@@ -12,10 +12,16 @@
 - Composed skills reference tool skills, they don't duplicate them
 
 ## Credentials
-- Store API keys and tokens as environment variables
+- Store API keys and tokens as environment variables in the project `.env` file (repo root, gitignored)
 - Never hardcode credentials in skills or scripts
 - Connection strings go in env vars, not in CLAUDE.md
 - Each skill documents which env vars it needs
+
+## Environment Loading
+- **Before running ANY Bash command that uses CLI tools or env vars**, source the project .env file first: `source .env && <command>`
+- This applies to: psql, curl with auth headers, gog, npx agent-slack, linearis, stripe, vercel, neonctl — any command that depends on credentials
+- The `.env` file is always at the repository root
+- Never assume env vars are already in the shell — always source explicitly
 
 ## Database
 - Read-only unless explicitly authorized

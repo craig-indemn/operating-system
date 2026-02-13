@@ -23,7 +23,14 @@ Connected intelligence layer for Indemn. Every tool the company uses, accessible
 | `/vercel` | vercel CLI | Deployments, environments, domains |
 | `/postgres` | neonctl + psql | Neon Postgres database access |
 
-### Composed Skills
+### Workflow Skills
+| Skill | What It Does |
+|-------|-------------|
+| `/call-prep` | End-to-end customer call briefing — meetings, signals, Slack, email, pipeline, contacts |
+| `/weekly-summary` | Weekly intelligence rollup — decisions, action items, signals, pipeline, quotes |
+| `/follow-up-check` | Surface overdue action items, unmet commitments, and dropped follow-ups |
+
+### Reference Skills
 | Skill | What It Does |
 |-------|-------------|
 | `/meeting-intelligence` | Query meetings, transcripts, extracted intelligence, customer signals |

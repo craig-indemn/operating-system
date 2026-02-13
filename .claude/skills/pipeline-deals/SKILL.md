@@ -1,88 +1,52 @@
 ---
 name: pipeline-deals
-description: Check pipeline status, deal context, and prepare for customer calls by pulling from meetings, email, Slack, and CRM data. Use when the user asks about deals, pipeline, or customer prep.
-allowed-tools: Bash(psql *), Bash(curl *), Bash(gog *), Bash(npx agent-slack *)
+description: Check pipeline status, deal context, and customer prep across meetings database and Pipeline API. Use when the user asks about deals, pipeline, or customer prep.
+allowed-tools: Bash(psql *), Bash(curl *)
 ---
 
 # Pipeline & Deals
 
-Cross-system intelligence for pipeline management and customer prep. Pulls from meetings database, Pipeline API, Google Workspace, and Slack.
+Pipeline intelligence from two sources: the Neon Postgres database (deals, companies, scoring, stale alerts) and the Pipeline API on Vercel.
 
-**Prerequisites**: `/postgres`, `/google-workspace`, and `/slack` skills should be set up.
+**Connection**: `source .env && /opt/homebrew/opt/libpq/bin/psql "$NEON_CONNECTION_STRING" -c "<query>"`
+
+All table and column names are **PascalCase and must be double-quoted**.
 
 ## Pipeline API
 
-The Pipeline API is hosted on Vercel:
-```
-https://indemn-pipeline.vercel.app/api/
-```
-
-Query it directly:
 ```bash
-curl -s "https://indemn-pipeline.vercel.app/api/deals" | jq '.'
-curl -s "https://indemn-pipeline.vercel.app/api/pipeline/summary" | jq '.'
+source .env && curl -s "https://indemn-pipeline.vercel.app/api/deals" | jq '.'
+source .env && curl -s "https://indemn-pipeline.vercel.app/api/pipeline/summary" | jq '.'
+source .env && curl -s "https://indemn-pipeline.vercel.app/api" | jq '.'
 ```
 
-Inspect available endpoints:
-```bash
-curl -s "https://indemn-pipeline.vercel.app/api" | jq '.'
-```
+## Database Tables & Key Columns
 
-## Customer Call Prep Workflow
+**Deals**
+- `"Deal"` — `"companyId"`, `status`, `"expectedARR"`, `"compositeScore"`, `"isStale"`, `"staleDays"`, `segment`, `"useCase"`, `"opportunityBucket"`, `"ownerId"`
+  - `status` (DealStatus enum): `CONTACT`, `DISCOVERY`, `DEMO`, `PROPOSAL`, `NEGOTIATION`, `WON`, `LOST`
+  - `segment`: `Enterprise`, `Mid-Market`, `SMB`
 
-When preparing for a call with a customer, pull from multiple sources:
+**Scoring**
+- `"AIScoringResult"` — `"dealId"`, `"compositeScore"`, `"suggestedARR"`, `confidence`, `status`
 
-### 1. Meeting history
-```sql
-SELECT m.title, m.date, ma.summary
-FROM meetings m
-JOIN meeting_analyses ma ON ma.meeting_id = m.id
-WHERE m.title ILIKE '%CUSTOMER%'
-ORDER BY m.date DESC
-LIMIT 5;
-```
+**Stale Alerts**
+- `"StaleAlert"` — `"dealId"`, `reason`, `"suggestedAction"`, `"isResolved"`
 
-### 2. Signals and objections
-```sql
-SELECT type, description, evidence FROM historical_signals WHERE company ILIKE '%CUSTOMER%' ORDER BY created_at DESC LIMIT 10;
-SELECT objection, response, response_worked FROM historical_objections WHERE objection ILIKE '%CUSTOMER%' ORDER BY created_at DESC LIMIT 5;
-```
+**Companies**
+- `"Company"` — `id`, `name`, `domain`, `type`, `industry`, `"healthColor"`, `"healthScore"`
 
-### 3. Recent Slack mentions
-```bash
-npx agent-slack search --query "CUSTOMER_NAME"
-```
+**Implementations**
+- `"Implementation"` — `"companyId"`, `"customerName"`, `stage`, `"healthStatus"`, `"hasVoiceAgent"`, `"hasChatAgent"`
+  - `stage` (ImplementationStage enum): `KICKOFF` → `SCOPING` → `CONFIGURATION` → `TESTING` → `LAUNCH` → `ONBOARDING` → `ACTIVE` → `LIVE` → `EXPAND` → `RENEW` → `ADVOCATE`
 
-### 4. Recent emails
-```bash
-gog gmail search "CUSTOMER_NAME" --max-results 10 --format json
-```
+## Key JOINs
 
-### 5. Deal status
-```bash
-curl -s "https://indemn-pipeline.vercel.app/api/deals?company=CUSTOMER_NAME" | jq '.'
-```
+- Deals to companies: `"Deal"."companyId"` → `"Company".id`
+- Scoring to deals: `"AIScoringResult"."dealId"` → `"Deal".id`
+- Stale alerts to deals: `"StaleAlert"."dealId"` → `"Deal".id`
+- Implementations to companies: `"Implementation"."companyId"` → `"Company".id`
 
-### 6. Contact info
-```sql
-SELECT name, email, role FROM people WHERE company ILIKE '%CUSTOMER%';
-```
+## Full Reference
 
-## Drafting Follow-Up Emails
-
-After gathering context, use Google Workspace to draft:
-```bash
-gog gmail draft --to "contact@customer.com" --subject "Following up on our conversation" --body "Draft text here"
-```
-
-Or create a Google Doc for collaborative prep:
-```bash
-gog docs create --title "Call Prep - CUSTOMER - DATE" --parent-folder "/Customers"
-```
-
-## Pipeline Summary
-
-For a quick pipeline overview:
-```bash
-curl -s "https://indemn-pipeline.vercel.app/api/pipeline/summary" | jq '.'
-```
+For complete deal pipeline model, signal-to-deal relationships, email/outreach system, and implementation tracking details, see the meeting-intelligence skill's `references/data-dictionary.md`.

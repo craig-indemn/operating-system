@@ -96,16 +96,24 @@ Kyle built a system that processes 3,211 meetings into structured intelligence:
 ## What's Built So Far
 
 - Repository structure: `operating-system/` with `.claude/skills/` for all tools
-- CLAUDE.md as lean index
+- CLAUDE.md as lean index with skill tiers (Tool, Workflow, Reference, Meta)
 - 9 tool skills with accurate commands (slack, google-workspace, linear, github, stripe, airtable, apollo, vercel, postgres)
+- 3 workflow skills: call-prep, weekly-summary, follow-up-check — end-to-end task skills that compose tool and reference skills
+- 2 reference skills (meeting-intelligence, pipeline-deals) — corrected to use actual PascalCase schema from the database
 - 1 onboarding meta-skill with prerequisites table
-- 2 composed skills (meeting-intelligence, pipeline-deals)
-- Rules file for conventions
+- Rules file for conventions including environment loading rule (`.env` auto-sourced before all CLI commands)
 - Google Workspace: 5 per-service reference files (gmail, calendar, drive, docs, sheets) with verified commands
 - Postgres: full schema guide (66 tables) and domain data dictionary
 - Airtable + Apollo: API spec reference files
-- Internal docs: philosophy, best practices, context
+- Internal docs: philosophy, best practices (now includes composed skill patterns), context
 - .gitignore for credentials
+
+## Known Issues
+
+- **Meeting ingestion stopped ~Jan 30, 2026** — no new meetings in the database since then. Extraction pipeline may need attention.
+- **Pipeline API down** — `indemn-pipeline.vercel.app/api/pipeline/summary` returned nothing during testing
+- **Action items have no owners or due dates** — all 15 open items are `pending` with NULL owner and NULL dueDate, limiting the follow-up-check skill's usefulness
+- **Duplicate meetings** — many meetings appear twice (once from Apollo, once from Granola) with slightly different timestamps
 
 ## Next Steps
 
@@ -114,14 +122,17 @@ Kyle built a system that processes 3,211 meetings into structured intelligence:
 2. ~~**Set environment variables**~~ — `.env` file in repo, sourced from `~/.zshrc`
 3. ~~**Test each skill end-to-end**~~ — all tools verified with real commands
 4. ~~**Fix skill documentation**~~ — corrected wrong CLI commands in Slack, Linear, Google Workspace, Postgres, and Onboarding skills
+5. ~~**Build composed workflows**~~ — call-prep, weekly-summary, follow-up-check built and tested against real data
+6. ~~**Fix reference skill accuracy**~~ — meeting-intelligence and pipeline-deals rewritten with correct PascalCase table/column names from actual database schema
+7. ~~**Environment loading**~~ — added conventions rule so `.env` is sourced before every CLI command; documented in best-practices.md
+8. ~~**Document skill composition patterns**~~ — three-tier model (tool/reference/task), invocation design, `$ARGUMENTS`, progressive disclosure added to best-practices.md
 
 ### Short Term
-5. **Answer Kyle's extraction pipeline questions** — now informed by real schema data
-6. **Build the first composed workflow** — "prepare for call with X" pulling from meetings + pipeline + slack
-7. **Validate Google Workspace deep** — test Calendar, Drive, Docs, Sheets with real data (Gmail confirmed)
-8. **Get Apollo API key** — requires paid plan, check with Kyle
+9. **Answer Kyle's extraction pipeline questions** — now informed by real schema data; ingestion appears stalled since Jan 30
+10. **Validate Google Workspace deep** — test Calendar, Drive, Docs, Sheets with real data (Gmail and Calendar confirmed)
+11. **Get Apollo API key** — requires paid plan, check with Kyle
+12. **Investigate pipeline API** — Vercel deployment may need redeployment or the API endpoint changed
 
 ### Medium Term
-9. **Onboard Cam** — use the onboarding skill to set up an executive-tier config
-10. **Cross-system workflows** — weekly summaries, follow-up detection, meeting prep automation
-11. **Maturity classification** — mark each integration as Experiment/Useful/Supported based on actual reliability
+13. **Onboard Cam** — use the onboarding skill to set up an executive-tier config
+14. **Maturity classification** — mark each integration as Experiment/Useful/Supported based on actual reliability

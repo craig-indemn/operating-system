@@ -6,84 +6,53 @@ allowed-tools: Bash(psql *)
 
 # Meeting Intelligence
 
-Query Indemn's meeting intelligence database — 3,211 meetings with transcripts, extracted decisions, quotes, signals, objections, learnings, and customer profiles.
+Query Indemn's meeting intelligence database. 3,141 meetings with transcripts, 14,612 extracted insights, 3,240 signals, 3,681 quotes, 1,469 action items.
 
-**Prerequisite**: The `/postgres` skill must be set up (psql installed, `NEON_CONNECTION_STRING` set).
+**Connection**: `source .env && /opt/homebrew/opt/libpq/bin/psql "$NEON_CONNECTION_STRING" -c "<query>"`
 
-## How to Use This
+All table and column names are **PascalCase and must be double-quoted**.
 
-Don't hardcode queries. The database schema may evolve. Always:
-1. Check available tables: `psql "$NEON_CONNECTION_STRING" -c "\dt"`
-2. Inspect table structure before querying: `psql "$NEON_CONNECTION_STRING" -c "\d tablename"`
-3. Then write your query based on the actual schema
+## Core Tables & Key Columns
 
-## Known Table Categories
+**Meetings**
+- `"Meeting"` — `id`, `title`, `date`, `source`, `"meetingType"`, `category`, `"companyId"`
+- `"MeetingUtterance"` — `"meetingId"`, `"speakerName"`, `text`, `"startMs"` (183K rows — always filter by `"meetingId"`)
+- `"MeetingParticipant"` — `"meetingId"`, `"speakerName"`, `"speakingTime"`, `"utteranceCount"`
 
-**Core meeting data:**
-- `meetings` — title, date, source, duration, host, category
-- `meeting_utterances` — full transcripts with speaker, timestamps
-- `meeting_participants` — who attended, speaking time, utterance count
-- `meeting_analyses` — AI-generated summaries, insights, action items
+**Extracted Intelligence**
+- `"MeetingExtraction"` — `"meetingId"`, `"extractionType"`, `category`, `text`, `confidence`, `context`, `rationale`
+  - `"extractionType"` values: `decision` (5,691), `learning` (4,691), `problem` (2,622), `objection` (1,608)
+  - `confidence` (learnings only): `insight`, `worked`, `didnt_work`
+  - `"companyId"` is almost always NULL — join through `"Meeting"."companyId"` instead
 
-**Extracted intelligence:**
-- `historical_decisions` — decisions made, categorized, with rationale
-- `historical_quotes` — notable quotes with speaker, sentiment, context
-- `historical_signals` — champion/expansion/churn/blocker/health signals by company
-- `historical_objections` — objections raised, responses given, effectiveness
-- `historical_learnings` — lessons learned, categorized
-- `historical_problems` — problems identified, severity, customer
+**Signals & Quotes**
+- `"Signal"` — `"meetingId"`, `"companyId"`, `"signalType"`, `sentiment`, `text`, `"meetingDate"`
+  - `"signalType"` values: `health`, `expansion`, `champion`, `churn_risk`, `blocker`
+- `"Quote"` — `"meetingId"`, `"companyId"`, `text`, `"speakerName"`, `sentiment`, `"usableFor"`, `"meetingDate"`
+  - `sentiment`: `positive`, `neutral`, `negative`
+  - `"usableFor"`: `internal`, `case_study`, `pitch`, `testimonial`
 
-**CRM-adjacent:**
-- `people` — contacts with company, role, interaction history
-- `customer_profiles` — aggregated intelligence per customer
-- `customer_contacts`, `person_companies` — relationship mapping
+**Action Items**
+- `"ActionItem"` — `"meetingId"`, `description`, `owner`, `"dueDate"`, `status`, `category`, `customer`
 
-**Workflow:**
-- `extraction_runs` — tracks processing history
-- `action_items`, `commitments` — meeting follow-ups
-- `daily_reviews`, `morning_briefs` — operational outputs
+**Companies & Contacts**
+- `"Company"` — `id`, `name`, `domain`, `type`, `industry`, `"healthColor"`, `"healthScore"`
+- `"Contact"` — `"companyId"`, `name`, `email`, `title`
+- `"Deal"` — `"companyId"`, `status`, `"expectedARR"`, `"compositeScore"`, `"isStale"`, `"staleDays"`
+- `"StaleAlert"` — `"dealId"`, `reason`, `"suggestedAction"`, `"isResolved"`
+- `"Implementation"` — `"companyId"`, `"customerName"`, `stage`, `"healthStatus"`, `"hasVoiceAgent"`, `"hasChatAgent"`
+- `"ImplementationMilestone"` — `"implementationId"`, `"isCompleted"`
 
-## Common Query Patterns
+## Key JOINs
 
-**What did we discuss with a customer?**
-```sql
-SELECT m.title, m.date, ma.summary
-FROM meetings m
-JOIN meeting_analyses ma ON ma.meeting_id = m.id
-WHERE m.title ILIKE '%CUSTOMER_NAME%'
-ORDER BY m.date DESC
-LIMIT 10;
-```
+- Extractions to companies: `"MeetingExtraction"` → `"Meeting"."companyId"` → `"Company"`
+- Signals to companies: `"Signal"."companyId"` → `"Company"`
+- Quotes to companies: `"Quote"."companyId"` → `"Company"`
+- Action items to meetings: `"ActionItem"."meetingId"` → `"Meeting"`
+- Deals to companies: `"Deal"."companyId"` → `"Company"`
+- Stale alerts to deals: `"StaleAlert"."dealId"` → `"Deal"`
+- Implementations to milestones: `"ImplementationMilestone"."implementationId"` → `"Implementation"`
 
-**Customer signals (expansion, churn risk, etc.):**
-```sql
-SELECT type, description, evidence, created_at
-FROM historical_signals
-WHERE company ILIKE '%CUSTOMER_NAME%'
-ORDER BY created_at DESC;
-```
+## Full Reference
 
-**Recent action items:**
-```sql
-SELECT * FROM action_items
-ORDER BY created_at DESC
-LIMIT 20;
-```
-
-**Quotes about a topic:**
-```sql
-SELECT quote, speaker_name, sentiment, context
-FROM historical_quotes
-WHERE quote ILIKE '%operational efficiency%'
-ORDER BY created_at DESC;
-```
-
-**Objections and how they were handled:**
-```sql
-SELECT objection, category, response, response_worked
-FROM historical_objections
-WHERE objection ILIKE '%pricing%'
-ORDER BY created_at DESC;
-```
-
-These are starting points. Inspect the actual schema columns before running queries — the column names above are based on Kyle's documentation and may differ slightly in the database.
+For complete column listings, enum values, query patterns, data flow diagrams, and domain explanations, see `references/data-dictionary.md`.
