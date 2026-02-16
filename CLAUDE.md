@@ -22,6 +22,7 @@ Connected intelligence layer for Indemn. Every tool the company uses, accessible
 | `/apollo` | curl (REST API) | Company enrichment, contacts, employee data |
 | `/vercel` | vercel CLI | Deployments, environments, domains |
 | `/postgres` | neonctl + psql | Neon Postgres database access |
+| `/mongodb` | mongosh | Query MongoDB Atlas tiledesk database — bot configs, conversations, agents, orgs |
 
 ### Workflow Skills
 | Skill | What It Does |

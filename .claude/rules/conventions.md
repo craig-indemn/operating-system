@@ -19,14 +19,15 @@
 
 ## Environment Loading
 - **Before running ANY Bash command that uses CLI tools or env vars**, source the project .env file first: `source .env && <command>`
-- This applies to: psql, curl with auth headers, gog, npx agent-slack, linearis, stripe, vercel, neonctl — any command that depends on credentials
+- This applies to: psql, mongosh, curl with auth headers, gog, npx agent-slack, linearis, stripe, vercel, neonctl — any command that depends on credentials
 - The `.env` file is always at the repository root
 - Never assume env vars are already in the shell — always source explicitly
 
 ## Database
 - Read-only unless explicitly authorized
 - Understand the schema dynamically — don't hardcode table names or column lists
-- Use the postgres skill for connection patterns, meeting-intelligence skill for domain queries
+- Use the postgres skill for Neon Postgres connection patterns, meeting-intelligence skill for domain queries
+- Use the mongodb skill for MongoDB Atlas connection patterns and tiledesk operational data
 
 ## When Compacting
 - Always preserve: the list of available skills, the user's role, which tools are authenticated
