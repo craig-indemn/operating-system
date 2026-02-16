@@ -3,7 +3,13 @@
 Building the data and analytics angle for Indemn's Series A fundraising. Consolidating existing materials, identifying gaps, and producing investor-ready artifacts that demonstrate traction, market position, and product-market fit through data.
 
 ## Status
-First session (2026-02-16). Inventoried all accessible Google Drive files and docs. Identified 9 existing Series A documents in Drive plus an extensive operations document set (numbered 1-13) covering frameworks, messaging, customer stories, and competitive positioning. Designed and built the project tracking system that this INDEX lives in. Next: review the existing Series A materials to understand what's already written and identify gaps for the data/analytics angle.
+Last session (2026-02-16): Inventoried all accessible Google Drive files and docs. Identified 9 existing Series A documents in Drive plus an extensive operations document set (numbered 1-13) covering frameworks, messaging, customer stories, and competitive positioning. Built the project tracking system this INDEX lives in.
+
+**Next steps:**
+1. Read the key Series A docs (Cam's Take, Investor Update, Deal Model, Revenue Model) to understand what's already written
+2. Identify gaps where data/analytics could strengthen the narrative
+3. Pull data from Meetings DB, Stripe, and MongoDB to quantify traction (conversation volumes, revenue, customer engagement)
+4. Determine what specific data points Cam wants to highlight
 
 ## External Resources
 | Resource | Type | Link |
