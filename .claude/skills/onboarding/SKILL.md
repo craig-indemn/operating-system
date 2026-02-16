@@ -21,13 +21,14 @@ Before starting, here's what each tool requires. Some are fully self-service, so
 | Slack (`slack_sdk`) | **Needs Slack app or browser token** | Option A: Workspace admin approves Indemn OS Slack app → get `xoxp-` token. Option B: Extract browser token from Slack Desktop (no admin needed, can expire). See `/slack` skill for details. |
 | Airtable (curl) | Yes | Airtable account > Builder Hub > create Personal Access Token (needs scopes: `data.records:read`, `data.records:write`, `schema.bases:read` + grant access to all bases) |
 | Apollo (curl) | Needs paid plan | Apollo.io paid plan > Settings > Integrations > API key |
+| MongoDB (`mongosh`) | Yes | Nothing — connection strings are provided |
 | Google Workspace (`gog`) | **Needs GCP project** | Desktop app OAuth credentials JSON — can self-service with your own GCP project, or use the shared Indemn project (ask Kyle) |
 | Neonctl (`neonctl`) | Optional | Only needed for branch management, not for queries |
 
 ## Step 1: Determine Role
 
 Ask the user their role if not already known:
-- **Engineer**: All tools — slack, google-workspace, linear, github, stripe, airtable, apollo, vercel, postgres
+- **Engineer**: All tools — slack, google-workspace, linear, github, stripe, airtable, apollo, vercel, postgres, mongodb
 - **Executive**: Core tools — slack, google-workspace, postgres (read-only via meeting-intelligence skill)
 - **Sales**: Customer tools — slack, google-workspace, postgres (read-only via meeting-intelligence skill), apollo
 
@@ -39,6 +40,7 @@ which node && echo "Node.js: OK" || echo "Node.js: MISSING — brew install node
 which npm && echo "npm: OK" || echo "npm: MISSING — comes with Node.js"
 which brew && echo "Homebrew: OK" || echo "Homebrew: MISSING — /bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\""
 which jq && echo "jq: OK" || echo "jq: MISSING — brew install jq"
+which mongosh && echo "mongosh: OK" || echo "mongosh: MISSING — brew install mongosh"
 /usr/bin/python3 -c "import slack_sdk" 2>/dev/null && echo "slack_sdk: OK" || echo "slack_sdk: MISSING — pip3 install slack_sdk"
 ```
 
@@ -63,6 +65,7 @@ For each tool that's not installed, run the install command from its skill:
 | vercel | `npm install -g vercel` |
 | neonctl | `npm install -g neonctl` |
 | psql | `brew install libpq` |
+| mongosh (MongoDB) | `brew install mongosh` |
 | slack_sdk (Python) | `pip3 install slack_sdk` |
 
 ## Step 5: Authenticate
@@ -78,8 +81,9 @@ For each tool that's installed but not authenticated, walk the user through the 
 4. **Stripe** — `stripe login` (browser flow, note: connects to sandbox by default)
 5. **Linear** — paste API key into `.env`
 6. **Airtable** — paste PAT into `.env`
-7. **Google Workspace** — needs OAuth credentials JSON first, then `gog auth add email`
-8. **Apollo** — paste API key into `.env` (requires paid plan)
+7. **MongoDB** — connection strings are provided, just add `MONGODB_PROD_URI` and `MONGODB_DEV_URI` to `.env` (see `/mongodb` skill)
+8. **Google Workspace** — needs OAuth credentials JSON first, then `gog auth add email`
+9. **Apollo** — paste API key into `.env` (requires paid plan)
 
 Collect any needed credentials from the user interactively.
 
@@ -89,7 +93,7 @@ All env vars live in the repo's `.env` file (gitignored), sourced from `~/.zshrc
 
 Check current state:
 ```bash
-env | grep -E "(SLACK_TOKEN|SLACK_XOXC_TOKEN|LINEAR_API_KEY|LINEAR_API_TOKEN|STRIPE_API_KEY|VERCEL_TOKEN|NEON_API_KEY|NEON_CONNECTION_STRING|AIRTABLE_PAT|APOLLO_API_KEY)" | sed 's/=.*/=***/' | sort
+env | grep -E "(SLACK_TOKEN|SLACK_XOXC_TOKEN|LINEAR_API_KEY|LINEAR_API_TOKEN|STRIPE_API_KEY|VERCEL_TOKEN|NEON_API_KEY|NEON_CONNECTION_STRING|MONGODB_PROD_URI|MONGODB_DEV_URI|AIRTABLE_PAT|APOLLO_API_KEY)" | sed 's/=.*/=***/' | sort
 ```
 
 If `.env` doesn't exist yet, create it in the repo root with:
@@ -121,6 +125,7 @@ linearis issues list --limit 1
 gog gmail search "newer_than:1d" --max 1 --json
 stripe config --list
 source /Users/home/Repositories/operating-system/.env && PYTHONPATH=/Users/home/Repositories/operating-system/lib /usr/bin/python3 -c "from slack_client import get_client; r = get_client().auth_test(); print(f'Slack: {r[\"user\"]}@{r[\"team\"]}')"
+source /Users/home/Repositories/operating-system/.env && mongosh "$MONGODB_PROD_URI/tiledesk" --quiet --eval "db.runCommand({ping:1}).ok"
 curl -s "https://api.airtable.com/v0/meta/bases" -H "Authorization: Bearer $AIRTABLE_PAT" | jq '.bases | length'
 ```
 
