@@ -29,6 +29,17 @@
 - Use the postgres skill for Neon Postgres connection patterns, meeting-intelligence skill for domain queries
 - Use the mongodb skill for MongoDB Atlas connection patterns and tiledesk operational data
 
+## Projects
+- Workstream projects live in `projects/<name>/` with INDEX.md, artifacts/, and .beads/
+- Artifacts are distilled outputs, not raw data dumps — summarize and organize before saving
+- Every artifact has a metadata header with `ask`, `created`, `workstream`, `session`, and `sources`
+- Artifact slugs: lowercase, hyphenated, descriptive (e.g. `google-drive-inventory`)
+- INDEX.md is the source of truth for resuming — if it's not there, it doesn't exist for resume purposes
+- Update INDEX.md at end of session: refresh Status, add new artifacts/decisions/links
+- Beads are scoped per-project — always `cd` into the project directory before running `bd` commands
+- Commit project state after closing a session
+
 ## When Compacting
 - Always preserve: the list of available skills, the user's role, which tools are authenticated
 - Always preserve: any active task context and decisions made in conversation
+- Always preserve: the current active project name and its last known status

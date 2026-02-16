@@ -27,6 +27,7 @@ Connected intelligence layer for Indemn. Every tool the company uses, accessible
 ### Workflow Skills
 | Skill | What It Does |
 |-------|-------------|
+| `/project` | Resume, create, and manage workstream projects — persistent context, artifacts, and beads across sessions |
 | `/call-prep` | End-to-end customer call briefing — meetings, signals, Slack, email, pipeline, contacts |
 | `/weekly-summary` | Weekly intelligence rollup — decisions, action items, signals, pipeline, quotes |
 | `/follow-up-check` | Surface overdue action items, unmet commitments, and dropped follow-ups |
@@ -46,6 +47,16 @@ Connected intelligence layer for Indemn. Every tool the company uses, accessible
 - **Engineer** (Craig): All tools, full database access, all skills
 - **Executive** (Cam): Meetings, docs, slack, pipeline — no raw DB or deployment tools
 - **Sales**: Meetings, pipeline, CRM — customer intelligence focus
+
+## Projects
+
+Workstream projects live in `projects/<name>/`. Each has an INDEX.md (context for resuming), artifacts (distilled outputs), and beads (task tracking). See `/project` skill for full usage.
+
+- To resume a project: `/project <name>` or just mention the project by name
+- To create a new project: `/project new <name>`
+- To save output as an artifact: `/project save <slug>`
+- To see all projects: `/project status`
+- Design doc: @docs/plans/2026-02-16-project-tracking-design.md
 
 ## Conventions
 @.claude/rules/conventions.md

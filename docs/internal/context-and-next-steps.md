@@ -107,6 +107,7 @@ Kyle built a system that processes 3,211 meetings into structured intelligence:
 - Airtable + Apollo: API spec reference files
 - Internal docs: philosophy, best practices (now includes composed skill patterns), context
 - .gitignore for credentials
+- **Project tracking system**: `projects/` directory with per-workstream INDEX.md, artifacts, and beads integration. `/project` skill for resume, create, save, status, and close-session. Design doc at `docs/plans/2026-02-16-project-tracking-design.md`
 
 ## Known Issues
 
