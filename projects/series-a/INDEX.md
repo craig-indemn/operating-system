@@ -3,13 +3,31 @@
 Building the data and analytics angle for Indemn's Series A fundraising. Consolidating existing materials, identifying gaps, and producing investor-ready artifacts that demonstrate traction, market position, and product-market fit through data.
 
 ## Status
-Last session (2026-02-16-b): Read all 35 Series A docs comprehensively (saved to source-docs/). Explored the engineering systems Craig has built — web operators, evaluation harness, observatory analytics. Course-corrected approach: the CTO angle is NOT critiquing the existing fundraising strategy. It's telling the technical story — frontier agentic AI infrastructure, data from the observatory, and the team's velocity — in a way that makes investors understand the moat.
+Last session (2026-02-17-a): Pulled real production data from MongoDB and git history. Produced a first draft of the data story artifact ("The Engineering Advantage") for Craig to share with Kyle.
+
+**What was done:**
+- Explored the full tiledesk MongoDB database — inventoried all collections and document counts
+- Mapped organizations and projects to customer names with conversation volumes
+- Pulled Observatory data: 7,695 conversations analyzed across 55 active agents, with outcome tracking, precursor lift analysis, intent classification, sentiment, daily snapshots
+- Got monthly conversation trends per customer (last 7 months)
+- Pulled git history for all three systems to verify build timelines (Observatory: Dec 22 first commit, Evaluations: Jan 20, Web Operators: Feb 12 — 5 days old)
+- Drafted v1 of the data story combining platform scale, build velocity, and system capabilities
+
+**Important context from Craig:**
+- Do NOT trust the financial numbers from previous session's analysis — Cam/Kyle have the correct revenue data
+- Craig is the de facto CTO (AI engineer, leading the 4-person engineering team, intending to formalize CTO role)
+- Kyle asked Craig to provide analytics and data to supplement the Series A investor pitch — Kyle doesn't know exactly what he's looking for, he trusts Craig to figure it out
+- Kyle and Cam are NOT technical — the story needs to be in results terms, not architecture terms
+- The previous session's comprehensive analysis (artifact 2) was overly critical and overstepped — the CTO angle is supplementing the pitch, not auditing it
+- The "Indemn" org conversations (~1,700/month) are demos and beta agents — exclude from customer metrics
+- All customers can be named in investor materials
 
 **Next steps:**
-1. Pull Observatory data from MongoDB (use `/mongodb` skill) — explore observatory_conversations, daily_snapshots, precursor_lifts, flow_paths collections
-2. Work iteratively with Craig to discover what data tells the most compelling story
-3. Consider Stripe data to complement conversation/engagement metrics
-4. Frame the technical narrative around web operators + eval system + observatory as differentiators
+1. Craig reviews the v1 draft and provides feedback
+2. Iterate on the story based on Craig's reaction and Kyle's input
+3. Potentially add more specific data points once Craig validates what's accurate vs. what needs correction
+4. Consider whether Stripe revenue data should be woven in (Cam/Kyle own those numbers)
+5. Consider format — is this a standalone doc, a section of the deck, talking points?
 
 ## External Resources
 | Resource | Type | Link |
@@ -39,16 +57,20 @@ Last session (2026-02-16-b): Read all 35 Series A docs comprehensively (saved to
 | 2026-02-16 | [google-drive-inventory](artifacts/2026-02-16-google-drive-inventory.md) | What Google Drive files and docs can we access? |
 | 2026-02-16 | [series-a-comprehensive-analysis](artifacts/2026-02-16-series-a-comprehensive-analysis.md) | Comprehensively read all Series A materials — understand strategy, real numbers, and gaps where engineering/data can strengthen the raise |
 | 2026-02-16 | [engineering-angle-session-handoff](artifacts/2026-02-16-engineering-angle-session-handoff.md) | Session handoff: engineering angle, what was built (web operators, eval system, observatory), where to pick up next |
+| 2026-02-17 | [data-story-draft-v1](artifacts/2026-02-17-data-story-draft-v1.md) | First draft of data/analytics story for Kyle — platform scale, build velocity, Observatory/Eval/WebOps capabilities backed by production data |
 
 ## Decisions
 - 2026-02-16: Building a data/analytics angle for the Series A — not just narrative docs but data-backed evidence of traction and PMF
 - 2026-02-16: The CTO angle is about telling the technical story (frontier agentic AI, web operators, observatory data, team velocity) — NOT auditing or critiquing Cam's fundraising strategy
 - 2026-02-16: Approach must be iterative and conversational with Craig — discover what data tells the best story together, don't make sweeping claims
+- 2026-02-17: Don't trust numbers from previous session's analysis as ground truth — treat all financial data as unverified unless confirmed by Kyle/Cam
+- 2026-02-17: The data story serves the pitch by showing what the engineering systems produce (Observatory outputs, eval results, build velocity) — the systems ARE the evidence, not just a data source
+- 2026-02-17: Exclude Indemn internal org (~1,700 conversations/month) from customer metrics — those are demos/beta agents
 
 ## Open Questions
-- What Observatory data is currently populated? Which customers have data? What date ranges?
-- What are the most impressive precursor insights the observatory has surfaced?
-- How many conversations are tracked across all customers?
-- What do the web operator run results look like? Any completed runs with success metrics?
-- What evaluation runs have been completed? What do the results show?
-- What data from Stripe + Observatory together tells the most compelling technical story?
+- Craig hasn't reviewed v1 draft yet — what resonates, what's wrong, what's missing?
+- What format does Kyle want? Standalone doc, deck section, talking points?
+- Should Stripe revenue data be woven in, or is that Cam/Kyle's domain entirely?
+- The platform totals (2M messages, 143K conversations) include all-time data back to Aug 2023 — how much is production vs. test? Need to validate before putting in front of investors.
+- Observatory "outcome_group" classifications (success/failure/partial) — is the classification system tuned correctly? Craig flagged "success" as a poor label for that metric.
+- What do web operator production runs look like? Current data is from 5 days of development — any completed runs with measurable results yet?
