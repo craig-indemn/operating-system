@@ -10,7 +10,7 @@ Full Slack Web API access via the Python SDK (`slack_sdk`). Supports every Slack
 ## Status Check
 
 ```bash
-source /Users/home/Repositories/operating-system/.env && PYTHONPATH=/Users/home/Repositories/operating-system/lib /usr/bin/python3 -c "
+REPO_ROOT=$(git rev-parse --show-toplevel) && source "$REPO_ROOT/.env" && PYTHONPATH="$REPO_ROOT/lib" /usr/bin/python3 -c "
 from slack_client import get_client
 r = get_client().auth_test()
 print(f'OK — {r[\"user\"]}@{r[\"team\"]}')
@@ -23,7 +23,7 @@ print(f'OK — {r[\"user\"]}@{r[\"team\"]}')
 - **Slack token** — one of:
   - `SLACK_TOKEN` (xoxp-) — from an approved Slack app (preferred)
   - `SLACK_XOXC_TOKEN` + `SLACK_XOXD_COOKIE` — from Slack Desktop browser session (quick path)
-- Token stored in `/Users/home/Repositories/operating-system/.env`
+- Token stored in the repo root `.env` file
 
 ## Setup
 
@@ -65,7 +65,7 @@ Note: Browser tokens can expire. If auth starts failing, re-extract from Slack D
 ### Verify
 
 ```bash
-source /Users/home/Repositories/operating-system/.env && PYTHONPATH=/Users/home/Repositories/operating-system/lib /usr/bin/python3 -c "
+REPO_ROOT=$(git rev-parse --show-toplevel) && source "$REPO_ROOT/.env" && PYTHONPATH="$REPO_ROOT/lib" /usr/bin/python3 -c "
 from slack_client import get_client
 r = get_client().auth_test()
 print(f'OK — {r[\"user\"]}@{r[\"team\"]} ({r[\"user_id\"]})')
@@ -77,7 +77,7 @@ print(f'OK — {r[\"user\"]}@{r[\"team\"]} ({r[\"user_id\"]})')
 Every Slack operation follows this pattern:
 
 ```bash
-source /Users/home/Repositories/operating-system/.env && PYTHONPATH=/Users/home/Repositories/operating-system/lib /usr/bin/python3 << 'PYEOF'
+REPO_ROOT=$(git rev-parse --show-toplevel) && source "$REPO_ROOT/.env" && PYTHONPATH="$REPO_ROOT/lib" /usr/bin/python3 << 'PYEOF'
 from slack_client import get_client
 
 client = get_client()

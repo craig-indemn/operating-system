@@ -82,7 +82,9 @@ For each tool that's installed but not authenticated, walk the user through the 
 5. **Linear** — paste API key into `.env`
 6. **Airtable** — paste PAT into `.env`
 7. **MongoDB** — connection strings are provided, just add `MONGODB_PROD_URI` and `MONGODB_DEV_URI` to `.env` (see `/mongodb` skill)
-8. **Google Workspace** — needs OAuth credentials JSON first, then `gog auth add email`
+8. **Google Workspace** — needs an OAuth credentials JSON file (Desktop app type). Ask the user: "Do you have a credentials JSON file that was shared with you?" If yes, use it directly. If no, they need to create their own GCP project — see the Prerequisites section of the `/google-workspace` skill. Once they have the JSON:
+   - `gog auth credentials set ~/path/to/credentials.json`
+   - `gog auth add their-email@indemn.ai` (opens browser for Google consent)
 9. **Apollo** — paste API key into `.env` (requires paid plan)
 
 Collect any needed credentials from the user interactively.
@@ -124,8 +126,8 @@ vercel whoami
 linearis issues list --limit 1
 gog gmail search "newer_than:1d" --max 1 --json
 stripe config --list
-source /Users/home/Repositories/operating-system/.env && PYTHONPATH=/Users/home/Repositories/operating-system/lib /usr/bin/python3 -c "from slack_client import get_client; r = get_client().auth_test(); print(f'Slack: {r[\"user\"]}@{r[\"team\"]}')"
-source /Users/home/Repositories/operating-system/.env && mongosh "$MONGODB_PROD_URI/tiledesk" --quiet --eval "db.runCommand({ping:1}).ok"
+REPO_ROOT=$(git rev-parse --show-toplevel) && source "$REPO_ROOT/.env" && PYTHONPATH="$REPO_ROOT/lib" /usr/bin/python3 -c "from slack_client import get_client; r = get_client().auth_test(); print(f'Slack: {r[\"user\"]}@{r[\"team\"]}')"
+REPO_ROOT=$(git rev-parse --show-toplevel) && source "$REPO_ROOT/.env" && mongosh "$MONGODB_PROD_URI/tiledesk" --quiet --eval "db.runCommand({ping:1}).ok"
 curl -s "https://api.airtable.com/v0/meta/bases" -H "Authorization: Bearer $AIRTABLE_PAT" | jq '.bases | length'
 ```
 

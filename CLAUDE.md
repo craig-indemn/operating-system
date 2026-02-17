@@ -44,8 +44,8 @@ Connected intelligence layer for Indemn. Every tool the company uses, accessible
 | `/onboarding` | Role-based setup — installs and authenticates all tools for your role |
 
 ## Roles
-- **Engineer** (Craig): All tools, full database access, all skills
-- **Executive** (Cam): Meetings, docs, slack, pipeline — no raw DB or deployment tools
+- **Engineer**: All tools, full database access, all skills
+- **Executive**: Meetings, docs, slack, pipeline — no raw DB or deployment tools
 - **Sales**: Meetings, pipeline, CRM — customer intelligence focus
 
 ## Projects
@@ -56,7 +56,6 @@ Workstream projects live in `projects/<name>/`. Each has an INDEX.md (context fo
 - To create a new project: `/project new <name>`
 - To save output as an artifact: `/project save <slug>`
 - To see all projects: `/project status`
-- Design doc: @docs/plans/2026-02-16-project-tracking-design.md
 
 ## Conventions
 @.claude/rules/conventions.md
@@ -64,6 +63,3 @@ Workstream projects live in `projects/<name>/`. Each has an INDEX.md (context fo
 ## Architecture Docs
 - Philosophy: @docs/internal/philosophy.md
 - Best practices: @docs/internal/best-practices.md
-- Context & next steps: @docs/internal/context-and-next-steps.md
-- Kyle's original plan: @docs/Indemn AI-First Operating System — Project Plan.md
-- Kyle's setup doc: @docs/Craig's Claude Code Setup — Full Stack Access.md
