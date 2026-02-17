@@ -1,0 +1,66 @@
+Series A Revenue Defense - Summary
+
+As of January 27, 2026
+
+
+The Story in One Sentence
+
+We have $1M ARR today, $1.74M in weighted pipeline, and a methodology that's defensible under investor scrutiny.
+
+
+Current ARR: ~$1M
+
+12 paying customers across insurance distribution.
+
+
+Weighted Pipeline: $1.74M
+
+Our pipeline isn't just a list of names - every deal has been scored on 5 dimensions and weighted by stage probability.
+
+By Stage:
+- NEGOTIATION: 11 deals, $454K ARR, $244K weighted (54% probability)
+- PROPOSAL: 1 deal, $60K ARR, $28K weighted (47% probability)
+- DEMO: 3 deals, $165K ARR, $36K weighted (22% probability)
+- DISCOVERY: 155 deals, $5.9M ARR, $589K weighted (10% probability)
+- CONTACT: 543 deals, $18.5M ARR, $845K weighted (5% probability)
+
+Total: 712 scored deals
+
+
+The Scoring Methodology
+
+Each deal is scored 1-5 on five dimensions:
+1. Company Fit - Size, segment, tech readiness
+2. Relationship Strength - Champion access, exec engagement
+3. Eagerness/Urgency - Timeline, pain level
+4. Use Case Clarity - Defined problem, clear scope
+5. Milestone Progress - Demos completed, proposals sent
+
+Composite Score = Average of 5 dimensions
+Weighted Value = Expected ARR × Stage Probability × (Composite Score ÷ 5)
+
+
+Why This Holds Up
+
+For investors asking "how real is your pipeline?":
+
+1. Every deal has been individually scored by AI + human review
+2. We're conservative - CONTACT stage at 5%, not 10%
+3. Methodology is documented and repeatable
+4. We can show the work on any specific deal
+
+
+Near-Term Upside
+
+Negotiation deals ($244K weighted) should close in 30-60 days:
+- These are real conversations with proposals out
+- Multiple at $30K+ ARR each
+- High confidence scores (3.5+ composite)
+
+
+The Full Document
+
+The complete revenue defense with customer detail, scoring breakdown, and stage definitions is in indemn-series-a/series-a-revenue-defense.md
+
+Ask Claude to read it: "Read the Series A revenue defense document"
+

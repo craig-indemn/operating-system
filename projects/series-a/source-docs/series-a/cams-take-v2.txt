@@ -1,0 +1,31 @@
+Indemn Series A Foundation, February 2026
+The Hook: The Resolution Layer
+Indemn is the Resolution Layer for Insurance Distribution. We deploy a Digital Workforce of specialized AI Associates that work alongside human teams to convert intent into bound premium. We are the infrastructure that wins regardless of who sits at the keyboard.
+
+The Problem: The Distribution Friction Gap
+The industry is stalled by a massive friction gap where 70% of underwriting capacity is wasted on non-productive work.
+
+For Carriers: Strategic appetite is trapped behind manual processes and a lack of speed-to-market for digital initiatives.
+For Distribution: Staff are drowning in administrative drudgery, causing $100M MGAs to operate at 30% efficiency.
+The Result: This is not just a cost problem; it is a lost revenue problem that human-only teams cannot physically solve.
+The Four Outcomes: Revenue-First Intelligence
+We deliver results through specialized AI Associates. These are not "products" but Business Outcomes deployed as a service.
+
+REVENUE GROWTH (The Growth Associate): Unlocks capacity to capture missed revenue via 24/7 quoting and eligibility triage. This is our highest differentiator; top-line growth always trumps efficiency during vendor consolidation.
+OPERATIONAL EFFICIENCY (Policy & Service Associates): Liberates human staff from administrative drudgery by resolving high-volume tasks like COIs and billing instantly.
+CLIENT RETENTION (The Renewal Associate): Protects the book and maximizes lifetime value by proactively identifying price spikes and coverage gaps.
+STRATEGIC CONTROL (The Strategy Studio): Provides visibility and deterministic guardrails through a Human-in-the-Loop architecture.
+The Moat: Insurance-Native Reasoning
+Specialized Discipline: As proven by Jewelers Mutual, elite carriers recognize that leading-edge AI is an enabling discipline best delivered by a partner whose core value is the delivery of complex, insurance-specific outcomes.
+Fail-Safe Governance: Our Human-in-the-Loop architecture meets the market’s near-term need for safety while building the infrastructure for long-term autonomous evolution.
+The Consolidation Hedge: By leading with revenue, we position Indemn as the "must-have" infrastructure. When the market consolidates, the platform that "makes the market" is the one that survives.
+The Proof: Validation at Scale
+Jewelers Mutual: Acquired the EventGuard Revenue Outcome for its speed-to-market and 330% premium growth. They didn't buy a chatbot; they bought a result.
+Land & Expand: We demonstrate a 3-5x expansion pattern by adding new capabilities to existing Associates (e.g., adding Renewal capabilities after a Service launch).
+The Ask: $10M Series A
+We are capacity-constrained, not demand-constrained.
+
+Goal: Scale from $1.1M ARR to $15M ARR in 24 months.
+Use of Funds: 40% Sales (capture $25M pipeline), 35% Engineering (deepen Associate capabilities), 15% Customer Success (drive expansion).
+The Vision: Become the Resolution Layer that every insurance transaction flows through.
+

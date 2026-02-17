@@ -1,0 +1,102 @@
+The Four Outcomes
+Indemn Product Strategy Foundation
+
+What This Is
+
+Everything we build should serve one of four customer outcomes. This framework (from Cam) helps us prioritize work, evaluate features, and communicate value.
+
+Use this to evaluate any work: "Which outcome does this serve?"
+
+The Four Outcomes
+
+1. Revenue Growth
+Definition: Unlock capacity to capture missed revenue
+
+How we deliver:
+- Revenue Engine (quoting, binding, payments)
+- Voice Agents (handle more calls)
+- Multi-channel coverage (web, voice, SMS, email)
+
+Example work: EventGuard quote flow, voice implementations
+
+2. Operational Efficiency
+Definition: Liberate staff from administrative drudgery
+
+How we deliver:
+- Efficiency Engine (automation, workflows)
+- CSR Copilot (AI suggestions)
+- Platform Audit (simplify experiences)
+
+Example work: Platform Audit initiative, RLHF improvements
+
+3. Client Retention
+Definition: Protect the book and maximize lifetime value
+
+How we deliver:
+- Proactive service capabilities
+- Analytics and early warning
+- Renewal workflows
+
+Example work: Customer health monitoring, renewal automation
+
+4. Strategic Control
+Definition: Visibility, agility, and governance
+
+How we deliver:
+- Human-in-the-Loop (HIL) System
+- Testing & Evaluation framework
+- Analytics dashboards
+- Observatory
+
+Example work: T&E platform integration, HIL real-time monitoring
+
+How to Use This
+
+When Planning Work
+Ask: "Which outcome does this serve?"
+- If it serves none, question whether we should build it
+- If it serves multiple, identify the primary outcome
+
+When Prioritizing
+Weight work by outcome urgency:
+- Revenue Growth: Customer-facing, drives ARR
+- Operational Efficiency: Internal capacity, scales team
+- Client Retention: Protects existing revenue
+- Strategic Control: Enables the other three
+
+When Communicating
+Lead with the outcome, not the feature:
+- Bad: "We built a voice agent"
+- Good: "We unlocked capacity to handle 3x more calls (Revenue Growth)"
+
+Current Initiative Mapping
+
+Initiative → Primary Outcome
+
+Testing & Evaluation → Strategic Control
+Human-in-the-Loop → Strategic Control
+Platform Audit & Personas → Operational Efficiency
+Voice & Multi-Channel → Revenue Growth
+EventGuard Scale → Revenue Growth
+Analytics & Observatory → Strategic Control
+Insurance Templates → Revenue Growth
+
+Language Guide
+
+Use:
+- Associate (not chatbot, bot)
+- Engine (not tool)
+- Revenue Capacity (not cost savings)
+- Digital Workforce (not automation)
+- Partner (not vendor)
+
+Avoid:
+- Chatbot, Bot
+- Cost Savings (focus on capacity unlocked)
+- Tool
+- Vendor
+
+Source
+
+Full context: /Users/kylegeoghan/claude-code/indemn-context/company/about.md
+

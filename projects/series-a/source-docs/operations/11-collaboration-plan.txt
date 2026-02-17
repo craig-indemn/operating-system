@@ -1,0 +1,132 @@
+Series A Collaboration Plan for Cam
+
+Clear ownership split and timeline for Q1 angel raise + Series A.
+
+Created: January 24, 2026
+
+
+THE GOAL
+
+Q1 Angel Raise: $100K minimum, $250K target
+Series A: $10M, term sheet by April 20
+
+The angel raise tests our narrative while we prep for the full Series A process.
+
+
+OWNERSHIP SPLIT
+
+Cam Owns:
+- Narrative development: Shape the story from materials Kyle provides
+- External messaging: What we say, how we say it
+- Investor strategy: Who we target, in what order
+- Pitch delivery: Lead investor meetings
+- Follow-up: Same-day responses to investor requests
+- Proof point organization: Structure diligence materials
+
+Kyle Owns:
+- Material generation: Customer stories, product depth
+- Customer context: What's actually happening with accounts
+- Product differentiation: Technical credibility in meetings
+- Diligence prep: Documentation, cap table, financials
+- Customer references: Julia (INSURICA), George R (UG), Juan Carlos (GIC)
+
+
+THE FEEDBACK LOOP
+
+Kyle generates material
+       ↓
+Cam shapes into narrative/deck/pitch
+       ↓
+Kyle reviews for accuracy
+       ↓
+Cam delivers to market
+       ↓
+Both capture feedback for iteration
+
+
+IMMUTABLE MILESTONES
+
+Customer stories locked: Jan 31 (Kyle delivers, Cam approves)
+"Last chance" emails to angels: Feb 7 (Cam drafts, Kyle reviews)
+Narrative v1 complete: Feb 5 (Cam, for Astrid reconnect)
+Deck draft complete: Feb 15 (Cam)
+First angel pitch: Feb 20 (Cam leads, Kyle supports)
+Q1 angel close: End of March (Both)
+Series A term sheet: April 20 (Target)
+
+
+MATERIAL AVAILABLE NOW
+
+In storyline/customer-stories.md:
+5 customer stories with headlines, numbers, extrapolations, proof points, quotes
+Distribution: 40% JM/EventGuard, 20% each for INSURICA, GIC, Union General
+
+In proof-points/customer-case-studies/:
+Deeper versions of each story for follow-up
+
+In series-a-compendium.md:
+Full compendium with core positioning, Four Outcomes, Voice AI, team section, operating model, quotes
+
+
+THE PITCH STRATEGY
+
+Angel Approach:
+Pitch the Series A story, then explicitly offer:
+"We're raising a $10M Series A. Here's what we're building and why now is the moment. By the way, we opened a small angel allocation at the same valuation — would you be interested in participating before we close it?"
+
+This shows strength while giving angels a path in.
+
+
+Q1 TARGETS (Ready to Contact)
+
+John Doucette: $10K confirmed, ready to close
+Jay Demucy: ~$50K potential, need to call
+Bill Pierce: $25K, wants meeting
+George Redenbaugh: Will invest, said yes
+
+
+DILIGENCE TIERS
+
+Tier 1: The Pitch (share first)
+- Deck (10-12 slides)
+- One-pager
+- Customer stories (1-pager each)
+
+Tier 2: Follow-up (same-day if asked)
+- Financial model
+- Deeper case studies
+- Product architecture
+- Team bios
+- JM deal structure
+
+Tier 3: Due Diligence (when requested)
+- Cap table
+- Legal docs
+- Full financials
+- Customer references
+
+Rule: Only share what we decide. Prepared materials first. Custom requests same-day.
+
+
+HOW CLAUDE CODE HELPS
+
+Meeting extraction: Pulls proof points from calls automatically
+Pipeline: Shows customer momentum in real-time
+This project: Organizes all Series A materials
+
+You can use these systems to:
+- Find customer quotes when updating the deck
+- Track investor pipeline
+- Pull metrics for the narrative
+
+
+WHAT NOT TO DO
+
+- Don't present Claude Code as distraction from Series A (it's infrastructure for it)
+- Don't make Series A decisions unilaterally (loop in before executing)
+- Don't lead with AI story (use outcomes-based framing)
+- Don't set vague goals (immutable milestones above)
+
+
+This plan gives you material to shape, not decisions to approve. You lead the narrative.
+

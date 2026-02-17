@@ -1,0 +1,28 @@
+ICP 1: Mid-Market MGAs & Program Administrators
+For the MGA, our model serves as the "Revenue Engine" designed to maximize the value of your delegated authority.
+
+Revenue Growth: We deploy The Growth Associate to perform "Eligibility Triage," instantly qualifying submissions against your guidelines to ensure underwriters spend 100% of their time on "bindable" business rather than manual filtering.
+Operational Efficiency: The Policy Associate enforces deterministic underwriting guardrails and deflects routine broker inquiries, allowing you to double submission intake without hiring additional staff.
+Client Retention: The Renewal Associate proactively reviews upcoming program renewals for price spikes, initiating communication with retail brokers early to secure the book.
+Strategic Control: Through The Strategy Studio, program managers gain the agility to update eligibility rules or launch niche products in days—not months—without needing IT support.
+ICP 2: Mid-Market Retail Agencies & Brokerages
+We position the Four-Outcomes Model as a "Sales & Service Velocity" tool to help you compete with 24/7 direct carriers while protecting your EBITDA.
+
+Revenue Growth: The Growth Associate ensures "speed-to-lead" by instantly engaging inbound web leads and scheduling appointments, alongside "Win-Back" campaigns that re-engage dead leads in your AMS.
+Operational Efficiency: The Service Associate acts as a digital receptionist, handling high-volume tasks like Certificates of Insurance (COIs) and billing questions, freeing your account managers from "minimum-wage" administrative work.
+Client Retention: The Renewal Associate serves as a "Silent Churn Defender," automatically flagging personal lines renewals with high increases and drafting the remarket pitch before the client shops elsewhere.
+Strategic Control: The Strategy Studio allows you to maintain brand integrity by training the Associate in your agency’s specific "voice" while providing a dashboard to track total staff hours saved.
+ICP 3: Insurance Carriers
+For Carriers, this is an "Efficiency Engine" designed to liberate staff from administrative drudgery and manage institutional knowledge.
+
+Revenue Growth: The Growth Associate is embedded in agent portals to guide brokers through complex appetites, reducing "Not Taken Up" (NTU) rates by making you the easiest carrier to do business with.
+Operational Efficiency: The Knowledge Associate acts as an internal "Super-Search," allowing junior staff to instantly retrieve answers from thousands of pages of policy forms and claims manuals.
+Client Retention: The Renewal Associate manages "house accounts" or direct-written business lacking an agent, automating communication to maintain high retention levels.
+Strategic Control: The Strategy Studio ensures institutional safety through compliance audit trails that log every AI decision and provides secure data integration with your core PAS or claims systems.
+ICP 4: Strategic Partners (Insurtech & Systems)
+We offer an "Engagement Layer" that makes your existing system conversational, increasing user stickiness and differentiation.
+
+Revenue Growth: By integrating The Growth Associate, your users can instantly qualify leads and perform cross-sell analysis directly within your interface.
+Operational Efficiency: We reduce user friction by allowing staff to perform complex tasks, like AMS data entry or internal guideline searches, through simple natural language commands.
+Client Retention: Your platform becomes a proactive churn-prevention tool by using The Renewal Associate to flag at-risk policies for your end-users.
+Strategic Control: The Strategy Studio gives you and your clients the power to customize the AI's logic and track performance analytics, proving the ROI of your software.

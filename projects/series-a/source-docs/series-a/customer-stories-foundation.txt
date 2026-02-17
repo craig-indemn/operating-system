@@ -1,0 +1,213 @@
+Customer Stories Foundation
+
+Purpose: Material for Cam to shape the Series A narrative. Distribution: 40/20/20/20 across core stories.
+
+Last Updated: January 24, 2026
+
+---
+
+STORY 1: JM/EventGuard (40% of customer discussion)
+
+THE HEADLINE
+First generative AI insurance acquisition in the industry.
+
+THE STORY
+We built EventGuard as our "MGA Lab" — proving AI-driven distribution works before anyone believed it could. A 110-year-old mutual insurer (Jewelers Mutual) saw the results and acquired the platform for $1.835M plus a $300K 3-year SaaS contract.
+
+This wasn't an acqui-hire. They bought a working AI system that quotes and binds insurance. Now they want more — commercial lines RFP in pipeline, marketing partnership with Steve Ramirez (CMO) offering full creative/PR support.
+
+KEY NUMBERS
+- Premium Growth: 330% YoY ($119K → $514K)
+- Conversion Rate: 10X vs. traditional webforms
+- Automation Rate: 95% of transactions fully automated
+- Purchase Price: $1.835M
+- SaaS Contract: $300K (3-year)
+- Earnout Potential: $645K + 10% after $1.35M
+
+THE EXTRAPOLATION
+"If a 110-year-old carrier acquires our platform, every carrier will want this capability."
+
+PROOF POINTS
+- Deal closed 2025
+- Active expansion: Commercial lines RFP, Zola/The Knot partnerships
+- Mike Alexander (President) calling directly about expanded usage
+- Marketing synergy: Steve Ramirez (CMO) offering full creative/PR support
+
+---
+
+STORY 2: INSURICA (20% - The Renewals Story)
+
+THE HEADLINE
+Top-50 mega agency automating C-account renewals.
+
+THE STORY
+INSURICA started at $2K/month ($24K ARR). In 5 months, they expanded to $89K TCV — 3.7x growth. They're taking back "C accounts" (bottom 20% of book) from a third-party vendor because our AI handles them better.
+
+Julia Hester (decision maker) was "mind blown" at the voice demo. They're targeting 25% reduction in human touches across 20+ staff. Multi-channel: voice, web chat, email.
+
+KEY NUMBERS
+- Starting MRR: $2K/month ($24K ARR)
+- Current TCV: $89K (3.7x growth in 5 months)
+- Target: 25% reduction in human touches
+- Staff Affected: 20+ people
+- Next Expansion: Medicare Advantage (April 2026)
+- Potential: 10x current deal size
+- Processing Speed: 18-96x faster (medication matching: 5 seconds vs. 90-480 seconds)
+
+THE EXTRAPOLATION
+"If a mega agency scales AI across renewals, every agency will follow."
+
+CUSTOMER QUOTE
+"Julia Hester at INSURICA called me right after the demo... she was ecstatic. Her mind was blown at the capabilities of our voice agents." — Kyle
+
+---
+
+STORY 3: GIC Underwriters (20% - Broker Resources)
+
+THE HEADLINE
+MGA broker portal with 53% AI resolution rate.
+
+THE STORY
+GIC had 6 CSRs drowning in routine broker inquiries. We deployed an AI agent ("Fred") in 7 days. Handling went from 19% to 46% in 60 days, now at 53% resolution. The CSRs went from skeptical to enthusiastic supporters.
+
+The planned testing week never happened — they went straight to production because it worked.
+
+KEY NUMBERS
+- Deployment Time: 7 days
+- Initial Handling: 19%
+- 60-Day Handling: 46%
+- Current Resolution: 53%
+- Accuracy: 95% maintained
+- Volume: 300-400 conversations/week
+
+THE EXTRAPOLATION
+"If an MGA gets 53% resolution, the model works for every broker-facing operation."
+
+PROOF POINTS
+- 7-day deployment (planned week of testing, went straight to production)
+- CSRs now enthusiastic supporters (were initially skeptical)
+- Industry publication feature: Insurance Innovation Reporter
+- Expanding to voice, email, multi-channel
+- Nationwide lead: "Largest version" of this use case in pipeline
+
+CUSTOMER QUOTE
+"While our customer service team was initially skittish about adding AI, they're now enthusiastic supporters because they have fewer chats to handle, and it allows them to focus on more meaningful work." — Juan Carlos Diaz-Padron, CUO
+
+---
+
+STORY 4: Union General (20% - Enterprise Upgrade)
+
+THE HEADLINE
+2-3 weeks → 2-3 minutes on insurance submissions.
+
+THE STORY
+Union General had 350+ emails piling up in their Northland underwriting inbox with insufficient staff. They were losing 50%+ of quotes because response time was 2-3 weeks.
+
+Started with $2K/month pilot, now at $84K ARR (3.5x growth). We integrated with GAIG API for multi-carrier support. 85% data extraction accuracy on complex multi-page trucking applications.
+
+KEY NUMBERS
+- Before: 2-3 week response time
+- After: 2-3 minutes (96%+ reduction)
+- Starting MRR: $2K/month
+- Current ARR: $84K (3.5x growth)
+- Annual Labor Savings: $100K+ identified
+- Data Extraction Accuracy: 85% on complex trucking applications
+
+THE EXTRAPOLATION
+"Enterprise carriers will pay for API-integrated AI that turns weeks into minutes."
+
+PROOF POINTS
+- Multi-carrier integration: Northland + Great American (GAIG API)
+- 85% accuracy on complex multi-page documents
+- $100K+ annual labor savings identified
+- Partner language: "Kind of like what's mine is yours"
+
+CUSTOMER QUOTE
+"When you said that was two to three weeks, I was like, oh, this is a home run for us because we can make this two to three minutes." — George Remmer
+
+---
+
+STORY 5: Nationwide (The Biggest Insurtech Opportunity)
+
+THE HEADLINE
+4-layer distribution architecture — Carrier → General Agent → Retail Agent → Customer.
+
+THE STORY
+This opportunity came through a General Agent who's already an Indemn customer. Nationwide wants a program-based agentic system deeply connected to their API. It enables the best version of access to quoting and binding.
+
+The system goes from General Agent to Retail Agent (making it easy for retail to submit through the GA). Now expanding to go all the way to the customer — 4 layers of distribution, all powered by AI.
+
+KEY DETAILS
+- Pipeline Value: $1M+ product potential
+- Connection: Kyle's friend leads Personal Alliance at Nationwide
+- Status: Email chain this week
+- Delivery: Phased approach possible
+
+THE EXTRAPOLATION
+"This is the biggest opportunity for an insurtech right now and for at least the next 3 years."
+
+FOR SERIES A
+- Demonstrates carrier-level opportunity
+- Shows multi-layer distribution capability
+- Connects to GIC broker resources story (same pattern at enterprise scale)
+- Proof that our model scales to the largest players
+
+---
+
+CROSS-CUTTING THEME: Voice as the Wedge
+
+THE SIGNAL
+Every customer conversation now includes voice. When we tried to push web chat, they just wanted voice. This pattern repeats across the pipeline.
+
+CURRENT VOICE PIPELINE
+- Rankin: Feb 2 go-live (Two-agent system, bilingual)
+- Tillman: Pilot (Bilingual English/Spanish, Nationwide API exploration)
+- Branch: 90-120 day POC (3 call centers, targeting 50-60% conversion)
+- INSURICA: Expanding (Multi-channel for C account renewals)
+- GIC: Expanding (Web chat → voice → form replacement)
+
+THE PLG MODEL
+- Zero-to-low implementation cost per customer
+- Usage-based success (they pay as they use)
+- Clear customer pull (they're asking for it)
+
+FOR INVESTORS
+Voice is the hottest demand area. We have working bilingual voice agents in production. Most competitors are still doing text.
+
+"Voice AI preferred over web chat for faster ROI despite higher implementation complexity." — Branch meeting
+
+---
+
+HOW TO USE THESE STORIES
+
+FOR THE DECK
+- Lead slide: JM acquisition headline + logo
+- Customer traction: All four core customers with key metric
+- Expansion proof: Revenue growth within accounts (2K → 89K pattern)
+- Pipeline: Nationwide as enterprise validation
+
+FOR THE NARRATIVE
+1. Open with JM — proves the model works
+2. INSURICA — shows enterprise expansion
+3. GIC — demonstrates resolution rates
+4. Union General — shows process transformation
+5. Nationwide — the future opportunity
+
+DISTRIBUTION IN CONVERSATIONS
+- 40% JM/EventGuard (it's the proof point)
+- 20% INSURICA (mega agency scale)
+- 20% GIC (resolution metrics)
+- 20% Union General (process transformation)
+- Nationwide as "what's next"
+
+---
+
+CUSTOMER REFERENCES (FOR DUE DILIGENCE)
+- Julia Hester — INSURICA
+- George Remmer — Union General
+- Juan Carlos Diaz-Padron — GIC
+
+---
+
+Generated January 24, 2026. For Cam to shape into Series A narrative.
+

@@ -3,13 +3,13 @@
 Building the data and analytics angle for Indemn's Series A fundraising. Consolidating existing materials, identifying gaps, and producing investor-ready artifacts that demonstrate traction, market position, and product-market fit through data.
 
 ## Status
-Last session (2026-02-16): Inventoried all accessible Google Drive files and docs. Identified 9 existing Series A documents in Drive plus an extensive operations document set (numbered 1-13) covering frameworks, messaging, customer stories, and competitive positioning. Built the project tracking system this INDEX lives in.
+Last session (2026-02-16-b): Read all 35 Series A docs comprehensively (saved to source-docs/). Explored the engineering systems Craig has built — web operators, evaluation harness, observatory analytics. Course-corrected approach: the CTO angle is NOT critiquing the existing fundraising strategy. It's telling the technical story — frontier agentic AI infrastructure, data from the observatory, and the team's velocity — in a way that makes investors understand the moat.
 
 **Next steps:**
-1. Read the key Series A docs (Cam's Take, Investor Update, Deal Model, Revenue Model) to understand what's already written
-2. Identify gaps where data/analytics could strengthen the narrative
-3. Pull data from Meetings DB, Stripe, and MongoDB to quantify traction (conversation volumes, revenue, customer engagement)
-4. Determine what specific data points Cam wants to highlight
+1. Pull Observatory data from MongoDB (use `/mongodb` skill) — explore observatory_conversations, daily_snapshots, precursor_lifts, flow_paths collections
+2. Work iteratively with Craig to discover what data tells the most compelling story
+3. Consider Stripe data to complement conversation/engagement metrics
+4. Frame the technical narrative around web operators + eval system + observatory as differentiators
 
 ## External Resources
 | Resource | Type | Link |
@@ -37,12 +37,18 @@ Last session (2026-02-16): Inventoried all accessible Google Drive files and doc
 | Date | Artifact | Ask |
 |------|----------|-----|
 | 2026-02-16 | [google-drive-inventory](artifacts/2026-02-16-google-drive-inventory.md) | What Google Drive files and docs can we access? |
+| 2026-02-16 | [series-a-comprehensive-analysis](artifacts/2026-02-16-series-a-comprehensive-analysis.md) | Comprehensively read all Series A materials — understand strategy, real numbers, and gaps where engineering/data can strengthen the raise |
+| 2026-02-16 | [engineering-angle-session-handoff](artifacts/2026-02-16-engineering-angle-session-handoff.md) | Session handoff: engineering angle, what was built (web operators, eval system, observatory), where to pick up next |
 
 ## Decisions
 - 2026-02-16: Building a data/analytics angle for the Series A — not just narrative docs but data-backed evidence of traction and PMF
+- 2026-02-16: The CTO angle is about telling the technical story (frontier agentic AI, web operators, observatory data, team velocity) — NOT auditing or critiquing Cam's fundraising strategy
+- 2026-02-16: Approach must be iterative and conversational with Craig — discover what data tells the best story together, don't make sweeping claims
 
 ## Open Questions
-- What specific data points does Cam want to highlight to investors?
-- What's the timeline for the raise?
-- Which existing docs are current vs. stale?
-- What data from meetings DB, Stripe, and platform usage would be most compelling?
+- What Observatory data is currently populated? Which customers have data? What date ranges?
+- What are the most impressive precursor insights the observatory has surfaced?
+- How many conversations are tracked across all customers?
+- What do the web operator run results look like? Any completed runs with success metrics?
+- What evaluation runs have been completed? What do the results show?
+- What data from Stripe + Observatory together tells the most compelling technical story?

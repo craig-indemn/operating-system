@@ -1,0 +1,162 @@
+Series A Compendium - Master Reference
+
+For Cam to use when building the narrative. This document compiles the best material from 395 meetings, strategic positioning docs, and customer evidence.
+
+Note: This is a summary. The full 500+ line document is in indemn-series-a/series-a-compendium.md
+
+
+PART 1: THE CORE POSITIONING
+
+The One-Liner
+"Indemn is the digital workforce for Insurance Distribution. We're capacity-constrained, not demand-constrained."
+
+The Key Shift
+
+Old Narrative (Competitors): "We automate tasks to lower your operational costs."
+
+Indemn Narrative: "We provide a digital workforce to unblock your distribution channels and capture missed revenue."
+
+Why this matters for investors: Most AI companies in insurance sell efficiency. We sell revenue growth. That's a different conversation entirely.
+
+The Umbrella Example (clearest articulation of why we exist)
+"Personal umbrella sales cost $50 in labor but only generate $25 in commission. It's economically irrational for humans to do this work. AI makes profitable outreach possible where human labor is too costly."
+
+Use this: When anyone asks "why AI for insurance" — this is the answer.
+
+
+PART 2: THE FOUR OUTCOMES
+
+Everything we build serves one of these:
+
+1. Revenue Growth — Unlock capacity to capture missed revenue
+   Products: Revenue Engine, Voice Agents
+
+2. Operational Efficiency — Liberate staff from administrative drudgery
+   Products: Efficiency Engine
+
+3. Client Retention — Protect the book and maximize lifetime value
+   Products: Cross-sell, Renewal automation
+
+4. Strategic Control — Visibility, agility, and governance
+   Products: HIL System, Control Engine
+
+For investors: Revenue Growth is the lead. The others are supporting cast.
+
+
+PART 3: THE JEWELERS MUTUAL PROOF POINT
+
+Why This Is Our Strongest Card:
+"The first generative AI insurance acquisition in the industry."
+
+They didn't buy a book of business. They bought:
+1. An AI platform that sells insurance
+2. A team that knows how to deploy it
+3. Proof that AI can quote and bind
+
+The Numbers:
+- Total purchase price: $1.835M
+- SaaS contract included: $300K (3-year)
+- Earnout potential: $645K + 10% of every dollar after $1.35M
+- Mike Alexander (President) calling directly about expanded usage
+
+The Story Arc:
+2021: Kyle starts Indemn with early GPT-3 access
+2021-2024: Builds Event Guard MGA as AI testing lab
+2024: Mitchell Busse moves to JM, recommends acquisition
+2025: JM acquires Event Guard in competitive process
+2026: JM now platform customer, expanding to commercial lines
+
+For investors: This proves we can build AND sell an AI insurance business.
+
+
+PART 4: THE CAPACITY CONSTRAINT STORY
+
+This Is the Series A Pitch:
+"Capacity is our only constraint. We have ~$1M ARR with 3 mega customers scaling from $1-2K/month to $100K/year. Growth is bottlenecked by team capacity (15 people), not demand."
+
+The Evidence:
+- Kyle meets every customer weekly
+- Q1 bandwidth limits to 10 new clients
+- 100+ applicants for 2 open roles
+- 4 voice implementations running simultaneously
+- Shurica paid $100K upfront, wants to expand
+
+What $10M Unlocks:
+1. Hire implementation capacity — 2x customer onboarding
+2. Build tooling — Reduce time-to-live from weeks to days
+3. Expand voice AI — Hottest demand area
+4. Go-to-market — Sales team to capture the pipeline
+
+
+PART 5: THE 5-YEAR MOAT
+
+The Challenge:
+"VCs believe building AI agents is 'relatively easy' now. Need to articulate unique secret sauce beyond Event Guard proof point."
+
+The Response:
+"Selling insurance with AI agents is the hardest thing to do."
+
+What we have that can't be replicated:
+- Started April 2021 with GPT-3 (before ChatGPT existed)
+- 5 years of compliance patterns learned by doing
+- Integration experience: EPIC, Hawksoft, Easy Links, Guidewire, Vertafore
+- Human-in-the-loop architecture built for regulated industries
+- Working production systems: GIC at 60%+ AI handling
+- Acquisition by 110-year mutual insurer
+
+
+PART 6: VOICE AS THE WEDGE
+
+Every customer conversation now includes voice.
+
+Current Voice Pipeline:
+- Rankin: Feb 2 go-live, bilingual, after-hours + overflow
+- Tillman: Pilot, bilingual English/Spanish
+- Branch: 90-120 day POC, 3 call centers, targeting 50-60% conversion
+- INSURICA: Expanding, multi-channel for C account renewals
+- GIC: Expanding, web chat → voice → form replacement
+
+Positioning: Voice is the hottest demand area. We have working bilingual voice agents in production. Most competitors are still doing text.
+
+
+PART 7: CURRENT METRICS
+
+ARR: ~$1M
+Customers: 12 active
+Weighted Pipeline: $1.74M (712 scored deals)
+Team size: 15 people
+Burn rate: ~$86K/month
+Runway: 12 months
+
+Comparable: Further AI raised $25M with $2.5M ARR
+
+
+PART 8: LANGUAGE RULES
+
+Use These Words:
+- Associate (not Chatbot/Bot)
+- Engine (not Tool)
+- Revenue Capacity (not Cost Savings)
+- Resolution Rate (not Deflection Rate)
+- Partner (not Vendor)
+- Digital Workforce (not AI)
+
+Never Use:
+- Chatbot / Bot
+- Cost Savings / Cost Reduction
+- Deflection Rate
+- Tool / Software
+- Vendor
+
+
+HOW TO USE THIS DOCUMENT
+
+For Cam:
+1. Lead with capacity constraint story
+2. Use JM as primary proof point
+3. Voice AI as the hot wedge
+4. Revenue positioning, not efficiency
+5. 5-year moat when they push on defensibility
+
+The full document with all 14 parts is in the codebase at indemn-series-a/series-a-compendium.md
+

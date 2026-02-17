@@ -1,0 +1,117 @@
+Indemn One-Page Strategic Plan
+Q1 2026
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PURPOSE
+
+Enable effortless customer journeys for insurance. 
+
+We do this by providing natural-language access to information, product configuration, application and policy management.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+MISSION
+
+Revolutionize insurance sales and service through generative AI and interconnected applications, propelling digital transformation across the industry. 
+
+We empower MGAs, agents, and insurers to confidently embrace AI-driven operations in both sales and service journeys. By becoming the go-to platform where AI meets real insurance challenges, we're shaping a more efficient, forward-thinking future for the entire market.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+CORE VALUES (We Believe)
+
+1. Technology should simplify insurance.
+2. Work should be fun and rewarding.
+3. In a mindset of curiosity, adaptability and resilience.
+4. GenAI is foundational for Indemn; AI agents will transform digital distribution.
+5. Customer-centric, product-led growth (PLG) is key to our success.
+6. Partnerships are crucial to transforming the industry.
+7. AI should enable amazing customer journeys.
+8. Thought leadership is central to our value in the market. In partnering people with AI.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+3-YEAR TARGETS
+
+• Define and lead a new category: revenue-driving agentic AI platform built specifically for insurance.
+• Develop full online AI agent access for at least 50 digital insurance products
+• Define the communication standard for AI in insurance.
+• Become recognized as a thought leader for AI in the insurance industry.
+• Lead the industry in insurance policies sold by AI agents.
+
+3-Year Metrics:
+• 3,000 AI agents deployed
+• ≥ 30 customers at ≥ $100,000/month
+• ≥ 300 customers @ ≥ $5,000/month
+• End-to-end sales support for life and P&C products
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1-YEAR GOALS
+
+• Increase user configuration to AI Agent studio.
+• Expand thought leadership positioning & increase publishing rate.
+• Increase organic website traffic
+• Reduce AI agent deployment time / cost
+• Sign & deploy enterprise customers
+• Develop dedicated insurance compliance tools in the platform
+• Increase % of conversions autonomously resolved
+• Expand accessible industry verticals
+• Build, document and deploy sales processes for ICPs
+• Build tools identified by the sales team to foster new account acquisition
+• Working alignment across the company through a comprehensive product development roadmap
+
+Annual Metrics:
+• 75 new customers
+• Achieve SOC-2, HIPPA, and PCI Compliance
+• 10 new customers ≥ $25k + $5k/month
+• ≥ 7 new products/integrations
+• Ave. implementation cost/customer ≥ $4,000
+• ≥ 1,000 AI conversations/week
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Q1 PROJECTS (Jan 1 - Mar 31)
+
+• Develop comprehensive product development roadmap with tech team
+• Scale multimodal AI agents in marketing & sales channels
+• Update indemn.ai to better facilitate ICP sales, improve engagement + lead capture
+• Consistently identify & engage target enterprise customers
+• Sign 15 new customers
+• Draft and begin testing iteration on initial sales process maps for ICPs
+• Grow sales team to three
+• Establish a thought leadership plan and a weekly cadence for thought-leadership activity
+• Launch at least one Jarvis function
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+STRATEGIC INITIATIVES
+
+1. Deliver the premier AI purchase experience for insurance.
+2. Develop and implement a robust customer feedback engine, enabling rapid personalization at scale.
+3. Create complementary software platform partnerships
+4. Deploy out-of-the-box and user configurable AI agents for common insurance workflows
+5. Introduce platform solutions capable of managing insurance workflows at scale
+6. Penetrate international markets
+7. Self sign-up
+8. AI support agents (Jarvis) for developing and improving AI agents, as well as navigating our software.
+9. Land & Expand: consistent use-case expansion with current customers
+10. Most secure and compliant AI agents platform in insurance
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+DEFINITIONS
+
+• CAC – Customer Acquisition Cost
+• ICP – Ideal Customer Profile
+• PLG - Product Led Growth, a strategy focusing on the use of the product itself as the primary driver of customer acquisition and expansion
+• BoH (Back of House) - operations not directly interacting with the end-use customer
+• Front of House - end-use customer interactions
+• Enterprise Customer - insurance org over $1B in annual premium
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Source: Original document created December 21, 2025
+Converted to shared format: January 25, 2026
+

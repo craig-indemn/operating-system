@@ -1,0 +1,27 @@
+Company  Stage  Owner  ARR  Primary Contact  Health  Last Activity  Next Step  Next Step Owner  Blocker  Notes  Type  Proposal URL
+
+LATE-STAGE PROSPECTS
+Branch Insurance     Security Review  Ganesh  $500,000  Nick Atwood       2026-01-26  Complete security questionnaire  Ganesh  Awaiting security responses  Verbal accept. Voice AI for 3 call centers. 90-day POC.            Prospect
+Alliance Insurance   Proposal Sent    Kyle    $54,000   Christopher       2026-02-03  Follow up on proposal            Kyle                                 Crawl-Walk-Run proposal. 100 missed calls/week. 101 Weston pilot.  Prospect  https://docs.google.com/document/d/1ty6RfBOKf4a8yXbBt2_a8FaqVwCE3qbWv1cTb9icBS4
+Physicians Mutual    Discovery        Kyle    $150,000  Nathan            2026-02-03  Nathan to champion internally    Nathan  Need internal buy-in         2-year roadmap sent. JM proof point. POC comparison.               Prospect  https://docs.google.com/document/d/1KWCZx4_WfIFDSseE0wVdRvoINQ-pJldw-3EA3yyZa9k
+Protective/Dai-ichi  Demo             Kyle              EJ, Dustin Dew    2025-10-18  Schedule follow-up demo          Kyle                                 Innovation lab. Broker Portal + chatbot. ITC contact.              Prospect
+
+ONBOARDING / IMPLEMENTATION
+O'Connor Insurance    Testing        Kyle      $30,000  Michelle O'Connor  ON_TRACK  2026-02-04  Web chat go-live Feb 4     Jonathan           101 Weston pilot. BT Core. Internal + billing agents next.  Onboarding
+Rankin Insurance      Testing        Kyle      $36,000                     ON_TRACK              Voice number provisioning  Jonathan           Voice implementation active                                 Onboarding
+Tillman Insurance     Configuration  Kyle                                  ON_TRACK              Voice setup                Jonathan           Voice implementation                                        Onboarding
+Family First          Testing        Ganesh             Ravi               AT_RISK   2026-01-22  Address blockers           Ganesh    At risk  Web agent. Met Sara, Ravi, Kerri Jan 22.                    Onboarding
+Loro                  Configuration  Ganesh                                AT_RISK               Address blockers           Ganesh    At risk                                                              Onboarding
+Borrowed Tyme         Scoping        Kyle                                  AT_RISK               Define scope               Kyle      At risk                                                              Onboarding
+GIC                   Configuration  Jonathan                              ON_TRACK              Complete configuration     Jonathan                                                                       Onboarding
+Middendorf Insurance  Scoping        Kyle                                  ON_TRACK              Define scope               Kyle                                                                           Onboarding
+eSpecialty            Configuration  Kyle                                  ON_TRACK              Complete configuration     Kyle                                                                           Onboarding
+Bonzah                Scoping        Jonathan                              ON_TRACK              Define scope               Jonathan                                                                       Onboarding
+Silent Sports         Scoping        Kyle                                  ON_TRACK              Define scope               Kyle                                                                           Onboarding
+
+ACTIVE CUSTOMERS
+Jewelers Mutual         Active         Ganesh    $745,000                     ON_TRACK              EventGuard scale       Ganesh      Flagship. EventGuard scaling.                          Customer
+INSURICA                Active         Jonathan  $89,000   Julia Hester       ON_TRACK  2026-01-26  GL renewal automation  Jonathan    $500K potential. 20 NGAs. Layer replacement.           Customer
+Union General           Configuration  Rem                 George Richardson  ON_TRACK  2026-02-03  Class code assistant   Dhruv       GL rater live since June 2024. Class code + trucking.  Customer
+Distinguished Programs  Active         Ganesh                                 ON_TRACK                                                                                                        Customer
+EventGuard              Active         Ganesh                                 ON_TRACK              Scale operations       Ganesh      JM subsidiary                                          Customer

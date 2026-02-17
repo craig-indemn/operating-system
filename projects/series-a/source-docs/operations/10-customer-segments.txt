@@ -1,0 +1,127 @@
+Ideal Customer Profiles (ICPs)
+
+Who we sell to, in priority order.
+
+
+PRIORITY 1: MID-MARKET MGAs & PROGRAM ADMINISTRATORS
+
+The "Sweet Spot" - They have the underwriting authority ("the pen") to drive revenue and the agility to buy quickly.
+
+Who They Are:
+Specialty intermediaries with delegated underwriting authority. They typically manage niche programs (e.g., Trucking, Habitational, Cyber) and rely on a network of independent retail brokers for distribution.
+
+Buying Persona:
+Chief Underwriting Officer (CUO) or Head of Programs
+- They care about "Loss Ratios" and "Submission Volume"
+- Decision-making is faster than carriers
+- Often have P&L responsibility for their programs
+
+The Problem:
+They are drowning in submissions. Human underwriters waste 60-70% of their time reviewing "out-of-appetite" business, missing the best opportunities.
+
+The Solution:
+Primary: The Revenue Engine (Eligibility Triage)
+The AI instantly qualifies submissions against program guidelines. It declines the junk and prioritizes the "bindable" business.
+
+Secondary: The Control Engine (Strategy Studio)
+Allows them to update eligibility rules in real-time without IT tickets.
+
+The Pitch:
+"We don't just save time; we unlock capacity. We allow you to double your submission intake without hiring a single new underwriter."
+
+Deal Characteristics:
+- Deal Size: $40K - $100K ARR
+- Sales Cycle: 2-4 months
+- Key Objection: "Will brokers actually use it?"
+
+
+PRIORITY 2: MID-MARKET RETAIL AGENCIES & BROKERAGES
+
+High volume opportunities served via standardized, personalized solutions.
+
+Who They Are:
+Scaling independent agencies (typically $5M - $50M revenue) dealing with high-volume client service needs.
+
+Buying Persona:
+Agency Principal or VP of Operations
+- They care about "EBITDA" and "Staff Retention"
+- Often owner-operated
+- Budget-conscious but willing to pay for real efficiency
+
+The Problem:
+Their highly paid producers are stuck doing minimum-wage work (issuing COIs, answering billing questions), leading to burnout and missed sales goals.
+
+The Solution:
+Primary: The Efficiency Engine (Digital Receptionist)
+Handles the high-volume noise (COIs, billing, docs) instantly, freeing staff to sell.
+
+Secondary: The Retention Engine (Silent Churn Defense)
+Automates renewal review, proactively flagging risks before the client leaves.
+
+Critical Constraint: Standardization
+No custom builds for agencies under $50M revenue. Personalized standard solution.
+
+The Pitch:
+"Stop paying producers to process COIs. Let the Efficiency Engine handle the noise so your team can focus on selling."
+
+Deal Characteristics:
+- Deal Size: $15K - $40K ARR
+- Sales Cycle: 1-2 months
+- Key Objection: "We're too small" / Budget constraints
+
+
+PRIORITY 3: INSURANCE CARRIERS
+
+High value but long sales cycles. Engage for "Efficiency" and "Control" while nurturing long-term revenue partnerships.
+
+Who They Are:
+The risk bearers. Large, complex, slow-moving, but massive scale potential.
+
+Buying Persona:
+Chief Claims Officer, VP of Digital Transformation, or Innovation Leads
+- Must navigate procurement, legal, and IT
+- Often measured on cost reduction or NTU rates
+
+The Problem:
+1. Institutional knowledge is trapped in PDFs
+2. High "Not Taken Up" (NTU) rates because agent portals are confusing
+
+The Solution:
+Primary (Internal): The Efficiency Engine (Knowledge Search)
+"Internal Super-Search" for policy forms and claims manuals.
+
+Primary (External): The Revenue Engine (Portal Support)
+Embed the Associate in agent portals to guide brokers.
+
+The Pitch:
+"Your institutional knowledge is trapped in PDFs. We make it searchable instantly."
+
+Deal Characteristics:
+- Deal Size: $100K - $250K+ ARR
+- Sales Cycle: 6-18 months
+- Key Objection: Security/compliance, integration complexity
+
+
+PRIORITY 4: STRATEGIC PARTNERS
+
+Agency Management Systems (AMS), Policy Admin Systems (PAS), and Insurtechs.
+
+The Opportunity:
+Embed Indemn as the "Engagement Layer" on top of their systems.
+
+The Pitch:
+"We make your system conversational. Instead of clicking 50 buttons in your AMS to find a policy, they just ask the Indemn Associate."
+
+The Value:
+- Increases their user stickiness
+- Gives us massive distribution leverage
+- Win-win partnership model
+
+
+SEGMENT SUMMARY
+
+Priority 1: Mid-Market MGAs → "Unblock Distribution" → Revenue Engine
+Priority 2: Retail Agencies → "Stop the Admin Noise" → Efficiency Engine
+Priority 3: Carriers → "Operational Efficiency" → Efficiency Engine (then Revenue)
+Priority 4: Strategic Partners → "Make your system conversational" → Embedded layer
+

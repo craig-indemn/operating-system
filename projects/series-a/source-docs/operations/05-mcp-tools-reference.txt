@@ -1,0 +1,79 @@
+MCP Tools Reference
+
+What Claude Can Actually Do (Not Theory - These Work Today)
+
+
+GOOGLE DOCS / DRIVE
+
+Reading Documents
+"Read [document name]" - Pulls content into conversation
+"List my recent Google Docs" - Shows what you've been working on
+"Search my docs for [term]" - Finds docs by name or content
+"What's in [folder name]?" - Lists folder contents
+
+Creating Documents
+"Create a new doc called [title]" - Makes it instantly
+"Create a doc in [folder] called [title]" - Puts it where you want
+
+Editing Documents
+"Append this to [doc]: [content]" - Adds to the end
+"Add a section about [topic] to [doc]" - Claude writes and adds it
+
+Organizing
+"Move [doc] to [folder]" - Reorganizes Drive
+"Copy [doc] as [new name]" - Duplicates
+"Delete [doc]" - Removes (can recover from trash)
+
+
+GOOGLE SHEETS
+
+"Read the data from [spreadsheet]" - Pulls in spreadsheet data
+"Add a row to [spreadsheet]: [data]" - Appends data
+"Create a spreadsheet called [name] with columns [x, y, z]" - New sheet
+
+
+SLACK
+
+Reading
+"What's happening in #[channel]?" - Summarizes recent messages
+"Show me the last week of #[channel]" - More history
+"Search Slack for [term]" - Finds messages across channels
+"What did [person] say about [topic]?" - Targeted search
+
+Posting
+"Send a message to #[channel]: [message]" - Posts for you
+"Reply in that thread with [message]" - Thread replies
+"DM [person]: [message]" - Direct messages
+
+
+THINGS CLAUDE KNOWS (Context)
+
+Without any tools, Claude already knows:
+- The Four Outcomes framework
+- Our messaging rules
+- Series A status and metrics
+- Customer names and context
+- What "Associate" means vs "chatbot"
+
+So you can ask:
+"Does this paragraph align with our messaging?"
+"Which outcome does this feature serve?"
+"What's our positioning against [competitor]?"
+
+
+EXAMPLE WORKFLOWS
+
+Writing an investor section:
+1. "Read the Four Outcomes doc" (context)
+2. "Help me write the Revenue Growth section of our pitch"
+3. "Add this to the Series A Draft doc"
+
+Preparing for a call:
+1. "What do we know about [company]?"
+2. "Search Slack for recent mentions of [company]"
+3. "Create a prep doc for my [company] call"
+
+Checking team activity:
+1. "What's been discussed in #sales this week?"
+2. "Summarize key decisions"
+

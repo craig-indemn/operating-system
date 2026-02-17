@@ -1,0 +1,555 @@
+Indemn Business Operating Architecture
+Version 1.0 | February 2026
+
+PURPOSE
+
+This document defines how Indemn organizes itself as a corporation. It establishes the fundamental domains of the business, where information lives, and how it can be accessed by both humans and AI agents.
+
+This is not about folder structure. It's about answering: "If someone (or something) needs to know X about Indemn, where do they go?"
+
+────────────────────────────────────────
+
+THE SEVEN DOMAINS
+
+Every company has the same fundamental domains. What differs is how mature and organized each one is.
+
+1. CORPORATE & GOVERNANCE
+2. FINANCE & ACCOUNTING  
+3. CUSTOMERS & REVENUE
+4. PIPELINE & SALES
+5. PRODUCT & ENGINEERING
+6. GO-TO-MARKET
+7. OPERATIONS & TEAM
+
+────────────────────────────────────────
+
+DOMAIN 1: CORPORATE & GOVERNANCE
+
+What belongs here:
+- Cap table (who owns what)
+- Investor records (who invested, terms, contacts)
+- Board materials (decks, minutes, resolutions)
+- Corporate formation (certificate of incorporation, bylaws)
+- Corporate resolutions and consents
+- Stock option grants and exercises
+- SAFEs, convertible notes, term sheets
+- 409A valuations
+
+Source of Truth:
+- Cap table: [DECISION NEEDED - Carta? Pulley? Spreadsheet?]
+- Legal documents: Shared Drive /Corporate
+- Board materials: Shared Drive /Corporate/Board
+
+Current State: DISORGANIZED
+- Cap table exists somewhere (spreadsheet?)
+- Investor docs scattered across Personal Drive
+- No single view of ownership
+
+Recommended Actions:
+[ ] Choose cap table management tool (Carta recommended for Series A)
+[ ] Create /Corporate folder in Shared Drive
+[ ] Consolidate all investor docs
+[ ] Create board materials subfolder
+[ ] Document all SAFEs/notes with terms
+
+AI Accessibility:
+- Cap table tool API (when selected)
+- Structured investor tracker (spreadsheet with standard fields)
+
+────────────────────────────────────────
+
+DOMAIN 2: FINANCE & ACCOUNTING
+
+What belongs here:
+- Revenue tracking (MRR, ARR, by customer)
+- Contracts (signed agreements, MSAs, SOWs)
+- Invoicing and collections
+- Bank accounts and cash position
+- Financial statements (P&L, balance sheet)
+- Financial models and projections
+- Tax filings
+- Vendor payments
+
+Source of Truth:
+- Accounting: [DECISION NEEDED - QBO? Pilot? Other?]
+- Contracts: Shared Drive /Finance/Contracts
+- Revenue tracker: [DECISION NEEDED - spreadsheet vs. system]
+- Financial model: Shared Drive /Finance
+
+Current State: PARTIALLY ORGANIZED
+- Revenue tracked somewhere
+- Contracts scattered
+- Financial model exists for Series A
+
+Recommended Actions:
+[ ] Confirm accounting system
+[ ] Create /Finance folder structure
+[ ] Build or designate revenue tracker with standard fields
+[ ] Centralize all signed contracts
+[ ] Establish monthly close process
+
+AI Accessibility:
+- Accounting system API (most have them)
+- Revenue tracker as structured data (spreadsheet or database)
+- Contract metadata in searchable format
+
+────────────────────────────────────────
+
+DOMAIN 3: CUSTOMERS & REVENUE
+
+What belongs here:
+- Customer master list (all accounts)
+- Customer contacts (who we talk to)
+- Contract details (what they bought, terms, renewal dates)
+- Revenue by customer (MRR, ARR, start date)
+- Customer health (engagement, satisfaction, risk)
+- Implementation status
+- Support history
+- Renewal and expansion tracking
+
+Source of Truth:
+- Customer records: Pipeline system (your existing project)
+- Customer folders (docs, notes): Shared Drive /Customers
+
+Current State: IN PROGRESS
+- Pipeline project exists with customer tracking
+- Customer folders exist in both Personal and Shared Drive
+- Need to consolidate and standardize
+
+The 12 Customers (as of Feb 2026):
+[List each customer with key fields - to be populated]
+
+Recommended Actions:
+[ ] Finalize Pipeline as customer system of record
+[ ] Standardize customer record fields
+[ ] Merge Personal/Customers into Shared/Customers
+[ ] Create customer folder template
+[ ] Link contracts to customer records
+
+AI Accessibility:
+- Pipeline API (already built)
+- Structured customer data with standard fields
+- Customer folder naming convention for retrieval
+
+────────────────────────────────────────
+
+DOMAIN 4: PIPELINE & SALES
+
+What belongs here:
+- Prospects (companies we're talking to)
+- Deals (active opportunities with stages)
+- Activities (calls, emails, meetings)
+- Deal values and close dates
+- Win/loss records
+- Sales metrics (conversion rates, cycle times)
+
+Source of Truth:
+- Pipeline/deals: Pipeline system
+- Activity log: Pipeline system + Meetings project
+
+Current State: IN PROGRESS
+- Pipeline project tracks deals
+- Meetings project captures call context
+- Need to ensure data flows between them
+
+Recommended Actions:
+[ ] Define deal stages clearly
+[ ] Ensure all prospects are in Pipeline
+[ ] Connect Meetings extractions to deal records
+[ ] Build pipeline dashboard/metrics
+
+AI Accessibility:
+- Pipeline API
+- Meetings API for context
+- Deal data as structured records
+
+────────────────────────────────────────
+
+DOMAIN 5: PRODUCT & ENGINEERING
+
+What belongs here:
+- Product roadmap
+- Feature specifications
+- Technical architecture
+- Engineering processes
+- Bug tracking
+- Release notes
+- Technical documentation
+
+Source of Truth:
+- Roadmap and issues: Linear
+- Technical docs: Shared Drive /Product & Tech
+- Architecture decisions: [docs or Linear?]
+
+Current State: ORGANIZED
+- Linear is established as engineering system
+- Roadmap project provides integration
+- Technical docs need consolidation
+
+Recommended Actions:
+[ ] Merge Personal/Product folders to Shared
+[ ] Establish technical documentation standards
+[ ] Link Linear issues to customer requests
+
+AI Accessibility:
+- Linear API (already integrated)
+- Technical docs in Shared Drive
+
+────────────────────────────────────────
+
+DOMAIN 6: GO-TO-MARKET
+
+What belongs here:
+- Messaging and positioning
+- Ideal Customer Profiles (ICPs)
+- The Four Outcomes framework
+- Playbooks (sales, onboarding, renewal)
+- Objection handling
+- Competitive intelligence
+- Case studies and proof points
+- Marketing materials
+- Website content
+
+Source of Truth:
+- All GTM content: Shared Drive /Go-to-Market
+
+Current State: EXISTS BUT SCATTERED
+- Four Outcomes documented
+- Messaging guidelines exist
+- ICPs defined
+- Playbooks partially built
+- Scattered across Personal Drive and various projects
+
+This is Indemn's "Sales Intelligence" - the knowledge that makes revenue happen.
+
+Recommended Actions:
+[ ] Create /Go-to-Market as primary GTM folder
+[ ] Consolidate all messaging docs
+[ ] Complete playbooks for each motion
+[ ] Build competitive intelligence library
+[ ] Create case study template and populate
+
+AI Accessibility:
+- Structured playbooks (not just prose)
+- Messaging as retrievable content
+- Competitive intel in searchable format
+
+────────────────────────────────────────
+
+DOMAIN 7: OPERATIONS & TEAM
+
+What belongs here:
+- Team directory (who works here, roles)
+- Org chart
+- HR policies
+- Hiring and recruiting
+- Vendor management
+- Legal (non-corporate)
+- Insurance
+- Office/workspace
+- Internal processes and SOPs
+
+Source of Truth:
+- Team info: [DECISION NEEDED - spreadsheet? HRIS?]
+- Processes: Shared Drive /Operations
+- Sensitive HR: Personal Drive (Kyle only)
+
+Current State: MINIMAL
+- Small team, informal processes
+- Legal docs scattered
+- No formal HRIS
+
+Recommended Actions:
+[ ] Create team directory (even as spreadsheet)
+[ ] Document key processes as they mature
+[ ] Centralize vendor contracts
+[ ] Decide what's sensitive (Personal) vs. shared
+
+AI Accessibility:
+- Team directory as structured data
+- Process docs in Shared Drive
+
+────────────────────────────────────────
+
+PROPOSED SHARED DRIVE STRUCTURE
+
+Based on the seven domains:
+
+/Corporate
+  /Board
+  /Formation
+  /Investors
+  /Equity (SAFEs, options)
+  /Resolutions
+
+/Finance
+  /Contracts
+  /Models
+  /Reports
+
+/Customers
+  /[Customer Name] (one folder per customer)
+
+/Pipeline
+  /Prospects (if needed for docs)
+
+/Product & Tech
+  /Roadmap
+  /Architecture
+  /Documentation
+
+/Go-to-Market
+  /Messaging
+  /Playbooks
+  /ICPs
+  /Competitive
+  /Case Studies
+  /Marketing
+
+/Operations
+  /Team
+  /Processes
+  /Legal
+  /Vendors
+
+/Archive
+  /[Year folders]
+
+────────────────────────────────────────
+
+KEY DECISIONS NEEDED
+
+Before reorganizing, these decisions should be made:
+
+1. Cap Table Tool
+   Options: Carta, Pulley, Spreadsheet
+   Recommendation: Carta (standard for VC-backed, required for Series A diligence)
+   Decision: [ ]
+
+2. Accounting System
+   Options: QuickBooks Online, Pilot, other
+   Current: [?]
+   Decision: [ ]
+
+3. Revenue Tracker
+   Options: Spreadsheet, Pipeline system, dedicated tool
+   Recommendation: Pipeline system with structured fields
+   Decision: [ ]
+
+4. Customer System of Record
+   Options: Pipeline project, Airtable, CRM
+   Recommendation: Pipeline project (already built)
+   Decision: [ ]
+
+5. Team Directory
+   Options: Spreadsheet, Notion, HRIS
+   Recommendation: Spreadsheet for now (15 people)
+   Decision: [ ]
+
+────────────────────────────────────────
+
+AI ACCESSIBILITY SUMMARY
+
+For each domain, what an AI agent needs:
+
+| Domain | Structured Data | API | Docs |
+|--------|-----------------|-----|------|
+| Corporate | Cap table tool | Carta API | /Corporate |
+| Finance | Revenue tracker | Accounting API | /Finance |
+| Customers | Pipeline | Pipeline API | /Customers |
+| Pipeline | Pipeline | Pipeline API | - |
+| Product | Linear | Linear API | /Product & Tech |
+| GTM | Playbook data | - | /Go-to-Market |
+| Operations | Team directory | - | /Operations |
+
+The goal: Any question about Indemn can be answered by querying the right source.
+
+────────────────────────────────────────
+
+NEXT STEPS
+
+1. Kyle & Cam review this architecture
+2. Make decisions on tools (cap table, accounting, etc.)
+3. Approve folder structure
+4. Execute migration with clear mapping
+5. Document in onboarding materials
+
+────────────────────────────────────────
+
+APPENDIX: CURRENT STATE INVENTORY
+
+Personal Drive Folders (to be migrated):
+- Customers/ → /Customers
+- Fundraising/ → /Corporate/Investors + /Finance
+- Operations/ → /Operations
+- Series A, Series A 2026 → /Corporate/Investors
+- Product, Product Development → /Product & Tech
+- Legal/ → /Operations/Legal or /Corporate
+- Data/ → [evaluate]
+- Archive/ → /Archive
+
+Already Completed:
+- Playbooks/ - deleted (empty)
+- Cam Claude Code Onboarding/ - moved to /Operations
+- Indemn Tech Team/ - moved to /Operations
+
+Staying Personal:
+- Personal/
+- Kai Taylor - Contractor/ (HR sensitive)
+
+
+
+
+────────────────────────────────────────
+
+DECISIONS MADE (Updated Feb 3, 2026)
+
+1. Cap Table Tool
+   DECISION: JPMorgan (migrating from Carta)
+   Owner: Kyle
+   Status: To-do - organize investors, employees, and agreements to provide updated cap table
+   This is a medium-sized project.
+
+2. Accounting System
+   DECISION: QuickBooks Online
+   Owner: Cam (may delegate)
+   Status: Active, working with accountant
+
+3. Revenue Tracker
+   DECISION: TBD - follow-up conversation needed
+
+4. Customer System of Record
+   DECISION: Building - Pipeline system + Google Drive /Customers
+   Google Drive is confirmed as part of the customer system
+
+5. Team Directory
+   DECISION: TBD
+
+────────────────────────────────────────
+
+THE TWO-LAYER OPERATING SYSTEM
+
+Indemn runs on a two-layer operating system designed for an AI-first company in 2026.
+
+LAYER 1: SHARED BUSINESS OS
+The company's collective memory and systems. Accessible to all executives.
+
+Components:
+- Google Drive (organized by the 7 domains above)
+- Recorded Meetings → extracted and searchable via Meetings system
+- Shared Slack Channels → company communication history
+- Linear → engineering work and roadmap
+- Pipeline → customers, deals, activities
+
+This is the "company brain." When anyone asks "what do we know about X?" - the answer lives here.
+
+LAYER 2: PERSONAL OS
+Individual productivity layer. Private to each executive.
+
+Components:
+- Claude Code terminal (command-line AI interface)
+- Personal email access (Gmail API)
+- Personal Slack DMs
+- Personal meeting recordings/transcripts (optional)
+
+This is how each person interfaces with the business and their own work.
+
+HOW IT WORKS TOGETHER
+
+The Shared OS is the source of truth. The Personal OS is how you access it and augment it with your own context.
+
+Example: Cam preparing for a customer call
+1. Personal OS: "What do I need to know about [Customer]?"
+2. Claude Code queries:
+   - Pipeline API → customer record, deal status, recent activity
+   - Google Drive → /Customers/[Customer] folder contents
+   - Meetings → past call transcripts with this customer
+   - Slack → recent messages in shared customer channel
+3. Returns: Synthesized brief with context
+
+Example: Kyle drafting investor update
+1. Personal OS: "Help me draft this month's investor update"
+2. Claude Code queries:
+   - Pipeline → revenue, new deals, customer wins
+   - Linear → product shipped this month
+   - Meetings → board meeting notes
+   - Personal email → any investor threads
+3. Returns: Draft update with real data
+
+────────────────────────────────────────
+
+CAM'S ONBOARDING PATH
+
+Phase 1: Shared Business OS (Week 1)
+- Understand the 7 domains and where things live
+- Learn the Google Drive structure
+- Access shared Slack channels
+- See how recorded meetings become searchable context
+
+Phase 2: Personal OS Setup (Week 2)
+- Install Claude Code (command-line terminal)
+- Connect personal Gmail
+- Connect personal Slack
+- Configure personal recording integration (optional)
+
+Phase 3: Daily Use (Ongoing)
+- Use Claude Code as primary interface
+- Let AI retrieve context from both layers
+- Contribute back to Shared OS (docs, updates, decisions)
+
+────────────────────────────────────────
+
+PERSONAL OS SETUP GUIDE (For Cam)
+
+Prerequisites:
+- Mac with terminal access
+- Gmail account (business)
+- Slack account (business)
+
+Step 1: Install Claude Code
+[Instructions to be added - command line installation]
+
+Step 2: Configure CLAUDE.md
+Create personal CLAUDE.md file that points to:
+- Business context (Indemn)
+- Personal working style
+- Project locations
+
+Step 3: Enable Integrations
+- Gmail: OAuth connection via Pipeline API
+- Slack: MCP server configuration
+- Google Docs: MCP server configuration
+- Meetings: API access for transcripts
+
+Step 4: Test Queries
+Try these to verify setup:
+- "What's in my inbox from investors?"
+- "Show me recent Slack messages in #sales"
+- "What happened in yesterday's customer calls?"
+
+────────────────────────────────────────
+
+KYLE'S ACTION ITEMS
+
+From this document:
+
+[ ] Cap Table Project
+    - Organize all investor records
+    - Organize all employee equity records  
+    - Consolidate agreements (SAFEs, options, etc.)
+    - Provide updated cap table to JPMorgan
+    - Medium project, Kyle owns
+
+[ ] Google Drive Migration
+    - Waiting on Cam review of folder structure
+    - Execute moves once approved
+
+[ ] Revenue Tracking Decision
+    - Follow-up conversation with Cam
+    - Decide: spreadsheet vs. Pipeline system vs. other
+
+[ ] Complete Cam's Personal OS Setup Guide
+    - Document exact installation steps
+    - Test the full flow
+
+
