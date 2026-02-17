@@ -1,6 +1,7 @@
 # Large data — don't commit
 audio_files/
 transcripts/
+extractions/
 *.WAV
 *.wav
 
