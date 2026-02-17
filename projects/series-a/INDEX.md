@@ -23,11 +23,10 @@ Last session (2026-02-17-a): Pulled real production data from MongoDB and git hi
 - All customers can be named in investor materials
 
 **Next steps:**
-1. Craig reviews the v1 draft and provides feedback
-2. Iterate on the story based on Craig's reaction and Kyle's input
-3. Potentially add more specific data points once Craig validates what's accurate vs. what needs correction
-4. Consider whether Stripe revenue data should be woven in (Cam/Kyle own those numbers)
-5. Consider format — is this a standalone doc, a section of the deck, talking points?
+1. Figure out with Kyle what FORMAT this needs to be in — the content/substance is solid, the format is wrong (written docs don't work for a pitch)
+2. The data-exploration-and-story-direction artifact has all the raw data, story direction, and Craig's framing — use it as the source material
+3. Craig may need to present the raw data to Kyle directly and let Kyle shape the pitch format
+4. The draft artifacts (v1, v2, slide versions) have usable content but are all wrong format — treat as raw material, not deliverables
 
 ## External Resources
 | Resource | Type | Link |
@@ -57,7 +56,11 @@ Last session (2026-02-17-a): Pulled real production data from MongoDB and git hi
 | 2026-02-16 | [google-drive-inventory](artifacts/2026-02-16-google-drive-inventory.md) | What Google Drive files and docs can we access? |
 | 2026-02-16 | [series-a-comprehensive-analysis](artifacts/2026-02-16-series-a-comprehensive-analysis.md) | Comprehensively read all Series A materials — understand strategy, real numbers, and gaps where engineering/data can strengthen the raise |
 | 2026-02-16 | [engineering-angle-session-handoff](artifacts/2026-02-16-engineering-angle-session-handoff.md) | Session handoff: engineering angle, what was built (web operators, eval system, observatory), where to pick up next |
-| 2026-02-17 | [data-story-draft-v1](artifacts/2026-02-17-data-story-draft-v1.md) | First draft of data/analytics story for Kyle — platform scale, build velocity, Observatory/Eval/WebOps capabilities backed by production data |
+| 2026-02-17 | [data-story-draft-v1](artifacts/2026-02-17-data-story-draft-v1.md) | First draft of data story (too long, kept as reference for raw content) |
+| 2026-02-17 | [data-story-draft-v2](artifacts/2026-02-17-data-story-draft-v2.md) | Distilled version (good content, still wrong format) |
+| 2026-02-17 | [engineering-slide](artifacts/2026-02-17-engineering-slide.md) | Slide iterations v1-v2 (good direction, format still off) |
+| 2026-02-17 | [engineering-slide-v2](artifacts/2026-02-17-engineering-slide-v2.md) | Cleanest version — professional but Craig says format is wrong for a real pitch |
+| 2026-02-17 | [data-exploration-and-story-direction](artifacts/2026-02-17-data-exploration-and-story-direction.md) | **SESSION HANDOFF** — all MongoDB data pulled, git timelines verified, story direction iterated, open questions for next session |
 
 ## Decisions
 - 2026-02-16: Building a data/analytics angle for the Series A — not just narrative docs but data-backed evidence of traction and PMF
