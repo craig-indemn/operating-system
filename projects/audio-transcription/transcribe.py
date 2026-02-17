@@ -14,6 +14,7 @@ Use --resume to skip files that already have transcripts (safe to ctrl-c and res
 
 import argparse
 import json
+import random
 import subprocess
 import sys
 import time
@@ -55,6 +56,7 @@ def main():
     parser.add_argument("--timestamps", action="store_true", help="Include word-level timestamps")
     parser.add_argument("--manifest", action="store_true", help="Write a JSONL manifest of all transcriptions")
     parser.add_argument("--resume", action="store_true", help="Skip files that already have transcripts")
+    parser.add_argument("--shuffle", action="store_true", help="Randomize file order for representative sampling")
     args = parser.parse_args()
 
     if not args.input_dir.exists():
@@ -84,6 +86,9 @@ def main():
         if skipped:
             print(f"Resuming: {skipped} already done, {len(remaining)} remaining")
         audio_files = remaining
+
+    if args.shuffle:
+        random.shuffle(audio_files)
 
     total = len(audio_files)
     if total == 0:

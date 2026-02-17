@@ -3,26 +3,26 @@
 Transcribe Alliance Insurance phone call recordings into text using Qwen3-ASR via MLX on MacBook Pro (M4 Pro, 24 GB). Audio from Brian Leftwich (Alliance COO), forwarded by Peter Duffy.
 
 ## Status
-Session 2026-02-16-a closed. Pipeline built, tested, ready to run.
+Session 2026-02-16-b closed. Transcription running overnight with `--shuffle`.
 
 **What happened this session:**
-- Read Peter's forwarded email from Brian Leftwich (Alliance COO) with two SharePoint zip links
-- Downloaded and extracted 37,005 WAV files (9.4 GB) of phone call recordings
-- Evaluated Ollama (can't do audio), NeMo/Canary-Qwen-2.5B (MPS silently corrupts output), and mlx-qwen3-asr
-- Built and tested transcription pipeline: Qwen3-ASR 0.6B via MLX, 24s per 4-min call, 2 GB memory
-- Investigated multi-process parallelism — single process is optimal (GPU-bound on one Metal GPU)
-- ~515 files transcribed in early partial runs
+- Investigated parallel transcription — tested 2 separate processes with symlink directories
+- Confirmed parallel MLX on Apple Silicon doesn't help: unified memory bandwidth is the bottleneck, not GPU cores or RAM
+- Total throughput with 2 workers was worse than 1, system became sluggish
+- Added `--shuffle` flag to transcribe.py for random sampling across all call types
+- ~536 files transcribed so far out of ~30,816 valid files (6,189 under 1KB filtered out of original 37,005)
 
-**To resume:**
+**Currently running:**
 ```bash
 cd projects/audio-transcription
-.venv/bin/python transcribe.py audio_files --output-dir transcripts --manifest --resume
+.venv/bin/python transcribe.py audio_files --output-dir transcripts --resume --shuffle
 ```
 
 **Next steps:**
-- Run full transcription batch (~3.5-7 days, ctrl-c safe with --resume)
-- Review transcript quality across different call types (short vs long, inbound vs outbound)
+- Check transcript count and quality after overnight run
+- Review sample transcripts across different call types (axfer vs exten, different extensions)
 - Decide on output format for delivery (plain text, timestamped SRT, speaker-labeled)
+- If full batch needed urgently, consider cloud transcription API (~$600-900 for all files in hours)
 - Check with Peter/Kyle on what to do with transcripts once complete
 
 ## External Resources
@@ -39,14 +39,16 @@ cd projects/audio-transcription
 | Date | Artifact | Ask |
 |------|----------|-----|
 | 2026-02-16 | [transcription-pipeline-setup](artifacts/2026-02-16-transcription-pipeline-setup.md) | Set up local audio transcription for Alliance phone calls |
+| 2026-02-16 | [parallelism-investigation](artifacts/2026-02-16-parallelism-investigation.md) | Can we run multiple transcription processes in parallel on Apple Silicon? |
 
 ## Decisions
 - 2026-02-16: Ollama can't do audio models — ruled out immediately
 - 2026-02-16: NeMo + MPS silently corrupts output (conformer encoder attention) — ruled out after extensive debugging
 - 2026-02-16: NeMo + CPU works (28s/4min) but mlx-qwen3-asr is faster and native to Apple Silicon
 - 2026-02-16: **mlx-qwen3-asr (Qwen3-ASR 0.6B) via MLX** — 24s/4min, native Metal GPU, 2 GB memory
-- 2026-02-16: Single process is optimal — multiple workers share one GPU with no throughput gain
-- 2026-02-16: Multi-process fork on macOS crashes (Metal GPU context corruption) — do not attempt
+- 2026-02-16: Single process is optimal — unified memory bandwidth is the bottleneck, not GPU cores or RAM capacity
+- 2026-02-16: Multi-process fork crashes (Metal context corruption); separate processes work mechanically but reduce total throughput
+- 2026-02-16: Use `--shuffle` for representative sampling instead of alphabetical grinding
 
 ## Open Questions
 - What output format does the team need? (plain text, timestamped SRT, speaker-labeled?)
