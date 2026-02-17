@@ -1,0 +1,14 @@
+# Large data — don't commit
+audio_files/
+transcripts/
+*.WAV
+*.wav
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Manifest (regenerated)
+manifest.jsonl
+errors.jsonl
