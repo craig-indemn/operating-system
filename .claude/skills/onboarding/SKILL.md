@@ -34,15 +34,26 @@ Ask the user their role if not already known:
 
 ## Step 2: Check Prerequisites
 
+First detect the platform:
+```bash
+echo "=== Platform ==="
+uname -s  # Darwin = macOS, Linux = Linux
+```
+
+Then check prerequisites (adapt install commands to platform):
 ```bash
 echo "=== Prerequisites ==="
-which node && echo "Node.js: OK" || echo "Node.js: MISSING — brew install node"
-which npm && echo "npm: OK" || echo "npm: MISSING — comes with Node.js"
-which brew && echo "Homebrew: OK" || echo "Homebrew: MISSING — /bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\""
-which jq && echo "jq: OK" || echo "jq: MISSING — brew install jq"
-which mongosh && echo "mongosh: OK" || echo "mongosh: MISSING — brew install mongosh"
-/usr/bin/python3 -c "import slack_sdk" 2>/dev/null && echo "slack_sdk: OK" || echo "slack_sdk: MISSING — pip3 install slack_sdk"
+which node && echo "Node.js: OK" || echo "Node.js: MISSING"
+which npm && echo "npm: OK" || echo "npm: MISSING"
+which curl && echo "curl: OK" || echo "curl: MISSING"
+which jq && echo "jq: OK" || echo "jq: MISSING"
+which python3 && echo "Python3: OK" || echo "Python3: MISSING"
+python3 -c "import slack_sdk" 2>/dev/null && echo "slack_sdk: OK" || echo "slack_sdk: MISSING — pip3 install slack_sdk"
 ```
+
+**Install missing prerequisites:**
+- macOS: `brew install node jq` (install Homebrew first if missing: `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`)
+- Linux: `sudo apt update && sudo apt install -y nodejs npm jq python3 python3-pip curl`
 
 ## Step 3: Run Status Checks
 
@@ -54,19 +65,21 @@ For each tool in the user's role, run the status check from its skill. Collect r
 
 ## Step 4: Install Missing Tools
 
-For each tool that's not installed, run the install command from its skill:
+For each tool that's not installed, run the install command from its skill. Detect the platform first (`uname -s`) and use the appropriate command:
 
-| Tool | Install Command |
-|------|----------------|
-| gog (Google Workspace) | `brew install steipete/tap/gogcli` |
-| linearis (Linear) | `npm install -g linearis` |
-| gh (GitHub) | `brew install gh` |
-| stripe | `brew install stripe/stripe-cli/stripe` |
-| vercel | `npm install -g vercel` |
-| neonctl | `npm install -g neonctl` |
-| psql | `brew install libpq` |
-| mongosh (MongoDB) | `brew install mongosh` |
-| slack_sdk (Python) | `pip3 install slack_sdk` |
+| Tool | macOS | Linux (Ubuntu/Debian) |
+|------|-------|----------------------|
+| gog (Google Workspace) | `brew install steipete/tap/gogcli` | Download binary from GitHub releases (see `/google-workspace` skill) |
+| linearis (Linear) | `npm install -g linearis` | `npm install -g linearis` |
+| gh (GitHub) | `brew install gh` | `sudo apt install gh` or [install instructions](https://github.com/cli/cli/blob/trunk/docs/install_linux.md) |
+| stripe | `brew install stripe/stripe-cli/stripe` | Download from https://github.com/stripe/stripe-cli/releases |
+| vercel | `npm install -g vercel` | `npm install -g vercel` |
+| neonctl | `npm install -g neonctl` | `npm install -g neonctl` |
+| psql | `brew install libpq` | `sudo apt install postgresql-client` |
+| mongosh (MongoDB) | `brew install mongosh` | See https://www.mongodb.com/docs/mongodb-shell/install/ |
+| slack_sdk (Python) | `pip3 install slack_sdk` | `pip3 install slack_sdk` |
+
+**Note:** On Linux, if `npm` is not available, install Node.js first: `sudo apt install nodejs npm`
 
 ## Step 5: Authenticate
 
@@ -107,11 +120,14 @@ export LINEAR_API_TOKEN="${LINEAR_API_KEY}"
 export NEON_CONNECTION_STRING="postgresql://neondb_owner:REDACTED_NEON_PASSWORD@ep-dark-hat-ah6i1mwb-pooler.c-3.us-east-1.aws.neon.tech/neondb?sslmode=require"
 ```
 
-Then add to `~/.zshrc` (replace `<repo-path>` with the actual path where the repo was cloned):
+Then add to the user's shell rc file. Detect which shell they use and add to the right file:
+- **zsh** (macOS default): `~/.zshrc`
+- **bash** (Linux default): `~/.bashrc`
+
 ```bash
 [ -f "<repo-path>/.env" ] && source "<repo-path>/.env"
 ```
-Claude should detect the repo root with `git rev-parse --show-toplevel` and substitute the correct path.
+Claude should detect the repo root with `git rev-parse --show-toplevel` and the shell with `echo $SHELL`, then substitute the correct values.
 
 ## Step 7: Verify Everything
 

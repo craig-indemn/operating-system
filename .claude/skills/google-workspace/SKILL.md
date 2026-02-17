@@ -58,9 +58,18 @@ Either option produces the same result: a credentials JSON file that gog uses to
 ## Setup
 
 ### Install
+
+**macOS:**
 ```bash
 brew install steipete/tap/gogcli
 ```
+
+**Linux (Ubuntu/Debian):**
+```bash
+curl -sL https://github.com/steipete/gogcli/releases/latest/download/gogcli_0.11.0_linux_amd64.tar.gz | tar xz
+sudo mv gog /usr/local/bin/
+```
+If the version above is outdated, check https://github.com/steipete/gogcli/releases for the latest.
 
 ### Load credentials
 ```bash
