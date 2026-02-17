@@ -107,10 +107,11 @@ export LINEAR_API_TOKEN="${LINEAR_API_KEY}"
 export NEON_CONNECTION_STRING="postgresql://neondb_owner:REDACTED_NEON_PASSWORD@ep-dark-hat-ah6i1mwb-pooler.c-3.us-east-1.aws.neon.tech/neondb?sslmode=require"
 ```
 
-Then add to `~/.zshrc`:
+Then add to `~/.zshrc` (replace `<repo-path>` with the actual path where the repo was cloned):
 ```bash
-[ -f "$HOME/Repositories/operating-system/.env" ] && source "$HOME/Repositories/operating-system/.env"
+[ -f "<repo-path>/.env" ] && source "<repo-path>/.env"
 ```
+Claude should detect the repo root with `git rev-parse --show-toplevel` and substitute the correct path.
 
 ## Step 7: Verify Everything
 
