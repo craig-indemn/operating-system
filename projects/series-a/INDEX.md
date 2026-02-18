@@ -3,30 +3,34 @@
 Building the data and analytics angle for Indemn's Series A fundraising. Consolidating existing materials, identifying gaps, and producing investor-ready artifacts that demonstrate traction, market position, and product-market fit through data.
 
 ## Status
-Last session (2026-02-17-a): Pulled real production data from MongoDB and git history. Produced a first draft of the data story artifact ("The Engineering Advantage") for Craig to share with Kyle.
+Last session (2026-02-17-b): Built a 1-page branded PDF pitch slide — "Frontier Agentic AI for Insurance." Craig approved v1.
 
 **What was done:**
-- Explored the full tiledesk MongoDB database — inventoried all collections and document counts
-- Mapped organizations and projects to customer names with conversation volumes
-- Pulled Observatory data: 7,695 conversations analyzed across 55 active agents, with outcome tracking, precursor lift analysis, intent classification, sentiment, daily snapshots
-- Got monthly conversation trends per customer (last 7 months)
-- Pulled git history for all three systems to verify build timelines (Observatory: Dec 22 first commit, Evaluations: Jan 20, Web Operators: Feb 12 — 5 days old)
-- Drafted v1 of the data story combining platform scale, build velocity, and system capabilities
+- Built a react-pdf generator at `indemn-observability/tools/pitch-slide/generate.tsx`
+- Iterated through 4 versions to nail the message and format
+- Fixed Barlow font fi/fl ligature rendering (ZWNJ character insertion)
+- Final slide establishes: core platform (conversational AI for insurance, 55 agents, 65 orgs, 2M+ messages) then differentiates (agents that operate software, AI that evaluates AI, knows why not just what), velocity bar (4/3/8/Days), customer proof, $140B+ market
+- PDF and artifact saved to project
 
-**Important context from Craig:**
-- Do NOT trust the financial numbers from previous session's analysis — Cam/Kyle have the correct revenue data
-- Craig is the de facto CTO (AI engineer, leading the 4-person engineering team, intending to formalize CTO role)
-- Kyle asked Craig to provide analytics and data to supplement the Series A investor pitch — Kyle doesn't know exactly what he's looking for, he trusts Craig to figure it out
-- Kyle and Cam are NOT technical — the story needs to be in results terms, not architecture terms
-- The previous session's comprehensive analysis (artifact 2) was overly critical and overstepped — the CTO angle is supplementing the pitch, not auditing it
-- The "Indemn" org conversations (~1,700/month) are demos and beta agents — exclude from customer metrics
+**Key learnings from this session:**
+- Generic benefits (24/7, freed employees) don't differentiate — lead with what makes Indemn SPECIAL
+- Must establish core business (conversational AI platform in production) before showing differentiators
+- Cut jargon for Kyle/investors: "Causal Conversation Intelligence" became "Knows Why, Not Just What"
+- Velocity bar (4 Engineers / 3 Production Systems / 8 Weeks / Days) is the strongest visual element
+- Impact should be woven into the narrative, not a separate section
+
+**Important context from Craig (carried forward):**
+- Do NOT trust financial numbers from session 2026-02-16-b — Cam/Kyle have the correct revenue data
+- Craig is the de facto CTO; Kyle asked him to provide analytics/data to supplement the pitch
+- Kyle and Cam are NOT technical — results terms, not architecture
+- Exclude Indemn internal org (~1,700 conversations/month) from customer metrics
 - All customers can be named in investor materials
 
 **Next steps:**
-1. Figure out with Kyle what FORMAT this needs to be in — the content/substance is solid, the format is wrong (written docs don't work for a pitch)
-2. The data-exploration-and-story-direction artifact has all the raw data, story direction, and Craig's framing — use it as the source material
-3. Craig may need to present the raw data to Kyle directly and let Kyle shape the pitch format
-4. The draft artifacts (v1, v2, slide versions) have usable content but are all wrong format — treat as raw material, not deliverables
+1. Get Kyle's reaction to the pitch slide PDF — does this format work? Does the message land?
+2. Iterate on content based on Kyle's feedback
+3. Verify the $140B+ market figure — currently unsourced, needs citation before investor use
+4. Consider additional supplemental slides (customer deep-dives, market sizing)
 
 ## External Resources
 | Resource | Type | Link |
@@ -60,7 +64,9 @@ Last session (2026-02-17-a): Pulled real production data from MongoDB and git hi
 | 2026-02-17 | [data-story-draft-v2](artifacts/2026-02-17-data-story-draft-v2.md) | Distilled version (good content, still wrong format) |
 | 2026-02-17 | [engineering-slide](artifacts/2026-02-17-engineering-slide.md) | Slide iterations v1-v2 (good direction, format still off) |
 | 2026-02-17 | [engineering-slide-v2](artifacts/2026-02-17-engineering-slide-v2.md) | Cleanest version — professional but Craig says format is wrong for a real pitch |
-| 2026-02-17 | [data-exploration-and-story-direction](artifacts/2026-02-17-data-exploration-and-story-direction.md) | **SESSION HANDOFF** — all MongoDB data pulled, git timelines verified, story direction iterated, open questions for next session |
+| 2026-02-17 | [data-exploration-and-story-direction](artifacts/2026-02-17-data-exploration-and-story-direction.md) | Session handoff from 2026-02-17-a — all MongoDB data, git timelines, story direction |
+| 2026-02-17 | [pitch-slide-v1](artifacts/2026-02-17-pitch-slide-v1.md) | 1-page branded PDF pitch slide — "Frontier Agentic AI for Insurance" |
+| 2026-02-17 | [Indemn_Series_A_Pitch_Slide.pdf](artifacts/Indemn_Series_A_Pitch_Slide.pdf) | The PDF deliverable |
 
 ## Decisions
 - 2026-02-16: Building a data/analytics angle for the Series A — not just narrative docs but data-backed evidence of traction and PMF
@@ -69,11 +75,15 @@ Last session (2026-02-17-a): Pulled real production data from MongoDB and git hi
 - 2026-02-17: Don't trust numbers from previous session's analysis as ground truth — treat all financial data as unverified unless confirmed by Kyle/Cam
 - 2026-02-17: The data story serves the pitch by showing what the engineering systems produce (Observatory outputs, eval results, build velocity) — the systems ARE the evidence, not just a data source
 - 2026-02-17: Exclude Indemn internal org (~1,700 conversations/month) from customer metrics — those are demos/beta agents
+- 2026-02-17: Format for investor deliverables is branded PDF using react-pdf (not markdown docs or slide outlines)
+- 2026-02-17: Lead with differentiators (frontier AI capabilities), not generic automation benefits
+- 2026-02-17: Always establish the core platform (conversational AI for insurance, in production) before showing what sets Indemn apart
 
 ## Open Questions
-- Craig hasn't reviewed v1 draft yet — what resonates, what's wrong, what's missing?
-- What format does Kyle want? Standalone doc, deck section, talking points?
+- Does Kyle like the PDF format? Does the message land for him?
+- The $140B+ market figure is unsourced — needs verification or citation before investor use
 - Should Stripe revenue data be woven in, or is that Cam/Kyle's domain entirely?
-- The platform totals (2M messages, 143K conversations) include all-time data back to Aug 2023 — how much is production vs. test? Need to validate before putting in front of investors.
-- Observatory "outcome_group" classifications (success/failure/partial) — is the classification system tuned correctly? Craig flagged "success" as a poor label for that metric.
-- What do web operator production runs look like? Current data is from 5 days of development — any completed runs with measurable results yet?
+- Platform totals (2M messages, 143K conversations) include all-time data back to Aug 2023 — how much is production vs. test?
+- Should there be additional supplemental slides? (customer deep-dives, market sizing, technical architecture)
+- Observatory "outcome_group" classifications — Craig flagged "success" as a poor label
+- What do web operator production runs look like? Any completed runs with measurable results yet?
