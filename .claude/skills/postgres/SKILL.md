@@ -54,7 +54,7 @@ Opens browser for OAuth. Or use API key:
 ### Set connection string
 Add to your `.env` file:
 ```bash
-export NEON_CONNECTION_STRING="postgresql://neondb_owner:REDACTED_NEON_PASSWORD@ep-dark-hat-ah6i1mwb-pooler.c-3.us-east-1.aws.neon.tech/neondb?sslmode=require"
+export NEON_CONNECTION_STRING="<get from .env or ask admin — do not hardcode here>"
 ```
 
 This is all you need for querying — no separate auth step required.

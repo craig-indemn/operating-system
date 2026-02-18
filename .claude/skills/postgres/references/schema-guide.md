@@ -7,7 +7,7 @@
 ## Connection
 
 ```
-postgresql://neondb_owner:REDACTED_NEON_PASSWORD@ep-dark-hat-ah6i1mwb-pooler.c-3.us-east-1.aws.neon.tech/neondb?sslmode=require
+Connection string stored in .env as NEON_CONNECTION_STRING — do not hardcode credentials in committed files.
 ```
 
 ---
