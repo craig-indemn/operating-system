@@ -102,7 +102,7 @@ If `.env` doesn't exist yet, create it in the repo root with:
 export LINEAR_API_TOKEN="${LINEAR_API_KEY}"
 
 # Neon Postgres
-export NEON_CONNECTION_STRING="postgresql://neondb_owner:REDACTED_NEON_PASSWORD@ep-dark-hat-ah6i1mwb-pooler.c-3.us-east-1.aws.neon.tech/neondb?sslmode=require"
+export NEON_CONNECTION_STRING="<get from admin — do not hardcode>"
 ```
 
 Then add to `~/.zshrc`:

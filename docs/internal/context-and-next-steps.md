@@ -39,7 +39,7 @@ Craig (Technical Partner) reviewed Kyle's documents and established a different 
 Kyle built a system that processes 3,211 meetings into structured intelligence:
 
 **Database**: Neon Postgres — **66 tables** (not 55 as originally described), 8 custom enum types, 62 foreign key relationships
-**Connection**: `postgresql://neondb_owner:REDACTED_NEON_PASSWORD@ep-dark-hat-ah6i1mwb-pooler.c-3.us-east-1.aws.neon.tech/neondb?sslmode=require`
+**Connection**: Stored in `.env` as `NEON_CONNECTION_STRING` — never hardcode in committed files.
 
 **Key data** (verified by direct database exploration):
 - 3,141 meetings, 183,697 utterances from 3 sources (Apollo, Granola, Gemini)

@@ -27,7 +27,7 @@ Copy the credentials.json file below into the mcp-googledocs-server/ directory:
     "auth\_uri": "https://accounts.google.com/o/oauth2/auth",  
     "token\_uri": "https://oauth2.googleapis.com/token",  
     "auth\_provider\_x509\_cert\_url": "https://www.googleapis.com/oauth2/v1/certs",  
-    "client\_secret": "REDACTED_GOOGLE_CLIENT_SECRET",  
+    "client\_secret": "<REDACTED — rotate this credential>",  
     "redirect\_uris": \["http://localhost:3000"\]  
   }  
 }
