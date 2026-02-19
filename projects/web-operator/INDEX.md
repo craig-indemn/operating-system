@@ -3,9 +3,17 @@
 Development workstream for the web-operator service. Uses operating system skills (Slack, meetings, pipeline, etc.) to pull context and data that informs implementation decisions in the web-operator repo. The code lives in its own repository; this project tracks context, decisions, and artifacts that bridge OS intelligence into that development work.
 
 ## Status
-Session 2026-02-19-a complete. Full context hydration done — codebase, Gmail, Slack, meeting notes synthesized. Endorsement path built and validated. Demo environment inventoried.
+Session 2026-02-19-b complete. Endorsement path shakeout (Steps 1-5) against Fergerson activity. Steps 1-4 work. Step 5 blocked — 2024-2025 BAUT policy not visible in Policies sidebar.
 
-**What was accomplished this session:**
+**What was accomplished this session (2026-02-19-b):**
+1. Committed and pushed all session-a work (both repos)
+2. Walked through endorsement path Steps 1-5 with agent-browser against Fergerson activity
+3. Confirmed Steps 1-4 work (login, collect activities, open activity/notes, download/read PDF)
+4. Found agent-browser `!` escaping bug — password entry needs eval workaround
+5. Found critical Step 5 blocker — 2024-2025 BAUT policy period missing from Policies sidebar
+6. Documented all findings in shakeout artifact
+
+**Previous session (2026-02-19-a):**
 1. Created web-operator project in the OS with full INDEX.md
 2. Read CLAUDE.md, HANDOFF.md, framework-architecture.md — deep codebase understanding
 3. Pulled all emails (Johnson thread, meeting notes) and Slack (#customer-implementation full thread)
@@ -17,12 +25,13 @@ Session 2026-02-19-a complete. Full context hydration done — codebase, Gmail, 
 9. Defined testing strategy: test on expendable activities, save 2 for Monday demo
 
 **Next up (run `bd ready` in this project dir):**
-1. Shake out the endorsement path manually with Claude Code + agent-browser (P0)
-2. Refine path based on findings (P0, blocked by #1)
-3. Run through harness with Haiku 4.5 — evaluate speed/cost (P0, blocked by #2)
-4. Monday demo dry run (P0, blocked by #3)
-5. Investigate missing Dry Ridge Farm / Bill Kistler test cases (P1)
-6. Benchmark additional models if Haiku insufficient (P1, blocked by #3)
+1. Resolve Step 5 blocker — investigate why 2024-2025 BAUT policy is missing from Policies sidebar (P0)
+2. Apply path refinements from shakeout (password eval, Step 5 nav) (P0, blocked by #1)
+3. Complete shakeout of Steps 5-8 once policy navigation is resolved (P0, blocked by #2)
+4. Run through harness with Haiku 4.5 — evaluate speed/cost (P0, blocked by #3)
+5. Monday demo dry run (P0, blocked by #4)
+6. Investigate missing Dry Ridge Farm / Bill Kistler test cases (P1)
+7. Benchmark additional models if Haiku insufficient (P1, blocked by #4)
 
 ## External Resources
 | Resource | Type | Link |
@@ -44,6 +53,7 @@ Session 2026-02-19-a complete. Full context hydration done — codebase, Gmail, 
 | 2026-02-19 | [endorsement-workflow-analysis](artifacts/2026-02-19-endorsement-workflow-analysis.md) | Endorsement verification workflow, team activity, demo prep requirements, critical gap (no endorsement path) |
 | 2026-02-19 | [endorsement-path-creation](artifacts/2026-02-19-endorsement-path-creation.md) | Built endorsement path (8 steps, 3 procedures), design decisions, demo environment risk, testing approach |
 | 2026-02-19 | [activity-inventory](artifacts/2026-02-19-activity-inventory.md) | Logged into Epic, inventoried all 18 activities — 4 BAUT available, testing strategy defined |
+| 2026-02-19 | [endorsement-path-shakeout](artifacts/2026-02-19-endorsement-path-shakeout.md) | Steps 1-5 walkthrough — Steps 1-4 work, Step 5 blocked (missing policy period), password bug found |
 
 ## Decisions
 - 2026-02-10: No API access for Applied Epic — full web operator approach required (Kyle confirmed)
@@ -57,6 +67,8 @@ Session 2026-02-19-a complete. Full context hydration done — codebase, Gmail, 
 - 2026-02-19: Endorsement path built as separate path (not retrofitted into renewal path) — simpler, verification-focused
 - 2026-02-19: Test on expendable activities (#1 Fergerson, #2 Echerd), save #0 Thanh Tran and #3 Wong/Huang for demo
 - 2026-02-19: Sheryll Bausin (not "Cheryl") is the reassignment target for failed endorsements
+- 2026-02-19: agent-browser escapes `!` in fill/type — must use eval with native input setter for passwords with special characters
+- 2026-02-19: Heredoc syntax required for complex eval expressions through bash (`cat <<'JSEOF'`)
 
 ## Open Questions
 - How to handle Epic password resets (every ~3 months, next expected end of April)?
@@ -64,3 +76,5 @@ Session 2026-02-19-a complete. Full context hydration done — codebase, Gmail, 
 - What does the `indemn/feat-web-operator-improvement` branch contain?
 - Is the Feb 18 code on `indemn/main` (2 commits ahead of `origin/main`) ready to merge?
 - Are there POL3 activities in the sandbox? (Not visible in default activity view — may need filter change)
+- Why is the 2024-2025 BAUT policy period (CAP500961) missing from the Fergerson account's Policies sidebar? Only 2021-2022 and 2022-2023 periods visible under any filter. The endorsement activity and PDF reference this period. Is this a demo environment data gap, or is there a different navigation path?
+- Does the Thanh Tran activity (#0, updated 2/18/2026) have the policy period visible? Might be a better test candidate.
