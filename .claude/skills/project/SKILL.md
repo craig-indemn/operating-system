@@ -128,29 +128,7 @@ sources:
 
 ## Beads Usage
 
-Beads is scoped per-project. Always `cd` into the project directory before running `bd` commands.
-
-```bash
-cd projects/<name>
-
-# See what's ready to work on
-bd ready
-
-# Create a task
-bd create "Task description" -p <0-3>
-
-# Add a dependency (child blocked by parent)
-bd dep add <child-id> <parent-id>
-
-# Claim a task when starting work
-bd update <id> --claim
-
-# Close a task
-bd update <id> --status=closed
-
-# View a task's full details and history
-bd show <id>
-```
+Beads is scoped per-project. Always `cd` into the project directory before running `bd` commands. See `/beads` skill for comprehensive task tracking reference including epics, dependencies, acceptance criteria, and dispatch integration.
 
 ## Conventions
 

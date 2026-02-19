@@ -39,6 +39,13 @@
 - Beads are scoped per-project — always `cd` into the project directory before running `bd` commands
 - Commit project state after closing a session
 
+## Systems
+- Systems live in `systems/<name>/` with a SYSTEM.md defining purpose, capabilities, dependencies, and integration points
+- Systems are operational infrastructure — persistent processes that don't "finish" like projects
+- Systems use skills as their interface (the skill is in `.claude/skills/<name>/`, the engine is in `systems/<name>/`)
+- Systems serve any project — they're cross-cutting infrastructure
+- The OS has three primitives: Skills (capabilities), Projects (memory), Systems (processes)
+
 ## When Compacting
 - Always preserve: the list of available skills, the user's role, which tools are authenticated
 - Always preserve: any active task context and decisions made in conversation

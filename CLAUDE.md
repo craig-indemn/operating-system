@@ -13,6 +13,7 @@ Connected intelligence layer for Indemn. Every tool the company uses, accessible
 ### Tool Skills
 | Skill | Tool | What It Does |
 |-------|------|-------------|
+| `/beads` | bd | Task tracking with dependencies, epics, acceptance criteria, and dispatch integration |
 | `/slack` | agent-slack | Read channels, search messages, post to Slack |
 | `/google-workspace` | gog (gogcli) | Gmail, Calendar, Drive, Docs, Sheets |
 | `/linear` | linearis | Issues, roadmap, project management |
@@ -25,6 +26,11 @@ Connected intelligence layer for Indemn. Every tool the company uses, accessible
 | `/mongodb` | mongosh | Query MongoDB Atlas tiledesk database — bot configs, conversations, agents, orgs |
 | `/local-dev` | local-dev.sh | Start, stop, and manage Indemn platform services locally — groups, federation, logs |
 | `/agent-browser` | agent-browser | Interact with web pages in a real browser — navigate, click, fill forms, verify UI, take screenshots |
+
+### System Skills
+| Skill | What It Does |
+|-------|-------------|
+| `/dispatch` | Autonomous execution of implementation plans — runs Claude Code sessions via Agent SDK against beads epics |
 
 ### Workflow Skills
 | Skill | What It Does |
@@ -59,6 +65,18 @@ Workstream projects live in `projects/<name>/`. Each has an INDEX.md (context fo
 - To save output as an artifact: `/project save <slug>`
 - To see all projects: `/project status`
 - Design doc: @docs/plans/2026-02-16-project-tracking-design.md
+
+## Systems
+
+Operational infrastructure — persistent processes that don't "finish" like projects. Lives in `systems/<name>/` with a SYSTEM.md defining purpose, capabilities, and integration points.
+
+| System | What It Does |
+|--------|-------------|
+| `dispatch` | Ralph loop engine that executes beads epics via Agent SDK — fresh Claude Code session per task, separate verification, autonomous until backstop criteria met |
+
+- Systems use skills as their interface (e.g., `/dispatch` invokes the dispatch engine)
+- Systems are infrastructure — they serve any project
+- Design doc: @projects/os-development/artifacts/2026-02-19-dispatch-system-design.md
 
 ## Conventions
 @.claude/rules/conventions.md
