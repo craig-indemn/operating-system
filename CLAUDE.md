@@ -23,6 +23,8 @@ Connected intelligence layer for Indemn. Every tool the company uses, accessible
 | `/vercel` | vercel CLI | Deployments, environments, domains |
 | `/postgres` | neonctl + psql | Neon Postgres database access |
 | `/mongodb` | mongosh | Query MongoDB Atlas tiledesk database — bot configs, conversations, agents, orgs |
+| `/local-dev` | local-dev.sh | Start, stop, and manage Indemn platform services locally — groups, federation, logs |
+| `/agent-browser` | agent-browser | Interact with web pages in a real browser — navigate, click, fill forms, verify UI, take screenshots |
 
 ### Workflow Skills
 | Skill | What It Does |
