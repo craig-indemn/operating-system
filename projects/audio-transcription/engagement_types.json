@@ -1,0 +1,202 @@
+[
+  {
+    "id": "make-payment",
+    "name": "Make a Payment",
+    "description": "Caller wants to pay a premium, catch up on overdue balance, or set up auto-pay/EFT/bank draft for recurring payments.",
+    "examples": [
+      "Sandra Haymore wants to make a payment for her automobile insurance policy, specifically the monthly installment.",
+      "Hannah wants to set up automatic payments for her insurance policies, provide her bank routing and account numbers",
+      "The caller wanted to make a down payment on their Progressive auto insurance policy and confirm the payment details."
+    ]
+  },
+  {
+    "id": "billing-question",
+    "name": "Billing Question / Dispute",
+    "description": "Caller is confused about a charge, unexpected amount, payment status, premium discrepancy, duplicate charge, or refund. Not trying to pay — wants an explanation.",
+    "examples": [
+      "Aurelio Garcia is questioning a $2,000 business insurance bill from Amtras/Travelers, claiming it was unexpected",
+      "Victor Santiago is seeking clarification about an unexpected $3,500 charge on his card, which he believes was incorrectly processed by autopay",
+      "The caller is seeking clarification on her calculated insurance premium ($479) vs the amounts quoted by an agent ($542.20)"
+    ]
+  },
+  {
+    "id": "new-quote",
+    "name": "New Insurance Quote",
+    "description": "Caller shopping for new insurance coverage (auto, home, commercial, renters, life, specialty). Includes quote follow-ups checking on previously requested quotes.",
+    "examples": [
+      "Karen Abruzo seeks a home insurance quote, believing her current Geico rate may be too high",
+      "Kendrick Cabrera is seeking general liability and workers' compensation insurance for his new construction company",
+      "The caller is seeking a liability insurance quote for a moped."
+    ]
+  },
+  {
+    "id": "vehicle-change",
+    "name": "Vehicle Add/Remove/Replace",
+    "description": "Caller wants to add a newly purchased vehicle, remove a sold/totaled vehicle, or swap vehicles on their auto policy.",
+    "examples": [
+      "Angela Fulton wants to add a car to her existing personal car insurance policy.",
+      "The caller wants to add a newly purchased 2025 Toyota RAV4 to their existing insurance policy",
+      "The caller wants to remove a 2012 Nissan Altima from their insurance policy and confirm the effective date of removal."
+    ]
+  },
+  {
+    "id": "driver-change",
+    "name": "Driver Add/Remove",
+    "description": "Caller wants to add a driver (new teen, spouse, household member) or remove a driver from their policy.",
+    "examples": [
+      "Melissa Nelson wants to add her daughter as a driver to her existing insurance policy after the daughter obtains her full license",
+      "The caller asked whether they need to add a young person to their insurance policy to obtain a learner's permit.",
+      "James Marshall wants to update his Progressive umbrella policy to remove his daughter after she moved to Ohio"
+    ]
+  },
+  {
+    "id": "coverage-modification",
+    "name": "Coverage Modification",
+    "description": "Caller wants to change deductibles, add/remove coverage types (collision, comprehensive, towing, umbrella, etc.), or adjust liability limits on existing policy.",
+    "examples": [
+      "Melissa Lail wants to change her insurance policy's deductible to $1,000",
+      "Cheryl Dickerson is following up on increasing her umbrella insurance policy from $1 million to $2 million",
+      "Jean wants to adjust their boat insurance to remove unnecessary coverages while retaining collision and liability"
+    ]
+  },
+  {
+    "id": "cancellation",
+    "name": "Policy Cancellation",
+    "description": "Caller explicitly wants to cancel one or more policies due to selling property, switching carriers, business closure, relocation, or dissatisfaction.",
+    "examples": [
+      "Pat Littleton wants to cancel his business owner policy effective September 15th because he is selling his embroidery business",
+      "Henry wants to cancel his home and auto insurance policies because he found a better rate",
+      "Juan wants to cancel his workers' compensation and general liability insurance policies because he is no longer working as an installer"
+    ]
+  },
+  {
+    "id": "reinstatement",
+    "name": "Policy Reinstatement",
+    "description": "A policy was canceled (usually for non-payment) and the caller wants it reinstated. Often urgent, involves reinstatement windows and past-due payment.",
+    "examples": [
+      "Barry Vernon is seeking assistance to resolve a canceled Travelers auto insurance policy due to non-payment",
+      "David Malia wants to reinstate his canceled insurance policy after non-renewal due to missed payment.",
+      "Jamie seeks to reinstate a canceled workers' comp policy affected by a hacked debit card"
+    ]
+  },
+  {
+    "id": "claims",
+    "name": "Claims Filing & Follow-Up",
+    "description": "Caller reporting a new claim (accident, theft, property damage, weather) or following up on an existing claim's status, settlement, adjuster communication, or payment.",
+    "examples": [
+      "Tim Holt is reporting a truck accident involving his 2021 Ram at 6:00 AM in Rocky Mountain, NC",
+      "Stephen Leak is reporting a stolen toolbox valued at $4,000-$5,000 from his truck",
+      "The caller wants to resolve a car damage claim settlement delayed by an unresponsive adjuster"
+    ]
+  },
+  {
+    "id": "renewal-review",
+    "name": "Policy Renewal / Rate Review",
+    "description": "Existing customer reviewing upcoming renewal, understanding rate changes, comparing carriers, exploring bundling discounts, or asking why their rate went up.",
+    "examples": [
+      "Charles is concerned about a significant increase in his insurance premiums (auto up $600/year, home up $173/year)",
+      "Corbin is checking if his insurance policies (auto and homeowners) are still the best option",
+      "Savannah King is seeking clarification on a significant increase in her Progressive insurance renewal premium"
+    ]
+  },
+  {
+    "id": "coi-request",
+    "name": "Certificate of Insurance (COI)",
+    "description": "Caller needs a certificate of insurance generated, corrected, or sent to a third party (builder, lender, vendor, general contractor).",
+    "examples": [
+      "Chris from Conterra Marble and Granite requests a certificate of insurance for Perrier Builders",
+      "Jason Harkey is requesting a corrected COI for FCR Holdings LLC, ensuring it includes 'DBA First Class Roofing'",
+      "Donnie from MPE Rentals needs an updated certificate of insurance reflecting $80,000 coverage for rented/leased equipment"
+    ]
+  },
+  {
+    "id": "document-request",
+    "name": "Document Request",
+    "description": "Caller needs a copy of their policy, declaration page, proof of insurance, ID cards, loss runs, or bond copy. Often time-sensitive for closings, dealerships, or lenders.",
+    "examples": [
+      "The caller requested a copy of his current insurance policy be emailed to him as proof of insurance",
+      "Vicky Hill needs a copy of her insurance declaration page for her employer",
+      "Tequisha requested a loss run report for Chris's Auto Company LLC"
+    ]
+  },
+  {
+    "id": "dmv-compliance",
+    "name": "DMV / Compliance",
+    "description": "Caller received a DMV notice about plate revocation, needs an FS-1 form filed, or has a compliance issue where DMV believes coverage lapsed. Includes DOT number setup.",
+    "examples": [
+      "Casey Tuttle is seeking clarification about an FS-1 form related to a DMV notice and vehicle registration revocation",
+      "Joseph Fernandez needs assistance addressing a DMV letter regarding an alleged insurance lapse and submitting an FS1 form",
+      "Sunny is assisting Cody in navigating the process of setting up a DOT number"
+    ]
+  },
+  {
+    "id": "mortgage-lender",
+    "name": "Mortgage / Lender Coordination",
+    "description": "Calls involving escrow payment issues, mortgage company needing proof of insurance, lienholder additions/removals, or resolving discrepancies between insurer and mortgage servicer.",
+    "examples": [
+      "Linda Ashford is seeking clarification about an unexpected increase in her home insurance escrow amount",
+      "Gary contacted Alliance Insurance to resolve an issue where his mortgage company had not received his updated policy",
+      "Matthew from NewRes is confirming whether NewRes LLC is listed as a mortgagee on Francisco Flores' policy"
+    ]
+  },
+  {
+    "id": "workers-comp",
+    "name": "Workers' Comp Administration",
+    "description": "Calls about workers' comp audits, class codes, payroll reporting, ghost policies, audit collections, and WC claims. Specialized knowledge domain.",
+    "examples": [
+      "Lily is seeking assistance with an unexpected charge from Travelers due to an audit on a canceled workers' comp policy",
+      "Victor Santiago needs assistance completing a Workers Comp policy audit for Travelers, which is currently non-compliant",
+      "Donette Sikes needs assistance changing workers' comp class codes from 8848 to 8826/8824 after an audit"
+    ]
+  },
+  {
+    "id": "info-update",
+    "name": "Policy Info Update",
+    "description": "Caller needs to update address, phone, email, name (divorce/marriage), DBA, or payment method on their policy. Administrative changes only.",
+    "examples": [
+      "Justin Horn wants to update his address on file with Alliance Insurance",
+      "Andrea wants to change her last name on her home insurance policy post-divorce",
+      "Agent Jamie is assisting client Mary with updating Jocelyn Harris's email address on her Auto Owners account"
+    ]
+  },
+  {
+    "id": "coverage-question",
+    "name": "Coverage Question / Clarification",
+    "description": "Caller asks 'am I covered for X?' without requesting changes. Pure knowledge query about what their policy covers or excludes.",
+    "examples": [
+      "The caller is inquiring about coverage for damages caused by a fallen tree limb that disrupted power lines",
+      "Eric Leopold is following up on whether his commercial policy covers lawsuits related to GPS tracking",
+      "Pam is seeking clarification on towing coverage differences between her current policy and Auto Owners"
+    ]
+  },
+  {
+    "id": "commercial-specialty",
+    "name": "Commercial / Specialty Inquiry",
+    "description": "Complex commercial questions requiring specialized underwriting judgment — builder's risk, vacant property, bonds, HOA, church programs, dealer lots, special events, liquor liability, farm, life/health.",
+    "examples": [
+      "Todd Fry is asking whether a builder's risk policy covers theft of materials on a construction site",
+      "Bruce Murray seeks advice on insuring his wife's church-affiliated preschool",
+      "Salman is seeking auto dealer insurance for a new used car sales business in Charlotte, NC"
+    ]
+  },
+  {
+    "id": "follow-up",
+    "name": "Follow-Up / Status Check",
+    "description": "Caller checking on a pending quote, document, payment, policy change, or any prior request that hasn't been completed yet.",
+    "examples": [
+      "Oscar is following up on submitted insurance quotes that are pending approval",
+      "Victoria is following up on a previous conversation to check the status of an insurance quote",
+      "Nathan Bell wanted to confirm receipt of a proposal email sent for carrier renewal confirmation"
+    ]
+  },
+  {
+    "id": "routing-triage",
+    "name": "Routing / Triage",
+    "description": "Calls primarily about reaching a specific agent, returning a voicemail, language assistance (Spanish), non-insurance matters (IT, personal), courtesy calls, or vendor solicitation.",
+    "examples": [
+      "The caller wanted to speak with Holly Moore at Alliance Insurance but was informed she was unavailable",
+      "The caller requested assistance in Spanish, which was not available, and agreed to a callback on Monday.",
+      "Ashley wanted to place an order for a side of hibachi chicken."
+    ]
+  }
+]
