@@ -67,11 +67,15 @@ Initiatives (strategic outcomes — "how Indemn wins")
 
 | Key | Team | Scope |
 |-----|------|-------|
-| `AI` | Agentic AI | AI agents, reasoning, RAG, RLHF, Jarvis, workflow automations |
-| `COP` | Copilot + Platform | Platform UI, AI suggestions, analytics, navigation, RBAC, MFA |
-| `FRONT` | Insurance Frontends | Webchat widget, landing pages, customer-facing UI |
-| `WEB` | Marketing Website | Marketing site, SEO, CMS, lead capture, conversions |
-| `DEVOPS` | DevOps | Infrastructure, CI/CD, observability, security, tenant isolation |
+| Key | CLI `--team` value | Scope |
+|-----|-------------------|-------|
+| `AI` | `"Agentic AI"` | AI agents, reasoning, RAG, RLHF, Jarvis, workflow automations |
+| `COP` | `"Copilot + Platform"` | Platform UI, AI suggestions, analytics, navigation, RBAC, MFA |
+| `FRONT` | `"Insurance Frontends"` | Webchat widget, landing pages, customer-facing UI |
+| `WEB` | `"Marketing website"` | Marketing site, SEO, CMS, lead capture, conversions |
+| `DEVOPS` | `"DevOps"` | Infrastructure, CI/CD, observability, security, tenant isolation |
+
+**Important**: The `--team` flag requires the full team name (e.g. `--team "Agentic AI"`), not the key (`AI`). Search and filter commands accept either.
 
 ### Issue Workflow States
 
@@ -187,7 +191,7 @@ Accepts both identifiers (`AI-280`) and UUIDs.
 **Create issue:**
 ```bash
 linearis issues create "Title" \
-  --team AI \
+  --team "Agentic AI" \
   --priority 2 \
   --description "Description" \
   --labels "Bug" \
