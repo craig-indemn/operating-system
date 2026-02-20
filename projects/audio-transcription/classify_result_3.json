@@ -1,0 +1,3320 @@
+{
+  "batch": 3,
+  "total_classified": 309,
+  "classifications": [
+    {
+      "file": "in-+13363779003-+13363913261-20250723-115236-1753285956.5149",
+      "engagement_type": "make-payment",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+13363992952-20250730-091119-1753881079.74",
+      "engagement_type": "driver-change",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13363995775-20251003-160312-1759521792.19881",
+      "engagement_type": "cancellation",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13364033546-20250926-131639-1758906999.2505",
+      "engagement_type": "routing-triage",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+13364033615-20250911-092332-1757597012.1255",
+      "engagement_type": "claims",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13364035628-20250821-141321-1755800001.6452",
+      "engagement_type": "new-quote",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+13364036893-20250903-145652-1756925812.9050",
+      "engagement_type": "routing-triage",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13364039762-20251114-134610-1763145970.6406",
+      "engagement_type": "commercial-specialty",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+13364064886-20251008-144828-1759949308.6727",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13364065979-20251105-131730-1762366650.4215",
+      "engagement_type": "vehicle-change",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+13364069829-20260119-122214-1768843334.2294",
+      "engagement_type": "billing-question",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+13364070263-20250725-103850-1753454330.4236",
+      "engagement_type": "claims",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13364070392-20250909-113536-1757432136.6527",
+      "engagement_type": "routing-triage",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+13364074381-20250730-131354-1753895634.4792",
+      "engagement_type": "info-update",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13364082499-20251119-111406-1763568846.3024",
+      "engagement_type": "routing-triage",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13364084391-20250728-114958-1753717798.4382",
+      "engagement_type": "info-update",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13364091732-20251112-162125-1762982485.8309",
+      "engagement_type": "routing-triage",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+13364097460-20250826-142956-1756232996.7385",
+      "engagement_type": "routing-triage",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13364097594-20250728-101402-1753712042.1780",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13364144231-20251211-122020-1765473620.2724",
+      "engagement_type": "document-request",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13364155701-20260105-120534-1767632734.6373",
+      "engagement_type": "renewal-review",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+13364197902-20250916-140431-1758045871.8336",
+      "engagement_type": "renewal-review",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13364228402-20250807-103820-1754577500.2466",
+      "engagement_type": "billing-question",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13364234380-20251020-124226-1760978546.6060",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13364302726-20250820-092723-1755696443.599",
+      "engagement_type": "new-quote",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+13364303205-20260119-095147-1768834307.805",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13364352000-20250822-143458-1755887698.10895",
+      "engagement_type": "vehicle-change",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13364352000-20250922-155926-1758571166.10970",
+      "engagement_type": "new-quote",
+      "confidence": "low"
+    },
+    {
+      "file": "in-+13363779003-+13364478822-20251204-093718-1764859038.437",
+      "engagement_type": "routing-triage",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+13364626658-20250818-103849-1755527929.2379",
+      "engagement_type": "coi-request",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13364663456-20250821-113403-1755790443.3486",
+      "engagement_type": "renewal-review",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13364669897-20251223-133453-1766514893.2588",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13364675457-20250910-091630-1757510190.109",
+      "engagement_type": "routing-triage",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+13364678729-20251023-102406-1761229446.1539",
+      "engagement_type": "billing-question",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13364692541-20250908-162523-1757363123.10195",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13364732565-20250724-162020-1753388420.10765",
+      "engagement_type": "cancellation",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13364863036-20250825-093758-1756129078.1304",
+      "engagement_type": "mortgage-lender",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13364869125-20250819-150246-1755630166.9244",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13364869125-20251119-142729-1763580449.4943",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13364869125-20260116-144024-1768592424.5136",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13364883777-20251215-150347-1765829027.4358",
+      "engagement_type": "claims",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13364924092-20250825-141057-1756145457.7762",
+      "engagement_type": "billing-question",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+13365089974-20250822-094151-1755870111.2202",
+      "engagement_type": "cancellation",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13365235067-20251222-095552-1766415352.1128",
+      "engagement_type": "vehicle-change",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13365292003-20251120-114056-1763656856.1577",
+      "engagement_type": "billing-question",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+13365297668-20250722-104112-1753195272.5218",
+      "engagement_type": "commercial-specialty",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13365491770-20260108-152533-1767903933.5865",
+      "engagement_type": "info-update",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+13365801916-20250722-165536-1753217736.18071",
+      "engagement_type": "driver-change",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13365824500-20251023-154545-1761248745.5674",
+      "engagement_type": "vehicle-change",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13366014476-20250723-113741-1753285061.4944",
+      "engagement_type": "routing-triage",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13366024824-20250908-090018-1757336418.65",
+      "engagement_type": "claims",
+      "confidence": "low"
+    },
+    {
+      "file": "in-+13363779003-+13366027274-20260114-112301-1768407781.1787",
+      "engagement_type": "routing-triage",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13366153560-20251223-102955-1766503795.1366",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13366181713-20251210-104807-1765381687.1432",
+      "engagement_type": "routing-triage",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13366242164-20250910-164804-1757537284.9867",
+      "engagement_type": "mortgage-lender",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13366480766-20250725-094908-1753451348.3043",
+      "engagement_type": "claims",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+13366484168-20250731-163700-1753994220.19215",
+      "engagement_type": "follow-up",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13366553154-20251010-141516-1760120116.7513",
+      "engagement_type": "follow-up",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+13366555941-20251114-124910-1763142550.5313",
+      "engagement_type": "billing-question",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13366557691-20251223-163212-1766525532.4466",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13366558074-20251007-105720-1759849040.1685",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13366558074-20260106-142145-1767727305.4341",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13366615429-20251015-145959-1760554799.4825",
+      "engagement_type": "routing-triage",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13366692453-20251016-142429-1760639069.9579",
+      "engagement_type": "claims",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13366818701-20251126-103437-1764171277.1564",
+      "engagement_type": "make-payment",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+13366827261-20251104-105203-1762271523.2647",
+      "engagement_type": "commercial-specialty",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13366896866-20251118-094954-1763477394.1656",
+      "engagement_type": "routing-triage",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13366897782-20251204-091212-1764857532.91",
+      "engagement_type": "coverage-modification",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13366921779-20260113-145453-1768334093.7545",
+      "engagement_type": "claims",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13366922318-20250924-130154-1758733314.3348",
+      "engagement_type": "reinstatement",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13366922515-20251003-093801-1759498681.2396",
+      "engagement_type": "routing-triage",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13366925859-20251229-123300-1767029580.8040",
+      "engagement_type": "new-quote",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13366957957-20251201-125355-1764611635.8101",
+      "engagement_type": "billing-question",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+13367031266-20260102-090052-1767362452.61",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13367037550-20251002-134432-1759427072.9598",
+      "engagement_type": "dmv-compliance",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+13367224191-20251229-114032-1767026432.5372",
+      "engagement_type": "vehicle-change",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13367236465-20250730-143947-1753900787.7304",
+      "engagement_type": "claims",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13367343880-20250826-153306-1756236786.8274",
+      "engagement_type": "claims",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13367401767-20250825-105716-1756133836.2704",
+      "engagement_type": "vehicle-change",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13367451730-20250903-122531-1756916731.4971",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13367457559-20250811-131606-1754932566.9700",
+      "engagement_type": "claims",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13367490677-20260119-140654-1768849614.4538",
+      "engagement_type": "info-update",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+13367497700-20250804-094340-1754315020.1632",
+      "engagement_type": "claims",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13367499840-20251218-095207-1766069527.536",
+      "engagement_type": "routing-triage",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13367557574-20260106-165138-1767736298.7030",
+      "engagement_type": "workers-comp",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+13367558620-20251007-120441-1759853081.3800",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13367559825-20250911-104859-1757602139.2123",
+      "engagement_type": "dmv-compliance",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13367674751-20250916-145518-1758048918.9944",
+      "engagement_type": "routing-triage",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+13367696653-20260115-093643-1768487803.739",
+      "engagement_type": "new-quote",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+13367717676-20250807-142948-1754591388.10647",
+      "engagement_type": "billing-question",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13367760979-20260108-150251-1767902571.5545",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13367768942-20251222-113846-1766421526.2527",
+      "engagement_type": "reinstatement",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+13367792101-20251003-111447-1759504487.8368",
+      "engagement_type": "follow-up",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+13367822281-20250919-135259-1758304379.6117",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13367827346-20250904-134122-1757007682.6523",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13367864165-20250827-163028-1756326628.7528",
+      "engagement_type": "driver-change",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+13368146641-20250917-125738-1758128258.2541",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13368170139-20251124-092905-1763994545.517",
+      "engagement_type": "reinstatement",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13368316764-20251009-131050-1760029850.3764",
+      "engagement_type": "cancellation",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13368378131-20251104-102120-1762269680.2069",
+      "engagement_type": "routing-triage",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13368629846-20250905-091256-1757077976.714",
+      "engagement_type": "reinstatement",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13368656233-20251013-153442-1760384082.11475",
+      "engagement_type": "claims",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13368750989-20251017-121125-1760717485.2625",
+      "engagement_type": "mortgage-lender",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13368968600-20251112-100329-1762959809.1496",
+      "engagement_type": "document-request",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13368978584-20251120-161608-1763673368.3888",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13368993083-20251124-125733-1764007053.3646",
+      "engagement_type": "routing-triage",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13369092038-20250919-091711-1758287831.496",
+      "engagement_type": "dmv-compliance",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13369093592-20251222-134719-1766429239.3636",
+      "engagement_type": "document-request",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13369181774-20260119-123546-1768844146.2919",
+      "engagement_type": "routing-triage",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13369182152-20250826-121943-1756225183.3987",
+      "engagement_type": "billing-question",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13369184809-20250806-113404-1754494444.4097",
+      "engagement_type": "reinstatement",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+13369185928-20250725-095047-1753451447.3068",
+      "engagement_type": "coi-request",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13369186212-20250905-162915-1757104155.6363",
+      "engagement_type": "vehicle-change",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+13369189609-20251124-124407-1764006247.3506",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13369200018-20250820-160927-1755720567.12677",
+      "engagement_type": "workers-comp",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+13369226534-20260106-131344-1767723224.3268",
+      "engagement_type": "renewal-review",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13369262158-20250924-121025-1758730225.2426",
+      "engagement_type": "routing-triage",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+13369266063-20251014-120402-1760457842.2880",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13369268526-20250722-111645-1753197405.7206",
+      "engagement_type": "new-quote",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13369293115-20250811-121901-1754929141.8580",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13369342800-20251013-123315-1760373195.7359",
+      "engagement_type": "document-request",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+13369389601-20250918-104440-1758206680.4229",
+      "engagement_type": "new-quote",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13369400825-20251001-092701-1759325221.751",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13369441709-20251110-132702-1762799222.3523",
+      "engagement_type": "vehicle-change",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13369455827-20260106-160142-1767733302.5960",
+      "engagement_type": "coverage-question",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13369714656-20251113-153006-1763065806.6720",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13369729049-20250728-105024-1753714224.3112",
+      "engagement_type": "routing-triage",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13369787385-20251110-094218-1762785738.727",
+      "engagement_type": "new-quote",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+13369790068-20250912-111139-1757689899.1967",
+      "engagement_type": "info-update",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+13369799585-20250826-111704-1756221424.2010",
+      "engagement_type": "cancellation",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13369864324-20250908-120813-1757347693.5083",
+      "engagement_type": "new-quote",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13369866078-20250919-104110-1758292870.1153",
+      "engagement_type": "follow-up",
+      "confidence": "low"
+    },
+    {
+      "file": "in-+13363779003-+13369950011-20260116-091538-1768572938.249",
+      "engagement_type": "commercial-specialty",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13369970295-20251209-153234-1765312354.7095",
+      "engagement_type": "coverage-question",
+      "confidence": "low"
+    },
+    {
+      "file": "in-+13363779003-+13369970484-20250909-163555-1757450155.13706",
+      "engagement_type": "info-update",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13369970906-20251201-105853-1764604733.4475",
+      "engagement_type": "claims",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+13369971414-20250730-132055-1753896055.5315",
+      "engagement_type": "document-request",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13369974047-20250917-090913-1758114553.207",
+      "engagement_type": "document-request",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13369975930-20250903-150432-1756926272.9091",
+      "engagement_type": "reinstatement",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+13369976166-20250811-094349-1754919829.1926",
+      "engagement_type": "info-update",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13369991202-20260116-144424-1768592664.5354",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13369993362-20250812-110301-1755010981.2637",
+      "engagement_type": "cancellation",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+13464349994-20251010-125035-1760115035.6583",
+      "engagement_type": "follow-up",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+13524256774-20250801-120946-1754064586.3492",
+      "engagement_type": "new-quote",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+14044240533-20251104-094644-1762267604.1421",
+      "engagement_type": "mortgage-lender",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+14068314454-20250829-144533-1756493133.6254",
+      "engagement_type": "cancellation",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+14238739276-20250930-141122-1759255882.4580",
+      "engagement_type": "routing-triage",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+14405666930-20251112-102131-1762960891.2046",
+      "engagement_type": "renewal-review",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+14409106130-20250818-090526-1755522326.283",
+      "engagement_type": "routing-triage",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+14409108130-20251009-130100-1760029260.3493",
+      "engagement_type": "follow-up",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+14434170997-20251008-150015-1759950015.6819",
+      "engagement_type": "coverage-question",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+14436267082-20251229-091741-1767017861.274",
+      "engagement_type": "claims",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+14704810473-20250828-132748-1756402068.5090",
+      "engagement_type": "mortgage-lender",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+14845854000-20251124-103446-1763998486.1454",
+      "engagement_type": "routing-triage",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+15186148898-20251007-100631-1759845991.1212",
+      "engagement_type": "mortgage-lender",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+16073330743-20251003-103930-1759502370.5674",
+      "engagement_type": "cancellation",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+16083323148-20251009-131953-1760030393.3885",
+      "engagement_type": "new-quote",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+16107813722-20251008-111720-1759936640.2809",
+      "engagement_type": "renewal-review",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+16316036731-20250918-092050-1758201650.625",
+      "engagement_type": "coverage-question",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+16316154991-20250722-145822-1753210702.15315",
+      "engagement_type": "mortgage-lender",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+16622795651-20260114-104043-1768405243.1173",
+      "engagement_type": "document-request",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+16788134751-20251118-135107-1763491867.3891",
+      "engagement_type": "billing-question",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+17042008835-20251226-151022-1766779822.2610",
+      "engagement_type": "commercial-specialty",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+17042412363-20250829-111011-1756480211.2201",
+      "engagement_type": "coi-request",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+17044705274-20250827-124543-1756313143.4383",
+      "engagement_type": "make-payment",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+17044900795-20250729-120250-1753804970.4098",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+17045001683-20250917-124441-1758127481.2199",
+      "engagement_type": "billing-question",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+17045003011-20250918-101215-1758204735.2895",
+      "engagement_type": "cancellation",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+17045285483-20260119-095820-1768834700.865",
+      "engagement_type": "billing-question",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+17045499908-20250904-093659-1756993019.1117",
+      "engagement_type": "new-quote",
+      "confidence": "low"
+    },
+    {
+      "file": "in-+13363779003-+17046157794-20250724-110050-1753369250.1340",
+      "engagement_type": "new-quote",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+17046210226-20260112-112226-1768234946.1297",
+      "engagement_type": "make-payment",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+17046508546-20250915-132744-1757957264.9790",
+      "engagement_type": "document-request",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+17046742427-20250922-094407-1758548647.917",
+      "engagement_type": "new-quote",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+17046807857-20250918-154756-1758224876.9575",
+      "engagement_type": "new-quote",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+17047262750-20250829-111839-1756480719.2323",
+      "engagement_type": "new-quote",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+17048193353-20250903-151824-1756927104.9215",
+      "engagement_type": "new-quote",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+17048539391-20251002-121149-1759421509.8323",
+      "engagement_type": "follow-up",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+17049634265-20250723-100842-1753279722.1780",
+      "engagement_type": "cancellation",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+17049759120-20250918-135255-1758217975.7937",
+      "engagement_type": "mortgage-lender",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+17138515827-20250926-145927-1758913167.4462",
+      "engagement_type": "new-quote",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+17432161857-20250724-131830-1753377510.2992",
+      "engagement_type": "new-quote",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+17432175374-20251215-161932-1765833572.5672",
+      "engagement_type": "follow-up",
+      "confidence": "low"
+    },
+    {
+      "file": "in-+13363779003-+17432579869-20250902-090517-1756818317.163",
+      "engagement_type": "vehicle-change",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+17434447366-20250728-115616-1753718176.4716",
+      "engagement_type": "coverage-question",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+17438370295-20250812-111509-1755011709.2719",
+      "engagement_type": "new-quote",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+17706924631-20251010-151811-1760123891.10381",
+      "engagement_type": "follow-up",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+17863673494-20250730-153512-1753904112.10461",
+      "engagement_type": "follow-up",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+17867952468-20250725-130951-1753463391.8090",
+      "engagement_type": "new-quote",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+18002430210-20250828-154937-1756410577.9491",
+      "engagement_type": "cancellation",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+18033714126-20251210-132423-1765391063.2702",
+      "engagement_type": "follow-up",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+18043573177-20251125-111658-1764087418.1353",
+      "engagement_type": "routing-triage",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+18053901792-20250821-140430-1755799470.6284",
+      "engagement_type": "new-quote",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+18106247446-20251218-151142-1766088702.3972",
+      "engagement_type": "vehicle-change",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+18183886947-20250729-112245-1753802565.3658",
+      "engagement_type": "cancellation",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+18284550585-20260116-143556-1768592156.4760",
+      "engagement_type": "vehicle-change",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+18438745111-20251013-140618-1760378778.10622",
+      "engagement_type": "follow-up",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+18605591342-20260113-103055-1768318255.3518",
+      "engagement_type": "billing-question",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+18642436542-20250909-125300-1757436780.8168",
+      "engagement_type": "routing-triage",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+18776340985-20250731-132731-1753982851.10182",
+      "engagement_type": "mortgage-lender",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+18882609698-20250801-155616-1754078176.6005",
+      "engagement_type": "mortgage-lender",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+18882609698-20250825-104938-1756133378.2585",
+      "engagement_type": "mortgage-lender",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+18882609876-20250822-105405-1755874445.5331",
+      "engagement_type": "mortgage-lender",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+18882609876-20250908-151158-1757358718.9046",
+      "engagement_type": "mortgage-lender",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+18882609876-20251014-155409-1760471649.7199",
+      "engagement_type": "mortgage-lender",
+      "confidence": "low"
+    },
+    {
+      "file": "in-+13363779003-+18882609876-20251105-141415-1762370055.5304",
+      "engagement_type": "mortgage-lender",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+19175395567-20250924-152850-1758742130.6181",
+      "engagement_type": "routing-triage",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+19176283741-20251215-104810-1765813690.1287",
+      "engagement_type": "follow-up",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+19192311601-20251125-144420-1764099860.6087",
+      "engagement_type": "document-request",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+19198687196-20250821-104319-1755787399.1502",
+      "engagement_type": "make-payment",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+19199066472-20251208-101536-1765206936.1814",
+      "engagement_type": "claims",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+19199467610-20250723-131423-1753290863.7773",
+      "engagement_type": "follow-up",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+19522488089-20250813-094640-1755092800.1207",
+      "engagement_type": "routing-triage",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+19542605510-20251222-155312-1766436792.4710",
+      "engagement_type": "new-quote",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+19545945588-20250915-125830-1757955510.8014",
+      "engagement_type": "renewal-review",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+19733626934-20251222-113454-1766421294.2330",
+      "engagement_type": "routing-triage",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13363779003-+19802101980-20250908-112812-1757345292.3421",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+19803492886-20250905-163825-1757104705.7269",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+19803783399-20250827-134020-1756316420.5194",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+19803783399-20250909-143705-1757443025.10437",
+      "engagement_type": "document-request",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+19842150785-20251110-131103-1762798263.3329",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-+19843901598-20251222-102053-1766416853.1464",
+      "engagement_type": "routing-triage",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-Anonymous-20250902-134057-1756834857.5698",
+      "engagement_type": "routing-triage",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13363779003-Anonymous-20250909-101819-1757427499.3698",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13365913091-+13364535020-20251014-113347-1760456027.2159",
+      "engagement_type": "document-request",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13365913091-+13364539740-20251020-140518-1760983518.7668",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13365913091-+13364825529-20250724-123748-1753375068.2324",
+      "engagement_type": "cancellation",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13365913091-+13365773297-20250801-131851-1754068731.4731",
+      "engagement_type": "claims",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13365913091-+13365958735-20250805-145816-1754420296.6734",
+      "engagement_type": "billing-question",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13365913091-+13368163540-20260115-092323-1768487003.505",
+      "engagement_type": "coverage-question",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13365913091-+13368164174-20251119-131236-1763575956.3949",
+      "engagement_type": "billing-question",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13365913091-+13368360102-20250801-162130-1754079690.7077",
+      "engagement_type": "reinstatement",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13365913091-+13369785337-20251017-155041-1760730641.5191",
+      "engagement_type": "claims",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13367861133-+12762601274-20250827-153904-1756323544.6817",
+      "engagement_type": "make-payment",
+      "confidence": "low"
+    },
+    {
+      "file": "in-+13367861133-+12767544067-20251219-111630-1766160990.3309",
+      "engagement_type": "coverage-question",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13367861133-+13362444868-20250929-132126-1759166486.4160",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13367861133-+13362795804-20251015-122209-1760545329.1513",
+      "engagement_type": "renewal-review",
+      "confidence": "low"
+    },
+    {
+      "file": "in-+13367861133-+13363062515-20251024-090644-1761311204.80",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13367861133-+13363512107-20251226-103711-1766763431.1063",
+      "engagement_type": "routing-triage",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13367861133-+13363681155-20251017-131332-1760721212.3677",
+      "engagement_type": "cancellation",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13367861133-+13364034763-20251201-125923-1764611963.8840",
+      "engagement_type": "coverage-modification",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13367861133-+13364088960-20250819-120539-1755619539.4381",
+      "engagement_type": "workers-comp",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13367861133-+13364102581-20250722-104622-1753195582.5296",
+      "engagement_type": "new-quote",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13367861133-+13364140963-20250918-105426-1758207266.4406",
+      "engagement_type": "vehicle-change",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13367861133-+13364685952-20250808-160707-1754683627.14062",
+      "engagement_type": "vehicle-change",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13367861133-+13365266379-20251014-133145-1760463105.4267",
+      "engagement_type": "document-request",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13367861133-+13365393774-20251010-101421-1760105661.924",
+      "engagement_type": "renewal-review",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13367861133-+13366481886-20250925-122401-1758817441.2502",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13367861133-+13366486810-20260106-141512-1767726912.4310",
+      "engagement_type": "new-quote",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13367861133-+13366487739-20251126-100227-1764169347.1188",
+      "engagement_type": "billing-question",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13367861133-+13366489233-20250915-162205-1757967725.17621",
+      "engagement_type": "new-quote",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13367861133-+13366489698-20251008-102241-1759933361.1756",
+      "engagement_type": "routing-triage",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13367861133-+13366690888-20260112-100832-1768230512.625",
+      "engagement_type": "routing-triage",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13367861133-+13367100758-20251209-110054-1765296054.1678",
+      "engagement_type": "coverage-modification",
+      "confidence": "medium"
+    },
+    {
+      "file": "in-+13367861133-+13367104518-20260105-102725-1767626845.2018",
+      "engagement_type": "coverage-question",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13367861133-+13367109817-20250903-110706-1756912026.2815",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13367861133-+13367782008-20251120-114508-1763657108.1612",
+      "engagement_type": "routing-triage",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13367861133-+13367822580-20251007-135522-1759859722.7376",
+      "engagement_type": "new-quote",
+      "confidence": "low"
+    },
+    {
+      "file": "in-+13367861133-+13367839100-20251008-143512-1759948512.6435",
+      "engagement_type": "mortgage-lender",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13367861133-+13369260928-20250815-160451-1755288291.9919",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13367861133-+13369725726-20251114-145921-1763150361.7902",
+      "engagement_type": "new-quote",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13367861133-+13369784401-20251006-142109-1759774869.9012",
+      "engagement_type": "coi-request",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13367861133-+16022849870-20250828-110356-1756393436.2618",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13367861133-+18436552677-20250903-103722-1756910242.2220",
+      "engagement_type": "new-quote",
+      "confidence": "high"
+    },
+    {
+      "file": "in-+13367861133-+19133364160-20250819-132615-1755624375.5720",
+      "engagement_type": "coverage-question",
+      "confidence": "high"
+    },
+    {
+      "file": "internal-105-409-20250806-152617-1754508377.9255",
+      "engagement_type": "commercial-specialty",
+      "confidence": "high"
+    },
+    {
+      "file": "internal-201-702-20251201-135340-1764615220.10160",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "internal-301-702-20250806-161112-1754511072.11732",
+      "engagement_type": "commercial-specialty",
+      "confidence": "medium"
+    },
+    {
+      "file": "internal-401-501-20251208-124915-1765216155.8749",
+      "engagement_type": "cancellation",
+      "confidence": "medium"
+    },
+    {
+      "file": "internal-406-702-20251008-144647-1759949207.6724",
+      "engagement_type": "follow-up",
+      "confidence": "high"
+    },
+    {
+      "file": "internal-409-100-20251110-105258-1762789978.1320",
+      "engagement_type": "make-payment",
+      "confidence": "medium"
+    },
+    {
+      "file": "internal-409-504-20251110-111953-1762791593.2227",
+      "engagement_type": "renewal-review",
+      "confidence": "medium"
+    },
+    {
+      "file": "internal-509-206-20250929-160402-1759176242.6520",
+      "engagement_type": "billing-question",
+      "confidence": "medium"
+    },
+    {
+      "file": "internal-510-201-20251114-141728-1763147848.6570",
+      "engagement_type": "coverage-modification",
+      "confidence": "high"
+    },
+    {
+      "file": "internal-510-202-20251222-100349-1766415829.1305",
+      "engagement_type": "new-quote",
+      "confidence": "medium"
+    },
+    {
+      "file": "internal-510-702-20251222-122506-1766424306.2856",
+      "engagement_type": "claims",
+      "confidence": "high"
+    },
+    {
+      "file": "internal-510-702-20260107-094426-1767797066.446",
+      "engagement_type": "coverage-question",
+      "confidence": "medium"
+    },
+    {
+      "file": "internal-702-201-20251105-144531-1762371931.5697",
+      "engagement_type": "routing-triage",
+      "confidence": "medium"
+    },
+    {
+      "file": "internal-702-502-20251229-135759-1767034679.9814",
+      "engagement_type": "dmv-compliance",
+      "confidence": "medium"
+    },
+    {
+      "file": "out-+13369973266-100-20250724-091255-1753362775.80",
+      "engagement_type": "info-update",
+      "confidence": "high"
+    },
+    {
+      "file": "out-+16073330743-100-20251006-163226-1759782746.14175",
+      "engagement_type": "cancellation",
+      "confidence": "high"
+    },
+    {
+      "file": "out-+17863714662-101-20250910-114654-1757519214.2016",
+      "engagement_type": "billing-question",
+      "confidence": "high"
+    },
+    {
+      "file": "out-12142440302-302-20251006-113531-1759764931.3569",
+      "engagement_type": "workers-comp",
+      "confidence": "medium"
+    },
+    {
+      "file": "out-12168108766-105-20250919-145756-1758308276.6879",
+      "engagement_type": "coverage-modification",
+      "confidence": "high"
+    },
+    {
+      "file": "out-12525615271-509-20251215-120640-1765818400.2553",
+      "engagement_type": "billing-question",
+      "confidence": "medium"
+    },
+    {
+      "file": "out-12604595000-206-20250805-151309-1754421189.7151",
+      "engagement_type": "new-quote",
+      "confidence": "high"
+    },
+    {
+      "file": "out-13362011011-114-20251003-114157-1759506117.9970",
+      "engagement_type": "billing-question",
+      "confidence": "high"
+    },
+    {
+      "file": "out-13362027527-114-20251002-123657-1759423017.8700",
+      "engagement_type": "claims",
+      "confidence": "high"
+    },
+    {
+      "file": "out-13362090172-705-20250826-143637-1756233397.7594",
+      "engagement_type": "commercial-specialty",
+      "confidence": "high"
+    },
+    {
+      "file": "out-13362579534-701-20251229-115629-1767027389.7057",
+      "engagement_type": "follow-up",
+      "confidence": "high"
+    },
+    {
+      "file": "out-13362594327-113-20251212-124620-1765561580.1756",
+      "engagement_type": "claims",
+      "confidence": "high"
+    },
+    {
+      "file": "out-13362764167-302-20251226-141720-1766776640.2261",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "out-13363250353-705-20260115-090828-1768486108.427",
+      "engagement_type": "claims",
+      "confidence": "high"
+    },
+    {
+      "file": "out-13363250785-702-20250804-103201-1754317921.3407",
+      "engagement_type": "make-payment",
+      "confidence": "high"
+    },
+    {
+      "file": "out-13363402207-114-20250827-164819-1756327698.7705",
+      "engagement_type": "vehicle-change",
+      "confidence": "high"
+    },
+    {
+      "file": "out-13363680668-206-20250822-163234-1755894754.15165",
+      "engagement_type": "routing-triage",
+      "confidence": "high"
+    },
+    {
+      "file": "out-13363680668-206-20250923-125532-1758646532.3126",
+      "engagement_type": "routing-triage",
+      "confidence": "high"
+    },
+    {
+      "file": "out-13363680668-207-20251202-120726-1764695246.3482",
+      "engagement_type": "commercial-specialty",
+      "confidence": "high"
+    },
+    {
+      "file": "out-13363682828-705-20250811-133927-1754933967.10829",
+      "engagement_type": "routing-triage",
+      "confidence": "high"
+    },
+    {
+      "file": "out-13363740199-702-20251212-134816-1765565296.3615",
+      "engagement_type": "make-payment",
+      "confidence": "medium"
+    },
+    {
+      "file": "out-13363770147-100-20250811-133820-1754933900.10826",
+      "engagement_type": "routing-triage",
+      "confidence": "high"
+    },
+    {
+      "file": "out-13363910990-114-20250916-141236-1758046356.8803",
+      "engagement_type": "reinstatement",
+      "confidence": "medium"
+    },
+    {
+      "file": "out-13364015705-207-20251124-142728-1764012448.4388",
+      "engagement_type": "new-quote",
+      "confidence": "high"
+    },
+    {
+      "file": "out-13364016855-206-20260119-081938-1768828778.24",
+      "engagement_type": "follow-up",
+      "confidence": "high"
+    },
+    {
+      "file": "out-13364060349-114-20260107-111909-1767802749.1307",
+      "engagement_type": "vehicle-change",
+      "confidence": "high"
+    },
+    {
+      "file": "out-13364063009-113-20251216-102636-1765898796.1090",
+      "engagement_type": "renewal-review",
+      "confidence": "high"
+    },
+    {
+      "file": "out-13364072580-113-20251226-090256-1766757776.39",
+      "engagement_type": "vehicle-change",
+      "confidence": "medium"
+    },
+    {
+      "file": "out-13364082370-114-20251119-093029-1763562629.651",
+      "engagement_type": "billing-question",
+      "confidence": "high"
+    },
+    {
+      "file": "out-13364085560-113-20260116-142050-1768591250.4629",
+      "engagement_type": "renewal-review",
+      "confidence": "medium"
+    }
+  ],
+  "type_digests": {
+    "billing-question": {
+      "count": 21,
+      "resolution_patterns": [
+        "Verified caller identity and policy details",
+        "Transferred/connected caller to specialist agent",
+        "Explained policy details or procedures to caller",
+        "Processed payment transaction",
+        "Placed caller on hold to research"
+      ],
+      "knowledge_required": [
+        "Ability to access and interpret client account details",
+        "Ability to access customer portal information",
+        "Ability to clarify billing discrepancies and confirm payment amounts.",
+        "Ability to differentiate between policy types (renter's vs. regular insurance)",
+        "Ability to explain rate calculations to customers.",
+        "Ability to identify discrepancies between customer statements and carrier communications",
+        "Automatic payment system operations",
+        "Billing cycle and payment due date information",
+        "Billing cycle understanding",
+        "Billing practices for adding vehicles to policies",
+        "Call transfer protocols",
+        "Carrier system access limitations",
+        "Commercial auto policy management",
+        "Cost estimation for plumbing repairs (water shut-off valves)",
+        "Differentiating between affiliated entities (Sun House Hospitality vs. Petroleum)",
+        "Escalation protocols for unresolved issues",
+        "Factors influencing auto insurance rates (e.g., vehicle type, safety features, repair costs, theft rates).",
+        "Handling cancellation-related inquiries",
+        "Handling client confusion about property-specific coverage details",
+        "Handling payment cancellation/reinstatement processes",
+        "Handling payment reversal scenarios",
+        "How to interpret insurance dashboards/portals",
+        "Impact of prior claims on premium calculations",
+        "Insurance policy cancellation processes",
+        "Insurance pricing factors (VIN, vehicle type, coverage type)",
+        "Insurance underwriting processes for property claims",
+        "Internal procedures for transferring calls to specialists",
+        "Internal system navigation",
+        "Internal systems to check refund status",
+        "Knowledge of carrier systems (First Mutual) and internal transfer protocols",
+        "Knowledge of customer portal and texting support options",
+        "Knowledge of how mortgage companies interact with insurance carriers",
+        "Knowledge of standard policy amounts and due dates",
+        "Payment processing confirmation",
+        "Payment processing procedures (electronic transfers via account/routing numbers).",
+        "Payment processing timelines for insurance drafts",
+        "Policy account lookup procedures",
+        "Policy lookup procedures in Alliance Insurance's system",
+        "Policy number verification",
+        "Policy status verification",
+        "Policy verification process",
+        "Premium calculation factors for older vehicles",
+        "Process for retrieving and comparing insurance statements",
+        "Progressive insurance payment processing workflows",
+        "Progressive insurance policy structure",
+        "Progressive's premium calculation methodology",
+        "Recognizing when to escalate to specialized agents",
+        "Refund timelines and procedures for canceled policies",
+        "SafeCo's specific policies on draft scheduling and fund availability",
+        "Standard procedures for addressing payment discrepancies",
+        "Understanding AutoOwners system navigation",
+        "Understanding auto draft payment processes",
+        "Understanding of auto insurance billing cycles and policy changes",
+        "Understanding of auto insurance payment processes",
+        "Understanding of automated payment system retry mechanisms",
+        "Understanding of automatic payment processes",
+        "Understanding of commercial insurance policies and account management",
+        "Understanding of insurance billing structures (Auto Owners and Travelers as separate carriers).",
+        "Understanding of policy renewal processes and escrow billing for homeowners insurance",
+        "Understanding of renter's insurance billing processes",
+        "Understanding policy billing cycles and due dates"
+      ],
+      "systems_referenced": [
+        "Alliance Insurance customer portal (myallianceinsurance.com)",
+        "Alliance Insurance internal policy management system",
+        "Alliance Insurance internal policy/account lookup system",
+        "Alliance Insurance internal transfer system",
+        "Alliance Insurance policy management tools",
+        "Alliance Insurance's internal policy database",
+        "AutoOwners",
+        "Automated payment processing system",
+        "Customer account portal (implied by policy number reference)",
+        "First Mutual (carrier system, though agent had no access)",
+        "Internal account management system for policy details",
+        "Internal agent transfer system",
+        "Internal policy/billing database",
+        "Payment processing system",
+        "Progressive Auto Insurance (mentioned as carrier in letter)",
+        "Progressive app",
+        "Progressive insurance portal",
+        "Progressive insurance system",
+        "Quote generation tool (reference to 'quote sent yesterday')",
+        "SafeCo (insurance carrier)",
+        "Underwriter (internal insurance system)",
+        "billing portal",
+        "carrier portal (unavailable to agent)",
+        "myallianceinsurance.com customer portal",
+        "texting support (3367861133)"
+      ],
+      "outcome_distribution": {
+        "callback_needed": 18,
+        "resolved": 2,
+        "unresolved": 1
+      },
+      "edge_cases": [],
+      "examples": [
+        {
+          "file": "in-+13363779003-+13364228402-20250807-103820-1754577500.2466",
+          "intent": "Melvin Flores is seeking clarification about a payment discrepancy for his commercial van insurance with Progressive. He is concerned about why a payment was removed and then put back, and whether it can be taken off again immediately.",
+          "summary": "Melvin Flores contacted Alliance Insurance to resolve confusion about a reversed payment on his Progressive commercial van policy. The agent checked the payment history, confirmed a reversal occurred, and referred him to Anna for further assistance. The call ended with a transfer to Anna for resolution."
+        },
+        {
+          "file": "in-+13363779003-+13364678729-20251023-102406-1761229446.1539",
+          "intent": "The caller asked why they were charged $3,700 on their policy, believing they were on auto draft and expecting smaller payments.",
+          "summary": "Caller disputed a $3,700 policy charge, believing they were on auto draft. Agent could not access carrier details and transferred the call for resolution."
+        },
+        {
+          "file": "in-+13363779003-+13366555941-20251114-124910-1763142550.5313",
+          "intent": "The caller is asking to confirm whether their recent insurance payment was successfully processed, as they were previously informed it had not gone through and are concerned about their automatic payment setup.",
+          "summary": "A long-time client confirmed their October payment was processed successfully after being concerned about a previous payment issue. The agent verified the automatic payment setup and confirmed no errors were detected. The caller expressed gratitude for the confirmation."
+        }
+      ]
+    },
+    "cancellation": {
+      "count": 16,
+      "resolution_patterns": [
+        "Verified caller identity and policy details",
+        "Transferred/connected caller to specialist agent",
+        "Initiated cancellation process",
+        "Explained policy details or procedures to caller",
+        "Placed caller on hold to research"
+      ],
+      "knowledge_required": [
+        "Auto insurance cancellation procedures",
+        "Call transfer procedures",
+        "Cancellation procedures for National General auto insurance",
+        "Cancellation procedures for auto insurance policies",
+        "Cancellation procedures for vehicle insurance policies",
+        "Cancellation process for motorcycle policies",
+        "Cancellation process protocols",
+        "Email tracking and confirmation processes",
+        "Experience handling client escalations and system outage communication",
+        "Handling commercial accounts vs. personal accounts",
+        "Handling customer transitions between carriers",
+        "Handling dropped calls during policy transactions",
+        "Handling inquiries about policy cancellations or status changes",
+        "Handling overdue payment scenarios",
+        "Handling policy termination requests",
+        "Insurance cancellation procedures",
+        "Internal call transfer protocols",
+        "Internal communication protocols with team members (e.g., Cecilia)",
+        "Internal contact protocols for policyholder interactions",
+        "Internal system navigation for policy management",
+        "Internal system navigation for policy records",
+        "Internal transfer protocols to connect callers with appropriate agents",
+        "Knowledge of carrier systems (Farm Bureau, National General) and their operational limitations",
+        "Policy lookup procedures",
+        "Policy lookup procedures in the agency's database",
+        "Policy lookup procedures using policy numbers and names",
+        "Policy status verification process",
+        "Policy termination procedures for home and auto insurance",
+        "Required documentation for policy termination",
+        "Transferring calls to appropriate specialists",
+        "Understanding how to retrieve and verify policy details from the agency's database",
+        "Understanding insurance policy cancellation processes",
+        "Understanding lien holder roles in policy management",
+        "Understanding of builder's risk policy cancellation processes",
+        "Understanding of cancellation form processes",
+        "Understanding of insurance policy renewal processes and cancellation procedures"
+      ],
+      "systems_referenced": [
+        "Alliance Insurance customer portal (myallianceinsurance.com)",
+        "Alliance Insurance internal policy database",
+        "Alliance Insurance internal policy management system",
+        "Alliance Insurance's internal policy database",
+        "Alliance Insurance's internal policy management system",
+        "Farm Bureau insurance system",
+        "Homer Auto",
+        "Internal agency communication tools (texting)",
+        "Internal call routing system",
+        "Internal call transfer system",
+        "National General (insurance carrier)",
+        "National General insurance system",
+        "Texting support service (3367861133)",
+        "email (general reference, no specific system mentioned)"
+      ],
+      "outcome_distribution": {
+        "callback_needed": 15,
+        "resolved": 1
+      },
+      "edge_cases": [],
+      "examples": [
+        {
+          "file": "in-+13363779003-+13363995775-20251003-160312-1759521792.19881",
+          "intent": "The caller wishes to cancel a vehicle insurance policy and is seeking assistance from Alliance Insurance.",
+          "summary": "A caller initiated a request to cancel a vehicle insurance policy. The agent confirmed the policy type and placed the caller on hold to proceed with cancellation assistance. The call is ongoing, requiring further steps to resolve the cancellation request."
+        },
+        {
+          "file": "in-+13363779003-+13364732565-20250724-162020-1753388420.10765",
+          "intent": "The caller wants to cancel their insurance coverage with Alliance Insurance and is asking what documents they need to send via email and whether they need to speak to someone.",
+          "summary": "A caller inquires about canceling their insurance policy with Alliance Insurance. The agent explains the need to send a declaration page via email and confirm the cancellation with a representative. The agent offers to provide the email address and connect the caller with the appropriate department to complete the process."
+        },
+        {
+          "file": "in-+13363779003-+13365089974-20250822-094151-1755870111.2202",
+          "intent": "Nathan Hefner wants to cancel his auto insurance policy with National General.",
+          "summary": "Nathan Hefner requested to cancel his National General auto insurance policy. The agent initiated a transfer to another agent to handle the cancellation request, but the call ended before resolution."
+        }
+      ]
+    },
+    "claims": {
+      "count": 21,
+      "resolution_patterns": [
+        "Transferred/connected caller to specialist agent",
+        "Verified caller identity and policy details",
+        "Explained policy details or procedures to caller",
+        "Initiated or processed claim"
+      ],
+      "knowledge_required": [
+        "Ability to access and modify policy payment information",
+        "Ability to transfer calls to language-specific representatives",
+        "Accident reporting procedures",
+        "Adjuster communication protocols",
+        "Auto insurance claims process",
+        "Basic language assistance for non-English speakers",
+        "Business auto insurance claims process",
+        "Call transfer procedures",
+        "Call transfer protocols for claim assistance",
+        "Carrier-specific claim processes (National General)",
+        "Claim filing process for auto insurance",
+        "Claim processing procedures",
+        "Claims denial processes for mechanical issues",
+        "Claims filing process",
+        "Claims process for commercial vehicle accidents",
+        "Claims process for hit-and-run incidents",
+        "Claims process for property theft",
+        "Claims process for vehicle towing reimbursement",
+        "Claims processing procedures",
+        "Claims submission process",
+        "Documentation procedures for disputed claims",
+        "Documentation requirements (e.g., claim numbers, envelope/intercom page details)",
+        "Handling claims without police tickets",
+        "Handling customer frustration in claims situations",
+        "Handling fault determination without police reports",
+        "Handling third-party contact attempts",
+        "Initial claim documentation requirements",
+        "Initial issue triage for insurance-related problems",
+        "Insurance claim settlement calculations",
+        "Internal call routing procedures",
+        "Internal call transfer procedures",
+        "Internal procedures for routing customer inquiries to specialists",
+        "Internal transfer protocols to connect callers with appropriate agents",
+        "Knowledge of claim adjustment processes and internal team coordination.",
+        "Knowledge of internal transfer protocols for complex claims inquiries",
+        "Policy number verification procedures",
+        "Policy procedures for customer-initiated towing and reimbursement",
+        "Policy provisions (e.g., appraisal clause, storage deductions)",
+        "Policy types (auto vs. flood)",
+        "Policy verification protocols",
+        "Portal functionality and troubleshooting",
+        "Progressive insurance claim follow-up procedures",
+        "Refund process for claims involving vehicle towing",
+        "Tax and DMV fee structures",
+        "Understanding driver exchange forms",
+        "Understanding of billing systems and automatic payment setup.",
+        "Understanding of insurance claims process",
+        "Understanding of insurance policy forms and their coverage details (theft, vandalism).",
+        "Understanding of insurance portal login processes and troubleshooting steps",
+        "Understanding the difference between Alliance Insurance Services and Alliance Insurance Company"
+      ],
+      "systems_referenced": [
+        "Agency portal system",
+        "Alliance Insurance Services internal policy database",
+        "Alliance Insurance claims database",
+        "Alliance Insurance's billing system",
+        "Alliance Insurance's internal customer support system",
+        "Claims department",
+        "Customer portal (myallianceinsurance.com)",
+        "DMV fee database",
+        "Email verification system",
+        "Internal agent routing system",
+        "Internal call routing system",
+        "Internal claim management system",
+        "Internal team communication (Jamie)",
+        "National General insurance carrier",
+        "National General insurance portal",
+        "Other party's insurer (unspecified)",
+        "Progressive (caller's insurer)",
+        "Progressive (insurance carrier)",
+        "claims portal"
+      ],
+      "outcome_distribution": {
+        "callback_needed": 18,
+        "resolved": 3
+      },
+      "edge_cases": [
+        "Low-confidence classification: Joe Silver is seeking assistance with an issue related to his house and the company, likely an insur... (file: in-+13363779003-+13366024824-20250908-090018-1757336418.65)"
+      ],
+      "examples": [
+        {
+          "file": "in-+13363779003-+13364033615-20250911-092332-1757597012.1255",
+          "intent": "The caller wants to file an insurance claim after hitting their Sentinel car parked in the driveway.",
+          "summary": "A caller contacted Alliance Insurance to report a car accident and request claim assistance. The agent acknowledged the request and initiated a transfer to another agent for further support."
+        },
+        {
+          "file": "in-+13363779003-+13364070263-20250725-103850-1753454330.4236",
+          "intent": "The caller wants to resolve a car damage claim settlement delayed by an unresponsive adjuster and avoid further car rental costs.",
+          "summary": "Caller reported an unresolved car damage claim due to an unresponsive adjuster, requesting assistance to finalize the settlement and avoid extended car rental costs. The agent acknowledged the issue and offered to escalate it for resolution."
+        },
+        {
+          "file": "in-+13363779003-+13364883777-20251215-150347-1765829027.4358",
+          "intent": "Caller is assisting a customer from an auto wash shop to file a business auto insurance claim and verifying they contacted the correct number.",
+          "summary": "A caller from an auto wash shop requested assistance filing a business auto insurance claim, providing a policy number. The agent confirmed the request and transferred the call to a specialist for further processing. The call is ongoing with the transfer completed."
+        }
+      ]
+    },
+    "coi-request": {
+      "count": 4,
+      "resolution_patterns": [
+        "Verified caller identity and policy details",
+        "Transferred/connected caller to specialist agent"
+      ],
+      "knowledge_required": [
+        "Ability to access and query insurance policy databases",
+        "Access to customer files/agent assignments",
+        "Call transfer procedures",
+        "Handling document request follow-ups",
+        "Internal process for transferring calls to commercial agents",
+        "Knowledge of internal agent specializations (commercial vs residential)",
+        "Understanding certificate of insurance requests for commercial clients",
+        "Understanding of HOA insurance policies and certificate of insurance processes",
+        "Understanding of internal agent roles and responsibilities"
+      ],
+      "systems_referenced": [
+        "Alliance Insurance internal policy database",
+        "Internal agent directory/file system",
+        "Internal phone system (voicemail transfer)"
+      ],
+      "outcome_distribution": {
+        "callback_needed": 3,
+        "transferred": 1
+      },
+      "edge_cases": [],
+      "examples": [
+        {
+          "file": "in-+13363779003-+13364626658-20250818-103849-1755527929.2379",
+          "intent": "Andrew Jones wants to send a Certificate of Insurance (COI) to one of his builders but is unsure which agent to contact, mentioning past interactions with agents named Jessica and Gloria.",
+          "summary": "Andrew Jones requested assistance in sending a COI to a builder and was directed to contact Gloria, an agent listed in his file. The agent confirmed Gloria's current status and provided contingency instructions if she was unavailable. The call concluded with the caller being transferred to Gloria."
+        },
+        {
+          "file": "in-+13363779003-+13369185928-20250725-095047-1753451447.3068",
+          "intent": "The caller requested a certificate of insurance that was promised by Gloria the previous day and is urgently needed.",
+          "summary": "A caller requested a certificate of insurance that Gloria had promised to send but failed to deliver. Sharon informed the caller that Gloria was unavailable and offered to transfer them to Gloria's voicemail for a callback, which the caller accepted."
+        },
+        {
+          "file": "in-+13363779003-+17042412363-20250829-111011-1756480211.2201",
+          "intent": "The caller is seeking a certificate of insurance for a condominium HOA's master hazard policy, as required by their mortgage holder (New Res). They provided the property address (3637 Maple Glen Lane, Charlotte) and a policy number (093706 Amazon Mary).",
+          "summary": "A HOA representative requested a certificate of insurance for a condominium master policy, but the agent could not retrieve the policy from the system. The agent confirmed the policy name and referred the caller to a commercial agent for resolution. The call ended with a transfer to Amani."
+        }
+      ]
+    },
+    "commercial-specialty": {
+      "count": 9,
+      "resolution_patterns": [
+        "Verified caller identity and policy details",
+        "Explained policy details or procedures to caller",
+        "Arranged callback or follow-up",
+        "Left voicemail or took message for callback"
+      ],
+      "knowledge_required": [
+        "Ability to delegate tasks to appropriate team members (e.g., Jeff for commercial accounts)",
+        "Ability to identify specialized insurance needs for coastal properties.",
+        "Ability to retrieve policy dates and status",
+        "Access to internal policy database/system",
+        "Agency's callback process for unavailable agents",
+        "Builder's risk insurance underwriting",
+        "Client consultation logistics (scheduling, office locations)",
+        "Familiarity with North Carolina insurance regulations for condo communities",
+        "Familiarity with municipal bond requirements for infrastructure projects",
+        "Handling multi-party insurance requests",
+        "Health condition management (blood pressure control, cholesterol implications)",
+        "Knowledge of Travelers' underwriting procedures for bond adjustments",
+        "Knowledge of carrier limitations (e.g., Auto Owners' coastal property exclusions).",
+        "Knowledge of commercial insurance processes for collectible property",
+        "Knowledge of internal agent specialties and contact information",
+        "Life insurance product offerings",
+        "Life insurance underwriting criteria (health tiers, premium calculations)",
+        "New construction policy requirements",
+        "Policy customization options (term length, coverage amounts)",
+        "Process for verifying policy details and contacting other agents",
+        "Understanding of Medicare Advantage plans",
+        "Understanding of bond modification processes for insurance policies",
+        "Understanding of insurance policy renewals and accord forms",
+        "Understanding of insurance policy riders for HOA management company coverage under Fannie Mae guidelines",
+        "Understanding of insurance policy terms (e.g., builder's risk, certification of occupancy).",
+        "Understanding of surety bond policies"
+      ],
+      "systems_referenced": [
+        "Alliance Insurance customer portal (myallianceinsurance.com)",
+        "Auto Owners (home insurance)",
+        "Chub (insurance carrier)",
+        "Cincinnati insurance policy portal",
+        "City of High Point documentation",
+        "Email system for policy documentation",
+        "Internal agent scheduling system",
+        "Internal communication tools (email/phone for sending requests to Jeff)",
+        "Progressive (car insurance)",
+        "Tracy (specialist for coastal property insurance)",
+        "Travelers (insurance carrier)",
+        "Winston office location",
+        "internal system",
+        "policy database"
+      ],
+      "outcome_distribution": {
+        "callback_needed": 6,
+        "resolved": 3
+      },
+      "edge_cases": [],
+      "examples": [
+        {
+          "file": "in-+13363779003-+13365297668-20250722-104112-1753195272.5218",
+          "intent": "The caller wanted to verify the status and details of a surety bond policy under the account 'Big Easy Cars' to ensure it was active and correctly dated.",
+          "summary": "A caller verified their surety bond policy's status with Alliance Insurance. The agent confirmed the policy was active and provided the effective and expiration dates. The caller expressed gratitude and ended the conversation."
+        },
+        {
+          "file": "in-+13363779003-+13366827261-20251104-105203-1762271523.2647",
+          "intent": "Daniel Williams is asking about the remaining balance on his Progressive car insurance policy and inquiring whether Auto Owners can provide home insurance for a new coastal property construction in Calabash, NC.",
+          "summary": "Daniel Williams confirmed his Progressive car insurance payment details and inquired about home insurance for a new coastal property. The agent clarified Auto Owners' limitations for coastal properties and directed him to Tracy for specialized coverage. The caller also learned about the need for a builder's risk policy during construction."
+        },
+        {
+          "file": "in-+13363779003-+13369950011-20260116-091538-1768572938.249",
+          "intent": "Bertella Gabbard wants to inquire about life insurance coverage for herself and her mother.",
+          "summary": "Bertella Gabbard called to inquire about life insurance for herself and her mother. The agent, unavailable in the office, arranged for a callback from another agent. The caller agreed to this solution."
+        }
+      ]
+    },
+    "coverage-modification": {
+      "count": 5,
+      "resolution_patterns": [
+        "Verified caller identity and policy details",
+        "Sent confirmation/documentation via email",
+        "Explained policy details or procedures to caller"
+      ],
+      "knowledge_required": [
+        "Call transfer protocols",
+        "Coverage adjustment processes",
+        "Customer service protocols for partial payments during policy changes",
+        "Dependent addition procedures",
+        "Health insurance policy changes",
+        "Insurance enrollment deadlines",
+        "Insurance policy adjustments (specifically liability coverage changes)",
+        "Knowledge of insurance product types and eligibility criteria.",
+        "Knowledge of policy limit adjustments and coverage conditions",
+        "Policy lookup procedures",
+        "Premium calculation logic for Auto Owners insurance",
+        "System limitations regarding pending updates and grace periods",
+        "Understanding of business income coverage terms in insurance policies",
+        "Understanding the process of switching between commercial and personal insurance policies."
+      ],
+      "systems_referenced": [
+        "Alliance Insurance policy database",
+        "Auto Owners insurance system",
+        "Email (used to communicate with Janelle)",
+        "Email system (to contact Morgan Campbell)",
+        "Internal account management portal"
+      ],
+      "outcome_distribution": {
+        "callback_needed": 3,
+        "resolved": 2
+      },
+      "edge_cases": [],
+      "examples": [
+        {
+          "file": "in-+13363779003-+13366897782-20251204-091212-1764857532.91",
+          "intent": "Juan Jose wants to reinstate full coverage on his Tundra's insurance policy, referencing a 500 deductible similar to the Honda's policy.",
+          "summary": "Aelia called on behalf of her husband Juan Jose to reinstate full coverage on his Tundra's policy with a 500 deductible. The agent retrieved the policy number and transferred the call to a specialist for further assistance."
+        },
+        {
+          "file": "internal-510-201-20251114-141728-1763147848.6570",
+          "intent": "The caller needs to change the insurance coverage on two vehicles (a 2019 Cruz and a Silverado) from current coverage to liability-only before making a payment.",
+          "summary": "An agent assists a customer in adjusting their insurance coverage to liability-only on two vehicles. The agent calculates the new premium, explains the need to wait for system updates, and suggests a temporary partial payment. The resolution is pending system processing, with final confirmation expected by Monday."
+        },
+        {
+          "file": "out-12168108766-105-20250919-145756-1758308276.6879",
+          "intent": "Rick Hendricks is following up with Tony Terelli to address a question about business income coverage limits on a policy quote and to discuss potential adjustments.",
+          "summary": "Rick Hendricks follows up with Tony Terelli to address concerns about business income coverage limits on a hospitality policy. He plans to send an email to Janelle (copying Tony) to propose increasing the limit and inquire about alternative coverage conditions. The call concludes with an agreement to follow up later, either today or next week."
+        }
+      ]
+    },
+    "coverage-question": {
+      "count": 10,
+      "resolution_patterns": [
+        "Verified caller identity and policy details",
+        "Transferred/connected caller to specialist agent"
+      ],
+      "knowledge_required": [
+        "Ability to access and interpret policy details using the policy number.",
+        "Ability to route calls to appropriate departments",
+        "Accessing and navigating Cincinnati's insurance portal",
+        "Call routing procedures within the agency",
+        "Claim filing procedures",
+        "Communication protocols for policy updates",
+        "Contact information management for policyholders",
+        "Customer documentation procedures",
+        "Emailing policy-related documents to clients",
+        "Handling customer inquiries about policy details and office visits",
+        "Home warranty coverage terms",
+        "Insurance policy management",
+        "Knowledge of coverage limit certification procedures",
+        "Office locations for Alliance Insurance (Mount Airy, Winston)",
+        "Policy lookup procedures",
+        "Process for transferring calls to specialized agents (e.g., commercial insurance agents).",
+        "Process for verifying and confirming policy details",
+        "Travelers insurance policy structure and claims process",
+        "Understanding insurance coverage for towing services",
+        "Understanding of auto insurance coverage details (e.g., windshield repair coverage)",
+        "Understanding of auto insurance policy coverage details",
+        "Understanding of commercial insurance policies, including liability coverage for buildings and renters' belongings.",
+        "Understanding of insurance policy coverage terms (e.g., replacement cost coverage)",
+        "Understanding of insurance policy documentation processes",
+        "Understanding policy coverage details (e.g., professional liability)"
+      ],
+      "systems_referenced": [
+        "Alliance Insurance internal policy database",
+        "Cincinnati insurance system",
+        "Home warranty portal/database",
+        "Insurance policy database (used to retrieve policy details via policy number).",
+        "Internal agent transfer system",
+        "Internal call transfer system",
+        "Internal contact information database",
+        "Internal customer paperwork system",
+        "Travelers insurance portal (implied by policy number format)"
+      ],
+      "outcome_distribution": {
+        "callback_needed": 10
+      },
+      "edge_cases": [
+        "Low-confidence classification: The caller sought assistance with a Travelers insurance policy (policy number 6808680406406793) and ... (file: in-+13363779003-+13369970295-20251209-153234-1765312354.7095)"
+      ],
+      "examples": [
+        {
+          "file": "in-+13363779003-+13369455827-20260106-160142-1767733302.5960",
+          "intent": "Ruth Mark is seeking clarification about her insurance coverage for three buildings, specifically whether she is responsible for renters' belongings (e.g., valuable papers, electrical systems) and if adjustments can be made to her policy to exclude coverage she does not need.",
+          "summary": "Ruth Mark is clarifying her insurance coverage for three buildings, questioning liability for renters' belongings and seeking adjustments to her policy. The agent retrieved her policy details and transferred her to a commercial agent for further review. The call emphasizes resolving coverage concerns and ensuring customer satisfaction."
+        },
+        {
+          "file": "in-+13363779003-+16316036731-20250918-092050-1758201650.625",
+          "intent": "The caller wanted to inquire about windshield coverage under their personal vehicle insurance policy.",
+          "summary": "A caller inquired about windshield coverage on their personal vehicle policy. The agent initiated a transfer but the conversation was cut off mid-transaction, requiring a callback to resolve the inquiry."
+        },
+        {
+          "file": "in-+13363779003-+17434447366-20250728-115616-1753718176.4716",
+          "intent": "The caller is inquiring whether their stackable washing machine and dryer are covered under their home warranty policy.",
+          "summary": "A caller asked if their stackable washer and dryer are covered under their home warranty. The agent paused to check policy details, indicating a need for further action to resolve the inquiry."
+        }
+      ]
+    },
+    "dmv-compliance": {
+      "count": 4,
+      "resolution_patterns": [
+        "Transferred/connected caller to specialist agent",
+        "Verified caller identity and policy details",
+        "Explained policy details or procedures to caller"
+      ],
+      "knowledge_required": [
+        "Awareness of internal transfer protocols for specialized requests",
+        "DMV vehicle inspection regulations",
+        "Handling customer disputes over incorrect coverage lapses",
+        "Internal call transfer protocols",
+        "Knowledge of DMV processes for vehicle registration and insurance validation",
+        "Process for addressing insurance lapse notices",
+        "Understanding insurance policy cancellation processes",
+        "Understanding of DMV insurance-related forms (e.g., FS-1)",
+        "Understanding of FS1 forms (likely related to vehicle registration in North Carolina)",
+        "exemption rules for older vehicles"
+      ],
+      "systems_referenced": [
+        "DMV (Department of Motor Vehicles)",
+        "DMV website",
+        "FS1 form (vehicle registration document)",
+        "Insurance payment tracking system (credit card drafts)"
+      ],
+      "outcome_distribution": {
+        "callback_needed": 4
+      },
+      "edge_cases": [],
+      "examples": [
+        {
+          "file": "in-+13363779003-+13367559825-20250911-104859-1757602139.2123",
+          "intent": "Amy Gravely is seeking assistance to resolve a DMV notice indicating a lapse in vehicle insurance, which she disputes, and needs help filing an electronic FS-1 form.",
+          "summary": "Amy Gravely contacted Alliance Insurance to address a DMV notice claiming a vehicle insurance lapse. The agent acknowledged the issue and offered to transfer her to another agent who can assist with filing the required electronic FS-1 form."
+        },
+        {
+          "file": "in-+13363779003-+13369092038-20250919-091711-1758287831.496",
+          "intent": "The caller is seeking assistance to resolve a vehicle registration issue for her son, who is at Western Carolina University. She needs the FS1 form sent to the DMV to prevent registration revocation, as her son requires the vehicle for classes and the insurance has been active (with payments drafted monthly).",
+          "summary": "A caller urgently seeks help to resolve a vehicle registration revocation for her son by ensuring the FS1 form is sent to the DMV. The agent explains they cannot process the form directly but will transfer her to the appropriate department. The caller is concerned about her son's ability to attend class without a vehicle and has confirmed VIN numbers match between the DMV and insurance records."
+        },
+        {
+          "file": "in-+13363779003-+13367037550-20251002-134432-1759427072.9598",
+          "intent": "The caller, Charlie McCon, seeks to resolve a three-week-long insurance lapse issue for his customer Byron Full, where the wrong vehicle (Explorer instead of Thunderbird) was mistakenly canceled, causing ongoing coverage problems.",
+          "summary": "Charlie McCon, working at a license plate office, reports a persistent insurance lapse issue for customer Byron Full due to an incorrect cancellation of the Explorer instead of the Thunderbird. The agent verifies details and initiates a transfer to another agent to resolve the problem, with the caller instructed to call back if the transfer fails."
+        }
+      ]
+    },
+    "document-request": {
+      "count": 12,
+      "resolution_patterns": [
+        "Verified caller identity and policy details",
+        "Transferred/connected caller to specialist agent",
+        "Explained policy details or procedures to caller"
+      ],
+      "knowledge_required": [
+        "Ability to route calls to appropriate personnel (e.g., Gloria)",
+        "Access to internal systems for policy information",
+        "Accessing client records to retrieve insurance documents",
+        "Declaration page retrieval process",
+        "Differentiating between personal and commercial insurance policies",
+        "Email and mailing procedures for insurance-related documents",
+        "Email notification system for policy updates",
+        "Email/fax document transmission protocols",
+        "Handling requests for policy documents (declaration pages, ID cards)",
+        "Internal call tracking system navigation",
+        "Internal procedures for escalating requests to specialized agents",
+        "Knowledge of internal systems to route calls to appropriate agents",
+        "Knowledge of lien holder processes in auto insurance",
+        "Policy lookup procedures",
+        "Policy management processes",
+        "Policy request escalation procedures",
+        "Process for sending policy documents via email",
+        "Travelers insurance contact information",
+        "Understanding documentation requirements for policy updates",
+        "Understanding how to retrieve loss history for commercial policies",
+        "Understanding insurance documentation requirements (e.g., declaration pages)",
+        "Understanding insurance policy declarations and address linkage issues",
+        "Understanding of bond renewal processes for automotive businesses",
+        "Understanding of homeowner's insurance documents and their retrieval process",
+        "Understanding of policy document retrieval processes",
+        "Verification of email addresses for document delivery",
+        "Verifying address details for document delivery"
+      ],
+      "systems_referenced": [
+        "Alliance Insurance email system",
+        "Alliance Insurance internal call tracking system",
+        "Alliance Insurance internal policy database",
+        "Alliance Insurance's internal agent routing system",
+        "Alliance Insurance's internal policy management system",
+        "Email system for document transmission",
+        "Farm Bureau Insurance",
+        "Internal client database (to pull insurance cards)",
+        "Internal policy management system",
+        "National Generals (carrier)",
+        "support email"
+      ],
+      "outcome_distribution": {
+        "callback_needed": 10,
+        "resolved": 2
+      },
+      "edge_cases": [],
+      "examples": [
+        {
+          "file": "in-+13363779003-+13364144231-20251211-122020-1765473620.2724",
+          "intent": "The caller, Monica from Better Way Automotive, requested a copy of their recently renewed bond.",
+          "summary": "Monica from Better Way Automotive requested a copy of their renewed bond. The agent confirmed the business name and attempted to transfer the call to Gloria, but the conversation ended before confirmation of the transfer's success."
+        },
+        {
+          "file": "in-+13363779003-+13368968600-20251112-100329-1762959809.1496",
+          "intent": "The caller requested access to their commercial insurance policy's loss history.",
+          "summary": "A commercial policyholder asked for their loss history. The agent confirmed the policy type and offered to escalate the request to a specialist. The call requires follow-up action."
+        },
+        {
+          "file": "in-+13363779003-+13369093592-20251222-134719-1766429239.3636",
+          "intent": "The caller requested the declaration page for their homeowners insurance policy.",
+          "summary": "The caller requested their homeowners insurance declaration page. The agent acknowledged the request and put the caller on hold to retrieve the document. The call is on hold with resolution pending."
+        }
+      ]
+    },
+    "driver-change": {
+      "count": 3,
+      "resolution_patterns": [
+        "Verified caller identity and policy details"
+      ],
+      "knowledge_required": [
+        "Adding new drivers to existing policies",
+        "Email tracking and response follow-up processes",
+        "Insurance requirements for learner's permits and driver's licenses",
+        "Insurance requirements for transitioning from learner's permit to full license",
+        "Internal communication protocols for transferring calls",
+        "Policy management procedures",
+        "Policy modification procedures",
+        "Policy updates and rate adjustments for new drivers"
+      ],
+      "systems_referenced": [
+        "Alliance Insurance policy management system",
+        "Internal insurance forms/documentation"
+      ],
+      "outcome_distribution": {
+        "resolved": 1,
+        "callback_needed": 2
+      },
+      "edge_cases": [],
+      "examples": [
+        {
+          "file": "in-+13363779003-+13363992952-20250730-091119-1753881079.74",
+          "intent": "The caller asked whether they need to add a young person to their insurance policy to obtain a learner's permit.",
+          "summary": "The caller inquired about insurance requirements for a learner's permit. The agent verified that while insurance documentation isn't needed for the permit, adding the individual to the policy would be necessary for future license issuance. The caller agreed to proceed with adding the person to their policy."
+        },
+        {
+          "file": "in-+13363779003-+13365801916-20250722-165536-1753217736.18071",
+          "intent": "Melissa Nelson wants to add her daughter as a driver to her existing insurance policy after the daughter obtains her full license (currently on a learner's permit).",
+          "summary": "Melissa Nelson is seeking to add her daughter as a driver to her insurance policy after the daughter obtains her full license. The agent would need to verify policy details and guide her through the necessary steps for the update."
+        },
+        {
+          "file": "in-+13363779003-+13367864165-20250827-163028-1756326628.7528",
+          "intent": "The caller wants to add a driver to their insurance policy and follow up on an unresponded email sent to the agency.",
+          "summary": "A caller from Merritt's Flying Military sought to add a driver to their policy and inquire about an unresponded email. The agent collected the policy number and attempted to connect the caller to another staff member ('Oman') for resolution, but the conversation was cut off mid-transfer."
+        }
+      ]
+    },
+    "follow-up": {
+      "count": 17,
+      "resolution_patterns": [
+        "Verified caller identity and policy details",
+        "Transferred/connected caller to specialist agent",
+        "Explained policy details or procedures to caller"
+      ],
+      "knowledge_required": [
+        "Ability to escalate or route calls appropriately",
+        "Ability to identify and route calls to the correct agent (Tracy)",
+        "Access to customer policy details",
+        "Access to internal policy databases and CRM systems (Amazon, email)",
+        "Agent assignments by office location",
+        "AutoPay processing timelines for insurance payments",
+        "Awareness of client communication protocols for insurance applications",
+        "CRM system to look up past interactions",
+        "Call transfer procedures",
+        "Call transfer protocols",
+        "Cincinnati insurance portal functionality",
+        "Commercial auto policy handling procedures",
+        "Commercial auto policy procedures",
+        "Customer communication channels (email, mail, portal, texting)",
+        "Customer communication standards",
+        "Email confirmation process for license cancellation",
+        "Email verification procedures for policy updates",
+        "Handling case transfers between agents",
+        "Handling customer concerns about policy activation delays",
+        "Handling customer requests for policy documents via mail",
+        "Handling customer requests for resent quotes",
+        "Handling customer service requests for policy modifications",
+        "Internal agent availability tracking",
+        "Internal agent directory for policy-specific support",
+        "Internal contact protocols for reaching Gary",
+        "Internal escalation protocols for unresolved requests",
+        "Knowledge of life insurance underwriting procedures",
+        "Knowledge of office hours and contact procedures",
+        "Managing staffing shortages during high-volume periods",
+        "Policy cancellation procedures (e.g., non-payment, move-related updates)",
+        "Policy change processing timelines (24-hour window)",
+        "Policy management and verification process",
+        "Policy modification procedures",
+        "Policy retrieval process for Progressive insurance",
+        "Policy review procedures for long-term customers",
+        "Proof of insurance documentation procedures",
+        "Spanish-speaking agent availability",
+        "Understanding of internal processes for connecting callers to commercial agents",
+        "Understanding of internal systems to track previous interactions",
+        "Understanding of medical record processing timelines for Novant Health",
+        "Understanding of the form's urgency and deadline",
+        "Understanding of the prior review discussion and email content"
+      ],
+      "systems_referenced": [
+        "Agency's internal policy management system",
+        "Alliance Insurance customer portal (myallianceinsurance.com)",
+        "Alliance Insurance internal agent database",
+        "Alliance Insurance internal call tracking system",
+        "Amazon (likely a CRM or database)",
+        "CRM system",
+        "Cincinnati insurance website/application",
+        "Email",
+        "Email system",
+        "Email system (for policy change requests)",
+        "Geico (current insurer being considered for cancellation)",
+        "Internal agent tracking system",
+        "Internal phone system (extensions)",
+        "Life insurance company portal",
+        "Mail system",
+        "Novant Health",
+        "Policy database (to verify address/name)",
+        "Policy management system",
+        "Progressive insurance portal",
+        "email"
+      ],
+      "outcome_distribution": {
+        "callback_needed": 15,
+        "resolved": 2
+      },
+      "edge_cases": [
+        "Low-confidence classification: The caller needed proof that a 2025 Chevrolet Silverado was added to their insurance policy for a de... (file: in-+13363779003-+13369866078-20250919-104110-1758292870.1153)",
+        "Low-confidence classification: Pam wants to make changes to her insurance policy but has not yet specified the details of the reque... (file: in-+13363779003-+17432175374-20251215-161932-1765833572.5672)"
+      ],
+      "examples": [
+        {
+          "file": "in-+13363779003-+13366484168-20250731-163700-1753994220.19215",
+          "intent": "The caller is requesting a resent insurance quote email that they did not receive and wants to speak with Amanda again to resolve the issue.",
+          "summary": "The caller reported not receiving an insurance quote email and requested it be resent. The agent attempted to transfer the call to Amanda for further assistance, but the outcome of the transfer is unclear."
+        },
+        {
+          "file": "in-+13363779003-+14409108130-20251009-130100-1760029260.3493",
+          "intent": "The caller (Video) aimed to follow up on a commercial auto policy for an insured, likely regarding a claim or policy update.",
+          "summary": "The caller followed up on a commercial auto policy, and the agent obtained the policy number and initiated a transfer to Gloria for further assistance. The call was cut off before resolution."
+        },
+        {
+          "file": "in-+13363779003-+17048539391-20251002-121149-1759421509.8323",
+          "intent": "The caller is following up on a previous interaction where Tracy was supposed to contact them but failed to get a response from the insurance company. They want to resolve this issue.",
+          "summary": "Denise Jordan followed up on a previous issue where Tracy failed to contact her. The agent identified Tracy as the involved agent and attempted to connect Denise with her. The call ended with the agent offering assistance but did not confirm resolution."
+        }
+      ]
+    },
+    "info-update": {
+      "count": 8,
+      "resolution_patterns": [
+        "Verified caller identity and policy details",
+        "Explained policy details or procedures to caller",
+        "Transferred/connected caller to specialist agent",
+        "Sent confirmation/documentation via email"
+      ],
+      "knowledge_required": [
+        "Ability to verify policy details (auto pay status).",
+        "Auto insurance draft account management",
+        "Auto-pay processing and payment history verification",
+        "Child coverage adjustments",
+        "Customer service protocols for address updates",
+        "Document submission processes for DL applications",
+        "Documentation requirements for updating policyholder information",
+        "Handling customer concerns about potential fraud/spam messages",
+        "Handling of name correction requests",
+        "Handling sensitive financial information securely",
+        "Insurance policy modification procedures",
+        "Insurance policy name change procedures",
+        "Insurance policy status checks",
+        "Interaction with loan officers during refinance processes",
+        "Internal communication protocols for policy updates",
+        "Policy separation processes for divorced individuals",
+        "Procedure for updating payment methods in insurance policies",
+        "Process for updating mortgage insurance policies during loan transfers",
+        "Processing timelines for insurance companies (e.g., Universal Property and Casualty)",
+        "Required documentation (letter with mortgagee clause, loan number, address)",
+        "Understanding of banking terminology (routing numbers, account numbers).",
+        "Verification of customer identity and policy details"
+      ],
+      "systems_referenced": [
+        "Account management system (for payment and address verification)",
+        "Email communication (for sending documents and instructions)",
+        "Internal agent transfer system",
+        "Internal policy management system (to view current payment details)",
+        "Universal Property and Casualty (insurance carrier)",
+        "support@myallianceinsurance.com (email system for agent communication)"
+      ],
+      "outcome_distribution": {
+        "callback_needed": 6,
+        "resolved": 2
+      },
+      "edge_cases": [],
+      "examples": [
+        {
+          "file": "in-+13363779003-+13364074381-20250730-131354-1753895634.4792",
+          "intent": "The caller needs to update their renter's insurance policy by adding a new address for an upcoming move to a townhouse.",
+          "summary": "A customer needs to update their renter's insurance policy with a new address due to an upcoming move. The agent acknowledged the request and offered to transfer the caller to an agent who can handle policy modifications. The call ended with the agent putting the caller on hold for the transfer."
+        },
+        {
+          "file": "in-+13363779003-+13364084391-20250728-114958-1753717798.4382",
+          "intent": "The caller wants to inform Alliance Insurance about a mortgage transfer and update their policy details to reflect the new mortgage information, including the escrow and new mortgagee clause.",
+          "summary": "A caller notified Alliance Insurance of a mortgage transfer and requested policy updates. The agent guided them to send a letter with specific details (new mortgagee clause, loan number, address) to a dedicated email address. The agent also mentioned they would notify the caller via email once the update was completed."
+        },
+        {
+          "file": "in-+13363779003-+13369970484-20250909-163555-1757450155.13706",
+          "intent": "The caller, James Pettywool, wanted to correct a mistake where he provided his account number instead of his routing number to someone else and ensure the correct numbers are on file for an insurance policy.",
+          "summary": "James Pettywool contacted Alliance Insurance to correct an error where he provided his account number instead of his routing number. The agent verified the correct numbers and confirmed the policy is now on auto pay. The call concluded with the issue resolved."
+        }
+      ]
+    },
+    "make-payment": {
+      "count": 51,
+      "resolution_patterns": [
+        "Verified caller identity and policy details",
+        "Processed payment transaction",
+        "Explained policy details or procedures to caller",
+        "Transferred/connected caller to specialist agent",
+        "Placed caller on hold to research"
+      ],
+      "knowledge_required": [
+        "Ability to access and interpret payment history within Progressive's system.",
+        "Ability to access and interpret policyholder account balances",
+        "Ability to access customer accounts via policy numbers",
+        "Ability to identify insurance providers (NMG, Farmers, Dwelling) and their respective systems",
+        "Ability to set internal reminders or notes for follow-up calls",
+        "Access to customer policy details (address, payment amounts)",
+        "Access to payment confirmation systems",
+        "Access to policyholder account information",
+        "Accessing and managing customer insurance accounts",
+        "Accessing and navigating National General carrier portal",
+        "Accessing and navigating the 'Foremost' insurance system.",
+        "Accessing and navigating the agency's billing system",
+        "Accessing customer accounts to retrieve payment information",
+        "Account verification protocols",
+        "Address update procedures for policy records",
+        "Agent licensing limitations regarding policy access",
+        "Alliance Insurance office locations",
+        "Alternative payment methods (electronic transfer)",
+        "Auto insurance payment procedures",
+        "Auto insurance payment processing procedures",
+        "Auto-pay processing timelines",
+        "Auto-pay setup procedures",
+        "Awareness of underwriting approval processes for payment plans",
+        "Bank switching protocols",
+        "Basic policy balance inquiry handling procedures",
+        "Carrier-specific payment requirements (e.g., National General)",
+        "Commercial insurance policy details",
+        "Confirming payment details with carriers",
+        "Confirming payment details with customers",
+        "Confirming policyholder details",
+        "Credit card payment processing",
+        "Credit card payment verification procedures",
+        "Credit card transaction processing",
+        "Credit card validation procedures",
+        "Credit card validation protocols",
+        "Credit card verification procedures",
+        "Credit card verification protocols",
+        "Credit/debit card payment verification steps",
+        "Customer account lookup",
+        "Customer account updates",
+        "Customer account verification",
+        "Customer service communication protocols",
+        "Data security protocols for handling card information",
+        "Email confirmation protocols",
+        "Email verification standards",
+        "Emailing confirmation receipts",
+        "Fee structures for different payment methods",
+        "Handling auto payment configurations",
+        "Handling billing inquiries and payment-related issues.",
+        "Handling confirmation numbers and payment confirmations.",
+        "Handling credit card details securely",
+        "Handling credit card payments securely",
+        "Handling customer confusion about payment history",
+        "Handling customer confusion during account verification",
+        "Handling customer inquiries about confirmation numbers and payment status",
+        "Handling late payment fees and deadlines",
+        "Handling multilingual customer interactions",
+        "Handling of sensitive financial information",
+        "Handling paperless enrollment requests",
+        "Handling policy number verification",
+        "Handling sensitive customer situations (e.g., recent family loss)",
+        "Handling sensitive financial information securely",
+        "Handling technical delays in payment systems",
+        "Insurance billing processes",
+        "Insurance billing systems",
+        "Insurance policy due date tracking",
+        "Insurance policy management",
+        "Insurance policy renewal processes",
+        "Insurance premium payment procedures",
+        "Insurance underwriting standards for policyholder verification",
+        "Internal transfer procedures",
+        "Internal transfer protocols",
+        "Knowledge of Progressive policy handling",
+        "Knowledge of autopay setup requirements and billing department contact procedures",
+        "Knowledge of credit card expiration dates and their impact on transactions.",
+        "Knowledge of payment processing systems and credit card verification",
+        "Knowledge of when to escalate calls to other agents",
+        "Managing partial balances and full payments",
+        "National General carrier-specific payment systems",
+        "Password reset procedures for insurance carrier systems",
+        "Payment method differentiation (one-time vs. recurring)",
+        "Payment plan options for partial payments",
+        "Payment processing procedures",
+        "Payment processing procedures for car insurance policies",
+        "Payment processing procedures for insurance policies",
+        "Payment processing timelines",
+        "Payment processing timelines for car insurance",
+        "Payment processing via debit card",
+        "Payment processing workflows",
+        "Policy account management",
+        "Policy lookup and payment processing procedures",
+        "Policy lookup and verification",
+        "Policy lookup protocols",
+        "Policy lookup using contact information",
+        "Policy management procedures",
+        "Policy management system navigation",
+        "Policy modification requirements (driver changes)",
+        "Policy payment schedules and due dates",
+        "Policy status verification",
+        "Policy type differentiation (renters vs. auto insurance)",
+        "Policy verification procedures",
+        "Process for transferring calls to appropriate agents",
+        "Process for updating payment information in insurance systems",
+        "Processing credit card payments securely.",
+        "Processing e-check payments",
+        "Processing payments through carrier systems",
+        "Progressive insurance payment process",
+        "Progressive insurance payment processes",
+        "Progressive insurance payment processing",
+        "Progressive insurance policy payment procedures",
+        "Progressive policy management",
+        "Proper payee for cashier's checks (Alliance vs. Foremost Insurance)",
+        "Providing hold music information and customer support channels.",
+        "Receipt generation and distribution methods (email/mail)",
+        "Recognizing when to escalate to a commercial agent",
+        "Routing calls to specific offices (Mount Airy).",
+        "Sending confirmation emails post-payment",
+        "Support email procedures for documentation sharing",
+        "System limitations for payment processing outside of scheduled billing periods",
+        "System verification procedures for policy payments",
+        "Understanding Cincinnati Insurance's payment process",
+        "Understanding Cincinnati's payment portal limitations",
+        "Understanding business insurance policy payment processes",
+        "Understanding of Alliance Insurance's carrier partnerships and system access limitations",
+        "Understanding of Cincinnati insurance portal navigation and payment processes",
+        "Understanding of Liberty Mutual's payment policies and grace periods",
+        "Understanding of auto-payment processing and decline reasons (e.g., expired cards, bank restrictions).",
+        "Understanding of billing cycles and payment processing timelines",
+        "Understanding of insurance payment workflows",
+        "Understanding of insurance policy payment structures and discounts",
+        "Understanding of policy migration processes",
+        "Understanding policyholder verification steps.",
+        "Understanding the agency's internal team structure (e.g., Brandi's role)",
+        "Using internal systems to send payment confirmations",
+        "Verification protocols for customer identity",
+        "Verifying banking details for insurance-related payments",
+        "Verifying payment methods"
+      ],
+      "systems_referenced": [
+        "Agency billing system",
+        "Alliance Insurance customer portal (myallianceinsurance.com)",
+        "Alliance Insurance internal account system",
+        "Alliance Insurance internal database",
+        "Alliance Insurance internal records system",
+        "Alliance Insurance payment portal",
+        "Alliance Insurance payment portal/system",
+        "Alliance Insurance policy management system",
+        "Alliance Insurance support email system",
+        "Alliance Insurance's internal note-taking or reminder system",
+        "Alliance Insurance's internal payment processing system",
+        "Alliance Insurance's internal policy management system",
+        "Alliance Insurance's policy database",
+        "Arthur Citizens Bank",
+        "Auto Owners insurance system",
+        "Cincinnati billing department",
+        "Cincinnati insurance carrier portal",
+        "Cincinnati insurance portal",
+        "Credit card payment processing system",
+        "Email confirmation portal",
+        "Email confirmation service",
+        "Email confirmation system",
+        "Email confirmation system for policy updates",
+        "Email notification service",
+        "Email system for sending confirmation",
+        "Email system for sending confirmation receipts",
+        "Email/mailing system for receipt distribution",
+        "Foremost",
+        "Foremost (insurance carrier system)",
+        "Insurance agency's billing portal",
+        "Internal account management system",
+        "Internal agent transfer system",
+        "Internal customer database (to verify address and payment details)",
+        "Internal email system for sending confirmations",
+        "Internal office communication system (to notify Winston Salem office of payment)",
+        "Internal policy database (to locate the Travelers policy)",
+        "Internal policy database (to retrieve payment details)",
+        "Internal policy database/portal (agent attempted to access policy details)",
+        "Internal policy management system",
+        "Internal policyholder account management system",
+        "Liberty Mutual's payment system",
+        "National General",
+        "National General (auto insurance carrier)",
+        "National General (insurance carrier)",
+        "National General insurance portal",
+        "National General insurance system",
+        "Payment portal website",
+        "Payment processing platform",
+        "Payment processing platform (for manual payment execution)",
+        "Payment processing portal",
+        "Payment processing system",
+        "Payment processing system (to apply the payment and generate confirmation numbers)",
+        "Payment processing system (to execute and confirm payment)",
+        "Payment processing website",
+        "Payment system (implied through 'pull up' and 'processed' references)",
+        "Penn (insurance carrier system)",
+        "Policy management database",
+        "Policyholder pay functionality",
+        "Progressive",
+        "Progressive (carrier)",
+        "Progressive (insurance carrier)",
+        "Progressive carrier system",
+        "Progressive insurance policy system",
+        "Progressive insurance portal",
+        "Progressive's insurance policy management system",
+        "Protonmail",
+        "Text support service (336-786-1133)",
+        "Texting service (336-786-1133)",
+        "Travelers insurance website",
+        "myallianceinsurance.com (customer portal)",
+        "sendin.com email system"
+      ],
+      "outcome_distribution": {
+        "resolved": 6,
+        "callback_needed": 45
+      },
+      "edge_cases": [
+        "Multi-intent call (payment, add): The caller, Karen, intends to make a payment for an auto insurance policy and requests confirmation ... (file: in-+13363779003-+13366558074-20251007-105720-1759849040.1685)",
+        "Multi-intent call (payment, update): The caller wanted to make payments for both auto and renters insurance policies using an updated cre... (file: in-+13363779003-+13367827346-20250904-134122-1757007682.6523)",
+        "Low-confidence classification: The caller, Britney Patel, wants to update her credit card information for auto payments and change ... (file: in-+13367861133-+12762601274-20250827-153904-1756323544.6817)"
+      ],
+      "examples": [
+        {
+          "file": "in-+13363779003-+13364064886-20251008-144828-1759949308.6727",
+          "intent": "The caller, Demaryd Cloud, intended to make a payment for their personal car insurance policy.",
+          "summary": "Demaryd Cloud successfully made a $103 car insurance payment via credit card. The agent processed the transaction through National General's system and confirmed an email receipt would be sent. The call concluded with standard closing remarks."
+        },
+        {
+          "file": "in-+13363779003-+13364097594-20250728-101402-1753712042.1780",
+          "intent": "The caller wants to pay a policy using a cashier's check and confirm which Alliance Insurance office to visit for the payment.",
+          "summary": "Caller seeks to pay a policy via cashier's check and confirm the correct office location. Agent clarifies office locations, correct payee (Alliance Insurance), and offers electronic payment as an alternative. Caller chooses cashier's check method and confirms details."
+        },
+        {
+          "file": "in-+13363779003-+13364234380-20251020-124226-1760978546.6060",
+          "intent": "The caller wanted to confirm the amount of their upcoming insurance payment, resolve a pending balance, and make a payment to avoid further penalties.",
+          "summary": "The caller contacted Alliance Insurance to resolve a pending payment balance and confirm their upcoming payment amount. The agent clarified the balance, explained discount options, and processed a full annual payment via credit card. The caller was informed the payment was successful and a receipt would be emailed."
+        }
+      ]
+    },
+    "mortgage-lender": {
+      "count": 16,
+      "resolution_patterns": [
+        "Verified caller identity and policy details",
+        "Transferred/connected caller to specialist agent",
+        "Placed caller on hold to research",
+        "Sent confirmation/documentation via email"
+      ],
+      "knowledge_required": [
+        "Ability to transfer calls to other agents",
+        "Access to payment processing systems to verify insurance payments",
+        "Alliance Insurance's support email address",
+        "Alliance Insurance's support email system",
+        "Call handling procedures for transferring/holding callers",
+        "Call transfer procedures",
+        "Call transfer procedures for specialized agents",
+        "Call transfer protocols for complex policy inquiries",
+        "Commercial insurance policy verification process",
+        "Differentiation between personal and business property claims",
+        "Document upload process for policy renewals",
+        "Email and fax communication procedures",
+        "Flood insurance claims process",
+        "Fraud monitoring protocols",
+        "Handling incomplete information during claims or policy updates",
+        "Handling insurance policy renewal requests",
+        "Hazad policy terminology (Fire vs. Homeowners)",
+        "Internal communication protocols for notifying colleagues",
+        "Knowledge of full coverage requirements for auto insurance",
+        "Knowledge of internal communication channels (email system)",
+        "Mortgagee change procedures in insurance policies",
+        "Policy number verification process",
+        "Policy renewal timelines and inactivity resolution procedures",
+        "Policy verification process",
+        "Process for resolving discrepancies between carrier records and customer expectations",
+        "Process for transferring calls to agents",
+        "Proper handling of mortgage-related insurance inquiries",
+        "Standard procedure for handling policy status inquiries",
+        "Support email address for Alliance Insurance",
+        "Understanding how to check policy status and coverage details",
+        "Understanding of Alliance Insurance's service scope (auto/homeowners insurance)",
+        "Understanding of escrow processes and mortgage lender payment workflows",
+        "Understanding of hazard insurance requirements and policy documentation processes",
+        "Understanding of home insurance policy details",
+        "Understanding of lienholder status in insurance policies",
+        "Verification protocols for caller identity"
+      ],
+      "systems_referenced": [
+        "Alliance Insurance customer portal (mentioned in hold music)",
+        "Alliance Insurance policy database (implied through policy number lookup)",
+        "Alliance Insurance policy management system",
+        "Alliance Insurance support email (support@allianceinsurance.com)",
+        "Alliance Insurance's internal payment tracking system",
+        "Email system (support@myallianceinsurance.com)",
+        "Email system for sending renewal information",
+        "Internal policy lookup system (implied by 'look up that way if you could')",
+        "support@myallianceinsurance.com"
+      ],
+      "outcome_distribution": {
+        "resolved": 1,
+        "callback_needed": 15
+      },
+      "edge_cases": [
+        "Low-confidence classification: The caller, representing Gilda Mortgage, requested the policy number for a Freddie Homeowner Policy ... (file: in-+13363779003-+18882609876-20251014-155409-1760471649.7199)"
+      ],
+      "examples": [
+        {
+          "file": "in-+13363779003-+13364863036-20250825-093758-1756129078.1304",
+          "intent": "Confirm that a home insurance invoice was paid by the mortgage lender (Truvises) and refer a friend for car insurance assistance.",
+          "summary": "Melchor confirmed his home insurance payment was handled by Truvises and referred a friend for car insurance assistance. The agent verified the payment status and agreed to help the referred individual. The call concluded with both parties satisfied."
+        },
+        {
+          "file": "in-+13363779003-+13366242164-20250910-164804-1757537284.9867",
+          "intent": "The caller wants to confirm whether their home insurance coverage is active after receiving a letter from their mortgage company indicating no insurance was on file, despite believing it was resolved two months ago.",
+          "summary": "Caller contacted Alliance Insurance to verify home insurance coverage after receiving conflicting information from their mortgage company. The agent recognized the need for a detailed policy review and initiated a transfer to a specialist for resolution."
+        },
+        {
+          "file": "in-+13363779003-+13368750989-20251017-121125-1760717485.2625",
+          "intent": "The caller is seeking assistance with a hazard insurance requirement issue, having received a letter from his mortgage company stating that hazard insurance is required on his property. He is confused about why this requirement was added and wants to resolve it quickly.",
+          "summary": "The caller contacted Alliance Insurance to address a confusion about a new hazard insurance requirement, having received a letter from his mortgage company. He requested assistance in finding his policy number using his address and was transferred to another agent for further help. The agent acknowledged the issue and initiated the transfer."
+        }
+      ]
+    },
+    "new-quote": {
+      "count": 32,
+      "resolution_patterns": [
+        "Verified caller identity and policy details",
+        "Transferred/connected caller to specialist agent",
+        "Explained policy details or procedures to caller",
+        "Initiated or provided quote",
+        "Left voicemail or took message for callback"
+      ],
+      "knowledge_required": [
+        "Ability to generate insurance quotes based on caller-provided details",
+        "Ability to identify when to transfer calls to specialized departments",
+        "Agent availability tracking",
+        "Agent directory/tracking system to verify team member names",
+        "Alliance Insurance's quoting policy (specifically requiring existing insurance to obtain a new quote)",
+        "Auto insurance coverage options",
+        "Auto insurance policies for multi-vehicle (truck and car) coverage",
+        "Auto insurance policy types (personal vs. commercial)",
+        "Auto insurance rate comparison processes",
+        "Auto insurance underwriting for new customers in North Carolina",
+        "Basic car insurance underwriting principles",
+        "Basic insurance product knowledge (homeowners insurance)",
+        "Call routing procedures for specialty insurance needs",
+        "Call routing procedures within the agency",
+        "Call transfer procedures",
+        "Call transfer procedures for specialty insurance lines",
+        "Call transfer protocols",
+        "Call transfer protocols for lead routing",
+        "Carrier quoting systems",
+        "Client information gathering for insurance quotes",
+        "Commercial insurance policies for installation crews",
+        "Commercial insurance products",
+        "Familiarity with the agency's online portal and texting support options",
+        "General liability insurance for small businesses",
+        "Geographic coverage distinctions (Virginia vs. North Carolina)",
+        "Handling Spanish-speaking clients",
+        "Handling customer confusion about previous communications",
+        "Handling high-risk clients with credit score issues",
+        "Handling insurance renewals",
+        "Handling referrals from other insurance carriers",
+        "Home insurance policies for different regions (Arizona vs. Winston Salem)",
+        "Homeowner's insurance policies",
+        "Homeowners insurance products",
+        "Insurance quote process",
+        "Insurance quoting processes",
+        "Insurance quoting systems and premium calculations",
+        "Internal process for routing calls to appropriate agents",
+        "Internal transfer protocols for policy specialists",
+        "JUA policy terms (deductibles, waiting periods)",
+        "Jessica's availability (Monday at 9:00 AM)",
+        "Knowledge of Alliance Insurance's customer service protocols",
+        "Language-specific agent allocation (Spanish-speaking commercial agent)",
+        "Managing cases where previous insurers are no longer active",
+        "New business policy setup procedures",
+        "Office location and availability of staff",
+        "Policy lookup procedures",
+        "Premium adjustment processes",
+        "Previous policy history checks",
+        "Process for initiating new auto insurance quotes",
+        "Process for obtaining insurance quotes",
+        "Process for routing calls to appropriate agents",
+        "Process for transferring calls to agents for insurance quotes",
+        "Process for transferring calls to appropriate agents",
+        "Property insurance quoting process",
+        "Protection class ratings and their implications",
+        "Providing alternative insurance options",
+        "Quote generation process",
+        "Quote request procedures",
+        "Sales process for new clients without existing policies",
+        "Understanding car insurance quoting procedures",
+        "Understanding carrier referral processes",
+        "Understanding of Alliance Insurance's coverage options for mopeds",
+        "Understanding of Alliance Insurance's internal call routing process for personal vs. commercial policies",
+        "Understanding of DOT requirements and insurance history verification",
+        "Understanding of Progressive's partnership with Alliance Insurance for homeowners policies",
+        "Understanding of bundling requirements for insurance policies",
+        "Understanding of insurance product types (Auto vs. Homeowner's)",
+        "Understanding of landlord insurance products",
+        "Understanding of liability insurance products for businesses",
+        "Understanding of motorsports insurance products",
+        "Understanding the difference between homeowners insurance and home warranty insurance"
+      ],
+      "systems_referenced": [
+        "Agency internal schedule (Jessica's return date/time)",
+        "Agency's quoting system",
+        "Alliance Insurance customer portal (myallianceinsurance.com)",
+        "Alliance Insurance internal database (implied for storing client information)",
+        "Alliance Insurance internal directory",
+        "Alliance Insurance's internal agent routing system",
+        "Alliance Insurance's internal quoting system",
+        "Internal agency systems for new business processing",
+        "Internal agent availability system",
+        "Internal client database (pulling up Mark and Paula's information)",
+        "Internal policy database to check existing accounts",
+        "JUA policy portal (checking deductible tiers and protection class)",
+        "Policy database",
+        "Progressive",
+        "Skype",
+        "Texting support service (336-786-1133)",
+        "office location"
+      ],
+      "outcome_distribution": {
+        "callback_needed": 31,
+        "resolved": 1
+      },
+      "edge_cases": [
+        "Low-confidence classification: The caller wants to know the renewal date, payment schedule, and whether the premium for his Nationa... (file: in-+13363779003-+13364352000-20250922-155926-1758571166.10970)",
+        "Low-confidence classification: The caller wanted to discuss an auto insurance policy for personal use.... (file: in-+13363779003-+17045499908-20250904-093659-1756993019.1117)",
+        "Low-confidence classification: The caller seeks a full insurance quote but mentions confusion about a previous message and a wrong ... (file: in-+13367861133-+13367822580-20251007-135522-1759859722.7376)"
+      ],
+      "examples": [
+        {
+          "file": "in-+13363779003-+13366925859-20251229-123300-1767029580.8040",
+          "intent": "The caller requested a quote for auto insurance with full coverage.",
+          "summary": "A caller requested a quote for auto insurance with full coverage. The agent confirmed the details and will connect the caller with an agent for further assistance. The call is pending a follow-up."
+        },
+        {
+          "file": "in-+13363779003-+13369268526-20250722-111645-1753197405.7206",
+          "intent": "The caller wants to obtain a quote for home warranty insurance for their son's newly purchased house.",
+          "summary": "A caller requested a home warranty insurance quote for their son's new house. The agent acknowledged the request and offered to connect the caller with an agent who can provide assistance. The call is pending further action as no resolution was reached."
+        },
+        {
+          "file": "in-+13363779003-+13369389601-20250918-104440-1758206680.4229",
+          "intent": "The caller wants to obtain car insurance quotes from Alliance Insurance to compare with their current provider, which they find too expensive.",
+          "summary": "A caller seeking car insurance quotes after finding their current provider too expensive was transferred to a specialist by the agent. The conversation highlights the need for competitive pricing options. The call is in progress with the next step being quote generation."
+        }
+      ]
+    },
+    "reinstatement": {
+      "count": 8,
+      "resolution_patterns": [
+        "Verified caller identity and policy details",
+        "Transferred/connected caller to specialist agent",
+        "Explained policy details or procedures to caller"
+      ],
+      "knowledge_required": [
+        "Access to client policy databases",
+        "Access to internal policy management systems",
+        "Auto-pay setup procedures",
+        "Awareness of reinstatement procedures for expired policies",
+        "Basic carrier identification for routing",
+        "Customer service procedures for scheduling callbacks",
+        "Document mailing protocols",
+        "Handling coverage lapse prevention",
+        "Internal communication protocols for notifying other agents",
+        "Knowledge of National General's communication protocols",
+        "Knowledge of Progressive's policy management system",
+        "Language assistance protocols for non-English speakers",
+        "Payment schedule interpretation",
+        "Policy cancellation reasons and carrier-specific notices (e.g., 'NG' reference)",
+        "Policy reinstatement procedures for auto insurance",
+        "Policy reinstatement processes",
+        "Procedure for handling retirement-related policy changes",
+        "Process for reinstating canceled insurance policies",
+        "Understanding how to handle policy renewal inquiries",
+        "Understanding insurance policy reinstatement processes",
+        "Understanding of insurance policy renewal processes",
+        "Understanding of payment confirmation processes"
+      ],
+      "systems_referenced": [
+        "Alliance Insurance Services policy management system",
+        "Alliance Insurance customer portal (myallianceinsurance.com)",
+        "Auto-pay enrollment portal",
+        "Carrier notice portal (NG)",
+        "Internal record-keeping system for tracking policy errors",
+        "National General insurance portal",
+        "Payment processing system",
+        "Policy management database",
+        "Policy management system",
+        "Progressive's insurance system"
+      ],
+      "outcome_distribution": {
+        "callback_needed": 6,
+        "resolved": 2
+      },
+      "edge_cases": [],
+      "examples": [
+        {
+          "file": "in-+13363779003-+13366922318-20250924-130154-1758733314.3348",
+          "intent": "The caller wants to renew an expired insurance policy with National General.",
+          "summary": "A caller contacted Alliance Insurance to renew an expired National General policy. The agent collected basic information and offered to connect the caller with a specialist. The call ended with the agent preparing to transfer the call."
+        },
+        {
+          "file": "in-+13363779003-+13368170139-20251124-092905-1763994545.517",
+          "intent": "Jeffrey Teague wants to confirm that his auto insurance policy was properly reinstated after a prior cutoff and verify the accuracy of a letter he received regarding his policy status.",
+          "summary": "Jeffrey Teague contacted Alliance Insurance to confirm his auto policy was properly reinstated after a prior cutoff and verify a letter he received. Agent Lyon Tintin checked his policy records, confirmed the last payment date, and verified the policy status as current. The call concluded with the agent reassuring Jeffrey that everything is correct."
+        },
+        {
+          "file": "in-+13363779003-+13368629846-20250905-091256-1757077976.714",
+          "intent": "The caller is concerned about a recently expired insurance policy with National General, as they did not receive renewal confirmation emails and are seeking assistance to reinstate the policy.",
+          "summary": "A caller contacted Alliance Insurance to address an expired National General policy, citing no email notifications. The agent verified policy details, explained renewal rules, and initiated a callback to assist with reinstatement. The call ended with the agent on hold to connect with a specialist."
+        }
+      ]
+    },
+    "renewal-review": {
+      "count": 12,
+      "resolution_patterns": [
+        "Verified caller identity and policy details",
+        "Explained policy details or procedures to caller",
+        "Transferred/connected caller to specialist agent",
+        "Arranged callback or follow-up"
+      ],
+      "knowledge_required": [
+        "Ability to analyze policy renewals, mid-term cancellation penalties, and bundling benefits",
+        "Ability to escalate calls to appropriate agents for policy review",
+        "Access to internal policy lookup systems",
+        "Auto insurance coverage types (liability, property damage, comprehensive) and their implications.",
+        "Customer onboarding procedures",
+        "Customer portal and support channels",
+        "Customer service protocols for follow-up communication",
+        "Familiarity with different policy types (personal vs. business)",
+        "Handling sensitive client situations (e.g., spouse's death)",
+        "Homeowners insurance policy comparison processes and rate calculation methodologies.",
+        "Homeowners insurance products",
+        "Internal case management systems",
+        "Internal communication protocols between agents",
+        "Interpreting payment records in carrier systems",
+        "Knowledge of Progressive's pricing structure and renewal processes.",
+        "Knowledge of carrier communication protocols",
+        "Knowledge of carrier portals (e.g., Auto Owners) and their limitations",
+        "Knowledge of homeowners insurance rate factors (replacement valuations, discounts)",
+        "Knowledge of insurance carriers like National Generals",
+        "Policy cancellation/reversion processes",
+        "Policy renewal date lookup procedures",
+        "Policy renewal process",
+        "Premium calculation and changes",
+        "Rate comparison processes",
+        "Travelers insurance policy renewal processes",
+        "Understanding factors affecting insurance premium increases (e.g., claims history, market trends, policy changes).",
+        "Understanding how to access and retrieve policy coverage details from internal systems",
+        "Understanding how to look up policies using policy numbers",
+        "Understanding insurance non-renewal policies and procedures",
+        "Understanding insurance rate adjustments and client management",
+        "Understanding of auto claims processes and dealership interactions",
+        "Understanding of deductible impacts on claims and coverage adequacy for modern vehicles.",
+        "Understanding of insurance rate determination timelines",
+        "Understanding of policy bundling processes"
+      ],
+      "systems_referenced": [
+        "Alliance Insurance internal quoting tools",
+        "Alliance Insurance's internal policy database",
+        "Auto Owners (carrier portal)",
+        "Auto Owners insurance app",
+        "Carrier portal/database (implied by the letter about non-renewal)",
+        "Farm Bureau (current insurer)",
+        "Internal case management system",
+        "Marblebox (quoting tool)",
+        "Policy management system (internal database)",
+        "Safeco (insurance carrier)",
+        "Texting support (336-786-1133)",
+        "Travelers insurance portal/system",
+        "myallianceinsurance.com customer portal"
+      ],
+      "outcome_distribution": {
+        "callback_needed": 10,
+        "transferred": 1,
+        "resolved": 1
+      },
+      "edge_cases": [
+        "Low-confidence classification: The caller is seeking to compare homeowners insurance rates for three properties and is not currentl... (file: in-+13367861133-+13362795804-20251015-122209-1760545329.1513)",
+        "Multi-intent call (coverage, renew): The caller (Kurt Vandry) wants to obtain detailed coverage information for his upcoming homeowner's ... (file: in-+13367861133-+13365393774-20251010-101421-1760105661.924)"
+      ],
+      "examples": [
+        {
+          "file": "in-+13363779003-+13364197902-20250916-140431-1758045871.8336",
+          "intent": "The caller wanted to confirm that a recent payment for their car insurance policy with Travelers was correctly applied to the policy renewal and sought clarification on why the renewal wasn't visible on the website.",
+          "summary": "The caller confirmed a car insurance payment with Travelers and sought reassurance about the renewal status. The agent verified the payment, explained the premium increase, and clarified the renewal date (29th). The caller expressed satisfaction with the resolution."
+        },
+        {
+          "file": "in-+13363779003-+13364663456-20250821-113403-1755790443.3486",
+          "intent": "The caller, Savannah King, is seeking clarification on a significant increase in her Progressive insurance renewal premium (over $100/month) and wants to understand the reasons behind the increase.",
+          "summary": "Savannah King contacted Alliance Insurance to inquire about a $100/month increase in her Progressive insurance renewal. The agent offered to help but the call ended before a detailed explanation or resolution. The agent would need to analyze Progressive's pricing factors and possibly check the policy details to address the concern."
+        },
+        {
+          "file": "in-+13363779003-+13369226534-20260106-131344-1767723224.3268",
+          "intent": "The caller, Deborah Bear, wants to discuss the renewal of a commercial auto insurance policy with National Generals, as indicated by an email she received. She is seeking assistance to confirm policy details and possibly address the renewal process.",
+          "summary": "Deborah Bear called Alliance Insurance to discuss the renewal of her commercial auto policy with National Generals. She provided her policy number, which the agent confirmed corresponds to a commercial auto policy. The call is ongoing as the agent assists her in addressing the renewal process."
+        }
+      ]
+    },
+    "routing-triage": {
+      "count": 40,
+      "resolution_patterns": [
+        "Verified caller identity and policy details",
+        "Transferred/connected caller to specialist agent",
+        "Left voicemail or took message for callback",
+        "Explained policy details or procedures to caller",
+        "Sent confirmation/documentation via email"
+      ],
+      "knowledge_required": [
+        "Ability to empathize with the caller's situation while maintaining professional boundaries",
+        "Ability to investigate unauthorized communications",
+        "Ability to manage customer expectations during staff unavailability",
+        "Ability to retrieve agent contact information from internal systems",
+        "Ability to search internal systems for client information.",
+        "Access to internal employee directory or HR system",
+        "Access to previous customer interactions (specifically with Morgan)",
+        "Accessing and verifying client contact records",
+        "Agency policy on not sharing personal client information",
+        "Agency protocol for handling requests when primary contact is unavailable",
+        "Agency's preferred communication methods (email, texting)",
+        "Agency's service areas (property casualty, life insurance)",
+        "Agent availability and scheduling",
+        "Agent availability tracking",
+        "Agent names and their areas of expertise (e.g., Steve Edmonds handling 'maker advantage plans')",
+        "Call handling procedures for unavailable contacts",
+        "Call routing procedures",
+        "Call transfer procedures",
+        "Callback procedures for language assistance",
+        "Callback procedures for unresolved language requests",
+        "Claims process procedures",
+        "Company ownership structure (identifying Chris Cook as the owner)",
+        "Company policy for leaving messages and scheduling follow-ups",
+        "Contact information verification",
+        "Current operational status of golf courses and facilities",
+        "Distinction between Alliance Insurance Services and other entities (Alliance Health, Alliance Behavior Health)",
+        "Employee directory (Jessica Brooks vs. Jessica Hernandez)",
+        "Handling calls for absent agents",
+        "Handling client follow-up procedures when an agent is unavailable",
+        "Handling inquiries about policyholders or clients",
+        "Handling miscommunication about agent/client names",
+        "Handling requests to connect with specific agents",
+        "Handling requests to speak with specific agents",
+        "Heather Johnson's contact information (email and phone number)",
+        "Heather Jones' work schedule and availability",
+        "Hold message protocols and customer portal information",
+        "Holly's work hours and availability",
+        "Insurance product categories (home/auto)",
+        "Internal agent directory lookup",
+        "Internal agent transfer protocols",
+        "Internal call transfer protocols",
+        "Internal directory access to verify employee information",
+        "Internal directory structure (multiple individuals with the same name)",
+        "Internal phone system knowledge (extensions)",
+        "Internal process for transferring calls to commercial insurance staff",
+        "Internal team structure for multilingual support",
+        "Knowledge of Alliance Insurance Services' role as a broker vs. direct carrier",
+        "Knowledge of alternative communication methods (email)",
+        "Knowledge of customer verification procedures",
+        "Knowledge of local housing support programs",
+        "Knowledge of voicemail protocols for transferring calls to agents",
+        "Language support capabilities of the agency",
+        "Language-specific transfer protocols",
+        "Message relay protocols",
+        "Message-taking protocols",
+        "Multilingual support protocols",
+        "Order processing procedures",
+        "Payment processing procedures for service completions",
+        "Policy-related contact information retrieval",
+        "Procedures for transferring calls to voicemail or sending messages",
+        "Process for changing insurance representatives",
+        "Process for transferring calls to specialized agents",
+        "Process for transferring calls to specialized departments",
+        "Restaurant menu items (e.g., hibachi chicken)",
+        "Standard call handling procedures for transferring calls or taking messages",
+        "Standard procedures for handling call transfers and follow-ups",
+        "Standard procedures for handling calls when an agent is unavailable",
+        "Transfer protocols to other agents",
+        "Understanding Alliance Insurance's role as a broker working with multiple carriers (e.g., Nationwide).",
+        "Understanding Alliance Insurance's service boundaries (insurance vs. rent assistance)",
+        "Understanding carrier-specific payment processes for international accounts",
+        "Understanding home inspection processes",
+        "Understanding of account registration processes",
+        "Understanding of agency's employee contact protocols",
+        "Understanding of backflow test service\u6d41\u7a0b",
+        "Understanding of caller's right to privacy (refusal to disclose current agent)",
+        "Understanding of document-signing processes",
+        "Understanding of insurance coverage for electrical damage and tree-related incidents",
+        "Understanding of insurance policy types (homeowners)",
+        "Understanding of internal directory structure for employee extensions",
+        "Understanding of internal staff schedules and office hours",
+        "Understanding of policy verification procedures",
+        "Understanding of standard procedures for handling payment inquiries",
+        "Voicemail procedures",
+        "Voicemail system functionality",
+        "Voicemail system navigation",
+        "Voicemail system operations"
+      ],
+      "systems_referenced": [
+        "Alliance Insurance Services portal",
+        "Alliance Insurance internal CRM/database (for storing agent contact details)",
+        "Alliance Insurance website (email domain reference)",
+        "Alliance Insurance's internal agent directory",
+        "Community resource databases for housing assistance",
+        "Email (HeatherJ@myallianceinsurance.com)",
+        "Internal agent availability system",
+        "Internal agent coordination system",
+        "Internal call transfer system",
+        "Internal client database/CMS",
+        "Internal employee directory (implied but not explicitly named)",
+        "Internal knowledge base for service limitations",
+        "Internal phone system (directory lookup)",
+        "Point-of-sale (POS) system or order management tool",
+        "Professional (carrier)",
+        "Text messaging (phone number provided)",
+        "Voicemail system",
+        "myalliance customer portal"
+      ],
+      "outcome_distribution": {
+        "callback_needed": 38,
+        "resolved": 1,
+        "transferred": 1
+      },
+      "edge_cases": [],
+      "examples": [
+        {
+          "file": "in-+13363779003-+13364036893-20250903-145652-1756925812.9050",
+          "intent": "The caller initially attempted to reach Matt at Alliance Insurance but became confused about her insurance provider, mistakenly believing she was with Alliance instead of Nationwide. She sought clarification and assistance in connecting with Matt.",
+          "summary": "A caller confused about her insurance provider (Nationwide vs. Alliance) sought to reach Matt at Alliance. The agent clarified the broker relationship, attempted to look up the caller's information, but could not find Susan Marshall in the system. The call ended with a confusing statement from the agent about 'Matt calling.'"
+        },
+        {
+          "file": "in-+13363779003-+13364082499-20251119-111406-1763568846.3024",
+          "intent": "The caller, Allison Coward, is following up on a previous interaction with an agent named Morgan regarding her Medicare plan and is requesting Morgan's email address for future communication.",
+          "summary": "Allison Coward followed up on a previous Medicare-related consultation with agent Morgan, requesting her email. The agent retrieved and provided Morgan's email address from internal records. The call concluded with the caller expressing gratitude and ending the conversation."
+        },
+        {
+          "file": "in-+13363779003-+13364097460-20250826-142956-1756232996.7385",
+          "intent": "The caller, Dina, aims to contact Chase (a client) to discuss insurance matters but cannot locate his cell phone number. She has a five-year relationship with Chase and seeks assistance in reaching him.",
+          "summary": "Dina, a caller, seeks to contact Chase for insurance-related discussions but cannot find his number. The agent offers to transfer her to Chase's voicemail or send a message, and the call concludes with a voicemail transfer. The agent adheres to privacy policies by not disclosing personal information."
+        }
+      ]
+    },
+    "vehicle-change": {
+      "count": 16,
+      "resolution_patterns": [
+        "Verified caller identity and policy details",
+        "Transferred/connected caller to specialist agent",
+        "Explained policy details or procedures to caller",
+        "Processed payment transaction"
+      ],
+      "knowledge_required": [
+        "Ability to calculate premium changes based on vehicle and coverage adjustments",
+        "Access to customer policy database",
+        "Auto insurance policy verification process",
+        "Automatic payment schedules",
+        "Call transfer procedures",
+        "Call transfer protocols for specialty requests",
+        "Commercial insurance policy management",
+        "Customer service (resolving pending issues, scheduling payments)",
+        "DMV license plate submission requirements",
+        "Handling customer requests for policy changes",
+        "Handling vehicle additions to policies",
+        "Insurance policy cancellation and addition processes",
+        "Insurance policy management procedures",
+        "Insurance policy management process",
+        "Internal agent availability tracking",
+        "Internal communication protocols to locate/transfer to the correct agent",
+        "Internal system navigation for policy lookup",
+        "Knowledge of how to transfer calls for specialized assistance",
+        "Lease termination timelines and policy implications",
+        "Payment processing (card verification, automatic payment setup)",
+        "Policy adjustment procedures",
+        "Policy management (updating payment methods, handling cancellations)",
+        "Policy modification procedures",
+        "Policy updates (adding vehicles)",
+        "Premium calculation factors",
+        "Procedure for adding new vehicles to existing policies",
+        "Process for adding vehicles to existing policies",
+        "Process for generating proof of insurance documents",
+        "Quote follow-up procedures",
+        "Recognizing the need to consult a licensed agent for policy-specific advice",
+        "Standard customer verification steps",
+        "System navigation for policy verification",
+        "Understanding how adding vehicles to a policy affects premiums",
+        "Understanding how vehicle changes affect insurance policies and pricing",
+        "Understanding of deductible and effective date terminology",
+        "Understanding of insurance policy structures (coverage types, vehicle additions/removals)",
+        "Understanding of insurance policy updates and vehicle addition procedures",
+        "Underwriting guidelines for adding vehicles",
+        "Vehicle removal from insurance accounts",
+        "When to escalate calls to other agents"
+      ],
+      "systems_referenced": [
+        "Alliance Insurance customer database",
+        "Alliance Insurance internal policy database",
+        "Alliance Insurance's internal policy management system",
+        "CRM system",
+        "DMV license plate submission process",
+        "Email system for document delivery",
+        "Internal agent directory",
+        "National General (insurance carrier)",
+        "Payment processing tools",
+        "Policy management system",
+        "Quote generation tool"
+      ],
+      "outcome_distribution": {
+        "callback_needed": 14,
+        "resolved": 2
+      },
+      "edge_cases": [
+        "Multi-intent call (payment, cancel, add, update): The caller wants to update their payment method to automatic and resolve a pending cancellation for ... (file: in-+13363779003-+13364065979-20251105-131730-1762366650.4215)"
+      ],
+      "examples": [
+        {
+          "file": "in-+13363779003-+13364352000-20250822-143458-1755887698.10895",
+          "intent": "The caller wants to remove a car from their insurance policy.",
+          "summary": "A caller requested to remove a vehicle from their insurance policy. The agent acknowledged the request and transferred the call to another agent for further assistance. The call is ongoing with no resolution yet."
+        },
+        {
+          "file": "in-+13363779003-+13365235067-20251222-095552-1766415352.1128",
+          "intent": "The caller wants to add a new car to their existing insurance policy and mentioned a desire to transfer over, though the exact context of the transfer is unclear.",
+          "summary": "A caller sought to add a car to their policy and mentioned a transfer. The agent would need to gather vehicle details, verify policy eligibility, and explain potential changes. The call requires follow-up for full resolution."
+        },
+        {
+          "file": "in-+13363779003-+13365824500-20251023-154545-1761248745.5674",
+          "intent": "The caller wants to add a new car to their business insurance policy but cannot reach their usual agent, Jessica, and requests assistance from another available agent.",
+          "summary": "A business customer attempted to add a new car to their policy but could not reach their usual agent. The agent transferred them to another commercial agent for assistance, indicating the need for a follow-up call to complete the policy update."
+        }
+      ]
+    },
+    "workers-comp": {
+      "count": 4,
+      "resolution_patterns": [
+        "Verified caller identity and policy details",
+        "Transferred/connected caller to specialist agent"
+      ],
+      "knowledge_required": [
+        "Carrier-specific procedures (Paychecks)",
+        "Class code modification processes",
+        "Handling business insurance audits",
+        "Internal process for escalating leads to specialized agents",
+        "Payment workflows for audit invoices",
+        "Procedures for handling overdue payments and collections",
+        "Processing payment plans for commercial policies",
+        "Transferring calls to appropriate departments (commercial team)",
+        "Understanding of third-party billing processes (Ascend)",
+        "Workers' compensation insurance offerings",
+        "Workers' compensation policy administration"
+      ],
+      "systems_referenced": [
+        "Ascend (third-party billing system)",
+        "Paychecks (insurance carrier)",
+        "Wasco Insurance Company",
+        "myallianceinsurance.com email support"
+      ],
+      "outcome_distribution": {
+        "callback_needed": 3,
+        "resolved": 1
+      },
+      "edge_cases": [],
+      "examples": [
+        {
+          "file": "in-+13367861133-+13364088960-20250819-120539-1755619539.4381",
+          "intent": "Donette Sikes needs assistance changing workers' comp class codes from 8848 to 8826/8824 after an audit, as her carrier (Paychecks) indicated this requires a new policy.",
+          "summary": "Donette Sikes requires help updating workers' comp class codes after an audit, as her carrier indicated this necessitates a new policy. The agent offered to connect her with the appropriate team and provided backup contact options."
+        },
+        {
+          "file": "in-+13363779003-+13367557574-20260106-165138-1767736298.7030",
+          "intent": "The caller inquired whether Alliance Insurance offers workers' compensation insurance for their small business.",
+          "summary": "A small business owner asked about workers' comp coverage. The agent confirmed availability and initiated a transfer to a specialized agent to handle the lead. The call ended with the agent offering to connect the caller with the appropriate team member."
+        },
+        {
+          "file": "in-+13363779003-+13369200018-20250820-160927-1755720567.12677",
+          "intent": "The caller is following up on a payment plan discussion from 2-3 weeks ago regarding an unresolved insurance audit, seeking resolution.",
+          "summary": "Caller followed up on an unresolved business insurance audit payment plan, provided policy details, and was referred to the commercial team for resolution. The agent initiated transfer to appropriate department."
+        }
+      ]
+    }
+  }
+}

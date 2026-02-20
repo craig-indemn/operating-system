@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Heather wanted to obtain a quote and start a policy for auto and home insurance.",
+  "resolution_steps": [
+    "Agent asked Heather to clarify the type of insurance she needed (auto/home).",
+    "Agent inquired if Heather had existing homeowners insurance.",
+    "Heather clarified she was not based in Salem, leading to the agent apologizing and ending the call."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding insurance policy types (auto, home)",
+    "Service area limitations (Salem-based operations)"
+  ],
+  "systems_referenced": [],
+  "summary": "Heather called to request auto and home insurance quotes. The agent attempted to clarify her needs but ended the call after realizing service limitations. The conversation indicates a potential need for follow-up or referral to another agent.",
+  "_model": "qwen3:14b",
+  "_eval_count": 191,
+  "_total_duration_ms": 29350,
+  "_source_file": "transcripts/q-200-+13364533471-20250805-160257-1754424177.8403.txt",
+  "_direction": "queue",
+  "_char_count": 392
+}

@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Not identifiable (call consists only of standard greeting and transfer initiation)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Standard inbound call greeting with transfer initiation to Heather Johnson. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 82,
+  "_total_duration_ms": 22519,
+  "_source_file": "transcripts/in-+13363779003-+13366690888-20260102-113124-1767371484.3367.txt",
+  "_direction": "inbound",
+  "_char_count": 151
+}

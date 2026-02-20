@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; appears to be a disconnected or confused conversation with no clear request or purpose.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Disorganized conversation with unclear intent. Agent mentions Jeremy and Salt Mountain Office, but no concrete action or resolution occurs. Call ends abruptly with 'Bye bye now.'",
+  "_model": "qwen3:14b",
+  "_eval_count": 105,
+  "_total_duration_ms": 30235,
+  "_source_file": "transcripts/out-7047510321-409-20250813-164208-1755117728.9636.txt",
+  "_direction": "outbound",
+  "_char_count": 611
+}

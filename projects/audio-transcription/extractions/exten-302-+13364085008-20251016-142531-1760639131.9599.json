@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Anna is seeking to finalize a commercial auto policy to obtain a DMV tag, requiring policy details and adjustments to coverage limits and payment terms.",
+  "resolution_steps": [
+    "Agent Lauren Ware confirms Anna's account transition from Rent Care Solutions to Carolinas Alliance for Residential.",
+    "Discusses current policy details, including coverage limits (2M vs. 1M) and driver information.",
+    "Proposes payment options (down payment + monthly installments) and automatic payment setup.",
+    "Identifies a system issue blocking policy issuance due to company name discrepancies with Carolinas Alliance.",
+    "Plans to consult with a manager to resolve the policy blockage and will call back with updates."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Commercial auto insurance policy requirements",
+    "Coverage limit adjustments",
+    "Payment structures (down payment, monthly installments)",
+    "Carrier-specific policy rules (Carolinas Alliance for Residential)",
+    "Troubleshooting policy issuance barriers"
+  ],
+  "systems_referenced": [
+    "Internal policy management system",
+    "Carolinas Alliance for Residential portal",
+    "Rent Care Solutions system"
+  ],
+  "summary": "Anna is working to finalize a commercial auto policy with Carolinas Alliance for Residential, requiring policy details for DMV tag processing. The agent is addressing coverage limit adjustments, payment terms, and a system issue blocking policy issuance due to company name discrepancies. The agent will consult with a manager and call back with updates.",
+  "_model": "qwen3:14b",
+  "_eval_count": 324,
+  "_total_duration_ms": 51049,
+  "_source_file": "transcripts/exten-302-+13364085008-20251016-142531-1760639131.9599.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4240
+}

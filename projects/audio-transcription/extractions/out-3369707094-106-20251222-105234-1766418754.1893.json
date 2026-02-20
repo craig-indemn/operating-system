@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Attempting to reach a phone number (3369707094), but the recipient is unavailable.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The call transcript consists of a phone number being dialed followed by 'no est\u00e1' (Spanish for 'is not there'). No agent interaction or conversation occurred, indicating a failed call attempt or voicemail scenario.",
+  "_model": "qwen3:14b",
+  "_eval_count": 119,
+  "_total_duration_ms": 28365,
+  "_source_file": "transcripts/out-3369707094-106-20251222-105234-1766418754.1893.txt",
+  "_direction": "outbound",
+  "_char_count": 63
+}

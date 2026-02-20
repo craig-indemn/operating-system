@@ -1,0 +1,23 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Not applicable (voicemail greeting and automated message)",
+  "resolution_steps": [
+    "Voicemail system notified caller of unavailable recipient",
+    "Agent left message requesting callback at specified number"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Voicemail protocols",
+    "Basic customer service messaging"
+  ],
+  "systems_referenced": [
+    "Voicemail system"
+  ],
+  "summary": "Outbound call resulted in voicemail. Agent left message requesting callback at 336-377-9003 after receiving a prior voicemail. No direct conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 135,
+  "_total_duration_ms": 27909,
+  "_source_file": "transcripts/out-13365757094-114-20260106-135402-1767725641.3906.txt",
+  "_direction": "outbound",
+  "_char_count": 410
+}

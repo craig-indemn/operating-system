@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Karen wanted to clarify details about her mother's insurance policy, specifically the number of vehicles with full coverage and the reason for a $600 bill.",
+  "resolution_steps": [
+    "Holly confirmed the policyholder's name and address.",
+    "Holly checked the policy and identified vehicles with full coverage (2020 Honda Accord, 2016 Nissan Pathfinder) and liability-only coverage (2014 Nissan, 2004 Chevrolet).",
+    "Holly explained the $600 bill was due to a new vehicle (2020 Honda Accord) added on October 30th, which included coverage from that date until the policy's end date (December 25th).",
+    "Holly clarified the payment structure, noting it was a final payment for the term and that December's renewal would show updated monthly rates.",
+    "Holly confirmed office hours (closed Thursday/Friday, open Wednesday until 5 PM)."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance policy structure (full vs. liability coverage)",
+    "Billing cycles and prorated payments for mid-term policy changes",
+    "Agency operating hours"
+  ],
+  "systems_referenced": [
+    "Internal policy database/portal"
+  ],
+  "summary": "Karen inquired about her mother's insurance policy details and a $600 bill. Holly explained that the bill included prorated coverage for a newly added vehicle and clarified the coverage types for each vehicle. The call concluded with Karen understanding the billing structure and office hours confirmation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 343,
+  "_total_duration_ms": 33483,
+  "_source_file": "transcripts/q-300-+17432248167-20251124-112622-1764001582.2253.txt",
+  "_direction": "queue",
+  "_char_count": 2268
+}

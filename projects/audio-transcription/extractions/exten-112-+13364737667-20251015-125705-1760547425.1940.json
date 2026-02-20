@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Roxana is seeking assistance to finalize home insurance coverage for her primary residence and a second home, ensuring proper address differentiation and confirming policy details before a deadline.",
+  "resolution_steps": [
+    "Brandi confirms NC Grange is processing the application and addresses the need to differentiate two homes with the same address by using suffixes (104A and 104B).",
+    "Brandi gathers details about the roof age (less than 5 years), heating system (new central air unit), electrical (no updates), and plumbing (PVC).",
+    "Brandi notes the purchase date (2018) and confirms no claims in the past 5 years.",
+    "Brandi states she will email a finalized quote and requests driver's licenses for Roxana's husband and sister to add them to the policy."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Home insurance underwriting requirements",
+    "Address differentiation for multiple properties",
+    "Policy documentation processes",
+    "Carrier-specific procedures (NC Grange)"
+  ],
+  "systems_referenced": [
+    "NC Grange (insurance carrier)",
+    "Main Street America (another carrier with limited access)"
+  ],
+  "summary": "Roxana works with Brandi to finalize home insurance for two properties under the same address, clarifying policy details and ensuring processing before a deadline. Brandi will send a quote and request additional documents for policy completion.",
+  "_model": "qwen3:14b",
+  "_eval_count": 321,
+  "_total_duration_ms": 50040,
+  "_source_file": "transcripts/exten-112-+13364737667-20251015-125705-1760547425.1940.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4016
+}

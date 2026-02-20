@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "N/A",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Outbound call was forwarded to voicemail. Agent left a message for the recipient (Mister Call) and mentioned assisting the caller (Scarlett). No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 93,
+  "_total_duration_ms": 89687,
+  "_source_file": "transcripts/out-2164070047-409-20260107-132659-1767810419.2504.txt",
+  "_direction": "outbound",
+  "_char_count": 485
+}

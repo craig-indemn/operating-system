@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to reinstate their mother's insurance policy and provide necessary details (policy number, personal information, and payment method) to proceed with the reinstatement.",
+  "resolution_steps": [
+    "Agent retrieves the policy using the provided policy number (2023390627) and name (Angela Fowler).",
+    "Agent confirms the policy was canceled on December 22nd and explains the reinstatement fee of $285.05.",
+    "Agent collects credit card information (ending in 89) for payment.",
+    "Agent mentions sending a 'statement of no loss' via e-signature to the email on file (Corey Turner 252@gmail.com).",
+    "Agent updates the caller's phone number (828-313-7261) with the carrier (National General)."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Reinstatement procedures and associated fees",
+    "Handling policy reinstatement with a carrier (National General)",
+    "Managing contact information updates"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance customer portal (myallianceinsurance.com)",
+    "National General (carrier)",
+    "E-signature process for documents"
+  ],
+  "summary": "A caller seeks to reinstate their mother's canceled insurance policy. The agent confirms the policy's cancellation date, explains the $285.05 reinstatement fee, collects payment details, and initiates the process by sending a required 'statement of no loss' via e-signature. The agent also updates the caller's contact information with the carrier. The call concludes with the agent confirming next steps and the caller agreeing to proceed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 380,
+  "_total_duration_ms": 51666,
+  "_source_file": "transcripts/in-+13363544000-+18283137261-20260107-110725-1767802045.1233.txt",
+  "_direction": "inbound",
+  "_char_count": 3710
+}

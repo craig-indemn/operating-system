@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Dara is seeking clarification about her canceled car insurance policy (2015 Honda, expired in July) and potential consequences of not turning in license tags while selling the vehicle. She also wants to know if there are pending payments or invoices to settle before closing the sale.",
+  "resolution_steps": [
+    "Agent confirmed the insurance policy was canceled in July and clarified no outstanding payments are owed to Alliance Insurance Services.",
+    "Explained North Carolina law requiring active tags to have insurance, and potential fines ($50\u2013$200) for unexpired tags without insurance.",
+    "Advised Dara to ensure coverage under her husband's current insurance policy while driving his car.",
+    "Recommended turning in the tags if the car won't be sold within two weeks to avoid future fines.",
+    "Noted that if the car is sold, the tags may be transferred to another vehicle or stored, but emphasized addressing the tags proactively."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "North Carolina vehicle registration and insurance laws",
+    "Process for canceling car insurance policies",
+    "Consequences of unexpired license tags without insurance",
+    "Insurance coverage transfer between vehicles"
+  ],
+  "systems_referenced": [],
+  "summary": "Dara is selling her 2015 Honda with expired insurance and unturned license tags. The agent clarified no policy debt exists but warned of potential state fines for unexpired tags. Advice included ensuring coverage under her husband's insurance and turning in tags if the sale will take longer than two weeks. The call concluded with Dara understanding next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 352,
+  "_total_duration_ms": 45922,
+  "_source_file": "transcripts/exten-107-+13367072276-20250903-124332-1756917812.6716.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3486
+}

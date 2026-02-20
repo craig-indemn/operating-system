@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Johnny wants to make payments for his workers' comp and package insurance policies and inquire about setting up automatic drafts to avoid future missed payments.",
+  "resolution_steps": [
+    "Cody confirmed the amounts due for workers' comp ($612) and the nationwide package policy ($13108).",
+    "Cody processed the payments using Johnny's credit card after confirming the card details (number, expiration, CVV, and zip code).",
+    "Cody offered to set up monthly auto drafts for future payments.",
+    "Cody confirmed Johnny's email address (johnieelkin@gmail.com) and agreed to send payment receipts via email.",
+    "Cody informed Johnny of the typical due dates (workers' comp around the 28th/30th, package around the 8th of the month)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance payment processing (including credit card fees)",
+    "Policy due date schedules",
+    "Auto draft setup procedures",
+    "Customer verification protocols"
+  ],
+  "systems_referenced": [
+    "Payment processing system (for card transactions and auto drafts)",
+    "Email system (for sending receipts)"
+  ],
+  "summary": "Johnny contacted Cody to make current insurance payments and discuss automatic payment setup. Cody processed the payments using Johnny's credit card, confirmed future due dates, and agreed to send receipts via email. Johnny will provide banking details for auto draft setup in the next business day.",
+  "_model": "qwen3:14b",
+  "_eval_count": 329,
+  "_total_duration_ms": 43959,
+  "_source_file": "transcripts/exten-207-+13363710022-20250805-153325-1754422405.7742.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3385
+}

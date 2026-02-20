@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Paul needs assistance obtaining a certificate of insurance to rent a tractor trailer, as he is stuck in a customer support loop and believes the agent can expedite the process.",
+  "resolution_steps": [
+    "Cody acknowledges the request and asks Paul to forward the rental contract and communications with customer support.",
+    "Cody assures Paul he will review the documents and help speed up the process.",
+    "Cody offers to contact Paul via email or phone if further information is needed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding insurance certificate requirements for rental equipment (tractor trailers)",
+    "Process for obtaining certificates through customer support channels"
+  ],
+  "systems_referenced": [],
+  "summary": "Paul is seeking help to obtain a certificate of insurance for a tractor trailer rental, as he is facing delays with customer support. Cody agrees to review the documents Paul will email and assist in expediting the process. The call concludes with Paul agreeing to send the necessary information for review.",
+  "_model": "qwen3:14b",
+  "_eval_count": 226,
+  "_total_duration_ms": 35161,
+  "_source_file": "transcripts/exten-207-+13363370946-20250825-143931-1756147171.10480.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1615
+}

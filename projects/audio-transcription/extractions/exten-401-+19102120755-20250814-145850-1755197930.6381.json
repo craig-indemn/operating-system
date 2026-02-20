@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "John Curley is seeking assistance to clarify his insurance coverage details for a Jeep (model Latitude, 2021) and his homeowners policy, including replacement cost estimation for his home.",
+  "resolution_steps": [
+    "Agent confirmed vehicle details (Jeep Latitude 2021) and deductible information (collision deductible of $500).",
+    "Agent explained the use of the 'Raider' replacement cost estimator tool to calculate home insurance values.",
+    "Agent verified home square footage via tax card data (1,116 heated square feet) and discussed discrepancies (unheated areas like porches).",
+    "Agent confirmed home features (1,116 sq ft, 2 full baths, concrete slab foundation) for accurate replacement cost estimation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of vehicle model identification (Jeep Latitude vs. Cherokee).",
+    "Home insurance replacement cost estimation methodologies.",
+    "Interpretation of tax card data for property square footage.",
+    "Use of the 'Raider' tool for carrier-specific replacement cost calculations."
+  ],
+  "systems_referenced": [
+    "Raider (replacement cost estimator tool)",
+    "Tax card database"
+  ],
+  "summary": "John Curley discussed his Jeep's insurance details and home replacement cost estimation with an agent. The agent used the Raider tool and tax card data to verify property details, clarifying discrepancies in square footage and home features. The conversation focused on ensuring accurate insurance coverage calculations.",
+  "_model": "qwen3:14b",
+  "_eval_count": 337,
+  "_total_duration_ms": 50493,
+  "_source_file": "transcripts/exten-401-+19102120755-20250814-145850-1755197930.6381.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4070
+}

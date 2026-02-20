@@ -1,0 +1,24 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Caller appears confused about Alliance Insurance's relationship with National General and may have been directed to the wrong number.",
+  "resolution_steps": [
+    "Agent clarifies that the call is not National General",
+    "Agent mentions Pocketbook as an option",
+    "Call ends with brief acknowledgment"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Carrier relationships (National General, Pocketbook)",
+    "Internal systems (Pocketbook reference)"
+  ],
+  "systems_referenced": [
+    "Pocketbook"
+  ],
+  "summary": "Caller was confused about Alliance Insurance's connection to National General. Agent clarified the company identity and mentioned Pocketbook as an option, but the conversation was brief and unclear on next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 159,
+  "_total_duration_ms": 37034,
+  "_source_file": "transcripts/in-+13363779003-+13364229790-20251222-111119-1766419879.2095.txt",
+  "_direction": "inbound",
+  "_char_count": 366
+}

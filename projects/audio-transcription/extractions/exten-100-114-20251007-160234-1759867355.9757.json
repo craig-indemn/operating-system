@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (not Yolanda Pineda Lario) wants to pay insurance for Yolanda's car, which was stopped by police due to a discrepancy in the insurance records.",
+  "resolution_steps": [
+    "Agent confirmed the policyholder's name (Yolanda Pineda Lario) and insurance carrier (Allstate).",
+    "Agent checked the active policy and identified listed vehicles (2004 Toyota, 1998 Ford, 2010 Acura).",
+    "Agent resolved the confusion about the 2010 Acura not appearing in the policy.",
+    "Agent offered to send insurance documents via text to the provided address (227 Kendall Drive, Winston Salem).",
+    "Agent processed a payment of $160.80 using a saved credit card (ending in 9828)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Allstate policy verification process",
+    "Handling vehicle discrepancies in insurance records",
+    "Payment processing via saved credit card",
+    "Document delivery via text messaging"
+  ],
+  "systems_referenced": [
+    "Allstate insurance portal (for policy verification)",
+    "Payment processing system",
+    "Document delivery via text messaging"
+  ],
+  "summary": "A caller contacted Allstate to resolve an issue where police stopped a 2010 Acura due to an apparent lack of insurance. The agent verified Yolanda Pineda Lario's active policy, clarified the vehicle discrepancy, sent documents via text, and processed a payment. The caller expressed satisfaction with the resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 358,
+  "_total_duration_ms": 44152,
+  "_source_file": "transcripts/exten-100-114-20251007-160234-1759867355.9757.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1589
+}

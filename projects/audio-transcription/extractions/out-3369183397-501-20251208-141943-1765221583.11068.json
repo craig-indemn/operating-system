@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Inform the client about a potential lapse in auto insurance coverage between her expired Progressive policy and the new National General policy, which may result in a DMV fine.",
+  "resolution_steps": [
+    "Explained that the client's Progressive policy expired on 9/19/2025, while the National General policy began on 10/10/2025, creating a coverage gap.",
+    "Notified the client that the FS1 form from National General confirms active coverage to the DMV but does not waive the fine for the lapse.",
+    "Advised the client to contact the DMV directly to confirm receipt of the FS1 form and prepare for a potential $50/vehicle fine.",
+    "Mentioned the auto-pay setup for the National General policy and confirmed the most recent payment was processed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy lapse implications under state law",
+    "Knowledge of DMV regulations regarding continuous coverage requirements",
+    "Familiarity with FS1 form functionality and limitations",
+    "Ability to interpret policy expiration/start dates and their legal consequences"
+  ],
+  "systems_referenced": [
+    "DMV (Department of Motor Vehicles)",
+    "Progressive Insurance",
+    "National General Insurance",
+    "Auto-pay credit card system"
+  ],
+  "summary": "The agent informed the client about a 16-day gap between her expired Progressive policy (ended 9/19/2025) and new National General policy (started 10/10/2025), which may result in a $50/vehicle DMV fine despite the FS1 form being submitted. The agent emphasized the need to contact the DMV directly and confirmed the client's National General policy is on auto-pay. The call concluded with the client understanding the need to address the potential fine.",
+  "_model": "qwen3:14b",
+  "_eval_count": 414,
+  "_total_duration_ms": 52806,
+  "_source_file": "transcripts/out-3369183397-501-20251208-141943-1765221583.11068.txt",
+  "_direction": "outbound",
+  "_char_count": 4258
+}

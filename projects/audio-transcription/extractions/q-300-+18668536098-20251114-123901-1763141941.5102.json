@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Verify renewal details for a homeowners policy, confirm coverage, check payment status, and request a declaration page email.",
+  "resolution_steps": [
+    "Agent looked up the policy using the provided policy number (5628250800).",
+    "Confirmed policy details: active, renews November 15, 2025, coverage of $287,000 with a $5,000 deductible.",
+    "Noted no mortgage information on the policy and explained a written request is needed to update it.",
+    "Checked payment status: premium paid on November 13, 2025, for $880 with a $0 balance.",
+    "Agreed to email a hard copy of the declaration page to Valen@ihaveinsurance.com."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy lookup and verification process",
+    "Homeowners insurance coverage details",
+    "Payment status tracking",
+    "Document request procedures (declaration pages)",
+    "Email communication protocols"
+  ],
+  "systems_referenced": [
+    "Internal policy management system",
+    "Email system (Valen@ihaveinsurance.com)"
+  ],
+  "summary": "Sarah from Valen Mortgage verified her homeowners policy details, confirmed payment status, and requested a declaration page email. Agent Jamie Flippin provided all requested information and arranged for the document to be emailed. The call concluded with Sarah satisfied and no further action needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 330,
+  "_total_duration_ms": 43392,
+  "_source_file": "transcripts/q-300-+18668536098-20251114-123901-1763141941.5102.txt",
+  "_direction": "queue",
+  "_char_count": 2200
+}

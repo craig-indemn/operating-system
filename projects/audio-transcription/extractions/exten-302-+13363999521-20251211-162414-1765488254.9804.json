@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jason is setting up monthly insurance payments, updating his mailing address, and requesting proof of insurance for a lien holder (New People's Bank).",
+  "resolution_steps": [
+    "Confirmed billing address (105 Meadowcrest) and selected monthly installments.",
+    "Processed credit card payment (ending in 1109) with expiration date 11/28.",
+    "Updated mailing address to 867 West Virginia.",
+    "Notified caller of next invoice in ~30 days.",
+    "Agreed to prepare and email proof of insurance for New People's Bank."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance billing processes",
+    "Payment method verification",
+    "Address update procedures",
+    "Lienholder documentation requirements"
+  ],
+  "systems_referenced": [
+    "Internal insurance agency system",
+    "Email confirmation system"
+  ],
+  "summary": "Jason finalized insurance payment setup with monthly installments, updated his mailing address, and requested proof of insurance for his lienholder. The agent confirmed details, processed payment, and committed to sending required documentation via email.",
+  "_model": "qwen3:14b",
+  "_eval_count": 256,
+  "_total_duration_ms": 33150,
+  "_source_file": "transcripts/exten-302-+13363999521-20251211-162414-1765488254.9804.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2571
+}

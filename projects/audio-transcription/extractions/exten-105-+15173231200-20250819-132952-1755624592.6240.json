@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "To resolve Gary Belcher's issue with the website being back online and ensure he receives the activation email.",
+  "resolution_steps": [
+    "Laura confirmed the website was back up and identified the affected user (Gary Belcher).",
+    "She resent the activation email to Gary Belcher.",
+    "Instructed Gary to check the email and respond promptly."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Handling activation email resends",
+    "Troubleshooting website accessibility issues"
+  ],
+  "systems_referenced": [
+    "Email system (for sending activation emails)",
+    "Customer portal/website"
+  ],
+  "summary": "Laura from Auto Owners resolved Gary Belcher's website issue by resending an activation email and instructing him to check it. The call concluded with both parties expressing gratitude, though further action from Gary was required to confirm resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 205,
+  "_total_duration_ms": 42086,
+  "_source_file": "transcripts/exten-105-+15173231200-20250819-132952-1755624592.6240.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 541
+}

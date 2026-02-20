@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Voicemail greeting from Duke Cancer Center directing callers to 911 for emergencies. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 72,
+  "_total_duration_ms": 25243,
+  "_source_file": "transcripts/out-9194708600-510-20250729-122951-1753806591.4935.txt",
+  "_direction": "outbound",
+  "_char_count": 149
+}

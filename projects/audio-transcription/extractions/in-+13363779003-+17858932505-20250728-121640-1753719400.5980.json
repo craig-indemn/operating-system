@@ -1,0 +1,24 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller attempted to reach Holly at Alliance Insurance Services.",
+  "resolution_steps": [
+    "Agent informed caller they would be placed on hold.",
+    "Hold message played, including information about online policy management and texting support."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Standard hold message protocols",
+    "Basic customer service procedures"
+  ],
+  "systems_referenced": [
+    "myallianceinsurance.com customer portal",
+    "Texting support at 336-786-1133"
+  ],
+  "summary": "This inbound call featured a standard hold message rather than a substantive conversation. The caller was attempting to reach Holly, but the agent did not connect them. The hold message included promotional information about online policy management and texting support, but no resolution was provided for the caller's specific request.",
+  "_model": "qwen3:14b",
+  "_eval_count": 198,
+  "_total_duration_ms": 28488,
+  "_source_file": "transcripts/in-+13363779003-+17858932505-20250728-121640-1753719400.5980.txt",
+  "_direction": "inbound",
+  "_char_count": 760
+}

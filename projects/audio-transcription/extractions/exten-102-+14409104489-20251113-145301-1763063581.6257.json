@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Christina from Progressive Insurance is following up on a previous request to contact the insured party (Shalom, Gia, Genomic Nursery) regarding a commercial claim that may be denied due to lack of contact. She provides policy and claim details and asks if the agent has reached out to the insured.",
+  "resolution_steps": [
+    "Agent confirms policy number (977346967) and claim number (25-263980231231) provided by Christina.",
+    "Agent agrees to call the insured directly using the provided phone number (440-910-4489) and extension.",
+    "Agent requests Christina's direct contact information for the insured to reach back to her.",
+    "Agent acknowledges responsibility to contact the insured and inform them of the claim status."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Commercial insurance claims process",
+    "Policy and claim number verification procedures",
+    "Contacting insured parties for claim resolution"
+  ],
+  "systems_referenced": [
+    "Progressive Insurance's claims system (implied through claim number and policy details)",
+    "Customer contact database (for storing insured contact information)"
+  ],
+  "summary": "Christina from Progressive Insurance follows up on a commercial claim against Shalom, Gia, Genomic Nursery's policy. She provides policy and claim numbers, explains the need to contact the insured before potentially denying the claim, and requests the agent to call the insured directly. The agent agrees to take action and obtain the insured's contact information.",
+  "_model": "qwen3:14b",
+  "_eval_count": 350,
+  "_total_duration_ms": 43954,
+  "_source_file": "transcripts/exten-102-+14409104489-20251113-145301-1763063581.6257.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1614
+}

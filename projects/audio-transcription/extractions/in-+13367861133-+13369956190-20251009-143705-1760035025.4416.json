@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with Carbet",
+  "resolution_steps": [
+    "Agent acknowledged request",
+    "Agent initiated transfer to Carbet's extension"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller requested to speak with Carbet. Agent transferred the call to his extension. No substantive conversation occurred beyond the transfer.",
+  "_model": "qwen3:14b",
+  "_eval_count": 99,
+  "_total_duration_ms": 28475,
+  "_source_file": "transcripts/in-+13367861133-+13369956190-20251009-143705-1760035025.4416.txt",
+  "_direction": "inbound",
+  "_char_count": 148
+}

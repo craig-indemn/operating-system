@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller attempted to obtain a car insurance quote but was unclear on whether they already had insurance elsewhere.",
+  "resolution_steps": [
+    "Agent explained that to get a quote, the caller must already have insurance with another provider.",
+    "Caller repeatedly confirmed they did not have existing insurance, leading to confusion.",
+    "Agent reiterated the requirement without offering alternative solutions."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Alliance Insurance's quoting policy (specifically requiring existing insurance to obtain a new quote)",
+    "Basic car insurance underwriting principles"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller attempted to get a car insurance quote but was informed by the agent that existing insurance was required. The conversation became circular as the caller clarified they had no current coverage, but the agent did not offer alternative pathways or clarify if the requirement was absolute. The call ended with the caller being informed of the policy but no resolution achieved.",
+  "_model": "qwen3:14b",
+  "_eval_count": 220,
+  "_total_duration_ms": 41187,
+  "_source_file": "transcripts/in-+13363779003-+13367696653-20260115-093643-1768487803.739.txt",
+  "_direction": "inbound",
+  "_char_count": 553
+}

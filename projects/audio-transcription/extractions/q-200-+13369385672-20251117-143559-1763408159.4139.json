@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to transfer an existing motorcycle insurance policy to a different motorcycle and confirm whether the current policy was canceled.",
+  "resolution_steps": [
+    "Agent asked for the caller's name and policy details.",
+    "Agent checked the system and confirmed an active motorcycle policy under William Sterling Jr.",
+    "Agent offered to transfer the policy to a different motorcycle.",
+    "Agent initiated a transfer to a dedicated insurance agent to handle the request."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy lookup and verification procedures",
+    "Motorcycle insurance policy transfer processes"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services policy database"
+  ],
+  "summary": "Caller requested to transfer an active motorcycle insurance policy to a new motorcycle. The agent confirmed the policy's status and transferred the call to an agent for further processing. The call ended with the agent agreeing to handle the transfer.",
+  "_model": "qwen3:14b",
+  "_eval_count": 211,
+  "_total_duration_ms": 37297,
+  "_source_file": "transcripts/q-200-+13369385672-20251117-143559-1763408159.4139.txt",
+  "_direction": "queue",
+  "_char_count": 684
+}

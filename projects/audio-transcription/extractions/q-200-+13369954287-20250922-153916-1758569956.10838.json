@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jacqueline is seeking a new homeowner's insurance quote for her father's policy to compare pricing options, as they are concerned about potential rate increases from their current provider (Heritage).",
+  "resolution_steps": [
+    "Agent Corbin gathers policy details (address, roof age, claims history, etc.).",
+    "Corbin checks current Heritage policy and identifies potential alternatives.",
+    "Provides three options: (1) Switching to National General with auto insurance bundling (809/month), (2) Adjusting deductibles on Heritage policy, (3) Auto Owners quote (1487/month).",
+    "Explains process for switching servicing agencies without changing policy terms.",
+    "Agrees to email the quote for review."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Homeowner's insurance underwriting factors (roof age, claims history, deductible options)",
+    "Carrier-specific pricing structures (Heritage, National General, Auto Owners)",
+    "Agency procedures for changing servicing agencies",
+    "Bundling discounts for multi-policy holders"
+  ],
+  "systems_referenced": [
+    "Heritage insurance system",
+    "National General insurance system",
+    "Auto Owners insurance system",
+    "Internal agency quoting tools"
+  ],
+  "summary": "Jacqueline sought a homeowner's insurance quote for her father's Winston Salem property, currently insured by Heritage. Corbin provided alternative options including a lower rate with National General if auto insurance is bundled, while explaining the process of switching servicing agencies. The call concluded with Corbin agreeing to email the detailed quote for review, pending her father's decision to proceed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 360,
+  "_total_duration_ms": 57174,
+  "_source_file": "transcripts/q-200-+13369954287-20250922-153916-1758569956.10838.txt",
+  "_direction": "queue",
+  "_char_count": 8058
+}

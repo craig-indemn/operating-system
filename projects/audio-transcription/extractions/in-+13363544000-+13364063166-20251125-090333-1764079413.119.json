@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jerry Mason is concerned about two vehicles (2001 Chevy Corvette and 1996 Mercedes) being removed from his National General insurance policy without his authorization, and he wants to resolve this to avoid potential financial liability.",
+  "resolution_steps": [
+    "Agent confirmed Jerry's policy details (2021 Ram 1500 and 2023 Hyundai Santa Fe currently insured).",
+    "Agent acknowledged Jerry's claim that the vehicle removal was unauthorized and unexplained.",
+    "Agent offered to escalate the issue to the service team for investigation, noting the October 3rd case created by Cecilia."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy modification authorization processes",
+    "How to access and interpret insurance app data",
+    "Escalation procedures for unauthorized policy changes"
+  ],
+  "systems_referenced": [
+    "National General insurance app",
+    "Alliance Insurance service team",
+    "Policy management system (case created by Cecilia on October 3rd)"
+  ],
+  "summary": "Jerry Mason disputes unauthorized removal of two vehicles from his insurance policy and expresses concern about potential financial liability. The agent confirmed current policy details, acknowledged the discrepancy, and offered to escalate the issue to the service team for resolution. The call ended with a commitment to follow up through the service team.",
+  "_model": "qwen3:14b",
+  "_eval_count": 300,
+  "_total_duration_ms": 39053,
+  "_source_file": "transcripts/in-+13363544000-+13364063166-20251125-090333-1764079413.119.txt",
+  "_direction": "inbound",
+  "_char_count": 1891
+}

@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Verify account status (payment history and address update) and confirm no issues with recent messages about a potential speeding ticket.",
+  "resolution_steps": [
+    "Agent verified caller's address (5701 Old Lexington Road) and confirmed it was updated in the system.",
+    "Checked payment history, confirming last auto-pay draft was successful (amount: $474.04 on January 9th) and next payment due February 11th.",
+    "Addressed concern about speeding ticket messages by explaining they are likely spam, as no tickets were reported in 2025 or January 2026.",
+    "Reassured caller that no issues were found with their account or insurance status."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Auto-pay processing and payment history verification",
+    "Handling customer concerns about potential fraud/spam messages",
+    "Insurance policy status checks"
+  ],
+  "systems_referenced": [
+    "Account management system (for payment and address verification)"
+  ],
+  "summary": "Caller confirmed their account was up to date with auto-pay and address update. They also inquired about suspicious speeding ticket messages, which the agent explained were likely spam. The call concluded with the agent confirming no issues with the caller's insurance status.",
+  "_model": "qwen3:14b",
+  "_eval_count": 282,
+  "_total_duration_ms": 32175,
+  "_source_file": "transcripts/in-+13363779003-+13367490677-20260119-140654-1768849614.4538.txt",
+  "_direction": "inbound",
+  "_char_count": 1534
+}

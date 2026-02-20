@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Christina is seeking assistance with two insurance-related issues: (1) resolving a canceled business auto policy for Jesse due to license renewal complications, and (2) reinstating Joel Mendoza Pagoda's Westfield insurance policies after cancellation due to unpaid premiums.",
+  "resolution_steps": [
+    "Cody confirms Jesse's policy was canceled by Progressive due to an invalid license and discusses potential re-quotes.",
+    "Cody checks the system for a cancel case related to Jesse's business auto policy.",
+    "Cody shifts focus to Joel's case, noting Westfield canceled policies due to unpaid premiums (August-October) and requires a statement of no loss for reinstatement.",
+    "Cody mentions needing checking account details and underwriter approval for reinstatement.",
+    "Christina provides her email address for forwarding the case to Pennsylvania."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy cancellation/reinstatement processes",
+    "Handling license-related policy issues",
+    "Coordination between Indiana and Pennsylvania offices",
+    "Carrier-specific procedures (Progressive, Westfield)"
+  ],
+  "systems_referenced": [
+    "Internal agency system for tracking cancel cases",
+    "Email communication with Ruby",
+    "Westfield insurance portal (reinstatement process)",
+    "Progressive insurance system"
+  ],
+  "summary": "Christina discusses two complex insurance cases with Cody: Jesse's canceled business auto policy due to license issues and Joel's Westfield policy reinstatement requiring back payments and documentation. Cody checks systems, confirms cancellation details, and outlines next steps for reinstatement, while Christina provides contact information for Pennsylvania coordination. The call ends with pending actions rather than immediate resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 367,
+  "_total_duration_ms": 59876,
+  "_source_file": "transcripts/exten-207-+15743771933-20250922-145747-1758567467.10141.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4132
+}

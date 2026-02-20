@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Dallas wants to confirm his monthly insurance payments for tax purposes and verify if a $400 charge on QuickBooks is from Alliance Insurance. He also discusses potential policy changes due to his business shifting from installation to manufacturing.",
+  "resolution_steps": [
+    "Cody confirms the auto owners policy cost ($409.98/month) and explains the need to adjust policies due to Dallas's business model change.",
+    "Cody discusses payroll figures to determine workers' comp costs and general liability coverage.",
+    "Cody clarifies the use of the truck and trailer for insurance purposes, leading to Dallas deciding to remove trailer coverage.",
+    "Cody notes future adjustments may be needed based on audits or business changes."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Workers' comp and general liability insurance calculations",
+    "Impact of business model changes (installation to manufacturing) on coverage",
+    "Payroll-based premium determination",
+    "Insurance policy adjustments for business operations"
+  ],
+  "systems_referenced": [
+    "QuickBooks",
+    "West (insurance carrier)"
+  ],
+  "summary": "Dallas consults Cody about his insurance costs, business changes, and coverage adjustments. Cody provides details on current policies, discusses necessary changes due to Dallas's shift to manufacturing, and helps adjust coverage for the truck and trailer. The call concludes with Dallas removing trailer coverage and planning future policy reviews.",
+  "_model": "qwen3:14b",
+  "_eval_count": 307,
+  "_total_duration_ms": 54322,
+  "_source_file": "transcripts/exten-207-+13364680333-20260112-143042-1768246242.5698.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 8765
+}

@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking assistance with adjusting insurance coverage for a restaurant business transition, where the building remains owned by the current owner but will become tenant-occupied. They need confirmation that the existing policy accounts for this change and that the new tenant has proper coverage.",
+  "resolution_steps": [
+    "Agent acknowledges the business transition from owner-occupied to tenant-occupied and confirms the need to update insurance documentation.",
+    "Agent advises the client to request written proof of insurance from the new tenant and ensure the current owner is listed as an additional insured.",
+    "Agent emphasizes the urgency of obtaining required documents (deck page, loss runs) within seven days to finalize the policy adjustment.",
+    "Agent reassures the client that quoting the new policy is straightforward once documentation is provided."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of business insurance transitions (owner-occupied to tenant-occupied)",
+    "Knowledge of required insurance documentation (loss runs, deck pages)",
+    "Familiarity with additional insured endorsements and policy adjustments"
+  ],
+  "systems_referenced": [],
+  "summary": "The call discusses adjusting insurance coverage for a restaurant business transition, ensuring the new tenant has proper insurance and the current owner is listed as an additional insured. The agent outlines next steps, including document collection and policy updates, with a deadline of seven days. The client agrees to proceed with the required actions.",
+  "_model": "qwen3:14b",
+  "_eval_count": 308,
+  "_total_duration_ms": 56480,
+  "_source_file": "transcripts/exten-206-+13364143620-20250804-140112-1754330472.6738.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4214
+}

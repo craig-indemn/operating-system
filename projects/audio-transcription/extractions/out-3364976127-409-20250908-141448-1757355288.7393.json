@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Corbin is assisting his unavailable father in updating insurance policies, changing mailing addresses, and obtaining quotes from Progressive and Foremost for auto and umbrella coverage.",
+  "resolution_steps": [
+    "Derek confirmed the new mailing address (3941 West Point) and noted it in the system.",
+    "Discussed updating the auto policy with Progressive, including sending documents and ID cards.",
+    "Mentioned handling the umbrella policy with Foremost once Corbin's father is available in September.",
+    "Agreed to follow up with Corbin's father directly for final confirmation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy update procedures",
+    "Carrier-specific documentation requirements (Progressive, Foremost)",
+    "Handling client requests for unavailable policyholders"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal system for address updates",
+    "Progressive policy portal",
+    "Foremost umbrella policy platform"
+  ],
+  "summary": "Corbin requested updates to his father's insurance policies while he is unavailable. Derek confirmed address changes, initiated Progressive auto policy updates, and scheduled follow-up for Foremost umbrella coverage. The call required coordination between multiple carriers and handling of administrative tasks for an unavailable client.",
+  "_model": "qwen3:14b",
+  "_eval_count": 279,
+  "_total_duration_ms": 67264,
+  "_source_file": "transcripts/out-3364976127-409-20250908-141448-1757355288.7393.txt",
+  "_direction": "outbound",
+  "_char_count": 15976
+}

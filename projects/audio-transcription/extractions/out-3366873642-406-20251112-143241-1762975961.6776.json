@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Gina from Alliance Insurance) is reaching out to Charlene to review her insurance policy renewal for January, ensuring all property details and coverage are accurate.",
+  "resolution_steps": [
+    "Confirmed Charlene's address and contact information.",
+    "Asked about property updates (e.g., roof, deck additions).",
+    "Measured the new deck's dimensions (10x10).",
+    "Checked for other improvements or business activities (e.g., Air B&B).",
+    "Verified loan information with Town Mortgage.",
+    "Ensured all details were correctly recorded for policy renewal."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding insurance policy renewal processes",
+    "Assessing property updates for coverage adjustments",
+    "Verifying loan information's impact on insurance"
+  ],
+  "systems_referenced": [],
+  "summary": "Gina from Alliance Insurance contacted Charlene to review her upcoming policy renewal, confirming property details like a new 10x10 deck and verifying her loan with Town Mortgage. The call concluded with no immediate changes needed, but further action may be required for renewal.",
+  "_model": "qwen3:14b",
+  "_eval_count": 257,
+  "_total_duration_ms": 42966,
+  "_source_file": "transcripts/out-3366873642-406-20251112-143241-1762975961.6776.txt",
+  "_direction": "outbound",
+  "_char_count": 1523
+}

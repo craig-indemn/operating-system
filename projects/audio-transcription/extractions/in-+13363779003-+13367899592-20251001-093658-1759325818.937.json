@@ -1,0 +1,19 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller intended to add insurance to their commercial policy and requested assistance.",
+  "resolution_steps": [
+    "Agent acknowledged the request",
+    "Agent stated they would transfer the caller to the commercial department",
+    "Agent initiated the transfer"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The caller requested assistance adding insurance to their commercial policy. The agent acknowledged the request and transferred the call to the commercial department without further discussion.",
+  "_model": "qwen3:14b",
+  "_eval_count": 119,
+  "_total_duration_ms": 27375,
+  "_source_file": "transcripts/in-+13363779003-+13367899592-20251001-093658-1759325818.937.txt",
+  "_direction": "inbound",
+  "_char_count": 307
+}

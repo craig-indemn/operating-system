@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Not applicable (voicemail greeting)",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Voicemail greeting played; no further interaction. Caller identified as Jeremy at Alliance Insurance, but no substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 80,
+  "_total_duration_ms": 21940,
+  "_source_file": "transcripts/out-3365044124-701-20251003-134847-1759513727.15913.txt",
+  "_direction": "outbound",
+  "_char_count": 233
+}

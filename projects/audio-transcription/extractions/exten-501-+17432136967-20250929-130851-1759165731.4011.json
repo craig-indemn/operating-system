@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jessica followed up on a prior insurance transaction involving a new Kia, confirming a billing adjustment from $1700 to $662 and requesting assistance with setting up access to the online portal.",
+  "resolution_steps": [
+    "Jamie confirmed the transaction details and acknowledged the billing adjustment.",
+    "Explained that the billing system requires three days to update and will transition to the new monthly payment.",
+    "Offered to send an invite for the online portal if Jessica preferred self-service access.",
+    "Agreed to trigger the portal invite setup for Jessica."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Billing adjustment processes for insurance policies",
+    "Online portal setup procedures for clients",
+    "Communication of processing timelines for system updates"
+  ],
+  "systems_referenced": [
+    "online portal"
+  ],
+  "summary": "Jessica followed up on a prior insurance transaction involving a new Kia, confirming a billing adjustment from $1700 to $662 and requesting assistance with setting up access to the online portal. Jamie confirmed the changes, explained the three-day processing timeline, and offered to send a portal invite. The call concluded with Jessica agreeing to receive the invite and no further issues.",
+  "_model": "qwen3:14b",
+  "_eval_count": 266,
+  "_total_duration_ms": 41581,
+  "_source_file": "transcripts/exten-501-+17432136967-20250929-130851-1759165731.4011.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1483
+}

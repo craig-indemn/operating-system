@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller (Shane Champ) appears to be relaying a message about a prior attempt to contact Holly, but no clear intent is expressed in this snippet.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Non-substantive voicemail snippet where Shane Champ mentions a prior call attempt to Holly. No actionable information or insurance-related discussion present.",
+  "_model": "qwen3:14b",
+  "_eval_count": 112,
+  "_total_duration_ms": 31034,
+  "_source_file": "transcripts/in-+13363779003-+13363250115-20260114-122450-1768411490.2874.txt",
+  "_direction": "inbound",
+  "_char_count": 154
+}

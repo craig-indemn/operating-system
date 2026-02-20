@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jeff is updating Joe about progress on a business deal (Big Dog Auto Salvage), discussing payment arrangements with Progressive and Lawson, and coordinating next steps for policy binding and client communication.",
+  "resolution_steps": [
+    "Joe confirms understanding of the Big Dog Auto Salvage deal and the client's preference for EFT with Progressive.",
+    "Notes the need to contact Lawson to finalize the policy based on their proposal.",
+    "Mentions follow-up on a pending Monta Line proposal and client communication about payment methods (EFT, bank draft).",
+    "Acknowledges the client's readiness to proceed with policy setup and payment arrangements."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance carrier processes (Progressive, Lawson, Monta Line)",
+    "Payment methods (EFT, bank draft, down payments)",
+    "Policy binding procedures",
+    "Client communication protocols for endorsements and proposals"
+  ],
+  "systems_referenced": [
+    "E-signature platforms",
+    "EFT systems",
+    "Cognosign",
+    "Carrier portals (Progressive, Lawson, Monta Line)"
+  ],
+  "summary": "Jeff and Joe discuss finalizing an auto salvage business deal, coordinating payment methods with insurance carriers, and ensuring client communication for policy binding. Key actions include contacting Lawson to finalize the policy and preparing the client for EFT and bank draft processes. The conversation highlights coordination between carriers and client expectations.",
+  "_model": "qwen3:14b",
+  "_eval_count": 317,
+  "_total_duration_ms": 47553,
+  "_source_file": "transcripts/exten-206-+13364143620-20250909-093044-1757424644.277.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3873
+}

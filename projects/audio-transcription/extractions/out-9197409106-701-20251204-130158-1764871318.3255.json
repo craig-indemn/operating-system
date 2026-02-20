@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Stephen Arnold seeks to switch insurance providers, specifically requesting assistance with auto and renters insurance, mentioning a need for bundling discounts and a December 15th deadline for policy activation.",
+  "resolution_steps": [
+    "Agent Jeremy collects Stephen's personal details (DOB, DL number, address, email, phone number).",
+    "Confirms Stephen's current auto insurance with Erie Insurance and discusses bundling opportunities.",
+    "Sends an email with a link to Erie's portal for Stephen to share coverage details and VIN numbers.",
+    "Informs Stephen of a follow-up after meetings to present bundled policy options by close of business.",
+    "Notes Stephen's deadline of December 15th and commitment to expedite the process."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance bundling processes for auto and renters policies",
+    "Erie Insurance's customer portal integration (Canopy Connect)",
+    "Data collection protocols for insurance applications",
+    "Urgency management for policy deadlines"
+  ],
+  "systems_referenced": [
+    "Erie Insurance portal (via Canopy Connect)",
+    "MyAllianceInsurance.com (email sender domain)",
+    "Internal insurance quoting systems"
+  ],
+  "summary": "Stephen Arnold is seeking to switch insurance providers and requested assistance with auto and renters insurance, emphasizing a need for bundling discounts and a December 15th deadline. Agent Jeremy collected personal and insurance details, initiated an email with a portal link for data retrieval, and committed to follow-up after meetings to provide options by close of business.",
+  "_model": "qwen3:14b",
+  "_eval_count": 343,
+  "_total_duration_ms": 49273,
+  "_source_file": "transcripts/out-9197409106-701-20251204-130158-1764871318.3255.txt",
+  "_direction": "outbound",
+  "_char_count": 4179
+}

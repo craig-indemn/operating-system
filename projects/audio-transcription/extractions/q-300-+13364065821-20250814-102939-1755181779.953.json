@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Cynthia Van Hoy is inquiring about the renewal of her homeowner's policy with Utica, expressing concern about potential price increases and ensuring she receives the renewal documents. She also needs to confirm that bills continue to be sent to her current address despite an inherited property change.",
+  "resolution_steps": [
+    "Agent Jacy confirmed Cynthia's identity and policy details (Utica, address: 794 Falconbridge Road, Rollhall).",
+    "Acknowledged Cynthia's concern about past premium increases and property tax hikes.",
+    "Offered to email the renewal documents due to Cynthia's trouble logging into the Utica portal.",
+    "Confirmed Cynthia's email address (ccaudle10@gmail.com) and agreed to send the documents.",
+    "Verified that the physical address (150 Torrey Lane) remains unchanged for billing purposes."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Handling insurance policy renewals",
+    "Address management for policyholders",
+    "Customer concerns about premium increases",
+    "Emailing documents as an alternative to portal access"
+  ],
+  "systems_referenced": [
+    "Utica insurance portal (mentioned as inaccessible by the caller)"
+  ],
+  "summary": "Cynthia Van Hoy contacted Alliance Insurance Services to address concerns about her Utica homeowner's policy renewal, fearing price increases after past experiences. Agent Jacy confirmed details, offered to email the renewal documents, and ensured billing would continue to her current address. The call concluded with a resolution to send documents via email.",
+  "_model": "qwen3:14b",
+  "_eval_count": 332,
+  "_total_duration_ms": 46444,
+  "_source_file": "transcripts/q-300-+13364065821-20250814-102939-1755181779.953.txt",
+  "_direction": "queue",
+  "_char_count": 2625
+}

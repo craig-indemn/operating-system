@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller engaged in casual conversation about personal fishing experiences and unrelated anecdotes, with no clear intent related to insurance services.",
+  "resolution_steps": [],
+  "outcome": "not_applicable",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A non-substantive extension transfer containing casual conversation about fishing trips, trout, and unrelated personal stories. No insurance-related topics or actionable items were discussed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 105,
+  "_total_duration_ms": 29398,
+  "_source_file": "transcripts/exten-105-+13363255363-20250806-092336-1754486616.623.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4310
+}

@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Barbara Green is discussing the impact of Carson Industries being acquired by Walter Group LLC on their insurance coverage and addressing the need to adjust policies for Stokes Tire and Automotive due to renewal and pricing changes.",
+  "resolution_steps": [
+    "Explained that Carson Industries' mid-term coverage change was due to being acquired, requiring a pro rata adjustment.",
+    "Checked if Walter Group LLC (the acquiring company) was already insured but confirmed they were not.",
+    "Discussed options for Stokes Tire and Automotive: either endorsing the existing policy or canceling/rewriting it for accuracy.",
+    "Agreed to generate a quote for the updated policy terms (including mod changes and pricing) and present it before final renewal.",
+    "Committed to handling the process and following up."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of mid-term insurance adjustments (pro rata vs. short rate)",
+    "Policy renewal processes and endorsements",
+    "Carrier-specific pricing and mod change procedures",
+    "Account management for large clients"
+  ],
+  "systems_referenced": [],
+  "summary": "Barbara Green addressed the insurance implications of Carson Industries' acquisition by Walter Group LLC, confirmed no existing coverage for the new owner, and outlined steps to handle Stokes Tire and Automotive's policy renewal. She agreed to generate a quote with updated terms and present it before finalizing the renewal. The call concluded with a plan to proceed with the necessary adjustments.",
+  "_model": "qwen3:14b",
+  "_eval_count": 316,
+  "_total_duration_ms": 48128,
+  "_source_file": "transcripts/exten-302-+16782588079-20251208-152611-1765225571.11943.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3214
+}

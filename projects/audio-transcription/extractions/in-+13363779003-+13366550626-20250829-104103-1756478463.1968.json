@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with Jamie",
+  "resolution_steps": [
+    "Agent checked Jamie's availability",
+    "Transferred call to Jamie"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller requested to speak with Jamie. Agent checked availability and initiated transfer. No substantive discussion occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 92,
+  "_total_duration_ms": 58192,
+  "_source_file": "transcripts/in-+13363779003-+13366550626-20250829-104103-1756478463.1968.txt",
+  "_direction": "inbound",
+  "_char_count": 213
+}

@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear, appears to be a fragmented conversation about a misplaced phone and unrelated remarks.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Fragmented conversation with unclear context, likely a transferred call that did not address insurance-related matters. The caller discusses a misplaced phone and makes disjointed remarks without clear intent or resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 106,
+  "_total_duration_ms": 35443,
+  "_source_file": "transcripts/exten-702-+13363255488-20250924-123313-1758731593.2646.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 480
+}

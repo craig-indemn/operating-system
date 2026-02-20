@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller requested a quote for commercial insurance for a construction company, noting they previously had a car insurance policy with National General. They emphasized the need for assistance in Spanish.",
+  "resolution_steps": [
+    "Agent confirmed the caller's intent to obtain a commercial insurance quote.",
+    "Agent checked the caller's previous policy history (National General car insurance).",
+    "Noted the absence of the Spanish-speaking commercial insurance representative.",
+    "Proposed alternatives: visiting the office or using Skype for assistance.",
+    "Caller agreed to visit the office in the afternoon for immediate service."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Commercial insurance products",
+    "Handling Spanish-speaking clients",
+    "Office location and availability of staff",
+    "Previous policy history checks"
+  ],
+  "systems_referenced": [
+    "Skype",
+    "office location"
+  ],
+  "summary": "A Spanish-speaking caller requested a commercial insurance quote for a construction company, referencing a prior car insurance policy with National General. The agent arranged an in-person meeting at the office for same-day service after confirming the unavailability of the Spanish-speaking commercial rep.",
+  "_model": "qwen3:14b",
+  "_eval_count": 253,
+  "_total_duration_ms": 44260,
+  "_source_file": "transcripts/in-+13363779003-+13369864324-20250908-120813-1757347693.5083.txt",
+  "_direction": "inbound",
+  "_char_count": 1489
+}

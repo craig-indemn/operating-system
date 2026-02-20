@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Voicemail left to follow up on a prior request from Heather Johnson to contact Amy Hall.",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Voicemail from Heather Scott to Amy Hall, referencing a prior request from Heather Johnson to contact Amy. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 93,
+  "_total_duration_ms": 24254,
+  "_source_file": "transcripts/out-3367103744-401-20250812-141919-1755022759.8857.txt",
+  "_direction": "outbound",
+  "_char_count": 532
+}

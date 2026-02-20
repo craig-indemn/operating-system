@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The agent (Mark) is updating Geo about ongoing efforts to remove three points from his auto insurance policy, explaining the carrier's process and reassuring him that the matter is being actively addressed despite delays.",
+  "resolution_steps": [
+    "Explained carrier's procedure for charging points until the claim is closed, with potential reimbursement if not the client's fault.",
+    "Acknowledged Geo's clarification that no claims were filed and no payments made.",
+    "Reassured Geo that Alliance is working with the carrier to resolve the issue, citing holiday-related delays.",
+    "Asked Geo about the status of the claim and medical aspects of the accident.",
+    "Noted the claimant's license suspension and potential rating changes after two years.",
+    "Committed to following up with the carrier's representative to expedite resolution."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Carrier procedures for handling points on auto policies with open claims",
+    "Impact of claim closures on point removal and reimbursement",
+    "Timeline for claim resolution and rating adjustments post-incident"
+  ],
+  "systems_referenced": [],
+  "summary": "An Alliance Insurance agent updates Geo on ongoing efforts to remove three points from his auto policy, explaining carrier procedures and delays. The agent reassures Geo that the matter is being actively addressed, notes the complexity of the claim due to medical issues, and commits to follow-up with the carrier. The call ends with Geo expressing gratitude and the agent promising further action.",
+  "_model": "qwen3:14b",
+  "_eval_count": 324,
+  "_total_duration_ms": 49635,
+  "_source_file": "transcripts/out-3362099635-303-20251202-125127-1764697887.4590.txt",
+  "_direction": "outbound",
+  "_char_count": 2618
+}

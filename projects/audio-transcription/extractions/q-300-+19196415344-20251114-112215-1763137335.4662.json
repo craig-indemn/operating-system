@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Ingrid wants to add a new 2026 Tesla Model 3 to her insurance policy by removing her 2016 Mercedes and obtain a quote with the same coverage terms.",
+  "resolution_steps": [
+    "Brandy confirmed the VIN number after clarifying that an 'O' in the VIN was actually a '0'.",
+    "Brandy checked the system to verify the Tesla's details (year, model, and coverage).",
+    "Brandy calculated the premium increase ($426 annually) and explained how it would be distributed across remaining payments.",
+    "Brandy confirmed the removal of the Mercedes and addition of the Tesla to the policy.",
+    "Brandy committed to sending proof of insurance via email."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy adjustments (adding/removing vehicles)",
+    "VIN verification and system troubleshooting",
+    "Premium calculation logic for vehicle changes",
+    "Handling leased vehicles (JP Morgan Chase)"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services policy management system",
+    "VIN lookup tool",
+    "Email notification system for proof of insurance"
+  ],
+  "summary": "Ingrid requested to replace her 2016 Mercedes with a 2026 Tesla Model 3 on her insurance policy. Brandy resolved a VIN input issue, confirmed the vehicle details, calculated the premium increase, and arranged for proof of insurance to be emailed. The caller needed clarification on how the premium increase would be applied across remaining payments.",
+  "_model": "qwen3:14b",
+  "_eval_count": 339,
+  "_total_duration_ms": 44589,
+  "_source_file": "transcripts/q-300-+19196415344-20251114-112215-1763137335.4662.txt",
+  "_direction": "queue",
+  "_char_count": 3930
+}

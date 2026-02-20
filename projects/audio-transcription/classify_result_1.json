@@ -1,0 +1,753 @@
+{
+  "batch": 1,
+  "total_classified": 309,
+  "classifications": [
+    {"file": "axfer-+12542164347-113-20250915-145824-1757962643.12811", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "axfer-+13362156620-409-20250926-135754-1758909253.3216", "engagement_type": "coverage-question", "confidence": "high"},
+    {"file": "axfer-+13363095754-510-20250805-114611-1754408636.3989", "engagement_type": "claims", "confidence": "high"},
+    {"file": "axfer-+13363910574-409-20250730-115946-1753891142.2954", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "axfer-+13364697645-509-20251024-131929-1761326220.3172", "engagement_type": "mortgage-lender", "confidence": "high"},
+    {"file": "axfer-+13367579219-501-20250924-095911-1758722151.824", "engagement_type": "coverage-question", "confidence": "medium"},
+    {"file": "axfer-+13368702229-706-20250801-092339-1754054550.145", "engagement_type": "routing-triage", "confidence": "high"},
+    {"file": "axfer-+15719917607-701-20250728-154532-1753731184.12761", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "axfer-+16788134751-301-20260114-114731-1768409045.1895", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "axfer-+17046811977-509-20250925-152018-1758827911.10350", "engagement_type": "coi-request", "confidence": "medium"},
+    {"file": "exten-100-+13103659076-20250909-155204-1757447524.12778", "engagement_type": "mortgage-lender", "confidence": "medium"},
+    {"file": "exten-100-+13366896866-20251016-094636-1760622396.1656", "engagement_type": "routing-triage", "confidence": "high"},
+    {"file": "exten-100-+13367109204-20250826-124004-1756226404.4280", "engagement_type": "info-update", "confidence": "medium"},
+    {"file": "exten-100-+13367144687-20251014-152409-1760469849.6235", "engagement_type": "billing-question", "confidence": "medium"},
+    {"file": "exten-100-+13367949911-20251014-143317-1760466797.5143", "engagement_type": "routing-triage", "confidence": "high"},
+    {"file": "exten-100-+13368291800-20251201-091942-1764598782.501", "engagement_type": "vehicle-change", "confidence": "high"},
+    {"file": "exten-100-+13369784284-20251110-101408-1762787648.928", "engagement_type": "make-payment", "confidence": "high"},
+    {"file": "exten-100-+17432859061-20250930-110815-1759244895.1381", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "exten-100-114-20251007-160234-1759867355.9757", "engagement_type": "make-payment", "confidence": "high"},
+    {"file": "exten-101-+13363514900-20250815-091535-1755263735.398", "engagement_type": "vehicle-change", "confidence": "high"},
+    {"file": "exten-101-+13364146514-20250925-162835-1758832115.12061", "engagement_type": "info-update", "confidence": "medium"},
+    {"file": "exten-101-+13364291181-20250731-111002-1753974602.5377", "engagement_type": "commercial-specialty", "confidence": "high"},
+    {"file": "exten-101-+13364730881-20250730-151117-1753902677.8520", "engagement_type": "coverage-question", "confidence": "high"},
+    {"file": "exten-101-+13366074611-20250825-134631-1756143991.6212", "engagement_type": "coverage-question", "confidence": "high"},
+    {"file": "exten-101-+13366992088-20250725-154730-1753472850.11242", "engagement_type": "claims", "confidence": "high"},
+    {"file": "exten-101-+13366992088-20250806-111549-1754493349.3706", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "exten-101-+13367102188-20250918-164215-1758228135.12517", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "exten-101-+13367865899-20250903-140100-1756922460.8493", "engagement_type": "cancellation", "confidence": "high"},
+    {"file": "exten-101-+13369368007-20250925-162506-1758831906.11999", "engagement_type": "coi-request", "confidence": "high"},
+    {"file": "exten-101-+15704662596-20250730-161105-1753906265.12550", "engagement_type": "coverage-question", "confidence": "medium"},
+    {"file": "exten-101-+17042777943-20250819-122124-1755620484.4659", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "exten-101-+17047522133-20250818-162320-1755548600.11083", "engagement_type": "reinstatement", "confidence": "medium"},
+    {"file": "exten-101-+18007662245-20250805-153346-1754422426.7759", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "exten-101-+19196257612-20250827-142434-1756319074.5321", "engagement_type": "follow-up", "confidence": "high"},
+    {"file": "exten-102-+12533182102-20251211-093514-1765463714.340", "engagement_type": "document-request", "confidence": "high"},
+    {"file": "exten-102-+13362515220-20251210-141052-1765393852.3130", "engagement_type": "document-request", "confidence": "high"},
+    {"file": "exten-102-+13362873866-20251229-142635-1767036395.10234", "engagement_type": "follow-up", "confidence": "medium"},
+    {"file": "exten-102-+13363013103-20251024-113341-1761320021.1876", "engagement_type": "coi-request", "confidence": "high"},
+    {"file": "exten-102-+13363066779-20251112-153303-1762979583.7500", "engagement_type": "cancellation", "confidence": "high"},
+    {"file": "exten-102-+13363275500-20251113-121438-1763054078.3324", "engagement_type": "coi-request", "confidence": "high"},
+    {"file": "exten-102-+13363710022-20251020-153236-1760988756.9847", "engagement_type": "make-payment", "confidence": "high"},
+    {"file": "exten-102-+13364076845-20251230-102153-1767108113.1158", "engagement_type": "follow-up", "confidence": "high"},
+    {"file": "exten-102-+13364144231-20251211-122020-1765473620.2724", "engagement_type": "document-request", "confidence": "high"},
+    {"file": "exten-102-+13364223221-20250828-130857-1756400937.5034", "engagement_type": "document-request", "confidence": "high"},
+    {"file": "exten-102-+13364223221-20250903-160311-1756929791.9952", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "exten-102-+13364291181-20251014-150955-1760468995.6039", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "exten-102-+13364677667-20251223-133423-1766514863.2575", "engagement_type": "follow-up", "confidence": "high"},
+    {"file": "exten-102-+13364737646-20251112-160224-1762981344.8000", "engagement_type": "vehicle-change", "confidence": "medium"},
+    {"file": "exten-102-+13366074877-20251216-095859-1765897139.691", "engagement_type": "reinstatement", "confidence": "high"},
+    {"file": "exten-102-+13366506702-20251006-130007-1759770007.6713", "engagement_type": "vehicle-change", "confidence": "high"},
+    {"file": "exten-102-+13366615183-20251210-142042-1765394442.3549", "engagement_type": "billing-question", "confidence": "medium"},
+    {"file": "exten-102-+13367102188-20251222-160656-1766437616.4850", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "exten-102-+13367823384-20251024-164957-1761338997.7562", "engagement_type": "coi-request", "confidence": "high"},
+    {"file": "exten-102-+13368136009-20251212-150332-1765569812.4328", "engagement_type": "follow-up", "confidence": "high"},
+    {"file": "exten-102-+13369184809-20251222-150736-1766434056.4508", "engagement_type": "cancellation", "confidence": "medium"},
+    {"file": "exten-102-+14173881838-20251216-134227-1765910547.3423", "engagement_type": "billing-question", "confidence": "medium"},
+    {"file": "exten-102-+14409104489-20251113-145301-1763063581.6257", "engagement_type": "claims", "confidence": "high"},
+    {"file": "exten-102-+16072713116-20251014-141739-1760465859.5079", "engagement_type": "coverage-modification", "confidence": "medium"},
+    {"file": "exten-102-+17045499908-20251212-134936-1765565376.3620", "engagement_type": "follow-up", "confidence": "high"},
+    {"file": "exten-102-+17049945800-20251229-102356-1767021836.2022", "engagement_type": "coi-request", "confidence": "high"},
+    {"file": "exten-102-+17346660139-20251113-142846-1763062126.5964", "engagement_type": "routing-triage", "confidence": "high"},
+    {"file": "exten-102-+17432397162-20260113-114007-1768322407.4573", "engagement_type": "reinstatement", "confidence": "medium"},
+    {"file": "exten-103-+12523193621-20250725-094740-1753451260.2984", "engagement_type": "coi-request", "confidence": "high"},
+    {"file": "exten-103-+13364143620-20251001-140327-1759341807.6732", "engagement_type": "workers-comp", "confidence": "medium"},
+    {"file": "exten-103-+13364143620-20251009-105545-1760021745.2655", "engagement_type": "routing-triage", "confidence": "medium"},
+    {"file": "exten-103-+13364144231-20250806-155111-1754509871.10385", "engagement_type": "workers-comp", "confidence": "medium"},
+    {"file": "exten-103-+13369185928-20250724-163946-1753389586.12364", "engagement_type": "document-request", "confidence": "medium"},
+    {"file": "exten-104-+13365857913-20251201-092105-1764598865.530", "engagement_type": "routing-triage", "confidence": "medium"},
+    {"file": "exten-105-+12165057199-20250924-144750-1758739670.5389", "engagement_type": "routing-triage", "confidence": "high"},
+    {"file": "exten-105-+12168108766-20250919-144233-1758307353.6750", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "exten-105-+13362554718-20250919-100803-1758290883.904", "engagement_type": "routing-triage", "confidence": "high"},
+    {"file": "exten-105-+13362764167-20251020-090918-1760965758.402", "engagement_type": "follow-up", "confidence": "high"},
+    {"file": "exten-105-+13363451343-20251117-153120-1763411480.4778", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "exten-105-+13364291341-20260108-130241-1767895361.3636", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "exten-105-+13364601448-20251031-095551-1761918951.1224", "engagement_type": "follow-up", "confidence": "medium"},
+    {"file": "exten-105-+13364601448-20260106-134117-1767724877.3714", "engagement_type": "routing-triage", "confidence": "medium"},
+    {"file": "exten-105-+13365952852-20251125-105220-1764085940.1069", "engagement_type": "cancellation", "confidence": "high"},
+    {"file": "exten-105-+13366860343-20250924-155700-1758743820.7135", "engagement_type": "vehicle-change", "confidence": "high"},
+    {"file": "exten-105-+13367823384-20260119-134445-1768848285.4141", "engagement_type": "follow-up", "confidence": "medium"},
+    {"file": "exten-105-+13466510036-20250929-091634-1759151794.741", "engagement_type": "claims", "confidence": "medium"},
+    {"file": "exten-105-+14409106098-20250909-091404-1757423644.202", "engagement_type": "commercial-specialty", "confidence": "high"},
+    {"file": "exten-105-+14845854000-20251210-094844-1765378124.716", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "exten-105-+14845854000-20251229-112610-1767025570.4816", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "exten-105-+15134906990-20251110-153108-1762806668.6779", "engagement_type": "new-quote", "confidence": "medium"},
+    {"file": "exten-105-+15173231200-20250819-132952-1755624592.6240", "engagement_type": "routing-triage", "confidence": "high"},
+    {"file": "exten-105-+15173231201-20250911-101539-1757600139.1846", "engagement_type": "routing-triage", "confidence": "high"},
+    {"file": "exten-105-+17045601996-20250919-104238-1758292958.1168", "engagement_type": "routing-triage", "confidence": "high"},
+    {"file": "exten-105-+17372010309-20251119-135001-1763578201.4675", "engagement_type": "routing-triage", "confidence": "high"},
+    {"file": "exten-105-+17738259688-20260109-095105-1767970265.637", "engagement_type": "commercial-specialty", "confidence": "medium"},
+    {"file": "exten-105-+18432240531-20251119-144517-1763581517.5082", "engagement_type": "coi-request", "confidence": "high"},
+    {"file": "exten-105-+18438600522-20251105-111932-1762359572.2807", "engagement_type": "routing-triage", "confidence": "high"},
+    {"file": "exten-105-+18886826671-20250922-143527-1758566127.8840", "engagement_type": "routing-triage", "confidence": "high"},
+    {"file": "exten-105-+19086564672-20251229-162258-1767043378.12651", "engagement_type": "commercial-specialty", "confidence": "high"},
+    {"file": "exten-105-+19192680679-20250818-130950-1755536990.4641", "engagement_type": "routing-triage", "confidence": "high"},
+    {"file": "exten-105-+19196210900-20251204-154944-1764881384.7580", "engagement_type": "coi-request", "confidence": "medium"},
+    {"file": "exten-106-+13362311126-20250924-132646-1758734806.4754", "engagement_type": "workers-comp", "confidence": "high"},
+    {"file": "exten-106-+13364048139-20250926-105702-1758898622.1467", "engagement_type": "cancellation", "confidence": "medium"},
+    {"file": "exten-106-+13364144231-20250818-133027-1755538227.5568", "engagement_type": "document-request", "confidence": "high"},
+    {"file": "exten-106-+13366151724-20251120-104405-1763653445.676", "engagement_type": "claims", "confidence": "high"},
+    {"file": "exten-106-+13366483647-20251017-124945-1760719785.3303", "engagement_type": "reinstatement", "confidence": "high"},
+    {"file": "exten-106-+13366557792-20251202-112811-1764692891.2785", "engagement_type": "coi-request", "confidence": "medium"},
+    {"file": "exten-106-+13366594105-20251016-095818-1760623098.1693", "engagement_type": "claims", "confidence": "high"},
+    {"file": "exten-106-+13366615183-20250922-094820-1758548900.1180", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "exten-106-+13366718842-20251117-142238-1763407358.4052", "engagement_type": "driver-change", "confidence": "high"},
+    {"file": "exten-106-+13367505898-20250730-134800-1753897680.6068", "engagement_type": "coi-request", "confidence": "high"},
+    {"file": "exten-106-+13367505898-20250808-104121-1754664081.4920", "engagement_type": "billing-question", "confidence": "medium"},
+    {"file": "exten-106-+13367505898-20250820-105127-1755701487.2527", "engagement_type": "coverage-question", "confidence": "medium"},
+    {"file": "exten-106-+13367505898-20250829-112242-1756480962.2422", "engagement_type": "make-payment", "confidence": "medium"},
+    {"file": "exten-106-+13367505898-20250923-091001-1758633001.508", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "exten-106-+13367505898-20250926-104014-1758897614.1207", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "exten-106-+13367560795-20250730-120036-1753891236.2974", "engagement_type": "make-payment", "confidence": "medium"},
+    {"file": "exten-106-+13367560795-20250915-102246-1757946166.2785", "engagement_type": "follow-up", "confidence": "high"},
+    {"file": "exten-106-+13367727887-20251126-122050-1764177650.2385", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "exten-106-+13367826357-20250728-124931-1753721371.7587", "engagement_type": "make-payment", "confidence": "high"},
+    {"file": "exten-106-+13367826357-20250805-091944-1754399984.856", "engagement_type": "coi-request", "confidence": "high"},
+    {"file": "exten-106-+13367826357-20250903-140440-1756922680.8540", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "exten-106-+13369863334-20250813-134259-1755106979.6432", "engagement_type": "make-payment", "confidence": "high"},
+    {"file": "exten-106-+17277991229-20250722-161528-1753215328.17642", "engagement_type": "make-payment", "confidence": "high"},
+    {"file": "exten-106-+17863538095-20250730-132542-1753896342.5337", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "exten-106-+17863538095-20250730-133500-1753896900.5576", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "exten-106-+17863538095-20250812-105223-1755010343.2448", "engagement_type": "document-request", "confidence": "high"},
+    {"file": "exten-106-+17863538095-20250812-113646-1755013006.4430", "engagement_type": "follow-up", "confidence": "high"},
+    {"file": "exten-106-+19193022011-20250819-141439-1755627279.7568", "engagement_type": "coverage-question", "confidence": "high"},
+    {"file": "exten-106-+19193483642-20250922-155329-1758570809.10920", "engagement_type": "follow-up", "confidence": "high"},
+    {"file": "exten-107-+13363025766-20251114-105529-1763135729.4327", "engagement_type": "routing-triage", "confidence": "high"},
+    {"file": "exten-107-+13363025766-20251114-145407-1763150047.7336", "engagement_type": "follow-up", "confidence": "medium"},
+    {"file": "exten-107-+13363417096-20250924-090917-1758719357.184", "engagement_type": "reinstatement", "confidence": "medium"},
+    {"file": "exten-107-+13363918979-20251003-165713-1759525033.21914", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "exten-107-+13363918979-20251008-130331-1759943011.4570", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "exten-107-+13364063166-20251007-155649-1759867009.9699", "engagement_type": "vehicle-change", "confidence": "high"},
+    {"file": "exten-107-+13364990749-20250919-131257-1758301977.3915", "engagement_type": "routing-triage", "confidence": "high"},
+    {"file": "exten-107-+13364990749-20251009-145112-1760035872.4551", "engagement_type": "routing-triage", "confidence": "high"},
+    {"file": "exten-107-+13364990749-20251017-102210-1760710930.1157", "engagement_type": "routing-triage", "confidence": "high"},
+    {"file": "exten-107-+13364990749-20251112-143432-1762976072.6783", "engagement_type": "routing-triage", "confidence": "high"},
+    {"file": "exten-107-+13367072276-20250903-124332-1756917812.6716", "engagement_type": "coverage-question", "confidence": "medium"},
+    {"file": "exten-107-+13367862401-20251020-135234-1760982754.7387", "engagement_type": "billing-question", "confidence": "medium"},
+    {"file": "exten-107-+13368135604-20250822-131302-1755882782.10081", "engagement_type": "routing-triage", "confidence": "high"},
+    {"file": "exten-107-+13369721803-20250724-100352-1753365832.627", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "exten-107-+17045499908-20251113-140730-1763060850.5295", "engagement_type": "reinstatement", "confidence": "medium"},
+    {"file": "exten-107-+17046723035-20251006-133056-1759771856.8310", "engagement_type": "routing-triage", "confidence": "high"},
+    {"file": "exten-107-+19415643010-20250822-111634-1755875794.6193", "engagement_type": "routing-triage", "confidence": "high"},
+    {"file": "exten-112-+13363378975-20250918-150044-1758222044.8732", "engagement_type": "cancellation", "confidence": "high"},
+    {"file": "exten-112-+13363748339-20260108-110526-1767888326.2436", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "exten-112-+13364016082-20251215-115342-1765817622.2361", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "exten-112-+13364068380-20251105-153252-1762374772.6028", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "exten-112-+13364149508-20251112-105706-1762963026.2694", "engagement_type": "follow-up", "confidence": "high"},
+    {"file": "exten-112-+13364685952-20251215-091553-1765808153.124", "engagement_type": "coverage-modification", "confidence": "high"},
+    {"file": "exten-112-+13364696809-20251107-122525-1762536325.2632", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "exten-112-+13364737667-20251014-133806-1760463486.4949", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "exten-112-+13364737667-20251015-125705-1760547425.1940", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "exten-112-+13364990749-20251009-145112-1760035872.4551", "engagement_type": "routing-triage", "confidence": "high"},
+    {"file": "exten-112-+13365889896-20251210-092807-1765376887.491", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "exten-112-+13366489698-20251014-123634-1760459794.3154", "engagement_type": "routing-triage", "confidence": "medium"},
+    {"file": "exten-112-+13366550162-20250930-134909-1759254549.4030", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "exten-112-+13366710149-20251006-140016-1759773616.8773", "engagement_type": "routing-triage", "confidence": "high"},
+    {"file": "exten-112-+13366826205-20250922-093854-1758548334.864", "engagement_type": "reinstatement", "confidence": "high"},
+    {"file": "exten-112-+13367171068-20251001-105035-1759330235.2323", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "exten-112-+13367550075-20260113-095657-1768316217.3009", "engagement_type": "cancellation", "confidence": "high"},
+    {"file": "exten-112-+13368309924-20251010-142752-1760120872.7855", "engagement_type": "billing-question", "confidence": "medium"},
+    {"file": "exten-112-+13368309924-20251017-134815-1760723295.3918", "engagement_type": "follow-up", "confidence": "high"},
+    {"file": "exten-112-+13368821183-20260116-123353-1768584833.2938", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "exten-112-+13369266246-20250724-105542-1753368942.1142", "engagement_type": "follow-up", "confidence": "high"},
+    {"file": "exten-112-+13369717787-20250923-155217-1758657137.5914", "engagement_type": "make-payment", "confidence": "high"},
+    {"file": "exten-112-+13369970484-20260106-121739-1767719859.2676", "engagement_type": "coverage-question", "confidence": "high"},
+    {"file": "exten-112-+15164446974-20250916-125412-1758041652.6894", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "exten-112-+17045025332-20251223-094403-1766501043.444", "engagement_type": "dmv-compliance", "confidence": "medium"},
+    {"file": "exten-112-+17046171294-20250814-110659-1755184019.1962", "engagement_type": "billing-question", "confidence": "medium"},
+    {"file": "exten-112-+18507281896-20251014-164225-1760474545.8409", "engagement_type": "coverage-question", "confidence": "medium"},
+    {"file": "exten-112-+19192803250-20260113-110024-1768320024.4175", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "exten-113-+13362607166-20251223-122054-1766510454.2161", "engagement_type": "follow-up", "confidence": "high"},
+    {"file": "exten-113-+13362874668-20250915-094759-1757944079.1036", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "exten-113-+13362874668-20251113-144934-1763063374.6219", "engagement_type": "info-update", "confidence": "medium"},
+    {"file": "exten-113-+13362879577-20251117-120200-1763398920.2254", "engagement_type": "cancellation", "confidence": "medium"},
+    {"file": "exten-113-+13362879577-20251117-125417-1763402057.3130", "engagement_type": "follow-up", "confidence": "high"},
+    {"file": "exten-113-+13363090286-20251215-101630-1765811790.916", "engagement_type": "vehicle-change", "confidence": "high"},
+    {"file": "exten-113-+13363098269-20250815-104753-1755269273.2329", "engagement_type": "follow-up", "confidence": "high"},
+    {"file": "exten-113-+13363250115-20251218-132139-1766082099.3074", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "exten-113-+13363456451-20250814-104716-1755182836.1479", "engagement_type": "new-quote", "confidence": "medium"},
+    {"file": "exten-113-+13363545052-20251219-125913-1766167153.5541", "engagement_type": "coverage-question", "confidence": "high"},
+    {"file": "exten-113-+13364083214-20251216-153646-1765917406.4671", "engagement_type": "follow-up", "confidence": "high"},
+    {"file": "exten-113-+13364180551-20251023-142454-1761243894.4522", "engagement_type": "follow-up", "confidence": "high"},
+    {"file": "exten-113-+13364237951-20250815-151143-1755285103.8806", "engagement_type": "vehicle-change", "confidence": "high"},
+    {"file": "exten-113-+13364299867-20251023-101653-1761229013.1374", "engagement_type": "vehicle-change", "confidence": "high"},
+    {"file": "exten-113-+13364528352-20260109-100726-1767971246.699", "engagement_type": "mortgage-lender", "confidence": "high"},
+    {"file": "exten-113-+13365758542-20250908-124734-1757350054.6212", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "exten-113-+13365772253-20250819-160743-1755634063.10606", "engagement_type": "follow-up", "confidence": "high"},
+    {"file": "exten-113-+13365778596-20250828-160146-1756411306.9738", "engagement_type": "cancellation", "confidence": "high"},
+    {"file": "exten-113-+13366024399-20251223-152257-1766521377.3963", "engagement_type": "follow-up", "confidence": "high"},
+    {"file": "exten-113-+13366814605-20250829-102930-1756477770.1857", "engagement_type": "claims", "confidence": "medium"},
+    {"file": "exten-113-+13366814605-20250925-154518-1758829518.11166", "engagement_type": "claims", "confidence": "high"},
+    {"file": "exten-113-+13367101171-20251230-154001-1767127201.10371", "engagement_type": "coverage-question", "confidence": "high"},
+    {"file": "exten-113-+13367621446-20251023-155552-1761249352.5829", "engagement_type": "routing-triage", "confidence": "medium"},
+    {"file": "exten-113-+13367867659-20251212-095458-1765551298.928", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "exten-113-+13368176796-20251110-162312-1762809792.7139", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "exten-113-+13369090959-20251020-095245-1760968365.1248", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "exten-113-+13369090959-20251031-113119-1761924679.1791", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "exten-113-+13369246872-20251114-122639-1763141199.5046", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "exten-113-+13369711243-20251117-103635-1763393795.1458", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "exten-113-+13369711243-20251117-120426-1763399066.2284", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "exten-113-+13369711243-20251215-105616-1765814176.1598", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "exten-113-+13369714291-20251023-145304-1761245584.4652", "engagement_type": "make-payment", "confidence": "high"},
+    {"file": "exten-113-+13369946585-20251104-142819-1762284499.5549", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "exten-113-+17023780480-20251110-101707-1762787827.961", "engagement_type": "follow-up", "confidence": "high"},
+    {"file": "exten-113-+17042229558-20251212-102611-1765553171.1013", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "exten-113-+17045499908-20251017-125524-1760720124.3321", "engagement_type": "info-update", "confidence": "high"},
+    {"file": "exten-113-+17326826639-20250915-111502-1757949302.3601", "engagement_type": "make-payment", "confidence": "high"},
+    {"file": "exten-113-+17433334358-20251230-094102-1767105662.339", "engagement_type": "follow-up", "confidence": "high"},
+    {"file": "exten-114-+13072001921-20251226-092728-1766759248.143", "engagement_type": "coverage-modification", "confidence": "high"},
+    {"file": "exten-114-+13362688454-20250923-154246-1758656566.5539", "engagement_type": "claims", "confidence": "high"},
+    {"file": "exten-114-+13364082370-20251212-095903-1765551543.947", "engagement_type": "billing-question", "confidence": "medium"},
+    {"file": "exten-114-+13364234380-20251120-161855-1763673535.3913", "engagement_type": "dmv-compliance", "confidence": "medium"},
+    {"file": "exten-114-+13364297579-20250919-154630-1758311190.8183", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "exten-114-+13366181713-20260105-093823-1767623903.680", "engagement_type": "document-request", "confidence": "high"},
+    {"file": "exten-114-+13366712501-20250731-131535-1753982135.9960", "engagement_type": "dmv-compliance", "confidence": "high"},
+    {"file": "exten-114-+13367451730-20251119-143940-1763581180.5041", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "exten-114-+13367579577-20260119-112440-1768839880.1681", "engagement_type": "follow-up", "confidence": "medium"},
+    {"file": "exten-114-+13369787645-20250904-141047-1757009447.6792", "engagement_type": "info-update", "confidence": "high"},
+    {"file": "exten-114-+15132371641-20250724-135338-1753379618.3370", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "exten-114-+15183329367-20251002-133239-1759426359.9546", "engagement_type": "vehicle-change", "confidence": "high"},
+    {"file": "exten-114-+15418902882-20250908-145652-1757357812.8964", "engagement_type": "make-payment", "confidence": "high"},
+    {"file": "exten-114-+17049644200-20251031-140312-1761933792.5091", "engagement_type": "vehicle-change", "confidence": "high"},
+    {"file": "exten-114-+18034877687-20250723-121152-1753287112.5887", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "exten-114-+18286662221-20250820-125741-1755709061.7385", "engagement_type": "document-request", "confidence": "high"},
+    {"file": "exten-201-+13365960994-20251202-105404-1764690844.2065", "engagement_type": "make-payment", "confidence": "high"},
+    {"file": "exten-202-+12156741856-20250818-090906-1755522546.351", "engagement_type": "renewal-review", "confidence": "medium"},
+    {"file": "exten-202-+13362532942-20251202-091727-1764685047.314", "engagement_type": "follow-up", "confidence": "high"},
+    {"file": "exten-202-+13362874535-20260112-161515-1768252515.10633", "engagement_type": "coverage-question", "confidence": "high"},
+    {"file": "exten-202-+13363913211-20250724-111201-1753369921.1568", "engagement_type": "follow-up", "confidence": "high"},
+    {"file": "exten-202-+13364076876-20250805-092203-1754400123.906", "engagement_type": "coverage-modification", "confidence": "high"},
+    {"file": "exten-202-+13364091345-20250915-111724-1757949444.3624", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "exten-202-+13364292860-20250826-104245-1756219365.1627", "engagement_type": "coverage-modification", "confidence": "high"},
+    {"file": "exten-202-+13364292860-20250827-160340-1756325020.7190", "engagement_type": "reinstatement", "confidence": "high"},
+    {"file": "exten-202-+13364333432-20250801-124020-1754066420.4655", "engagement_type": "routing-triage", "confidence": "high"},
+    {"file": "exten-202-+13366690888-20251223-090603-1766498763.82", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "exten-202-+13367058728-20260107-153410-1767818050.4490", "engagement_type": "mortgage-lender", "confidence": "high"},
+    {"file": "exten-202-+13367513337-20250723-151556-1753298156.12243", "engagement_type": "claims", "confidence": "high"},
+    {"file": "exten-202-+13367513337-20250723-161725-1753301845.13067", "engagement_type": "document-request", "confidence": "high"},
+    {"file": "exten-202-+13367513337-20250805-131837-1754414317.5658", "engagement_type": "follow-up", "confidence": "high"},
+    {"file": "exten-202-+13367560906-20250820-103841-1755700721.2377", "engagement_type": "follow-up", "confidence": "medium"},
+    {"file": "exten-202-+13369958863-20251015-091310-1760533990.106", "engagement_type": "cancellation", "confidence": "high"},
+    {"file": "exten-202-+18283025670-20250825-143510-1756146910.10265", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "exten-203-+13363062204-20251223-102007-1766503207.1302", "engagement_type": "vehicle-change", "confidence": "high"},
+    {"file": "exten-203-+13363996535-20260102-135436-1767380076.5988", "engagement_type": "coverage-modification", "confidence": "high"},
+    {"file": "exten-203-+13364863364-20251230-162636-1767129996.10766", "engagement_type": "new-quote", "confidence": "medium"},
+    {"file": "exten-203-+13364863364-20251230-163006-1767130206.10777", "engagement_type": "make-payment", "confidence": "high"},
+    {"file": "exten-203-+13366013747-20260106-154924-1767732564.5493", "engagement_type": "coverage-modification", "confidence": "high"},
+    {"file": "exten-203-+13366013747-20260113-155235-1768337555.8278", "engagement_type": "make-payment", "confidence": "high"},
+    {"file": "exten-203-+13366013747-20260115-130438-1768500278.4666", "engagement_type": "coverage-modification", "confidence": "medium"},
+    {"file": "exten-203-+13369797940-20251219-125340-1766166820.5242", "engagement_type": "routing-triage", "confidence": "high"},
+    {"file": "exten-203-+15402392260-20251226-143303-1766777583.2311", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "exten-203-+17047633482-20251226-100637-1766761597.647", "engagement_type": "vehicle-change", "confidence": "high"},
+    {"file": "exten-204-702-20260109-113056-1767976256.1543", "engagement_type": "follow-up", "confidence": "medium"},
+    {"file": "exten-205-+13363258130-20251230-110019-1767110419.1524", "engagement_type": "commercial-specialty", "confidence": "high"},
+    {"file": "exten-206-+13057663648-20250728-091205-1753708325.1098", "engagement_type": "document-request", "confidence": "medium"},
+    {"file": "exten-206-+13363268633-20250806-150722-1754507242.9128", "engagement_type": "vehicle-change", "confidence": "high"},
+    {"file": "exten-206-+13363542024-20250815-121238-1755274358.4700", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "exten-206-+13363568305-20260112-105204-1768233124.1147", "engagement_type": "vehicle-change", "confidence": "medium"},
+    {"file": "exten-206-+13363779003-20250806-112825-1754494105.3912", "engagement_type": "follow-up", "confidence": "high"},
+    {"file": "exten-206-+13364016855-20260119-094423-1768833863.726", "engagement_type": "coverage-modification", "confidence": "high"},
+    {"file": "exten-206-+13364065717-20250909-101744-1757427464.3642", "engagement_type": "make-payment", "confidence": "high"},
+    {"file": "exten-206-+13364074559-20250723-095338-1753278818.967", "engagement_type": "follow-up", "confidence": "high"},
+    {"file": "exten-206-+13364143620-20250804-140112-1754330472.6738", "engagement_type": "coverage-modification", "confidence": "high"},
+    {"file": "exten-206-+13364143620-20250909-093044-1757424644.277", "engagement_type": "follow-up", "confidence": "high"},
+    {"file": "exten-206-+13364143620-20251230-101829-1767107909.1078", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "exten-206-+13364155363-20251013-095213-1760363533.1055", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "exten-206-+13364223497-20260119-102451-1768836291.1178", "engagement_type": "document-request", "confidence": "high"},
+    {"file": "exten-206-+13364238139-20260108-114001-1767890401.2829", "engagement_type": "make-payment", "confidence": "high"},
+    {"file": "exten-206-+13364302726-20250821-112537-1755789937.3152", "engagement_type": "coverage-question", "confidence": "high"},
+    {"file": "exten-206-+13364323980-20260116-115519-1768582519.2446", "engagement_type": "commercial-specialty", "confidence": "high"},
+    {"file": "exten-206-+13364990749-20251006-160345-1759781025.13576", "engagement_type": "routing-triage", "confidence": "high"},
+    {"file": "exten-206-+13365106909-20250923-130523-1758647123.3181", "engagement_type": "document-request", "confidence": "high"},
+    {"file": "exten-206-+13365293608-20250827-161058-1756325458.7358", "engagement_type": "reinstatement", "confidence": "high"},
+    {"file": "exten-206-+13367104904-20250814-094425-1755179065.719", "engagement_type": "claims", "confidence": "high"},
+    {"file": "exten-206-+13367557045-20250731-094037-1753969237.1901", "engagement_type": "driver-change", "confidence": "high"},
+    {"file": "exten-206-+13368133908-20250929-155637-1759175797.6383", "engagement_type": "coi-request", "confidence": "high"},
+    {"file": "exten-206-+13368138051-20250917-123013-1758126613.1744", "engagement_type": "workers-comp", "confidence": "high"},
+    {"file": "exten-206-+13368170846-20250728-161431-1753733671.14173", "engagement_type": "dmv-compliance", "confidence": "high"},
+    {"file": "exten-206-+13368301632-20260105-135559-1767639359.11189", "engagement_type": "dmv-compliance", "confidence": "high"},
+    {"file": "exten-206-+13368693000-20251229-100417-1767020657.1408", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "exten-206-+13368704260-20251110-111802-1762791482.2055", "engagement_type": "commercial-specialty", "confidence": "high"},
+    {"file": "exten-206-+13369701866-20250808-095238-1754661158.3366", "engagement_type": "make-payment", "confidence": "high"},
+    {"file": "exten-206-+13369701866-20251202-095857-1764687537.832", "engagement_type": "make-payment", "confidence": "high"},
+    {"file": "exten-206-+14845854000-20250815-125336-1755276816.5807", "engagement_type": "coverage-question", "confidence": "high"},
+    {"file": "exten-206-+15173231201-20250815-152934-1755286174.9548", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "exten-206-+16093597898-20250825-133558-1756143358.5497", "engagement_type": "follow-up", "confidence": "high"},
+    {"file": "exten-206-+16782588079-20251215-093320-1765809200.245", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "exten-206-+17042006623-20250731-102109-1753971669.3630", "engagement_type": "cancellation", "confidence": "high"},
+    {"file": "exten-206-+17042006623-20250801-121302-1754064782.3847", "engagement_type": "cancellation", "confidence": "high"},
+    {"file": "exten-206-+17348218705-20250903-141435-1756923275.8578", "engagement_type": "workers-comp", "confidence": "high"},
+    {"file": "exten-206-+17864955900-20250729-093726-1753796246.1946", "engagement_type": "document-request", "confidence": "high"},
+    {"file": "exten-206-+18283800807-20250725-131836-1753463916.8406", "engagement_type": "commercial-specialty", "confidence": "high"},
+    {"file": "exten-206-+18434651848-20251113-160629-1763067989.8432", "engagement_type": "reinstatement", "confidence": "medium"},
+    {"file": "exten-206-+19046614730-20260113-113154-1768321914.4368", "engagement_type": "coverage-question", "confidence": "high"},
+    {"file": "exten-206-+19198159523-20250922-124806-1758559686.4105", "engagement_type": "coverage-modification", "confidence": "high"},
+    {"file": "exten-206-+19806226147-20250820-152456-1755717896.10261", "engagement_type": "cancellation", "confidence": "medium"},
+    {"file": "exten-207-+13042963047-20251114-104804-1763135284.3690", "engagement_type": "coi-request", "confidence": "high"},
+    {"file": "exten-207-+13176969890-20250924-104145-1758724905.1015", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "exten-207-+13176969890-20251124-111022-1764000622.2038", "engagement_type": "follow-up", "confidence": "high"},
+    {"file": "exten-207-+13308876486-20251229-152026-1767039626.11799", "engagement_type": "routing-triage", "confidence": "medium"},
+    {"file": "exten-207-+13362020395-20250917-124802-1758127682.2370", "engagement_type": "follow-up", "confidence": "high"},
+    {"file": "exten-207-+13362440854-20251125-164420-1764107060.7967", "engagement_type": "driver-change", "confidence": "high"},
+    {"file": "exten-207-+13362447559-20251104-162007-1762291207.7606", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "exten-207-+13362448945-20251105-091659-1762352219.303", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "exten-207-+13362448945-20251112-113225-1762965145.3333", "engagement_type": "make-payment", "confidence": "medium"},
+    {"file": "exten-207-+13362448945-20251119-094058-1763563258.1073", "engagement_type": "dmv-compliance", "confidence": "high"},
+    {"file": "exten-207-+13363265206-20250825-150724-1756148844.11938", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "exten-207-+13363370946-20250825-143931-1756147171.10480", "engagement_type": "coi-request", "confidence": "high"},
+    {"file": "exten-206-+16084103499-20250815-162128-1755289288.10154", "engagement_type": "commercial-specialty", "confidence": "high"},
+    {"file": "exten-112-+19196415344-20251114-151804-1763151484.8183", "engagement_type": "document-request", "confidence": "high"}
+  ],
+  "type_digests": {
+    "make-payment": {
+      "count": 20,
+      "resolution_patterns": [
+        "Agent verifies account/policy details and processes payment via credit card, debit card, or bank account",
+        "Agent collects routing and account numbers for bank draft or EFT setup",
+        "Agent confirms payment amount, due date, and sends receipt or confirmation email",
+        "Auto-pay setup requests often bundled with the payment call"
+      ],
+      "knowledge_required": ["Payment processing procedures", "Bank draft/EFT setup", "Account verification protocols", "Insurance carrier billing systems", "Credit/debit card handling"],
+      "systems_referenced": ["Allstate insurance portal", "Insurance agency payment system", "National General", "Progressive", "Auto Owners", "Email system", "Ascend agency bill platform", "Civic Federal Credit Union"],
+      "outcome_distribution": {"callback_needed": 13, "resolved": 6},
+      "edge_cases": [
+        "Third-party payment for someone else's policy, where caller is not the policyholder (file: exten-100-114-20251007-160234)",
+        "Payment bundled with auto-pay setup and payment schedule discussion spanning multiple policies (file: exten-100-+13369784284-20251110-101408)",
+        "Payment made in Spanish requiring bilingual assistance (file: exten-106-+13367560795-20250730-120036)"
+      ],
+      "examples": [
+        {"file": "exten-100-114-20251007-160234-1759867355.9757", "intent": "The caller (not Yolanda Pineda Lario) wants to pay insurance for Yolanda's car, which was stopped by police due to a discrepancy in the insurance records.", "summary": "A caller contacted Allstate to resolve an issue where police stopped a 2010 Acura due to an apparent lack of insurance. The agent verified Yolanda Pineda Lario's active policy, clarified the vehicle discrepancy, sent documents via text, and processed a payment."},
+        {"file": "exten-100-+13369784284-20251110-101408-1762787648.928", "intent": "Hannah wants to set up automatic payments for her insurance policies, provide her bank routing and account numbers, adjust the payment due date, and confirm email notifications for payments.", "summary": "Hannah arranged automatic insurance payments with Alliance Insurance, providing banking details and confirming due dates. The agent will send an authorization form and noted ongoing paper statement delivery."},
+        {"file": "exten-112-+13369717787-20250923-155217-1758657137.5914", "intent": "Ellie wants to pay the remaining balance of her father Melvin Ody's homeowners insurance policy in full and confirm the amount and due date.", "summary": "Ellie contacts Brandi to pay the remaining balance of her father's homeowners insurance policy. Brandi confirms the amount ($1,285.68) and due date (October 11th)."}
+      ]
+    },
+    "billing-question": {
+      "count": 24,
+      "resolution_patterns": [
+        "Agent checks payment history and billing records to explain unexpected charges or discrepancies",
+        "Agent clarifies premium increases due to state rate mandates, coverage changes, or audit results",
+        "Agent identifies incorrect carrier charges and redirects caller to the correct carrier",
+        "Agent explains payment plan structures (11-pay vs 12-pay, quarterly, bank draft) and associated fees"
+      ],
+      "knowledge_required": ["Insurance billing systems", "Premium calculation factors", "State rate mandates", "Workers comp audit billing", "Payment plan structures", "Carrier-specific billing portals"],
+      "systems_referenced": ["Penn National billing system", "National General", "Auto Owners portal", "Ascend agency bill platform", "Progressive", "Travelers", "Carrier portals"],
+      "outcome_distribution": {"callback_needed": 15, "resolved": 7},
+      "edge_cases": [
+        "Caller confused by charge from a different carrier (National General) on their business account, not from Alliance (file: exten-106-+13366615183-20250922-094820)",
+        "Caller disputing a $2,000 workers comp audit bill they believed was canceled (file: exten-106-+13367826357-20250903-140440)",
+        "Premium discrepancy between proposal amount and system-displayed payoff causing confusion (file: exten-113-+13368176796-20251110-162312)"
+      ],
+      "examples": [
+        {"file": "exten-106-+13367826357-20250903-140440-1756922680.8540", "intent": "Aurelio Garcia is questioning a $2,000 business insurance bill from Amtras/Travelers, claiming it was unexpected after disconnecting automatic payments and canceling a workers' comp audit.", "summary": "Aurelio Garcia disputed an unexpected $2,000 business insurance bill, linked to a workers' comp audit for the police department. The agent clarified the charge was tied to an audit requiring employee data."},
+        {"file": "exten-112-+15164446974-20250916-125412-1758041652.6894", "intent": "Mr. Hakeem is seeking clarification on a significant auto insurance rate increase (from $103 to $170/month) and wants to explore switching to National General for a better rate.", "summary": "Customer disputes a $68/month auto insurance rate increase. Agent explains the increase may stem from North Carolina rate hikes but needs to analyze policy history."},
+        {"file": "exten-107-+13369721803-20250724-100352-1753365832.627", "intent": "Nancy Holmes is seeking resolution for a $72 billing discrepancy caused by an insurance policy reinstatement following her husband's death and vehicle changes.", "summary": "Nancy Holmes discussed a $72 billing discrepancy caused by a reinstatement after her husband's death. The agent agreed to request a waiver due to her financial situation."}
+      ]
+    },
+    "new-quote": {
+      "count": 30,
+      "resolution_patterns": [
+        "Agent gathers property/vehicle details, driver information, and contact info to initiate a quote",
+        "Agent explains available coverage options, deductibles, and carrier differences",
+        "Agent runs quotes through carrier systems and promises to email results",
+        "Agent discusses bundling opportunities (auto + home) for discounts"
+      ],
+      "knowledge_required": ["Insurance quoting systems", "Carrier product offerings", "Underwriting criteria", "Life insurance products", "Homeowners insurance factors", "Commercial insurance requirements", "Construction/contractor insurance"],
+      "systems_referenced": ["Insurance quoting system", "Progressive", "National General", "Auto Owners", "NC Grange", "Snap (USLI quoting)", "Carrier portals"],
+      "outcome_distribution": {"callback_needed": 22, "resolved": 6},
+      "edge_cases": [
+        "Caller seeking non-owners insurance which Alliance does not offer, requiring referral (file: exten-100-+17432859061-20250930-110815)",
+        "Life insurance quote for a 64-year-old diabetic with specific term/whole life comparisons (file: axfer-+15719917607-701-20250728-154532)",
+        "HOA insurance quote with complex legal requirements under NC's 2023 condo act (file: exten-105-+14845854000-20251229-112610)"
+      ],
+      "examples": [
+        {"file": "exten-106-+17863538095-20250730-132542-1753896342.5337", "intent": "Kendrick Cabrera is seeking general liability and workers' compensation insurance for his new construction company in Burlington, NC.", "summary": "Kendrick Cabrera requested insurance quotes for general liability and workers' comp. The agent gathered business details including company structure, construction scope, and contact information."},
+        {"file": "exten-107-+13363918979-20251003-165713-1759525033.21914", "intent": "The caller is seeking a homeowners insurance quote for a house they are purchasing.", "summary": "Lina McFarlane assists a caller in initiating a homeowners insurance quote for a new property, gathering necessary details and arranging follow-up communication."},
+        {"file": "axfer-+15719917607-701-20250728-154532-1753731184.12761", "intent": "The caller is seeking life insurance options, specifically comparing term and permanent policies.", "summary": "A 64-year-old diabetic caller sought life insurance options. The agent explained $100,000 minimum term coverage at ~$68/month for a 20-year term."}
+      ]
+    },
+    "vehicle-change": {
+      "count": 15,
+      "resolution_patterns": [
+        "Agent collects VIN, vehicle details, and confirms coverage type (full vs liability-only)",
+        "Agent verifies financing/lienholder information for new vehicles",
+        "Agent processes removal of sold/totaled vehicles and adjusts policy effective dates",
+        "Agent explains how vehicle changes affect premium amounts"
+      ],
+      "knowledge_required": ["VIN verification", "Vehicle coverage types", "Lienholder requirements", "Commercial vs personal auto distinctions", "Policy effective dates for vehicle changes"],
+      "systems_referenced": ["Auto Owners", "National General", "Progressive", "Capital One", "Internal policy management system"],
+      "outcome_distribution": {"callback_needed": 12, "resolved": 3},
+      "edge_cases": [
+        "Adding a vehicle to a commercial policy that's already on a personal policy (file: exten-102-+13366506702-20251006-130007)",
+        "Adding mother's car to commercial auto policy with complex title/lienholder issues across NC/VA (file: exten-102-+13364737646-20251112-160224)",
+        "Newly purchased equipment (Bobcat excavator) needing determination if it fits existing policy or needs a new one (file: exten-101-+13363514900-20250815-091535)"
+      ],
+      "examples": [
+        {"file": "exten-100-+13368291800-20251201-091942-1764598782.501", "intent": "Angela Fulton wants to add a car to her existing personal car insurance policy.", "summary": "Angela requested to add a vehicle to her personal car insurance policy. The agent confirmed the policy type and began assessing recent changes before preparing to transfer the call."},
+        {"file": "exten-114-+17049644200-20251031-140312-1761933792.5091", "intent": "The caller wants to add a newly purchased 2025 Toyota RAV4 to their existing insurance policy.", "summary": "The caller requested to add a new 2025 Toyota RAV4 to their insurance policy. The agent confirmed details, scheduled the addition, and informed the caller the premium would be communicated later."},
+        {"file": "exten-206-+13363268633-20250806-150722-1754507242.9128", "intent": "Jennifer Brock wants to transfer insurance coverage from a 2013 Chevrolet van to a new 2014 Chevy Express van.", "summary": "Jennifer Brock requested a vehicle insurance transfer. The agent verified policy details, confirmed coverage parameters, and agreed to send a proof of insurance email."}
+      ]
+    },
+    "driver-change": {
+      "count": 3,
+      "resolution_patterns": [
+        "Agent collects driver information and verifies license status",
+        "Agent processes removal of a name from policy or addition of new driver",
+        "Agent explains insurance implications of driver changes on coverage and premiums"
+      ],
+      "knowledge_required": ["Driver listing requirements", "License status verification", "Motor vehicle record checks", "Premium impact of driver additions"],
+      "systems_referenced": ["MVR database", "CMS Insurance", "Allstate"],
+      "outcome_distribution": {"callback_needed": 3, "resolved": 0},
+      "edge_cases": [
+        "Complex case involving employee changing companies and needing to be added as driver with multiple tickets and personal complications (file: exten-207-+13362440854-20251125-164420)"
+      ],
+      "examples": [
+        {"file": "exten-106-+13366718842-20251117-142238-1763407358.4052", "intent": "Cassandra wants to update her insurance policy to reflect that she is the sole driver.", "summary": "Cassandra is updating her insurance policy to her name after discovering her husband lacks a driver's license. The agent is helping her cancel the current policy and set up a new one."},
+        {"file": "exten-206-+13367557045-20250731-094037-1753969237.1901", "intent": "Nancy Dixon wants to remove someone's name from an insurance policy.", "summary": "Nancy Dixon requested to remove a name from an insurance policy. Jeff confirmed he would process the request and send an email confirmation."},
+        {"file": "exten-207-+13362440854-20251125-164420-1764107060.7967", "intent": "The caller wants to add Jesus as a driver to their insurance policy but faces complications.", "summary": "Jesus is attempting to transition to a new insurance provider but faces challenges due to lack of coverage and complex personal situation."}
+      ]
+    },
+    "coverage-modification": {
+      "count": 11,
+      "resolution_patterns": [
+        "Agent adjusts deductibles and calculates premium impact",
+        "Agent adds or removes specific coverages (collision, comprehensive, umbrella, towing, etc.)",
+        "Agent processes endorsements for coverage changes and explains billing implications",
+        "Agent explains coverage options and their cost trade-offs"
+      ],
+      "knowledge_required": ["Coverage types and deductible structures", "Endorsement processes", "Premium impact calculations", "Umbrella policy mechanics", "Carrier-specific modification procedures"],
+      "systems_referenced": ["Auto Owners", "National General", "Westfield", "Progressive", "Whistle", "Carrier underwriting portals"],
+      "outcome_distribution": {"callback_needed": 6, "resolved": 5},
+      "edge_cases": [
+        "Carrier declining to add additional insured because operations fall outside their underwriting appetite (file: exten-102-+16072713116-20251014-141739)",
+        "Coverage modification tied to restaurant business transition from owner-occupied to tenant-occupied (file: exten-206-+13364143620-20250804-140112)",
+        "Umbrella policy increase from $1M to $2M requiring endorsement with billing complexity (file: exten-206-+13364016855-20260119-094423)"
+      ],
+      "examples": [
+        {"file": "exten-203-+13363996535-20260102-135436-1767380076.5988", "intent": "Melissa Lail wants to change her insurance policy's deductible to $1,000.", "summary": "Melissa contacted Alliance Insurance to adjust her deductible to $1,000. Maria explained the payment couldn't be backdated but the new deductible would reduce future payments to $129.94."},
+        {"file": "exten-206-+13364016855-20260119-094423-1768833863.726", "intent": "Cheryl Dickerson is following up on increasing her umbrella insurance policy from $1 million to $2 million.", "summary": "Cheryl confirmed with Jeff that increasing her umbrella policy to $2M would require an endorsement, with no changes to her quarterly payment method."},
+        {"file": "exten-202-+13364076876-20250805-092203-1754400123.906", "intent": "The caller is following up on a previous conversation to adjust insurance policy details, including deductible changes, pet coverage options, and removing a lien holder.", "summary": "Heather and Bradley discuss adjusting auto insurance deductibles, evaluating the minimal premium impact of increasing them to $500."}
+      ]
+    },
+    "cancellation": {
+      "count": 13,
+      "resolution_patterns": [
+        "Agent sends cancellation form via email for caller to sign",
+        "Agent explains cancellation effective dates and refund timeline",
+        "Agent processes policy cancellation and confirms no further payments needed",
+        "Some callers decide to let policies cancel for non-payment rather than formally canceling"
+      ],
+      "knowledge_required": ["Cancellation procedures", "Effective date coordination", "Refund calculation", "Cancellation form handling", "Non-payment cancellation implications"],
+      "systems_referenced": ["Email system", "Carrier portals", "Conga Sign/electronic signature platforms"],
+      "outcome_distribution": {"callback_needed": 8, "resolved": 4},
+      "edge_cases": [
+        "Caller wants to cancel due to auto-pay being inadvertently switched on, not actually wanting to end coverage (file: exten-102-+13369184809-20251222-150736)",
+        "Multiple policy cancellation (4 policies) due to Airbnb coverage not being available from any carrier (file: exten-202-+13369958863-20251015-091310)",
+        "Caller letting policies cancel for non-payment rather than formally canceling to avoid audit complications (file: exten-106-+13364048139-20250926-105702)"
+      ],
+      "examples": [
+        {"file": "exten-101-+13367865899-20250903-140100-1756922460.8493", "intent": "Pat Littleton wants to cancel his business owner policy effective September 15th because he is selling his embroidery business.", "summary": "Pat Littleton requested cancellation of his business insurance policy effective September 15th. The agent confirmed the active policy and sent a cancellation form via email."},
+        {"file": "exten-202-+13369958863-20251015-091310-1760533990.106", "intent": "Heather wants to cancel four insurance policies due to difficulties securing coverage for a long-term Airbnb rental.", "summary": "Heather cancels four insurance policies due to Airbnb coverage issues, with the agent initiating cancellation forms."},
+        {"file": "exten-112-+13367550075-20260113-095657-1768316217.3009", "intent": "Vicki Shepard is seeking to resolve an issue with her insurance policy related to a property she sold in March or May.", "summary": "Vicki Shepard discusses a property insurance policy backdating issue with Brandi, who explains the need for closing documents to process a refund."}
+      ]
+    },
+    "reinstatement": {
+      "count": 10,
+      "resolution_patterns": [
+        "Agent checks if reinstatement is possible within carrier's window (typically 30-60 days)",
+        "Agent contacts carrier directly to request reinstatement approval",
+        "If too late for reinstatement, agent explains policy rewrite process",
+        "Agent collects past-due payment to facilitate reinstatement"
+      ],
+      "knowledge_required": ["Carrier reinstatement windows", "Non-payment cancellation rules", "Policy rewrite procedures", "EFT setup for reinstated policies", "Underwriter approval processes"],
+      "systems_referenced": ["Travelers", "National General", "Auto Owners", "Westfield", "Internal policy database"],
+      "outcome_distribution": {"callback_needed": 7, "resolved": 3},
+      "edge_cases": [
+        "Policy canceled over 30 days requiring full rewrite instead of reinstatement (file: exten-102-+13366074877-20251216-095859)",
+        "Reinstatement complicated by mortgage company payment dispute (file: exten-206-+13365293608-20250827-161058)",
+        "Travelers refusing reinstatement after multiple prior cancellations (file: exten-112-+13366826205-20250922-093854)"
+      ],
+      "examples": [
+        {"file": "exten-112-+13366826205-20250922-093854-1758548334.864", "intent": "Barry Vernon is seeking assistance to resolve a canceled Travelers auto insurance policy due to non-payment.", "summary": "Barry's Travelers auto policy was canceled due to non-payment. Brandy explains Travelers' reinstatement restrictions and offers to contact them again."},
+        {"file": "exten-102-+13366074877-20251216-095859-1765897139.691", "intent": "The caller wants to reinstate their general liability insurance for their business.", "summary": "The caller sought to reinstate a canceled policy, but the agent determined it was too late (over 30 days). The agent explained the need for a policy rewrite."},
+        {"file": "exten-202-+13364292860-20250827-160340-1756325020.7190", "intent": "The caller is following up on a request to reinstate an insurance policy and adjust deductibles.", "summary": "The agent confirmed the carrier approved the policy reinstatement request, though it may take overnight to process."}
+      ]
+    },
+    "claims": {
+      "count": 11,
+      "resolution_patterns": [
+        "Agent collects accident/incident details and initiates claim with carrier",
+        "Agent verifies policy information and provides adjuster contact details",
+        "Agent follows up on claim payment discrepancies and contacts carrier on caller's behalf",
+        "Agent guides caller through workers comp claim filing process"
+      ],
+      "knowledge_required": ["Claims reporting process", "Adjuster coordination", "Workers comp claim procedures", "Payment discrepancy resolution", "Documentation requirements"],
+      "systems_referenced": ["Auto Owners", "Utica Insurance", "Progressive claims system", "Insurance company claims portals"],
+      "outcome_distribution": {"callback_needed": 7, "resolved": 4},
+      "edge_cases": [
+        "Commercial claim from Progressive where insured is unreachable and claim may be denied (file: exten-102-+14409104489-20251113-145301)",
+        "Workers comp claim for employee who fell through a porch with numbness (file: exten-101-+13366992088-20250725-154730)",
+        "Claim payment discrepancy involving contractor payments and $1,700 gap (file: axfer-+13363095754-510-20250805-114611)"
+      ],
+      "examples": [
+        {"file": "exten-206-+13367104904-20250814-094425-1755179065.719", "intent": "Tim Holt is reporting a truck accident involving his 2021 Ram at 6:00 AM in Rocky Mountain, NC.", "summary": "Tim Holt reported a truck accident involving his 2021 Ram. The agent verified policy details, collected necessary information, and provided adjuster contact details."},
+        {"file": "exten-101-+13366992088-20250725-154730-1753472850.11242", "intent": "Sherry seeks guidance on handling a workers' compensation claim for an employee who fell through a porch.", "summary": "Sherry contacted Alliance Insurance to file a workers' comp claim. Amani guided her through immediate medical steps and collected necessary details."},
+        {"file": "exten-106-+13366151724-20251120-104405-1763653445.676", "intent": "Rode is seeking clarification about a partial insurance payment ($1,800 instead of the full $4,335.99) for a car accident claim.", "summary": "Rode contacted Alliance to address a partial payment for a car accident claim. The agent confirmed the issue and committed to contacting the insurer."}
+      ]
+    },
+    "renewal-review": {
+      "count": 28,
+      "resolution_patterns": [
+        "Agent reviews upcoming renewal details including premium changes and coverage levels",
+        "Agent explains rate increases (often due to state mandates or coverage expansions)",
+        "Agent shops for alternative carriers to find better rates",
+        "Agent discusses bundling opportunities and deductible adjustments to reduce premiums"
+      ],
+      "knowledge_required": ["Renewal processes", "Rate change factors", "Carrier comparison", "Bundling discount strategies", "State rate mandates", "Property valuation", "NC market dynamics"],
+      "systems_referenced": ["Auto Owners", "Progressive", "National General", "NC Grange", "Westfield", "Greystone", "Carrier portals", "Internal quoting system"],
+      "outcome_distribution": {"callback_needed": 21, "resolved": 8},
+      "edge_cases": [
+        "Farm policy confused with primary dwelling policy due to two policies at same address (file: axfer-+16788134751-301-20260114-114731)",
+        "Carrier exiting NC market (NGM Insurance) forcing customer to find new coverage (file: exten-113-+13369090959-20251020-095245)",
+        "Complex multi-policy review involving home, auto, umbrella, and potential farm transition (file: exten-112-+13363748339-20260108-110526)"
+      ],
+      "examples": [
+        {"file": "axfer-+13363910574-409-20250730-115946-1753891142.2954", "intent": "Corbin is checking if his insurance policies (auto and homeowners) are still the best option.", "summary": "Corbin discusses his upcoming insurance renewal with Arlo, who explains a homeowners coverage increase and plans to check the auto rate for potential discounts."},
+        {"file": "exten-113-+13369090959-20251020-095245-1760968365.1248", "intent": "Gary needs assistance renewing his expiring home and car insurance policies.", "summary": "Andre assists Gary with renewing expiring policies after NGM Insurance's withdrawal from North Carolina. Andre will follow up with rate options."},
+        {"file": "exten-112-+13365889896-20251210-092807-1765376887.491", "intent": "Nick Materia wants to review his home and auto insurance policies with Brandy to ensure they are up to date before his renewal.", "summary": "Brandy reviews Nick's auto and home insurance policies, confirms details, and discusses coverage options including earthquake and flood."}
+      ]
+    },
+    "coi-request": {
+      "count": 15,
+      "resolution_patterns": [
+        "Agent collects certificate holder name, address, and email for delivery",
+        "Agent generates certificate and sends via email, often same-day",
+        "Agent corrects errors on existing COIs (DBA names, holder information, coverage amounts)",
+        "Agent routes requests through support email or commercial department"
+      ],
+      "knowledge_required": ["COI generation process", "Certificate holder requirements", "DBA/additional insured designations", "Coverage verification for certificates"],
+      "systems_referenced": ["Certificate generator system", "Email system", "support@myallianceinsurance.com", "Carrier portals"],
+      "outcome_distribution": {"callback_needed": 10, "resolved": 4},
+      "edge_cases": [
+        "COI correction needed with missing project addresses for a university bid (file: exten-102-+13367823384-20251024-164957)",
+        "Certificate needed to preview coverage before policy is actually issued (file: exten-106-+13367505898-20250730-134800)",
+        "COI for equipment rental requiring specific coverage amount update from $25K to $80K (file: exten-207-+13042963047-20251114-104804)"
+      ],
+      "examples": [
+        {"file": "exten-101-+13369368007-20250925-162506-1758831906.11999", "intent": "Chris from Conterra Marble and Granite requests a certificate of insurance for Perrier Builders.", "summary": "Chris requested a COI for Perrier Builders, providing company name, address, and recipient email. The agent confirmed and agreed to generate and send the certificate."},
+        {"file": "exten-102-+13363275500-20251113-121438-1763054078.3324", "intent": "Jason Harkey is requesting a corrected COI for FCR Holdings LLC, ensuring it includes 'DBA First Class Roofing.'", "summary": "Jason Harkey requested a corrected COI with the DBA name included, emphasizing urgency. Gloria confirmed she would send the corrected document."},
+        {"file": "exten-207-+13042963047-20251114-104804-1763135284.3690", "intent": "Donnie from MPE Rentals needs an updated certificate of insurance reflecting $80,000 coverage for rented/leased equipment.", "summary": "Donnie requested an updated COI for Fralin with proper coverage for an $80,000 telehandler. Cody agreed to contact the underwriter for an updated certificate."}
+      ]
+    },
+    "document-request": {
+      "count": 15,
+      "resolution_patterns": [
+        "Agent retrieves requested document from internal system and emails it",
+        "Agent coordinates document delivery via email, text, or physical mail",
+        "Agent explains portal access for self-service document retrieval",
+        "Agent processes loss run requests and bond copy requests"
+      ],
+      "knowledge_required": ["Policy retrieval procedures", "Document types (dec pages, proof of insurance, loss runs, bonds)", "Portal setup (USLI, Auto Owners)", "Electronic document delivery methods"],
+      "systems_referenced": ["USLI portal", "Internal policy database", "Email system", "Consign (e-signing)", "Alliance Insurance portal"],
+      "outcome_distribution": {"callback_needed": 9, "resolved": 5},
+      "edge_cases": [
+        "Document request complicated by system migration making old records inaccessible (file: exten-103-+12523193621-20250725-094740 - also classified as COI)",
+        "Bond copy request where supervisor needs to be contacted (file: exten-102-+13364144231-20251211-122020)",
+        "Loss run report for a business that has left the agency (file: exten-206-+13364223497-20260119-102451)"
+      ],
+      "examples": [
+        {"file": "exten-102-+12533182102-20251211-093514-1765463714.340", "intent": "The caller requested a copy of his current insurance policy be emailed to him as proof of insurance for a client's job board event.", "summary": "Josh Ryder Baker from Pinnacle Tree Service requested proof of insurance via email. The agent confirmed the request and agreed to send the document."},
+        {"file": "exten-102-+13362515220-20251210-141052-1765393852.3130", "intent": "Lauren needs a copy of her organization's insurance policy to submit to a national organization and wants to set up digital access.", "summary": "Lauren requested a policy copy and digital access setup. Gloria confirmed account details, agreed to send the policy via email, and guided Lauren on the USLI portal."},
+        {"file": "exten-206-+13364223497-20260119-102451-1768836291.1178", "intent": "Tequisha requested a loss run report for Chris's Auto Company LLC.", "summary": "Tequisha requested a loss run report for a former business insured by Alliance. Agent Jeff collected the business name and contact number, promising to retrieve the information."}
+      ]
+    },
+    "dmv-compliance": {
+      "count": 6,
+      "resolution_patterns": [
+        "Agent verifies whether FS-1 form was filed electronically with DMV",
+        "Agent explains DMV notice implications and collects documentation",
+        "Agent assists with DOT number setup process including FMCSA website navigation",
+        "Agent coordinates between insurance records and DMV requirements"
+      ],
+      "knowledge_required": ["FS-1 form requirements", "DMV notice processes", "DOT number setup", "FMCSA regulations", "NC vehicle registration requirements", "State-specific compliance forms"],
+      "systems_referenced": ["DMV portal", "FMCSA website", "Insurance carrier systems", "Email"],
+      "outcome_distribution": {"callback_needed": 3, "resolved": 3},
+      "edge_cases": [
+        "South Carolina-specific accident form (fr guion 10) that the NC agency cannot handle (file: exten-114-+13364234380-20251120-161855)",
+        "DOT setup requiring lease agreement between driver and vehicle title holder who is a cousin (file: exten-207-+13362448945-20251119-094058)",
+        "Junk mail issue causing FS-1 delivery confusion (file: exten-112-+17045025332-20251223-094403)"
+      ],
+      "examples": [
+        {"file": "exten-114-+13366712501-20250731-131535-1753982135.9960", "intent": "Casey Tuttle is seeking clarification about an FS-1 form related to a DMV notice and vehicle registration revocation.", "summary": "Casey Tuttle discusses a DMV notice related to vehicle registration revocation and an FS-1 form. JC updates Casey's address, verifies an FS-1 was filed, and requests a photo of the notice."},
+        {"file": "exten-206-+13368301632-20260105-135559-1767639359.11189", "intent": "The caller wanted to confirm whether the FS1 for a 2025 Ford was processed electronically.", "summary": "Jeff confirmed with the caller that the FS1 was processed electronically and planned to follow up directly with Oscar to resolve the DMV discrepancy."},
+        {"file": "exten-207-+13362448945-20251119-094058-1763563258.1073", "intent": "Sunny is assisting Cody in navigating the process of setting up a DOT number.", "summary": "Sunny guided Cody through setting up a DOT number, addressing complications from the vehicle being titled under a family member's name."}
+      ]
+    },
+    "mortgage-lender": {
+      "count": 4,
+      "resolution_patterns": [
+        "Agent explains escrow payment discrepancies between mortgage company and insurer",
+        "Agent coordinates sending proof of insurance to mortgage company",
+        "Agent facilitates communication between caller, mortgage company, and insurance carrier",
+        "Agent addresses mortgage-related billing confusion"
+      ],
+      "knowledge_required": ["Mortgage escrow processes", "Lienholder requirements", "Proof of insurance for lenders", "Escrow account mechanics"],
+      "systems_referenced": ["Carington Mortgage", "Mr. Cooper", "Freedom Mortgage", "Carrier portals"],
+      "outcome_distribution": {"callback_needed": 4, "resolved": 0},
+      "edge_cases": [
+        "Financial crisis caused by escrow increase after third-party handled insurance cancellation (file: exten-113-+13364528352-20260109-100726)",
+        "Check discrepancy between settlement company and carrier requiring escrow team coordination (file: exten-100-+13103659076-20250909-155204)"
+      ],
+      "examples": [
+        {"file": "axfer-+13364697645-509-20251024-131929-1761326220.3172", "intent": "Linda Ashford is seeking clarification about an unexpected increase in her home insurance escrow amount.", "summary": "Linda Ashford contacted Alliance Insurance to inquire about an unexpected increase in her home insurance escrow amount, citing a letter from Carington Mortgage."},
+        {"file": "exten-202-+13367058728-20260107-153410-1767818050.4490", "intent": "Allison needs assistance confirming how her mortgage company requires insurance details to be listed.", "summary": "Allison seeks guidance on correctly listing insurance details for her mortgage company. Heather directs her to confirm requirements."},
+        {"file": "exten-113-+13364528352-20260109-100726-1767971246.699", "intent": "The caller is seeking assistance with resolving a financial crisis caused by an unexpected increase in mortgage payments following insurance policy cancellation.", "summary": "A caller experiencing severe financial strain due to an unexpected increase in mortgage payments following an insurance policy cancellation."}
+      ]
+    },
+    "workers-comp": {
+      "count": 5,
+      "resolution_patterns": [
+        "Agent assists with workers comp audit processes and documentation",
+        "Agent explains payroll reporting requirements for workers comp",
+        "Agent files workers comp claims and collects employee details",
+        "Agent addresses class code issues and ghost policy questions"
+      ],
+      "knowledge_required": ["Workers comp claim procedures", "Audit processes", "Class codes", "Payroll reporting", "Ghost policies", "Carrier-specific WC requirements"],
+      "systems_referenced": ["West Bend Insurance", "Builders Mutual", "Travelers", "Penn National", "Audit portals"],
+      "outcome_distribution": {"callback_needed": 3, "resolved": 2},
+      "edge_cases": [
+        "Workers comp audit with class code discrepancy and business ownership transition (file: exten-103-+13364144231-20250806-155111)",
+        "Payroll reporting confusion for fluctuating construction business (file: exten-206-+13368138051-20250917-123013)"
+      ],
+      "examples": [
+        {"file": "exten-106-+13362311126-20250924-132646-1758734806.4754", "intent": "John is seeking clarification on the status of an insurance audit and the financial implications.", "summary": "John discussed an unresolved insurance audit with Jessica, seeking clarity on the status, number discrepancies, and coverage validity."},
+        {"file": "exten-206-+13368138051-20250917-123013-1758126613.1744", "intent": "Lisa Brothers is seeking clarification on how to accurately report payroll for workers' comp insurance.", "summary": "Lisa discusses payroll reporting confusion for workers' comp. Jeff clarifies that she can retain Builders Mutual and offers to provide a quote."},
+        {"file": "exten-103-+13364143620-20251001-140327-1759341807.6732", "intent": "Joe seeks assistance in urgently contacting Chris Stevens regarding a Cape Cod workers' compensation matter.", "summary": "Joe urgently requests assistance contacting Chris Stevens for a workers' compensation issue. Kendall agrees to call Chris."}
+      ]
+    },
+    "info-update": {
+      "count": 5,
+      "resolution_patterns": [
+        "Agent updates address, phone, or email in the system",
+        "Agent processes name changes or business registration corrections",
+        "Agent coordinates updates across multiple carriers",
+        "Agent verifies updated information with caller"
+      ],
+      "knowledge_required": ["Address update procedures", "Name change processes", "Carrier-specific update requirements", "VIN correction procedures"],
+      "systems_referenced": ["Travelers", "Progressive", "National General", "Internal policy management system"],
+      "outcome_distribution": {"callback_needed": 4, "resolved": 1},
+      "edge_cases": [
+        "VIN discrepancy (2001 vs 2000 Nissan) requiring registration card and statement of no losses (file: exten-113-+13362874668-20251113-144934)",
+        "Address update combined with policy cancellation request (file: exten-100-+13367109204-20250826-124004)"
+      ],
+      "examples": [
+        {"file": "exten-114-+13369787645-20250904-141047-1757009447.6792", "intent": "Veronica is seeking resolution for an issue where National General did not update Trinity's license status from a permit to a full license.", "summary": "Veronica reported an issue with National General not updating Trinity's license status. JC confirmed he would contact National General to investigate."},
+        {"file": "exten-113-+17045499908-20251017-125524-1760720124.3321", "intent": "Gary is seeking assistance to update a policyholder's address (including country change) and process a cancellation.", "summary": "Gary needed to update a Canadian address for a policyholder while processing a cancellation. Ellie guided him to first process a policy change."},
+        {"file": "exten-101-+13364146514-20250925-162835-1758832115.12061", "intent": "The caller wants to clarify their business setup (sole proprietorship since 2009) and address a carrier notification.", "summary": "The caller discusses their sole proprietorship setup with Monty, who confirms the business structure and agrees to investigate a carrier notification."}
+      ]
+    },
+    "coverage-question": {
+      "count": 16,
+      "resolution_patterns": [
+        "Agent explains what is and isn't covered under the caller's current policy",
+        "Agent clarifies coverage distinctions (general liability vs property vs auto)",
+        "Agent consults with specialists or carriers for complex coverage questions",
+        "Agent provides information about renters, homeowners, or commercial policy exclusions"
+      ],
+      "knowledge_required": ["Policy coverage terms and exclusions", "Insurance product structures", "Carrier-specific coverage details", "NC insurance regulations", "Specialty coverages (GPS tracking, vacant property, etc.)"],
+      "systems_referenced": ["Carrier portals", "Internal policy database", "Auto Owners", "National General"],
+      "outcome_distribution": {"callback_needed": 9, "resolved": 5},
+      "edge_cases": [
+        "GPS tracking coverage question for an investigator's commercial policy (file: exten-206-+13364302726-20250821-112537)",
+        "Temporary vehicle use by a non-policyholder (church pastor) and insurance implications (file: axfer-+13362156620-409-20250926-135754)",
+        "Non-standard parking lot driving scenario for commercial coverage (file: exten-101-+13366074611-20250825-134631)"
+      ],
+      "examples": [
+        {"file": "exten-101-+13364730881-20250730-151117-1753902677.8520", "intent": "The caller seeks clarification about the coverage of his insurance policies, specifically regarding general liability, property, and auto coverage.", "summary": "The caller asked about coverage for various scenarios. The agent clarified policy distinctions and committed to sending an email with detailed information."},
+        {"file": "exten-112-+13369970484-20260106-121739-1767719859.2676", "intent": "The caller is seeking clarification on their renters insurance coverage, specifically whether it protects personal belongings.", "summary": "The caller was concerned about their renters insurance coverage. Brandi clarified the policy covers personal items up to $25,000."},
+        {"file": "exten-206-+13364302726-20250821-112537-1755789937.3152", "intent": "Eric Leopold is following up on whether his commercial policy covers lawsuits related to GPS tracking.", "summary": "Eric followed up on a prior inquiry about GPS tracking coverage. Jeff reviewed account history and committed to following up with Gloria for an answer."}
+      ]
+    },
+    "commercial-specialty": {
+      "count": 9,
+      "resolution_patterns": [
+        "Agent consults with specialists or underwriters for complex commercial questions",
+        "Agent explains specialized coverage types (builder's risk, HOA, church programs, dealer lots)",
+        "Agent identifies appropriate carriers for niche commercial needs",
+        "Agent reviews reinsurance thresholds and underwriting guidelines"
+      ],
+      "knowledge_required": ["Builder's risk policies", "HOA/condo insurance", "Church-affiliated programs", "Dealer lot insurance", "Reinsurance thresholds", "NC condo act", "DNO coverage", "Habitational insurance"],
+      "systems_referenced": ["Progressive product guide", "USLI", "Honeycomb", "Church Mutual", "Westfield", "Snap quoting system"],
+      "outcome_distribution": {"callback_needed": 5, "resolved": 3},
+      "edge_cases": [
+        "Church-affiliated preschool liability requiring separate coverage path from corporate entity (file: exten-206-+18283800807-20250725-131836)",
+        "Crime and fidelity policy endorsement for NC HOA per Fannie Mae guidelines that carrier hasn't filed (file: exten-105-+19086564672-20251229-162258)",
+        "Insurance coverage optimization for auto dealerships to avoid $15M reinsurance trigger (file: exten-206-+13364323980-20260116-115519)"
+      ],
+      "examples": [
+        {"file": "exten-101-+13364291181-20250731-111002-1753974602.5377", "intent": "Todd Fry from Haker Construction is asking whether a builder's risk policy covers theft or vandalism of materials on a construction site.", "summary": "Todd Fry inquired about builder's risk coverage for theft/vandalism on a construction project. The agent confirmed standard coverage but needed details to verify."},
+        {"file": "exten-206-+18283800807-20250725-131836-1753463916.8406", "intent": "Bruce Murray seeks advice on insuring his wife's church-affiliated preschool.", "summary": "Bruce Murray consults about insuring a church-affiliated preschool. The agent explains risks and suggests Church Mutual as a potential carrier."},
+        {"file": "exten-205-+13363258130-20251230-110019-1767110419.1524", "intent": "The caller is seeking clarification on insurance requirements for a land development project involving ground leases.", "summary": "The caller discussed insurance needs for a land development project involving ground leases for Bojangles and Taco Bell."}
+      ]
+    },
+    "follow-up": {
+      "count": 37,
+      "resolution_patterns": [
+        "Agent checks status of pending quotes, documents, or payments and provides updates",
+        "Agent confirms receipt of previously sent documents or forms",
+        "Agent resends emails or documents that weren't received",
+        "Agent verifies completion of prior requests and confirms next steps"
+      ],
+      "knowledge_required": ["Internal tracking systems", "Email communication protocols", "Quote and document status verification", "Carrier processing timelines"],
+      "systems_referenced": ["Email systems", "Internal policy database", "Carrier portals", "Salesforce", "Conga Sign"],
+      "outcome_distribution": {"callback_needed": 22, "resolved": 11},
+      "edge_cases": [
+        "Follow-up on Salesforce documentation and 130-page insurance proposal review (file: exten-103-+13364143620-20251009-105545)",
+        "Follow-up on commercial policy non-renewal after DOT status change (file: exten-207-+13176969890-20251124-111022)",
+        "Multiple follow-ups from same client (Maggie) across different dates about various pending items (files: exten-106-+13367505898-*)"
+      ],
+      "examples": [
+        {"file": "exten-102-+13364076845-20251230-102153-1767108113.1158", "intent": "Victoria is following up on a previous conversation to check the status of an insurance quote.", "summary": "Victoria followed up on an insurance quote status. The agent confirmed they were working on alternative carrier quotes and scheduled a follow-up email by Friday."},
+        {"file": "exten-102-+13364677667-20251223-133423-1766514863.2575", "intent": "Nathan Bell wanted to confirm receipt of a proposal email sent for carrier renewal confirmation.", "summary": "Nathan Bell reported not receiving a critical proposal email. Glory confirmed the original send and resent the document."},
+        {"file": "exten-113-+17023780480-20251110-101707-1762787827.961", "intent": "The caller is following up on a previous conversation regarding home insurance.", "summary": "Deborah Risi updates Gary on the status of his home insurance application, confirming they will provide a resolution by the end of the week."}
+      ]
+    },
+    "routing-triage": {
+      "count": 32,
+      "resolution_patterns": [
+        "Agent transfers call to the appropriate specialist or department",
+        "Agent takes a message and arranges callback from the correct person",
+        "Agent handles IT/technical support issues (printers, portals, email, copiers)",
+        "Agent addresses non-insurance matters (scheduling, banking, vendor calls)"
+      ],
+      "knowledge_required": ["Internal team structure and agent specialties", "Call routing procedures", "Basic IT troubleshooting", "Office locations and hours"],
+      "systems_referenced": ["Internal call routing system", "myallianceinsurance.com portal", "Email systems", "Lightspeed Voice", "Various carrier portals"],
+      "outcome_distribution": {"callback_needed": 19, "resolved": 11},
+      "edge_cases": [
+        "Caller ordering hibachi chicken from wrong number (mentioned in engagement type examples but not in this batch)",
+        "Salesforce renewal meeting follow-up that is not insurance-related (file: exten-104-+13365857913-20251201-092105)",
+        "Bank account closure and online banking setup calls routed to wrong department (file: exten-100-+13367949911-20251014-143317)",
+        "Bamboo HR login issue misdirected to insurance support team (file: exten-105-+17372010309-20251119-135001)",
+        "IT calls for copier configuration, printer troubleshooting, and email restoration (files: exten-107-+13364990749-*)"
+      ],
+      "examples": [
+        {"file": "axfer-+13368702229-706-20250801-092339-1754054550.145", "intent": "Thomas Burns is attempting to schedule a meeting with Mr. Cook.", "summary": "The call involves a scheduling discussion between Thomas Burns and Mr. Cook, with no insurance resolution reached."},
+        {"file": "exten-105-+17372010309-20251119-135001-1763578201.4675", "intent": "The caller is experiencing login issues with Bamboo and seeks assistance.", "summary": "The caller reported login issues with Bamboo. The agent explained that Bamboo HR support, not their team, is responsible for resolving such issues."},
+        {"file": "exten-105-+18886826671-20250922-143527-1758566127.8840", "intent": "Rick needed assistance resolving a login error on the Employers website portal.", "summary": "Rick contacted tech support to resolve a login error on the Employers portal. The agent guided him to clear his browser cache and use the direct login link."}
+      ]
+    }
+  }
+}

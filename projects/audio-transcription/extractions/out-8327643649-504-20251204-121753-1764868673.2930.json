@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Holly at Alliance Insurance) aimed to inform the customer about an upcoming auto insurance renewal with InterGar and offer a review of the policy to ensure accuracy and address any questions or concerns.",
+  "resolution_steps": [
+    "Holly introduced herself and stated the purpose of the call: to discuss an upcoming auto insurance renewal.",
+    "She offered to review the policy details with the customer to confirm accuracy and address any questions.",
+    "Provided her contact number for the customer to call back if they needed further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Auto insurance renewal processes",
+    "Customer service protocols for policy reviews",
+    "InterGar carrier-specific procedures"
+  ],
+  "systems_referenced": [
+    "InterGar (insurance carrier)"
+  ],
+  "summary": "Holly from Alliance Insurance called to notify a customer about an upcoming auto insurance renewal with InterGar, offering to review the policy details and providing her contact number for follow-up. The customer was not reached directly but was given instructions to call back if they needed assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 245,
+  "_total_duration_ms": 81454,
+  "_source_file": "transcripts/out-8327643649-504-20251204-121753-1764868673.2930.txt",
+  "_direction": "outbound",
+  "_char_count": 768
+}

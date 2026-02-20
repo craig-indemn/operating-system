@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Lisa Macy from Main Street America wants to schedule a meeting with Rick (likely a representative) to discuss small commercial insurance lines, as Main Street is expanding into this area and has previously had interactions with Alliance Insurance.",
+  "resolution_steps": [
+    "Jeff confirms Alliance Insurance handles small commercial lines and advises Lisa to contact Rick for scheduling.",
+    "Jeff agrees to leave a note at Rick's desk and send an email to ensure Rick is aware of Lisa's call.",
+    "Jeff provides details about Rick's schedule (available Monday-Thursday) and mentions Wednesday sales meetings where scheduling discussions occur.",
+    "Jeff offers to send potential Wednesday meeting times via email."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of Alliance Insurance's small commercial lines services",
+    "Knowledge of internal scheduling processes and Rick's availability",
+    "Awareness of weekly sales meetings and their structure"
+  ],
+  "systems_referenced": [
+    "Email (for follow-up with Rick)"
+  ],
+  "summary": "Lisa Macy from Main Street America attempts to reach Rick at Alliance Insurance to discuss small commercial insurance scheduling. Jeff Edmonds confirms Alliance handles small commercial lines, agrees to notify Rick via note and email, and explains Rick's availability and Wednesday meeting structure. The call concludes with Jeff offering to send potential meeting times via email.",
+  "_model": "qwen3:14b",
+  "_eval_count": 290,
+  "_total_duration_ms": 43045,
+  "_source_file": "transcripts/exten-105-+13362554718-20250919-100803-1758290883.904.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4099
+}

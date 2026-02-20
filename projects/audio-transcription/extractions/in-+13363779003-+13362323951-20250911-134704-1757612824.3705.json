@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unknown (greeting only)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller initiated a greeting but no meaningful conversation occurred. Agent responded with standard greeting but no further interaction took place.",
+  "_model": "qwen3:14b",
+  "_eval_count": 79,
+  "_total_duration_ms": 21160,
+  "_source_file": "transcripts/in-+13363779003-+13362323951-20250911-134704-1757612824.3705.txt",
+  "_direction": "inbound",
+  "_char_count": 73
+}

@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Randy Sidnort, is concerned about a potential double charge on his insurance premium and wants to confirm whether a second payment was processed after writing a check and noticing a bank withdrawal.",
+  "resolution_steps": [
+    "Agent asked for clarification on the payment amount and type (home/autos).",
+    "Agent checked the system and found a single payment of $2,607 dated October 2nd.",
+    "Agent confirmed the system does not show evidence of overpayment or a second transaction.",
+    "Agent advised the caller to recheck bank records for discrepancies."
+  ],
+  "outcome": "not_applicable",
+  "knowledge_required": [
+    "Understanding how insurance payments are recorded in the agency's system.",
+    "Ability to interpret bank statement details versus system records."
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's internal payment tracking system"
+  ],
+  "summary": "Randy Sidnort contacted Alliance Insurance to investigate a potential double charge on his insurance premium. The agent reviewed the system and found only one payment of $2,607, with no evidence of overpayment. The caller was advised to verify bank records independently. The call concluded with the agent offering to assist further if needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 280,
+  "_total_duration_ms": 41871,
+  "_source_file": "transcripts/in-+13363544000-+13364149842-20251107-091901-1762525141.322.txt",
+  "_direction": "inbound",
+  "_char_count": 1242
+}

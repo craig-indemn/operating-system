@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller needed assistance canceling insurance on a totaled car and adding a new car to their policy.",
+  "resolution_steps": [
+    "Agent confirmed Jamie was unavailable and asked if the caller was open to speaking with another agent.",
+    "Caller agreed to speak with another agent.",
+    "Agent offered to connect the caller with an agent who could handle the cancel-and-add request."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy cancellation and addition processes",
+    "Handling customer requests for policy changes"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller requested help canceling insurance on a totaled vehicle and adding a new car. Jamie was unavailable, so the agent offered to connect the caller with another agent to handle the request. The call ended with the agent promising to assist.",
+  "_model": "qwen3:14b",
+  "_eval_count": 192,
+  "_total_duration_ms": 35324,
+  "_source_file": "transcripts/in-+13363779003-+18284550585-20260116-143556-1768592156.4760.txt",
+  "_direction": "inbound",
+  "_char_count": 834
+}

@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Lina) is clarifying discrepancies between two homeowners insurance quotes, specifically the dwelling value ($340,000 vs. $302,000), and seeking confirmation on whether the value can be adjusted downward.",
+  "resolution_steps": [
+    "Agent Cecilia explains the dwelling value is calculated using a system that considers home details (square footage, construction type, rooms, etc.).",
+    "Cecilia verifies specific home attributes with Lina (e.g., basement status, fireplace removal, heating type, flooring materials).",
+    "Cecilia confirms the system's calculated value cannot be manually lowered below $340,000 but adjusts some details, resulting in a slightly higher estimate ($340,509).",
+    "Cecilia highlights the quote's benefits (flood coverage, equipment breakdown coverage with $500 deductible)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Home insurance quoting system mechanics",
+    "Replacement cost estimation methodology",
+    "Insurance coverage types (flood, equipment breakdown)"
+  ],
+  "systems_referenced": [
+    "Internal insurance quoting system (replacement cost estimator)"
+  ],
+  "summary": "Agent Cecilia clarifies a homeowners insurance quote discrepancy with a caller, explaining the dwelling value calculation based on home attributes. After verifying details, she confirms the system's non-negotiable value but highlights the quote's coverage benefits. The caller agrees to proceed and will send the quote to finance for escrow.",
+  "_model": "qwen3:14b",
+  "_eval_count": 340,
+  "_total_duration_ms": 49695,
+  "_source_file": "transcripts/exten-107-+13363918979-20251008-130331-1759943011.4570.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4108
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Maria from Alliance Insurance is following up with Jeff to present updated insurance quotes for auto and dwelling coverage, highlighting potential premium savings and requesting a follow-up with Amanda to finalize details.",
+  "resolution_steps": [
+    "Maria explains lowering dwelling coverage to $100,000 would reduce the premium by ~$591/year, requiring a new replacement cost estimator.",
+    "Discusses auto insurance renewal with Nat General, noting a potential agent-of-record transition and a quoted rate of ~$3,700/year for all vehicles.",
+    "Requests Amanda call back to confirm current auto rates and finalize decisions."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance premium calculation methods",
+    "Replacement cost estimation processes",
+    "Carrier-specific policies (Nat General)",
+    "Agent-of-record transitions"
+  ],
+  "systems_referenced": [
+    "Internal quoting system",
+    "Replacement cost estimator tool"
+  ],
+  "summary": "Maria from Alliance Insurance presented Jeff with updated auto and dwelling insurance quotes, emphasizing premium savings opportunities. She outlined the need for a replacement cost estimator for the dwelling and discussed auto policy renewal options. The call concluded with a request for Amanda to call back to confirm details and proceed with next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 280,
+  "_total_duration_ms": 36407,
+  "_source_file": "transcripts/out-3366087353-203-20251215-094343-1765809823.378.txt",
+  "_direction": "outbound",
+  "_char_count": 2109
+}

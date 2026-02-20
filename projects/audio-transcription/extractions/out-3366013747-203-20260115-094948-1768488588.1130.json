@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Maria from Alliance Insurance Services is contacting Bill McClure to request details about two accidents (one involving Colley in May 2023 and another involving McClure in February 2024) to provide to the carrier handling his personal umbrella policy.",
+  "resolution_steps": [
+    "Maria explains the carrier requires details about the accidents, including fault and incident specifics.",
+    "She states she will send an email to McClure with further instructions.",
+    "Offers to answer questions if McClure calls back."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of personal umbrella policy claims processes",
+    "Knowledge of carrier requirements for accident documentation",
+    "Ability to request specific details (fault, incident description) from policyholders"
+  ],
+  "systems_referenced": [
+    "Email"
+  ],
+  "summary": "Maria from Alliance Insurance Services is gathering information about two accidents to update the carrier handling Bill McClure's personal umbrella policy. She explains the need for details about fault and incident specifics, and offers to answer questions if McClure calls back. The call is ongoing with the next step being McClure providing the requested information.",
+  "_model": "qwen3:14b",
+  "_eval_count": 257,
+  "_total_duration_ms": 44569,
+  "_source_file": "transcripts/out-3366013747-203-20260115-094948-1768488588.1130.txt",
+  "_direction": "outbound",
+  "_char_count": 695
+}

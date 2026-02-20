@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "MJ is selling their truck and wants to understand how to maintain insurance coverage while transitioning from automatic to manual insurance with Glider, specifically asking if they can switch to a commercial insurance policy on a personal car during this process.",
+  "resolution_steps": [
+    "Jessica clarifies that MJ cannot add a personal auto policy to their existing commercial policy; they must cancel the current policy and obtain a new one once they have the new truck.",
+    "She explains that if the new truck takes longer than a couple of weeks to acquire, MJ can keep the existing policy active for up to a month or more if needed.",
+    "Jessica acknowledges MJ's concern about losing authority if they cancel the policy and confirms that canceling would result in losing coverage."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of commercial vs. personal auto insurance policies",
+    "Insurance policy cancellation and renewal processes",
+    "Handling coverage gaps during vehicle transitions"
+  ],
+  "systems_referenced": [
+    "Progressive",
+    "Glider"
+  ],
+  "summary": "MJ is selling their truck and seeks guidance on maintaining insurance coverage while transitioning to a new policy. Jessica explains that they must cancel their current commercial policy and obtain a new one once they acquire the new truck, but can keep the existing policy active temporarily if needed. The call concludes with MJ satisfied after receiving clarification on the process.",
+  "_model": "qwen3:14b",
+  "_eval_count": 302,
+  "_total_duration_ms": 46837,
+  "_source_file": "transcripts/out-3368038049-106-20251105-120420-1762362260.3382.txt",
+  "_direction": "outbound",
+  "_char_count": 2176
+}

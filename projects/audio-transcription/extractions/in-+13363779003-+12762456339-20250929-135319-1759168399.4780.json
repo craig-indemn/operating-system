@@ -1,0 +1,19 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Follow-up on a previous request to reinstate an insurance policy and check if any progress had been made.",
+  "resolution_steps": [
+    "Agent acknowledged the caller's request",
+    "Agent attempted to identify the assigned representative (Gloria)",
+    "Call was transferred to Gloria"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Aaron called to check on the status of his policy reinstatement request. The agent recognized the caller's previous interaction but did not provide updates, instead transferring the call to Gloria for further handling.",
+  "_model": "qwen3:14b",
+  "_eval_count": 139,
+  "_total_duration_ms": 25185,
+  "_source_file": "transcripts/in-+13363779003-+12762456339-20250929-135319-1759168399.4780.txt",
+  "_direction": "inbound",
+  "_char_count": 475
+}

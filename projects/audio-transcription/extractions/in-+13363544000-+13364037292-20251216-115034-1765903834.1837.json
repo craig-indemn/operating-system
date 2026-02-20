@@ -1,0 +1,19 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller attempted to reach Heather Scott to leave a message but was informed she was unavailable.",
+  "resolution_steps": [
+    "Jackie Shore informed the caller that Heather Scott was not in the office.",
+    "Jackie mentioned Heather would return in a couple of days.",
+    "Caller asked to leave a message but was told Heather could not be reached until later."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief call where the caller tried to reach Heather Scott but was informed she was unavailable. The agent provided a return date but did not resolve the caller's need to leave a message.",
+  "_model": "qwen3:14b",
+  "_eval_count": 161,
+  "_total_duration_ms": 54087,
+  "_source_file": "transcripts/in-+13363544000-+13364037292-20251216-115034-1765903834.1837.txt",
+  "_direction": "inbound",
+  "_char_count": 313
+}

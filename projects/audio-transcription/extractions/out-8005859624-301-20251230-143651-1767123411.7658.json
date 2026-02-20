@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "N/A (automated menu prompt with no caller interaction)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [
+    "chubagribusiness.com"
+  ],
+  "summary": "Automated menu prompt directing callers to press numbers for different departments (claims, accounting, underwriting, help desk). Repeated instructions with no substantive conversation or resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 105,
+  "_total_duration_ms": 33309,
+  "_source_file": "transcripts/out-8005859624-301-20251230-143651-1767123411.7658.txt",
+  "_direction": "outbound",
+  "_char_count": 4975
+}

@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Cassandra wants to update her insurance policy to reflect that she is the sole driver (as her husband does not have a driver's license) and needs assistance canceling her current policy and starting a new one under her name.",
+  "resolution_steps": [
+    "Agent confirms Cassandra is the sole driver and clarifies policy requirements.",
+    "Agent requests start date for the new policy and agrees to cancel the current policy.",
+    "Agent collects mailing address (104 Maple) and lien holder information.",
+    "Agent explains online access for payments and policy management.",
+    "Agent notes pending personal auto policy payment due by December 1st and renewal in February."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy requirements (e.g., driver's license verification)",
+    "Policy cancellation and activation procedures",
+    "Payment deadlines and renewal processes",
+    "Lien holder and mailing address handling"
+  ],
+  "systems_referenced": [
+    "Auto (insurance carrier system)",
+    "Online payment portal"
+  ],
+  "summary": "Cassandra is updating her insurance policy to her name after discovering her husband lacks a driver's license. The agent is helping her cancel the current policy, set up a new one, and address payment deadlines. Cassandra will handle a pending personal auto policy payment and renewal in February.",
+  "_model": "qwen3:14b",
+  "_eval_count": 295,
+  "_total_duration_ms": 46064,
+  "_source_file": "transcripts/exten-106-+13366718842-20251117-142238-1763407358.4052.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2457
+}

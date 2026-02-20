@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "April Gravely from Alliance Insurance Services is inquiring about booking Luna's Trail Farm's event space for a large meeting (130-140 people) on December 5th, with specific arrival/end times and a request for food service. She asks to be contacted via phone.",
+  "resolution_steps": [
+    "April leaves a voicemail message through the automated system",
+    "Provides detailed event requirements (date, time, number of attendees, food request)",
+    "Shares her cell phone number for callback"
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [
+    "Event space booking procedures",
+    "Contact information handling",
+    "Voicemail system navigation"
+  ],
+  "systems_referenced": [
+    "Luna's Trail Farm voicemail system"
+  ],
+  "summary": "April Gravely from Alliance Insurance Services left a voicemail inquiring about booking Luna's Trail Farm's event space for a large meeting on December 5th. She provided details about the event size, timing, and food requirements, and requested a callback via her cell phone number.",
+  "_model": "qwen3:14b",
+  "_eval_count": 246,
+  "_total_duration_ms": 35017,
+  "_source_file": "transcripts/out-3363512052-704-20251020-095621-1760968581.1268.txt",
+  "_direction": "outbound",
+  "_char_count": 1632
+}

@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "",
+  "_model": "qwen3:14b",
+  "_eval_count": 50,
+  "_total_duration_ms": 30560,
+  "_source_file": "transcripts/out-3364139845-510-20251204-104930-1764863370.1474.txt",
+  "_direction": "outbound",
+  "_char_count": 95
+}

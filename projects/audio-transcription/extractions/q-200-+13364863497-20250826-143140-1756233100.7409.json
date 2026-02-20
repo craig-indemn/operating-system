@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jimmy Elkins wants to switch his auto insurance from Auto Owners to Alliance Insurance Services, requesting quotes with coverage limits reverted to 2021 levels and specifically seeking guaranteed replacement cost coverage.",
+  "resolution_steps": [
+    "Agent Tyler confirms caller's identity and current insurance providers (National General for auto, Auto Owners for homeowners).",
+    "Tyler acknowledges the request to adjust coverage limits and obtain a quote for guaranteed replacement cost.",
+    "Tyler apologizes for the delay and transfers the call to the appropriate team to handle the quote request."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Accessing client account information (policy providers, coverage details).",
+    "Understanding insurance policy adjustments (coverage limits, guaranteed replacement cost).",
+    "Internal process for transferring calls to specialized teams."
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal client account system"
+  ],
+  "summary": "Jimmy Elkins seeks to switch auto insurance providers and adjust coverage limits. Tyler confirms account details and transfers the call to a team that can generate the requested quote. The call requires access to client data and knowledge of policy adjustments.",
+  "_model": "qwen3:14b",
+  "_eval_count": 254,
+  "_total_duration_ms": 35082,
+  "_source_file": "transcripts/q-200-+13364863497-20250826-143140-1756233100.7409.txt",
+  "_direction": "queue",
+  "_char_count": 1525
+}

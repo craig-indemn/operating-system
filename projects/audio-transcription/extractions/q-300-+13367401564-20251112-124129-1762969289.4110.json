@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Maria Vialon wants to add a third vehicle to her insurance policy and inquire about the impact on her premium.",
+  "resolution_steps": [
+    "Agent Gina verifies Maria's identity and policy details (address, name, existing vehicles).",
+    "Maria provides vehicle details: 2001 Ford truck with VIN 1FTRW07L01K36821.",
+    "Agent confirms coverage type (liability-only) and no additional drivers.",
+    "Agent checks rate impact and informs Maria of the new monthly payment ($1,516.60).",
+    "Maria confirms no further requests and ends the call."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Vehicle addition process for insurance policies",
+    "Rate calculation for liability coverage",
+    "VIN format verification",
+    "Policy update procedures"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance customer portal (myallianceinsurance.com)",
+    "Texting support service (336-786-1133)"
+  ],
+  "summary": "Maria Vialon contacted Alliance Insurance to add a third vehicle (2001 Ford truck) to her policy. Agent Gina collected vehicle details, confirmed liability coverage, and informed Maria of a rate increase to $1,516.60/month. The call concluded with Maria confirming no further requests.",
+  "_model": "qwen3:14b",
+  "_eval_count": 314,
+  "_total_duration_ms": 40649,
+  "_source_file": "transcripts/q-300-+13367401564-20251112-124129-1762969289.4110.txt",
+  "_direction": "queue",
+  "_char_count": 1991
+}

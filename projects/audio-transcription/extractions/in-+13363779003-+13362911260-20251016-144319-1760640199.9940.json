@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Annie Gnoiet from West Bank) aims to send Gary Belcher information related to a policy he is writing, requiring his email address for delivery.",
+  "resolution_steps": [
+    "Agent requested Gary Belcher's email address.",
+    "Caller provided the email: 'gary@myallianceinsurance.com' and confirmed the spelling.",
+    "Agent acknowledged receipt and confirmed she would send the information."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of policy-related communication workflows",
+    "Verification of contact details for accurate information delivery"
+  ],
+  "systems_referenced": [
+    "myallianceinsurance.com (email domain)"
+  ],
+  "summary": "An agent from West Bank requested Gary Belcher's email address to send policy-related information. After confirming the email address, the agent committed to sending the materials. The call concluded with both parties expressing gratitude.",
+  "_model": "qwen3:14b",
+  "_eval_count": 210,
+  "_total_duration_ms": 31139,
+  "_source_file": "transcripts/in-+13363779003-+13362911260-20251016-144319-1760640199.9940.txt",
+  "_direction": "inbound",
+  "_char_count": 512
+}

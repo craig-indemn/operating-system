@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller sought renewal information for a farm policy under Kenneth H. Robinson's account, specifically asking about the annual premium and dwelling coverage amount.",
+  "resolution_steps": [
+    "Agent verified the policy number (FAB125531W) and account details (name, address).",
+    "Agent retrieved the initial premium amount ($15,165) but noted a discrepancy with the caller's expectation.",
+    "Agent discovered a mix-up between two policies: one for the farm (high premium) and another for the primary dwelling (lower premium).",
+    "Agent clarified the correct dwelling coverage ($455,500) and premium ($1,868) for the primary dwelling policy.",
+    "Agent explained the farm policy's renewal date (June 12) and offered to send documents via email/fax.",
+    "Agent collected the caller's name (Addison N.) for documentation."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of farm policy structures and coverage distinctions (primary dwelling vs. farm-specific policies).",
+    "Ability to cross-reference policy numbers, addresses, and billing details in the agency's database.",
+    "Knowledge of premium calculation differences based on policy type and coverage."
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services internal policy database",
+    "Email support system (support@myallianceinsurance.com)"
+  ],
+  "summary": "The agent resolved a confusion between two farm policies for the same address, clarifying that the $15,165 premium applied to a farm-specific policy while a separate policy ($1,868) covered the primary dwelling. The caller was directed to email for documents and provided with correct renewal details.",
+  "_model": "qwen3:14b",
+  "_eval_count": 381,
+  "_total_duration_ms": 49015,
+  "_source_file": "transcripts/axfer-+16788134751-301-20260114-114731-1768409045.1895.txt",
+  "_direction": "attended_transfer",
+  "_char_count": 4087
+}

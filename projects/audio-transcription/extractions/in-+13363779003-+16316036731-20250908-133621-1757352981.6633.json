@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with Holly",
+  "resolution_steps": [
+    "Agent acknowledged the request",
+    "Agent initiated transfer to Holly"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller requested to speak with Holly. Agent acknowledged and began transferring the call.",
+  "_model": "qwen3:14b",
+  "_eval_count": 87,
+  "_total_duration_ms": 29685,
+  "_source_file": "transcripts/in-+13363779003-+16316036731-20250908-133621-1757352981.6633.txt",
+  "_direction": "inbound",
+  "_char_count": 193
+}

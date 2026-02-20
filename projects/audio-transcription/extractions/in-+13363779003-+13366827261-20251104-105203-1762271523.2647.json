@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Daniel Williams is asking about the remaining balance on his Progressive car insurance policy and inquiring whether Auto Owners can provide home insurance for a new coastal property construction in Calabash, NC.",
+  "resolution_steps": [
+    "Brandy checks Daniel's Progressive car insurance policy and confirms the payment due date (December 1st) and amount ($320.79).",
+    "Brandy explains that Auto Owners does not insure coastal properties and recommends contacting Tracy for specialized coastal property insurance options.",
+    "Brandy clarifies that a builder's risk policy would be required for the under-construction home and that a homeowner's policy cannot be issued until the property is certified as complete."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of insurance policy terms (e.g., builder's risk, certification of occupancy).",
+    "Knowledge of carrier limitations (e.g., Auto Owners' coastal property exclusions).",
+    "Ability to identify specialized insurance needs for coastal properties."
+  ],
+  "systems_referenced": [
+    "Progressive (car insurance)",
+    "Auto Owners (home insurance)",
+    "Tracy (specialist for coastal property insurance)"
+  ],
+  "summary": "Daniel Williams confirmed his Progressive car insurance payment details and inquired about home insurance for a new coastal property. The agent clarified Auto Owners' limitations for coastal properties and directed him to Tracy for specialized coverage. The caller also learned about the need for a builder's risk policy during construction.",
+  "_model": "qwen3:14b",
+  "_eval_count": 323,
+  "_total_duration_ms": 40240,
+  "_source_file": "transcripts/in-+13363779003-+13366827261-20251104-105203-1762271523.2647.txt",
+  "_direction": "inbound",
+  "_char_count": 4216
+}

@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Mar\u00eda is seeking to cancel her insurance policy with Stephen but is concerned about potential coverage issues related to a large tree near her home.",
+  "resolution_steps": [
+    "Jessica confirms Mar\u00eda has already contacted Stephen's agency and they are reviewing the tree's proximity to the house.",
+    "Jessica explains the agency is considering temporary coverage while finding an alternative policy that accommodates the tree.",
+    "Jessica commits to researching other companies that would accept the tree as-is to avoid coverage gaps."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy cancellation procedures",
+    "Coverage criteria for property risks (e.g., trees near homes)",
+    "Alternative carrier options and underwriting guidelines"
+  ],
+  "systems_referenced": [
+    "Application system for reviewing property photos (via Google images)"
+  ],
+  "summary": "Mar\u00eda is attempting to cancel her insurance policy with Stephen's agency due to a large tree near her home, which the insurer is reviewing. Jessica is exploring alternative policies that would accept the tree to maintain coverage. The agent will follow up with options after researching other carriers.",
+  "_model": "qwen3:14b",
+  "_eval_count": 248,
+  "_total_duration_ms": 36823,
+  "_source_file": "transcripts/out-3369799585-106-20250728-161753-1753733872.14457.txt",
+  "_direction": "outbound",
+  "_char_count": 856
+}

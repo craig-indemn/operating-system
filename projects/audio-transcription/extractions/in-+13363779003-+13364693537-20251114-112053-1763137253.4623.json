@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with Corbin Durks",
+  "resolution_steps": [
+    "Agent checked Corbin Durks' availability",
+    "Agent attempted to transfer the call"
+  ],
+  "outcome": "transferred",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller requested to speak with Corbin Durks. Agent checked availability and initiated a transfer, but the call transcript cuts off before confirmation of success or failure.",
+  "_model": "qwen3:14b",
+  "_eval_count": 108,
+  "_total_duration_ms": 26563,
+  "_source_file": "transcripts/in-+13363779003-+13364693537-20251114-112053-1763137253.4623.txt",
+  "_direction": "inbound",
+  "_char_count": 215
+}

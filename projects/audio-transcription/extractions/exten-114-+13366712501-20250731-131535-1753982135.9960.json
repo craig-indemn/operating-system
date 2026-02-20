@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Casey Tuttle is seeking clarification about an FS-1 form related to a DMV notice, confirming address details, and resolving a vehicle registration revocation issue.",
+  "resolution_steps": [
+    "JC confirms Casey's address and updates it in the system.",
+    "JC checks internal records to verify if an FS-1 form was filed.",
+    "JC requests a photo of the DMV notice via text to determine next steps.",
+    "JC agrees to follow up after receiving the photo."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of DMV notice processes",
+    "FS-1 form requirements for vehicle registration",
+    "Insurance carrier communication protocols"
+  ],
+  "systems_referenced": [
+    "DMV portal",
+    "Insurance carrier systems",
+    "Internal address update tool"
+  ],
+  "summary": "Casey Tuttle discusses a DMV notice related to vehicle registration revocation and an FS-1 form. JC updates Casey's address, verifies an FS-1 was filed, and requests a photo of the notice for further action. The call concludes with a promise to follow up after receiving the photo.",
+  "_model": "qwen3:14b",
+  "_eval_count": 260,
+  "_total_duration_ms": 33811,
+  "_source_file": "transcripts/exten-114-+13366712501-20250731-131535-1753982135.9960.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2449
+}

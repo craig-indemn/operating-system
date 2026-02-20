@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Donnie from MPE Rentals needs an updated certificate of insurance for Fralin that properly reflects $80,000 coverage for rented/leased equipment, as the current certificate only shows $25,000 and lacks clarity on equipment type.",
+  "resolution_steps": [
+    "Cody confirms the issue with the certificate's coverage value and equipment description.",
+    "Cody attempts to locate an email from Fralin or Zach Foley containing the necessary details.",
+    "Donnie clarifies the email was physically handed to him, not sent electronically.",
+    "Cody requests Donnie's email address to send required information directly.",
+    "Donnie provides Cody's email (cody@allianceinsurance.com) and confirms equipment details (telehandler valued at $80,000).",
+    "Cody agrees to contact the underwriter and issue an updated certificate once information is received."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Certificate of insurance requirements and formatting",
+    "Underwriting process for equipment coverage adjustments",
+    "Handling client requests for policy updates"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's internal system",
+    "Email communication",
+    "Underwriter's system"
+  ],
+  "summary": "Donnie from MPE Rentals requested an updated certificate of insurance for Fralin with proper coverage for a $80,000 telehandler. Cody worked to locate necessary documentation, confirmed equipment details, and agreed to contact the underwriter for an updated certificate. The call concluded with Cody committing to follow up after receiving required information.",
+  "_model": "qwen3:14b",
+  "_eval_count": 353,
+  "_total_duration_ms": 47782,
+  "_source_file": "transcripts/exten-207-+13042963047-20251114-104804-1763135284.3690.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3851
+}

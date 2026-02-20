@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Caller attempted to reach a specific agent (Lynn/Linda) but was met with confusion about names.",
+  "resolution_steps": [
+    "Agent confirmed no employee named Linda exists",
+    "Agent offered to transfer call to another agent"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller sought to contact a specific agent but encountered name confusion. Agent confirmed no employee named Linda exists and offered to transfer the call.",
+  "_model": "qwen3:14b",
+  "_eval_count": 118,
+  "_total_duration_ms": 27769,
+  "_source_file": "transcripts/in-+13367861133-+13367102758-20251003-160111-1759521671.19630.txt",
+  "_direction": "inbound",
+  "_char_count": 305
+}

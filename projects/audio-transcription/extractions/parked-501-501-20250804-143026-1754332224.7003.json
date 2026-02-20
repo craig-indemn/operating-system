@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "John is concerned about a significant increase in his homeowners insurance premium, particularly the jump in coverage limits, and seeks clarification on the cause and potential solutions.",
+  "resolution_steps": [
+    "Nicky explains the Inflation Guard endorsement and its role in adjusting coverage based on inflation and rebuild costs.",
+    "Nicky checks the replacement cost estimator (RCE) tool for John's property to assess potential adjustments.",
+    "Nicky commits to consulting underwriting for possible relief outside of the current carrier's rate.",
+    "Nicky acknowledges the possibility of remarketing to another carrier but warns of potentially higher quotes due to new business algorithms."
+  ],
+  "outcome": "not_applicable",
+  "knowledge_required": [
+    "Understanding of insurance policy endorsements (e.g., Inflation Guard).",
+    "Knowledge of replacement cost estimators and their impact on coverage limits.",
+    "Awareness of factors influencing insurance rates (e.g., inflation, natural disasters, claims history).",
+    "Familiarity with underwriting processes and carrier-specific rate adjustments."
+  ],
+  "systems_referenced": [
+    "Replacement Cost Estimator (RCE) tool",
+    "Underwriting processes",
+    "Google search for property data"
+  ],
+  "summary": "John discusses a significant increase in his homeowners insurance premium with Nicky Porter from Alliance Insurance Services. Nicky explains the Inflation Guard endorsement's role in adjusting coverage limits based on inflation and rebuild costs. Nicky plans to use the RCE tool to assess potential adjustments and consult underwriting for relief, while acknowledging the challenges of remarketing to other carriers due to higher potential quotes. The call ends with no immediate resolution but a commitment to further action.",
+  "_model": "qwen3:14b",
+  "_eval_count": 367,
+  "_total_duration_ms": 65912,
+  "_source_file": "transcripts/parked-501-501-20250804-143026-1754332224.7003.txt",
+  "_direction": "parked",
+  "_char_count": 9203
+}

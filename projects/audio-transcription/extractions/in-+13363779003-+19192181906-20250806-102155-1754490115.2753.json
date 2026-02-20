@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Yuri has questions about their home insurance policy and requests assistance from an agent.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller Yuri requested help with home insurance questions. The agent acknowledged the request and promised to connect them with an agent but no further details were provided in the transcript.",
+  "_model": "qwen3:14b",
+  "_eval_count": 101,
+  "_total_duration_ms": 20975,
+  "_source_file": "transcripts/in-+13363779003-+19192181906-20250806-102155-1754490115.2753.txt",
+  "_direction": "inbound",
+  "_char_count": 202
+}

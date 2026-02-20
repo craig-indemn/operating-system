@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller intends to make a full payment for her Progressive auto insurance policy and request a paper receipt despite being enrolled in the paperless program.",
+  "resolution_steps": [
+    "Agent verified the caller's identity and policy details (Sonia Perez Benavidez, Progressive auto policy).",
+    "Agent confirmed the payment amount ($536.56) and noted the remaining balance of 75 cents.",
+    "Agent addressed the caller's concern about missing emails and clarified the paperless enrollment status.",
+    "Agent offered to mail a paper receipt and send a copy to the caller's email.",
+    "Caller confirmed intent to pay in full and requested the receipt."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Progressive insurance payment processes",
+    "Handling paperless enrollment requests",
+    "Managing partial balances and full payments"
+  ],
+  "systems_referenced": [
+    "Progressive carrier system",
+    "Alliance Insurance payment portal"
+  ],
+  "summary": "Sonia Perez Benavidez called to pay her Progressive auto insurance in full ($536.56) and requested a paper receipt despite being paperless. The agent clarified the remaining 75-cent balance, confirmed the payment method, and arranged for the receipt to be mailed and emailed. The caller confirmed the payment and receipt request.",
+  "_model": "qwen3:14b",
+  "_eval_count": 300,
+  "_total_duration_ms": 36329,
+  "_source_file": "transcripts/in-+13363779003-+17044900795-20250729-120250-1753804970.4098.txt",
+  "_direction": "inbound",
+  "_char_count": 2216
+}

@@ -1,0 +1,36 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Heather) is following up on a previous conversation to adjust insurance policy details, including deductible changes, pet coverage options, and removing a lien holder, while discussing the impact on premiums.",
+  "resolution_steps": [
+    "Confirmed the rental coverage was added as requested.",
+    "Discussed increasing deductibles on both vehicles (Santa Fe and Mini Cooper) to $500 and calculated the minimal premium reduction.",
+    "Noted the client's preference to avoid claims under $500 and advised waiting until policy renewal in October for meaningful changes.",
+    "Addressed pet coverage options through other carriers.",
+    "Removed the lien holder effective immediately after the loan was paid off.",
+    "Scheduled a follow-up in late September to reassess deductible changes before the October renewal.",
+    "Mentioned potential rate revisions from July 1 and suggested evaluating bundled policies (Travelers, Arilla) if needed."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Auto insurance policy adjustments (deductibles, collision coverage)",
+    "Impact of deductible changes on premiums",
+    "Pet coverage options and carrier-specific policies",
+    "Lien removal processes and loan payoff implications",
+    "Rate revisions from carriers (e.g., Progressive, Travelers)",
+    "Policy renewal timelines and strategic timing for changes"
+  ],
+  "systems_referenced": [
+    "Progressive (auto insurance)",
+    "Travelers (home insurance)",
+    "Arilla (umbrella insurance)",
+    "Santa Fe and Mini Cooper (vehicles)",
+    "Loan payoff records"
+  ],
+  "summary": "Heather and Bradley discuss adjusting auto insurance deductibles, evaluating the minimal premium impact of increasing them to $500, and addressing pet coverage options. Heather removes the lien holder after the loan is paid off and schedules a follow-up in late September to reassess changes before the October policy renewal. The conversation also touches on potential rate revisions and bundled insurance options.",
+  "_model": "qwen3:14b",
+  "_eval_count": 419,
+  "_total_duration_ms": 60394,
+  "_source_file": "transcripts/exten-202-+13364076876-20250805-092203-1754400123.906.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3957
+}

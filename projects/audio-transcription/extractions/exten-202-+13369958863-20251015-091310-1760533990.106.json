@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Heather wants to cancel four insurance policies (two cars, one homeowner's, one umbrella) effective yesterday due to difficulties securing coverage for a long-term Airbnb rental, which she learned Erie and Travelers do not support.",
+  "resolution_steps": [
+    "Agent confirms cancellation request and effective date (yesterday at 10:14 AM).",
+    "Agent states cancellation forms will be emailed for Heather to sign.",
+    "Agent notes Heather's mention of an ongoing requote (policy #111) and offers to assist if she needs to reinstate coverage in the future.",
+    "Agent confirms Heather's email address (david@davidrodwell.com)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance cancellation procedures and required documentation",
+    "Carrier-specific policies regarding Airbnb coverage (Erie, Travelers)",
+    "Handling requote requests and policy reinstatement processes"
+  ],
+  "systems_referenced": [
+    "Email system for sending cancellation forms",
+    "Internal policy tracking system (reference to 'requote for 111')"
+  ],
+  "summary": "Heather cancels four insurance policies due to Airbnb coverage issues, with the agent initiating cancellation forms and noting an existing requote request. The agent confirms email details and offers future assistance. The call concludes with the agent sending forms and Heather expressing gratitude.",
+  "_model": "qwen3:14b",
+  "_eval_count": 304,
+  "_total_duration_ms": 40156,
+  "_source_file": "transcripts/exten-202-+13369958863-20251015-091310-1760533990.106.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1675
+}

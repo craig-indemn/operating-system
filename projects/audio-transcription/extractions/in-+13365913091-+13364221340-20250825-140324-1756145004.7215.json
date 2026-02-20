@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Not applicable (automated voicemail greeting)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [
+    "voicemail system",
+    "automated attendant"
+  ],
+  "summary": "Automated voicemail greeting played, indicating technical issues with call connection. No meaningful conversation occurred. Caller may need to retry or use alternative contact methods.",
+  "_model": "qwen3:14b",
+  "_eval_count": 101,
+  "_total_duration_ms": 22383,
+  "_source_file": "transcripts/in-+13365913091-+13364221340-20250825-140324-1756145004.7215.txt",
+  "_direction": "inbound",
+  "_char_count": 145
+}

@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Danny wants to bundle his auto and home insurance policies, citing concerns about potential premium increases or non-renewal by Farm Bureau if they are separated. He seeks a bundled quote.",
+  "resolution_steps": [
+    "Heather confirms she is working on Danny's homeowner insurance and acknowledges his request to bundle auto insurance.",
+    "Heather explains challenges in retrieving Danny's auto insurance data and asks for vehicle details to proceed.",
+    "Danny provides vehicle information (2020 Lincoln MKZ, 2008 Nissan Maxima, 2025 Ford F-150 Lariat)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance bundling practices and carrier-specific policies (e.g., Farm Bureau's bundling effects)",
+    "Data retrieval limitations when pulling customer insurance records",
+    "Impact of separating auto/home policies on premiums and renewals"
+  ],
+  "systems_referenced": [
+    "Carrier portals/databases (implied through data retrieval challenges)",
+    "Farm Bureau insurance system"
+  ],
+  "summary": "Danny seeks to bundle his auto and home insurance with Farm Bureau, but Heather needs additional vehicle details due to data retrieval issues. Heather is working to gather information to provide a bundled quote, while Danny emphasizes the importance of maintaining both policies together to avoid potential premium increases or non-renewal.",
+  "_model": "qwen3:14b",
+  "_eval_count": 301,
+  "_total_duration_ms": 47075,
+  "_source_file": "transcripts/exten-401-+13366482247-20250818-101414-1755526454.1905.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1520
+}

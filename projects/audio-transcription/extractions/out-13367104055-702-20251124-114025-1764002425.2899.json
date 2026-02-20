@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Rachel left a voicemail message for Anna regarding a past-due payment.",
+  "resolution_steps": [
+    "Voicemail greeting played",
+    "Rachel's message about overdue payment was recorded"
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Rachel left a voicemail for Anna informing her of a past-due payment. The message included the due date (21st), amount ($65.12), and requested Anna visit the office. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 128,
+  "_total_duration_ms": 33214,
+  "_source_file": "transcripts/out-13367104055-702-20251124-114025-1764002425.2899.txt",
+  "_direction": "outbound",
+  "_char_count": 472
+}

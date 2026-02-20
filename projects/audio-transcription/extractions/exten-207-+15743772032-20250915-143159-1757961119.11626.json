@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Christina needs a certificate of compliance (specifically the FS1 form) for Eduardo Hernandez's vehicle, which was involved in a traffic stop in May. She requires this document to prove insurance to the DMV.",
+  "resolution_steps": [
+    "Agent acknowledges the need for a certificate of compliance (FS1 form) for a traffic stop incident on May 15.",
+    "Agent confirms the vehicle involved is a 2020 Ram and the insurance provider is Progressive.",
+    "Agent requests Christina's email address (June.Alex@Ymail.com) to send the form once obtained.",
+    "Agent states they will contact Progressive to retrieve the required documentation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding state-specific insurance compliance forms (e.g., NC's FS1 form).",
+    "Process for obtaining proof of insurance from carriers like Progressive.",
+    "Handling DMV-related compliance documentation for traffic violations."
+  ],
+  "systems_referenced": [
+    "Progressive (insurance carrier)"
+  ],
+  "summary": "Christina seeks a certificate of compliance (FS1 form) for Eduardo's vehicle after a May traffic stop. The agent will contact Progressive to retrieve the form and send it to Christina's email (June.Alex@Ymail.com). The call remains open pending confirmation from the insurance provider.",
+  "_model": "qwen3:14b",
+  "_eval_count": 295,
+  "_total_duration_ms": 49773,
+  "_source_file": "transcripts/exten-207-+15743772032-20250915-143159-1757961119.11626.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2511
+}

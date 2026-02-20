@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jeremy Palmer from Alliance Insurance Services wanted to verify with Auto Owners Insurance's underwriter whether a 2021 wind loss claim would affect a client's premium calculation on a new quote.",
+  "resolution_steps": [
+    "Ellie (Auto Owners underwriter) confirmed that as long as the 2021 wind loss claim is listed on the policy and not deleted, the premium should remain accurate.",
+    "Jeremy was advised to proceed with the quote, as the backend review would not change the premium if the claim is properly documented."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Underwriting processes for property insurance",
+    "How past claims (specifically wind losses) impact premium calculations",
+    "Quote system navigation (e.g., 'quote key,' 'summary' screen)"
+  ],
+  "systems_referenced": [
+    "Auto Owners Insurance underwriting system",
+    "Quote generation platform (referenced via 'quote key' and 'summary' screen)"
+  ],
+  "summary": "Alliance Insurance agent Jeremy Palmer confirmed with Auto Owners underwriter Ellie that a 2021 wind loss claim would not alter a client's premium if properly documented on the policy. Ellie assured the quote could proceed, with final backend verification to confirm accuracy.",
+  "_model": "qwen3:14b",
+  "_eval_count": 285,
+  "_total_duration_ms": 40089,
+  "_source_file": "transcripts/out-8003460346-701-20250728-124818-1753721298.7585.txt",
+  "_direction": "outbound",
+  "_char_count": 3082
+}

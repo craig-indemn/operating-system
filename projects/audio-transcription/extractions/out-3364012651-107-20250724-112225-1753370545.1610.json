@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to discuss the renewal of their homeowner's insurance policy and understand the new rate and replacement options provided by the agent.",
+  "resolution_steps": [
+    "Agent confirmed the caller's situation regarding the upcoming policy renewal.",
+    "Provided details about the replacement policy from North Carolina Grange Mutual, including the new annual rate ($14,130) and monthly increase ($39 compared to the previous rate).",
+    "Explained that rates typically increase yearly and no lower options were available.",
+    "Informed the caller about sending an electronic application for signature to the specified email address.",
+    "Confirmed the email address provided by the caller for document delivery."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Homeowner's insurance renewal processes",
+    "Understanding of insurance rate fluctuations",
+    "Knowledge of North Carolina Grange Mutual as a carrier",
+    "Electronic signature application procedures"
+  ],
+  "systems_referenced": [
+    "North Carolina Grange Mutual (insurance carrier)",
+    "Email system for document delivery (witc@co.siri.nc.us)"
+  ],
+  "summary": "Agent Cecile informed Crystal about a replacement homeowner's insurance policy from North Carolina Grange Mutual, explained the rate increase, and prepared to send an electronic application for signature. Crystal agreed to proceed after confirming the new rate details and email address for document delivery.",
+  "_model": "qwen3:14b",
+  "_eval_count": 306,
+  "_total_duration_ms": 44495,
+  "_source_file": "transcripts/out-3364012651-107-20250724-112225-1753370545.1610.txt",
+  "_direction": "outbound",
+  "_char_count": 1564
+}

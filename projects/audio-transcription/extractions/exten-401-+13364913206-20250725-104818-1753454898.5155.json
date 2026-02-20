@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to adjust her insurance policy by removing her father from the current policy and creating a new one for him, while keeping herself and her sister on the same policy with their 2016 Lexus. She also wants to explore deductible changes to reduce costs.",
+  "resolution_steps": [
+    "Agent pulls up the caller's renewal policy to review current details.",
+    "Confirms vehicle and driver information (2016 Lexus shared with sister, 2006 Lexus for father).",
+    "Discusses removing father from the current policy and creating a new policy for him with the 2006 Lexus.",
+    "Agrees to keep the same coverage levels (100/500 deductible) but explores increasing deductibles for cost savings.",
+    "Mentions shopping with other carriers for comparison."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy structure (multiple drivers/vehicles, deductible adjustments)",
+    "Process for splitting policies between family members",
+    "Carrier comparison practices"
+  ],
+  "systems_referenced": [
+    "Progressive (current carrier)"
+  ],
+  "summary": "The caller is adjusting her insurance policy to separate her father's coverage into a new policy while keeping her and her sister on the same policy. The agent is confirming details, discussing deductible changes, and will provide a quote after reviewing the new policy structure.",
+  "_model": "qwen3:14b",
+  "_eval_count": 307,
+  "_total_duration_ms": 50203,
+  "_source_file": "transcripts/exten-401-+13364913206-20250725-104818-1753454898.5155.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3680
+}

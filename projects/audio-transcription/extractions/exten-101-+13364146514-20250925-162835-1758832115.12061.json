@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to clarify their business setup (sole proprietorship since 2009) and address a carrier notification about unregistered business information in their account.",
+  "resolution_steps": [
+    "Agent confirms the caller's business structure as a sole proprietorship established in 2009.",
+    "Agent states they will verify the carrier's notification and investigate discrepancies in the business registration.",
+    "Agent assures the caller they will follow up if additional information is needed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of business entity structures (sole proprietorship)",
+    "Carrier communication protocols for business registration verification",
+    "Account history tracking for long-term clients"
+  ],
+  "systems_referenced": [
+    "Carrier systems for business registration verification"
+  ],
+  "summary": "The caller discusses their sole proprietorship setup with Monty, who confirms the business structure and agrees to investigate a carrier notification about unregistered business information. The caller is reassured that further investigation will occur, with a promise to follow up if needed. The conversation highlights long-term client history and carrier communication processes.",
+  "_model": "qwen3:14b",
+  "_eval_count": 252,
+  "_total_duration_ms": 33200,
+  "_source_file": "transcripts/exten-101-+13364146514-20250925-162835-1758832115.12061.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1223
+}

@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Barry Gamboa) is being contacted to review his insurance policies due for renewal in August. The agent is verifying policy details, addressing discrepancies (e.g., an unknown person named Oscar Gutierrez Martinez listed on the policy), and offering additional coverage options.",
+  "resolution_steps": [
+    "Agent confirmed Barry's address (20 Golden Flats Street) and email (Barry Gamboa@live.com).",
+    "Noted that Carla Albor Cortez and Oscar Gutierrez Martinez are listed on the policy, with Barry confirming he does not know Oscar.",
+    "Agent offered to investigate why Oscar is on the policy and how to remove him.",
+    "Discussed vehicle details (2008 Ford Focus with basic coverage) and confirmed no additional drivers.",
+    "Asked about renters' insurance coverage, which Barry declined for now.",
+    "Agent committed to follow up via text after investigating the Oscar discrepancy."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy renewal processes",
+    "Policyholder verification procedures",
+    "Handling discrepancies in policy details (e.g., unknown individuals)",
+    "Renters' insurance offerings"
+  ],
+  "systems_referenced": [
+    "Internal policy database (for checking policy details like names, addresses, and coverage)"
+  ],
+  "summary": "An agent from Lions and Shores contacted Barry Gamboa to review his expiring insurance policies. The call revealed an unknown individual (Oscar Gutierrez Martinez) listed on the policy, which the agent agreed to investigate. Barry also declined renters' insurance for now, but the agent will follow up after resolving the Oscar discrepancy.",
+  "_model": "qwen3:14b",
+  "_eval_count": 360,
+  "_total_duration_ms": 43711,
+  "_source_file": "transcripts/out-3366921326-114-20260112-113212-1768235532.1401.txt",
+  "_direction": "outbound",
+  "_char_count": 2808
+}

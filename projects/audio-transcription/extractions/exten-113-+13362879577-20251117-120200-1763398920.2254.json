@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Colin) is seeking confirmation that he correctly signed a cancellation document and is concerned he may have accidentally paid for insurance instead of canceling it.",
+  "resolution_steps": [
+    "Agent (Jerry) acknowledges the caller's concern and confirms the document sent was for cancellation.",
+    "Explains that verification may take a few minutes if the document was recently processed.",
+    "Offers to call the caller back once the document is confirmed as received."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Cancellation document verification process",
+    "Document processing timelines"
+  ],
+  "systems_referenced": [],
+  "summary": "Colin confirms he signed a cancellation document but wants verification. Jerry explains processing delays and agrees to follow up once confirmation is received. The call ends with Jerry offering to call back using the provided phone number.",
+  "_model": "qwen3:14b",
+  "_eval_count": 196,
+  "_total_duration_ms": 27825,
+  "_source_file": "transcripts/exten-113-+13362879577-20251117-120200-1763398920.2254.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 997
+}

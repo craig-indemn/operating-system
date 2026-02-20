@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Rosalie Toro wants to add a new driver (Michael Vasquez-Vellis) to her husband's 2007 Freightliner insurance policy and confirm coverage details.",
+  "resolution_steps": [
+    "Agent Anna requested the driver's full name, date of birth, and Florida driver's license number.",
+    "Anna processed the information through the system and informed Rosalie of a $69 premium increase for the remainder of the term.",
+    "Rosalie asked for proof of coverage for the new driver; Anna explained that a Certificate of Insurance (COI) with the driver's name would be required, which may take 24 hours to generate.",
+    "Anna confirmed the driver is now covered and offered alternative documentation (insurance card) if needed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Commercial auto insurance policy adjustments",
+    "Driver underwriting and premium calculations",
+    "Documentation requirements for proof of coverage"
+  ],
+  "systems_referenced": [
+    "Insurance policy management system",
+    "Florida driver's license database"
+  ],
+  "summary": "Rosalie Toro added a new driver to her husband's commercial truck insurance policy. The agent processed the request, confirmed coverage, and explained the $69 premium increase. Documentation for proof of coverage was discussed, with a 24-hour processing time noted. The call concluded with confirmation of coverage and next steps for documentation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 316,
+  "_total_duration_ms": 46835,
+  "_source_file": "transcripts/exten-302-+17863673494-20250805-094956-1754401796.1193.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2539
+}

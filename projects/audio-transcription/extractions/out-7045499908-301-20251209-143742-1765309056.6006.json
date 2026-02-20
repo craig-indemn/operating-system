@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "N/A",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [
+    "Auto Owners Insurance automated menu system"
+  ],
+  "summary": "Automated menu playback with no substantive interaction. The transcript contains a standard voicemail greeting and menu options for an insurance company's billing department, with no actual conversation or resolution of a specific caller request.",
+  "_model": "qwen3:14b",
+  "_eval_count": 100,
+  "_total_duration_ms": 28031,
+  "_source_file": "transcripts/out-7045499908-301-20251209-143742-1765309056.6006.txt",
+  "_direction": "outbound",
+  "_char_count": 2317
+}

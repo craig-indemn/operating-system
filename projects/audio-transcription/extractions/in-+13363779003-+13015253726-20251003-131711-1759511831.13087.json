@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller requested to change his monthly insurance payment date.",
+  "resolution_steps": [
+    "Agent acknowledged the request and offered to connect the caller to another agent.",
+    "Agent stated they would retrieve an agent to handle the payment date change request."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of payment date modification processes",
+    "Ability to transfer calls to appropriate agents"
+  ],
+  "systems_referenced": [],
+  "summary": "Tim Norris requested to change his monthly insurance payment date. The agent acknowledged the request and stated they would connect him to another agent to process the change. The call remains ongoing as the agent prepares the transfer.",
+  "_model": "qwen3:14b",
+  "_eval_count": 161,
+  "_total_duration_ms": 35921,
+  "_source_file": "transcripts/in-+13363779003-+13015253726-20251003-131711-1759511831.13087.txt",
+  "_direction": "inbound",
+  "_char_count": 332
+}

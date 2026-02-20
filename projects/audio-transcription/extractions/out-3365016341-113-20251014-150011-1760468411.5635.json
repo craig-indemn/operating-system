@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Miss Young wants to renew her homeowner insurance after her previous provider (Main Street) is no longer operating in North Carolina and also seeks car insurance quotes, ideally bundled for a better rate.",
+  "resolution_steps": [
+    "Agent Gary confirms the client's current insurance details (National General for car, Main Street for home).",
+    "Discusses the need to renew homeowner insurance on November 26 and explores alternatives.",
+    "Asks about home details (roof age, HVAC, water heater, pets, security system) to assess risk factors.",
+    "Agrees to generate new quotes for both home and car insurance, prioritizing bundled rates.",
+    "Informs client he will follow up in a few days with options."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance renewal processes",
+    "Impact of home conditions (roof age, HVAC, etc.) on premiums",
+    "Carrier-specific underwriting criteria",
+    "Bundling benefits for clients"
+  ],
+  "systems_referenced": [
+    "Internal client policy database (to check current insurance details)"
+  ],
+  "summary": "Gary from Alliance Insurance assists Miss Young in transitioning from Main Street Insurance after their NC closure. He gathers home and car insurance details, confirms policy specifics, and commits to providing new quotes. The client will be contacted later with options after data analysis.",
+  "_model": "qwen3:14b",
+  "_eval_count": 302,
+  "_total_duration_ms": 47979,
+  "_source_file": "transcripts/out-3365016341-113-20251014-150011-1760468411.5635.txt",
+  "_direction": "outbound",
+  "_char_count": 2969
+}

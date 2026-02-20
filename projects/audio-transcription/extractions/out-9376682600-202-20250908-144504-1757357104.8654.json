@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Henry wants to cancel his home and auto insurance policies effective September 14th because he found a better rate with another company (military provider).",
+  "resolution_steps": [
+    "Agent Heather confirms the cancellation effective date (September 14th) and the reason for cancellation (better rate elsewhere).",
+    "Requests Henry's email address (Henry HB72@Yahoo.com) to send the cancellation form.",
+    "Explains the e-sign process for the cancellation document, noting it will be sent via 'Congresson via' or from Heather Johnson.",
+    "Agrees to generate and send the cancellation form electronically."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy cancellation procedures",
+    "E-signature platform workflows",
+    "Effective date handling for policy terminations"
+  ],
+  "systems_referenced": [
+    "Email system (Yahoo.com)",
+    "E-signature platform ('Congresson via' - likely a typo for DocuSign or similar)"
+  ],
+  "summary": "Henry seeks to cancel his home and auto insurance policies with Alliance Insurance, effective September 14th, after finding a better rate. Heather confirms the request, collects Henry's email, and explains the e-sign process for the cancellation form. The call concludes with Heather agreeing to send the form for electronic signing.",
+  "_model": "qwen3:14b",
+  "_eval_count": 297,
+  "_total_duration_ms": 43775,
+  "_source_file": "transcripts/out-9376682600-202-20250908-144504-1757357104.8654.txt",
+  "_direction": "outbound",
+  "_char_count": 987
+}

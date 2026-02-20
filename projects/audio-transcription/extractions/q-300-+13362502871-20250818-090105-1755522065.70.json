@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Cynthia McMullen wants to update her car insurance policy after trading in her Jeep for a Nissan Pathfinder, ensuring the new vehicle is added with the same coverage.",
+  "resolution_steps": [
+    "JC confirms Cynthia's address and verifies the details of the new Nissan Pathfinder and the traded Jeep.",
+    "JC collects the VIN of the Nissan Pathfinder to process the vehicle update.",
+    "JC explains that the policy will be updated to remove the Jeep and add the Pathfinder with the same coverage.",
+    "JC clarifies that auto-pay billing will automatically adjust once the transaction processes, and Cynthia will receive an email confirmation.",
+    "JC notes that financing details from Nissan are not immediately required but recommends contacting Nissan for lienholder information if needed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Updating vehicle information in insurance systems",
+    "Handling auto-pay billing adjustments",
+    "Understanding lienholder requirements for financed vehicles"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services policy management system",
+    "Auto-pay billing portal",
+    "Email notification system for policy changes"
+  ],
+  "summary": "Cynthia McMullen contacted Alliance Insurance Services to update her car insurance after trading her Jeep for a Nissan Pathfinder. The agent, JC, processed the change, confirmed the new vehicle details, and explained that auto-pay billing would adjust automatically. Cynthia was advised to contact Nissan for potential lienholder information, though it was not required to proceed with the update. The call concluded with the policy change being processed and an email confirmation expected.",
+  "_model": "qwen3:14b",
+  "_eval_count": 338,
+  "_total_duration_ms": 50608,
+  "_source_file": "transcripts/q-300-+13362502871-20250818-090105-1755522065.70.txt",
+  "_direction": "queue",
+  "_char_count": 4131
+}

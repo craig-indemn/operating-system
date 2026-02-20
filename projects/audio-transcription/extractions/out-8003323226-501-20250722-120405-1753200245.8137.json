@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to update their auto policy's draft but had difficulty communicating the request clearly to the agent.",
+  "resolution_steps": [
+    "Agent guided caller through menu options (policy type, billing, etc.).",
+    "Caller selected 'billing' and attempted to clarify their request as 'update auto draft'.",
+    "Agent struggled to understand the request and informed the caller they would be transferred to their agent.",
+    "Agent provided the agent's phone number and initiated the transfer."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "IVR menu structure for policy types and billing",
+    "Agent contact information"
+  ],
+  "systems_referenced": [
+    "Call center IVR system"
+  ],
+  "summary": "A caller attempted to resolve a billing issue related to their auto policy but struggled to communicate their request ('update auto draft') to the agent. The agent, unable to resolve the issue, transferred the call to the caller's agent and provided the agent's contact number.",
+  "_model": "qwen3:14b",
+  "_eval_count": 230,
+  "_total_duration_ms": 35697,
+  "_source_file": "transcripts/out-8003323226-501-20250722-120405-1753200245.8137.txt",
+  "_direction": "outbound",
+  "_char_count": 916
+}

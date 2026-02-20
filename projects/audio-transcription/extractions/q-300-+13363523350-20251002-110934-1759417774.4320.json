@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Betty Udd wants to address a discrepancy between her North Carolina policy's approved rate and the amount charged, seeking a premium reduction.",
+  "resolution_steps": [
+    "Holly retrieves Betty's policy renewal details, noting the current premium and coverage amounts.",
+    "Holly explains the premium is based on replacement cost and deductible, suggesting increasing the deductible to $2,500 to lower the premium.",
+    "Calculates the new premium ($1,600 annually) after adjusting the deductible and explains potential savings over time.",
+    "Confirms Betty's agreement to the deductible change and schedules processing of the update.",
+    "Addresses Betty's follow-up question about adding a Florida car to the policy, explaining title requirements for North Carolina registration."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance policy renewal processes",
+    "Deductible adjustments and their impact on premiums",
+    "North Carolina insurance regulations",
+    "Multi-policy discount calculations",
+    "Vehicle title and registration requirements"
+  ],
+  "systems_referenced": [
+    "Policy renewal system (for retrieving coverage details)",
+    "Carrier portal (for processing deductible changes)"
+  ],
+  "summary": "Betty Udd contacted Alliance Insurance to address a premium discrepancy on her North Carolina policy. The agent, Holly, explained the premium calculation based on replacement cost and deductible, proposed increasing the deductible to $2,500 to reduce the annual premium from $1,894 to $1,600, and processed the change. Betty also inquired about adding her Florida car to the policy, and Holly explained the need for a North Carolina-registered title. The call concluded with Betty agreeing to the deductible adjustment and awaiting updated documents.",
+  "_model": "qwen3:14b",
+  "_eval_count": 374,
+  "_total_duration_ms": 46991,
+  "_source_file": "transcripts/q-300-+13363523350-20251002-110934-1759417774.4320.txt",
+  "_direction": "queue",
+  "_char_count": 4294
+}

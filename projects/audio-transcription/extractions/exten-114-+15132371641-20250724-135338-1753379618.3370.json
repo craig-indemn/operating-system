@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller confirmed receipt of a license plate document and requested an insurance quote for a Tesla they plan to lease, inquiring about the process and potential costs.",
+  "resolution_steps": [
+    "Agent verified receipt of the license plate document via system check.",
+    "Agent initiated Tesla insurance quote process after obtaining VIN details from the caller.",
+    "Agent explained that an estimate could be generated using a similar VIN if the exact model wasn't available.",
+    "Agent addressed the caller's question about whether existing Progressive policies (homeowner's and other car) would affect the quote.",
+    "Agent clarified that access to other policies requires coordination during renewal and explained the process for transferring policies.",
+    "Agent began inputting the VIN and vehicle details into the system to generate a quote."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance quoting process for new vehicles",
+    "VIN validation and its impact on rate estimates",
+    "Policy management across multiple lines of insurance",
+    "Progressive account integration and policy access limitations"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services internal quoting system",
+    "Progressive account portal",
+    "VIN lookup database"
+  ],
+  "summary": "The caller confirmed receipt of a license plate document and requested a Tesla insurance quote. The agent initiated the quote process using a provided VIN, explained policy integration limitations, and began system input to generate an estimate. The call ended mid-process with the agent preparing to provide the estimate.",
+  "_model": "qwen3:14b",
+  "_eval_count": 326,
+  "_total_duration_ms": 48172,
+  "_source_file": "transcripts/exten-114-+15132371641-20250724-135338-1753379618.3370.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3989
+}

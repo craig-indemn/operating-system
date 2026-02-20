@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to make a payment for workers' compensation insurance and confirm that another policy (general liability) is set up for automatic payments.",
+  "resolution_steps": [
+    "Agent confirms the caller's intent to pay for workers' comp and checks if automatic payments are already set up.",
+    "Caller explains they need to send a check and requests a photo of it.",
+    "Agent agrees to process the payment manually for $278 today.",
+    "Agent confirms the payment will be applied to the current month's premium.",
+    "Agent checks the general liability policy to verify automatic payments are active.",
+    "Agent confirms the next workers' comp payment is due August 22nd."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance payment processing workflows",
+    "Workers' compensation and general liability policy details",
+    "Automatic payment setup procedures"
+  ],
+  "systems_referenced": [
+    "Internal insurance agency payment processing system",
+    "Policy management database"
+  ],
+  "summary": "The caller requested to make a manual workers' comp payment and verify automatic payments for general liability. The agent processed the $278 payment, confirmed the current month's coverage, and scheduled the next workers' comp payment for August 22nd. The agent also verified the general liability policy's automatic payment status.",
+  "_model": "qwen3:14b",
+  "_eval_count": 297,
+  "_total_duration_ms": 38815,
+  "_source_file": "transcripts/exten-106-+13367826357-20250728-124931-1753721371.7587.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1289
+}

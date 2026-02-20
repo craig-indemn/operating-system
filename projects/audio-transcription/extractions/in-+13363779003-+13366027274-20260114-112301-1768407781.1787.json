@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller attempted to reach Jessica Brooks and expressed confusion about whether Alliance Insurance Services provides care coordination or operates under different names like Alliance Health or Alliance Behavior Health.",
+  "resolution_steps": [
+    "Agent confirmed there is no Jessica Brooks at the agency but mentioned Jessica Hernandez.",
+    "Agent clarified that the agency is Alliance Insurance Services, not Alliance Health or Alliance Behavior Health.",
+    "Agent explained the agency's focus on property casualty and life insurance, noting they do not provide care coordination."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Agency's service areas (property casualty, life insurance)",
+    "Employee directory (Jessica Brooks vs. Jessica Hernandez)",
+    "Distinction between Alliance Insurance Services and other entities (Alliance Health, Alliance Behavior Health)"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller sought to contact Jessica Brooks and inquired about potential confusion between Alliance Insurance Services and other entities. The agent clarified the agency's name, service focus, and employee directory, leading to the caller ending the conversation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 237,
+  "_total_duration_ms": 38533,
+  "_source_file": "transcripts/in-+13363779003-+13366027274-20260114-112301-1768407781.1787.txt",
+  "_direction": "inbound",
+  "_char_count": 574
+}

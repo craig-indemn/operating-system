@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [
+    "Auto Owners Manager Call"
+  ],
+  "summary": "Automated voicemail greeting with menu options and transfer to Auto Owners Manager Call. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 76,
+  "_total_duration_ms": 28231,
+  "_source_file": "transcripts/out-7045499908-301-20251211-153743-1765485460.8553.txt",
+  "_direction": "outbound",
+  "_char_count": 369
+}

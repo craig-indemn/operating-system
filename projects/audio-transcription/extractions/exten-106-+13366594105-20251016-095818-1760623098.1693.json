@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Renee from Ortho Carolina is following up on a previous message regarding a claim for Dillon Ricardo, who requires a form completion to proceed with surgery. She seeks assistance in ensuring the adjuster can contact the employer and employee, despite language barriers.",
+  "resolution_steps": [
+    "Jessica acknowledges the call and confirms receipt of the request.",
+    "Renee provides patient details (Dillon Ricardo) and her contact information (336-659-4105).",
+    "Jessica agrees to note the request to contact Renee once the claim process initiates."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Medical claims process for workers' compensation",
+    "Handling language barriers in claim communication",
+    "Coordination with adjusters and employer/employee stakeholders"
+  ],
+  "systems_referenced": [
+    "Ortho Carolina form",
+    "Adjuster communication process"
+  ],
+  "summary": "Renee from Ortho Carolina follows up on a claim for Dillon Ricardo, requiring a form completion to proceed with surgery. Communication challenges due to language barriers (Spanish-speaking patient/employer) are noted. Jessica agrees to set up a follow-up callback once the claim process initiates.",
+  "_model": "qwen3:14b",
+  "_eval_count": 276,
+  "_total_duration_ms": 52488,
+  "_source_file": "transcripts/exten-106-+13366594105-20251016-095818-1760623098.1693.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3640
+}

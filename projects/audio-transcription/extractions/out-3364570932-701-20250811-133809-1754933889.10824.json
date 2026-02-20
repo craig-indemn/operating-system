@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Miss Beard is seeking clarification about her home insurance coverage, specifically equipment breakdown coverage and water heater protection, and is concerned about recent insurance cost increases and technical issues accessing her policy details.",
+  "resolution_steps": [
+    "Jeremy acknowledges previous communication and clarifies coverage details (equipment breakdown, water heater deductible).",
+    "Admits limited access to specific carrier systems but explains available options.",
+    "Offers to contact Nancy Grange directly to resolve access issues.",
+    "Sets up a reminder to follow up by 4 PM.",
+    "Agrees to send an email reminder to the client."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Home insurance policy details (equipment breakdown coverage, deductibles).",
+    "Carrier system access limitations and workarounds.",
+    "Client communication follow-up procedures."
+  ],
+  "systems_referenced": [
+    "Carrier portal (technical access issues).",
+    "Internal client tracking system (notes, reminders)."
+  ],
+  "summary": "Jeremy from Lions Insurance discusses home insurance coverage details with Miss Beard, addresses her concerns about equipment breakdown coverage, acknowledges technical barriers to accessing policy details, and commits to contacting a carrier representative directly. The call ends with a plan to follow up after resolving system access issues and setting reminders for both parties.",
+  "_model": "qwen3:14b",
+  "_eval_count": 286,
+  "_total_duration_ms": 49136,
+  "_source_file": "transcripts/out-3364570932-701-20250811-133809-1754933889.10824.txt",
+  "_direction": "outbound",
+  "_char_count": 5196
+}

@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Elizabeth is seeking help to resolve an issue where a portal link sent by Heather is not retrieving her Allstate insurance information, preventing her from submitting required details.",
+  "resolution_steps": [
+    "Heather confirms the link Elizabeth used was for submitting information to compare policies.",
+    "Heather suggests resending the link and ensuring Allstate is selected as the carrier.",
+    "Heather recommends creating a new login if credentials are forgotten.",
+    "Heather proposes an alternative: forwarding existing policy emails to her for processing.",
+    "Heather acknowledges a known issue where the portal redirects to YouTube after submission, causing confusion."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Allstate portal functionality",
+    "Policy submission workflows",
+    "Troubleshooting login issues",
+    "Understanding carrier-specific portal integrations"
+  ],
+  "systems_referenced": [
+    "Allstate insurance portal",
+    "Email system (for policy documents)",
+    "YouTube (as a redirect endpoint)"
+  ],
+  "summary": "Elizabeth reports a malfunctioning Allstate portal link that fails to retrieve her insurance information. Heather guides her through troubleshooting steps, including resending the link, verifying carrier selection, and creating new login credentials. She also notes a known issue where the portal redirects to YouTube post-submission, which can cause confusion. The call concludes with Heather suggesting alternative methods like email forwarding to resolve the issue.",
+  "_model": "qwen3:14b",
+  "_eval_count": 309,
+  "_total_duration_ms": 42088,
+  "_source_file": "transcripts/exten-401-+13365295497-20251007-120559-1759853159.3815.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4099
+}

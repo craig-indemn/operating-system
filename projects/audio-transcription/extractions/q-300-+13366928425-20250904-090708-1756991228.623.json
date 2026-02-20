@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Archie Reese is concerned about a recent increase in his insurance bill and wants to understand the reasons behind it and explore options to reduce the cost.",
+  "resolution_steps": [
+    "Holly confirms Archie's policy details (address, carrier, policy type).",
+    "Explains the premium increase is due to North Carolina state rate hikes and additional dwelling coverage (now $234,000).",
+    "Discusses deductible options (current $1,000 vs. potential $2,500) and their impact on premiums.",
+    "Reviews optional coverages (e.g., water backup) and advises against removing them.",
+    "Attempts to adjust dwelling coverage but finds it locked by the replacement cost estimator tool.",
+    "Notes the home's 2018 roof replacement and inability to manually alter coverage estimates.",
+    "Offers to shop for alternative quotes and schedules a follow-up callback for Monday."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance rate factors (state mandates, coverage levels)",
+    "Policy adjustment options (deductibles, coverage exclusions)",
+    "Replacement cost estimator tool limitations",
+    "Discount bundling strategies"
+  ],
+  "systems_referenced": [
+    "Policy database (for customer details and coverage history)",
+    "Replacement cost estimator tool"
+  ],
+  "summary": "Archie Reese contacted Alliance Insurance Services about a $282 annual premium increase on his Travelers homeowners policy. Agent Holly explained the increase was due to state rate hikes and automatic dwelling coverage upgrades. After exploring deductible adjustments and coverage exclusions, Holly noted the replacement cost estimator tool locked coverage levels based on home specifics. She committed to shopping for alternative quotes and scheduled a Monday follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 378,
+  "_total_duration_ms": 41279,
+  "_source_file": "transcripts/q-300-+13366928425-20250904-090708-1756991228.623.txt",
+  "_direction": "queue",
+  "_char_count": 3774
+}

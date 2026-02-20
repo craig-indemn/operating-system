@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Richard Joyce is seeking assistance with an issue where a letter he sent is being marked as junk mail, and he wants confirmation that Brandy has sent the correct documents (specifically a 'picture' and 'letter') multiple times.",
+  "resolution_steps": [
+    "Brandy acknowledges the call and confirms she has sent the documents three times.",
+    "Richard confirms he received the documents but notes the delivery status is not showing as delivered.",
+    "Brandy does not resolve the technical issue but confirms receipt and agrees to follow up via text when the 'FS one' is sent."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of email delivery status and spam filtering mechanisms",
+    "Ability to confirm document sending history",
+    "Basic troubleshooting for delivery issues"
+  ],
+  "systems_referenced": [],
+  "summary": "Richard Joyce reports an issue with a letter being marked as junk mail and confirms receipt of documents sent by Brandy. Brandy verifies she sent the documents three times but does not resolve the technical delivery issue. The conversation concludes with Richard agreeing to follow up via text when the 'FS one' is sent.",
+  "_model": "qwen3:14b",
+  "_eval_count": 258,
+  "_total_duration_ms": 48084,
+  "_source_file": "transcripts/exten-112-+17045025332-20251223-094403-1766501043.444.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 821
+}

@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking assistance with insurance policy details, including routing numbers, account information, policy cancellation dates, and e-signing procedures for new policies.",
+  "resolution_steps": [
+    "Agent confirmed the caller's identity and requested routing number and account details.",
+    "Agent verified the routing number (253177887) and account number (400031920402).",
+    "Agent discussed policy cancellation dates and clarified that e-signing is required for new policies.",
+    "Agent explained the e-signing process (via phone or computer) and confirmed the caller's email address (d_mallard17@gmail.com).",
+    "Agent committed to sending policy documents via email and mailing physical copies.",
+    "Agent confirmed the total cost ($4,989.93) and assured flexibility in e-signing timelines."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy cancellation rules and grace periods",
+    "E-signing procedures for insurance applications",
+    "Document delivery methods (email and mail)",
+    "Policy-specific details (umbrella, home, auto)"
+  ],
+  "systems_referenced": [
+    "Email (for document delivery)"
+  ],
+  "summary": "The caller worked with the agent to finalize insurance policy details, including verifying account information, confirming e-signing procedures, and confirming the total cost. The agent committed to sending documents via email and mail, with flexibility on e-signing timelines. The caller expressed satisfaction with the cost savings.",
+  "_model": "qwen3:14b",
+  "_eval_count": 339,
+  "_total_duration_ms": 48444,
+  "_source_file": "transcripts/parked-112-112-20251112-161534-1762982134.8177.txt",
+  "_direction": "parked",
+  "_char_count": 2943
+}

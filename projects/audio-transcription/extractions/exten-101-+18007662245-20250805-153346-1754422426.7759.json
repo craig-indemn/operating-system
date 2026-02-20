@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Emma wanted to change a client's payment plan to an 11-pay option but later agreed to switch to a 12-pay plan after discussing the required upfront payment and billing timelines.",
+  "resolution_steps": [
+    "Amani explained the $680.04 payment required to switch to the 11-pay plan and clarified the 20-day billing window rule.",
+    "Emma requested deferring the payment to next month but was informed this wasn't possible under the 11-pay terms.",
+    "Emma opted to switch to the 12-pay plan instead, which doesn't require an upfront payment.",
+    "Amani confirmed the change would be processed and take effect within 24 hours."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of different payment plan structures (11-pay vs. 12-pay) and their financial requirements",
+    "Billing cycle rules (e.g., 20-day window for payment changes)",
+    "Internal systems for processing payment plan changes"
+  ],
+  "systems_referenced": [
+    "Penn National's billing system"
+  ],
+  "summary": "A call between an Alliance Insurance agent (Amani) and Penn National representative (Emma) resolved a payment plan change request. After discussing the financial requirements and timelines for an 11-pay plan, the client opted for a 12-pay plan instead, which was processed with expected 24-hour effectiveness. The conversation highlighted specific billing rules and payment plan terms.",
+  "_model": "qwen3:14b",
+  "_eval_count": 325,
+  "_total_duration_ms": 40228,
+  "_source_file": "transcripts/exten-101-+18007662245-20250805-153346-1754422426.7759.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2324
+}

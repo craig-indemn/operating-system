@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Brandy from Alliance Insurance is seeking clarification on a $72 billing charge for a client's canceled policy, questioning why the charge wasn't included in a prior $125.26 payment and what the $72 specifically covers.",
+  "resolution_steps": [
+    "Agent Joy confirms the $72 is the remaining balance after policy cancellation on June 27, 2021.",
+    "Joy explains the short-rate calculation in North Carolina, citing 158 days between renewal (Jan 20) and cancellation (June 27).",
+    "Joy notes a $1,773.95 total cancellation charge but clarifies the $125.26 payment was received on July 2, 2021, the same day the policy was canceled.",
+    "Joy mentions a billing adjustment but does not fully resolve Brandy's confusion about the $72 charge's specific coverage period."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Short-rate cancellation calculations in North Carolina",
+    "Policy cancellation procedures and timelines",
+    "Billing adjustment processes",
+    "Auto-pay system limitations"
+  ],
+  "systems_referenced": [
+    "Travelers' billing system",
+    "Policy management portal",
+    "North Carolina insurance regulations"
+  ],
+  "summary": "Brandy from Alliance Insurance discusses a billing discrepancy with Travelers agent Joy. The client received a $72 charge for a canceled policy, with confusion about why it wasn't included in a prior $125.26 payment. Joy explains the short-rate calculation and cancellation timeline but fails to fully clarify the $72 charge's specific coverage period, leaving Brandy seeking further resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 379,
+  "_total_duration_ms": 61021,
+  "_source_file": "transcripts/out-8778782468-112-20250722-093217-1753191137.2833.txt",
+  "_direction": "outbound",
+  "_char_count": 5361
+}

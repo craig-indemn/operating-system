@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller is attempting to reach someone named Jessica regarding a business insurance policy for Mason Construction, but the conversation appears to be disconnected or incomplete.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The call appears to be disconnected or incomplete, with the caller attempting to contact Jessica about a business insurance policy for Mason Construction. No agent interaction or resolution steps are evident in the transcript.",
+  "_model": "qwen3:14b",
+  "_eval_count": 116,
+  "_total_duration_ms": 43410,
+  "_source_file": "transcripts/in-+13363779003-+13367826357-20250903-140440-1756922680.8540.txt",
+  "_direction": "inbound",
+  "_char_count": 494
+}

@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Requesting a phone verification code for AutoOwners",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [
+    "AutoOwners"
+  ],
+  "summary": "The call was a fragmented message requesting a phone verification code for AutoOwners. No agent interaction occurred, and the conversation was too brief to determine further details. The caller may have been attempting to access an account or verify a phone number through an automated system.",
+  "_model": "qwen3:14b",
+  "_eval_count": 115,
+  "_total_duration_ms": 27648,
+  "_source_file": "transcripts/in-+13363779003-+13158733627-20251007-113456-1759851296.1889.txt",
+  "_direction": "inbound",
+  "_char_count": 93
+}

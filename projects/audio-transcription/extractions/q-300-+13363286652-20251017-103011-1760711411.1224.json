@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to understand why their insurance policy was canceled and explore options to reinstate or renew it, providing the policy number and mentioning a potential lapse in coverage.",
+  "resolution_steps": [
+    "Agent Brandy checked the policy using the provided policy number and phone number.",
+    "Discovered the policy was canceled due to non-payment of the September bill, leading to a lapse in coverage.",
+    "Explained that reinstatement is not possible due to the over-one-year lapse.",
+    "Suggested contacting other insurers (e.g., State Farm, Farm Bureau) to obtain coverage and returning after a year for reinstatement with Alliance.",
+    "Offered further assistance if needed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy cancellation rules for non-payment",
+    "Reinstatement eligibility criteria (e.g., lapse duration)",
+    "Alternative insurance providers for homes with coverage gaps"
+  ],
+  "systems_referenced": [
+    "Internal policy database (to check payment history and policy status)"
+  ],
+  "summary": "The caller inquired about a canceled policy due to non-payment and sought reinstatement options. The agent explained the policy was canceled in October 2024 due to an unpaid September bill, making reinstatement impossible. The caller was advised to seek coverage from other insurers and return after a year for potential reinstatement. The call concluded with the caller accepting this guidance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 313,
+  "_total_duration_ms": 41425,
+  "_source_file": "transcripts/q-300-+13363286652-20251017-103011-1760711411.1224.txt",
+  "_direction": "queue",
+  "_char_count": 2076
+}

@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Jeff Edmond) is following up with Neil to discuss upcoming insurance renewals for two Woodruff Road properties, check on recent roof repairs, and explore potential coverage adjustments with Westfield Insurance.",
+  "resolution_steps": [
+    "Confirmed renewal dates (August 30th and a few weeks later) for two Woodruff Road properties.",
+    "Discussed roof repair timelines and details (100,000 sq ft metal roof section, 20+ years old, with ongoing TPO replacement).",
+    "Explained Westfield's proposed policy endorsement excluding cosmetic damage from wind/hail claims.",
+    "Agreed to follow up with written details on roof work and policy adjustments."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance renewal processes",
+    "Policy endorsements (cosmetic damage exclusions)",
+    "Building coverage evaluation methods",
+    "Roofing material terminology (TPO, metal roofs)"
+  ],
+  "systems_referenced": [
+    "Westfield Insurance (renewal indications)",
+    "Internal policy management system (for coverage details)",
+    "Client property records (Woodruff Road locations)"
+  ],
+  "summary": "Agent Jeff Edmond discusses insurance renewals for two Woodruff Road properties with Neil, covering roof repair timelines, coverage increases, and a proposed policy endorsement excluding cosmetic damage. The client requests written details on roof work before finalizing adjustments. The conversation highlights the need for precise building data and policy customization.",
+  "_model": "qwen3:14b",
+  "_eval_count": 332,
+  "_total_duration_ms": 45229,
+  "_source_file": "transcripts/out-13366923000-206-20250724-080853-1753358933.29.txt",
+  "_direction": "outbound",
+  "_char_count": 4066
+}

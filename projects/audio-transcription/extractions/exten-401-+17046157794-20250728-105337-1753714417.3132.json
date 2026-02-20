@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "David wants to process a homeowners insurance proposal received via email, correct details on the policy (including his wife's name and auto policy information), and pay the premium for coverage starting July 26th.",
+  "resolution_steps": [
+    "Confirmed David's State Farm policy expiration date (July 15th) and verified no mortgage or claims in the last 5 years.",
+    "Corrected his wife's name (Sam E. Sipaw) and auto policy details in the proposal.",
+    "Adjusted deductible from $2,500 to $1,000, resulting in a $1,607 annual premium.",
+    "Processed full payment via credit card (ending in 4147) for the policy.",
+    "Emailing the application for electronic signing and sending a receipt from Northwest Farmers."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Homeowners insurance quoting process",
+    "Policyholder verification (claims history, mortgage status)",
+    "Carrier-specific details (Northwest Farmers)",
+    "Payment processing via credit card",
+    "Document correction and resubmission procedures"
+  ],
+  "systems_referenced": [
+    "Northwest Farmers (carrier)",
+    "Email system for application and receipt",
+    "Policy management portal (for quote adjustments)"
+  ],
+  "summary": "David finalized a homeowners insurance policy with Northwest Farmers after correcting personal details and adjusting the deductible. Heather processed the $1,607 annual premium payment and sent the application for electronic signing. The policy will take effect July 26th, replacing his expired State Farm coverage.",
+  "_model": "qwen3:14b",
+  "_eval_count": 350,
+  "_total_duration_ms": 56720,
+  "_source_file": "transcripts/exten-401-+17046157794-20250728-105337-1753714417.3132.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 5906
+}

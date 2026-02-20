@@ -1,0 +1,22 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Leaving a voicemail to follow up on an auto insurance change and discuss a renters policy",
+  "resolution_steps": [
+    "Call was forwarded to voicemail system",
+    "Caller left message with callback number"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Basic insurance product knowledge"
+  ],
+  "systems_referenced": [
+    "Automated voice messaging system"
+  ],
+  "summary": "Heather Johnson from Alliance Insurance left a voicemail for Shelley regarding an auto insurance change and renters policy inquiry, providing a callback number. The call was routed to an automated voicemail system.",
+  "_model": "qwen3:14b",
+  "_eval_count": 137,
+  "_total_duration_ms": 31191,
+  "_source_file": "transcripts/out-3368296133-202-20251215-104116-1765813276.1236.txt",
+  "_direction": "outbound",
+  "_char_count": 557
+}

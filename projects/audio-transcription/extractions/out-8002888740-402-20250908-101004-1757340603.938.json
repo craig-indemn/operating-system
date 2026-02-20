@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Karen from Alliance Insurance Services is attempting to enroll a mutual client, Raymond Coley, in AutoPay using a credit card.",
+  "resolution_steps": [
+    "Agent Nancy asks for the client's account number, insured name, and agency code.",
+    "Karen provides the account number (102715724) and insured name (Raymond Coley) but states she does not have the agency code.",
+    "Karen requests clarification on whether someone in the office can provide the agency code."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "AutoPay enrollment process for AutoOwners Insurance",
+    "Information required to verify client identity (account number, insured name, agency code)"
+  ],
+  "systems_referenced": [],
+  "summary": "Karen from Alliance Insurance Services is working with AutoOwners Insurance to enroll Raymond Coley in AutoPay. The agent requested the account number, insured name, and agency code, but Karen lacks the agency code and is seeking assistance from the office. The call is paused pending resolution of the missing agency code.",
+  "_model": "qwen3:14b",
+  "_eval_count": 244,
+  "_total_duration_ms": 51247,
+  "_source_file": "transcripts/out-8002888740-402-20250908-101004-1757340603.938.txt",
+  "_direction": "outbound",
+  "_char_count": 2885
+}

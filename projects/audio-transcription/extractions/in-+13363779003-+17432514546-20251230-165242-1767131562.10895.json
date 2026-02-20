@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller attempted to reach Maria at Alliance Insurance Services.",
+  "resolution_steps": [
+    "Agent acknowledged the request to connect with Maria",
+    "Agent informed caller they would be transferred shortly"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief inbound call where the caller requested to speak with Maria. The agent confirmed the request and indicated the call would be transferred, but no further details were provided.",
+  "_model": "qwen3:14b",
+  "_eval_count": 116,
+  "_total_duration_ms": 30115,
+  "_source_file": "transcripts/in-+13363779003-+17432514546-20251230-165242-1767131562.10895.txt",
+  "_direction": "inbound",
+  "_char_count": 261
+}

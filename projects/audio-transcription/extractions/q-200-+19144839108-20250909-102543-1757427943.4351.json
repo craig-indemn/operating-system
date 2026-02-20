@@ -1,0 +1,32 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Heather, is seeking assistance after being denied home insurance coverage due to three water-related claims in three years and is looking for alternative insurance providers.",
+  "resolution_steps": [
+    "Agent confirmed caller's name and acknowledged her frustration with Progressive.",
+    "Asked for details about claim amounts and history (approx. $20k in three claims, two unresolved prior issues).",
+    "Requested address and auto insurer information (Progressive).",
+    "Explained industry-wide challenges with multiple water claims.",
+    "Suggested alternatives: Farm Bureau, Erie, lender-placed coverage, and NCJUA (North Carolina Joint Underwriters).",
+    "Warned about long-term impact of claims history on future coverage."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance underwriting criteria for water damage claims",
+    "Carrier-specific policies on multiple claims",
+    "Alternative insurance options (e.g., NCJUA, lender-placed coverage)",
+    "Impact of claims history on future coverage eligibility"
+  ],
+  "systems_referenced": [
+    "Progressive (current insurer)",
+    "Farm Bureau",
+    "Erie",
+    "NCJUA (North Carolina Joint Underwriters)"
+  ],
+  "summary": "Heather, a homeowner with three water claims in three years, is struggling to find new insurance after being denied by Progressive and other carriers. The agent explained industry limitations, suggested alternative providers like Farm Bureau and NCJUA, and warned about the long-term impact of her claims history on future coverage. The call ended with Heather planning to contact suggested alternatives.",
+  "_model": "qwen3:14b",
+  "_eval_count": 349,
+  "_total_duration_ms": 39330,
+  "_source_file": "transcripts/q-200-+19144839108-20250909-102543-1757427943.4351.txt",
+  "_direction": "queue",
+  "_char_count": 4275
+}

@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (representing Lakeview Loan Servicing LLC) is seeking assistance with a non-renewal of a Hazardous Homeowners Policy due to NGM Insurance no longer operating in North Carolina. They need confirmation of the non-renewal reason, verification of policy details, and guidance on transitioning to Main Street America Insurance Company.",
+  "resolution_steps": [
+    "Agent Brandy verified the caller's identity using the policy number and initial.",
+    "Confirmed the policy's non-renewal effective date (10/1/2025) and reason (NGM Insurance exiting North Carolina).",
+    "Checked if Lakeview Loan Servicing LLC is listed as the first lien holder on the policy.",
+    "Notified the caller that the policy number remains the same with Main Street America Insurance Company until 10/1/2025.",
+    "Provided the website (www.mycoverageinfo.com/agent) for uploading the declaration page using a loan number, zip code, and insured last name.",
+    "Clarified that no cancellation documents exist for non-renewals and that a new policy is not yet generated."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy non-renewal processes and reasons (e.g., carrier exit from a state).",
+    "Ability to verify policy details (lien holders, effective dates) via internal systems.",
+    "Knowledge of transitioning policies between insurers and associated documentation requirements."
+  ],
+  "systems_referenced": [
+    "Internal policy database (to verify policy details and lien holders).",
+    "www.mycoverageinfo.com/agent (for uploading declaration pages)."
+  ],
+  "summary": "Brandy assisted Lakeview Loan Servicing LLC with a non-renewal of a Hazardous Homeowners Policy due to NGM Insurance's exit from North Carolina. The agent confirmed the non-renewal details, verified the policy's transition to Main Street America Insurance Company, and directed the caller to a website for future documentation. The call concluded with the caller expressing gratitude and no further questions.",
+  "_model": "qwen3:14b",
+  "_eval_count": 451,
+  "_total_duration_ms": 51506,
+  "_source_file": "transcripts/q-300-+18882609876-20250917-145002-1758135002.3966.txt",
+  "_direction": "queue",
+  "_char_count": 2911
+}

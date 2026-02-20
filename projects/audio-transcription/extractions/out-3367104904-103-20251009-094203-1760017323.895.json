@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Tim) is following up on an insurance-related matter involving an H2A worker who had an accident, seeking clarification on the status of an insurance report and how to handle the situation with the worker's attorney.",
+  "resolution_steps": [
+    "Kendall confirms that information was sent to Auto Owners and the DMV, noting a 24-hour processing window.",
+    "Discusses confusion about a separate accident involving an H2A worker, with the caller seeking guidance on whether to involve the worker's attorney.",
+    "Mentions checking with Marcella for details on the accident report request.",
+    "Advises the caller to let the attorney handle the matter, as the worker may have lied about returning to Nicaragua.",
+    "Suggests the worker could obtain a police report directly or have the attorney contact the insurance company for information."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance claim processes for accident-related reports",
+    "Handling disputes with third-party attorneys",
+    "DMV processing timelines for insurance-related documents"
+  ],
+  "systems_referenced": [
+    "Auto Owners (insurance carrier)",
+    "DMV (Department of Motor Vehicles)",
+    "Internal agency communication (Marcella, Jeff)"
+  ],
+  "summary": "Kendall discusses an ongoing insurance matter with Tim, involving an H2A worker's accident and conflicting information about the worker's location. The caller seeks clarity on whether to involve the worker's attorney and how to handle the insurance report request. Kendall advises letting the attorney manage the situation but notes the need for verification and potential follow-up with the DMV or carrier.",
+  "_model": "qwen3:14b",
+  "_eval_count": 362,
+  "_total_duration_ms": 49806,
+  "_source_file": "transcripts/out-3367104904-103-20251009-094203-1760017323.895.txt",
+  "_direction": "outbound",
+  "_char_count": 4097
+}

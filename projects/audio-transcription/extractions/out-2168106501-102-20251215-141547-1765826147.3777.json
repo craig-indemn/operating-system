@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Gloria is seeking to determine if Novum Underwriting can accommodate a workers compensation and umbrella insurance package for a company that sells and leases utility trailers, which she previously attempted to contact Joel about.",
+  "resolution_steps": [
+    "Daniela confirms Joel is no longer with Novum and offers to handle the inquiry.",
+    "Gloria explains the account details (trailer sales/leasing in Pilot Mountain) and asks about coverage eligibility.",
+    "Daniela requests an email with the account's specifics (e.g., accord form) for review.",
+    "Daniela provides her email (daniella.oddawhdb@novumuw.com) and direct phone number (216-505-7009) for follow-up.",
+    "Gloria agrees to send an email and update their system with Daniela's contact information."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Novum Underwriting's underwriting criteria for utility trailer operations",
+    "Wholesale insurance program structures and eligibility",
+    "Handling of rented equipment in workers compensation/umbrella policies"
+  ],
+  "systems_referenced": [
+    "Novum Underwriting's email system",
+    "Underwriting communication portal"
+  ],
+  "summary": "Gloria inquires about Novum Underwriting's ability to provide workers compensation and umbrella coverage for a trailer leasing business. Daniela, covering Joel's territory, requests detailed account information via email and provides her contact details for follow-up. The call concludes with Gloria agreeing to send an email for review.",
+  "_model": "qwen3:14b",
+  "_eval_count": 347,
+  "_total_duration_ms": 45409,
+  "_source_file": "transcripts/out-2168106501-102-20251215-141547-1765826147.3777.txt",
+  "_direction": "outbound",
+  "_char_count": 3899
+}

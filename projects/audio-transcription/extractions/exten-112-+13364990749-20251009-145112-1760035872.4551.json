@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is experiencing technical issues with printing insurance quotes and accessing the quoting system, specifically mentioning problems with a checkbox, the 'print quote' function, and system lockups.",
+  "resolution_steps": [
+    "Agent acknowledged the caller's attempts to troubleshoot the issue (e.g., clicking checkboxes, trying to print quotes).",
+    "Agent suggested logging out and back into the system.",
+    "Agent recommended checking the printer settings.",
+    "Agent advised contacting Grange Mutual directly for further assistance, noting the system's outdated nature.",
+    "Agent offered to help if the caller followed up over the weekend."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of the Infinity Remote Workspace and Grange Mutual's legacy systems.",
+    "Troubleshooting steps for web-based insurance quoting systems.",
+    "Printer configuration and remote session communication protocols."
+  ],
+  "systems_referenced": [
+    "Infinity Remote Workspace",
+    "Grange Mutual underwriting system",
+    "Legacy carrier software",
+    "Web browser-based remote session interface"
+  ],
+  "summary": "A customer reported persistent issues printing insurance quotes and accessing the quoting system, citing problems with checkboxes, the 'print quote' function, and system lockups. The agent guided them through basic troubleshooting steps, noted the system's outdated nature, and recommended contacting Grange Mutual directly for resolution. The agent offered to assist further if needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 311,
+  "_total_duration_ms": 46324,
+  "_source_file": "transcripts/exten-112-+13364990749-20251009-145112-1760035872.4551.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2956
+}

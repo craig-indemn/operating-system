@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Rachel is informing Dale about payment deadlines for his farm owners policy, confirming a quote process for contents and liability insurance on a leased building, and coordinating follow-up communication.",
+  "resolution_steps": [
+    "Rachel confirmed that Allison has resolved the farm owners policy and reminded Dale to make a payment by the 23rd.",
+    "Rachel mentioned a bill from Chub would be sent and offered to call again if it's not received.",
+    "Rachel informed Dale that Jeff was sent to obtain a quote for contents and liability insurance on the building leased from Charlotte to Jeff Edmonds.",
+    "Rachel stated Jeff would contact Dale within a day or two and apologized for any confusion."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Farm owners policy details and payment deadlines",
+    "Quote process for contents and liability insurance",
+    "Coordination with third-party agents (Jeff) for policy quotes"
+  ],
+  "systems_referenced": [
+    "Chub (insurance carrier)",
+    "Internal agency workflow for quote processing"
+  ],
+  "summary": "Rachel from Alliance Insurance Services informed Dale about a pending payment for his farm owners policy, confirmed a quote process for a leased building's insurance, and arranged follow-up communication from Jeff. The call concluded with Dale's acknowledgment and gratitude.",
+  "_model": "qwen3:14b",
+  "_eval_count": 287,
+  "_total_duration_ms": 43895,
+  "_source_file": "transcripts/out-13369701866-702-20250806-161531-1754511331.11915.txt",
+  "_direction": "outbound",
+  "_char_count": 624
+}

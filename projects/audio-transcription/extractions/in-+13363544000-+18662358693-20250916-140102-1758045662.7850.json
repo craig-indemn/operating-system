@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, representing a mortgage company, seeks to verify insurance coverage for a customer refinancing their property. They provided policy details and requested assistance to reverify coverage adequacy.",
+  "resolution_steps": [
+    "Agent confirmed receipt of policy number (NWF20223803) and customer details (Gloria Johnson, 1416 Langdon Terrace Drive, Indian Trail, NC 28079).",
+    "Agent acknowledged the need to verify insurance coverage and stated they would connect the caller with an agent to assist further."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Access to policy databases to verify insurance details",
+    "Understanding of mortgage-related insurance requirements"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's internal policy lookup system"
+  ],
+  "summary": "James Blair from West Fargo Home Mortgage contacted Alliance Insurance to verify insurance coverage for a refinance client. He provided policy details, and the agent confirmed they would connect him with an agent to proceed. The call remains open for further resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 247,
+  "_total_duration_ms": 45007,
+  "_source_file": "transcripts/in-+13363544000-+18662358693-20250916-140102-1758045662.7850.txt",
+  "_direction": "inbound",
+  "_char_count": 671
+}

@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Zoe) seeks assistance with a commercial underwriting inquiry related to 'personal appearance' insurance, likely for a business in North Carolina.",
+  "resolution_steps": [
+    "Agent asked for clarification on the purpose of the commercial underwriting request ('personal appearance').",
+    "Agent inquired about the caller's state (North Carolina).",
+    "Agent confirmed the request and began transferring the call to the appropriate department."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of West Bend Insurance Company's departmental structure (commercial underwriting, personal lines, etc.).",
+    "Ability to route calls based on insurance type and location."
+  ],
+  "systems_referenced": [
+    "West Bend Insurance Company's internal call routing system"
+  ],
+  "summary": "Zoe contacted West Bend Insurance Company to reach commercial underwriting for 'personal appearance' insurance in North Carolina. The agent gathered necessary details and initiated a transfer, but the call ended before resolution. The caller likely requires follow-up from the underwriting department.",
+  "_model": "qwen3:14b",
+  "_eval_count": 239,
+  "_total_duration_ms": 41694,
+  "_source_file": "transcripts/out-8002365010-503-20251112-160448-1762981488.8072.txt",
+  "_direction": "outbound",
+  "_char_count": 1149
+}

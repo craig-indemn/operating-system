@@ -1,0 +1,21 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Inquired about a letter received from American Heritage Life Insurance Company, seeking clarification on whether it relates to their existing life insurance policy.",
+  "resolution_steps": [
+    "Agent asked whether the letter pertains to home or auto insurance.",
+    "Agent inquired if the caller has life insurance with Alliance Insurance or MetLife."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of life insurance policy correspondence",
+    "Ability to differentiate between insurance types (home, auto, life)"
+  ],
+  "systems_referenced": [],
+  "summary": "Caller sought clarification about a letter from American Heritage Life Insurance but did not answer key questions about their policy type or carrier. The agent attempted to gather necessary information but the conversation ended without resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 178,
+  "_total_duration_ms": 38830,
+  "_source_file": "transcripts/in-+13363779003-+13369724116-20250729-103009-1753799409.2913.txt",
+  "_direction": "inbound",
+  "_char_count": 376
+}

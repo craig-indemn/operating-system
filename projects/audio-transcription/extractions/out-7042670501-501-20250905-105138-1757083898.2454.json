@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (referred to as 'mother') wants to file an insurance claim for an incident that occurred the previous day, and is seeking confirmation that the claim has been processed.",
+  "resolution_steps": [
+    "Agent Jamie confirms the caller's contact information (phone number: 704-267-0501, email: mom453@aol.com).",
+    "Agent states the claim is being filed and will be processed by Utica Insurance.",
+    "Agent informs the caller that a claim number will be emailed once available.",
+    "Agent mentions Utica's typical response time (24-48 hours) but notes it may be faster."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Claims processing procedures",
+    "Utica Insurance's claim handling timelines",
+    "Agency's internal system for filing claims"
+  ],
+  "systems_referenced": [
+    "Agency's internal claims system",
+    "Utica Insurance's claim portal"
+  ],
+  "summary": "Agent Jamie assists 'mother' in filing a claim for an incident that occurred the previous day. The claim is being processed by Utica Insurance, and the caller will receive a claim number via email. The agent mentions Utica's typical 24-48 hour response window but notes it may be faster. The call concludes with the agent offering to email the claim number once available.",
+  "_model": "qwen3:14b",
+  "_eval_count": 314,
+  "_total_duration_ms": 33346,
+  "_source_file": "transcripts/out-7042670501-501-20250905-105138-1757083898.2454.txt",
+  "_direction": "outbound",
+  "_char_count": 1084
+}

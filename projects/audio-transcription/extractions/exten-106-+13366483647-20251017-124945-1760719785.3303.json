@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller seeks assistance with reinstating a canceled auto-pay insurance policy (Frank Winston) and ensuring an incomplete Amtrak audit is resolved to avoid collections.",
+  "resolution_steps": [
+    "Agent acknowledges the canceled insurance policy and confirms it was canceled due to non-payment.",
+    "Agent agrees to contact Frank Winston to reinstate the policy and follow up with the caller.",
+    "Agent addresses the Amtrak audit issue, confirming the audit was not completed and that the caller requested it be reopened.",
+    "Agent agrees to resend the audit portal link and password via email to facilitate document submission.",
+    "Agent notes the need to submit documents by a deadline (24th) and commits to resending the email if not found immediately."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy reinstatement procedures for non-payment issues",
+    "Amtrak audit compliance processes and portal navigation",
+    "Handling of collections risks from unresolved audits"
+  ],
+  "systems_referenced": [
+    "Frank Winston insurance carrier",
+    "Amtrak audit portal",
+    "Email communication system"
+  ],
+  "summary": "The caller discusses a canceled auto-pay insurance policy and an incomplete Amtrak audit. The agent agrees to contact the insurance carrier for reinstatement and resend audit documents via email. The caller will follow up if additional information is needed, with a deadline for document submission.",
+  "_model": "qwen3:14b",
+  "_eval_count": 305,
+  "_total_duration_ms": 41213,
+  "_source_file": "transcripts/exten-106-+13366483647-20251017-124945-1760719785.3303.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2984
+}

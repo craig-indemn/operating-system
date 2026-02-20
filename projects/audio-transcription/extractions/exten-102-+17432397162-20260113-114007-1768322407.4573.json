@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Gloria) is assisting Luis, who had his general insurance policy canceled, likely due to non-payment. She seeks resolution for the canceled policy.",
+  "resolution_steps": [
+    "Gloria transfers the call to a producer to address the policy cancellation.",
+    "The agent explains the cancellation was due to non-payment of premium.",
+    "The agent offers to contact Luis's agent directly using the provided phone number (274-7743 or 239-7162).",
+    "The agent directs the caller to the customer portal (myallianceinsurance.com) and text support for future assistance."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Policy cancellation reasons (e.g., non-payment)",
+    "Internal call transfer protocols",
+    "Customer portal and contact information"
+  ],
+  "systems_referenced": [
+    "myallianceinsurance.com (customer portal)",
+    "Text support service (336-786-1133)"
+  ],
+  "summary": "Gloria assists Luis with a canceled insurance policy, leading to a transfer to a producer who explains the cancellation due to non-payment. A callback is arranged with the correct agent's number, and the caller is directed to online resources for future support.",
+  "_model": "qwen3:14b",
+  "_eval_count": 289,
+  "_total_duration_ms": 37217,
+  "_source_file": "transcripts/exten-102-+17432397162-20260113-114007-1768322407.4573.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1621
+}

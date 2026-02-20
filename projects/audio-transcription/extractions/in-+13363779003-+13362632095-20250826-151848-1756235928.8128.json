@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Randy Howard from Mutual Reports needs to contact policyholder Axel Bernal Poland to reschedule a homeowner's insurance inspection after the initial phone number provided was invalid.",
+  "resolution_steps": [
+    "Agent asked Randy for the policy number to look up contact information.",
+    "Agent checked their system and found an alternative phone number (336-782-0476) associated with the policyholder.",
+    "Agent confirmed this was the only other number on file and suggested Randy try it."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Access to policyholder contact information via policy number lookup",
+    "Understanding of insurance inspection follow-up procedures"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal policy database"
+  ],
+  "summary": "Randy Howard from Mutual Reports contacted Alliance Insurance to resolve an issue with an invalid policyholder phone number for a scheduled inspection. The agent looked up the policy using the provided number (572-798-2) and found an alternative contact number (336-782-0476) for Axel Bernal Poland. The call concluded with the agent providing this number for Randy to attempt contacting the policyholder.",
+  "_model": "qwen3:14b",
+  "_eval_count": 270,
+  "_total_duration_ms": 35005,
+  "_source_file": "transcripts/in-+13363779003-+13362632095-20250826-151848-1756235928.8128.txt",
+  "_direction": "inbound",
+  "_char_count": 1250
+}

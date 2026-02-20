@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller is following up on a previous request for insurance assistance from last Friday and is frustrated about not receiving a callback.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller reports no callback after initial insurance inquiry and requests assistance. Agent acknowledges the need to connect with an agent but the conversation ends abruptly without resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 106,
+  "_total_duration_ms": 30373,
+  "_source_file": "transcripts/in-+13363544000-+13364520461-20260119-113715-1768840635.1738.txt",
+  "_direction": "inbound",
+  "_char_count": 244
+}

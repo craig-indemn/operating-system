@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jacob Covington from Cyber Gear is seeking assistance with installing check scanner software, specifically troubleshooting the Teller scanner not appearing during installation.",
+  "resolution_steps": [
+    "Karen confirmed the scanner was plugged in and guided Jacob through uninstalling/reinstalling the software.",
+    "They checked Device Manager and attempted admin login to resolve installation issues.",
+    "When the Teller scanner still didn't appear, Karen acknowledged the need for a factory reset (as a prior solution) and planned to contact CC for further support clarification."
+  ],
+  "outcome": "not_applicable",
+  "knowledge_required": [
+    "Check scanner software installation process",
+    "Teller scanner functionality and dependencies",
+    "Device Manager troubleshooting",
+    "Admin login procedures for software installation",
+    "Factory reset as a last-resort solution"
+  ],
+  "systems_referenced": [
+    "Teller scanner",
+    "D420",
+    "Device Manager",
+    "Web portal",
+    "CC (support contact)"
+  ],
+  "summary": "Jacob Covington from Cyber Gear called to troubleshoot a failed check scanner software installation. Karen guided him through uninstalling/reinstalling the software, checking Device Manager, and attempting admin login, but the Teller scanner still failed to install. Karen plans to contact CC for support clarification, as prior issues required a factory reset. The call ended with Karen committing to follow up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 308,
+  "_total_duration_ms": 42599,
+  "_source_file": "transcripts/exten-402-+13364990749-20251119-145451-1763582091.5108.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2327
+}

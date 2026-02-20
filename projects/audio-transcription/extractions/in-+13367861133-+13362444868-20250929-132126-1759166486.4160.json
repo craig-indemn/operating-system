@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller intends to make a payment for their car insurance policy with Progressive, specifying the amount and payment method.",
+  "resolution_steps": [
+    "Agent confirms the caller's Progressive policy and verifies the payment amount ($67.56).",
+    "Caller selects debit card as the payment method.",
+    "Agent guides the caller through providing account details, including a repeated phone number confirmation.",
+    "Agent processes the payment and confirms its success.",
+    "Agent offers to email the payment confirmation number."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Progressive insurance policy payment procedures",
+    "Handling customer confusion during account verification",
+    "Payment processing via debit card"
+  ],
+  "systems_referenced": [
+    "Progressive (carrier)"
+  ],
+  "summary": "The caller successfully completes a car insurance payment for their Progressive policy after resolving confusion over account details. The agent confirms the payment and offers to email the confirmation number. The caller expresses satisfaction and ends the conversation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 228,
+  "_total_duration_ms": 40886,
+  "_source_file": "transcripts/in-+13367861133-+13362444868-20250929-132126-1759166486.4160.txt",
+  "_direction": "inbound",
+  "_char_count": 1773
+}

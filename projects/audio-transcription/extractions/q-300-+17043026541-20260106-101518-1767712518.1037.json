@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Mary Nichols is seeking clarification on why her auto insurance premium with Travelers increased for the January renewal period.",
+  "resolution_steps": [
+    "Agent Brandy verifies Mary's mailing address to confirm her policy details.",
+    "Brandy confirms Mary's policy is with Travelers, covering a 2006 Ford Explorer with liability-only coverage.",
+    "Brandy explains she needs to investigate the premium increase by accessing Travelers' system.",
+    "Mary requests a callback, and Brandy agrees to contact her before 4:30 PM (considering her MRI appointment)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Accessing carrier systems (Travelers) to review policy details and premium changes",
+    "Understanding auto insurance policy structures (liability-only coverage)",
+    "Handling customer inquiries about premium increases"
+  ],
+  "systems_referenced": [
+    "Travelers"
+  ],
+  "summary": "Mary Nichols contacted Alliance Insurance Services to inquire about a January auto insurance premium increase with Travelers. Agent Brandy confirmed policy details and agreed to investigate the increase by accessing Travelers' system, with a commitment to callback before 4:30 PM (accounting for Mary's MRI appointment). The issue remains unresolved but is being actively addressed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 281,
+  "_total_duration_ms": 41535,
+  "_source_file": "transcripts/q-300-+17043026541-20260106-101518-1767712518.1037.txt",
+  "_direction": "queue",
+  "_char_count": 1385
+}

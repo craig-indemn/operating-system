@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to send multiple pictures to Heather Johnson without sending multiple emails and inquired about alternative methods like Dropbox or other apps.",
+  "resolution_steps": [
+    "Agent provided Heather's email address (HeatherJ@myallianceinsurance.com).",
+    "Agent explained texting as an alternative method, confirming the phone number (336-377-9003).",
+    "Agent clarified that texts would require Heather to check them the next day.",
+    "Caller agreed to text the pictures with a note to Heather."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Heather Johnson's contact information (email and phone number)",
+    "Agency's preferred communication methods (email, texting)"
+  ],
+  "systems_referenced": [
+    "Email (HeatherJ@myallianceinsurance.com)",
+    "Text messaging (phone number provided)"
+  ],
+  "summary": "A caller sought to send multiple pictures to Heather Johnson but wanted to avoid multiple emails. The agent provided her email and texting option, leading the caller to choose texting with a note. The call concluded with the caller agreeing to proceed via text.",
+  "_model": "qwen3:14b",
+  "_eval_count": 261,
+  "_total_duration_ms": 40750,
+  "_source_file": "transcripts/in-+13363779003-+13369729049-20250728-105024-1753714224.3112.txt",
+  "_direction": "inbound",
+  "_char_count": 1647
+}

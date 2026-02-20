@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Brandy wanted to review an insurance quote from National General, understand the cost breakdown, and discuss switching from her current provider (Utica) to National General, including down payment and monthly payment details.",
+  "resolution_steps": [
+    "Agent explained the quote structure, including shared risk between Brandy and her son for the 2020 Nissan Rogue.",
+    "Discussed vehicle age and type impacts on premiums (e.g., older vehicles like 2010 or older, non-SUVs like Honda Civic/Accord are cheaper).",
+    "Provided financial details: $330 down payment, $269 monthly payments.",
+    "Outlined steps to switch policies: cancel Utica via AutoPay, sign cancellation form, and start National General policy after down payment.",
+    "Confirmed Brandy\u2019s understanding and readiness to proceed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance quoting processes",
+    "Factors affecting auto insurance premiums (vehicle age, driver status, vehicle type)",
+    "Policy cancellation procedures (AutoPay, cancellation forms)",
+    "Financial terms for insurance policies (down payments, monthly payments)"
+  ],
+  "systems_referenced": [
+    "National General (insurance provider)",
+    "Utica (current insurance provider)",
+    "AutoPay (payment system)"
+  ],
+  "summary": "Agent Brandy reviewed a National General insurance quote with the caller, explaining cost structures, vehicle impact on premiums, and steps to switch from Utica. The caller expressed interest in proceeding after confirming the down payment and monthly payment terms. The agent outlined next steps, including canceling the current policy and initiating the new one.",
+  "_model": "qwen3:14b",
+  "_eval_count": 366,
+  "_total_duration_ms": 52889,
+  "_source_file": "transcripts/out-3369993022-112-20251120-131016-1763662216.2282.txt",
+  "_direction": "outbound",
+  "_char_count": 2825
+}

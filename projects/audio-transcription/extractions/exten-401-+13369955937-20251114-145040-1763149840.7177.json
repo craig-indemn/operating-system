@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Francisco is asking about insurance options for a vehicle with a salvage title, specifically whether liability-only coverage would suffice and what carriers (e.g., Progressive, National General) allow such coverage. He also inquires about certified cars and comprehensive coverage.",
+  "resolution_steps": [
+    "Heather checks Francisco's current policy (Progressive) and confirms it includes liability-only coverage for salvage-title vehicles.",
+    "She explains that National General may allow full coverage on salvage-title vehicles, unlike Progressive.",
+    "Provides instructions to email support@myallianceinsurance.com or use the Alliance website to submit requests for policy changes.",
+    "Clarifies that certified cars would follow the same process for coverage adjustments.",
+    "Notes that comprehensive coverage is not currently included on Francisco's liability-only vehicles."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance coverage options for salvage-title vehicles",
+    "Carrier-specific policies (Progressive, National General)",
+    "Process for submitting policy change requests through Alliance Insurance"
+  ],
+  "systems_referenced": [
+    "MyAllianceInsurance website",
+    "support@myallianceinsurance.com email",
+    "Progressive insurance portal"
+  ],
+  "summary": "Francisco inquired about insuring a salvage-title vehicle with liability-only coverage and options for full coverage through other carriers. Heather confirmed Progressive's liability-only policy, suggested National General for full coverage, and provided steps to submit requests via email or the Alliance website. The call concluded with Francisco understanding the process and next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 330,
+  "_total_duration_ms": 48933,
+  "_source_file": "transcripts/exten-401-+13369955937-20251114-145040-1763149840.7177.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4249
+}

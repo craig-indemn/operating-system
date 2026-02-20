@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Fragmented greeting with unclear context. Caller identity (Brian) mentioned but no actionable request or conversation flow established. Transcript appears incomplete or disconnected.",
+  "_model": "qwen3:14b",
+  "_eval_count": 80,
+  "_total_duration_ms": 26669,
+  "_source_file": "transcripts/in-+13363779003-+18282381533-20251125-145748-1764100668.6325.txt",
+  "_direction": "inbound",
+  "_char_count": 141
+}

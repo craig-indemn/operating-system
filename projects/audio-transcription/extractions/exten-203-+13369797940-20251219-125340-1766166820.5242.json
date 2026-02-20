@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller attempted to reach someone at Alliance Insurance Services but encountered a language barrier (Spanish), seeking assistance in their preferred language.",
+  "resolution_steps": [
+    "Agent (Maria) acknowledged the language barrier and apologized for not speaking Spanish.",
+    "Offered to connect the caller with a Spanish-speaking representative for a callback."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Language assistance protocols",
+    "Internal process for transferring calls to bilingual staff"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller reached Alliance Insurance Services but faced a language barrier. The agent (Maria) apologized for not speaking Spanish and arranged for a Spanish-speaking representative to contact the caller. The conversation concluded with the caller agreeing to wait for the callback.",
+  "_model": "qwen3:14b",
+  "_eval_count": 179,
+  "_total_duration_ms": 32485,
+  "_source_file": "transcripts/exten-203-+13369797940-20251219-125340-1766166820.5242.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 352
+}

@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Heather) aimed to confirm with the customer (Chassidy) that a $26 check related to a canceled insurance policy was valid and could be cashed.",
+  "resolution_steps": [
+    "Heather called AO (likely an insurance carrier or system) to verify the check's validity.",
+    "AO confirmed the check represented two days' worth of premium from the policy canceled on the 25th.",
+    "Heather assured Chassidy the check was safe to cash and clarified billing discrepancies."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding insurance cancellation policies and billing calculations",
+    "Knowledge of carrier systems (e.g., AO) for policy verification"
+  ],
+  "systems_referenced": [
+    "AO (insurance carrier/system)"
+  ],
+  "summary": "Heather confirmed with Chassidy that a $26 check from a canceled insurance policy was valid, after verifying with AO. The call resolved billing confusion and ensured the customer could cash the check. The agent demonstrated knowledge of cancellation policies and carrier systems.",
+  "_model": "qwen3:14b",
+  "_eval_count": 238,
+  "_total_duration_ms": 34580,
+  "_source_file": "transcripts/out-3362579401-405-20250807-152250-1754594570.12293.txt",
+  "_direction": "outbound",
+  "_char_count": 693
+}

@@ -1,0 +1,22 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller left a voicemail offering assistance with commercial trucking insurance for Matt, referencing a referral from Penny Galloway.",
+  "resolution_steps": [
+    "Agent Joe left a voicemail message for Matt.",
+    "Provided contact information (phone number and email) for follow-up.",
+    "Mentioned sending an email to Matt via ProWorks LLC at Yahoo."
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [
+    "Commercial trucking insurance policies",
+    "Referral process through client contacts"
+  ],
+  "systems_referenced": [],
+  "summary": "Voicemail left by Joe at Alliance Insurance offering assistance with commercial trucking insurance for Matt, referencing a referral from Penny Galloway. Contact details and an email promise were provided for follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 180,
+  "_total_duration_ms": 56959,
+  "_source_file": "transcripts/out-3368703750-512-20250826-170528-1756242328.9632.txt",
+  "_direction": "outbound",
+  "_char_count": 789
+}

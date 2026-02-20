@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "N/A (voicemail greeting)",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Standard voicemail greeting from Chris Kuzak in the Total Loss Department requesting caller information for callback.",
+  "_model": "qwen3:14b",
+  "_eval_count": 77,
+  "_total_duration_ms": 22570,
+  "_source_file": "transcripts/out-6148170064-510-20251222-124509-1766425509.3084.txt",
+  "_direction": "outbound",
+  "_char_count": 201
+}

@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Follow-up on previous voicemail regarding Florida operations and confirm understanding of withdrawal decision.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Cody from Lines Insurance followed up on a previous voicemail to confirm Dale's receipt of information about withdrawing from Florida operations. The conversation was brief and concluded without further action.",
+  "_model": "qwen3:14b",
+  "_eval_count": 104,
+  "_total_duration_ms": 23761,
+  "_source_file": "transcripts/out-13365801058-207-20251218-105409-1766073249.1121.txt",
+  "_direction": "outbound",
+  "_char_count": 608
+}

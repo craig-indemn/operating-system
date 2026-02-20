@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Tim Smith wants to add a new vehicle (2023 Lexus) to his existing auto policy with Cincinnati Insurance and understand the impact on his premium, while considering replacing his 2015 Lexus. He also inquires about potential differences in insurance if he finances the new vehicle.",
+  "resolution_steps": [
+    "Heather confirms Tim's policy details with Cincinnati Insurance.",
+    "Tim provides the VIN for the 2023 Lexus and explains the vehicle's intended use (pleasure, not primary).",
+    "Heather checks current coverages (deductibles, roadside assistance, liability limits) and confirms they will remain unchanged.",
+    "Heather calculates the prorated premium increase from now until April (policy renewal date) and shares the projected monthly payment increase.",
+    "Heather clarifies that financing the vehicle does not affect insurance costs and confirms no lien holder impact on coverage."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding auto insurance policy updates, VIN verification, prorated premium calculations, and carrier-specific details (Cincinnati Insurance)."
+  ],
+  "systems_referenced": [
+    "Cincinnati Insurance Company's policy management system",
+    "Internal agency system for policy lookup and premium calculation"
+  ],
+  "summary": "Tim Smith discusses updating his auto insurance policy with Cincinnati Insurance by adding a new 2023 Lexus. Heather confirms policy details, verifies the VIN, and explains the premium impact. Tim remains undecided but gains clarity on costs and coverage. The call ends with Heather providing necessary information for Tim to make a final decision.",
+  "_model": "qwen3:14b",
+  "_eval_count": 351,
+  "_total_duration_ms": 59033,
+  "_source_file": "transcripts/exten-401-+17578487350-20260109-151659-1767989819.5723.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3728
+}

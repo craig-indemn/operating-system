@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to update her car insurance information due to an upcoming renewal and confirm that her account details were accurate.",
+  "resolution_steps": [
+    "Agent confirmed caller's identity by verifying name, address, and contact information.",
+    "Reviewed active policies (auto and homeowners) to check for updates or discrepancies.",
+    "Identified need to update auto policy address from 1950 Tucker Road to 2305 Flagstone Court.",
+    "Noted that William Shore's auto policy (Toyota Tacoma) should be transferred to his own account.",
+    "Confirmed current homeowners policy details (deductible, coverage limits) and checked for property updates.",
+    "Planned to update the auto policy address and transfer William's policy in the system."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy management (auto/homeowners)",
+    "Address update procedures",
+    "Handling multiple policies under a single account",
+    "Understanding deductible structures"
+  ],
+  "systems_referenced": [
+    "Insurance agency's policy management system",
+    "Customer account database"
+  ],
+  "summary": "Catherine Collins contacted Alliance Insurance to update her car insurance information and confirm policy details. The agent verified her identity, reviewed her active policies, identified an address change for her auto policy, and noted the need to transfer William Shore's policy to his own account. The agent planned to implement these updates in the system.",
+  "_model": "qwen3:14b",
+  "_eval_count": 315,
+  "_total_duration_ms": 42543,
+  "_source_file": "transcripts/q-300-+13363910897-20251112-134303-1762972983.5930.txt",
+  "_direction": "queue",
+  "_char_count": 4222
+}

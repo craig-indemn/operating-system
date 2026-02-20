@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Lee Everidge needs to add Ethan (an underage driver) to an insurance policy to allow him to take his level two driving test, and is requesting to speak with Taylor Scott to resolve this.",
+  "resolution_steps": [
+    "Agent confirmed Taylor Scott is available.",
+    "Agent informed Taylor Scott that Lee Everidge is on the line for a policy update request.",
+    "Agent offered to transfer the call to Taylor Scott."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy updates for adding drivers",
+    "Underage driver insurance requirements"
+  ],
+  "systems_referenced": [
+    "Internal agent availability system"
+  ],
+  "summary": "Lee Everidge urgently needs to add Ethan to an insurance policy to enable his driving test. The agent confirmed Taylor Scott's availability and initiated a transfer to address the policy update request.",
+  "_model": "qwen3:14b",
+  "_eval_count": 199,
+  "_total_duration_ms": 26121,
+  "_source_file": "transcripts/in-+13363544000-+13364066606-20250909-142344-1757442224.10137.txt",
+  "_direction": "inbound",
+  "_char_count": 1011
+}

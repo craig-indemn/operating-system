@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unknown (automated system message)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [
+    "automated voice messaging system"
+  ],
+  "summary": "Automated system message indicating call was forwarded and recipient unavailable. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 84,
+  "_total_duration_ms": 21316,
+  "_source_file": "transcripts/out-3364520461-501-20260116-113841-1768581521.2319.txt",
+  "_direction": "outbound",
+  "_char_count": 86
+}

@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Brian is trying to access his commission statement but is unable to log in with either of his two registered accounts (Chris Cook or B Leftwich) and needs assistance resetting his password.",
+  "resolution_steps": [
+    "Pat confirms the login names Brian is using (Chris Cook and B Leftwich).",
+    "Pat checks with the agency support unit to reactivate one of the profiles.",
+    "Pat determines that reactivating the B Leftwich profile is preferable since Chris Cook is out of the office.",
+    "Pat informs Brian that reactivating B Leftwich will trigger a password reset email to his account (Brian@myallianceinsurance.com)."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of the Alliance Insurance Services login system and password reset process",
+    "Knowledge of agency support unit procedures for reactivating user profiles"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services agency support unit",
+    "myallianceinsurance.com email portal"
+  ],
+  "summary": "Brian contacted Chubb Agribusiness to resolve login issues with his Alliance Insurance Services account. Pat helped identify the correct login profile to reactivate (B Leftwich) and initiated the password reset process via email. The call concluded with Brian expecting an email with a reset link.",
+  "_model": "qwen3:14b",
+  "_eval_count": 287,
+  "_total_duration_ms": 36137,
+  "_source_file": "transcripts/out-18002338347-104-20250814-091522-1755177322.440.txt",
+  "_direction": "outbound",
+  "_char_count": 2463
+}

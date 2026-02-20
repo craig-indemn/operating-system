@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Adrian seeks to verify and bind an insurance quote for Felix Remodeling LLC, adjust the effective date, and set up a payment plan with a down payment and monthly installments.",
+  "resolution_steps": [
+    "Anna confirms the client's identity (Felix Remodeling LLC) and the need to verify the quote.",
+    "Discusses backdating the policy's effective date from January 8th to the current date.",
+    "Agrees on a renewal premium of $727.31 and outlines a payment plan: $135.18 down payment plus 9 monthly installments of $77.34 with a 3% convenience fee.",
+    "Initiates a three-way call to obtain payment details (credit card info and billing address) for direct billing setup.",
+    "Coordinates with Felix to confirm payment information and finalize the binding process."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy binding processes",
+    "Backdating policy effective dates",
+    "Direct billing and payment plan configurations",
+    "Handling business credit card information for insurance payments"
+  ],
+  "systems_referenced": [
+    "AY Direct Bill (payment processing system)",
+    "Alliance Insurance Services customer portal (myallianceinsurance.com)"
+  ],
+  "summary": "Anna assists Adrian in finalizing an insurance policy for Felix Remodeling LLC, adjusting the effective date and setting up a payment plan. A three-way call is initiated to obtain payment details for direct billing. The policy is bound with a down payment and installment terms agreed upon.",
+  "_model": "qwen3:14b",
+  "_eval_count": 348,
+  "_total_duration_ms": 49660,
+  "_source_file": "transcripts/exten-302-+18883769633-20260112-122934-1768238974.3168.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4303
+}

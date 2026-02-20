@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Bill Slater is seeking assistance with resolving a certificate approval issue for a customer, emphasizing delays caused by a single certificate request and coordinating with team members (David, Aaron) to expedite resolution.",
+  "resolution_steps": [
+    "Agent (Corbin) acknowledges the certificate approval bottleneck and confirms efforts to secure approvals.",
+    "Mentions coordination with David, who has handled the issue for 17+ years, to resolve the delay.",
+    "Notes the need for Aaron to take a more active role in processing requests.",
+    "Suggests temporary workarounds (e.g., 'faking the funk on EFC ones') to manage immediate pressure from stakeholders."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Certificate approval workflows",
+    "Internal team roles (David, Aaron)",
+    "Handling customer service delays",
+    "Temporary workaround strategies for urgent requests"
+  ],
+  "systems_referenced": [],
+  "summary": "Bill Slater discusses a critical bottleneck in certificate approvals, requiring coordination with long-term team members and temporary fixes. Corbin confirms ongoing efforts to resolve the issue and escalate to Aaron for faster processing. The conversation highlights internal process challenges and urgent customer demands.",
+  "_model": "qwen3:14b",
+  "_eval_count": 267,
+  "_total_duration_ms": 53074,
+  "_source_file": "transcripts/exten-409-+13363910141-20251124-100925-1763996965.1132.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1394
+}

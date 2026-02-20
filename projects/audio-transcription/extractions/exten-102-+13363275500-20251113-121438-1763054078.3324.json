@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jason Harkey is requesting a corrected Certificate of Insurance (COI) for FCR Holdings LLC, ensuring it includes 'DBA First Class Roofing,' and needs it urgently for Stone Development. He also mentions a follow-up request for Wolf Holmes.",
+  "resolution_steps": [
+    "Gloria confirms she can check and send the corrected COI.",
+    "Jason requests the COI be sent immediately for Stone Development.",
+    "Gloria mentions she will send an email for Wolf Holmes later today."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding Certificate of Insurance (COI) documentation",
+    "Handling business name (DBA) corrections on insurance policies",
+    "Managing urgent client requests for insurance certificates"
+  ],
+  "systems_referenced": [
+    "Email system (for sending COI documents)"
+  ],
+  "summary": "Jason Harkey requested a corrected COI for FCR Holdings LLC with the DBA name included, emphasizing urgency for Stone Development. Gloria confirmed she would send the corrected document and mentioned handling a follow-up request for Wolf Holmes later. The call concluded with mutual agreement on the resolution steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 253,
+  "_total_duration_ms": 33361,
+  "_source_file": "transcripts/exten-102-+13363275500-20251113-121438-1763054078.3324.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1079
+}

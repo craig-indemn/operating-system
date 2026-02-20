@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to confirm that he completed and submitted insurance documents correctly, verify that recent bills from Cincinnati are invalid due to prior payments, and ensure everything is resolved before Christmas.",
+  "resolution_steps": [
+    "Agent reviewed the signed documents with the caller to confirm completion.",
+    "Clarified that Cincinnati bills were invalid due to payments already being posted.",
+    "Explained the Glove Box app (Alliance's internal tool) for accessing policy information and making changes.",
+    "Provided Cincinnati's website (cinfin.com) as an alternative for direct account setup.",
+    "Confirmed that the Glove Box app would be available after the documents were finalized.",
+    "Addressed the caller's confusion about receiving payment confirmations before signing."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of Cincinnati's billing process and payment posting timelines",
+    "Familiarity with Alliance's Glove Box app functionality",
+    "Ability to explain document signing workflows and their impact on account setup"
+  ],
+  "systems_referenced": [
+    "Glove Box (Alliance's internal policy management app)",
+    "Cincinnati's website (cinfin.com)",
+    "Document signing application"
+  ],
+  "summary": "The caller confirmed completion of insurance documents and sought reassurance that Cincinnati bills were invalid due to prior payments. The agent verified document status, explained Glove Box app access, and clarified billing timelines. The caller remained concerned about receiving payment confirmations before signing but was reassured that this was due to system delays.",
+  "_model": "qwen3:14b",
+  "_eval_count": 337,
+  "_total_duration_ms": 44126,
+  "_source_file": "transcripts/exten-113-+13362607166-20251223-122054-1766510454.2161.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4285
+}

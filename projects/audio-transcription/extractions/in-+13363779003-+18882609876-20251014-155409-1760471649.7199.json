@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, representing Gilda Mortgage, requested the policy number for a Freddie Homeowner Policy and sought assistance with renewal information.",
+  "resolution_steps": [
+    "Agent confirmed the caller's request for renewal information.",
+    "Agent instructed the caller to request renewal information via email.",
+    "Caller requested the fax number instead and provided it (336-377-2003).",
+    "Agent asked for the caller's name (Ashley, initials P for Peter)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Handling insurance policy renewal requests",
+    "Fraud monitoring protocols",
+    "Email and fax communication procedures"
+  ],
+  "systems_referenced": [
+    "Email system for sending renewal information"
+  ],
+  "summary": "A representative from Gilda Mortgage contacted Alliance Insurance to obtain a Freddie Homeowner Policy number and renewal details. The agent guided the caller to request renewal information via email but provided the fax number when requested. The caller identified themselves as Ashley (P. Peter) before ending the call.",
+  "_model": "qwen3:14b",
+  "_eval_count": 242,
+  "_total_duration_ms": 35382,
+  "_source_file": "transcripts/in-+13363779003-+18882609876-20251014-155409-1760471649.7199.txt",
+  "_direction": "inbound",
+  "_char_count": 748
+}

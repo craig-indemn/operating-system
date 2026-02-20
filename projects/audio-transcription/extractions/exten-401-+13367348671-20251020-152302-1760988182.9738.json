@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "William Wilson seeks insurance quotes for his auto, home, and health policies, specifically mentioning adding his wife to his health insurance and managing seven rental properties. He also inquires about umbrella policies and multi-line coverage options.",
+  "resolution_steps": [
+    "Heather confirms Alliance Insurance Services covers auto, home, commercial, and health insurance.",
+    "Heather explains multi-line policies offer more options and requests William's current auto and home insurance documents via email.",
+    "Heather refers William's health insurance inquiry to another agent (Steve) for specialized handling.",
+    "Heather provides her email address (Heather.Scott@allianceinsurance.com) and outlines required documents: policy details, driver information, claims history, and renewal dates."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of insurance lines (auto, home, health, commercial, umbrella policies)",
+    "Process for obtaining multi-line insurance quotes",
+    "Referral protocols for specialized insurance types (health insurance)",
+    "Document requirements for policy evaluation"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services email system",
+    "Carrier portals (e.g., Allstate for auto, unspecified for home)"
+  ],
+  "summary": "William Wilson contacted Alliance Insurance Services for quotes on auto, home, and health insurance, including adding his wife to his health policy and managing rental properties. Heather coordinated the process, referred health insurance to another agent, and requested documents via email. The call concluded with William agreeing to send required information.",
+  "_model": "qwen3:14b",
+  "_eval_count": 332,
+  "_total_duration_ms": 47710,
+  "_source_file": "transcripts/exten-401-+13367348671-20251020-152302-1760988182.9738.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4216
+}

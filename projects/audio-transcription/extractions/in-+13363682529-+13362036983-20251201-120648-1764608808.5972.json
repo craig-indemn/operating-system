@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Gabby from Rich and Service Center requested to speak with the business owner.",
+  "resolution_steps": [
+    "Agent acknowledged the request and stated they would check if the business owner was available."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief inbound call where the caller requested to speak with the business owner. The agent indicated they would check availability but no further action or resolution was achieved before the call ended.",
+  "_model": "qwen3:14b",
+  "_eval_count": 120,
+  "_total_duration_ms": 24637,
+  "_source_file": "transcripts/in-+13363682529-+13362036983-20251201-120648-1764608808.5972.txt",
+  "_direction": "inbound",
+  "_char_count": 229
+}

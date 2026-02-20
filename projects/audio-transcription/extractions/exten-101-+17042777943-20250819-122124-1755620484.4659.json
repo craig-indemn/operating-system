@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Dale Powell is seeking resolution for an insurance issue with Honeycomb, which declined coverage due to aluminum wiring in buildings from 1973, and is exploring alternatives with Westfield, including potential additional costs for a lower wind/hail deductible.",
+  "resolution_steps": [
+    "Marnie confirms Honeycomb's rejection was due to aluminum wiring in buildings constructed in 1973.",
+    "Discusses that while most units have been remodeled, some may still have original wiring.",
+    "Explains Westfield's 1% wind/hail deductible and clarifies that the buyback option (from Honeycomb) is separate from Westfield's policy.",
+    "Agrees to investigate whether Westfield can offer a lower deductible for an additional fee.",
+    "Notes the policy's automatic renewal and the urgency to resolve the issue before the 20th."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of insurance underwriting criteria (e.g., aluminum wiring risks)",
+    "Knowledge of Westfield's policy terms (deductibles, buyback options)",
+    "Ability to navigate policy renewal processes and carrier-specific requirements"
+  ],
+  "systems_referenced": [
+    "Westfield",
+    "Honeycomb"
+  ],
+  "summary": "Dale Powell discusses a rejected Honeycomb insurance application due to aluminum wiring in 1973-era buildings and explores Westfield's coverage options. Marnie confirms Westfield's 1% wind/hail deductible and commits to investigating potential additional fees for a lower deductible. The call concludes with a plan to resolve the issue before the policy's expiration on the 20th.",
+  "_model": "qwen3:14b",
+  "_eval_count": 357,
+  "_total_duration_ms": 55208,
+  "_source_file": "transcripts/exten-101-+17042777943-20250819-122124-1755620484.4659.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2836
+}

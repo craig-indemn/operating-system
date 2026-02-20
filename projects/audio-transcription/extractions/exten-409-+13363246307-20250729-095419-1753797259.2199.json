@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "John Campbell is seeking alternative insurance options after experiencing a significant rate increase of over $9,000 for four vehicles, attributing the increase to an accident involving Caleb and potential rate hikes in North Carolina.",
+  "resolution_steps": [
+    "Agent Corbin acknowledges the rate increase and confirms the auto insurance premium jumped from $49,65 to $87,69 due to Caleb's accident.",
+    "Corbin explains homeowners insurance increased from $16,60 to $22,71 due to North Carolina rate hikes and increased coverage.",
+    "Corbin commits to running rates with multiple carriers to identify cheaper alternatives.",
+    "Discusses the possibility of splitting Caleb's coverage but notes it would result in a 40% higher cost due to loss of multi-car and credit discounts.",
+    "Agrees to provide options after running comparisons and schedule a follow-up discussion."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of rate factors (accidents, state-specific increases, coverage changes)",
+    "Knowledge of multi-car discounts and credit score impacts on premiums",
+    "Ability to run comparative rate quotes across carriers"
+  ],
+  "systems_referenced": [
+    "Internal rate-checking system (\"I run these on the seventeenth\")",
+    "Carrier portals for rate comparisons"
+  ],
+  "summary": "John Campbell contacted Alliance Insurance Services after a significant insurance rate increase, seeking alternatives. Agent Corbin confirmed the auto insurance increase was due to Caleb's accident and North Carolina rate hikes, committed to running comparative rates, and discussed potential cost implications of splitting Caleb's policy. A follow-up call was scheduled to review options.",
+  "_model": "qwen3:14b",
+  "_eval_count": 367,
+  "_total_duration_ms": 43256,
+  "_source_file": "transcripts/exten-409-+13363246307-20250729-095419-1753797259.2199.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2032
+}

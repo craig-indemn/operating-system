@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Ivan Torres is seeking an auto insurance quote for a new truck he is purchasing, as he has no prior insurance or existing policies.",
+  "resolution_steps": [
+    "Agent confirmed Ivan's lack of existing insurance and requested his name.",
+    "Agent explained that most carriers require bundled policies (home and auto) and prior coverage.",
+    "Agent admitted no competitive carriers could be used for Ivan's specific situation.",
+    "Agent apologized and ended the call, offering no further options."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Auto insurance underwriting requirements",
+    "Carrier bundling policies",
+    "Handling new customers without prior insurance history"
+  ],
+  "systems_referenced": [],
+  "summary": "Ivan Torres contacted Alliance Insurance Services to request an auto insurance quote for a new truck, but the agent could not provide coverage due to carrier requirements for bundled policies and lack of prior insurance. The agent explained the limitations and ended the call without resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 223,
+  "_total_duration_ms": 38153,
+  "_source_file": "transcripts/q-200-+13369797831-20251013-161001-1760386201.11972.txt",
+  "_direction": "queue",
+  "_char_count": 1117
+}

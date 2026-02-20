@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller needs assistance paying a home insurance bill for a property in France, as they cannot access their account via the French phone code and require an English-speaking option to pay by credit card.",
+  "resolution_steps": [
+    "Agent asked for clarification on the carrier (Professional/Alliance Insurance Services).",
+    "Agent explained Alliance Insurance Services is a broker, not a single carrier.",
+    "Caller expressed confusion about the correct company and payment process."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding carrier-specific payment processes for international accounts",
+    "Knowledge of Alliance Insurance Services' role as a broker vs. direct carrier"
+  ],
+  "systems_referenced": [
+    "Professional (carrier)",
+    "Alliance Insurance Services portal"
+  ],
+  "summary": "International caller struggled to pay a French home insurance bill due to language barriers and account access issues. The agent clarified Alliance's broker role but did not resolve the payment method issue, requiring further callback.",
+  "_model": "qwen3:14b",
+  "_eval_count": 220,
+  "_total_duration_ms": 27523,
+  "_source_file": "transcripts/in-+13363779003-+19733626934-20251222-113454-1766421294.2330.txt",
+  "_direction": "inbound",
+  "_char_count": 968
+}

@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to confirm why their auto insurance payment amount had decreased compared to their usual charge.",
+  "resolution_steps": [
+    "Agent asked for the policyholder's name and insurance carrier.",
+    "Agent checked the policy renewal amount in their system.",
+    "Agent informed the caller the renewal amount had decreased.",
+    "Agent offered to transfer the caller to a specialist for further clarification."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding how to access and interpret policy renewal information",
+    "Recognizing when to escalate to a specialist agent"
+  ],
+  "systems_referenced": [
+    "Internal policy database"
+  ],
+  "summary": "A caller contacted Alliance Insurance to inquire about a lower-than-expected auto insurance payment. The agent verified the policy details, confirmed the renewal amount had decreased, and offered to transfer the caller to an agent for further explanation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 201,
+  "_total_duration_ms": 29276,
+  "_source_file": "transcripts/in-+13363779003-+13362769059-20251016-140007-1760637607.7580.txt",
+  "_direction": "inbound",
+  "_char_count": 635
+}

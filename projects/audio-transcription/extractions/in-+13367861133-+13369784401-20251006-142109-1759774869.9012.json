@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Ed Weiss from B T S Tire and Wheel, seeks assistance in obtaining a certificate of insurance for Leroy Trent's business (Firewater Service Center) to add the Goodyear program. He mentions having sent documents to Goodyear and needing the certificate.",
+  "resolution_steps": [
+    "Agent asks for the policy number, which the caller does not have but provides the business address (1329 Scenic Drive, Stuart, Virginia) and business name (Firewater Transport, LLC/Firewater Service Center).",
+    "Agent confirms details and offers to connect the caller with Gloria, a commercial agent, to handle the certificate request."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding certificate of insurance requests for commercial clients",
+    "Internal process for transferring calls to commercial agents"
+  ],
+  "systems_referenced": [],
+  "summary": "Ed Weiss from B T S Tire and Wheel requested help obtaining a certificate of insurance for Firewater Service Center to add the Goodyear program. The agent collected business details and transferred the call to a commercial agent (Gloria) for resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 257,
+  "_total_duration_ms": 36342,
+  "_source_file": "transcripts/in-+13367861133-+13369784401-20251006-142109-1759774869.9012.txt",
+  "_direction": "inbound",
+  "_char_count": 1356
+}

@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with Brandi",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Brief inbound call where caller requested to speak with Brandi. Agent acknowledged and placed caller on hold. No further details or resolution steps provided in the transcript.",
+  "_model": "qwen3:14b",
+  "_eval_count": 91,
+  "_total_duration_ms": 30217,
+  "_source_file": "transcripts/in-+13367861133-+13364090527-20251222-144921-1766432961.4380.txt",
+  "_direction": "inbound",
+  "_char_count": 116
+}

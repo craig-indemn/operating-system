@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Monica needs to obtain an updated insurance policy document that includes missing dealer lot coverage and additional secured finance companies (Next Gear and Casey S floor plans) for her dealership.",
+  "resolution_steps": [
+    "Jessica confirms the policy is missing dealer lot coverage and Next Gear/Casey S floor plan coverage.",
+    "Jessica checks the policy database to verify existing secured finance companies (Flexpath Capital is present).",
+    "Jessica identifies missing entities (Next Gear, Casey S) and commits to adding them to the policy.",
+    "Jessica agrees to review the certificate for dealer lot coverage and send an updated policy back to Monica within an hour."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy structures and coverage types (dealer lot, secured interest).",
+    "Ability to access and modify policy details in the agency's system.",
+    "Knowledge of secured finance company naming conventions and policy integration processes."
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's policy management system (used to view/edit policy details)."
+  ],
+  "summary": "Monica requested an updated insurance policy document with missing dealer lot coverage and additional secured finance companies. Jessica confirmed the policy was incomplete, identified the missing entities, and committed to updating the policy and sending the revised document within an hour. The call concluded with a pending follow-up to provide the updated policy.",
+  "_model": "qwen3:14b",
+  "_eval_count": 307,
+  "_total_duration_ms": 39038,
+  "_source_file": "transcripts/exten-106-+13364144231-20250818-133027-1755538227.5568.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1994
+}

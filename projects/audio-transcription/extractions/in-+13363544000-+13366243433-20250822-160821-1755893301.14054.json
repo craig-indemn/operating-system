@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Sonia) wanted to understand why her mortgage insurance premium increased significantly and sought clarification on changes to her policy.",
+  "resolution_steps": [
+    "Agent asked for the caller's policy number (OS3198131).",
+    "Agent placed the caller on hold to connect with another agent.",
+    "Hold music message played, including prompts about managing policies online and texting support.",
+    "Agent mentioned a phone issue and transferred the call to an extension for another agent."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Handling premium change inquiries",
+    "Policy lookup procedures",
+    "Call transfer protocols for technical issues"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance customer portal (myallianceinsurance.com)",
+    "Text support service (3367861133)"
+  ],
+  "summary": "Sonia contacted Alliance Insurance to address a significant increase in her mortgage insurance premium. The agent collected her policy number and placed her on hold, but due to a phone issue, the call was transferred to another extension. The conversation ended without resolving her query about the premium change.",
+  "_model": "qwen3:14b",
+  "_eval_count": 262,
+  "_total_duration_ms": 43919,
+  "_source_file": "transcripts/in-+13363544000-+13366243433-20250822-160821-1755893301.14054.txt",
+  "_direction": "inbound",
+  "_char_count": 1720
+}

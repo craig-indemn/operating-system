@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller needs to pay an overdue auto insurance bill to prevent cancellation and is seeking assistance to resolve the payment issue.",
+  "resolution_steps": [
+    "Agent confirmed the caller's intent to pay an overdue bill.",
+    "Agent asked for policy type (auto) and carrier (National General).",
+    "Agent noted the policy appears canceled and offered to transfer to another agent for resolution."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding insurance policy cancellation processes",
+    "Handling overdue payment scenarios",
+    "Transferring calls to appropriate specialists"
+  ],
+  "systems_referenced": [],
+  "summary": "James Gilman contacted Alliance Insurance to resolve an overdue auto insurance payment with National General. The agent confirmed the policy was canceled and offered to transfer him to a specialist for further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 190,
+  "_total_duration_ms": 25468,
+  "_source_file": "transcripts/in-+13363779003-+17045003011-20250918-101215-1758204735.2895.txt",
+  "_direction": "inbound",
+  "_char_count": 465
+}

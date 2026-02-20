@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Ashley is following up about a deal for William Ware that was not received via email and requests clarification on the correct document to be sent.",
+  "resolution_steps": [
+    "Tammy confirms the email address provided by Ashley (tj.hurt@scbinc.com) and acknowledges the initial email was not received.",
+    "Tammy realizes she sent the wrong document (a rental property file) and offers to resend the correct one.",
+    "Ashley provides her email address (ashley.asim.peter@allianceinsurance.com) for resending the document.",
+    "Tammy agrees to email the correct document and suggests using fax as an alternative if needed."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Client communication protocols",
+    "Document management for insurance deals",
+    "Email/fax troubleshooting"
+  ],
+  "systems_referenced": [
+    "Email client",
+    "Fax machine"
+  ],
+  "summary": "Ashley contacted Tammy to resolve an issue where an email with a client deal for William Ware was not received. Tammy initially sent the wrong document but corrected the mistake by offering to resend the proper file via email or fax. Ashley provided her email address for the resubmission, and the call concluded with a plan to resolve the issue.",
+  "_model": "qwen3:14b",
+  "_eval_count": 285,
+  "_total_duration_ms": 31023,
+  "_source_file": "transcripts/out-3044312286-100-20251201-151945-1764620385.13815.txt",
+  "_direction": "outbound",
+  "_char_count": 1215
+}

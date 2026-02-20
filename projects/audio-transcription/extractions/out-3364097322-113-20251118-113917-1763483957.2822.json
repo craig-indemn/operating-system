@@ -1,0 +1,33 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Client Gary is adjusting his auto and homeowners insurance policies with Alliance Insurance Services, seeking to lower premiums through coverage changes and deductible adjustments while transitioning from Progressive to a new provider.",
+  "resolution_steps": [
+    "Agent explains adjustments made: increased auto coverage from $10,300 to $25,500, changed homeowners deductible to $5,000 for wind/hail and $2,500 for other losses.",
+    "Provided updated premium figures: $2,359 for homeowners, $1,124 for auto (with discounts), and $2,201 for umbrella coverage.",
+    "Discussed payment options, including a $150 discount for paying annually upfront.",
+    "Requested client's banking details (routing and account numbers) for immediate payment processing.",
+    "Set policy effective date for November 29th and outlined steps for e-signing new applications and canceling Progressive policies.",
+    "Offered online access setup for the new policies via email."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy adjustments (coverage limits, deductibles)",
+    "Premium calculation mechanics",
+    "Payment discount structures",
+    "Policy cancellation and transition procedures",
+    "Online account setup for clients"
+  ],
+  "systems_referenced": [
+    "Progressive (current provider)",
+    "Alliance Insurance Services (new provider)",
+    "Banking systems (First Citizens Bank routing/account numbers)",
+    "E-signature platform for policy documents"
+  ],
+  "summary": "Client Gary is finalizing insurance policy changes with Alliance Insurance Services, including increased auto coverage and adjusted homeowners deductibles to reduce premiums. The agent provided detailed cost breakdowns, discussed payment terms, and arranged for immediate payment processing and policy transition. The client agreed to proceed, with final steps requiring banking details and e-signature for new policies.",
+  "_model": "qwen3:14b",
+  "_eval_count": 412,
+  "_total_duration_ms": 57577,
+  "_source_file": "transcripts/out-3364097322-113-20251118-113917-1763483957.2822.txt",
+  "_direction": "outbound",
+  "_char_count": 4266
+}

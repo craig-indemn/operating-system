@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Clarify next steps for a mobile home insurance policy and confirm if the agency is taking over the account.",
+  "resolution_steps": [
+    "Agent acknowledged the call and confirmed understanding of the mobile home insurance inquiry.",
+    "Agent confirmed they would handle the matter when they got around to it.",
+    "Agent reassured the caller they would not be bothered further."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Mobile home insurance policies",
+    "Agency's process for account transitions"
+  ],
+  "systems_referenced": [],
+  "summary": "Corbin contacted Morgan to clarify next steps for a mobile home insurance policy and whether the agency was taking over the account. Morgan confirmed they would handle the matter when they got around to it, and the call ended with Corbin's gratitude.",
+  "_model": "qwen3:14b",
+  "_eval_count": 188,
+  "_total_duration_ms": 37981,
+  "_source_file": "transcripts/out-3366485655-409-20250722-164034-1753216834.18011.txt",
+  "_direction": "outbound",
+  "_char_count": 588
+}

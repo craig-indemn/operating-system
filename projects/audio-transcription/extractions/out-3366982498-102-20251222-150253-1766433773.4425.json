@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Not applicable (automated voicemail message)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Automated voicemail message informing the caller that the target mailbox could not be found, possibly due to incorrect setup or network issues. The system prompts the caller to enter the full phone number but ultimately states the mailbox is not in use.",
+  "_model": "qwen3:14b",
+  "_eval_count": 109,
+  "_total_duration_ms": 33241,
+  "_source_file": "transcripts/out-3366982498-102-20251222-150253-1766433773.4425.txt",
+  "_direction": "outbound",
+  "_char_count": 400
+}

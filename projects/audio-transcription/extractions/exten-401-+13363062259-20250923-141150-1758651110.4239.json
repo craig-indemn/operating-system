@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Henry Rory is initiating a new insurance policy through his mortgage escrow and providing details about his current mortgage (account number, service provider, address) to facilitate the process. He wants to cancel his existing policy once the new one is active.",
+  "resolution_steps": [
+    "Agent collects mortgage details: account number (0100379924), service provider (Lakeview, serviced by M T Bank), and address (P O Box 619063, Dallas, TX 75261-9063).",
+    "Agent clarifies that the policy is under escrow and will be effective the next day (September 24).",
+    "Agent explains the need to contact the current insurance carrier to cancel the existing policy once the new policy is processed.",
+    "Agent advises that the carrier can backdate the cancellation if proof of the new policy is provided."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy cancellation process through escrow",
+    "Mortgage company and carrier coordination",
+    "Escrow account and policy effective date procedures"
+  ],
+  "systems_referenced": [
+    "M T Bank",
+    "Lakeview (mortgage company)",
+    "Escrow system",
+    "Insurance carrier portal (implied)"
+  ],
+  "summary": "Henry Rory is setting up a new insurance policy through his mortgage escrow, providing detailed account and service information. The agent explains the need to cancel his existing policy once the new one is active, requiring coordination with his current insurance carrier. The new policy will take effect the next day.",
+  "_model": "qwen3:14b",
+  "_eval_count": 359,
+  "_total_duration_ms": 63206,
+  "_source_file": "transcripts/exten-401-+13363062259-20250923-141150-1758651110.4239.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3959
+}

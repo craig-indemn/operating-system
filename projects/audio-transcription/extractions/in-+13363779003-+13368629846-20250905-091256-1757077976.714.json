@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is concerned about a recently expired insurance policy with National General, as they did not receive renewal confirmation emails and are seeking assistance to reinstate the policy.",
+  "resolution_steps": [
+    "Agent confirmed the caller's policy details (National General, renewal date September 3rd, paperless status).",
+    "Agent acknowledged the caller's lack of email communication from National General.",
+    "Agent explained that renewals do not have a grace period and offered to put the caller on hold to connect with an agent for reinstatement assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy renewal processes",
+    "Knowledge of National General's communication protocols",
+    "Awareness of reinstatement procedures for expired policies"
+  ],
+  "systems_referenced": [
+    "National General insurance portal",
+    "Alliance Insurance customer portal (myallianceinsurance.com)"
+  ],
+  "summary": "A caller contacted Alliance Insurance to address an expired National General policy, citing no email notifications. The agent verified policy details, explained renewal rules, and initiated a callback to assist with reinstatement. The call ended with the agent on hold to connect with a specialist.",
+  "_model": "qwen3:14b",
+  "_eval_count": 266,
+  "_total_duration_ms": 24939,
+  "_source_file": "transcripts/in-+13363779003-+13368629846-20250905-091256-1757077976.714.txt",
+  "_direction": "inbound",
+  "_char_count": 1680
+}

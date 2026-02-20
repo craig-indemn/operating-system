@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking to purchase home and auto insurance, with specific questions about coverage limits, policy forms, deductibles, and flood insurance options.",
+  "resolution_steps": [
+    "Confirmed the caller's home insurance details (property type, coverage amounts, deductible options, and policy form).",
+    "Addressed the need to adjust property damage coverage from $100k to $250k.",
+    "Discussed auto insurance details (vehicle models, coverage limits, deductibles, and potential premium changes).",
+    "Explained flood insurance options and the impact of water shut-off systems on coverage.",
+    "Clarified the start date flexibility for flood insurance and the need for a policy form."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Home insurance policy forms (e.g., Cincinnati's 8721 enhanced form)",
+    "Umbrella coverage and liability limits",
+    "Auto insurance coverage types (bodily injury, property damage, comprehensive)",
+    "Flood insurance requirements and water shut-off systems",
+    "Deductible adjustments and their impact on premiums"
+  ],
+  "systems_referenced": [
+    "Cincinnati Insurance policy forms",
+    "Carrier portals for flood insurance",
+    "Auto insurance coverage calculators"
+  ],
+  "summary": "The caller discussed home and auto insurance needs with the agent, including coverage adjustments, deductible options, and flood insurance. The agent provided details on policy forms, coverage limits, and the impact of deductible changes. The call concluded with the agent confirming the next steps and sending policy documents.",
+  "_model": "qwen3:14b",
+  "_eval_count": 343,
+  "_total_duration_ms": 72247,
+  "_source_file": "transcripts/exten-401-+15087367419-20250822-110233-1755874953.6082.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 21482
+}

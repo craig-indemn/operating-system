@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "N/A (automated menu options only)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Automated menu options provided by Penn National Insurance. No agent interaction or substantive conversation occurred. Caller directed to select from claims, roadside assistance, or ID card options.",
+  "_model": "qwen3:14b",
+  "_eval_count": 95,
+  "_total_duration_ms": 22435,
+  "_source_file": "transcripts/out-8007662245-510-20251015-170043-1760562043.8213.txt",
+  "_direction": "outbound",
+  "_char_count": 298
+}

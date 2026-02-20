@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jeremy requests Shelly to verify the installation date of a roof on a rental property's declaration page (sent to State Employees) to ensure accuracy, as he believes the date (2016) may be outdated (possibly 2020 or 2022). He wants to confirm this to avoid potential documentation issues if the roof is less than five years old.",
+  "resolution_steps": [
+    "Shelly agrees to check the declaration page for the roof's installation date.",
+    "Jeremy clarifies that if the roof is less than five years old, documentation (e.g., invoices) may be required for State Farm.",
+    "Jeremy mentions coordinating with Tiffany, who has already emailed him documents, and he is preparing to send materials to her.",
+    "Shelly confirms she will call back if she cannot locate the information on the declaration page."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding insurance declaration pages and their relevance to property claims",
+    "Documentation requirements for roof replacements (e.g., invoices, claim records)",
+    "Coordination with clients and third parties (e.g., Tiffany) for document verification"
+  ],
+  "systems_referenced": [
+    "State Farm (carrier)",
+    "Declaration pages (insurance documents)",
+    "Email communication (Tiffany's email)"
+  ],
+  "summary": "Jeremy asks Shelly to verify the roof installation date on a rental property's declaration page (sent to State Farm) to ensure accuracy for insurance purposes. Shelly agrees to check the document, and Jeremy is coordinating with Tiffany to send necessary materials. The call ends with a plan to follow up if the date cannot be confirmed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 365,
+  "_total_duration_ms": 54474,
+  "_source_file": "transcripts/out-13369951565-701-20251024-145624-1761332183.5232.txt",
+  "_direction": "outbound",
+  "_char_count": 2546
+}

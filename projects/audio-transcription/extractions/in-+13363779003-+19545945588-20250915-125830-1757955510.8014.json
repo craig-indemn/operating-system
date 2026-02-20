@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to confirm the renewal date for their Progressive insurance policy and inquire about potential rate changes ahead of time.",
+  "resolution_steps": [
+    "Agent accessed the caller's policy to check renewal details.",
+    "Confirmed the policy is due on October 15.",
+    "Explained that rate information is not yet available and cannot be determined until closer to the renewal date.",
+    "Advised the caller to contact back around October 29 for an update.",
+    "Apologized for the inconvenience and thanked the caller."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy renewal date lookup procedures",
+    "Understanding of insurance rate determination timelines",
+    "Customer service protocols for follow-up communication"
+  ],
+  "systems_referenced": [
+    "Policy management system (internal database)"
+  ],
+  "summary": "A Progressive policyholder contacted Lions Insurance to check their October 15 renewal date and inquire about potential rate changes. The agent confirmed the due date but explained rates can't be determined until closer to renewal, advising a follow-up call on October 29. The caller was thanked and provided with clear next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 257,
+  "_total_duration_ms": 41543,
+  "_source_file": "transcripts/in-+13363779003-+19545945588-20250915-125830-1757955510.8014.txt",
+  "_direction": "inbound",
+  "_char_count": 1433
+}

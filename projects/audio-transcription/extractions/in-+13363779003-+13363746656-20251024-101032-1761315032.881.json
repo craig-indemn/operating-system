@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking clarification about a policy termination letter from North Carolina Farm Bureau, which they believe is incorrect as they have always been insured by Alliance Insurance.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's confusion about the policy termination letter.",
+    "Agent offers to transfer the caller to an agency that can assist with resolving the discrepancy."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding how to handle policy disputes or discrepancies in coverage",
+    "Knowledge of internal systems to transfer calls to appropriate departments"
+  ],
+  "systems_referenced": [],
+  "summary": "The caller received a policy termination letter from North Carolina Farm Bureau but insists their vehicle has always been insured by Alliance. The agent acknowledged the confusion and offered to transfer the caller to an agency for further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 188,
+  "_total_duration_ms": 22639,
+  "_source_file": "transcripts/in-+13363779003-+13363746656-20251024-101032-1761315032.881.txt",
+  "_direction": "inbound",
+  "_char_count": 717
+}

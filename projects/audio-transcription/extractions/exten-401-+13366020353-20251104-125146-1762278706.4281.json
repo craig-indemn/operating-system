@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Martin is following up on insurance quotes he previously requested and seeking a ballpark estimate for townhouse insurance rates.",
+  "resolution_steps": [
+    "Heather confirms quotes are being processed and provides a timeline (by 5 PM today or first thing tomorrow).",
+    "Heather explains that insurance rates depend on factors like credit, insurance history, and property specifics.",
+    "Heather provides a ballpark estimate of $700\u2013$1,000 annually for townhouse insurance.",
+    "Martin acknowledges the estimate and confirms he will wait for the finalized quotes."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding variables affecting insurance rates (credit, claims history, property location).",
+    "Process of generating and delivering quotes through multiple carriers as an independent broker."
+  ],
+  "systems_referenced": [
+    "carrier portals (implied through 'many carriers we're courting')"
+  ],
+  "summary": "Martin followed up on pending insurance quotes and requested a rate estimate. Heather provided a timeline for quote delivery and explained that townhouse rates vary widely based on factors like credit and property specifics, offering a $700\u2013$1,000 annual ballpark. The call concluded with mutual agreement on next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 277,
+  "_total_duration_ms": 41001,
+  "_source_file": "transcripts/exten-401-+13366020353-20251104-125146-1762278706.4281.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2536
+}

@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Verify car insurance details (comprehensive coverage, deductible, policy dates, lienholder info) after refinancing through True Liant and assist with online verification process.",
+  "resolution_steps": [
+    "Agent Polly accessed the customer's policy using provided name, phone number, and email.",
+    "Confirmed comprehensive/collision deductibles ($500) and policy effective dates (Jan 2025\u20132026).",
+    "Notified customer about lienholder (First Citizens Bank) and advised to provide True Liant's required lienholder address.",
+    "Guided customer through uploading documents via insuranceinfo.com using reference ID, name, zip code, and VIN.",
+    "Clarified agent name field should be 'Alliance Insurance Services' and confirmed email submission process.",
+    "Assisted with final form submission and confirmed completion."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Policy retrieval via customer identifiers (name, phone, email)",
+    "Insurance terminology (deductibles, lienholders)",
+    "True Liant refinancing process requirements",
+    "insuranceinfo.com portal functionality for document uploads"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services internal policy database",
+    "insuranceinfo.com document upload portal"
+  ],
+  "summary": "Customer Jonathan needed verification of car insurance details after refinancing through True Liant. Agent Polly retrieved policy specifics, guided him through document uploads on insuranceinfo.com, and clarified form requirements. The customer successfully completed verification and expressed gratitude.",
+  "_model": "qwen3:14b",
+  "_eval_count": 332,
+  "_total_duration_ms": 42839,
+  "_source_file": "transcripts/q-300-+18184817563-20251218-124937-1766080177.2395.txt",
+  "_direction": "queue",
+  "_char_count": 3800
+}

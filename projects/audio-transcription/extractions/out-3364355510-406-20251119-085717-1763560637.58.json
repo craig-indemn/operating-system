@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unknown (voicemail greeting only)",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Standard voicemail greeting from Tiffany Phillips in the claims department. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 74,
+  "_total_duration_ms": 17784,
+  "_source_file": "transcripts/out-3364355510-406-20251119-085717-1763560637.58.txt",
+  "_direction": "outbound",
+  "_char_count": 98
+}

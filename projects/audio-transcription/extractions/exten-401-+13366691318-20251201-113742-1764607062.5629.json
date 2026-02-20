@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Bill McNair is following up on a previous conversation to obtain a home insurance quote for a property at 1102 South Hawthorne, specifically to confirm details needed for closing on December 19th.",
+  "resolution_steps": [
+    "Heather confirms the property address and construction year (1925) with asphalt shingles.",
+    "Acknowledges the lack of roof age information from the inspection.",
+    "Agrees to proceed with available data (construction year and shingle type) to generate a quote.",
+    "Commits to emailing the quote to the lender promptly."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Home insurance underwriting requirements",
+    "Estimating roof age based on construction year",
+    "Lender communication protocols for closing timelines"
+  ],
+  "systems_referenced": [
+    "Lender portal (implied through reference to 'getting this thing wrapped up for closing')",
+    "Internal quoting system (referenced by 'get you over a quote')"
+  ],
+  "summary": "Bill McNair follows up on a home insurance quote for a 1925-built property, resolving a roof age uncertainty by using construction year and shingle type data. Heather confirms details and commits to sending the quote via email to facilitate closing on December 19th.",
+  "_model": "qwen3:14b",
+  "_eval_count": 291,
+  "_total_duration_ms": 36205,
+  "_source_file": "transcripts/exten-401-+13366691318-20251201-113742-1764607062.5629.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1937
+}

@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller attempted to reach Rachel at Alliance Insurance.",
+  "resolution_steps": [
+    "Agent checked Rachel's office availability",
+    "Requested caller to wait briefly"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A caller attempted to reach Rachel at Alliance Insurance. The agent checked Rachel's office availability and asked the caller to wait, but the transcript ends without resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 110,
+  "_total_duration_ms": 40546,
+  "_source_file": "transcripts/in-+13367861133-+17439993165-20250902-101854-1756822734.1498.txt",
+  "_direction": "inbound",
+  "_char_count": 223
+}

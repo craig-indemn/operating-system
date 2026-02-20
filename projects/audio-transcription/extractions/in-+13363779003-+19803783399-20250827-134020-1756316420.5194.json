@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to make a payment on their car insurance policy with Travelers and requested a confirmation email.",
+  "resolution_steps": [
+    "Agent confirmed the caller's intent to pay for their car policy with Travelers.",
+    "Agent accessed the policy through the Travelers website (with delays noted).",
+    "Agent collected debit card details (number, expiration date, and security code).",
+    "Agent processed the payment ($240.28) and confirmed successful transaction.",
+    "Agent agreed to send the payment confirmation and receipt via email."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Payment processing procedures for insurance policies",
+    "Customer service communication protocols",
+    "Handling of sensitive financial information"
+  ],
+  "systems_referenced": [
+    "Travelers insurance website",
+    "Email system for sending confirmation receipts"
+  ],
+  "summary": "The caller successfully made a car insurance payment via debit card after a brief system delay. The agent confirmed the payment and agreed to send an email receipt. The conversation included informal discussion about the agent's workday and customer service feedback. The call concluded with mutual gratitude and confirmation of payment completion.",
+  "_model": "qwen3:14b",
+  "_eval_count": 264,
+  "_total_duration_ms": 37068,
+  "_source_file": "transcripts/in-+13363779003-+19803783399-20250827-134020-1756316420.5194.txt",
+  "_direction": "inbound",
+  "_char_count": 2672
+}

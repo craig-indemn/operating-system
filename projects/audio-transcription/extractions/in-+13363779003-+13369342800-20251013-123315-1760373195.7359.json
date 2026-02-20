@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to update his personal auto insurance policy and request a declaration form for his commercial property insurance.",
+  "resolution_steps": [
+    "Agent asked clarifying questions about policy types (commercial vs. personal).",
+    "Caller confirmed he was updating a personal auto policy and needed a commercial property declaration.",
+    "Agent acknowledged the request and offered to transfer to a specialist for further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Differentiating between personal and commercial insurance policies",
+    "Understanding documentation requirements for policy updates"
+  ],
+  "systems_referenced": [
+    "Internal policy management system"
+  ],
+  "summary": "Nick Patillo contacted Alliance Insurance to update his personal auto policy and request a commercial property declaration. The agent clarified policy types and offered to transfer him to a specialist. The call remains open with further assistance pending.",
+  "_model": "qwen3:14b",
+  "_eval_count": 201,
+  "_total_duration_ms": 30930,
+  "_source_file": "transcripts/in-+13363779003-+13369342800-20251013-123315-1760373195.7359.txt",
+  "_direction": "inbound",
+  "_char_count": 695
+}

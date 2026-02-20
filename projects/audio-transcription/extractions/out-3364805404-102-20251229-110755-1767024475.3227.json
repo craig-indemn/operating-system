@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to understand why they were being transitioned to a new carrier for professional liability insurance, cancel ENO insurance, and request a refund for removing a car (Audi) from their policy.",
+  "resolution_steps": [
+    "Gloria explained the transition from Hannover Insurance Group (a broker) to Cincinnati (a standard carrier), emphasizing benefits like direct client portal access and reduced administrative burden.",
+    "Confirmed cancellation of ENO insurance, noting it was already processed through Exe.",
+    "Addressed the Audi policy refund request, promising to contact the carrier to assess billing cycles and provide a refund breakdown.",
+    "Agreed to follow up with the caller after verifying refund details."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of broker vs. standard carrier distinctions",
+    "Process for transitioning policies between carriers",
+    "Client portal functionality (e.g., Cincinnati's portal)",
+    "Refund policies for partial policy cancellations"
+  ],
+  "systems_referenced": [
+    "Cincinnati Insurance client portal",
+    "Carrier systems for policy management and billing cycles"
+  ],
+  "summary": "Gloria explained the transition from a broker (Hannover) to a standard carrier (Cincinnati) for professional liability insurance, highlighting benefits like online document access. She confirmed ENO insurance cancellation and committed to investigating a refund for removing the Audi from the car insurance policy. The caller agreed to proceed with the transition and await refund details.",
+  "_model": "qwen3:14b",
+  "_eval_count": 326,
+  "_total_duration_ms": 44918,
+  "_source_file": "transcripts/out-3364805404-102-20251229-110755-1767024475.3227.txt",
+  "_direction": "outbound",
+  "_char_count": 3813
+}

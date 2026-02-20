@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Maria from Alliance Insurance is following up with Patricia Hanks to collect auto insurance information to generate quotes before the February 27th renewal deadline.",
+  "resolution_steps": [
+    "Maria informed Patricia about the February 27th deadline for auto insurance renewal.",
+    "Notified Patricia she would be out of the office until Tuesday but would follow up via email if contacted.",
+    "Provided her phone number for direct contact.",
+    "Offered to start the quote process via email if Patricia preferred."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance renewal timelines and processes",
+    "Client follow-up protocols when unavailable",
+    "Quote generation procedures for auto/homeowners insurance"
+  ],
+  "systems_referenced": [],
+  "summary": "Maria from Alliance Insurance followed up with Patricia Hanks to collect auto insurance information for quote generation before the February 27th deadline. Maria provided multiple options for Patricia to proceed, including email follow-up and direct phone contact, while informing her of her temporary unavailability until Tuesday.",
+  "_model": "qwen3:14b",
+  "_eval_count": 237,
+  "_total_duration_ms": 37155,
+  "_source_file": "transcripts/out-3365001202-203-20260115-105118-1768492278.1923.txt",
+  "_direction": "outbound",
+  "_char_count": 706
+}

@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The agent (Brandy) left a voicemail to inform Eina about a home policy review and request a callback.",
+  "resolution_steps": [
+    "Agent asked caller to leave a message after the tone",
+    "Agent left a voicemail with callback number (336-377-9003)"
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Brandy from Alliance Insurance left a voicemail for Eina to review a home insurance policy and requested a callback. The call was not substantive as it involved only a voicemail message.",
+  "_model": "qwen3:14b",
+  "_eval_count": 150,
+  "_total_duration_ms": 32451,
+  "_source_file": "transcripts/out-3365093744-112-20260113-152131-1768335691.7741.txt",
+  "_direction": "outbound",
+  "_char_count": 542
+}

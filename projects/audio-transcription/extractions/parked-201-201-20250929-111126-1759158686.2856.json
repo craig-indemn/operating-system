@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller intends to pay their insurance premiums (auto, umbrella, and property) using a credit card to earn points, split the payment with a family member, and obtain confirmation of the transaction.",
+  "resolution_steps": [
+    "Confirmed the caller's intent to use a credit card for payment.",
+    "Processed the payment for auto, umbrella, and property insurance totaling $5,859.92.",
+    "Sent a confirmation email to the provided Gmail address.",
+    "Advised the caller to contact an agent (Chase Smith) for potential discounts.",
+    "Resolved the caller's concern about splitting payments with a family member."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance payment processing via credit card",
+    "Handling multi-policy payments",
+    "Referral to agents for discount eligibility",
+    "Email confirmation procedures"
+  ],
+  "systems_referenced": [
+    "Insurance carrier portal for payment processing",
+    "Email system for confirmation"
+  ],
+  "summary": "The caller successfully paid $5,859.92 in insurance premiums using a credit card, with confirmation emailed to their Gmail address. The agent referred them to an agent for discount inquiries and resolved a payment-splitting request with a family member. The call concluded with the caller agreeing to follow up with the agent for potential discounts.",
+  "_model": "qwen3:14b",
+  "_eval_count": 299,
+  "_total_duration_ms": 46637,
+  "_source_file": "transcripts/parked-201-201-20250929-111126-1759158686.2856.txt",
+  "_direction": "parked",
+  "_char_count": 3942
+}

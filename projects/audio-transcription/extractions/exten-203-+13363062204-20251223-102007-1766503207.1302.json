@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Joy Delimbo wants to cancel the 2011 Lincoln Navigator from her insurance policy but needs to keep the Lincoln Corsair on the policy. She requires documentation confirming her husband's license surrender to proceed.",
+  "resolution_steps": [
+    "Agent confirmed the policy details (2011 Lincoln Navigator and Lincoln Corsair).",
+    "Agent requested documentation from DMV proving Mr. Delimbo surrendered his license.",
+    "Joy agreed to bring the documentation to the office by the same day."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy cancellation procedures",
+    "Handling vehicle removals while maintaining active coverage",
+    "DMV documentation requirements for license surrender verification"
+  ],
+  "systems_referenced": [
+    "Internal policy management system",
+    "DMV record verification process"
+  ],
+  "summary": "Joy Delimbo is seeking to cancel a vehicle from her insurance policy but needs to retain another vehicle. The agent requested DMV documentation to verify her husband's license surrender, which Joy agreed to provide in person. The call concluded with a follow-up plan for document submission.",
+  "_model": "qwen3:14b",
+  "_eval_count": 255,
+  "_total_duration_ms": 37336,
+  "_source_file": "transcripts/exten-203-+13363062204-20251223-102007-1766503207.1302.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1469
+}

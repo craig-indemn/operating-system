@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Dale wants to finalize an insurance policy by getting it bonded, set up payment terms, and clarify refund policies for future refinancing.",
+  "resolution_steps": [
+    "Jeff confirms Dale's intent to close the policy and discusses payment options (full payment vs. installments).",
+    "Jeff explains that the bill will come from USLI and clarifies payment timing (post-signing).",
+    "Jeff outlines the e-signature process via Congress Sign and assures Dale about policy binding.",
+    "Jeff confirms refund terms for unearned premiums if Dale refinances later."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance policy bonding process",
+    "Payment setup options (full vs. installments)",
+    "E-signature platform (Congress Sign) workflow",
+    "Unearned premium refund policies"
+  ],
+  "systems_referenced": [
+    "Congress Sign (e-signature platform)",
+    "USLI (carrier)"
+  ],
+  "summary": "Dale and Jeff finalize an insurance policy, agreeing to full payment and e-signature process. Jeff clarifies billing, binding, and refund terms for future refinancing. Dale confirms readiness to proceed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 260,
+  "_total_duration_ms": 37778,
+  "_source_file": "transcripts/exten-206-+13369701866-20251202-095857-1764687537.832.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3008
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller seeks assistance in obtaining liability insurance for their business (Island Breeze and King) and expresses frustration over previous unanswered calls to Alliance Insurance.",
+  "resolution_steps": [
+    "Agent Robin Pettit acknowledges the caller's request and confirms they previously had insurance with the agency.",
+    "Agent attempts to connect the caller to an available agent but appears unable to do so immediately.",
+    "Agent puts the caller on hold and plays a pre-recorded message about managing policies online and texting for support.",
+    "Agent assures the caller they will return if an agent cannot be connected."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of liability insurance products for businesses",
+    "Knowledge of Alliance Insurance's customer service protocols",
+    "Familiarity with the agency's online portal and texting support options"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance customer portal (myallianceinsurance.com)",
+    "Texting support service (336-786-1133)"
+  ],
+  "summary": "A business owner contacts Alliance Insurance to request liability insurance for their business but expresses frustration over prior unanswered calls. The agent acknowledges the request, attempts to connect the caller to an agent, and provides hold message information about online and texting support options. The call remains unresolved with a promise to follow up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 300,
+  "_total_duration_ms": 31286,
+  "_source_file": "transcripts/in-+13363779003-+13364035628-20250821-141321-1755800001.6452.txt",
+  "_direction": "inbound",
+  "_char_count": 1477
+}

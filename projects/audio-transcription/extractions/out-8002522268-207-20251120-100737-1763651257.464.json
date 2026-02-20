@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Gabriel Martinez, was verifying bank account information associated with a policy and confirming details for a recurring payment setup in 2024.",
+  "resolution_steps": [
+    "Agent Cody Jackson identified himself and asked for the insured name (Gabriel Martinez).",
+    "Asked for the checking account name linked to the policy, clarifying that only the last four digits of the account number could be confirmed.",
+    "Customer provided the last four digits (9561) and explained the account was used for EFD (Electronic Funds Debit) enrollment in 2024 and rolled over to the next renewal.",
+    "Agent acknowledged the information and committed to following up with a callback."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Bank account verification processes for insurance policies",
+    "Understanding of EFD (Electronic Funds Debit) enrollment and renewal procedures"
+  ],
+  "systems_referenced": [
+    "Travelers website (www.travelers.com) for online payments",
+    "Internal systems for checking account details"
+  ],
+  "summary": "Gabriel Martinez confirmed bank account details (last four digits: 9561) for a policy linked to an EFD setup in 2024. Agent Cody Jackson will follow up after verifying the information. The call included automated hold messages and a post-call survey prompt.",
+  "_model": "qwen3:14b",
+  "_eval_count": 305,
+  "_total_duration_ms": 38296,
+  "_source_file": "transcripts/out-8002522268-207-20251120-100737-1763651257.464.txt",
+  "_direction": "outbound",
+  "_char_count": 3142
+}

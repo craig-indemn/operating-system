@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Caller mistakenly called Alliance Insurance and corrected the agent immediately.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief inbound call where the caller admitted to dialing the wrong number. The agent acknowledged the mistake with a simple response, and the conversation ended immediately.",
+  "_model": "qwen3:14b",
+  "_eval_count": 96,
+  "_total_duration_ms": 25519,
+  "_source_file": "transcripts/in-+13363779003-+13368603197-20250813-163403-1755117243.9610.txt",
+  "_direction": "inbound",
+  "_char_count": 139
+}

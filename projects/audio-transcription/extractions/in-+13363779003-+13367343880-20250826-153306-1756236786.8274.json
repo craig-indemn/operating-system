@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller needs assistance filing an auto insurance claim.",
+  "resolution_steps": [
+    "Agent asked whether the claim is for home or auto insurance.",
+    "Caller confirmed it is an auto claim.",
+    "Agent stated they would transfer the caller to an agent who can assist with auto claims."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Claim filing process for auto insurance",
+    "Internal call transfer procedures"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller contacted Alliance Insurance to file an auto insurance claim. The agent confirmed the claim type and committed to transferring the caller to an appropriate agent. The call concluded with the agent preparing to transfer the call.",
+  "_model": "qwen3:14b",
+  "_eval_count": 167,
+  "_total_duration_ms": 31018,
+  "_source_file": "transcripts/in-+13363779003-+13367343880-20250826-153306-1756236786.8274.txt",
+  "_direction": "inbound",
+  "_char_count": 296
+}

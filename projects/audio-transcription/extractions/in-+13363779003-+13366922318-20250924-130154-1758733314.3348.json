@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to renew an expired insurance policy with National General.",
+  "resolution_steps": [
+    "Agent asked for the policyholder's name (Jason Medina).",
+    "Agent confirmed the carrier (National General).",
+    "Agent offered to connect the caller with an appropriate representative."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding how to handle policy renewal inquiries",
+    "Basic carrier identification for routing"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller contacted Alliance Insurance to renew an expired National General policy. The agent collected basic information and offered to connect the caller with a specialist. The call ended with the agent preparing to transfer the call.",
+  "_model": "qwen3:14b",
+  "_eval_count": 167,
+  "_total_duration_ms": 43049,
+  "_source_file": "transcripts/in-+13363779003-+13366922318-20250924-130154-1758733314.3348.txt",
+  "_direction": "inbound",
+  "_char_count": 437
+}

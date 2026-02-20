@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jim is seeking clarification on differences between Cincinnati and Auto Owners insurance quotes, specifically regarding premium discrepancies, replacement cost coverage, and how to address a claim involving his daughter to potentially lower the premium.",
+  "resolution_steps": [
+    "Heather explains factors affecting premium differences (insurance score, home details, inflation).",
+    "She checks the policies, discusses excluding a claim involving Jim's daughter from the policy.",
+    "Offers to follow up with documentation for exclusions and adjust the policy accordingly.",
+    "Mentions the process for renewals and changing carriers if needed.",
+    "Agrees to work on exclusions and provide updates to Jim."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance rating factors (credit score, home details, inflation).",
+    "Replacement cost evaluations and inflation impacts on coverage.",
+    "Handling claims and exclusions from policies.",
+    "Carrier-specific policies (Auto Owners and Cincinnati's rate changes)."
+  ],
+  "systems_referenced": [
+    "Internal systems for pulling up insurance quotes and claims.",
+    "Documentation processes for policy exclusions."
+  ],
+  "summary": "Jim is comparing Cincinnati and Auto Owners insurance policies, asking about premium differences and replacement cost coverage. Heather explains rating factors, discusses excluding a claim involving Jim's daughter, and offers to follow up. The call ends with Heather committing to help and Jim planning to decide by Monday.",
+  "_model": "qwen3:14b",
+  "_eval_count": 308,
+  "_total_duration_ms": 67683,
+  "_source_file": "transcripts/exten-401-+15087367419-20250911-160022-1757620822.5325.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 12706
+}

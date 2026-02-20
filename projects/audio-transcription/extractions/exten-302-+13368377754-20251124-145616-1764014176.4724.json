@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Sandra Vols requested the 2024-2025 version of a certificate for an audit, noting it is similar to the prior year's document she previously received.",
+  "resolution_steps": [
+    "Anna acknowledged the request and confirmed the need for the 2024-2025 certificate.",
+    "Anna stated she would retrieve the document and send it via email."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of certificate document types and audit timelines",
+    "Access to internal systems for retrieving policy documents"
+  ],
+  "systems_referenced": [
+    "Internal document retrieval system (implied but not named)"
+  ],
+  "summary": "Sandra Vols requested an updated certificate for the 2024-2025 audit period. Anna confirmed the request and committed to emailing the document after verifying its availability. The call concluded with mutual gratitude and a confirmation of follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 215,
+  "_total_duration_ms": 32535,
+  "_source_file": "transcripts/exten-302-+13368377754-20251124-145616-1764014176.4724.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 513
+}

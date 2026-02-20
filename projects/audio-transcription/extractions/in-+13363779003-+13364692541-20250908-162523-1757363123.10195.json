@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Bailey Stinson) wants to address an outstanding balance on an insurance policy and confirm if a previous missed call was handled by Gary or Brandi.",
+  "resolution_steps": [
+    "Shannon Thomas greets the caller and acknowledges the missed call.",
+    "Shannon asks if the caller spoke with Gary or Brandi to determine the appropriate next step.",
+    "Shannon offers to transfer the call to Brandi for further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding the agency's internal team structure (e.g., Brandi's role)",
+    "Basic policy balance inquiry handling procedures"
+  ],
+  "systems_referenced": [],
+  "summary": "Bailey Stinson contacted Alliance Insurance to resolve an outstanding policy balance and confirm if a previous missed call was addressed by Brandi. The agent, Shannon Thomas, confirmed the need to transfer the call to Brandi for further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 215,
+  "_total_duration_ms": 44550,
+  "_source_file": "transcripts/in-+13363779003-+13364692541-20250908-162523-1757363123.10195.txt",
+  "_direction": "inbound",
+  "_char_count": 419
+}

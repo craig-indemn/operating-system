@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Rita Rogers is seeking clarification on whether she can use an existing claim number for new water damage in her basement or needs to file a new claim. She also needs guidance on next steps involving a service professional.",
+  "resolution_steps": [
+    "Tracy checks Rita's existing claim details to determine applicability.",
+    "Tracy confirms the old claim can be used for the new water damage.",
+    "Tracy mentions a payment check was sent for the previous claim.",
+    "Tracy offers to provide the service pro's contact information (Cameron) to facilitate direct communication.",
+    "Tracy instructs Rita to contact Cameron for further assessment and updates."
+  ],
+  "outcome": "transferred",
+  "knowledge_required": [
+    "Understanding of claim applicability for water damage",
+    "Access to claim history and payment records",
+    "Ability to determine when to use existing vs. new claims"
+  ],
+  "systems_referenced": [
+    "Internal claims database (implied by 'pulling up the notes')"
+  ],
+  "summary": "Rita Rogers contacted Alliance Insurance to clarify if her existing claim can cover new basement water damage. Tracy confirmed the old claim is applicable, mentioned a prior payment, and provided the service pro's contact details for further action. The call concluded with Tracy offering to assist Rita in contacting the service professional.",
+  "_model": "qwen3:14b",
+  "_eval_count": 293,
+  "_total_duration_ms": 39600,
+  "_source_file": "transcripts/q-300-+13364882732-20251209-150103-1765310463.6486.txt",
+  "_direction": "queue",
+  "_char_count": 2640
+}

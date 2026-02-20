@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (John from State Employees Credit Union) seeks to obtain the 2025-2026 policy term for a mutual client (Abby and Donnie Watkins) and ensure the client is informed about the non-renewal of their N G M Insurance policy, which is set to expire on November 12, 2025.",
+  "resolution_steps": [
+    "Confirmed policy details: insured names, address, and current carrier (N G M Insurance).",
+    "Notified caller that N G M has not renewed the policy and has not responded to rate inquiries.",
+    "Agreed to schedule a follow-up call before November 7, 2025, to confirm final policy status.",
+    "Noted that a new policy would be issued if needed, with a copy provided to the client."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance policy non-renewal processes",
+    "Carrier communication protocols",
+    "Policy term and renewal timelines"
+  ],
+  "systems_referenced": [
+    "N G M Insurance carrier portal (implied through discussion of non-renewal and rate inquiries)"
+  ],
+  "summary": "John from State Employees Credit Union contacted Gary to address a client's pending insurance policy non-renewal with N G M Insurance. The agent confirmed the policy details, acknowledged N G M's lack of response, and agreed to a follow-up call before the November 12, 2025, non-renewal date. A new policy would be issued if needed, with a copy provided to the client.",
+  "_model": "qwen3:14b",
+  "_eval_count": 353,
+  "_total_duration_ms": 44248,
+  "_source_file": "transcripts/q-300-+12134760469-20251023-153720-1761248240.5534.txt",
+  "_direction": "queue",
+  "_char_count": 1526
+}

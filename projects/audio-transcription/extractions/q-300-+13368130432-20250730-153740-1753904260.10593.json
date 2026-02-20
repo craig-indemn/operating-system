@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "David needs to update his apartment insurance policy due to a move on August 1st and requires an updated evidence of insurance to send to someone for moving in.",
+  "resolution_steps": [
+    "Heather confirms David's identity and current policy details (policy number ending in 703, current address: 102 Village Drive, Apartment 317).",
+    "David provides new address: 102 Village Drive, Apartment 411, and confirms move date as August 1st.",
+    "Heather notes the policy is also listed under 'Rondo's name' and confirms the email address (David.McGirt@CooperEIC.com).",
+    "Heather assures David she will send the updated evidence of insurance via email."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Updating insurance policies for address changes",
+    "Generating and sending evidence of insurance documents",
+    "Accessing customer policy details and contact information"
+  ],
+  "systems_referenced": [
+    "Cooper EIC (email domain mentioned)"
+  ],
+  "summary": "David contacted Alliance Insurance to update his apartment insurance policy due to a move on August 1st. Heather confirmed his current policy details, new address, and email, and committed to sending updated evidence of insurance. The call concluded with David expressing gratitude.",
+  "_model": "qwen3:14b",
+  "_eval_count": 297,
+  "_total_duration_ms": 37903,
+  "_source_file": "transcripts/q-300-+13368130432-20250730-153740-1753904260.10593.txt",
+  "_direction": "queue",
+  "_char_count": 1401
+}

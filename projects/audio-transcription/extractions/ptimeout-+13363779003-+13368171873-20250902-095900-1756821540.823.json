@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller needs assistance but the intended recipient (a female colleague) is unavailable until 10:30 AM. The caller insists on resolving the matter today.",
+  "resolution_steps": [
+    "Agent confirms the recipient is in a meeting until 10:30 AM.",
+    "Agent offers to have the recipient call the caller back after the meeting.",
+    "Caller agrees and provides their phone number (336-817-1873).",
+    "Agent confirms they will relay the message and arrange the callback."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Handling callback requests",
+    "Understanding client urgency",
+    "Internal communication protocols"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller reached out for assistance, but the intended recipient was unavailable until 10:30 AM. The agent arranged for the recipient to call back after the meeting. The caller emphasized the need for immediate resolution, and the agent confirmed they would relay the message.",
+  "_model": "qwen3:14b",
+  "_eval_count": 234,
+  "_total_duration_ms": 38117,
+  "_source_file": "transcripts/ptimeout-+13363779003-+13368171873-20250902-095900-1756821540.823.txt",
+  "_direction": "park_timeout",
+  "_char_count": 381
+}

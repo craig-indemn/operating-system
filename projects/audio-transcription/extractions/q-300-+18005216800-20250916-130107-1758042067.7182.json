@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Prince is requesting renewal information for a homeowner's policy, specifically the total premium amount, policy status, effective dates, and a copy of the declaration page.",
+  "resolution_steps": [
+    "Brandy confirmed the policy number, property address, and insured name.",
+    "Brandy verified the total premium amount ($5,318) and confirmed the policy is still outstanding.",
+    "Brandy confirmed the renewal effective dates (October 7, 2025, to October 6, 2026).",
+    "Brandy asked Prince to provide a fax number to send the declaration page."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy lookup and verification process",
+    "Premium calculation and status checks",
+    "Document retrieval (declaration pages)",
+    "Fax request procedures"
+  ],
+  "systems_referenced": [
+    "Internal policy database",
+    "Fax machine"
+  ],
+  "summary": "Prince requested renewal details for a homeowner's policy, including premium amount, status, and declaration page. Brandy confirmed key details and requested the fax number to send the declaration page. The call remains open for the final fax number confirmation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 266,
+  "_total_duration_ms": 38613,
+  "_source_file": "transcripts/q-300-+18005216800-20250916-130107-1758042067.7182.txt",
+  "_direction": "queue",
+  "_char_count": 1131
+}

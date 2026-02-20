@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Mr. Gary Belcher, wants to reschedule his January 9th colonoscopy appointment due to a change in Dr. Arkema's schedule and prefers a Friday slot.",
+  "resolution_steps": [
+    "Agent confirms the original appointment date (January 9th) and the need to reschedule.",
+    "Agent checks Dr. Arkema's updated schedule and identifies the next available Friday slot on January 23rd at 9:00 AM.",
+    "Confirms the new date and time with the caller.",
+    "Reassures the caller that the phone number for the appointment remains unchanged.",
+    "Wishes the caller a happy Thanksgiving and concludes the call."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of appointment scheduling processes",
+    "Access to physician's updated availability",
+    "Knowledge of rescheduling protocols for medical procedures"
+  ],
+  "systems_referenced": [],
+  "summary": "The agent successfully rescheduled Mr. Belcher's colonoscopy from January 9th to January 23rd at 9:00 AM due to Dr. Arkema's schedule change. The caller confirmed the new date and expressed satisfaction with the resolution. The call concluded with a Thanksgiving greeting.",
+  "_model": "qwen3:14b",
+  "_eval_count": 283,
+  "_total_duration_ms": 37875,
+  "_source_file": "transcripts/out-3367686211-113-20251124-142003-1764012003.4364.txt",
+  "_direction": "outbound",
+  "_char_count": 1149
+}

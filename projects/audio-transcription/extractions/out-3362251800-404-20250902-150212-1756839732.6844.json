@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Confirm that a payment made online by the caller's wife was successfully processed, as the agent had previously been unable to follow up due to a prior scheduling conflict.",
+  "resolution_steps": [
+    "Agent Gloria apologized for not following up earlier.",
+    "Caller confirmed his wife paid online that morning.",
+    "Gloria requested the caller verify the payment status.",
+    "Gloria stated she would contact the relevant party to confirm the payment."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Payment verification procedures",
+    "Handling client follow-ups for unresolved matters"
+  ],
+  "systems_referenced": [
+    "Online payment portal (implied but not named)"
+  ],
+  "summary": "Gloria from Alliance Insurance followed up with Jeff to confirm a payment his wife made online. Jeff confirmed the payment was made, and Gloria requested verification before stating she would contact the relevant party to confirm the transaction.",
+  "_model": "qwen3:14b",
+  "_eval_count": 211,
+  "_total_duration_ms": 32336,
+  "_source_file": "transcripts/out-3362251800-404-20250902-150212-1756839732.6844.txt",
+  "_direction": "outbound",
+  "_char_count": 642
+}

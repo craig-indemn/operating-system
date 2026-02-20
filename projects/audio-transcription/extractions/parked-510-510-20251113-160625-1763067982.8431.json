@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Kai is discussing discrepancies in Mr. Collins' insurance policy rates, seeking clarification on why the rates fluctuated and how to resolve the issue.",
+  "resolution_steps": [
+    "Tracy explains the system's inability to retrieve prior rate data after submission.",
+    "Identifies a system issue where vehicle history reports were not properly pulled after a date change, causing rate inaccuracies.",
+    "Notes a $24.03 overcharge and adjusts the total balance to $311.09.",
+    "Plans to send the policy for a product team review to investigate ongoing rate fluctuations."
+  ],
+  "outcome": "transferred",
+  "knowledge_required": [
+    "Insurance policy rate calculation processes",
+    "System limitations in retrieving historical data",
+    "Billing line reconciliation",
+    "Vehicle history report integration"
+  ],
+  "systems_referenced": [
+    "Insurance agency's policy management system",
+    "Product team review process"
+  ],
+  "summary": "Tracy and Kai discuss a policy rate discrepancy caused by a system failure in retrieving vehicle history reports after a date change. Tracy adjusts the charge and plans to send the policy for further review. The issue highlights a recurring system problem with rate fluctuations.",
+  "_model": "qwen3:14b",
+  "_eval_count": 270,
+  "_total_duration_ms": 52851,
+  "_source_file": "transcripts/parked-510-510-20251113-160625-1763067982.8431.txt",
+  "_direction": "parked",
+  "_char_count": 4392
+}

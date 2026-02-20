@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Attempt to leave a voicemail message for an unavailable recipient",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Call was forwarded to an automated voice messaging system which indicated the recipient's mailbox was full and could not accept messages. No human agent was involved in the interaction.",
+  "_model": "qwen3:14b",
+  "_eval_count": 95,
+  "_total_duration_ms": 27723,
+  "_source_file": "transcripts/out-3367507237-409-20251015-143257-1760553177.4688.txt",
+  "_direction": "outbound",
+  "_char_count": 223
+}

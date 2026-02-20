@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller requested a quote for liability-only auto insurance.",
+  "resolution_steps": [
+    "Heather confirmed the caller needed liability auto insurance.",
+    "Heather explained Alliance Insurance Services does not offer standalone liability-only policies.",
+    "Heather inquired if the caller had other policies (e.g., homeowners insurance), which they did not.",
+    "Heather informed the caller they could not assist with liability-only coverage."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of Alliance Insurance Services' policy offerings",
+    "Knowledge of insurance product availability"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller requested liability-only auto insurance, but the agent explained Alliance Insurance Services does not offer standalone liability policies. The caller was informed they could not be assisted with this request.",
+  "_model": "qwen3:14b",
+  "_eval_count": 190,
+  "_total_duration_ms": 26353,
+  "_source_file": "transcripts/q-200-+19453531701-20250902-162533-1756844733.8906.txt",
+  "_direction": "queue",
+  "_char_count": 459
+}

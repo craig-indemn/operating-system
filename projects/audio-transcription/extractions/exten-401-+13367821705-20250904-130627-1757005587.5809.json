@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Luis is seeking assistance to resolve issues with setting up a debit card for car insurance payments and addressing a potential problem with his mortgage company not sending a home insurance payment.",
+  "resolution_steps": [
+    "Agent confirmed Luis provided his debit card details (number, expiration, security code) for setting up payments.",
+    "Agent explained the process for updating card information when the card expires.",
+    "Agent clarified that the first month's payment would be processed, with any remaining balance from Progressive refunded after cancellation.",
+    "Agent discussed Luis's concern about his mortgage company (PennyMac) not sending a home insurance payment to Auto Owners.",
+    "Agent requested the loan number and address details to assist with verifying the mortgage payment issue."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Debit card payment setup process for insurance policies",
+    "Refund procedures when switching insurance providers",
+    "Understanding of mortgage company payment workflows for home insurance",
+    "Handling expired payment method updates"
+  ],
+  "systems_referenced": [
+    "Auto Owners (insurance provider)",
+    "Progressive (current insurance provider)",
+    "PennyMac Loan Services (mortgage company)",
+    "Mortgage company portal/app"
+  ],
+  "summary": "Luis is working with an agent to set up a debit card for car insurance payments with Auto Owners, while also addressing concerns about his mortgage company (PennyMac) not sending a home insurance payment. The agent is gathering necessary details for both the payment setup and mortgage verification process.",
+  "_model": "qwen3:14b",
+  "_eval_count": 336,
+  "_total_duration_ms": 48827,
+  "_source_file": "transcripts/exten-401-+13367821705-20250904-130627-1757005587.5809.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4878
+}

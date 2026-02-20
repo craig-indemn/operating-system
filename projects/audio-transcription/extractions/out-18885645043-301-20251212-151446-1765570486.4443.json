@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Not identifiable; transcript contains only automated greeting and prompt for caller to state purpose.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [
+    "Travelers (insurance carrier)"
+  ],
+  "summary": "Automated greeting from Travelers with recording notice and prompt for caller to state purpose. No substantive conversation or resolution occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 100,
+  "_total_duration_ms": 21715,
+  "_source_file": "transcripts/out-18885645043-301-20251212-151446-1765570486.4443.txt",
+  "_direction": "outbound",
+  "_char_count": 158
+}

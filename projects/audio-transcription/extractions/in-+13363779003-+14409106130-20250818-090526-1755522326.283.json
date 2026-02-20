@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Debbie from Progressive Insurance is attempting to reach an agent named Thi Eu (or similar pronunciation) for a client named Stan Win (or similar last name) to resolve an issue, having previously left a message on a number provided by the policy.",
+  "resolution_steps": [
+    "Agent confirms caller's intent and asks for clarification on the agent's name (Thieu) and client name (Stan Win).",
+    "Agent checks internal system but cannot find an agent with the provided name.",
+    "Agent suggests connecting to another agent or leaving a message on an alternate number provided by the policy.",
+    "Caller agrees to leave a message and wait for a callback."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Internal agent directory lookup",
+    "Policy-related contact information retrieval",
+    "Handling miscommunication about agent/client names"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's internal agent directory"
+  ],
+  "summary": "Debbie from Progressive Insurance attempts to reach an Alliance Insurance agent named Thi Eu for a client, but the agent cannot find a match in their system. The agent suggests leaving a message on an alternate number provided by the policy, and the caller agrees to wait for a callback.",
+  "_model": "qwen3:14b",
+  "_eval_count": 273,
+  "_total_duration_ms": 35755,
+  "_source_file": "transcripts/in-+13363779003-+14409106130-20250818-090526-1755522326.283.txt",
+  "_direction": "inbound",
+  "_char_count": 1403
+}

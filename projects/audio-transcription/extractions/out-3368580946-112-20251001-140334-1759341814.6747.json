@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Fern is seeking clarification about why her insurance policy was canceled and what steps she needs to take to prevent cancellation, specifically regarding the water shut-off system requirement.",
+  "resolution_steps": [
+    "Brandy explains the policy cancellation date (October 29th) and the requirement for a flow-based automatic water shut-off system.",
+    "Clarifies that the cancellation only applies to the home insurance, not the auto insurance.",
+    "Mentions the cost of the water shut-off system (~$500) and the financial implications of switching insurers (higher premiums).",
+    "Offers to provide a list of approved water shut-off systems from the underwriter.",
+    "Suggests contacting Michael for further assistance and exploring alternative insurers if needed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy requirements for water shut-off systems",
+    "Underwriting guidelines for home insurance",
+    "Cost implications of policy changes and system installations",
+    "Carrier-specific procedures (e.g., Cincinnati, Auto Owners)"
+  ],
+  "systems_referenced": [
+    "Cincinnati Insurance",
+    "Auto Owners Insurance",
+    "Underwriter's list of water shut-off systems"
+  ],
+  "summary": "Brandy from Alliance Insurance clarifies with Fern that her home insurance policy is at risk of cancellation on October 29th due to the absence of a required flow-based automatic water shut-off system. Fern was initially confused about the requirement and mistakenly believed her insurance was canceled immediately. Brandy explains the system's purpose, cost, and options for resolution, including installing the system or switching insurers (with higher costs). The auto insurance remains unaffected.",
+  "_model": "qwen3:14b",
+  "_eval_count": 362,
+  "_total_duration_ms": 51128,
+  "_source_file": "transcripts/out-3368580946-112-20251001-140334-1759341814.6747.txt",
+  "_direction": "outbound",
+  "_char_count": 4135
+}

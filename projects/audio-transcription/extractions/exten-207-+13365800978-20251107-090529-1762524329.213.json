@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Nancy is seeking assistance to resolve a claim for her husband's injury (broken elbow) and is struggling with the insurance company (WhatsCom/Encova) not finding the policy under the business name 'Bahado Installer's'. She also wants clarification on policy coverage for medical costs and lost wages.",
+  "resolution_steps": [
+    "Cody acknowledges the injury and confirms the incident occurred yesterday.",
+    "Explains that the policy is under the husband's personal name (not the business name) because the company is a DBA (doing business as) and not an LLC.",
+    "Clarifies that medical costs are covered by the policy but lost wages would require discussion with the adjuster.",
+    "Advises Nancy to contact the insurance company directly for smoother claim processing.",
+    "Offers to follow up if further assistance is needed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of policy structures (personal vs. business DBA/LLC distinctions)",
+    "Claim filing processes for injury-related incidents",
+    "Coverage details for medical expenses and lost wages under workers' compensation policies"
+  ],
+  "systems_referenced": [
+    "Encova",
+    "WhatsCom",
+    "adjuster"
+  ],
+  "summary": "Nancy called to report a claim for her husband's injury, facing issues with the insurance company not finding the policy under the business name. Cody explained the policy is under the husband's personal name (DBA structure), clarified coverage for medical costs, and advised contacting the insurance company directly. The call ended with Nancy planning to follow up if needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 344,
+  "_total_duration_ms": 52206,
+  "_source_file": "transcripts/exten-207-+13365800978-20251107-090529-1762524329.213.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4176
+}

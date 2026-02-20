@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Voicemail greeting from Joe at Alliance Insurance Services providing contact information and instructions for after-hours communication.",
+  "_model": "qwen3:14b",
+  "_eval_count": 69,
+  "_total_duration_ms": 27666,
+  "_source_file": "transcripts/out-3364143620-102-20251114-095444-1763132084.2172.txt",
+  "_direction": "outbound",
+  "_char_count": 247
+}

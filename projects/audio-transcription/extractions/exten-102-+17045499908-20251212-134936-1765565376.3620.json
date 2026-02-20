@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Zach from Auto Owners Insurance wanted to confirm whether Gloria had received assistance after a voicemail exchange regarding billing.",
+  "resolution_steps": [
+    "Zach initiated the call to follow up on a previous voicemail from Gloria.",
+    "He confirmed Gloria had received help after the initial voicemail.",
+    "Zach concluded the call after verifying the resolution."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Handling follow-up calls for voicemail responses",
+    "Confirming resolution of customer inquiries"
+  ],
+  "systems_referenced": [
+    "Auto Owners Insurance"
+  ],
+  "summary": "Zach from Auto Owners Insurance followed up with Gloria to confirm she had received assistance after a billing-related voicemail. Gloria confirmed she had been helped, and Zach ended the call.",
+  "_model": "qwen3:14b",
+  "_eval_count": 184,
+  "_total_duration_ms": 53710,
+  "_source_file": "transcripts/exten-102-+17045499908-20251212-134936-1765565376.3620.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 636
+}

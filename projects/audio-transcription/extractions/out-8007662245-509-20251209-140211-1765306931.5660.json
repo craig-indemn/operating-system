@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Erin) wanted to confirm the due dates for her auto and home insurance policies and ensure they were not cancellation dates, while also seeking clarification on Penn National's billing process.",
+  "resolution_steps": [
+    "Adina confirmed the auto policy number provided by Erin.",
+    "Adina checked the policy details and confirmed the due date (January 2, 2026) was correct and not a cancellation date.",
+    "Adina explained Penn National's billing cycle (billing after coverage is provided, not in advance).",
+    "Adina verified the home policy number and confirmed its due date was also January 2, 2026.",
+    "Erin expressed satisfaction with the clarification and ended the call."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of Penn National's billing practices (post-coverage billing).",
+    "Ability to check policy due dates via internal systems or carrier portals.",
+    "Knowledge of differentiating due dates from cancellation dates."
+  ],
+  "systems_referenced": [
+    "website (mentioned by Erin for viewing due dates)"
+  ],
+  "summary": "Erin contacted Alliance Insurance to confirm her auto and home policy due dates and clarify Penn National's billing process. Adina verified the due dates, explained the post-coverage billing model, and confirmed the home policy details. Erin was satisfied with the resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 303,
+  "_total_duration_ms": 46245,
+  "_source_file": "transcripts/out-8007662245-509-20251209-140211-1765306931.5660.txt",
+  "_direction": "outbound",
+  "_char_count": 2925
+}

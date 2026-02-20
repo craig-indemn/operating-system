@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "John Mastasi wants to adjust his insurance policy's effective date to midnight tonight to ensure coverage for a trip the following day, as he is waiting for a settlement to finalize and plans to move out of his current home.",
+  "resolution_steps": [
+    "Heather confirms that John's current policy remains active and covers him until cancellation.",
+    "She explains that New Jersey's coverage lasts until midnight the next day, even if the policy isn't canceled immediately.",
+    "Heather clarifies that Cincinnati requires canceling and rewriting policies for date changes but notes that coverage remains active until cancellation.",
+    "She advises John to cancel his policy on Wednesday and confirms coverage will last until midnight on the day of cancellation."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance policy effective dates and cancellation processes",
+    "Carrier-specific rules (Cincinnati, New Jersey manufacturers)",
+    "Coordination of coverage during settlements and policy transitions"
+  ],
+  "systems_referenced": [
+    "Cincinnati (carrier)",
+    "New Jersey manufacturers (carrier/insurance provider)"
+  ],
+  "summary": "John Mastasi seeks to adjust his insurance effective date to ensure coverage during a move after a settlement. Heather explains that New Jersey's coverage lasts until midnight the next day, and Cincinnati's coverage begins at 12:01 AM on the third. John will cancel his policy on Wednesday, ensuring coverage until then. The call concludes with mutual understanding and resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 318,
+  "_total_duration_ms": 47901,
+  "_source_file": "transcripts/exten-401-+18568168648-20251201-115231-1764607951.5860.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4071
+}

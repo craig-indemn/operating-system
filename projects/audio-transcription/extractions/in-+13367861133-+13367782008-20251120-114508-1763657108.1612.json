@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Dana from PF Plumbing is following up to request payment for a completed backflow test at Summit Square Boulevard in Winston.",
+  "resolution_steps": [
+    "Agent asked Dana if they knew who they initially spoke with.",
+    "Agent requested the specific location (Summit Square Boulevard in Winston).",
+    "Agent stated they would transfer the call to process the payment."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of backflow test service\u6d41\u7a0b",
+    "Payment processing procedures for service completions"
+  ],
+  "systems_referenced": [
+    "Internal call transfer system"
+  ],
+  "summary": "Dana from PF Plumbing contacted Alliance Insurance to request payment for a completed backflow test at a Winston location. The agent requested clarification on the initial contact and location before transferring the call to the appropriate department for payment processing.",
+  "_model": "qwen3:14b",
+  "_eval_count": 194,
+  "_total_duration_ms": 31196,
+  "_source_file": "transcripts/in-+13367861133-+13367782008-20251120-114508-1763657108.1612.txt",
+  "_direction": "inbound",
+  "_char_count": 507
+}

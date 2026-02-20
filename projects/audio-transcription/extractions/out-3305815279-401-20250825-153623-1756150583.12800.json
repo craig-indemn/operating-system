@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Follow up on insurance proposals sent via email and confirm details for home and auto policies with Alliance Insurance Services.",
+  "resolution_steps": [
+    "Agent retrieves and confirms receipt of the caller's email with insurance proposals.",
+    "Reviews policy details: home ($1,331/year), auto ($1,225/year), total $2,556/year.",
+    "Explains coverage differences (comprehensive vs. collision, rental assistance).",
+    "Compares current Progressive policy ($1,632/year) to new Cincinnati proposal.",
+    "Discusses payment options (annual vs. monthly) and savings from paying in full.",
+    "Plans to cancel Progressive policy once new Cincinnati policy is active."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy terminology (comprehensive, collision, deductibles).",
+    "Carrier-specific pricing structures (Cincinnati vs. Progressive).",
+    "Market trends affecting insurance rates (inflation, state regulations)."
+  ],
+  "systems_referenced": [
+    "Email system (for proposal delivery confirmation).",
+    "Progressive insurance portal (for current policy details).",
+    "Cincinnati insurance quoting system."
+  ],
+  "summary": "Brothers with a line followed up on insurance proposals from Alliance Insurance Services, comparing Cincinnati's home/auto rates ($2,556/year) to his current Progressive policy ($1,632/year). The agent explained coverage details, confirmed savings from paying annually, and planned to cancel Progressive once the new policy was active. The caller expressed interest in switching to Cincinnati due to lower costs and comprehensive coverage.",
+  "_model": "qwen3:14b",
+  "_eval_count": 357,
+  "_total_duration_ms": 46990,
+  "_source_file": "transcripts/out-3305815279-401-20250825-153623-1756150583.12800.txt",
+  "_direction": "outbound",
+  "_char_count": 7238
+}

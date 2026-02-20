@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller needs to reinstate a renters insurance policy that was canceled during a move to a new apartment.",
+  "resolution_steps": [
+    "Agent acknowledged the caller's request for renters insurance.",
+    "Agent offered to assist with the process."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Renters insurance policy requirements",
+    "Process for reinstating canceled policies"
+  ],
+  "systems_referenced": [],
+  "summary": "Caller requested help reinstating a renters insurance policy after a move. Agent offered assistance but did not complete the process during the call. Outcome indicates a follow-up is needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 151,
+  "_total_duration_ms": 28714,
+  "_source_file": "transcripts/in-+13363779003-+12282435845-20251124-102832-1763998112.1313.txt",
+  "_direction": "inbound",
+  "_char_count": 334
+}

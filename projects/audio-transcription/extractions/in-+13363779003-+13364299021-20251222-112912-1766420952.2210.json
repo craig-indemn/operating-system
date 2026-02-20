@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with an agent about an All State insurance policy",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller requested to speak with an agent about an All State insurance policy but the conversation was cut off mid-escalation. No resolution or next steps were provided.",
+  "_model": "qwen3:14b",
+  "_eval_count": 98,
+  "_total_duration_ms": 24242,
+  "_source_file": "transcripts/in-+13363779003-+13364299021-20251222-112912-1766420952.2210.txt",
+  "_direction": "inbound",
+  "_char_count": 199
+}

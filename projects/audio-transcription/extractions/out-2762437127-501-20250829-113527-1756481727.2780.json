@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Minish is seeking guidance on resolving property damage caused by a tree removal company's negligence, specifically about pursuing the company's insurance and whether he should use his own homeowners policy.",
+  "resolution_steps": [
+    "Agent acknowledged the incident and expressed empathy.",
+    "Explained that the tree removal company's liability insurance should cover the damage, not Minish's homeowners policy.",
+    "Advised Minish to pursue the company's insurance for claims, as the company is legally responsible.",
+    "Discussed Minish's option to withhold payment until the company resolves the issue.",
+    "Warned against potential legal actions from the company but suggested negotiating a resolution."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Homeowners insurance coverage for third-party damage",
+    "Liability insurance for contractors",
+    "Small claims court process",
+    "Consumer rights in contractor disputes"
+  ],
+  "systems_referenced": [],
+  "summary": "Minish reported damage from a tree removal company's negligence and sought advice on insurance claims. The agent clarified that the company's liability insurance should cover the damage, advised pursuing the company's insurance, and discussed withholding payment as leverage. The call ended with Minish considering legal options and the agent offering further support.",
+  "_model": "qwen3:14b",
+  "_eval_count": 279,
+  "_total_duration_ms": 52781,
+  "_source_file": "transcripts/out-2762437127-501-20250829-113527-1756481727.2780.txt",
+  "_direction": "outbound",
+  "_char_count": 4296
+}

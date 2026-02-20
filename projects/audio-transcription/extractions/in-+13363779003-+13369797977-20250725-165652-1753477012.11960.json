@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller is attempting to reach Jeremy (possibly Jeremy Palmer) and mentions returning a call to Courtney Benfield, but no clear request or issue is articulated.",
+  "resolution_steps": [
+    "Agent acknowledges the call and asks for a moment to check the system.",
+    "No further action or resolution is documented in the transcript."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The call appears to be a transfer attempt where the caller is trying to reach Jeremy. The agent briefly acknowledges the call but does not resolve any issue or provide assistance. The conversation is too brief and lacks substantive content.",
+  "_model": "qwen3:14b",
+  "_eval_count": 154,
+  "_total_duration_ms": 31984,
+  "_source_file": "transcripts/in-+13363779003-+13369797977-20250725-165652-1753477012.11960.txt",
+  "_direction": "inbound",
+  "_char_count": 349
+}

@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Marion is seeking liability insurance for a vehicle and is looking for assistance from an insurance provider.",
+  "resolution_steps": [
+    "Agent Jeremy Colin confirms Marion's intent to obtain liability insurance.",
+    "Asks Marion about his current insurance provider (none).",
+    "Informs Marion that Alliance Insurance does not have carriers available for this type of insurance.",
+    "Provides a phone number to a different agency that can assist with this request.",
+    "Requests Marion to contact the referred agency and shares the number (336-768-2107)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of available insurance carriers and their current capacity to take on new clients.",
+    "Ability to identify appropriate referral partners for specific insurance needs."
+  ],
+  "systems_referenced": [],
+  "summary": "Jeremy Colin from Alliance Insurance Services informs Marion that they cannot provide liability insurance for a vehicle due to carrier limitations and refers him to another agency. The call concludes with the provision of a referral phone number.",
+  "_model": "qwen3:14b",
+  "_eval_count": 238,
+  "_total_duration_ms": 38536,
+  "_source_file": "transcripts/out-3369868938-701-20251208-093646-1765204606.695.txt",
+  "_direction": "outbound",
+  "_char_count": 804
+}

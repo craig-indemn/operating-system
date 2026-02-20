@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Spencer Christopher Cook from Alliance Insurance) is seeking assistance to add liquor liability coverage to a convenience store policy and is requesting a callback to resolve the issue.",
+  "resolution_steps": [
+    "Agent left a voicemail message explaining the issue with adding liquor liability coverage.",
+    "Provided contact information (phone number) for follow-up."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy underwriting processes",
+    "Knowledge of liquor liability coverage requirements",
+    "Ability to navigate carrier systems for policy adjustments"
+  ],
+  "systems_referenced": [
+    "Underwriting system (mentioned in automated message)",
+    "Carrier portal (implied through liquor liability discussion)"
+  ],
+  "summary": "An Alliance Insurance agent contacted a client to address difficulties adding liquor liability coverage to a convenience store policy. The agent left a voicemail requesting a callback and provided contact information for follow-up. The call highlights the need for underwriting support to resolve policy adjustments.",
+  "_model": "qwen3:14b",
+  "_eval_count": 228,
+  "_total_duration_ms": 80909,
+  "_source_file": "transcripts/out-7045443698-706-20251006-132715-1759771635.8011.txt",
+  "_direction": "outbound",
+  "_char_count": 807
+}

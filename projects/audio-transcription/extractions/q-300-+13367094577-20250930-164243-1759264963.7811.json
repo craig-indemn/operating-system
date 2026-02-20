@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Henry wants to remove a 2008 Mercury from his National General insurance policy because the vehicle's plates were turned in last week (likely Friday, May 26th). He needs confirmation that the removal is processed.",
+  "resolution_steps": [
+    "Agent JC confirms Henry's identity and current address (1236 Northeast 23rd Street).",
+    "Henry clarifies the vehicle to remove is a 2008 Mercury with plates turned in 'last week' (Friday, May 26th).",
+    "JC confirms the removal will be processed effective May 26th.",
+    "Henry confirms no further action is needed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy vehicle removal procedures",
+    "National General policy administration",
+    "Address and vehicle verification protocols"
+  ],
+  "systems_referenced": [
+    "National General"
+  ],
+  "summary": "Henry requested removal of a 2008 Mercury from his National General policy after turning in the plates. The agent confirmed the vehicle details, plate turn-in date (Friday, May 26th), and scheduled the removal. Henry confirmed no further action was needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 269,
+  "_total_duration_ms": 35441,
+  "_source_file": "transcripts/q-300-+13367094577-20250930-164243-1759264963.7811.txt",
+  "_direction": "queue",
+  "_char_count": 2232
+}

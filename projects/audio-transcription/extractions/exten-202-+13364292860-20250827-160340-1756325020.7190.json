@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is following up on a request to reinstate an insurance policy and adjust deductibles, seeking confirmation of approval and next steps.",
+  "resolution_steps": [
+    "Agent confirms a written reinstatement request was submitted and the carrier has approved it.",
+    "Agent explains the reinstatement may take overnight to process and become active.",
+    "Agent clarifies that deductible adjustments will be addressed after the policy is reinstated.",
+    "Agent acknowledges a reminder to check the status the next morning and apologizes for the delay.",
+    "Agent advises the caller to expect rate information by the next day."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy reinstatement processes",
+    "Carrier approval timelines",
+    "Deductible adjustment procedures",
+    "Policy status tracking (e.g., 'cancel pending' vs. 'active')"
+  ],
+  "systems_referenced": [
+    "Carrier's insurance portal/database (implied by 'reinstatement to show on our end')",
+    "Internal reminder system (agent mentions a reminder to check status)"
+  ],
+  "summary": "The agent confirmed the carrier approved the policy reinstatement request, though it may take overnight to process. Deductible adjustments will be addressed after reinstatement. The caller will check the status the next day and expect rate information by then. The agent apologized for the delay and acknowledged a prior meeting.",
+  "_model": "qwen3:14b",
+  "_eval_count": 308,
+  "_total_duration_ms": 37313,
+  "_source_file": "transcripts/exten-202-+13364292860-20250827-160340-1756325020.7190.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1644
+}

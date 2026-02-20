@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Julia Jessup from Melbourne, Australia, intended to make payments for auto and home insurance policies.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Incomplete call transcript showing a caller initiating a payment request, but the agent's response is cut off mid-transaction. No resolution steps or systems referenced are visible in the provided snippet.",
+  "_model": "qwen3:14b",
+  "_eval_count": 109,
+  "_total_duration_ms": 27446,
+  "_source_file": "transcripts/in-+13367861133-+14086079453-20251126-125423-1764179663.2672.txt",
+  "_direction": "inbound",
+  "_char_count": 236
+}

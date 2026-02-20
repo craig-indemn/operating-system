@@ -1,0 +1,32 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Hannah wants to set up automatic payments for her insurance policies, provide her bank routing and account numbers, adjust the payment due date, and confirm email notifications for payments.",
+  "resolution_steps": [
+    "Agent confirmed Hannah's request to set up automatic payments.",
+    "Hannah provided her bank routing number (253177049) and account number (91730243).",
+    "Agent confirmed the current due date (21st) and agreed to keep it unchanged.",
+    "Hannah requested email notifications for payments; agent noted this and mentioned checking if the carrier sends statements via email.",
+    "Agent confirmed the next payment amounts ($260.34) and subsequent payments ($98.67 and $31.50).",
+    "Agent explained that paper statements would continue to be mailed to 434 Maple Hollow Road since Hannah is not paperless.",
+    "Agent agreed to send an authorization form via email for the automatic payment setup."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Automatic payment setup process",
+    "Banking details handling",
+    "Insurance carrier payment scheduling",
+    "Email notification configuration",
+    "Paperless vs. paper statement policies"
+  ],
+  "systems_referenced": [
+    "Email system (for sending authorization form and statements)",
+    "Insurance carrier portal (for payment processing)"
+  ],
+  "summary": "Hannah arranged automatic insurance payments with Alliance Insurance, providing banking details and confirming due dates. The agent will send an authorization form and noted ongoing paper statement delivery. Email notifications for payments were requested but require carrier confirmation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 364,
+  "_total_duration_ms": 46145,
+  "_source_file": "transcripts/exten-100-+13369784284-20251110-101408-1762787648.928.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3534
+}

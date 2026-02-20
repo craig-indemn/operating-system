@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Verify insurance coverage for a mutual client (Crystal and Brandon Evans) on a Progressive policy, specifically checking if a 2011 Dodge Nitro (VIN 90520) is still active.",
+  "resolution_steps": [
+    "Agent JC asked for the policy number and confirmed the client's name and vehicle details.",
+    "JC checked the policy status in the system and found it was canceled on August 21, 2023.",
+    "JC informed Cassandra that the policy was no longer active and provided the cancellation date."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Progressive policy lookup procedures",
+    "Understanding of policy cancellation dates and status verification"
+  ],
+  "systems_referenced": [
+    "Progressive insurance portal/system"
+  ],
+  "summary": "Cassandra from One Main Financial Services verified a Progressive policy's status for Crystal and Brandon Evans. The agent checked the system and confirmed the policy was canceled on August 21, 2023. The call concluded with the agent providing this information and offering further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 249,
+  "_total_duration_ms": 34036,
+  "_source_file": "transcripts/q-300-+12134760469-20250904-130408-1757005448.5718.txt",
+  "_direction": "queue",
+  "_char_count": 1289
+}

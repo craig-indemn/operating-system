@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller seeks an insurance quote to adjust their existing policy by removing one vehicle and adding another.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's request for a quote involving vehicle changes.",
+    "Agent offers to transfer the caller to a specialist who can provide the necessary quote."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding how vehicle changes affect insurance policies and pricing",
+    "Call transfer protocols for specialty requests"
+  ],
+  "systems_referenced": [],
+  "summary": "A customer with existing Alliance Insurance coverage requested a quote to modify their policy by removing one vehicle and adding another. The agent recognized the need for a specialty quote and offered to transfer the caller to an appropriate agent for detailed assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 175,
+  "_total_duration_ms": 21750,
+  "_source_file": "transcripts/in-+13363779003-+18106247446-20251218-151142-1766088702.3972.txt",
+  "_direction": "inbound",
+  "_char_count": 380
+}

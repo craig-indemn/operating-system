@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller appears to be discussing confusion about an audit and underwriting process, though their statements are fragmented and unclear.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The transcript contains fragmented, incoherent dialogue where the caller mentions audits, underwriting, and a need for clarification. The conversation lacks clear structure or resolution, making it difficult to determine the caller's specific needs or the agent's response.",
+  "_model": "qwen3:14b",
+  "_eval_count": 124,
+  "_total_duration_ms": 64604,
+  "_source_file": "transcripts/exten-106-+13362311126-20250923-162648-1758659208.6407.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 735
+}

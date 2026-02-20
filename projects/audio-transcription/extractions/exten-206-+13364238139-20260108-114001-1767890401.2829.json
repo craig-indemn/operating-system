@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Nancy aims to provide bank details (routing and account numbers) for Lakes Edge to set up monthly insurance policy drafts.",
+  "resolution_steps": [
+    "Jeff confirms he can process the bank information for monthly drafts.",
+    "Nancy provides the routing number (051408949) and account number (2386404919).",
+    "Jeff verifies the numbers and confirms they are sufficient to proceed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding how to set up bank drafts for insurance policies",
+    "Handling client communication for payment setup"
+  ],
+  "systems_referenced": [],
+  "summary": "Nancy calls to provide bank details for setting up monthly insurance payments. Despite a poor connection, she successfully shares the required routing and account numbers. Jeff confirms the information is sufficient, and the call concludes with both parties agreeing to proceed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 213,
+  "_total_duration_ms": 30694,
+  "_source_file": "transcripts/exten-206-+13364238139-20260108-114001-1767890401.2829.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1023
+}

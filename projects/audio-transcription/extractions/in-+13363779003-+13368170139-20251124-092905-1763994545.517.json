@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jeffrey Teague wants to confirm that his auto insurance policy was properly reinstated after a prior cutoff and verify the accuracy of a letter he received regarding his policy status.",
+  "resolution_steps": [
+    "Agent Lyon Tintin accessed Jeffrey's policy records to check reinstatement status.",
+    "Confirmed the last payment date (October 31) and amount ($235.02) in the system.",
+    "Verified that the policy shows as 'paid in full' and reinstated.",
+    "Provided reassurance that the policy is current and the letter aligns with system records."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy reinstatement procedures for auto insurance",
+    "Access to client policy databases",
+    "Understanding of payment confirmation processes"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services policy management system"
+  ],
+  "summary": "Jeffrey Teague contacted Alliance Insurance to confirm his auto policy was properly reinstated after a prior cutoff and verify a letter he received. Agent Lyon Tintin checked his policy records, confirmed the last payment date, and verified the policy status as current. The call concluded with the agent reassuring Jeffrey that everything is correct.",
+  "_model": "qwen3:14b",
+  "_eval_count": 275,
+  "_total_duration_ms": 38406,
+  "_source_file": "transcripts/in-+13363779003-+13368170139-20251124-092905-1763994545.517.txt",
+  "_direction": "inbound",
+  "_char_count": 1147
+}

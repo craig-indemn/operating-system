@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Inform the client about an upcoming homeowner's policy renewal and offer to review policy details to ensure accuracy.",
+  "resolution_steps": [
+    "Agent Jamie Flippin introduced herself and stated the purpose of the call (policy review for February 2026 renewal).",
+    "Provided office hours (Monday-Friday until 5:00 p.m.) and direct contact number (236-3779-0003).",
+    "Offered flexibility for the client to schedule a review at their convenience."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy renewal dates",
+    "Client's current policy details",
+    "Agency contact information"
+  ],
+  "systems_referenced": [],
+  "summary": "Jamie Flippin from Alliance Insurance contacted Zachary to notify him of his homeowner's policy renewal date (Feb 14, 2026) and offered to review policy details. She provided office hours and a direct phone number for follow-up, emphasizing flexibility for the client to schedule a review.",
+  "_model": "qwen3:14b",
+  "_eval_count": 243,
+  "_total_duration_ms": 31335,
+  "_source_file": "transcripts/out-3368049636-501-20251216-105749-1765900668.1270.txt",
+  "_direction": "outbound",
+  "_char_count": 907
+}

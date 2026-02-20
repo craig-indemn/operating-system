@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Mr. Hakeem is seeking clarification on a significant auto insurance rate increase (from $103 to $170/month) and wants to explore switching to National General for a better rate.",
+  "resolution_steps": [
+    "Brandy confirms the rate increase is tied to North Carolina's state-mandated rate hike.",
+    "Explains that the new rate is detailed in the renewal documents sent via mail (declarations/billing pages).",
+    "Admits she needs to review the policy history to confirm the exact increase reason.",
+    "Commit to providing a National General quote and follow-up by Friday.",
+    "Reassures caller he has until October 19th to make a decision."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance rate factors (state mandates, policy history)",
+    "Process for switching carriers",
+    "Location-specific rate regulations (North Carolina)"
+  ],
+  "systems_referenced": [
+    "Utica (current carrier)",
+    "National General (proposed carrier)"
+  ],
+  "summary": "Customer disputes a $68/month auto insurance rate increase, attributing it to unclear policy changes. Agent explains the increase may stem from North Carolina rate hikes but needs to analyze policy history. Plans to provide National General quote by Friday while emphasizing the customer has a month to decide before October 19th renewal.",
+  "_model": "qwen3:14b",
+  "_eval_count": 305,
+  "_total_duration_ms": 48457,
+  "_source_file": "transcripts/exten-112-+15164446974-20250916-125412-1758041652.6894.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3802
+}

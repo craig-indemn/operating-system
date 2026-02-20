@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to cancel a homeowners policy for Tony and William Brown, specifically requesting assistance with the cancellation process.",
+  "resolution_steps": [
+    "Agent verified the caller's intent to cancel a property policy.",
+    "Agent attempted to locate the policy in the system but initially struggled to find it.",
+    "Agent directed the caller to send a cancellation request via email to 'bia service@travelers.com' (Business Insurance Assistance).",
+    "Agent confirmed the email address and instructed the caller to send the request to 'Dirk'."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Travelers' policy cancellation procedures",
+    "Email address for submitting cancellation requests",
+    "Handling customer inquiries about policy status"
+  ],
+  "systems_referenced": [
+    "Travelers' email system (bia service@travelers.com)"
+  ],
+  "summary": "The caller requested assistance canceling a homeowners policy. The agent struggled to locate the policy in the system but directed the caller to submit a cancellation request via email to Travelers' Business Insurance Assistance team. The call ended with the agent offering a post-call survey.",
+  "_model": "qwen3:14b",
+  "_eval_count": 256,
+  "_total_duration_ms": 38749,
+  "_source_file": "transcripts/out-8778728737-409-20250909-154624-1757447184.12356.txt",
+  "_direction": "outbound",
+  "_char_count": 1679
+}

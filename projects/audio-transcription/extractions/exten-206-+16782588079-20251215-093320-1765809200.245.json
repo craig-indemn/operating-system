@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Barbara Green is negotiating with Jeff Edmonds to adjust an insurance policy's credit rate (from 25% to 35%) to retain a client facing competition from a prior carrier, aiming to secure renewal by offering rate relief.",
+  "resolution_steps": [
+    "Jeff acknowledges Barbara's request to adjust the rate to 25-35% credit.",
+    "He confirms the adjustment requires an endorsement and agrees to process it.",
+    "Barbara emphasizes the client's preference for stability and the need to avoid further changes.",
+    "Jeff commits to sending the endorsement for processing while keeping Barbara on the line."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance policy rate adjustments",
+    "Endorsement processes for policy changes",
+    "Competitive carrier negotiations",
+    "Understanding of credit percentages in insurance pricing"
+  ],
+  "systems_referenced": [
+    "PSR (likely a policy administration system)",
+    "Endorsement processing tools"
+  ],
+  "summary": "Barbara Green negotiates with Jeff Edmonds to adjust an insurance policy's credit rate to retain a client. Jeff agrees to process a 35% credit adjustment via endorsement, prioritizing client retention over premium concerns. The call concludes with the endorsement being sent for processing.",
+  "_model": "qwen3:14b",
+  "_eval_count": 282,
+  "_total_duration_ms": 38669,
+  "_source_file": "transcripts/exten-206-+16782588079-20251215-093320-1765809200.245.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3871
+}

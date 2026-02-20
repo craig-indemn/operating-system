@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Ashley from Van Dyke Mortgage is requesting the evidence of insurance for the McDowls to proceed with underwriting, as it is the final step needed to close the deal.",
+  "resolution_steps": [
+    "Heather confirms she has the evidence of insurance and apologizes for the delay.",
+    "Heather assures Ashley she will send the document immediately.",
+    "Ashley expresses gratitude and ends the conversation."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding insurance documentation processes",
+    "Handling client follow-ups for underwriting requirements"
+  ],
+  "systems_referenced": [],
+  "summary": "Ashley from Van Dyke Mortgage contacted Heather to request the evidence of insurance for the McDowls, which is critical for underwriting. Heather confirmed she had the document and committed to sending it immediately. The call concluded with Ashley thanking Heather.",
+  "_model": "qwen3:14b",
+  "_eval_count": 198,
+  "_total_duration_ms": 37771,
+  "_source_file": "transcripts/exten-401-+17048287661-20251006-152917-1759778957.11256.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 849
+}

@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to remove a Dodge Ram from their father's insurance policy, which was mistakenly added and paid for by the caller several months ago.",
+  "resolution_steps": [
+    "Agent acknowledged the caller's request to remove a vehicle from a policy.",
+    "Agent offered to transfer the call to another agent for further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy modification procedures",
+    "Vehicle removal from insurance accounts"
+  ],
+  "systems_referenced": [],
+  "summary": "The caller contacted Alliance Insurance to correct an error where a Dodge Ram was added to their father's policy. The agent acknowledged the issue and offered to transfer the call to another agent for resolution. The call was cut off before a resolution was provided.",
+  "_model": "qwen3:14b",
+  "_eval_count": 179,
+  "_total_duration_ms": 36491,
+  "_source_file": "transcripts/in-+13367861133-+13364685952-20250808-160707-1754683627.14062.txt",
+  "_direction": "inbound",
+  "_char_count": 564
+}

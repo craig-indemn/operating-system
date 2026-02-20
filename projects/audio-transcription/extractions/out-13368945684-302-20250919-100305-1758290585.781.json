@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Automated voicemail system message indicating failure to receive a message due to no speech or poor connection.",
+  "_model": "qwen3:14b",
+  "_eval_count": 70,
+  "_total_duration_ms": 67970,
+  "_source_file": "transcripts/out-13368945684-302-20250919-100305-1758290585.781.txt",
+  "_direction": "outbound",
+  "_char_count": 363
+}

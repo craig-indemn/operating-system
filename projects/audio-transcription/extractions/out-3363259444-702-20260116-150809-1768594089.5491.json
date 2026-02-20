@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Kathy) is concerned about her insurance policy (1214) being marked as 'cancellation status' despite sending a premium payment via check, and wants clarification on the status.",
+  "resolution_steps": [
+    "Rachel confirms Kathy sent a check for the premium via mail.",
+    "Rachel asks for the date the check was mailed (Kathy says 'Sunday the 11th').",
+    "Rachel explains that the company's system (Cincinnati) may not have received the check yet, and advises waiting 1-2 days for processing."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of check payment processing timelines",
+    "Policy cancellation rules for unpaid premiums",
+    "How to interpret carrier system statuses"
+  ],
+  "systems_referenced": [
+    "Cincinnati (carrier system)"
+  ],
+  "summary": "Kathy called to resolve confusion about her policy (1214) being marked as canceled after sending a check for premium payment. Rachel confirmed the check was mailed on 10/11 and explained the carrier may need more time to process it. The call ended with Rachel advising Kathy to wait 1-2 days for resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 271,
+  "_total_duration_ms": 39685,
+  "_source_file": "transcripts/out-3363259444-702-20260116-150809-1768594089.5491.txt",
+  "_direction": "outbound",
+  "_char_count": 916
+}

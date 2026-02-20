@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Tina Holt requested a car insurance quote, mentioning she previously contacted Alliance Insurance and is currently insured with National General. She needs liability coverage for a vehicle driven to and from work.",
+  "resolution_steps": [
+    "Agent Corbin confirmed Tina's identity and verified her contact information.",
+    "Collected details about Tina's vehicle (2012 Equinox), drivers (Tina and Jimmy McGraw), and current insurance with National General.",
+    "Clarified vehicle usage (commuting 24 miles daily) and policy preferences (12-month term, full payment).",
+    "Provided a quote of $779.14 for liability coverage."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance quoting process",
+    "Data verification for existing customers",
+    "Understanding of liability coverage and policy terms"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's internal quoting system"
+  ],
+  "summary": "Tina Holt contacted Alliance Insurance for a car insurance quote. Agent Corbin gathered her details, confirmed her current insurance with National General, and provided a liability coverage quote of $779.14. The call concluded with Tina expressing intent to consider the offer.",
+  "_model": "qwen3:14b",
+  "_eval_count": 277,
+  "_total_duration_ms": 34588,
+  "_source_file": "transcripts/out-3366480870-409-20250806-105437-1754492077.3606.txt",
+  "_direction": "outbound",
+  "_char_count": 2994
+}

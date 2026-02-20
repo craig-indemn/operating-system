@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Marcia is following up on a policy change she initiated with Progressive, checking the processing timeline and seeking clarity on the expected insurance rate and factors affecting the cost.",
+  "resolution_steps": [
+    "Corbin confirmed with Progressive that the policy change would take 14 days to process, with an expected completion date of the 31st.",
+    "He explained that the rate adjustment depends on factors like the driver's experience and the vehicle's details, which are still being evaluated.",
+    "Corbin advised Marcia to monitor the portal for updates and set up a follow-up call for Tuesday to reassess the situation.",
+    "He acknowledged her concerns about uncertainty in the final rate and assured her the change would be reflected automatically on the portal."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Progressive's policy change processing timelines",
+    "Factors influencing insurance rates (e.g., driving experience, vehicle details)",
+    "Portal functionality for tracking policy updates"
+  ],
+  "systems_referenced": [
+    "Progressive's insurance system",
+    "Alliance Insurance portal for policy tracking"
+  ],
+  "summary": "Marcia followed up on a policy change with Progressive, discussing a 14-day processing timeline and uncertainty around the new rate. Corbin provided updates, explained rate determinants, and scheduled a follow-up. The call concluded with Marcia agreeing to monitor the portal and check back on Tuesday.",
+  "_model": "qwen3:14b",
+  "_eval_count": 315,
+  "_total_duration_ms": 47590,
+  "_source_file": "transcripts/out-7135827879-409-20250826-140143-1756231303.6579.txt",
+  "_direction": "outbound",
+  "_char_count": 2641
+}

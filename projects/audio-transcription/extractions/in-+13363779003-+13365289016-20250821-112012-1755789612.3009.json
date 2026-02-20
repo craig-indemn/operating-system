@@ -1,0 +1,23 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller wanted to update a driver's license number on a personal insurance policy and requested assistance.",
+  "resolution_steps": [
+    "Agent asked whether the policy was personal or commercial",
+    "Agent stated they would connect the caller with an agent"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Process for updating personal policy information",
+    "Call routing procedures"
+  ],
+  "systems_referenced": [
+    "Internal call routing system"
+  ],
+  "summary": "A caller requested to update a driver's license number on a personal policy. The agent confirmed the policy type and offered to connect the caller with an agent, but no resolution was achieved during the call.",
+  "_model": "qwen3:14b",
+  "_eval_count": 151,
+  "_total_duration_ms": 37846,
+  "_source_file": "transcripts/in-+13363779003-+13365289016-20250821-112012-1755789612.3009.txt",
+  "_direction": "inbound",
+  "_char_count": 354
+}

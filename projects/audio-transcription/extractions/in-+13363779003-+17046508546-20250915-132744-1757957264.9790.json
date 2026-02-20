@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jason Stamper requests that his new insurance cards be sent to him for a loaner vehicle his wife will use at Lexus the next day.",
+  "resolution_steps": [
+    "Agent confirms the request and asks for Jason's street address.",
+    "Jason provides the address: '2804 Bernard Castle Lane' (with clarification on pronunciation of 'B').",
+    "Agent verifies the address and indicates they will retrieve the documents."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Accessing client records to retrieve insurance documents",
+    "Verifying address details for document delivery"
+  ],
+  "systems_referenced": [
+    "Internal client database (to pull insurance cards)"
+  ],
+  "summary": "Jason Stamper, a recent Erie Eyes client, requested his insurance cards for a loaner vehicle. The agent confirmed the request, verified his address, and indicated they would retrieve the documents. The call ended with the agent preparing to send the cards once the address was confirmed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 228,
+  "_total_duration_ms": 39744,
+  "_source_file": "transcripts/in-+13363779003-+17046508546-20250915-132744-1757957264.9790.txt",
+  "_direction": "inbound",
+  "_char_count": 549
+}

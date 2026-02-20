@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "N/A (pre-recorded voicemail greeting with menu options)",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Pre-recorded voicemail greeting announcing updated phone menu options for Smart Choice, guiding listeners to press numbers for different services (agent support, commercial lines, website login, etc.). No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 104,
+  "_total_duration_ms": 18788,
+  "_source_file": "transcripts/out-3362174650-107-20251003-115422-1759506862.10488.txt",
+  "_direction": "outbound",
+  "_char_count": 841
+}

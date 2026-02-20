@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Sandra Millian is asking to confirm whether a $1,400 charge from her business account was made by Alliance Insurance Services, as she is confused because Salvador claims he already paid, but she wants to verify the source of the charge to avoid disputing it unnecessarily.",
+  "resolution_steps": [
+    "Jessica confirms the date of the transaction (September 10) and checks payment history for the client's policies.",
+    "References the Marine policy (paid June 24) and Auto Commercial policy (paid June 24) to clarify that no $1,400 charge was recorded for those policies.",
+    "Explains that the charge likely belongs to National General Insurance, as the client has Auto Insurance with them, and provides the National General phone number (1-800-462-2123).",
+    "Advises Sandra to contact National General directly for clarification instead of disputing the charge."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of different insurance policy types (Marine, Auto Commercial) and their payment schedules.",
+    "Ability to check internal payment records for clients.",
+    "Knowledge of third-party insurers (National General) and their contact information."
+  ],
+  "systems_referenced": [
+    "Internal payment history database (for checking policy payments)."
+  ],
+  "summary": "Sandra Millian contacted Alliance Insurance to investigate a $1,400 charge from her business account, fearing it might be a fraudulent transaction. Jessica clarified that the charge was not from Alliance but likely from National General, as the client has Auto Insurance with them. Sandra was advised to contact National General directly for resolution, avoiding unnecessary disputes.",
+  "_model": "qwen3:14b",
+  "_eval_count": 373,
+  "_total_duration_ms": 48650,
+  "_source_file": "transcripts/exten-106-+13366615183-20250922-094820-1758548900.1180.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2330
+}

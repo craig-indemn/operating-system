@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Elizabeth Queen from Signa is onboarding a new client (Morgan) to transition their group from Blue Cross and Blue Shield, explaining Signa's conservative approach to group insurance and addressing concerns about the process.",
+  "resolution_steps": [
+    "Elizabeth shares her background as a former benefit consultant and explains her transition to Signa.",
+    "She acknowledges the client's group's timeline and reassures them about moving away from Blue Cross and Blue Shield.",
+    "Elizabeth emphasizes Signa's conservative underwriting approach and commitment to proper risk assessment.",
+    "She promises to provide data on the group's renewal and avoid unnecessary investment risks.",
+    "Mentions that Signa declines groups that don't meet criteria and explains her rare use of quotes from Signa."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Group insurance underwriting principles",
+    "Signa's conservative underwriting policies",
+    "Risk scoring and pricing methodologies for insurance groups",
+    "Client onboarding processes for insurance transitions"
+  ],
+  "systems_referenced": [
+    "Signa (insurance provider)",
+    "Blue Cross and Blue Shield (current insurer)",
+    "Risk scoring systems"
+  ],
+  "summary": "Elizabeth Queen from Signa is onboarding Morgan's group insurance account, explaining her background, Signa's conservative underwriting approach, and the transition process from Blue Cross and Blue Shield. She emphasizes proper risk assessment, data transparency, and commitment to avoiding unnecessary investment risks. The call appears to be ongoing with the client's agreement to proceed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 337,
+  "_total_duration_ms": 53293,
+  "_source_file": "transcripts/out-3365964620-+19106053117-20250924-141149-1758737509.5003.txt",
+  "_direction": "outbound",
+  "_char_count": 4103
+}

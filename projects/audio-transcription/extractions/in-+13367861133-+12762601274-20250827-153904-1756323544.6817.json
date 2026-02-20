@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Britney Patel, wants to update her credit card information for auto payments and change her zip code associated with her insurance policy due to a canceled card and relocation to Mount Airy.",
+  "resolution_steps": [
+    "Agent verified the caller's identity by confirming her full name, previous card details, and policy information.",
+    "Agent updated the credit card number, expiration date, and security code in the system.",
+    "Agent adjusted the zip code from 24343 to 27030 to reflect the caller's new address in Mount Airy.",
+    "Agent confirmed the auto payment setting remained active after the update."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Process for updating payment information in insurance systems",
+    "Verification protocols for customer identity",
+    "Handling auto payment configurations",
+    "Address update procedures for policy records"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance customer portal (myallianceinsurance.com)",
+    "Internal policy management system"
+  ],
+  "summary": "Britney Patel contacted Alliance Insurance to update her credit card details for auto payments and change her policy's zip code. The agent verified her identity, updated the card information, and adjusted the address in the system. The auto payment setting was confirmed to remain active, and the caller expressed satisfaction with the resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 303,
+  "_total_duration_ms": 38873,
+  "_source_file": "transcripts/in-+13367861133-+12762601274-20250827-153904-1756323544.6817.txt",
+  "_direction": "inbound",
+  "_char_count": 3585
+}

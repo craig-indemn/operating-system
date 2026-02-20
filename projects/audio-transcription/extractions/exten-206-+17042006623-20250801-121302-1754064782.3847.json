@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Bill Meyer is seeking clarification on the timeline for receiving a refund after canceling two insurance policies, which are tied to his former employment at Excel Construction.",
+  "resolution_steps": [
+    "Jeff confirms that refund calculations require processing policy cancellations first, which are submitted directly to the insurance carriers.",
+    "Jeff estimates cancellations will be processed by mid-next week, with refunds mailed afterward (typically taking 1-2 weeks).",
+    "Jeff acknowledges the uncertainty in timing due to carrier processes and offers to expedite if possible."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy cancellation workflows",
+    "Refund calculation timelines",
+    "Carrier-specific processing delays"
+  ],
+  "systems_referenced": [
+    "Insurance carrier portals (for cancellation submissions)"
+  ],
+  "summary": "Bill Meyer discusses refund expectations after canceling two insurance policies. Jeff explains that refunds depend on carrier-processed cancellations, expected by mid-next week, followed by mailed checks. The conversation concludes with Bill acknowledging the timeline and thanking Jeff.",
+  "_model": "qwen3:14b",
+  "_eval_count": 238,
+  "_total_duration_ms": 37046,
+  "_source_file": "transcripts/exten-206-+17042006623-20250801-121302-1754064782.3847.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2288
+}

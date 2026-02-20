@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; caller appears confused about receiving an answering machine response while speaking to an agent.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller Rob appears confused during the call, mistakenly believing he is speaking to an answering machine. The agent attempts to clarify but the conversation ends with Rob stating he will hang up. No clear intent or resolution is achieved.",
+  "_model": "qwen3:14b",
+  "_eval_count": 114,
+  "_total_duration_ms": 38048,
+  "_source_file": "transcripts/in-+13363544000-+13367856083-20251006-155203-1759780323.12214.txt",
+  "_direction": "inbound",
+  "_char_count": 667
+}

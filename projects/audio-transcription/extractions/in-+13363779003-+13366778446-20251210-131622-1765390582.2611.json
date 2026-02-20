@@ -1,0 +1,19 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Caller requested to speak with Tracy (intent unclear due to transcript brevity)",
+  "resolution_steps": [
+    "Agent acknowledged call",
+    "Caller repeated request to speak with Tracy",
+    "Agent confirmed transfer to Tracy"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Very brief inbound call where caller requested to speak with Tracy. Agent confirmed transfer but no further details were exchanged. Transcript too short to determine substantive intent or resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 122,
+  "_total_duration_ms": 25453,
+  "_source_file": "transcripts/in-+13363779003-+13366778446-20251210-131622-1765390582.2611.txt",
+  "_direction": "inbound",
+  "_char_count": 179
+}

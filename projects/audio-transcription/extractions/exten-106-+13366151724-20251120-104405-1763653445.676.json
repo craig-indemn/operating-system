@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Rod\u00e9 is seeking clarification about a partial insurance payment ($1,800 instead of the full $4,335.99) for a car accident claim from October, and wants to resolve the discrepancy with the insurer.",
+  "resolution_steps": [
+    "Agent (Jessica) confirms the accident date (October) and acknowledges Rod\u00e9's communication with the adjuster.",
+    "Rod\u00e9 explains the payment discrepancy and the expected calculation involving a Chilean loan and deductible.",
+    "Jessica offers to contact the insurance company directly to investigate the partial payment and provide updates."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance claims process",
+    "Adjuster communication protocols",
+    "Deductible calculations",
+    "Handling payment discrepancies"
+  ],
+  "systems_referenced": [
+    "Insurance company's claims portal",
+    "Adjuster contact system"
+  ],
+  "summary": "Rod\u00e9 contacted Alliance Insurance Services to address a partial payment ($1,800) for a car accident claim, expecting $4,335.99 after deductibles. The agent confirmed the issue and committed to contacting the insurer to resolve the discrepancy. The call concluded with a plan to follow up with the carrier for clarification.",
+  "_model": "qwen3:14b",
+  "_eval_count": 276,
+  "_total_duration_ms": 36357,
+  "_source_file": "transcripts/exten-106-+13366151724-20251120-104405-1763653445.676.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1638
+}

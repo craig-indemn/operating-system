@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking clarification about a $1,000 charge for a new vehicle tag due to a policy lapse, confusion over dates on paperwork, and why they received a 'mailed plate revocation' notice despite believing their new policy was active.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's confusion about the $1,000 charge and the need for a new tag.",
+    "Asks the caller to bring the paper with dates for review.",
+    "Explains the timeline of events: old policy cancellation in September, DMV notice in October, and plate revocation notice in November.",
+    "Mentions the missing DMV letter (sent October 13th) that should have been received to avoid revocation.",
+    "Offers to send the paper for further analysis."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy lapse consequences",
+    "DMV plate revocation processes",
+    "Interpretation of insurance policy termination and effective dates",
+    "Handling of FS one forms and DMV correspondence"
+  ],
+  "systems_referenced": [
+    "DMV notice system",
+    "Insurance policy management system",
+    "FS one form (likely a state-specific insurance documentation form)"
+  ],
+  "summary": "The caller is confused about a $1,000 charge for a new vehicle tag due to a policy lapse and conflicting dates on paperwork. The agent explains the timeline of policy cancellations and DMV notices, identifies a missing October letter, and asks the caller to bring the paper for further analysis. The call ends with the agent preparing to review the documents.",
+  "_model": "qwen3:14b",
+  "_eval_count": 362,
+  "_total_duration_ms": 49143,
+  "_source_file": "transcripts/exten-207-+13367106556-20251201-094702-1764600422.966.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1750
+}

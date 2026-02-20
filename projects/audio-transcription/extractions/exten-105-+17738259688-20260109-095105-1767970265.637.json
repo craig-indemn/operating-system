@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Rick (from Honeycomb) introduces Alex as his new insurance contact and discusses policy details, coverage gaps, and potential improvements in insurance offerings.",
+  "resolution_steps": [
+    "Alex acknowledges Rick's introduction and agrees to collect contact information via email.",
+    "Rick provides feedback on current policy limitations (e.g., DNO liability caps, crime coverage gaps) compared to competitors like Travelers.",
+    "Alex mentions an upcoming excess liability endorsement to address DNO coverage gaps and improve competitiveness.",
+    "Both parties express hope for future improvements and approval of new products."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy terminology (deductibles, liability limits, endorsements)",
+    "Competitor carrier offerings (Travelers, Insure)",
+    "Internal product development timelines (e.g., Q1 release of excess liability endorsement)"
+  ],
+  "systems_referenced": [
+    "Internal contact management system",
+    "Travelers insurance portal",
+    "Insure carrier platform"
+  ],
+  "summary": "Alex, representing Alliance Insurance Services, discusses policy improvements with Rick from Honeycomb. They identify coverage gaps (DNO liability limits, crime coverage) and agree on an upcoming excess liability endorsement to enhance competitiveness. The conversation concludes with mutual agreement to follow up on implementation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 286,
+  "_total_duration_ms": 47090,
+  "_source_file": "transcripts/exten-105-+17738259688-20260109-095105-1767970265.637.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4193
+}

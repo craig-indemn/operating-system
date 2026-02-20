@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is confirming whether a reimbursement for a recent policy change will be applied to their next payment, which is scheduled for the following week.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's inquiry about a policy change and reimbursement.",
+    "Agent states they will transfer the call to a specialist for further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy change processes",
+    "Reimbursement application timelines",
+    "Payment scheduling procedures"
+  ],
+  "systems_referenced": [],
+  "summary": "The caller inquired about a reimbursement for a recent policy change and whether it would be applied to their upcoming payment. The agent acknowledged the request and offered to transfer the call to a specialist for resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 176,
+  "_total_duration_ms": 49849,
+  "_source_file": "transcripts/in-+13363544000-+13365773579-20250722-090642-1753189602.822.txt",
+  "_direction": "inbound",
+  "_char_count": 499
+}

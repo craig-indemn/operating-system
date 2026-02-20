@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "James is being informed about updates to his insurance policies, specifically regarding premium changes and removal of Carolyn from policies, with Heather confirming actions taken and ensuring no unexpected costs.",
+  "resolution_steps": [
+    "Heather confirms Tracy contacted Travelers about a premium increase due to Carolyn's removal and agreed to wait until renewal to avoid changes.",
+    "Heather notes Carolyn was removed from a Progressive policy (motorcycle/golf cart) after James clarified the motorcycle was sold six months ago.",
+    "Heather verifies the Gold Wing is still active and ensures Carolyn's removal from other policies will occur near renewal.",
+    "Heather mentions an insurance adjuster inspected a vehicle and will relay details to Tracy."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding insurance policy renewals and premium adjustments",
+    "Process for removing individuals from policies",
+    "Handling vehicle-related insurance claims and policy cancellations"
+  ],
+  "systems_referenced": [
+    "Travelers insurance portal",
+    "Progressive insurance portal",
+    "Internal notes system for tracking client updates"
+  ],
+  "summary": "Heather updates James on policy changes, including a Travelers premium adjustment delay and Progressive policy updates after removing Carolyn. She confirms motorcycle policy status and notes an adjuster's vehicle inspection. The call concludes with Heather committing to follow up on remaining actions.",
+  "_model": "qwen3:14b",
+  "_eval_count": 299,
+  "_total_duration_ms": 45327,
+  "_source_file": "transcripts/out-3362842907-202-20251230-121809-1767115089.2757.txt",
+  "_direction": "outbound",
+  "_char_count": 2214
+}

@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Sherry informed Amani about a delayed payment for an invoice received yesterday, explaining that the bank processing was delayed until August 13th and confirming a confirmation number to ensure timely processing.",
+  "resolution_steps": [
+    "Amani listened to Sherry's explanation about the delayed payment and confirmation number.",
+    "Amani confirmed that as long as the postmark date is before August 13th, there would be no issues.",
+    "Amani assured Sherry that the agency would monitor the payment and follow up if needed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of payment processing timelines and confirmation numbers",
+    "Awareness of postal service and bank processing delays"
+  ],
+  "systems_referenced": [
+    "bank",
+    "postal service"
+  ],
+  "summary": "Sherry from Camden Heating informed Amani at Alliance Insurance Services about a delayed payment for an invoice, providing a confirmation number and ensuring the payment would be processed by August 13th. Amani confirmed the details and assured Sherry that the agency would monitor the payment. The call ended with Sherry feeling reassured and Amani offering to follow up if needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 263,
+  "_total_duration_ms": 49837,
+  "_source_file": "transcripts/exten-101-+13366992088-20250806-111549-1754493349.3706.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1379
+}

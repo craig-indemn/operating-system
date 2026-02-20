@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Corbin Dirks, an agent) wanted to set up an automatic credit card payment for a policyholder (Gilbert Knight) with Auto Owners Insurance.",
+  "resolution_steps": [
+    "Agent Michelle confirmed the policy/account number (103551035) and the insured's name (Gilbert Knight).",
+    "Michelle guided the caller through entering credit card details (number, expiration, CVV) for auto pay setup.",
+    "Auto pay was activated with the next payment scheduled for September 22nd."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Auto Owners Insurance billing process",
+    "Credit card auto-pay setup procedures",
+    "Policyholder verification protocols"
+  ],
+  "systems_referenced": [
+    "Auto Owners Insurance online portal (www.auto-owners.com)",
+    "Auto Owners billing system"
+  ],
+  "summary": "An agent called Auto Owners Insurance to set up automatic credit card payments for a policyholder. The agent provided the policy number and credit card details, and the system successfully activated the auto-pay with a scheduled payment date. The call concluded with confirmation of the setup.",
+  "_model": "qwen3:14b",
+  "_eval_count": 259,
+  "_total_duration_ms": 34894,
+  "_source_file": "transcripts/out-8003460346-409-20250903-114313-1756914193.3505.txt",
+  "_direction": "outbound",
+  "_char_count": 3710
+}

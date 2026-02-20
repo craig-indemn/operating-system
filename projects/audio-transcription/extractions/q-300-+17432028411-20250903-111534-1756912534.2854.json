@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (representing their mother, Maria Estebelon Vasquez) wants to cancel an old renters insurance policy for an apartment Maria previously lived in, as she has moved and received a new policy for her current residence.",
+  "resolution_steps": [
+    "Agent confirmed the policy details for Maria's old apartment (2534 Suffolk Avenue Apartment J and House).",
+    "Agent clarified whether the policy needs to be updated to the new address or canceled entirely.",
+    "Agent explained cancellation requires Maria's signature and offered electronic signing via email.",
+    "Caller disclosed Maria's limited tech proficiency and requested alternative methods (email or mail).",
+    "Agent asked for Maria's email address to send cancellation paperwork, which the caller attempted to provide (Myra Villalon60@yahoo.com)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy cancellation procedures",
+    "Handling signature requirements for policy changes",
+    "Alternative communication methods for tech-inexperienced clients"
+  ],
+  "systems_referenced": [
+    "Internal policy database (to verify policy details)",
+    "Email system (for sending cancellation paperwork)"
+  ],
+  "summary": "Maria Vasquez seeks to cancel her old renters insurance policy after moving. The agent confirmed the policy details, explained cancellation requirements, and accommodated Maria's preference for email communication due to her limited tech skills. The caller provided an email address (Myra Villalon60@yahoo.com) for sending cancellation documents, and the agent will follow up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 332,
+  "_total_duration_ms": 43048,
+  "_source_file": "transcripts/q-300-+17432028411-20250903-111534-1756912534.2854.txt",
+  "_direction": "queue",
+  "_char_count": 2178
+}

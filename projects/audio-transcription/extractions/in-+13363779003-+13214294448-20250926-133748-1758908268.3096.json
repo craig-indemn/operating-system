@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Carlos Cunningham, seeks a home insurance policy quote after being transferred from Progressive Insurance.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's request for a home insurance quote.",
+    "Agent states they will connect the caller to another agent who can assist."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Home insurance policy procedures",
+    "Call transfer protocols"
+  ],
+  "systems_referenced": [
+    "Progressive Insurance (mentioned as the transferring carrier)"
+  ],
+  "summary": "Carlos Cunningham contacted Alliance Insurance after being transferred from Progressive, requesting a home insurance quote. The agent confirmed the request and stated they would connect him to another agent, but the call ended before further action.",
+  "_model": "qwen3:14b",
+  "_eval_count": 173,
+  "_total_duration_ms": 52590,
+  "_source_file": "transcripts/in-+13363779003-+13214294448-20250926-133748-1758908268.3096.txt",
+  "_direction": "inbound",
+  "_char_count": 393
+}

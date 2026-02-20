@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Judya Hernandez, a client, requested a homeowners insurance quote.",
+  "resolution_steps": [
+    "Agent acknowledged the request and stated they would transfer the call."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A client requested a homeowners insurance quote, but the agent only confirmed they would transfer the call without providing further assistance or next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 105,
+  "_total_duration_ms": 30305,
+  "_source_file": "transcripts/in-+13363779003-+19199060761-20260116-133909-1768588749.3910.txt",
+  "_direction": "inbound",
+  "_char_count": 255
+}

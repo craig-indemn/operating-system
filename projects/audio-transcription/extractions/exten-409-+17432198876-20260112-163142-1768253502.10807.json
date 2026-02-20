@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to adjust their insurance policy by removing unnecessary coverages (cargo, excess liability) to reduce the monthly premium from over $1,000 to around $500-$600, based on a prior message from Kendall.",
+  "resolution_steps": [
+    "Agent reviews the policy details for Rose Logistics LLC, noting the current coverage (general liability, cargo, med pay, etc.).",
+    "Identifies discrepancies: excess general liability aggregate ($2M) and unnecessary coverages (cargo, damage to rented premises).",
+    "Discusses removing cargo coverage ($554/year) and adjusting liability limits to align with the caller's request.",
+    "Notes potential impact of past incidents (2023 moving violation, 2022 speeding tickets) on premium calculations.",
+    "Advises caller to verify driving record details with Direct Auto Insurance to resolve discrepancies."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of commercial insurance policy structures (general liability, cargo, med pay).",
+    "Ability to interpret policy renewal details and adjust coverage limits.",
+    "Knowledge of how driving records (tickets, claims) affect insurance premiums."
+  ],
+  "systems_referenced": [
+    "Policy management system (viewing Rose Logistics LLC renewal details).",
+    "Motor vehicle report (MVR) from Direct Auto Insurance."
+  ],
+  "summary": "The caller sought to reduce their insurance premium by removing unnecessary coverages (cargo, excess liability). The agent reviewed the policy, identified adjustments, and highlighted the need to verify driving record details with Direct Auto Insurance to resolve discrepancies affecting the quote. The call ended with a recommendation to follow up with the auto insurer for clarification.",
+  "_model": "qwen3:14b",
+  "_eval_count": 377,
+  "_total_duration_ms": 45008,
+  "_source_file": "transcripts/exten-409-+17432198876-20260112-163142-1768253502.10807.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3977
+}

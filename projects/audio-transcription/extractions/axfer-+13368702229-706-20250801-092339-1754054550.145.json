@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Thomas Burns is attempting to schedule a meeting with Mr. Cook, following missed calls and expressing urgency to discuss matters.",
+  "resolution_steps": [
+    "Mr. Cook acknowledges the call and mentions he is in a meeting, offering availability up to 10:15 AM.",
+    "Thomas Burns confirms he will call back within the next hour if Mr. Cook is unavailable.",
+    "Mr. Cook apologizes for prior unavailability and agrees to the tentative follow-up."
+  ],
+  "outcome": "not_applicable",
+  "knowledge_required": [
+    "time management and scheduling",
+    "professional communication during busy periods"
+  ],
+  "systems_referenced": [],
+  "summary": "The call involves a scheduling discussion between Thomas Burns and Mr. Cook, with no resolution reached but a tentative agreement to reconnect later. Mr. Cook is unavailable for immediate discussion, and Thomas Burns agrees to follow up within an hour.",
+  "_model": "qwen3:14b",
+  "_eval_count": 211,
+  "_total_duration_ms": 50285,
+  "_source_file": "transcripts/axfer-+13368702229-706-20250801-092339-1754054550.145.txt",
+  "_direction": "attended_transfer",
+  "_char_count": 816
+}

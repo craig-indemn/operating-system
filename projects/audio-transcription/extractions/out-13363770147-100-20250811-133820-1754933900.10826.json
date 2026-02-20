@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Ashley wanted to place an order for a side of hibachi chicken.",
+  "resolution_steps": [
+    "Agent confirmed Ashley's request for a side of hibachi chicken.",
+    "Agent provided the total cost ('six ninety-six') and estimated preparation time ('five minutes')."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Restaurant menu items (e.g., hibachi chicken)",
+    "Order processing procedures"
+  ],
+  "systems_referenced": [
+    "Point-of-sale (POS) system or order management tool"
+  ],
+  "summary": "Ashley placed an order for a side of hibachi chicken. The agent confirmed the order, provided the total cost, and estimated a five-minute preparation time. The call concluded with Ashley expressing gratitude.",
+  "_model": "qwen3:14b",
+  "_eval_count": 187,
+  "_total_duration_ms": 62873,
+  "_source_file": "transcripts/out-13363770147-100-20250811-133820-1754933900.10826.txt",
+  "_direction": "outbound",
+  "_char_count": 300
+}

@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller seeks advice on adjusting insurance coverage for their older vehicles, specifically whether to keep full coverage or switch to liability, while expressing a preference to invest in a house rather than replace cars.",
+  "resolution_steps": [
+    "Heather confirms the caller's policy details (three vehicles, including a 2011 Toyota Rav4, 2012 Toyota Highlander, and 2014 Honda Accord).",
+    "Heather advises keeping comprehensive coverage but removing collision coverage for the older vehicles (2011 and 2012 models) due to their age and diminishing value.",
+    "Heather reassures the caller that National General will email the ID card for the refund process.",
+    "Heather acknowledges the caller's long-term relationship with the agency and confirms the policy change has been processed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance coverage types (liability, full coverage, comprehensive, collision).",
+    "Knowledge of vehicle depreciation and its impact on coverage recommendations.",
+    "Familiarity with National General's claim/ID card distribution process."
+  ],
+  "systems_referenced": [
+    "National General (carrier)",
+    "Email system for ID card distribution",
+    "Insurance policy database"
+  ],
+  "summary": "Heather advises a caller on adjusting insurance coverage for their older vehicles, recommending comprehensive but not collision coverage due to vehicle age. The caller agrees and confirms they will keep the vehicles long-term. Heather also confirms National General will email the ID card for a refund. The call concludes with mutual agreement on the policy adjustments.",
+  "_model": "qwen3:14b",
+  "_eval_count": 354,
+  "_total_duration_ms": 45765,
+  "_source_file": "transcripts/exten-401-+13369052127-20251006-091520-1759756520.235.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4178
+}

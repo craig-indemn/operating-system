@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unknown (call was immediately transferred without meaningful interaction)",
+  "resolution_steps": [
+    "Agent requested caller to hold",
+    "Agent initiated transfer"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Inbound call was immediately transferred without substantive conversation. Caller said 'You're doing good with Jesse' before being placed on hold and transferred. No resolution or information exchange occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 109,
+  "_total_duration_ms": 26550,
+  "_source_file": "transcripts/in-+13363779003-+12293314630-20251119-115428-1763571268.3568.txt",
+  "_direction": "inbound",
+  "_char_count": 147
+}

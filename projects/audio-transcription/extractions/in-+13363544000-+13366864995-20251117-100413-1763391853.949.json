@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller inquired about a vehicle insurance policy held under the name Carlos Rivera.",
+  "resolution_steps": [
+    "Agent acknowledged the request and stated they would connect the caller with another agent."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief inbound call where the caller requested information about Carlos Rivera's vehicle policy. The agent did not resolve the inquiry but indicated they would transfer the call for further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 119,
+  "_total_duration_ms": 31541,
+  "_source_file": "transcripts/in-+13363544000-+13366864995-20251117-100413-1763391853.949.txt",
+  "_direction": "inbound",
+  "_char_count": 269
+}

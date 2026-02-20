@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Jane Johnson) wants to shop for a cheaper homeowner's insurance rate for a policy under Brian Rominger, addressing a recent rate increase.",
+  "resolution_steps": [
+    "Agent confirmed the policyholder's name (Brian Rominger) after initial spelling error.",
+    "Asked about roof age (1 year old, replaced last year), pets (Chihuahua mix), and property features (no pools/trampolines or security systems).",
+    "Verified contact information and confirmed Progressive is the current auto insurer.",
+    "Noted Brian has two Progressive policies (commercial and personal vehicle) for potential package discounts.",
+    "Agreed to run quotes through multiple carriers and contact the caller with results."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance rate factors (roof age, pet types, discounts)",
+    "Carrier comparison processes",
+    "Auto-insurance cross-referencing for package discounts"
+  ],
+  "systems_referenced": [
+    "Carrier databases for rate comparisons",
+    "Progressive system for policy cross-referencing"
+  ],
+  "summary": "Jane Johnson requested a homeowner's insurance rate review for Brian Rominger's policy, citing a rate increase. The agent gathered details about property features, pets, and auto insurance (Progressive) to compare carrier options. A callback will follow with potential cheaper rates and discount opportunities.",
+  "_model": "qwen3:14b",
+  "_eval_count": 305,
+  "_total_duration_ms": 45061,
+  "_source_file": "transcripts/q-300-+13369093948-20251112-094638-1762958798.1019.txt",
+  "_direction": "queue",
+  "_char_count": 2666
+}

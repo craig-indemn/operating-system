@@ -1,0 +1,35 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Cecilia is finalizing an auto insurance policy, adjusting the effective date, deductibles, and coverage options, while addressing lien holder information and payment setup.",
+  "resolution_steps": [
+    "Agent explains the impact of changing the policy effective date from today to tomorrow on the quote price.",
+    "Discusses removing the snapshot discount and increasing the deductible to $1,000 due to proximity to the effective date.",
+    "Reviews rental car coverage options, removing it from the Mustang to reduce costs by ~$100/year.",
+    "Confirms no driving infractions in the past 3-5 years by checking the CLUE report.",
+    "Handles lien holder information for the Mustang (Public Federal Credit Union) and acknowledges uncertainty about the second lien holder.",
+    "Processes payment details (credit card info) and sets up auto pay.",
+    "Informs Cecilia that Progress will send an email for account setup and policy renewal."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance discounts (advance quote, snapshot)",
+    "Deductible adjustments and their cost impact",
+    "Rental car coverage options and cost differences",
+    "CLUE report interpretation (claim history)",
+    "Lien holder requirements for policy issuance",
+    "Payment processing and auto pay setup",
+    "Account setup procedures via Progress system"
+  ],
+  "systems_referenced": [
+    "Progress (insurance system/portal)",
+    "CLUE (claim history database)",
+    "Credit card payment processing"
+  ],
+  "summary": "Cecilia adjusts her auto insurance policy with Lions Insurance, modifying the effective date, deductibles, and coverage options. The agent explains cost implications, processes payment details, and addresses lien holder information. Follow-up emails will be sent for account setup and policy renewal.",
+  "_model": "qwen3:14b",
+  "_eval_count": 393,
+  "_total_duration_ms": 57487,
+  "_source_file": "transcripts/out-7276927163-107-20250806-124710-1754498830.5269.txt",
+  "_direction": "outbound",
+  "_char_count": 4010
+}

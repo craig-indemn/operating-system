@@ -1,0 +1,32 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller seeks assistance with closing bank accounts, resolving declined transactions, and addressing a pending payment. They also want to set up online banking and block Zel (likely Zelle) transfers.",
+  "resolution_steps": [
+    "Agent Anna connects the caller with Ava, a banker, via speakerphone.",
+    "They plan to close the savings account and deposit $15 into a checking account to test online banking functionality.",
+    "Ava will attempt to delete the online banking profile and block Zel transfers.",
+    "Caller is advised to contact Edward's bank to cancel a pending transaction.",
+    "Agent agrees to follow up via text with updates."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Bank account closure procedures",
+    "Online banking setup and troubleshooting",
+    "Reasons for transaction declines (e.g., foreign ATM use)",
+    "Handling pending payments and transaction cancellations"
+  ],
+  "systems_referenced": [
+    "Mainframe (banking system)",
+    "Back office (internal banking processes)",
+    "Online checking portal",
+    "Zel/Zelle (payment platform)",
+    "Bank's account management tools"
+  ],
+  "summary": "The caller is troubleshooting bank account issues, including declined transactions and a pending payment. The agent collaborates with a banker to close accounts, set up online banking, and address transaction problems. Resolution steps include testing account functionality and follow-up communication.",
+  "_model": "qwen3:14b",
+  "_eval_count": 314,
+  "_total_duration_ms": 49945,
+  "_source_file": "transcripts/exten-100-+13367949911-20251014-143317-1760466797.5143.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2350
+}

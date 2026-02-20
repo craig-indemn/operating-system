@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Lori Collins wanted to make a payment on her car insurance policy and update her email address due to a recent phone hack.",
+  "resolution_steps": [
+    "Agent retrieved Lori's policy details.",
+    "Processed credit card payment (4733 1002 8139 8390, exp. 5/2027).",
+    "Confirmed name on card matched Lori Collins.",
+    "Updated email address to 'Lawson.Lori@Protonmail' due to security changes.",
+    "Sent payment receipt via Protonmail."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Payment processing procedures",
+    "Policy lookup protocols",
+    "Email verification standards",
+    "Customer account updates"
+  ],
+  "systems_referenced": [
+    "Protonmail"
+  ],
+  "summary": "Lori Collins successfully made a car insurance payment while updating her email address to a Protonmail account due to security concerns. The agent processed the payment, verified details, and sent a receipt via the new email. Lori confirmed no further assistance was needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 249,
+  "_total_duration_ms": 35776,
+  "_source_file": "transcripts/in-+13365913091-+13364539740-20251020-140518-1760983518.7668.txt",
+  "_direction": "inbound",
+  "_char_count": 1498
+}

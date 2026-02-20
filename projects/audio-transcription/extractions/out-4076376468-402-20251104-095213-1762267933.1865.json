@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "George is informing the agent about a situation where Merisave, his current mortgage company, contacted Alliance Insurance to be removed from his homeowner's policy. He clarifies that he is still in the process of refinancing with Merisave and wants to keep them on the policy until the process is finalized.",
+  "resolution_steps": [
+    "Brandy explains that Merisave contacted Alliance Insurance to request removal as the mortgage company on George's policy.",
+    "George confirms he is still refinancing with Merisave but has not finalized the process yet.",
+    "Brandy reassures George that Merisave will remain on the policy until refinancing is complete.",
+    "Brandy advises George to contact Alliance Insurance when he obtains a new loan number to update the policy.",
+    "George agrees to keep Merisave on the policy temporarily and thanks Brandy for her assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding how mortgage company changes affect homeowner's insurance policies",
+    "Refinancing process timelines and requirements",
+    "Procedures for updating policy details with new loan information"
+  ],
+  "systems_referenced": [],
+  "summary": "George is in the process of refinancing his home with Merisave but has not yet finalized the transaction. Brandy from Alliance Insurance confirms that Merisave requested removal from his policy, but George agrees to keep them on the policy until refinancing is complete. Brandy advises him to contact the agency when he obtains a new loan number to update the policy. The conversation ends with mutual agreement to maintain the current setup.",
+  "_model": "qwen3:14b",
+  "_eval_count": 349,
+  "_total_duration_ms": 51479,
+  "_source_file": "transcripts/out-4076376468-402-20251104-095213-1762267933.1865.txt",
+  "_direction": "outbound",
+  "_char_count": 1580
+}

@@ -1,0 +1,19 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear, but the caller may have intended to request assistance but left the call abruptly after a brief exchange.",
+  "resolution_steps": [
+    "Agent Armando answered the call and confirmed his name.",
+    "Caller identified himself and stated he was not an agent.",
+    "Agent offered to connect him with one, then the caller ended the conversation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief, inconclusive call where the caller (Albert Carcougham) identified himself and stated he was not an agent. The agent offered to connect him with one, but the conversation ended abruptly without further details or resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 161,
+  "_total_duration_ms": 29348,
+  "_source_file": "transcripts/in-+13363779003-+13367864085-20250908-135236-1757353956.7192.txt",
+  "_direction": "inbound",
+  "_char_count": 255
+}

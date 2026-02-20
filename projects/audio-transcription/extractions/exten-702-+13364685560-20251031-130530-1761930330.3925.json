@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Casual check-in about expected checks and updates on a colleague's health, with no explicit request for assistance.",
+  "resolution_steps": [],
+  "outcome": "resolved",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A friendly, informal conversation between Rachel and Clifford discussing expected checks, office availability, and a colleague's recovery progress. No actionable items or insurance-related tasks were identified.",
+  "_model": "qwen3:14b",
+  "_eval_count": 104,
+  "_total_duration_ms": 18104,
+  "_source_file": "transcripts/exten-702-+13364685560-20251031-130530-1761930330.3925.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 715
+}

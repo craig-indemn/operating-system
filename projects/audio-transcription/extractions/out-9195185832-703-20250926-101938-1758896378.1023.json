@@ -1,0 +1,24 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Attempt to reach a specific person at Alliance Insurance Services",
+  "resolution_steps": [
+    "Agent Gina informs caller the person is unavailable",
+    "Provides voicemail instructions",
+    "Returns call later to apologize and provide callback number"
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [
+    "Standard voicemail procedures",
+    "Phone system operations"
+  ],
+  "systems_referenced": [
+    "Phone system/voicemail"
+  ],
+  "summary": "Outbound call resulted in voicemail greeting. Agent attempted to reach a specific person but was unsuccessful, leaving a message with callback instructions. The call was later returned to apologize and reiterate contact information.",
+  "_model": "qwen3:14b",
+  "_eval_count": 158,
+  "_total_duration_ms": 30792,
+  "_source_file": "transcripts/out-9195185832-703-20250926-101938-1758896378.1023.txt",
+  "_direction": "outbound",
+  "_char_count": 462
+}

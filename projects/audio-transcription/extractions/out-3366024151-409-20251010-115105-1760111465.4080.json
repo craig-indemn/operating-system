@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Tiffany seeks to switch insurance providers due to a rate increase from National General and concerns about an expired driver's license on her mother's policy record, aiming to secure cheaper coverage before her current policy cancels on October 20th.",
+  "resolution_steps": [
+    "Agent Corbin collects policy details (names, addresses, email, DOB) for Tiffany and her mother Linda Graham.",
+    "Discusses the expired license issue and its impact on the rate increase.",
+    "Explores possibility of transferring the policy to Alliance Insurance Services for potentially lower rates.",
+    "Notes the need to reinstate the policy before cancellation on October 20th."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Handling insurance policy transfers with expired license records",
+    "Rate calculation factors for auto insurance",
+    "Policy reinstatement procedures",
+    "Underwriting considerations for multi-driver policies"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal policy management system",
+    "National General insurance portal (for policy details)",
+    "Carrier rate comparison tools"
+  ],
+  "summary": "Tiffany is seeking assistance to switch from National General due to a rate increase and an expired license issue on her mother's policy. Corbin is gathering necessary information to evaluate options for transferring the policy to Alliance Insurance, focusing on resolving the expired license concern and finding more affordable coverage before the October 20th cancellation date.",
+  "_model": "qwen3:14b",
+  "_eval_count": 316,
+  "_total_duration_ms": 48242,
+  "_source_file": "transcripts/out-3366024151-409-20251010-115105-1760111465.4080.txt",
+  "_direction": "outbound",
+  "_char_count": 4033
+}

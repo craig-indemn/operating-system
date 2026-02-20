@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Mark is seeking resolution for a canceled insurance policy due to an unfenced pool, exploring alternatives with Auto Owners and Cincinnati, and clarifying implications for coverage and bundling requirements.",
+  "resolution_steps": [
+    "Heather confirms receipt of the letter and acknowledges Mark's previous communication about the canceled policy.",
+    "Discusses options: moving to Auto Owners (single-policy home coverage) or Cincinnati (bundled auto/home policy).",
+    "Addresses concerns about Auto Owners' potential non-renewal of auto insurance if the home is moved.",
+    "Explains Cincinnati's requirement to bundle auto and home policies.",
+    "Clarifies that Auto Owners and Cincinnati do not have issues with the unfenced pool based on property details (gate access, acreage).",
+    "Notes that Heather will email proposals for review later that day."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance carrier underwriting criteria (Auto Owners, Cincinnati)",
+    "Policy bundling requirements",
+    "Risk assessment for unfenced pools in rural properties",
+    "Property ownership and access details impacting coverage"
+  ],
+  "systems_referenced": [
+    "Auto Owners",
+    "Cincinnati",
+    "email (for proposal delivery)"
+  ],
+  "summary": "Mark discusses a canceled home insurance policy due to an unfenced pool with Heather, exploring alternatives with Auto Owners and Cincinnati. Heather explains the implications of each option, clarifies carrier requirements, and confirms she will email proposals. The conversation highlights property-specific details (gates, acreage) that mitigate underwriting concerns for the unfenced pool.",
+  "_model": "qwen3:14b",
+  "_eval_count": 344,
+  "_total_duration_ms": 54275,
+  "_source_file": "transcripts/exten-401-+13364084804-20250923-103203-1758637923.1892.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4218
+}

@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Frank Grubs wanted to clarify his insurance renewal details and make a partial payment toward his upcoming premium.",
+  "resolution_steps": [
+    "Amanda confirmed Frank's account details, showing his last payment was $1,629.60 on October 23 and the next renewal amount of $404.72 due January 31.",
+    "Frank requested to pay $200 toward the renewal, which Amanda processed via credit card.",
+    "Amanda sent a confirmation email and informed Frank he would receive a renewal notice in the mail by January."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance renewal processes and payment schedules",
+    "Credit card payment processing",
+    "Customer account lookup and verification"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's internal payment system",
+    "Email confirmation service"
+  ],
+  "summary": "Frank Grubs contacted Alliance Insurance to address confusion about his insurance payments and make a partial renewal payment. Amanda clarified his account details, processed a $200 credit card payment toward his $404.72 January 31 renewal, and confirmed he would receive a renewal notice in the mail.",
+  "_model": "qwen3:14b",
+  "_eval_count": 269,
+  "_total_duration_ms": 37811,
+  "_source_file": "transcripts/exten-201-+13365960994-20251202-105404-1764690844.2065.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2946
+}

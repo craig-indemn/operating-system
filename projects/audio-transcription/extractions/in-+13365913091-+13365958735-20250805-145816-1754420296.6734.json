@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Darce Gordy is asking why the insurance premium for their Geo Tracker is higher than that of their Ford truck, expecting the opposite due to perceived differences in vehicle value or risk.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's question about insurance rate discrepancy.",
+    "Agent offers to transfer the call to another agent for further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Factors influencing auto insurance rates (e.g., vehicle type, safety features, repair costs, theft rates).",
+    "Ability to explain rate calculations to customers."
+  ],
+  "systems_referenced": [],
+  "summary": "Darce Gordy contacted Alliance Insurance to inquire about why their Geo Tracker's insurance premium exceeds that of their Ford truck. The agent acknowledged the question and offered to transfer the call for further assistance, indicating the need for specialized knowledge to explain rate discrepancies.",
+  "_model": "qwen3:14b",
+  "_eval_count": 205,
+  "_total_duration_ms": 38981,
+  "_source_file": "transcripts/in-+13365913091-+13365958735-20250805-145816-1754420296.6734.txt",
+  "_direction": "inbound",
+  "_char_count": 527
+}

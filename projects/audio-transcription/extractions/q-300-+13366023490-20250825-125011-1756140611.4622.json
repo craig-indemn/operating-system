@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking clarification on a $300 increase in his home insurance premium, which he attributes to an incorrect inclusion of pool coverage he does not have, and is exploring options to find a better quote.",
+  "resolution_steps": [
+    "Agent confirmed the policy number provided by the caller (NW20222635).",
+    "Agent checked the policy details and confirmed the presence of a 'swimming pool restriction' in the coverage, explaining that this restriction likely contributed to the premium increase.",
+    "Agent acknowledged the caller's frustration with Northwest Farmers' customer service and offered to assist in finding alternative insurance providers for comparison.",
+    "Agent noted the caller's auto insurance is with Progressive (not through Alliance) and confirmed the caller's previous policy history with Alliance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy structures, including exclusions/restrictions (e.g., pool coverage).",
+    "Ability to interpret premium increase trends and carrier-specific pricing factors.",
+    "Knowledge of how to facilitate quote comparisons between insurers."
+  ],
+  "systems_referenced": [
+    "Northwest Farmers (current insurer)",
+    "Progressive (auto insurance provider)",
+    "Alliance Insurance Services internal policy database"
+  ],
+  "summary": "The caller is concerned about a significant increase in his home insurance premium, which he attributes to an incorrect inclusion of pool coverage. The agent confirmed the policy details, explained the pool restriction's impact on pricing, and offered to help find alternative insurers for comparison. The caller also mentioned having auto insurance with Progressive, though not through Alliance anymore.",
+  "_model": "qwen3:14b",
+  "_eval_count": 356,
+  "_total_duration_ms": 56891,
+  "_source_file": "transcripts/q-300-+13366023490-20250825-125011-1756140611.4622.txt",
+  "_direction": "queue",
+  "_char_count": 4355
+}

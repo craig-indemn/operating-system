@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Amanda) is requesting information about the cancellation reason for her insurance policy (number 6077801536331).",
+  "resolution_steps": [
+    "Agent asked for the policy number and confirmed the caller's name.",
+    "Agent looked up the policy in their system.",
+    "Agent informed the caller they would retrieve the cancellation details and connect them with an agent."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy lookup procedures in Alliance Insurance's system",
+    "Handling cancellation-related inquiries"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's internal policy database"
+  ],
+  "summary": "Amanda contacted Alliance Insurance to inquire about her policy's cancellation reason. The agent verified her details, located the policy, and informed her that an agent would follow up. The call remains unresolved as the agent has not yet provided the cancellation details.",
+  "_model": "qwen3:14b",
+  "_eval_count": 212,
+  "_total_duration_ms": 34677,
+  "_source_file": "transcripts/in-+13363779003-+16788134751-20251118-135107-1763491867.3891.txt",
+  "_direction": "inbound",
+  "_char_count": 532
+}

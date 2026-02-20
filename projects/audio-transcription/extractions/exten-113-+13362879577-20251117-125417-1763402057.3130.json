@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Gary attempted to resolve a document cancellation issue by resending a signed document after realizing he may have missed a step in the electronic signing process.",
+  "resolution_steps": [
+    "Carl confirmed Gary's issue with the document being marked as 'declined' after signing.",
+    "Carl explained the need to click the 'completed' or 'finished' button after signing to finalize the transaction.",
+    "Gary acknowledged the oversight and agreed to resend the document using the correct process."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Electronic document signing workflows",
+    "Troubleshooting document portal issues",
+    "Transaction status interpretation"
+  ],
+  "systems_referenced": [
+    "Document portal/software (unspecified)"
+  ],
+  "summary": "Gary encountered an issue where a document he signed was marked as declined due to incomplete submission. Carl guided him through the proper process of clicking 'completed' after signing. Gary will resend the document and call back once the status updates.",
+  "_model": "qwen3:14b",
+  "_eval_count": 221,
+  "_total_duration_ms": 30635,
+  "_source_file": "transcripts/exten-113-+13362879577-20251117-125417-1763402057.3130.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1506
+}

@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Arlene is seeking clarification and comparison of home and auto insurance options, including pricing, coverage details, and payment plans, to make an informed decision on switching providers.",
+  "resolution_steps": [
+    "Jeremy presents two companies (Auto Owners and National General) for home and auto insurance, comparing full-payment vs. monthly payment plans.",
+    "He explains how splitting home and auto policies between companies affects pricing (e.g., Auto Owners for home, National General for auto raises home costs by ~$230/year).",
+    "Details coverage specifics: guaranteed replacement cost (HE7), equipment breakdown coverage ($100k), and additional barn coverage ($60k).",
+    "Calculates total annual costs for different scenarios (e.g., $3,835.32 for Auto Owners full-pay vs. $2,812 for split policies).",
+    "Mentions credit checks, payment methods (credit cards), and arranges follow-up via text for card details once closing costs are secured."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance pricing structures (full vs. monthly payments)",
+    "Coverage terminology (e.g., guaranteed replacement cost, equipment breakdown)",
+    "Impact of policy splits on pricing",
+    "Credit check processes for insurance",
+    "Company-specific details (Auto Owners, National General)"
+  ],
+  "systems_referenced": [
+    "Auto Owners",
+    "National General"
+  ],
+  "summary": "Jeremy from Alliance Insurance Services provides Arlene with detailed comparisons of home and auto insurance options from Auto Owners and National General, explaining pricing, coverage, and financial implications. He arranges a follow-up to finalize payment details once Arlene is ready, after discussing her property's proximity to Pilot Mountain and her husband's mobility needs.",
+  "_model": "qwen3:14b",
+  "_eval_count": 388,
+  "_total_duration_ms": 70864,
+  "_source_file": "transcripts/out-7047510321-701-20250814-151357-1755198837.6771.txt",
+  "_direction": "outbound",
+  "_char_count": 12220
+}

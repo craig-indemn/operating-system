@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Teresa Brigel, wanted to review her homeowner's policy to ensure it was up to date and explore additional insurance needs, such as life insurance.",
+  "resolution_steps": [
+    "Brandy confirmed the caller's identity and pulled up her policy details.",
+    "Verified the mailing address and policyholders (Teresa and Denise Sandfield).",
+    "Updated Denise's phone number for contact purposes.",
+    "Reviewed policy coverage details (home value, deductible, excluded coverages like flood/earthquake).",
+    "Inquired about auto insurance (State Farm) and explained potential discounts for bundling policies.",
+    "Discussed life insurance options, including term vs. permanent policies and factors affecting premiums.",
+    "Offered to provide a life insurance quote upon request."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Homeowner's policy structure (coverage limits, deductibles, exclusions)",
+    "Auto insurance bundling discounts",
+    "Life insurance product types (term, permanent) and underwriting factors (age, health, smoking status)",
+    "State Farm auto insurance operations"
+  ],
+  "systems_referenced": [
+    "Internal policy management system"
+  ],
+  "summary": "Brandy reviewed Teresa Brigel's homeowner's policy, updated contact information, and discussed additional insurance needs. The conversation included explanations of coverage details, auto insurance bundling benefits, and life insurance options. The call concluded with the agent offering to provide a life insurance quote, though no immediate action was taken.",
+  "_model": "qwen3:14b",
+  "_eval_count": 330,
+  "_total_duration_ms": 51956,
+  "_source_file": "transcripts/exten-112-+13364016082-20251215-115342-1765817622.2361.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4337
+}

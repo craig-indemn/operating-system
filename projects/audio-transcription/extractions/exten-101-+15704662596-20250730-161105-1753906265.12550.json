@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Aj is following up on a previous discussion about insurance coverage for a business, seeking guidance on whether the current exposure and premium size are viable for the type of work the business is conducting.",
+  "resolution_steps": [
+    "Bonnie explains that the current exposure (under $10,000) is too low for the business's operations, particularly due to high-risk activities in class 5537 (HVAC refrigeration).",
+    "She clarifies that the business would need a minimum premium of $25,000 to support their operations, especially given the risks associated with welding and manufacturing.",
+    "Bonnie offers to send an email with the declaration and agrees to provide updates in the future."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance underwriting criteria for business exposures",
+    "Risk assessment for specific business classes (e.g., HVAC refrigeration, welding)",
+    "Premium thresholds based on risk and exposure levels"
+  ],
+  "systems_referenced": [],
+  "summary": "Aj discusses insurance coverage for a business with Bonnie, who advises that the current exposure is too low for the type of work being conducted, particularly due to high-risk activities in class 5537. Bonnie recommends a minimum premium of $25,000 and agrees to send an email with the declaration. The conversation concludes with Aj thanking Bonnie and confirming future follow-ups.",
+  "_model": "qwen3:14b",
+  "_eval_count": 315,
+  "_total_duration_ms": 46861,
+  "_source_file": "transcripts/exten-101-+15704662596-20250730-161105-1753906265.12550.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2303
+}

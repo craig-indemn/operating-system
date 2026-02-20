@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Seeking assistance from an agent",
+  "resolution_steps": [
+    "Informed caller that agent is on another call",
+    "Offered to have agent call back"
+  ],
+  "outcome": "transferred",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller was informed the agent was on another call and offered a callback. No substantive discussion occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 96,
+  "_total_duration_ms": 21450,
+  "_source_file": "transcripts/parked-100-100-20250725-162812-1753475292.11742.txt",
+  "_direction": "parked",
+  "_char_count": 155
+}

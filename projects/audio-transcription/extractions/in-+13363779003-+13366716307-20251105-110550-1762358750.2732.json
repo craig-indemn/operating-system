@@ -1,0 +1,22 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller, Jerry Hoping, is following up on a previous claim related to his camper and seeks resolution.",
+  "resolution_steps": [
+    "Agent offered to connect caller with an agent to assist with the claim."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Claims processing procedures",
+    "Internal call routing protocols"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal agent routing system"
+  ],
+  "summary": "Jerry Hoping called to follow up on a camper claim he's previously discussed. The agent offered to transfer him to another agent but the conversation was cut short, leaving the issue unresolved.",
+  "_model": "qwen3:14b",
+  "_eval_count": 145,
+  "_total_duration_ms": 26715,
+  "_source_file": "transcripts/in-+13363779003-+13366716307-20251105-110550-1762358750.2732.txt",
+  "_direction": "inbound",
+  "_char_count": 287
+}

@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to add a car to an existing insurance policy under the name Brianne Marine.",
+  "resolution_steps": [
+    "Agent asked for the policyholder's name (Brianne Marine).",
+    "Agent informed the caller they would connect them with an agent to assist with adding the car."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Process for adding vehicles to existing policies",
+    "Standard customer verification steps"
+  ],
+  "systems_referenced": [],
+  "summary": "A customer requested to add a car to their policy under Brianne Marine. The agent collected the policyholder's name and committed to connecting them with an agent for further assistance. The call requires a follow-up to complete the request.",
+  "_model": "qwen3:14b",
+  "_eval_count": 175,
+  "_total_duration_ms": 36212,
+  "_source_file": "transcripts/in-+13363779003-+17432579869-20250902-090517-1756818317.163.txt",
+  "_direction": "inbound",
+  "_char_count": 359
+}

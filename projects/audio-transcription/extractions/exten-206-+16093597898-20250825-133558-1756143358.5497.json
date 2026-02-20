@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Terry is following up on a voicemail regarding an unprocessed insurance endorsement request from June, seeking clarification on why the requested changes to a policy (at 51 South Main Street) have not been finalized.",
+  "resolution_steps": [
+    "Jeff confirms he can assist and asks for details about the policy and endorsement request.",
+    "Terry explains the policy became agent of record on August 22nd, but the endorsement request from June 12th was closed due to missing documents (loss history and winter weatherization form).",
+    "Jeff provides his email address (jeff@allianceinsurance.com) for Terry to send the application details and missing information.",
+    "Terry agrees to forward the application and email Monica Irwin to reopen the endorsement request."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance policy processing workflows",
+    "Endorsement request requirements (e.g., loss history verification, weatherization forms)",
+    "Inter-agency communication protocols for policy transfers"
+  ],
+  "systems_referenced": [
+    "Insurance policy management system (Philadelphia Insurance)",
+    "Email communication (Monica Irwin's email referenced)"
+  ],
+  "summary": "Terry from Philadelphia Insurance discusses an unresolved endorsement request for a policy at 51 South Main Street, which was closed due to missing documentation. Jeff provides his email to receive the application details, and Terry agrees to forward the information to reopen the endorsement request. The call concludes with a plan to resolve the issue via email.",
+  "_model": "qwen3:14b",
+  "_eval_count": 332,
+  "_total_duration_ms": 37159,
+  "_source_file": "transcripts/exten-206-+16093597898-20250825-133558-1756143358.5497.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2547
+}

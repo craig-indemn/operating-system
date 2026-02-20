@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Leaving a voicemail to inform the recipient about next steps for a policy and offering to send additional information.",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A voicemail message in Spanish from Alliance Insurance informing the recipient about policy steps and offering to send further details. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 99,
+  "_total_duration_ms": 26127,
+  "_source_file": "transcripts/out-13366690288-114-20251229-140421-1767035061.9869.txt",
+  "_direction": "outbound",
+  "_char_count": 387
+}

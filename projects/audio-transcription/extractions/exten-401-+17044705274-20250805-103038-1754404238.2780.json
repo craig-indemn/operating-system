@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Zach wants to transfer his RV insurance policy from Progressive to Alliance Insurance Services to consolidate policies under one agency and potentially secure an agency discount.",
+  "resolution_steps": [
+    "Heather confirms Zach sent policy details on Friday but clarifies he did not receive an attachment.",
+    "Zach provides the Progressive policy number (2021 Cruiser) and renewal dates (Sept 6, 2025\u20132026).",
+    "Heather notes the policy is underwritten by Progressive Southeastern Insurance Company, not Alliance.",
+    "Zach agrees to take a photo of his paper policy documents and send them via text to Heather.",
+    "Heather explains the process of transferring the policy to Alliance would require a form and coordination with Progressive."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy transfer processes between agencies",
+    "Progressive's underwriting structure",
+    "Agency discount eligibility criteria",
+    "Document submission workflows for policy rollovers"
+  ],
+  "systems_referenced": [
+    "Progressive Southeastern Insurance Company",
+    "Alliance Insurance Services agency portal",
+    "Text messaging for document submission"
+  ],
+  "summary": "Zach seeks to consolidate his RV insurance with Alliance Insurance by transferring his Progressive policy. Heather requires a paper copy of the policy documents to initiate the transfer process. The conversation outlines next steps for policy rollover and potential agency discounts.",
+  "_model": "qwen3:14b",
+  "_eval_count": 314,
+  "_total_duration_ms": 44309,
+  "_source_file": "transcripts/exten-401-+17044705274-20250805-103038-1754404238.2780.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4127
+}

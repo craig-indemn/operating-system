@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Axel needs assistance verifying his roof's age to avoid insurance premium increases, as the insurer may assume an older roof if proof is unavailable.",
+  "resolution_steps": [
+    "Agent explains need for documentation proving roof age (e.g., previous homeowner records, disclosure statements).",
+    "Suggests checking the home's disclosure statement for improvements or roof details.",
+    "Offers to follow up with a callback after Axel investigates.",
+    "Warns that without proof, the insurer may adjust the roof's age, leading to higher premiums."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance underwriting requirements for roof age verification",
+    "Homeownership transfer documentation processes",
+    "Disclosure statement content and location of roof-related information"
+  ],
+  "systems_referenced": [],
+  "summary": "Corbin from Lions Insurance assists Axel in locating proof of his roof's age to prevent insurance premium adjustments. They discuss checking the disclosure statement and contacting the previous homeowner. Corbin agrees to follow up after Axel investigates these sources.",
+  "_model": "qwen3:14b",
+  "_eval_count": 235,
+  "_total_duration_ms": 39391,
+  "_source_file": "transcripts/out-3367820476-409-20250930-091543-1759238143.190.txt",
+  "_direction": "outbound",
+  "_char_count": 1202
+}

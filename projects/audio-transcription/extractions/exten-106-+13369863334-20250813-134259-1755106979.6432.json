@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to confirm that a workers' comp renewal payment of $189 could be processed using their existing routing and account number, and to clarify the payment schedule to avoid cancellation.",
+  "resolution_steps": [
+    "Jessica confirmed the payment method (routing/account number) was acceptable.",
+    "The caller agreed to proceed with the payment.",
+    "Jessica acknowledged the need to adjust the payment schedule from two payments to monthly payments.",
+    "The caller committed to sending the monthly payment amounts to ensure continuity."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Workers' compensation insurance renewal processes",
+    "Payment scheduling and adjustment procedures",
+    "Verification of payment methods for insurance premiums"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's internal payment tracking system"
+  ],
+  "summary": "The caller discussed a past-due workers' comp renewal payment, confirmed the payment method, and clarified that the payment schedule would be adjusted to monthly payments to avoid cancellation. Jessica confirmed the details and the caller committed to sending the monthly amounts.",
+  "_model": "qwen3:14b",
+  "_eval_count": 242,
+  "_total_duration_ms": 30789,
+  "_source_file": "transcripts/exten-106-+13369863334-20250813-134259-1755106979.6432.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 930
+}

@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking a certificate of insurance for a condominium HOA's master hazard policy, as required by their mortgage holder (New Res). They provided the property address (3637 Maple Glen Lane, Charlotte) and a policy number (093706 Amazon Mary).",
+  "resolution_steps": [
+    "Agent attempted to retrieve the policy using the provided address and policy number.",
+    "Notified caller that the policy name on file is 'Sir John's Hill Homeowners Association' (under Cedar Management Group).",
+    "Transferred caller to commercial agent Amani for further assistance with the certificate of insurance request."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of HOA insurance policies and certificate of insurance processes",
+    "Ability to access and query insurance policy databases",
+    "Knowledge of internal agent specializations (commercial vs residential)"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal policy database"
+  ],
+  "summary": "A HOA representative requested a certificate of insurance for a condominium master policy, but the agent could not retrieve the policy from the system. The agent confirmed the policy name and referred the caller to a commercial agent for resolution. The call ended with a transfer to Amani.",
+  "_model": "qwen3:14b",
+  "_eval_count": 283,
+  "_total_duration_ms": 33380,
+  "_source_file": "transcripts/in-+13363779003-+17042412363-20250829-111011-1756480211.2201.txt",
+  "_direction": "inbound",
+  "_char_count": 1671
+}

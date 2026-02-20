@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller seeks confirmation whether a customer in Virginia can legally drive a newly purchased vehicle home while waiting for Not Gen to process adding it to her auto policy, given Not Gen's systems are down.",
+  "resolution_steps": [
+    "Agent acknowledges the customer's situation and confirms the request was documented in Salesforce.",
+    "Agent explains that under agency contracts with admitted carriers like National General, documented requests during system outages may grant binding authority.",
+    "Agent concludes it is acceptable to inform the customer she may drive the vehicle home."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of agency contracts with admitted insurance carriers",
+    "Binding authority rules for independent agents",
+    "Salesforce documentation protocols for policy changes"
+  ],
+  "systems_referenced": [
+    "Salesforce (CRM system)",
+    "Not Gen online/phone systems"
+  ],
+  "summary": "An agent confirms it is permissible to allow a customer to drive a new vehicle home while waiting for Not Gen to process a policy update, based on documented requests in Salesforce and agency contract terms granting binding authority during carrier system outages. The call resolves the customer's immediate need while adhering to insurance compliance protocols.",
+  "_model": "qwen3:14b",
+  "_eval_count": 264,
+  "_total_duration_ms": 42933,
+  "_source_file": "transcripts/exten-105-+13366860343-20250924-155700-1758743820.7135.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1308
+}

@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Dominique Glantz from Meridian Realty requested a callback to clarify details about a WRCP properties insurance quote and proposal before sending it to another owner.",
+  "resolution_steps": [
+    "Chase Smith left a voicemail greeting with contact information.",
+    "Dominique Glantz called back, left a message explaining her request and provided her cell number for a callback."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding insurance quotes and proposals for property insurance",
+    "Handling client requests for document verification"
+  ],
+  "systems_referenced": [
+    "email (chase@myallianceinsurance.com)"
+  ],
+  "summary": "Dominique Glantz from Meridian Realty left a voicemail with Chase Smith at Alliance Insurance Services, requesting clarification on a WRCP properties insurance quote before sharing it with another owner. She provided her cell number for a callback. The agent has not yet responded to the request.",
+  "_model": "qwen3:14b",
+  "_eval_count": 210,
+  "_total_duration_ms": 85931,
+  "_source_file": "transcripts/out-3366615593-+13364802092-20251223-124634-1766511994.2390.txt",
+  "_direction": "outbound",
+  "_char_count": 780
+}

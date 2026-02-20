@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Sunny is relaying a message from Zeus about payment delays and discussing payment methods (checking account, card, or cash) for an outstanding obligation, while also mentioning a split payment arrangement with another party.",
+  "resolution_steps": [
+    "Cody confirms acceptance of payment on Friday via checking account, card, or DFT setup.",
+    "Acknowledges Zeus's preference for cash on the first payment.",
+    "Requests Sunny to inform Zeus to call before arriving in case Cody is out of the office."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Payment processing methods (checking account, card, DFT)",
+    "Handling partial payments and split arrangements",
+    "Client communication protocols for payment confirmations"
+  ],
+  "systems_referenced": [
+    "DFT (Direct Funds Transfer) setup process"
+  ],
+  "summary": "Sunny informs Cody that Zeus will pay on Friday, either via checking account, card, or DFT, with a note that the first payment may be cash. Cody requests confirmation from Zeus to call ahead if visiting. The conversation focuses on payment logistics and client coordination.",
+  "_model": "qwen3:14b",
+  "_eval_count": 250,
+  "_total_duration_ms": 42810,
+  "_source_file": "transcripts/exten-207-+13362448945-20251112-113225-1762965145.3333.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1052
+}

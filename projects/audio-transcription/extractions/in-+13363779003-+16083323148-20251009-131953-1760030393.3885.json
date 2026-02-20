@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (a parent) wants to obtain auto insurance for their daughter in North Carolina, likely for a new vehicle or policy.",
+  "resolution_steps": [
+    "Agent confirmed the request is for a new business policy.",
+    "Agent asked for a moment ('turn three over') to prepare for the new business process."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Auto insurance underwriting for new customers in North Carolina",
+    "New business policy setup procedures"
+  ],
+  "systems_referenced": [
+    "Internal agency systems for new business processing"
+  ],
+  "summary": "A parent requested auto insurance for their daughter in NC. The agent confirmed it was a new business inquiry and paused to prepare for the application process. The call appears to be in progress with next steps likely involving policy details and documentation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 191,
+  "_total_duration_ms": 36833,
+  "_source_file": "transcripts/in-+13363779003-+16083323148-20251009-131953-1760030393.3885.txt",
+  "_direction": "inbound",
+  "_char_count": 298
+}

@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller (Marilyn Nance) is following up on a previous interaction with Jamie, referencing a quote from yesterday and stating she does not need insurance currently.",
+  "resolution_steps": [
+    "Caller requested to be transferred to an agent",
+    "Call ended abruptly before transfer completion"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Marilyn Nance left a message about a previous insurance quote and requested to speak with an agent, but the call ended before the transfer could be completed. The conversation lacks resolution or actionable steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 143,
+  "_total_duration_ms": 48315,
+  "_source_file": "transcripts/in-+13363779003-+13363096441-20251113-091504-1763043304.266.txt",
+  "_direction": "inbound",
+  "_char_count": 331
+}

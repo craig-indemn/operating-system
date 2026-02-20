@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Stephen Leak is reporting a stolen toolbox valued at $4,000\u2013$5,000 from his truck and seeking guidance on how to file an insurance claim after making a police report.",
+  "resolution_steps": [
+    "Agent acknowledged the situation and offered to connect the caller with a specialist agent."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Claims process for property theft",
+    "Internal call routing procedures"
+  ],
+  "systems_referenced": [
+    "Internal agent routing system"
+  ],
+  "summary": "Stephen Leak reported a toolbox theft from his truck and requested assistance with filing an insurance claim. The agent offered to transfer him to a specialist to handle the claim process.",
+  "_model": "qwen3:14b",
+  "_eval_count": 172,
+  "_total_duration_ms": 33033,
+  "_source_file": "transcripts/in-+13363779003-+13367497700-20250804-094340-1754315020.1632.txt",
+  "_direction": "inbound",
+  "_char_count": 903
+}

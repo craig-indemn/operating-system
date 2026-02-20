@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Pre-recorded voicemail greeting from USLI's Instant Quote Team providing contact information and instructions for leaving a message, including a reference to extension 2175 for immediate assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 87,
+  "_total_duration_ms": 38460,
+  "_source_file": "transcripts/out-8885235545-503-20251230-155316-1767127996.10439.txt",
+  "_direction": "outbound",
+  "_char_count": 558
+}

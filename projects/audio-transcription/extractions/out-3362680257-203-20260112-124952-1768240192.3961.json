@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jennifer wanted to confirm that her insurance tags were turned in and ensure the policy cancellation is processed without coverage gaps.",
+  "resolution_steps": [
+    "Maria confirmed Jennifer turned in the tags on Friday and acknowledged the callback oversight.",
+    "They agreed to make the cancellation effective immediately to avoid coverage gaps.",
+    "Maria requested and obtained Jennifer's email address (Juanita69s@icloud.com) for sending the cancellation form.",
+    "Maria committed to sending the electronic cancellation form via email for Jennifer to sign."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy cancellation procedures",
+    "Handling electronic form submissions",
+    "Email communication protocols for client documentation"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services internal documentation system",
+    "Email portal (icloud.com)"
+  ],
+  "summary": "Maria and Jennifer resolved a policy cancellation request by confirming tag submission, setting an immediate effective date, and arranging for an electronic cancellation form to be sent to Jennifer's provided email address. The process was completed with clear next steps for Jennifer to sign and return the form.",
+  "_model": "qwen3:14b",
+  "_eval_count": 250,
+  "_total_duration_ms": 33675,
+  "_source_file": "transcripts/out-3362680257-203-20260112-124952-1768240192.3961.txt",
+  "_direction": "outbound",
+  "_char_count": 1195
+}

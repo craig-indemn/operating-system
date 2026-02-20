@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Garrett seeks assistance with insurance renewal for his mortgage, specifically confirming the correct address for billing and initiating the application process.",
+  "resolution_steps": [
+    "Agent helps Garrett locate the correct insurance billing address via Mr. Cooper's website (www.mrcooper.com).",
+    "Confirms the address details (PO Box 7729, Springfield, Ohio) and clarifies that the mortgage company will handle billing.",
+    "Discusses the insurance cost increase from $830 to $996 annually and reassures Garrett about coverage improvements.",
+    "Explains the next steps: releasing the application, emailing it for e-signature, and ensuring the mortgage company processes the payment.",
+    "Guarantees the application will be sent via email within the day or by the following day."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance renewal processes for mortgage policies",
+    "Navigating mortgage company portals (e.g., Mr. Cooper)",
+    "E-signature application workflows",
+    "Billing address verification procedures"
+  ],
+  "systems_referenced": [
+    "Mr. Cooper's website (www.mrcooper.com)",
+    "Internal insurance application system"
+  ],
+  "summary": "Garrett works with an agent to resolve insurance renewal details for his mortgage, including verifying the correct billing address and initiating the application process. The agent explains cost changes, confirms address details, and outlines next steps for e-signature approval. The call concludes with Garrett satisfied and the agent committing to send the application email promptly.",
+  "_model": "qwen3:14b",
+  "_eval_count": 342,
+  "_total_duration_ms": 52982,
+  "_source_file": "transcripts/exten-113-+13363250115-20251218-132139-1766082099.3074.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3544
+}

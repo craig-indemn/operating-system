@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Confirm whether a vehicle addition to a policy was completed, as the caller had previously received a voicemail about the matter.",
+  "resolution_steps": [
+    "Heather greeted Christina and mentioned she had received a voicemail.",
+    "Asked if the vehicle addition from the quoted policy needed to be processed.",
+    "Christina confirmed the vehicle was already added.",
+    "Heather verified this by pulling up the policy in her system.",
+    "Confirmed with Christina that the ID and documentation were already in place.",
+    "Ended the call with mutual thanks and well-wishes."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy management processes",
+    "Vehicle addition procedures",
+    "Access to client policy databases"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's policy management system"
+  ],
+  "summary": "Heather from Alliance Insurance confirmed with Christina that a vehicle addition to her policy had already been completed, verified this through the policy system, and concluded the call with a confirmation and thanks. The interaction was brief but focused on resolving a specific administrative task.",
+  "_model": "qwen3:14b",
+  "_eval_count": 248,
+  "_total_duration_ms": 31453,
+  "_source_file": "transcripts/out-7047633482-202-20251229-094919-1767019759.901.txt",
+  "_direction": "outbound",
+  "_char_count": 508
+}

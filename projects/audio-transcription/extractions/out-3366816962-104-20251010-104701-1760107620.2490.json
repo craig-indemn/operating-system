@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "John, representing the Woodbridge Condominium Association, seeks clarification on whether their Alliance Insurance policy covers legal liabilities from a denied vandalism claim involving a tenant and potential small claims court action.",
+  "resolution_steps": [
+    "Brian confirms the policy includes $2M directors and officers (D&O) liability coverage with a retroactive date of March 27, 2023.",
+    "Brian explains that the management company's coverage depends on whether they are automatically classified as an 'additional insured' under the policy based on contract terms (e.g., lease agreements, vendors).",
+    "Brian advises consulting the insurance carrier directly for definitive confirmation on the management company's coverage status."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of D&O insurance coverage terms and retroactive dates",
+    "Knowledge of 'additional insured' classifications under insurance policies",
+    "Familiarity with condominium association insurance requirements"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance policy documents",
+    "Insurance carrier portal for coverage verification"
+  ],
+  "summary": "Brian from Alliance Insurance clarifies that the Woodbridge Condominium Association's policy includes D&O coverage for the board but leaves the management company's coverage ambiguous, requiring further review of contract terms. The call resolves John's immediate query about policy scope while highlighting the need for legal and carrier consultation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 305,
+  "_total_duration_ms": 47032,
+  "_source_file": "transcripts/out-3366816962-104-20251010-104701-1760107620.2490.txt",
+  "_direction": "outbound",
+  "_char_count": 4746
+}

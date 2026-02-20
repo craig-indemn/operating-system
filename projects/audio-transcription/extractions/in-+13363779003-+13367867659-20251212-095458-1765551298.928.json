@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unknown (no meaningful conversation occurred)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Brief transfer attempt with no meaningful conversation. Agent apologized and tried to transfer the call, but no substantive information was exchanged.",
+  "_model": "qwen3:14b",
+  "_eval_count": 84,
+  "_total_duration_ms": 24968,
+  "_source_file": "transcripts/in-+13363779003-+13367867659-20251212-095458-1765551298.928.txt",
+  "_direction": "inbound",
+  "_char_count": 104
+}

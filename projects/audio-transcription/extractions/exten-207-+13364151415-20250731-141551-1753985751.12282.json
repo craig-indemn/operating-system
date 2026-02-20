@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Cody is seeking assistance with workers' compensation insurance coverage through Fielden Hawks, while also wanting to retain general liability and inland marine insurance through Westfield. He needs confirmation on policy details, renewal dates, and document updates.",
+  "resolution_steps": [
+    "Agent Lily confirms Cody's workers' comp coverage through Fielden Hawks and acknowledges the high rate.",
+    "Discusses retaining general liability and inland marine policies with Westfield due to better rates.",
+    "Checks the billing account system to verify EFT setup and renewal dates (August 2nd).",
+    "Agrees to email a draft schedule and send updated certificates of insurance (COIs) to Ruby.",
+    "Informs Cody of payment history and upcoming invoices (August 11th and 31st)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Workers' compensation, general liability, and inland marine insurance policies",
+    "Carrier-specific rate structures (Fielden Hawks, Westfield)",
+    "Billing account management and EFT setup",
+    "Certificate of insurance (COI) processing"
+  ],
+  "systems_referenced": [
+    "Internal billing account system",
+    "EFT (Electronic Funds Transfer) setup",
+    "Email communication for draft schedules and COIs"
+  ],
+  "summary": "Cody discusses workers' comp coverage through Fielden Hawks and retention of Westfield policies for general liability and inland marine. Lily confirms details, verifies EFT setup, and agrees to send updated documents. Renewal dates and payment schedules are confirmed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 340,
+  "_total_duration_ms": 48405,
+  "_source_file": "transcripts/exten-207-+13364151415-20250731-141551-1753985751.12282.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4233
+}

@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Trent from IPMG seeks to speak with Jeff Edmonds regarding a quote sent to him.",
+  "resolution_steps": [
+    "Agent acknowledges the request and offers to connect Trent with Jeff Edmonds."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief inbound call where the caller requests to speak with Jeff Edmonds about a quote. The agent offers to transfer the call but does not confirm success or provide further details.",
+  "_model": "qwen3:14b",
+  "_eval_count": 121,
+  "_total_duration_ms": 25850,
+  "_source_file": "transcripts/in-+13363779003-+19842224764-20250930-091553-1759238153.192.txt",
+  "_direction": "inbound",
+  "_char_count": 239
+}

@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Return a missed call to Ron by leaving a voicemail with contact information",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A voicemail message from Rick Hendricks at Alliance Insurance attempting to reach Ron. The message includes Rick's phone number and extension, indicating an attempt to return a previously missed call.",
+  "_model": "qwen3:14b",
+  "_eval_count": 104,
+  "_total_duration_ms": 29802,
+  "_source_file": "transcripts/out-3368705735-105-20250917-162526-1758140726.5360.txt",
+  "_direction": "outbound",
+  "_char_count": 484
+}

@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is attempting to make a payment for an insurance-related matter, providing banking details (routing number, account number, and credit card information) to process the transaction.",
+  "resolution_steps": [
+    "Agent confirms the payment amount ($658) and verifies the code (28621).",
+    "Caller provides routing number (053000219) and account number (6952440367).",
+    "Agent repeats the details to confirm accuracy.",
+    "Caller clarifies the final digits of the account number (562) and confirms the payment method (credit card).",
+    "Agent informs the caller the payment will be processed and verified within 48\u201372 hours.",
+    "Agent requests the caller to contact back next month before the 18th for verification."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Payment processing procedures",
+    "Banking information verification",
+    "Insurance policy payment timelines",
+    "Customer communication for follow-up verification"
+  ],
+  "systems_referenced": [
+    "Payment processing system (implied by reference to 'sistema')"
+  ],
+  "summary": "A caller made a payment for an insurance-related obligation, providing detailed banking information. The agent confirmed the details, processed the payment, and scheduled a follow-up verification call next month. The caller was assured the payment would be processed within 48\u201372 hours.",
+  "_model": "qwen3:14b",
+  "_eval_count": 324,
+  "_total_duration_ms": 56847,
+  "_source_file": "transcripts/parked-502-502-20250922-145716-1758567432.10129.txt",
+  "_direction": "parked",
+  "_char_count": 1948
+}

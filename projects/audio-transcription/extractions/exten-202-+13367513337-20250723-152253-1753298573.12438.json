@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Customer attempted to provide contact information (email/phone number) for follow-up, but the conversation lacks clear purpose or actionable request.",
+  "resolution_steps": [
+    "Customer agreed to send email/text",
+    "Michael confirmed receipt and mentioned forwarding to Tracy"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Brief exchange where customer sent contact details to be forwarded to Tracy, but no clear issue or request was addressed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 118,
+  "_total_duration_ms": 35426,
+  "_source_file": "transcripts/exten-202-+13367513337-20250723-152253-1753298573.12438.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 439
+}

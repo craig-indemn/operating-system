@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Follow-up on an invitation to an informal roundtable event for Wilson Covington Construction, emphasizing networking opportunities with industry experts and past clients.",
+  "resolution_steps": [
+    "Transferred call to Hayes at Wilson Covington Construction.",
+    "Mentioned a recent email with event details and attachment.",
+    "Provided cell number for immediate contact.",
+    "Reinforced credibility by referencing long-term clients (Chase Smith, Pete Shephard).",
+    "Reiterated event date (December 12), location (Pilot Mountain office), and purpose (industry expert roundtable)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Event details (date, location, purpose)",
+    "Client relationship history (Chase Smith, Pete Shephard)",
+    "Email communication protocols",
+    "Networking event logistics"
+  ],
+  "systems_referenced": [
+    "Email with attachment",
+    "Alliance Insurance Services office number (336-724-1721)",
+    "Pilot Mountain office location"
+  ],
+  "summary": "Joe Jessup from Alliance Insurance Services followed up with Hayes about an upcoming roundtable event, emphasizing networking with industry experts and past clients. He provided event details via email, his cell number, and reinforced credibility through client references. The call ended with Hayes acknowledging the message but no confirmation of attendance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 306,
+  "_total_duration_ms": 47793,
+  "_source_file": "transcripts/out-13367241721-705-20251210-105444-1765382084.1445.txt",
+  "_direction": "outbound",
+  "_char_count": 1585
+}

@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Anthony Lewis intended to renew his insurance policy and requested assistance.",
+  "resolution_steps": [
+    "Agent offered to transfer the call to an agent but did not complete the transfer"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller Anthony Lewis attempted to renew a policy but was only offered a transfer to an agent without completion. The call ended abruptly with no resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 109,
+  "_total_duration_ms": 23429,
+  "_source_file": "transcripts/in-+13363779003-+13369973596-20250825-090358-1756127038.291.txt",
+  "_direction": "inbound",
+  "_char_count": 253
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking clarification on a 600-buck increase in barn insurance renewal and confusion about TRS coverage from USLI, including appraisal discrepancies and renovation definitions.",
+  "resolution_steps": [
+    "Agent acknowledges the barn renewal increase and explains it's due to a 4% coverage increase in barn building value.",
+    "Agent clarifies that USLI's confusion about TRS coverage stems from appraisal value vs. actual cash value and advises the caller to communicate directly with USLI.",
+    "Agent defines 'renovation' as structural changes (e.g., adding walls) and confirms no such work was done, only maintenance (painting, lighting).",
+    "Agent notes the caller's unrelated title loan issue and confirms no impact on insurance matters."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy terminology (e.g., actual cash value, renovations)",
+    "Appraisal process and coverage valuation",
+    "Handling carrier-specific issues (e.g., USLI's requirements)"
+  ],
+  "systems_referenced": [
+    "USLI (insurance carrier)",
+    "Appraisal documents"
+  ],
+  "summary": "The caller discussed a barn insurance renewal increase and TRS coverage confusion with an agent. The agent explained the premium increase was due to a 4% coverage adjustment and clarified that no structural renovations had occurred, only maintenance. The caller was advised to directly address USLI's appraisal concerns. The call concluded with the caller planning to follow up with USLI.",
+  "_model": "qwen3:14b",
+  "_eval_count": 331,
+  "_total_duration_ms": 50744,
+  "_source_file": "transcripts/exten-206-+13363542024-20250815-121238-1755274358.4700.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4459
+}

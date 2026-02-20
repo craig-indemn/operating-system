@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Cancel insurance on a 2016 Chrysler that was totaled and towed, with the license plate lost due to the incident.",
+  "resolution_steps": [
+    "Agent Heather verifies caller's identity (Crystal Upchurch) and address (141 Hill Street, Pilot Mountain, NC 27041).",
+    "Confirms vehicle details: 2016 Chrysler (and other vehicles in the policy).",
+    "Notes that the vehicle was totaled, towed before plate retrieval, and caller has a receipt from the driver's license office.",
+    "Processes cancellation effective immediately for the 2016 Chrysler."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Vehicle removal/total loss cancellation procedures",
+    "Handling license plate loss scenarios",
+    "Policyholder verification protocols"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services internal policy system"
+  ],
+  "summary": "Crystal Upchurch requested cancellation of insurance on a totaled 2016 Chrysler after it was towed before she could retrieve the license plate. Agent Heather verified her identity, confirmed vehicle details, and processed the cancellation effective immediately. The caller had a receipt from the driver's license office related to the lost plate.",
+  "_model": "qwen3:14b",
+  "_eval_count": 278,
+  "_total_duration_ms": 34859,
+  "_source_file": "transcripts/q-300-+13367103414-20250804-164320-1754340200.13224.txt",
+  "_direction": "queue",
+  "_char_count": 1161
+}

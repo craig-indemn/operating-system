@@ -52,8 +52,8 @@ Connected intelligence layer for Indemn. Every tool the company uses, accessible
 | `/onboarding` | Role-based setup — installs and authenticates all tools for your role |
 
 ## Roles
-- **Engineer** (Craig): All tools, full database access, all skills
-- **Executive** (Cam): Meetings, docs, slack, pipeline — no raw DB or deployment tools
+- **Engineer**: All tools, full database access, all skills
+- **Executive**: Meetings, docs, slack, pipeline — no raw DB or deployment tools
 - **Sales**: Meetings, pipeline, CRM — customer intelligence focus
 
 ## Projects
@@ -76,7 +76,7 @@ Operational infrastructure — persistent processes that don't "finish" like pro
 
 - Systems use skills as their interface (e.g., `/dispatch` invokes the dispatch engine)
 - Systems are infrastructure — they serve any project
-- Design doc: @projects/os-development/artifacts/2026-02-19-dispatch-system-design.md
+- Design doc: see `systems/dispatch/SYSTEM.md`
 
 ## Conventions
 @.claude/rules/conventions.md

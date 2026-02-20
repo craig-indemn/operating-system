@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Juan called to resolve a $37 charge from 'force community loan' after canceling his insurance, claiming he was overcharged due to insufficient funds and requesting a refund.",
+  "resolution_steps": [
+    "Cody acknowledged the charge and explained it was due to a timing conflict between the cancellation request and the auto-draft.",
+    "Cody clarified that the cancellation form was submitted on Monday at 8:27 AM, but the draft had already occurred on the same day.",
+    "Cody informed Juan that In Cova would refund the $37, but the overdraft fee was not their responsibility.",
+    "Cody emphasized that the delay was due to the cancellation being processed after the draft date."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance cancellation processes and auto-draft billing timelines",
+    "Refund procedures with In Cova",
+    "Understanding of insufficient funds fees and their handling"
+  ],
+  "systems_referenced": [
+    "In Cova (bank)",
+    "Cancellation form submission system",
+    "Auto-draft billing process"
+  ],
+  "summary": "Juan was charged $37 by 'force community loan' after canceling his insurance, believing the charge was due to insufficient funds. Cody explained the charge occurred because the cancellation was processed after the auto-draft on the same day. In Cova will refund the $37, but the overdraft fee is not covered. The call concluded with the agent confirming the refund process.",
+  "_model": "qwen3:14b",
+  "_eval_count": 328,
+  "_total_duration_ms": 55806,
+  "_source_file": "transcripts/exten-207-+13369080405-20250910-092749-1757510869.302.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4548
+}

@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unknown (call was placed on hold without further interaction)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [
+    "myallianceinsurance.com customer portal",
+    "texting support (3367861133)"
+  ],
+  "summary": "The call was placed on hold with a pre-recorded message about online policy management and texting support. No substantive interaction occurred between the caller and agent.",
+  "_model": "qwen3:14b",
+  "_eval_count": 119,
+  "_total_duration_ms": 24927,
+  "_source_file": "transcripts/in-+13363779003-+17044976395-20251020-105536-1760972136.1856.txt",
+  "_direction": "inbound",
+  "_char_count": 813
+}

@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Heather is confirming a quote for Don Hensa, verifying a claim, and ensuring homeowner's and umbrella policy requirements are met, while addressing an issue with the auto policy being 'seated'.",
+  "resolution_steps": [
+    "Heather provides the quote key (218-902623) and confirms the client's name (Don Hensa).",
+    "The agent verifies the claim details (one claim from 2024 with a new roof).",
+    "Discusses roof year requirements (within 10 years, confirmed as 2024).",
+    "Addresses the auto policy issue, noting it's on hold but confirms the umbrella policy can proceed.",
+    "Confirms umbrella policy requirements (500k with National General)."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Claim verification processes",
+    "Homeowner's policy underwriting criteria (roof age)",
+    "Umbrella policy requirements (carrier-specific limits)",
+    "Quote system navigation"
+  ],
+  "systems_referenced": [
+    "Auto Owners quote system (via quote key)",
+    "Claim database",
+    "Carrier portal (National General for umbrella policy details)"
+  ],
+  "summary": "Heather confirms a homeowner's quote for Don Hensa, verifies a single claim with a 2024 roof, and resolves a policy discrepancy. The agent confirms the umbrella policy can proceed with National General (500k limit) while the auto policy remains on hold. The call concludes with mutual agreement on next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 343,
+  "_total_duration_ms": 51563,
+  "_source_file": "transcripts/out-7045499908-401-20251202-101121-1764688281.1008.txt",
+  "_direction": "outbound",
+  "_char_count": 3889
+}

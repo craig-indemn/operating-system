@@ -1,0 +1,25 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller (Anna) left a voicemail to inform Melissa Lewis that an issue has been resolved and documents are being handled by Jeff.",
+  "resolution_steps": [
+    "Anna left a voicemail message confirming the issue was fixed.",
+    "Notified Melissa that Jeff is taking documents to the Polymount office for signing.",
+    "Mentioned the Polymount office hours until 5 p.m.",
+    "Offered to send an email for reference."
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [
+    "Understanding of document handling processes",
+    "Knowledge of office hours for Polymount"
+  ],
+  "systems_referenced": [
+    "Email communication"
+  ],
+  "summary": "Anna from Lines Insurance left a voicemail for Melissa Lewis at Heco Construction, confirming an issue was resolved and informing her that Jeff is handling document signing at the Polymount office until 5 p.m., with an email to follow.",
+  "_model": "qwen3:14b",
+  "_eval_count": 217,
+  "_total_duration_ms": 82444,
+  "_source_file": "transcripts/out-13364444448-302-20251003-163809-1759523889.21662.txt",
+  "_direction": "outbound",
+  "_char_count": 613
+}

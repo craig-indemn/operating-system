@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Susan wanted to confirm the most secure method for sending her temporary license documentation and was ready to proceed with submitting a photo.",
+  "resolution_steps": [
+    "Agent Addison explained both email and phone methods are secure, with documents stored in a locked database.",
+    "Mentioned Alliance's IP program monitors for suspicious activity.",
+    "Confirmed Susan only needed to send one side of the license.",
+    "Agreed to receive the photo later that afternoon."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Security protocols for document transmission",
+    "Internal IP program for threat monitoring",
+    "Client onboarding procedures for temporary license verification"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance database",
+    "IP program (security monitoring system)"
+  ],
+  "summary": "Agent Addison reassured Susan about secure document transmission methods for her temporary license, confirmed only one side of the license was needed, and scheduled receipt of the photo later that day. The conversation focused on security assurances and next steps for document submission.",
+  "_model": "qwen3:14b",
+  "_eval_count": 236,
+  "_total_duration_ms": 40188,
+  "_source_file": "transcripts/out-8649804183-301-20260106-130925-1767722965.3238.txt",
+  "_direction": "outbound",
+  "_char_count": 1788
+}

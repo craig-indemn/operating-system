@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with Jeremy",
+  "resolution_steps": [
+    "Agent attempted to connect caller with Jeremy",
+    "Agent asked caller to wait"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller requested to speak with Jeremy. Agent attempted to transfer the call but did not confirm success. The conversation was too brief to determine if the transfer was completed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 106,
+  "_total_duration_ms": 26158,
+  "_source_file": "transcripts/in-+13363779003-+13364570932-20250828-165054-1756414254.10281.txt",
+  "_direction": "inbound",
+  "_char_count": 136
+}

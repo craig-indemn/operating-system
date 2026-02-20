@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller needs assistance with an upcoming insurance payment and policy migration that Heather Scott was previously handling for a Progressive policy.",
+  "resolution_steps": [
+    "Agent checked Heather Scott's availability and confirmed she was not in the office.",
+    "Offered to transfer the caller to Zachary to leave a voice message for Heather.",
+    "Asked if another agent could assist with the payment and policy migration issue.",
+    "Put the caller on hold to connect them to another agent."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of policy migration processes",
+    "Knowledge of Progressive policy handling",
+    "Internal transfer procedures"
+  ],
+  "systems_referenced": [],
+  "summary": "Caller sought help with an upcoming insurance payment and policy migration previously managed by Heather Scott. Agent confirmed Heather's absence, offered voicemail transfer, and attempted to connect the caller to another agent for immediate assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 209,
+  "_total_duration_ms": 31474,
+  "_source_file": "transcripts/in-+13363779003-+17044705274-20250827-124543-1756313143.4383.txt",
+  "_direction": "inbound",
+  "_char_count": 908
+}

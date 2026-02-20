@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller asked whether their insurance policy covers a rented U-Haul trailer and property stored on it.",
+  "resolution_steps": [
+    "Agent acknowledged the call and confirmed the caller's intent.",
+    "Agent offered to transfer the caller to an agent for further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The caller inquired about insurance coverage for a rented U-Haul trailer. The agent did not answer the question directly but offered to transfer the caller to another agent. The call was too brief to determine if the issue was resolved.",
+  "_model": "qwen3:14b",
+  "_eval_count": 148,
+  "_total_duration_ms": 14539,
+  "_source_file": "transcripts/in-+13363779003-+13363995611-20250909-141647-1757441807.10043.txt",
+  "_direction": "inbound",
+  "_char_count": 287
+}

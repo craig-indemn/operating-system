@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Melody Smith needs her National General insurance policy number to obtain a temporary tag for her Honda at DMD Mall pool.",
+  "resolution_steps": [
+    "Agent confirmed caller's identity and requested policy number.",
+    "Agent retrieved policy number from internal database.",
+    "Agent verified policy number with caller.",
+    "Agent provided policy number and confirmed carrier (National General)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Access to internal policy database",
+    "Verification of customer insurance details",
+    "Understanding of temporary tag requirements"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal policy database",
+    "National General insurance carrier"
+  ],
+  "summary": "Melody Smith requested her National General policy number to obtain a temporary vehicle tag. The agent retrieved the policy number (203094318000) from the database and confirmed it with the caller. The call concluded with the caller expressing gratitude and indicating she would handle the temporary tag process.",
+  "_model": "qwen3:14b",
+  "_eval_count": 232,
+  "_total_duration_ms": 28703,
+  "_source_file": "transcripts/in-+13363544000-+19809442172-20250909-121849-1757434729.7353.txt",
+  "_direction": "inbound",
+  "_char_count": 1011
+}

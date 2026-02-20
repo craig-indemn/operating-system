@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Kayla Dillon needs a digital proof of insurance sent to the DMV for her husband, who is at the DMV and unable to use paper proof. She is unsure of the correct method (fax, email, etc.) and needs assistance.",
+  "resolution_steps": [
+    "Jamie confirms Kayla's active policy with National General and verifies her contact details.",
+    "Jamie explains that the DMV typically requires a fax number but does not know it offhand and attempts to search for it without success.",
+    "Jamie offers to email the policy's declarations page to Kayla's email (kayla.dillon17@gmail.com) as a temporary solution.",
+    "Jamie advises Kayla to confirm with the DMV or her husband at the DMV for the correct submission method (fax, email, etc.) once she arrives.",
+    "Jamie assures Kayla she can follow up via email or call back for further assistance."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Process for generating and sending proof of insurance documents",
+    "Typical DMV requirements for proof of insurance (fax numbers, email submission)",
+    "Access to internal systems to retrieve policy details (declarations page)"
+  ],
+  "systems_referenced": [
+    "Internal policy management system (to retrieve declarations page)"
+  ],
+  "summary": "Kayla Dillon requested digital proof of insurance for the DMV, but the agent could not locate the required fax number. The agent emailed the declarations page to Kayla's email as a workaround and advised her to confirm the correct submission method with the DMV. The call concluded with the agent offering further assistance if needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 358,
+  "_total_duration_ms": 53689,
+  "_source_file": "transcripts/q-300-+13364860228-20251114-094202-1763131322.1717.txt",
+  "_direction": "queue",
+  "_char_count": 3837
+}

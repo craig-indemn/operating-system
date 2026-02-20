@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Andy Handy is reporting a commercial truck accident involving his son and seeking assistance with the insurance claim process.",
+  "resolution_steps": [
+    "Rachel confirms the caller's identity and details (Andy Handy, commercial F350 truck accident).",
+    "Rachel checks the system to verify the policy and claim status, noting the claim was filed three hours ago.",
+    "Rachel provides the Winston Salem contact number for the adjuster and instructs Andy to follow up with the Monterey office.",
+    "Rachel clarifies that policy details (e.g., coverage) must be confirmed directly with the Monterey office."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Commercial auto insurance claims process",
+    "Policy lookup procedures",
+    "Adjuster contact protocols"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance policy database",
+    "Adjuster contact information (Winston Salem number)"
+  ],
+  "summary": "Andy Handy reports a commercial truck accident and seeks assistance. Rachel verifies the claim was filed, provides an adjuster contact number, and directs Andy to follow up with the Monterey office for coverage details. The call concludes with Rachel offering further support.",
+  "_model": "qwen3:14b",
+  "_eval_count": 258,
+  "_total_duration_ms": 38430,
+  "_source_file": "transcripts/exten-702-+12762338911-20251013-152557-1760383557.11436.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2491
+}

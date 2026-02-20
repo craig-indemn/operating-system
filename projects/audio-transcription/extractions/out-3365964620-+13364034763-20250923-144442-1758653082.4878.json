@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Laken Benson wants to add a new baby to her health insurance policy and needs assistance with the process, specifically understanding insurance implications and updating coverage.",
+  "resolution_steps": [
+    "Agent Morgan confirmed understanding of the request to add a dependent.",
+    "Agreed to schedule a follow-up call the next afternoon to discuss policy changes."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Health insurance policy updates for dependents",
+    "Process for adding newborns to existing coverage"
+  ],
+  "systems_referenced": [],
+  "summary": "Laken Benson is expecting a baby and needs help updating her health insurance. Agent Morgan agreed to call her back the next afternoon to assist with adding the new baby to the policy. The call was productive and resulted in a follow-up arrangement.",
+  "_model": "qwen3:14b",
+  "_eval_count": 186,
+  "_total_duration_ms": 32778,
+  "_source_file": "transcripts/out-3365964620-+13364034763-20250923-144442-1758653082.4878.txt",
+  "_direction": "outbound",
+  "_char_count": 879
+}

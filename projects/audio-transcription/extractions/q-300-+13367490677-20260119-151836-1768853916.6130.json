@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Ori Westa, wants to report a scratch on their Honda Civic and seek guidance on whether to file an insurance claim, particularly concerning the deductible and potential impact on their insurance rates.",
+  "resolution_steps": [
+    "Agent Gary confirmed the incident details (location, time, vehicle, and damage description).",
+    "Agent explained the 500 deductible on the Honda Civic and its implications for claim payouts.",
+    "Agent advised checking with a body shop for repair estimates before filing a claim to avoid unnecessary claims history.",
+    "Agent offered to create a case note for follow-up and provided contact information."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance claims process for vehicle damage",
+    "Deductible calculations and their impact on claim payouts",
+    "Advice on when to file claims based on repair costs"
+  ],
+  "systems_referenced": [
+    "Internal claims database (implied by 'I need to get me a piece of paper' and 'I'm waiting on the computer')"
+  ],
+  "summary": "Ori Westa reported a scratch on their Honda Civic and sought guidance on filing a claim. Agent Gary explained the 500 deductible, advised checking repair estimates, and offered to create a case note for follow-up. The caller expressed gratitude and indicated intent to proceed with further steps after gathering more information.",
+  "_model": "qwen3:14b",
+  "_eval_count": 301,
+  "_total_duration_ms": 34547,
+  "_source_file": "transcripts/q-300-+13367490677-20260119-151836-1768853916.6130.txt",
+  "_direction": "queue",
+  "_char_count": 3928
+}

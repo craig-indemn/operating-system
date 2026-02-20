@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; caller mentions a policy issue from last Wednesday but does not specify details or request assistance.",
+  "resolution_steps": [
+    "Agent attempts to transfer call to another agent but conversation cuts off mid-transaction."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Incomplete call where caller mentions a policy issue but does not clarify details. Agent attempts to transfer the call but the conversation ends abruptly without resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 118,
+  "_total_duration_ms": 22795,
+  "_source_file": "transcripts/in-+13363779003-+13362099635-20251009-150353-1760036633.4668.txt",
+  "_direction": "inbound",
+  "_char_count": 270
+}

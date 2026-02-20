@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "No clear intent - brief transfer announcement",
+  "resolution_steps": [
+    "Agent announced transfer to Josie"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Very brief inbound call where agent announced transfer to Josie without any substantive conversation occurring. No meaningful interaction or resolution achieved.",
+  "_model": "qwen3:14b",
+  "_eval_count": 93,
+  "_total_duration_ms": 36925,
+  "_source_file": "transcripts/in-+13363779003-+13369863334-20251208-154917-1765226957.12402.txt",
+  "_direction": "inbound",
+  "_char_count": 172
+}

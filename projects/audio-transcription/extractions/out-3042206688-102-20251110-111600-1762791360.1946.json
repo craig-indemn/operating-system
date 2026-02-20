@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Gloria from Alliance Insurance aims to discuss a new submission in the insurance portal and requests a callback or email communication.",
+  "resolution_steps": [
+    "Gloria leaves a voicemail for Taylor McCullie at Encova Insurance.",
+    "Provides her contact information (phone number and email).",
+    "Mentions she will send an email with submission details."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance submission processes",
+    "Portal navigation and communication protocols"
+  ],
+  "systems_referenced": [
+    "Insurance portal"
+  ],
+  "summary": "Gloria from Alliance Insurance left a voicemail for Taylor McCullie at Encova Insurance regarding a new submission. She provided her contact details and mentioned she would send an email with submission details, requesting a callback or email response.",
+  "_model": "qwen3:14b",
+  "_eval_count": 194,
+  "_total_duration_ms": 30104,
+  "_source_file": "transcripts/out-3042206688-102-20251110-111600-1762791360.1946.txt",
+  "_direction": "outbound",
+  "_char_count": 766
+}

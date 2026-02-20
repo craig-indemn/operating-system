@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to confirm that a recent payment for their car insurance policy with Travelers was correctly applied to the policy renewal and sought clarification on why the renewal wasn't visible on the website.",
+  "resolution_steps": [
+    "Agent verified the caller's payment details ($889.19) through Travelers' system.",
+    "Confirmed the payment was for the policy renewal, noting the previous premium ($723.65) and the slight increase.",
+    "Explained the renewal date (29th of the month) and clarified the website's lack of immediate renewal visibility.",
+    "Assured the caller the renewal would take effect on the 29th."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Travelers insurance policy renewal processes",
+    "Premium calculation and changes",
+    "Interpreting payment records in carrier systems"
+  ],
+  "systems_referenced": [
+    "Travelers insurance portal/system"
+  ],
+  "summary": "The caller confirmed a car insurance payment with Travelers and sought reassurance about the renewal status. The agent verified the payment, explained the premium increase, and clarified the renewal date (29th). The caller expressed satisfaction with the resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 275,
+  "_total_duration_ms": 36439,
+  "_source_file": "transcripts/in-+13363779003-+13364197902-20250916-140431-1758045871.8336.txt",
+  "_direction": "inbound",
+  "_char_count": 1502
+}

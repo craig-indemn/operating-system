@@ -1,0 +1,25 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Follow-up on an auto insurance quote request, asking Cecilia to provide coverage details, VIN numbers, driver's license, and date of birth.",
+  "resolution_steps": [
+    "Agent left a voicemail message for Cecilia.",
+    "Provided email and phone number for contact.",
+    "Requested specific documents and personal information via voicemail."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Auto insurance quoting process",
+    "Information required for policy evaluation (VIN, coverage details, ID verification)"
+  ],
+  "systems_referenced": [
+    "Email communication (myallianceinsurance.com)",
+    "Phone system"
+  ],
+  "summary": "Jeremy from Alliance Insurance left a voicemail for Cecilia following up on an auto quote request, asking for coverage details, VIN numbers, and personal information. He provided contact details for email or phone follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 203,
+  "_total_duration_ms": 39778,
+  "_source_file": "transcripts/out-5624154245-701-20250729-091151-1753794711.445.txt",
+  "_direction": "outbound",
+  "_char_count": 955
+}

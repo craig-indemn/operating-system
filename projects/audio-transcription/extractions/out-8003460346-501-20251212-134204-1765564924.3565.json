@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Agent Jamie from Alliance Insurance is assisting client Mary with updating Jocelyn Harris's email address on her Auto Owners Insurance account after she lost access to her Hotmail account.",
+  "resolution_steps": [
+    "Agent Jamie explains that Jocelyn must log in with her old Hotmail email and password to access the account.",
+    "If Jocelyn cannot remember the password, Jamie advises contacting Auto Owners to verify identity and reset the password.",
+    "Once logged in, Jocelyn can edit her profile to update the email address to her new Gmail account."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Auto Owners Insurance online portal navigation",
+    "Password recovery procedures for account access",
+    "Client account management workflows"
+  ],
+  "systems_referenced": [
+    "Auto Owners Insurance online access portal",
+    "Auto Owners mobile app",
+    "Account profile editing interface"
+  ],
+  "summary": "Agent Jamie guided Mary through resolving Jocelyn Harris's access issue to her insurance account after losing Hotmail access. The solution involved using the old email/password to log in and update the email address. The call concluded with Mary understanding the steps required to complete the update.",
+  "_model": "qwen3:14b",
+  "_eval_count": 264,
+  "_total_duration_ms": 45911,
+  "_source_file": "transcripts/out-8003460346-501-20251212-134204-1765564924.3565.txt",
+  "_direction": "outbound",
+  "_char_count": 4685
+}

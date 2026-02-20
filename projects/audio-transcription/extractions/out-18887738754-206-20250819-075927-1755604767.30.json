@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jeff Edmonds requested a special events insurance quote for a three-day event involving parking direction at a dedicated lot.",
+  "resolution_steps": [
+    "Mike confirmed the nature of the event (parking direction, no vehicle operation).",
+    "Mike checked internal systems to verify coverage for the specific exposure.",
+    "Mike informed Jeff that Alliance Insurance Services does not cover parking direction under their special events product.",
+    "Mike clarified that coverage is available for hosts/vendors selling goods/services at events, but not for parking exposure."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Special events insurance product limitations",
+    "Underwriting guidelines for event exposures",
+    "Differentiation between covered and excluded event types"
+  ],
+  "systems_referenced": [
+    "Internal underwriting guidelines",
+    "Special events product documentation"
+  ],
+  "summary": "Jeff requested insurance for a parking-direction event, but Mike explained Alliance Insurance Services cannot cover this exposure. The agent clarified coverage limitations and suggested alternative event types that would qualify for their special events product.",
+  "_model": "qwen3:14b",
+  "_eval_count": 238,
+  "_total_duration_ms": 26865,
+  "_source_file": "transcripts/out-18887738754-206-20250819-075927-1755604767.30.txt",
+  "_direction": "outbound",
+  "_char_count": 1528
+}

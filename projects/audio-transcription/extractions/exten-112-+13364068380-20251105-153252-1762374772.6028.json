@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is informing Antonio about a new home insurance quote from Auto Owners, highlighting the lower cost compared to his current policy and confirming coverage details for his new home.",
+  "resolution_steps": [
+    "Confirmed the new insurance quote amount ($1,420/year) and explained the discount for a new home with Auto Owners.",
+    "Detailed coverage specifics: $208,600 replacement cost coverage and full coverage transfer from the current home.",
+    "Outlined next steps: Issuing the policy as closing approaches and coordinating mortgage payment.",
+    "Offered to assist with any additional requests from the mortgage company."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Home insurance policy structures",
+    "Replacement cost vs actual cash value",
+    "Mortgage insurance coordination processes"
+  ],
+  "systems_referenced": [],
+  "summary": "Agent provided Antonio with details about a new home insurance quote from Auto Owners, emphasizing cost savings and coverage equivalence. The conversation concluded with confirmation of next steps for policy issuance and mortgage coordination. The caller requested follow-up if the mortgage company needed additional information.",
+  "_model": "qwen3:14b",
+  "_eval_count": 253,
+  "_total_duration_ms": 37714,
+  "_source_file": "transcripts/exten-112-+13364068380-20251105-153252-1762374772.6028.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1141
+}

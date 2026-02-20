@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Tracy from Alliance Insurance, asked whether Progressive Insurance accepts American Express as a payment method.",
+  "resolution_steps": [
+    "Progressive's automated system collected the caller's agent code and transferred her to a representative.",
+    "Lisa confirmed the caller's identity and asked about the purpose of the call.",
+    "The caller clarified she was inquiring about payment options for Progressive policies.",
+    "The representative directly answered that Progressive does not accept American Express."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Progressive's accepted payment methods",
+    "Standard insurance agency procedures for payment inquiries"
+  ],
+  "systems_referenced": [],
+  "summary": "Tracy from Alliance Insurance called Progressive to confirm if they accept American Express. The representative confirmed they do not. The call concluded with Tracy thanking the agent and ending the conversation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 198,
+  "_total_duration_ms": 26704,
+  "_source_file": "transcripts/out-8777762436-510-20250807-154917-1754596157.12353.txt",
+  "_direction": "outbound",
+  "_char_count": 1204
+}

@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Jamie Flippin) aims to finalize a new homeowners policy with SafeCo for Nicole Thomas, using existing mortgage information and addressing a note about a dog.",
+  "resolution_steps": [
+    "Confirmed the client's intent to proceed with the SafeCo policy.",
+    "Used existing mortgage information from Pinnacle Loan Services LLC.",
+    "Noted the client's mention of a dog and confirmed SafeCo allows pets.",
+    "Scheduled the policy to issue effective August 6.",
+    "Planned to send electronic paperwork for signature."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Homeowners insurance policy issuance",
+    "Mortgage information integration",
+    "Pet coverage policies",
+    "SafeCo underwriting guidelines"
+  ],
+  "systems_referenced": [
+    "SafeCo insurance platform",
+    "Pinnacle Loan Services LLC mortgage records"
+  ],
+  "summary": "Jamie Flippin from Alliance Insurance is finalizing a SafeCo homeowners policy for Nicole Thomas, using existing mortgage data and addressing a pet note. The policy will issue on August 6 with electronic paperwork sent for signature. Jamie requests a callback for any remaining questions.",
+  "_model": "qwen3:14b",
+  "_eval_count": 262,
+  "_total_duration_ms": 26575,
+  "_source_file": "transcripts/out-7323229877-501-20250805-103959-1754404799.2871.txt",
+  "_direction": "outbound",
+  "_char_count": 1340
+}

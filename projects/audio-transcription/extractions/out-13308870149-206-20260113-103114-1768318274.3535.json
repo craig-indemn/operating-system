@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unknown (automated voicemail message)",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Standard voicemail greeting indicating the recipient is unavailable. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 74,
+  "_total_duration_ms": 23030,
+  "_source_file": "transcripts/out-13308870149-206-20260113-103114-1768318274.3535.txt",
+  "_direction": "outbound",
+  "_char_count": 99
+}

@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller inquired whether Alliance Insurance offers workers' compensation insurance for their small business.",
+  "resolution_steps": [
+    "Agent Jennifer confirmed that workers' comp is available.",
+    "Agent Jennifer requested a moment to connect the caller with a dedicated agent to proceed with the inquiry."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Workers' compensation insurance offerings",
+    "Internal process for escalating leads to specialized agents"
+  ],
+  "systems_referenced": [],
+  "summary": "A small business owner asked about workers' comp coverage. The agent confirmed availability and initiated a transfer to a specialized agent to handle the lead. The call ended with the agent offering to connect the caller with the appropriate team member.",
+  "_model": "qwen3:14b",
+  "_eval_count": 171,
+  "_total_duration_ms": 27898,
+  "_source_file": "transcripts/in-+13363779003-+13367557574-20260106-165138-1767736298.7030.txt",
+  "_direction": "inbound",
+  "_char_count": 289
+}

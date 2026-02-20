@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking assistance after her new insurance policy was declined by Northwest Farmers. She wants to understand the reason for the decline and find a replacement policy before her insurance renewal on the 29th.",
+  "resolution_steps": [
+    "Agent reviews previous claim notes with Nationwide Insurance related to a water leak from an ice maker three and a half years ago.",
+    "Agent discusses details of the water loss incident (cracked hose from grandson's fishing equipment causing a month-long leak).",
+    "Agent confirms no recent claim was filed for the recent water damage but notes past repairs (flooring, sheetrock replacement).",
+    "Agent acknowledges lack of communication from Northwest Farmers regarding the policy decline and assures the caller they will investigate further."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance claim processes and underwriting criteria",
+    "Knowledge of water damage causes and repair requirements",
+    "Ability to interpret carrier-specific policy denial reasons"
+  ],
+  "systems_referenced": [
+    "Northwest Farmers insurance system",
+    "Nationwide Insurance claim portal"
+  ],
+  "summary": "Alliance Insurance agent is assisting a client whose new policy was declined by Northwest Farmers. The client explains a past water damage incident involving a cracked hose and a previous claim with Nationwide Insurance from three and a half years ago. The agent is reviewing claim notes and discussing repair history while acknowledging the need to investigate why the new policy was denied. The client needs replacement coverage before her insurance renewal on the 29th.",
+  "_model": "qwen3:14b",
+  "_eval_count": 335,
+  "_total_duration_ms": 45910,
+  "_source_file": "transcripts/out-3363207022-113-20250917-132319-1758129799.2610.txt",
+  "_direction": "outbound",
+  "_char_count": 4251
+}

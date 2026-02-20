@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Darlene is seeking clarification about an unexpected increase in insurance premiums and coverage for a rental property, specifically asking about the replacement cost calculation and potential options to address the changes.",
+  "resolution_steps": [
+    "Agent verified policy details (policy number, names, addresses, and insurer).",
+    "Explained that the premium increase is tied to a recalculated replacement cost (rebuild cost) of the property.",
+    "Noted that the renewal notice is not yet due (November 5th) and that Brandy (likely a claims adjuster or underwriter) will provide specifics.",
+    "Advised Darlene to contact Brandy directly on Monday for detailed information.",
+    "Mentioned that switching insurers may be difficult due to the roof's age."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy renewal processes",
+    "Replacement cost calculation methodology",
+    "Carrier-specific procedures (Auto Owners)",
+    "Handling customer inquiries about premium changes"
+  ],
+  "systems_referenced": [
+    "Auto Owners (insurer)",
+    "Alliance Insurance portal (for policy details)"
+  ],
+  "summary": "Darlene contacted Alliance Insurance to address a rental property's premium increase and coverage changes. The agent clarified that the increase stems from a recalculated replacement cost and advised waiting for Brandy's follow-up on Monday. The customer will need to contact Brandy directly for specifics and consider the roof's age when evaluating insurer options.",
+  "_model": "qwen3:14b",
+  "_eval_count": 322,
+  "_total_duration_ms": 41925,
+  "_source_file": "transcripts/q-300-+13364077638-20250911-110752-1757603272.2349.txt",
+  "_direction": "queue",
+  "_char_count": 4218
+}

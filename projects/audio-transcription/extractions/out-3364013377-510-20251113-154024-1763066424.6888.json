@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Heather) sought clarification about her insurance policy's payment schedule, specifically why a payment was missed in October and when future payments would be due.",
+  "resolution_steps": [
+    "Tracy explained the policy was issued in mid-September with an initial payment taken.",
+    "She clarified that no auto draft was set up, leading to the October payment failure.",
+    "Outlined upcoming payment dates: December 3rd (for November) and December 26th (for December), followed by monthly payments on the 26th.",
+    "Confirmed no payments would be due between now and December 3rd.",
+    "Reassured the caller and offered future assistance."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Policy payment terms and auto draft setup",
+    "Insurance billing cycles and due dates",
+    "Handling customer inquiries about missed payments"
+  ],
+  "systems_referenced": [],
+  "summary": "Tracy from Alliance Insurance Services clarified Heather's confusion about her policy's payment schedule, explaining past missed payments and future due dates. Heather expressed gratitude, and the call concluded with mutual appreciation. The agent demonstrated knowledge of billing cycles and customer service protocols.",
+  "_model": "qwen3:14b",
+  "_eval_count": 266,
+  "_total_duration_ms": 39620,
+  "_source_file": "transcripts/out-3364013377-510-20251113-154024-1763066424.6888.txt",
+  "_direction": "outbound",
+  "_char_count": 1044
+}

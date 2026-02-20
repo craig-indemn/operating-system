@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Not applicable (no meaningful interaction with the caller)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Non-substantive call: Agent (Meredith Cantrell) is returning a previous call but no meaningful conversation occurs with the current caller. The transcript only shows the agent's internal notes about attempting to reach another party (JC).",
+  "_model": "qwen3:14b",
+  "_eval_count": 111,
+  "_total_duration_ms": 26459,
+  "_source_file": "transcripts/in-+13363779003-+13363917604-20251120-154545-1763671545.3375.txt",
+  "_direction": "inbound",
+  "_char_count": 229
+}

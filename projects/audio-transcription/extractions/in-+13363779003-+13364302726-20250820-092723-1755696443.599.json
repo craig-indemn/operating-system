@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to discuss both personal (home) and business insurance policies and is seeking guidance on whether they need separate processes for each.",
+  "resolution_steps": [
+    "Agent Eric Leopold acknowledges the caller's request for assistance with both personal and business policies.",
+    "Eric clarifies the caller's focus on home (personal) and business policies.",
+    "Eric offers to first address the personal lines (home) and then transfer the caller to the commercial department for business policy inquiries."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of Alliance Insurance's internal call routing process for personal vs. commercial policies",
+    "Ability to identify when to transfer calls to specialized departments"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller contacted Alliance Insurance to discuss both personal (home) and business insurance policies. Agent Eric Leopold confirmed the caller's intent and offered to first address the personal lines (home) before transferring the call to the commercial department for business policy discussions. The call is ongoing with a transfer pending.",
+  "_model": "qwen3:14b",
+  "_eval_count": 241,
+  "_total_duration_ms": 35039,
+  "_source_file": "transcripts/in-+13363779003-+13364302726-20250820-092723-1755696443.599.txt",
+  "_direction": "inbound",
+  "_char_count": 632
+}

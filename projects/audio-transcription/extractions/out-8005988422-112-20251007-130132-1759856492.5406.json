@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Brandy from Alliance Insurance is seeking assistance to resolve a two-week delay in obtaining a declarations page for a policy (number 5225060), which is causing a claim to be on hold. The claims department requires the document to proceed, and previous attempts to access it via online systems or ticket #Inc0719097 have failed.",
+  "resolution_steps": [
+    "Jasmine requests the policy number (5225060) and ticket number (Inc0719097) to investigate the issue.",
+    "Jasmine submits a new expedited ticket (#Inc072053) to address the policy access problem.",
+    "Jasmine commits to contacting Brandy directly once there is an update on the ticket."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding Utica National's internal ticketing system and policy access workflows",
+    "Knowledge of how to escalate policy access issues",
+    "Ability to manage customer frustration during unresolved claims"
+  ],
+  "systems_referenced": [
+    "Utica National's online customer care portal (utica national dot com slash customer care)",
+    "Utica National's internal ticketing system (ticket numbers starting with 'Inc')"
+  ],
+  "summary": "Brandy from Alliance Insurance is struggling to resolve a two-week delay in obtaining a declarations page for a policy (5225060), which is blocking a claim. Jasmine from Utica National acknowledges the issue, submits a new expedited ticket, and commits to providing updates directly to Brandy. The resolution remains pending but is being actively pursued.",
+  "_model": "qwen3:14b",
+  "_eval_count": 362,
+  "_total_duration_ms": 53180,
+  "_source_file": "transcripts/out-8005988422-112-20251007-130132-1759856492.5406.txt",
+  "_direction": "outbound",
+  "_char_count": 4421
+}

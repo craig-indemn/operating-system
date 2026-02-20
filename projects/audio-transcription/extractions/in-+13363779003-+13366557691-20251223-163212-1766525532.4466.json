@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to make payments for their home and auto insurance policies, which are about to expire. They provided credit card details and requested assistance ensuring payments are applied to the correct accounts.",
+  "resolution_steps": [
+    "Agent helped locate the home and auto insurance policies in the system.",
+    "Attempted to process home insurance payment using a credit card, but encountered validation errors due to incorrect card number input.",
+    "Corrected the card number after verification and successfully processed the home insurance payment.",
+    "Processed auto insurance payment for National General using a second credit card after confirming details.",
+    "Provided the caller with a payment confirmation number via email."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Payment processing workflows",
+    "Insurance policy management",
+    "Credit card validation procedures",
+    "Carrier-specific payment requirements (e.g., National General)"
+  ],
+  "systems_referenced": [
+    "National General (auto insurance carrier)"
+  ],
+  "summary": "The caller made payments for home and auto insurance policies, requiring assistance with card validation and ensuring payments applied to correct accounts. The agent resolved card issues and processed payments, with confirmation sent via email. The caller may need follow-up for final confirmation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 275,
+  "_total_duration_ms": 48910,
+  "_source_file": "transcripts/in-+13363779003-+13366557691-20251223-163212-1766525532.4466.txt",
+  "_direction": "inbound",
+  "_char_count": 3217
+}

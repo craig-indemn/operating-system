@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jamie requested a quote to add a new vehicle (2020 Chevy Traverse) to her existing insurance policy, which currently includes a 2015 Chrysler 200.",
+  "resolution_steps": [
+    "Agent Shana retrieved Jamie's existing policy details (2015 Chrysler 200 at 61 Whitney Road, Moxie).",
+    "Confirmed Jamie had not yet purchased the new vehicle but was considering it.",
+    "Used the VIN provided (GNEDKW4LJ31674) to identify the 2020 Chevy Traverse.",
+    "Asked about vehicle usage (commuting >10 miles to work) and payment method (cash, no loan).",
+    "Calculated premium impact for adding the Traverse: $2,986.11 annually ($805/month estimated).",
+    "Explained endorsement down payment structure ($248.74 initial payment).",
+    "Provided alternative quote for replacing the Chrysler with the Traverse: $1,215 annually ($492/month)."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance policy structure and premium calculation",
+    "Impact of vehicle usage (commuting distance) on rates",
+    "Deductible matching for multi-vehicle policies",
+    "Endorsement payment schedules for policy changes"
+  ],
+  "systems_referenced": [
+    "Internal policy management system (used to retrieve policy details and calculate premiums)"
+  ],
+  "summary": "Jamie sought a quote to add a 2020 Chevy Traverse to her existing policy. Shana retrieved her current policy details, gathered vehicle specifics, and provided a breakdown of costs for both adding the new car and replacing the existing Chrysler. The agent explained payment structures and estimated monthly premiums, concluding with a resolved outcome.",
+  "_model": "qwen3:14b",
+  "_eval_count": 401,
+  "_total_duration_ms": 53693,
+  "_source_file": "transcripts/q-300-+13369091493-20250924-105510-1758725710.1070.txt",
+  "_direction": "queue",
+  "_char_count": 3770
+}

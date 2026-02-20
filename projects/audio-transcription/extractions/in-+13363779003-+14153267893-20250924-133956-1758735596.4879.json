@@ -1,0 +1,19 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller attempted to reach Zeke at Alliance Insurance.",
+  "resolution_steps": [
+    "Agent acknowledged the call",
+    "Agent checked Zeke's availability",
+    "Agent responded with 'One moment' and then 'Okay'"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief inbound call where the caller inquired about Zeke's availability. The agent checked but provided no clear resolution, ending the call with minimal interaction.",
+  "_model": "qwen3:14b",
+  "_eval_count": 122,
+  "_total_duration_ms": 39014,
+  "_source_file": "transcripts/in-+13363779003-+14153267893-20250924-133956-1758735596.4879.txt",
+  "_direction": "inbound",
+  "_char_count": 194
+}

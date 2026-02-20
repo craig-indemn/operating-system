@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Tony is seeking clarification on insurance coverage for his real estate vehicle (a Volkswagen) used for occasional hauling and staging, ensuring there are no signage restrictions and confirming appropriate coverage.",
+  "resolution_steps": [
+    "Agent (Gary) confirms with Tony that there are no signage restrictions on the vehicle.",
+    "Gary clarifies coverage details with the company via chat screen to ensure Tony's specific use cases (hauling people, staging) are covered."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of vehicle insurance classifications for personal vs. business use",
+    "Knowledge of signage policies for insured vehicles",
+    "Familiarity with coverage terms for hauling and staging activities"
+  ],
+  "systems_referenced": [
+    "Company chat screen (for real-time policy clarification)"
+  ],
+  "summary": "Tony discusses with Gary about insuring his real estate vehicle, which is also used for occasional hauling and staging. They clarify signage restrictions and confirm coverage details via chat with the company. The call ends with Tony awaiting final confirmation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 234,
+  "_total_duration_ms": 58193,
+  "_source_file": "transcripts/exten-113-+13363545052-20251219-125913-1766167153.5541.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1087
+}

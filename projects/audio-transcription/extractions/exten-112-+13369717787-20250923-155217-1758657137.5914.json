@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Ellie wants to pay the remaining balance of her father Melvin Ody's homeowners insurance policy in full and confirm the amount and due date.",
+  "resolution_steps": [
+    "Brandi confirms the policyholder's name (Melvin Ody) and verifies the account.",
+    "Brandi calculates the remaining balance for the year as $1,285.68.",
+    "Brandi informs Ellie the payment is due by October 11th.",
+    "Ellie agrees to pay the full amount and thanks Brandi."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Access to policyholder account details",
+    "Ability to calculate remaining premium balances",
+    "Knowledge of payment deadlines and options"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services policy management system"
+  ],
+  "summary": "Ellie contacts Brandi to pay the remaining balance of her father Melvin Ody's homeowners insurance policy. Brandi confirms the amount ($1,285.68) and due date (October 11th). Ellie decides to pay in full and appreciates the assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 259,
+  "_total_duration_ms": 35949,
+  "_source_file": "transcripts/exten-112-+13369717787-20250923-155217-1758657137.5914.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1534
+}

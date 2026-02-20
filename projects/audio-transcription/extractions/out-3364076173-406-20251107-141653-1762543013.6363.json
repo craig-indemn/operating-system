@@ -1,0 +1,20 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller (J Don from Lite Insurance Services) intended to inform Amanda von Redman about upcoming policy renewals and request a callback to verify details.",
+  "resolution_steps": [
+    "Agent left a voicemail message with contact information and purpose of the call."
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [
+    "Insurance policy renewal processes",
+    "Customer contact protocols"
+  ],
+  "systems_referenced": [],
+  "summary": "Agent left a voicemail message for Amanda von Redman to review her auto and home insurance policies ahead of January renewals. The message included a callback number and requested verification of policy details.",
+  "_model": "qwen3:14b",
+  "_eval_count": 152,
+  "_total_duration_ms": 49549,
+  "_source_file": "transcripts/out-3364076173-406-20251107-141653-1762543013.6363.txt",
+  "_direction": "outbound",
+  "_char_count": 545
+}

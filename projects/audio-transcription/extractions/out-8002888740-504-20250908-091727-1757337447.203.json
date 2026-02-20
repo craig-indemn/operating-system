@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Holly from Alliance Insurance, wanted to check on a billing refund related to a policy change, specifically a $92.74 refund that was supposed to be issued.",
+  "resolution_steps": [
+    "Agent asked for the caller's billing account number and agency code for verification.",
+    "Caller provided account number (018919369) and agency code (15039400).",
+    "Agent confirmed the policyholder's current address (2325 Elderbrook Drive, High Point).",
+    "Agent confirmed the refund amount and committed to processing the check that night.",
+    "Agent informed the caller the refund would be issued within 7-12 business days."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Billing refund processes for policy changes",
+    "Verification of account numbers and agency codes",
+    "Refund processing timelines"
+  ],
+  "systems_referenced": [
+    "Auto Owners Insurance billing system",
+    "Auto Owners Insurance online portal (www.auto-owners.com)"
+  ],
+  "summary": "Holly from Alliance Insurance contacted Auto Owners Insurance to resolve a billing refund issue after a policy change. The agent verified account details, confirmed the policyholder's address, and committed to processing a $92.74 refund. The refund was scheduled for issuance within 7-12 business days. The call concluded with the issue being resolved.",
+  "_model": "qwen3:14b",
+  "_eval_count": 321,
+  "_total_duration_ms": 39902,
+  "_source_file": "transcripts/out-8002888740-504-20250908-091727-1757337447.203.txt",
+  "_direction": "outbound",
+  "_char_count": 3868
+}

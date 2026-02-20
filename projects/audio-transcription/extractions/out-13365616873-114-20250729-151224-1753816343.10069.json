@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to add a vehicle to their insurance policy and understand the cost difference between full coverage and liability coverage options.",
+  "resolution_steps": [
+    "Agent explained the cost increase for adding full coverage ($455 for half a year until July renewal)",
+    "Addressed audio issues during the call",
+    "Provided liability-only quote ($265)",
+    "Confirmed caller's decision to proceed with full coverage",
+    "Agreed to process the addition effective immediately"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy pricing structures",
+    "Impact of adding vehicles to policies",
+    "Policy renewal timelines",
+    "Handling communication challenges during calls"
+  ],
+  "systems_referenced": [],
+  "summary": "Agent assisted customer in evaluating insurance coverage options for a new vehicle, explained cost differences between full coverage and liability, and processed the customer's decision to add full coverage. The conversation included audio quality issues but ultimately resulted in a policy update.",
+  "_model": "qwen3:14b",
+  "_eval_count": 226,
+  "_total_duration_ms": 41837,
+  "_source_file": "transcripts/out-13365616873-114-20250729-151224-1753816343.10069.txt",
+  "_direction": "outbound",
+  "_char_count": 1059
+}

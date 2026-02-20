@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Schedule a callback at 9 AM after a meeting",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Brief outbound call where caller arranges to return at 9 AM after a meeting. No substantive interaction or issue resolution occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 87,
+  "_total_duration_ms": 25729,
+  "_source_file": "transcripts/out-13367104904-206-20250923-081056-1758629456.31.txt",
+  "_direction": "outbound",
+  "_char_count": 168
+}

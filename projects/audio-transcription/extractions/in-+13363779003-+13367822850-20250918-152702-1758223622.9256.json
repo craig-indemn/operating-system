@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller requested assistance in obtaining automobile insurance quotes.",
+  "resolution_steps": [
+    "Agent acknowledged the request and offered to transfer the call to the appropriate team."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A caller requested automobile insurance quotes. The agent offered to transfer the call but did not provide any further assistance or resolution during the conversation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 106,
+  "_total_duration_ms": 42298,
+  "_source_file": "transcripts/in-+13363779003-+13367822850-20250918-152702-1758223622.9256.txt",
+  "_direction": "inbound",
+  "_char_count": 291
+}

@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Maggie is asking whether Alliance Insurance Services can assist with creating incident reports for a workplace fall incident, as required by her employer (a subcontractor) for compliance purposes.",
+  "resolution_steps": [
+    "Jessica clarifies she does not handle incident reports directly but can review a form if provided.",
+    "Jessica suggests using Chat GPT to generate a fall protection plan and employee acknowledgment documents.",
+    "Jessica offers to help review the form if Maggie emails it over."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of workplace incident reporting requirements",
+    "Knowledge of insurance claim processes",
+    "Familiarity with third-party tools like Chat GPT for document generation"
+  ],
+  "systems_referenced": [
+    "Chat GPT (AI tool for document creation)",
+    "Builders Mutual (insurance carrier mentioned in background context)"
+  ],
+  "summary": "Maggie seeks help creating incident reports for a workplace fall, which her employer requires despite no formal claim being filed. Jessica explains she cannot generate reports directly but offers to review forms if provided and suggests using Chat GPT for template creation. The call ends with Maggie needing to obtain the form and Jessica offering further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 269,
+  "_total_duration_ms": 43963,
+  "_source_file": "transcripts/exten-106-+13367505898-20250820-105127-1755701487.2527.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4282
+}

@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to confirm the status of their business insurance payment and address a pending cancellation notice on their commercial auto policy, ensuring their husband (the primary policyholder) is informed to avoid a lapse in coverage.",
+  "resolution_steps": [
+    "Agent confirmed the caller's account details (S & S Masonry) and address.",
+    "Checked the payment history, confirming a $556 payment made on June 24 covering until December 20.",
+    "Notified the caller that the next bill is due on December 31.",
+    "Identified a pending cancellation on the commercial auto policy (linked to business trucks).",
+    "Agreed to contact the caller's husband (Salvador) at 336-287-7528 to remind him about the pending cancellation and due date.",
+    "Ensured the caller's request to discreetly inform her husband without revealing her involvement was honored."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance policy lifecycle (payment tracking, cancellation notices)",
+    "Access to internal systems for checking payment and policy details",
+    "Customer service protocols for discreetly relaying information to third parties"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services internal policy/payment tracking system"
+  ],
+  "summary": "The caller confirmed their business insurance payment was up to date but discovered a pending cancellation on their commercial auto policy. The agent agreed to discreetly contact the caller's husband to ensure he addresses the pending cancellation and avoids a lapse in coverage. The call concluded with the caller satisfied that action would be taken.",
+  "_model": "qwen3:14b",
+  "_eval_count": 349,
+  "_total_duration_ms": 46610,
+  "_source_file": "transcripts/exten-102-+13366615183-20251210-142042-1765394442.3549.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3163
+}

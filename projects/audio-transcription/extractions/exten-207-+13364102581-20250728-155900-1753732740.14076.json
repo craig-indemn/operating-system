@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jean wants to adjust their boat and jet ski insurance policy to remove unnecessary coverages (like towing and replacement cost) while retaining collision, comprehensive, liability, and medical payments coverage to ensure essential protection without excessive costs.",
+  "resolution_steps": [
+    "Cody confirms the policy details and identifies coverages to remove (towing, replacement cost, personal effects).",
+    "Cody retains collision, comprehensive, liability, and medical payments coverage as requested.",
+    "Cody explains the impact of removing extra coverages, noting a $143 premium reduction.",
+    "Cody assures Jean updated policy information will be mailed after processing the changes."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of boat/jet ski insurance coverages (towing, collision, comprehensive, medical payments, replacement cost).",
+    "Ability to explain how removing optional coverages affects premium costs.",
+    "Knowledge of standard insurance policy structures and terminology."
+  ],
+  "systems_referenced": [
+    "Progressive (mentioned as an example carrier with added coverages)"
+  ],
+  "summary": "Jean worked with Cody to refine their boat and jet ski insurance policy, removing non-essential coverages while retaining core protections. The agent explained the cost impact and confirmed updated policy details would be mailed. The call concluded with mutual agreement on the adjustments.",
+  "_model": "qwen3:14b",
+  "_eval_count": 297,
+  "_total_duration_ms": 49077,
+  "_source_file": "transcripts/exten-207-+13364102581-20250728-155900-1753732740.14076.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4291
+}

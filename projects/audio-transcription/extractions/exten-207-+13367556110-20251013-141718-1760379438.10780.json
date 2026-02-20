@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "German from Interbiomes wants to report a truck accident involving a deer and initiate a claim with Ancients, seeking guidance on the process.",
+  "resolution_steps": [
+    "Cody confirms the accident details (deer collision damaging a truck used by Ancients).",
+    "Cody instructs German to send photos and a detailed description of the incident (time, location, extent of damage).",
+    "Cody assures German that the claim will be filed once the information is received."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance claims process for vehicle damage",
+    "Documentation requirements for accident reporting"
+  ],
+  "systems_referenced": [],
+  "summary": "German reports a truck damaged in a deer collision and seeks to file a claim with Ancients. Cody guides him to provide photos and incident details for processing. The call concludes with German agreeing to send the required information.",
+  "_model": "qwen3:14b",
+  "_eval_count": 210,
+  "_total_duration_ms": 35329,
+  "_source_file": "transcripts/exten-207-+13367556110-20251013-141718-1760379438.10780.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3121
+}

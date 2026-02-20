@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Chip wanted to confirm that his car insurance payment to Penn was successfully processed to avoid policy cancellation.",
+  "resolution_steps": [
+    "Rachel confirmed Chip had made a payment this morning.",
+    "Rachel acknowledged the payment date and stated she would check the system on Monday.",
+    "Rachel assured Chip the payment would be verified to prevent cancellation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Payment processing timelines for car insurance",
+    "System verification procedures for policy payments"
+  ],
+  "systems_referenced": [
+    "Penn (insurance carrier system)"
+  ],
+  "summary": "Chip confirmed making a car insurance payment to Penn, but the system hadn't reflected it. Rachel assured him she would verify the payment on Monday to prevent cancellation. The call concluded with both parties agreeing to follow up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 186,
+  "_total_duration_ms": 29087,
+  "_source_file": "transcripts/out-13363740199-702-20251212-134816-1765565296.3615.txt",
+  "_direction": "outbound",
+  "_char_count": 459
+}

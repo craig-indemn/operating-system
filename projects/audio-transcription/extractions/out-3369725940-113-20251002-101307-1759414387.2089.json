@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Miss Adams is inquiring about a $16 charge from National General on October 1st, which she does not see reflected in her account, and is seeking clarification on her payment schedule and billing discrepancies.",
+  "resolution_steps": [
+    "Gary confirms the October 1st payment was processed through National General for $16 but notes it is not visible in the system.",
+    "He checks the customer's payment history, confirming the last payment was $395.17 on September 22nd, which was the initial down payment for the October renewal.",
+    "Explains the remaining payments for the year are scheduled for $1,355 on the 21st of each month.",
+    "Admits the $16 charge is not visible in the system history and agrees to recheck in 1-2 days.",
+    "Offers to follow up with further details once the discrepancy is resolved."
+  ],
+  "outcome": "not_applicable",
+  "knowledge_required": [
+    "Understanding of insurance billing cycles and payment schedules",
+    "Ability to interpret payment history and carrier-specific charges",
+    "Knowledge of how delays in system updates can affect visibility of recent transactions"
+  ],
+  "systems_referenced": [
+    "Insurance agency's internal payment tracking system",
+    "Customer's bank statement (referenced indirectly)"
+  ],
+  "summary": "Miss Adams contacted Gary to clarify a $16 charge from National General and discrepancies in her payment schedule. Gary confirmed the October 1st payment but noted it was not visible in the system, explained the remaining payments for the year, and agreed to recheck the charge in 1-2 days. The call ended with a commitment to follow up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 376,
+  "_total_duration_ms": 41650,
+  "_source_file": "transcripts/out-3369725940-113-20251002-101307-1759414387.2089.txt",
+  "_direction": "outbound",
+  "_char_count": 2120
+}

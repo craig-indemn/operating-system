@@ -1,0 +1,19 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear, fragmented statement about 'getting home on it' and 'pushing back feedback' regarding insurance, possibly related to home insurance inquiry.",
+  "resolution_steps": [
+    "Agent asked if caller has existing policies",
+    "Caller responded 'No, ma'am'",
+    "Agent put caller on hold for an agent"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Fragmented and unclear conversation where caller's intent is difficult to determine. Agent placed caller on hold without resolving any specific request.",
+  "_model": "qwen3:14b",
+  "_eval_count": 134,
+  "_total_duration_ms": 30670,
+  "_source_file": "transcripts/in-+13363779003-+14347105304-20250728-150503-1753729503.12453.txt",
+  "_direction": "inbound",
+  "_char_count": 305
+}

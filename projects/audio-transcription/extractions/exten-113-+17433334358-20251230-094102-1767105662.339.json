@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Gary called to inform Betty Hill about a discrepancy in a VIN number (O5 vs. O6) related to a previous insurance change request.",
+  "resolution_steps": [
+    "Betty acknowledges the call and explains the VIN was correctly processed as an O5 (2005 model) despite initial confusion about the year model.",
+    "Clarifies that the VIN itself was accurate, but the year model (O6) was incorrect in the system.",
+    "Ensures Gary understands the documents he receives will reflect the correct VIN and year model."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of VIN number formats and their relation to vehicle year models",
+    "Insurance policy change processing workflows"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services internal policy management system"
+  ],
+  "summary": "Betty Hill resolved a confusion with Gary about a VIN number discrepancy, clarifying that the VIN was correct (O5/2005) but the year model was initially misprocessed. The issue was resolved through direct communication, ensuring Gary would not be confused by documents related to the policy change.",
+  "_model": "qwen3:14b",
+  "_eval_count": 256,
+  "_total_duration_ms": 33385,
+  "_source_file": "transcripts/exten-113-+17433334358-20251230-094102-1767105662.339.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 678
+}

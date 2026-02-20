@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Megan is seeking guidance on insuring a newly purchased food trailer and discussing future business entity setup (LLC) for proper insurance coverage.",
+  "resolution_steps": [
+    "Agent advises Megan to temporarily add the trailer to her existing Geico personal policy without detailed explanations.",
+    "Suggests waiting until her LLC is formed to implement formal business insurance policies.",
+    "Offers to schedule a meeting to discuss future insurance setup once the entity is established."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Temporary coverage for personal property additions",
+    "Process for adding trailers to personal auto policies",
+    "LLC formation and business insurance requirements",
+    "Carrier-specific procedures (Geico)"
+  ],
+  "systems_referenced": [
+    "Geico"
+  ],
+  "summary": "Agent Joe assists Megan with temporary insurance coverage for her new food trailer by adding it to her Geico personal policy. He acknowledges the need for future business insurance once her LLC is formed and agrees to schedule a meeting to discuss next steps. The conversation concludes with Megan confirming she'll review the agent's availability.",
+  "_model": "qwen3:14b",
+  "_eval_count": 245,
+  "_total_duration_ms": 39001,
+  "_source_file": "transcripts/out-13364597321-512-20260116-130421-1768586661.3277.txt",
+  "_direction": "outbound",
+  "_char_count": 1718
+}

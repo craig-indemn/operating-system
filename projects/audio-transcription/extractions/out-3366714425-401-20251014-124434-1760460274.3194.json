@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Heather Scott aimed to contact Lauren Purdue to review her homeowners insurance policy with Auto Owners and discuss bundling her auto insurance to offset a premium increase.",
+  "resolution_steps": [
+    "Heather left a voicemail message for Lauren Purdue.",
+    "She identified herself as Heather Scott from Alliance Insurance.",
+    "She explained the purpose of the call: reviewing the policy and discussing bundling options.",
+    "She provided her contact number for a callback."
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [
+    "Understanding homeowners and auto insurance policies",
+    "Knowledge of premium adjustments and bundling benefits"
+  ],
+  "systems_referenced": [
+    "Auto Owners (insurance carrier)"
+  ],
+  "summary": "Heather Scott from Alliance Insurance left a voicemail for Lauren Purdue to discuss reviewing her homeowners insurance and bundling auto insurance to reduce costs. The call was not answered, resulting in a voicemail.",
+  "_model": "qwen3:14b",
+  "_eval_count": 206,
+  "_total_duration_ms": 47137,
+  "_source_file": "transcripts/out-3366714425-401-20251014-124434-1760460274.3194.txt",
+  "_direction": "outbound",
+  "_char_count": 925
+}

@@ -1,0 +1,19 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Not applicable (pre-recorded voicemail message with no direct caller interaction)",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [
+    "SpecialtyCommission@Foremost.com",
+    "ForemostStar.com",
+    "Agency Contract Management (1800-237-6136 option one)"
+  ],
+  "summary": "Pre-recorded voicemail message directing listeners to email for Specialty Commission inquiries, access statements online, and contact Agency Contract Management for setup. Notes that Bristol West, Flood, and Formal Signature (Farmers PC) are separate entities with no system access.",
+  "_model": "qwen3:14b",
+  "_eval_count": 156,
+  "_total_duration_ms": 34950,
+  "_source_file": "transcripts/out-18777886368-104-20250724-142348-1753381428.5940.txt",
+  "_direction": "outbound",
+  "_char_count": 1099
+}

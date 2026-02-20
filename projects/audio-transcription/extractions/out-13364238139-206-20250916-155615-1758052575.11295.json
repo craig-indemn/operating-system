@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Nancy is providing banking information to complete an EFT form for a package, requiring assistance with routing numbers, bank details, and account numbers.",
+  "resolution_steps": [
+    "Agent confirmed the call is for processing an EFT form for Penn National.",
+    "Collected routing number (0531011210533) and bank name (Truist) from Nancy.",
+    "Obtained account number (1340017757414) and confirmed email address (nancyduffy@washfivestar5.com).",
+    "Informed Nancy that the EFT form would be completed and an email with a Conga Sign e-signature request sent."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "EFT form processing for Penn National",
+    "Conga Sign e-signature workflow",
+    "Banking information requirements for insurance payments"
+  ],
+  "systems_referenced": [
+    "Penn National (carrier)",
+    "Conga Sign (e-signature platform)",
+    "EFT form (internal document)"
+  ],
+  "summary": "Jeff Edmonds from Alliance Insurance Services assisted Nancy in completing an EFT form for Penn National by collecting her banking details and arranging an e-signature via Conga Sign. The agent confirmed the process would be completed and an email sent for final approval. The call concluded with Nancy agreeing to the next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 323,
+  "_total_duration_ms": 50663,
+  "_source_file": "transcripts/out-13364238139-206-20250916-155615-1758052575.11295.txt",
+  "_direction": "outbound",
+  "_char_count": 1823
+}

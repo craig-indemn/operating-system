@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is following up on a previous request to cancel an auto insurance policy with National General, as she did not receive or access a cancellation link sent by the agent during a prior call.",
+  "resolution_steps": [
+    "Agent asked for the policyholder's name (Maria) and confirmed the policy type (auto insurance with National General).",
+    "Agent checked the system and confirmed the policy had not been canceled yet.",
+    "Agent offered to connect the caller with another agent to resolve the cancellation status."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy status verification process",
+    "Cancellation procedures for National General auto insurance",
+    "Internal system navigation for policy records"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's internal policy management system"
+  ],
+  "summary": "A caller followed up on a previous auto insurance cancellation request with National General. The agent confirmed the policy was still active and arranged for another agent to assist with the cancellation process. The call ended with the agent offering to connect the caller to a specialist.",
+  "_model": "qwen3:14b",
+  "_eval_count": 243,
+  "_total_duration_ms": 37401,
+  "_source_file": "transcripts/in-+13363779003-+13369799585-20250826-111704-1756221424.2010.txt",
+  "_direction": "inbound",
+  "_char_count": 635
+}

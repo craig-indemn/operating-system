@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Brandi is assisting Mackenzie in finalizing renters' insurance for Joe, ensuring understanding of policy details, coverage amounts, and payment preferences.",
+  "resolution_steps": [
+    "Brandi explains renters' policy components (personal property, additional living expenses, liability, medical payments).",
+    "Discusses coverage limits (e.g., $50,000 for personal property, $10,000 for additional living expenses, $500,000 liability minimum).",
+    "Clarifies deductible ($500 for claims) and payment options (full annual payment vs. monthly auto-pay).",
+    "Confirms Mackenzie's preference for monthly payments due to existing insurance obligations.",
+    "Informs Mackenzie about next steps: sending proof of insurance, application email, and auto-owners portal setup for payments."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Renters' insurance policy structure (coverage types, limits, deductibles).",
+    "Payment structures (annual vs. monthly) and their financial implications.",
+    "Landlord requirements (e.g., $100,000 liability minimum)."
+  ],
+  "systems_referenced": [
+    "Auto Owners portal (for payment setup).",
+    "Email system (for sending application and policy documents)."
+  ],
+  "summary": "Brandi, an Alliance Insurance agent, guides Mackenzie through renters' insurance details for Joe, explaining coverage options, liability requirements, and payment methods. Mackenzie opts for monthly payments, and Brandi commits to sending proof of insurance and application materials via email. The call concludes with next steps for policy activation and payment setup.",
+  "_model": "qwen3:14b",
+  "_eval_count": 368,
+  "_total_duration_ms": 46552,
+  "_source_file": "transcripts/out-2514024229-112-20251204-160212-1764882132.8287.txt",
+  "_direction": "outbound",
+  "_char_count": 4513
+}

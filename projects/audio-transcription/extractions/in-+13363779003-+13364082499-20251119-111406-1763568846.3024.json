@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Allison Coward, is following up on a previous interaction with an agent named Morgan regarding her Medicare plan and is requesting Morgan's email address for future communication.",
+  "resolution_steps": [
+    "Agent confirmed the caller's previous interaction with Morgan.",
+    "Agent retrieved and provided Morgan's email address: 'Morgan@allianceinsurance.com' (with phonetic spelling guidance)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Access to previous customer interactions (specifically with Morgan)",
+    "Ability to retrieve agent contact information from internal systems"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal CRM/database (for storing agent contact details)",
+    "Alliance Insurance website (email domain reference)"
+  ],
+  "summary": "Allison Coward followed up on a previous Medicare-related consultation with agent Morgan, requesting her email. The agent retrieved and provided Morgan's email address from internal records. The call concluded with the caller expressing gratitude and ending the conversation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 230,
+  "_total_duration_ms": 31610,
+  "_source_file": "transcripts/in-+13363779003-+13364082499-20251119-111406-1763568846.3024.txt",
+  "_direction": "inbound",
+  "_char_count": 824
+}

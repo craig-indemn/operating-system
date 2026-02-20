@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Agent Holly left a voicemail to follow up on a question regarding the 24-volt flagon on the caller's auto policy renewal.",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A voicemail was left by Holly from Alliance Insurance to follow up on a question about the 24-volt flagon on an auto policy renewal. The transcript is incomplete and does not include a substantive conversation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 122,
+  "_total_duration_ms": 60509,
+  "_source_file": "transcripts/out-3364484655-504-20250924-110527-1758726327.1242.txt",
+  "_direction": "outbound",
+  "_char_count": 493
+}

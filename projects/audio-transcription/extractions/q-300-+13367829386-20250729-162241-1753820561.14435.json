@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Heather, a client of Alliance Insurance Services, seeks a new car insurance quote for a 2025 Mazda CX5 she is purchasing, while trading in her current 2015 Nissan Altima. She also inquires about potential rates for a Toyota RAV4.",
+  "resolution_steps": [
+    "Agent verifies Heather's identity and current policy details (2015 Nissan Altima).",
+    "Agent requests VIN for the new Mazda CX5, which Heather provides via her daughter.",
+    "Agent generates a quote showing a $13.62 monthly decrease due to the Mazda's lower repair costs compared to the Nissan.",
+    "Heather asks about Toyota RAV4 rates; agent estimates similar costs to the Mazda.",
+    "Agent confirms Heather will follow up once she decides on a vehicle and saves the quote for 30 days."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding vehicle insurance rate differentials based on make/model (e.g., Nissan vs. Mazda).",
+    "Process for obtaining and using VIN numbers for policy updates.",
+    "Handling client requests for quotes on new vehicles while managing trade-ins."
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services' internal quoting system"
+  ],
+  "summary": "Heather requested a new car insurance quote for a Mazda CX5, with the agent providing a rate comparison to her current Nissan Altima policy. The agent also discussed potential rates for a Toyota RAV4 and saved the quote for 30 days. Heather will follow up once she finalizes her vehicle choice.",
+  "_model": "qwen3:14b",
+  "_eval_count": 354,
+  "_total_duration_ms": 46218,
+  "_source_file": "transcripts/q-300-+13367829386-20250729-162241-1753820561.14435.txt",
+  "_direction": "queue",
+  "_char_count": 3772
+}

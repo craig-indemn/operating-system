@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is inquiring about coverage for damages caused by a fallen tree limb that disrupted power lines, leading to electrical surges and appliance damage (refrigerator, humidifier, and electrical issues in two rooms).",
+  "resolution_steps": [
+    "Agent acknowledged the caller's issue with the tree limb damaging power lines and causing appliance failures.",
+    "Agent offered to transfer the caller to an agent for further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance coverage for electrical damage and tree-related incidents",
+    "Process for transferring calls to specialized agents"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller reported damage from a fallen tree limb that caused power line disruptions and electrical surges, leading to appliance failures. The agent acknowledged the issue and offered to transfer the caller to an agent for further assistance, but the call ended before resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 208,
+  "_total_duration_ms": 33841,
+  "_source_file": "transcripts/in-+13363779003-+13364033546-20250926-131639-1758906999.2505.txt",
+  "_direction": "inbound",
+  "_char_count": 721
+}

@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "John is seeking clarification on the status of an insurance audit, the accuracy of reported numbers, and the financial implications of completing the audit. He also wants to confirm if his insurance coverage remains valid.",
+  "resolution_steps": [
+    "Agent (Jessica) listened to John's concerns about the audit status and discrepancies in numbers.",
+    "Explained that the audit was not completed despite online indications and advised waiting for the underwriter's response.",
+    "Clarified the financial impact of audit numbers, noting potential higher bills if reported numbers are lower than actual values.",
+    "Reviewed the recent bill breakdown (audit cost and monthly premium) to confirm coverage validity.",
+    "Offered to assist with future insurance needs for John's contractors or subcontractors."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance audit processes and terminology",
+    "Billing implications of audit discrepancies",
+    "Communication with underwriters and auditors",
+    "Policy coverage validation"
+  ],
+  "systems_referenced": [
+    "Email communication with auditor (Bill)",
+    "Underwriter consultation process"
+  ],
+  "summary": "John discussed an unresolved insurance audit with Jessica, seeking clarity on the audit status, number discrepancies, and coverage validity. Jessica explained the situation, advised on potential financial impacts, and confirmed coverage remained active. John opted to defer further action on the audit but agreed to follow up with the underwriter. The conversation concluded with mutual appreciation and a referral for future insurance needs.",
+  "_model": "qwen3:14b",
+  "_eval_count": 319,
+  "_total_duration_ms": 57249,
+  "_source_file": "transcripts/exten-106-+13362311126-20250924-132646-1758734806.4754.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3580
+}

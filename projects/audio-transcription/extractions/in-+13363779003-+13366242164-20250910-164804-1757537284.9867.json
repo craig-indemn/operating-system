@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to confirm whether their home insurance coverage is active after receiving a letter from their mortgage company indicating no insurance was on file, despite believing it was resolved two months ago.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's concern and confirms the need to verify policy details.",
+    "Agent offers to transfer the caller to a specialist for further review."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding how to check policy status and coverage details",
+    "Process for resolving discrepancies between carrier records and customer expectations"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance policy management system"
+  ],
+  "summary": "Caller contacted Alliance Insurance to verify home insurance coverage after receiving conflicting information from their mortgage company. The agent recognized the need for a detailed policy review and initiated a transfer to a specialist for resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 195,
+  "_total_duration_ms": 20370,
+  "_source_file": "transcripts/in-+13363779003-+13366242164-20250910-164804-1757537284.9867.txt",
+  "_direction": "inbound",
+  "_char_count": 447
+}

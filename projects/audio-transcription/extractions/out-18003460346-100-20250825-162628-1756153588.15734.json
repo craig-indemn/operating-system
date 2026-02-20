@@ -1,0 +1,34 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Ashley from Alliance Insurance Services seeks to set up a life insurance policy on EFT for her client, Jacqueline Gordon, and update her banking information for the policy.",
+  "resolution_steps": [
+    "Agent confirmed the policy number (1010681110) and client name (Jacqueline Gordon).",
+    "Agent requested the agency code (15039400) and verified the last four digits of the account number (8246).",
+    "Agent offered to email the form required to update banking information.",
+    "Ashley provided her email address (ashley.psm@allianceinsurance.com) for the form.",
+    "Agent agreed to place a stop payment on the existing August payment until the new form is submitted.",
+    "Agent confirmed the client would sign the form in person and use DocuSign for electronic submission.",
+    "Agent instructed to send the form to the Life PHS email address for processing."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "EFT policy setup procedures",
+    "Banking information update workflows",
+    "Form retrieval and submission processes",
+    "Stop payment protocols for pending payments",
+    "Electronic signature integration (DocuSign)"
+  ],
+  "systems_referenced": [
+    "Auto Owners Insurance policy management system",
+    "Email communication for form distribution",
+    "DocuSign for electronic signatures",
+    "Life PHS (Life Policy Holder Services) processing team"
+  ],
+  "summary": "Ashley from Alliance Insurance Services collaborated with Auto Owners Insurance to set up a life policy EFT for Jacqueline Gordon and update her banking details. The agent facilitated form submission via email, placed a temporary stop on the existing payment, and confirmed electronic signature workflows. The client will sign the form in person, and the processing team will handle the update once the signed form is received.",
+  "_model": "qwen3:14b",
+  "_eval_count": 406,
+  "_total_duration_ms": 54956,
+  "_source_file": "transcripts/out-18003460346-100-20250825-162628-1756153588.15734.txt",
+  "_direction": "outbound",
+  "_char_count": 3526
+}

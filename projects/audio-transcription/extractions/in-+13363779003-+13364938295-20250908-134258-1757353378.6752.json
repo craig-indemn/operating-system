@@ -1,0 +1,19 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller wanted to remove a car from their insurance policy but did not provide specific details about the policy or vehicle.",
+  "resolution_steps": [
+    "Agent acknowledged the request",
+    "Caller asked to be connected to an agent",
+    "Call was placed on hold without further action"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The caller initiated a request to remove a vehicle from their insurance but the conversation was cut short when the agent placed the call on hold. No resolution was achieved, and the caller was not connected to an agent.",
+  "_model": "qwen3:14b",
+  "_eval_count": 143,
+  "_total_duration_ms": 30748,
+  "_source_file": "transcripts/in-+13363779003-+13364938295-20250908-134258-1757353378.6752.txt",
+  "_direction": "inbound",
+  "_char_count": 244
+}

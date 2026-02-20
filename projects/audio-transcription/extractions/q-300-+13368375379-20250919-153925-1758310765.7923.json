@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Miguel Molina wants to cancel his home insurance with Polisacu because he found a cheaper alternative and needs assistance with the cancellation process to avoid coverage gaps.",
+  "resolution_steps": [
+    "Tracy verifies Miguel's identity and confirms his intent to cancel.",
+    "Tracy checks the policy details, noting the current policy ends on September 21st but Miguel expects coverage until September 30th.",
+    "Tracy explains the auto-pay system and the potential financial implications of canceling mid-policy.",
+    "Tracy advises Miguel to coordinate with the new insurer to confirm the new policy's effective date to prevent coverage lapses.",
+    "Miguel agrees to cancel the Polisacu policy on Sunday at 12:01 a.m., with Tracy handling the auto-pay adjustment."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of insurance policy terms (effective dates, auto-pay systems, cancellation procedures).",
+    "Ability to explain how coverage periods align with home purchase timelines and lender requirements."
+  ],
+  "systems_referenced": [
+    "Polisacu account",
+    "Auto-pay system"
+  ],
+  "summary": "Miguel sought to cancel his home insurance with Polisacu due to a cheaper alternative. Tracy clarified the policy's end date discrepancy, explained auto-pay implications, and coordinated with Miguel to cancel the policy on Sunday at 12:01 a.m. to avoid coverage gaps. The resolution involved ensuring alignment between the new policy's effective date and the cancellation date.",
+  "_model": "qwen3:14b",
+  "_eval_count": 336,
+  "_total_duration_ms": 43003,
+  "_source_file": "transcripts/q-300-+13368375379-20250919-153925-1758310765.7923.txt",
+  "_direction": "queue",
+  "_char_count": 3874
+}

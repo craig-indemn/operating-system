@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is concerned about a significant increase in their homeowner's insurance premium ($1600 vs. the state-mandated rate of $975) and seeks clarification on the discrepancy and potential cost-reduction strategies.",
+  "resolution_steps": [
+    "Agent explains that the state sets a minimum rate ($975) but insurers charge more due to inflation and increased rebuilding costs post-COVID.",
+    "Agent acknowledges the caller's frustration with rising premiums and mortgage payments.",
+    "Agent suggests increasing the deductible (caller mentions raising theirs from $1,000 to $2,500) as a potential cost-reduction measure.",
+    "Agent notes that shopping around with other insurers may yield better rates but emphasizes that costs depend on location and risk factors (e.g., coastal areas)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of state-mandated insurance rate structures",
+    "Impact of inflation and construction costs on insurance premiums",
+    "Deductible adjustment strategies for policyholders",
+    "Regional risk factors affecting insurance costs (e.g., coastal vs. inland areas)"
+  ],
+  "systems_referenced": [
+    "State insurance rate documentation",
+    "Policyholder's current insurance policy details"
+  ],
+  "summary": "The caller expressed frustration over a $1600 homeowner's insurance premium, far above the state's $975 minimum rate. The agent explained that insurers charge more due to inflation, rebuilding costs, and regional risk factors. The caller was advised to consider increasing deductibles and shopping around with other insurers, though the agent deferred further details to a follow-up call.",
+  "_model": "qwen3:14b",
+  "_eval_count": 363,
+  "_total_duration_ms": 46682,
+  "_source_file": "transcripts/out-13368146641-207-20251209-161647-1765315007.7487.txt",
+  "_direction": "outbound",
+  "_char_count": 4390
+}

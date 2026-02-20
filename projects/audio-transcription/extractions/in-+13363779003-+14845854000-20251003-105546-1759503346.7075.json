@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller attempted to reach Jessica Hernandez at Alliance Insurance Services.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief inbound call where the caller inquired about Jessica Hernandez's availability. The agent responded with a transfer message, but the conversation was too short to determine further action or resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 100,
+  "_total_duration_ms": 25728,
+  "_source_file": "transcripts/in-+13363779003-+14845854000-20251003-105546-1759503346.7075.txt",
+  "_direction": "inbound",
+  "_char_count": 109
+}

@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "JC left a voicemail for Mar\u00eda, requesting a callback to open an insurance policy with Jasmine, emphasizing urgency due to a 5 PM closing deadline.",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A voicemail message from JC to Mar\u00eda, requesting a callback to finalize an insurance policy with Jasmine. The caller emphasized urgency due to a closing deadline and offered to reschedule if necessary.",
+  "_model": "qwen3:14b",
+  "_eval_count": 117,
+  "_total_duration_ms": 32687,
+  "_source_file": "transcripts/out-13367490450-114-20250728-164146-1753735306.15372.txt",
+  "_direction": "outbound",
+  "_char_count": 749
+}

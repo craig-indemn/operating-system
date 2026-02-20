@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Sylvia is seeking clarification about a refund discrepancy for her auto insurance policy after removing a vehicle, believing she should receive a larger refund than the $97.19 credited.",
+  "resolution_steps": [
+    "Heather confirms the refund amount of $97.19 was calculated based on the policy change when the vehicle was removed.",
+    "Heather explains that removing the vehicle triggered a premium adjustment due to the loss of the multi-vehicle discount.",
+    "Heather clarifies that the refund reflects the remaining premium after the policy change, not the full initial payment.",
+    "Heather provides details about future installments and acknowledges Sylvia's confusion about the calculation."
+  ],
+  "outcome": "spam",
+  "knowledge_required": [
+    "Auto insurance premium calculations",
+    "Impact of removing vehicles on multi-vehicle discounts",
+    "Refund processes for policy changes"
+  ],
+  "systems_referenced": [
+    "Billing details system",
+    "Policy statement portal"
+  ],
+  "summary": "Sylvia disputes a $97.19 refund for removing her Toyota from her auto policy, expecting a larger refund. Heather explains the refund was calculated based on the remaining premium after the policy change, emphasizing the loss of the multi-vehicle discount. Sylvia remains confused but acknowledges the explanation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 289,
+  "_total_duration_ms": 39641,
+  "_source_file": "transcripts/exten-401-+13368137946-20251014-091856-1760447936.117.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4138
+}

@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Monte Dickover) is informing the client that a colleague, Jeff Edmonds, will handle a renewal and confirming whether sending a copy via the client's mailbox is acceptable.",
+  "resolution_steps": [
+    "Monte Dickover mentions Jeff Edmonds will bring up the renewal.",
+    "Asks the client if sending a copy via mailbox is acceptable.",
+    "Client agrees to receiving the renewal via mailbox."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of renewal processes",
+    "Client communication preferences (mailbox delivery)"
+  ],
+  "systems_referenced": [],
+  "summary": "Monte Dickover from Alliance Insurance informs the client that Jeff Edmonds will handle a renewal and confirms mailbox delivery is acceptable. The client agrees, and the agent will follow up with Jeff Edmonds to proceed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 195,
+  "_total_duration_ms": 35151,
+  "_source_file": "transcripts/out-3368169086-101-20250923-161951-1758658791.6238.txt",
+  "_direction": "outbound",
+  "_char_count": 613
+}

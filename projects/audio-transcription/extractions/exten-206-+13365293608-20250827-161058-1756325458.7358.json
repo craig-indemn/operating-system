@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Carlos is seeking assistance to reinstate a canceled insurance policy after a payment dispute with his mortgage company (P H H) and Westfield. He needs guidance on next steps involving the underwriter and payment process.",
+  "resolution_steps": [
+    "Jeff confirms the need to contact Westfield's underwriter for policy reinstatement approval.",
+    "Jeff clarifies that P H H has documented the conversation and will relay details to the underwriter.",
+    "Jeff explains the policy's semi-annual payment structure and the confusion around switching to monthly payments.",
+    "Jeff outlines the next steps: contacting Westfield for approval, then coordinating payment with P H H."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy reinstatement procedures for canceled insurance",
+    "Communication protocols between mortgage companies and insurers",
+    "Understanding of semi-annual vs. monthly payment structures in insurance"
+  ],
+  "systems_referenced": [
+    "Westfield (insurance provider)",
+    "P H H (mortgage company)",
+    "Underwriter systems",
+    "Policy management databases"
+  ],
+  "summary": "Carlos discusses a canceled insurance policy with his agent Jeff, explaining that P H H (his mortgage company) attempted to resolve a payment issue but required underwriter approval for reinstatement. Jeff clarifies the policy's payment structure and outlines steps to contact Westfield for approval and coordinate payments. The call concludes with next steps pending underwriter action.",
+  "_model": "qwen3:14b",
+  "_eval_count": 317,
+  "_total_duration_ms": 56148,
+  "_source_file": "transcripts/exten-206-+13365293608-20250827-161058-1756325458.7358.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4285
+}

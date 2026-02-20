@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Chelsea is seeking clarification about a homeowner's insurance policy under an LLC (Pintail Properties of King LLC) to determine if it is on auto draft and whether payment responsibility lies with her office or the accountant.",
+  "resolution_steps": [
+    "Heather acknowledges the call and confirms the policy details (LLC name).",
+    "Heather places the caller on hold to check the policy's auto draft status and payment history.",
+    "Heather provides hold music and a voicemail message with additional contact options (portal, texting)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding how to check policy details (auto draft status, payment history) in the agency's system.",
+    "Knowledge of typical insurance policy management workflows for LLC-owned properties."
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services internal policy management system"
+  ],
+  "summary": "Chelsea from Doctor Edward Bell's office contacted Alliance Insurance Services to clarify whether a homeowner's insurance policy under Pintail Properties of King LLC is on auto draft and who is responsible for payment. The agent placed the call on hold to verify policy details, with a follow-up expected.",
+  "_model": "qwen3:14b",
+  "_eval_count": 260,
+  "_total_duration_ms": 39632,
+  "_source_file": "transcripts/q-300-+13369832176-20250908-141421-1757355261.7378.txt",
+  "_direction": "queue",
+  "_char_count": 1942
+}

@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to inquire about the status of a refund check for a policy under their account (number 100717077) with Federal Haco Martinez.",
+  "resolution_steps": [
+    "Agent JC Dominguez verified the caller's account number and agency code (15039400).",
+    "JC confirmed the refund check was in processing and typically takes 30 days but could be expedited.",
+    "JC checked the status and informed the caller the check would be sent on Monday."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Refund processing timelines for Auto Owners Insurance",
+    "Account verification procedures for billing inquiries",
+    "Understanding of agency codes and policyholder information"
+  ],
+  "systems_referenced": [
+    "Auto Owners Insurance billing system",
+    "Auto Owners Insurance online portal (auto-owners.com)"
+  ],
+  "summary": "An Alliance Insurance agent assisted a caller inquiring about a refund check for a Federal Haco Martinez policy. After verifying account details, the agent confirmed the check would be sent on Monday. The call resolved the customer's query about refund timing.",
+  "_model": "qwen3:14b",
+  "_eval_count": 259,
+  "_total_duration_ms": 44248,
+  "_source_file": "transcripts/out-8002888740-114-20251212-131547-1765563347.2298.txt",
+  "_direction": "outbound",
+  "_char_count": 1777
+}

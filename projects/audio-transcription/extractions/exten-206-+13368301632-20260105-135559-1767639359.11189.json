@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Oscar) wanted to confirm whether the FS1 for a 2025 Ford was processed electronically, as the DMV claimed they had not received it.",
+  "resolution_steps": [
+    "Jeff Edmonds checked his email and found confirmation that the FS1 was processed electronically with an effective date of November 3.",
+    "Jeff confirmed the email details with the caller and planned to contact Oscar directly to inform him of the confirmation."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of FS1 processing workflows",
+    "Knowledge of DMV procedures for document verification",
+    "Ability to access and reference electronic processing confirmations via email"
+  ],
+  "systems_referenced": [
+    "email"
+  ],
+  "summary": "Jeff Edmonds confirmed with the caller that the FS1 was processed electronically and planned to follow up directly with Oscar to resolve the DMV discrepancy. The call concluded with a resolution and a commitment to further communication.",
+  "_model": "qwen3:14b",
+  "_eval_count": 217,
+  "_total_duration_ms": 47472,
+  "_source_file": "transcripts/exten-206-+13368301632-20260105-135559-1767639359.11189.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 914
+}

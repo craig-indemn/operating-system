@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Angie) seeks assistance after being dropped by her insurance carrier and denied coverage by Homesite due to her credit score, requesting a quote from Alliance Insurance.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's situation and confirms the need for a quote.",
+    "Agent requests a moment to transfer the call to a specialist for further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Handling high-risk clients with credit score issues",
+    "Understanding carrier referral processes",
+    "Providing alternative insurance options"
+  ],
+  "systems_referenced": [],
+  "summary": "Angie was dropped by her insurance carrier and referred to Homesite, which denied coverage due to her credit score. She requested a quote from Alliance Insurance, and the agent is transferring her to a specialist to address her needs.",
+  "_model": "qwen3:14b",
+  "_eval_count": 195,
+  "_total_duration_ms": 34062,
+  "_source_file": "transcripts/in-+13363779003-+17048193353-20250903-151824-1756927104.9215.txt",
+  "_direction": "inbound",
+  "_char_count": 496
+}

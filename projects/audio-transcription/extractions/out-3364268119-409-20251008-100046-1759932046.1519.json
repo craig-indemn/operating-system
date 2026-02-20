@@ -1,0 +1,32 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Austin is seeking a home insurance quote for a new property he is purchasing, providing details about the home's structure, HOA responsibilities, loan information, and personal context (e.g., moving due to a problematic neighbor).",
+  "resolution_steps": [
+    "Agent gathers details about the home's type (cluster home with separate building), HOA responsibilities (roof, exterior), and loan structure (both names on title).",
+    "Discusses credit scores (735 and 775) and their impact on rates.",
+    "Notes home specifics: 1,300 sq ft, 3 beds, 2 baths, vinyl and brick exterior, heat pump, gas fireplace, 2-car garage, and escrow payments.",
+    "Mentions need for tree trimming and potential insurance inspection requirements.",
+    "Suggests self-inspection for the client to expedite the process.",
+    "Notes mortgage company (Canopy Mortgage) and confirms escrow arrangements."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Home insurance policy details (HOA responsibilities, coverage for roof/exteriors, inspection requirements).",
+    "Credit score impact on insurance rates.",
+    "Mortgage escrow processes and lender partnerships.",
+    "Home inspection procedures (self-inspection vs. professional)."
+  ],
+  "systems_referenced": [
+    "Canopy Mortgage (lender)",
+    "HOA (Homeowners Association)",
+    "Insurance carrier systems for quote generation",
+    "Self-inspection tools/applications"
+  ],
+  "summary": "Austin is purchasing a new home and seeking a home insurance quote. The agent collects detailed property information, loan structure, and personal context (e.g., HOA responsibilities, credit scores, and neighbor issues). The agent suggests a self-inspection to expedite the process and notes the involvement of Canopy Mortgage. The call concludes with the agent preparing a quote once all details are confirmed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 422,
+  "_total_duration_ms": 66130,
+  "_source_file": "transcripts/out-3364268119-409-20251008-100046-1759932046.1519.txt",
+  "_direction": "outbound",
+  "_char_count": 7967
+}

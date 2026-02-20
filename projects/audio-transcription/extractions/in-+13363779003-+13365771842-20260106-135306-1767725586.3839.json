@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; transcript is fragmented and lacks context about the caller's purpose.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The transcript is incomplete and lacks meaningful conversation details. The caller mentions 'Jessica' but no clear intent or resolution is evident. The call appears to have been interrupted or disconnected.",
+  "_model": "qwen3:14b",
+  "_eval_count": 103,
+  "_total_duration_ms": 26890,
+  "_source_file": "transcripts/in-+13363779003-+13365771842-20260106-135306-1767725586.3839.txt",
+  "_direction": "inbound",
+  "_char_count": 167
+}

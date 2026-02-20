@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Mr. Raber is seeking clarification about an email indicating his golf cart insurance payment was processed, but he is concerned about a potential duplicate charge and wants assurance it will not occur.",
+  "resolution_steps": [
+    "Gary acknowledges the confusion and confirms the email refers to the golf cart, not the motorcycle.",
+    "Gary assures Mr. Raber that the pending charge can be stopped and advises him to verify it after the call.",
+    "Gary notes the carrier's processing delay (expected to take a week) and commits to updating Mr. Raber once resolved."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of carrier payment processing timelines",
+    "Ability to halt recurring charges",
+    "Familiarity with email communication from carriers"
+  ],
+  "systems_referenced": [
+    "Carrier's payment processing system",
+    "Email communication from carrier"
+  ],
+  "summary": "Mr. Raber is concerned about a potential duplicate charge for his golf cart insurance after receiving a confusing email. Gary reassures him the charge can be stopped, explains the carrier's processing delay, and commits to follow-up once resolved. The call ends with Mr. Raber satisfied with the plan to monitor the status.",
+  "_model": "qwen3:14b",
+  "_eval_count": 274,
+  "_total_duration_ms": 40062,
+  "_source_file": "transcripts/exten-113-+13369246872-20251114-122639-1763141199.5046.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1136
+}

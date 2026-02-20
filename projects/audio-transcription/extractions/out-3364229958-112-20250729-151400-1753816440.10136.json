@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Jelica) is seeking assistance with renewing a home insurance policy, clarifying the roof's installation year, and exploring potential bundling options with auto insurance to secure better rates.",
+  "resolution_steps": [
+    "Agent Brandy confirms the policy renewal date and notes the August renewal deadline.",
+    "Discusses roof year confusion (2006 vs. 2016) and clarifies with the caller that the roof was installed in 2006 but replaced in 2022.",
+    "Requests documentation (receipts/invoices) from the roofing company to verify the 2022 roof replacement for rate adjustments.",
+    "Promises to send a home insurance quote by Thursday, contingent on receiving the roof proof.",
+    "Mentions potential bundling of home and auto insurance for additional savings."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Home insurance policy renewal processes",
+    "Impact of roof age on insurance rates",
+    "Bundling strategies for home and auto policies",
+    "Documentation requirements for property upgrades"
+  ],
+  "systems_referenced": [
+    "Internal policy declarations page",
+    "Zillow (for property visual assessment)",
+    "Email communication for quote delivery"
+  ],
+  "summary": "Brandy from Alliance Insurance follows up on a home insurance renewal, clarifies roof installation dates, and requests proof of a 2022 roof replacement to secure better rates. She will send a quote by Thursday once documentation is provided, with potential bundling options discussed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 344,
+  "_total_duration_ms": 50042,
+  "_source_file": "transcripts/out-3364229958-112-20250729-151400-1753816440.10136.txt",
+  "_direction": "outbound",
+  "_char_count": 3807
+}

@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with Tracy from Alliance Insurance Services",
+  "resolution_steps": [
+    "Agent confirmed Tracy was available",
+    "Agent offered to transfer the call"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller requested to speak with Tracy. Agent confirmed availability and initiated transfer. No substantive discussion occurred beyond the transfer request.",
+  "_model": "qwen3:14b",
+  "_eval_count": 105,
+  "_total_duration_ms": 22577,
+  "_source_file": "transcripts/in-+13363779003-+13364354002-20251113-154856-1763066936.7652.txt",
+  "_direction": "inbound",
+  "_char_count": 425
+}

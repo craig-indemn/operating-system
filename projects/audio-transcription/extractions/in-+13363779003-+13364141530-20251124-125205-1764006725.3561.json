@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Brian Seymour wanted to speak to an insurance agent.",
+  "resolution_steps": [
+    "Agent acknowledged the caller and said 'one second, please' (likely preparing to transfer or assist)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Short inbound call where caller requested to speak to an agent. Agent responded briefly, but no further details or resolution were provided in the transcript.",
+  "_model": "qwen3:14b",
+  "_eval_count": 112,
+  "_total_duration_ms": 23601,
+  "_source_file": "transcripts/in-+13363779003-+13364141530-20251124-125205-1764006725.3561.txt",
+  "_direction": "inbound",
+  "_char_count": 147
+}

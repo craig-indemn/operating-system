@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Michelle Williams is following up on insurance quotes for a property at 3113 Allen Court, seeking confirmation on their status and requesting clarification about the carriers being considered.",
+  "resolution_steps": [
+    "Heather acknowledges Michelle's follow-up and confirms the quotes are being verified by a team.",
+    "Heather discusses the carriers being considered (Cincinnati, Auto Owners, Travelers, Liberty Mutual, Pam National) and their reputations.",
+    "Heather offers to provide literature or suggest online resources for carrier information.",
+    "Heather sets a timeline for returning the quotes (by the next day if not today).",
+    "Heather expresses condolences for Michelle's family loss and maintains empathetic communication."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Carrier-specific information (e.g., AM Best ratings, coverage lines, and recognition)",
+    "Handling sensitive client situations (e.g., expressing condolences)",
+    "Insurance quoting process and timelines"
+  ],
+  "systems_referenced": [
+    "Cincinnati Insurance",
+    "Auto Owners Insurance",
+    "Travelers Insurance",
+    "Liberty Mutual",
+    "Pam National Insurance"
+  ],
+  "summary": "Michelle follows up on insurance quotes for a property, and Heather confirms the status, discusses carrier options, and sets a delivery timeline. The conversation includes empathetic support for Michelle's recent family loss. Key carriers mentioned include Cincinnati, Auto Owners, and others.",
+  "_model": "qwen3:14b",
+  "_eval_count": 319,
+  "_total_duration_ms": 49414,
+  "_source_file": "transcripts/exten-401-+19172394582-20250828-133018-1756402218.5107.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2531
+}

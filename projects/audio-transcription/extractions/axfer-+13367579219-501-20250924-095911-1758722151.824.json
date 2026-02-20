@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Francisco is following up on a resolved insurance claim and seeking clarification about policy details, specifically regarding household members (Juan and Stephanie) listed on his policy and potential liability if Juan has an accident.",
+  "resolution_steps": [
+    "Agent Jamie confirmed the claim was processed and acknowledged the uploaded documents.",
+    "Explained that Juan and Stephanie are listed as household members but not drivers, with no premium charges.",
+    "Noted that their 'other insurance' status could cause claim rejections if Juan drives and has an accident.",
+    "Informed Francisco about upcoming payments and the option to remove Juan/Stephanie with proof of separate residence.",
+    "Addressed liability concerns, clarifying that the policy does not cover Juan's potential accidents but emphasized public data visibility.",
+    "Offered to email a policy screenshot for reference."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance claim processing workflows",
+    "Policyholder rights and liability implications",
+    "Nat Gen system navigation for policy verification",
+    "Documentation requirements for removing household members"
+  ],
+  "systems_referenced": [
+    "Nat Gen insurance system",
+    "Policyholder database"
+  ],
+  "summary": "Jamie resolved Francisco's follow-up on a completed claim, clarified policy details about household members, and addressed liability concerns. The agent explained that while the policy is current, Juan's 'other insurance' status could cause claim rejections if he drives. Francisco was informed about payment schedules and options to remove household members with proper documentation. The call ended with an offer to email policy details.",
+  "_model": "qwen3:14b",
+  "_eval_count": 344,
+  "_total_duration_ms": 44655,
+  "_source_file": "transcripts/axfer-+13367579219-501-20250924-095911-1758722151.824.txt",
+  "_direction": "attended_transfer",
+  "_char_count": 4481
+}

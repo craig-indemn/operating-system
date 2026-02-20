@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Rosalia is contacting Alliance Insurance regarding a call she received about her mother-in-law Juliana Romero's accident case and needs assistance with the insurance claim.",
+  "resolution_steps": [
+    "Agent acknowledges the call and asks for clarification.",
+    "Rosalia explains the call is about her mother-in-law's accident case.",
+    "Agent offers to transfer her to a Spanish-speaking representative.",
+    "Rosalia agrees to the transfer."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance claims process",
+    "Ability to transfer calls to language-specific representatives"
+  ],
+  "systems_referenced": [],
+  "summary": "Rosalia called Alliance Insurance regarding a claim related to her mother-in-law's accident. The agent offered to transfer her to a Spanish-speaking representative to address the case, resulting in a pending callback.",
+  "_model": "qwen3:14b",
+  "_eval_count": 195,
+  "_total_duration_ms": 30768,
+  "_source_file": "transcripts/in-+13363779003-+13367457559-20250811-131606-1754932566.9700.txt",
+  "_direction": "inbound",
+  "_char_count": 648
+}

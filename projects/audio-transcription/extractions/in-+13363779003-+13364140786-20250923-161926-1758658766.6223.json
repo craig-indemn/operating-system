@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Emily Boyd requested a PDF copy of her active homeowner's insurance policy to apply for an unspecified process (likely a typo or mispronunciation, e.g., 'Home Walk').",
+  "resolution_steps": [
+    "Agent acknowledged the request and offered to transfer the caller to an agent who could assist."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller requested a policy PDF but was only transferred to another agent. The call was too brief to determine if the issue was resolved.",
+  "_model": "qwen3:14b",
+  "_eval_count": 133,
+  "_total_duration_ms": 58932,
+  "_source_file": "transcripts/in-+13363779003-+13364140786-20250923-161926-1758658766.6223.txt",
+  "_direction": "inbound",
+  "_char_count": 420
+}

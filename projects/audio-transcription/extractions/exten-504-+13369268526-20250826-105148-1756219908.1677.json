@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Brando wants to reinstate a canceled homeowner's policy and check eligibility with underwriting.",
+  "resolution_steps": [
+    "Holly confirms she has emailed underwriting to check if the policy is eligible for reinstatement.",
+    "Holly states she is waiting for underwriting's response before proceeding.",
+    "Holly promises to call back with next steps once underwriting replies (expected today or tomorrow)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy reinstatement procedures",
+    "Underwriting eligibility criteria",
+    "Communication with underwriting department"
+  ],
+  "systems_referenced": [
+    "Underwriting email system"
+  ],
+  "summary": "Brando contacted Holly about reinstating a canceled homeowner's policy. Holly has initiated contact with underwriting to check eligibility and will follow up once she receives a response. The outcome depends on underwriting's determination of reinstatement eligibility.",
+  "_model": "qwen3:14b",
+  "_eval_count": 210,
+  "_total_duration_ms": 26445,
+  "_source_file": "transcripts/exten-504-+13369268526-20250826-105148-1756219908.1677.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 720
+}

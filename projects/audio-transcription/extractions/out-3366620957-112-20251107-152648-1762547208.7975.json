@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Brandy from Alliance Insurance is requesting documentation confirming the payment and closure status of claim number 30005217112025, as previous attempts to contact the adjuster (Garrett Graybill) were unsuccessful.",
+  "resolution_steps": [
+    "Agent attempted to transfer Brandy to the adjuster (Garrett Graybill) handling the claim.",
+    "When the adjuster was unavailable, Brandy left a voicemail message with her contact number (336-377-9003) and email (Brandy@myallianceinsurance.com) to request the document.",
+    "Agent confirmed receipt of the message and provided options for callback or email."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Claim processing procedures",
+    "Handling customer follow-ups for unresolved claims",
+    "Internal/external communication protocols for claims documentation"
+  ],
+  "systems_referenced": [
+    "Auto Owners Insurance claims department",
+    "Voicemail system"
+  ],
+  "summary": "Brandy from Alliance Insurance followed up on a claim (30005217112025) to request payment/closure documentation after previous attempts to contact the adjuster failed. The agent facilitated a voicemail message with Brandy's contact details for follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 298,
+  "_total_duration_ms": 42118,
+  "_source_file": "transcripts/out-3366620957-112-20251107-152648-1762547208.7975.txt",
+  "_direction": "outbound",
+  "_char_count": 1622
+}

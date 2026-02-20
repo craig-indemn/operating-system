@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Charlie Flannery from Mutual Inspection Bureau, sought to confirm the correct contact information for Stephen Allen Killes Jr. to conduct a home owner's inspection, as the provided number led to Rowan Maintenance instead of the client.",
+  "resolution_steps": [
+    "Agent greeted the caller and asked how they could assist.",
+    "Caller explained the issue with the incorrect phone number leading to Rowan Maintenance.",
+    "Agent confirmed the provided address (525 Tresler Road, Salisbury) and verified the primary number (704.213.5989).",
+    "Caller shared an alternative number (336.607.4323) and stated plans to try it or visit the location if unreachable.",
+    "Agent acknowledged and offered further assistance if needed."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Accessing and verifying client contact records",
+    "Handling inquiries about policyholders or clients",
+    "Understanding home inspection processes"
+  ],
+  "systems_referenced": [],
+  "summary": "Charlie Flannery from Mutual Inspection Bureau contacted Alliance Insurance to resolve an issue with incorrect contact information for Stephen Allen Killes Jr. The agent confirmed the client's details, and Charlie planned to use an alternative number or visit the address. The call concluded successfully with the agent's assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 298,
+  "_total_duration_ms": 49821,
+  "_source_file": "transcripts/in-+13363779003-+13366896866-20251118-094954-1763477394.1656.txt",
+  "_direction": "inbound",
+  "_char_count": 1113
+}

@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller seeks assistance with a disputed workers' compensation policy audit from AmTrust, which they claim is a 'ghost policy' with no coverage, and wants to avoid paying an additional $2,386 based on a PNL statement request.",
+  "resolution_steps": [
+    "Agent confirmed the caller's commercial policy details (workers' comp, four policies total).",
+    "Agent acknowledged the caller's confusion about the AmTrust audit and PNL statement request.",
+    "Agent noted the policy was canceled and transferred, but the audit occurred post-cancellation.",
+    "Agent offered to transfer the call to Corbin for further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Workers' compensation policy mechanics",
+    "Handling of canceled/ghost policies",
+    "AmTrust audit processes and documentation requirements"
+  ],
+  "systems_referenced": [
+    "AmTrust (carrier)"
+  ],
+  "summary": "Caller disputes an AmTrust audit for a canceled workers' comp 'ghost policy,' arguing it provided no coverage and questioning why a PNL statement is required. Agent acknowledges the issue and transfers the call to Corbin for resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 258,
+  "_total_duration_ms": 33078,
+  "_source_file": "transcripts/in-+13363544000-+13365965391-20251117-114437-1763397877.2163.txt",
+  "_direction": "inbound",
+  "_char_count": 3342
+}

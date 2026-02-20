@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to confirm that their insurance policies (specifically with Auto Owners) are up to date in the system and to discuss potential premium increases during the January renewal, particularly due to canceling auto insurance with Auto Owners.",
+  "resolution_steps": [
+    "Agent confirmed the caller's details (address, phone number, email).",
+    "Agent explained that the caller's Auto Owners policy may see a premium increase due to canceled auto coverage.",
+    "Agent suggested reviewing the policy during January renewal and exploring alternative carriers for combined home/auto discounts.",
+    "Agent noted the caller's auto insurance is now with Gico and that the renewal timeline for the auto policy is four months away."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy renewals and premium adjustments",
+    "Knowledge of carrier-specific discounts (e.g., combining home/auto policies)",
+    "Ability to check policy details in the agency's system"
+  ],
+  "systems_referenced": [
+    "Internal agency system for policy verification"
+  ],
+  "summary": "The caller confirmed their Auto Owners policy details and expressed concerns about potential premium increases during the January renewal. The agent explained that canceling auto insurance with Auto Owners may remove a discount and suggested reviewing options during renewal, including combining home and auto policies with other carriers for better rates. The caller agreed to wait for the renewal bill before proceeding further.",
+  "_model": "qwen3:14b",
+  "_eval_count": 309,
+  "_total_duration_ms": 40922,
+  "_source_file": "transcripts/out-13366024677-114-20251112-163205-1762983125.8508.txt",
+  "_direction": "outbound",
+  "_char_count": 4157
+}

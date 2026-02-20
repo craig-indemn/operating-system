@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Heather) is following up on an insurance quote and underwriting process, expressing urgency to resolve the matter to avoid paying dual insurance policies due to financial constraints.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's email communication and underwriting delay.",
+    "Agent explains the need to check the email for the quote and underwriting status.",
+    "Agent agrees to contact the underwriter directly and promises to follow up with the caller.",
+    "Agent clarifies the cost implications of maintaining separate policies versus consolidated coverage."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance underwriting processes",
+    "Quote management and email tracking",
+    "Cost structures for multi-vehicle policies"
+  ],
+  "systems_referenced": [
+    "Email communication system",
+    "Underwriting portal",
+    "Quote management tool"
+  ],
+  "summary": "Heather is following up on an unresolved insurance quote, emphasizing the need to avoid paying dual policies. The agent explains the next steps of checking the email, contacting the underwriter, and clarifying cost differences. The call ends with a commitment to follow up after contacting the underwriter.",
+  "_model": "qwen3:14b",
+  "_eval_count": 261,
+  "_total_duration_ms": 41656,
+  "_source_file": "transcripts/exten-401-+15719917607-20250731-160145-1753992105.18249.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1400
+}

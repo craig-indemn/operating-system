@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Voicemail greeting from Tim Jones in the Claims Department informing the caller of his absence from November 20th to 26th. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 83,
+  "_total_duration_ms": 29384,
+  "_source_file": "transcripts/out-7274253406-510-20251120-135642-1763665002.2748.txt",
+  "_direction": "outbound",
+  "_char_count": 289
+}

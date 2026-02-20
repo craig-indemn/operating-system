@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "N/A (voicemail greeting, no interaction)",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Outbound call from Mary in the Total Loss Department leaving a voicemail greeting to inform absence on November 10th and request message details.",
+  "_model": "qwen3:14b",
+  "_eval_count": 89,
+  "_total_duration_ms": 23373,
+  "_source_file": "transcripts/out-3364353782-510-20251110-141906-1762802346.6119.txt",
+  "_direction": "outbound",
+  "_char_count": 278
+}

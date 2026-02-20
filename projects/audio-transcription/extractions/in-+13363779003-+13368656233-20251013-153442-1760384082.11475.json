@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking a refund related to a claim where they were instructed to tow their own vehicle and submit a bill for reimbursement, but have not yet received the refund.",
+  "resolution_steps": [
+    "Agent acknowledged the caller's issue with the refund process.",
+    "Agent offered to transfer the caller to an agent for further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Refund process for claims involving vehicle towing",
+    "Policy procedures for customer-initiated towing and reimbursement"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller contacted Alliance Insurance to follow up on a refund for a claim involving vehicle towing. They explained they were instructed to tow their own car and submit a bill, but had not yet received reimbursement. The agent acknowledged the issue and offered to transfer the caller to an agent for resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 199,
+  "_total_duration_ms": 31583,
+  "_source_file": "transcripts/in-+13363779003-+13368656233-20251013-153442-1760384082.11475.txt",
+  "_direction": "inbound",
+  "_char_count": 477
+}

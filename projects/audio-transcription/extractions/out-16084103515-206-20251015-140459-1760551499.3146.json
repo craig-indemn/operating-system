@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Voicemail greeting from Riley Heiserdorf of West Bend specialty, providing contact information and office hours.",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A voicemail greeting from Riley Heiserdorf with West Bend specialty, stating their availability and current location. No substantive interaction occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 96,
+  "_total_duration_ms": 26677,
+  "_source_file": "transcripts/out-16084103515-206-20251015-140459-1760551499.3146.txt",
+  "_direction": "outbound",
+  "_char_count": 208
+}

@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Non-substantive call: brief greeting and transfer attempt with no meaningful conversation or actionable intent expressed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 73,
+  "_total_duration_ms": 27339,
+  "_source_file": "transcripts/in-+13363544000-+18888456087-20251002-102549-1759415149.2520.txt",
+  "_direction": "inbound",
+  "_char_count": 161
+}

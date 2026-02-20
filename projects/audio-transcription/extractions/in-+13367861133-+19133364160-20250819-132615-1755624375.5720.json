@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Emily Owen from True Home Solutions seeks confirmation of 100% replacement cost coverage for a condominium policy under the Greystone Condominium Association, requesting a confirmation via email.",
+  "resolution_steps": [
+    "Agent acknowledges the request and offers to assist.",
+    "Agent agrees to contact the caller for further details."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy coverage terms (e.g., replacement cost coverage)",
+    "Process for verifying and confirming policy details"
+  ],
+  "systems_referenced": [],
+  "summary": "Emily Owen from True Home Solutions requested confirmation of 100% replacement cost coverage for a condominium policy. The agent agreed to assist and will contact the caller for further details. The call concluded with the agent promising to follow up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 189,
+  "_total_duration_ms": 33621,
+  "_source_file": "transcripts/in-+13367861133-+19133364160-20250819-132615-1755624375.5720.txt",
+  "_direction": "inbound",
+  "_char_count": 556
+}

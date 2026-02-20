@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Che McDowell is seeking new homeowners insurance after his current USAA policy increased in price. He wants to compare options through Alliance Insurance Services.",
+  "resolution_steps": [
+    "Brandi confirms Che is not a current client and begins gathering information.",
+    "Collects personal details (name, DOB, DL number, contact info, address).",
+    "Obtains co-owner (wife Sonya McDowell) information and mortgage provider (State Employees Credit Union).",
+    "Asks about property specifics (roof age, pools, pets, solar panels).",
+    "Discusses deductible options (confirms Che is comfortable with $2,500 deductible).",
+    "Informs Che that quoting team will contact him within the week."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Homeowners insurance underwriting requirements",
+    "Deductible changes across carriers",
+    "Process for initiating new policy quotes",
+    "Handling co-owners on property deeds"
+  ],
+  "systems_referenced": [
+    "quoting team (internal process)"
+  ],
+  "summary": "Che McDowell is shopping for new homeowners insurance after USAA rate increases. Brandi collects comprehensive personal and property information, confirms deductible preferences, and schedules follow-up from the quoting team. The call highlights carrier-specific deductible changes and the need for co-owner information.",
+  "_model": "qwen3:14b",
+  "_eval_count": 300,
+  "_total_duration_ms": 40472,
+  "_source_file": "transcripts/q-300-+13366955420-20260107-141957-1767813597.3766.txt",
+  "_direction": "queue",
+  "_char_count": 4105
+}

@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jennifer is seeking to transition her home insurance from Main Street America (exiting North Carolina) to a new provider, while also addressing auto insurance needs for her temporary home until January 2024.",
+  "resolution_steps": [
+    "Brandi explains Main Street America's exit from NC due to financial losses and lack of rate increases.",
+    "Discusses Auto Owners as a home-only option with 100% replacement cost coverage and temporary policy benefits.",
+    "Explains National General's auto insurance options with specific deductibles and coverage details.",
+    "Clarifies refund process for unused months if the home is sold in January.",
+    "Provides cost comparisons between current Main Street America rates and new quotes."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance market changes (Main Street America's NC exit)",
+    "Carrier-specific policies (Auto Owners, National General)",
+    "Homeowners policy replacement cost calculations",
+    "Temporary insurance policy mechanics",
+    "Escrow and mortgage-related refunds"
+  ],
+  "systems_referenced": [
+    "Auto Owners insurance platform",
+    "National General insurance system",
+    "Alliance Insurance internal quoting tools"
+  ],
+  "summary": "Brandi assists Jennifer in transitioning from Main Street America to Auto Owners for temporary home insurance, explaining coverage upgrades and refund terms for a January 2024 home sale. Auto Owners' 100% replacement cost and 25% additional coverage are highlighted, while National General's auto insurance options with specific deductibles are discussed. The call concludes with Brandi offering to resend quotes for review.",
+  "_model": "qwen3:14b",
+  "_eval_count": 352,
+  "_total_duration_ms": 56181,
+  "_source_file": "transcripts/out-8507281896-112-20251008-115340-1759938820.3405.txt",
+  "_direction": "outbound",
+  "_char_count": 8953
+}

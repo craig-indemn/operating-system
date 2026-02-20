@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; conversation consists only of brief greeting and pleasantries",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Very brief greeting exchange between Anna and Jenny Kinney from Armfield Recreation Center. No substantive conversation or issue reported. Call appears to have been cut short or not fully recorded.",
+  "_model": "qwen3:14b",
+  "_eval_count": 102,
+  "_total_duration_ms": 26671,
+  "_source_file": "transcripts/exten-302-+13363682012-20260106-135656-1767725816.3930.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 169
+}

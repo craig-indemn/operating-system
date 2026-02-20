@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Timothy Smith (and Blake Smith) is seeking a health insurance quote for their small business, Smith Auto and Truck Service, which employs four people. They want to explore options for 50% payment terms and are looking for an alternative to their current United Healthcare provider through a broker.",
+  "resolution_steps": [
+    "Agent Heather confirms the call is about business health insurance and notes the company has no existing insurance.",
+    "Heather checks availability of Steve Edmund, the health insurance specialist, and sends him a chat message.",
+    "Heather collects contact details (Blake Smith, phone number, company name, and location details).",
+    "Informs caller that Steve is unavailable but will respond by Monday.",
+    "Provides contact information for follow-up."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding small business health insurance options",
+    "Knowledge of carrier providers (United Healthcare)",
+    "Ability to route calls to specialized agents (Steve Edmund)"
+  ],
+  "systems_referenced": [
+    "Internal chat system for agent communication",
+    "Brokerage platform for insurance quotes"
+  ],
+  "summary": "A business owner seeks health insurance quotes for their four-employee auto service company. The agent connects them with the health insurance specialist, collects necessary details, and schedules a follow-up when the specialist becomes available. The caller is dissatisfied with their current provider and prefers direct broker assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 312,
+  "_total_duration_ms": 38103,
+  "_source_file": "transcripts/q-200-+13367837199-20250822-150323-1755889403.12608.txt",
+  "_direction": "queue",
+  "_char_count": 3509
+}

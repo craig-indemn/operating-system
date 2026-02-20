@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Ted Bradley is inquiring about potential work comp opportunities Alliance Insurance Services might have and seeking assistance with registering his team for the wholesale agency portal.",
+  "resolution_steps": [
+    "Rick acknowledges the work comp inquiry and commits to reviewing opportunities during their Wednesday team meetings.",
+    "Rick explains the wholesale agency registration process, noting it requires separate portal access and user IDs.",
+    "Ted provides a list of team members (Brian, Cecilia, Christopher, John, Anastasia, Jeff) for registration.",
+    "Rick agrees to coordinate with the account manager for onboarding and individual setup."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Work comp insurance opportunities",
+    "Wholesale agency registration processes",
+    "User portal onboarding procedures"
+  ],
+  "systems_referenced": [
+    "Wholesale agency portal",
+    "Password manager (for storing user IDs)",
+    "Account manager coordination system"
+  ],
+  "summary": "Ted Bradley discusses potential work comp opportunities and requests assistance registering his team for the wholesale agency portal. Rick confirms he'll review opportunities and coordinate onboarding once contact information is provided. The call concludes with Ted sharing team member details for registration.",
+  "_model": "qwen3:14b",
+  "_eval_count": 264,
+  "_total_duration_ms": 40928,
+  "_source_file": "transcripts/exten-105-+19192680679-20250818-130950-1755536990.4641.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4133
+}

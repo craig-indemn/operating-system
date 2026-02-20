@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller, Josh Hill, has commercial policies with Alliance Insurance for Wilson Plumbing and Pool and wants to discuss renewal details.",
+  "resolution_steps": [
+    "Agent acknowledged the call and stated they would connect the caller to an agent for assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Josh Hill called to inquire about commercial policy renewals for his business. The agent confirmed they would transfer him to another agent but provided no further details or resolution steps in the brief transcript.",
+  "_model": "qwen3:14b",
+  "_eval_count": 132,
+  "_total_duration_ms": 32659,
+  "_source_file": "transcripts/in-+13367861133-+13364880152-20250806-093247-1754487167.736.txt",
+  "_direction": "inbound",
+  "_char_count": 399
+}

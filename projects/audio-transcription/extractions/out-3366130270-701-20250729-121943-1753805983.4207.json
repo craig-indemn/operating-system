@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jeremy is providing Amanda with quotes for auto and home insurance policies, explaining the cost savings, coverage improvements, and payment options compared to her current policies.",
+  "resolution_steps": [
+    "Jeremy explains the auto insurance quote from National General, highlighting a $738 annual savings and payment options (payroll deductible vs. checking account).",
+    "He details the home insurance quote from Northwestern Farmers Mutual, emphasizing enhanced coverage (service line, equipment breakdown) and a $2,500 deductible.",
+    "Discusses the timing of switching policies to avoid potential weather-related binding issues, adjusting the start date to August 8th.",
+    "Confirms Amanda's understanding and agreement to proceed with the switch."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance carrier specifics (National General, Northwestern Farmers Mutual)",
+    "Coverage details (service line coverage, equipment breakdown, deductibles)",
+    "Payment methods (payroll deductible, checking account)",
+    "Impact of weather events on policy binding"
+  ],
+  "systems_referenced": [
+    "Novant (payroll deductible system)",
+    "Insurance quoting platform (implied through policy details and adjustments)"
+  ],
+  "summary": "Jeremy provides Amanda with detailed quotes for auto and home insurance, explaining cost savings, coverage improvements, and payment options. He advises switching policies by August 8th to avoid weather-related binding issues, and Amanda agrees to proceed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 312,
+  "_total_duration_ms": 51147,
+  "_source_file": "transcripts/out-3366130270-701-20250729-121943-1753805983.4207.txt",
+  "_direction": "outbound",
+  "_char_count": 4481
+}

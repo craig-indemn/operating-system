@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller needs a copy of her mother's auto insurance policy, which was not sent for the current year, and wants to transition her account to an agent in the Clemens office for convenience.",
+  "resolution_steps": [
+    "Agent confirmed the policyholder's name (Wilma Hanes) and acknowledged the request for mailed documents.",
+    "Agent stated documents would be sent directly by Progressive and confirmed the mailing process.",
+    "Agent clarified current agents at the Clemens office (Corbin, Heather, Jamie) and addressed confusion about Christopher's office location.",
+    "Agreed to follow up after receiving the policy to discuss potential changes to the Clemens office agents."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Policy retrieval process for Progressive insurance",
+    "Agent assignments by office location",
+    "Handling customer requests for policy documents via mail"
+  ],
+  "systems_referenced": [
+    "Progressive insurance portal",
+    "Alliance Insurance internal agent database"
+  ],
+  "summary": "Ashley requested a copy of her mother's auto insurance policy, which had not been sent for the current year. The agent confirmed the policy would be mailed directly by Progressive and clarified current agent assignments at the Clemens office. Ashley agreed to follow up after receiving the documents to transition her account to a Clemens-based agent for convenience.",
+  "_model": "qwen3:14b",
+  "_eval_count": 295,
+  "_total_duration_ms": 37517,
+  "_source_file": "transcripts/in-+13363779003-+13366553154-20251010-141516-1760120116.7513.txt",
+  "_direction": "inbound",
+  "_char_count": 3564
+}

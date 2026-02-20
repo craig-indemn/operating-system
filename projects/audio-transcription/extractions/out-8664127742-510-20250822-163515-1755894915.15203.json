@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Tracy from Alliance Insurance is trying to confirm whether a liability claim (involving a tree branch falling on a vehicle) was successfully filed with Berkeley Aspire, as they did not receive an expected email confirmation.",
+  "resolution_steps": [
+    "Agent Alejandro requested the policy number, callback number, and claim details.",
+    "Alejandro apologized for the delay and explained the system's limited access to claim data.",
+    "He confirmed the claim was filed and scheduled a follow-up to verify its status.",
+    "Provided a 24-48 hour timeframe for resolution and assured Tracy of prompt action."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Claim filing process for property/liability claims",
+    "Internal system limitations for claims reporting line",
+    "Follow-up procedures for unresolved claims"
+  ],
+  "systems_referenced": [
+    "Berkeley Aspire claims reporting line",
+    "Berkeley Connect Insurance Solutions",
+    "Berkeley Specialty Insurance"
+  ],
+  "summary": "Tracy from Alliance Insurance contacted Berkeley Aspire to confirm a liability claim was filed after not receiving an email confirmation. Agent Alejandro verified the claim details, acknowledged the system's limitations, and scheduled a follow-up to resolve the issue within 24-48 hours. Tracy was satisfied with the resolution plan.",
+  "_model": "qwen3:14b",
+  "_eval_count": 294,
+  "_total_duration_ms": 34373,
+  "_source_file": "transcripts/out-8664127742-510-20250822-163515-1755894915.15203.txt",
+  "_direction": "outbound",
+  "_char_count": 3673
+}

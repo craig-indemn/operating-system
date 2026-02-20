@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with Heather Scott at Alliance Insurance",
+  "resolution_steps": [],
+  "outcome": "transferred",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller requested to speak with Heather Scott. Agent confirmed the correct Heather and began checking availability. The call was brief and focused on routing the caller to the right person.",
+  "_model": "qwen3:14b",
+  "_eval_count": 93,
+  "_total_duration_ms": 28625,
+  "_source_file": "transcripts/in-+13363779003-+13363406142-20250804-150827-1754334507.8154.txt",
+  "_direction": "inbound",
+  "_char_count": 283
+}

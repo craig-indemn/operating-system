@@ -1,0 +1,20 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller (Glory from Alliance Insurance) intended to follow up on an email regarding a quote request for 'generability' and left a voicemail to arrange a callback.",
+  "resolution_steps": [
+    "Call was forwarded to voicemail since Anna Lee was unavailable.",
+    "Glory left a voicemail message requesting a callback."
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [
+    "automated voice messaging system"
+  ],
+  "summary": "A voicemail was left by Glory from Alliance Insurance for Anna Lee, following up on an email about a quote request. The call was not substantive as it involved only a voicemail message.",
+  "_model": "qwen3:14b",
+  "_eval_count": 158,
+  "_total_duration_ms": 30189,
+  "_source_file": "transcripts/out-3368178333-102-20250827-092055-1756300855.286.txt",
+  "_direction": "outbound",
+  "_char_count": 706
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Stuart Blanton contacted Alliance Insurance Services to clarify why he received a policy renewal notice from Auto Owners Insurance, which he misinterpreted as an actual renewal, and to confirm whether his policy was being renewed prematurely.",
+  "resolution_steps": [
+    "Brandi confirmed the notice was a pre-renewal communication, not an actual renewal.",
+    "She provided specific renewal dates (auto: November 30; home: December 3) and explained the notice was sent to allow review of the policy before renewal.",
+    "Brandi mentioned Alliance Insurance Services' process of contacting customers 30 days before renewal to review policies and discuss changes.",
+    "She assured Stuart that a representative would reach out around the end of next week for a policy review."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy renewal processes and timelines",
+    "Carrier communication protocols (Auto Owners Insurance)",
+    "Alliance Insurance Services' client outreach procedures"
+  ],
+  "systems_referenced": [
+    "Auto Owners Insurance (carrier)",
+    "Alliance Insurance Services internal policy review system"
+  ],
+  "summary": "Stuart contacted Alliance Insurance Services to clarify a confusing policy renewal notice. Brandi explained the notice was a pre-renewal communication, provided specific renewal dates, and outlined Alliance's process of contacting clients 30 days before renewal. She assured follow-up in late November for a policy review, resolving Stuart's confusion and setting expectations for future contact.",
+  "_model": "qwen3:14b",
+  "_eval_count": 323,
+  "_total_duration_ms": 41883,
+  "_source_file": "transcripts/q-300-+13364144762-20251023-150300-1761246180.5058.txt",
+  "_direction": "queue",
+  "_char_count": 2174
+}

@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller asked if Jeremy was available and was placed on hold.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Brief interaction where caller inquired about Jeremy's availability. Agent placed caller on hold without resolving any issue or providing information.",
+  "_model": "qwen3:14b",
+  "_eval_count": 90,
+  "_total_duration_ms": 25479,
+  "_source_file": "transcripts/in-+13363779003-+17048985329-20250915-111403-1757949243.3583.txt",
+  "_direction": "inbound",
+  "_char_count": 168
+}

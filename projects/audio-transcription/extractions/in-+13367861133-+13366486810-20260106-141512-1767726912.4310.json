@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller requested a car insurance quote and inquired about standalone policies.",
+  "resolution_steps": [
+    "Agent asked if the caller had existing policies with Alliance Insurance.",
+    "Agent explained that standalone policies are not offered and bundling (e.g., renters/home insurance) is required.",
+    "Caller declined additional policies and stated they would need to contact sales elsewhere."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of bundling requirements for insurance policies",
+    "Sales process for new clients without existing policies"
+  ],
+  "systems_referenced": [
+    "Internal policy database to check existing accounts"
+  ],
+  "summary": "A caller requested a car insurance quote but was informed that Alliance Insurance requires bundling with other policies (e.g., renters/home). The caller declined additional coverage and indicated they would need to contact another sales representative, ending the conversation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 201,
+  "_total_duration_ms": 29047,
+  "_source_file": "transcripts/in-+13367861133-+13366486810-20260106-141512-1767726912.4310.txt",
+  "_direction": "inbound",
+  "_char_count": 534
+}

@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Jeremy from Alliance Insurance is following up on a life insurance discussion from several months prior, requesting Anne Gary to call him back at a specific number.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Jeremy from Alliance Insurance left a voicemail for Anne Gary regarding a life insurance follow-up, asking her to call him back at 336-377-9003. The call was not answered and resulted in a voicemail.",
+  "_model": "qwen3:14b",
+  "_eval_count": 133,
+  "_total_duration_ms": 29130,
+  "_source_file": "transcripts/out-3364130707-701-20260116-082838-1768570118.28.txt",
+  "_direction": "outbound",
+  "_char_count": 901
+}

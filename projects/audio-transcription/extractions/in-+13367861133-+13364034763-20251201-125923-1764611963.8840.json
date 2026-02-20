@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller needs assistance changing their insurance policy due to an upcoming pregnancy, specifically adding a dependent and understanding coverage changes before the insurance switch deadline (by the 15th). They have left multiple messages for Morgan Campbell without a callback.",
+  "resolution_steps": [
+    "Agent confirmed the caller's need to modify their insurance policy for a new baby.",
+    "Agent acknowledged Morgan Campbell is the primary contact for health insurance but noted she is busy.",
+    "Agent offered to send an email to Morgan with the caller's contact information and request for a callback.",
+    "Caller provided their phone number for the email."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Health insurance policy changes",
+    "Dependent addition procedures",
+    "Insurance enrollment deadlines"
+  ],
+  "systems_referenced": [
+    "Email system (to contact Morgan Campbell)"
+  ],
+  "summary": "Lykin Benson requested help modifying their insurance policy due to an upcoming baby, needing guidance on adding a dependent and meeting the enrollment deadline. The agent will email Morgan Campbell (the primary health insurance contact) with the caller's details to arrange a callback. The caller emphasized urgency due to the December 15th deadline.",
+  "_model": "qwen3:14b",
+  "_eval_count": 267,
+  "_total_duration_ms": 32226,
+  "_source_file": "transcripts/in-+13367861133-+13364034763-20251201-125923-1764611963.8840.txt",
+  "_direction": "inbound",
+  "_char_count": 1898
+}

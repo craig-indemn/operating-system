@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Mark Spencer is seeking technical assistance to troubleshoot a scanner connected to Jeff's computer, specifically to resolve issues with scanning documents and sending them to a PC.",
+  "resolution_steps": [
+    "Jeff guided Mark through locating the login name and accessing the computer's settings.",
+    "They checked the printer's connection (Ethernet cable) and confirmed its location.",
+    "Jeff instructed Mark to attempt scanning to the PC, troubleshooting firewall settings when the connection failed.",
+    "After adjusting security settings, the scan was successfully completed, and the file was saved to the Pictures folder.",
+    "Jeff clarified that the printer's configuration remained unchanged from Stan's previous setup."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Computer login and navigation (e.g., Start menu, user accounts)",
+    "Printer connectivity (wired vs. wireless)",
+    "Scanner software operation and troubleshooting",
+    "Firewall/security settings configuration"
+  ],
+  "systems_referenced": [
+    "Windows operating system (Start menu, user login)",
+    "Scanner software (OCR, image, email options)",
+    "Firewall/security settings",
+    "Network configuration (Ethernet cable)"
+  ],
+  "summary": "Jeff assisted Mark Spencer in troubleshooting a scanner connected to his computer. After verifying the printer's physical connection and adjusting firewall settings, the scanner successfully sent a scanned document to the PC. Jeff confirmed the configuration remained consistent with previous settings, ensuring compatibility with Stan's existing workflow.",
+  "_model": "qwen3:14b",
+  "_eval_count": 316,
+  "_total_duration_ms": 44705,
+  "_source_file": "transcripts/exten-206-+13364990749-20251006-160345-1759781025.13576.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3953
+}

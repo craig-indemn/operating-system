@@ -1,0 +1,19 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; caller appears confused and provides fragmented information about needing a call 'today' for a commercial matter.",
+  "resolution_steps": [
+    "Agent acknowledges caller and offers to have someone call back.",
+    "Caller confirms need for a call today and specifies 'commercial' when asked about type of insurance.",
+    "Agent attempts to transfer call to 'Jesse' but conversation cuts off mid-connection."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Fragmented conversation where caller expresses confusion and unclear intent. Agent attempts to transfer to Jesse but call ends abruptly. No clear resolution or actionable information extracted.",
+  "_model": "qwen3:14b",
+  "_eval_count": 160,
+  "_total_duration_ms": 23080,
+  "_source_file": "transcripts/in-+13363779003-+13367826357-20250728-124931-1753721371.7587.txt",
+  "_direction": "inbound",
+  "_char_count": 370
+}

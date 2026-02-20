@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; caller asked about Brandy's availability but conversation cut off before intent was fully expressed",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Brief exchange where agent confirmed ability to check Brandy's availability but call ended before resolution. Insufficient information to determine caller's purpose or outcome.",
+  "_model": "qwen3:14b",
+  "_eval_count": 102,
+  "_total_duration_ms": 24870,
+  "_source_file": "transcripts/in-+13363779003-+13366555101-20251211-140538-1765479938.6079.txt",
+  "_direction": "inbound",
+  "_char_count": 192
+}

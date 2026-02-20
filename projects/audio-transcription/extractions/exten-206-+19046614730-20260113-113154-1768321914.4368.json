@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Rebecca is verifying coverage details for unscheduled farm personal property, confirming the removal of a policy location, and checking eligibility of auto policies for inclusion in an umbrella policy.",
+  "resolution_steps": [
+    "Jeff confirmed that specified items (tractors, saddle) fall under coverage F and explained scheduling requirements for high-value equipment.",
+    "Jeff instructed Rebecca to submit an endorsement request to CL processing at WestfieldGRP.com to remove location two and livestock coverage.",
+    "Jeff clarified that only the existing farm policy is currently listed as an underlying coverage for the umbrella policy.",
+    "Jeff noted that commercial auto policies through Westfield are eligible for inclusion, but personal auto policies (Auto Owners, National General/Intagon) require further review."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of insurance coverage types (F, D, umbrella)",
+    "Policy endorsement procedures",
+    "Eligibility criteria for umbrella policy underlying coverages"
+  ],
+  "systems_referenced": [
+    "WestfieldGRP.com (CL processing)",
+    "Agent page (policy documents)",
+    "Underwriting file system"
+  ],
+  "summary": "Rebecca confirmed coverage details for farm property, received instructions to remove a policy location via endorsement, and clarified umbrella policy eligibility. Jeff provided guidance on coverage limits, scheduling requirements, and underlying policy inclusion criteria.",
+  "_model": "qwen3:14b",
+  "_eval_count": 299,
+  "_total_duration_ms": 41097,
+  "_source_file": "transcripts/exten-206-+19046614730-20260113-113154-1768321914.4368.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4691
+}

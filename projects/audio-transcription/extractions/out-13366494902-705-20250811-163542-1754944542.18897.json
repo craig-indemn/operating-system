@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Joe Justo) is following up with Dylan to discuss a commercial insurance renewal that was previously discussed with Heather and Dylan, likely around October.",
+  "resolution_steps": [
+    "Joe identifies himself and mentions prior conversations with Heather and Dylan about commercial insurance renewal.",
+    "He reminds Dylan about the scheduled revisit in October and attempts to reconnect Dylan to the discussion."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Commercial insurance renewal process",
+    "Client interaction history (Heather and Dylan)",
+    "Timeline for policy revisits"
+  ],
+  "systems_referenced": [],
+  "summary": "Joe Justo from Alliance Insurance follows up with Dylan about a commercial insurance renewal discussion, referencing prior conversations with Heather and a planned revisit in October. The call appears interrupted when Dylan says, 'I lost you, buddy,' suggesting the conversation requires resumption.",
+  "_model": "qwen3:14b",
+  "_eval_count": 203,
+  "_total_duration_ms": 37368,
+  "_source_file": "transcripts/out-13366494902-705-20250811-163542-1754944542.18897.txt",
+  "_direction": "outbound",
+  "_char_count": 414
+}

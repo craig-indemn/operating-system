@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to make a down payment on their Progressive auto insurance policy and confirm the payment details.",
+  "resolution_steps": [
+    "Agent verified the caller's identity and confirmed the policy is with Progressive.",
+    "Agent located the payment amount ($220.11) and asked for payment method.",
+    "Caller corrected the amount to $220.11 and provided credit card details (ending in 48).",
+    "Agent processed the payment and confirmed it was successful.",
+    "Agent provided confirmation details and offered further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Progressive policy management",
+    "Payment processing procedures",
+    "Credit card verification protocols"
+  ],
+  "systems_referenced": [
+    "Progressive insurance portal",
+    "Payment processing system"
+  ],
+  "summary": "Customer called to make a down payment on their Progressive auto insurance. The agent verified the policy, processed the $220.11 payment via credit card, and confirmed the transaction. The customer indicated no further assistance was needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 246,
+  "_total_duration_ms": 32770,
+  "_source_file": "transcripts/in-+13363779003-+13364869125-20251119-142729-1763580449.4943.txt",
+  "_direction": "inbound",
+  "_char_count": 1105
+}

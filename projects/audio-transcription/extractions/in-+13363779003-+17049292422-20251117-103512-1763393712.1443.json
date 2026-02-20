@@ -1,0 +1,19 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller attempted to reach Brandy but was met with fragmented responses and no clear resolution.",
+  "resolution_steps": [
+    "Agent acknowledged the call",
+    "Agent checked Brandy's availability",
+    "Agent requested a moment to check"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief, fragmented interaction where the caller attempted to reach Brandy. The agent checked availability but no resolution or substantive discussion occurred. The call appears to be a transfer or incomplete conversation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 129,
+  "_total_duration_ms": 29021,
+  "_source_file": "transcripts/in-+13363779003-+17049292422-20251117-103512-1763393712.1443.txt",
+  "_direction": "inbound",
+  "_char_count": 230
+}

@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Gary) attempted to pay a premium but encountered a discrepancy between the proposal amount ($29,185.30) and the system's displayed payoff amount ($3,080.85) for his home auto and umbrella policies. He seeks clarification on which amount is accurate.",
+  "resolution_steps": [
+    "Agent (Wayne Mickey) acknowledges the discrepancy and asks for clarification on which policy (home auto/umbrella) the caller referenced.",
+    "Agent notes the conflicting amounts and states they will verify the details by checking the system.",
+    "Agent offers to call back within 10 minutes after confirming the correct payoff amount."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding how to access and verify policy details in the agency's system",
+    "Handling premium payment discrepancies between proposals and system records"
+  ],
+  "systems_referenced": [],
+  "summary": "Gary contacted the agent about a discrepancy between the proposed and system-recorded premium amounts for his home auto and umbrella policies. The agent will investigate the discrepancy and call back within 10 minutes to resolve the issue.",
+  "_model": "qwen3:14b",
+  "_eval_count": 257,
+  "_total_duration_ms": 42320,
+  "_source_file": "transcripts/exten-113-+13368176796-20251110-162312-1762809792.7139.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 933
+}

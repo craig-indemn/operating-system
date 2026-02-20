@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Mac is following up on a general liability policy quote, confirming receipt of the quote, addressing certificate holder changes, and setting up auto pay for the policy.",
+  "resolution_steps": [
+    "Jessica confirms the quote was received via email and verifies the policy details remain unchanged.",
+    "Mac clarifies that certificate holder updates (Olivia from BPG) don't affect coverages.",
+    "Jessica explains the auto pay setup process, including email confirmation and a 24-48 hour window to approve.",
+    "Mac confirms the mailing address update to 2341 Ravenhill Drive.",
+    "Both agree to follow up if the auto pay email isn't received by Wednesday."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Traveler's Online System policy issuance\u6d41\u7a0b",
+    "Auto pay setup procedures and email confirmation\u6d41\u7a0b",
+    "Handling certificate holder updates without coverage changes"
+  ],
+  "systems_referenced": [
+    "Traveler's Online System",
+    "Email confirmation process",
+    "Auto pay portal (mentioned as an alternative)"
+  ],
+  "summary": "Mac follows up on a general liability policy quote, confirming details and auto pay setup. Jessica guides him through the process, updates the mailing address, and confirms next steps. Both agree to follow up if the auto pay email isn't received by Wednesday.",
+  "_model": "qwen3:14b",
+  "_eval_count": 300,
+  "_total_duration_ms": 37466,
+  "_source_file": "transcripts/exten-106-+19193483642-20250922-155329-1758570809.10920.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1853
+}

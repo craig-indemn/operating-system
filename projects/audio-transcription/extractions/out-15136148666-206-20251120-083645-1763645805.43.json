@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Voicemail left to inform Nathan about a roundtable event and request a callback.",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A voicemail message was left by Jeff Edmonds of Alliance Insurance, informing Nathan about a roundtable event on December 12th and requesting a callback. The call was forwarded to voicemail, indicating no live conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 112,
+  "_total_duration_ms": 31744,
+  "_source_file": "transcripts/out-15136148666-206-20251120-083645-1763645805.43.txt",
+  "_direction": "outbound",
+  "_char_count": 749
+}

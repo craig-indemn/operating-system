@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller needed proof that a 2025 Chevrolet Silverado was added to their insurance policy for a dealership requirement, but was having trouble receiving the documentation.",
+  "resolution_steps": [
+    "Agent confirmed the caller added a 2025 Chevrolet Silverado to their policy the previous day.",
+    "Agent checked the policy and identified four vehicles listed, including the 2025 Chevrolet.",
+    "Agent offered to send proof via email (to 'Dany') or by mail, acknowledging the caller's email connectivity issues.",
+    "Agent clarified email would be faster but noted mail might take longer, and offered to proceed with email.",
+    "Agent asked if there was anything else the caller needed assistance with."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Policy management and verification process",
+    "Proof of insurance documentation procedures",
+    "Customer communication channels (email, mail, portal, texting)"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance customer portal (myallianceinsurance.com)",
+    "Email system",
+    "Mail system"
+  ],
+  "summary": "A caller requested proof that a new car was added to their insurance policy for a dealership requirement. The agent verified the policy details, confirmed the vehicle was listed, and offered to send the proof via email or mail. The caller opted for email, and the agent committed to sending the documents immediately. The call concluded with the agent offering further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 319,
+  "_total_duration_ms": 41273,
+  "_source_file": "transcripts/in-+13363779003-+13369866078-20250919-104110-1758292870.1153.txt",
+  "_direction": "inbound",
+  "_char_count": 2957
+}

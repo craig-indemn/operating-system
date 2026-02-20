@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (James) wanted to confirm whether he could sign a 'statement of no loss' document the next day to reinstate an insurance policy, as he lacked computer access at the time of the call.",
+  "resolution_steps": [
+    "Kendall confirmed the purpose of the call: to follow up on the 'statement of no loss' document needed for policy reinstatement.",
+    "James explained he received the document but couldn't sign it immediately due to lack of computer access and being in a construction environment.",
+    "Kendall acknowledged the situation and agreed to relay James's request to Anna (the usual contact) to coordinate with the underwriter.",
+    "James committed to signing the document the next day once he had access to a computer."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy reinstatement requirements (specifically the need for a 'statement of no loss')",
+    "Understanding client challenges in remote or non-office environments"
+  ],
+  "systems_referenced": [
+    "carrier underwriting system (implied through mention of 'underwriter')"
+  ],
+  "summary": "James, a construction worker, received a 'statement of no loss' document via email but couldn't sign it immediately due to lack of computer access. Kendall, the agent, confirmed the document's necessity and agreed to inform Anna (the usual contact) to coordinate with the underwriter. James committed to signing the document the next day.",
+  "_model": "qwen3:14b",
+  "_eval_count": 319,
+  "_total_duration_ms": 40724,
+  "_source_file": "transcripts/out-3362091127-103-20251023-173733-1761255453.6576.txt",
+  "_direction": "outbound",
+  "_char_count": 2735
+}

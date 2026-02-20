@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to cancel their car insurance policy for a 2000 Honda and mentions they have already turned in the tags.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's intent to cancel insurance.",
+    "Agent attempts to transfer the caller to the appropriate department.",
+    "Call appears to be cut off mid-transfer with the agent saying 'give me one second.'"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance cancellation procedures",
+    "Handling policy termination requests",
+    "Internal call transfer protocols"
+  ],
+  "systems_referenced": [
+    "Internal call routing system"
+  ],
+  "summary": "Caller attempted to cancel car insurance on a 2000 Honda but faced technical issues during the call. The agent initiated a transfer but the conversation was cut off before resolution. The caller mentioned having already turned in vehicle tags, indicating potential policy termination.",
+  "_model": "qwen3:14b",
+  "_eval_count": 206,
+  "_total_duration_ms": 27620,
+  "_source_file": "transcripts/in-+13363779003-+13368316764-20251009-131050-1760029850.3764.txt",
+  "_direction": "inbound",
+  "_char_count": 529
+}

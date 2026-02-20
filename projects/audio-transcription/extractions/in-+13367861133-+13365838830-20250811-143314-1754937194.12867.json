@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request for homeowners insurance quote",
+  "resolution_steps": [
+    "Agent acknowledged request but conversation cut off mid-escalation"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Incomplete call where caller requested homeowners insurance quote but agent's response was cut off mid-escalation. No resolution achieved due to abrupt termination.",
+  "_model": "qwen3:14b",
+  "_eval_count": 98,
+  "_total_duration_ms": 26795,
+  "_source_file": "transcripts/in-+13367861133-+13365838830-20250811-143314-1754937194.12867.txt",
+  "_direction": "inbound",
+  "_char_count": 210
+}

@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Existing policyholder Jamie wants to add their daughter to their auto policy before she takes her driver's test on January 13th, ensuring coverage is active for the test.",
+  "resolution_steps": [
+    "Agent confirmed the policy details (Auto Owners, address, active policy).",
+    "Agreed to add the daughter effective January 12th as a rated driver.",
+    "Explained the new North Carolina law extending the inexperienced operator surcharge to 8 years (previously 3 years).",
+    "Notified Jamie about potential future rate adjustments post-July 1, 2025, and upcoming 7.5% rate increase in 2026."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "North Carolina auto insurance laws (inexperienced operator surcharge changes effective July 1, 2025)",
+    "Policy renewal dates and rate adjustment timelines"
+  ],
+  "systems_referenced": [
+    "Auto Owners (carrier portal)",
+    "DOJ rate increase announcements"
+  ],
+  "summary": "Jamie, an existing policyholder, needed to add their daughter to their auto policy before her driver's test. The agent facilitated the addition, explained the extended 8-year inexperienced operator surcharge under new NC law, and outlined upcoming rate changes. The call concluded with the policy update and full disclosure of legal and financial implications.",
+  "_model": "qwen3:14b",
+  "_eval_count": 308,
+  "_total_duration_ms": 41192,
+  "_source_file": "transcripts/q-300-+12627073641-20260106-134549-1767725149.3760.txt",
+  "_direction": "queue",
+  "_char_count": 4667
+}

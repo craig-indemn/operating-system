@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller sought clarification on whether the Handyman Class Code covers incidental roofing repair replacement for a new business venture involving limited metal roof repairs.",
+  "resolution_steps": [
+    "Agent asked for details about the frequency and scope of the roofing repairs.",
+    "Caller provided context: 2-3 repairs/year on metal roofs as part of renovations/add-ons.",
+    "Agent confirmed that incidental patching under the Handyman Code is acceptable for the described activity.",
+    "Agent emphasized that major repairs/replacements would require a different classification."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of insurance class codes (specifically Handyman Code)",
+    "Ability to assess business operations for code applicability",
+    "Knowledge of incidental vs. major repair classifications"
+  ],
+  "systems_referenced": [],
+  "summary": "An Alliance Insurance agent clarified that the Handyman Class Code covers incidental metal roof repairs for a new business, provided the work is limited to 2-3 annual repairs as part of renovations. The agent confirmed this after discussing the client's business model and repair scope, ensuring proper code application to avoid future quoting issues.",
+  "_model": "qwen3:14b",
+  "_eval_count": 253,
+  "_total_duration_ms": 34093,
+  "_source_file": "transcripts/out-8003340328-701-20260113-121748-1768324668.4941.txt",
+  "_direction": "outbound",
+  "_char_count": 2948
+}

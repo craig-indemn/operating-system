@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller appears to be speaking to themselves or testing the line, with no clear intent to engage with an agent.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The transcript contains only the caller's fragmented monologue with no agent interaction. The caller mentions needing to speak with the commercial team but does not wait for an agent or clarify their request. The call appears to be a disconnected or abandoned attempt.",
+  "_model": "qwen3:14b",
+  "_eval_count": 124,
+  "_total_duration_ms": 32330,
+  "_source_file": "transcripts/in-+13363779003-+13369962033-20251010-125154-1760115114.6607.txt",
+  "_direction": "inbound",
+  "_char_count": 181
+}

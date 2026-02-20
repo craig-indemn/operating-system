@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jacqui Watson wants to add her 15-year-old son Darian Watson to her auto insurance policy after receiving a notice from Alliance Insurance, despite him not having a driver's license yet.",
+  "resolution_steps": [
+    "Jamie verifies Jacqui's policy details (Progressive auto policy with 2020 GMC Terrain).",
+    "Jamie collects Darian's full name, date of birth, and confirms he is not yet a driver.",
+    "Jamie adds Darian as a 'household member' on the policy without changing the premium.",
+    "Explains that Darian will remain a non-rated driver until he obtains a license, at which point he would need to be updated to a 'rated driver' with a permit number.",
+    "Offers to store the permit number in the system if provided now or note it for future reference."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance policy updates for minors",
+    "Differentiation between household members and rated drivers",
+    "Process for adding new drivers to auto policies",
+    "Impact of driver's license status on insurance rates"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal policy management system",
+    "Progressive auto insurance portal"
+  ],
+  "summary": "Jacqui Watson contacted Alliance Insurance to add her 15-year-old son Darian to her auto policy after receiving a notice. Jamie verified her policy, added Darian as a household member (non-rated driver), and explained that future updates would require his permit number when he obtains a license. The process was completed without premium changes at this stage.",
+  "_model": "qwen3:14b",
+  "_eval_count": 352,
+  "_total_duration_ms": 41555,
+  "_source_file": "transcripts/q-300-+13366956121-20251002-151614-1759432574.11992.txt",
+  "_direction": "queue",
+  "_char_count": 3944
+}

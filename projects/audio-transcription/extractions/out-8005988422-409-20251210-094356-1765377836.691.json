@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Corbin needed to make a payment for a reimbursement request related to a 'no loss' statement submitted to Utica National Insurance.",
+  "resolution_steps": [
+    "Nikki verified the policy/account number (204657729) and confirmed the no-loss statement was sent to customer service.",
+    "Nikki accessed the system to process a $483 payment for Malay Inc.",
+    "Corbin provided credit card details (ending in 3152), expiration date (05/30), and the three-digit security code (680).",
+    "Nikki confirmed the receipt email (C Dirks season cat D I R K S@myallianceinsurance.com) and obtained authorization for the payment.",
+    "Nikki assured the payment would be processed and confirmed the transaction details."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Processing electronic payments via credit card",
+    "Handling no-loss statement reimbursements",
+    "Verifying customer identity and payment authorization",
+    "Navigating Utica National's payment system"
+  ],
+  "systems_referenced": [
+    "Utica National Insurance website (uticanational.com)",
+    "Utica National customer service portal",
+    "Electronic payment processing system",
+    "Email receipt delivery system"
+  ],
+  "summary": "Corbin contacted Utica National to make a $483 reimbursement payment for a no-loss statement. Nikki verified details, processed the payment using a credit card, confirmed receipt email, and obtained authorization. The call concluded with confirmation that the payment would be processed and the transaction details reviewed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 352,
+  "_total_duration_ms": 52271,
+  "_source_file": "transcripts/out-8005988422-409-20251210-094356-1765377836.691.txt",
+  "_direction": "outbound",
+  "_char_count": 4424
+}

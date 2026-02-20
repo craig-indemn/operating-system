@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Ryan seeks confirmation to renew an expired insurance account for Brian's Carolina Cultivators, as Brian is unavailable to provide approval.",
+  "resolution_steps": [
+    "Jeff confirms the account's expiration date (12/27) and checks for additional notes or tasks related to the renewal.",
+    "Jeff identifies that Brian forwarded the renewal request to Connor (the underwriter) but found no further details.",
+    "Jeff advises Ryan to proceed with the renewal since no blocking information was found and Brian may respond via email."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance renewal processes",
+    "Handling account renewals with expired policies",
+    "Interpreting internal task/communication systems"
+  ],
+  "systems_referenced": [
+    "Internal account management system (implied by checking expiration dates and tasks)"
+  ],
+  "summary": "Ryan contacted Jeff to confirm renewing an expired policy for Carolina Cultivators. Jeff verified the account's expiration date, checked for pending tasks, and determined no obstacles existed to proceed with renewal. Ryan agreed to move forward if Brian (the account holder) did not respond promptly.",
+  "_model": "qwen3:14b",
+  "_eval_count": 254,
+  "_total_duration_ms": 39946,
+  "_source_file": "transcripts/exten-206-+13368693000-20251229-100417-1767020657.1408.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2468
+}

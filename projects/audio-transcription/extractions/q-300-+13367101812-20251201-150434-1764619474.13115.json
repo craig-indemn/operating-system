@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Travis Hudson wants to cancel his car insurance policy after selling his vehicle and returning the license plates.",
+  "resolution_steps": [
+    "Jacy confirms Travis's identity by asking for his address and policy number.",
+    "Verifies that the 2019 Kia Forte is the only vehicle on the policy.",
+    "Informs Travis that a cancellation form must be sent via email for him to sign and return.",
+    "Provides Travis's email address (thudson87@gmail.com) and explains the form will come from 'Congressine'.",
+    "Clarifies that no further action is required after submitting the form, except for potential final billing from Safeco."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy cancellation process",
+    "Verification of policy details (vehicles, addresses, policy numbers)",
+    "Handling of final billing from carriers"
+  ],
+  "systems_referenced": [
+    "Congressine (likely an internal system or portal)",
+    "Safeco (insurance carrier)"
+  ],
+  "summary": "Travis Hudson contacted Alliance Insurance to cancel his car insurance after selling his vehicle. Jacy confirmed policy details and explained the cancellation process, which requires a signed form sent via email. The call concluded with the form being sent to Travis's email, and he was informed about potential final billing from Safeco.",
+  "_model": "qwen3:14b",
+  "_eval_count": 302,
+  "_total_duration_ms": 44943,
+  "_source_file": "transcripts/q-300-+13367101812-20251201-150434-1764619474.13115.txt",
+  "_direction": "queue",
+  "_char_count": 2162
+}

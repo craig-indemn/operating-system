@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Chuck Milton wanted to follow up on a previous request for Aaron McGuire to obtain an insurance quote, specifically inquiring about deductibles for full coverage on a vehicle.",
+  "resolution_steps": [
+    "Agent Jeremy confirmed the call was regarding a quote request for Aaron McGuire.",
+    "Jeremy asked about deductible amounts for full coverage.",
+    "Chuck clarified that Aaron had already obtained a quote from another provider the previous day.",
+    "Jeremy acknowledged the clarification and offered to close out the request."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding insurance quote processes",
+    "Knowledge of coverage types (full coverage, liability)",
+    "Handling client follow-ups on prior requests"
+  ],
+  "systems_referenced": [],
+  "summary": "Jeremy from Alliance Insurance followed up on a quote request for Aaron McGuire, discussing coverage details and deductibles. Chuck clarified that Aaron had already obtained a quote from another provider, prompting Jeremy to close out the request.",
+  "_model": "qwen3:14b",
+  "_eval_count": 222,
+  "_total_duration_ms": 35331,
+  "_source_file": "transcripts/out-2762298051-701-20251118-095128-1763477488.1693.txt",
+  "_direction": "outbound",
+  "_char_count": 612
+}

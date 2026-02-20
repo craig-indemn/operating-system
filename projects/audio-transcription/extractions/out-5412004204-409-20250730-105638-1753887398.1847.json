@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear, but appears to be an attempt to reach Janice for a follow-up (incomplete transcript)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Incomplete outbound call attempting to reach Janice. The caller asks her to call back but the conversation is cut off mid-sentence. No agent interaction or resolution steps are present.",
+  "_model": "qwen3:14b",
+  "_eval_count": 110,
+  "_total_duration_ms": 20384,
+  "_source_file": "transcripts/out-5412004204-409-20250730-105638-1753887398.1847.txt",
+  "_direction": "outbound",
+  "_char_count": 116
+}

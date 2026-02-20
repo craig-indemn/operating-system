@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unknown (call transcript incomplete)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Incomplete transcript showing only the beginning of a call. The agent's greeting is cut off mid-sentence, and no further conversation is recorded. Insufficient information to determine purpose or resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 96,
+  "_total_duration_ms": 23148,
+  "_source_file": "transcripts/in-+13363779003-+13364296169-20260105-130603-1767636363.8892.txt",
+  "_direction": "inbound",
+  "_char_count": 69
+}

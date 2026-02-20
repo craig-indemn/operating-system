@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Confirm hazard insurance policy for William's new home, guide him on next steps (signing the policy email), and discuss potential upselling of additional insurance services (auto, life, health).",
+  "resolution_steps": [
+    "Sent policy via email from Northwest Farmers Mutual and instructed William to click and sign it.",
+    "Explained escrow process for insurance and taxes, clarifying upfront payment for the first year and subsequent annual billing.",
+    "Offered to assist with additional insurance services (auto, life, health) and highlighted potential discounts for bundling policies.",
+    "Provided a link for William to initiate auto insurance quoting at his convenience."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy issuance and escrow processes",
+    "Carrier-specific procedures (Northwest Farmers Mutual)",
+    "Upselling strategies for bundled insurance products"
+  ],
+  "systems_referenced": [
+    "Northwest Farmers Mutual (carrier)",
+    "Email communication for policy signing",
+    "Auto insurance quoting link"
+  ],
+  "summary": "Corbin from Alliance Insurance confirmed the hazard insurance policy for William's new home, guided him on signing the policy via email, explained escrow and tax payment processes, and offered to help with additional insurance services. William agreed to follow up after closing, with Corbin planning to send an auto insurance quoting link.",
+  "_model": "qwen3:14b",
+  "_eval_count": 302,
+  "_total_duration_ms": 48269,
+  "_source_file": "transcripts/out-3363396550-409-20250930-111736-1759245456.1435.txt",
+  "_direction": "outbound",
+  "_char_count": 2893
+}

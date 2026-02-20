@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Nathan wanted to confirm that his insurance policy was updated from a 24 to a 25 and ensure the change was processed correctly.",
+  "resolution_steps": [
+    "Gary confirmed the policy change was completed via the Progressive app.",
+    "Gary advised Nathan to check the updated policy documents via email or the agency's app.",
+    "Gary sent a link for the agency's 'glove box' app to Nathan for future reference.",
+    "Nathan confirmed he received an updated policy email and verified the change reduced his premium."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy modification processes",
+    "Progressive app functionality",
+    "Agency-specific tools (glove box app)",
+    "Policy document verification procedures"
+  ],
+  "systems_referenced": [
+    "Progressive insurance app",
+    "Agency's 'glove box' app",
+    "Email communication system"
+  ],
+  "summary": "Nathan confirmed his insurance policy was successfully updated from a 24 to a 25 via the Progressive app. Gary provided follow-up instructions and shared the agency's app for future document access. Nathan received confirmation of the change and noted a premium reduction.",
+  "_model": "qwen3:14b",
+  "_eval_count": 271,
+  "_total_duration_ms": 37752,
+  "_source_file": "transcripts/exten-113-+13363090286-20251215-101630-1765811790.916.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2553
+}

@@ -1,0 +1,20 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Mandy has been trying to reach someone at Alliance Insurance for a week and has questions to discuss.",
+  "resolution_steps": [
+    "Agent requested to send a message to another party to contact the caller.",
+    "Standard hold message played, asking caller to wait and consider recent contact information changes."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [
+    "myallianceinsurance.com customer portal (mentioned in hold message)"
+  ],
+  "summary": "Caller Mandy was put on hold with a standard message while an agent attempted to notify another party to return her call. No substantive discussion occurred about her questions or policy matters.",
+  "_model": "qwen3:14b",
+  "_eval_count": 158,
+  "_total_duration_ms": 36619,
+  "_source_file": "transcripts/in-+13363779003-+17042393171-20251002-144041-1759430441.10698.txt",
+  "_direction": "inbound",
+  "_char_count": 656
+}

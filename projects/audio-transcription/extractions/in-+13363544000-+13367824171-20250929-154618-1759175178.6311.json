@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Caller attempted to reach an agent (Corbin) to inquire about car insurance in Virginia.",
+  "resolution_steps": [
+    "Agent Armando acknowledged the call and mentioned transferring to another agent (Churn)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Fragmented conversation where caller sought car insurance information in Virginia. Agent attempted to transfer call but did not resolve the inquiry.",
+  "_model": "qwen3:14b",
+  "_eval_count": 117,
+  "_total_duration_ms": 22161,
+  "_source_file": "transcripts/in-+13363544000-+13367824171-20250929-154618-1759175178.6311.txt",
+  "_direction": "inbound",
+  "_char_count": 373
+}

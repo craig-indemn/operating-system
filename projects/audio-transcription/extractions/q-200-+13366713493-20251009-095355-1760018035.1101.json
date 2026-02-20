@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller intended to request a quote for an assuredy bond and garage insurance for new business.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The call was cut off mid-conversation with the caller requesting insurance quotes but no resolution steps completed. The transcript is incomplete and lacks sufficient detail for substantive analysis.",
+  "_model": "qwen3:14b",
+  "_eval_count": 103,
+  "_total_duration_ms": 25949,
+  "_source_file": "transcripts/q-200-+13366713493-20251009-095355-1760018035.1101.txt",
+  "_direction": "queue",
+  "_char_count": 212
+}

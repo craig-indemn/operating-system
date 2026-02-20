@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; caller (Liz) appears to have had a misunderstanding about client files and insurance ownership, then abruptly ends the call.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Non-substantive call with confused caller who abruptly ended the conversation without clarifying needs. No actionable information extracted.",
+  "_model": "qwen3:14b",
+  "_eval_count": 103,
+  "_total_duration_ms": 22580,
+  "_source_file": "transcripts/in-+13363779003-+14404623703-20260105-093248-1767623568.550.txt",
+  "_direction": "inbound",
+  "_char_count": 392
+}

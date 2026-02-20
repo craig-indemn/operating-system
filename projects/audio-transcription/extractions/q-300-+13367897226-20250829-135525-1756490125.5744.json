@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Christopher Bryant needs to add a lien to his vehicle and obtain proof of insurance for an auto loan.",
+  "resolution_steps": [
+    "Agent confirmed the vehicle is already on the policy.",
+    "Agent requested lien details (State Employees Credit Union, PO Box 27528, Raleigh, NC, ZIP 27611).",
+    "Agent asked for email address to send documents.",
+    "Customer provided email: 'Mount Ary at ncsecu.org' (State Employees Credit Union branch).",
+    "Agent confirmed documents would be emailed to the provided address."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Process for adding liens to vehicle insurance policies",
+    "Proof of insurance documentation procedures",
+    "Email communication protocols for document delivery"
+  ],
+  "systems_referenced": [
+    "Email system (ncsecu.org)"
+  ],
+  "summary": "Agent assisted Christopher Bryant in adding a lien to his vehicle and arranging proof of insurance. Lien details were collected, and the customer provided an email address for document delivery. The agent confirmed documents would be sent via email to the State Employees Credit Union branch.",
+  "_model": "qwen3:14b",
+  "_eval_count": 259,
+  "_total_duration_ms": 42450,
+  "_source_file": "transcripts/q-300-+13367897226-20250829-135525-1756490125.5744.txt",
+  "_direction": "queue",
+  "_char_count": 1039
+}

@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Mildred is seeking assistance with insurance renewal options and is open to scheduling a meeting with Joe to discuss them. She prefers flexibility in timing and location.",
+  "resolution_steps": [
+    "Joe confirms Frank requested the call to discuss renewal options.",
+    "Proposes meeting at 4 PM to accommodate Mildred's schedule.",
+    "Agrees to meet at Mildred's home (address: 89) instead of the shop.",
+    "Mentions preparing paperwork for the meeting.",
+    "Confirms meeting time and location with Mildred."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance renewal processes",
+    "Client scheduling preferences",
+    "Location details (e.g., proximity to the Y, address 89)"
+  ],
+  "systems_referenced": [],
+  "summary": "Joe from Alliance Insurance schedules a meeting with Mildred to discuss her insurance renewal. They agree on a 4 PM meeting at her home (address 89) after she declines the shop location. The call concludes with confirmation of the arrangement and preparation of paperwork.",
+  "_model": "qwen3:14b",
+  "_eval_count": 241,
+  "_total_duration_ms": 39137,
+  "_source_file": "transcripts/out-13364298383-205-20250911-114831-1757605711.2492.txt",
+  "_direction": "outbound",
+  "_char_count": 1865
+}

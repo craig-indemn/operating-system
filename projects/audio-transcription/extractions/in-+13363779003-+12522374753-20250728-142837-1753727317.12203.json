@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to pay her rental home insurance policy online using a credit card and obtain a confirmation number.",
+  "resolution_steps": [
+    "Agent verified the caller's policy details (rental home at 607 West Main Street, Pilot) and confirmed the outstanding balance ($965.30).",
+    "Agent processed the payment using the caller's First Citizens Bank Visa card (number provided).",
+    "Agent confirmed the card's expiration date (1/29) and verified the caller's email (GAW28@Hotmail.com).",
+    "Agent generated and provided a confirmation number (314-7773-7274) via phone after temporarily pausing the call to write it down."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Online payment portal navigation",
+    "Credit card payment processing",
+    "Policy verification procedures",
+    "Email confirmation protocols"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance online payment website",
+    "Email system for confirmation delivery"
+  ],
+  "summary": "Marilyn Weaver successfully paid her rental home insurance policy online using a Visa card. The agent verified policy details, processed the payment, and provided a confirmation number. The caller confirmed no further assistance was needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 292,
+  "_total_duration_ms": 31917,
+  "_source_file": "transcripts/in-+13363779003-+12522374753-20250728-142837-1753727317.12203.txt",
+  "_direction": "inbound",
+  "_char_count": 1700
+}

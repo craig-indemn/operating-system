@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Tim Hooker wants to add a new truck to his insurance policy effective immediately so he can drive it home before selling his current vehicle. He also seeks clarification on driving without a license plate once insured.",
+  "resolution_steps": [
+    "Holly confirms Tim's identity and policy details (name, address, existing policy).",
+    "Tim provides VIN and clarifies the truck is a diesel (correcting a title error).",
+    "Holly verifies coverage preferences (liability + comprehensive) and deductible ($100).",
+    "Holly explains processing timeline (quote sent within 24 hours) and confirms insurance coverage for driving the truck home.",
+    "Holly advises against legal advice on driving without a tag but confirms insurance coverage."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Vehicle addition process to insurance policies",
+    "VIN lookup and vehicle identification",
+    "State-specific title requirements (Virginia)",
+    "Coverage types (liability, comprehensive) and deductibles",
+    "Temporary insurance coverage for new vehicles"
+  ],
+  "systems_referenced": [
+    "Policy management system (to pull existing policy details)"
+  ],
+  "summary": "Tim Hooker added a new truck to his policy with Alliance Insurance, specifying coverage needs and effective date. Holly confirmed details, processed the request, and clarified temporary coverage for driving the truck home. A quote will be sent within 24 hours.",
+  "_model": "qwen3:14b",
+  "_eval_count": 316,
+  "_total_duration_ms": 52999,
+  "_source_file": "transcripts/q-300-+13364085228-20251124-110657-1764000417.1810.txt",
+  "_direction": "queue",
+  "_char_count": 2589
+}

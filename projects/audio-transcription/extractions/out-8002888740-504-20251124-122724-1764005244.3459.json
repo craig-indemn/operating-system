@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Holly from Alliance Insurance is seeking clarification on a billing discrepancy for a client's Auto Owners Insurance policy. The client's monthly payment increased from $94.98 to $144.72 after adding a travel trailer, and there are concerns about missed payments and automatic payment settings.",
+  "resolution_steps": [
+    "Patricia confirms the account details (policy number, name, agency code) provided by Holly.",
+    "Patricia reviews the billing history, noting the original policy renewal amount ($94.98/month) and the added travel trailer premium ($447.41).",
+    "Patricia explains that automatic payments were turned off, leading to missed payments for the original policy renewal.",
+    "Patricia clarifies that the current $144.72 payment covers the remaining balance from the missed payments plus the new premium after the travel trailer was added.",
+    "Patricia confirms the client has since reactivated automatic payments, which are now processing the adjusted monthly amount."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of Auto Owners Insurance billing structures and policy changes",
+    "Ability to interpret billing history and payment discrepancies",
+    "Knowledge of automatic payment systems and their impact on premium calculations"
+  ],
+  "systems_referenced": [
+    "Auto Owners Insurance billing system"
+  ],
+  "summary": "Holly from Alliance Insurance resolved a billing confusion for a client with Auto Owners Insurance. The client's payment increased after adding a travel trailer, but missed automatic payments for the original policy created a shortfall. Patricia explained the adjusted payment structure and confirmed automatic payments were reactivated. The caller expressed understanding and gratitude.",
+  "_model": "qwen3:14b",
+  "_eval_count": 362,
+  "_total_duration_ms": 45787,
+  "_source_file": "transcripts/out-8002888740-504-20251124-122724-1764005244.3459.txt",
+  "_direction": "outbound",
+  "_char_count": 4319
+}

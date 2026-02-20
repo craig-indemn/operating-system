@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Conducting an annual policy review to verify vehicle details and assess coverage adequacy, with a focus on liability and comprehensive coverage for a Silverado, and exploring potential upgrades to homeowners insurance.",
+  "resolution_steps": [
+    "Confirmed the customer's vehicle details (Silverado used for personal purposes).",
+    "Noted current liability coverage ($50,000 property damage) and explained potential gaps in coverage for newer vehicles.",
+    "Suggested increasing liability coverage to $100,000 at a low cost (~$20/year).",
+    "Discussed comprehensive coverage details (500 deductible) and its applicability for incidents like hitting a deer.",
+    "Inquired about homeowners insurance (currently with Farm Bureau, up for renewal) and offered to provide rate comparisons.",
+    "Agreed to send a coverage summary sheet for the customer to review and requested homeowners policy details for further analysis."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Auto insurance coverage types (liability, property damage, comprehensive) and their implications.",
+    "Homeowners insurance policy comparison processes and rate calculation methodologies.",
+    "Understanding of deductible impacts on claims and coverage adequacy for modern vehicles."
+  ],
+  "systems_referenced": [
+    "Farm Bureau (current insurer)"
+  ],
+  "summary": "An Alliance Insurance agent conducted a policy review with Gregory, verifying his Silverado's coverage and highlighting potential gaps in liability insurance. The agent suggested increasing liability coverage to $100,000 at a low cost and offered to compare homeowners insurance rates if Gregory provided his current policy details. Gregory agreed to adjust his liability coverage and will share homeowners information for further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 364,
+  "_total_duration_ms": 46759,
+  "_source_file": "transcripts/out-13364063009-113-20251216-102636-1765898796.1090.txt",
+  "_direction": "outbound",
+  "_char_count": 3810
+}

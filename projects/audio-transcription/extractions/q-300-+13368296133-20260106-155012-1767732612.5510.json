@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jamie needs to switch from National General Insurance to Auto Homeowners Insurance due to a recent move requiring rental insurance. They are concerned about avoiding payment on the old policy and need assistance with the transition before their insurance lapses.",
+  "resolution_steps": [
+    "Agent verified the caller's identity (Shelley Kirkland) and current address (525 N MLK Jr Drive, Winston Salem).",
+    "Checked the system to confirm the policy details, including the effective date (January 7) and vehicle information (2004 Kia Sorento).",
+    "Provided premium breakdown: $813.06 annually, with monthly payment options (67.81 deposit + 11 payments of $67.75).",
+    "Noted the caller's request to avoid paying National General's higher premium ($101/month).",
+    "Explained that Brandi (previous agent) was unavailable after 3 PM but offered to proceed with the new policy."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy management system navigation",
+    "Carrier-specific premium calculations (National General, Auto Homeowners)",
+    "Payment arrangement processes",
+    "Address verification protocols"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal policy management system"
+  ],
+  "summary": "Jamie is transitioning from National General to Auto Homeowners Insurance due to a move requiring rental coverage. The agent verified policy details, explained payment options, and confirmed the new policy's effective date. The call ended mid-explanation, requiring follow-up to finalize the switch and ensure coverage continuity.",
+  "_model": "qwen3:14b",
+  "_eval_count": 359,
+  "_total_duration_ms": 55275,
+  "_source_file": "transcripts/q-300-+13368296133-20260106-155012-1767732612.5510.txt",
+  "_direction": "queue",
+  "_char_count": 4034
+}

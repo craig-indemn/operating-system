@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller sought to resolve an issue with unlinking a canceled insurance file and updating the DBA (doing business as) information for an account, while addressing system display problems in the billing account portal.",
+  "resolution_steps": [
+    "Agent acknowledged the disconnected call and confirmed the call was recorded.",
+    "Explained that unlinking the old file was not possible but suggested removing the DBA 'Hernandez Lions' and switching to 'Julio Installer LLC' instead.",
+    "Addressed the caller's concern about the billing account portal displaying old data by attributing it to a system-wide issue and confirming the old data would eventually be purged.",
+    "Confirmed the caller would proceed with removing the DBA and updating the account to 'Julio Installer LLC' effective immediately."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance account management processes",
+    "Handling DBA updates and policy linkage",
+    "Troubleshooting billing system display issues"
+  ],
+  "systems_referenced": [
+    "Billing account portal",
+    "Client summary system"
+  ],
+  "summary": "The caller requested assistance with updating an insurance account's DBA and resolving display issues in the billing system. The agent explained that unlinking the old file was not possible but recommended switching the DBA to 'Julio Installer LLC.' The agent also attributed the system display problem to a temporary issue, assuring the old data would be purged. The caller agreed to proceed with the DBA change, and the call concluded with no further action needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 336,
+  "_total_duration_ms": 39876,
+  "_source_file": "transcripts/exten-207-+18885088622-20250903-091930-1756905570.465.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2355
+}

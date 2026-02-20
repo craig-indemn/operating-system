@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to confirm that pictures from a car accident were submitted to the insurance company for a claim, specifically ensuring they were received by Leroy Kennard or Daphne's policy team.",
+  "resolution_steps": [
+    "Agent acknowledged the caller's request about submitting claim pictures.",
+    "Agent identified the need to contact National General Insurance directly.",
+    "Agent provided National General's customer service number (877-468-3466) to resolve the issue."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "National General is a carrier partnered with Alliance Insurance Services",
+    "Correct customer service contact information for National General"
+  ],
+  "systems_referenced": [
+    "National General Insurance customer service line"
+  ],
+  "summary": "A caller requested confirmation that car accident claim pictures were received by Alliance Insurance. The agent determined the need to contact National General directly and provided their customer service number. The call ended with the agent offering to assist further if needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 231,
+  "_total_duration_ms": 35648,
+  "_source_file": "transcripts/in-+13363779003-+13362478843-20250909-105406-1757429646.5105.txt",
+  "_direction": "inbound",
+  "_char_count": 885
+}

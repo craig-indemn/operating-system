@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to bundle their auto policy (with Progressive) with homeowners insurance and understand how this bundling affects their insurance coverage.",
+  "resolution_steps": [
+    "Agent asked for the phone number associated with the policy.",
+    "Caller provided the number and confirmed their name (Craig).",
+    "Agent stated they would need to transfer the call to an agent and asked the caller to hold."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of policy bundling processes",
+    "Access to internal policy lookup systems"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's internal policy database"
+  ],
+  "summary": "Craig contacted Alliance Insurance to inquire about bundling his Progressive auto policy with homeowners insurance. The agent attempted to access his policy but was unable to retrieve it, prompting a transfer to another agent. The call ended with Craig being placed on hold for the transfer.",
+  "_model": "qwen3:14b",
+  "_eval_count": 212,
+  "_total_duration_ms": 27522,
+  "_source_file": "transcripts/in-+13363779003-+14405666930-20251112-102131-1762960891.2046.txt",
+  "_direction": "inbound",
+  "_char_count": 529
+}

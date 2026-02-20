@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Claudia is seeking assistance with an issue where her insurance policies are not displaying correctly in the system (showing 'bindable' instead of 'issued'), and she wants to inform Cody about an upcoming underwriter change effective January 1st.",
+  "resolution_steps": [
+    "Cody acknowledges the policy display issue and confirms he will investigate by rechecking the search results and policy statuses.",
+    "He agrees to forward the issue to the appropriate team for resolution.",
+    "Cody shares details about being reassigned to Georgia starting January 1st, explaining the underwriter change and his dissatisfaction with the decision."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of policy status terminology (e.g., 'bindable' vs. 'issued')",
+    "Familiarity with underwriting processes and territory management",
+    "Ability to troubleshoot system display issues in carrier portals"
+  ],
+  "systems_referenced": [
+    "Carrier portal/database for policy searches"
+  ],
+  "summary": "Claudia discusses a technical issue with policy display in the system and informs Cody about his impending reassignment as underwriter. Cody commits to resolving the policy issue and acknowledges the territorial change, expressing frustration about the decision. The call concludes with mutual understanding and a plan for follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 291,
+  "_total_duration_ms": 43925,
+  "_source_file": "transcripts/exten-207-+13308876486-20251229-152026-1767039626.11799.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4049
+}

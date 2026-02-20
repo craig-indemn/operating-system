@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jeff Edmonds from Alliance Insurance Services wanted to discuss an ongoing matter with USLI regarding Motor Company of Allegheny LLC's policy (number CP 1869030) and requested a callback.",
+  "resolution_steps": [
+    "Courtney Richards from USLI's Midwest Commercial Line team answered the call.",
+    "Jeff provided context about the policy and requested a callback.",
+    "Courtney acknowledged the message and asked Jeff to return the call as soon as possible."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding commercial insurance policy processes",
+    "Handling client follow-ups for unresolved matters"
+  ],
+  "systems_referenced": [],
+  "summary": "Jeff Edmonds from Alliance Insurance Services left a voicemail for USLI's Courtney Richards regarding a policy with Motor Company of Allegheny LLC (policy CP 1869030), requesting a callback to resolve an ongoing issue. Courtney confirmed receipt and asked for a return call.",
+  "_model": "qwen3:14b",
+  "_eval_count": 224,
+  "_total_duration_ms": 44824,
+  "_source_file": "transcripts/out-18885235545-206-20251119-111832-1763569112.3118.txt",
+  "_direction": "outbound",
+  "_char_count": 1091
+}

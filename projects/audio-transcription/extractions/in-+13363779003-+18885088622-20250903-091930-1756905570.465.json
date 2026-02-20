@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Caller attempted to reach an agent named Cody but experienced a disconnected call.",
+  "resolution_steps": [
+    "Agent apologized for the disconnected call",
+    "Agent stated they would transfer the call to Cody"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller Morgan from Nationwide attempted to reach Cody but faced a disconnected call. The agent apologized and offered to transfer the call, but the conversation was too brief and inconclusive to qualify as substantive.",
+  "_model": "qwen3:14b",
+  "_eval_count": 123,
+  "_total_duration_ms": 29290,
+  "_source_file": "transcripts/in-+13363779003-+18885088622-20250903-091930-1756905570.465.txt",
+  "_direction": "inbound",
+  "_char_count": 411
+}

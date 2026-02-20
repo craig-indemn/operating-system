@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Maggie is seeking clarification on the deadline for paying a workers' compensation bill to avoid cancellation and is also discussing a delay in a general liability insurance down payment due to a bank hold.",
+  "resolution_steps": [
+    "Agent acknowledges the workers' comp payment issue and offers to transfer the call to Gloria, who is more familiar with the billing system.",
+    "Agent agrees to gather documents to facilitate the payment process once Maggie is ready.",
+    "Agent commits to checking with the carrier whether the general liability coverage can start on the 18th, when the bank hold is lifted."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Workers' compensation payment deadlines and cancellation policies",
+    "General liability insurance underwriting processes",
+    "Bank hold implications on insurance payments"
+  ],
+  "systems_referenced": [
+    "Billing system (referenced via Gloria)",
+    "Carrier portal (for coverage start date verification)"
+  ],
+  "summary": "Maggie discusses a workers' comp payment delay and a general liability down payment issue with an agent. The agent arranges for Gloria to handle the payment and will check with the carrier about starting coverage on the 18th. The call concludes with a commitment to follow up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 279,
+  "_total_duration_ms": 37615,
+  "_source_file": "transcripts/exten-106-+13367505898-20250808-104121-1754664081.4920.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1990
+}

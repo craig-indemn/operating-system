@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Voicemail left for Gary at Alliance Insurance requesting a callback regarding Lena's policies.",
+  "_model": "qwen3:14b",
+  "_eval_count": 66,
+  "_total_duration_ms": 34475,
+  "_source_file": "transcripts/out-3363384318-113-20251003-112610-1759505170.9291.txt",
+  "_direction": "outbound",
+  "_char_count": 449
+}

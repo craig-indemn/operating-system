@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Manolo is seeking assistance to complete a document he did not receive via email, which is required to retain a discount. He plans to visit the office in person tomorrow to address this.",
+  "resolution_steps": [
+    "Agent explains the document is necessary to maintain the discount and clarifies it must be completed by the caller.",
+    "Agent offers to help Manolo complete the document in person at the office.",
+    "Agent suggests contacting the company to resend the email if Manolo did not receive it.",
+    "Agent confirms Manolo's plan to visit the office tomorrow and agrees to meet at 11:30 AM.",
+    "Agent notes alternative assistance options if Manolo cannot attend."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of document requirements for discounts",
+    "Process for resending documents via company systems",
+    "Office location and availability for in-person assistance"
+  ],
+  "systems_referenced": [
+    "company's email system (implied)"
+  ],
+  "summary": "Manolo needs to complete a document to retain a discount but did not receive the email. The agent explains the necessity, offers in-person help at the office tomorrow, and confirms a meeting time. The caller agrees to attend, with backup assistance options available if needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 285,
+  "_total_duration_ms": 42230,
+  "_source_file": "transcripts/exten-114-+13367579577-20260119-112440-1768839880.1681.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1843
+}

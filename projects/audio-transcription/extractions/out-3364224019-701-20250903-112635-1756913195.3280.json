@@ -1,0 +1,22 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Provide update on carrier availability and future follow-up",
+  "resolution_steps": [
+    "Agent left voicemail message confirming previous conversation",
+    "Notified client of lack of available carriers with National General",
+    "Offered to revisit the matter in the future"
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [
+    "Understanding of carrier partnerships with National General",
+    "Ability to communicate complex insurance availability issues clearly"
+  ],
+  "systems_referenced": [],
+  "summary": "Agent Jeremy left a voicemail message for Nizmar updating them on the lack of available carriers with National General and offering to revisit the matter in the future. The call was initially forwarded to voicemail, and the conversation consisted of a pre-recorded message rather than a live interaction.",
+  "_model": "qwen3:14b",
+  "_eval_count": 179,
+  "_total_duration_ms": 119495,
+  "_source_file": "transcripts/out-3364224019-701-20250903-112635-1756913195.3280.txt",
+  "_direction": "outbound",
+  "_char_count": 986
+}

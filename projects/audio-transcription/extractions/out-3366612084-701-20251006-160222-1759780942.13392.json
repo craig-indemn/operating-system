@@ -1,0 +1,33 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jeremy from Alliance Insurance is presenting a new combined home, rental, and auto insurance package to Bill and Cindy, comparing it to their current policies with Farm Bureau and highlighting cost savings and coverage improvements.",
+  "resolution_steps": [
+    "Explained home insurance details: guaranteed replacement cost policy, deductible options, and coverage differences from Farm Bureau.",
+    "Discussed rental property coverage limits, service line coverage, and personal property value.",
+    "Provided auto insurance rates for three vehicles, liability coverage, and payment plan options.",
+    "Compared new quotes to current Farm Bureau rates, emphasizing cost reductions.",
+    "Mentioned Auto Owners Insurance Company as the carrier, its AM Best rating, and the agency's flexibility with multiple carriers.",
+    "Addressed questions about payment plans, upfront discounts, and policy terms."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy terminology (e.g., guaranteed replacement cost, service line coverage).",
+    "Carrier-specific details (Auto Owners, Farm Bureau, Progressive).",
+    "Premium calculation methods (deductibles, payment plans, coverage limits).",
+    "Independent agency operations vs. captive agents."
+  ],
+  "systems_referenced": [
+    "Auto Owners Insurance Company",
+    "Farm Bureau",
+    "Progressive",
+    "Safeco (transitioning to Liberty Mutual)",
+    "Alliance Insurance Services agency platform"
+  ],
+  "summary": "Jeremy from Alliance Insurance presented a comprehensive insurance package combining home, rental, and auto coverage for Bill and Cindy, demonstrating significant cost savings compared to their current Farm Bureau policies. He detailed policy specifics, carrier advantages, and payment flexibility, ultimately securing their intent to switch providers.",
+  "_model": "qwen3:14b",
+  "_eval_count": 370,
+  "_total_duration_ms": 61696,
+  "_source_file": "transcripts/out-3366612084-701-20251006-160222-1759780942.13392.txt",
+  "_direction": "outbound",
+  "_char_count": 13009
+}

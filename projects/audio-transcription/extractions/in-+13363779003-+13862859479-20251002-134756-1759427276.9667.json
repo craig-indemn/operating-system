@@ -1,0 +1,26 @@
+{
+  "is_substantive": false,
+  "caller_intent": "John Mack is inquiring whether someone from Alliance Insurance Services contacted him recently.",
+  "resolution_steps": [
+    "Agent mentions a possible caller named Brandi.",
+    "Agent places the caller on hold.",
+    "Hold message played about online policy management and texting support."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Hold message script content",
+    "Customer portal URL (myallianceinsurance.com)",
+    "Texting support number (336-786-1133)"
+  ],
+  "systems_referenced": [
+    "myallianceinsurance.com customer portal",
+    "Alliance Insurance Services texting support"
+  ],
+  "summary": "The agent placed John Mack on hold and played a standard hold message about online policy management and texting support. No substantive resolution occurred beyond the hold message.",
+  "_model": "qwen3:14b",
+  "_eval_count": 195,
+  "_total_duration_ms": 31127,
+  "_source_file": "transcripts/in-+13363779003-+13862859479-20251002-134756-1759427276.9667.txt",
+  "_direction": "inbound",
+  "_char_count": 880
+}

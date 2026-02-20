@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is asking whether he needs to report an additional driver (his church associate pastor) on his insurance policy for a vehicle he temporarily loaned while the pastor's car is being repaired.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's concern about temporary vehicle use and liability.",
+    "Agent offers to connect the caller with Corbin (the carrier) for clarification.",
+    "Agent puts the caller on hold to facilitate the transfer."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance coverage rules for temporary drivers and vehicle use",
+    "Carrier-specific policies for adding drivers or reporting changes"
+  ],
+  "systems_referenced": [
+    "myallianceinsurance.com customer portal"
+  ],
+  "summary": "A caller inquires about insurance liability for temporarily loaning a vehicle to someone else. The agent explains they will connect him with his carrier (Corbin) for clarification but does not resolve the question directly. The call is put on hold to transfer to Corbin.",
+  "_model": "qwen3:14b",
+  "_eval_count": 226,
+  "_total_duration_ms": 43953,
+  "_source_file": "transcripts/q-300-+13362156620-20250926-135413-1758909253.3216.txt",
+  "_direction": "queue",
+  "_char_count": 1500
+}

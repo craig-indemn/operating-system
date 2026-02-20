@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Carlos wants to add his Kawasaki Z400 motorcycle to his existing insurance policy and obtain a quote for full coverage, aiming to consolidate payments into one bill.",
+  "resolution_steps": [
+    "Agent confirmed Carlos's identity and motorcycle details (model, VIN, purchase date).",
+    "Collected address, driving experience, license information, and motorcycle usage (pleasure-only).",
+    "Discussed coverage options (full coverage, deductibles, towing/labor, roadside assistance).",
+    "Provided a quote from Progressive: $2,210/year for liability, $1,041/year for comprehensive, $2,022/year for collision, plus $8/year for towing and $10/year for roadside assistance.",
+    "Explained payment options (full payment vs. monthly installments with a 15% down payment).",
+    "Noted that collision coverage is the most expensive component and explained financing implications."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Motorcycle insurance terminology (comprehensive, collision, deductibles).",
+    "VIN verification process.",
+    "Impact of financing on insurance quotes.",
+    "Comparison of insurance providers (e.g., Progressive)."
+  ],
+  "systems_referenced": [
+    "Progressive insurance"
+  ],
+  "summary": "Carlos sought to add his motorcycle to his existing policy. The agent gathered detailed information about the motorcycle, his driving history, and coverage preferences. A quote from Progressive was provided, highlighting the costs of liability, comprehensive, and collision coverage. Carlos opted to compare quotes but thanked the agent for the assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 353,
+  "_total_duration_ms": 63031,
+  "_source_file": "transcripts/q-200-+13364222033-20260106-151950-1767730790.5017.txt",
+  "_direction": "queue",
+  "_char_count": 6975
+}

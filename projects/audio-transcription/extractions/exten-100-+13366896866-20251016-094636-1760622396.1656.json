@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller aimed to confirm Brian's phone number for an inspection and later requested contact information for Jason Rutledge at a new address.",
+  "resolution_steps": [
+    "Agent verified Brian's phone number (524-934-5240) and confirmed it was correct.",
+    "Agent left a voicemail with Brian for the inspection.",
+    "Agent looked up Jason Rutledge's information at 1632 Sanford Drive.",
+    "Agent provided Jason's phone number (336-865-9175) and his spouse Jacqueline's number (336-596-8306).",
+    "Agent offered to follow up for an email if phone numbers were unresponsive."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Access to client contact database",
+    "Ability to search addresses and names in agency records"
+  ],
+  "systems_referenced": [
+    "Agency's internal client contact database"
+  ],
+  "summary": "The agent assisted with verifying a phone number for an inspection and looked up new contact details for Jason Rutledge. They provided phone numbers and offered to follow up for an email if needed. The call concluded with both tasks addressed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 275,
+  "_total_duration_ms": 39433,
+  "_source_file": "transcripts/exten-100-+13366896866-20251016-094636-1760622396.1656.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1747
+}

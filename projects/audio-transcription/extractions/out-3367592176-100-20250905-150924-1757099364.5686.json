@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Brandy from Alliance Insurance seeks assistance to resolve an issue with a quote for Jennifer Bryant, specifically to confirm if missing underwriting details or a call estimator are preventing the policy from being bound.",
+  "resolution_steps": [
+    "Agent Emma verifies the quote number (NWF.202512414) provided by Brandy.",
+    "Emma checks the quote and identifies missing underwriting questions and a call estimator.",
+    "Emma informs Brandy of the missing requirements and offers to relay the information to Heather Johnson."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Underwriting process requirements for insurance quotes",
+    "Quote tracking system navigation",
+    "Call estimator documentation protocols"
+  ],
+  "systems_referenced": [
+    "Northwest Farmers Mutual Insurance quote tracking system"
+  ],
+  "summary": "Brandy from Alliance Insurance contacts Northwest Farmers to resolve an issue with a quote for Jennifer Bryant. The agent identifies missing underwriting details and a call estimator, informing Brandy that these must be completed before binding the policy. The agent offers to relay the information to Heather Johnson, leaving the issue unresolved but providing clear next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 261,
+  "_total_duration_ms": 45246,
+  "_source_file": "transcripts/out-3367592176-100-20250905-150924-1757099364.5686.txt",
+  "_direction": "outbound",
+  "_char_count": 2038
+}

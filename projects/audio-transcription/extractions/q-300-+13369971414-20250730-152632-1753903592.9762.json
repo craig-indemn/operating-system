@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Vicky Hill needs a copy of her insurance declaration page for her employer, as a previous attempt to obtain it was unsuccessful.",
+  "resolution_steps": [
+    "Heather asks for Vicky's policy number, address, and email to verify her account.",
+    "Heather confirms the request is for a declaration page showing coverages.",
+    "Heather assures Vicky the document will be sent within five minutes and instructs her to call back if it's not received within ten minutes."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Process for retrieving and sending insurance declaration pages",
+    "Travelers policy verification procedures"
+  ],
+  "systems_referenced": [
+    "Travelers insurance system"
+  ],
+  "summary": "Vicky Hill requested a copy of her Travelers insurance declaration page for her employer. Heather collected verification details and committed to sending the document within five minutes, with a follow-up instruction if it was not received within ten minutes.",
+  "_model": "qwen3:14b",
+  "_eval_count": 219,
+  "_total_duration_ms": 42459,
+  "_source_file": "transcripts/q-300-+13369971414-20250730-152632-1753903592.9762.txt",
+  "_direction": "queue",
+  "_char_count": 992
+}

@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking approval for a settlement offer related to a 2016 Ford F350 accident claim involving Osler Handy, detailing adjusted vehicle value, tax calculations, storage deductions, and policy provisions.",
+  "resolution_steps": [
+    "Agent reviews settlement breakdown including adjusted value ($26,864), taxes, storage deductions, and deductible calculations.",
+    "Agent confirms need for manager approval if the offer is accepted.",
+    "Caller requests time to review documents and agrees to call back after evaluation.",
+    "Agent agrees to send settlement details for manager approval."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance claim settlement calculations",
+    "Policy provisions (e.g., appraisal clause, storage deductions)",
+    "Tax and DMV fee structures",
+    "Carrier-specific claim processes (National General)"
+  ],
+  "systems_referenced": [
+    "National General insurance portal",
+    "DMV fee database",
+    "Internal claim management system"
+  ],
+  "summary": "The call discusses a complex truck accident claim with detailed financial breakdowns. The agent is coordinating approval for a settlement offer, highlighting the need for manager approval and potential appraisal clause invocation if the offer is rejected. The caller requests time to review documents before finalizing the decision.",
+  "_model": "qwen3:14b",
+  "_eval_count": 285,
+  "_total_duration_ms": 35949,
+  "_source_file": "transcripts/internal-510-702-20251222-122506-1766424306.2856.txt",
+  "_direction": "internal",
+  "_char_count": 1969
+}

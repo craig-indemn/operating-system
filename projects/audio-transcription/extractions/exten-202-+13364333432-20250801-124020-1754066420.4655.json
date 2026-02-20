@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking assistance to locate the correct insurance office, specifically asking for the number of an All State office near a specific address and confirming details about Tonda Phillips Agency.",
+  "resolution_steps": [
+    "Agent confirms the caller is referring to an All State office near the specified location.",
+    "Agent acknowledges uncertainty about the exact address but suggests calling the All State office on 601.",
+    "Agent mentions Tonda Phillips Agency as a possible match and advises the caller to verify the name when contacting."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Local business locations and phone numbers",
+    "Insurance agency directory information"
+  ],
+  "systems_referenced": [],
+  "summary": "The caller sought help locating an All State insurance office near a specific address. The agent confirmed the office's location on 601, suggested contacting it directly, and mentioned Tonda Phillips Agency as a potential match. The call ended with the caller expressing gratitude.",
+  "_model": "qwen3:14b",
+  "_eval_count": 224,
+  "_total_duration_ms": 43677,
+  "_source_file": "transcripts/exten-202-+13364333432-20250801-124020-1754066420.4655.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 616
+}

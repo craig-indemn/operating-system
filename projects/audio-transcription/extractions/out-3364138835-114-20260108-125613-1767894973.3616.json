@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking commercial insurance for a box truck rented from Ryder and is willing to provide documentation via email to facilitate the process.",
+  "resolution_steps": [
+    "Agent Stacy confirms the caller's need for commercial insurance related to a Ryder-rented box truck.",
+    "Caller agrees to email documentation if provided with an email address.",
+    "Agent requests the caller's email address, which the caller spells out phonetically (propnewhow@yahoo.com).",
+    "Agent confirms the email address and assures the caller a commercial agent will follow up."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Commercial insurance underwriting process",
+    "Client information collection protocols",
+    "Referral procedures for specialized agents"
+  ],
+  "systems_referenced": [
+    "Email communication channel",
+    "Alliance Insurance support email (support@allianceinsurance.com)"
+  ],
+  "summary": "A caller inquires about commercial insurance for a Ryder-rented box truck. The agent collects the caller's email address (propnewhow@yahoo.com) and schedules a follow-up with a commercial agent. The call concludes with confirmation of next steps and contact information.",
+  "_model": "qwen3:14b",
+  "_eval_count": 258,
+  "_total_duration_ms": 41842,
+  "_source_file": "transcripts/out-3364138835-114-20260108-125613-1767894973.3616.txt",
+  "_direction": "outbound",
+  "_char_count": 1175
+}

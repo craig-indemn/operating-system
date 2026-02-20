@@ -1,0 +1,24 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Follow-up on a received voicemail to request specific information about vehicle plate submission and removal.",
+  "resolution_steps": [
+    "Agent left a voicemail message requesting the date the plate was turned in and details about the vehicle to be removed.",
+    "Offered to send a text message for clarification.",
+    "Provided a callback phone number for further assistance."
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [
+    "Understanding of vehicle insurance claim processes",
+    "Knowledge of voicemail follow-up procedures"
+  ],
+  "systems_referenced": [
+    "Text messaging system"
+  ],
+  "summary": "This is a voicemail follow-up from Alliance Insurance agent Jason, requesting specific details about a vehicle plate submission and removal process. The agent offered to send a text message and provided a callback number for further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 190,
+  "_total_duration_ms": 32085,
+  "_source_file": "transcripts/out-13364938295-114-20250908-132648-1757352408.6533.txt",
+  "_direction": "outbound",
+  "_char_count": 700
+}

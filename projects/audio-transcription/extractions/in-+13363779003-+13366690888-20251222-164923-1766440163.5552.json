@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Attempting to contact Heather Johnson regarding life insurance",
+  "resolution_steps": [
+    "Agent acknowledged caller's request",
+    "Agent said 'One second. Thank you.' (likely preparing to transfer or retrieve voicemail)"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller attempted to reach Heather Johnson about life insurance. Agent responded with a brief acknowledgment, suggesting the call may be transferred or a voicemail is being handled.",
+  "_model": "qwen3:14b",
+  "_eval_count": 121,
+  "_total_duration_ms": 40750,
+  "_source_file": "transcripts/in-+13363779003-+13366690888-20251222-164923-1766440163.5552.txt",
+  "_direction": "inbound",
+  "_char_count": 109
+}

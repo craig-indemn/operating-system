@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Tracie sought clarification on why her insurance policy premium increased, specifically inquiring about the role of the ISO rating and whether there were other factors contributing to the change.",
+  "resolution_steps": [
+    "Joe explained the ISO rating system and its impact on insurance premiums, noting the rating had increased in Tracie's area.",
+    "He acknowledged the lack of specific data on why the ISO rating worsened (e.g., fire department changes, water sources).",
+    "Joe mentioned efforts to request credit for the policyholder but confirmed the carrier only offered a $125 credit, which he found insufficient.",
+    "He committed to continuing follow-up but emphasized the agency's limited control over carrier decisions."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of ISO ratings and their influence on insurance pricing",
+    "Knowledge of how fire protection class codes are determined and reported",
+    "Awareness of carrier underwriting processes and limitations on policyholder credits"
+  ],
+  "systems_referenced": [
+    "ISO rating system",
+    "Carrier underwriting team",
+    "State government fire department reporting",
+    "Department of Insurance"
+  ],
+  "summary": "Joe explained that Tracie's policy increase was tied to a worsened ISO rating in her area, though he could not confirm the exact cause. He also shared the carrier's limited credit offer of $125, which he found inadequate. The call ended with a commitment to continue advocating for Tracie but no immediate resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 331,
+  "_total_duration_ms": 49129,
+  "_source_file": "transcripts/out-3364087685-512-20250904-101313-1756995193.3293.txt",
+  "_direction": "outbound",
+  "_char_count": 4323
+}

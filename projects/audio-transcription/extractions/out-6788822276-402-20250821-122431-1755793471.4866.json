@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Confirm the customer's billing address to resolve an issue with undelivered mail.",
+  "resolution_steps": [
+    "Agent Karen called to verify the customer's current address.",
+    "Customer confirmed the address: 1105 North Carolina 54 Apt 5B, Chapel Hill, NC 27516.",
+    "Agent acknowledged confirmation and stated she would update the records."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Address verification process for mail delivery issues",
+    "Customer account management procedures"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal customer records system"
+  ],
+  "summary": "Agent Karen called to confirm a customer's billing address after encountering mail delivery issues. The customer verified the address on file, and the agent committed to updating records. The call resolved the immediate issue but may require follow-up for full resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 204,
+  "_total_duration_ms": 30578,
+  "_source_file": "transcripts/out-6788822276-402-20250821-122431-1755793471.4866.txt",
+  "_direction": "outbound",
+  "_char_count": 680
+}

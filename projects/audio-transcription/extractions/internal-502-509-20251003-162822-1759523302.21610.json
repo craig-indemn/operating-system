@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller is seeking technical assistance with audio input settings on their computer, specifically troubleshooting headset/speaker configuration.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "This appears to be a technical support call unrelated to insurance services. The caller is troubleshooting audio input settings on their computer, and the agent is attempting to assist with basic troubleshooting steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 111,
+  "_total_duration_ms": 32876,
+  "_source_file": "transcripts/internal-502-509-20251003-162822-1759523302.21610.txt",
+  "_direction": "internal",
+  "_char_count": 579
+}

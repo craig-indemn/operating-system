@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Curtis Williams is inquiring whether his insurance policy covers towing services after his car was towed on Wednesday and seeks assistance with filing a claim.",
+  "resolution_steps": [
+    "Agent requested Curtis's policy-associated phone numbers (home and mobile) to update contact information.",
+    "Agent confirmed Curtis's current numbers and clarified that an old number is no longer valid.",
+    "Agent explained the process of sending a text message to Curtis's mobile number to request a tow receipt for claim filing.",
+    "Curtis agreed to provide the receipt via text, and the agent committed to processing it once received."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding insurance coverage for towing services",
+    "Claim filing procedures",
+    "Contact information management for policyholders"
+  ],
+  "systems_referenced": [
+    "Internal contact information database"
+  ],
+  "summary": "Curtis Williams contacted Alliance Insurance to confirm if his policy covers towing after his car was towed. The agent updated his contact information and arranged to receive a tow receipt via text for claim processing. The call concluded with the agent agreeing to follow up once the receipt is submitted.",
+  "_model": "qwen3:14b",
+  "_eval_count": 263,
+  "_total_duration_ms": 37203,
+  "_source_file": "transcripts/in-+13367861133-+12767544067-20251219-111630-1766160990.3309.txt",
+  "_direction": "inbound",
+  "_char_count": 2319
+}

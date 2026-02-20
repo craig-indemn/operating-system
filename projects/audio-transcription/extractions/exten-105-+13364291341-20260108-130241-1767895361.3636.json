@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is discussing the implications of switching car insurance from Auto Owners to National General, including potential impacts on umbrella policies, homeowners discounts, and overall savings. They also inquire about their condo policy coverage limits and improvements.",
+  "resolution_steps": [
+    "Agent explains potential impacts of switching car insurance on existing Auto Owners umbrella, homeowners, and auto policies.",
+    "Agent confirms need to verify if Auto Owners will allow umbrella coverage to extend to National General.",
+    "Agent highlights potential 10-12% discount loss on homeowners policy if Auto Owners policy remains.",
+    "Agent mentions National General quote ($2,621) is ~$1,000 less than Auto Owners but net savings may be reduced after considering discount loss.",
+    "Agent notes Progressive was the only carrier cheaper than Auto Owners ($200 less) but National General is the best option.",
+    "Agent discusses condo policy coverage (Combined A & C with $100K limit) and advises client on potential risks to improvements."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy discounts (e.g., multi-policy discounts)",
+    "Coverage relationships between auto, homeowners, and umbrella policies",
+    "Carrier-specific underwriting rules (e.g., Auto Owners' umbrella policy compatibility)",
+    "Condo policy structure (Combined A & C coverage)"
+  ],
+  "systems_referenced": [
+    "Carrier portal for insurance quotes",
+    "Auto Owners underwriting system",
+    "Agency's carrier database (15,820+ carriers)"
+  ],
+  "summary": "Agent discusses switching car insurance from Auto Owners to National General, emphasizing potential savings, coverage compatibility risks, and impacts on existing policies. They also review the client's condo policy coverage limits and improvements, advising on potential risks. The call requires follow-up to confirm Auto Owners' umbrella policy compatibility with National General.",
+  "_model": "qwen3:14b",
+  "_eval_count": 409,
+  "_total_duration_ms": 52617,
+  "_source_file": "transcripts/exten-105-+13364291341-20260108-130241-1767895361.3636.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 6522
+}

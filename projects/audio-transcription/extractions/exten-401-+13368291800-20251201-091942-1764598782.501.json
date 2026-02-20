@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Angela Fulton wants to add a newly purchased car to her existing insurance policy.",
+  "resolution_steps": [
+    "Heather greets Angela and confirms her identity.",
+    "Heather accesses Angela's account to review existing policies (auto, boat, homeowners, renters).",
+    "Heather identifies the auto insurance is underwritten by Auto Owners.",
+    "Heather transfers Angela to the appropriate department to handle the vehicle addition."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Accessing client account systems to verify policy details",
+    "Identifying carrier-specific departments for policy adjustments"
+  ],
+  "systems_referenced": [
+    "Internal client account database",
+    "Auto Owners insurance platform"
+  ],
+  "summary": "Angela contacted Alliance Insurance to add a new car to her policy. Heather verified her account details, identified the auto insurance carrier (Auto Owners), and transferred her to the appropriate department for further assistance. The call was not resolved but directed to the correct team.",
+  "_model": "qwen3:14b",
+  "_eval_count": 229,
+  "_total_duration_ms": 37311,
+  "_source_file": "transcripts/exten-401-+13368291800-20251201-091942-1764598782.501.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1026
+}

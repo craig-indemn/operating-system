@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Not applicable (voicemail greeting with no direct caller request)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [
+    "myallianceinsurance.com customer portal",
+    "text support at 336-786-1133"
+  ],
+  "summary": "Voicemail greeting from Alliance Insurance Services informing callers of online policy management options and text support. No substantive interaction occurred as the call was placed on hold or timed out.",
+  "_model": "qwen3:14b",
+  "_eval_count": 124,
+  "_total_duration_ms": 25201,
+  "_source_file": "transcripts/ptimeout-+13363779003-+13363514900-20260107-093633-1767796593.370.txt",
+  "_direction": "park_timeout",
+  "_char_count": 530
+}

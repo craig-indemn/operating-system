@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Corbin is following up on an insurance application for Anthony's new home, requesting Claudia's information, and coordinating the submission of documents via email and DocuSign.",
+  "resolution_steps": [
+    "Corbin informs Anthony he is working on the insurance application and needs Claudia's information.",
+    "Mentions sending documents via email once the application is completed.",
+    "References using DocuSign for e-signing the application.",
+    "Notes that Bradford has already provided necessary information."
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [
+    "Insurance application process",
+    "DocuSign e-signature platform",
+    "Client information collection procedures"
+  ],
+  "systems_referenced": [
+    "Email",
+    "DocuSign"
+  ],
+  "summary": "Corbin from Alliance Insurance left a voicemail for Anthony regarding a new home insurance application. He requested Claudia's information, mentioned using DocuSign for e-signing, and noted that Bradford had already provided necessary details. The call concluded with Corbin expecting Anthony to respond via email.",
+  "_model": "qwen3:14b",
+  "_eval_count": 236,
+  "_total_duration_ms": 78502,
+  "_source_file": "transcripts/out-3362424118-409-20260112-085802-1768226282.46.txt",
+  "_direction": "outbound",
+  "_char_count": 1053
+}

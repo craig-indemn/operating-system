@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller requested a liability insurance quote for two vehicles and explained that they currently have no insurance due to a friend's previous coverage lapse.",
+  "resolution_steps": [
+    "Agent confirmed the caller's need for liability insurance and asked for details about existing coverage.",
+    "Agent noted the caller's mother (Viviana Diaz Garcia) is already insured with Travelers but clarified the caller has no current coverage.",
+    "Agent explained that new applicants without prior coverage require full upfront payment for liability insurance.",
+    "Agent offered a payment plan alternative by providing a phone number for further assistance.",
+    "Agent mentioned a potential exception if the caller's mother is present to facilitate coverage."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance underwriting rules for new applicants",
+    "Payment plan options for uninsured customers",
+    "Exceptions for existing policyholders' family members"
+  ],
+  "systems_referenced": [
+    "Travelers insurance portal (via reference to existing coverage)",
+    "Payment plan assistance line (336-736-7682)"
+  ],
+  "summary": "A caller sought liability insurance for two vehicles but had no current coverage. The agent explained full upfront payment requirements for new applicants but offered a payment plan alternative. The caller was informed they might qualify for an exception if their mother (an existing Travelers policyholder) was present.",
+  "_model": "qwen3:14b",
+  "_eval_count": 306,
+  "_total_duration_ms": 40637,
+  "_source_file": "transcripts/q-200-+17432136710-20260116-133056-1768588256.3806.txt",
+  "_direction": "queue",
+  "_char_count": 2394
+}

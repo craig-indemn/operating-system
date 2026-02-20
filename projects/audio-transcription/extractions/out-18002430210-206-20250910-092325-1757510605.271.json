@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Jeff Edmonds) is seeking clarification on a canceled insurance policy, specifically to understand outstanding payments, audit premiums, and steps required to reinstate the policy.",
+  "resolution_steps": [
+    "Agent verified the caller's account details (Northside Lanes Inc.) and confirmed the policy status.",
+    "Agent explained the policy was canceled for non-payment on September 3, 2025, with a past due amount of $1,445.",
+    "Agent clarified that an audit premium of $1,435 was paid in March 2025, but a current term adjustment of $306.16 remained unpaid.",
+    "Agent provided documents showing cancellation notices and explained the payment history, including an overpayment in November 2024.",
+    "Agent outlined next steps: underwriter approval and payment of the remaining $1,445 to reinstate the policy.",
+    "Agent offered to provide underwriter contact information (Lake Cobbs)."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance policy cancellation processes",
+    "Audit premium calculations",
+    "Handling of overpayments and installment billing",
+    "Underwriting approval requirements for reinstatement"
+  ],
+  "systems_referenced": [
+    "Westfield Customer Care portal",
+    "Policy management system (for account details and payment history)",
+    "Underwriter contact information"
+  ],
+  "summary": "Jeff Edmonds contacted Westfield to resolve confusion about a canceled policy. The agent explained the policy was canceled due to non-payment of $1,445, including an unpaid current term adjustment. The caller was provided with cancellation notices, payment history details, and instructed to contact the underwriter (Lake Cobbs) for reinstatement approval. The call concluded with the caller understanding the next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 397,
+  "_total_duration_ms": 54506,
+  "_source_file": "transcripts/out-18002430210-206-20250910-092325-1757510605.271.txt",
+  "_direction": "outbound",
+  "_char_count": 12688
+}

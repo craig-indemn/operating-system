@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is inquiring whether their stackable washing machine and dryer are covered under their home warranty policy.",
+  "resolution_steps": [
+    "Agent acknowledged the caller's request",
+    "Agent paused to check the home warranty policy details (implied by 'One second')"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Home warranty coverage terms",
+    "Policy lookup procedures"
+  ],
+  "systems_referenced": [
+    "Home warranty portal/database"
+  ],
+  "summary": "A caller asked if their stackable washer and dryer are covered under their home warranty. The agent paused to check policy details, indicating a need for further action to resolve the inquiry.",
+  "_model": "qwen3:14b",
+  "_eval_count": 151,
+  "_total_duration_ms": 40770,
+  "_source_file": "transcripts/in-+13363779003-+17434447366-20250728-115616-1753718176.4716.txt",
+  "_direction": "inbound",
+  "_char_count": 202
+}

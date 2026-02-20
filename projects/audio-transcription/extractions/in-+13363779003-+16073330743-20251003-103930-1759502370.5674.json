@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Michelle is seeking guidance on when to terminate her current insurance policies for her camper cars and home, as she is moving and closing on a new home in Raleigh. She also mentions she has already purchased a new policy with another company but is unsure about the process for ending her current coverage.",
+  "resolution_steps": [
+    "Agent acknowledged Michelle's request and asked clarifying questions about her new policy.",
+    "Agent offered to transfer Michelle to another agent to assist with her specific needs."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy termination procedures for home and auto insurance",
+    "Handling customer transitions between carriers"
+  ],
+  "systems_referenced": [
+    "Internal call transfer system"
+  ],
+  "summary": "Michelle contacted Alliance Insurance to inquire about terminating her current policies as she moves to a new home in Raleigh and has already secured a new policy with another provider. The agent recognized the need for specialized assistance and transferred her to another agent for further support.",
+  "_model": "qwen3:14b",
+  "_eval_count": 225,
+  "_total_duration_ms": 33267,
+  "_source_file": "transcripts/in-+13363779003-+16073330743-20251003-103930-1759502370.5674.txt",
+  "_direction": "inbound",
+  "_char_count": 991
+}

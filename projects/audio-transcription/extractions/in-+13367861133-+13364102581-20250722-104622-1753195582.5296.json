@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to obtain insurance estimates for two additional jet skis, either adding them to an existing policy or creating separate policies, and clarify how the insurance would be structured.",
+  "resolution_steps": [
+    "Agent Diane Johnson confirms the caller's identity and locates the existing policy under 'Samuel Eugene and Diane Johnson'.",
+    "Caller explains the need for insurance estimates on two new jet skis and asks about options for adding them to the existing policy or creating separate policies.",
+    "Agent offers to connect the caller with another agent to provide detailed estimates and policy options."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy lookup procedures",
+    "Insurance quoting processes",
+    "Call transfer protocols"
+  ],
+  "systems_referenced": [],
+  "summary": "A customer inquires about insurance options for additional jet skis, either adding them to an existing policy or creating separate policies. The agent locates the existing policy and arranges for a specialist to provide detailed estimates.",
+  "_model": "qwen3:14b",
+  "_eval_count": 229,
+  "_total_duration_ms": 35385,
+  "_source_file": "transcripts/in-+13367861133-+13364102581-20250722-104622-1753195582.5296.txt",
+  "_direction": "inbound",
+  "_char_count": 889
+}

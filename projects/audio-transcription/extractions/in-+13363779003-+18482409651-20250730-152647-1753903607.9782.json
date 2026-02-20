@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Nicole Thomas attempts to reach Jamie Smithen, referencing a prior conversation.",
+  "resolution_steps": [
+    "Agent acknowledges caller and states they will transfer the call."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief inbound call where the caller requests to speak to Jamie Smithen. The agent confirms the request and initiates a transfer, but no further details or resolution are provided in the transcript.",
+  "_model": "qwen3:14b",
+  "_eval_count": 118,
+  "_total_duration_ms": 29547,
+  "_source_file": "transcripts/in-+13363779003-+18482409651-20250730-152647-1753903607.9782.txt",
+  "_direction": "inbound",
+  "_char_count": 296
+}

@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unknown (automated voicemail message)",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [
+    "automated voice messaging system"
+  ],
+  "summary": "Call was forwarded to an automated voicemail system which indicated the mailbox was full and could not accept messages. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 90,
+  "_total_duration_ms": 26169,
+  "_source_file": "transcripts/out-3366027426-406-20251031-145212-1761936732.5991.txt",
+  "_direction": "outbound",
+  "_char_count": 217
+}

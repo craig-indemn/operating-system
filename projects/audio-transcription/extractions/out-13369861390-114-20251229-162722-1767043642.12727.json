@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller requested a quote for additional coverage (intendaci\u00f3n, likely flood insurance) not included in their existing home policy and sought clarification on costs and coverage details.",
+  "resolution_steps": [
+    "Agent confirmed the caller's previous discussion about home insurance coverage gaps.",
+    "Explained that intendaci\u00f3n coverage requires a separate policy from the existing home policy.",
+    "Provided the annual cost for the new intendaci\u00f3n policy ($1,050) and its coverage limit ($250,000).",
+    "Noted the caller's current home policy cost ($959/year) for context."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of insurance policy structures (separate policies for home and flood coverage).",
+    "Ability to calculate and quote insurance premiums.",
+    "Knowledge of coverage limits and policy terminology (e.g., intendaci\u00f3n)."
+  ],
+  "systems_referenced": [
+    "internal insurance quoting system"
+  ],
+  "summary": "An Alliance Insurance agent provided a quote for a separate flood (intendaci\u00f3n) insurance policy, explaining its $1,050 annual cost and $250,000 coverage limit, while contrasting it with the caller's existing home policy ($959/year). The caller received clarification on policy structure and costs.",
+  "_model": "qwen3:14b",
+  "_eval_count": 290,
+  "_total_duration_ms": 47113,
+  "_source_file": "transcripts/out-13369861390-114-20251229-162722-1767043642.12727.txt",
+  "_direction": "outbound",
+  "_char_count": 1304
+}

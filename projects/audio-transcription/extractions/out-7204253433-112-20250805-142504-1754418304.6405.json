@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Justin is verifying the mortgage information on an insurance policy (5795 Gay Street) to ensure Auto Owners sends a bill correctly, as the previous attempt was not returned.",
+  "resolution_steps": [
+    "Brandy acknowledges the request and confirms she does not have the current mortgage information.",
+    "She offers to email Justin the policy details for verification.",
+    "Justin agrees to review the emailed information and confirm its accuracy.",
+    "If discrepancies are found, Auto Owners will resend the bill, and Brandy will update the policy as needed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy verification process",
+    "Billing procedures for insurance carriers",
+    "Communication with third-party entities (Auto Owners)"
+  ],
+  "systems_referenced": [
+    "Auto Owners"
+  ],
+  "summary": "Brandy from Alliance Insurance is assisting Justin in verifying the mortgage details for a policy at 5795 Gay Street to resolve an Auto Owners billing issue. She will email the policy information for verification, with plans to update the policy if discrepancies are found. The call concludes with a commitment to follow up via email.",
+  "_model": "qwen3:14b",
+  "_eval_count": 253,
+  "_total_duration_ms": 40408,
+  "_source_file": "transcripts/out-7204253433-112-20250805-142504-1754418304.6405.txt",
+  "_direction": "outbound",
+  "_char_count": 1181
+}

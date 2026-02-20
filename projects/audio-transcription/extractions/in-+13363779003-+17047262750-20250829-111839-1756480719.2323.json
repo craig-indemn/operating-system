@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking assistance with obtaining a new landlord insurance policy in North Carolina.",
+  "resolution_steps": [
+    "Agent confirmed the ability to assist with landlord insurance in North Carolina.",
+    "Agent offered to transfer the caller to a specialist who can handle new policies."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of landlord insurance products",
+    "Internal transfer protocols for policy specialists"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller requested help with a new landlord insurance policy in North Carolina. The agent confirmed they could assist and offered to transfer the caller to a specialist. The call ended with the agent initiating the transfer process.",
+  "_model": "qwen3:14b",
+  "_eval_count": 163,
+  "_total_duration_ms": 27174,
+  "_source_file": "transcripts/in-+13363779003-+17047262750-20250829-111839-1756480719.2323.txt",
+  "_direction": "inbound",
+  "_char_count": 327
+}

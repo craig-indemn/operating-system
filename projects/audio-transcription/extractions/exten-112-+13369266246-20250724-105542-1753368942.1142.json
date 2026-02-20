@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Lyneta called to clarify whether she had properly provided proof of insurance to her previous insurer after switching policies, as she was concerned about potential issues with her new policy and prior documentation.",
+  "resolution_steps": [
+    "Brandy confirmed Lyneta's new policy is active and in force.",
+    "Brandy clarified that Lyneta had already submitted a signed application for the new policy.",
+    "Brandy reassured Lyneta that the previous insurer's request for proof of insurance had been addressed with the new policy documentation.",
+    "Brandy offered to assist further if Lyneta needed additional clarification."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of insurance policy documentation requirements",
+    "Process for handling policy renewals and proof of insurance",
+    "Communication with insurers on behalf of clients"
+  ],
+  "systems_referenced": [],
+  "summary": "Lyneta contacted Brandy to confirm she had properly submitted proof of insurance after switching policies, alleviating concerns about her previous insurer's requirements. Brandy confirmed the new policy was active and that documentation had been properly submitted, resolving the issue.",
+  "_model": "qwen3:14b",
+  "_eval_count": 248,
+  "_total_duration_ms": 37931,
+  "_source_file": "transcripts/exten-112-+13369266246-20250724-105542-1753368942.1142.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1954
+}

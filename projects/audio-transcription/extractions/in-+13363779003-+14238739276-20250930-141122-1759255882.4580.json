@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Tim from Veris) seeks assistance in contacting the correct person for a survey order linked to policy number 35967999, as there is confusion between two listed contacts who have not responded.",
+  "resolution_steps": [
+    "Agent asked for the policy number to verify the request.",
+    "Agent confirmed the policy details and acknowledged the confusion between two listed contacts.",
+    "Agent offered to transfer the call to the commercial staff for further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Internal process for transferring calls to commercial insurance staff",
+    "Understanding of policy verification procedures"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller from Veris requested help locating the correct contact for a survey order tied to policy 35967999. The agent confirmed the policy details and transferred the call to the commercial team. The conversation ended with the agent's acknowledgment.",
+  "_model": "qwen3:14b",
+  "_eval_count": 220,
+  "_total_duration_ms": 33727,
+  "_source_file": "transcripts/in-+13363779003-+14238739276-20250930-141122-1759255882.4580.txt",
+  "_direction": "inbound",
+  "_char_count": 711
+}

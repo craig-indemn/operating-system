@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Cheryl Dickerson is following up on an email to confirm details about increasing her umbrella insurance policy from $1 million to $2 million and clarify billing implications.",
+  "resolution_steps": [
+    "Jeff reviewed Cheryl's file and confirmed the umbrella policy increase request.",
+    "Explained the change would be an endorsement, maintaining the current payment method (quarterly).",
+    "Calculated the new annual premium ($1,477 vs. original $864) and discussed potential billing adjustments if the first payment had already been processed.",
+    "Clarified that the recent payment Cheryl made only covered the package policy, not the umbrella.",
+    "Confirmed the updated declaration page and billing would be sent via email after processing the endorsement."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Umbrella policy structures and endorsements",
+    "Insurance billing cycles and payment methods",
+    "Premium calculation for policy upgrades",
+    "Document processing workflows (declaration pages, emails)"
+  ],
+  "systems_referenced": [
+    "Whistle (carrier/system associated with the umbrella policy)",
+    "Email communication for policy updates",
+    "Internal policy processing system for endorsements"
+  ],
+  "summary": "Cheryl Dickerson confirmed with Jeff at Alliance Insurance Services that increasing her umbrella policy to $2 million would require an endorsement, with no changes to her quarterly payment method. Jeff explained the premium increase and clarified that the recent payment only covered the package policy. The call concluded with Cheryl understanding the next steps and Jeff agreeing to send updated documents via email.",
+  "_model": "qwen3:14b",
+  "_eval_count": 336,
+  "_total_duration_ms": 50430,
+  "_source_file": "transcripts/exten-206-+13364016855-20260119-094423-1768833863.726.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2913
+}

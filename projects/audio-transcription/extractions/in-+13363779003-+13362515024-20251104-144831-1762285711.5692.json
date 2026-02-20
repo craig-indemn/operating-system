@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Orlando Glenn requested a car insurance quote.",
+  "resolution_steps": [
+    "Agent asked for the type of insurance.",
+    "Caller specified it was for a vehicle.",
+    "Agent offered to transfer to the service team."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance product types (e.g., auto insurance)",
+    "Internal transfer protocols"
+  ],
+  "systems_referenced": [],
+  "summary": "Orlando Glenn requested a car insurance quote. The agent confirmed the need and initiated a transfer to the service team for further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 141,
+  "_total_duration_ms": 22301,
+  "_source_file": "transcripts/in-+13363779003-+13362515024-20251104-144831-1762285711.5692.txt",
+  "_direction": "inbound",
+  "_char_count": 338
+}

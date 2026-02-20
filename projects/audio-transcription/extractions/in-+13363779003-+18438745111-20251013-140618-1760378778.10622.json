@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is following up on a previous attempt to contact Gary regarding a form that needs to be signed by the close of business. She has already sent messages and emails but has not received a response.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's previous attempts to contact Gary.",
+    "Agent offers to connect the caller with Gary immediately."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Internal contact protocols for reaching Gary",
+    "Understanding of the form's urgency and deadline"
+  ],
+  "systems_referenced": [],
+  "summary": "The caller is urgently seeking assistance to get a form signed by Gary before the end of the business day. The agent is attempting to connect her with Gary directly. The call is ongoing with no resolution yet.",
+  "_model": "qwen3:14b",
+  "_eval_count": 183,
+  "_total_duration_ms": 31988,
+  "_source_file": "transcripts/in-+13363779003-+18438745111-20251013-140618-1760378778.10622.txt",
+  "_direction": "inbound",
+  "_char_count": 406
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Rick Hendricks is coordinating a site inspection for the Armfield Civic Center with Joe and Christopher, following Money Duke's departure and to address an account management gap.",
+  "resolution_steps": [
+    "Confirmed Joe's availability for inspection (Wednesday/Thursday, early Friday).",
+    "Noted need to obtain a price estimate before finalizing the inspection.",
+    "Planned to email Christopher with scheduling options and coordinate further.",
+    "Mentioned supplemental materials sent by Christopher and Accord apps provided to Joe."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance account management processes",
+    "Site inspection protocols for recreational facilities",
+    "Use of internal tools (Accord apps) and client communication workflows"
+  ],
+  "systems_referenced": [
+    "Accord apps",
+    "Supplemental materials from Christopher"
+  ],
+  "summary": "Rick Hendricks coordinated with Joe to schedule a site inspection for the Armfield Civic Center, addressing a management gap after Money Duke's departure. Joe confirmed availability for midweek and early Friday, with plans to email Christopher for final scheduling. The conversation included discussion of price estimation and use of internal tools.",
+  "_model": "qwen3:14b",
+  "_eval_count": 258,
+  "_total_duration_ms": 40978,
+  "_source_file": "transcripts/out-15134906990-105-20251013-143533-1760380533.10860.txt",
+  "_direction": "outbound",
+  "_char_count": 4307
+}

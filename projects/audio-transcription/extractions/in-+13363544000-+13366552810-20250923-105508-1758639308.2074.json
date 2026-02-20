@@ -1,0 +1,20 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Matt Mayor, is informing Alliance Insurance that he canceled his auto insurance policy and is now with the auto club. He mentions receiving letters and believes the insurance company failed to notify him of the cancellation.",
+  "resolution_steps": [
+    "The agent acknowledges the caller's issue and offers to connect him with another agent for further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Cancellation procedures for auto insurance policies",
+    "Handling customer notifications and correspondence"
+  ],
+  "systems_referenced": [],
+  "summary": "Matt Mayor called Alliance Insurance to report that he canceled his auto insurance policy and is now with the auto club. He mentioned receiving letters and believed the insurance company did not notify him of the cancellation. The agent offered to escalate the call to another agent for further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 190,
+  "_total_duration_ms": 40963,
+  "_source_file": "transcripts/in-+13363544000-+13366552810-20250923-105508-1758639308.2074.txt",
+  "_direction": "inbound",
+  "_char_count": 422
+}

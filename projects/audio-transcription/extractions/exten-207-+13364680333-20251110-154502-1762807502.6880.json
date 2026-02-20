@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Dallas is asking if he can add a rented sports car to his business insurance policy while he's out of town in California.",
+  "resolution_steps": [
+    "Cody asks Dallas to confirm the rental company (Manza Exotics) and whether they require specific coverage details.",
+    "Cody explains that commercial policies typically cover business-use vehicles, not personal rentals.",
+    "Cody clarifies that rental sports cars are unlikely covered by commercial policies and suggests contacting personal auto insurance for potential coverage.",
+    "Cody advises Dallas to check with his personal insurer about restrictions for sports car rentals."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Commercial vs. personal auto insurance coverage distinctions",
+    "Rental vehicle insurance requirements",
+    "Policy limitations for recreational/rental vehicles"
+  ],
+  "systems_referenced": [],
+  "summary": "Dallas inquired about adding a rented sports car to his business policy. Cody explained commercial policies don't cover rental vehicles and advised contacting personal auto insurance. The call concluded with Dallas understanding the limitation and thanking Cody.",
+  "_model": "qwen3:14b",
+  "_eval_count": 242,
+  "_total_duration_ms": 32779,
+  "_source_file": "transcripts/exten-207-+13364680333-20251110-154502-1762807502.6880.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2440
+}

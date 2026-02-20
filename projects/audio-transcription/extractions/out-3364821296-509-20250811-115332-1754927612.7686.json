@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Dewey sought clarification about his insurance payment obligations and options for settling his account.",
+  "resolution_steps": [
+    "Agent confirmed Dewey's next payment due date (September 10th) and amount ($157.75).",
+    "Explained that prior partial payment ($82.25) would apply to the September installment if paid early.",
+    "Notified Dewey about a potential $3 service fee (though uncertain as the bill had not yet generated).",
+    "Offered flexibility to pay at any time before the due date."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance billing cycles and payment schedules",
+    "Carrier-specific payment policies (Travelers)",
+    "Service fee structures for partial payments"
+  ],
+  "systems_referenced": [
+    "Travelers insurance carrier system",
+    "Alliance Insurance internal billing portal"
+  ],
+  "summary": "Agent clarified Dewey's insurance payment timeline, explained how prior payments would apply, and discussed potential service fees. The conversation focused on resolving confusion about due dates and payment options, with the agent offering to assist further if needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 260,
+  "_total_duration_ms": 43461,
+  "_source_file": "transcripts/out-3364821296-509-20250811-115332-1754927612.7686.txt",
+  "_direction": "outbound",
+  "_char_count": 1020
+}

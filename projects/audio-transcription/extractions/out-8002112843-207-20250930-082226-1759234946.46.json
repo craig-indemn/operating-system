@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Cody Jackson from Alliance Insurance Services) is seeking clarification on why multiple policies (general liability, inland marine, and business auto) were canceled despite a payment being made on September 3, 2025, and is requesting reinstatement options.",
+  "resolution_steps": [
+    "Agent John confirmed the policies canceled on September 23, 2025, and checked the payment history.",
+    "Discovered the September 3, 2025 payment was returned as non-sufficient funds (NSF), leading to automatic payment removal and cancellation.",
+    "Offered to assist with policy reinstatement and requested the caller wait while verifying details.",
+    "Notified caller of a $30 NSF fee and confirmed no losses reported to proceed with reinstatement."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Policy cancellation triggers (e.g., NSF payments)",
+    "Reinstatement procedures for canceled policies",
+    "NSF fee implications on policy status"
+  ],
+  "systems_referenced": [
+    "Nationwide Commercial Lines policy management system",
+    "Payment processing portal (for NSF verification)"
+  ],
+  "summary": "Cody Jackson from Alliance Insurance Services contacted Nationwide to resolve confusion about canceled policies after a payment was made. The agent identified the payment was returned as NSF, leading to cancellation, and offered reinstatement assistance. The caller was informed of the NSF fee and next steps for reinstatement.",
+  "_model": "qwen3:14b",
+  "_eval_count": 319,
+  "_total_duration_ms": 39449,
+  "_source_file": "transcripts/out-8002112843-207-20250930-082226-1759234946.46.txt",
+  "_direction": "outbound",
+  "_char_count": 4132
+}

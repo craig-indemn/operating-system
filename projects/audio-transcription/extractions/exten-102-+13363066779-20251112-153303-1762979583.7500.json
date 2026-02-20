@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Timothy wants to cancel a commercial passenger policy on a truck to avoid being double insured and requests that Brandon handles the cancellation on their side.",
+  "resolution_steps": [
+    "Glory acknowledges Timothy's request to cancel the policy.",
+    "Glory confirms she will inform Brandon to process the cancellation.",
+    "Glory states there is no further action required on her end.",
+    "Timothy expresses gratitude, and Glory responds politely before ending the call."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of commercial insurance policies, specifically passenger policies on trucks.",
+    "Knowledge of internal coordination processes for policy cancellations."
+  ],
+  "systems_referenced": [],
+  "summary": "Timothy contacted Glory to cancel a commercial passenger policy on a truck to avoid double insurance. Glory confirmed she would inform Brandon to handle the cancellation and assured no further action was needed on her end. The conversation concluded with mutual thanks and a polite goodbye.",
+  "_model": "qwen3:14b",
+  "_eval_count": 219,
+  "_total_duration_ms": 33081,
+  "_source_file": "transcripts/exten-102-+13363066779-20251112-153303-1762979583.7500.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 520
+}

@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Christy from Davies firm) seeks updated contact information for an insurer related to an audit for D Laura Construction.",
+  "resolution_steps": [
+    "Agent asked for clarification on the type of contact information needed.",
+    "Agent provided the phone number '336-345-5950' after confirming it with the caller.",
+    "Caller expressed gratitude and confirmed no further assistance was needed."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding how to retrieve or provide insurer contact information",
+    "Handling audit-related inquiries from clients"
+  ],
+  "systems_referenced": [],
+  "summary": "Christy from Davies firm requested updated insurer contact details for an audit involving D Laura Construction. The agent provided the phone number '336-345-5950' after verification, and the caller concluded the conversation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 202,
+  "_total_duration_ms": 29395,
+  "_source_file": "transcripts/exten-102-+17346660139-20251113-142846-1763062126.5964.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 610
+}

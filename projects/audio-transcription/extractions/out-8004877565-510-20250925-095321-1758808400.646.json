@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The underwriter from Johnson and Johnson seeks assistance in covering a temporary outbuilding and its contents for a client transitioning from a sold home to a new construction site, requiring specialized insurance solutions.",
+  "resolution_steps": [
+    "Agent clarified the client's situation: temporary residence in a travel trailer, outbuilding with household goods on a construction site.",
+    "Discussed policy options (builder's risk, HO-3/4, other structure coverage) and limitations.",
+    "Determined need for specialized coverage not directly available through standard policies.",
+    "Offered to transfer the case to the habitation queue for further review."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of builder's risk policies",
+    "Knowledge of HO-3/4 coverage limitations",
+    "Familiarity with other structure coverage parameters",
+    "Ability to navigate policy exceptions for temporary structures"
+  ],
+  "systems_referenced": [
+    "Internal policy database",
+    "Habitation queue system"
+  ],
+  "summary": "An underwriter sought help insuring a temporary outbuilding and its contents during home construction. The agent explored policy options but found no direct solution, transferring the case to the habitation queue for specialized handling. The situation involves unique coverage challenges for temporary structures and contents not covered by standard builder's risk or homeowner policies.",
+  "_model": "qwen3:14b",
+  "_eval_count": 298,
+  "_total_duration_ms": 37084,
+  "_source_file": "transcripts/out-8004877565-510-20250925-095321-1758808400.646.txt",
+  "_direction": "outbound",
+  "_char_count": 4130
+}

@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jeff is following up on the status of ABV's new venture, specifically whether a bank draft was set up and if the invoice was processed correctly.",
+  "resolution_steps": [
+    "Agent confirmed the invoice was sent to the OP (likely an internal system or portal).",
+    "Agent offered assistance to help ABV set up the bank draft if needed.",
+    "Agent verified that no further action was required beyond sending the invoice."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance claim processing",
+    "Familiarity with internal systems (OP) for document tracking",
+    "Knowledge of bank draft setup procedures"
+  ],
+  "systems_referenced": [
+    "OP (operations portal or document system)"
+  ],
+  "summary": "Jeff inquired about the status of ABV's new venture and whether a bank draft was set up. The agent confirmed the invoice was sent to the OP and offered assistance if ABV needed help with the draft setup. The conversation ended with Jeff agreeing to follow up if further action was required.",
+  "_model": "qwen3:14b",
+  "_eval_count": 239,
+  "_total_duration_ms": 38872,
+  "_source_file": "transcripts/exten-206-+13363779003-20250806-112825-1754494105.3912.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1111
+}

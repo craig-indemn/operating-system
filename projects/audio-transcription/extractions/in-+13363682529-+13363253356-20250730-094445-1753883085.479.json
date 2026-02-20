@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with Rachel",
+  "resolution_steps": [
+    "Agent confirmed transfer to Rachel's extension",
+    "Caller placed on hold"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Brief transfer request with no substantive discussion. Caller asked to speak with Rachel, agent initiated transfer but no further conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 98,
+  "_total_duration_ms": 28449,
+  "_source_file": "transcripts/in-+13363682529-+13363253356-20250730-094445-1753883085.479.txt",
+  "_direction": "inbound",
+  "_char_count": 166
+}

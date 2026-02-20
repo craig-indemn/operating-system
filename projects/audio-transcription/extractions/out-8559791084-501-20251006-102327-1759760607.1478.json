@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jamie Flippin from Alliance Insurance is addressing an issue with a client's insurance policy that was rewritten from AutoOwners to Utica National, which has not been paid and is at risk of cancellation. The goal is to resolve the payment issue and prevent policy cancellation.",
+  "resolution_steps": [
+    "Confirmed the client's loan number and social security details via automated system.",
+    "Identified that the policy was rewritten from AutoOwners to Utica National on July 18, 2025.",
+    "Notified the client that the Utica National policy has a $1,965 balance due and is at risk of cancellation on October 10, 2025.",
+    "Proposed issuing a check to Utica National to resolve the payment issue.",
+    "Noted a discrepancy in the mortgage clause (listed as 'Movement Mortgage LLC' vs. 'Movement Mortgage under Luke Georgia') and committed to correcting it.",
+    "Requested policy details (dates, coverage, deductible) to verify and update the policy."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy rewrites and carrier-specific payment processes",
+    "Knowledge of mortgage clause formatting for insurance policies",
+    "Ability to coordinate with internal insurance teams for policy updates and check issuance"
+  ],
+  "systems_referenced": [
+    "Movement's automated payment system (movement.com/paymymortgage)",
+    "Utica National insurance platform",
+    "AutoOwners Insurance records",
+    "Alliance Insurance internal policy management system"
+  ],
+  "summary": "Jamie Flippin from Alliance Insurance is resolving a client's insurance policy issue where a policy rewrite to Utica National resulted in an unpaid balance. The agent identified the problem, confirmed policy details, and proposed issuing a check to Utica National while correcting a mortgage clause error. The call is ongoing with next steps involving internal team coordination.",
+  "_model": "qwen3:14b",
+  "_eval_count": 414,
+  "_total_duration_ms": 66986,
+  "_source_file": "transcripts/out-8559791084-501-20251006-102327-1759760607.1478.txt",
+  "_direction": "outbound",
+  "_char_count": 9819
+}

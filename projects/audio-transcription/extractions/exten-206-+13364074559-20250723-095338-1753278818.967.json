@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Norman Simon is following up on an unresolved insurance quote issue, seeking clarification on where a quote was sent and requesting correction of an email address to ensure proper communication.",
+  "resolution_steps": [
+    "Jeff confirms the incorrect email address (Simon Futures LLC @gmail.com) used by Joe for sending the quote.",
+    "Jeff agrees to correct the email address and resend both the original and follow-up emails.",
+    "Jeff schedules a follow-up call after a meeting to coordinate with Joe and the attorney to finalize insurance setup and address concerns."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Email address verification and correction",
+    "Insurance quote tracking and binding process",
+    "Coordination with attorneys and clients"
+  ],
+  "systems_referenced": [
+    "Email client (gmail.com)"
+  ],
+  "summary": "Norman Simon discusses an unresolved insurance quote issue with Jeff, clarifying that Joe sent the quote to an incorrect email address. Jeff agrees to correct the email and coordinate with Joe and the attorney post-meeting to finalize setup. The call concludes with a request for a follow-up after the meeting.",
+  "_model": "qwen3:14b",
+  "_eval_count": 254,
+  "_total_duration_ms": 40355,
+  "_source_file": "transcripts/exten-206-+13364074559-20250723-095338-1753278818.967.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1728
+}

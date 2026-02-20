@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Maggie requested assistance in obtaining quotes for an umbrella insurance policy and personal auto insurance, while also inquiring about the status of a business auto certificate and potential cost savings by listing her mother as the primary driver.",
+  "resolution_steps": [
+    "Jessica acknowledged the request for an umbrella insurance quote and committed to contacting the company to initiate the process.",
+    "Jessica confirmed she would check the status of the business auto certificate.",
+    "Jessica explained that the personal auto insurance cost would depend on whether Miguel is listed as a driver and the credit profiles of Maggie and her mother.",
+    "Jessica agreed to attempt obtaining quotes for both the umbrella and personal auto insurance policies."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Umbrella insurance policy requirements and underwriting processes",
+    "Auto insurance rate factors (drivers, credit scores)",
+    "Certificate of insurance tracking and status verification"
+  ],
+  "systems_referenced": [
+    "Insurance company's quoting system",
+    "Certificate of insurance tracking portal"
+  ],
+  "summary": "Maggie requested assistance with umbrella and auto insurance quotes while following up on a business auto certificate. Jessica committed to initiating the umbrella quote, checking the certificate status, and evaluating the personal auto insurance cost implications of driver and credit factors. The call concluded with Jessica agreeing to follow up with results.",
+  "_model": "qwen3:14b",
+  "_eval_count": 296,
+  "_total_duration_ms": 37073,
+  "_source_file": "transcripts/exten-106-+13367505898-20250923-091001-1758633001.508.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2121
+}

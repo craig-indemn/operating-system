@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Marvin is following up on a previous discussion about life insurance for his wife, specifically seeking clarification on quotes and policy details that were supposedly emailed but not received.",
+  "resolution_steps": [
+    "Brandi apologized for the delay and explained she needed to reset her password to access the system.",
+    "She provided details on Cincinnati's whole life policies (100k, 150k, 250k coverage) with corresponding monthly premiums.",
+    "Discussed diabetes as a risk factor affecting pricing but noted the quotes were based on the highest standard rating.",
+    "Compared whole life vs. term life options, explaining term's return-of-premium feature and cost differences.",
+    "Mentioned Auto Owners as an alternative carrier with potentially lower minimum coverage amounts."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Life insurance product structures (whole life vs. term)",
+    "Underwriting considerations for pre-existing conditions (diabetes)",
+    "Carrier-specific policy limits and pricing models"
+  ],
+  "systems_referenced": [
+    "Cincinnati Insurance",
+    "Auto Owners Insurance"
+  ],
+  "summary": "Brandi provided detailed comparisons of whole life and term life insurance options for Marvin's wife, explaining premium differences, policy terms, and carrier-specific limitations. She addressed Marvin's concern about missing email quotes and offered to explore alternative carriers if needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 308,
+  "_total_duration_ms": 42899,
+  "_source_file": "transcripts/parked-112-112-20251204-095455-1764860095.822.txt",
+  "_direction": "parked",
+  "_char_count": 3693
+}

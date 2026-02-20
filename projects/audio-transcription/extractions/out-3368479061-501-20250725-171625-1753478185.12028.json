@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller informed the agent about incorrect driver's license information linked to Amelia's policy, which caused inflated insurance premiums, and sought resolution.",
+  "resolution_steps": [
+    "Agent contacted the carrier to update Amelia's correct driver's license information",
+    "Reran the NVR (likely a policy evaluation tool) to recalculate premiums",
+    "Identified a refund of $281.97 for the current term and reduced the renewal premium to $1,854.55",
+    "Confirmed monthly payment adjustments to $157.39 for August and $157.56 thereafter"
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of how driver's license data impacts insurance premiums",
+    "Process for updating policyholder information with carriers",
+    "Interpretation of insurance scoring systems and data sources"
+  ],
+  "systems_referenced": [
+    "NVR (policy evaluation/renewal system)",
+    "DMV database (driver's license information)",
+    "Auto pay system (credit card payments)"
+  ],
+  "summary": "An agent resolved a premium discrepancy caused by incorrect driver's license data linked to a client's policy. After updating the information, the client received a refund and saw significant premium reductions. The conversation highlighted vulnerabilities in data accuracy between DMV systems and insurance carriers.",
+  "_model": "qwen3:14b",
+  "_eval_count": 299,
+  "_total_duration_ms": 38735,
+  "_source_file": "transcripts/out-3368479061-501-20250725-171625-1753478185.12028.txt",
+  "_direction": "outbound",
+  "_char_count": 4111
+}

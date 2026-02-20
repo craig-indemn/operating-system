@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jeff Edmonds from ISU Insurance Services is checking the status of a policy renewal (policy number 08194409) and inquiring when the renewal deck page will be available for agents.",
+  "resolution_steps": [
+    "Agent verified the policy number and agency code (32701) with the caller.",
+    "Agent checked the policy status and confirmed the renewal had processed on the same day.",
+    "Agent explained the deck page had not yet been generated but would be available the next morning.",
+    "Agent advised the caller to contact Progressive again the following day to request the deck page after the renewal date (September 21, 2025)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Progressive Commercial Lines renewal process",
+    "Deck page generation timeline (24-hour window)",
+    "Policy access restrictions for agents before the renewal date"
+  ],
+  "systems_referenced": [
+    "Progressive Commercial Lines policy database",
+    "Internal system for checking renewal status"
+  ],
+  "summary": "Jeff Edmonds inquired about the status of a policy renewal and access to the renewal deck page. The agent confirmed the renewal had processed but explained the deck page would not be available until the next day. The caller was advised to contact Progressive again the following day to obtain the document after the renewal date.",
+  "_model": "qwen3:14b",
+  "_eval_count": 307,
+  "_total_duration_ms": 41221,
+  "_source_file": "transcripts/out-18777762436-206-20250731-103527-1753972527.3864.txt",
+  "_direction": "outbound",
+  "_char_count": 3483
+}

@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to make a payment for their insurance policy.",
+  "resolution_steps": [
+    "Agent verified caller's identity by asking for name and address.",
+    "Confirmed payment amount ($1,862) and method (card on file ending in 4410).",
+    "Processed the payment and confirmed it was successful.",
+    "Provided confirmation number upon request (052628).",
+    "Offered further assistance, which the caller declined."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Payment processing procedures",
+    "Customer account verification",
+    "Access to payment confirmation systems"
+  ],
+  "systems_referenced": [
+    "Internal customer database (to verify address and payment details)",
+    "Payment processing system (to execute and confirm payment)"
+  ],
+  "summary": "One Childa contacted Alliance Insurance Services to make a $1,862 insurance payment. The agent verified her identity, processed the payment using a card on file, and provided a confirmation number. The caller confirmed no further assistance was needed, and the call concluded successfully.",
+  "_model": "qwen3:14b",
+  "_eval_count": 252,
+  "_total_duration_ms": 41285,
+  "_source_file": "transcripts/in-+13363779003-+13367451730-20250903-122531-1756916731.4971.txt",
+  "_direction": "inbound",
+  "_char_count": 957
+}

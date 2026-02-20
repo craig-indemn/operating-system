@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is attempting to follow up on a previous interaction with Heather Johnson, expressing confusion about not receiving an email and seeking clarification on next steps.",
+  "resolution_steps": [
+    "Agent confirms the caller previously spoke with Heather Johnson.",
+    "Agent checks Heather's availability and informs the caller she is at lunch (12-1 PM).",
+    "Agent forwards the caller's voicemail to Heather.",
+    "Agent assures the caller Heather will be contacted to follow up."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Internal voicemail forwarding process",
+    "Standard lunch hours for staff",
+    "Escalation procedures for unresolved client inquiries"
+  ],
+  "systems_referenced": [
+    "Internal voicemail system",
+    "Email communication platform"
+  ],
+  "summary": "A caller followed up on a previous interaction with Heather Johnson, expressing confusion about not receiving an email. The agent confirmed Heather was at lunch, forwarded the voicemail, and assured the caller Heather would contact them. The email issue remained unresolved but was acknowledged for follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 243,
+  "_total_duration_ms": 38120,
+  "_source_file": "transcripts/exten-401-+13364671710-20251226-121921-1766769561.2019.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 835
+}

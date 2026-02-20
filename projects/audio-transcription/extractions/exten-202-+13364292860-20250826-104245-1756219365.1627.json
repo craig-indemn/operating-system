@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Deborah wants to adjust her insurance deductible and reinstate a mortgage discount by contacting Auto Owners to release the policy, while ensuring her auto insurance remains separate from her home policy.",
+  "resolution_steps": [
+    "Agent Heather acknowledges Deborah's request to adjust deductible and reinstate mortgage discount.",
+    "Heather confirms need to contact Auto Owners to undo cancellation and release the policy for changes.",
+    "Deborah agrees to wait for Heather's callback after policy release to finalize deductible and discount adjustments."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy adjustments (deductibles, mortgage discounts)",
+    "Process for contacting Auto Owners to release policies",
+    "Knowledge of separate auto/home insurance discounts"
+  ],
+  "systems_referenced": [
+    "Auto Owners (insurance carrier)"
+  ],
+  "summary": "Deborah discusses adjusting her home insurance deductible and reinstating a mortgage discount with agent Heather. Heather explains the need to contact Auto Owners to release the policy before changes can be made. Deborah agrees to wait for a callback after policy release to finalize adjustments, while confirming her auto insurance can remain separate.",
+  "_model": "qwen3:14b",
+  "_eval_count": 250,
+  "_total_duration_ms": 40897,
+  "_source_file": "transcripts/exten-202-+13364292860-20250826-104245-1756219365.1627.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1935
+}

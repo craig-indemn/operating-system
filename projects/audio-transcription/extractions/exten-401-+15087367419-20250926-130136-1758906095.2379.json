@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jim Silver wants to adjust the deductible on his Cincinnati insurance policy, confirm coverage details, and ensure policies are finalized before potential carrier restrictions due to weather events.",
+  "resolution_steps": [
+    "Heather checks the Cincinnati quote to verify changes (deductible reduced to $5,000, earthquake coverage at 5%)",
+    "Updates policy start date to October 8th for all three policies",
+    "Confirms contact details (phone: 508-736-7419, email: jay.silver.esq@gmail.com) for inspector scheduling",
+    "Reviews vehicle details, bodily injury coverage, umbrella policy ($5M), and rental vehicle coverage",
+    "Confirms annual payment for all policies and finalizes adjustments",
+    "Mentions carrier restrictions related to weather events and urgency to bind policies"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy adjustments (deductibles, coverage limits)",
+    "Carrier-specific requirements (e.g., Cincinnati inspection process)",
+    "Weather-related carrier restrictions",
+    "Policy binding procedures and timelines"
+  ],
+  "systems_referenced": [
+    "Cincinnati insurance portal (for quote adjustments)"
+  ],
+  "summary": "Jim Silver works with Heather to finalize insurance policy changes, including deductible adjustments, policy dates, and coverage verification. Heather ensures all details are updated in the Cincinnati system and confirms carrier restrictions necessitate immediate binding. The call concludes with Jim satisfied and no further questions.",
+  "_model": "qwen3:14b",
+  "_eval_count": 330,
+  "_total_duration_ms": 59397,
+  "_source_file": "transcripts/exten-401-+15087367419-20250926-130136-1758906095.2379.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 8322
+}

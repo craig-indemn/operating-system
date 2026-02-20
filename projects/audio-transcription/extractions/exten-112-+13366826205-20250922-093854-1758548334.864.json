@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Barry Vernon is seeking assistance to resolve a canceled Travelers auto insurance policy due to non-payment, which he claims he attempted to pay online but was blocked, and is frustrated about being forced to switch insurers.",
+  "resolution_steps": [
+    "Brandy acknowledges the policy cancellation and confirms it was due to non-payment after September 8.",
+    "Brandy explains Travelers' reinstatement policy (no reinstatement after multiple cancellations) and offers to contact Travelers again.",
+    "Brandy suggests switching to a different insurer if reinstatement fails, noting Travelers does not allow reactivating auto-pay after repeated cancellations."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Travelers' policy reinstatement rules for non-payment cancellations",
+    "Auto-pay reactivation limitations after policy cancellations",
+    "Process for switching insurance providers"
+  ],
+  "systems_referenced": [
+    "Travelers insurance portal/customer service",
+    "Alliance Insurance Services internal systems for policy switching"
+  ],
+  "summary": "Barry's Travelers auto policy was canceled due to non-payment, and he is frustrated about being unable to reinstate it. Brandy explains Travelers' reinstatement restrictions and offers to contact them again, but acknowledges the need to switch insurers if reinstatement fails. The call ends with Brandy committing to follow up with Travelers.",
+  "_model": "qwen3:14b",
+  "_eval_count": 304,
+  "_total_duration_ms": 43507,
+  "_source_file": "transcripts/exten-112-+13366826205-20250922-093854-1758548334.864.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2633
+}

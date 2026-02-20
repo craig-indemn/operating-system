@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Gary is seeking to resolve an issue with automatic payments that were not processed correctly, leading to financial strain, and wants to set up automatic payments again to avoid future problems.",
+  "resolution_steps": [
+    "Richard listens to Gary's explanation about the automatic payment failure and financial hardship due to medical bills.",
+    "Confirms Gary's preference for automatic payments and collects debit card details (number, expiration, zip code) and bank account information (routing number, account number).",
+    "Informs Gary that e-signature documents from Progressive will be sent to finalize the setup.",
+    "Reassures Gary that insurance cards will be included in the documents and confirms the process is complete."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Handling customer financial hardship cases",
+    "Setting up automatic payment systems",
+    "Progressive e-signature document process",
+    "Secure collection of banking information"
+  ],
+  "systems_referenced": [
+    "Progressive (e-signature documents)",
+    "Automatic payment system"
+  ],
+  "summary": "Gary experienced automatic payment failures due to a bank error, causing financial strain. Richard helped him re-establish automatic payments, collected necessary banking details, and informed him about receiving Progressive documents via e-signature. The call concluded with Gary's approval and confirmation of next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 294,
+  "_total_duration_ms": 44370,
+  "_source_file": "transcripts/out-6153446559-113-20251126-142224-1764184944.4271.txt",
+  "_direction": "outbound",
+  "_char_count": 3589
+}

@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Brian from Alliance Insurance Services is seeking clarification on why adding a US DOT number to a commercial policy for Buck Out Tree Service increased the premium by $660, despite the client having no vehicle or driver inspection history.",
+  "resolution_steps": [
+    "Paul acknowledges the policy change and explains that the US DOT number is a rating factor.",
+    "Paul offers to verify the reason for the rate change by contacting someone internally.",
+    "Paul leaves the call to investigate further but does not return with a resolution."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of commercial insurance rating factors, particularly how US DOT numbers impact premiums.",
+    "Knowledge of Progressive's policy verification processes for commercial lines."
+  ],
+  "systems_referenced": [
+    "Progressive Commercial Lines system",
+    "Internal verification process for DOT-related policy changes"
+  ],
+  "summary": "Brian from Alliance Insurance Services contacted Progressive to investigate a $660 premium increase for a commercial policy after adding a US DOT number. Paul confirmed the DOT number is a rating factor and offered to verify the change's cause, but the call ended without a resolution. The agent required knowledge of commercial insurance rating factors and Progressive's verification systems.",
+  "_model": "qwen3:14b",
+  "_eval_count": 272,
+  "_total_duration_ms": 40438,
+  "_source_file": "transcripts/out-18777762436-104-20250818-091656-1755523016.420.txt",
+  "_direction": "outbound",
+  "_char_count": 2654
+}

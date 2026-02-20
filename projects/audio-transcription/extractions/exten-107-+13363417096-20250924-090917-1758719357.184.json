@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking clarification about a missing cancellation notice and a reinstated policy for a business insurance policy with Pen National, and is also concerned about ensuring their auto insurance coverage was updated after purchasing a new truck in April.",
+  "resolution_steps": [
+    "Cecilia checks the caller's policy details to confirm the business insurance with Pen National.",
+    "Requests the caller to email documentation (letter of cancellation) for verification.",
+    "Notes the need to investigate the auto insurance policy (originally with another company) due to a recent vehicle change (Mercedes to 2025 Chevy Colorado).",
+    "Informs the caller that the truck is currently covered as of April but confirms follow-up with another agent (Brandy) to resolve any discrepancies.",
+    "Schedules a follow-up call from Brandy by the end of the week."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy reinstatement processes",
+    "Handling business insurance (Pen National) and auto insurance claims",
+    "Coordination between agents (Cecilia and Brandy) for policy verification"
+  ],
+  "systems_referenced": [
+    "Pen National (insurance carrier)",
+    "Brandy (Alliance Insurance agent)",
+    "Email for document submission"
+  ],
+  "summary": "The caller discusses issues with a business insurance policy (Pen National) and auto insurance coverage after purchasing a new truck. Cecilia verifies policy details, requests documentation, and coordinates with another agent to resolve discrepancies. The caller is assured the truck is covered as of April but requires further follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 350,
+  "_total_duration_ms": 44857,
+  "_source_file": "transcripts/exten-107-+13363417096-20250924-090917-1758719357.184.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3388
+}

@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Debrason Cabbage, is inquiring about a significant increase in their homeowners insurance payment for September and seeks an explanation.",
+  "resolution_steps": [
+    "The agent acknowledged the caller's request and explained that they would be placed on hold.",
+    "The agent informed the caller that if no agent was available, they should leave a voicemail to be contacted by an agent."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of standard procedures for handling payment inquiries",
+    "Knowledge of voicemail protocols for transferring calls to agents"
+  ],
+  "systems_referenced": [],
+  "summary": "Debrason Cabbage contacted Alliance Insurance to inquire about a sudden increase in their homeowners insurance payment. The agent placed the caller on hold and instructed them to leave a voicemail if no agent was immediately available for further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 199,
+  "_total_duration_ms": 43143,
+  "_source_file": "transcripts/in-+13363779003-+13364070392-20250909-113536-1757432136.6527.txt",
+  "_direction": "inbound",
+  "_char_count": 774
+}

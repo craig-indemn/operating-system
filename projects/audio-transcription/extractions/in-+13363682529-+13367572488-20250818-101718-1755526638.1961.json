@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; appears to be a brief attempt to communicate (possibly requesting a German-speaking agent) before the call ended abruptly.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Very brief call with incomplete conversation. Caller appears to be attempting to communicate but the exchange was cut short. No clear intent or resolution identified.",
+  "_model": "qwen3:14b",
+  "_eval_count": 106,
+  "_total_duration_ms": 24368,
+  "_source_file": "transcripts/in-+13363682529-+13367572488-20250818-101718-1755526638.1961.txt",
+  "_direction": "inbound",
+  "_char_count": 152
+}

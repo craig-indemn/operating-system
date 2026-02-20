@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jerry Hoping is seeking assistance with a denied insurance claim for his camper, insured through Utica, due to a policy status discrepancy despite evidence of premium payments.",
+  "resolution_steps": [
+    "Jamie checked the system and confirmed Jerry's policy number (5225060).",
+    "Reviewed internal notes showing ongoing communication with Utica since October 7th, including issues with online claim submissions and manual policy issuance.",
+    "Notified Jerry that Utica's underwriter (William Bond) acknowledged the policy existed but claims processing was delayed.",
+    "Informed Jerry that Utica's supervisor indicated coverage would be reinstated by October 17th, though no contact had been made yet.",
+    "Placed Jerry on hold to check for updates."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of Utica's claim processing workflows",
+    "Manual policy issuance procedures",
+    "Internal team coordination for complex claims"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal case management system",
+    "Utica National Insurance portal"
+  ],
+  "summary": "Jerry Hoping's claim for a camper insured through Utica was denied due to a policy status issue. Jamie from Alliance Insurance reviewed internal notes showing ongoing efforts since October 7th, including manual policy documentation and communication with Utica's underwriter. Utica's supervisor indicated coverage reinstatement by October 17th, but no contact had been made. Jamie placed Jerry on hold for further updates.",
+  "_model": "qwen3:14b",
+  "_eval_count": 334,
+  "_total_duration_ms": 45013,
+  "_source_file": "transcripts/q-300-+13366716307-20251020-160031-1760990431.11478.txt",
+  "_direction": "queue",
+  "_char_count": 2700
+}

@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Victor Santiago is seeking clarification about an unexpected $3,500 charge on his card, which he believes was incorrectly processed by autopay, and wants to resolve the issue related to a pending audit from Travelers Insurance.",
+  "resolution_steps": [
+    "Agent explains the charge stems from a non-compliant audit fee added by Travelers if autopay is enabled without completing the audit.",
+    "Agent confirms Victor's account shows the audit fee ($2,734) plus his regular $1,014 payment, totaling $3,748.25.",
+    "Agent notes the charge was reversed after putting Victor's account into negative balance, but the transaction is no longer visible in his history.",
+    "Agent advises Victor to contact Travelers using the audit letter's contact details to complete the audit, which will reverse the non-compliant fee and adjust billing.",
+    "Agent offers to email Victor the audit letter containing the necessary contact information."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Travelers Insurance audit process and non-compliant audit fees",
+    "How autopay interacts with audit requirements",
+    "Steps to resolve overcharged autopay transactions"
+  ],
+  "systems_referenced": [
+    "Travelers Insurance audit system",
+    "Travelers Insurance contact portal (email/phone)",
+    "Customer's banking/credit card transaction history"
+  ],
+  "summary": "Victor Santiago received an unexpected $3,500 charge due to a non-compliant audit fee from Travelers Insurance, which was reversed but left him confused. The agent explained the audit process, confirmed the charge was tied to an incomplete audit, and directed Victor to contact Travelers to complete the audit and resolve the billing issue. The agent will email the audit letter with contact details for follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 398,
+  "_total_duration_ms": 50908,
+  "_source_file": "transcripts/exten-207-+13364678729-20251024-142530-1761330330.4741.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4440
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "William wanted to discuss his auto policy renewal with National General and update his credit card information, as well as schedule an in-person meeting to address his new car.",
+  "resolution_steps": [
+    "Bina reminded William about his expiring credit card linked to his National General auto policy.",
+    "Bina requested William to notify them if he obtains a new credit card for updates.",
+    "William agreed to schedule an in-person meeting on Wednesday or Thursday.",
+    "Bina confirmed the meeting and offered assistance with the policy renewal."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Auto policy management",
+    "Credit card update procedures",
+    "Policy renewal timelines",
+    "Scheduling client appointments"
+  ],
+  "systems_referenced": [
+    "National General (insurance carrier)"
+  ],
+  "summary": "Bina from Alliance Insurance contacted William to inform him about his expiring credit card on his National General auto policy and scheduled an in-person meeting to discuss the renewal and his new car. William agreed to the meeting and confirmed he would bring his new car details for discussion.",
+  "_model": "qwen3:14b",
+  "_eval_count": 248,
+  "_total_duration_ms": 35419,
+  "_source_file": "transcripts/out-3364730171-509-20250915-131343-1757956423.8809.txt",
+  "_direction": "outbound",
+  "_char_count": 807
+}

@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with Cody",
+  "resolution_steps": [
+    "Agent placed caller on hold/handled transfer"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Brief inbound call where caller requested to speak with Cody. Agent placed caller on hold/handled transfer without further conversation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 93,
+  "_total_duration_ms": 26364,
+  "_source_file": "transcripts/in-+13367861133-+14797472597-20251211-132903-1765477743.3677.txt",
+  "_direction": "inbound",
+  "_char_count": 105
+}

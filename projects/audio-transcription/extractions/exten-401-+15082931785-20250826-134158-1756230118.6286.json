@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Heather is seeking resolution for a DMV request requiring proof of insurance coverage on July 22nd for a 2025 Toyota, which was not active at that time due to a policy change on August 11th.",
+  "resolution_steps": [
+    "Shivan clarifies that Liberty Mutual (the carrier on July 22nd) must submit an FS1 form for that date to DMV.",
+    "Heather is directed to contact her Liberty Mutual agent to request the form submission.",
+    "Shivan notes that the DMV may later require a follow-up form for August 11th once the July 22nd issue is resolved."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of insurance policy effective dates and carrier responsibilities for DMV forms.",
+    "Knowledge of FS1 form requirements and submission processes.",
+    "Ability to differentiate between policy periods for multiple insurers (Liberty Mutual vs. Cincinnati)."
+  ],
+  "systems_referenced": [
+    "Liberty Mutual",
+    "DMV (Department of Motor Vehicles)",
+    "FS1 form",
+    "Cincinnati Group (current insurer)",
+    "Certificate of insurance"
+  ],
+  "summary": "Heather's call revolves around resolving a DMV discrepancy requiring proof of insurance on July 22nd for a 2025 Toyota, which was not covered by her current policy. Shivan explains that Liberty Mutual must submit an FS1 form for that date, and Heather is directed to contact her Liberty Mutual agent. The agent also notes that the DMV may later require a follow-up form for August 11th once the initial issue is resolved.",
+  "_model": "qwen3:14b",
+  "_eval_count": 366,
+  "_total_duration_ms": 55071,
+  "_source_file": "transcripts/exten-401-+15082931785-20250826-134158-1756230118.6286.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4509
+}

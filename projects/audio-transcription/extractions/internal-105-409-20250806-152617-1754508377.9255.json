@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Steve Phillips is seeking guidance on modifying an existing bond for the city of High Point's stormwater project, specifically reducing the bond amount from $85,000 to $17,000 after passing inspection.",
+  "resolution_steps": [
+    "Rick confirms the bond was issued with Travelers and acknowledges the need to verify if the bond can be modified based on the city's approval.",
+    "Rick requests written documentation from the city of High Point to support the bond reduction request.",
+    "Rick plans to consult with the underwriter at Travelers to determine if the existing bond can be adjusted or if a new bond must be issued.",
+    "Rick agrees to follow up after reviewing the documentation and consulting with the underwriter."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of bond modification processes for insurance policies",
+    "Knowledge of Travelers' underwriting procedures for bond adjustments",
+    "Familiarity with municipal bond requirements for infrastructure projects"
+  ],
+  "systems_referenced": [
+    "Travelers (insurance carrier)",
+    "City of High Point documentation"
+  ],
+  "summary": "Steve Phillips discusses a bond adjustment request for a stormwater project with Rick, who will consult Travelers' underwriters and request formal documentation from the city to determine the best course of action. The call concludes with a commitment to follow up after reviewing the necessary information.",
+  "_model": "qwen3:14b",
+  "_eval_count": 306,
+  "_total_duration_ms": 33746,
+  "_source_file": "transcripts/internal-105-409-20250806-152617-1754508377.9255.txt",
+  "_direction": "internal",
+  "_char_count": 3285
+}

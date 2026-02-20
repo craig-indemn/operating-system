@@ -1,0 +1,22 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Inquired about life insurance coverage options",
+  "resolution_steps": [
+    "Agent confirmed Alliance Insurance offers life insurance",
+    "Agent offered to transfer caller to a specialist"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Basic product knowledge (life insurance offerings)"
+  ],
+  "systems_referenced": [
+    "Internal call transfer system"
+  ],
+  "summary": "Caller inquired about life insurance availability. Agent confirmed and initiated transfer, but the call ended before completion. No resolution achieved due to incomplete conversation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 134,
+  "_total_duration_ms": 49925,
+  "_source_file": "transcripts/in-+13363779003-+13367786319-20250919-095640-1758290200.727.txt",
+  "_direction": "inbound",
+  "_char_count": 434
+}

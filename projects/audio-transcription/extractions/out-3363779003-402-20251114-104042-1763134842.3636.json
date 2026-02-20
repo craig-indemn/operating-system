@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "N/A",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Standard voicemail greeting indicating call monitoring and agent availability. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 69,
+  "_total_duration_ms": 20854,
+  "_source_file": "transcripts/out-3363779003-402-20251114-104042-1763134842.3636.txt",
+  "_direction": "outbound",
+  "_char_count": 173
+}

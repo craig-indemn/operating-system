@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Very brief call where caller requested to speak to Jamie. Agent acknowledged and put caller on hold. No meaningful interaction or resolution achieved.",
+  "_model": "qwen3:14b",
+  "_eval_count": 79,
+  "_total_duration_ms": 26506,
+  "_source_file": "transcripts/in-+13363779003-+13365879729-20251215-094849-1765810129.413.txt",
+  "_direction": "inbound",
+  "_char_count": 168
+}

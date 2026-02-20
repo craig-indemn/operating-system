@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with Rachel Hall",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller requested Rachel Hall; agent confirmed she was present but did not complete the connection. Transcript ends mid-call with agent saying 'Okay.'",
+  "_model": "qwen3:14b",
+  "_eval_count": 88,
+  "_total_duration_ms": 39505,
+  "_source_file": "transcripts/in-+13363682529-+13363252660-20250917-094317-1758116597.673.txt",
+  "_direction": "inbound",
+  "_char_count": 158
+}

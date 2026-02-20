@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Philip is clarifying details about a water event at a different property and discussing the financial implications of switching insurance providers, including potential costs for a water shut-off valve and premium differences.",
+  "resolution_steps": [
+    "JC explains the premium increase from $3,651 to $5,554 and confirms the client's history of prior premiums.",
+    "JC clarifies that the water event occurred at a different property (20603 Point Regata Drive) and not the current residence.",
+    "JC acknowledges the need to contact the underwriter with the corrected property information to reassess requirements.",
+    "JC discusses uncertainty around the cost of a water shut-off valve, noting estimates ranging from $500 to $3,000.",
+    "JC confirms the client's intent to review the quote and resolve the underwriting clarification."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance underwriting processes for property claims",
+    "Impact of prior claims on premium calculations",
+    "Cost estimation for plumbing repairs (water shut-off valves)",
+    "Handling client confusion about property-specific coverage details"
+  ],
+  "systems_referenced": [
+    "Underwriter (internal insurance system)",
+    "Quote generation tool (reference to 'quote sent yesterday')"
+  ],
+  "summary": "JC from Lions Insurance clarifies a premium increase and resolves confusion about a past water event at a different property. The client needs to contact the underwriter for updated requirements and is uncertain about potential costs for a water shut-off valve. The call ends with the client intending to follow up on the quote and underwriting details.",
+  "_model": "qwen3:14b",
+  "_eval_count": 357,
+  "_total_duration_ms": 54724,
+  "_source_file": "transcripts/out-13364082370-114-20251119-093029-1763562629.651.txt",
+  "_direction": "outbound",
+  "_char_count": 4223
+}

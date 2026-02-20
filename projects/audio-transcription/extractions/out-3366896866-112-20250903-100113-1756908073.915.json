@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "N/A (voicemail greeting, no caller interaction recorded)",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Voicemail greeting from Charlie informing the caller to leave a message. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 80,
+  "_total_duration_ms": 22788,
+  "_source_file": "transcripts/out-3366896866-112-20250903-100113-1756908073.915.txt",
+  "_direction": "outbound",
+  "_char_count": 175
+}

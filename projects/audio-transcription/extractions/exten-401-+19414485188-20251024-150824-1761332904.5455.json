@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Rachel Huntzicker needs an updated insurance declaration page showing a discount for paying the policy in full at closing (not in escrow), which must be emailed to Patty Culvard at the title company by the closing date (next week).",
+  "resolution_steps": [
+    "Heather confirms the request is from Patty Culvard, a loan processor at Prosperity Home Mortgage.",
+    "Heather explains the system requires Auto Owners (the carrier) to adjust the policy manually since it's pending binding on the 30th.",
+    "Heather states she will call Auto Owners to update the policy and generate a new declaration page showing the discount.",
+    "Heather offers to bill Rachel directly for the payment instead of applying it to the loan."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy adjustment processes for full payment vs. escrow",
+    "Carrier-specific workflows for updating declaration pages",
+    "Title company requirements for closing documentation"
+  ],
+  "systems_referenced": [
+    "Auto Owners (insurance carrier)",
+    "Prosperity Home Mortgage (title company)",
+    "Policy management system (declaration page generation)"
+  ],
+  "summary": "Rachel Huntzicker requires an updated home insurance declaration page to reflect a discount for paying the policy in full at closing. Heather explains the carrier (Auto Owners) must manually adjust the policy, which will then generate the updated page for Patty Culvard at the title company. The adjustment is time-sensitive due to the closing date on the 30th.",
+  "_model": "qwen3:14b",
+  "_eval_count": 336,
+  "_total_duration_ms": 48209,
+  "_source_file": "transcripts/exten-401-+19414485188-20251024-150824-1761332904.5455.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4233
+}

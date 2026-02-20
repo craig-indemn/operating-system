@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Leaving a voicemail update regarding a delayed insurance quote processing.",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Voicemail message from Corbin to Mike regarding a delayed insurance quote, explaining the extended processing time and apologizing for the inconvenience.",
+  "_model": "qwen3:14b",
+  "_eval_count": 89,
+  "_total_duration_ms": 41120,
+  "_source_file": "transcripts/out-17023240436-409-20250808-121755-1754669875.8140.txt",
+  "_direction": "outbound",
+  "_char_count": 648
+}

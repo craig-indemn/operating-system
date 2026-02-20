@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Kevin Yar wants to ensure that his upcoming insurance payment on the 17th will be processed from the correct Chase account after closing two other accounts.",
+  "resolution_steps": [
+    "Agent confirmed Kevin's policy number and current payment method (checking account draft).",
+    "Agent requested the last four digits of Kevin's Chase account number.",
+    "Kevin provided the last four digits (9632), which the agent verified as the correct account linked to his auto policy.",
+    "Agent confirmed no issues would occur with the next payment on the 17th."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Policy management system access to verify payment methods",
+    "Account verification procedures for payment processing",
+    "Understanding of automatic payment setup and account closure implications"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services policy database",
+    "Chase banking system (via account number verification)"
+  ],
+  "summary": "Kevin Yar confirmed his current insurance payment account and provided verification details to ensure future payments are processed correctly. The agent verified the account information and confirmed no issues would arise with the upcoming payment. The call concluded with both parties expressing gratitude.",
+  "_model": "qwen3:14b",
+  "_eval_count": 266,
+  "_total_duration_ms": 33178,
+  "_source_file": "transcripts/q-300-+17864430043-20251114-093907-1763131147.1595.txt",
+  "_direction": "queue",
+  "_char_count": 1112
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to confirm and process a payment for their rent insurance, ensuring the correct payment method was used.",
+  "resolution_steps": [
+    "Agent accessed the caller's account to retrieve payment details.",
+    "Confirmed the payment amount ($19.68) and asked the caller to specify their preferred payment method.",
+    "Caller selected MasterCard ending in 0510.",
+    "Agent processed the payment and confirmed it was already processed.",
+    "Agent verified no further action was needed and closed the call."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Payment processing procedures",
+    "Accessing customer accounts to retrieve payment information",
+    "Verifying payment methods"
+  ],
+  "systems_referenced": [
+    "Payment system (implied through 'pull up' and 'processed' references)"
+  ],
+  "summary": "The caller confirmed a rent insurance payment of $19.68 using their MasterCard. The agent processed the payment and verified its success. The caller had no further requests, and the call concluded with confirmation of payment completion.",
+  "_model": "qwen3:14b",
+  "_eval_count": 244,
+  "_total_duration_ms": 36212,
+  "_source_file": "transcripts/in-+13363779003-+13369266063-20251014-120402-1760457842.2880.txt",
+  "_direction": "inbound",
+  "_char_count": 653
+}

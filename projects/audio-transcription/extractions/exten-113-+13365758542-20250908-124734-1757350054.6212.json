@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Gary) sought clarification on insurance options, specifically comparing Auto Owners Insurance and Progressive, and wanted to understand how his roof's age (2021 installation) affects coverage and premium calculations.",
+  "resolution_steps": [
+    "Agent Lynn Miller reviewed the caller's previous message and pulled up relevant information.",
+    "Explained Auto Owners Insurance premium ($1,666 for full payment) and Progressive's coverage limitations for roofs older than four years.",
+    "Clarified that Progressive's depreciation policy would reduce roof coverage after the four-year anniversary (2025).",
+    "Recommended Auto Owners as the best available option due to rate and coverage compatibility."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance carrier-specific policies (Auto Owners, Progressive)",
+    "Homeowners insurance coverage rules (roof depreciation timelines)",
+    "Policy bundling/compatibility requirements"
+  ],
+  "systems_referenced": [
+    "Auto Owners Insurance",
+    "Progressive",
+    "Internal policy database"
+  ],
+  "summary": "Agent Lynn Miller advised Gary on insurance options, explaining why Auto Owners Insurance was preferable to Progressive for his situation due to roof age-related coverage limitations. The call concluded with a recommendation for Auto Owners as the best rate available.",
+  "_model": "qwen3:14b",
+  "_eval_count": 274,
+  "_total_duration_ms": 39703,
+  "_source_file": "transcripts/exten-113-+13365758542-20250908-124734-1757350054.6212.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1322
+}

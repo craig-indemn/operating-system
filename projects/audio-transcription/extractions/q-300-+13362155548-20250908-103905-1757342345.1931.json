@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Loretta Kittley reports a car accident where another driver ran a stop sign and seeks guidance on filing a claim to repair her vehicle without affecting her own insurance policy.",
+  "resolution_steps": [
+    "JC acknowledges the accident and explains that claims for accidents not the caller's fault should be filed under the at-fault party's insurance (Progressive).",
+    "JC provides the Progressive Claims contact number (800-776-4737) and instructs Loretta to call with the policy number, accident date, and event number from the police report.",
+    "JC clarifies that Alliance Insurance Services does not handle third-party claims but will assist if Loretta needs further support."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance claims process for third-party liability",
+    "Procedures for non-fault accident reporting",
+    "Carrier-specific contact information (Progressive)"
+  ],
+  "systems_referenced": [
+    "Progressive Claims (contact number provided)"
+  ],
+  "summary": "Loretta Kittley contacted Alliance Insurance Services after an accident caused by another driver. JC guided her to file the claim under the at-fault party's insurance (Progressive), provided the claims number, and explained the required documentation. The call concluded with Loretta agreeing to contact Progressive directly.",
+  "_model": "qwen3:14b",
+  "_eval_count": 298,
+  "_total_duration_ms": 38464,
+  "_source_file": "transcripts/q-300-+13362155548-20250908-103905-1757342345.1931.txt",
+  "_direction": "queue",
+  "_char_count": 3364
+}

@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Deborah Bear, wants to discuss the renewal of a commercial auto insurance policy with National Generals, as indicated by an email she received. She is seeking assistance to confirm policy details and possibly address the renewal process.",
+  "resolution_steps": [
+    "Agent confirmed the caller's identity and acknowledged the renewal email.",
+    "Caller provided policy number (2009035338) for verification.",
+    "Agent identified the policy as a commercial auto policy with National Generals."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding how to look up policies using policy numbers",
+    "Familiarity with different policy types (personal vs. business)",
+    "Knowledge of insurance carriers like National Generals"
+  ],
+  "systems_referenced": [],
+  "summary": "Deborah Bear called Alliance Insurance to discuss the renewal of her commercial auto policy with National Generals. She provided her policy number, which the agent confirmed corresponds to a commercial auto policy. The call is ongoing as the agent assists her in addressing the renewal process.",
+  "_model": "qwen3:14b",
+  "_eval_count": 243,
+  "_total_duration_ms": 59978,
+  "_source_file": "transcripts/in-+13363779003-+13369226534-20260106-131344-1767723224.3268.txt",
+  "_direction": "inbound",
+  "_char_count": 763
+}

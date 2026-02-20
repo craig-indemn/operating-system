@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is concerned about receiving an unsolicited email claiming they registered with Alliance Insurance, which they did not do, and requests an investigation into the matter.",
+  "resolution_steps": [
+    "Agent acknowledges the concern and commits to investigating the email's origin.",
+    "Agent states they will verify the caller's account status to ensure no unauthorized activity.",
+    "Agent requests time to follow up after checking internal systems."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of account registration processes",
+    "Ability to investigate unauthorized communications",
+    "Knowledge of customer verification procedures"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller reports receiving an unsolicited email about an alleged account registration. The agent assures them an investigation will be conducted to verify the email's legitimacy and the caller's account status. The call ends with the agent requesting time to follow up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 206,
+  "_total_duration_ms": 31155,
+  "_source_file": "transcripts/in-+13363779003-+13368993083-20251124-125733-1764007053.3646.txt",
+  "_direction": "inbound",
+  "_char_count": 449
+}

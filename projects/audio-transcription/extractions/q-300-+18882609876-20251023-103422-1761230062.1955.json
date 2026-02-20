@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Verify details of a fire insurance policy for Jordan Wood at 3217 Ridgewood Road, Winston Salem, NC 27107, including effective date, coverage amount, and premium.",
+  "resolution_steps": [
+    "Agent confirmed the policy number provided by the caller (555-793-3000) and checked the associated details.",
+    "Agent discovered a mismatch between the policy number and the address provided by the caller.",
+    "Agent clarified that the policy number corresponds to a different property and offered to retrieve the correct policy number.",
+    "Agent requested the caller's full name (Holly M.) to confirm identity and proceed with the correct policy information."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy verification process",
+    "Handling address-policy number mismatches",
+    "Customer identity verification protocols"
+  ],
+  "systems_referenced": [
+    "Internal policy database/portal"
+  ],
+  "summary": "The caller requested verification of a fire policy for Jordan Wood at a specific address. The agent discovered the provided policy number did not match the address and needed additional verification (name) to retrieve the correct policy information. The call was paused pending confirmation of the policyholder's identity.",
+  "_model": "qwen3:14b",
+  "_eval_count": 282,
+  "_total_duration_ms": 32157,
+  "_source_file": "transcripts/q-300-+18882609876-20251023-103422-1761230062.1955.txt",
+  "_direction": "queue",
+  "_char_count": 2501
+}

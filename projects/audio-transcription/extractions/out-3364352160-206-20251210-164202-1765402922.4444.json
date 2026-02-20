@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Follow up on a property damage claim (claim #250944511) involving Pine Hill Farm Supply and request a response regarding a $1,500 sign damage repair from Joseph Marty Ellis.",
+  "resolution_steps": [
+    "Provided claim details: date of loss (Nov 15, 2025), claim number, and insured parties (Pine Hill Farm Supply, Scott Mosley/Gray Bruner).",
+    "Noted that Pine Hill Farm Supply had attempted contact multiple times without resolution.",
+    "Requested callback within 24 hours to resolve the claim.",
+    "Provided Jeff Edmonds' contact number (336-377-9003) and Scott Bruner's number (336-374-8339) for follow-up."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance claims process for property damage",
+    "Handling disputes over claim settlements",
+    "Client communication protocols for unresolved claims"
+  ],
+  "systems_referenced": [],
+  "summary": "Alliance Insurance Services agent Jeff Edmonds followed up with Joseph Marty Ellis regarding an unresolved property damage claim (claim #250944511) involving Pine Hill Farm Supply. The call detailed a November 2025 incident where a vehicle damaged a sign, with a $1,500 repair cost. The agent requested a response within 24 hours and provided contact details for follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 335,
+  "_total_duration_ms": 48904,
+  "_source_file": "transcripts/out-3364352160-206-20251210-164202-1765402922.4444.txt",
+  "_direction": "outbound",
+  "_char_count": 1636
+}

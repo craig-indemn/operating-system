@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking clarification on a discrepancy between her calculated insurance premium ($479) and the amounts quoted by an agent ($542.20) and the system ($547.60) after removing a vehicle from her policy.",
+  "resolution_steps": [
+    "Agent Rhonda Murphy confirms the caller's policy details (three vehicles initially, now two after removing the Jaguar).",
+    "Explains that rate increases from October 2023 are now reflected in the renewal premium.",
+    "Clarifies the pro-rated credit for removing the Jaguar ($10.70) and the loss of multi-car discounts.",
+    "Breaks down the individual vehicle premiums (Jeep Wrangler: $164.23, Honda truck: $283.37) and additional fees (uninsured motorists: $85).",
+    "Resolves the discrepancy by noting the $542.20 figure applies if paid in full, aligning with the caller's expectation."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Multi-car discount calculations",
+    "Impact of rate changes on premiums",
+    "Pro-rated credits for vehicle removal",
+    "Policy breakdown components (vehicle premiums, uninsured motorists fees)"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services policy management system"
+  ],
+  "summary": "The caller was confused about a $68 discrepancy in her insurance premium after removing a vehicle. The agent explained that rate increases, loss of multi-car discounts, and pro-rated credits contributed to the difference. By breaking down the policy into individual components, the agent clarified that the $542.20 figure (for full payment) matched the caller's expectation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 382,
+  "_total_duration_ms": 52242,
+  "_source_file": "transcripts/q-300-+13368800695-20260105-124854-1767635334.8777.txt",
+  "_direction": "queue",
+  "_char_count": 4380
+}

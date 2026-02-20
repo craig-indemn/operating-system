@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Confirm the due date and amount for a policy renewal premium increase of $62, and verify the total renewal amount of $4,396.",
+  "resolution_steps": [
+    "Agent accessed the carrier portal to verify policy details.",
+    "Confirmed the renewal premium amount ($4,396) and due date (November 25th).",
+    "Notified caller of the need to pay by November 25th to avoid lapse.",
+    "Offered assistance with payment arrangements and mailing address for check."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Policy renewal processes",
+    "Carrier portal access and verification procedures",
+    "Premium calculation and payment deadlines"
+  ],
+  "systems_referenced": [
+    "carrier portal"
+  ],
+  "summary": "Todd Frack confirmed receipt of conditional renewal notices and inquired about a $62 premium increase. The agent verified the total renewal amount ($4,396) and due date (November 25th) via the carrier portal. The caller agreed to pay by the deadline and will send a check, with the agent offering further payment assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 252,
+  "_total_duration_ms": 36207,
+  "_source_file": "transcripts/exten-102-+13364291181-20251014-150955-1760468995.6039.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1312
+}

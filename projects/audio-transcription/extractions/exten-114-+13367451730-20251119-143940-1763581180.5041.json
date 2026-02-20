@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking clarification on a recent increase in their insurance premium and wants to understand the impact of removing their Honda Civic 2003 from the policy.",
+  "resolution_steps": [
+    "Agent verified the caller's address and checked the policy details.",
+    "Agent explained the premium increase was due to a state rate adjustment, not accidents or claims.",
+    "Agent discussed the potential reduction in premium if the Honda Civic is removed from the policy, noting the timing of removal affects the rate.",
+    "Agent mentioned the caller's daughter's policy and the Honda Pilot, but the call ended before full resolution."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of state-mandated rate changes",
+    "Policy adjustment procedures for vehicle removal",
+    "Impact of vehicle age and mechanical issues on coverage"
+  ],
+  "systems_referenced": [
+    "Policy management system"
+  ],
+  "summary": "The caller is concerned about a premium increase and the effect of removing their Honda Civic 2003 from the policy. The agent explained the increase was due to state rate changes and discussed potential premium reductions if the car is removed. The call ended abruptly before full resolution, requiring follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 269,
+  "_total_duration_ms": 51364,
+  "_source_file": "transcripts/exten-114-+13367451730-20251119-143940-1763581180.5041.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3826
+}

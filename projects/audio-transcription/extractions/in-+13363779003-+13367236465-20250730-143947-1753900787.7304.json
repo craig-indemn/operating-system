@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, representing G Scott Jones Attorneys Office, attempted to file an insurance claim and provided a policy number for verification.",
+  "resolution_steps": [
+    "Agent asked for the policy number.",
+    "Agent checked the system but could not find the provided policy number (PSC15781122).",
+    "Agent clarified that Alliance Insurance Services is distinct from 'Alliance Insurance Company,' which the caller may have referenced."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding the difference between Alliance Insurance Services and Alliance Insurance Company",
+    "Claim processing procedures",
+    "Policy verification protocols"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services internal policy database"
+  ],
+  "summary": "A caller from an attorney's office attempted to file a claim but encountered issues with a policy number not found in the system. The agent clarified the distinction between Alliance Insurance Services and Alliance Insurance Company, indicating a potential miscommunication about the correct carrier.",
+  "_model": "qwen3:14b",
+  "_eval_count": 225,
+  "_total_duration_ms": 34991,
+  "_source_file": "transcripts/in-+13363779003-+13367236465-20250730-143947-1753900787.7304.txt",
+  "_direction": "inbound",
+  "_char_count": 590
+}

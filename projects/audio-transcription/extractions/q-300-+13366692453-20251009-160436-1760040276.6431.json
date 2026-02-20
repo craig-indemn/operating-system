@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller seeks assistance with a car insurance claim after his wife was involved in an accident where the other driver (insured by Progressive) is denying liability, citing conflicting accounts and lack of witnesses.",
+  "resolution_steps": [
+    "Agent confirms the caller's policy (Main Street America) and acknowledges the Progressive claim denial.",
+    "Explains that Progressive is treating the case as a 50/50 split due to lack of evidence (no witnesses, conflicting accounts).",
+    "Suggests filing a claim under the caller's own policy if the at-fault party refuses to take responsibility.",
+    "Offers to connect the caller with Tracy, another agent, for further guidance on claim procedures."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance claim processes for at-fault vs. not-at-fault scenarios",
+    "Handling disputes with third-party insurers (e.g., Progressive)",
+    "Role of police reports in liability determinations"
+  ],
+  "systems_referenced": [
+    "Main Street America (caller's insurance provider)",
+    "Progressive (other party's insurer)",
+    "Police report documentation"
+  ],
+  "summary": "A customer reports a car accident where his wife's vehicle was damaged by another driver, but Progressive is denying the claim due to conflicting accounts. The agent explains the need to file under the customer's own policy and offers to escalate to a specialist for further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 316,
+  "_total_duration_ms": 53394,
+  "_source_file": "transcripts/q-300-+13366692453-20251009-160436-1760040276.6431.txt",
+  "_direction": "queue",
+  "_char_count": 4364
+}

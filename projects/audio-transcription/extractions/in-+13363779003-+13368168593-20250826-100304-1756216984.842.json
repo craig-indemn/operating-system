@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; fragmented mention of vehicle purchase/trade-in and reference to 'Gary' without clear request",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Short, fragmented conversation where caller mentions vehicle purchase/trade-in and references 'Gary.' Agent apologizes for confusion and asks for a moment to check information, but no clear resolution or actionable steps are taken. Call lacks sufficient context for substantive analysis.",
+  "_model": "qwen3:14b",
+  "_eval_count": 124,
+  "_total_duration_ms": 25898,
+  "_source_file": "transcripts/in-+13363779003-+13368168593-20250826-100304-1756216984.842.txt",
+  "_direction": "inbound",
+  "_char_count": 399
+}

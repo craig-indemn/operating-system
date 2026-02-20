@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Christopher Cook from Alliance Insurance Services) aimed to greet Larissa Lewis with a holiday message and inform her of future contact from the agency.",
+  "resolution_steps": [
+    "Followed voicemail prompts to leave a message after being forwarded by the recipient's system.",
+    "Delivered a pre-recorded holiday greeting and offered assistance for the new year."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Standard voicemail protocols for leaving messages",
+    "Holiday outreach practices in insurance client relations"
+  ],
+  "systems_referenced": [
+    "Recipient's company directory voicemail system"
+  ],
+  "summary": "An outbound call from Alliance Insurance Services left a holiday greeting voicemail for Larissa Lewis at Piedmont Automation. The agent followed voicemail prompts to deliver a Merry Christmas message and announced plans for new year outreach. The call was forwarded to voicemail, requiring a callback.",
+  "_model": "qwen3:14b",
+  "_eval_count": 211,
+  "_total_duration_ms": 45359,
+  "_source_file": "transcripts/out-13367761885-706-20251219-081746-1766150266.30.txt",
+  "_direction": "outbound",
+  "_char_count": 1071
+}

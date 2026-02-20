@@ -1,0 +1,22 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with Christopher Cook at Alliance Insurance Services",
+  "resolution_steps": [
+    "Agent confirmed Christopher Cook was available",
+    "Offered to transfer the call"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Basic call routing procedures"
+  ],
+  "systems_referenced": [
+    "Internal phone system"
+  ],
+  "summary": "Caller requested to speak with Christopher Cook. Agent confirmed his availability and initiated a call transfer.",
+  "_model": "qwen3:14b",
+  "_eval_count": 119,
+  "_total_duration_ms": 28504,
+  "_source_file": "transcripts/in-+13363779003-+16075582398-20250916-101430-1758032070.3116.txt",
+  "_direction": "inbound",
+  "_char_count": 282
+}

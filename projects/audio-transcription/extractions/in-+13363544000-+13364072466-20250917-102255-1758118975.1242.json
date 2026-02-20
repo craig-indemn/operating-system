@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller identified themselves as a client with questions about car and home insurance. Agent initiated transfer to an agent but conversation cut off before resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 79,
+  "_total_duration_ms": 28117,
+  "_source_file": "transcripts/in-+13363544000-+13364072466-20250917-102255-1758118975.1242.txt",
+  "_direction": "inbound",
+  "_char_count": 293
+}

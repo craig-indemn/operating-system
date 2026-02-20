@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking a homeowners insurance quote and is in the process of being connected to an agent.",
+  "resolution_steps": [
+    "Agent confirmed the caller's interest in homeowners insurance and a quote.",
+    "Agent requested a moment to check for available agents to assist."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Homeowners insurance products",
+    "Quote request procedures",
+    "Agent availability tracking"
+  ],
+  "systems_referenced": [
+    "Internal agent availability system"
+  ],
+  "summary": "A caller requested a homeowners insurance quote. The agent acknowledged the request and is checking for available agents to assist, indicating the need for a callback.",
+  "_model": "qwen3:14b",
+  "_eval_count": 158,
+  "_total_duration_ms": 26906,
+  "_source_file": "transcripts/in-+13367861133-+18436552677-20250903-103722-1756910242.2220.txt",
+  "_direction": "inbound",
+  "_char_count": 235
+}

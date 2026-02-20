@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Angie Moore from Express Premium Finance is inquiring whether Alliance Insurance offers commercial premium finance services and if Chris Cook (the owner) is available to discuss it.",
+  "resolution_steps": [
+    "Agent confirmed Chris Cook is the owner of Alliance Insurance.",
+    "Agent checked Chris Cook's availability and offered to transfer the call to his extension."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Company ownership structure (identifying Chris Cook as the owner)",
+    "Call transfer procedures"
+  ],
+  "systems_referenced": [],
+  "summary": "Angie Moore from Express Premium Finance asked about commercial premium finance services and requested to speak with Chris Cook, the owner of Alliance Insurance. The agent confirmed Chris Cook's ownership and facilitated a call transfer to his extension.",
+  "_model": "qwen3:14b",
+  "_eval_count": 183,
+  "_total_duration_ms": 29261,
+  "_source_file": "transcripts/in-+13363779003-+18043573177-20251125-111658-1764087418.1353.txt",
+  "_direction": "inbound",
+  "_char_count": 599
+}

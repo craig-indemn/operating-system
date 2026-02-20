@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Gloria from Alliance Insurance, wanted to verify the active status of a commercial policy for 'Good Old Days Car Wash, Inc.' using account number 9743309.",
+  "resolution_steps": [
+    "Agent Brandi requested the caller's name, policy/account number, and policyholder name.",
+    "Verified the account number and confirmed the policyholder's name.",
+    "Checked the policy status in Liberty Mutual's system.",
+    "Informed the caller the policy is active (effective July 8, 2025\u2013July 8, 2026).",
+    "Closed the call after confirming no further assistance was needed."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Policy validation process",
+    "Account number verification",
+    "Access to Liberty Mutual's policy database",
+    "Understanding of policy effective dates"
+  ],
+  "systems_referenced": [
+    "Liberty Mutual's internal policy management system"
+  ],
+  "summary": "An Alliance Insurance agent verified a commercial policy's active status for a client via Liberty Mutual's system. The agent confirmed the policy was active and provided the effective dates. The caller was satisfied and ended the conversation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 266,
+  "_total_duration_ms": 34910,
+  "_source_file": "transcripts/out-8006537893-103-20250725-115129-1753458689.6527.txt",
+  "_direction": "outbound",
+  "_char_count": 2239
+}

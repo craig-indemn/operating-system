@@ -1,0 +1,21 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; the caller did not explicitly state a purpose for the call and only engaged in minimal conversation about language barriers.",
+  "resolution_steps": [
+    "Agent attempted to confirm the caller's identity (Willfredo).",
+    "Agent offered to have someone call back in Spanish after determining the caller does not speak English."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Handling non-English speaking callers",
+    "Internal process for transferring calls to Spanish-speaking representatives"
+  ],
+  "systems_referenced": [],
+  "summary": "A short outbound call where the agent attempted to communicate with a non-English speaking caller named Willfredo. The caller did not express a clear intent, and the agent offered to have a Spanish-speaking representative follow up. The conversation lacked substantive discussion about insurance needs or services.",
+  "_model": "qwen3:14b",
+  "_eval_count": 192,
+  "_total_duration_ms": 46517,
+  "_source_file": "transcripts/out-7872258255-509-20251216-102322-1765898602.1087.txt",
+  "_direction": "outbound",
+  "_char_count": 298
+}

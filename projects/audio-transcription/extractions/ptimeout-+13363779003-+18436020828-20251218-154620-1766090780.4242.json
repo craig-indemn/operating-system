@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "N/A (no meaningful interaction occurred)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Hold message played to caller with no substantive interaction. Message includes policy management portal link and texting option, but no agent assistance was provided. Call direction indicates timeout after being placed on hold.",
+  "_model": "qwen3:14b",
+  "_eval_count": 99,
+  "_total_duration_ms": 24115,
+  "_source_file": "transcripts/ptimeout-+13363779003-+18436020828-20251218-154620-1766090780.4242.txt",
+  "_direction": "park_timeout",
+  "_char_count": 725
+}

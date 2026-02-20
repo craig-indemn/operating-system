@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Kristen Hill wants to add a newly purchased car to her existing policy at Alliance Insurance.",
+  "resolution_steps": [
+    "Agent acknowledged Kristen's request to add a new vehicle to her policy.",
+    "Agent offered to transfer her to another agent for further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding how to add vehicles to existing insurance policies",
+    "Call transfer procedures within the agency"
+  ],
+  "systems_referenced": [],
+  "summary": "Kristen Hill contacted Alliance Insurance to add a new car to her existing policy. The agent recognized the request and offered to connect her with another agent for assistance, but the call did not reach resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 166,
+  "_total_duration_ms": 34020,
+  "_source_file": "transcripts/in-+13363544000-+19104449326-20250801-105352-1754060032.1192.txt",
+  "_direction": "inbound",
+  "_char_count": 330
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The agent (Jeremy) is following up with Doreen to gather details about an HOA policy covering six townhouses on Forest Hill Circle, including roof conditions, property features, and deductible preferences to provide a quote.",
+  "resolution_steps": [
+    "Confirmed the number of units (six townhouses) and their construction year (2001).",
+    "Clarified the policy scope (exterior and roof coverage only).",
+    "Inquired about roof replacement history (four units replaced two years ago).",
+    "Collected property-specific details (basements, garages, cross-space units).",
+    "Discussed deductible options (current $1,000 vs. higher deductibles for lower premiums).",
+    "Confirmed property type (townhouses) and ownership structure (HOA-managed)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "HOA insurance policy structures",
+    "Assessment of property features (basements, garages, cross-space units)",
+    "Roof age and replacement impact on coverage",
+    "Deductible trade-offs for premium adjustments"
+  ],
+  "systems_referenced": [],
+  "summary": "Jeremy from Alliance Insurance gathered detailed information about six townhouses on Forest Hill Circle to tailor an HOA policy quote, focusing on exterior/roof coverage, property features, and deductible preferences. The call ended mid-sentence but provided sufficient data for next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 318,
+  "_total_duration_ms": 48832,
+  "_source_file": "transcripts/out-3369856148-701-20251104-112703-1762273622.3388.txt",
+  "_direction": "outbound",
+  "_char_count": 4092
+}

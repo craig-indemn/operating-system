@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Leave a voicemail regarding insurance policy renewal",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Voicemail message from Holly of Lions Insurance informing Nickit about upcoming insurance policy renewal and requesting a callback.",
+  "_model": "qwen3:14b",
+  "_eval_count": 81,
+  "_total_duration_ms": 32064,
+  "_source_file": "transcripts/out-3367667656-504-20260106-124514-1767721514.2870.txt",
+  "_direction": "outbound",
+  "_char_count": 408
+}

@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jeff Edmonds from Alliance Insurance aims to obtain a wet signature on a bond application previously completed over the phone, and he is at the Pilot Mountain office to meet Amanda Bryant in person.",
+  "resolution_steps": [
+    "Katie from the Town of Pilot Mountain forwards the call to Amanda Bryant in the finance office.",
+    "Amanda asks the caller to leave a voicemail with his name, number, and message for the attorney.",
+    "Jeff leaves a message stating his location, time, and contact number for follow-up."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding the town's call-forwarding protocol for finance office inquiries",
+    "Procedures for handling bond applications and wet signatures",
+    "Voicemail protocols for attorney communication"
+  ],
+  "systems_referenced": [
+    "Town of Pilot Mountain phone system"
+  ],
+  "summary": "Jeff Edmonds from Alliance Insurance called to follow up on a bond application, aiming to get a wet signature. He left a message for Amanda Bryant, who is in the finance office, requesting a callback. The call was forwarded through the town's system, and the outcome was a message left for Amanda.",
+  "_model": "qwen3:14b",
+  "_eval_count": 266,
+  "_total_duration_ms": 44135,
+  "_source_file": "transcripts/out-3363682247-206-20260108-133156-1767897116.4003.txt",
+  "_direction": "outbound",
+  "_char_count": 1398
+}

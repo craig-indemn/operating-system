@@ -1,0 +1,19 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; appears to be a transferred call with no clear purpose stated",
+  "resolution_steps": [
+    "Agent greets caller",
+    "Agent checks for Jeff Edmonds",
+    "Transfers call to Dale Falk"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief inbound call where the agent transfers the call to Dale Falk without resolving any specific customer request. The transcript contains minimal conversation and no clear purpose.",
+  "_model": "qwen3:14b",
+  "_eval_count": 119,
+  "_total_duration_ms": 24252,
+  "_source_file": "transcripts/in-+13363779003-+13369701866-20250808-095238-1754661158.3366.txt",
+  "_direction": "inbound",
+  "_char_count": 195
+}

@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Ricardo provided account and route numbers to initiate policy processing and requested a certificate to be sent to Laura.",
+  "resolution_steps": [
+    "Jessica confirmed the route number (053.00.219) and account number (CS7022504299) provided by Ricardo.",
+    "Jessica stated she would begin processing the policies.",
+    "Jessica confirmed she would send the certificate to Laura immediately."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy processing workflows",
+    "Certificate generation procedures",
+    "Account verification protocols"
+  ],
+  "systems_referenced": [],
+  "summary": "Ricardo contacted Alliance Insurance to provide account details for policy processing. Jessica confirmed the information and committed to initiating the process and sending a certificate to Laura. The call concluded with mutual thanks.",
+  "_model": "qwen3:14b",
+  "_eval_count": 198,
+  "_total_duration_ms": 37453,
+  "_source_file": "transcripts/exten-106-+13367560795-20250730-120036-1753891236.2974.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 530
+}

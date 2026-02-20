@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Maria from Alliance Insurance Services is following up on a previous conversation to provide Lisa with a new auto insurance quote from Progressive and Auto Owners, aiming to offer savings on both auto and home insurance policies.",
+  "resolution_steps": [
+    "Maria confirms Lisa's current Allstate policy details (vehicles, deductibles, coverage).",
+    "She compares quotes from Auto Owners and Progressive, highlighting potential savings.",
+    "Maria emails Lisa a detailed quote with coverage breakdowns and payment options.",
+    "Discusses aligning the new policy with Lisa's Allstate renewal date (May 12) to avoid penalties.",
+    "Mentions handling boat insurance once Lisa provides the boat's serial number and coverage details.",
+    "Schedules a follow-up to review Lisa's decision after she discusses the quote with her husband."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Auto insurance policy structures (deductibles, coverage limits, liability protection).",
+    "Comparison of insurance providers (Allstate, Auto Owners, Progressive).",
+    "Handling mid-term policy cancellations and renewal cycles.",
+    "Boat insurance specifics (serial numbers, coverage types)."
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal policy database",
+    "Email system for sending quotes",
+    "Progressive and Auto Owners quoting tools"
+  ],
+  "summary": "Maria from Alliance Insurance Services provides Lisa with a detailed auto insurance quote from Progressive, offering significant savings compared to Allstate. She emails the quote, outlines coverage differences, and plans to follow up after Lisa reviews it with her husband. Boat insurance is to be addressed once Lisa provides the boat's serial number.",
+  "_model": "qwen3:14b",
+  "_eval_count": 363,
+  "_total_duration_ms": 56790,
+  "_source_file": "transcripts/out-3364568615-203-20260112-093550-1768228550.280.txt",
+  "_direction": "outbound",
+  "_char_count": 8673
+}

@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Evelyn Fry is following up about her homeowner's insurance policy and correcting the mailing address listed on her account.",
+  "resolution_steps": [
+    "Agent Jamie acknowledges Evelyn's concern and confirms she is checking on the policy.",
+    "Evelyn provides the incorrect mailing address (Two Foot Four South Sunset Driving Winston)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy verification process",
+    "Address update procedures for insurance accounts"
+  ],
+  "systems_referenced": [
+    "Internal policy database",
+    "Customer account management system"
+  ],
+  "summary": "Evelyn Fry contacted Alliance Insurance to check on her homeowner's insurance policy and correct an outdated mailing address. The agent confirmed the policy inquiry and noted the address correction, but the call was parked before resolution steps could be completed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 192,
+  "_total_duration_ms": 40840,
+  "_source_file": "transcripts/parked-501-501-20251222-152807-1766435284.4589.txt",
+  "_direction": "parked",
+  "_char_count": 666
+}

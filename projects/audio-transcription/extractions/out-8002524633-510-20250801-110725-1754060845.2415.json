@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "N/A",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Automated voicemail greeting from Travelers; no agent interaction occurred. Message includes claim options and safety priority prompts.",
+  "_model": "qwen3:14b",
+  "_eval_count": 79,
+  "_total_duration_ms": 26982,
+  "_source_file": "transcripts/out-8002524633-510-20250801-110725-1754060845.2415.txt",
+  "_direction": "outbound",
+  "_char_count": 502
+}

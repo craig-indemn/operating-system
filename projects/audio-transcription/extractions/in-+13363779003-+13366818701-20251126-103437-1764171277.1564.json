@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller needs to provide banking information to complete an insurance payment and request emailed proof of insurance.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's previous interaction with Natasha.",
+    "Agent confirms the caller needs to provide banking details to finalize payment.",
+    "Agent offers to transfer the call to Holly, the previous agent who handled the account."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Process for transferring calls to appropriate agents",
+    "Understanding of insurance payment workflows"
+  ],
+  "systems_referenced": [],
+  "summary": "The caller is following up on an insurance setup initiated by Natasha, needing to provide banking information and request proof of insurance. The agent is transferring the call to Holly, who previously handled the account, to resolve the payment and documentation request.",
+  "_model": "qwen3:14b",
+  "_eval_count": 187,
+  "_total_duration_ms": 25309,
+  "_source_file": "transcripts/in-+13363779003-+13366818701-20251126-103437-1764171277.1564.txt",
+  "_direction": "inbound",
+  "_char_count": 387
+}

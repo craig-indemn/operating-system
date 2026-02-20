@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Heather is seeking insurance quotes for full coverage on one car, liability on another car, and renters insurance (as she is renting-to-own her home). She is dissatisfied with her current provider (National General) and wants alternatives.",
+  "resolution_steps": [
+    "Agent confirmed Heather's current policies (National General for autos only).",
+    "Explained Alliance's bundling options (home + auto) and noted Heather's interest in renters insurance.",
+    "Suggested Access Agency as an alternative for standalone auto policies.",
+    "Provided Access Agency's phone number (336-768-2107).",
+    "Offered to connect Heather with National General for standalone auto if needed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance bundling options (home + auto vs standalone policies)",
+    "Knowledge of alternative agencies (Access Agency) and their contact information",
+    "Familiarity with National General's standalone auto offerings"
+  ],
+  "systems_referenced": [
+    "National General (current provider)",
+    "Access Agency (alternative provider)",
+    "Alliance Insurance Services internal quoting systems"
+  ],
+  "summary": "Heather requested auto and renters insurance quotes while expressing dissatisfaction with her current provider. The agent explained Alliance's bundling options, suggested Access Agency for standalone policies, and provided contact information. The call concluded with Heather being directed to alternative resources.",
+  "_model": "qwen3:14b",
+  "_eval_count": 318,
+  "_total_duration_ms": 40011,
+  "_source_file": "transcripts/q-200-+19108858818-20250815-101420-1755267260.1301.txt",
+  "_direction": "queue",
+  "_char_count": 1588
+}

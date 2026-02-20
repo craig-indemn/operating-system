@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller asked why they were charged $3,700 on their policy, believing they were on auto draft and expecting smaller payments.",
+  "resolution_steps": [
+    "Agent acknowledged the payment discrepancy and requested clarification on the policy type.",
+    "Agent attempted to check the policy details but admitted lack of access to the carrier's system.",
+    "Agent offered to transfer the caller to another agent for further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding auto draft payment processes",
+    "Recognizing when to escalate to specialized agents",
+    "Carrier system access limitations"
+  ],
+  "systems_referenced": [
+    "carrier portal (unavailable to agent)"
+  ],
+  "summary": "Caller disputed a $3,700 policy charge, believing they were on auto draft. Agent could not access carrier details and transferred the call for resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 202,
+  "_total_duration_ms": 25644,
+  "_source_file": "transcripts/in-+13363779003-+13364678729-20251023-102406-1761229446.1539.txt",
+  "_direction": "inbound",
+  "_char_count": 878
+}

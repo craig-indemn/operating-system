@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Rufaelo Lopez wants to reinstate a canceled renters insurance policy after receiving a voicemail from Heather about his home insurance policy.",
+  "resolution_steps": [
+    "Heather checks Rufaelo's account and confirms his renters insurance policy is canceled.",
+    "Heather explains that the policy cannot be reinstated and needs to be re-established.",
+    "Heather transfers Rufaelo to the service team for further assistance with reinstating the policy."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy reinstatement procedures for renters insurance",
+    "Account management system navigation to check policy status"
+  ],
+  "systems_referenced": [
+    "Internal account management system (used to check policy status)"
+  ],
+  "summary": "Rufaelo Lopez contacted Heather to reinstate a canceled renters insurance policy after receiving a voicemail. Heather confirmed the policy was canceled and transferred him to the service team for reinstatement assistance. The call ended with a transfer to the service team.",
+  "_model": "qwen3:14b",
+  "_eval_count": 229,
+  "_total_duration_ms": 36376,
+  "_source_file": "transcripts/exten-401-+14076944253-20251107-155752-1762549072.8286.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1577
+}

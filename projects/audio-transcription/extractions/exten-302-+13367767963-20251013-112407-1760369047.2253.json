@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Jennifer from Warrior Metal Building) is checking on the status of an ID card approval for a client and seeking an estimated timeline for carrier approval.",
+  "resolution_steps": [
+    "Agent confirmed the ID card is awaiting carrier approval.",
+    "Agent explained approval time depends on underwriter review.",
+    "Agent mentioned following up with underwriters that morning and expecting a response by end of day."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Carrier approval processes",
+    "Underwriting timelines",
+    "Follow-up procedures for pending approvals"
+  ],
+  "systems_referenced": [
+    "Carrier underwriting system"
+  ],
+  "summary": "Jennifer from Warrior Metal Building checked the status of an ID card approval. The agent confirmed it was pending carrier underwriter review, with a follow-up done that morning and expected resolution by end of day. The call concluded with Jennifer satisfied with the update.",
+  "_model": "qwen3:14b",
+  "_eval_count": 212,
+  "_total_duration_ms": 29746,
+  "_source_file": "transcripts/exten-302-+13367767963-20251013-112407-1760369047.2253.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 598
+}

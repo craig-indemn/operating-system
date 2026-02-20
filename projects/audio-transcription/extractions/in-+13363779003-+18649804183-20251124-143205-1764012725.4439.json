@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with Corbin Burke",
+  "resolution_steps": [
+    "Agent confirmed transfer to Corbin Burke's extension",
+    "Placed caller on hold"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller requested to speak with Corbin Burke; agent initiated transfer but conversation ended before completion.",
+  "_model": "qwen3:14b",
+  "_eval_count": 96,
+  "_total_duration_ms": 44452,
+  "_source_file": "transcripts/in-+13363779003-+18649804183-20251124-143205-1764012725.4439.txt",
+  "_direction": "inbound",
+  "_char_count": 183
+}

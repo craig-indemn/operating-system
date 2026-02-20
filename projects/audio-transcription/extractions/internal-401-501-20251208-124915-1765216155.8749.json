@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The agent is sharing a detailed account of a challenging client interaction involving policy cancellation, system outages, and miscommunication, seeking support or advice on how to handle the situation.",
+  "resolution_steps": [
+    "Agent attempted to contact the client (Tammy) multiple times, including texting at 6:48 AM.",
+    "Agent explained that policies were not bound prior to the weekend due to underwriting approval delays and system outages.",
+    "Agent apologized for the confusion and offered to write a policy with National General as a temporary solution.",
+    "Agent acknowledged the client's frustration and the cancellation of the Farm Bureau policy effective the 7th."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy renewal processes and cancellation procedures",
+    "Knowledge of carrier systems (Farm Bureau, National General) and their operational limitations",
+    "Experience handling client escalations and system outage communication"
+  ],
+  "systems_referenced": [
+    "Farm Bureau insurance system",
+    "National General insurance system",
+    "Internal agency communication tools (texting)"
+  ],
+  "summary": "An agent detailed a complex client situation where Tammy canceled her Farm Bureau policy due to confusion over renewal dates and system outages over the weekend. Despite multiple attempts to communicate and resolve the issue, the client became frustrated and hung up after being cussed out. The agent apologized and offered alternative solutions but acknowledged the policy cancellation. The conversation highlights challenges with carrier systems and client communication during operational disruptions.",
+  "_model": "qwen3:14b",
+  "_eval_count": 331,
+  "_total_duration_ms": 40640,
+  "_source_file": "transcripts/internal-401-501-20251208-124915-1765216155.8749.txt",
+  "_direction": "internal",
+  "_char_count": 8111
+}

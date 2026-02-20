@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "N/A (voicemail greeting only)",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Standard voicemail greeting from Morgan Agency stating business hours (Mon-Fri, 8:30 AM-4:30 PM) and requesting caller to listen carefully. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 98,
+  "_total_duration_ms": 23590,
+  "_source_file": "transcripts/out-3367219054-409-20260106-151322-1767730402.4703.txt",
+  "_direction": "outbound",
+  "_char_count": 139
+}

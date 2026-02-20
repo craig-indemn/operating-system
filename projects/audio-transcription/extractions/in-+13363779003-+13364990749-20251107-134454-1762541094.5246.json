@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; fragmented dialogue with no discernible request or purpose.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Fragmented and incoherent conversation with unclear context. Caller's identity and intent are ambiguous. No meaningful interaction or resolution occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 92,
+  "_total_duration_ms": 20667,
+  "_source_file": "transcripts/in-+13363779003-+13364990749-20251107-134454-1762541094.5246.txt",
+  "_direction": "inbound",
+  "_char_count": 199
+}

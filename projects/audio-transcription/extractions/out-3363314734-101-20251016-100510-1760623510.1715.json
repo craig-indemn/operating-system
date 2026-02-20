@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Not applicable (voicemail greeting)",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Voicemail greeting from Elizabeth Kaiser at National General Insurance requesting caller to leave name, claim number, and a brief.",
+  "_model": "qwen3:14b",
+  "_eval_count": 80,
+  "_total_duration_ms": 57365,
+  "_source_file": "transcripts/out-3363314734-101-20251016-100510-1760623510.1715.txt",
+  "_direction": "outbound",
+  "_char_count": 145
+}

@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Gary) seeks clarification on an insurance quote, specifically regarding coverage for a swimming pool with a diving board and appliance breakdown coverage.",
+  "resolution_steps": [
+    "Agent (Terry Cook) explains that the presence of a diving board may exclude pool coverage under the other company's policy.",
+    "Discusses appliance breakdown coverage, clarifying it applies to mechanical failures, not wear and tear.",
+    "Agrees to call back the caller at a provided phone number for further discussion."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy coverage terms (e.g., pool exclusions, appliance breakdown coverage)",
+    "Ability to interpret and explain insurance quotes and limitations"
+  ],
+  "systems_referenced": [
+    "insurance quote system (implied through discussion of 'the other company's policy'"
+  ],
+  "summary": "Gary discusses an insurance quote issue with Terry Cook, focusing on pool coverage exclusions due to a diving board and appliance breakdown coverage details. Terry explains policy limitations and agrees to call back for further clarification.",
+  "_model": "qwen3:14b",
+  "_eval_count": 238,
+  "_total_duration_ms": 43115,
+  "_source_file": "transcripts/exten-113-+13367101171-20251230-154001-1767127201.10371.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1572
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Maisie from Milestone Settlement is following up on a prior conversation with Jennifer to resolve a check discrepancy, seeking options to either accept the check and have the difference sent or return the check for a full reissue.",
+  "resolution_steps": [
+    "Ashley explains she cannot directly process the check adjustment on the carrier side.",
+    "Ashley offers to contact the carrier to confirm if they can accept the check and handle the difference.",
+    "Ashley requests Maisie's email address for confirmation once the carrier is contacted.",
+    "Ashley commits to emailing the escrow team to send the difference after confirmation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance payment processing workflows",
+    "Carrier-specific procedures for check adjustments",
+    "Escrow team communication protocols"
+  ],
+  "systems_referenced": [
+    "Carrier payment system",
+    "Escrow team internal communication"
+  ],
+  "summary": "Maisie from Milestone Settlement discusses a check discrepancy with Ashley from Alliance Insurance. Ashley explains she cannot directly adjust the check but will contact the carrier to confirm options. She requests Maisie's email for confirmation and commits to coordinating with the escrow team once resolved.",
+  "_model": "qwen3:14b",
+  "_eval_count": 268,
+  "_total_duration_ms": 42710,
+  "_source_file": "transcripts/exten-100-+13103659076-20250909-155204-1757447524.12778.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1790
+}

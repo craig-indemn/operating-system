@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Tracy is seeking assistance with quoting a Mountain Cabin policy, specifically addressing an issue where the address verification system removes 'Katy' from 'Katy Davis Road' during the quoting process.",
+  "resolution_steps": [
+    "Agent Morgan confirms the quote number and policyholders' names.",
+    "Explains that the address verification system may remove parts of the street name (e.g., 'Katy') if not inputted correctly.",
+    "Advises typing the full address as desired, avoiding tabbing after entering the zip code.",
+    "Instructs to save the address without clicking the verify button, even if a warning appears.",
+    "Clarifies that the warning can be bypassed as long as the address is saved correctly, allowing the quote to proceed."
+  ],
+  "outcome": "transferred",
+  "knowledge_required": [
+    "Address verification workflow in quoting systems",
+    "Handling address discrepancies in insurance policies",
+    "Quote submission process for Mountain Cabin policies"
+  ],
+  "systems_referenced": [
+    "NCJUA quoting system",
+    "Customer service portal"
+  ],
+  "summary": "Tracy encountered an address verification issue while quoting a Mountain Cabin policy. Morgan guided her to input the address correctly, save without verification, and proceed despite warnings. The call concluded with Tracy satisfied and the issue resolved.",
+  "_model": "qwen3:14b",
+  "_eval_count": 295,
+  "_total_duration_ms": 42427,
+  "_source_file": "transcripts/out-9198211299-510-20251204-152709-1764880029.6599.txt",
+  "_direction": "outbound",
+  "_char_count": 1880
+}

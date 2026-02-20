@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jeremy from Alliance Insurance is following up with Susie to discuss a potential client, Chad Bolington, who is seeking farm insurance coverage for his property in the Pilot area, including his home, chicken houses, and crops, while transitioning from Farm Bureau.",
+  "resolution_steps": [
+    "Susie confirms she is available to assist.",
+    "Jeremy explains the referral from Jeff Edmonds and provides context about Chad Bolington's farming operations.",
+    "Susie clarifies Alliance's policy limitations: no coverage for poultry houses or crop insurance, only hobby farms with homes and storage buildings.",
+    "Jeremy asks about acreage for crops, which Susie notes is unclear and requires further clarification.",
+    "Susie suggests Chad may need separate policies for crops and poultry houses through other providers."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Alliance's insurance policy scope (hobby farms vs. commercial/agricultural operations)",
+    "Exclusions for poultry houses and crop insurance",
+    "Understanding of regional farming practices and property types"
+  ],
+  "systems_referenced": [],
+  "summary": "Jeremy from Alliance Insurance discusses a referral for Chad Bolington, a farmer seeking coverage for his home and agricultural operations. Susie clarifies Alliance's limitations in covering poultry houses and crop insurance, directing Chad to consider separate policies for those aspects. The call highlights the need for further details about crop acreage and the complexity of aligning client needs with available insurance options.",
+  "_model": "qwen3:14b",
+  "_eval_count": 323,
+  "_total_duration_ms": 52076,
+  "_source_file": "transcripts/out-3367592176-701-20251204-134155-1764873715.3540.txt",
+  "_direction": "outbound",
+  "_char_count": 4269
+}

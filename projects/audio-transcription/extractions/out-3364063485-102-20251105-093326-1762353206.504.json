@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller aims to set up a home insurance policy but requires additional information about the property and its updates to proceed.",
+  "resolution_steps": [
+    "Agent Glory explains the need for property details to set up the policy.",
+    "Caller misunderstands initial questions about 'number of stories' and 'employees,' leading to clarification.",
+    "Agent asks about home updates (wiring, roof, plumbing, heating).",
+    "Caller refers the agent to Jeff Edmonds for detailed property information.",
+    "Caller provides Jeff's contact number for follow-up."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding home insurance policy requirements (property details, updates).",
+    "Knowledge of standard underwriting criteria for residential policies."
+  ],
+  "systems_referenced": [],
+  "summary": "Agent Glory attempts to gather property details to set up a home insurance policy but is referred to Jeff Edmonds by the caller for specific information. The caller provides Jeff's contact number for follow-up, resulting in a deferred resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 233,
+  "_total_duration_ms": 43048,
+  "_source_file": "transcripts/out-3364063485-102-20251105-093326-1762353206.504.txt",
+  "_direction": "outbound",
+  "_char_count": 1365
+}

@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "David is seeking clarification on a significant increase in his insurance premiums, specifically a $3,000 jump compared to last year, and is inquiring about a refund of $32,938.60. He also wants to understand discrepancies in coverage amounts and explore ways to reduce costs.",
+  "resolution_steps": [
+    "Agent reviews policy details, including Dynamic Driver app status, which was inactive and affecting discounts.",
+    "Compares last year's and this year's premium breakdowns, noting a new vehicle addition and rate increases.",
+    "Discusses business use classification on a Tahoe and vehicle-specific insurance rates.",
+    "Addresses appraisal and replacement cost estimate changes for a lake house, explaining the decrease in coverage value.",
+    "Plans to requote policies, adjust driver information, and check for additional credits.",
+    "Handles administrative tasks like sending appraisal documents and confirming coverage details."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance premium calculation factors (e.g., Dynamic Driver discount, vehicle additions, rate changes).",
+    "Policy administration (declaration pages, coverage classifications, business use designations).",
+    "Claims and appraisal processes (replacement cost estimates, carrier-specific valuations)."
+  ],
+  "systems_referenced": [
+    "Dynamic Driver app portal",
+    "Policy deck/declaration pages",
+    "Carrier appraisal systems",
+    "Internal quoting tools"
+  ],
+  "summary": "Agent assists David in diagnosing a $3,000 premium increase by reviewing policy details, app status, and coverage changes. They discuss a potential refund, address replacement cost estimate adjustments for a lake house, and plan to requote policies. Administrative tasks like appraisal documentation are also handled.",
+  "_model": "qwen3:14b",
+  "_eval_count": 375,
+  "_total_duration_ms": 74565,
+  "_source_file": "transcripts/out-9192250270-409-20251208-145308-1765223588.11787.txt",
+  "_direction": "outbound",
+  "_char_count": 11624
+}

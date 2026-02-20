@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to add a new car to their business insurance policy but cannot reach their usual agent, Jessica, and requests assistance from another available agent.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's request and confirms Jessica is unavailable.",
+    "Agent offers to transfer the caller to another commercial agent.",
+    "Caller agrees to the transfer."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Commercial insurance policy management",
+    "Internal agent availability tracking",
+    "Call transfer procedures"
+  ],
+  "systems_referenced": [
+    "Internal agent directory",
+    "CRM system"
+  ],
+  "summary": "A business customer attempted to add a new car to their policy but could not reach their usual agent. The agent transferred them to another commercial agent for assistance, indicating the need for a follow-up call to complete the policy update.",
+  "_model": "qwen3:14b",
+  "_eval_count": 195,
+  "_total_duration_ms": 28320,
+  "_source_file": "transcripts/in-+13363779003-+13365824500-20251023-154545-1761248745.5674.txt",
+  "_direction": "inbound",
+  "_char_count": 539
+}

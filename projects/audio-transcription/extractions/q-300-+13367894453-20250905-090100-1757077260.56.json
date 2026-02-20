@@ -1,0 +1,33 @@
+{
+  "is_substantive": true,
+  "caller_intent": "David Buchanan wants to adjust his auto insurance policy by dropping full coverage on his 18-year-old Toyota Corolla to liability-only, and discuss potential changes to his homeowners insurance deductible. He also seeks advice on insurance carriers and trends, including comparisons to State Farm and concerns about Florida's insurance market.",
+  "resolution_steps": [
+    "Jamie confirms David's identity and policy details (Allstate auto/homeowners, Mount Airy, NC).",
+    "Explains Allstate's actual cash value calculation for auto claims (Kelly Blue Book, zip code data).",
+    "Discusses rationale for dropping full coverage on an old vehicle, emphasizing cost vs. potential payout.",
+    "Addresses David's curiosity about State Farm as a captive carrier and risks of switching insurers.",
+    "Shares insights about Florida's insurance crisis (Citizens Fund, rising costs, potential exodus).",
+    "Warns about challenges of switching carriers (property inspections, policy cancellations)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Auto insurance valuation methods (actual cash value)",
+    "Captive carrier operations (State Farm)",
+    "Homeowners insurance deductible adjustments",
+    "Regional insurance market trends (Florida's Citizens Fund)",
+    "Policy switching risks (property inspections, coverage gaps)"
+  ],
+  "systems_referenced": [
+    "Allstate",
+    "State Farm",
+    "Citizens Fund (Florida's state insurance)",
+    "Alliance Insurance Services (agent platform)"
+  ],
+  "summary": "David Buchanan seeks to adjust his Allstate auto policy by dropping full coverage on his aging Toyota Corolla and discusses homeowners insurance changes. Jamie explains Allstate's payout methodology, compares carrier options, and highlights risks of switching insurers. The conversation also touches on Florida's insurance crisis and captive carrier limitations. The call concludes with David needing time to consider adjustments.",
+  "_model": "qwen3:14b",
+  "_eval_count": 401,
+  "_total_duration_ms": 65795,
+  "_source_file": "transcripts/q-300-+13367894453-20250905-090100-1757077260.56.txt",
+  "_direction": "queue",
+  "_char_count": 9061
+}

@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Request a certificate of insurance for Eastern Cabinet Installers Incorporated, specifically covering April 10th, 2025, after previous information was lost during a system migration.",
+  "resolution_steps": [
+    "Agent Gloria confirmed the caller's company and requested contact details.",
+    "Notified caller that old system data is inaccessible due to a recent migration.",
+    "Requested email confirmation to proceed with certificate issuance.",
+    "Clarified the need for coverage on April 10th, 2025.",
+    "Agreed to send the certificate once details are received."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of certificate of insurance (COI) issuance process",
+    "Knowledge of system migration limitations",
+    "Email communication protocols for client verification"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's new internal system",
+    "Support email address: support@myalliancesurance.com"
+  ],
+  "summary": "A builder requested a certificate of insurance for a client, but the agent could not access historical records due to a recent system migration. The agent requested email confirmation and clarified the required coverage date. The call concluded with a promise to send the certificate once details were received.",
+  "_model": "qwen3:14b",
+  "_eval_count": 279,
+  "_total_duration_ms": 32795,
+  "_source_file": "transcripts/exten-103-+12523193621-20250725-094740-1753451260.2984.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2206
+}

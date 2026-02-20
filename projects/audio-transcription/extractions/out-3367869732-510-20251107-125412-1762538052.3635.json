@@ -1,0 +1,20 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Outbound call to follow up on insurance policies and request a callback.",
+  "resolution_steps": [
+    "Agent left voicemail message requesting callback.",
+    "Agent mentioned sending an email for further discussion."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [
+    "email"
+  ],
+  "summary": "Tracy from Alliance Insurance left a voicemail message requesting a callback and mentioned sending an email for follow-up. The call did not involve a substantive conversation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 121,
+  "_total_duration_ms": 30556,
+  "_source_file": "transcripts/out-3367869732-510-20251107-125412-1762538052.3635.txt",
+  "_direction": "outbound",
+  "_char_count": 615
+}

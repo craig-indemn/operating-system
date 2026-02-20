@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Ashley Williams is seeking assistance to resolve an insurance policy issue with her lender, aiming to adjust the deductible to meet closing requirements for a mortgage transaction involving Rocket Mortgage and Helmed Mortgage.",
+  "resolution_steps": [
+    "Heather listens to Ashley's explanation about the lender's request and confusion over policy details.",
+    "Heather confirms Ashley's plan to increase the deductible to lower the premium and meet closing requirements.",
+    "Heather notes Ashley's attempt to contact the lender and co-worker Catherine for clarification on required adjustments.",
+    "Heather acknowledges the complexity of the mortgage process and the need to coordinate with multiple parties (lender, co-workers, mortgage companies)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy adjustments (e.g., deductible changes)",
+    "Mortgage closing requirements",
+    "Coordination between lenders, agents, and co-workers"
+  ],
+  "systems_referenced": [
+    "Rocket Mortgage",
+    "Helmed Mortgage"
+  ],
+  "summary": "Ashley Williams discusses a last-minute insurance policy adjustment needed for a mortgage closing with Heather. The conversation highlights confusion over policy details, communication gaps with the lender, and the need to increase the deductible. Heather confirms the plan to resolve the issue once the lender provides specific requirements, while noting the complexity of coordinating with multiple parties involved in the mortgage process.",
+  "_model": "qwen3:14b",
+  "_eval_count": 302,
+  "_total_duration_ms": 42473,
+  "_source_file": "transcripts/exten-401-+13366923642-20250723-112507-1753284307.4742.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3952
+}

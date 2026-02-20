@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller attempted to reach Jamie flipping but did not articulate a specific request or issue.",
+  "resolution_steps": [
+    "Agent placed caller on hold",
+    "Agent mentioned putting the caller on a 'recall'"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The call was a transfer attempt to Jamie flipping with no substantive conversation. The agent placed the caller on hold and mentioned a 'recall' but did not resolve any issue or provide information.",
+  "_model": "qwen3:14b",
+  "_eval_count": 126,
+  "_total_duration_ms": 26001,
+  "_source_file": "transcripts/in-+13363779003-+18045176280-20251105-162841-1762378121.6414.txt",
+  "_direction": "inbound",
+  "_char_count": 830
+}

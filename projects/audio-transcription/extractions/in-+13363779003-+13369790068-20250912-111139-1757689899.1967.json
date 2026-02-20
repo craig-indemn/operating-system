@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller needs to update their auto insurance draft account due to an invalid account and seeks assistance with separating insurance coverage for themselves and their children following a divorce.",
+  "resolution_steps": [
+    "Agent acknowledged the need to update the auto draft account.",
+    "Agent offered to transfer the caller to a specialist to handle policy adjustments related to divorce and child coverage."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Auto insurance draft account management",
+    "Policy separation processes for divorced individuals",
+    "Child coverage adjustments"
+  ],
+  "systems_referenced": [
+    "Internal agent transfer system"
+  ],
+  "summary": "Caller requested assistance updating an invalid auto insurance draft account and separating insurance coverage for themselves and their children following a divorce. The agent offered to connect them with a specialist to resolve the matter.",
+  "_model": "qwen3:14b",
+  "_eval_count": 188,
+  "_total_duration_ms": 22410,
+  "_source_file": "transcripts/in-+13363779003-+13369790068-20250912-111139-1757689899.1967.txt",
+  "_direction": "inbound",
+  "_char_count": 712
+}

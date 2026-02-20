@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is requesting the agent to send a disability insurance certificate or document via email, as required by their insurance company.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's request for a disability coverage document.",
+    "Agent confirms they will send the required certificate via email immediately."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of disability insurance requirements",
+    "Document handling procedures for insurance claims"
+  ],
+  "systems_referenced": [
+    "Email communication system"
+  ],
+  "summary": "The caller requested a disability insurance certificate to be sent via email. The agent confirmed they would send the document immediately. The conversation focused on resolving a document submission requirement for an insurance claim.",
+  "_model": "qwen3:14b",
+  "_eval_count": 171,
+  "_total_duration_ms": 28050,
+  "_source_file": "transcripts/exten-106-+17863538095-20250812-105223-1755010343.2448.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 507
+}

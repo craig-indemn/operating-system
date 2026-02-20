@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to cancel their car insurance policy and is frustrated with the lack of callback after leaving multiple messages.",
+  "resolution_steps": [
+    "Agent acknowledged the caller's frustration with not receiving a callback.",
+    "Agent attempted to transfer the caller to the appropriate department.",
+    "Agent offered an alternative: providing a support email to submit the cancellation request.",
+    "Caller requested to wait for the transfer attempt again."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy cancellation procedures",
+    "Support channels (email, transfer protocols)",
+    "Handling customer frustration and service issues"
+  ],
+  "systems_referenced": [
+    "Support email system"
+  ],
+  "summary": "A frustrated caller sought to cancel their car insurance policy but had not received a callback after leaving messages. The agent attempted to transfer them, offered an email alternative, and let them wait for another transfer attempt. The issue remained unresolved at the call's end.",
+  "_model": "qwen3:14b",
+  "_eval_count": 215,
+  "_total_duration_ms": 32863,
+  "_source_file": "transcripts/in-+13363779003-+13363253231-20251208-141300-1765221180.9959.txt",
+  "_direction": "inbound",
+  "_char_count": 1314
+}

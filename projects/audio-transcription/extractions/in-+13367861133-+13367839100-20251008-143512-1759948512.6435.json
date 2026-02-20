@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Mindy from Northside Mortgage Group needed to request a homeowner's insurance quote but was unsure of the correct recipient.",
+  "resolution_steps": [
+    "Agent confirmed the caller's intent to request a homeowner's quote.",
+    "Agent directed the caller to send the request via the Alliance Insurance support email."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Alliance Insurance's support email address"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance support email (support@allianceinsurance.com)"
+  ],
+  "summary": "Mindy from Northside Mortgage Group inquired about submitting a homeowner's insurance quote. The agent provided the support email address for submitting requests, but did not process the quote directly. The call concluded with the caller being directed to send the request via email.",
+  "_model": "qwen3:14b",
+  "_eval_count": 190,
+  "_total_duration_ms": 37247,
+  "_source_file": "transcripts/in-+13367861133-+13367839100-20251008-143512-1759948512.6435.txt",
+  "_direction": "inbound",
+  "_char_count": 470
+}

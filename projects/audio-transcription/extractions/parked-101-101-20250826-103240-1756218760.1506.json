@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Colin, representing an information provider, requested Monty to contact Julie Hill and a church treasurer to expedite submission of outstanding payroll information for a workers compensation audit.",
+  "resolution_steps": [
+    "Monty acknowledged the request and confirmed he would reach out to Julie Hill and the church treasurer to urge them to complete and submit the remaining audit information.",
+    "Colin provided his contact details for follow-up questions."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Workers compensation audit processes",
+    "Client communication protocols for insurance agencies"
+  ],
+  "systems_referenced": [],
+  "summary": "Colin requested Monty's assistance in accelerating a workers compensation audit by contacting Julie Hill and a church treasurer for missing payroll information. Monty agreed to follow up with the parties involved, and Colin provided his contact details for future questions. The call concluded with mutual thanks and confirmation of next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 210,
+  "_total_duration_ms": 32311,
+  "_source_file": "transcripts/parked-101-101-20250826-103240-1756218760.1506.txt",
+  "_direction": "parked",
+  "_char_count": 1419
+}

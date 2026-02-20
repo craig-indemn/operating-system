@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jennifer from Deli Bank is seeking confirmation on whether sending updated documents for a home equity line of credit (with a new loan number) via email to Alliance Insurance's support address is appropriate, and she wants to ensure the correct Brian Miller's file is updated.",
+  "resolution_steps": [
+    "Agent confirms the correct email address (support@myallianceinsurance.com) for document submissions.",
+    "Agent requests the client's address to verify the correct Brian Miller (3653 Union Hill Road) due to multiple clients with the same name.",
+    "Agent offers to either forward the documents directly to the support email or receive them via their own email (dena@myallianceinsurance.com) for processing."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of document submission processes for policy updates",
+    "Ability to verify client identities using address details",
+    "Knowledge of internal email routing for document handling"
+  ],
+  "systems_referenced": [
+    "support@myallianceinsurance.com (official support email)",
+    "dena@myallianceinsurance.com (agent's personal email for document forwarding)"
+  ],
+  "summary": "Jennifer from Deli Bank confirms with Alliance Insurance that sending updated home equity line of credit documents via email is appropriate. The agent verifies the client's address to ensure the correct Brian Miller's file is updated and offers to receive the documents directly via email for processing. Jennifer agrees to send the information to the agent's email.",
+  "_model": "qwen3:14b",
+  "_eval_count": 328,
+  "_total_duration_ms": 45393,
+  "_source_file": "transcripts/in-+13363544000-+13367781601-20250729-094833-1753796913.2032.txt",
+  "_direction": "inbound",
+  "_char_count": 1840
+}

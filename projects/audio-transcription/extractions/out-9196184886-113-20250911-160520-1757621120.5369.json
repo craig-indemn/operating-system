@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (James) is attempting to add a vehicle to his insurance policy but is facing issues with obtaining the VIN number, which is required for the process.",
+  "resolution_steps": [
+    "Agent (Gary) confirms the need for the VIN number to proceed with adding the vehicle.",
+    "Informs the caller that the VIN must be provided (via picture) to continue.",
+    "Offers to send a picture of the bill of sale if the caller prefers to text for verification."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy modification process",
+    "Documentation requirements for vehicle additions (VIN, bill of sale)"
+  ],
+  "systems_referenced": [],
+  "summary": "Agent Gary is assisting James with adding a vehicle to his insurance policy but is waiting for the VIN number. The caller has not yet provided the required information, and the agent is offering alternative methods (texting) to facilitate the process. The call remains unresolved pending the VIN submission.",
+  "_model": "qwen3:14b",
+  "_eval_count": 226,
+  "_total_duration_ms": 52051,
+  "_source_file": "transcripts/out-9196184886-113-20250911-160520-1757621120.5369.txt",
+  "_direction": "outbound",
+  "_char_count": 686
+}

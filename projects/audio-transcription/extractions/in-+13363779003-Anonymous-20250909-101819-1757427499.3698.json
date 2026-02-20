@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to make a payment on their home insurance policy, specifically for a policy held under the name Juan Canongo Basquez.",
+  "resolution_steps": [
+    "Agent asked for the policy number and confirmed it as 381009103458011.",
+    "Agent accessed the policy in the 'Foremost' system and confirmed the outstanding balance of $572.",
+    "Agent collected credit card details (number: 4513360004461968, expiration: 11/27, CVV: 673, zip code: 28112).",
+    "Agent processed the payment and provided a confirmation number (44959547473554).",
+    "Agent confirmed the payment was successful and offered to email the confirmation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Accessing and navigating the 'Foremost' insurance system.",
+    "Processing credit card payments securely.",
+    "Understanding policyholder verification steps.",
+    "Handling confirmation numbers and payment confirmations."
+  ],
+  "systems_referenced": [
+    "Foremost"
+  ],
+  "summary": "A caller made a home insurance payment for policyholder Juan Canongo Basquez. The agent verified the policy details, processed the payment via credit card, and provided a confirmation number. The caller confirmed they needed no further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 324,
+  "_total_duration_ms": 49407,
+  "_source_file": "transcripts/in-+13363779003-Anonymous-20250909-101819-1757427499.3698.txt",
+  "_direction": "inbound",
+  "_char_count": 2292
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jose is following up on a previous conversation with Nadia from Alliance Insurance regarding an unresolved issue with reinstating his commercial auto insurance policy due to a payment processing error involving a checking account mix-up.",
+  "resolution_steps": [
+    "Agent Nadia would verify the payment history to confirm the incorrect account entry.",
+    "Check internal systems or carrier portals to assess the status of the policy reinstatement.",
+    "Coordinate with banking systems or the customer to correct the account details and reprocess the payment."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Commercial auto insurance policy reinstatement procedures",
+    "Payment processing error resolution",
+    "Account verification protocols"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal payment tracking system",
+    "Carrier portal for policy management",
+    "Banking system for account verification"
+  ],
+  "summary": "Jose contacted Nadia from Alliance Insurance to resolve an ongoing issue with reinstating his commercial auto policy after a payment failed due to a checking account mix-up. The agent needs to investigate the payment error, verify account details, and reprocess the payment to complete the reinstatement. The call is ongoing, requiring further steps to resolve the issue.",
+  "_model": "qwen3:14b",
+  "_eval_count": 270,
+  "_total_duration_ms": 55918,
+  "_source_file": "transcripts/out-3369711783-401-20250811-120455-1754928295.7770.txt",
+  "_direction": "outbound",
+  "_char_count": 497
+}

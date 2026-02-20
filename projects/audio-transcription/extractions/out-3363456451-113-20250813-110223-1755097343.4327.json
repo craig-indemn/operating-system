@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Provide updated insurance quotes for auto, home, and umbrella policies and explain coverage details to Mr. Limeberry.",
+  "resolution_steps": [
+    "Agent Gary shares 12-month rates for auto ($1,701.95), home ($1,394), and umbrella ($248/year) policies.",
+    "Notes that auto policy comparison is based on a 6-month State Farm policy.",
+    "Explains umbrella coverage provides an additional $1M liability protection.",
+    "Offers to send physical copies of quotes via email for review.",
+    "Agrees to follow up if Mr. Limeberry has questions or decides to proceed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy terminology (e.g., umbrella coverage, liability limits)",
+    "Rate comparison methodologies across different policy terms (6-month vs. 12-month)",
+    "Customer service protocols for quote delivery and follow-up"
+  ],
+  "systems_referenced": [
+    "Email communication channel"
+  ],
+  "summary": "Gary from Alliance Insurance provided Mr. Limeberry with detailed auto, home, and umbrella insurance quotes, explained coverage specifics, and arranged to send physical copies via email for review. The conversation concluded with an agreement to follow up if Mr. Limeberry has further questions or wishes to proceed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 292,
+  "_total_duration_ms": 38768,
+  "_source_file": "transcripts/out-3363456451-113-20250813-110223-1755097343.4327.txt",
+  "_direction": "outbound",
+  "_char_count": 1669
+}

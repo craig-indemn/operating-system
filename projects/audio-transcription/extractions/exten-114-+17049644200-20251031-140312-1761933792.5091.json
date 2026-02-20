@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to add a newly purchased 2025 Toyota RAV4 to their existing insurance policy, ensuring it has the same full coverage as their 2016 RAV4.",
+  "resolution_steps": [
+    "Agent confirmed the VIN and purchase date of the new vehicle (October 28, 2025).",
+    "Agent verified the existing coverage details for the 2016 RAV4.",
+    "Agent noted the new vehicle is financed through Capital One and confirmed the customer would handle the financing details.",
+    "Agent scheduled the addition of the new vehicle to the policy effective immediately.",
+    "Agent informed the caller that the premium amount would be communicated via email or in-person on Monday."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy updates and coverage types (full coverage).",
+    "Process for adding new vehicles to existing policies.",
+    "Knowledge of financing partnerships (e.g., Capital One)."
+  ],
+  "systems_referenced": [
+    "Internal insurance policy management system",
+    "Capital One financing portal"
+  ],
+  "summary": "The caller requested to add a new 2025 Toyota RAV4 to their insurance policy, matching the coverage of their existing 2016 RAV4. The agent confirmed details, scheduled the addition, and informed the caller that the premium would be communicated later. The call concluded with the agent offering further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 326,
+  "_total_duration_ms": 37718,
+  "_source_file": "transcripts/exten-114-+17049644200-20251031-140312-1761933792.5091.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2715
+}

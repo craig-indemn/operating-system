@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (JC from Alliance Insurance) wanted to amend a policy to add a dog (shih tzu) to a client's coverage (Patricia Lena Miller, policy #5622030000).",
+  "resolution_steps": [
+    "Agent confirmed the caller's identity and purpose.",
+    "Agent requested policy number and dog breed details.",
+    "Agent checked the policy database using the provided policy number.",
+    "Agent confirmed the dog was already listed on the policy.",
+    "Agent informed caller no changes were needed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy amendment procedures",
+    "Auto Owners Insurance database navigation",
+    "Pet coverage eligibility criteria"
+  ],
+  "systems_referenced": [
+    "Auto Owners Insurance policy database"
+  ],
+  "summary": "Alliance Insurance agent JC contacted Auto Owners Insurance to add a shih tzu to a policy. The agent confirmed the dog was already on file, resolving the request without changes. The call concluded with confirmation of existing coverage.",
+  "_model": "qwen3:14b",
+  "_eval_count": 239,
+  "_total_duration_ms": 29625,
+  "_source_file": "transcripts/out-8003340328-114-20260106-125106-1767721866.2917.txt",
+  "_direction": "outbound",
+  "_char_count": 1424
+}

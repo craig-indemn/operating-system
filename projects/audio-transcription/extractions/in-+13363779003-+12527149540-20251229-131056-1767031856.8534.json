@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is inquiring about a $14 monthly deduction from their late aunt's bank account, potentially linked to Alliance Insurance, and seeks clarification on its origin and how to investigate further.",
+  "resolution_steps": [
+    "Agent asked for the deceased's full name (Marilyn Tucker) and confirmed spelling.",
+    "Requested the two ID numbers associated with the bank draft.",
+    "Collected physical addresses from the past 15 years (One thirteen Heritage Street, Greenville, NC; 3091 Brick Hill Road, Greenville, NC) and current address (1748 Foster Road, Greenville, NC).",
+    "Clarified that Marilyn Tucker never received mail from Alliance Insurance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy deductions and account lookups",
+    "Procedures for investigating unexplained charges",
+    "Knowledge of deceased policyholder claims processes"
+  ],
+  "systems_referenced": [
+    "Internal customer database",
+    "Policy lookup system"
+  ],
+  "summary": "A caller seeks to investigate a $14 monthly deduction from their late aunt's account, potentially linked to Alliance Insurance. The agent is gathering details about the deceased, including names, addresses, and ID numbers to investigate the charge. The call is ongoing with a callback needed for further resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 297,
+  "_total_duration_ms": 31954,
+  "_source_file": "transcripts/in-+13363779003-+12527149540-20251229-131056-1767031856.8534.txt",
+  "_direction": "inbound",
+  "_char_count": 1599
+}

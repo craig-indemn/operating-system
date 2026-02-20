@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Kimberly Bolsoff is seeking assistance with insurance quotes from National General, specifically addressing a significant price increase for her Polaris CyberCyber policy and the absence of quotes for her car insurance. She also confirms her account details and mentions she has been a long-term client of Alliance.",
+  "resolution_steps": [
+    "Agent verifies caller's identity (Kimberly Bolsoff, with spouse Jeffrey).",
+    "Agent attempts to access the caller's account to retrieve policy details.",
+    "Agent informs caller they will transfer her to the 'light department' for further assistance.",
+    "Call ends abruptly before resolution."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Accessing customer accounts and policy details",
+    "Understanding insurance pricing changes and quote processes",
+    "Handling customer inquiries about specific carriers (National General)"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal account system",
+    "Light department (internal team or tool for quote processing)"
+  ],
+  "summary": "Kimberly Bolsoff contacted Alliance Insurance to address a significant price increase from National General for her Polaris CyberCyber policy and the absence of car insurance quotes. The agent verified her identity, accessed her account, and began transferring her to the light department for further assistance, but the call ended abruptly before resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 296,
+  "_total_duration_ms": 46723,
+  "_source_file": "transcripts/q-200-+13367826001-20250922-134707-1758563227.5536.txt",
+  "_direction": "queue",
+  "_char_count": 1016
+}

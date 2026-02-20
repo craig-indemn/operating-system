@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Amy Smith is following up on an insurance policy update for her business, specifically addressing general liability coverage and workers' compensation exclusions. She seeks clarification on why her and her husband (Ian) were excluded from workers' comp and wants to ensure proper coverage for subcontractors without over-insuring.",
+  "resolution_steps": [
+    "Jeff confirms Amy updated exposures with Auto Owners via an endorsement for general liability.",
+    "Jeff explains workers' comp exclusions: if Amy and Ian are the only officers excluded, no employees are covered, leaving coverage reliant on subcontractors.",
+    "Jeff mentions the need for a 'dummy policy' through the North Carolina Rate Bureau (standard deposit premium of $1,500) to satisfy certificate-of-insurance requirements despite no employees.",
+    "Jeff acknowledges Amy's confusion about exclusion rationale and offers to review Joe's notes for clarity."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Workers' compensation policy mechanics (e.g., dummy policies for no-employee scenarios)",
+    "North Carolina Rate Bureau procedures and premium structures",
+    "Insurance exclusion clauses for corporate officers",
+    "Subcontractor insurance requirements"
+  ],
+  "systems_referenced": [
+    "Auto Owners (insurance carrier)",
+    "North Carolina Rate Bureau",
+    "Internal notes from Joe (previous agent)"
+  ],
+  "summary": "Amy Smith discusses updating her business's insurance policy with Jeff Edmonds, focusing on general liability and workers' comp exclusions. Jeff explains the complexities of workers' comp when no employees are covered, suggesting a dummy policy through the North Carolina Rate Bureau. The conversation highlights confusion around exclusion clauses and the need for further clarification on policy options.",
+  "_model": "qwen3:14b",
+  "_eval_count": 365,
+  "_total_duration_ms": 49637,
+  "_source_file": "transcripts/parked-105-105-20250919-135114-1758304274.6102.txt",
+  "_direction": "parked",
+  "_char_count": 4336
+}

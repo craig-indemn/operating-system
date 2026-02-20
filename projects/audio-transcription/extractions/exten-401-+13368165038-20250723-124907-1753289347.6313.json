@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Harvey Dillon wanted to confirm the discount percentage he received for paying his insurance premiums in full, specifically for his auto and homeowners policies.",
+  "resolution_steps": [
+    "Heather checked the auto policy and confirmed a $196 paid-in-full discount, noting the premium after discount was $1,782.49.",
+    "Heather explained the auto policy's $5 discount might be from a 'green discount' (paperless enrollment) or payment method.",
+    "Heather reviewed the homeowners policy, noting a $200+ discount but confusion about whether recent changes (endorsement #630) affected the premium calculation.",
+    "Heather advised Harvey to check the 'renewing' section on his policy portal for details."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of insurance discounts (paid-in-full, green/paperless, endorsement changes)",
+    "Ability to access and interpret policy details via carrier systems (Auto Owners)",
+    "Familiarity with premium calculation logic and policy portal navigation"
+  ],
+  "systems_referenced": [
+    "Auto Owners (insurance carrier)",
+    "Policy portal/renewing section",
+    "Endorsement documents"
+  ],
+  "summary": "Harvey called to confirm discounts from paying insurance premiums in full. Heather verified a $196 auto discount and $200+ homeowners discount but noted confusion about recent policy changes. The call concluded with Heather guiding Harvey to check his policy portal for detailed breakdowns.",
+  "_model": "qwen3:14b",
+  "_eval_count": 334,
+  "_total_duration_ms": 50027,
+  "_source_file": "transcripts/exten-401-+13368165038-20250723-124907-1753289347.6313.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4276
+}

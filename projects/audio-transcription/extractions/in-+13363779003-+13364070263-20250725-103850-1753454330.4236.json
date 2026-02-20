@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to resolve a car damage claim settlement delayed by an unresponsive adjuster and avoid further car rental costs.",
+  "resolution_steps": [
+    "Agent asked for policy number and confirmed claim details.",
+    "Agent acknowledged the adjuster's unresponsiveness and the caller's frustration.",
+    "Agent offered to escalate the issue to ensure the adjuster follows up."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Claims processing procedures",
+    "Adjuster communication protocols"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance claims database"
+  ],
+  "summary": "Caller reported an unresolved car damage claim due to an unresponsive adjuster, requesting assistance to finalize the settlement and avoid extended car rental costs. The agent acknowledged the issue and offered to escalate it for resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 190,
+  "_total_duration_ms": 21755,
+  "_source_file": "transcripts/in-+13363779003-+13364070263-20250725-103850-1753454330.4236.txt",
+  "_direction": "inbound",
+  "_char_count": 1195
+}

@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; transcript contains only a single statement about potential record issues",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Inbound call transcript is too brief to determine caller intent or agent actions. Only a single statement about potential record verification issues on Google Search is present, with no context or resolution steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 103,
+  "_total_duration_ms": 23385,
+  "_source_file": "transcripts/in-+13367861133-+17432558585-20250909-091617-1757423777.223.txt",
+  "_direction": "inbound",
+  "_char_count": 95
+}

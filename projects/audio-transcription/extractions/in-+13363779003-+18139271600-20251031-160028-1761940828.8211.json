@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Not identifiable; transcript only shows agent transferring call",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Agent informed caller they would transfer the call to Corbin. No substantive conversation or resolution occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 82,
+  "_total_duration_ms": 23259,
+  "_source_file": "transcripts/in-+13363779003-+18139271600-20251031-160028-1761940828.8211.txt",
+  "_direction": "inbound",
+  "_char_count": 206
+}

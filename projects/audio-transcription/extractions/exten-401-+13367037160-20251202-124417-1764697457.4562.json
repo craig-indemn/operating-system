@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Julia seeks clarification on her home insurance payment status and rate increase, and requests assistance for her friend Dante to switch auto insurance providers while ensuring policy continuity.",
+  "resolution_steps": [
+    "Heather verifies Julia's home insurance payment status, confirming no escrow payments are active since Julia owns her home outright.",
+    "Heather explains the rate increase ($1,541 from $1,137) and agrees to email Julia a summary of the change.",
+    "Heather connects with Dante Lemon to gather details for a new auto policy (2007 Honda CR-V, liability-only coverage, clean driving record).",
+    "Heather clarifies that Dante's friend (Julia's client) needs to secure new coverage before canceling National General to avoid gaps.",
+    "Heather confirms Dante's vehicle VIN and coverage needs, and agrees to proceed with the new policy application."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance payment processes (escrow vs. direct payment)",
+    "Policy rate calculation factors (coverage changes, claims history)",
+    "Procedure for switching insurance providers without coverage gaps",
+    "Auto insurance underwriting criteria (driving record, vehicle details)"
+  ],
+  "systems_referenced": [
+    "First Horizon Bank (auto pay account)",
+    "National General (current insurance provider)",
+    "Email communication for policy details",
+    "Insurance policy databases for coverage verification"
+  ],
+  "summary": "Julia discusses her home insurance payment issues and rate increase with Heather, who confirms no escrow payments apply and agrees to send a detailed email. Heather then assists Dante Lemon in initiating a new auto insurance policy, gathering vehicle and coverage details while emphasizing the need to secure new coverage before canceling existing policies. The call concludes with Heather preparing to email Julia and process Dante's application.",
+  "_model": "qwen3:14b",
+  "_eval_count": 396,
+  "_total_duration_ms": 69284,
+  "_source_file": "transcripts/exten-401-+13367037160-20251202-124417-1764697457.4562.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 12355
+}

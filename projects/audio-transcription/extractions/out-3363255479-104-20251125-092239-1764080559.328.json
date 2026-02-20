@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Megan is confirming whether an invoice was mailed to the correct address and inquiring about the status of her insurance policy after a three-day payment delay, while considering updating her mailing address to a PO box.",
+  "resolution_steps": [
+    "Brian confirms the policy has not been canceled due to the three-day delay and explains the grace period.",
+    "He verifies the invoice's due date (November 22nd) and assures Megan there is no immediate cancellation risk.",
+    "Brian offers to update Megan's mailing address to PO Box 1308 if she prefers, acknowledging the previous administrative transition as a potential cause of confusion.",
+    "He reassures Megan that the policy is active and provides guidance on next steps for payment."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Policy cancellation rules and grace periods",
+    "Client account management (address updates, invoice tracking)",
+    "Handling client concerns post-administrative transition"
+  ],
+  "systems_referenced": [],
+  "summary": "Brian from Alliance Insurance Services addresses Megan's concerns about a delayed invoice and potential policy cancellation. He confirms the policy remains active, explains the grace period, and assists Megan in updating her mailing address to a PO box. The call concludes with Megan feeling reassured and informed about next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 285,
+  "_total_duration_ms": 48920,
+  "_source_file": "transcripts/out-3363255479-104-20251125-092239-1764080559.328.txt",
+  "_direction": "outbound",
+  "_char_count": 1763
+}

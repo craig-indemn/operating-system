@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Jesse) needs to send a certificate of insurance to Aurelio from GA Mainstream, as the previous coverage was canceled and a new one is required for today.",
+  "resolution_steps": [
+    "Jessica confirms the caller's request to send a certificate to Aurelio from GA Mainstream.",
+    "Jessica asks for the recipient's company name (NC Construcci\u00f3n) and email address.",
+    "Jessica assures the caller she will send the certificate via email and provide a copy to the caller's phone."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance certificate issuance and cancellation processes",
+    "Handling requests for document transfers between parties"
+  ],
+  "systems_referenced": [
+    "Email system for document transfer"
+  ],
+  "summary": "Jesse requested assistance sending an updated insurance certificate to NC Construcci\u00f3n after a previous policy was canceled. Jessica confirmed the request, verified the recipient details, and committed to sending the document via email and providing a phone copy. The call concluded with the issue being resolved.",
+  "_model": "qwen3:14b",
+  "_eval_count": 229,
+  "_total_duration_ms": 27765,
+  "_source_file": "transcripts/exten-106-+13367826357-20250805-091944-1754399984.856.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1133
+}

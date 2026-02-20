@@ -1,0 +1,809 @@
+time=2026-02-19T08:43:59.673-07:00 level=INFO msg="Daemon started (interval: %v, auto-commit: %v, auto-push: %v)" !BADKEY=5s !BADKEY=false !BADKEY=false
+time=2026-02-19T08:43:59.674-07:00 level=INFO msg="using database" path=/Users/home/Repositories/operating-system/projects/web-operator/.beads/beads.db
+time=2026-02-19T08:43:59.694-07:00 level=INFO msg="database opened" path=/Users/home/Repositories/operating-system/projects/web-operator/.beads/beads.db backend=sqlite freshness_checking=true
+time=2026-02-19T08:43:59.694-07:00 level=INFO msg="upgrading .beads/.gitignore"
+time=2026-02-19T08:43:59.694-07:00 level=WARN msg="failed to upgrade .gitignore" error="open .beads/.gitignore: no such file or directory"
+time=2026-02-19T08:43:59.704-07:00 level=INFO msg="Repository fingerprint validated: %s" !BADKEY=57d0744c
+time=2026-02-19T08:43:59.704-07:00 level=INFO msg="starting RPC server" socket=/Users/home/Repositories/operating-system/projects/web-operator/.beads/bd.sock
+time=2026-02-19T08:43:59.704-07:00 level=INFO msg="RPC server ready (socket listening)"
+time=2026-02-19T08:43:59.710-07:00 level=INFO msg="registered in global registry"
+time=2026-02-19T08:43:59.710-07:00 level=INFO msg="Starting %s..." !BADKEY="sync cycle"
+time=2026-02-19T08:43:59.711-07:00 level=INFO msg="Exported to JSONL"
+time=2026-02-19T08:44:00.313-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T08:44:00.332-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T08:44:00.349-07:00 level=INFO msg="Sync cycle complete"
+time=2026-02-19T08:44:00.349-07:00 level=INFO msg="monitoring parent process" pid=0
+time=2026-02-19T08:44:00.349-07:00 level=INFO msg="using event-driven mode"
+time=2026-02-19T08:44:00.350-07:00 level=INFO msg="Auto-pull disabled: use 'git pull' manually to sync remote changes"
+time=2026-02-19T08:44:00.350-07:00 level=INFO msg="Mutation detected: %s %s" create=web-operator-gik
+time=2026-02-19T08:44:00.850-07:00 level=INFO msg="Export triggered by mutation events"
+time=2026-02-19T08:44:00.852-07:00 level=INFO msg="Starting %s..." !BADKEY=export
+time=2026-02-19T08:44:00.853-07:00 level=INFO msg="Pre-export validation failed: %v" !BADKEY="refusing to export: JSONL content has changed since last import (import first to avoid data loss)"
+time=2026-02-19T08:44:05.314-07:00 level=INFO msg="Mutation detected: %s %s" create=web-operator-ptp
+time=2026-02-19T08:44:05.815-07:00 level=INFO msg="Export triggered by mutation events"
+time=2026-02-19T08:44:05.815-07:00 level=INFO msg="Starting %s..." !BADKEY=export
+time=2026-02-19T08:44:05.816-07:00 level=INFO msg="Pre-export validation failed: %v" !BADKEY="refusing to export: JSONL content has changed since last import (import first to avoid data loss)"
+time=2026-02-19T08:44:10.736-07:00 level=INFO msg="Mutation detected: %s %s" create=web-operator-2e3
+time=2026-02-19T08:44:11.237-07:00 level=INFO msg="Export triggered by mutation events"
+time=2026-02-19T08:44:11.237-07:00 level=INFO msg="Starting %s..." !BADKEY=export
+time=2026-02-19T08:44:11.238-07:00 level=INFO msg="Pre-export validation failed: %v" !BADKEY="refusing to export: JSONL content has changed since last import (import first to avoid data loss)"
+time=2026-02-19T08:44:15.816-07:00 level=INFO msg="Mutation detected: %s %s" create=web-operator-tzo
+time=2026-02-19T08:44:16.317-07:00 level=INFO msg="Export triggered by mutation events"
+time=2026-02-19T08:44:16.317-07:00 level=INFO msg="Starting %s..." !BADKEY=export
+time=2026-02-19T08:44:16.317-07:00 level=INFO msg="Pre-export validation failed: %v" !BADKEY="refusing to export: JSONL content has changed since last import (import first to avoid data loss)"
+time=2026-02-19T08:44:21.688-07:00 level=INFO msg="Mutation detected: %s %s" create=web-operator-2uy
+time=2026-02-19T08:44:22.189-07:00 level=INFO msg="Export triggered by mutation events"
+time=2026-02-19T08:44:22.189-07:00 level=INFO msg="Starting %s..." !BADKEY=export
+time=2026-02-19T08:44:22.190-07:00 level=INFO msg="Pre-export validation failed: %v" !BADKEY="refusing to export: JSONL content has changed since last import (import first to avoid data loss)"
+time=2026-02-19T08:44:27.237-07:00 level=INFO msg="Mutation detected: %s %s" create=web-operator-4qu
+time=2026-02-19T08:44:27.738-07:00 level=INFO msg="Export triggered by mutation events"
+time=2026-02-19T08:44:27.738-07:00 level=INFO msg="Starting %s..." !BADKEY=export
+time=2026-02-19T08:44:27.738-07:00 level=INFO msg="Pre-export validation failed: %v" !BADKEY="refusing to export: JSONL content has changed since last import (import first to avoid data loss)"
+time=2026-02-19T08:44:32.002-07:00 level=INFO msg="Mutation detected: %s %s" update=web-operator-ptp
+time=2026-02-19T08:44:32.076-07:00 level=INFO msg="Mutation detected: %s %s" update=web-operator-2e3
+time=2026-02-19T08:44:32.146-07:00 level=INFO msg="Mutation detected: %s %s" update=web-operator-tzo
+time=2026-02-19T08:44:32.216-07:00 level=INFO msg="Mutation detected: %s %s" update=web-operator-4qu
+time=2026-02-19T08:44:32.717-07:00 level=INFO msg="Export triggered by mutation events"
+time=2026-02-19T08:44:32.718-07:00 level=INFO msg="Starting %s..." !BADKEY=export
+time=2026-02-19T08:44:32.718-07:00 level=INFO msg="Pre-export validation failed: %v" !BADKEY="refusing to export: JSONL content has changed since last import (import first to avoid data loss)"
+time=2026-02-19T08:51:13.470-07:00 level=INFO msg="JSONL removed/renamed, re-establishing watch"
+time=2026-02-19T08:51:13.521-07:00 level=INFO msg="Successfully re-established JSONL watch after %v" !BADKEY=50ms
+time=2026-02-19T08:51:13.521-07:00 level=INFO msg="JSONL file created: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:51:14.523-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T08:51:14.523-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T08:51:14.523-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T08:51:14.539-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:51:14.539-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T08:51:14.539-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T08:51:14.977-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T08:51:14.978-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T08:51:14.978-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T08:52:21.575-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:52:22.589-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T08:52:22.590-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T08:52:22.590-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T08:52:22.611-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:52:22.612-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T08:52:22.612-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T08:52:23.018-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T08:52:23.019-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T08:52:23.019-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T08:52:31.205-07:00 level=INFO msg="Mutation detected: %s %s" status=web-operator-gik
+time=2026-02-19T08:52:31.707-07:00 level=INFO msg="Export triggered by mutation events"
+time=2026-02-19T08:52:31.707-07:00 level=INFO msg="Starting %s..." !BADKEY=export
+time=2026-02-19T08:52:31.707-07:00 level=INFO msg="Pre-export validation failed: %v" !BADKEY="refusing to export: JSONL content has changed since last import (import first to avoid data loss)"
+time=2026-02-19T08:52:43.388-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:52:44.408-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T08:52:44.409-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T08:52:44.409-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T08:52:44.423-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:52:44.423-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T08:52:44.423-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T08:52:44.887-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T08:52:44.889-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T08:52:44.889-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T08:52:45.045-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:52:46.064-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T08:52:46.065-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T08:52:46.065-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T08:52:46.076-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:52:46.076-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T08:52:46.076-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T08:52:46.520-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T08:52:46.521-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T08:52:46.521-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T08:52:53.792-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:52:54.805-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T08:52:54.806-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T08:52:54.806-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T08:52:54.818-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:52:54.818-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T08:52:54.818-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T08:52:55.275-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T08:52:55.277-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T08:52:55.277-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T08:53:05.115-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:53:06.131-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T08:53:06.131-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T08:53:06.131-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T08:53:06.144-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:53:06.144-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T08:53:06.144-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T08:53:06.538-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T08:53:06.539-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T08:53:06.539-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T08:53:13.854-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:53:14.870-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T08:53:14.870-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T08:53:14.870-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T08:53:14.888-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:53:14.888-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T08:53:14.888-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T08:53:15.288-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T08:53:15.289-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T08:53:15.289-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T08:53:17.427-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:53:18.467-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T08:53:18.468-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T08:53:18.468-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T08:53:18.481-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:53:18.481-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T08:53:18.481-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T08:53:18.895-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T08:53:18.897-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T08:53:18.897-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T08:53:26.325-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:53:27.354-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T08:53:27.355-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T08:53:27.355-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T08:53:27.378-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:53:27.378-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T08:53:27.378-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T08:53:27.766-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T08:53:27.768-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T08:53:27.768-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T08:53:46.399-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:53:47.410-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T08:53:47.411-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T08:53:47.411-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T08:53:47.426-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:53:47.426-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T08:53:47.426-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T08:53:47.836-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T08:53:47.837-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T08:53:47.837-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T08:54:00.334-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:54:01.358-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T08:54:01.358-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T08:54:01.358-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T08:54:01.372-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:54:01.372-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T08:54:01.372-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T08:54:01.747-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T08:54:01.749-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T08:54:01.749-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T08:54:20.402-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:54:21.416-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T08:54:21.416-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T08:54:21.416-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T08:54:21.428-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:54:21.428-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T08:54:21.428-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T08:54:21.844-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T08:54:21.845-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T08:54:21.845-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T08:54:40.454-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:54:41.465-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T08:54:41.466-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T08:54:41.466-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T08:54:41.477-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:54:41.477-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T08:54:41.477-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T08:54:41.863-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T08:54:41.864-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T08:54:41.864-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T08:54:49.114-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:54:50.126-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T08:54:50.127-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T08:54:50.127-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T08:54:50.138-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:54:50.138-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T08:54:50.138-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T08:54:50.537-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T08:54:50.538-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T08:54:50.538-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T08:55:09.167-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:55:10.179-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T08:55:10.180-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T08:55:10.180-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T08:55:10.192-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:55:10.192-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T08:55:10.192-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T08:55:10.589-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T08:55:10.590-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T08:55:10.590-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T08:55:27.929-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:55:28.965-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T08:55:28.965-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T08:55:28.965-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T08:55:28.976-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:55:28.976-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T08:55:28.976-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T08:55:29.382-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T08:55:29.384-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T08:55:29.384-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T08:55:48.016-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:55:49.030-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T08:55:49.031-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T08:55:49.031-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T08:55:49.046-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:55:49.047-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T08:55:49.047-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T08:55:49.422-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T08:55:49.423-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T08:55:49.423-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T08:57:12.842-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:57:13.854-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T08:57:13.855-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T08:57:13.855-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T08:57:13.869-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:57:13.869-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T08:57:13.869-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T08:57:14.289-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T08:57:14.292-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T08:57:14.292-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T08:57:15.437-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:57:16.450-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T08:57:16.450-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T08:57:16.450-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T08:57:16.463-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:57:16.463-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T08:57:16.463-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T08:57:16.838-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T08:57:16.840-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T08:57:16.840-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T08:57:32.900-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:57:33.914-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T08:57:33.915-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T08:57:33.915-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T08:57:33.931-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:57:33.931-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T08:57:33.931-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T08:57:34.307-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T08:57:34.308-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T08:57:34.308-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T08:57:35.498-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:57:36.513-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T08:57:36.513-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T08:57:36.513-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T08:57:36.527-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:57:36.527-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T08:57:36.527-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T08:57:36.894-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T08:57:36.895-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T08:57:36.896-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T08:57:52.955-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:57:53.967-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T08:57:53.968-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T08:57:53.968-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T08:57:53.979-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:57:53.979-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T08:57:53.979-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T08:57:54.344-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T08:57:54.345-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T08:57:54.345-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T08:58:16.534-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:58:17.547-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T08:58:17.547-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T08:58:17.547-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T08:58:17.558-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:58:17.558-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T08:58:17.558-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T08:58:17.955-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T08:58:17.956-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T08:58:17.957-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T08:58:36.587-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:58:37.600-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T08:58:37.600-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T08:58:37.600-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T08:58:37.612-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T08:58:37.612-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T08:58:37.612-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T08:58:38.024-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T08:58:38.026-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T08:58:38.026-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T09:00:04.875-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:00:05.894-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T09:00:05.894-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T09:00:05.894-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T09:00:05.908-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:00:05.908-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T09:00:05.908-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T09:00:06.312-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T09:00:06.314-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T09:00:06.314-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T09:00:07.944-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:00:08.959-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T09:00:08.960-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T09:00:08.960-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T09:00:08.973-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:00:08.973-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T09:00:08.973-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T09:00:09.366-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T09:00:09.368-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T09:00:09.368-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T09:00:24.941-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:00:25.954-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T09:00:25.954-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T09:00:25.954-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T09:00:25.965-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:00:25.965-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T09:00:25.965-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T09:00:26.346-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T09:00:26.347-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T09:00:26.347-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T09:00:28.027-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:00:29.039-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T09:00:29.039-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T09:00:29.039-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T09:00:29.051-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:00:29.051-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T09:00:29.051-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T09:00:29.415-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T09:00:29.416-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T09:00:29.417-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T09:02:07.353-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:02:08.366-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T09:02:08.366-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T09:02:08.366-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T09:02:08.377-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:02:08.377-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T09:02:08.377-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T09:02:08.774-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T09:02:08.775-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T09:02:08.775-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T09:02:12.349-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:02:13.362-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T09:02:13.363-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T09:02:13.363-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T09:02:13.379-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:02:13.379-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T09:02:13.379-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T09:02:13.780-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T09:02:13.782-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T09:02:13.782-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T09:02:27.414-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:02:28.431-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T09:02:28.431-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T09:02:28.431-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T09:02:28.446-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:02:28.446-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T09:02:28.446-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T09:02:28.828-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T09:02:28.829-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T09:02:28.829-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T09:02:32.422-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:02:33.435-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T09:02:33.436-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T09:02:33.436-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T09:02:33.448-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:02:33.448-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T09:02:33.448-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T09:02:33.842-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T09:02:33.844-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T09:02:33.844-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T09:04:03.386-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:04:04.400-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T09:04:04.401-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T09:04:04.401-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T09:04:04.414-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:04:04.414-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T09:04:04.414-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T09:04:04.865-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T09:04:04.866-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T09:04:04.866-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T09:04:29.348-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:04:30.366-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T09:04:30.366-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T09:04:30.366-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T09:04:30.378-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:04:30.378-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T09:04:30.378-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T09:04:30.768-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T09:04:30.770-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T09:04:30.770-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T09:04:49.414-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:04:50.430-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T09:04:50.430-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T09:04:50.430-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T09:04:50.443-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:04:50.443-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T09:04:50.443-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T09:04:50.821-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T09:04:50.822-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T09:04:50.822-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T09:05:06.947-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:05:07.962-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T09:05:07.962-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T09:05:07.962-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T09:05:07.975-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:05:07.975-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T09:05:07.975-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T09:05:08.377-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T09:05:08.379-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T09:05:08.379-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T09:05:09.473-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:05:10.487-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T09:05:10.487-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T09:05:10.487-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T09:05:10.499-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:05:10.499-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T09:05:10.499-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T09:05:10.888-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T09:05:10.889-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T09:05:10.889-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T09:05:20.100-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:05:21.113-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T09:05:21.113-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T09:05:21.113-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T09:05:21.125-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:05:21.125-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T09:05:21.125-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T09:05:21.506-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T09:05:21.507-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T09:05:21.507-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T09:05:56.401-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:05:57.415-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T09:05:57.415-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T09:05:57.415-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T09:05:57.428-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:05:57.428-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T09:05:57.428-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T09:05:57.833-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T09:05:57.834-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T09:05:57.834-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T09:05:58.770-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:05:59.784-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T09:05:59.784-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T09:05:59.784-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T09:05:59.795-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:05:59.795-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T09:05:59.795-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T09:06:00.243-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T09:06:00.245-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T09:06:00.245-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T09:06:18.839-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:06:19.852-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T09:06:19.852-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T09:06:19.852-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T09:06:19.864-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:06:19.864-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T09:06:19.864-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T09:06:20.265-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T09:06:20.266-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T09:06:20.267-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T09:07:04.081-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:07:05.095-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T09:07:05.095-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T09:07:05.095-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T09:07:05.106-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:07:05.106-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T09:07:05.106-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T09:07:05.511-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T09:07:05.512-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T09:07:05.512-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T09:13:44.752-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:13:45.766-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T09:13:45.767-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T09:13:45.767-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T09:13:45.779-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:13:45.779-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T09:13:45.779-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T09:13:46.195-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T09:13:46.196-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T09:13:46.196-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T09:14:59.282-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:15:00.295-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T09:15:00.296-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T09:15:00.296-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T09:15:00.310-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:15:00.310-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T09:15:00.310-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T09:15:00.844-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T09:15:00.845-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T09:15:00.845-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T09:15:19.337-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:15:20.350-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T09:15:20.351-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T09:15:20.351-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T09:15:20.362-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:15:20.362-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T09:15:20.362-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T09:15:20.770-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T09:15:20.772-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T09:15:20.772-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T09:16:08.024-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:16:09.045-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T09:16:09.045-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T09:16:09.045-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T09:16:09.057-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:16:09.057-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T09:16:09.057-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T09:16:09.456-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T09:16:09.457-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T09:16:09.457-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T09:16:10.074-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:16:11.088-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T09:16:11.089-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T09:16:11.089-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T09:16:11.100-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:16:11.100-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T09:16:11.100-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T09:16:11.477-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T09:16:11.478-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T09:16:11.478-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T09:16:30.146-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:16:31.161-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T09:16:31.162-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T09:16:31.162-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T09:16:31.179-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:16:31.179-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T09:16:31.179-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T09:16:31.651-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T09:16:31.652-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T09:16:31.653-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T09:18:54.474-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:18:55.487-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T09:18:55.488-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T09:18:55.488-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T09:18:55.499-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:18:55.499-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T09:18:55.499-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T09:18:55.909-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T09:18:55.911-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T09:18:55.911-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T09:19:14.551-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:19:15.566-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T09:19:15.567-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T09:19:15.567-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T09:19:15.583-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:19:15.583-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T09:19:15.583-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T09:19:15.977-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T09:19:15.978-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T09:19:15.978-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T09:20:14.631-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:20:15.644-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T09:20:15.644-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T09:20:15.644-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T09:20:15.656-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:20:15.656-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T09:20:15.656-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T09:20:16.058-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T09:20:16.059-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T09:20:16.060-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T09:32:48.659-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:32:49.672-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T09:32:49.672-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T09:32:49.672-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T09:32:49.683-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:32:49.683-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T09:32:49.684-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T09:32:50.163-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T09:32:50.165-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T09:32:50.165-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T09:33:08.715-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:33:09.728-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T09:33:09.729-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T09:33:09.729-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T09:33:09.740-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T09:33:09.740-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T09:33:09.740-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T09:33:10.110-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T09:33:10.111-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T09:33:10.112-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T10:27:32.378-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T10:27:33.393-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T10:27:33.394-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T10:27:33.394-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T10:27:33.407-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T10:27:33.407-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T10:27:33.407-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T10:27:33.991-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T10:27:33.993-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T10:27:33.993-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T10:27:44.244-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T10:27:45.260-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T10:27:45.261-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T10:27:45.261-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T10:27:45.272-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T10:27:45.272-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T10:27:45.272-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T10:27:45.714-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T10:27:45.715-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T10:27:45.715-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T10:28:04.326-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T10:28:05.338-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T10:28:05.340-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T10:28:05.340-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T10:28:05.361-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T10:28:05.361-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T10:28:05.361-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T10:28:05.793-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T10:28:05.795-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T10:28:05.795-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T10:28:56.616-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T10:28:57.631-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T10:28:57.632-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T10:28:57.632-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T10:28:57.649-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T10:28:57.649-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T10:28:57.649-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T10:29:12.398-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T10:29:12.400-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T10:29:12.400-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T10:29:16.686-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T10:29:17.699-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T10:29:17.699-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T10:29:17.699-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T10:29:17.711-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T10:29:17.711-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T10:29:17.711-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T10:29:18.168-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T10:29:18.169-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T10:29:18.169-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T10:29:50.000-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T10:29:51.015-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T10:29:51.016-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T10:29:51.016-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T10:29:51.032-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T10:29:51.032-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T10:29:51.032-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T10:29:54.405-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T10:29:54.406-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T10:29:54.406-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T10:30:10.085-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T10:30:11.098-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T10:30:11.099-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T10:30:11.099-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T10:30:11.110-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T10:30:11.110-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T10:30:11.110-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T10:30:11.547-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T10:30:11.548-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T10:30:11.548-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T10:30:25.901-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T10:30:26.913-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T10:30:26.913-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T10:30:26.913-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T10:30:26.925-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T10:30:26.925-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T10:30:26.925-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T10:30:27.394-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T10:30:27.396-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T10:30:27.396-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T10:30:31.787-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T10:30:32.800-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T10:30:32.801-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T10:30:32.801-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T10:30:32.815-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T10:30:32.815-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T10:30:32.815-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T10:30:37.161-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T10:30:37.162-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T10:30:37.162-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T10:30:51.846-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T10:30:52.859-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T10:30:52.860-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T10:30:52.860-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T10:30:52.874-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T10:30:52.874-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T10:30:52.874-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T10:30:53.784-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T10:30:53.785-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T10:30:53.786-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T10:31:03.204-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T10:31:04.221-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T10:31:04.222-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T10:31:04.222-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T10:31:04.238-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T10:31:04.238-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T10:31:04.238-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T10:31:07.857-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T10:31:07.859-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T10:31:07.859-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T10:31:23.336-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T10:31:24.348-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T10:31:24.348-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T10:31:24.348-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T10:31:24.361-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T10:31:24.361-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T10:31:24.361-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T10:31:29.725-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T10:31:29.726-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T10:31:29.726-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T10:32:28.273-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T10:32:29.419-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T10:32:29.420-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T10:32:29.420-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T10:32:29.434-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T10:32:29.434-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T10:32:29.434-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T10:32:31.072-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T10:32:31.073-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T10:32:31.073-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T10:32:48.468-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T10:32:49.485-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T10:32:49.485-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T10:32:49.485-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T10:32:49.498-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T10:32:49.498-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T10:32:49.498-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T10:32:49.927-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T10:32:49.929-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T10:32:49.929-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T10:33:35.852-07:00 level=INFO msg="JSONL removed/renamed, re-establishing watch"
+time=2026-02-19T10:33:35.903-07:00 level=INFO msg="Successfully re-established JSONL watch after %v" !BADKEY=50ms
+time=2026-02-19T10:33:35.903-07:00 level=INFO msg="JSONL file created: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T10:33:36.905-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T10:33:36.906-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T10:33:36.906-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T10:33:36.916-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T10:33:36.916-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T10:33:36.916-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T10:33:37.307-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T10:33:37.308-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T10:33:37.308-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T10:34:44.425-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T10:34:45.442-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T10:34:45.442-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T10:34:45.442-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T10:34:45.453-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T10:34:45.453-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T10:34:45.453-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T10:34:46.288-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T10:34:46.290-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T10:34:46.290-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T10:35:04.493-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T10:35:05.506-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T10:35:05.506-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T10:35:05.506-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T10:35:05.521-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T10:35:05.521-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T10:35:05.521-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T10:35:07.197-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T10:35:07.198-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T10:35:07.198-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T10:35:08.931-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T10:35:09.943-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T10:35:09.944-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T10:35:09.944-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T10:35:09.954-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T10:35:09.954-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T10:35:09.954-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T10:35:10.418-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T10:35:10.419-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T10:35:10.419-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T10:35:20.192-07:00 level=INFO msg="Mutation detected: %s %s" update=web-operator-gik
+time=2026-02-19T10:35:20.693-07:00 level=INFO msg="Export triggered by mutation events"
+time=2026-02-19T10:35:20.693-07:00 level=INFO msg="Starting %s..." !BADKEY=export
+time=2026-02-19T10:35:20.694-07:00 level=INFO msg="Pre-export validation failed: %v" !BADKEY="refusing to export: JSONL content has changed since last import (import first to avoid data loss)"
+time=2026-02-19T10:35:28.985-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T10:35:30.000-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T10:35:30.001-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T10:35:30.001-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T10:35:30.017-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T10:35:30.017-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T10:35:30.017-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T10:35:30.617-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T10:35:30.618-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T10:35:30.618-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T10:35:36.840-07:00 level=INFO msg="JSONL removed/renamed, re-establishing watch"
+time=2026-02-19T10:35:36.891-07:00 level=INFO msg="Successfully re-established JSONL watch after %v" !BADKEY=50ms
+time=2026-02-19T10:35:36.891-07:00 level=INFO msg="JSONL file created: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T10:35:37.893-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T10:35:37.893-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T10:35:37.893-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T10:35:37.904-07:00 level=INFO msg="⚠️  WARNING: Uncommitted local changes detected in %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T10:35:37.904-07:00 level=INFO msg="   Pulling from remote may overwrite local unpushed changes."
+time=2026-02-19T10:35:37.904-07:00 level=INFO msg="   Consider running 'bd sync' to commit and push your changes first."
+time=2026-02-19T10:35:38.760-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T10:35:38.762-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T10:35:38.762-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-19T10:35:58.978-07:00 level=INFO msg="File change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/projects/web-operator/.beads/issues.jsonl
+time=2026-02-19T10:35:59.980-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-19T10:35:59.980-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-19T10:35:59.980-07:00 level=INFO msg="JSONL content changed, proceeding with %s..." !BADKEY=auto-import
+time=2026-02-19T10:36:05.887-07:00 level=INFO msg="Pulled from remote"
+time=2026-02-19T10:36:05.888-07:00 level=INFO msg="Imported from JSONL"
+time=2026-02-19T10:36:05.888-07:00 level=INFO msg="Auto-import complete"
+time=2026-02-20T11:09:50.440-07:00 level=INFO msg="Git HEAD change detected: %s" !BADKEY=/Users/home/Repositories/operating-system/.git/HEAD
+time=2026-02-20T11:09:51.443-07:00 level=INFO msg="Import triggered by file change"
+time=2026-02-20T11:09:51.444-07:00 level=INFO msg="Starting %s..." !BADKEY=auto-import
+time=2026-02-20T11:09:51.444-07:00 level=INFO msg="Skipping %s: JSONL content unchanged" !BADKEY=auto-import
+time=2026-02-20T11:09:59.975-07:00 level=INFO msg="JSONL removed/renamed, re-establishing watch"
+time=2026-02-20T11:10:00.027-07:00 level=INFO msg="JSONL still missing after %v, retrying..." !BADKEY=50ms
+time=2026-02-20T11:10:00.128-07:00 level=INFO msg="JSONL still missing after %v, retrying..." !BADKEY=100ms
+time=2026-02-20T11:10:00.329-07:00 level=INFO msg="JSONL still missing after %v, retrying..." !BADKEY=200ms
+time=2026-02-20T11:10:00.730-07:00 level=INFO msg="JSONL still missing after %v, retrying..." !BADKEY=400ms
+time=2026-02-20T11:10:00.730-07:00 level=INFO msg="Failed to re-establish JSONL watch after all retries"

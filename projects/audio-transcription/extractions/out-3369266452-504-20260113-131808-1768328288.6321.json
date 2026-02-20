@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Evy wanted to update her address information across multiple insurance policies to ensure correspondence is sent to the correct location.",
+  "resolution_steps": [
+    "Holly confirmed the correct address (822 West Fourth Street, Apartment 305, 27101) provided by Evy.",
+    "Noted discrepancies in existing records for life, auto, renters, and dwelling fire policies.",
+    "Agreed to update all policies to the new address.",
+    "Confirmed additional policy addresses (e.g., 811 Silverleaf Drive, 4716 Evy Court) for reference."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Policy address management procedures",
+    "Understanding of different policy types (life, auto, renters, dwelling fire)"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal policy database"
+  ],
+  "summary": "Holly updated Evy's address across multiple insurance policies after identifying discrepancies in the records. Evy provided the correct address, and Holly confirmed the changes would be applied to all relevant policies.",
+  "_model": "qwen3:14b",
+  "_eval_count": 241,
+  "_total_duration_ms": 27327,
+  "_source_file": "transcripts/out-3369266452-504-20260113-131808-1768328288.6321.txt",
+  "_direction": "outbound",
+  "_char_count": 1382
+}

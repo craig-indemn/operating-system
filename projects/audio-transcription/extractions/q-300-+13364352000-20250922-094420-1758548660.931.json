@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Ramona James is confirming whether her insurance policy covers towing services for her Kia Rio and seeking guidance on the reimbursement process.",
+  "resolution_steps": [
+    "Agent confirmed Ramona's address to verify her policy details.",
+    "Agent checked the policy and confirmed towing coverage was included.",
+    "Agent explained the reimbursement process: contacting a towing company, providing a receipt with specific details (VIN, date, service description, miles, tow locations).",
+    "Agent clarified the reimbursement limit ($100) and required documentation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy coverage (towing reimbursement limits and requirements)",
+    "Claims process for reimbursement (documentation needed)",
+    "Policy verification procedures"
+  ],
+  "systems_referenced": [
+    "Policy database (internal system for checking coverage details)"
+  ],
+  "summary": "Ramona confirmed her towing coverage and was informed about the reimbursement process, including required documentation. The agent verified her policy details and provided step-by-step instructions for filing a claim through a towing company.",
+  "_model": "qwen3:14b",
+  "_eval_count": 238,
+  "_total_duration_ms": 31804,
+  "_source_file": "transcripts/q-300-+13364352000-20250922-094420-1758548660.931.txt",
+  "_direction": "queue",
+  "_char_count": 1000
+}

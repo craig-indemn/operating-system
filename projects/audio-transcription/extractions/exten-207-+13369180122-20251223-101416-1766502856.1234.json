@@ -1,0 +1,32 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to set up a new insurance policy with monthly EFT using a Capital One credit card, effective on the 29th of the month, to avoid a coverage lapse when canceling their existing policy.",
+  "resolution_steps": [
+    "Confirmed the caller's preference to use a Capital One credit card for monthly EFT payments.",
+    "Collected credit card details (number, expiration date, CVV, and zip code).",
+    "Set the policy effective date to the 29th to align with the cancellation of the existing policy.",
+    "Warned the caller about potential DMV letters due to policy changes and explained the FS1 form as a solution.",
+    "Agreed to issue the policy on Friday to ensure coverage is active before canceling the old policy.",
+    "Notified the caller that ID cards will be emailed once the policy is processed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Credit card processing for EFT payments",
+    "Insurance policy effective dates and cancellation procedures",
+    "DMV communication protocols and lapse prevention (FS1 form)",
+    "Internal systems for policy issuance and document delivery"
+  ],
+  "systems_referenced": [
+    "Capital One credit card system",
+    "DMV (Department of Motor Vehicles)",
+    "FS1 form (insurance lapse documentation)",
+    "Alliance Insurance Services internal policy management system"
+  ],
+  "summary": "The caller is setting up a new insurance policy with monthly EFT via Capital One credit card, effective on the 29th to avoid a coverage lapse. The agent confirmed details, explained DMV letter risks, and scheduled policy activation for Friday. The call concluded with confirmation of next steps and document delivery.",
+  "_model": "qwen3:14b",
+  "_eval_count": 378,
+  "_total_duration_ms": 46422,
+  "_source_file": "transcripts/exten-207-+13369180122-20251223-101416-1766502856.1234.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2925
+}

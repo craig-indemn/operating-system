@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller followed up on a previous commercial request for a certificate of insurance and worker's comp from builders, expressing frustration over a 24-hour wait for a callback.",
+  "resolution_steps": [
+    "Agent confirmed the caller's company (C and C Custom LLC) and acknowledged the delayed callback.",
+    "Agent put the caller on hold to locate the account manager.",
+    "Agent promoted the customer portal (myallianceinsurance.com) and texting support (336-786-1133) during the hold.",
+    "Agent returned to suggest emailing the request for the certificate and worker's comp to expedite processing."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Commercial insurance account management processes",
+    "Internal systems for handling certificate requests",
+    "Customer communication protocols for unresolved inquiries"
+  ],
+  "systems_referenced": [
+    "myallianceinsurance.com customer portal",
+    "Texting support system (336-786-1133)"
+  ],
+  "summary": "A caller followed up on a delayed commercial insurance request, seeking a certificate of insurance and worker's comp. The agent acknowledged the delay, put the caller on hold to locate the account manager, and suggested emailing the request for faster processing. The call ended with the agent proposing an email-based solution but not confirming resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 303,
+  "_total_duration_ms": 43037,
+  "_source_file": "transcripts/in-+13363544000-+13363013103-20250827-161219-1756325539.7392.txt",
+  "_direction": "inbound",
+  "_char_count": 1368
+}

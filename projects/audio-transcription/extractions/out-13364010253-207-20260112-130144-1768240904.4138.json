@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "N/A",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Automated voicemail greeting detected; no substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 69,
+  "_total_duration_ms": 17955,
+  "_source_file": "transcripts/out-13364010253-207-20260112-130144-1768240904.4138.txt",
+  "_direction": "outbound",
+  "_char_count": 68
+}

@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "German is discussing an insurance policy non-renewal with Cody, seeking assistance to adjust coverage and provide updated business figures for a new quote.",
+  "resolution_steps": [
+    "Cody confirms the Escalade was added to the policy.",
+    "Cody explains Westfield non-renewed the entire policy but agreed to non-renew only the auto portion.",
+    "Cody requests updated sales figures and payroll data for the new quote.",
+    "Cody and German clarify payroll figures (subcontractor: ~$450k, internal crew: $150k) and estimate sales at ~$1M.",
+    "Cody agrees to send updated numbers to the underwriter and continue seeking business auto coverage."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance policy non-renewal processes",
+    "Business auto coverage options",
+    "Underwriting requirements for commercial policies"
+  ],
+  "systems_referenced": [
+    "Westfield insurance portal",
+    "Underwriting system for new quotes"
+  ],
+  "summary": "German discusses a non-renewal of his commercial insurance policy with Cody, who helps adjust coverage terms and gathers updated business data for a new quote. They clarify payroll and sales figures, and Cody commits to submitting the information to underwriters while seeking alternative business auto coverage. The call concludes with agreement to follow up on next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 306,
+  "_total_duration_ms": 46283,
+  "_source_file": "transcripts/exten-207-+13367556110-20260109-133559-1767983759.4548.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3804
+}

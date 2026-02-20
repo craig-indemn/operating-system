@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (William) is seeking clarification about a bill from Utica National Insurance Group, believing he may have already paid his premium for a property in Linwood under his name (William and Mary).",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance billing processes",
+    "Policyholder account verification",
+    "Handling disputes over unpaid premiums"
+  ],
+  "systems_referenced": [
+    "Utica National Insurance Group (carrier)"
+  ],
+  "summary": "William contacted Alliance Insurance Services after receiving a bill from Utica National Insurance Group, claiming he had already paid his premium for a property in Linwood. The call was transferred, and the automated system prompted the caller to consider online policy management, but no agent had yet addressed the specific billing inquiry.",
+  "_model": "qwen3:14b",
+  "_eval_count": 188,
+  "_total_duration_ms": 35372,
+  "_source_file": "transcripts/exten-401-+13366824540-20250806-155505-1754510105.10473.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 890
+}

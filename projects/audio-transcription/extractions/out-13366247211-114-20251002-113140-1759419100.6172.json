@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller (JC from Alliance Insurance) left a voicemail to check on the status of a claim and provide contact information for follow-up.",
+  "resolution_steps": [
+    "Call was forwarded to an automated voice messaging system.",
+    "Caller left a voicemail message regarding claim status and contact details."
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A voicemail was left by Alliance Insurance regarding a claim status check. The caller provided contact information and noted they cannot answer claim-related questions directly.",
+  "_model": "qwen3:14b",
+  "_eval_count": 136,
+  "_total_duration_ms": 46969,
+  "_source_file": "transcripts/out-13366247211-114-20251002-113140-1759419100.6172.txt",
+  "_direction": "outbound",
+  "_char_count": 833
+}

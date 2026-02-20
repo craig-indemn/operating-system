@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Jack Hill, wants to change his commercial truck insurance to a regular insurance policy.",
+  "resolution_steps": [
+    "Agent acknowledged the caller's intent.",
+    "Agent said 'one second' and 'Oh, thank you,' indicating possible clarification or preparation for next steps, but no further action was taken as the transcript ends mid-conversation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding the process of switching between commercial and personal insurance policies.",
+    "Knowledge of insurance product types and eligibility criteria."
+  ],
+  "systems_referenced": [],
+  "summary": "Jack Hill contacted Alliance Insurance to request switching his commercial truck insurance to a regular policy. The agent acknowledged the request, but the conversation was cut off before any resolution steps were completed. Further information or action is likely required to address the caller's intent.",
+  "_model": "qwen3:14b",
+  "_eval_count": 198,
+  "_total_duration_ms": 67021,
+  "_source_file": "transcripts/in-+13367861133-+13367100758-20251209-110054-1765296054.1678.txt",
+  "_direction": "inbound",
+  "_char_count": 298
+}

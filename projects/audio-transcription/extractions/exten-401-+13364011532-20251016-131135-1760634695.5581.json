@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Tanya) is providing detailed information about multiple properties to an insurance agent to finalize an insurance quote, including roof ages, property types, land details, and mortgage information.",
+  "resolution_steps": [
+    "Agent confirmed roof age (at least 10 years) for 538 Slate Road and 192 (dwelling) and 180 McBride (mobile home).",
+    "Requested specific details about the mobile home's roof (manufacturer, model, serial number, dimensions).",
+    "Discussed property renovations (laminate flooring, vinyl underpinning) and land acreage (18.8 acres, additional land on Peter Cotton Trail).",
+    "Verified mortgage details (Surety Bank and Trust equity line of credit on primary residence).",
+    "Noted need for title documentation to confirm mobile home specifications.",
+    "Agreed to follow up via text for additional information."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy requirements for property details (roof age, property type, renovations).",
+    "Understanding of mortgage terms (equity line of credit vs. traditional mortgage).",
+    "Knowledge of property documentation (titles, tax cards) for insurance underwriting."
+  ],
+  "systems_referenced": [
+    "title documentation",
+    "Surety Bank and Trust"
+  ],
+  "summary": "Tanya provided detailed property information to an insurance agent for quote finalization, including roof ages, property types, land details, and mortgage specifics. The agent requested additional documentation (title) and confirmed follow-up via text. The call concluded with the agent planning to use the data for carrier quotes.",
+  "_model": "qwen3:14b",
+  "_eval_count": 362,
+  "_total_duration_ms": 66618,
+  "_source_file": "transcripts/exten-401-+13364011532-20251016-131135-1760634695.5581.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 7572
+}

@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Heather Scott is attempting to confirm that the recipient (Eden) has received an email and signed an authorization form to process a payment and prevent policy cancellation.",
+  "resolution_steps": [
+    "Left a voicemail message after being forwarded to an automated system.",
+    "Mentioned prior attempts to contact via email, voicemail, and text.",
+    "Requested confirmation of email receipt and authorization form signing.",
+    "Provided the office phone number for further assistance.",
+    "Expressed concern about policy cancellation and offered to help set up payment."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy cancellation procedures",
+    "Authorization form requirements",
+    "Payment setup process"
+  ],
+  "systems_referenced": [],
+  "summary": "Heather Scott from Alliance Insurance left a voicemail for Eden, following up on prior communication to ensure an authorization form was signed to process a payment and avoid policy cancellation. She provided the office number for further assistance and expressed concern about the policy's status.",
+  "_model": "qwen3:14b",
+  "_eval_count": 231,
+  "_total_duration_ms": 76471,
+  "_source_file": "transcripts/out-9089062525-401-20251229-133210-1767033130.9537.txt",
+  "_direction": "outbound",
+  "_char_count": 1248
+}

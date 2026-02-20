@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; appears to be a brief, fragmented exchange about contacting a logistic company",
+  "resolution_steps": [
+    "Agent informed caller the requested person was unavailable",
+    "Offered to transfer to voicemail"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Short, unclear conversation where caller mentions needing to contact a logistic company. Agent offers voicemail transfer but no resolution is confirmed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 113,
+  "_total_duration_ms": 23821,
+  "_source_file": "transcripts/in-+13363779003-+13368586751-20251117-095852-1763391532.852.txt",
+  "_direction": "inbound",
+  "_char_count": 221
+}

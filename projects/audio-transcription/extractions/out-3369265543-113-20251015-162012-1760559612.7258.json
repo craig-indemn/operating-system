@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller asked about insurance options for her 22-year-old son who drives her vehicle but does not own a car, seeking clarification on whether he can obtain his own policy and associated costs.",
+  "resolution_steps": [
+    "Agent clarified that a non-owner policy cannot be issued without a vehicle.",
+    "Explained that if the son lives with the caller, he must remain on her policy.",
+    "Discussed cost differences between liability-only and full-coverage policies.",
+    "Suggested transitioning to the son's own policy once he owns a vehicle."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Non-owner insurance policy requirements",
+    "Age and dependency considerations in insurance",
+    "Liability vs. full-coverage cost differentials",
+    "Policy transition processes for dependents"
+  ],
+  "systems_referenced": [],
+  "summary": "Agent advised caller about her son's insurance options, explaining non-owner policy limitations, cost factors, and transition steps. The call concluded with the caller receiving actionable information and expressing gratitude.",
+  "_model": "qwen3:14b",
+  "_eval_count": 235,
+  "_total_duration_ms": 42906,
+  "_source_file": "transcripts/out-3369265543-113-20251015-162012-1760559612.7258.txt",
+  "_direction": "outbound",
+  "_char_count": 1074
+}

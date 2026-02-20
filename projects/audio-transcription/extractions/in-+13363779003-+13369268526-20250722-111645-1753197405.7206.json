@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to obtain a quote for home warranty insurance for their son's newly purchased house.",
+  "resolution_steps": [
+    "Agent acknowledged the caller's request for a home warranty insurance quote.",
+    "Agent stated they would connect the caller with an agent who can assist with the request."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding the difference between homeowners insurance and home warranty insurance",
+    "Process for transferring calls to appropriate agents"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller requested a home warranty insurance quote for their son's new house. The agent acknowledged the request and offered to connect the caller with an agent who can provide assistance. The call is pending further action as no resolution was reached.",
+  "_model": "qwen3:14b",
+  "_eval_count": 178,
+  "_total_duration_ms": 39475,
+  "_source_file": "transcripts/in-+13363779003-+13369268526-20250722-111645-1753197405.7206.txt",
+  "_direction": "inbound",
+  "_char_count": 378
+}

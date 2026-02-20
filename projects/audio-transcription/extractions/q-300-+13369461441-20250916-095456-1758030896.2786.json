@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Richard wants to add a 2024 Ford Mustang to his existing insurance policy, specifying he only needs liability coverage for now and will add full coverage later when financially feasible.",
+  "resolution_steps": [
+    "Agent Jamie confirms the need for VIN and loan information, which Richard provides.",
+    "Jamie asks about vehicle usage (commuting, spare use) and coverage preferences (liability only).",
+    "Jamie calculates the policy increase ($31.93) and confirms the addition with liability coverage.",
+    "Jamie emails proof of coverage to Richard's provided email address (garden gal 1222@aol.com)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy updates (adding vehicles)",
+    "Liability vs. full coverage distinctions",
+    "Premium calculation based on vehicle details and usage",
+    "Emailing proof of coverage via carrier systems"
+  ],
+  "systems_referenced": [
+    "Email system (for sending proof of coverage)",
+    "Insurance policy management portal"
+  ],
+  "summary": "Richard successfully added a 2024 Mustang to his policy with liability-only coverage. The agent processed the request, confirmed details, and sent proof of coverage via email. The call concluded with Richard expressing satisfaction and a minor complaint about the phone system.",
+  "_model": "qwen3:14b",
+  "_eval_count": 294,
+  "_total_duration_ms": 42626,
+  "_source_file": "transcripts/q-300-+13369461441-20250916-095456-1758030896.2786.txt",
+  "_direction": "queue",
+  "_char_count": 3732
+}

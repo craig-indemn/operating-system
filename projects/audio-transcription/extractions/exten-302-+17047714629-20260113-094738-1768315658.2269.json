@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "David Humphries is seeking clarification about a payment discrepancy for his insurance policies, specifically why a $112 payment was processed but a higher amount ($437) appears on his account, and why auto-pay didn't align with his expectations.",
+  "resolution_steps": [
+    "Agent Bon acknowledges the caller's confusion and requests clarification on the payment timeline and amounts.",
+    "Bon checks the payment details on the system, confirming the $112 general liability payment and $137 workers comp down payment.",
+    "Explains that the higher amount ($437) includes both the general liability and workers comp down payments, which are higher than regular monthly payments.",
+    "Clarifies that the payment structure involves a higher initial down payment for renewal, followed by lower monthly payments.",
+    "Advises David to contact the carrier directly to resolve the discrepancy and confirms willingness to follow up if needed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance payment structures (down payments vs. regular monthly payments)",
+    "Ability to interpret payment portals and auto-pay systems",
+    "Knowledge of carrier-specific renewal processes"
+  ],
+  "systems_referenced": [
+    "Carrier portal for policy and payment tracking",
+    "Payment processing system for verifying transaction details"
+  ],
+  "summary": "David Humphries contacted Alliance Insurance Services to resolve confusion about a payment discrepancy, where a $112 auto-pay was processed but a higher amount appeared on his account. The agent explained that the higher amount included a workers comp down payment for policy renewal, which is standard practice. The call concluded with the agent advising David to contact the carrier directly for further resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 366,
+  "_total_duration_ms": 53235,
+  "_source_file": "transcripts/exten-302-+17047714629-20260113-094738-1768315658.2269.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3426
+}

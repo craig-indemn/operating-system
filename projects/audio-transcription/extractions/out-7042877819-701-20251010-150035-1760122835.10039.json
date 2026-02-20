@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Voicemail greeting indicating mailbox is full. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 63,
+  "_total_duration_ms": 22602,
+  "_source_file": "transcripts/out-7042877819-701-20251010-150035-1760122835.10039.txt",
+  "_direction": "outbound",
+  "_char_count": 117
+}

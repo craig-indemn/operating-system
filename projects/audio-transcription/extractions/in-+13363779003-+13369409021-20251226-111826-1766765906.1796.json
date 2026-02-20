@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller requested to speak to Rachel but provided no further context or specific request.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [
+    "Alliance Insurance Services"
+  ],
+  "summary": "A brief inbound call where the caller requested to speak to Rachel. The conversation was cut off before any further details could be exchanged, making it impossible to determine the caller's specific needs or provide resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 114,
+  "_total_duration_ms": 20917,
+  "_source_file": "transcripts/in-+13363779003-+13369409021-20251226-111826-1766765906.1796.txt",
+  "_direction": "inbound",
+  "_char_count": 189
+}

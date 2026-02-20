@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Jimmy Cardwell from Farm Bureau Insurance) seeks a declaration page to remove Sage Stovall from Helen Green's policy, as the DMV linked their addresses, causing Farm Bureau to want to add Sage to the policy.",
+  "resolution_steps": [
+    "Agent confirmed the policy number (2004889071) with National Generals.",
+    "Agent agreed to email the declaration page to Ashley (the caller's email: ashley@allianceinsurance.com) with the subject 'Sage Stovall'.",
+    "Agent confirmed mailing physical ID cards to the address: 101030 Madison, North Carolina."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding insurance policy declarations and address linkage issues",
+    "Handling requests for policy documents (declaration pages, ID cards)",
+    "Email and mailing procedures for insurance-related documents"
+  ],
+  "systems_referenced": [
+    "Farm Bureau Insurance",
+    "National Generals (carrier)",
+    "Alliance Insurance email system"
+  ],
+  "summary": "A Farm Bureau agent requested a declaration page to remove Sage Stovall from Helen Green's policy due to address linkage. The Alliance Insurance agent confirmed the policy details, agreed to email the declaration page, and arranged for physical ID cards to be mailed to the provided address. The call concluded with the agent confirming next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 308,
+  "_total_duration_ms": 34142,
+  "_source_file": "transcripts/in-+13365913091-+13364535020-20251014-113347-1760456027.2159.txt",
+  "_direction": "inbound",
+  "_char_count": 1861
+}

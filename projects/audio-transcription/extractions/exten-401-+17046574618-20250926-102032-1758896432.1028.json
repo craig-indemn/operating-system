@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Kenneth Holston, as executor of his late father's estate, seeks temporary homeowners insurance for a property being sold, facing rejection from State Farm and Progressive due to unclear ownership documentation.",
+  "resolution_steps": [
+    "Heather acknowledges the situation and confirms the property's insurance lapsed due to State Farm's requirement for a deed showing ownership transfer.",
+    "She explains Progressive referred the caller to Alliance Insurance Services.",
+    "Heather recommends North Carolina Joint Underwriters Association (NCJUA) for short-term coverage, noting their limitations (no liability coverage, only fire/hurricane damage).",
+    "Clarifies NCJUA's role and confirms Kenneth's acceptance of the recommendation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of NCJUA's coverage scope and limitations",
+    "Insurance underwriting for properties in transition (e.g., estates, sales)",
+    "Handling temporary coverage scenarios"
+  ],
+  "systems_referenced": [
+    "State Farm",
+    "Progressive",
+    "North Carolina Joint Underwriters Association (NCJUA)"
+  ],
+  "summary": "Kenneth Holston, managing his father's estate, needs temporary insurance for a property being sold while awaiting legal paperwork. Heather recommends NCJUA for short-term fire/hurricane coverage, noting their exclusion of liability. Kenneth accepts the solution, prioritizing property protection over liability coverage.",
+  "_model": "qwen3:14b",
+  "_eval_count": 309,
+  "_total_duration_ms": 40099,
+  "_source_file": "transcripts/exten-401-+17046574618-20250926-102032-1758896432.1028.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2611
+}

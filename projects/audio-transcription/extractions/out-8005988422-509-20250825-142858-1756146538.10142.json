@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to confirm the status of a pending policy cancellation notice and inquire about the timeline before the cancellation takes effect, as the insured has a new mortgage company.",
+  "resolution_steps": [
+    "Agent verified the policyholder's name and address after the caller provided account details.",
+    "Agent confirmed a pending cancellation notice was scheduled for September 8 (NLC date).",
+    "Agent explained that the notice is the initial step and the actual cancellation typically occurs a couple of weeks after the NLC date.",
+    "Agent reassured the caller there was still time before the cancellation becomes effective."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy cancellation processes and timelines",
+    "Account verification procedures",
+    "Understanding of Notice of Cancellation (NLC) documentation"
+  ],
+  "systems_referenced": [
+    "Utica National Insurance Group's internal policy database",
+    "Customer portal (uticanational.com/slash/customercare)"
+  ],
+  "summary": "The caller inquired about a pending policy cancellation notice related to a new mortgage company. The agent verified the account, confirmed the NLC date of September 8, and explained that the actual cancellation would occur a couple of weeks after that date. The caller was reassured there was still time before the cancellation takes effect.",
+  "_model": "qwen3:14b",
+  "_eval_count": 293,
+  "_total_duration_ms": 34367,
+  "_source_file": "transcripts/out-8005988422-509-20250825-142858-1756146538.10142.txt",
+  "_direction": "outbound",
+  "_char_count": 2814
+}

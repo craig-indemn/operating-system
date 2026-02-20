@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to file an insurance claim after hitting their Sentinel car parked in the driveway.",
+  "resolution_steps": [
+    "Agent confirmed the caller's intent to file a claim.",
+    "Agent informed the caller they would transfer the call to another agent for assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Claims filing process",
+    "Call transfer procedures"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller contacted Alliance Insurance to report a car accident and request claim assistance. The agent acknowledged the request and initiated a transfer to another agent for further support.",
+  "_model": "qwen3:14b",
+  "_eval_count": 148,
+  "_total_duration_ms": 29714,
+  "_source_file": "transcripts/in-+13363779003-+13364033615-20250911-092332-1757597012.1255.txt",
+  "_direction": "inbound",
+  "_char_count": 254
+}

@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Patricia Hancock seeks assistance to resolve missed insurance payments caused by a scam that drained her checking account funds, leaving her two to three payments behind on her auto insurance.",
+  "resolution_steps": [
+    "Heather checks Patricia's auto insurance status, confirming it is 'cancel pending' with a $463.80 outstanding balance.",
+    "Heather verifies the condo insurance is current and confirms Patricia cannot pay the full amount immediately due to delayed funds from a retirement account transfer.",
+    "Heather proposes a partial payment of at least $150 to potentially lift the 'cancel pending' status, requiring approval from underwriting.",
+    "Heather agrees to contact Auto Owners (the carrier) to request approval for a partial payment and will follow up with Patricia by Friday."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance payment processes and 'cancel pending' status",
+    "Knowledge of underwriting approval procedures for partial payments",
+    "Ability to navigate carrier communication protocols"
+  ],
+  "systems_referenced": [
+    "Auto Owners (insurance carrier)"
+  ],
+  "summary": "Patricia Hancock, an Alliance Insurance client, explains her auto insurance payments are delinquent due to a scam that emptied her checking account. Heather confirms the policy is 'cancel pending' and proposes a partial payment plan, requiring carrier approval. Heather agrees to follow up with the carrier and inform Patricia by Friday. The call ends with Patricia awaiting further contact.",
+  "_model": "qwen3:14b",
+  "_eval_count": 322,
+  "_total_duration_ms": 39507,
+  "_source_file": "transcripts/q-300-+13369973570-20251223-144901-1766519341.3501.txt",
+  "_direction": "queue",
+  "_char_count": 3053
+}

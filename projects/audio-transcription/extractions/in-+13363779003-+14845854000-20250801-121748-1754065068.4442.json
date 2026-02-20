@@ -1,0 +1,19 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Caller (Mason) sought to speak with Brandy but was placed on hold.",
+  "resolution_steps": [
+    "Agent confirmed call transfer request",
+    "Placed caller on hold",
+    "Voicemail greeting played"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Inbound call from USLI underwriter Mason requesting to speak with Brandy. Agent placed caller on hold and played standard voicemail message. No substantive conversation occurred beyond initial transfer attempt.",
+  "_model": "qwen3:14b",
+  "_eval_count": 126,
+  "_total_duration_ms": 41234,
+  "_source_file": "transcripts/in-+13363779003-+14845854000-20250801-121748-1754065068.4442.txt",
+  "_direction": "inbound",
+  "_char_count": 686
+}

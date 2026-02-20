@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Mickey is asking whether a truck driver with a non-U.S. license (from another country) can be used for local runs, as the driver does not have a regular U.S. state license but claims to have a CDL from another country.",
+  "resolution_steps": [
+    "Cody confirms that U.S.-based licenses are required for most companies, including Alliance Insurance Services.",
+    "Cody explains that non-U.S. licenses (e.g., Mexico CDLs) are typically not accepted for commercial driving in the U.S.",
+    "Cody advises against using drivers with non-U.S. licenses due to prior issues with such licenses not working out."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Commercial driver licensing requirements in the U.S.",
+    "Insurance eligibility criteria for drivers with non-U.S. licenses"
+  ],
+  "systems_referenced": [
+    "Insurance agency's driver eligibility policies",
+    "Carrier portals for license verification"
+  ],
+  "summary": "Mickey inquired about using a truck driver with a non-U.S. license for local runs. Cody explained that U.S. state licenses are required, and non-U.S. licenses (like Mexico CDLs) are typically not accepted. The conversation concluded with Cody advising against using such licenses due to prior issues.",
+  "_model": "qwen3:14b",
+  "_eval_count": 295,
+  "_total_duration_ms": 40894,
+  "_source_file": "transcripts/exten-207-+13365106909-20251023-141034-1761243034.4092.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1891
+}

@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Charlie Parsons is checking in about vehicle insurance estimates and confirming coverage changes (removing coverages effective the policy renewal date) for his 2012 Jeep Cherokee and other vehicles.",
+  "resolution_steps": [
+    "Heather clarifies the vehicle details (2012 Jeep Cherokee) and confirms the estimate amount ($2,200\u2013$2,300).",
+    "Discusses confusion about coverage changes (removing comprehensive/collision on two vehicles not owned or used).",
+    "Notes that changes were applied effective September 5 instead of the intended renewal date (September 28).",
+    "Mentions contacting National General (carrier) to resolve discrepancies and will follow up later."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding insurance policy coverage types (comprehensive, collision, liability).",
+    "Process for adjusting coverage effective dates.",
+    "Carrier-specific procedures (National General)."
+  ],
+  "systems_referenced": [
+    "National General (insurance carrier)"
+  ],
+  "summary": "Charlie Parsons discusses vehicle insurance estimates and coverage changes with Heather. Heather clarifies policy details, notes a discrepancy in effective dates, and confirms follow-up with National General. The call ends with a commitment to update Charlie once carrier communication is resolved.",
+  "_model": "qwen3:14b",
+  "_eval_count": 286,
+  "_total_duration_ms": 34794,
+  "_source_file": "transcripts/exten-202-+13364091345-20250915-111724-1757949444.3624.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2288
+}

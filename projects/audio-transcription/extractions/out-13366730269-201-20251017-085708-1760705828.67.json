@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Vera wants to make a partial payment of $631 toward her outstanding balance of $1,231 for an insurance policy, clarifying she initially misunderstood the amount but later corrects herself.",
+  "resolution_steps": [
+    "Agent confirms Vera's intent to pay half of $1,231 ($631) and clarifies the correct amount.",
+    "Collects Vera's credit card details (last four digits: 5344, expiration: 07/29, security code: 896).",
+    "Processes the $631 payment through the system.",
+    "Provides a confirmation number (59982114) to Vera."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Handling partial payments for insurance policies",
+    "Credit card payment processing procedures",
+    "Generating and providing confirmation numbers for transactions"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's payment processing system"
+  ],
+  "summary": "Vera contacted Alliance Insurance to make a partial payment of $631 toward her $1,231 balance. The agent clarified the amount, processed the payment via credit card, and provided a confirmation number. Vera expressed gratitude and confirmed she would follow up if needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 293,
+  "_total_duration_ms": 41470,
+  "_source_file": "transcripts/out-13366730269-201-20251017-085708-1760705828.67.txt",
+  "_direction": "outbound",
+  "_char_count": 2682
+}

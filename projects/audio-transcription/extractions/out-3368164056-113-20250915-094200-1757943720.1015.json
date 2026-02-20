@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Gary from Alliance Insurance is following up to add an auto policy and requests payment information and a callback.",
+  "resolution_steps": [
+    "Left voicemail with contact information (336-377-9003) and mentioned needing payment details and policy discussion"
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Outbound call resulted in a voicemail message from Gary at Alliance Insurance following up on an auto policy. The caller requested payment information and asked the recipient to call back using the provided phone number.",
+  "_model": "qwen3:14b",
+  "_eval_count": 138,
+  "_total_duration_ms": 37081,
+  "_source_file": "transcripts/out-3368164056-113-20250915-094200-1757943720.1015.txt",
+  "_direction": "outbound",
+  "_char_count": 458
+}

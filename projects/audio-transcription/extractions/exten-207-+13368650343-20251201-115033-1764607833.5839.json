@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Christina from North Edge Steel is requesting insurance information and the CLI (Customer Lifetime Identifier) for a contractor named Eric Alvarez Mendoza, specifically for an address in rural Hall, North Carolina, and wants the information sent to C Chavez at North Edge Steel.",
+  "resolution_steps": [
+    "Cody confirms the contractor's full name (Eric Alvarez Mendoza).",
+    "Verifies the address (rural Hall, North Carolina).",
+    "Obtains the email address (C Chavez at North Edge Steel US).",
+    "Informs Christina he will send the requested information shortly."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of CLI (Customer Lifetime Identifier) and insurance information retrieval processes",
+    "Handling requests for contractor-related insurance data"
+  ],
+  "systems_referenced": [
+    "Internal system for retrieving insurance information and CLI data"
+  ],
+  "summary": "Christina from North Edge Steel requested insurance information and the CLI for contractor Eric Alvarez Mendoza. Cody confirmed the details and committed to sending the information to C Chavez at North Edge Steel. The call concluded with mutual thanks and a promise to follow up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 261,
+  "_total_duration_ms": 34845,
+  "_source_file": "transcripts/exten-207-+13368650343-20251201-115033-1764607833.5839.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 653
+}

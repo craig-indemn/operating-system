@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Gary) aimed to resolve an issue where a text message was not delivered, by instead sending an email to an iCloud address and requesting specific information (name, birthday, permit number) to proceed with document processing.",
+  "resolution_steps": [
+    "Gary confirmed he sent an email to the iCloud address.",
+    "He checked his email, received the information, and agreed to send a document back via email.",
+    "He requested the recipient to provide a picture of the permit to extract necessary details.",
+    "Agreed to return the document once the information is received."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Email communication protocols",
+    "Document processing workflows",
+    "Handling failed text message attempts",
+    "Permit information requirements"
+  ],
+  "systems_referenced": [
+    "iCloud email",
+    "email communication"
+  ],
+  "summary": "Gary and Miss Chada discussed sending documents via email after a failed text message attempt. Gary requested specific information (name, birthday, permit number) and agreed to send a document once the details were provided. The call concluded with a plan to proceed via email.",
+  "_model": "qwen3:14b",
+  "_eval_count": 251,
+  "_total_duration_ms": 41707,
+  "_source_file": "transcripts/exten-113-+13366024399-20251223-152257-1766521377.3963.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 799
+}

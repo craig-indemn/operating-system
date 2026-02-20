@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Reva is calling to report an insurance claim for Brian, but is unsure if she can complete the report today due to time constraints and may need to follow up with Brian tomorrow.",
+  "resolution_steps": [
+    "JC confirms the caller's identity and the purpose of the call.",
+    "JC verifies Brian's insurance policy details (carrier: Auto Owners) from the system.",
+    "Reva clarifies that she may not have time to report the claim today and will need to contact Brian tomorrow.",
+    "JC agrees to follow up with Brian as requested."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance claims reporting process",
+    "Policy lookup procedures",
+    "Carrier-specific details (Auto Owners)"
+  ],
+  "systems_referenced": [
+    "Internal policy database (used to verify Brian's insurance details)"
+  ],
+  "summary": "Reva discusses reporting an insurance claim for Brian with JC. After verifying Brian's policy with Auto Owners, Reva indicates she may need to contact Brian tomorrow to proceed with the claim. JC agrees to follow up with Brian as requested.",
+  "_model": "qwen3:14b",
+  "_eval_count": 249,
+  "_total_duration_ms": 36534,
+  "_source_file": "transcripts/exten-114-+13362688454-20250923-154246-1758656566.5539.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1065
+}

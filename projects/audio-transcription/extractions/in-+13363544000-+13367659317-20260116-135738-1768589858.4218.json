@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to discuss transferring their insurance from home to car and inquires if Alliance Insurance works with Liberty Mutual.",
+  "resolution_steps": [
+    "Agent confirmed Alliance Insurance's name and acknowledged the caller's intent to transfer insurance.",
+    "Agent placed the caller on hold to connect them with a specialist for detailed information."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy transfer processes",
+    "Carrier partnerships (e.g., Liberty Mutual)"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller contacted Alliance Insurance to inquire about transferring home insurance to car insurance and asked about Liberty Mutual coverage. The agent acknowledged the request and placed the caller on hold to connect with a specialist for further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 174,
+  "_total_duration_ms": 29777,
+  "_source_file": "transcripts/in-+13363544000-+13367659317-20260116-135738-1768589858.4218.txt",
+  "_direction": "inbound",
+  "_char_count": 415
+}

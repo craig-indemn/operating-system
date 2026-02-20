@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unknown (incomplete message)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Incomplete transcript indicating a failed connection attempt. No meaningful conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 70,
+  "_total_duration_ms": 17010,
+  "_source_file": "transcripts/out-3363415692-112-20251204-165848-1764885528.9670.txt",
+  "_direction": "outbound",
+  "_char_count": 51
+}

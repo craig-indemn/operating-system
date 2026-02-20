@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Shay from Gentry and Son Coleman is verifying whether the provided insurance policy meets a client's updated requirements for a large job, specifically checking coverage gaps like earth movement and ensuring required endorsements are included.",
+  "resolution_steps": [
+    "Agent confirmed receipt of the addendum and explained that earth movement is not typically covered in standard policies.",
+    "Agent offered to send a copy of the policy to Shay for review, highlighting existing coverage (e.g., collapse and underground pipe coverage).",
+    "Agent noted that specific limits for certain coverages depend on the job type and trade, advising Shay to check requirements with the client.",
+    "Agent prepared to send the policy document and confirmed the email would be sent immediately."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of standard insurance policy coverages (e.g., earth movement, collapse, underground coverage).",
+    "Ability to interpret client-specific insurance requirements and addendums.",
+    "Familiarity with sending policy documents and managing COI requests."
+  ],
+  "systems_referenced": [
+    "Email (for sending policy documents)"
+  ],
+  "summary": "Shay from Gentry and Son Coleman confirmed an insurance addendum for a job and sought verification of coverage alignment. The agent explained policy limitations, offered to send the policy for review, and noted that coverage specifics depend on the job type. The agent prepared to send the policy document via email.",
+  "_model": "qwen3:14b",
+  "_eval_count": 313,
+  "_total_duration_ms": 46587,
+  "_source_file": "transcripts/axfer-+17046811977-509-20250925-152018-1758827911.10350.txt",
+  "_direction": "attended_transfer",
+  "_char_count": 1919
+}

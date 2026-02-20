@@ -1,0 +1,20 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Steve from Alliance Motor Credit wants to confirm that a mutual customer is listed as a lienholder and has full coverage on their insurance policy.",
+  "resolution_steps": [
+    "Agent acknowledges the request and offers to connect Steve with an agent who can assist with verifying lienholder status and coverage details."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of lienholder status in insurance policies",
+    "Knowledge of full coverage requirements for auto insurance"
+  ],
+  "systems_referenced": [],
+  "summary": "Steve from Alliance Motor Credit contacted Alliance Insurance to verify a mutual customer's lienholder status and full coverage. The agent offered to transfer the call to a specialist for further assistance, indicating the need for a follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 175,
+  "_total_duration_ms": 34397,
+  "_source_file": "transcripts/in-+13363779003-+16316154991-20250722-145822-1753210702.15315.txt",
+  "_direction": "inbound",
+  "_char_count": 364
+}

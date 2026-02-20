@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Albert wants to update his insurance deductible from $2500 to $3000 to lower his premium, as discussed in a prior conversation.",
+  "resolution_steps": [
+    "Heather confirms the requested deductible change from $2500 to $3000.",
+    "She processes the change to take effect on the renewal date.",
+    "Informs Albert he will receive a new bill reflecting the updated terms."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance deductibles and premium calculations",
+    "Policy renewal procedures",
+    "Billing process for policy changes"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance policy management system (implied through conversation)"
+  ],
+  "summary": "Heather assists Albert in updating his insurance deductible from $2500 to $3000 as part of his policy renewal. The change is processed to lower his premium, and Albert is informed he will receive a new bill. The conversation confirms the adjustment but does not resolve all billing questions immediately.",
+  "_model": "qwen3:14b",
+  "_eval_count": 240,
+  "_total_duration_ms": 29226,
+  "_source_file": "transcripts/out-3367864085-404-20250918-115135-1758210695.6119.txt",
+  "_direction": "outbound",
+  "_char_count": 947
+}

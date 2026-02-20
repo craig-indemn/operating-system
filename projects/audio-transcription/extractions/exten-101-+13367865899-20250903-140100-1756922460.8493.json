@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Pat Littleton wants to cancel his business owner policy effective September 15th because he is selling his embroidery business and does not need coverage after the sale closes.",
+  "resolution_steps": [
+    "Agent confirms Mayberry Embroidery's active business owner policy.",
+    "Agent offers to send a cancellation form via email for Pat to sign.",
+    "Agent provides Pat's email address (192@MayberryEmbroidery.com) and confirms it is on file.",
+    "Agent commits to sending the cancellation form immediately.",
+    "Agent asks if Pat needs anything else, which Pat declines."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Business owner policy cancellation procedures",
+    "Email communication for policy changes",
+    "Handling policy cancellations during business transitions"
+  ],
+  "systems_referenced": [
+    "Email system (for sending cancellation form)"
+  ],
+  "summary": "Pat Littleton from Mayberry Embroidery requested cancellation of his business insurance policy effective September 15th, as he is selling his business. The agent confirmed the active policy, sent a cancellation form via email, and closed the call after confirming no further assistance was needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 264,
+  "_total_duration_ms": 38080,
+  "_source_file": "transcripts/exten-101-+13367865899-20250903-140100-1756922460.8493.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1224
+}

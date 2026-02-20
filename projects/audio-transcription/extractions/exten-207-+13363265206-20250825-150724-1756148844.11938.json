@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking the cheapest auto insurance rate for their 2004 Trailblazer, considering removing comprehensive coverage and how it affects their home insurance, while comparing options between Alliance Insurance and Farm Bureau due to dissatisfaction with Farm Bureau's rising costs and lack of communication.",
+  "resolution_steps": [
+    "Cody explains the cost of removing comprehensive coverage from the Trailblazer, reducing the annual premium by $105 to $34,888.80.",
+    "He highlights that keeping the auto policy with Alliance would prevent a $292 increase on the home insurance premium.",
+    "Cody compares this to Farm Bureau's potential $3,000+ annual cost and the uncertainty of future rate hikes.",
+    "He advises the caller to consider the long-term risks of Farm Bureau's six-month policies and potential future increases."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Impact of removing comprehensive coverage on auto insurance premiums",
+    "How motor vehicle records affect insurance quotes",
+    "Differences between six-month and annual insurance policies",
+    "Interplay between auto and home insurance rates"
+  ],
+  "systems_referenced": [],
+  "summary": "The caller is comparing insurance options between Alliance Insurance and Farm Bureau, concerned about rising costs and paperwork issues with Farm Bureau. Cody provided a detailed breakdown of potential savings by removing comprehensive coverage from the Trailblazer and highlighted the risks of Farm Bureau's uncertain rate increases. The caller is weighing the options but has not yet committed to a decision.",
+  "_model": "qwen3:14b",
+  "_eval_count": 340,
+  "_total_duration_ms": 55060,
+  "_source_file": "transcripts/exten-207-+13363265206-20250825-150724-1756148844.11938.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3707
+}

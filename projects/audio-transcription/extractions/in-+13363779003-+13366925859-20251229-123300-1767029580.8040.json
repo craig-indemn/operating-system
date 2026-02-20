@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller requested a quote for auto insurance with full coverage.",
+  "resolution_steps": [
+    "Agent asked about the type of coverage the caller was interested in.",
+    "Caller confirmed they wanted auto insurance with full coverage.",
+    "Agent offered to connect the caller with an agent to proceed with the quote."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Auto insurance coverage options",
+    "Process for obtaining insurance quotes"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller requested a quote for auto insurance with full coverage. The agent confirmed the details and will connect the caller with an agent for further assistance. The call is pending a follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 164,
+  "_total_duration_ms": 28281,
+  "_source_file": "transcripts/in-+13363779003-+13366925859-20251229-123300-1767029580.8040.txt",
+  "_direction": "inbound",
+  "_char_count": 386
+}

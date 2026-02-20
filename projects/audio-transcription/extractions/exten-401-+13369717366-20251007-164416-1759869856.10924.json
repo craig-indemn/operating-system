@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Debbie is following up on a previous voicemail to resolve a policy cancellation related to switching from Travelers to PNC, address a refund process, and handle an email about an auto theft claim.",
+  "resolution_steps": [
+    "Debbie confirms the plan to cancel the Travelers policy when rewriting to PNC and explains the refund process.",
+    "She acknowledges that PNC has already received the premium and assures Heather it will be resolved with a new check.",
+    "Debbie requests to forward an email about the auto theft claim to Heather's email address.",
+    "Confirms Heather's email is on file at myallianceinsurance.com.",
+    "Agrees to send the email and ensures the refund will be applied to escrow."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy cancellation and rewrite processes",
+    "Refund handling between carriers",
+    "Escrow account management",
+    "Email communication protocols for claims"
+  ],
+  "systems_referenced": [
+    "myallianceinsurance.com (email domain)",
+    "PNC (insurance carrier)",
+    "Kia (possibly a client or third party)"
+  ],
+  "summary": "Debbie and Heather discuss canceling a Travelers policy when switching to PNC, resolving a refund, and handling an auto theft email. Debbie confirms the process and agrees to forward the email to Heather's myallianceinsurance.com address. The call concludes with mutual confirmation of next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 323,
+  "_total_duration_ms": 43192,
+  "_source_file": "transcripts/exten-401-+13369717366-20251007-164416-1759869856.10924.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1312
+}

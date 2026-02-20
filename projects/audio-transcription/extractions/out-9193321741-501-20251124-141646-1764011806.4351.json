@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jamie, an insurance agent, is conducting a policy review with David to confirm his auto insurance details, check for updates, and discuss potential future needs like boat insurance.",
+  "resolution_steps": [
+    "Confirmed David's contact information (phone, email, address).",
+    "Reviewed two active auto policies (National General and Haggerty), including renewal dates, coverage details (comp/collision with $500 deductibles), and vehicle specifics.",
+    "Discussed lien holder information for the Ford F150 Raptor and clarified that David would need to notify the agency after paying off the lien.",
+    "Inquired about vehicle usage (pleasure vs. business) and confirmed no business use (e.g., Uber, Lyft).",
+    "Mentioned a potential future need for boat insurance and offered assistance when David is ready."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Auto insurance policy structures (coverage types, deductibles, lien holders).",
+    "Policy renewal processes and customer communication protocols.",
+    "Differentiation between pleasure and business vehicle usage for insurance purposes.",
+    "Handling of lien holder updates and policy adjustments."
+  ],
+  "systems_referenced": [
+    "National General (auto insurance provider)",
+    "Haggerty (auto insurance provider)"
+  ],
+  "summary": "Jamie from Life Insurance reviewed David's auto policies, confirmed details, and discussed potential future needs. The call concluded with David indicating he may need boat insurance next year, and the agent offering assistance when he's ready.",
+  "_model": "qwen3:14b",
+  "_eval_count": 337,
+  "_total_duration_ms": 53664,
+  "_source_file": "transcripts/out-9193321741-501-20251124-141646-1764011806.4351.txt",
+  "_direction": "outbound",
+  "_char_count": 4004
+}

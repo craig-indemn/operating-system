@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Non-substantive: Voicemail greeting or automated message",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A voicemail greeting from Dr. Daniel Skender's office stating office hours. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 86,
+  "_total_duration_ms": 24133,
+  "_source_file": "transcripts/out-13367892075-207-20260109-123746-1767980266.2570.txt",
+  "_direction": "outbound",
+  "_char_count": 121
+}

@@ -1,0 +1,21 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller attempted to reach Jamie at Alliance Insurance Services but was placed on hold.",
+  "resolution_steps": [
+    "Agent informed caller they would check Jamie's availability.",
+    "Caller placed on hold with standard waiting message.",
+    "Agent provided hold message including portal and text support information."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [
+    "myallianceinsurance.com customer portal"
+  ],
+  "summary": "A caller attempted to reach Jamie at Alliance Insurance but was placed on hold. The agent provided standard hold messaging including online portal information but did not connect the caller to Jamie or resolve the request.",
+  "_model": "qwen3:14b",
+  "_eval_count": 153,
+  "_total_duration_ms": 26309,
+  "_source_file": "transcripts/in-+13363779003-+13364421417-20250819-165623-1755636983.12660.txt",
+  "_direction": "inbound",
+  "_char_count": 767
+}

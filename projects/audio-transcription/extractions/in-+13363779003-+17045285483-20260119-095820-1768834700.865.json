@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Amy Milsap is inquiring about a missing bill for her well policy under Milsap Farm LLC, noting it should have been issued by the end of the month and confirming the policy's due date.",
+  "resolution_steps": [
+    "Agent asked for policy number and business name (Milsap Farm LLC).",
+    "Agent confirmed the bill should have been issued by the end of the month (around the 20th).",
+    "Agent admitted lack of access to First Mutual system and transferred call to Addison for direct support.",
+    "Agent provided reminder about policy portal (myallianceinsurance.com) and texting option for quick support."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding policy billing cycles and due dates",
+    "Knowledge of carrier systems (First Mutual) and internal transfer protocols",
+    "Ability to access customer portal information"
+  ],
+  "systems_referenced": [
+    "First Mutual (carrier system, though agent had no access)",
+    "Alliance Insurance customer portal (myallianceinsurance.com)"
+  ],
+  "summary": "Amy Milsap contacted Alliance Insurance about a missing well policy bill for Milsap Farm LLC, noting it should have been issued by month-end. The agent confirmed the expected timeline but could not access the carrier system, transferring the call to Addison for direct support. The agent also promoted the customer portal and texting options for future assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 315,
+  "_total_duration_ms": 40586,
+  "_source_file": "transcripts/in-+13363779003-+17045285483-20260119-095820-1768834700.865.txt",
+  "_direction": "inbound",
+  "_char_count": 1876
+}

@@ -1,0 +1,20 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Cody from Lights Insurance left a voicemail attempting to reach Rico regarding a vehicle move inquiry, following up on previous unsuccessful attempts.",
+  "resolution_steps": [
+    "Voicemail left by caller",
+    "No interactive resolution steps taken"
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [
+    "automatic voice message system"
+  ],
+  "summary": "A non-substantive outbound call where the caller left a voicemail attempting to reach Rico about a vehicle-related insurance matter. No direct conversation occurred, and the call was not resolved.",
+  "_model": "qwen3:14b",
+  "_eval_count": 131,
+  "_total_duration_ms": 38159,
+  "_source_file": "transcripts/out-13367100758-207-20251219-133253-1766169173.6098.txt",
+  "_direction": "outbound",
+  "_char_count": 971
+}

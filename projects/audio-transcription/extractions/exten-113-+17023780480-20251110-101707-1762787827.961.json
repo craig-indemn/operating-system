@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Gary) is following up on a previous conversation regarding home insurance, seeking an update on the status of his policy.",
+  "resolution_steps": [
+    "Deborah Risi confirms they are still working on the home insurance case.",
+    "She provides a timeline of resolving the matter by the end of the week.",
+    "She explains they are verifying all details before providing final numbers."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Home insurance policy processing timelines",
+    "Customer service protocols for follow-up communication"
+  ],
+  "systems_referenced": [],
+  "summary": "Deborah Risi updates Gary on the status of his home insurance application, confirming they are still working on it and will provide a resolution by the end of the week after verifying all details. The conversation is professional and concludes with mutual acknowledgment.",
+  "_model": "qwen3:14b",
+  "_eval_count": 193,
+  "_total_duration_ms": 35334,
+  "_source_file": "transcripts/exten-113-+17023780480-20251110-101707-1762787827.961.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 524
+}

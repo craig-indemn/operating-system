@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "A customer needs to add a newly purchased vehicle to their insurance policy, as facilitated by Liliana from Modern Chevrolet.",
+  "resolution_steps": [
+    "Agent acknowledges the request for adding a vehicle to a policy.",
+    "Agent offers to transfer the call to a specialist for further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding insurance policy updates for vehicle additions",
+    "Call transfer procedures for specialized support"
+  ],
+  "systems_referenced": [],
+  "summary": "Liliana from Modern Chevrolet contacts Alliance Insurance to add a newly purchased vehicle to a customer's policy. The agent confirms the request and offers to transfer the call to a specialist, with the customer placed on hold.",
+  "_model": "qwen3:14b",
+  "_eval_count": 171,
+  "_total_duration_ms": 35577,
+  "_source_file": "transcripts/in-+13363544000-+13367224191-20250910-142013-1757528413.5413.txt",
+  "_direction": "inbound",
+  "_char_count": 509
+}

@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to compare their upcoming insurance statement with the previous one for a commercial policy under Jonathan White to understand changes or discrepancies.",
+  "resolution_steps": [
+    "Agent acknowledged the caller's request to compare statements.",
+    "Agent requested clarification on the policy type (confirmed as commercial) and account name (Jonathan White).",
+    "Agent informed the caller they would connect them with a specialist to assist further."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of commercial insurance policies and account management",
+    "Process for retrieving and comparing insurance statements",
+    "Internal procedures for transferring calls to specialists"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller contacted Alliance Insurance to compare their current and previous commercial insurance statements for an account under Jonathan White. The agent confirmed details and arranged for a specialist to assist further. The call is pending resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 205,
+  "_total_duration_ms": 36171,
+  "_source_file": "transcripts/in-+13363779003-+13364924092-20250825-141057-1756145457.7762.txt",
+  "_direction": "inbound",
+  "_char_count": 503
+}

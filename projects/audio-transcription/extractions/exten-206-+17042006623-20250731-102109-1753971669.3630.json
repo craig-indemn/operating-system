@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Phil Meyer wants to finalize the cancellation of his insurance policies by signing and returning documents, with the goal of having the cancellations effective by the end of the month.",
+  "resolution_steps": [
+    "Jeff Edmonds confirms the need for two signed documents (one per policy) to process the cancellation.",
+    "Jeff provides his email address (wolf1230bc@gmail.com) for Phil to send the signed documents.",
+    "Jeff states the cancellation will be effective on the 29th, as previously agreed.",
+    "Phil agrees to send the documents immediately."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy cancellation procedures",
+    "Document handling and processing timelines",
+    "Effective date coordination with carriers"
+  ],
+  "systems_referenced": [
+    "Email communication (Gmail)"
+  ],
+  "summary": "Phil Meyer is finalizing insurance policy cancellations by signing and returning documents. Jeff Edmonds confirms the process, provides an email address for document submission, and confirms the cancellation will take effect on the 29th. The call concludes with Phil agreeing to send the documents immediately.",
+  "_model": "qwen3:14b",
+  "_eval_count": 255,
+  "_total_duration_ms": 32239,
+  "_source_file": "transcripts/exten-206-+17042006623-20250731-102109-1753971669.3630.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1236
+}

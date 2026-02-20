@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jennifer is informing Heather that she found a better insurance rate through First Insurance Agency (Progressive) and apologizing for not following up sooner. She also seeks clarification on Heather's quoted rate.",
+  "resolution_steps": [
+    "Heather acknowledges Jennifer's apology and confirms she has already secured a rate with Progressive.",
+    "Heather offers to revisit the matter if Jennifer's current provider does not work out.",
+    "Jennifer thanks Heather and ends the conversation on a polite note."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance carrier rate comparisons",
+    "Client follow-up procedures",
+    "Knowledge of local insurance agencies (Farm Bureau, First Insurance Agency)"
+  ],
+  "systems_referenced": [
+    "Farm Bureau",
+    "First Insurance Agency",
+    "Progressive",
+    "Terry Hawks (agent)",
+    "Filton Hawks (agent)"
+  ],
+  "summary": "Jennifer explains she secured a better auto insurance rate through First Insurance Agency (Progressive) and apologizes for delayed communication. Heather acknowledges the update and leaves the door open for future reconsideration. The conversation highlights client follow-up challenges and carrier rate differences.",
+  "_model": "qwen3:14b",
+  "_eval_count": 262,
+  "_total_duration_ms": 42837,
+  "_source_file": "transcripts/exten-401-+13367696683-20251024-143820-1761331100.4844.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2035
+}

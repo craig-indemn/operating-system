@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Gregory/Tamatha) wanted to confirm details of their auto insurance policy renewal and inquire about potential rate increases, seeking options to manage costs.",
+  "resolution_steps": [
+    "Agent Holly confirmed the policy details (2011 Chevy Cruze, full coverage, deductibles, no lienholder).",
+    "Acknowledged the customer's concern about rising rates and explained North Carolina's recent trends.",
+    "Offered to shop for alternative carriers to potentially reduce costs.",
+    "Noted the renewal date (Feb 22) and committed to follow up with findings next week.",
+    "Asked about homeowners/renters policies (no interest expressed)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Auto insurance rate trends in North Carolina",
+    "Policy shopping processes for auto insurance",
+    "Understanding deductible structures and coverage types"
+  ],
+  "systems_referenced": [],
+  "summary": "Holly from Alliance Insurance contacted Gregory/Tamatha about their auto policy renewal, addressing concerns about rate increases and offering to find better rates. The customer declined additional policy bundling, and Holly committed to follow up with options next week.",
+  "_model": "qwen3:14b",
+  "_eval_count": 263,
+  "_total_duration_ms": 41988,
+  "_source_file": "transcripts/out-3367215494-504-20260108-122123-1767892883.3114.txt",
+  "_direction": "outbound",
+  "_char_count": 1737
+}

@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to obtain car insurance quotes from Alliance Insurance to compare with their current provider, which they find too expensive.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's request for insurance quotes.",
+    "Agent offers to transfer the call to a specialist who can initiate the quoting process."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding car insurance quoting procedures",
+    "Call transfer protocols for lead routing"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller seeking car insurance quotes after finding their current provider too expensive was transferred to a specialist by the agent. The conversation highlights the need for competitive pricing options. The call is in progress with the next step being quote generation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 173,
+  "_total_duration_ms": 31625,
+  "_source_file": "transcripts/in-+13363779003-+13369389601-20250918-104440-1758206680.4229.txt",
+  "_direction": "inbound",
+  "_char_count": 589
+}

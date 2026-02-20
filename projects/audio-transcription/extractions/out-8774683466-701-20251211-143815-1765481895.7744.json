@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jeremy from Alliance Insurance Services seeks to resolve a client's confusion about a $206 premium increase on a policy, questioning why the increase occurred despite the client submitting proof of prior bodily injury limits and continuous insurance.",
+  "resolution_steps": [
+    "Ramon reviews the policy details and documents provided by Jeremy.",
+    "Identifies an additional accident (not at fault, dismissed) that was incorrectly pulled by the system due to a DMB system outage during policy creation.",
+    "Contacts another department to confirm the system error caused the premium increase.",
+    "Explains the accident's impact on the premium despite no points on the policy.",
+    "Confirms the dynamic drive discount is active and validates the next payment amount ($1,942.90)."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of insurance premium calculation factors (accidents, discounts)",
+    "Knowledge of DMB system functionality and its impact on policy data",
+    "Ability to interpret policy documents and system-generated reports"
+  ],
+  "systems_referenced": [
+    "DMB system (Driver Motor Vehicle Report system)",
+    "MBR (Motor Vehicle Report)",
+    "Policy management system"
+  ],
+  "summary": "Jeremy from Alliance Insurance Services discusses a premium increase with Ramon from National General Insurance. The increase stems from a system error during policy creation, where a DMB system outage caused an incorrect accident report to be pulled. Ramon explains the error's impact on the premium and confirms the next payment amount, while noting the active dynamic drive discount.",
+  "_model": "qwen3:14b",
+  "_eval_count": 340,
+  "_total_duration_ms": 53046,
+  "_source_file": "transcripts/out-8774683466-701-20251211-143815-1765481895.7744.txt",
+  "_direction": "outbound",
+  "_char_count": 7312
+}

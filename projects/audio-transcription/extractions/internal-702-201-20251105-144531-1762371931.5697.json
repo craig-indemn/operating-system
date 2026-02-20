@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller sought to confirm Jeremy's phone extension (701) while in the military and requested assistance with a document requiring a signature and answers to specific questions.",
+  "resolution_steps": [
+    "Agent confirmed Jeremy's extension is still 701.",
+    "Agent acknowledged the caller's mention of a document requiring a signature and questions about answers but did not provide further resolution steps."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Internal phone system knowledge (extensions)",
+    "Understanding of document-signing processes"
+  ],
+  "systems_referenced": [],
+  "summary": "The caller confirmed Jeremy's military extension (701) and mentioned needing help with a document requiring a signature. The agent verified the extension but did not resolve the document-related questions, leaving the issue unresolved.",
+  "_model": "qwen3:14b",
+  "_eval_count": 190,
+  "_total_duration_ms": 44332,
+  "_source_file": "transcripts/internal-702-201-20251105-144531-1762371931.5697.txt",
+  "_direction": "internal",
+  "_char_count": 726
+}

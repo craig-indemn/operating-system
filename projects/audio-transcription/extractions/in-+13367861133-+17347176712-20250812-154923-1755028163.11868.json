@@ -1,0 +1,21 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Follow up with Christopher to confirm his availability in the afternoon",
+  "resolution_steps": [
+    "Agent offers to check Christopher's availability"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "N/A"
+  ],
+  "systems_referenced": [
+    "N/A"
+  ],
+  "summary": "A brief follow-up call to confirm Christopher's availability, but the conversation is too short to determine a clear outcome or resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 104,
+  "_total_duration_ms": 34732,
+  "_source_file": "transcripts/in-+13367861133-+17347176712-20250812-154923-1755028163.11868.txt",
+  "_direction": "inbound",
+  "_char_count": 211
+}

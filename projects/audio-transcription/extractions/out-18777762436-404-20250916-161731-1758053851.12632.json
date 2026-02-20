@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Gloria from Alliance Insurance is confirming whether a policy for Manny's trucking excludes theft or damage to automotive parts, clarifying whether the exclusion applies to parts on the vehicle or parts being transported.",
+  "resolution_steps": [
+    "Nicole from Progressive verifies the policy number and confirms the policy details.",
+    "They discuss the ambiguity around whether the exclusion applies to automotive parts on the vehicle or being transported.",
+    "Nicole checks the policy's motor truck cargo coverage and finds no explicit exclusion for automotive parts.",
+    "Nicole explains the policy is not classified as an auto hauler, requiring reclassification to apply the necessary exclusion form.",
+    "Nicole advises contacting Progressive's support team to process the form once the policy is reclassified."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of policy classifications (e.g., auto hauling vs. general cargo)",
+    "Knowledge of motor truck cargo coverage definitions and exclusions",
+    "Process for adjusting policy forms through support teams"
+  ],
+  "systems_referenced": [
+    "Progressive's policy lookup system",
+    "Progressive's support team for form processing"
+  ],
+  "summary": "Gloria from Alliance Insurance confirms with Progressive that a policy for Manny's trucking requires reclassification as an auto hauler to address a potential exclusion for automotive parts. Nicole explains the policy's current setup and the steps needed to adjust it, including contacting Progressive's support team for the necessary form.",
+  "_model": "qwen3:14b",
+  "_eval_count": 321,
+  "_total_duration_ms": 56128,
+  "_source_file": "transcripts/out-18777762436-404-20250916-161731-1758053851.12632.txt",
+  "_direction": "outbound",
+  "_char_count": 8631
+}

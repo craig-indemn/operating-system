@@ -1,0 +1,32 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Amy Jeff Edmonds) is discussing workers' compensation insurance options for KTS Concrete Services, addressing ownership structure discrepancies and providing quotes for coverage with and without excluding Ian (a listed officer).",
+  "resolution_steps": [
+    "Agent checked North Carolina Secretary of State website to verify KTS's officers and ownership structure.",
+    "Provided two quotes via HemTrust: one excluding Ian (costing ~$300) and one including Ian (annual premium $2,364).",
+    "Explained underwriting requirements for the higher-cost option.",
+    "Warned about annual audits and potential payroll additions from subcontractors.",
+    "Collected banking details (routing number, account number, bank name) and email for policy issuance.",
+    "Confirmed client's decision to proceed with the lower-cost option excluding Ian."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Workers' compensation insurance processes",
+    "State business registry (North Carolina Secretary of State) data interpretation",
+    "Carrier systems (HemTrust) for policy issuance",
+    "Underwriting requirements for insurance policies",
+    "Implications of excluding officers from coverage"
+  ],
+  "systems_referenced": [
+    "North Carolina Secretary of State website",
+    "HemTrust (insurance carrier)",
+    "Underwriting system"
+  ],
+  "summary": "Agent Amy Jeff Edmonds provided workers' comp insurance options for KTS Concrete Services, addressing ownership discrepancies and offering two quotes. After explaining implications and collecting banking details, the client agreed to proceed with the lower-cost option excluding Ian. The agent will issue the policy electronically.",
+  "_model": "qwen3:14b",
+  "_eval_count": 356,
+  "_total_duration_ms": 49105,
+  "_source_file": "transcripts/out-17045601996-206-20250919-145920-1758308360.6889.txt",
+  "_direction": "outbound",
+  "_char_count": 4323
+}

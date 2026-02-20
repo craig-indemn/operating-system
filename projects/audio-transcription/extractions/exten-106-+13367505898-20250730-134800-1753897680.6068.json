@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Meg is seeking assistance to create a certificate of insurance that previews coverage details for a client (Gola company) before the policy is issued, specifically focusing on general liability and umbrella coverage.",
+  "resolution_steps": [
+    "Jessica confirms the need for a certificate without a policy number to showcase coverage details.",
+    "Explains how to highlight coverage on the quote and map it to the certificate (e.g., project-based general liability limits).",
+    "Addresses the need to check if the current umbrella policy can be retained with the new general liability policy.",
+    "Agrees to prepare the certificate and send it by the same day."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy structure (general liability, umbrella coverage)",
+    "Certificate of insurance preparation",
+    "Policy number requirements for issued policies",
+    "Carrier-specific coverage terms (e.g., project-based vs. aggregate limits)"
+  ],
+  "systems_referenced": [
+    "Internal quote and certificate generation tools",
+    "Carrier portals for policy details"
+  ],
+  "summary": "Meg requested help creating a certificate of insurance for Gola company to preview coverage details before policy issuance. Jessica explained how to map quote details to the certificate, highlighted project-based general liability limits, and discussed retaining the existing umbrella policy. Jessica committed to preparing the certificate for same-day delivery.",
+  "_model": "qwen3:14b",
+  "_eval_count": 299,
+  "_total_duration_ms": 41782,
+  "_source_file": "transcripts/exten-106-+13367505898-20250730-134800-1753897680.6068.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3170
+}

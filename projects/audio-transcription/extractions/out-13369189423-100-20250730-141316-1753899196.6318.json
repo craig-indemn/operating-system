@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Ludi) wanted to confirm whether their insurance policy was reactivated after a missed payment and ensure future payments would be handled automatically to avoid cancellation.",
+  "resolution_steps": [
+    "Ashley confirmed the payment was processed and the policy is active.",
+    "Ashley explained that automatic payments were set up using the credit card.",
+    "Ashley provided the next payment due date (August 27th) and amount ($66.30).",
+    "Ashley reassured the caller that the policy would remain active with the automatic payment setup."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of insurance policy cancellation/reinstatement processes",
+    "Knowledge of automatic payment setup procedures",
+    "Ability to check payment history and policy status",
+    "Familiarity with billing cycles and due dates"
+  ],
+  "systems_referenced": [],
+  "summary": "Ashley from Alliance Insurance resolved Ludi's concern about a canceled policy by confirming the payment was processed, setting up automatic payments, and providing details about the next payment. The caller was reassured that the policy is active and no further action is needed. The conversation concluded with both parties expressing gratitude.",
+  "_model": "qwen3:14b",
+  "_eval_count": 267,
+  "_total_duration_ms": 37539,
+  "_source_file": "transcripts/out-13369189423-100-20250730-141316-1753899196.6318.txt",
+  "_direction": "outbound",
+  "_char_count": 1200
+}

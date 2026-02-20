@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Connor is seeking assistance with an audit-related issue for JNC Fences LLC, specifically regarding missing documents or communication from the audit vendor.",
+  "resolution_steps": [
+    "Agent Jeff Edmonds confirms the policy number (WC 27505) for JNC Fences LLC.",
+    "Notes that no audit-related references are found in the account manager's records.",
+    "Mentions an email from Connor to Chris (possibly from Excel) requesting audit documents.",
+    "Asks Connor to check the portal where audit documents should be uploaded.",
+    "Discusses using Doc Sign or Conga Sign for document signing.",
+    "Attempts to contact Amati for additional information but is redirected back to Connor."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of workers' compensation policies and audit processes",
+    "Familiarity with document management systems (Doc Sign, Conga Sign)",
+    "Ability to navigate carrier portals for audit documentation"
+  ],
+  "systems_referenced": [
+    "Doc Sign",
+    "Conga Sign",
+    "carrier portal for audit uploads"
+  ],
+  "summary": "Jeff Edmonds assists Connor with an audit issue for JNC Fences LLC, checking policy details, document portals, and coordinating with Amati. The resolution requires further information from Amati, leading to a callback request.",
+  "_model": "qwen3:14b",
+  "_eval_count": 292,
+  "_total_duration_ms": 43557,
+  "_source_file": "transcripts/out-13368781026-206-20250811-110607-1754924767.6139.txt",
+  "_direction": "outbound",
+  "_char_count": 1450
+}

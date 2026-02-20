@@ -1,0 +1,20 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; caller appears to be waiting for Heather Johnson and may have had a prior interaction with Karen Kitzung",
+  "resolution_steps": [
+    "Agent placed caller on hold",
+    "Agent played automated hold message with portal and texting information"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [
+    "myallianceinsurance.com customer portal"
+  ],
+  "summary": "Inbound call where caller was placed on hold while agent attempted to connect them with Heather Johnson. No substantive conversation occurred beyond the hold message, which included marketing about online policy management.",
+  "_model": "qwen3:14b",
+  "_eval_count": 139,
+  "_total_duration_ms": 26283,
+  "_source_file": "transcripts/in-+13363779003-+15869948596-20251107-135700-1762541820.5993.txt",
+  "_direction": "inbound",
+  "_char_count": 1034
+}

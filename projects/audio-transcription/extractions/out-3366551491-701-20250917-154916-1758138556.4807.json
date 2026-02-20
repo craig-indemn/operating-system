@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller (Jeremy from Alliance Insurance) intended to discuss a home and auto insurance quote with Leslie, offering to compare policies with other carriers.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A voicemail message from Alliance Insurance's Jeremy to Leslie regarding a home and auto insurance quote. The call was not answered, and Jeremy left his number and requested a callback. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 121,
+  "_total_duration_ms": 28468,
+  "_source_file": "transcripts/out-3366551491-701-20250917-154916-1758138556.4807.txt",
+  "_direction": "outbound",
+  "_char_count": 870
+}

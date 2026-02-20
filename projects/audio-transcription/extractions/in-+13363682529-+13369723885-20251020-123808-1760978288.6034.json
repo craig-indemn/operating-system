@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "William (Lawrence) Efler is seeking a new insurance quote, expressing dissatisfaction with his current provider's response time. He specifically mentions Medicare and Advantage plans.",
+  "resolution_steps": [
+    "Agent confirmed inability to assist immediately but offered to connect caller with Steve Edmonds for a callback.",
+    "Agent collected caller's name (Lawrence Efler), phone number (336-972-3885), and noted his intent to explore alternative plans.",
+    "Agent confirmed Steve Edmonds would contact him to discuss options and schedule an appointment."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Medicare and Advantage plan offerings",
+    "Internal agent coordination process",
+    "Customer service protocols for quote requests"
+  ],
+  "systems_referenced": [],
+  "summary": "Caller Lawrence Efler requested a new insurance quote, citing dissatisfaction with his current provider's response time. The agent arranged for Steve Edmonds to contact him for further discussion. The call concluded with a commitment to follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 236,
+  "_total_duration_ms": 37355,
+  "_source_file": "transcripts/in-+13363682529-+13369723885-20251020-123808-1760978288.6034.txt",
+  "_direction": "inbound",
+  "_char_count": 1530
+}

@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is experiencing login issues with Bamboo and seeks assistance from the Tracker I and Support team.",
+  "resolution_steps": [
+    "The agent clarifies that the Tracker I and Support team cannot resolve Bamboo login issues.",
+    "The agent directs the caller to contact Bamboo HR support, explaining that Bamboo HR administers Tracker I and manages user access for clients."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding the relationship between Tracker I, Bamboo HR, and their respective support responsibilities.",
+    "Knowledge of Bamboo HR's role in managing user credentials and access."
+  ],
+  "systems_referenced": [
+    "Bamboo HR support",
+    "Tracker I and Support team"
+  ],
+  "summary": "The caller reported login issues with Bamboo and initially contacted the Tracker I and Support team. The agent explained that Bamboo HR support, not Tracker I, is responsible for resolving such issues. The caller agreed to contact Bamboo HR directly.",
+  "_model": "qwen3:14b",
+  "_eval_count": 219,
+  "_total_duration_ms": 37473,
+  "_source_file": "transcripts/exten-105-+17372010309-20251119-135001-1763578201.4675.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 736
+}

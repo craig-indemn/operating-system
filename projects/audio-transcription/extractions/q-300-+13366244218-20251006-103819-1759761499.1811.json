@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Peggy Folk wanted to confirm her insurance policies are up to date and address a notice from Westfield indicating her homeowners policy may have expired.",
+  "resolution_steps": [
+    "Agent JC verified Peggy's identity and confirmed her address.",
+    "JC checked Peggy's account to locate her Westfield homeowners policy (under John A. Folk).",
+    "JC confirmed Peggy had submitted proof of insurance to mycoverageinformation.com, which Westfield uses for updates.",
+    "JC verified the truck's (2016 RAM) insurance was renewed in July with no outstanding balances.",
+    "JC ensured no other vehicles were on the policy and confirmed all coverage was current."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Accessing customer accounts in the agency's system",
+    "Understanding policy submission processes for carriers like Westfield",
+    "Differentiating between residential and farm/commercial policies",
+    "Navigating proof-of-insurance portals (e.g., mycoverageinformation.com)"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services internal account system",
+    "mycoverageinformation.com (Westfield's portal)"
+  ],
+  "summary": "Peggy Folk confirmed her insurance policies were current after receiving a Westfield notice about a potential policy expiration. Agent JC verified her homeowners and auto policies, confirmed proof of insurance was submitted, and ensured no coverage gaps existed. The call concluded with all policies confirmed as up to date.",
+  "_model": "qwen3:14b",
+  "_eval_count": 317,
+  "_total_duration_ms": 38562,
+  "_source_file": "transcripts/q-300-+13366244218-20251006-103819-1759761499.1811.txt",
+  "_direction": "queue",
+  "_char_count": 3610
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (JC from Alliance Insurance) is following up to resolve a policy adjustment for a 2023 vehicle, ensuring proper removal from the policy without coverage lapses and confirming lease details.",
+  "resolution_steps": [
+    "Explained that the license plate must be turned in to the DMV to avoid coverage gaps.",
+    "Advised the customer to submit the plate themselves and provide a receipt for verification.",
+    "Confirmed the lease end date (next Tuesday) to ensure no policy issues arise.",
+    "Offered to send a text message once the plate is submitted for confirmation."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance policy management procedures",
+    "DMV license plate submission requirements",
+    "Lease termination timelines and policy implications"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's internal policy management system",
+    "DMV license plate submission process"
+  ],
+  "summary": "JC from Alliance Insurance resolved a policy adjustment for a 2023 vehicle by ensuring the customer submits the license plate to the DMV and confirms the lease end date. The customer agreed to handle the plate submission and notify the agent via text for removal confirmation. The call concluded with mutual agreement on next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 278,
+  "_total_duration_ms": 32553,
+  "_source_file": "transcripts/out-13364060349-114-20260107-111909-1767802749.1307.txt",
+  "_direction": "outbound",
+  "_char_count": 1486
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Ashley from Alliance Insurance Services is seeking the insured name for a homeowner's insurance premium check issued to the agency, as the recipient (Clark Cipher) is unaware of the payment's origin.",
+  "resolution_steps": [
+    "Ashley explains the check's details (amount: $3,930, description: homeowner's insurance premium) to Clark Cipher.",
+    "Clark Cipher admits he does not know the attorney who sent the check.",
+    "Ashley offers to transfer the call to Jenna Webb for further assistance.",
+    "Call is transferred to Jenna Webb's voicemail.",
+    "Ashley leaves a voicemail message with Jenna, repeating the check details and providing her contact number."
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [
+    "Insurance claims processing protocols",
+    "Client communication procedures for unresolved payments",
+    "Internal call transfer workflows"
+  ],
+  "systems_referenced": [
+    "Voicemail system"
+  ],
+  "summary": "Ashley from Alliance Insurance Services attempts to resolve a payment discrepancy by transferring a call to Jenna Webb after the initial recipient (Clark Cipher) is unable to identify the source of a homeowner's insurance premium check. The call is redirected to voicemail, and Ashley leaves a detailed message for Jenna with the check's information and contact details.",
+  "_model": "qwen3:14b",
+  "_eval_count": 286,
+  "_total_duration_ms": 37444,
+  "_source_file": "transcripts/out-9106925100-100-20250820-164212-1755722532.13629.txt",
+  "_direction": "outbound",
+  "_char_count": 1076
+}

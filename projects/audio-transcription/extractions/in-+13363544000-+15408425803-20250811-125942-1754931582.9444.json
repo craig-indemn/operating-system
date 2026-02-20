@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unknown; call is too short to determine intent",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Very brief call where agent asks for confirmation of name and states they will check. No meaningful conversation or resolution steps identifiable.",
+  "_model": "qwen3:14b",
+  "_eval_count": 87,
+  "_total_duration_ms": 24656,
+  "_source_file": "transcripts/in-+13363544000-+15408425803-20250811-125942-1754931582.9444.txt",
+  "_direction": "inbound",
+  "_char_count": 144
+}

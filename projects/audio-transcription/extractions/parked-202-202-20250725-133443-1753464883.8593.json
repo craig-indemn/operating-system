@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Amelia from National General Insurance is verifying whether a client's policy covers renting a high-end Aston Martin DB11, including coverage limits, eligibility for drivers, and exclusions like racing.",
+  "resolution_steps": [
+    "Heather confirms coverage transfers for temporary use of the vehicle in the policy's territory (US, Canada, Puerto Rico).",
+    "She clarifies that racing is excluded from coverage.",
+    "Heather notes that only the named insured (Mohammed Tarek) and household members are covered, not additional drivers.",
+    "She mentions that while some carriers avoid high-end rentals, National General currently allows coverage for temporary use."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy coverage for high-end rental vehicles",
+    "Exclusions for racing and non-temporary use",
+    "Rules about driver eligibility and household coverage"
+  ],
+  "systems_referenced": [
+    "National General Insurance policies"
+  ],
+  "summary": "Amelia from National General Insurance consults Heather about covering a high-end Aston Martin rental for client Mohammed Tarek. Heather explains coverage applies for temporary use in policy territories but excludes racing and limits coverage to the named insured and household members. Amelia plans to follow up after confirming details.",
+  "_model": "qwen3:14b",
+  "_eval_count": 280,
+  "_total_duration_ms": 44173,
+  "_source_file": "transcripts/parked-202-202-20250725-133443-1753464883.8593.txt",
+  "_direction": "parked",
+  "_char_count": 4214
+}

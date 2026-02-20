@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Ruth Mark is seeking clarification about her insurance coverage for three buildings, specifically whether she is responsible for renters' belongings (e.g., valuable papers, electrical systems) and if adjustments can be made to her policy to exclude coverage she does not need.",
+  "resolution_steps": [
+    "Agent asked for Ruth's policy number to access her coverage details.",
+    "Agent confirmed the policy number and noted it includes commercial and general liability coverage.",
+    "Agent explained they would transfer Ruth to Anna Joyce, a commercial agent, to review the policy and adjust coverage as needed.",
+    "Agent reassured Ruth about the time available to resolve the issue and emphasized commitment to her satisfaction."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of commercial insurance policies, including liability coverage for buildings and renters' belongings.",
+    "Ability to access and interpret policy details using the policy number.",
+    "Process for transferring calls to specialized agents (e.g., commercial insurance agents)."
+  ],
+  "systems_referenced": [
+    "Insurance policy database (used to retrieve policy details via policy number)."
+  ],
+  "summary": "Ruth Mark is clarifying her insurance coverage for three buildings, questioning liability for renters' belongings and seeking adjustments to her policy. The agent retrieved her policy details and transferred her to a commercial agent for further review. The call emphasizes resolving coverage concerns and ensuring customer satisfaction.",
+  "_model": "qwen3:14b",
+  "_eval_count": 308,
+  "_total_duration_ms": 43061,
+  "_source_file": "transcripts/in-+13363779003-+13369455827-20260106-160142-1767733302.5960.txt",
+  "_direction": "inbound",
+  "_char_count": 3128
+}

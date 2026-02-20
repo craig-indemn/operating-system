@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Confirm a policy cancellation date for a policy written by Alliance Insurance.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller requested confirmation of a policy cancellation date but the agent only offered to transfer the call without providing any information. The conversation was cut short and no resolution was achieved.",
+  "_model": "qwen3:14b",
+  "_eval_count": 99,
+  "_total_duration_ms": 22807,
+  "_source_file": "transcripts/in-+13363779003-+13363314707-20260105-113551-1767630951.5603.txt",
+  "_direction": "inbound",
+  "_char_count": 291
+}

@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Andrew Jones wants to send a Certificate of Insurance (COI) to one of his builders but is unsure which agent to contact, mentioning past interactions with agents named Jessica and Gloria.",
+  "resolution_steps": [
+    "Agent confirmed the request for a COI and acknowledged the caller's confusion about the correct agent.",
+    "Agent checked internal records and identified Gloria as the appropriate agent based on her presence in the caller's file.",
+    "Agent directed the caller to contact Gloria, with a backup plan to leave a message if Gloria was unavailable."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of internal agent roles and responsibilities",
+    "Access to customer files/agent assignments"
+  ],
+  "systems_referenced": [
+    "Internal agent directory/file system"
+  ],
+  "summary": "Andrew Jones requested assistance in sending a COI to a builder and was directed to contact Gloria, an agent listed in his file. The agent confirmed Gloria's current status and provided contingency instructions if she was unavailable. The call concluded with the caller being transferred to Gloria.",
+  "_model": "qwen3:14b",
+  "_eval_count": 243,
+  "_total_duration_ms": 35829,
+  "_source_file": "transcripts/in-+13363779003-+13364626658-20250818-103849-1755527929.2379.txt",
+  "_direction": "inbound",
+  "_char_count": 1271
+}

@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Not applicable (automated menu/options provided)",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Automated voicemail menu from Cincinnati Insurance Company providing options for agents, policyholders, and claimants. No agent interaction or substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 88,
+  "_total_duration_ms": 32947,
+  "_source_file": "transcripts/out-5138702882-114-20250808-141801-1754677081.11113.txt",
+  "_direction": "outbound",
+  "_char_count": 1305
+}

@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to pay a policy using a cashier's check and confirm which Alliance Insurance office to visit for the payment.",
+  "resolution_steps": [
+    "Agent confirms the caller can bring a cashier's check to an Alliance Insurance office.",
+    "Agent clarifies there is only one office in Winston Salem (near Sam's Club) but notes other locations in Walnut Cove, Clemens, Mount Airy, and Pilot Mountain.",
+    "Agent explains the cashier's check should be made payable to Alliance Insurance, not Foremost Insurance, for proper deposit.",
+    "Agent offers alternative payment method via phone using Alliance's routing/account number.",
+    "Caller confirms preference for cashier's check and agrees to make it payable to Alliance Insurance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Alliance Insurance office locations",
+    "Proper payee for cashier's checks (Alliance vs. Foremost Insurance)",
+    "Payment processing procedures",
+    "Alternative payment methods (electronic transfer)"
+  ],
+  "systems_referenced": [
+    "Internal office communication system (to notify Winston Salem office of payment)"
+  ],
+  "summary": "Caller seeks to pay a policy via cashier's check and confirm the correct office location. Agent clarifies office locations, correct payee (Alliance Insurance), and offers electronic payment as an alternative. Caller chooses cashier's check method and confirms details.",
+  "_model": "qwen3:14b",
+  "_eval_count": 306,
+  "_total_duration_ms": 34389,
+  "_source_file": "transcripts/in-+13363779003-+13364097594-20250728-101402-1753712042.1780.txt",
+  "_direction": "inbound",
+  "_char_count": 2111
+}

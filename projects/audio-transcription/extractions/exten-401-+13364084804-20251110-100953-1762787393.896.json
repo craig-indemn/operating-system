@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Tomas Figueroa requests assistance updating his homeowner's insurance policy by removing an old home equity line and adding a new second mortgage loan, requiring a PDF confirmation for closing. He also discusses refinancing details and Cincinnati Insurance's handling of water claims.",
+  "resolution_steps": [
+    "Heather confirms receipt of an email from Fulmain containing the new loan details.",
+    "Agrees to send a PDF confirmation of the updated lienholder information to Tomas.",
+    "Discusses refinancing from a home equity line to a second mortgage.",
+    "Confirms no other issues with Cincinnati Insurance and acknowledges prior water claim discussions."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Homeowner's insurance policy updates",
+    "Refinancing processes (home equity to second mortgage)",
+    "Handling lienholder documentation",
+    "Cincinnati Insurance's claims procedures",
+    "Water shut-off valve requirements for insurers"
+  ],
+  "systems_referenced": [
+    "Fulmain (email system)",
+    "Cincinnati Insurance portal",
+    "Homeowner's insurance policy management system"
+  ],
+  "summary": "Tomas Figueroa requested policy updates for his homeowner's insurance, transitioning from a home equity line to a second mortgage and needing a PDF confirmation. Heather confirmed she would process the document and discussed Cincinnati Insurance's flexible approach to water claims. The conversation highlighted ongoing policy management and insurer-specific requirements.",
+  "_model": "qwen3:14b",
+  "_eval_count": 313,
+  "_total_duration_ms": 47589,
+  "_source_file": "transcripts/exten-401-+13364084804-20251110-100953-1762787393.896.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4041
+}

@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Tom) is following up about a missing check related to an insurance policy and seeks clarification on why the policy was canceled and if it can be reinstated.",
+  "resolution_steps": [
+    "Agent confirms the check was not received by either the client or the agency.",
+    "Agent explains the policy was canceled in September and Auto Owners will not reinstate it.",
+    "Agent offers to cancel the check, stop payment, and send a new one overnight.",
+    "Agent clarifies that the policy cannot be reinstated due to being canceled over 60 days ago.",
+    "Agent notes no further action is possible on their end."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy cancellation periods (e.g., 60-day rule for reinstatement)",
+    "Auto Owners' insurance reinstatement policies",
+    "Certified mail tracking and check issuance procedures"
+  ],
+  "systems_referenced": [
+    "Certified mail receipts",
+    "Email correspondence with client",
+    "Catawba County Tax Collector (mentioned in email context)"
+  ],
+  "summary": "The caller reports a missing check and inquires about a canceled insurance policy. The agent explains the policy was canceled in September, Auto Owners will not reinstate it, and the check was not received by either party. The agent offers to cancel the check and send a new one but confirms no further action is possible due to the 60-day cancellation rule. The caller is directed to find alternative coverage.",
+  "_model": "qwen3:14b",
+  "_eval_count": 333,
+  "_total_duration_ms": 50761,
+  "_source_file": "transcripts/exten-206-+18434651848-20251113-160629-1763067989.8432.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3504
+}

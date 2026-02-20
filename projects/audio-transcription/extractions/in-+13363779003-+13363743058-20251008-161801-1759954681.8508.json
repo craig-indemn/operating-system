@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Peggy from Brighton Sons) appears to be attempting to reach someone named Gloria, possibly to follow up on an email request for a certificate and coordinate next steps.",
+  "resolution_steps": [
+    "Agent acknowledged Peggy's request to reach Gloria.",
+    "Agent offered to transfer the call to Gloria's extension.",
+    "Agent mentioned sending an email request for the certificate to ensure Gloria is aware of the pending action."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Internal phone system navigation (transferring calls)",
+    "Email handling procedures for certificate requests"
+  ],
+  "systems_referenced": [
+    "Internal phone system (extensions)"
+  ],
+  "summary": "An inbound call from Peggy at Brighton Sons involved attempting to reach Gloria for follow-up on an email request for a certificate. The agent offered to transfer the call and mentioned sending an email to ensure coordination. The call did not resolve the issue but set up potential follow-up actions.",
+  "_model": "qwen3:14b",
+  "_eval_count": 224,
+  "_total_duration_ms": 48355,
+  "_source_file": "transcripts/in-+13363779003-+13363743058-20251008-161801-1759954681.8508.txt",
+  "_direction": "inbound",
+  "_char_count": 596
+}

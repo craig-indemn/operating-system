@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Brandy wants to adjust their mobile home insurance policy because they are no longer renting it out and are using it for family visits and as a training ground for their disabled daughter, requiring a change in coverage from rental to personal use.",
+  "resolution_steps": [
+    "Agent Jamie confirmed the property's location (100 feet from primary residence) and current use (occasional family visits and training for disabled daughter).",
+    "Noted current coverage details: $47,534 policy limit, $1,000 deductible, and a 1990 trailer with unknown roof age.",
+    "Planned to contact carrier Foremost to adjust the policy from commercial (rental) to personal use.",
+    "Informed Brandy of potential delays due to limited staff on the day after New Year's and expected follow-up next week."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Mobile home insurance underwriting considerations (property use, vacancy status, proximity to primary residence)",
+    "Policy form distinctions (commercial vs. personal coverage)",
+    "Carrier-specific procedures for adjusting policy terms"
+  ],
+  "systems_referenced": [
+    "Foremost (insurance carrier)",
+    "Alliance Insurance's internal policy management system"
+  ],
+  "summary": "Jamie, an Alliance Insurance agent, is assisting Brandy in updating their mobile home insurance policy from rental to personal use after ceasing to rent it out. The conversation details the property's current use, location, and coverage specifics, with Jamie planning to contact Foremost to adjust the policy. A follow-up is expected next week due to staffing limitations on the day after New Year's.",
+  "_model": "qwen3:14b",
+  "_eval_count": 366,
+  "_total_duration_ms": 48850,
+  "_source_file": "transcripts/out-4342501427-501-20260102-090016-1767362416.59.txt",
+  "_direction": "outbound",
+  "_char_count": 4076
+}

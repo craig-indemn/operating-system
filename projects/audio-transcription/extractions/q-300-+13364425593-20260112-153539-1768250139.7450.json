@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Renee Knight is seeking resolution for ongoing billing from her old insurance company (Auto Owners) after paying in full for a new policy with Alliance Insurance Services, believing the old policy should have been canceled automatically.",
+  "resolution_steps": [
+    "Agent confirmed Renee's policy details (name, policy number, and old insurer).",
+    "Agent explained that Alliance Insurance Services does not have authority to cancel policies from other companies unless the policy was issued through their agency.",
+    "Agent offered to research the situation internally and contact Renee back with findings.",
+    "Agent requested Renee's contact information and old policy details for further investigation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy cancellation procedures across different agencies",
+    "Knowledge of carrier-specific processes for policy termination",
+    "Ability to navigate internal systems to verify policy details"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services internal policy database",
+    "Auto Owners insurance system (implied)"
+  ],
+  "summary": "Renee Knight is being billed by her old insurer (Auto Owners) despite paying in full for a new policy with Alliance Insurance Services. The agent clarified that Alliance cannot cancel policies from other companies unless they issued the original policy. The agent will investigate the situation and follow up with Renee. The case involves coordination between two insurance agencies and requires verification of policy ownership and cancellation procedures.",
+  "_model": "qwen3:14b",
+  "_eval_count": 313,
+  "_total_duration_ms": 34266,
+  "_source_file": "transcripts/q-300-+13364425593-20260112-153539-1768250139.7450.txt",
+  "_direction": "queue",
+  "_char_count": 2790
+}

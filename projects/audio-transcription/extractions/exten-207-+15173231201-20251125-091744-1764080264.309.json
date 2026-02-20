@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Christy from Auto Owners is following up on a commercial auto insurance submission for Val Valis Structures, identifying a coverage gap between November 6th and 24th with Progressive and requesting a statement of no losses during that period.",
+  "resolution_steps": [
+    "Cody confirms the coverage gap and explains the need for a statement of no losses from November 6th to 24th.",
+    "Cody provides his email address (sutton.christy@aoi.aoi) for receiving the document.",
+    "Christy agrees to send the statement via email as soon as possible."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance submission processes",
+    "Handling coverage gaps in commercial auto policies",
+    "Obtaining statements of no losses from previous carriers"
+  ],
+  "systems_referenced": [
+    "Auto Owners (insurance carrier)",
+    "Email communication"
+  ],
+  "summary": "Christy from Auto Owners discusses a commercial auto insurance submission with Cody, identifying a coverage gap with Progressive and requesting a statement of no losses from November 6th to 24th. Cody provides his email address for the document, and Christy agrees to send it promptly. The call concludes with a mutual agreement to proceed via email.",
+  "_model": "qwen3:14b",
+  "_eval_count": 287,
+  "_total_duration_ms": 34909,
+  "_source_file": "transcripts/exten-207-+15173231201-20251125-091744-1764080264.309.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 839
+}

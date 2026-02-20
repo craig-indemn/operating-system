@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jamie Flippin seeks clarification on whether Leviticus, an adult son who occasionally drives Jane and Gary Moore's vehicle for errands, needs to be listed on their Auto Owners Insurance policy for coverage. Jamie also wants to remove the Buick Encore from the policy after Leviticus obtained his own Progressive policy.",
+  "resolution_steps": [
+    "Jenny confirms Leviticus was removed from the policy in October 2024 but the Buick Encore was not removed.",
+    "Jenny verifies Leviticus's Progressive policy details (vehicle and mailing address) to ensure accuracy.",
+    "Jenny advises that occasional use (e.g., 1-2 times/month) likely doesn't require Leviticus to be listed, but frequent use would necessitate adding him.",
+    "Jenny confirms the need to remove the Buick Encore from the Auto Owners policy to align with Progressive's coverage."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of insurance coverage for occasional drivers vs. regular drivers",
+    "Policy update procedures for removing vehicles and drivers",
+    "Carrier-specific rules (e.g., National General's requirement to list caregivers/drivers)"
+  ],
+  "systems_referenced": [
+    "Auto Owners Insurance policy system",
+    "Progressive Direct (for verifying Leviticus's policy)",
+    "Charlotte driving system (mentioned in closing)"
+  ],
+  "summary": "Jamie Flippin consults Auto Owners Insurance about coverage for a vehicle occasionally driven by Leviticus, an adult son not living with the policyholders. The agent confirms that incidental use (e.g., 1-2 times/month) likely doesn't require Leviticus to be listed on the policy but emphasizes updating the policy if usage increases. The agent also identifies a need to remove the Buick Encore from the policy to match Progressive's coverage details.",
+  "_model": "qwen3:14b",
+  "_eval_count": 400,
+  "_total_duration_ms": 47171,
+  "_source_file": "transcripts/out-8003460346-501-20250903-102602-1756909562.1836.txt",
+  "_direction": "outbound",
+  "_char_count": 4541
+}

@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Martin from Shellpoint Mortgage is attempting to reach Tracy at Alliance Insurance Services.",
+  "resolution_steps": [
+    "Agent confirms caller's name and affiliation (Shellpoint Mortgage).",
+    "Agent sends a message to Tracy to notify her of the call.",
+    "Agent places Martin on hold to await Tracy's response."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Internal communication protocols for notifying colleagues",
+    "Call handling procedures for transferring/holding callers"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance customer portal (mentioned in hold music)"
+  ],
+  "summary": "Martin from Shellpoint Mortgage called to reach Tracy at Alliance Insurance. The agent sent a message to Tracy and placed Martin on hold. The call remains unresolved as Tracy has not yet responded.",
+  "_model": "qwen3:14b",
+  "_eval_count": 187,
+  "_total_duration_ms": 31867,
+  "_source_file": "transcripts/in-+13363779003-+18776340985-20250731-132731-1753982851.10182.txt",
+  "_direction": "inbound",
+  "_char_count": 772
+}

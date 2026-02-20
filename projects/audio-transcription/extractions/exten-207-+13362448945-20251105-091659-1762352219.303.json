@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Sunny requested a quote for an installation crew policy, specifying it would be under a personal name (Jesus Cruz Miller) and provided contact details.",
+  "resolution_steps": [
+    "Agent confirmed the policy was for an installation crew.",
+    "Collected the policyholder's full name (Jesus Cruz Miller).",
+    "Obtained the address: 4212 Flames Church Road, Hamptonville, NC 27020.",
+    "Recorded the phone number: 336-244-0854.",
+    "Received the email: JesusCruz2343@gmail.com."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding insurance policies for installation crews",
+    "Data collection for quote requests"
+  ],
+  "systems_referenced": [],
+  "summary": "Sunny requested a quote for an installation crew policy under Jesus Cruz Miller's name. Cody collected the policyholder's details, including address, phone number, and email. The call concluded with information gathered for further processing.",
+  "_model": "qwen3:14b",
+  "_eval_count": 240,
+  "_total_duration_ms": 37130,
+  "_source_file": "transcripts/exten-207-+13362448945-20251105-091659-1762352219.303.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1095
+}

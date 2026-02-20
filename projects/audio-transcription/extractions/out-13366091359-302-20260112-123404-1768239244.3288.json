@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Felix needs to make a down payment for general liability insurance to bind the coverage, as requested by the agent.",
+  "resolution_steps": [
+    "Agent explains the need for a down payment to bind general liability coverage.",
+    "Agent clarifies the payment is required for general liability, not workers' comp.",
+    "Agent instructs Felix to provide payment information.",
+    "Felix agrees to send the payment."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance binding processes",
+    "Payment procedures for insurance policies",
+    "Differentiation between general liability and workers' comp coverage"
+  ],
+  "systems_referenced": [],
+  "summary": "Agent contacted Felix to request a down payment for general liability insurance to proceed with binding the policy. Felix confirmed he would send the payment information. The call concluded with Felix agreeing to take the next step.",
+  "_model": "qwen3:14b",
+  "_eval_count": 202,
+  "_total_duration_ms": 37481,
+  "_source_file": "transcripts/out-13366091359-302-20260112-123404-1768239244.3288.txt",
+  "_direction": "outbound",
+  "_char_count": 511
+}

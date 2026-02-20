@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Caller Andrea attempts to reach Brandy (uncertain of last name) regarding a prior life insurance interaction.",
+  "resolution_steps": [
+    "Agent likely attempted to transfer call to Brandy (no explicit steps documented in transcript)"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Fragmented call where caller Andrea tries to reach Brandy for a prior life insurance matter but fails to provide clear contact details. Transcript ends mid-conversation without resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 125,
+  "_total_duration_ms": 34988,
+  "_source_file": "transcripts/in-+13363779003-+17172109536-20251212-111401-1765556041.1162.txt",
+  "_direction": "inbound",
+  "_char_count": 366
+}

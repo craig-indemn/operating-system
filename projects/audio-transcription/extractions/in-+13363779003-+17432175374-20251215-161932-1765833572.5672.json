@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Pam wants to make changes to her insurance policy but has not yet specified the details of the requested modifications.",
+  "resolution_steps": [
+    "Agent acknowledged Pam's request to modify her policy.",
+    "Agent stated they would need to review the policy details to determine the next steps."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy modification procedures",
+    "Access to customer policy details"
+  ],
+  "systems_referenced": [
+    "Agency's internal policy management system"
+  ],
+  "summary": "Pam contacted Lights Insurance to request changes to her policy. The agent acknowledged the request and indicated they would need to review the policy details to proceed. The call appears to be ongoing with further action required.",
+  "_model": "qwen3:14b",
+  "_eval_count": 175,
+  "_total_duration_ms": 37421,
+  "_source_file": "transcripts/in-+13363779003-+17432175374-20251215-161932-1765833572.5672.txt",
+  "_direction": "inbound",
+  "_char_count": 241
+}

@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unknown (incomplete voicemail greeting)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Incomplete voicemail greeting from an outbound call. No meaningful conversation or intent identified. Transcript cuts off mid-announcement.",
+  "_model": "qwen3:14b",
+  "_eval_count": 85,
+  "_total_duration_ms": 23470,
+  "_source_file": "transcripts/out-13367106506-207-20250729-142907-1753813747.8571.txt",
+  "_direction": "outbound",
+  "_char_count": 58
+}

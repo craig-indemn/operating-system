@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is attempting to resolve an issue with an email address they provided earlier, which Brandi is trying to verify and correct.",
+  "resolution_steps": [
+    "Brandi confirms the caller's last name and attempts to reconstruct the correct email address.",
+    "The caller clarifies the email format, including a comma between the last name and initial.",
+    "Brandi explains that commas are not typically allowed in email addresses and suggests removing it.",
+    "The caller agrees to try the corrected format without the comma.",
+    "The caller mentions sending an email (possibly related to a personal matter) and asks if it was received."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Email address formatting rules",
+    "Troubleshooting email delivery issues"
+  ],
+  "systems_referenced": [
+    "Email client/system"
+  ],
+  "summary": "The caller and agent Brandi work to resolve an email address formatting issue. The caller initially provided an email with a comma, which Brandi explains is invalid. They agree to try a corrected version. The conversation abruptly shifts to the caller discussing a personal matter (writing a eulogy), but the primary issue remains the email troubleshooting.",
+  "_model": "qwen3:14b",
+  "_eval_count": 269,
+  "_total_duration_ms": 59073,
+  "_source_file": "transcripts/exten-112-+13366710149-20251006-140016-1759773616.8773.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2068
+}

@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Hector Jimenez is asking about a non-compliant audit fee he received, whether he can get a refund after completing the audit, and requests resending the required audit forms since he didn't receive them.",
+  "resolution_steps": [
+    "Agent Cody confirms Hector's identity and pulls up his Florida Travelers policy.",
+    "Explains that the non-compliant audit fee can be refunded once the audit is completed.",
+    "Agrees to resend the audit forms via email to Hector.",
+    "Provides the policy renewal date (September 8, 2026) and confirms coverage remains active.",
+    "Informs Hector to submit payroll/tax documents to complete the audit and reverse the fee."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of non-compliant audit fees and refund processes",
+    "Policy renewal dates and coverage terms",
+    "Audit documentation requirements for workers' comp policies"
+  ],
+  "systems_referenced": [
+    "Florida Travelers insurance system",
+    "Email system for sending audit forms"
+  ],
+  "summary": "Hector Jimenez contacted Alliance Insurance Services about a non-compliant audit fee and refund process for his Florida Travelers workers' comp policy. The agent explained the refund procedure, confirmed policy coverage, and resent the audit forms via email. Hector plans to complete the audit by mid-week to resolve the fee.",
+  "_model": "qwen3:14b",
+  "_eval_count": 303,
+  "_total_duration_ms": 42197,
+  "_source_file": "transcripts/exten-207-+13367102264-20251208-142124-1765221684.11339.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4021
+}

@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Caller requested to be connected to Stan Marion.",
+  "resolution_steps": [
+    "Agent informed caller Stan Marion is out of the office",
+    "Agent offered to leave a voicemail"
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller requested Stan Marion, who is out of the office. Agent offered to leave voicemail, which caller accepted.",
+  "_model": "qwen3:14b",
+  "_eval_count": 103,
+  "_total_duration_ms": 25116,
+  "_source_file": "transcripts/in-+13363779003-+19528003414-20250729-102112-1753798872.2720.txt",
+  "_direction": "inbound",
+  "_char_count": 224
+}

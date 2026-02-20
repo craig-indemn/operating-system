@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to initiate an insurance claim after hitting a deer with a company vehicle and attempted to contact someone else without success.",
+  "resolution_steps": [
+    "Agent asked whether the vehicle involved was personal or commercial.",
+    "Caller confirmed it was a company vehicle.",
+    "Agent requested a moment to process the information."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Claims process for commercial vehicle accidents",
+    "Handling third-party contact attempts",
+    "Initial claim documentation requirements"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller attempted to start a commercial vehicle insurance claim after hitting a deer. The agent asked clarifying questions about the vehicle type and temporarily paused the call to process the request. The conversation was cut off before resolution, requiring a follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 187,
+  "_total_duration_ms": 45900,
+  "_source_file": "transcripts/in-+13363779003-+13366480766-20250725-094908-1753451348.3043.txt",
+  "_direction": "inbound",
+  "_char_count": 498
+}

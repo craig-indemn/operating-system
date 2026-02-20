@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Lauren needs a copy of her organization's insurance policy to submit to a national organization and wants to set up digital access for her treasurer.",
+  "resolution_steps": [
+    "Gloria confirms the policyholder's name, address, and chapter details.",
+    "Gloria agrees to email the policy document to Lauren's specified email address.",
+    "Gloria explains the process for setting up online access via the USLI portal.",
+    "Gloria requests updated contact information (names, emails, phone numbers) for the account to ensure proper communication."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Policy retrieval and distribution process",
+    "USLI portal setup for online access",
+    "Account management procedures for updating contact information"
+  ],
+  "systems_referenced": [
+    "USLI (insurance policy portal)",
+    "Alliance Insurance internal account management system"
+  ],
+  "summary": "Lauren from the Institute for Classical Architecture and Art requested a copy of her organization's insurance policy and digital access setup. Gloria confirmed account details, agreed to send the policy via email, and guided Lauren on using the USLI portal for online access. Gloria also requested updated contact information for the account.",
+  "_model": "qwen3:14b",
+  "_eval_count": 270,
+  "_total_duration_ms": 43958,
+  "_source_file": "transcripts/exten-102-+13362515220-20251210-141052-1765393852.3130.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3556
+}

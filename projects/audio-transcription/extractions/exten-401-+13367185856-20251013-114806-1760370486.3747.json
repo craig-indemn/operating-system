@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to modify their insurance policy by removing a 2020 Nissan Maxima and adding a 2017 Honda Accord, and they also seek clarification about a past accident involving their son and its impact on their insurance rates.",
+  "resolution_steps": [
+    "Agent confirmed the caller's intent to remove and add vehicles, verified the VIN for the new car, and noted the coverage remains unchanged.",
+    "Agent explained the rate decrease ($276/month) after the vehicle change and confirmed the new payment amount.",
+    "Agent agreed to send updated ID cards to the provided email address.",
+    "Agent discussed the caller's concern about a past accident, clarified that the other party's insurance (State Farm) covered the claim, and offered to help remove any accident-related notations if needed.",
+    "Agent requested the caller to provide police reports or accident documentation for further verification."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy modification procedures",
+    "VIN verification and vehicle addition/removal processes",
+    "Rate calculation adjustments for policy changes",
+    "Accident reporting and liability determination",
+    "Handling claims with third-party insurers (e.g., State Farm)"
+  ],
+  "systems_referenced": [
+    "National General insurance system",
+    "State Farm insurance (for accident claims)"
+  ],
+  "summary": "The caller requested changes to their National General insurance policy, including removing a vehicle and adding a new one, and sought clarification about a past accident involving their son. The agent processed the policy update, confirmed the rate reduction, and offered assistance with accident documentation. The caller was asked to provide police reports or accident records for further review.",
+  "_model": "qwen3:14b",
+  "_eval_count": 369,
+  "_total_duration_ms": 55766,
+  "_source_file": "transcripts/exten-401-+13367185856-20251013-114806-1760370486.3747.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 7774
+}

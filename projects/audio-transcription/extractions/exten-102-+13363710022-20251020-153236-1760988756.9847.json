@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to make a payment for an insurance account associated with Johnny Alberto Ruiz Aranda.",
+  "resolution_steps": [
+    "Agent verified the account name and type (generability).",
+    "Agent confirmed payment method (debit card) and collected card details (number, expiration date, CVV).",
+    "Agent processed the payment of $1,141.08.",
+    "Agent sent a receipt to the caller."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Payment processing procedures",
+    "Account verification protocols",
+    "Debit card payment handling"
+  ],
+  "systems_referenced": [
+    "Insurance agency's payment system",
+    "Account database"
+  ],
+  "summary": "Caller made a payment for Johnny Alberto Ruiz Aranda's insurance account using a debit card. Agent verified details, processed the payment, and sent a receipt. The call concluded with the caller confirming no further assistance was needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 220,
+  "_total_duration_ms": 25278,
+  "_source_file": "transcripts/exten-102-+13363710022-20251020-153236-1760988756.9847.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1313
+}

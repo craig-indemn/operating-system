@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Follow-up on a $400 refund promised after a car total loss claim, confirming payment status and resolution timeline.",
+  "resolution_steps": [
+    "Agent Hazel confirmed the caller's identity and account details.",
+    "Checked the account to verify a $417.18 credit was applied.",
+    "Explained the refund is in process and typically takes 7-10 business days.",
+    "Provided National General's customer service number for direct follow-up.",
+    "Reassured caller to wait and contact the carrier if unresolved after 2-3 days."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance claims processing timelines",
+    "Refund application workflows",
+    "Carrier-specific contact information (National General)"
+  ],
+  "systems_referenced": [
+    "Internal account management system",
+    "National General's customer service line (877-468-4683)"
+  ],
+  "summary": "Tiodros Halesilasi followed up on a promised $400 refund after a totaled car claim. Hazel confirmed a $417.18 credit was applied and explained the 7-10 business day processing window. She provided National General's contact number for direct follow-up, with the caller agreeing to wait 2-3 days before contacting the carrier.",
+  "_model": "qwen3:14b",
+  "_eval_count": 297,
+  "_total_duration_ms": 35041,
+  "_source_file": "transcripts/exten-401-+13369052127-20251013-095851-1760363931.1072.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2805
+}

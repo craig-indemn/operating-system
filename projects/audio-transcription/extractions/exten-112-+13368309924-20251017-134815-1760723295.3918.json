@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Judy is following up on a pending insurance policy, inquiring about the status of mailed paperwork and seeking assistance with processing a money order refund for a canceled policy.",
+  "resolution_steps": [
+    "Brandi confirms the policy is still pending and explains the document is being mailed but not yet received.",
+    "Brandi suggests Judy can visit the Winston office to sign the old policy paperwork.",
+    "Brandi offers to help Judy request a refund for the money order but notes office computers have restricted access to certain websites.",
+    "Brandi agrees to call Judy once the new policy document arrives."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy processing timelines",
+    "Office location accessibility for document signing",
+    "Money order refund procedures",
+    "Internal system security restrictions for website access"
+  ],
+  "systems_referenced": [
+    "Winston office",
+    "Clemens office",
+    "Insurance carrier portal (implied)",
+    "Money order refund website (unspecified URL)"
+  ],
+  "summary": "Judy discusses a pending insurance policy and needs help with paperwork and a money order refund. Brandi explains the document mailing timeline, suggests visiting the Winston office, and discusses refund process limitations due to office security systems. A follow-up call is scheduled once the new policy document arrives.",
+  "_model": "qwen3:14b",
+  "_eval_count": 295,
+  "_total_duration_ms": 49623,
+  "_source_file": "transcripts/exten-112-+13368309924-20251017-134815-1760723295.3918.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3907
+}

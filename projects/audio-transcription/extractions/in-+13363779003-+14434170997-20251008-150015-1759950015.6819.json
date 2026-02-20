@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, a client of Alliance Insurance, is seeking clarification about a received letter regarding a 'certification of higher coverage limits' and wants to understand its implications and required actions.",
+  "resolution_steps": [
+    "Agent acknowledged the caller's request and confirmed the need for clarification about the letter.",
+    "Agent offered to transfer the call to a specialist for further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy documentation processes",
+    "Knowledge of coverage limit certification procedures"
+  ],
+  "systems_referenced": [
+    "Internal agent transfer system"
+  ],
+  "summary": "A client contacted Alliance Insurance to inquire about a confusing letter regarding coverage limit certification. The agent recognized the need for specialized assistance and initiated a transfer to a relevant department. The call was not fully resolved but directed toward appropriate support.",
+  "_model": "qwen3:14b",
+  "_eval_count": 197,
+  "_total_duration_ms": 23209,
+  "_source_file": "transcripts/in-+13363779003-+14434170997-20251008-150015-1759950015.6819.txt",
+  "_direction": "inbound",
+  "_char_count": 411
+}

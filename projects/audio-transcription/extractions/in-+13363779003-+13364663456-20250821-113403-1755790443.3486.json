@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Savannah King, is seeking clarification on a significant increase in her Progressive insurance renewal premium (over $100/month) and wants to understand the reasons behind the increase.",
+  "resolution_steps": [
+    "Agent offered to assist with questions about the renewal policy.",
+    "Agent requested a moment to prepare for the discussion."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding factors affecting insurance premium increases (e.g., claims history, market trends, policy changes).",
+    "Knowledge of Progressive's pricing structure and renewal processes."
+  ],
+  "systems_referenced": [],
+  "summary": "Savannah King contacted Alliance Insurance to inquire about a $100/month increase in her Progressive insurance renewal. The agent offered to help but the call ended before a detailed explanation or resolution. The agent would need to analyze Progressive's pricing factors and possibly check the policy details to address the concern.",
+  "_model": "qwen3:14b",
+  "_eval_count": 213,
+  "_total_duration_ms": 62889,
+  "_source_file": "transcripts/in-+13363779003-+13364663456-20250821-113403-1755790443.3486.txt",
+  "_direction": "inbound",
+  "_char_count": 546
+}

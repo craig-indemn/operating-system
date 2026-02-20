@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Bertha is following up on a previous conversation to confirm her decision to switch insurance providers, having found a cheaper alternative with additional coverage. She is in the process of finalizing the switch and seeks guidance on ensuring the new policy meets her needs.",
+  "resolution_steps": [
+    "Jeremy confirms Bertha's intent to cancel her current policy and let it expire.",
+    "He advises her to ensure the new provider offers replacement cost coverage for her home, not just actual cash value.",
+    "He highlights the importance of verifying the policy form (HO3 vs. HO2) and coverage specifics like backup protection.",
+    "He agrees to contact the new provider's Mount Area location to prepare documentation for Bertha's review.",
+    "He emphasizes the need for the new provider to clearly outline coverage limits and policy details."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy types (HO2 vs. HO3)",
+    "Knowledge of coverage differences (replacement cost vs. actual cash value)",
+    "Awareness of provider-specific documentation processes"
+  ],
+  "systems_referenced": [
+    "Main Street (new provider's location)",
+    "Mount Area location (new provider's office)",
+    "Policy documentation forms"
+  ],
+  "summary": "Jeremy from Alliance Insurance Services follows up with Bertha, who is switching providers to a cheaper option with better coverage. He advises her on critical policy details (replacement cost, policy form type) and agrees to coordinate with the new provider's office to ensure proper documentation. Bertha is still finalizing the switch but seeks assurance that her new policy meets her needs.",
+  "_model": "qwen3:14b",
+  "_eval_count": 356,
+  "_total_duration_ms": 42460,
+  "_source_file": "transcripts/out-3366489698-701-20250807-090533-1754571933.110.txt",
+  "_direction": "outbound",
+  "_char_count": 4336
+}

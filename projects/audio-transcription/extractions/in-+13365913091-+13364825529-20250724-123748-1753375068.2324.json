@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller intends to cancel their insurance policy under the name Jashun Reed.",
+  "resolution_steps": [
+    "Agent asked for the policyholder's name (Jashun Reed).",
+    "Agent confirmed the policy was found in the system.",
+    "Agent informed the caller they would connect them with an agent to proceed with cancellation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy lookup procedures",
+    "Cancellation process protocols"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's internal policy database"
+  ],
+  "summary": "A caller requested to cancel their insurance policy under Jashun Reed. The agent located the policy and committed to connecting the caller with an agent to complete the cancellation process. The call appears to be paused pending agent transfer.",
+  "_model": "qwen3:14b",
+  "_eval_count": 188,
+  "_total_duration_ms": 28983,
+  "_source_file": "transcripts/in-+13365913091-+13364825529-20250724-123748-1753375068.2324.txt",
+  "_direction": "inbound",
+  "_char_count": 290
+}

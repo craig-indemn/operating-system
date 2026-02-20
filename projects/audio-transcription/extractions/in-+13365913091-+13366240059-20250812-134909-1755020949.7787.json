@@ -1,0 +1,19 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear due to technical issues and fragmented conversation; caller mentions wanting a quote but context is lost.",
+  "resolution_steps": [
+    "Agent provided standard greeting",
+    "Attempted to clarify caller's needs",
+    "Requested contact info updates while waiting"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Call plagued by technical issues (dropped connection, unclear speech). Caller's intent (import company seeking quote) was partially mentioned but not fully clarified. Agent followed standard hold procedure.",
+  "_model": "qwen3:14b",
+  "_eval_count": 131,
+  "_total_duration_ms": 19140,
+  "_source_file": "transcripts/in-+13365913091-+13366240059-20250812-134909-1755020949.7787.txt",
+  "_direction": "inbound",
+  "_char_count": 576
+}

@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking clarification on insurance requirements for a land development project involving ground leases for Bojangles and Taco Bell, specifically general liability coverage with the lender listed as a legacy.",
+  "resolution_steps": [
+    "Agent confirmed the project details: land purchase, grading, road construction, and ground leases for Bojangles and Taco Bell.",
+    "Discussed insurance needs, emphasizing general liability coverage with the lender as a legacy.",
+    "Addressed timeline for closing (tentatively January 9th, pending site plan approvals).",
+    "Mentioned the LLC structure (50/50 between caller and Samuel) and unresolved equity issues.",
+    "Agreed to send site plan via email and follow up on insurance requirements."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance requirements for land development projects",
+    "Ground lease insurance structures",
+    "Lender-specific legacy designations in policies"
+  ],
+  "systems_referenced": [],
+  "summary": "The caller discussed insurance needs for a land development project involving ground leases for Bojangles and Taco Bell. The agent clarified general liability coverage requirements, project timelines, and LLC structure details. The caller will receive a site plan email and follow up on insurance arrangements.",
+  "_model": "qwen3:14b",
+  "_eval_count": 279,
+  "_total_duration_ms": 48598,
+  "_source_file": "transcripts/exten-205-+13363258130-20251230-110019-1767110419.1524.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3591
+}

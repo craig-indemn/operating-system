@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "George is discussing the renewal of his workers' compensation insurance policy with Cody, providing details about payroll, employee count, and addressing a pending payment. He also mentions a return to work program and issues with accessing his online banking portal.",
+  "resolution_steps": [
+    "Cody gathers information about George's payroll (70,000 per employee annually) and employee count (2 helpers plus George).",
+    "Cody explains the return to work program and suggests opting into West Works to manage potential injuries.",
+    "Cody checks the status of a pending payment and acknowledges George's issue with accessing his online banking portal.",
+    "Cody attempts to troubleshoot the online banking issue but the call ends mid-conversation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Workers' compensation policy details",
+    "Payroll and employee count calculations",
+    "Return to work program requirements",
+    "West Works program functionality",
+    "Insurance payment processes"
+  ],
+  "systems_referenced": [
+    "Westfield (insurance carrier)",
+    "West Works (return to work program)",
+    "Online banking portal"
+  ],
+  "summary": "George discusses his workers' comp insurance renewal with Cody, providing payroll details and addressing a pending payment. Cody explains the return to work program and suggests West Works. The call ends mid-conversation as Cody attempts to resolve the online banking issue.",
+  "_model": "qwen3:14b",
+  "_eval_count": 312,
+  "_total_duration_ms": 54191,
+  "_source_file": "transcripts/exten-207-+13367497048-20251230-103846-1767109126.1395.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3141
+}

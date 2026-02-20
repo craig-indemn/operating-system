@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; transcript cuts off mid-sentence with 'inform you twenty'",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Incomplete transcript with unclear intent. Caller identifies as 'Leah with senior benefits' but message cuts off mid-sentence. No meaningful conversation or resolution documented.",
+  "_model": "qwen3:14b",
+  "_eval_count": 100,
+  "_total_duration_ms": 17754,
+  "_source_file": "transcripts/in-+13363682529-+13364381174-20251023-145439-1761245679.4677.txt",
+  "_direction": "inbound",
+  "_char_count": 137
+}

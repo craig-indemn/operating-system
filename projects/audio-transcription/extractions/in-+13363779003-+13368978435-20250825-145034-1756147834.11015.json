@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Evelyn Frost contacted Alliance Insurance to ask about her home insurance renewal and sought assistance with policy-related questions.",
+  "resolution_steps": [
+    "Agent acknowledged the call and asked for the policy number.",
+    "Agent mentioned transferring the caller to an agent who could address her questions."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Evelyn Frost called to inquire about home insurance renewal but the agent only confirmed the need for a policy number and mentioned transferring her to another agent. The call ended before any substantive assistance was provided.",
+  "_model": "qwen3:14b",
+  "_eval_count": 146,
+  "_total_duration_ms": 41371,
+  "_source_file": "transcripts/in-+13363779003-+13368978435-20250825-145034-1756147834.11015.txt",
+  "_direction": "inbound",
+  "_char_count": 464
+}

@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Brandy from Alliance Insurance attempting to reach Lisa for a callback",
+  "resolution_steps": [
+    "Left voicemail message with callback instructions"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Voicemail left by Brandy from Alliance Insurance requesting callback. Lisa was unavailable, and Brandy provided contact information for follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 99,
+  "_total_duration_ms": 46217,
+  "_source_file": "transcripts/out-3369724013-112-20250918-161130-1758226290.10712.txt",
+  "_direction": "outbound",
+  "_char_count": 425
+}

@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Follow up on Ellen's auto policy renewal to verify contact information, policy details, and ensure there are no updates needed.",
+  "resolution_steps": [
+    "JC confirmed Ellen's contact information, email, and address on file.",
+    "JC reviewed Ellen's auto policy details, including coverage types, deductibles, and rental/towing coverage.",
+    "JC asked about vehicle usage (e.g., Uber/Lyft) and household members on the policy.",
+    "JC discussed potential discounts (e.g., senior citizen, good driver) and inquired about Progressive's Snapshot app.",
+    "Ellen confirmed she no longer has the Snapshot app installed, and JC offered to provide further information on the discount."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Auto insurance policy structure (deductibles, coverages)",
+    "Progressive's Snapshot app and associated discounts",
+    "Policy renewal processes and verification protocols"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's internal database (for customer information and policy details)",
+    "Progressive's Snapshot program"
+  ],
+  "summary": "JC from Alliance Insurance conducted a follow-up call with Ellen to verify her auto policy details ahead of renewal. The conversation covered policy coverage, deductibles, and potential discounts. Ellen mentioned she no longer uses the Progressive Snapshot app, prompting JC to offer further information on the discount. The call concluded with a commitment to follow up on the discount opportunity.",
+  "_model": "qwen3:14b",
+  "_eval_count": 322,
+  "_total_duration_ms": 39590,
+  "_source_file": "transcripts/out-9498928351-114-20251211-102713-1765466833.957.txt",
+  "_direction": "outbound",
+  "_char_count": 4573
+}

@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Tracy Carver) needs to add a newly purchased vehicle to her insurance policy and retrieve her policy number for the update.",
+  "resolution_steps": [
+    "Agent Heather confirms the caller's name and purpose of the call.",
+    "Heather acknowledges the request to add a vehicle and retrieves policy information.",
+    "Heather states she will transfer the call to another agent to assist with the policy update."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Process for adding vehicles to existing policies",
+    "Policy number retrieval procedures",
+    "Internal call transfer protocols"
+  ],
+  "systems_referenced": [],
+  "summary": "Tracy Carver contacted Alliance Insurance to add a new vehicle to her policy and obtain her policy number. Agent Heather confirmed the request and initiated a transfer to another agent for further assistance. The call was not resolved in this interaction but was directed to appropriate support.",
+  "_model": "qwen3:14b",
+  "_eval_count": 212,
+  "_total_duration_ms": 35355,
+  "_source_file": "transcripts/in-+13363779003-+13362409400-20250728-130727-1753722447.7759.txt",
+  "_direction": "inbound",
+  "_char_count": 580
+}

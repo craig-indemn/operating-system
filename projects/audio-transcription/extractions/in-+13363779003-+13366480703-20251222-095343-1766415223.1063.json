@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Stephen Quistonbury attempted to reach 'Father Sales' to discuss his insurance policy but was unclear about the specific department or agent he needed.",
+  "resolution_steps": [
+    "Agent acknowledged the caller's request",
+    "Agent said, 'give me one second' and 'I could try to be over' (incomplete/unclear action)"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller Stephen Quistonbury sought assistance with his policy but was unsure of the correct contact. The agent's response was incomplete, suggesting the call may have been disconnected or abandoned before resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 153,
+  "_total_duration_ms": 28259,
+  "_source_file": "transcripts/in-+13363779003-+13366480703-20251222-095343-1766415223.1063.txt",
+  "_direction": "inbound",
+  "_char_count": 298
+}

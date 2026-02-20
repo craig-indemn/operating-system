@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Joe) seeks assistance in urgently contacting Chris Stevens regarding a Cape Cod workers' compensation matter, as Chris is in a panic and needs immediate attention.",
+  "resolution_steps": [
+    "Kendall acknowledges receiving a message to contact Chris Stevens.",
+    "Joe explains Chris has reached out again, emphasizing urgency.",
+    "Kendall agrees to call Chris as soon as current tasks are completed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of workers' compensation processes",
+    "Client communication protocols",
+    "Handling urgent client requests"
+  ],
+  "systems_referenced": [
+    "Email (mention of forwarded emails about policy changes)",
+    "Internal case management system (reference to 'build a case')"
+  ],
+  "summary": "Joe urgently requests assistance contacting Chris Stevens for a Cape Cod workers' compensation issue. Kendall agrees to call Chris after completing current tasks. The conversation also touches on policy adjustments and email communication, but the primary focus is the urgent client request.",
+  "_model": "qwen3:14b",
+  "_eval_count": 230,
+  "_total_duration_ms": 41903,
+  "_source_file": "transcripts/exten-103-+13364143620-20251001-140327-1759341807.6732.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2965
+}

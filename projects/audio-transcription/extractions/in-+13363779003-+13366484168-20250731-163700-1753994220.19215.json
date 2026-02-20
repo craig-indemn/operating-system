@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is requesting a resent insurance quote email that they did not receive and wants to speak with Amanda again to resolve the issue.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's issue with not receiving the email.",
+    "Agent offers to connect the caller with Amanda to address the request."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Handling customer requests for resent quotes",
+    "Call transfer procedures"
+  ],
+  "systems_referenced": [],
+  "summary": "The caller reported not receiving an insurance quote email and requested it be resent. The agent attempted to transfer the call to Amanda for further assistance, but the outcome of the transfer is unclear.",
+  "_model": "qwen3:14b",
+  "_eval_count": 164,
+  "_total_duration_ms": 36286,
+  "_source_file": "transcripts/in-+13363779003-+13366484168-20250731-163700-1753994220.19215.txt",
+  "_direction": "inbound",
+  "_char_count": 574
+}

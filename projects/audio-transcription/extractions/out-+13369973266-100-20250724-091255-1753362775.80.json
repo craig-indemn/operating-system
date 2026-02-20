@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Andrea wants to change her last name on her home insurance policy to match her new name post-divorce (Andrea Aaronson), but is unsure of the process and needs guidance.",
+  "resolution_steps": [
+    "Brandi explains that the name change requires documentation from the loan officer (e.g., refinance-related documents) to prove the name change.",
+    "Brandi offers to send Andrea a form to sign, which will be used to request the name change with the insurance company.",
+    "Brandi mentions that Universal Property and Casualty typically takes about two weeks to process such changes.",
+    "Brandi agrees to send Andrea an email with instructions and a document to sign, which Andrea can complete and return via email or text."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy name change procedures",
+    "Documentation requirements for updating policyholder information",
+    "Interaction with loan officers during refinance processes",
+    "Processing timelines for insurance companies (e.g., Universal Property and Casualty)"
+  ],
+  "systems_referenced": [
+    "Email communication (for sending documents and instructions)",
+    "Universal Property and Casualty (insurance carrier)"
+  ],
+  "summary": "Andrea is updating her name post-divorce and needs to change her home insurance policy's last name to 'Aaronson.' Brandi explains the process requires documentation from her loan officer, a signed form, and a two-week processing time with the insurance carrier. Andrea will receive an email with instructions and can send the required documents via email or text.",
+  "_model": "qwen3:14b",
+  "_eval_count": 341,
+  "_total_duration_ms": 50117,
+  "_source_file": "transcripts/out-+13369973266-100-20250724-091255-1753362775.80.txt",
+  "_direction": "outbound",
+  "_char_count": 3350
+}

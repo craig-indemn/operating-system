@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, a lien holder, intends to cancel a policy for James R. Hammond but is unable to locate the necessary information on the insurance cards provided by National General Insurance.",
+  "resolution_steps": [
+    "Agent confirmed Alliance Insurance's partnership with National General Insurance and asked if the caller was trying to reach National General directly.",
+    "Caller provided policy number 2012422729 and name James R. Hammond, but the agent could not find a match in the system.",
+    "Agent requested clarification on whether the account was personal or commercial, and the caller confirmed it was a commercial account.",
+    "Agent apologized for the inconvenience and offered to assist further, directing the caller to the customer portal and texting option for support."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy lookup procedures using policy numbers and names",
+    "Handling commercial accounts vs. personal accounts",
+    "Understanding lien holder roles in policy management"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance customer portal (myallianceinsurance.com)",
+    "Texting support service (3367861133)"
+  ],
+  "summary": "A lien holder attempted to cancel a commercial policy for James R. Hammond but faced difficulties locating policy details. The agent could not find the policy in the system using the provided information and directed the caller to online resources for further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 314,
+  "_total_duration_ms": 39759,
+  "_source_file": "transcripts/in-+13363779003-+14068314454-20250829-144533-1756493133.6254.txt",
+  "_direction": "inbound",
+  "_char_count": 1537
+}

@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Chad Bickery needs to send a certificate of insurance to a builder for Gary's expired workers' comp policy, which was renewed on September 1st.",
+  "resolution_steps": [
+    "Gary confirms the expired workers' comp policy and the need to send a certificate to a builder.",
+    "Gary agrees to email the request to support@myallianceinsurance.com.",
+    "Gary explains that the support team will route the request to the commercial department."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding insurance certificate requests",
+    "Knowledge of internal support email system",
+    "Process for routing commercial insurance requests"
+  ],
+  "systems_referenced": [
+    "support@myallianceinsurance.com"
+  ],
+  "summary": "Gary explains that his workers' comp policy expired and needs a certificate sent to a builder. Chad directs him to email the support team, which will forward the request to the commercial department. The call concludes with Gary agreeing to send the email immediately.",
+  "_model": "qwen3:14b",
+  "_eval_count": 231,
+  "_total_duration_ms": 29181,
+  "_source_file": "transcripts/exten-102-+13363013103-20251024-113341-1761320021.1876.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1315
+}

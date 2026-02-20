@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Corbin is checking if his insurance policies (auto and homeowners) are still the best option, particularly after a coverage increase on his homeowners policy, and wants to review the auto rate for potential discounts.",
+  "resolution_steps": [
+    "Arlo explains the homeowners coverage increase from $2,800 to $3,720 due to roof age.",
+    "Arlo proposes checking the auto rate tomorrow to see if a 14% discount is possible.",
+    "Arlo schedules a follow-up call for the next day (Friday) to review policies and finalize by the weekend.",
+    "Arlo assures Corbin he will return calls if unavailable."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy adjustments (homeowners coverage increases)",
+    "Auto insurance rate calculations and discounts",
+    "Client follow-up procedures"
+  ],
+  "systems_referenced": [],
+  "summary": "Corbin discusses his upcoming insurance renewal with Arlo, who explains a homeowners coverage increase and plans to check the auto rate for potential discounts. They agree to finalize policies by the weekend after a follow-up call.",
+  "_model": "qwen3:14b",
+  "_eval_count": 255,
+  "_total_duration_ms": 45661,
+  "_source_file": "transcripts/axfer-+13363910574-409-20250730-115946-1753891142.2954.txt",
+  "_direction": "attended_transfer",
+  "_char_count": 2177
+}

@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Bruce Murray seeks advice on insuring his wife's church-affiliated preschool, which is now facing liability concerns after the church board removed its sponsorship. He asks if he can incorporate the preschool under his existing corporation (French Broad Chevrolet, a C Corp) to obtain coverage.",
+  "resolution_steps": [
+    "Jeff verifies Bruce's policy through French Broad Chevrolet.",
+    "Bruce explains the preschool's liability situation and asks about incorporating it under his corporation.",
+    "Jeff advises against the corporate incorporation route due to conflicting exposures and insurance risks.",
+    "Jeff suggests Church Mutual (a carrier known for church insurance) as a potential solution and shares an example of a similar setup at another church with added riders for liability."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding insurance exposure differences between corporate entities and non-profits",
+    "Knowledge of Church Mutual's insurance products for religious organizations",
+    "Experience with liability risks in church-affiliated programs"
+  ],
+  "systems_referenced": [
+    "Church Mutual (insurance carrier)",
+    "French Broad Chevrolet (policyholder entity)",
+    "Auto Owners (current insurance provider)"
+  ],
+  "summary": "Bruce Murray consults about insuring a church-affiliated preschool after liability concerns arose. The agent explains risks of corporate consolidation and suggests Church Mutual as a potential carrier, while highlighting exposure differences between corporate and non-profit entities.",
+  "_model": "qwen3:14b",
+  "_eval_count": 305,
+  "_total_duration_ms": 46815,
+  "_source_file": "transcripts/exten-206-+18283800807-20250725-131836-1753463916.8406.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4644
+}

@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Caller Lloyd Mangum intends to cancel his home insurance policy.",
+  "resolution_steps": [
+    "Agent acknowledges intent to cancel",
+    "Agent offers to transfer caller to appropriate department"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller initiates request to cancel home insurance. Agent acknowledges and offers to transfer, but call ends abruptly before resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 104,
+  "_total_duration_ms": 26865,
+  "_source_file": "transcripts/in-+13363779003-+13365404317-20251119-110811-1763568491.2856.txt",
+  "_direction": "inbound",
+  "_char_count": 220
+}

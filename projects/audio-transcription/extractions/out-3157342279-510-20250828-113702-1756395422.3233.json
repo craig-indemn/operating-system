@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Leaving a voicemail to request a callback regarding a specific insurance claim.",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A voicemail message from Tracy of Alliance Insurance requesting a callback for a claim related to Charles and Jessica Phelps (claim #10454096). The call was not a live conversation but a pre-recorded voicemail message.",
+  "_model": "qwen3:14b",
+  "_eval_count": 114,
+  "_total_duration_ms": 24408,
+  "_source_file": "transcripts/out-3157342279-510-20250828-113702-1756395422.3233.txt",
+  "_direction": "outbound",
+  "_char_count": 660
+}

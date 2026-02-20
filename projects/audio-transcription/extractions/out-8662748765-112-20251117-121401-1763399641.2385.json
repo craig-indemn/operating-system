@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller sought to reinstate an umbrella insurance policy (NCU2411) for Wayne and Karen Newsom, asking if it could be reinstated after cancellation on September 30.",
+  "resolution_steps": [
+    "Agent Miriam verified the policy number and policyholder details.",
+    "Miriam checked the policy status and confirmed it was canceled on September 30.",
+    "Miriam informed the caller that reinstatement is only possible within the first 30 days of cancellation.",
+    "Miriam explained the policy would need to be rewritten as it was past the 30-day window."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Progressive's umbrella policy reinstatement rules (30-day window post-cancellation)",
+    "Policy status checks and underwriting procedures"
+  ],
+  "systems_referenced": [
+    "Progressive policy database",
+    "Progressive Home Umbrella Underwriting system"
+  ],
+  "summary": "An Alliance Insurance agent requested reinstatement of a canceled umbrella policy (NCU2411). The Progressive underwriter confirmed the policy was canceled on September 30 and informed the caller that reinstatement is only possible within the first 30 days of cancellation. The policy would need to be rewritten as it was past the deadline.",
+  "_model": "qwen3:14b",
+  "_eval_count": 288,
+  "_total_duration_ms": 43346,
+  "_source_file": "transcripts/out-8662748765-112-20251117-121401-1763399641.2385.txt",
+  "_direction": "outbound",
+  "_char_count": 3000
+}

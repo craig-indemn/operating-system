@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Destiny Lewis wanted to make a payment for an insurance policy (likely a typo for 'smart' or another term) and confirm the payment details.",
+  "resolution_steps": [
+    "Agent asked for payment details (checking account and routing number).",
+    "Agent processed the payment after confirming the information.",
+    "Agent offered to send an email confirmation for the payment."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Payment processing procedures",
+    "Account verification protocols"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's internal payment processing system"
+  ],
+  "summary": "Destiny Lewis contacted Alliance Insurance to make a payment. The agent verified her banking details, processed the payment, and confirmed they would send an email receipt. The call concluded with the agent offering further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 192,
+  "_total_duration_ms": 25908,
+  "_source_file": "transcripts/in-+13363779003-+13368146641-20250917-125738-1758128258.2541.txt",
+  "_direction": "inbound",
+  "_char_count": 635
+}

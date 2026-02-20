@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Harry Donen wants to inquire about the cost of worker's compensation and general liability insurance for his business, which he refers to as 'drawwall and.'",
+  "resolution_steps": [
+    "Agent acknowledges the caller's request for insurance cost information.",
+    "Agent asks for clarification on the type of business ('drawwall and').",
+    "Agent offers to transfer the caller to a specialized agent for further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of worker's compensation and general liability insurance products",
+    "Knowledge of business classification for insurance purposes"
+  ],
+  "systems_referenced": [],
+  "summary": "Harry Donen inquired about insurance costs for his business. The agent requested clarification on his business type and offered to transfer him to an agent specializing in commercial insurance. The call concluded with a pending transfer to a specialist.",
+  "_model": "qwen3:14b",
+  "_eval_count": 202,
+  "_total_duration_ms": 33461,
+  "_source_file": "transcripts/in-+13363779003-+13362875054-20251118-142523-1763493923.4369.txt",
+  "_direction": "inbound",
+  "_char_count": 397
+}

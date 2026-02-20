@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is trying to resolve confusion about an automatic bank account deduction related to their auto insurance policy after recently adding and dropping a car. They want to know the amount being charged.",
+  "resolution_steps": [
+    "Agent acknowledged the caller's issue with the automatic bank deduction.",
+    "Agent put the caller on hold and offered assistance via the customer portal (myallianceinsurance.com) or texting (3367861133).",
+    "Agent informed the caller that the system was not allowing them to check the information directly and offered to transfer them to another teammate for further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of auto insurance payment processes",
+    "Knowledge of customer portal and texting support options"
+  ],
+  "systems_referenced": [
+    "myallianceinsurance.com customer portal",
+    "texting support (3367861133)"
+  ],
+  "summary": "The caller is confused about an automatic bank deduction linked to their auto insurance policy after adding and dropping a car. The agent offered online and texting support options but could not resolve the issue directly, transferring the caller to another teammate. The call was cut off before the transfer was completed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 279,
+  "_total_duration_ms": 44570,
+  "_source_file": "transcripts/in-+13363779003-+13367717676-20250807-142948-1754591388.10647.txt",
+  "_direction": "inbound",
+  "_char_count": 1461
+}

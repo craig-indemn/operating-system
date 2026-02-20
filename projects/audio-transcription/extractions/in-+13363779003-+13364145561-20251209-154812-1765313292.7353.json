@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Inbound call transcript is too brief and incomplete to determine caller intent or resolution steps. Agent acknowledges call and mentions checking availability, but conversation cuts off before meaningful interaction.",
+  "_model": "qwen3:14b",
+  "_eval_count": 85,
+  "_total_duration_ms": 23722,
+  "_source_file": "transcripts/in-+13363779003-+13364145561-20251209-154812-1765313292.7353.txt",
+  "_direction": "inbound",
+  "_char_count": 132
+}

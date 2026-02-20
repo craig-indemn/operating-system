@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller left a voicemail regarding an insurance application and proof of insurance requirements for National General.",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A voicemail was left by JC from Alliance Insurance for Virginia, discussing a missing signed application and proof of insurance for National General. The caller requested a callback.",
+  "_model": "qwen3:14b",
+  "_eval_count": 102,
+  "_total_duration_ms": 34725,
+  "_source_file": "transcripts/out-13369720775-114-20250728-095955-1753711195.1556.txt",
+  "_direction": "outbound",
+  "_char_count": 770
+}

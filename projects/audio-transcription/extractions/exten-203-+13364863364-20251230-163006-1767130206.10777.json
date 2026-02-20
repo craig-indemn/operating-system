@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Mary Baker wants to process a claim payment (claim #136) and inquire about online payment options and enrollment in a customer portal for future access to policy documents and claim information.",
+  "resolution_steps": [
+    "Agent verifies claim number (corrected from 137 to 136) and confirms documents were received.",
+    "Agent offers enrollment in a customer center portal for online payments and claim management.",
+    "Agent explains payment options (credit card or check) and confirms Mary will use credit card.",
+    "Agent schedules a callback after making a quick call to finalize payment setup.",
+    "Agent confirms Mary will sign and return a quote via the portal."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance claims processing",
+    "Online customer portal enrollment procedures",
+    "Payment method options (credit card, check)",
+    "Policy document management"
+  ],
+  "systems_referenced": [
+    "Auto Owners (insurance carrier)",
+    "Customer center portal (for policy access and payments)",
+    "Claim management system (reference to claim #136)"
+  ],
+  "summary": "Mary Baker discusses processing a claim payment (claim #136) with Maria from Alliance Insurance Services. The agent guides her through online payment options, enrolls her in a customer portal, and schedules a callback to finalize payment setup. The conversation includes verification of claim details and confirmation of credit card payment method.",
+  "_model": "qwen3:14b",
+  "_eval_count": 317,
+  "_total_duration_ms": 43665,
+  "_source_file": "transcripts/exten-203-+13364863364-20251230-163006-1767130206.10777.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1784
+}

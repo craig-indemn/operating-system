@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Verify the certificate of liability insurance for Woody's Tree Services.",
+  "resolution_steps": [
+    "Agent offered to connect caller with another agent to assist with verification"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller requested verification of Woody's Tree Services insurance certificate. Agent promised to connect with another agent but did not perform any verification steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 104,
+  "_total_duration_ms": 28492,
+  "_source_file": "transcripts/in-+13363779003-+18282313827-20251014-125408-1760460848.3240.txt",
+  "_direction": "inbound",
+  "_char_count": 414
+}

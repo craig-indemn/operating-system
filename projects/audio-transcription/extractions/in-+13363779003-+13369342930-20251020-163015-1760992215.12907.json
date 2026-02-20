@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; caller briefly asked if Anna was available before the conversation ended.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Very brief call where the caller asked if Anna was available. The agent (Joyce) responded with a standard greeting and a pause, but no meaningful conversation or resolution occurred. Insufficient information to determine intent or outcome.",
+  "_model": "qwen3:14b",
+  "_eval_count": 112,
+  "_total_duration_ms": 25248,
+  "_source_file": "transcripts/in-+13363779003-+13369342930-20251020-163015-1760992215.12907.txt",
+  "_direction": "inbound",
+  "_char_count": 111
+}

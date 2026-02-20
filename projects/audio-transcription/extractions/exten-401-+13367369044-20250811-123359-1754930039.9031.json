@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "David McFarlane wants to add a vehicle to his insurance policy under his name and his daughter's name while keeping his daughter's existing policy open without canceling it. He also seeks clarification on adjusting coverage and ensuring proper documentation.",
+  "resolution_steps": [
+    "Agent Heather confirms David's identity and references a prior conversation about adding full coverage to a vehicle.",
+    "David provides details about his wife's and daughter's policies, including names and contact information.",
+    "Heather explains the process of adjusting coverage (dropping collision to liability-only) without canceling the daughter's policy.",
+    "Heather coordinates with the service team to handle the policy changes and ensures David understands the need to avoid policy cancellation to prevent higher premiums.",
+    "Heather verifies the daughter's policy details, including address and insurance provider (Progressive), and confirms the service team will manage the adjustments."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance policy adjustments (adding vehicles, modifying coverage types)",
+    "Progressive insurance system navigation",
+    "Importance of continuous coverage to avoid premium increases",
+    "Handling policy transfers between individuals"
+  ],
+  "systems_referenced": [
+    "Progressive insurance portal",
+    "Alliance Insurance Services customer portal (myallianceinsurance.com)",
+    "Email communication for proof of insurance"
+  ],
+  "summary": "David McFarlane seeks to add a vehicle to his insurance policy and adjust his daughter's existing policy to liability-only coverage without cancellation. Agent Heather explains the process, coordinates with the service team, and ensures proper documentation to avoid coverage lapses. The call concludes with confirmation that the service team will handle the adjustments.",
+  "_model": "qwen3:14b",
+  "_eval_count": 362,
+  "_total_duration_ms": 60067,
+  "_source_file": "transcripts/exten-401-+13367369044-20250811-123359-1754930039.9031.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 7817
+}

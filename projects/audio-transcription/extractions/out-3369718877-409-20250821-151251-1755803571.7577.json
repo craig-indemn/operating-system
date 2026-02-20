@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Alan needed assistance finalizing a payment for an insurance policy, resolving confusion between carriers (Chub vs. USLI), and confirming document receipt for an event-related insurance policy.",
+  "resolution_steps": [
+    "Corbin clarified the correct carrier (USLI) after Alan mistakenly selected Chub.",
+    "Confirmed payment details, including credit card information, email, and cardholder name.",
+    "Processed the payment and verified its completion.",
+    "Checked whether Alan had received and signed the required document via email.",
+    "Provided confirmation that the payment was processed and the document was received."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Carrier-specific insurance policies (e.g., USLI for events)",
+    "Payment processing procedures",
+    "Handling credit card information securely",
+    "Document verification and signing workflows"
+  ],
+  "systems_referenced": [
+    "USLI (carrier)",
+    "Chub (carrier)",
+    "Payment processing system",
+    "Email communication (honeybeehempfarms.farms domain)"
+  ],
+  "summary": "Corbin assisted Alan in resolving a carrier mix-up, processed a payment for an event insurance policy, and confirmed document receipt. The call concluded with payment confirmation and a follow-up on the signed document. Alan expressed gratitude, and both parties agreed to stay in touch for future needs.",
+  "_model": "qwen3:14b",
+  "_eval_count": 301,
+  "_total_duration_ms": 60404,
+  "_source_file": "transcripts/out-3369718877-409-20250821-151251-1755803571.7577.txt",
+  "_direction": "outbound",
+  "_char_count": 2609
+}

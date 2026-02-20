@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is following up on previous messages left for commercial agents at Alliance Insurance and is seeking assistance with an unresolved inquiry.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's attempt to reach commercial agents and confirms they have left messages.",
+    "Agent states they will attempt to connect the caller with a commercial agent."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of internal processes for connecting callers to commercial agents",
+    "Ability to escalate or route calls appropriately"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller followed up on previous messages to commercial agents at Alliance Insurance, expressing frustration over lack of response. The agent acknowledged the caller's attempts and committed to connecting them with a commercial agent. The call was cut off before resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 185,
+  "_total_duration_ms": 45785,
+  "_source_file": "transcripts/in-+13363779003-+17863673494-20250730-153512-1753904112.10461.txt",
+  "_direction": "inbound",
+  "_char_count": 325
+}

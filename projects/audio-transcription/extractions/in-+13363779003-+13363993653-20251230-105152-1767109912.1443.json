@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unknown (call transcript truncated immediately after agent greeting)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Incomplete call transcript showing only the beginning of an agent greeting. No meaningful conversation or caller input is present in the available audio.",
+  "_model": "qwen3:14b",
+  "_eval_count": 88,
+  "_total_duration_ms": 20674,
+  "_source_file": "transcripts/in-+13363779003-+13363993653-20251230-105152-1767109912.1443.txt",
+  "_direction": "inbound",
+  "_char_count": 81
+}

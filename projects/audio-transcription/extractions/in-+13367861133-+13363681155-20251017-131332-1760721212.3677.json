@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (SDJ Jessup Construction) wants to cancel a builder's risk insurance policy associated with Doug Johnson at 630 Whitaker Chapel Road.",
+  "resolution_steps": [
+    "Agent confirmed the business name (SDJ Jessup Construction) and client name (Doug Johnson).",
+    "Agent looked up the policy using the address (630 Whitaker Chapel Road) and policy number.",
+    "Agent identified Kendall as the appropriate agent to handle the cancellation request.",
+    "Agent transferred the call to Kendall."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy lookup procedures in the agency's database",
+    "Understanding of builder's risk policy cancellation processes"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal policy database"
+  ],
+  "summary": "A construction company representative requested cancellation of a builder's risk policy. The agent verified policy details and transferred the call to the appropriate agent for further processing. The call was not resolved in this interaction but was directed to the correct handler.",
+  "_model": "qwen3:14b",
+  "_eval_count": 233,
+  "_total_duration_ms": 30929,
+  "_source_file": "transcripts/in-+13367861133-+13363681155-20251017-131332-1760721212.3677.txt",
+  "_direction": "inbound",
+  "_char_count": 825
+}

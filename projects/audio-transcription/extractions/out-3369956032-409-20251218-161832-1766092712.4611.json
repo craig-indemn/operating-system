@@ -1,0 +1,35 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Willet needs assistance finalizing a car insurance policy setup, including payment method configuration and clarification about the carrier and required documentation.",
+  "resolution_steps": [
+    "Agent confirmed Willet's intent to complete a previously interrupted payment setup for a new policy.",
+    "Collected banking details (routing/account numbers) for automatic payments.",
+    "Discussed policy activation date and payment scheduling options.",
+    "Informed Willet about the carrier (National General Insurance) and its relationship with Allstate.",
+    "Provided instructions for downloading the Nat Gen app and mentioned the Dynamic Driver app (later retracted).",
+    "Sent a canopy connect link for proof of home ownership and requested completion.",
+    "Notified Willet about receiving an email for e-signing the application and using a code from the email."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy activation processes",
+    "Payment setup procedures (direct debit, routing/account numbers)",
+    "Carrier-specific information (National General Insurance, Allstate acquisition)",
+    "App integration for policy management (Nat Gen, Dynamic Driver)",
+    "Documentation requirements (proof of home ownership, e-signature processes)"
+  ],
+  "systems_referenced": [
+    "National General Insurance",
+    "Nat Gen app",
+    "Dynamic Driver app",
+    "canopy connect portal",
+    "Allstate (as parent company of National General)"
+  ],
+  "summary": "Agent assisted Willet in finalizing a car insurance policy setup, including configuring automatic payments, clarifying the carrier details, and providing instructions for app integration and documentation. The agent also sent a canopy connect link for proof of home ownership and mentioned e-signature requirements for the application.",
+  "_model": "qwen3:14b",
+  "_eval_count": 371,
+  "_total_duration_ms": 54929,
+  "_source_file": "transcripts/out-3369956032-409-20251218-161832-1766092712.4611.txt",
+  "_direction": "outbound",
+  "_char_count": 4091
+}

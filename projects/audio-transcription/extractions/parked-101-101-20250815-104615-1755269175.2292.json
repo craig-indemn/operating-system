@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Follow-up on previous insurance quotes (restaurant/construction business and Slice of Italy), discuss outcomes, and explore new business opportunities in building supplies/lumber.",
+  "resolution_steps": [
+    "Agent confirmed previous quotes (BOP/auto for construction business with Westfield and Slice of Italy with Auto Owners) and explained they were out of range.",
+    "Discussed credit application strategies and differences in premium customization philosophies.",
+    "Addressed client's appetite for new business in building supplies/lumber and confirmed current carrier restrictions.",
+    "Offered assistance with new business/renewals and acknowledged another business inquiry."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance quoting processes for commercial policies (BOP, auto)",
+    "Carrier-specific underwriting criteria (Westfield, Auto Owners)",
+    "Credit application procedures for insurance policies",
+    "Industry-specific risk appetites (lumber/building materials)"
+  ],
+  "systems_referenced": [
+    "Hartford Small Commercial internal systems",
+    "Westfield insurance portal",
+    "Auto Owners insurance platform"
+  ],
+  "summary": "Sharice Daniel from Hartford Small Commercial followed up on previous insurance quotes, discussed outcomes with the agent, and inquired about new business opportunities in building supplies. The agent explained policy outcomes, credit strategies, and current carrier restrictions, offering to assist with new business/renewals. The conversation ended with the client indicating another business inquiry to address.",
+  "_model": "qwen3:14b",
+  "_eval_count": 317,
+  "_total_duration_ms": 45218,
+  "_source_file": "transcripts/parked-101-101-20250815-104615-1755269175.2292.txt",
+  "_direction": "parked",
+  "_char_count": 4329
+}

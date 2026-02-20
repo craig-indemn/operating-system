@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller seeks a homeowner's insurance quote for a secondary home they are purchasing, while noting they already have life insurance through the agency.",
+  "resolution_steps": [
+    "Agent acknowledges the request and offers to connect the caller with an agent for a homeowner's insurance quote."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Homeowner's insurance policies",
+    "Quote generation process"
+  ],
+  "systems_referenced": [
+    "Agency's quoting system"
+  ],
+  "summary": "A caller with existing life insurance through Alliance Insurance Services requested a homeowner's insurance quote for a secondary home. The agent offered to connect them with an agent for the quote, but the call was cut off before resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 172,
+  "_total_duration_ms": 21697,
+  "_source_file": "transcripts/in-+13363779003-+17046807857-20250918-154756-1758224876.9575.txt",
+  "_direction": "inbound",
+  "_char_count": 322
+}

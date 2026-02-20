@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Larry Batlock wanted to confirm whether he had successfully paid his car insurance for the current month after receiving a bill.",
+  "resolution_steps": [
+    "Agent accessed Larry's payment history to check the last payment date.",
+    "Confirmed the last payment was made on December 10th for the full amount.",
+    "Notified Larry that his next payment is scheduled for January 25th and that he is currently up to date.",
+    "Provided reassurance and closed the conversation with a friendly sign-off."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Access to client payment records",
+    "Understanding of insurance billing cycles and renewal dates"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services internal payment tracking system"
+  ],
+  "summary": "Larry Batlock contacted Alliance Insurance Services to confirm he had paid his car insurance for the current month. The agent verified his payment history, confirmed he was up to date, and informed him of his next payment date. The call concluded with Larry being reassured and both parties exchanging polite farewells.",
+  "_model": "qwen3:14b",
+  "_eval_count": 244,
+  "_total_duration_ms": 34077,
+  "_source_file": "transcripts/in-+13363682529-+13365825944-20251226-100104-1766761264.621.txt",
+  "_direction": "inbound",
+  "_char_count": 895
+}

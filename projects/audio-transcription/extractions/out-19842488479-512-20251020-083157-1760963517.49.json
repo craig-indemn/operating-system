@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Apologize for missing a previous call and request a callback or email.",
+  "resolution_steps": [
+    "Left voicemail message",
+    "Requested callback or email"
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Voicemail left by Joe at Alliance Insurance apologizing for missing a call and requesting a callback or email. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 103,
+  "_total_duration_ms": 31353,
+  "_source_file": "transcripts/out-19842488479-512-20251020-083157-1760963517.49.txt",
+  "_direction": "outbound",
+  "_char_count": 565
+}

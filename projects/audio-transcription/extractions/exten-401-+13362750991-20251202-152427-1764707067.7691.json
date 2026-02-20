@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Taryn is discussing a recent claim related to a prior residence and seeking assistance with updating insurance policies (home, auto, and umbrella) for Tommy Blacklock, while also sharing a personal story about her husband's hospitalization.",
+  "resolution_steps": [
+    "Agent confirmed the claim relates to a prior residence and verified the roof's installation year (2016) for the new home.",
+    "Agent checked the auto quote details, confirming it qualifies and includes coverage for Tommy and his daughter.",
+    "Agent discussed the need for an umbrella policy, noting a previous quote of $250,000/$500,000.",
+    "Agent acknowledged the need to verify the relationship between Tommy and his daughter (possible grandmother/granddaughter)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding insurance claim processes for prior residences",
+    "Knowledge of policy coverage details (home, auto, umbrella)",
+    "Ability to verify policyholder relationships and household composition"
+  ],
+  "systems_referenced": [
+    "Auto quote system (used to check policy details)",
+    "Claims portal (for prior residence claim verification)"
+  ],
+  "summary": "Taryn shared a personal story about her husband's hospitalization before discussing insurance needs for Tommy Blacklock. The agent verified claim details, confirmed auto policy eligibility, and discussed umbrella policy options. The call required checking policyholder relationships and accessing quote systems.",
+  "_model": "qwen3:14b",
+  "_eval_count": 320,
+  "_total_duration_ms": 49669,
+  "_source_file": "transcripts/exten-401-+13362750991-20251202-152427-1764707067.7691.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3867
+}

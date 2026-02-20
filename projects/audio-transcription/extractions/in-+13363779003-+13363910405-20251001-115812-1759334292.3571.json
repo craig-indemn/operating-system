@@ -1,0 +1,19 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Returning a call to Holly, requesting to be connected to her extension",
+  "resolution_steps": [
+    "Agent acknowledges the call",
+    "Agent states intent to transfer to Holly's extension",
+    "Call is transferred"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Brief inbound call where the caller requested to be connected to Holly's extension. No substantive discussion occurred beyond the transfer request.",
+  "_model": "qwen3:14b",
+  "_eval_count": 112,
+  "_total_duration_ms": 23483,
+  "_source_file": "transcripts/in-+13363779003-+13363910405-20251001-115812-1759334292.3571.txt",
+  "_direction": "inbound",
+  "_char_count": 193
+}

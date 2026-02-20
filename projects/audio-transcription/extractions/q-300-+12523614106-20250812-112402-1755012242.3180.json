@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is trying to submit a claim for an accident and is clarifying their role as the other party in the incident.",
+  "resolution_steps": [
+    "Agent verifies the caller is the other party, not the insured.",
+    "Agent requests policy number and insured's name (Jamea Newell) for lookup.",
+    "Agent clarifies confusion about 'Alliance' being an agency vs. a carrier.",
+    "Agent attempts to locate the policy using provided details (policy number, address in North Carolina).",
+    "Agent admits difficulty finding the policy and requests additional information."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding the difference between insurance agencies and carriers",
+    "Policy lookup procedures",
+    "State-specific insurance regulations (North Carolina)"
+  ],
+  "systems_referenced": [
+    "Internal policy database",
+    "Carrier portals (Alliance Insurance)"
+  ],
+  "summary": "A caller attempted to submit a claim for an accident, clarifying they were the other party. The agent struggled to locate the policy using provided details, highlighting confusion between the agency and carrier names. Further information was requested to resolve the claim submission.",
+  "_model": "qwen3:14b",
+  "_eval_count": 263,
+  "_total_duration_ms": 31382,
+  "_source_file": "transcripts/q-300-+12523614106-20250812-112402-1755012242.3180.txt",
+  "_direction": "queue",
+  "_char_count": 1691
+}

@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Corbin, an agent from Alliance Insurance) sought to verify whether a boat was added to the correct policy in Progressive's system and confirm coverage details.",
+  "resolution_steps": [
+    "Jasmine confirmed the policy number provided by Corbin (31207185) and verified the boat was added to the correct policy.",
+    "Corbin requested a second check on another policy number (969995329) for Edward Wilkinson to ensure no errors.",
+    "Jasmine confirmed no additional items were added to Edward Wilkinson's policy and validated the boat coverage on the original policy.",
+    "Corbin was assured the boat was correctly added and the call concluded with mutual confirmation."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Access to Progressive's policy verification system",
+    "Understanding of policy number formats and coverage details",
+    "Ability to cross-check multiple policies for accuracy"
+  ],
+  "systems_referenced": [
+    "Progressive's internal policy management system"
+  ],
+  "summary": "Corbin, an agent from Alliance Insurance, contacted Progressive to confirm a boat was added to the correct policy. Jasmine verified the policy details, cross-checked with a second policy number, and confirmed the boat coverage was accurate. The call concluded with Corbin satisfied and the issue resolved.",
+  "_model": "qwen3:14b",
+  "_eval_count": 294,
+  "_total_duration_ms": 41553,
+  "_source_file": "transcripts/out-8777762436-409-20250731-144154-1753987314.12824.txt",
+  "_direction": "outbound",
+  "_char_count": 1942
+}

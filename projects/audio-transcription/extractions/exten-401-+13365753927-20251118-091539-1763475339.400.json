@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "David is discussing his current insurance policies with his agent, Heather, and considering switching from Travelers to Auto Owners for auto insurance while keeping his home policy with Travelers. He wants to compare costs, coverage details, and administrative steps.",
+  "resolution_steps": [
+    "Heather confirmed David's current policies (Travelers auto/home) and discussed switching auto insurance to Auto Owners.",
+    "Compared pricing: Auto Owners offered $100/month vs. Travelers' $130/month, with Auto Owners providing $500 more in coverage.",
+    "Discussed coverage adjustments: Removing medical payments to lower costs, adjusting deductibles, and confirming liability limits.",
+    "Addressed administrative tasks: Collecting driver's license numbers for David's daughter and her husband, coordinating policy renewals, and confirming umbrella policy details.",
+    "Heather agreed to call Auto Owners to confirm details and send revised quotes for David's approval."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Auto and home insurance policy structures",
+    "Coverage options (liability, deductibles, umbrella policies)",
+    "Administrative requirements (driver's license verification, policy renewals)",
+    "Insurance carrier-specific details (Travelers, Auto Owners, Erie)"
+  ],
+  "systems_referenced": [
+    "Auto Owners insurance platform",
+    "Travelers insurance portal",
+    "Erie insurance (mentioned as daughter's provider)"
+  ],
+  "summary": "David is transitioning his auto insurance from Travelers to Auto Owners for cost savings and coverage improvements, while retaining his Travelers home policy. Heather is coordinating policy adjustments, verifying administrative details, and will follow up with Auto Owners for final confirmation. Key decisions include coverage modifications and timing for policy renewals.",
+  "_model": "qwen3:14b",
+  "_eval_count": 381,
+  "_total_duration_ms": 74317,
+  "_source_file": "transcripts/exten-401-+13365753927-20251118-091539-1763475339.400.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 16778
+}

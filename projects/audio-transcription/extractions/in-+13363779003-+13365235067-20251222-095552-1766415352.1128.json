@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to add a new car to their existing insurance policy and mentioned a desire to transfer over, though the exact context of the transfer is unclear.",
+  "resolution_steps": [
+    "Agent would confirm the caller's policy details to verify eligibility for adding a vehicle.",
+    "Agent would request specific information about the new car (e.g., make, model, year, VIN).",
+    "Agent would check for any necessary documentation or underwriting requirements for the addition.",
+    "Agent would explain potential changes to premiums or coverage terms."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy adjustment procedures",
+    "Underwriting guidelines for adding vehicles",
+    "Premium calculation factors"
+  ],
+  "systems_referenced": [
+    "Policy management system",
+    "Quote generation tool"
+  ],
+  "summary": "A caller sought to add a car to their policy and mentioned a transfer. The agent would need to gather vehicle details, verify policy eligibility, and explain potential changes. The call requires follow-up for full resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 236,
+  "_total_duration_ms": 24073,
+  "_source_file": "transcripts/in-+13363779003-+13365235067-20251222-095552-1766415352.1128.txt",
+  "_direction": "inbound",
+  "_char_count": 154
+}

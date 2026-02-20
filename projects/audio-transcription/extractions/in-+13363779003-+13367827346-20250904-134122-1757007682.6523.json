@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to make payments for both auto and renters insurance policies using an updated credit card and clarify payment amounts and due dates.",
+  "resolution_steps": [
+    "Agent verified the caller's identity and confirmed the policies involved (auto and renters).",
+    "Agent processed the auto payment using a new card number provided by the caller after the initial card was declined.",
+    "Agent attempted to send a payment confirmation email but noted the caller had no valid email address.",
+    "Agent confirmed the auto payment was successful and clarified the renters payment was already covered by the first transaction.",
+    "Agent resolved confusion about the renters policy's due date by checking internal records and confirming the payment was up to date."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Payment processing procedures",
+    "Policy account management",
+    "Credit card validation protocols",
+    "Insurance policy due date tracking"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance customer portal (myallianceinsurance.com)",
+    "Internal policy management system"
+  ],
+  "summary": "The caller successfully made payments for auto and renters insurance after updating her credit card information. The agent clarified that the renters payment was already covered by the initial transaction and resolved confusion about policy due dates. The call concluded with the caller indicating no further assistance was needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 294,
+  "_total_duration_ms": 40404,
+  "_source_file": "transcripts/in-+13363779003-+13367827346-20250904-134122-1757007682.6523.txt",
+  "_direction": "inbound",
+  "_char_count": 2330
+}

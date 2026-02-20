@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller seeks assistance with merging multiple agency codes into a single statement and inquires about educational opportunities related to their role with Hartford School of Insurance.",
+  "resolution_steps": [
+    "Agent confirms caller's request to merge agency codes and explains the need to contact the contracting department.",
+    "Agent provides the contracting department's phone number (888-203-3823) and clarifies the caller should select the 'contracting' option, not 'licensing.'",
+    "Agent explains the potential need for multiple codes (master code, policy holder service code, management liability code) and advises the caller to discuss consolidation with the contracting department.",
+    "Agent mentions the caller's upcoming role as an instructor trainer at Hartford School of Insurance and acknowledges their transition.",
+    "Agent asks if there are specific resources or portals (e.g., ISU or VIP programs) to direct the caller for educational opportunities."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance agency code structures and consolidation processes",
+    "Familiarity with Hartford School of Insurance programs",
+    "Knowledge of internal systems (ISU, VIP programs) and carrier portals"
+  ],
+  "systems_referenced": [
+    "Contracting department (phone number provided)",
+    "Hartford School of Insurance",
+    "ISU (Insurance Service University)",
+    "VIP programs"
+  ],
+  "summary": "The caller discusses merging multiple agency codes into a single statement and seeks guidance on educational resources related to their new role at Hartford School of Insurance. The agent provides steps to contact the contracting department, explains potential code requirements, and acknowledges the caller's career transition. The conversation highlights the need for further follow-up with the contracting team and exploration of ISU/VIP resources.",
+  "_model": "qwen3:14b",
+  "_eval_count": 387,
+  "_total_duration_ms": 44391,
+  "_source_file": "transcripts/exten-105-+13364601448-20260106-134117-1767724877.3714.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4532
+}

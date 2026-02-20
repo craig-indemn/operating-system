@@ -1,0 +1,23 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Requesting a callback to discuss auto policy assistance after leaving a voicemail.",
+  "resolution_steps": [
+    "Left voicemail message requesting callback",
+    "Mentioned sending an email for further assistance"
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [
+    "Auto insurance policies",
+    "Follow-up procedures"
+  ],
+  "systems_referenced": [
+    "Email communication"
+  ],
+  "summary": "Agent Jacy from Alliance Insurance left a voicemail for Cynthia, requesting a callback to assist with an auto policy and mentioned sending an email for further details.",
+  "_model": "qwen3:14b",
+  "_eval_count": 126,
+  "_total_duration_ms": 53315,
+  "_source_file": "transcripts/out-13362502871-404-20250805-124205-1754412125.5389.txt",
+  "_direction": "outbound",
+  "_char_count": 369
+}

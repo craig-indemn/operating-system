@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Daryl Rogers is seeking guidance on repairing a minor windshield ping mark on his mother Rita Rogers' auto insurance policy and requesting assistance in arranging a repair service.",
+  "resolution_steps": [
+    "Brandy confirms the claim details and explains that Piedmont Tire and Auto Glass will assess whether the damage requires repair or replacement.",
+    "Brandy provides the deductible amount ($100) for replacement and offers to send the claim to Piedmont for evaluation.",
+    "Daryl requests to be added as a contact for Rita's policy (auto and homeowners insurance with Penn National) to avoid confusion with caregivers.",
+    "Brandy agrees to add Daryl's contact information (phone numbers and email) to the system."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Auto insurance claims process",
+    "Deductible calculations for windshield repairs",
+    "Partnership with Piedmont Tire and Auto Glass",
+    "Policy contact management procedures"
+  ],
+  "systems_referenced": [
+    "Penn National (insurance carrier)",
+    "Piedmont Tire and Auto Glass (service provider)",
+    "Alliance Insurance Services internal contact management system"
+  ],
+  "summary": "Brandy assists Daryl Rogers with a windshield damage claim for his mother's auto policy, refers the case to Piedmont Tire and Auto Glass for assessment, and adds Daryl as an official contact for the policy to streamline future communications. The call concludes with confirmation that Piedmont will contact the customer directly for repair scheduling.",
+  "_model": "qwen3:14b",
+  "_eval_count": 329,
+  "_total_duration_ms": 43282,
+  "_source_file": "transcripts/q-300-+17138758646-20260109-120647-1767978407.1805.txt",
+  "_direction": "queue",
+  "_char_count": 3945
+}

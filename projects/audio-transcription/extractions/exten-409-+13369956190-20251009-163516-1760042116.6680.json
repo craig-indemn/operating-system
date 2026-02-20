@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Ricardo is following up on a previous request related to a college matter, seeking an update that Carbon had asked him to check on.",
+  "resolution_steps": [
+    "Carbon acknowledges not having received an update yet.",
+    "Ricardo requests a one-day extension to wait for a response.",
+    "Carbon agrees to call back the next day around 10 AM."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding the context of prior communication about college-related tasks",
+    "Managing follow-up timelines and expectations"
+  ],
+  "systems_referenced": [],
+  "summary": "Ricardo checks in with Carbon about a college-related update, noting no response yet. Carbon agrees to follow up the next day at 10 AM, citing office meetings as a reason for the delay. The conversation concludes with mutual acknowledgment of the timeline.",
+  "_model": "qwen3:14b",
+  "_eval_count": 197,
+  "_total_duration_ms": 32116,
+  "_source_file": "transcripts/exten-409-+13369956190-20251009-163516-1760042116.6680.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 684
+}

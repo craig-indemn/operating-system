@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Sarah wants to make a payment for her insurance policy with Travelers, confirm there will be no coverage lapse after switching from Progressive, and set up AutoPay for future payments.",
+  "resolution_steps": [
+    "Dina confirms Sarah's intent to make a payment and checks the policy status.",
+    "Dina explains that there will be no coverage lapse if the payment is made before the cancellation date.",
+    "Dina clarifies that the policy was recently switched from Progressive to Travelers and confirms the first payment is for the truck.",
+    "Dina assists Sarah in setting up AutoPay using her checking account and routing number.",
+    "Dina confirms the account and routing numbers provided by Sarah and agrees to process the payment."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of insurance policy activation and coverage lapse dates",
+    "Process for switching insurance providers and updating DMV records",
+    "AutoPay setup procedures for insurance payments"
+  ],
+  "systems_referenced": [
+    "Travelers insurance policy system",
+    "Progressive insurance (previous provider)",
+    "DMV (Department of Motor Vehicles)",
+    "AutoPay payment system"
+  ],
+  "summary": "Dina from Alliance Insurance Services assists Sarah in making her first payment for a newly activated Travelers insurance policy for a truck, confirms there will be no coverage lapse, and sets up AutoPay using Sarah's checking account details. The conversation also addresses the recent switch from Progressive and potential DMV correspondence.",
+  "_model": "qwen3:14b",
+  "_eval_count": 325,
+  "_total_duration_ms": 40338,
+  "_source_file": "transcripts/out-3366928814-509-20260109-134242-1767984162.4585.txt",
+  "_direction": "outbound",
+  "_char_count": 3943
+}

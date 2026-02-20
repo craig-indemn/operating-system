@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Claudia is following up on an email regarding a policy cancellation for Warrior Metal Buildings LLC due to non-payment and seeks clarification on class code discrepancies and reinstatement options for the new owner.",
+  "resolution_steps": [
+    "Amani confirms the previous cancellation of Mega Metals LLC due to non-payment and explains the class code (98502) discrepancy related to building manufacturing vs. carport installation.",
+    "Amani acknowledges the new owner's association with Mega Metals LLC but states the new owner wouldn't be held responsible for prior debts.",
+    "Amani agrees to adjust the class code and remove property due to building age, treating the request as a new policy.",
+    "Amani commits to sending updated details back to Claudia for next steps."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of insurance class codes (e.g., 98502 for building manufacturing)",
+    "Policy reinstatement procedures for businesses with prior non-payment cancellations",
+    "Handling of ownership transitions and liability for prior debts"
+  ],
+  "systems_referenced": [
+    "Westfield insurance portal (implied through policy details discussion)"
+  ],
+  "summary": "Claudia and Amani resolve an insurance policy issue for Warrior Metal Buildings LLC, addressing class code discrepancies, policy reinstatement, and liability for prior debts. Amani agrees to adjust the class code and send updated details, ensuring the new owner isn't held responsible for Mega Metals LLC's outstanding payments.",
+  "_model": "qwen3:14b",
+  "_eval_count": 322,
+  "_total_duration_ms": 46008,
+  "_source_file": "transcripts/exten-101-+17047522133-20250818-162320-1755548600.11083.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2337
+}

@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with an agent (intent not fully articulated due to call truncation)",
+  "resolution_steps": [
+    "Agent (Armando) acknowledges caller",
+    "Agent states 'one second' (likely preparing to transfer or wait)"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Inbound call truncated during initial greeting. Caller requested to speak with an agent but did not articulate specific intent. Agent acknowledged request but no further action or resolution was documented.",
+  "_model": "qwen3:14b",
+  "_eval_count": 128,
+  "_total_duration_ms": 34394,
+  "_source_file": "transcripts/in-+13363779003-+13368146641-20251023-135833-1761242313.4017.txt",
+  "_direction": "inbound",
+  "_char_count": 257
+}

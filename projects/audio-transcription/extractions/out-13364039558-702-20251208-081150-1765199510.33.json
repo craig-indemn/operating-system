@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Caller left a voicemail for their boss to inform them about forgetting their phone and requesting a callback.",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [
+    "automated voice messaging system"
+  ],
+  "summary": "Caller left a voicemail for their boss, explaining they forgot their phone and asked to be called back. The call was routed to an automated system, with no agent interaction.",
+  "_model": "qwen3:14b",
+  "_eval_count": 112,
+  "_total_duration_ms": 25985,
+  "_source_file": "transcripts/out-13364039558-702-20251208-081150-1765199510.33.txt",
+  "_direction": "outbound",
+  "_char_count": 435
+}

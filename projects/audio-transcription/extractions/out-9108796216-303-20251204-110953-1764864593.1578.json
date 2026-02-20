@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "No substantive conversation occurred; voicemail greeting followed by outbound message about policy review.",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The call was an outbound voicemail message from Alliance Insurance, leaving a greeting and a message about scheduling a policy review. No substantive interaction occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 95,
+  "_total_duration_ms": 82578,
+  "_source_file": "transcripts/out-9108796216-303-20251204-110953-1764864593.1578.txt",
+  "_direction": "outbound",
+  "_char_count": 591
+}

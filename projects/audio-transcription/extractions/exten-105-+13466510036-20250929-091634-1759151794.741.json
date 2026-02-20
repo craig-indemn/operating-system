@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, representing Covenant, is addressing a delayed claim payment caused by an adjusting firm's inefficiencies and seeks assurance that the claim will be prioritized. They also mention discussing updates to the hotel program.",
+  "resolution_steps": [
+    "Agent acknowledges the claim delay and confirms Brian (likely a colleague) has the issue on his priority list.",
+    "Agent explains that while immediate payment isn't possible, attention will be directed to the claim.",
+    "Agent shifts to discussing the hotel program update, including a new fronting carrier and reinsurance progress."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Claim processing delays",
+    "Adjusting firm workflows",
+    "Broker relations management",
+    "Carrier program updates"
+  ],
+  "systems_referenced": [
+    "Accelerant (carrier)",
+    "Reinsurance system",
+    "Hotel program portal"
+  ],
+  "summary": "A Covenant broker discusses a 120-day delayed claim caused by an adjusting firm's structural engineer requirement and requests prioritization. The agent confirms Brian's involvement and mentions upcoming hotel program updates, including a new fronting carrier. The call transitions from problem resolution to business updates.",
+  "_model": "qwen3:14b",
+  "_eval_count": 265,
+  "_total_duration_ms": 58931,
+  "_source_file": "transcripts/exten-105-+13466510036-20250929-091634-1759151794.741.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4247
+}

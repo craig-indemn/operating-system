@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Inform the client that an auto policy cannot be reinstated and must be rewritten, offering to provide a new quote via email.",
+  "resolution_steps": [
+    "Notified the client of the inability to reinstate the auto policy.",
+    "Informed the client that a new policy would need to be written.",
+    "Offered to prepare and email a quote for the new policy.",
+    "Provided a phone number for further questions."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy reinstatement procedures",
+    "Auto insurance policy rewriting process",
+    "Client communication protocols for policy changes"
+  ],
+  "systems_referenced": [
+    "Email (for sending quotes)"
+  ],
+  "summary": "Brandy from Alliance Insurance informed Michelle that the auto policy could not be reinstated and would require a new policy. She offered to prepare a quote and send it via email, while providing a phone number for additional questions. The call concluded with a standard sign-off.",
+  "_model": "qwen3:14b",
+  "_eval_count": 224,
+  "_total_duration_ms": 42478,
+  "_source_file": "transcripts/out-3367171068-112-20250929-131220-1759165940.4111.txt",
+  "_direction": "outbound",
+  "_char_count": 504
+}

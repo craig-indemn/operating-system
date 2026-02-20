@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jen Rockley is seeking clarification on her umbrella policy's exclusions for her daughters, confirming home policy coverage, and discussing auto policy details with National General, including the Dynamic Drive app and billing arrangements.",
+  "resolution_steps": [
+    "Brandi explains that the umbrella policy excludes youthful drivers under 24 due to Ruth's accident points, affecting coverage for Jen's daughters.",
+    "Confirms the home policy was issued and will activate by 10:15 AM, with billing adjusted to escrow for mortgage reimbursement.",
+    "Discusses the auto policy's discount with National General, noting the Dynamic Drive app requirement and its impact on premiums.",
+    "Arranges to send proof of insurance to the mortgage company and outlines the 30-day payment window for escrow billing."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Umbrella policy exclusions for youthful drivers under 24",
+    "Home and auto policy interactions with mortgage escrow billing",
+    "National General's Dynamic Drive app and its discount terms",
+    "Proof of insurance requirements for mortgage companies"
+  ],
+  "systems_referenced": [
+    "National General (auto insurance provider)",
+    "Dynamic Drive app (National General's telematics tool)",
+    "Mortgage company's proof of insurance portal"
+  ],
+  "summary": "Jen Rockley discusses her umbrella policy exclusions, home policy activation, and auto policy details with Brandi. Brandi clarifies coverage terms, confirms policy issuance, addresses billing adjustments for escrow, and explains National General's Dynamic Drive app requirements. The call concludes with next steps for proof of insurance submission and escrow billing arrangements.",
+  "_model": "qwen3:14b",
+  "_eval_count": 368,
+  "_total_duration_ms": 52274,
+  "_source_file": "transcripts/exten-112-+18507281896-20251014-164225-1760474545.8409.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4240
+}

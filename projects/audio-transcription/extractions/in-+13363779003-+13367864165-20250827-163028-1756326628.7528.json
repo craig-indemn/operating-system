@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to add a driver to their insurance policy and follow up on an unresponded email sent to the agency.",
+  "resolution_steps": [
+    "Agent asked for the policy number.",
+    "Caller provided account number '600023530' (with initial confusion in delivery).",
+    "Agent attempted to connect the caller to 'Oman,' who was allegedly the recipient of the email."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy management procedures",
+    "Internal communication protocols for transferring calls",
+    "Email tracking and response follow-up processes"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller from Merritt's Flying Military sought to add a driver to their policy and inquire about an unresponded email. The agent collected the policy number and attempted to connect the caller to another staff member ('Oman') for resolution, but the conversation was cut off mid-transfer.",
+  "_model": "qwen3:14b",
+  "_eval_count": 220,
+  "_total_duration_ms": 41153,
+  "_source_file": "transcripts/in-+13363779003-+13367864165-20250827-163028-1756326628.7528.txt",
+  "_direction": "inbound",
+  "_char_count": 879
+}

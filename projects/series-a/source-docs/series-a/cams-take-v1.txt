@@ -1,67 +1,0 @@
-Cam's Take - Indemn Series A Foundation: 
-Insurance Resolution Layer
-
-1. VISION & IDENTITY: THE DIGITAL WORKFORCE
-Indemn is the Resolution Layer for Insurance Distribution. We deploy a Digital Workforce of specialized AI Associates that understand the complex logic of insurance and work alongside human teams to convert intent into bound premium.
-
-The Strategic Insight: We are the infrastructure that wins regardless of who sits at the keyboard.
-The Native Advantage: We deliver specialized insurance intelligence as an enabling discipline, allowing carriers and MGAs to focus on their core value while we resolve the transaction.
-Outcome over Product: We do not sell tools; we deliver Business Outcomes.
-2. THE PROBLEM: THE DISTRIBUTION FRICTION GAP
-Insurance distribution is stalled by a massive friction gap: 70% of underwriting capacity is wasted on non-productive work.
-
-For Carriers: Strategic appetite is trapped behind slow, manual processes and a lack of speed-to-market for new digital initiatives.
-For Distribution: Staff are drowning in administrative drudgery, causing $100M MGAs to operate at 30% efficiency.
-The Consequence: This friction represents lost revenue that current human-only teams cannot physically capture.
-3. THE FOUR OUTCOMES: REVENUE-FIRST INTELLIGENCE
-We deliver results through specialized AI Associates. These are not "products" you buy; they are capabilities you deploy to achieve specific business results.
-
-
-THE OUTCOME
-	THE ROLE OF THE ASSOCIATE
-	STRATEGIC VALUE
-
-REVENUE GROWTH
-	Unlocks capacity to capture missed revenue via 24/7 quoting and eligibility triage.
-
-	Primary Differentiator. Revenue-generating capabilities always outlast efficiency tools in vendor consolidation.
-
-
-OPERATIONAL EFFICIENCY
-	Liberates human staff from administrative drudgery by resolving service tasks (COIs, billing) instantly.
-
-	Converts fixed costs into scalable, automated resolutions.
-
-
-CLIENT RETENTION
-	Protects the book and maximizes lifetime value by identifying price spikes and coverage gaps.
-
-	Defends the current portfolio while seeking organic growth.
-
-
-STRATEGIC CONTROL
-	Provides visibility and deterministic guardrails through a Human-in-the-Loop architecture.
-
-	Ensures compliance by design; the AI never "guesses" on binding authority.
-
-4. THE STRATEGIC HEDGE: WHY WE WIN EITHER WAY
-Indemn is not just a bet on a single distribution model; it is a bet on the infrastructure that underlies all of them.
-
-Today (Support and Thrive): We empower the traditional distribution chain. Brokers and agents use our AI Associates to remain competitive and scale in a high-volume digital world.
-Tomorrow (The Function Gap): If market forces shift consumers away from traditional agents, a massive "Function Gap" opens in distribution.
-The Pivot: Because Indemn’s Associates already own the underwriting logic and the customer interface, we are perfectly positioned to step into that gap. We don’t just support the market; we can make the market directly.
-Investor Upside: Traditional distribution thrives, we win (we are their digital workforce). Consumers go direct, we win (we are the resolution layer they need).
-5. THE MOAT: DOMAIN SPECIFICITY
-The Fail-Safe Approach: Our Human-in-the-Loop architecture is a critical control for institutional engagement. It meets the market’s near-term need for safety while preparing the infrastructure for long-term autonomous evolution.
-The Partner Thesis: As proven by Jewelers Mutual, elite carriers recognize that leading-edge AI is an enabling discipline best delivered by a partner whose core value is the delivery of complex, insurance-specific outcomes.
-6. THE ASK: $10M SERIES A
-We are capacity-constrained, not demand-constrained.
-
-Funding Priorities: Scaling the Sales force (40%) to capture a $25M pipeline and Engineering (35%) to deepen the capabilities of our AI Associates.
-The Roadmap: Scaling from $1.1M ARR to $15M ARR by becoming the intelligence layer that every policy flows through.
-Key Soundbites for Investors
-"We are the infrastructure that wins regardless of who sits at the keyboard".
-"We empower the traditional broker to survive today and own the interface if the consumer goes direct tomorrow".
-"SaaS is a delivery method; Resolution is the business outcome".
-"Jewelers Mutual didn't buy a chatbot; they bought a revenue engine".
-

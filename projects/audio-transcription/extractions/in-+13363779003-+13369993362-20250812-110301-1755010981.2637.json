@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller attempted to cancel their auto insurance policy with Homer Auto but encountered a dropped call during the process.",
+  "resolution_steps": [
+    "Agent acknowledged the dropped call and offered to try reconnecting.",
+    "Caller confirmed they were on hold for 'Homer Auto' and stated their intent to cancel the policy."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Auto insurance cancellation procedures",
+    "Handling dropped calls during policy transactions"
+  ],
+  "systems_referenced": [
+    "Homer Auto"
+  ],
+  "summary": "A caller tried to cancel their Homer Auto insurance policy but faced a dropped call. The agent offered to reconnect but the conversation ended abruptly without resolution. The caller's intent to cancel remains unaddressed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 175,
+  "_total_duration_ms": 22420,
+  "_source_file": "transcripts/in-+13363779003-+13369993362-20250812-110301-1755010981.2637.txt",
+  "_direction": "inbound",
+  "_char_count": 306
+}

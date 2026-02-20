@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Carla Shell wants to make a payment for a loan with Progressive, specifically paying $1,381.20 using a credit card.",
+  "resolution_steps": [
+    "Agent confirmed the payment amount owed ($1,381.20).",
+    "Caller provided credit card details (number: 5312 5700 6381 1081, expiration: 06/30).",
+    "Agent confirmed the payment method and processed the transaction.",
+    "Caller requested confirmation via email, which the agent agreed to send."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Payment processing procedures",
+    "Handling credit card information securely",
+    "Progressive loan account management"
+  ],
+  "systems_referenced": [
+    "Progressive loans system (implied through context)"
+  ],
+  "summary": "Carla Shell contacted Alliance Insurance to make a payment on her Progressive loan. The agent guided her through providing credit card details and confirmed the payment would be processed. The caller requested an email confirmation, which the agent agreed to send. The call concluded with both parties confirming the transaction details.",
+  "_model": "qwen3:14b",
+  "_eval_count": 267,
+  "_total_duration_ms": 32315,
+  "_source_file": "transcripts/in-+13363779003-+13362879577-20250902-112014-1756826414.2457.txt",
+  "_direction": "inbound",
+  "_char_count": 853
+}

@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Caleb Collins is trying to verify insurance coverage for a customer at Mount Airy Nissan (formerly Siemens Nissan) but cannot recall the policy number or specific customer details.",
+  "resolution_steps": [
+    "Agent acknowledges the call and confirms the context of verifying insurance coverage.",
+    "Agent asks if the caller provided the policy number or customer details, which Caleb confirms he did not.",
+    "Agent states they will review files to identify the policy."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding how to search for insurance policies using dealership names (Mount Airy Nissan/Siemens Nissan) and customer account information.",
+    "Access to internal databases or files to look up policy details."
+  ],
+  "systems_referenced": [
+    "Internal database/files for policy lookup"
+  ],
+  "summary": "Caleb Collins is verifying insurance coverage for a customer at Mount Airy Nissan but cannot recall the policy number or customer details. The agent agrees to search their files to identify the policy. The call remains unresolved as the agent has not yet located the specific policy information.",
+  "_model": "qwen3:14b",
+  "_eval_count": 245,
+  "_total_duration_ms": 53243,
+  "_source_file": "transcripts/exten-302-+13367868371-20251013-113755-1760369875.3387.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 683
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Ivan needs to obtain a liability insurance certificate for Surrey County, but is unable to locate it in the GloveBox client hub portal and requires assistance to resolve the issue.",
+  "resolution_steps": [
+    "Anna confirms Ivan's issue with missing liability insurance in GloveBox client hub.",
+    "Anna verifies the correct email address for Surrey County Inspection Department.",
+    "Anna agrees to send the certificate directly to the county's email with a copy to Ivan.",
+    "Anna assures Ivan she will follow up to ensure the liability policy is properly linked to GloveBox."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of GloveBox client hub portal functionality",
+    "Process for requesting insurance certificates",
+    "Knowledge of proper contact channels for county departments"
+  ],
+  "systems_referenced": [
+    "GloveBox client hub (portal)",
+    "Email system (centralpermitting@surry.nc.us)"
+  ],
+  "summary": "Ivan needed a liability insurance certificate for Surrey County but couldn't find it in GloveBox. Anna confirmed the issue, obtained the correct county email address, and agreed to send the certificate directly to the county with a copy to Ivan. The call concluded with Anna promising to ensure the liability policy is properly linked to the portal.",
+  "_model": "qwen3:14b",
+  "_eval_count": 285,
+  "_total_duration_ms": 37866,
+  "_source_file": "transcripts/exten-302-+13364730881-20251016-163113-1760646673.12801.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3191
+}

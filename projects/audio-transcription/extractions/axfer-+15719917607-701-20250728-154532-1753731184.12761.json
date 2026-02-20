@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking life insurance options, specifically comparing term and permanent policies, and is looking for lower costs than a previous quote. They want to understand coverage amounts, pricing, and available terms.",
+  "resolution_steps": [
+    "Agent confirmed caller's age (64), health status (type 2 diabetic, no tobacco use), and existing insurance status.",
+    "Agent explained term insurance maximum duration (10 years for someone over 50) and minimum coverage ($100,000).",
+    "Agent ran a quote for $100,000 term over 20 years, resulting in ~$68/month.",
+    "Agent clarified that $100,000 is the minimum term coverage available and that lower amounts (e.g., $50k) are not offered.",
+    "Agent mentioned whole life (permanent) insurance as an alternative, noting it would be more expensive."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Life insurance product structures (term vs. whole life)",
+    "Underwriting rules for coverage amounts and terms based on age/health",
+    "Premium calculation methodologies",
+    "Carrier-specific policy limitations"
+  ],
+  "systems_referenced": [
+    "Insurance quoting system (used to generate term policy quote)"
+  ],
+  "summary": "A 64-year-old diabetic caller sought life insurance options with lower costs than a previous quote. The agent explained that $100,000 is the minimum term coverage available through their carrier, resulting in ~$68/month for a 20-year term. The caller found this too expensive and inquired about lower amounts, but the agent confirmed $100k is the minimum. Whole life insurance was presented as an alternative, though more expensive. The caller remains undecided and may need further consideration.",
+  "_model": "qwen3:14b",
+  "_eval_count": 406,
+  "_total_duration_ms": 55810,
+  "_source_file": "transcripts/axfer-+15719917607-701-20250728-154532-1753731184.12761.txt",
+  "_direction": "attended_transfer",
+  "_char_count": 3710
+}

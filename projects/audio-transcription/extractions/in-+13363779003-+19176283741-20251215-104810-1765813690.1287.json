@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is a new customer trying to confirm if their Cincinnati insurance payment has been processed (expected to start on the 15th) and is concerned about a potential delay that might require canceling their current Geico insurance.",
+  "resolution_steps": [
+    "Agent confirmed the caller provided their checking account for AutoPay.",
+    "Explained typical processing times for AutoPay (2-3 days).",
+    "Attempted to access the Cincinnati insurance website but encountered technical delays.",
+    "Notified caller that the system was unresponsive and offered to transfer to another agent for further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "AutoPay processing timelines for insurance payments",
+    "Cincinnati insurance portal functionality",
+    "Handling customer concerns about policy activation delays"
+  ],
+  "systems_referenced": [
+    "Cincinnati insurance website/application",
+    "Geico (current insurer being considered for cancellation)"
+  ],
+  "summary": "A new customer contacted Alliance Insurance to address a delayed Cincinnati insurance payment and potential need to cancel their Geico policy. The agent explained typical AutoPay processing times but encountered technical issues accessing the Cincinnati portal, offering to transfer to another agent for resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 270,
+  "_total_duration_ms": 39605,
+  "_source_file": "transcripts/in-+13363779003-+19176283741-20251215-104810-1765813690.1287.txt",
+  "_direction": "inbound",
+  "_char_count": 1361
+}

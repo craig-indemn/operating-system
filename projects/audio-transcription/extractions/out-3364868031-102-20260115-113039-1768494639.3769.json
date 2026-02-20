@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Ashley) wanted to confirm that the refund check she received was correct and ensure there were no misunderstandings about the reason for the refund.",
+  "resolution_steps": [
+    "Gloria confirmed the refund was issued based on prior communication.",
+    "Ashley verified she understood the reason for the check and the voicemail context.",
+    "Gloria offered further assistance, which Ashley declined."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Refund processing procedures",
+    "Understanding of voicemail follow-up protocols"
+  ],
+  "systems_referenced": [],
+  "summary": "Ashley called Gloria to confirm a refund check was issued correctly. Gloria verified the refund was appropriate, and Ashley confirmed she understood the situation. The call concluded with Ashley satisfied and no further action required.",
+  "_model": "qwen3:14b",
+  "_eval_count": 191,
+  "_total_duration_ms": 34424,
+  "_source_file": "transcripts/out-3364868031-102-20260115-113039-1768494639.3769.txt",
+  "_direction": "outbound",
+  "_char_count": 624
+}

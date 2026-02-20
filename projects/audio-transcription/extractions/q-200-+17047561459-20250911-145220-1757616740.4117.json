@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Lu Zhao is seeking a home insurance quote for a secondary home in Charlotte, NC, after their current insurer (Safeco) increased their rates. They were referred by Progressive and want to explore alternative coverage options.",
+  "resolution_steps": [
+    "Agent confirmed the property address and details (Ventana Court, Charlotte, NC 28277).",
+    "Collected personal information: name (Lu Zhao), mailing address, phone number, email (luzhao66@gmail.com), and date of birth (March 20, 1962).",
+    "Noted current insurance details: Safeco policy with $2,000 dwelling coverage, $250 deductible, and other coverage amounts.",
+    "Inputted information into the quoting platform to generate a new quote.",
+    "Clarified effective date (29th of the current month) and confirmed the need for a secondary home policy (not rental)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Home insurance policy structures (e.g., dwelling, personal property, loss of use coverage).",
+    "Quoting platform navigation for residential properties.",
+    "Understanding of carrier-specific rate changes (e.g., Safeco's increased premiums)."
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services quoting platform",
+    "Safeco (current insurer)",
+    "Progressive (referral source)"
+  ],
+  "summary": "Lu Zhao requested a home insurance quote for a secondary home in Charlotte, NC, after Safeco's renewal rates increased. The agent collected property details, personal information, and current policy specifics to generate a new quote via their platform. The call is ongoing with resolution pending quote generation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 380,
+  "_total_duration_ms": 56153,
+  "_source_file": "transcripts/q-200-+17047561459-20250911-145220-1757616740.4117.txt",
+  "_direction": "queue",
+  "_char_count": 3946
+}

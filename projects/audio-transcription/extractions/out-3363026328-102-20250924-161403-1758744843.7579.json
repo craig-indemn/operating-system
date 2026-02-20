@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Gloria wanted to understand the insurance audit she received, clarify her current policy details with Auto Owners, and determine the next steps for submitting required information.",
+  "resolution_steps": [
+    "Matt explained the audit process, clarifying it's a routine review of policy data (payroll, exposure, subcontractors) to ensure premium accuracy.",
+    "Matt logged into Orona to check Gloria's policy, confirming her general liability coverage limits, premium ($4,087), and policy term (Sept 27, 2025\u2013Sept 27, 2026).",
+    "Matt clarified his role as her servicing agent and mentioned Joe as the original policy writer.",
+    "Matt advised Gloria to submit payroll details and subcontractor COIs to the auditor (via email) and offered to contact Orona directly to confirm audit requirements.",
+    "Gloria agreed to follow up with the auditor and thanked Matt for the assistance."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance audit process and purpose",
+    "Policy details (premiums, coverage limits, terms)",
+    "Orona system access and usage",
+    "Role differentiation between servicing agents and policy writers",
+    "Document submission requirements for audits"
+  ],
+  "systems_referenced": [
+    "Orona (insurance carrier portal)"
+  ],
+  "summary": "Gloria received an unexpected insurance audit and contacted Alliance Insurance for clarification. Matt explained the audit process, reviewed her policy details via Orona, and outlined steps for submitting required documents. The call concluded with Gloria feeling informed and prepared to follow up with the auditor.",
+  "_model": "qwen3:14b",
+  "_eval_count": 355,
+  "_total_duration_ms": 49965,
+  "_source_file": "transcripts/out-3363026328-102-20250924-161403-1758744843.7579.txt",
+  "_direction": "outbound",
+  "_char_count": 4461
+}

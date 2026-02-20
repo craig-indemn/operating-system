@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Charles is confirming whether Truline is being added as a secondary insurance carrier and if Round Point Mortgage will remain on the policy.",
+  "resolution_steps": [
+    "Agent confirmed that Round Point Mortgage will remain on the policy.",
+    "Agent confirmed that Truline is being added as a secondary carrier.",
+    "Agent assured the caller they would proceed with the requested changes."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy structures (primary/secondary carriers)",
+    "Knowledge of Round Point Mortgage and Truline as insurance providers"
+  ],
+  "systems_referenced": [],
+  "summary": "Agent confirmed with Charles that Truline is being added as a secondary insurer while keeping Round Point Mortgage. The caller expressed gratitude, and the agent committed to processing the changes. No specific systems were referenced during the conversation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 199,
+  "_total_duration_ms": 34472,
+  "_source_file": "transcripts/out-3365295024-203-20251212-113108-1765557068.1237.txt",
+  "_direction": "outbound",
+  "_char_count": 375
+}

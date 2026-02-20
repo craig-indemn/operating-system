@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to obtain an auto insurance quote but was hesitant to change their existing renters insurance from State Farm, as they were about to move and preferred to keep it for one more month.",
+  "resolution_steps": [
+    "Agent confirmed the caller's intent to get an auto insurance quote.",
+    "Agent inquired about existing insurance policies and learned the caller had renters insurance from State Farm.",
+    "Agent explained that Alliance requires both auto and renters insurance to be quoted together.",
+    "Caller clarified they were not ready to change renters insurance but would consider it after moving.",
+    "Agent offered to proceed with a quote for both policies once the caller was ready."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Alliance's policy requirement to quote auto and renters insurance together",
+    "Understanding customer hesitation around changing renters insurance during a move"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller sought an auto insurance quote but was not ready to change their existing State Farm renters insurance. The agent explained Alliance's requirement to quote both policies together and offered to proceed when the caller was ready. The caller agreed to follow up later.",
+  "_model": "qwen3:14b",
+  "_eval_count": 260,
+  "_total_duration_ms": 42248,
+  "_source_file": "transcripts/q-200-+13365753732-20251110-132037-1762798837.3355.txt",
+  "_direction": "queue",
+  "_char_count": 1784
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Agent Corbin Dukes is addressing an error in Donald O'Neill's policy email address, aiming to correct it to prevent charges and secure a $5 discount before a deadline.",
+  "resolution_steps": [
+    "Agent Debbie verifies the policy number and confirms the customer's details.",
+    "Corbin explains the incorrect email address (DON@MEZGERINC.com had an 'N' instead of 'M') and its impact on paperless enrollment.",
+    "Debbie agrees to send a corrected email to Donald to resolve the issue.",
+    "Corbin requests ensuring Donald agrees to paperless terms to qualify for the $5 discount before the 17th."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Policy correction procedures",
+    "Paperless enrollment requirements and associated discounts",
+    "Email communication protocols for policy updates"
+  ],
+  "systems_referenced": [
+    "Progressive's policy management system (used to verify policy details)",
+    "Customer email portal (for sending corrected email to Donald)"
+  ],
+  "summary": "Agent Corbin Dukes collaborates with Debbie to correct an email address error on Donald O'Neill's policy, ensuring paperless enrollment and a $5 discount. The agent sends a revised email to the customer for action, resolving the issue before the deadline.",
+  "_model": "qwen3:14b",
+  "_eval_count": 287,
+  "_total_duration_ms": 45839,
+  "_source_file": "transcripts/out-8777762436-409-20251114-082433-1763126673.60.txt",
+  "_direction": "outbound",
+  "_char_count": 1896
+}

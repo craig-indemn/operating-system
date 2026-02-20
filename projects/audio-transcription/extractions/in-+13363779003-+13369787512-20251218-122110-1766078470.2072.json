@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with Gloria",
+  "resolution_steps": [
+    "Agent acknowledged request",
+    "Transferred call to Gloria"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller requested to speak with Gloria. Agent acknowledged and transferred the call.",
+  "_model": "qwen3:14b",
+  "_eval_count": 85,
+  "_total_duration_ms": 21796,
+  "_source_file": "transcripts/in-+13363779003-+13369787512-20251218-122110-1766078470.2072.txt",
+  "_direction": "inbound",
+  "_char_count": 117
+}

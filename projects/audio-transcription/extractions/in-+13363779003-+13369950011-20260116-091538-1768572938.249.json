@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Bertella Gabbard wants to inquire about life insurance coverage for herself and her mother.",
+  "resolution_steps": [
+    "Agent acknowledges the inquiry but states no agent is available at the moment.",
+    "Agent offers to schedule a callback from another available agent.",
+    "Caller initially mentions plans to visit the office but is informed no agents are in the office.",
+    "Caller agrees to the callback arrangement."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Life insurance product offerings",
+    "Agency's callback process for unavailable agents"
+  ],
+  "systems_referenced": [
+    "Internal agent scheduling system"
+  ],
+  "summary": "Bertella Gabbard called to inquire about life insurance for herself and her mother. The agent, unavailable in the office, arranged for a callback from another agent. The caller agreed to this solution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 195,
+  "_total_duration_ms": 34933,
+  "_source_file": "transcripts/in-+13363779003-+13369950011-20260116-091538-1768572938.249.txt",
+  "_direction": "inbound",
+  "_char_count": 522
+}

@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Gary is seeking clarification on his insurance policies, specifically about coverage for his home, auto policy (including a van used partially for business), and the need for upgrades based on recent property valuations.",
+  "resolution_steps": [
+    "Andre confirms Gary's policies (homeowner and auto) and asks about business use of the van.",
+    "Andre explains the need to upgrade auto coverage due to business use and estimates a $50/year increase.",
+    "Andre highlights underinsurance on the homeowner policy, noting the need to increase coverage from $466k to at least $200k for replacement cost.",
+    "Andre mentions the need to evaluate the home's current condition and upgrades, but Gary reports no recent renovations.",
+    "Andre agrees to provide quotes after a few days and schedule a follow-up."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy coverage types (liability, replacement cost, underinsurance)",
+    "Business use vehicle insurance requirements",
+    "Property valuation and replacement cost calculations",
+    "Policy renewal processes and quoting systems"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services quoting system",
+    "Property tax valuation records"
+  ],
+  "summary": "Gary discusses his insurance policies with Andre Buchan, addressing coverage gaps for his home and auto (including a van used for business). Andre explains the need for coverage upgrades and will provide quotes after evaluating the property's current value. The call concludes with a commitment to follow up in a few days.",
+  "_model": "qwen3:14b",
+  "_eval_count": 335,
+  "_total_duration_ms": 42973,
+  "_source_file": "transcripts/exten-113-+13369090959-20251031-113119-1761924679.1791.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4353
+}

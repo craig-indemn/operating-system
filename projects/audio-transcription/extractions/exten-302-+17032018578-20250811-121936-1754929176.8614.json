@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Joseph Vagagenny seeks clarification on whether demolition costs from a recent claim (tree damage to his dock) are covered under his policy's demolition limit and requests to increase his property coverage from $50,000 to $100,000.",
+  "resolution_steps": [
+    "Agent Anna confirms the policy number and verifies the account holder's name.",
+    "Anna acknowledges the claim involving tree damage to the dock and notes the need to consult the adjuster (Dalton Biggs) for demolition coverage details.",
+    "Anna agrees to submit a request to the carrier to increase the property coverage limit to $100,000.",
+    "Anna explains the carrier's process for updating policy documents and assures follow-up via email once changes are processed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Commercial insurance policy structures (e.g., demolition limits, property coverage)",
+    "Carrier-specific procedures for adjusting policy limits",
+    "Distinction between commercial and personal insurance lines"
+  ],
+  "systems_referenced": [
+    "Carrier's policy management system",
+    "Adjuster contact (Dalton Biggs)"
+  ],
+  "summary": "Joseph Vagagenny, a commercial policyholder, discusses a claim involving tree damage to his dock and seeks clarification on coverage for demolition costs. He also requests to increase his property coverage limit. The agent confirms the policy details, notes the need for adjuster consultation, and commits to submitting the coverage adjustment request to the carrier.",
+  "_model": "qwen3:14b",
+  "_eval_count": 334,
+  "_total_duration_ms": 46697,
+  "_source_file": "transcripts/exten-302-+17032018578-20250811-121936-1754929176.8614.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4077
+}

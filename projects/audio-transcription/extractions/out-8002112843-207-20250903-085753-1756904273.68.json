@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (representing Julio Installer LLC) seeks to resolve an issue where their new billing account is incorrectly linked to an old canceled policy (Hernandez Installations) after a policy rewrite, causing the system to display outdated DBA information instead of the correct insured entity.",
+  "resolution_steps": [
+    "Agent verified the caller's policy number and account details.",
+    "Agent confirmed the system shows the old DBA (Hernandez Installations) on the billing account despite the policy being under Julio Installer LLC.",
+    "Agent acknowledged the issue stems from a policy rewrite linking old and new accounts.",
+    "Agent requested to put the call on hold to investigate system linkage and potential resolution steps."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of policy rewrite processes and their impact on billing account linkage.",
+    "Familiarity with Nationwide Commercial Lines' system behavior regarding canceled policies and DBA associations."
+  ],
+  "systems_referenced": [
+    "Nationwide Commercial Lines policy management system",
+    "Billing account portal"
+  ],
+  "summary": "A client reported that after a policy rewrite, their new billing account incorrectly displays an old DBA (Hernandez Installations) instead of the current insured entity (Julio Installer LLC). The agent confirmed the system linkage issue and placed the call on hold to investigate how to fully unlink the canceled old policy from the new billing account.",
+  "_model": "qwen3:14b",
+  "_eval_count": 312,
+  "_total_duration_ms": 43029,
+  "_source_file": "transcripts/out-8002112843-207-20250903-085753-1756904273.68.txt",
+  "_direction": "outbound",
+  "_char_count": 4746
+}

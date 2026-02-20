@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Tracy is attempting to resolve an issue where Heather has not received an email she sent, which is critical for client-related matters.",
+  "resolution_steps": [
+    "Tracy confirms with Heather whether she received an email.",
+    "Heather states she hasn't checked her email and later confirms she didn't see it.",
+    "Tracy suggests checking the spam folder and confirms she will resend the email.",
+    "Heather agrees to wait and check again."
+  ],
+  "outcome": "transferred",
+  "knowledge_required": [
+    "Understanding of email delivery issues and spam filtering",
+    "Client communication protocols"
+  ],
+  "systems_referenced": [
+    "Email client (implied through discussion of spam and resending emails)"
+  ],
+  "summary": "Tracy and Heather discuss a missing email related to a client. Tracy agrees to resend the email and check spam, while Heather will wait and verify receipt. The call appears to be a transferred extension conversation focused on resolving an email delivery issue.",
+  "_model": "qwen3:14b",
+  "_eval_count": 224,
+  "_total_duration_ms": 55984,
+  "_source_file": "transcripts/exten-401-+13366240059-20250812-141532-1755022532.8740.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 760
+}

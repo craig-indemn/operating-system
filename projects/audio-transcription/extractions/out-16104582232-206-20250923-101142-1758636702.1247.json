@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller needs documentation to prove a bond is active and that the NC Licensing Board received a cancellation notice but not a reinstatement notice.",
+  "resolution_steps": [
+    "Agent confirmed bond number and client details (Front Line Steel Structures, bond #108314314).",
+    "Checked Travellers system and found a 'notice of possible cancellation' was sent but no reinstatement documentation.",
+    "Notified client that the cancellation notice was likely pending and offered to escalate to the bond department.",
+    "Requested client's email to forward the issue to the bond department for resolution."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Bond processing workflows",
+    "Cancellation/reinstatement documentation requirements",
+    "Internal escalation procedures for bond-related issues"
+  ],
+  "systems_referenced": [
+    "Travellers Bond portal",
+    "Alliance Insurance Services internal systems",
+    "Bond department communication channels"
+  ],
+  "summary": "Jeff Edmonds from Alliance Insurance Services helped a client track down documentation for a bond issued in July. After checking Travellers' system, he identified a possible pending cancellation notice and arranged to escalate the request to the bond department. The client provided their email for follow-up, and the agent committed to resolving the documentation gap.",
+  "_model": "qwen3:14b",
+  "_eval_count": 284,
+  "_total_duration_ms": 34550,
+  "_source_file": "transcripts/out-16104582232-206-20250923-101142-1758636702.1247.txt",
+  "_direction": "outbound",
+  "_char_count": 2032
+}

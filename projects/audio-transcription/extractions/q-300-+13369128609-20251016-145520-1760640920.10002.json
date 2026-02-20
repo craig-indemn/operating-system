@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller attempted to make a car insurance payment but was confused about policy status and which company to contact, believing they might be calling the wrong insurer.",
+  "resolution_steps": [
+    "Agent checked the policy using the provided name (Michael Avila) and found it was canceled.",
+    "Agent clarified that Alliance Insurance Services is no longer the agent on the policy and that the policy was originally with Allstate.",
+    "Caller mentioned confusion about the correct insurer, referencing 'National General' and a Winston location on Peter Street.",
+    "Agent confirmed they do not operate in that area and advised the caller may have the wrong contact information."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy status tracking",
+    "Carrier partnerships (Allstate, National General)",
+    "Geographic coverage areas"
+  ],
+  "systems_referenced": [
+    "Internal policy database"
+  ],
+  "summary": "Caller sought to make a car insurance payment but was informed their policy was canceled and they were no longer serviced by Alliance Insurance Services. The agent helped clarify the policy history and suggested the caller may need to contact the correct insurer (likely National General) directly for payment options.",
+  "_model": "qwen3:14b",
+  "_eval_count": 265,
+  "_total_duration_ms": 28002,
+  "_source_file": "transcripts/q-300-+13369128609-20251016-145520-1760640920.10002.txt",
+  "_direction": "queue",
+  "_char_count": 1312
+}

@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to pay his car insurance premium for Benson Land, specifically confirming the amount and processing the payment via debit card.",
+  "resolution_steps": [
+    "Agent accessed the customer's policy to confirm the outstanding balance ($324.49).",
+    "Agent guided the caller through providing debit card details (number, expiration date, and security code).",
+    "Agent processed the payment and waited for confirmation due to technical delays.",
+    "Once confirmed, the agent emailed the payment receipt to the customer.",
+    "Agent apologized for the extended wait and confirmed no further assistance was needed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy lookup and payment processing procedures",
+    "Credit/debit card payment verification steps",
+    "Handling technical delays in payment systems",
+    "Emailing confirmation receipts"
+  ],
+  "systems_referenced": [
+    "Internal policy database (to locate the Travelers policy)",
+    "Payment processing portal",
+    "Email system for sending confirmation"
+  ],
+  "summary": "The caller requested assistance paying his car insurance premium. The agent processed the $324.49 payment via debit card after multiple attempts to clarify details, apologized for technical delays, and emailed the confirmation. The customer confirmed no further needs.",
+  "_model": "qwen3:14b",
+  "_eval_count": 285,
+  "_total_duration_ms": 44184,
+  "_source_file": "transcripts/in-+13363779003-+19803492886-20250905-163825-1757104705.7269.txt",
+  "_direction": "inbound",
+  "_char_count": 1991
+}

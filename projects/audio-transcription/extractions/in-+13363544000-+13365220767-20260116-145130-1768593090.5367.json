@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear due to incomplete and fragmented transcript",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Inbound call transcript is incomplete and lacks meaningful conversation. Caller's intent cannot be determined from the fragment 'A lion's.' No actionable information or resolution steps identified.",
+  "_model": "qwen3:14b",
+  "_eval_count": 94,
+  "_total_duration_ms": 23110,
+  "_source_file": "transcripts/in-+13363544000-+13365220767-20260116-145130-1768593090.5367.txt",
+  "_direction": "inbound",
+  "_char_count": 56
+}

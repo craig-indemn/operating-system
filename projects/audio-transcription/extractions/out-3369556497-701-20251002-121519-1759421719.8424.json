@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Phyllis is following up on a previous conversation about insurance costs and coverage, seeking clarification on savings and policy details from Cincinnati.",
+  "resolution_steps": [
+    "Jeremy confirms the monthly cost ($453.11) and annual savings (~$600) compared to Phyllis's current plan.",
+    "He explains coverage details (mechanical breakdown, service line coverage up to $10,000) and clarifies that coverage is equivalent to her current policy.",
+    "Phyllis acknowledges the savings but expresses disappointment in the amount and mentions she will seek additional estimates."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy terminology (e.g., service line coverage, mechanical breakdown)",
+    "Cost comparison analysis between carriers",
+    "Customer service techniques for handling price sensitivity"
+  ],
+  "systems_referenced": [
+    "Cincinnati insurance policy details"
+  ],
+  "summary": "Jeremy from Alliance Insurance Services discusses a Cincinnati insurance quote with Phyllis, detailing costs, coverage, and savings. While Phyllis acknowledges the $600 annual savings, she expresses disappointment in the amount and intends to obtain additional estimates before deciding. The agent clarifies coverage equivalence and specific benefits like service line coverage.",
+  "_model": "qwen3:14b",
+  "_eval_count": 282,
+  "_total_duration_ms": 40644,
+  "_source_file": "transcripts/out-3369556497-701-20251002-121519-1759421719.8424.txt",
+  "_direction": "outbound",
+  "_char_count": 1640
+}

@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is inquiring about Medicare Advantage plans for 2026 and wants to speak with Steve, an agent who handles such plans.",
+  "resolution_steps": [
+    "Agent confirmed the caller's existing car insurance with Alliance Insurance.",
+    "Agent informed the caller that Steve is the agent who handles Medicare Advantage plans and offered to transfer the call to his extension.",
+    "Agent noted Steve may not be immediately available and suggested leaving a message.",
+    "Caller agreed to leave a message and thanked the agent."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of Medicare Advantage plans",
+    "Knowledge of internal agent specialties and contact information"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller inquired about Medicare Advantage plans for 2026 and requested to speak with Steve, a specific agent. The agent confirmed Steve's role, offered to transfer the call, and noted Steve's potential unavailability, resulting in the caller leaving a message for follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 231,
+  "_total_duration_ms": 36620,
+  "_source_file": "transcripts/in-+13363779003-+13364039762-20251114-134610-1763145970.6406.txt",
+  "_direction": "inbound",
+  "_char_count": 825
+}

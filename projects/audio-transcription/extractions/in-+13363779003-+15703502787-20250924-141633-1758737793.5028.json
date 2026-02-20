@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller mentioned receiving a notice from her bank about missing comprehensive and collision coverage on her vehicle and requested assistance.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The caller reported an issue with insurance coverage requirements from her bank but the conversation was cut off before the agent could engage further. The system responded with a generic callback promise without addressing the specific coverage concern.",
+  "_model": "qwen3:14b",
+  "_eval_count": 115,
+  "_total_duration_ms": 30075,
+  "_source_file": "transcripts/in-+13363779003-+15703502787-20250924-141633-1758737793.5028.txt",
+  "_direction": "inbound",
+  "_char_count": 403
+}

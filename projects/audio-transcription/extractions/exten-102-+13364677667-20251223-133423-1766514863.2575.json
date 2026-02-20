@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Nathan Bell wanted to confirm receipt of a proposal email sent for carrier renewal confirmation and requested a resend since he hadn't received it.",
+  "resolution_steps": [
+    "Glory Delancey Shine confirmed the proposal was sent to Nathan's email address (nbel@gbngi.com).",
+    "Nathan verified he hadn't received it and checked spam folders.",
+    "Glory offered to resend the proposal.",
+    "Glory resent the proposal and asked Nathan to confirm receipt."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Email tracking and resend procedures",
+    "Proposal submission workflows for carrier renewals",
+    "Client communication protocols for document follow-ups"
+  ],
+  "systems_referenced": [
+    "Email client (for sending/receiving proposals)",
+    "Proposal management system (for document handling)"
+  ],
+  "summary": "Nathan Bell reported not receiving a critical proposal email for carrier renewal. Glory Delancey Shine confirmed the original send and resent the document. Nathan agreed to review the new email and provide confirmation once received.",
+  "_model": "qwen3:14b",
+  "_eval_count": 242,
+  "_total_duration_ms": 37019,
+  "_source_file": "transcripts/exten-102-+13364677667-20251223-133423-1766514863.2575.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1181
+}

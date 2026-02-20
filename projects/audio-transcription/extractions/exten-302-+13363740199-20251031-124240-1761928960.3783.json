@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Chip/Osler Handy, is seeking resolution for an unresolved auto insurance claim filed three weeks ago with National General, expressing frustration over lack of communication from the adjuster and requesting assistance to ensure the claim is properly processed.",
+  "resolution_steps": [
+    "Agent confirmed the caller's identity and policy details (commercial auto, 2016 Ford F-350).",
+    "Agent checked the claim status and noted no record of it being filed with National General.",
+    "Agent attempted to access online reporting tools to file the claim.",
+    "Agent verified the incident details (bear ran into road, son driving, police report from state highway patrol).",
+    "Agent confirmed the vehicle's current location (Granite City Tow Yard) and contact information (email, phone number).",
+    "Agent acknowledged the caller's email issues and offered alternative communication methods."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Claims processing procedures for National General",
+    "Policy verification for commercial auto insurance",
+    "Online claim reporting systems",
+    "Handling customer frustration over unresolved claims"
+  ],
+  "systems_referenced": [
+    "National General insurance portal",
+    "Alliance Insurance Services online reporting tool"
+  ],
+  "summary": "Chip/Osler Handy reported an unresolved auto insurance claim with National General, three weeks post-incident. The agent verified policy details, checked claim status, and attempted online filing while gathering incident specifics. The caller requested follow-up due to communication gaps and email inaccessibility. Resolution requires further claim processing and adjuster coordination.",
+  "_model": "qwen3:14b",
+  "_eval_count": 348,
+  "_total_duration_ms": 43617,
+  "_source_file": "transcripts/exten-302-+13363740199-20251031-124240-1761928960.3783.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4100
+}

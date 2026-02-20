@@ -1,0 +1,23 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with Corbin Durks",
+  "resolution_steps": [
+    "Agent checked Corbin Durks' availability",
+    "Informed caller Corbin was on a call",
+    "Offered to transfer to voicemail"
+  ],
+  "outcome": "transferred",
+  "knowledge_required": [
+    "Agent availability tracking"
+  ],
+  "systems_referenced": [
+    "Internal agent availability system"
+  ],
+  "summary": "Caller requested to speak with Corbin Durks, who was unavailable. Agent offered to transfer to voicemail, which the caller accepted.",
+  "_model": "qwen3:14b",
+  "_eval_count": 139,
+  "_total_duration_ms": 42198,
+  "_source_file": "transcripts/in-+13363779003-+18147203366-20251024-162005-1761337205.6139.txt",
+  "_direction": "inbound",
+  "_char_count": 343
+}

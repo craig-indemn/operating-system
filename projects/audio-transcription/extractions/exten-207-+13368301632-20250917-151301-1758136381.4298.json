@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jennifer seeks a better workers compensation insurance quote for an installer named Mario (FG Installations), as the current Westfield quote is deemed too expensive by Mario.",
+  "resolution_steps": [
+    "Cody acknowledges the request and explains that new installers with no prior insurance face higher costs due to increased market risks.",
+    "He compares the current Westfield quote (7,300 for workers comp + 48.95 for GL/marine) to previous rates from AmTrust (40% higher) and Nationwide (now defunct for installers).",
+    "Cody emphasizes that current policies are more expensive due to fewer insurers writing for new installers and higher claim frequencies.",
+    "He provides specific payroll and premium figures to contextualize the pricing differences."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance market trends for installers (e.g., reduced carrier options, increased premiums)",
+    "Workers compensation rate calculations and endorsements",
+    "Historical insurance carrier practices (e.g., Nationwide's exit from installer market)"
+  ],
+  "systems_referenced": [
+    "Westfield Insurance",
+    "AmTrust",
+    "Nationwide Insurance",
+    "FG Installations (client)"
+  ],
+  "summary": "Jennifer requests a more affordable insurance quote for a new installer, but Cody explains that current market conditions (higher risks, fewer insurers) have made quotes like Westfield's (7,300/year for workers comp) unavoidable. He contrasts this with defunct options like Nationwide's cheaper rates and AmTrust's higher premiums, concluding that current pricing reflects industry realities.",
+  "_model": "qwen3:14b",
+  "_eval_count": 354,
+  "_total_duration_ms": 52453,
+  "_source_file": "transcripts/exten-207-+13368301632-20250917-151301-1758136381.4298.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3974
+}

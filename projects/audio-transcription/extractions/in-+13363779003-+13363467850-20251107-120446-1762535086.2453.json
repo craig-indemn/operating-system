@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to pay their auto insurance policy via phone using their mother's account, which had a different name associated with the phone number.",
+  "resolution_steps": [
+    "Agent verified the caller's identity by cross-checking the phone number, address, and policy number.",
+    "Agent accessed the National General policy system to confirm the policy details and payment amount.",
+    "Agent processed the payment using the existing credit card on file (ending in 2541).",
+    "Agent confirmed the payment was applied and provided closure to the caller."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Access to insurance policy databases (National General)",
+    "Payment processing procedures",
+    "Customer verification protocols"
+  ],
+  "systems_referenced": [
+    "National General policy system",
+    "myallianceinsurance.com customer portal"
+  ],
+  "summary": "A caller attempted to pay their auto insurance policy via phone using their mother's account. The agent verified the policy details, processed the payment using the existing credit card, and confirmed the transaction. The caller did not request a confirmation number and ended the call.",
+  "_model": "qwen3:14b",
+  "_eval_count": 256,
+  "_total_duration_ms": 37308,
+  "_source_file": "transcripts/in-+13363779003-+13363467850-20251107-120446-1762535086.2453.txt",
+  "_direction": "inbound",
+  "_char_count": 2419
+}

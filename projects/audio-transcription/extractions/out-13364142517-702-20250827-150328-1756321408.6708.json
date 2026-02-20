@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking clarification on whether a car repair estimate of $2,000\u2013$3,000 would result in insurance points being added to their record and how this might affect their insurance rates. They also express frustration about high insurance costs compared to others and consider paying out-of-pocket to avoid points.",
+  "resolution_steps": [
+    "Rachel acknowledges the caller's concerns about insurance points and repair costs.",
+    "Rachel confirms she will check the details about the points and the cost of the repair.",
+    "Rachel explains that points are tied to claim history and MVRs (Motor Vehicle Records), not the deductible or repair cost itself.",
+    "Rachel notes the agency will be closed Monday for Labor Day and promises to follow up next week with the paperwork and information."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance points and how they are determined (e.g., via MVRs, claim history).",
+    "Knowledge of how repair costs relate to insurance claims and points.",
+    "Awareness of insurance rate factors (e.g., comprehensive, collision, liability claims)."
+  ],
+  "systems_referenced": [],
+  "summary": "The caller is concerned about potential insurance points from a car accident repair and the associated costs. Rachel listens, acknowledges the concerns, and promises to check the details. The caller considers paying out-of-pocket to avoid points, and Rachel agrees to follow up next week with the paperwork and information.",
+  "_model": "qwen3:14b",
+  "_eval_count": 324,
+  "_total_duration_ms": 53940,
+  "_source_file": "transcripts/out-13364142517-702-20250827-150328-1756321408.6708.txt",
+  "_direction": "outbound",
+  "_char_count": 4237
+}

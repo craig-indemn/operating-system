@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Stuart Blanton is inquiring about an unexpected insurance policy renewal notice he received, questioning why the policy was renewed early and why he wasn't contacted about it.",
+  "resolution_steps": [
+    "The agent acknowledged the inquiry and offered to assist by transferring the call to another agent for further support."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy renewal processes",
+    "Customer communication protocols",
+    "Policy management systems"
+  ],
+  "systems_referenced": [
+    "Policy management system",
+    "Customer portal (implied)"
+  ],
+  "summary": "Stuart Blanton contacted Alliance Insurance to clarify an unexpected policy renewal notice. The agent acknowledged his concerns and offered to transfer him to another agent for detailed assistance. The call is ongoing with a resolution pending.",
+  "_model": "qwen3:14b",
+  "_eval_count": 174,
+  "_total_duration_ms": 81434,
+  "_source_file": "transcripts/in-+13363544000-+13364144762-20251023-150300-1761246180.5058.txt",
+  "_direction": "inbound",
+  "_char_count": 546
+}

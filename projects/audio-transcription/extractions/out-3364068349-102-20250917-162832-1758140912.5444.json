@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to speak with Jessica regarding a prior voicemail.",
+  "resolution_steps": [
+    "Agent Gloria informed the caller that Jessica is not currently in the office.",
+    "Agent Gloria stated Jessica will return tomorrow morning.",
+    "Agent Gloria agreed to have Jessica call the caller back."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of employee availability schedules",
+    "Ability to coordinate follow-up communications"
+  ],
+  "systems_referenced": [],
+  "summary": "The caller requested to speak with Jessica, who is unavailable until tomorrow. The agent committed to having Jessica contact the caller for follow-up. No insurance-related systems or information were referenced in the conversation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 165,
+  "_total_duration_ms": 66208,
+  "_source_file": "transcripts/out-3364068349-102-20250917-162832-1758140912.5444.txt",
+  "_direction": "outbound",
+  "_char_count": 505
+}

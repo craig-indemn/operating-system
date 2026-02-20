@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with Jeff Edmonds (intent not elaborated)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller requested to speak with Jeff Edmonds. Agent placed caller on hold and prompted them to consider recent contact information changes while waiting.",
+  "_model": "qwen3:14b",
+  "_eval_count": 92,
+  "_total_duration_ms": 20671,
+  "_source_file": "transcripts/in-+13363779003-+16782588079-20251215-093320-1765809200.245.txt",
+  "_direction": "inbound",
+  "_char_count": 389
+}

@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is inquiring about the status of his insurance billing, policy effective dates, and the insurance company associated with his policy (Cincinnati Casualty Company).",
+  "resolution_steps": [
+    "Agent Gary confirms the caller's identity and asks about billing concerns.",
+    "Caller provides policy details (effective/expiration dates) and identifies the carrier.",
+    "Agent acknowledges the information and commits to investigating the billing discrepancy.",
+    "Agent requests the caller to wait while he checks the details."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding insurance policy terms (effective dates, carriers)",
+    "Billing processes for insurance policies",
+    "Internal systems to verify policy details"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal policy database"
+  ],
+  "summary": "Gary from Alliance Insurance confirms a caller's policy details with Cincinnati Casualty Company and agrees to investigate why the caller hasn't received billing information. The call concludes with a commitment to follow up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 223,
+  "_total_duration_ms": 32665,
+  "_source_file": "transcripts/out-13369246872-113-20251226-110100-1766764860.1338.txt",
+  "_direction": "outbound",
+  "_char_count": 686
+}

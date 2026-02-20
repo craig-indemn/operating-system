@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to check their insurance account status and address an automatic payment issue, as they received a ticket and are concerned about a draft scheduled for the same day.",
+  "resolution_steps": [
+    "Agent confirms the caller's policyholder name (Jermaine Lane) and accesses their account.",
+    "Agent checks the policy and confirms it is set up for automatic draft payment.",
+    "Agent explains that the payment cannot be stopped without the social security number.",
+    "Agent offers to connect the caller with another agent for further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of automatic payment processes",
+    "Policy account lookup procedures",
+    "Escalation protocols for unresolved issues"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal policy/account lookup system"
+  ],
+  "summary": "The caller contacted Alliance Insurance to address an automatic payment issue and check their account status. The agent confirmed the policy was set up for auto-draft but could not stop the payment without the social security number. The agent offered to transfer the call to another agent for further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 252,
+  "_total_duration_ms": 38547,
+  "_source_file": "transcripts/in-+13363779003-+13366957957-20251201-125355-1764611635.8101.txt",
+  "_direction": "inbound",
+  "_char_count": 878
+}

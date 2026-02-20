@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking guidance on whether to pay a pending insurance bill and how to update their policy by removing a vehicle (Mini) and adding a new one (Frontier) after an accident, while also addressing confusion about a Safeco renewal bill.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's confusion about the Penn National/Safeco payment and policy changes.",
+    "Agent confirms the policy was bound and advises waiting for processing but clarifies the payment is needed for activation.",
+    "Agent plans to verify details with Heather (another agent) and check the system for accuracy.",
+    "Agent advises proceeding with the payment but notes potential delays in updating the policy with new vehicle information."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy activation processes",
+    "Handling vehicle additions/removals post-accident",
+    "Understanding of payment deadlines and their impact on policy status",
+    "Internal communication protocols between agents"
+  ],
+  "systems_referenced": [
+    "Penn National",
+    "Safeco",
+    "Safeco app (for bill viewing)"
+  ],
+  "summary": "The caller is confused about a pending insurance payment and policy updates after an accident. The agent confirms the payment is necessary for policy activation but notes delays in processing vehicle changes. The agent will verify details with another agent and follow up with the caller today.",
+  "_model": "qwen3:14b",
+  "_eval_count": 305,
+  "_total_duration_ms": 45783,
+  "_source_file": "transcripts/exten-114-+15183329367-20251002-133239-1759426359.9546.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4222
+}

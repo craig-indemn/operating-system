@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Heather Spot) needed urgent approval for a homeowners policy quote to bind it for a lender, as the lender was pressuring for immediate action.",
+  "resolution_steps": [
+    "Heather provided the quote number (10573430) and explained the policy details (homeowners, for Michael Ochozinsky).",
+    "The agent confirmed Heather had already approved the quote but noted coverage A required additional approval.",
+    "The agent clarified that coverage A adjustments were being reviewed and that the underwriter (Heather) was en route to meet with the team.",
+    "Confirmed that central station fire and burglar alarms were already bound into the policy.",
+    "Addressed a question about security gate credits, explaining that fencing requirements apply, not just gates."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Underwriting processes for personal lines homeowners policies",
+    "Coverage A approval requirements",
+    "Policy binding procedures",
+    "Security system credit criteria"
+  ],
+  "systems_referenced": [
+    "Cincinnati Insurance Company's internal quoting system",
+    "Underwriting approval workflow"
+  ],
+  "summary": "Heather Spot urgently requested approval for a homeowners policy quote to meet a lender's deadline. The agent confirmed partial approval, clarified coverage A requirements, and coordinated with the underwriter. The call concluded with confirmation that the policy met all binding requirements, pending final underwriting approval.",
+  "_model": "qwen3:14b",
+  "_eval_count": 313,
+  "_total_duration_ms": 38123,
+  "_source_file": "transcripts/out-5138702882-401-20250729-125119-1753807879.5701.txt",
+  "_direction": "outbound",
+  "_char_count": 4073
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Yas) is informing Cody about a refund process for an incorrect checking account charge, explaining the implications of refunding past payments, and discussing steps to resolve the issue.",
+  "resolution_steps": [
+    "Explained the possibility of a manual ACH refund for the incorrect checking account charge.",
+    "Calculated the total amount owed over 15 months (October 2024 to October 2025) as $21,244.69.",
+    "Noted the need for a sign authorization form to update the checking account on the policy.",
+    "Offered to proceed once the form is received and the repayment plan is clarified."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Refund processes for commercial accounts",
+    "Payment history tracking across multiple terms",
+    "Authorization requirements for account updates"
+  ],
+  "systems_referenced": [
+    "Internal payment history system",
+    "Sign authorization form (internal process)"
+  ],
+  "summary": "Yas from Mission One Commercial Service Center discusses refunding a charge linked to an incorrect checking account with Cody. The agent calculates a $21,244.69 debt spanning 15 months and explains the need for a sign authorization form to update the account. The call concludes with the agent awaiting the form to proceed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 299,
+  "_total_duration_ms": 49644,
+  "_source_file": "transcripts/exten-207-+18885088622-20251202-114049-1764693649.2893.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4207
+}

@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Shayla is seeking assistance with a $19 payment notice she received, which she believes is a cancellation notice pending cancellation. She is frustrated because she cannot pay it online despite having already made a lump-sum payment of over $1,000.",
+  "resolution_steps": [
+    "Agent Shayla checks the caller's home policy and identifies a bank draft payment of $1,858, but the $19 notice is unclear.",
+    "Agent acknowledges the confusion and offers to contact the carrier (Travelers) directly to clarify the $19 charge.",
+    "Agent confirms the caller will be available later in the day and agrees to call back after resolving the issue."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of insurance policy payment structures (e.g., lump-sum vs. recurring payments)",
+    "Ability to interpret policy documents and payment notices",
+    "Knowledge of carrier communication processes"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance customer portal (myallianceinsurance.com)",
+    "Travelers insurance carrier"
+  ],
+  "summary": "Shayla contacted Alliance Insurance about a confusing $19 payment notice she received, believing it might be a cancellation notice. The agent checked her policy, identified a prior lump-sum payment, and offered to contact the carrier to clarify the charge. The agent will follow up after confirming details with the carrier.",
+  "_model": "qwen3:14b",
+  "_eval_count": 309,
+  "_total_duration_ms": 35538,
+  "_source_file": "transcripts/in-+13363544000-+19196414141-20250818-104612-1755528372.2537.txt",
+  "_direction": "inbound",
+  "_char_count": 2780
+}

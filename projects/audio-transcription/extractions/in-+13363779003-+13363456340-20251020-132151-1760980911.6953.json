@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is concerned about a past-due bill and wants to confirm that their scheduled automatic payment on the 31st will prevent their auto insurance policy from being canceled on the same day.",
+  "resolution_steps": [
+    "Agent asked for the policyholder's name (Morgan Bohannon) and confirmed it's an auto policy.",
+    "Agent requested a moment to check the account and locate an agent to assist further."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of payment scheduling and policy cancellation processes",
+    "Access to internal systems to verify account details"
+  ],
+  "systems_referenced": [
+    "internal database"
+  ],
+  "summary": "Caller is concerned about a past-due auto insurance bill and scheduled payment on the 31st potentially leading to policy cancellation. Agent is verifying account details and will connect with another agent to resolve the issue.",
+  "_model": "qwen3:14b",
+  "_eval_count": 205,
+  "_total_duration_ms": 25021,
+  "_source_file": "transcripts/in-+13363779003-+13363456340-20251020-132151-1760980911.6953.txt",
+  "_direction": "inbound",
+  "_char_count": 722
+}

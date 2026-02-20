@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Brandy is following up with Brian regarding an umbrella policy quote sent via email, urging him to contact her after January 5th to discuss transitioning the policy to USLI before its January 19th renewal date.",
+  "resolution_steps": [
+    "Brandy mentions sending an email with a quote and coverage details for USLI.",
+    "Informs Brian she will be out of the office until January 5th but the policy renews on January 19th.",
+    "Requests Brian to call back after January 5th or respond to the email to schedule a discussion."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of umbrella policy renewals and carrier transitions (USLI)",
+    "Email communication protocols for client follow-ups",
+    "Policy timeline management"
+  ],
+  "systems_referenced": [
+    "Email system (for sending quotes and coverage details)",
+    "USLI carrier portal (for policy transition)"
+  ],
+  "summary": "Brandy from Alliance Insurance follows up with Brian about an umbrella policy quote sent via email, emphasizing the need to transition to USLI before the January 19th renewal date. She requests a callback after January 5th when she returns to the office. The call highlights the importance of timely client communication in insurance policy management.",
+  "_model": "qwen3:14b",
+  "_eval_count": 291,
+  "_total_duration_ms": 39752,
+  "_source_file": "transcripts/out-3367572787-112-20251219-132049-1766168449.5826.txt",
+  "_direction": "outbound",
+  "_char_count": 875
+}

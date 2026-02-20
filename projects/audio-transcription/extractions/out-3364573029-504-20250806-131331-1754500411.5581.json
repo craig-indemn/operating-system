@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Callie is dealing with a legal situation (lawsuit) and is hesitant to proceed with insurance renewals until after the matter is resolved. She is interested in a home insurance quote that could lower her deductible.",
+  "resolution_steps": [
+    "Holly confirms the renewal date (30th) and clarifies that renewals can be done after the legal settlement.",
+    "Holly suggests keeping auto insurance with Progressive and provides a home insurance quote with a lower deductible.",
+    "Holly reassures Callie there is no penalty for delaying the homeowner's renewal."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance renewal processes and flexibility around legal settlements",
+    "Carrier-specific policies (Progressive for auto insurance)",
+    "Home insurance quoting strategies to reduce deductibles"
+  ],
+  "systems_referenced": [
+    "Progressive (auto insurance carrier)",
+    "Home insurance quoting system"
+  ],
+  "summary": "Holly from Alliance Insurance discusses renewal options with Callie, who is waiting on a legal matter. Holly provides options to keep auto insurance with Progressive and a home insurance quote, noting flexibility in renewal timing. Callie will follow up after her legal situation is resolved.",
+  "_model": "qwen3:14b",
+  "_eval_count": 271,
+  "_total_duration_ms": 40572,
+  "_source_file": "transcripts/out-3364573029-504-20250806-131331-1754500411.5581.txt",
+  "_direction": "outbound",
+  "_char_count": 1426
+}

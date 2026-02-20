@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unknown (call ended before intent could be determined)",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The call resulted in a voicemail message indicating the recipient's voicemail box has not been configured yet. No further interaction occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 86,
+  "_total_duration_ms": 27106,
+  "_source_file": "transcripts/out-13369862139-207-20260109-104349-1767973429.1208.txt",
+  "_direction": "outbound",
+  "_char_count": 95
+}

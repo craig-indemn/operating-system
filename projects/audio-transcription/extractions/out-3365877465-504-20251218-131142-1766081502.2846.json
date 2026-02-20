@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (One) wanted to inform Holly about canceling their auto policy renewal in February due to a recent Progressive claim and seek guidance on retrieving their vehicle title from the DMV to process the insurance check.",
+  "resolution_steps": [
+    "Holly confirmed the caller's intent to cancel the policy and acknowledged the claim with Progressive.",
+    "Holly advised the caller to contact their adjuster to resolve the title issue for the insurance check.",
+    "Holly offered assistance with quoting a new policy once the caller has the title."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Auto insurance policy cancellation procedures",
+    "Claims process with Progressive",
+    "Title retrieval requirements for insurance settlements"
+  ],
+  "systems_referenced": [
+    "Progressive (insurance carrier)",
+    "DMV (Department of Motor Vehicles)"
+  ],
+  "summary": "The caller is canceling their auto policy due to a Progressive claim and needs help retrieving their vehicle title to process the insurance check. Holly advised contacting the adjuster for title resolution and offered future assistance with new policy quotes. The call ended with the caller agreeing to follow up with the adjuster.",
+  "_model": "qwen3:14b",
+  "_eval_count": 262,
+  "_total_duration_ms": 41955,
+  "_source_file": "transcripts/out-3365877465-504-20251218-131142-1766081502.2846.txt",
+  "_direction": "outbound",
+  "_char_count": 1913
+}

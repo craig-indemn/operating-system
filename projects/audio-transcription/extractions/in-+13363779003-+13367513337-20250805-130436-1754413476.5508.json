@@ -1,0 +1,21 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller wanted to speak with an agent related to auto insurance but did not specify a particular request.",
+  "resolution_steps": [
+    "Agent asked if the inquiry was personal or commercial",
+    "Agent offered to transfer the call to an agent"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of Alliance Insurance's services",
+    "Ability to route calls appropriately"
+  ],
+  "systems_referenced": [],
+  "summary": "The caller expressed a general interest in speaking with an auto insurance agent, but did not provide specific details. The agent initiated a transfer but did not complete the process before the call ended.",
+  "_model": "qwen3:14b",
+  "_eval_count": 145,
+  "_total_duration_ms": 86693,
+  "_source_file": "transcripts/in-+13363779003-+13367513337-20250805-130436-1754413476.5508.txt",
+  "_direction": "inbound",
+  "_char_count": 464
+}

@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller followed up on an email exchange regarding insurance-related documents, confirmed receipt of the email, and requested a quote to be sent for review with a follow-up meeting scheduled for Monday.",
+  "resolution_steps": [
+    "Agent (Serena) acknowledges receipt of the email with updated information and answers to questions.",
+    "Informs caller they will prepare and send a quote within a few hours.",
+    "Suggests the caller review the quote and confirms a follow-up meeting on Monday morning."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance quote generation process",
+    "Email communication protocols for client follow-ups",
+    "Scheduling client meetings"
+  ],
+  "systems_referenced": [
+    "Email"
+  ],
+  "summary": "The caller confirmed receipt of an email containing insurance-related updates and requested a quote. The agent assured the caller a quote would be sent shortly and arranged a follow-up meeting for Monday. The conversation concluded with mutual thanks and a plan for further action.",
+  "_model": "qwen3:14b",
+  "_eval_count": 226,
+  "_total_duration_ms": 34573,
+  "_source_file": "transcripts/exten-102-+13368136009-20251212-150332-1765569812.4328.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 618
+}

@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Shivan Sherman received a letter from the Department of Transportation (DNV) requesting Form FS-1 after switching insurance carriers and needs guidance on resolving the issue.",
+  "resolution_steps": [
+    "Heather explains that the letter is common when switching carriers, as the old carrier (Liberty Mutual) notifies DNV of the cancellation.",
+    "Heather provides the email address (support@myallianceinsurance.com) for submitting the letter electronically.",
+    "She clarifies that submitting the form promptly ensures DNV processes it, avoiding potential delays.",
+    "She reassures Shivan that even if another letter arrives, the team can handle it and recommends contacting them if that happens."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of insurance carrier transitions and DNV's requirements for Form FS-1",
+    "Knowledge of electronic submission processes for insurance-related documents"
+  ],
+  "systems_referenced": [
+    "Email system (support@myallianceinsurance.com)",
+    "DNV (Department of Transportation) portal/process"
+  ],
+  "summary": "Shivan Sherman received a DNV letter after switching insurance carriers. Heather from Alliance Insurance Services explained the letter's cause, provided the email address for submitting Form FS-1, and assured him the issue would be resolved once the form was submitted. The call concluded with Shivan agreeing to send the letter electronically.",
+  "_model": "qwen3:14b",
+  "_eval_count": 304,
+  "_total_duration_ms": 40896,
+  "_source_file": "transcripts/exten-401-+15082931785-20250825-132842-1756142922.5456.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3741
+}

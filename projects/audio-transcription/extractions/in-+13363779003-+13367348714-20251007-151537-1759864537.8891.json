@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to transfer the call to Corbin",
+  "resolution_steps": [
+    "Agent confirmed the request to transfer to Corbin",
+    "Agent initiated the transfer to Corbin's extension"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller requested to transfer the call to Corbin. Agent acknowledged and began the transfer process.",
+  "_model": "qwen3:14b",
+  "_eval_count": 102,
+  "_total_duration_ms": 29298,
+  "_source_file": "transcripts/in-+13363779003-+13367348714-20251007-151537-1759864537.8891.txt",
+  "_direction": "inbound",
+  "_char_count": 203
+}

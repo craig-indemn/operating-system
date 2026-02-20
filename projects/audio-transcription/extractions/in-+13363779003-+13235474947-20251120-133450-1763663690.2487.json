@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Not applicable (no meaningful conversation)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Brief voicemail greeting with no substantive conversation. Agent acknowledges call and indicates they will return shortly.",
+  "_model": "qwen3:14b",
+  "_eval_count": 79,
+  "_total_duration_ms": 20205,
+  "_source_file": "transcripts/in-+13363779003-+13235474947-20251120-133450-1763663690.2487.txt",
+  "_direction": "inbound",
+  "_char_count": 153
+}

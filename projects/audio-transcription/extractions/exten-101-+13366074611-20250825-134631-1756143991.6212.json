@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Kendra Claybo is seeking guidance on whether Alliance Insurance Services can cover a non-standard insurance request involving an employee driving within a parking lot between docks, which is not a typical coverage scenario.",
+  "resolution_steps": [
+    "Amani acknowledges the unique nature of the request and confirms she will consult with Christopher to assess the situation.",
+    "Amani notes she does not perceive significant risk but emphasizes the need for thorough evaluation.",
+    "Amani commits to providing a definitive answer to Kendra after consulting with Christopher."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance coverage nuances for non-standard scenarios (e.g., driving within a parking lot for employment purposes).",
+    "Ability to assess risk in atypical situations.",
+    "Knowledge of when to escalate to colleagues for specialized input."
+  ],
+  "systems_referenced": [],
+  "summary": "Kendra Claybo consults Amani about covering a unique insurance scenario involving an employee driving within a parking lot. Amani agrees to consult with Christopher to evaluate the risk and provide a definitive answer. The call concludes with Amani committing to follow up once she has the necessary information.",
+  "_model": "qwen3:14b",
+  "_eval_count": 260,
+  "_total_duration_ms": 48287,
+  "_source_file": "transcripts/exten-101-+13366074611-20250825-134631-1756143991.6212.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2577
+}

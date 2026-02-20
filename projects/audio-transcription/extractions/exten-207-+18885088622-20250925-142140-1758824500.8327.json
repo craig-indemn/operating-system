@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Brief follow-up to a previous conversation, expressing gratitude and confirming no further action is needed.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A short, polite exchange where the caller confirms there are no further issues and thanks the agent. No new requests or problems were discussed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 97,
+  "_total_duration_ms": 25608,
+  "_source_file": "transcripts/exten-207-+18885088622-20250925-142140-1758824500.8327.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 521
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "John wants to confirm if his insurance payments are set up for automatic draft and check the status of his claim, which has been delayed due to an adjuster not visiting as scheduled.",
+  "resolution_steps": [
+    "Agent asked John to clarify which policy he was referring to (TCJ policy).",
+    "Agent checked the billing system to verify automatic draft details.",
+    "Agent informed John of the next draft due date (December 27) and bill date (December 13).",
+    "Agent offered to transfer John to Jamie to leave a voice message regarding the claim delay."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of billing systems and automatic payment setup.",
+    "Knowledge of claim adjustment processes and internal team coordination."
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's billing system",
+    "Customer portal (myallianceinsurance.com)",
+    "Internal team communication (Jamie)"
+  ],
+  "summary": "John contacted Alliance Insurance to confirm his automatic payment setup and follow up on a delayed claim. The agent verified his payment details and referred the claim issue to Jamie for further action. The call concluded with John agreeing to leave a voicemail for Jamie.",
+  "_model": "qwen3:14b",
+  "_eval_count": 269,
+  "_total_duration_ms": 42185,
+  "_source_file": "transcripts/in-+13363779003-+13369970906-20251201-105853-1764604733.4475.txt",
+  "_direction": "inbound",
+  "_char_count": 3009
+}

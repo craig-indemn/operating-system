@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Requesting quotes for general liability and workers' compensation insurance",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller requested insurance quotes but the agent only acknowledged the request and did not provide any next steps. The conversation appears to have been cut off mid-escalation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 97,
+  "_total_duration_ms": 23163,
+  "_source_file": "transcripts/in-+13363779003-+14435367961-20250807-132821-1754587701.7222.txt",
+  "_direction": "inbound",
+  "_char_count": 205
+}

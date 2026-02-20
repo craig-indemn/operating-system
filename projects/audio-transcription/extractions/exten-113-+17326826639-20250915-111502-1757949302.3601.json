@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jim Dallas is finalizing a business insurance contract by providing payment details and requesting lien information to complete the transaction.",
+  "resolution_steps": [
+    "Gary confirmed the insurance quote and requested payment information.",
+    "Jim provided routing number (021200025) and account number (5451336860) for payment.",
+    "Gary requested lienholder details (Allied Financial) and their address (PO Box 71119).",
+    "Jim confirmed proof of insurance would be emailed once received."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Business insurance contract execution process",
+    "Payment processing requirements",
+    "Lienholder verification procedures",
+    "Proof of insurance delivery methods"
+  ],
+  "systems_referenced": [
+    "Email system for proof of insurance delivery"
+  ],
+  "summary": "Jim Dallas is finalizing a business insurance contract with Alliance Insurance Services. He provided payment details and confirmed the lienholder as Allied Financial. Gary requested the lienholder's address and confirmed proof of insurance would be emailed once received. The call requires follow-up to complete the transaction.",
+  "_model": "qwen3:14b",
+  "_eval_count": 257,
+  "_total_duration_ms": 41071,
+  "_source_file": "transcripts/exten-113-+17326826639-20250915-111502-1757949302.3601.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1606
+}

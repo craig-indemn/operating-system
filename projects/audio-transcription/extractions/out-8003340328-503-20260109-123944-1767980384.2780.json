@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "John from Alliance Insurance Services requested Pat from Auto Owners Insurance to retrieve and send an FS-1 document for a specific vehicle on a policy.",
+  "resolution_steps": [
+    "John provided the policy number (51275000) and vehicle details (2014 Honda Accord, date: November 29, 2025).",
+    "John shared his email address (john@myallianceinsurance.com) for receiving the document.",
+    "Pat confirmed receipt of details and agreed to send the FS-1 document shortly."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance document types (FS-1)",
+    "Policy number and vehicle information verification",
+    "Email communication for document delivery"
+  ],
+  "systems_referenced": [
+    "Auto Owners Insurance internal policy database"
+  ],
+  "summary": "John requested an FS-1 document for a 2014 Honda Accord under policy 51275000. Pat confirmed details and agreed to send the document via email. The call concluded with Pat committing to follow up shortly.",
+  "_model": "qwen3:14b",
+  "_eval_count": 257,
+  "_total_duration_ms": 29865,
+  "_source_file": "transcripts/out-8003340328-503-20260109-123944-1767980384.2780.txt",
+  "_direction": "outbound",
+  "_char_count": 1281
+}

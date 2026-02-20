@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Gary wants to set up AutoPay for his homeowners insurance policy using his Civic Credit Union bank account, similar to his existing auto policy with National General. He also needs the agent to review the auto policy details and send an email for his review.",
+  "resolution_steps": [
+    "Agent confirms Gary is set up on AutoPay through Civic Credit Union for his auto policy.",
+    "Agent attempts to access online portal to retrieve homeowners billing details but encounters technical issues.",
+    "Agent assures Gary an email with policy details will be sent for review.",
+    "Agent schedules follow-up call by end of week/early next week to collect bank information for setup.",
+    "Agent agrees to send email with auto policy details for Gary's review."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "AutoPay setup process for insurance policies",
+    "Billing and payment methods for homeowners insurance",
+    "Troubleshooting online portal access issues",
+    "Policy review and documentation procedures"
+  ],
+  "systems_referenced": [
+    "Civic Credit Union banking system",
+    "Online portal (computer/phone access)",
+    "Email communication"
+  ],
+  "summary": "Agent assists Gary in setting up AutoPay for his homeowners insurance, addresses technical issues with online portal access, and schedules a follow-up call to collect bank information. The agent will send an email with auto policy details for review. The call concludes with a plan to finalize setup by the end of the week.",
+  "_model": "qwen3:14b",
+  "_eval_count": 323,
+  "_total_duration_ms": 49727,
+  "_source_file": "transcripts/out-3369714291-113-20251020-142654-1760984814.9027.txt",
+  "_direction": "outbound",
+  "_char_count": 2077
+}

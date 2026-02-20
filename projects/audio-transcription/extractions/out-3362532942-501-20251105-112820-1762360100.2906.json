@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jamie Flippin, an Alliance Insurance agent, called to conduct an account review for the caller's auto and travel trailer policies, specifically to confirm up-to-date information ahead of an auto policy renewal with Progressive on January 27th.",
+  "resolution_steps": [
+    "Agent introduced themselves and stated the purpose of the call (account review).",
+    "Notified the caller of the auto policy's upcoming renewal date with Progressive.",
+    "Provided direct office contact information (336-377-9003) and office hours (Monday-Friday, 9:00 AM-5:00 PM).",
+    "Offered to call back if the caller needed assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy renewal processes and timelines",
+    "Customer contact protocols",
+    "Progressive insurance carrier specifics"
+  ],
+  "systems_referenced": [
+    "Progressive"
+  ],
+  "summary": "Jamie Flippin from Alliance Insurance contacted Will Thompson to review his auto and travel trailer policies, highlighting the auto policy's January 27th renewal date with Progressive and offering assistance with updates. The agent provided direct contact information for follow-up. The call concluded with an invitation for the caller to reach out if further assistance was needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 288,
+  "_total_duration_ms": 54776,
+  "_source_file": "transcripts/out-3362532942-501-20251105-112820-1762360100.2906.txt",
+  "_direction": "outbound",
+  "_char_count": 949
+}

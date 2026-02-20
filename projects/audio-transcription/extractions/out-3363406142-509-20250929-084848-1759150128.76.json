@@ -1,0 +1,21 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Informing the recipient about a pending $0.35 charge from Progressive and offering payment options.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance billing processes",
+    "Progressive carrier policies"
+  ],
+  "systems_referenced": [
+    "Progressive",
+    "insurance portal"
+  ],
+  "summary": "Zena from Alliance Insurance left a voicemail informing Thomas about a $0.35 charge from Progressive that will appear on his August 2026 renewal. She offered to accept payment over the phone or wait for the charge to be applied automatically.",
+  "_model": "qwen3:14b",
+  "_eval_count": 141,
+  "_total_duration_ms": 29721,
+  "_source_file": "transcripts/out-3363406142-509-20250929-084848-1759150128.76.txt",
+  "_direction": "outbound",
+  "_char_count": 1169
+}

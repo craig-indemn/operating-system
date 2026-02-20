@@ -1,0 +1,20 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Customer attempted to insure a vehicle but encountered issues completing the task and was directed to contact their agent for assistance.",
+  "resolution_steps": [
+    "Agent offered to connect the caller with another agent to help"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance enrollment processes",
+    "Ability to transfer calls to appropriate agents"
+  ],
+  "systems_referenced": [],
+  "summary": "Customer reported difficulty insuring a vehicle and was directed to contact their agent. The agent offered to connect them with another agent but the conversation ended abruptly without resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 134,
+  "_total_duration_ms": 32941,
+  "_source_file": "transcripts/in-+13363779003-+12523622076-20251230-120914-1767114554.2512.txt",
+  "_direction": "inbound",
+  "_char_count": 450
+}

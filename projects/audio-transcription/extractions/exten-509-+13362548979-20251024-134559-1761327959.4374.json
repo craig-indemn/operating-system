@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Wallace wants to resolve a past insurance bill issue by either setting up paperless billing or paying a small fee to waive a balance.",
+  "resolution_steps": [
+    "Agent explains that Wallace needs to log in to Progressive's website to set up paperless billing but acknowledges his lack of computer skills.",
+    "Agent offers to call Progressive to waive a $3 fee if Wallace pays $1 instead of the full balance.",
+    "Agent clarifies that the $4 balance stems from losing the paperless discount in the previous term.",
+    "Wallace agrees to pay the $1 and provides credit card details for the agent to process the payment.",
+    "Agent confirms receipt of credit card information and agrees to call Progressive to handle the payment and send a receipt via email."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Progressive's billing process",
+    "Paperless discount policies",
+    "Handling past-term balances",
+    "Credit card payment procedures"
+  ],
+  "systems_referenced": [
+    "Progressive.com",
+    "Progressive customer service",
+    "Email (VORTE address)"
+  ],
+  "summary": "Wallace had a $4 balance from a previous insurance term due to losing the paperless discount. The agent offered to waive $3 of the balance if Wallace paid $1, which he agreed to. The agent collected credit card details to process the payment and will follow up with a receipt. The call concluded with the agent committing to resolve the issue.",
+  "_model": "qwen3:14b",
+  "_eval_count": 330,
+  "_total_duration_ms": 51168,
+  "_source_file": "transcripts/exten-509-+13362548979-20251024-134559-1761327959.4374.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3964
+}

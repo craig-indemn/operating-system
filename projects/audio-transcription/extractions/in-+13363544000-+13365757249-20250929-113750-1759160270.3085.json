@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Attempting to reach Corbin (possibly a specific agent or contact)",
+  "resolution_steps": [
+    "Agent instructed caller to hold",
+    "Agent initiated transfer (call cut off before completion)"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Short inbound call where caller attempted to reach Corbin. Agent requested hold and began transfer, but call ended abruptly without resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 110,
+  "_total_duration_ms": 24364,
+  "_source_file": "transcripts/in-+13363544000-+13365757249-20250929-113750-1759160270.3085.txt",
+  "_direction": "inbound",
+  "_char_count": 119
+}

@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Confirm that auto insurance claim documents submitted via the claims portal were received and seek clarification on next steps after an accident.",
+  "resolution_steps": [
+    "Agent acknowledged receipt of claim documents and noted the discrepancy with the flood policy being highlighted.",
+    "Agent offered to transfer caller to a specialist for further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Claims submission process",
+    "Policy types (auto vs. flood)",
+    "Portal functionality and troubleshooting"
+  ],
+  "systems_referenced": [
+    "claims portal"
+  ],
+  "summary": "Melissa Somy followed up about an auto insurance claim submitted through the claims portal after an accident, expressing concern that only her flood policy was noted. The agent confirmed receipt and arranged a transfer to a specialist for next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 184,
+  "_total_duration_ms": 28061,
+  "_source_file": "transcripts/in-+13363779003-+19199066472-20251208-101536-1765206936.1814.txt",
+  "_direction": "inbound",
+  "_char_count": 629
+}

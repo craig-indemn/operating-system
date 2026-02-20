@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Heather Tommy Cole) is seeking renter's insurance for a new rental home, specifying $100,000 liability coverage and requesting assistance with property valuation and policy details.",
+  "resolution_steps": [
+    "Agent confirmed receipt of initial email but noted missing details.",
+    "Agent asked about property specifics (bedrooms, square footage, furnishings) to assess personal property coverage.",
+    "Discussed liability vs. property coverage requirements, clarifying management company mandates vs. personal needs.",
+    "Estimated property value based on furnishings and family needs (e.g., grandkids' rooms).",
+    "Suggested $75,000\u2013$100,000 property coverage range and confirmed email with policy details was received.",
+    "Inquired about primary residence (condo) status and future plans to sell it."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Renter's insurance policy structures",
+    "Liability vs. property coverage distinctions",
+    "Property valuation methods for insurance",
+    "Handling vacant property insurance scenarios"
+  ],
+  "systems_referenced": [
+    "Email communication"
+  ],
+  "summary": "Heather Tommy Cole is arranging renter's insurance for a new rental home, requiring $100,000 liability coverage. The agent is gathering details about the property's size, furnishings, and personal belongings to determine appropriate coverage. Heather also mentioned her primary residence's future sale and temporary vacancy status, which may affect insurance needs. The agent will prepare a proposal after confirming all details.",
+  "_model": "qwen3:14b",
+  "_eval_count": 343,
+  "_total_duration_ms": 53661,
+  "_source_file": "transcripts/exten-401-+18324923386-20250902-144230-1756838550.6560.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4157
+}

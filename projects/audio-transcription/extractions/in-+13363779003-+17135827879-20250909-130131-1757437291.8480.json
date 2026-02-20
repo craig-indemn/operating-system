@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; caller appears to be attempting to reach someone named 'Corbin' but provides no context or specific request.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief, unclear call where the caller repeatedly mentions 'Corbin' without explaining their purpose. The agent did not clarify the caller's intent or resolve any issue.",
+  "_model": "qwen3:14b",
+  "_eval_count": 110,
+  "_total_duration_ms": 23019,
+  "_source_file": "transcripts/in-+13363779003-+17135827879-20250909-130131-1757437291.8480.txt",
+  "_direction": "inbound",
+  "_char_count": 159
+}

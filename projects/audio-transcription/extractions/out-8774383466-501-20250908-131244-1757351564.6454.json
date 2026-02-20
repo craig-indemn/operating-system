@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Menu prompt directing caller to press 1 for auto insurance or 2 for home insurance",
+  "_model": "qwen3:14b",
+  "_eval_count": 71,
+  "_total_duration_ms": 26256,
+  "_source_file": "transcripts/out-8774383466-501-20250908-131244-1757351564.6454.txt",
+  "_direction": "outbound",
+  "_char_count": 137
+}

@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Chip Handy is seeking updates on a truck claim he filed, emphasizing urgency due to his hospitalization and need to resume farming operations.",
+  "resolution_steps": [
+    "Anna confirms she will contact the adjuster to check the claim's status.",
+    "Anna notes there are no additional notes in the system beyond the claim number.",
+    "Anna agrees to follow up with the adjuster to ensure they contact Chip directly."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Claims processing workflow",
+    "Adjuster communication protocols",
+    "Access to internal claim tracking systems"
+  ],
+  "systems_referenced": [
+    "Internal claim tracking system (shows claim number but no notes)"
+  ],
+  "summary": "Chip Handy discusses a truck claim with Anna, requesting updates on his adjuster's progress. Anna agrees to contact the adjuster directly to investigate the status, noting the system only shows basic claim information. The call concludes with Anna committing to follow up with the adjuster.",
+  "_model": "qwen3:14b",
+  "_eval_count": 227,
+  "_total_duration_ms": 37202,
+  "_source_file": "transcripts/exten-302-+13363740199-20251112-163847-1762983527.8529.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1192
+}

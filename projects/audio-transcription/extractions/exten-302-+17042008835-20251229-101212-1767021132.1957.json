@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Laura Taylor needs to add a supplemental crime fidelity coverage to an HOA policy for Sir John Hill to facilitate a property closing before foreclosure, as the current coverage is insufficient per lender requirements.",
+  "resolution_steps": [
+    "Agent confirmed the need for HOA to add a supplemental crime writer to their fidelity policy.",
+    "Explained that the HOA president (Dale Powell) must formally request the addition through the carrier.",
+    "Noted that the carrier would review the request and determine approval/costs, which is uncertain.",
+    "Advised Laura to contact Dale to initiate the process."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "HOA insurance policy structures",
+    "Supplemental crime/fidelity coverage requirements",
+    "Carrier request processes for policy amendments",
+    "Fannie Mae guidelines for insurance coverage"
+  ],
+  "systems_referenced": [
+    "Carrier portal/email system for policy requests",
+    "Fannie Mae guidelines documentation"
+  ],
+  "summary": "Laura Taylor sought to resolve a policy shortfall for Sir John Hill's HOA to avoid foreclosure. The agent explained that the HOA president must formally request the supplemental coverage, which would then be reviewed by the carrier for approval and cost determination. The caller agreed to follow up with the HOA president to initiate the process.",
+  "_model": "qwen3:14b",
+  "_eval_count": 294,
+  "_total_duration_ms": 38050,
+  "_source_file": "transcripts/exten-302-+17042008835-20251229-101212-1767021132.1957.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3323
+}

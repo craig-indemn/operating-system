@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Claudia is clarifying a previous misunderstanding about payroll adjustments for sole proprietors, ensuring Cody is informed that the issue was resolved and there was no mistake.",
+  "resolution_steps": [
+    "Cody listened to Claudia's explanation about a communication gap regarding payroll and scheduling for sole proprietors.",
+    "Cody acknowledged that Claudia was left out of a prior conversation and confirmed the issue was resolved.",
+    "Cody reassured Claudia that no mistake was made and that the correct payroll setup was confirmed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of payroll and scheduling processes for sole proprietors",
+    "Internal communication protocols within the organization"
+  ],
+  "systems_referenced": [],
+  "summary": "Claudia called to clarify a previous misunderstanding about payroll adjustments for sole proprietors, ensuring Cody was informed that the issue was resolved and there was no mistake. The conversation focused on communication gaps and confirming the correct payroll setup. The call ended with mutual agreement that no action was needed beyond the clarification.",
+  "_model": "qwen3:14b",
+  "_eval_count": 235,
+  "_total_duration_ms": 37251,
+  "_source_file": "transcripts/exten-207-+18002430210-20251120-132350-1763663030.2432.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1920
+}

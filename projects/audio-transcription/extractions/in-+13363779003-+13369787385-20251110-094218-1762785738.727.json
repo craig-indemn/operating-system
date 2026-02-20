@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to obtain a better insurance rate, specifically for auto insurance, and is seeking assistance from Alliance Insurance to achieve this.",
+  "resolution_steps": [
+    "Agent asked the caller to clarify whether the request is for home, auto, or both insurance.",
+    "Caller confirmed the request is for auto insurance.",
+    "Agent informed the caller they would retrieve an answer shortly."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Auto insurance rate comparison processes",
+    "Carrier quoting systems"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller inquired about obtaining a better auto insurance rate. The agent confirmed the request and stated they would retrieve information to provide an answer. The call is ongoing with a follow-up expected.",
+  "_model": "qwen3:14b",
+  "_eval_count": 180,
+  "_total_duration_ms": 29164,
+  "_source_file": "transcripts/in-+13363779003-+13369787385-20251110-094218-1762785738.727.txt",
+  "_direction": "inbound",
+  "_char_count": 276
+}

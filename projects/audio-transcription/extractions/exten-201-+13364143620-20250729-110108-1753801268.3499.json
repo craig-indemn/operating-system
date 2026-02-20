@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Casual check-in between colleagues with no actionable requests",
+  "resolution_steps": [],
+  "outcome": "not_applicable",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Brief extension transfer conversation between Joe and Amanda where they exchange pleasantries and confirm no immediate needs. No insurance-related topics or actions discussed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 91,
+  "_total_duration_ms": 17691,
+  "_source_file": "transcripts/exten-201-+13364143620-20250729-110108-1753801268.3499.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 295
+}

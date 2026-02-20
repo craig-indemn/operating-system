@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller intended to speak with Heather, specifying the correct email address to distinguish between two individuals named Heather.",
+  "resolution_steps": [
+    "Agent clarified there are two Heathers and asked for additional details to identify the correct one.",
+    "Caller provided the email address ending with 'S' to specify the correct Heather.",
+    "Agent informed the caller that Heather was on another line and asked if they wanted to leave a voice message.",
+    "Caller declined to leave a message and requested to speak directly with Heather.",
+    "Agent offered to call Heather back to facilitate the conversation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Internal directory structure (multiple individuals with the same name)",
+    "Standard procedures for handling call transfers and follow-ups"
+  ],
+  "systems_referenced": [
+    "Internal phone system (directory lookup)"
+  ],
+  "summary": "Caller attempted to reach Heather but faced confusion due to duplicate names. The agent clarified the situation and offered to call Heather back to resolve the issue. The call ended with the agent committing to follow up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 241,
+  "_total_duration_ms": 30471,
+  "_source_file": "transcripts/in-+13363779003-+19175395567-20250924-152850-1758742130.6181.txt",
+  "_direction": "inbound",
+  "_char_count": 430
+}

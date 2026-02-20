@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants a homeowners insurance quote from Alliance Insurance Services, as they currently have auto insurance with Progressive and are looking to switch providers.",
+  "resolution_steps": [
+    "Agent confirmed the caller's current auto insurance provider (Progressive) and clarified that Alliance works with them for homeowners insurance.",
+    "Agent requested necessary details to generate a quote (e.g., location, coverage preferences)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of Progressive's partnership with Alliance Insurance for homeowners policies",
+    "Ability to generate insurance quotes based on caller-provided details"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's internal quoting system"
+  ],
+  "summary": "A caller with Progressive auto insurance requested a homeowners insurance quote from Alliance. The agent confirmed compatibility with Progressive and initiated the quoting process. Further details are needed to finalize the quote.",
+  "_model": "qwen3:14b",
+  "_eval_count": 201,
+  "_total_duration_ms": 20367,
+  "_source_file": "transcripts/in-+13363779003-+17046742427-20250922-094407-1758548647.917.txt",
+  "_direction": "inbound",
+  "_char_count": 403
+}

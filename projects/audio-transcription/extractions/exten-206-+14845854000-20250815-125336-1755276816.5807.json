@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Steve Waller is following up on an insurance coverage issue for a building undergoing renovations, seeking clarification on appraisal discrepancies and coverage amounts for Trs Business LLC.",
+  "resolution_steps": [
+    "Steve reviews the client's file and policy details (GL #1288353213552) to assess the current coverage and appraisal data.",
+    "He confirms the building's square footage (6,060 sq ft), current occupancy (2,400\u20132,600 sq ft occupied), and renovation status (closed-off section).",
+    "Discusses the appraisal submitted in March, which estimated the building's value at $330,000 (as-is) and $550,000 post-renovations.",
+    "Notes Holly Coons' concern that the $300,000 coverage is undervalued at ~$49.50/sq ft and her rejection of the appraisal without alternative proposals.",
+    "Seeks Jeff's input on acceptable coverage amounts and next steps for resolving the discrepancy."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance appraisal processes",
+    "Building coverage calculations (per square foot)",
+    "Handling policy endorsements for renovations",
+    "Communication with underwriters/carriers"
+  ],
+  "systems_referenced": [
+    "Policy file system (GL #1288353213552)",
+    "Email communication with Holly Coons",
+    "Appraisal documentation from March"
+  ],
+  "summary": "Steve Waller discusses a coverage dispute for a building renovation with Jeff, highlighting an appraisal discrepancy and Holly Coons' concerns about undervaluation. The conversation focuses on reconciling the $300,000 coverage with the appraisal's $330,000 as-is value and $550,000 post-renovation estimate, while addressing the need for alternative coverage proposals.",
+  "_model": "qwen3:14b",
+  "_eval_count": 433,
+  "_total_duration_ms": 59178,
+  "_source_file": "transcripts/exten-206-+14845854000-20250815-125336-1755276816.5807.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4471
+}

@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; appears to be a fragmented voicemail message or automated system response",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief, incomplete message containing a thank you and reference to 'Sticker 702' with no further context or interaction. Likely a voicemail greeting or system-generated message rather than a substantive conversation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 108,
+  "_total_duration_ms": 18440,
+  "_source_file": "transcripts/in-+13363682529-+19802073767-20251008-152101-1759951261.7527.txt",
+  "_direction": "inbound",
+  "_char_count": 61
+}

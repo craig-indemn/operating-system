@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Heather is seeking assistance to obtain a new auto insurance quote for her 2025 Toyota Camry and 2017 Lexus, compare it with her existing Progressive policy, and potentially bundle it with her homeowners insurance.",
+  "resolution_steps": [
+    "Johnny confirms Heather's vehicle details (2017 Lexus, 2025 Toyota Camry) and policy information (Progressive policy #986296373, effective September 10, 2025\u2013March 10, 2026).",
+    "Heather sends her Progressive policy details via email for comparison.",
+    "Johnny agrees to revisit previous quotes and provide a revised comparison, including potential bundling with homeowners insurance."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Auto insurance quoting processes",
+    "Progressive policy structure and terminology",
+    "Bundling strategies for homeowners and auto insurance"
+  ],
+  "systems_referenced": [
+    "Progressive insurance portal",
+    "Email communication"
+  ],
+  "summary": "Heather discusses her need for a new auto insurance quote with Johnny, providing details about her vehicles and existing Progressive policy. Johnny agrees to compare quotes and explore bundling options with her homeowners insurance. Heather sends her policy details via email, and Johnny commits to revising the quotes for her review.",
+  "_model": "qwen3:14b",
+  "_eval_count": 303,
+  "_total_duration_ms": 45287,
+  "_source_file": "transcripts/exten-401-+13365800121-20250902-114704-1756828024.3076.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3753
+}

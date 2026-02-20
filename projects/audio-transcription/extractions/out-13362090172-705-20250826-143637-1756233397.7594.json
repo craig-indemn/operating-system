@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Christopher Cook wants to discuss a life insurance policy offer from Cincinnati, considering options like adjusting coverage amounts or term lengths based on his health status (above average but with blood pressure/cholesterol) and financial situation (currently unemployed). He seeks guidance on whether to accept the offered policy or explore alternatives.",
+  "resolution_steps": [
+    "Agent explained Cincinnati's assessment of Cook's health (above average, with controlled blood pressure and existing cholesterol).",
+    "Presented policy options: $1M 30-year term ($697/month) vs. $750K or 20-year term.",
+    "Addressed Cook's concern about affordability given his current unemployment.",
+    "Proposed scheduling an in-person meeting to review numbers and finalize decisions.",
+    "Cook agreed to meet Thursday at 1:30 PM at the Winston office."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Life insurance underwriting criteria (health tiers, premium calculations)",
+    "Policy customization options (term length, coverage amounts)",
+    "Health condition management (blood pressure control, cholesterol implications)",
+    "Client consultation logistics (scheduling, office locations)"
+  ],
+  "systems_referenced": [
+    "Cincinnati insurance policy portal",
+    "Winston office location"
+  ],
+  "summary": "Agent Carmine discusses a life insurance offer with Christopher Cook, addressing his health profile and financial situation. Cook agrees to meet in person to review policy options and finalize decisions. The call highlights considerations around health tiers, premium costs, and term customization.",
+  "_model": "qwen3:14b",
+  "_eval_count": 337,
+  "_total_duration_ms": 46550,
+  "_source_file": "transcripts/out-13362090172-705-20250826-143637-1756233397.7594.txt",
+  "_direction": "outbound",
+  "_char_count": 3493
+}

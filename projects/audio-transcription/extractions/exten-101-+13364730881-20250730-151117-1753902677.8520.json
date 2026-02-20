@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Aaron Hunter) seeks clarification about the coverage of his insurance policies, specifically regarding general liability, property, and auto coverage, and whether certain scenarios (e.g., engine failure, liability from accidents) are included.",
+  "resolution_steps": [
+    "Amanda explains that the express loop policy covers general liability and property (e.g., building replacement, liability for injuries like slips/falls).",
+    "She clarifies that engine failure during oil changes is covered under the auto policy, not the liability policy.",
+    "Amanda agrees to check policy details and send an email with further information."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of insurance policy types (general liability, property, auto).",
+    "Knowledge of coverage specifics for scenarios like engine failure, property damage, and bodily injury liability."
+  ],
+  "systems_referenced": [],
+  "summary": "The caller asked about insurance coverage for various scenarios, including general liability, property damage, and auto-related incidents. The agent clarified policy distinctions and committed to sending an email with detailed information. The call concluded with the caller satisfied and next steps outlined.",
+  "_model": "qwen3:14b",
+  "_eval_count": 254,
+  "_total_duration_ms": 42032,
+  "_source_file": "transcripts/exten-101-+13364730881-20250730-151117-1753902677.8520.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1458
+}

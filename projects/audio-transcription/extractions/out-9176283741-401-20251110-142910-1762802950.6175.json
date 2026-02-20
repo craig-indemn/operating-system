@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Marvin wants to finalize home insurance for his lender and set up auto insurance later, while ensuring the transition doesn't affect his mortgage process.",
+  "resolution_steps": [
+    "Agent explains that Cincinnati requires bundling home and auto insurance but agrees to send only the home policy to the lender for now.",
+    "Confirms home insurance cost ($615/year) and discusses transitioning to a bundled policy with Cincinnati in the future.",
+    "Agrees to set up monthly auto payments via bank draft, collects Marvin's routing and account numbers.",
+    "Notes current Geico auto policy will be canceled and replaced with Cincinnati starting 12/15.",
+    "Confirms effective date (12/15) and ensures lender will only receive home insurance details."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance bundling requirements for carriers like Cincinnati",
+    "Process for canceling existing auto policies (Geico) and switching providers",
+    "Setting up monthly bank drafts for insurance payments",
+    "Lender communication protocols for insurance documentation"
+  ],
+  "systems_referenced": [
+    "Cincinnati Insurance",
+    "Geico (current auto insurer)",
+    "Banking systems for payment setup",
+    "Lender documentation portal"
+  ],
+  "summary": "Agent assists Marvin in finalizing home insurance for his lender while planning a future transition to bundled home/auto insurance with Cincinnati. They set up monthly auto payments via bank draft, collect banking details, and confirm cancellation of Marvin's current Geico policy. The call concludes with Marvin providing routing and account information for payment setup.",
+  "_model": "qwen3:14b",
+  "_eval_count": 351,
+  "_total_duration_ms": 53356,
+  "_source_file": "transcripts/out-9176283741-401-20251110-142910-1762802950.6175.txt",
+  "_direction": "outbound",
+  "_char_count": 4198
+}

@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to add a car to an existing insurance policy but encountered issues due to a canceled policy and a new policy opened with Progressive.",
+  "resolution_steps": [
+    "Agent confirmed the caller's address and name.",
+    "Agent checked the system and found the policy was canceled in July for non-payment.",
+    "Caller explained he opened a new policy with Progressive and contacted them directly.",
+    "Agent clarified that Alliance Insurance cannot access policies opened directly with Progressive.",
+    "Agent informed caller he must contact Progressive directly for further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding policy cancellation reasons (non-payment)",
+    "Differentiating between policies managed through Alliance vs. direct carrier interactions",
+    "Progressive's role as a carrier and limitations of third-party agencies"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's internal policy database",
+    "Progressive's insurance portal"
+  ],
+  "summary": "The caller attempted to add a vehicle to a canceled policy but had already opened a new policy with Progressive. The agent explained that since the policy was managed directly with Progressive, Alliance Insurance could not assist with the request, requiring the caller to contact Progressive directly for updates.",
+  "_model": "qwen3:14b",
+  "_eval_count": 273,
+  "_total_duration_ms": 39007,
+  "_source_file": "transcripts/out-13366171152-114-20251120-152156-1763670116.3280.txt",
+  "_direction": "outbound",
+  "_char_count": 1384
+}

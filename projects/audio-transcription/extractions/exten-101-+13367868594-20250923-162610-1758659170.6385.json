@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Deborah Williams is providing directions to her condo to Amani, likely during a call transfer.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "This appears to be a non-substantive extension transfer where Deborah Williams provides directions to her condo. No insurance-related conversation occurs, and the call lacks context tied to Alliance Insurance Services' operations.",
+  "_model": "qwen3:14b",
+  "_eval_count": 112,
+  "_total_duration_ms": 25711,
+  "_source_file": "transcripts/exten-101-+13367868594-20250923-162610-1758659170.6385.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 378
+}

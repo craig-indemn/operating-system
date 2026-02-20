@@ -1,0 +1,21 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller (Brandy) intended to reach Scott to review his insurance policies but was unable to connect directly.",
+  "resolution_steps": [
+    "Left a voicemail message with contact information.",
+    "Provided a phone number for follow-up."
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [
+    "Basic insurance policy review procedures",
+    "Voicemail etiquette for client outreach"
+  ],
+  "systems_referenced": [],
+  "summary": "Agent left a voicemail message for Scott, providing contact details and requesting a call to review policies. The call was not substantive due to lack of direct conversation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 147,
+  "_total_duration_ms": 53865,
+  "_source_file": "transcripts/out-3363748339-100-20260107-143355-1767814435.4091.txt",
+  "_direction": "outbound",
+  "_char_count": 876
+}

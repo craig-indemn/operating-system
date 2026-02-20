@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller seeks clarification on a new insurance quote from En Range, why the price increased compared to their previous provider (Main Street America), and what steps they need to take regarding their current policy and potential bank involvement.",
+  "resolution_steps": [
+    "Agent explains that the previous insurer (Main Street America) is no longer operating in North Carolina, necessitating a new quote from En Range.",
+    "Agent clarifies the new quote price ($1,226 for a policy from Sept 2025 to Sept 2026) and addresses the caller's concern about the increase by noting the previous insurer's exit from the market.",
+    "Agent advises the caller to contact the bank to discuss the situation, though clarifies the bank is not directly involved in the insurance arrangement.",
+    "Agent emphasizes that the current policy with Main Street America expires on Sept 19 and warns that filing a claim now could complicate matters.",
+    "Agent offers the caller the option to seek cheaper insurance elsewhere if desired."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance market dynamics in North Carolina (e.g., insurer exits, rate changes).",
+    "Process for handling policy cancellations, claims, and transitions between insurers.",
+    "Role of banks in insurance arrangements (e.g., mortgage-related insurance)."
+  ],
+  "systems_referenced": [
+    "En Range (insurance provider).",
+    "Main Street America (previous insurer)."
+  ],
+  "summary": "An agent from Lions Insurance discusses a new insurance quote with a customer, explaining the price increase due to the previous insurer's exit from North Carolina. The customer is advised to contact their bank and consider alternative insurers if needed. The agent clarifies that the current policy expires soon and warns against filing a claim prematurely.",
+  "_model": "qwen3:14b",
+  "_eval_count": 395,
+  "_total_duration_ms": 64771,
+  "_source_file": "transcripts/out-13365822488-114-20250903-131310-1756919590.7862.txt",
+  "_direction": "outbound",
+  "_char_count": 4288
+}

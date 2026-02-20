@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Pradeep called to confirm home policy details for Veriforce Bank, likely related to a verification request.",
+  "resolution_steps": [
+    "Agent acknowledged the request",
+    "Agent stated they would transfer the call (but no actual transfer occurred)"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The call was cut off prematurely after the agent promised to transfer the caller but did not complete the action. No meaningful resolution occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 122,
+  "_total_duration_ms": 31671,
+  "_source_file": "transcripts/in-+13363779003-+18882609876-20251010-145200-1760122320.9135.txt",
+  "_direction": "inbound",
+  "_char_count": 365
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Edward from New Tech Bank is seeking to add his institution as additional insured or certificate holders on multiple insurance policies (general liability, property, molestation, workers' comp) and increase workers' comp coverage from $103,000 to $1 million, while confirming timelines for processing.",
+  "resolution_steps": [
+    "Confirmed need to add New Tech Bank as additional insured on general liability, property, and molestation policies, and as certificate holder on workers' comp.",
+    "Noted business personal property insurance is missing and requires procurement.",
+    "Agreed to submit workers' comp coverage increase request to carrier, acknowledging potential delays due to mid-term adjustments.",
+    "Planned to contact carrier for timeline on molestation insurance increase approval.",
+    "Assured remaining tasks (additions, submissions) can be completed immediately."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy terminology (additional insured, certificate holder, payee/mortgagee).",
+    "Process for mid-term coverage adjustments and carrier approval timelines.",
+    "Understanding of workers' comp, general liability, and molestation insurance requirements."
+  ],
+  "systems_referenced": [
+    "carrier portals (for coverage adjustments and submissions)"
+  ],
+  "summary": "Edward from New Tech Bank collaborated with Donna to address insurance policy updates, including adding the bank as additional insured/certificate holders and increasing workers' comp coverage. Donna confirmed immediate actions and will follow up with the carrier for a timeline on the molestation insurance increase, which may require carrier approval.",
+  "_model": "qwen3:14b",
+  "_eval_count": 337,
+  "_total_duration_ms": 55721,
+  "_source_file": "transcripts/exten-302-+15162547560-20251211-092219-1765462939.153.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3016
+}

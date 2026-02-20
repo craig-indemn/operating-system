@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Gary from Alliance Insurance is contacting Phil to address the non-renewal of his MSA insurance policy and gather information to secure new quotes. He aims to assess property details (roof age, home updates, security systems) to ensure accurate pricing.",
+  "resolution_steps": [
+    "Asked Phil about the last roof installation date (2016, no recent updates).",
+    "Inquired about household changes (no new pets, pools, or trampolines; existing cat remains unchanged).",
+    "Checked for home improvements (no plumbing/electric updates, but new AC unit installed last month with same configuration).",
+    "Noted presence of ADT security system used regularly.",
+    "Committed to providing re-quotes by the next day and requested additional info if needed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance underwriting factors (roof age, home modifications, security systems).",
+    "Policy renewal processes and carrier-specific requirements.",
+    "Impact of AC unit replacements on insurance quotes."
+  ],
+  "systems_referenced": [
+    "MSA (previous insurer)",
+    "Alliance Insurance quoting process"
+  ],
+  "summary": "Gary from Alliance Insurance contacted Phil to address the non-renewal of his MSA policy, gathering details about his home's condition (roof age, AC unit, security system) to secure new quotes. Phil provided key updates, and Gary committed to follow-up with options by the next day.",
+  "_model": "qwen3:14b",
+  "_eval_count": 321,
+  "_total_duration_ms": 46983,
+  "_source_file": "transcripts/out-6178933452-113-20250903-112408-1756913048.3240.txt",
+  "_direction": "outbound",
+  "_char_count": 2042
+}

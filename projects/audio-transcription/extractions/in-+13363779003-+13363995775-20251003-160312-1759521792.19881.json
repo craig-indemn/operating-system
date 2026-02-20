@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wishes to cancel a vehicle insurance policy and is seeking assistance from Alliance Insurance.",
+  "resolution_steps": [
+    "Agent confirmed the policy type (vehicle insurance) after the caller mentioned canceling 'some insurance'.",
+    "Agent requested the caller to hold while they prepare to assist with the cancellation process."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Cancellation procedures for vehicle insurance policies",
+    "Internal system navigation for policy management"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal policy management system"
+  ],
+  "summary": "A caller initiated a request to cancel a vehicle insurance policy. The agent confirmed the policy type and placed the caller on hold to proceed with cancellation assistance. The call is ongoing, requiring further steps to resolve the cancellation request.",
+  "_model": "qwen3:14b",
+  "_eval_count": 188,
+  "_total_duration_ms": 26226,
+  "_source_file": "transcripts/in-+13363779003-+13363995775-20251003-160312-1759521792.19881.txt",
+  "_direction": "inbound",
+  "_char_count": 173
+}

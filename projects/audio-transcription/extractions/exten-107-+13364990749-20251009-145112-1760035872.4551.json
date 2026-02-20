@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jacob is seeking clarification on an Adobe licensing issue affecting Morgan Campbell and assistance with a printing problem on his computer at the Winston office.",
+  "resolution_steps": [
+    "Agent confirms there is no agency-wide Adobe license and explains Morgan's account status.",
+    "Agent initiates remote access to Jacob's computer to troubleshoot the printing issue.",
+    "Agent attempts to identify the problematic printer settings and login credentials for NC Green.",
+    "Agent checks application status and printer configuration while guiding Jacob through the process."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Adobe licensing management for individual users",
+    "Remote support troubleshooting techniques",
+    "Internal software systems (NC Green, personal lines portal)"
+  ],
+  "systems_referenced": [
+    "Adobe licensing portal",
+    "NC Green (internal system)",
+    "Remote access tools",
+    "Personal lines insurance portal"
+  ],
+  "summary": "Jacob contacted support regarding an Adobe licensing issue affecting a colleague and a printing problem on his computer. The agent confirmed no agency-wide Adobe license exists and began remote troubleshooting of the printer issue, checking login credentials and application status in NC Green. The call is ongoing as the agent works to resolve the technical issues.",
+  "_model": "qwen3:14b",
+  "_eval_count": 271,
+  "_total_duration_ms": 43999,
+  "_source_file": "transcripts/exten-107-+13364990749-20251009-145112-1760035872.4551.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3979
+}

@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Tom needed confirmation that his Toyota insurance policy was effective on the 14th to provide proof to the dealership, after initially receiving a binder with an incorrect effective date.",
+  "resolution_steps": [
+    "JC informed Tom that the initial binder was processed and emailed.",
+    "Tom requested verification of the policy date for the Toyota.",
+    "JC realized the initial email contained a policy effective on the 15th instead of the requested 14th.",
+    "JC corrected the error by sending a new binder with the effective date adjusted to the 14th.",
+    "JC confirmed the corrected binder would show coverage effective for the Toyota on the 14th."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of insurance binder processing and effective dates",
+    "Ability to adjust policy dates based on customer requests",
+    "Knowledge of dealership requirements for proof of insurance"
+  ],
+  "systems_referenced": [
+    "Email communication system for sending binders",
+    "Internal policy processing system for adjusting effective dates"
+  ],
+  "summary": "JC from Lions Insurance corrected an error in Tom's Toyota insurance binder, ensuring the policy was effective on the 14th as requested. After initially sending a binder with the wrong date, JC resubmitted the correct document, resolving the issue and satisfying Tom's need for proof of insurance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 300,
+  "_total_duration_ms": 39820,
+  "_source_file": "transcripts/out-7169696111-114-20251013-133256-1760376776.9647.txt",
+  "_direction": "outbound",
+  "_char_count": 2416
+}

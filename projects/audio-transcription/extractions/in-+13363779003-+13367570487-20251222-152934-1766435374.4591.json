@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller attempted to reach Corbin and requested a transfer.",
+  "resolution_steps": [
+    "Agent offered to transfer the call to Corbin's extension."
+  ],
+  "outcome": "transferred",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief inbound call where the caller requested to speak with Corbin. The agent offered to transfer the call but the conversation was too short to determine further details.",
+  "_model": "qwen3:14b",
+  "_eval_count": 108,
+  "_total_duration_ms": 24139,
+  "_source_file": "transcripts/in-+13363779003-+13367570487-20251222-152934-1766435374.4591.txt",
+  "_direction": "inbound",
+  "_char_count": 180
+}

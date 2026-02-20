@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Brandi from Alliance Insurance Services needs to submit FS1 forms for four vehicles (three under policy 865303068 and one under policy 989029686) related to Thurman Porter's insurance account.",
+  "resolution_steps": [
+    "Agent verified the policy number (865303068) and customer name (Thurman Porter).",
+    "Transferred to Progressive's insurance verification department.",
+    "Verification agent confirmed Brandi's identity, agency, and requested details about the vehicles needing FS1 forms.",
+    "Agent provided vehicle details (makes, models, VINs, and policy dates) for four vehicles across two policies.",
+    "Verification agent submitted FS1 forms for all four vehicles to North Carolina.",
+    "Agent confirmed successful submission and closed the call."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of FS1 forms (likely insurance claim or documentation forms)",
+    "Policy verification process for multi-vehicle accounts",
+    "Handling of expired and active policies",
+    "VIN and policy number lookup procedures"
+  ],
+  "systems_referenced": [
+    "Progressive's insurance verification system",
+    "Policy management portal (referenced via policy numbers 865303068 and 989029686)"
+  ],
+  "summary": "Brandi from Alliance Insurance Services requested submission of FS1 forms for four vehicles across two policies. After verifying details with Progressive's verification department, the agent confirmed successful submission of all forms. The call concluded with confirmation of resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 353,
+  "_total_duration_ms": 50124,
+  "_source_file": "transcripts/out-8777762436-112-20251219-123750-1766165870.4807.txt",
+  "_direction": "outbound",
+  "_char_count": 6932
+}

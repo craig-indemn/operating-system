@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to discuss an auto insurance policy for personal use.",
+  "resolution_steps": [
+    "Agent Dana asked whether the policy was for personal or commercial use.",
+    "Caller confirmed it was personal.",
+    "Agent offered to connect the caller with an appropriate agent."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Auto insurance policy types (personal vs. commercial)",
+    "Internal process for routing calls to appropriate agents"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller contacted Alliance Insurance to inquire about a personal auto policy. The agent confirmed the policy type and offered to connect the caller with an appropriate agent. The call did not reach resolution but was routed to the next step in the process.",
+  "_model": "qwen3:14b",
+  "_eval_count": 176,
+  "_total_duration_ms": 53694,
+  "_source_file": "transcripts/in-+13363779003-+17045499908-20250904-093659-1756993019.1117.txt",
+  "_direction": "inbound",
+  "_char_count": 369
+}

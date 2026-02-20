@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jana is following up on a case transfer regarding Brett Barney Castle's insurance policy, which was canceled in 2023. She seeks confirmation of the policy status and clarification on a reference to 'Trinity.'",
+  "resolution_steps": [
+    "Rachel confirms Brett's policy was canceled in January 2023 due to non-payment of premium and his move to Texas.",
+    "Rachel checks internal systems (Amazon, policy database) but cannot locate current insurance records for Brett.",
+    "Rachel agrees to contact Brett directly to inform him of the canceled policy and resolve the case.",
+    "Rachel acknowledges uncertainty about 'Trinity' but commits to reaching out to Brett for further clarification."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy cancellation procedures (e.g., non-payment, move-related updates)",
+    "Access to internal policy databases and CRM systems (Amazon, email)",
+    "Handling case transfers between agents"
+  ],
+  "systems_referenced": [
+    "Amazon (likely a CRM or database)",
+    "Policy management system",
+    "Email"
+  ],
+  "summary": "Rachel confirms Brett Barney Castle's policy was canceled in 2023 due to non-payment and his relocation to Texas. Despite system checks, no current insurance records are found. Rachel agrees to contact Brett directly to resolve the case, while acknowledging confusion about a reference to 'Trinity.' The call highlights challenges in tracking policy status and case management.",
+  "_model": "qwen3:14b",
+  "_eval_count": 317,
+  "_total_duration_ms": 44071,
+  "_source_file": "transcripts/internal-406-702-20251008-144647-1759949207.6724.txt",
+  "_direction": "internal",
+  "_char_count": 2247
+}

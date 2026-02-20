@@ -1,0 +1,19 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Not applicable (call is a transfer without substantive conversation)",
+  "resolution_steps": [
+    "Caller asked to speak to commercial policy department",
+    "Caller confirmed name and requested transfer to Gloria",
+    "Agent initiated transfer"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Inbound call involved a transfer to Gloria in the commercial policy department. No substantive conversation occurred beyond the transfer request. Caller did not explain their purpose or issue.",
+  "_model": "qwen3:14b",
+  "_eval_count": 121,
+  "_total_duration_ms": 21240,
+  "_source_file": "transcripts/in-+13363779003-+13364924092-20251107-144330-1762544610.7289.txt",
+  "_direction": "inbound",
+  "_char_count": 327
+}

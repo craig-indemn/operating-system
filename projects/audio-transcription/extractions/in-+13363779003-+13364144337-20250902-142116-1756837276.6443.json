@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with Gary",
+  "resolution_steps": [
+    "Agent acknowledged request",
+    "Agent initiated call transfer to Gary"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller requested to speak with Gary; agent initiated transfer. No further details provided in the brief exchange.",
+  "_model": "qwen3:14b",
+  "_eval_count": 90,
+  "_total_duration_ms": 27377,
+  "_source_file": "transcripts/in-+13363779003-+13364144337-20250902-142116-1756837276.6443.txt",
+  "_direction": "inbound",
+  "_char_count": 171
+}

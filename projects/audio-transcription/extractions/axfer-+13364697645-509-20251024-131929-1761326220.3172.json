@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Linda Ashford is seeking clarification about an unexpected increase in her home insurance escrow amount, which was sent by Carington Mortgage, and requests a callback to discuss details with her husband.",
+  "resolution_steps": [
+    "Agent Holly Moore provided a voicemail greeting explaining she is assisting other clients and requested the caller leave a message.",
+    "Linda Ashford left a detailed message including her name, address, phone number, and specific inquiry about an August escrow letter related to her mortgage.",
+    "Linda requested a callback after 4 PM to discuss the issue with her husband."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Mortgage escrow processes",
+    "Insurance policy adjustments",
+    "Communication protocols for client callbacks"
+  ],
+  "systems_referenced": [
+    "Carington Mortgage escrow system",
+    "Mortgage account portal (reference to 'letter sent back')"
+  ],
+  "summary": "Linda Ashford contacted Alliance Insurance Services to inquire about an unexpected increase in her home insurance escrow amount, citing a letter from Carington Mortgage dated August. She requested a callback after 4 PM to discuss the matter with her husband. The agent left a voicemail greeting, and Linda provided detailed contact information and context in her message.",
+  "_model": "qwen3:14b",
+  "_eval_count": 289,
+  "_total_duration_ms": 50986,
+  "_source_file": "transcripts/axfer-+13364697645-509-20251024-131929-1761326220.3172.txt",
+  "_direction": "attended_transfer",
+  "_char_count": 1586
+}

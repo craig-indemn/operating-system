@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Ruth Mark is following up on the status of a blanket policy for three buildings and confirming payment terms, while seeking clarification on potential premium changes if the policy is approved.",
+  "resolution_steps": [
+    "Anna confirms she is still investigating the blanket policy status and expects to provide an answer by the afternoon.",
+    "Anna verifies with Ruth that the payment is not due until February, as shown in the system.",
+    "Anna agrees to call Ruth back the next morning to provide further updates.",
+    "Anna mentions that approval of the blanket policy may increase Ruth's premium."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy processing timelines for blanket coverage",
+    "Payment schedule rules for insurance policies",
+    "Impact of adding blanket coverage on premiums"
+  ],
+  "systems_referenced": [],
+  "summary": "Ruth Mark follows up on a blanket policy for three buildings, confirming payment terms and seeking clarification on premium changes. Anna confirms the policy status is still under review, verifies the payment timeline, and schedules a follow-up call. The conversation highlights potential premium implications of approving the blanket coverage.",
+  "_model": "qwen3:14b",
+  "_eval_count": 250,
+  "_total_duration_ms": 38945,
+  "_source_file": "transcripts/exten-302-+13369455827-20260115-091945-1768486785.487.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1497
+}

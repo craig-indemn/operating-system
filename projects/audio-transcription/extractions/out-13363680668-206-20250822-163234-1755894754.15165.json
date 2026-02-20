@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jeff Edmonds from Alliance Insurance wanted to speak with Vicky about an email she sent earlier in the day and needed to discuss the matter promptly.",
+  "resolution_steps": [
+    "Karina informed Jeff that Vicky had left for the day.",
+    "Karina offered to leave a message for Vicky to call Jeff back at his number.",
+    "Karina also volunteered to call Vicky on Monday to follow up."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Handling client follow-up procedures when an agent is unavailable",
+    "Company policy for leaving messages and scheduling follow-ups"
+  ],
+  "systems_referenced": [],
+  "summary": "Jeff Edmonds attempted to reach Vicky at NC Carports regarding an email. Since Vicky was unavailable, Karina offered to leave a message and follow up on Monday. The call concluded with a pending resolution requiring Vicky's response.",
+  "_model": "qwen3:14b",
+  "_eval_count": 210,
+  "_total_duration_ms": 33680,
+  "_source_file": "transcripts/out-13363680668-206-20250822-163234-1755894754.15165.txt",
+  "_direction": "outbound",
+  "_char_count": 944
+}

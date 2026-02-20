@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with Cody Jackson",
+  "resolution_steps": [
+    "Agent acknowledged request",
+    "Call was transferred"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller requested to speak with Cody Jackson. Agent acknowledged and transferred the call.",
+  "_model": "qwen3:14b",
+  "_eval_count": 84,
+  "_total_duration_ms": 29964,
+  "_source_file": "transcripts/in-+13363779003-+13042963047-20251114-104804-1763135284.3690.txt",
+  "_direction": "inbound",
+  "_char_count": 170
+}

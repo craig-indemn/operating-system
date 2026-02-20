@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; fragmented speech suggests possible confusion or miscommunication, but no explicit request or intent is conveyed.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The call consists of fragmented, incoherent speech with no clear intent or actionable request. The caller's statements ('I want mom and please') are ambiguous, and the agent's responses are limited to standard greetings. No meaningful interaction or resolution occurs.",
+  "_model": "qwen3:14b",
+  "_eval_count": 124,
+  "_total_duration_ms": 23924,
+  "_source_file": "transcripts/in-+13363779003-+13363363259-20251002-134213-1759426933.9580.txt",
+  "_direction": "inbound",
+  "_char_count": 105
+}

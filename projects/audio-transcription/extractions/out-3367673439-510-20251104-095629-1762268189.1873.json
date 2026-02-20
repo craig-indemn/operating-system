@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Tracy from Alliance Insurance is following up to confirm the recipient received an email sent in early October and to request a callback.",
+  "resolution_steps": [
+    "Tracy left a voicemail with her contact number and requested a callback.",
+    "She reiterated her name and the purpose of the call."
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [
+    "Client communication protocols",
+    "Follow-up procedures for unresponsive clients"
+  ],
+  "systems_referenced": [],
+  "summary": "Tracy from Alliance Insurance left a voicemail to follow up on an email sent in October, requesting a callback. The call was not connected, and no further action was taken beyond leaving the message.",
+  "_model": "qwen3:14b",
+  "_eval_count": 165,
+  "_total_duration_ms": 28351,
+  "_source_file": "transcripts/out-3367673439-510-20251104-095629-1762268189.1873.txt",
+  "_direction": "outbound",
+  "_char_count": 722
+}

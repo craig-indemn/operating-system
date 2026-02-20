@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Seeking car insurance quotes from another company",
+  "resolution_steps": [
+    "Agent offered to transfer to another agent"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller asked about car insurance options and requested quotes. Agent offered to transfer to another agent but did not provide specific information or resolve the request.",
+  "_model": "qwen3:14b",
+  "_eval_count": 98,
+  "_total_duration_ms": 67562,
+  "_source_file": "transcripts/in-+13363779003-+13369306799-20250922-160412-1758571452.11446.txt",
+  "_direction": "inbound",
+  "_char_count": 415
+}

@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Anna wanted to confirm details of a new insurance quote (including drivers and vehicles), address issues with her previous Allstate policy, and finalize setup of the new policy with Alliance Insurance.",
+  "resolution_steps": [
+    "Cody confirmed the quote included drivers Louise and Juan, and the specified vehicles (2018 RAM 3500, 2018 Cardinal trailer, 2018 Ford F-150).",
+    "Discussed Anna's frustration with Allstate, including their failure to renew her policy and lack of communication.",
+    "Explained the new policy's cost ($77,556 annually, cheaper than Allstate's previous rate for fewer vehicles).",
+    "Set up monthly payments ($643) via checking account, effective immediately.",
+    "Addressed need for business certificate information and confirmed the policy address (2221 Shore Road, Yakindville, NC)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Commercial insurance policy details",
+    "Handling policy transfers from Allstate",
+    "Payment setup procedures",
+    "Address verification for policy documentation"
+  ],
+  "systems_referenced": [
+    "Quote email",
+    "Allstate policy records",
+    "Payment processing system",
+    "Business certificate documentation"
+  ],
+  "summary": "Anna transitioned from Allstate to Alliance Insurance, confirming policy details for two trucks and a trailer. Cody resolved her concerns about Allstate's policy cancellation, finalized the new quote's cost and payment setup, and outlined next steps for certificate verification and address confirmation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 351,
+  "_total_duration_ms": 54311,
+  "_source_file": "transcripts/exten-207-+13362447559-20251104-162007-1762291207.7606.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4434
+}

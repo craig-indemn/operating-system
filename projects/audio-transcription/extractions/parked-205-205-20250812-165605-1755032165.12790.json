@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "James is seeking clarification on insurance pricing for his towing business, specifically whether premiums will decrease over time and what the approximate cost would be for different types of towing operations.",
+  "resolution_steps": [
+    "Agent explains that James's business will likely start in the surplus/excess market due to high risk, with premiums expected to remain high for 2-3 years.",
+    "Agent emphasizes the importance of comprehensive coverage to avoid costly claims and warns against cutting corners on coverage.",
+    "Agent asks detailed questions about the business model (e.g., vehicle type, towing radius, equipment used) to assess risk and determine pricing.",
+    "Provides a preliminary estimate of $5,000+ as a starting point for premiums, noting that variables like vehicle value and towing type will affect the final cost."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Commercial auto insurance markets (surplus vs. standard carriers)",
+    "Risk assessment for towing businesses",
+    "Premium calculation factors for high-risk commercial operations"
+  ],
+  "systems_referenced": [],
+  "summary": "The agent discusses insurance pricing for a towing business, explaining that initial premiums will be high due to surplus market placement but may decrease after 2-3 years. The agent emphasizes comprehensive coverage and asks detailed questions about the business model to refine the quote. A preliminary estimate of $5,000+ is provided, contingent on factors like vehicle type and towing operations.",
+  "_model": "qwen3:14b",
+  "_eval_count": 318,
+  "_total_duration_ms": 42523,
+  "_source_file": "transcripts/parked-205-205-20250812-165605-1755032165.12790.txt",
+  "_direction": "parked",
+  "_char_count": 4384
+}

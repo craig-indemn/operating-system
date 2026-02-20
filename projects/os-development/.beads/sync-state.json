@@ -1,0 +1,7 @@
+{
+  "last_failure": "2026-02-20T11:09:51.755111-07:00",
+  "failure_count": 1,
+  "backoff_until": "2026-02-20T11:10:21.755112-07:00",
+  "needs_manual_sync": false,
+  "failure_reason": "git pull failed: exit status 1\nfatal: couldn't find remote ref onboarding\n"
+}

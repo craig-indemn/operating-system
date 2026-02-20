@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; appears to be a disconnected call with fragmented audio",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Fragmented audio with no clear conversation. Caller appears to have reached the wrong number and the call was disconnected before meaningful interaction could occur.",
+  "_model": "qwen3:14b",
+  "_eval_count": 93,
+  "_total_duration_ms": 25098,
+  "_source_file": "transcripts/out-3367560705-106-20250723-151905-1753298345.12267.txt",
+  "_direction": "outbound",
+  "_char_count": 111
+}

@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Not applicable (voicemail greeting/hold message)",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [
+    "myallianceinsurance.com customer portal"
+  ],
+  "summary": "Standard voicemail greeting from Alliance Insurance Services, requesting caller to update contact information and promoting online policy management. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 94,
+  "_total_duration_ms": 26866,
+  "_source_file": "transcripts/in-+13365913091-+13366240059-20250812-164932-1755031772.12737.txt",
+  "_direction": "inbound",
+  "_char_count": 920
+}

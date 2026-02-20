@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Angela Pearman seeks to add a vehicle to her existing commercial auto policy, noting the vehicle is already insured under her personal policy and that she previously emailed details to Anna.",
+  "resolution_steps": [
+    "Gloria confirms Angela's business name (Pearman Sparkling Clean) and account details.",
+    "Gloria acknowledges the vehicle is already insured under Angela's personal policy and that prior information was emailed to Anna.",
+    "Gloria offers to send an email with required information or have Angela provide details directly, but Angela states information has already been shared.",
+    "Gloria assures Angela that the team will follow up and call back to proceed with the request."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Commercial auto insurance processes",
+    "Account management for existing policies",
+    "Handling requests for policy updates with existing customer data"
+  ],
+  "systems_referenced": [],
+  "summary": "Angela Pearman requested assistance adding a vehicle to her commercial policy, noting prior communication with Anna. Gloria confirmed account details and assured follow-up. The call concluded with a promise to contact Angela for next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 256,
+  "_total_duration_ms": 44480,
+  "_source_file": "transcripts/exten-102-+13366506702-20251006-130007-1759770007.6713.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1631
+}

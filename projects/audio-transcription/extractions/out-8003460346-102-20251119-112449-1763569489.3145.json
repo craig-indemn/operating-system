@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Automated voicemail greeting with menu options for callers to select departments at Auto Owners Insurance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 68,
+  "_total_duration_ms": 27018,
+  "_source_file": "transcripts/out-8003460346-102-20251119-112449-1763569489.3145.txt",
+  "_direction": "outbound",
+  "_char_count": 406
+}

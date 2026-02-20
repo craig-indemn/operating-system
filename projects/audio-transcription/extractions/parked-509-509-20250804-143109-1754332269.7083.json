@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Edward) requested that his auto insurance payment be processed using updated card information and confirmed that he had previously provided a new card to the agent.",
+  "resolution_steps": [
+    "Dina acknowledged the request to process the auto policy payment.",
+    "Confirmed she would apply the payment and update the email address on file.",
+    "Accepted gratitude and ended the conversation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Payment processing procedures for insurance policies",
+    "Updating customer payment and contact information"
+  ],
+  "systems_referenced": [],
+  "summary": "Edward requested his auto insurance payment be processed with updated card information. Dina confirmed she would handle the payment and update his email on file. The conversation concluded with mutual thanks, though no confirmation of payment processing was explicitly provided.",
+  "_model": "qwen3:14b",
+  "_eval_count": 190,
+  "_total_duration_ms": 46041,
+  "_source_file": "transcripts/parked-509-509-20250804-143109-1754332269.7083.txt",
+  "_direction": "parked",
+  "_char_count": 636
+}

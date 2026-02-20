@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Robert Warren, is inquiring about a significant increase in his homeowners insurance premium from 2024 to 2025 and seeks clarification on the reason for the increase.",
+  "resolution_steps": [
+    "Agent confirmed account details (name, address).",
+    "Agent compared 2024 and 2025 policies to identify changes.",
+    "Agent explained the rate increase was due to a statewide North Carolina mandate and no claims history.",
+    "Agent checked for applicable discounts (Ring alarm system, local alarms discount).",
+    "Agent suggested reshopping policies next year to find a better rate, noting carrier differences (Auto Owners vs. National General).",
+    "Agent committed to following up a month before the next renewal (May 16th)."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of insurance rate determinants (state mandates, coverage levels).",
+    "Knowledge of discounts (alarm systems, carrier bundling).",
+    "Familiarity with carrier differences (Auto Owners, National General)."
+  ],
+  "systems_referenced": [
+    "Auto Owners",
+    "National General"
+  ],
+  "summary": "Robert Warren contacted Alliance Insurance Services to address a 900-dollar increase in his homeowners insurance premium. The agent explained the increase was due to a statewide North Carolina rate hike and confirmed no discounts were missed. The agent proposed reshopping policies next year to find a better rate, noting carrier differences and committing to follow up before the next renewal.",
+  "_model": "qwen3:14b",
+  "_eval_count": 332,
+  "_total_duration_ms": 39606,
+  "_source_file": "transcripts/q-300-+13369093592-20250820-152753-1755718073.10282.txt",
+  "_direction": "queue",
+  "_char_count": 3913
+}

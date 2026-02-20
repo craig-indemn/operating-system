@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking assistance with paying an insurance premium after their policy was canceled by Erie Insurance but not by another provider (possibly a misstatement of 'auto owners'). They mention not receiving a bill and are confused about how to proceed.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's issue with Erie Insurance cancellation and payment confusion.",
+    "Agent requests time to transfer the call to another agent for further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding insurance cancellation processes",
+    "Billing procedures for auto insurance policies",
+    "Handling customer confusion about multiple insurers"
+  ],
+  "systems_referenced": [
+    "Erie Insurance system (implied)"
+  ],
+  "summary": "The caller, Sergey Kobelev, is confused about paying an insurance premium after Erie Insurance canceled his policy. He claims he was not billed and seeks guidance. The agent acknowledges the issue and transfers the call for further assistance, indicating the need for specialized support to resolve billing and cancellation discrepancies.",
+  "_model": "qwen3:14b",
+  "_eval_count": 230,
+  "_total_duration_ms": 37115,
+  "_source_file": "transcripts/ptimeout-+13363779003-+13367077543-20251007-132044-1759857644.6358.txt",
+  "_direction": "park_timeout",
+  "_char_count": 549
+}

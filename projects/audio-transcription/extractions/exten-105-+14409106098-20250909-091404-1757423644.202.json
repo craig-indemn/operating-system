@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Rick) sought guidance on understanding Progressive's habitational insurance product, including its coverage, acceptability, and how to access the product guide.",
+  "resolution_steps": [
+    "Agent (Chris) explained how to navigate Progressive's product guide via the website (products > business owners and contractor GL).",
+    "Walked Rick through locating the habitational product guide and reference cards by selecting the state and accessing the table of contents.",
+    "Provided details on coverage limits (e.g., $5M liability, up to 4 units per location).",
+    "Compared habitational coverage to DP three policies, highlighting included/excluded items (e.g., equipment breakdown, cyber coverage).",
+    "Mentioned exclusions (e.g., Airbnb short-term rentals) and specific use cases (e.g., mixed occupancy buildings)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Progressive's habitational insurance product structure",
+    "Navigation of Progressive's online product guide",
+    "Coverage details (e.g., liability limits, included/excluded perils)",
+    "Comparison to DP three policies"
+  ],
+  "systems_referenced": [
+    "Progressive's product guide (website)",
+    "BOP North habitationals summary document"
+  ],
+  "summary": "Chris from Progressive guided Rick through the habitational insurance product, explaining coverage details, exclusions, and how to access the product guide. The conversation included comparisons to DP three policies and specific use cases for the habitational product.",
+  "_model": "qwen3:14b",
+  "_eval_count": 338,
+  "_total_duration_ms": 55242,
+  "_source_file": "transcripts/exten-105-+14409106098-20250909-091404-1757423644.202.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4705
+}

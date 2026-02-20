@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Robin Gibson is following up on a previous request for homeowners insurance quotes and is checking if Gary has received any numbers for her.",
+  "resolution_steps": [
+    "Gary acknowledges the call and attempts to locate the quotes.",
+    "The system plays hold messages about the customer portal and contact information updates.",
+    "Gary confirms he hasn't retrieved the quotes yet.",
+    "Robin expresses frustration about the delay and decides to hang up."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Accessing and retrieving insurance quotes from the agency's system",
+    "Handling customer frustration during hold times"
+  ],
+  "systems_referenced": [
+    "myallianceinsurance.com customer portal",
+    "Text support number 336-786-1133"
+  ],
+  "summary": "Robin Gibson called to check on homeowners insurance quotes but became frustrated after being on hold for five minutes and left the call. Gary attempted to retrieve the quotes but was unable to provide them immediately.",
+  "_model": "qwen3:14b",
+  "_eval_count": 229,
+  "_total_duration_ms": 53967,
+  "_source_file": "transcripts/exten-113-+13364083214-20251216-153646-1765917406.4671.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1779
+}

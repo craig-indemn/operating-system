@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Voicemail left by Heather Johnson from Alliance Insurance requesting a callback from Elina.",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Voicemail left by Heather Johnson from Alliance Insurance requesting a callback from Elina.",
+  "_model": "qwen3:14b",
+  "_eval_count": 82,
+  "_total_duration_ms": 20669,
+  "_source_file": "transcripts/out-4085293829-202-20251223-095708-1766501828.545.txt",
+  "_direction": "outbound",
+  "_char_count": 367
+}

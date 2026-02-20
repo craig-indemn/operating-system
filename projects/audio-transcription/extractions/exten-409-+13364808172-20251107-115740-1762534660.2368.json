@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Jim Morris) is following up about a towed vehicle and seeking guidance on next steps after reporting a claim with Auto Owners Insurance.",
+  "resolution_steps": [
+    "Confirmed the adjuster would contact the caller within 24-48 hours after the claim was reported.",
+    "Advised the caller to keep their phone accessible and answer calls from unknown numbers.",
+    "Explained that the adjuster would discuss options for a loaner vehicle and coverage details.",
+    "Reassured the caller that they had already completed necessary actions and no further steps were required immediately."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Auto insurance claims process",
+    "Adjuster communication protocols",
+    "Coverage details for loaner vehicles"
+  ],
+  "systems_referenced": [
+    "Auto Owners Insurance"
+  ],
+  "summary": "Jim Morris contacted Alliance Insurance Services to inquire about next steps after his vehicle was towed and a claim was filed with Auto Owners. The agent confirmed the adjuster would contact him within 24-48 hours, advised him to remain available for calls, and explained that the adjuster would handle loaner vehicle arrangements. The caller demonstrated understanding of the process and no further action was required at the time of the call.",
+  "_model": "qwen3:14b",
+  "_eval_count": 286,
+  "_total_duration_ms": 43688,
+  "_source_file": "transcripts/exten-409-+13364808172-20251107-115740-1762534660.2368.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2086
+}

@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller sought guidance on adjusting a customer's insurance quote by correcting the location state in the Hartford's system and selecting the appropriate business classification for a restaurant.",
+  "resolution_steps": [
+    "Anna explained that the customer record's location state needed to be manually updated to the correct state (e.g., Florida) to generate an accurate quote.",
+    "She instructed the caller to edit the customer record, locate the 'predominant state' field, and input the correct physical address state.",
+    "Anna clarified that 'stop signs' (denial codes) are state-specific and depend on class codes, requiring careful selection of the business type (e.g., 'retail' or 'restaurant').",
+    "They discussed potential classifications for the restaurant, including 'Builder Lesser Risk Shopping Centers Less than 10 Stores,' and acknowledged the need to verify rate implications."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Hartford's insurance quoting system workflow",
+    "State-specific insurance rate rules",
+    "Class code classifications for business types",
+    "Customer record editing procedures"
+  ],
+  "systems_referenced": [
+    "The Hartford's customer record system",
+    "Insurance quoting portal"
+  ],
+  "summary": "Anna guided a colleague through correcting a customer's insurance quote by updating the location state in the Hartford's system and selecting the appropriate business classification. The conversation highlighted state-specific rate rules and the importance of accurate class code selection for restaurants. The issue was resolved by adjusting the customer record and confirming the correct classification.",
+  "_model": "qwen3:14b",
+  "_eval_count": 335,
+  "_total_duration_ms": 51497,
+  "_source_file": "transcripts/exten-302-+13364601448-20251212-122234-1765560154.1585.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2391
+}

@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Tequisha, requested a loss run report for Chris's Auto Company LLC, a business previously insured by Alliance Insurance Services, to provide to their current insurer.",
+  "resolution_steps": [
+    "Agent Jeff Edmonds confirmed the business name (Chris's Auto Company LLC) and requested clarification on the request.",
+    "Tequisha provided her phone number (336-422-3497) for a callback.",
+    "Jeff acknowledged the request and committed to retrieving the loss run information and contacting her."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of loss run reports and their use in insurance transitions",
+    "Ability to retrieve historical policy data for businesses"
+  ],
+  "systems_referenced": [],
+  "summary": "Tequisha requested a loss run report for a former business insured by Alliance Insurance Services. Agent Jeff collected the business name and her contact number, promising to retrieve the information and call her back. The call was substantive as it involved a specific insurance documentation request.",
+  "_model": "qwen3:14b",
+  "_eval_count": 237,
+  "_total_duration_ms": 40108,
+  "_source_file": "transcripts/exten-206-+13364223497-20260119-102451-1768836291.1178.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1072
+}

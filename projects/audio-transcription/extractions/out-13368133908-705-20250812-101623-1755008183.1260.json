@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Joe Jessup aims to discuss PQA Healthcare renewal opportunities with Khalil, offering Alliance Insurance's support and proposing an in-person meeting to explore partnership possibilities.",
+  "resolution_steps": [
+    "Joe explains PQA Healthcare's upcoming renewal and references Jeff Fitzgerald's referral.",
+    "Proposes meeting Khalil in person to discuss the renewal and long-term partnership.",
+    "Discusses scheduling flexibility around Khalil's availability.",
+    "Exchanges contact information (provides cell number and promises to email details).",
+    "Confirms willingness to adjust meeting time based on Khalil's schedule."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of PQA Healthcare renewal processes",
+    "Agency's services and partnership opportunities",
+    "Local office locations and accessibility"
+  ],
+  "systems_referenced": [
+    "PQA phone line (2600 number)",
+    "Email communication"
+  ],
+  "summary": "Joe Jessup from Alliance Insurance discusses PQA Healthcare renewal opportunities with Khalil, proposes an in-person meeting, and exchanges contact information. The call concludes with Khalil agreeing to meet but requiring a callback to confirm timing. The agent demonstrated knowledge of insurance renewal processes and local office locations.",
+  "_model": "qwen3:14b",
+  "_eval_count": 273,
+  "_total_duration_ms": 32590,
+  "_source_file": "transcripts/out-13368133908-705-20250812-101623-1755008183.1260.txt",
+  "_direction": "outbound",
+  "_char_count": 2451
+}

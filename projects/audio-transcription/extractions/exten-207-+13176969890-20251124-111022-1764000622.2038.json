@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Paula is following up on a commercial insurance policy that was non-renewed after she updated her DOT status to private property, seeking clarification on the non-renewal reason and resolution steps.",
+  "resolution_steps": [
+    "Cody confirms Paula's email correspondence about the commercial insurance policy.",
+    "Cody checks the policy details, noting the non-renewal occurred on November 6th due to coverage reduction by the carrier.",
+    "Cody verifies the policyholder's current setup: one truck, one trailer, and Francisco as the sole driver (not listed as a driver on the policy)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Commercial insurance policy renewal processes",
+    "DOT (Department of Transportation) regulatory requirements",
+    "Handling non-renewal scenarios due to coverage adjustments"
+  ],
+  "systems_referenced": [
+    "Progressive policy system (referenced via policy expiration date and coverage details)"
+  ],
+  "summary": "Paula discusses a non-renewed commercial insurance policy with Cody, who confirms the policy expired on November 6th after the carrier reduced coverage. They clarify the current setup (one truck, one trailer, and Francisco as the sole driver) to address the non-renewal and next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 285,
+  "_total_duration_ms": 42912,
+  "_source_file": "transcripts/exten-207-+13176969890-20251124-111022-1764000622.2038.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1108
+}

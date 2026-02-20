@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller intended to speak with or leave a message for Corbin Dirks.",
+  "resolution_steps": [
+    "Agent acknowledged the request and placed the caller on hold."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief inbound call where the caller requested to speak with Corbin Dirks. The agent placed the caller on hold without further interaction or resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 110,
+  "_total_duration_ms": 27100,
+  "_source_file": "transcripts/in-+13363779003-+13366089615-20251112-152501-1762979101.7473.txt",
+  "_direction": "inbound",
+  "_char_count": 136
+}

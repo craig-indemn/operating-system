@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Addison from Alliance Insurance seeks to cancel Westfield policies for Hog Mountain Farm, as the client is now insured through another carrier and is receiving incorrect bills from Westfield.",
+  "resolution_steps": [
+    "Tracy confirms the policy numbers (FAB225817N and CAG226220M) for Hog Mountain Farm.",
+    "Tracy verifies the policies were canceled due to non-payment but notes documentation is needed to confirm coverage elsewhere.",
+    "Tracy instructs Addison to email cancellation documentation to CL processing at Westfield (CL@westfield.com).",
+    "Tracy advises Addison to follow up in 1\u20132 weeks for confirmation after the documentation is processed."
+  ],
+  "outcome": "transferred",
+  "knowledge_required": [
+    "Westfield policy cancellation procedures",
+    "Handling client transitions between agencies",
+    "Internal systems for checking policy statuses",
+    "Email protocols for submitting cancellation documentation"
+  ],
+  "systems_referenced": [
+    "Westfield's internal policy management system",
+    "CL processing email (CL@westfield.com)"
+  ],
+  "summary": "Addison from Alliance Insurance contacts Westfield to resolve billing issues for Hog Mountain Farm, whose Westfield policies need cancellation after switching to another carrier. Tracy confirms policy details, requests documentation, and directs Addison to email CL processing for cancellation. Follow-up is recommended in 1\u20132 weeks.",
+  "_model": "qwen3:14b",
+  "_eval_count": 312,
+  "_total_duration_ms": 47753,
+  "_source_file": "transcripts/out-8002430210-301-20250812-103238-1755009158.1458.txt",
+  "_direction": "outbound",
+  "_char_count": 3123
+}

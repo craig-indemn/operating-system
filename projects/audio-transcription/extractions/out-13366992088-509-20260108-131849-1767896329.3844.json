@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Sherry needs to make a last payment as noted in a message from Anna, but Anna has not yet responded to her attempts to contact her.",
+  "resolution_steps": [
+    "Agent Thina acknowledges Sherry's concern about not receiving a response from Anna.",
+    "Thina checks internal notes confirming the payment request and today's date.",
+    "Thina informs Sherry that Anna has just messaged her back and puts her on hold to connect with Anna."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of payment processes and client communication protocols",
+    "Ability to access and interpret internal notes/communication logs"
+  ],
+  "systems_referenced": [
+    "Internal notes system (for tracking client communications)",
+    "Agency messaging platform (for client-agent interactions)"
+  ],
+  "summary": "Sherry is trying to make a final payment but has not received a response from Anna. Agent Thina checks internal notes confirming the payment request and attempts to connect Sherry with Anna, who has just responded. The call is placed on hold to facilitate this connection.",
+  "_model": "qwen3:14b",
+  "_eval_count": 246,
+  "_total_duration_ms": 48601,
+  "_source_file": "transcripts/out-13366992088-509-20260108-131849-1767896329.3844.txt",
+  "_direction": "outbound",
+  "_char_count": 620
+}

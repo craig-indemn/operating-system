@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Brandy from Alliance Insurance is attempting to contact the Martin residence to update a life insurance policy and confirm if previous communication with Corbin was successful.",
+  "resolution_steps": [
+    "Left a voicemail with the Martin residence.",
+    "Provided her phone number (336-377-9003) for callback.",
+    "Requested confirmation of policy updates if not already completed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of life insurance policy update procedures",
+    "Awareness of prior agent interactions (Corbin)"
+  ],
+  "systems_referenced": [],
+  "summary": "Brandy from Alliance Insurance left a voicemail for the Martin residence to address a life insurance policy update and confirm prior communication with Corbin. She provided her contact information for a callback. The call was not answered, requiring follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 202,
+  "_total_duration_ms": 40337,
+  "_source_file": "transcripts/out-3369835629-112-20251113-090839-1763042919.182.txt",
+  "_direction": "outbound",
+  "_char_count": 609
+}

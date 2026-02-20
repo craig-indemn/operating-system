@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Phil Murray wants to return two checks received from Auto Owners (one for $1,255 related to an auto policy and one for $131 related to an umbrella policy) to the appropriate parties, including coordinating with his lender for an escrow payment.",
+  "resolution_steps": [
+    "JC confirmed the caller's identity and understood the issue with the checks.",
+    "JC verified the amounts and purposes of the checks (auto policy and umbrella policy).",
+    "JC acknowledged the need to coordinate with the lender for the escrow payment.",
+    "JC agreed to submit the checks to Cincinnati as instructed."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Handling insurance claim reimbursements",
+    "Understanding escrow account processes",
+    "Coordinating with lenders and insurance carriers"
+  ],
+  "systems_referenced": [
+    "Cincinnati (insurance carrier)"
+  ],
+  "summary": "Phil Murray contacted JC to resolve returning two insurance checks (auto and umbrella policies) and coordinate with his lender for an escrow payment. JC confirmed details and agreed to submit the checks to Cincinnati. The call concluded with mutual agreement on next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 255,
+  "_total_duration_ms": 34387,
+  "_source_file": "transcripts/exten-114-+13364082370-20251212-095903-1765551543.947.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1736
+}

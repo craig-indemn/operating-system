@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is following up on a previous interaction where Tracy was supposed to contact them but failed to get a response from the insurance company. They want to resolve this issue.",
+  "resolution_steps": [
+    "Agent asks for the caller's name (Denise Jordan).",
+    "Agent checks the previous interaction and identifies Tracy as the agent involved.",
+    "Agent attempts to connect the caller with Tracy."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of internal systems to track previous interactions",
+    "Ability to identify and route calls to the correct agent (Tracy)"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal call tracking system"
+  ],
+  "summary": "Denise Jordan followed up on a previous issue where Tracy failed to contact her. The agent identified Tracy as the involved agent and attempted to connect Denise with her. The call ended with the agent offering assistance but did not confirm resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 213,
+  "_total_duration_ms": 39508,
+  "_source_file": "transcripts/in-+13363779003-+17048539391-20251002-121149-1759421509.8323.txt",
+  "_direction": "inbound",
+  "_char_count": 473
+}

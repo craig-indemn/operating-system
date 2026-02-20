@@ -1,0 +1,19 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Attempt to reach J.C. Domingo at Alliance Insurance",
+  "resolution_steps": [
+    "Agent acknowledges call",
+    "Agent attempts to connect caller with J.C. Domingo",
+    "Agent says 'Just one moment' before disconnecting"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief inbound call where the caller requested to speak with J.C. Domingo. The agent acknowledged the request and attempted to transfer the call, but no further conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 129,
+  "_total_duration_ms": 24819,
+  "_source_file": "transcripts/in-+13363779003-+13364130868-20250922-155758-1758571078.10943.txt",
+  "_direction": "inbound",
+  "_char_count": 182
+}

@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Kelsey is confirming details about a policy update (premium reduction due to added experience) and seeking clarification on removing a vehicle from her insurance policy.",
+  "resolution_steps": [
+    "Agent Heather informed Kelsey about a premium reduction from $476 to $310.34 due to added experience.",
+    "Explained that removing a vehicle requires returning the license plate to avoid DMV issues.",
+    "Clarified that the current month's payment for the vehicle being removed would be adjusted after the removal process is completed.",
+    "Agreed to follow up after the vehicle is removed to provide updated payment details."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy adjustments based on driving experience",
+    "Premium calculation logic",
+    "Vehicle removal procedures",
+    "DMV license plate requirements"
+  ],
+  "systems_referenced": [],
+  "summary": "Heather updated Kelsey on a premium reduction due to added experience and guided her through removing a vehicle from her policy. They discussed returning the license plate to avoid DMV issues and agreed to follow up after the removal for final payment adjustments. The call ended with Kelsey understanding the process and Heather committing to provide updated information.",
+  "_model": "qwen3:14b",
+  "_eval_count": 271,
+  "_total_duration_ms": 43402,
+  "_source_file": "transcripts/out-7434441889-202-20251223-091418-1766499258.174.txt",
+  "_direction": "outbound",
+  "_char_count": 1683
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jocelyn Harris is concerned about a $220 discount not being applied to her homeowners insurance renewal, as she believes she already received it last year and is being charged the same amount despite policy changes.",
+  "resolution_steps": [
+    "Agent Jamie reviews Jocelyn's policy details (address: 173 Hunters Way, Andrew, NC) to verify the discount application.",
+    "Explains that a 7.5% state-mandated rate increase (effective July 1, 2025) and increased home coverage ($248,500 replacement cost) offset the discount.",
+    "Proposes adjusting the deductible from $1,000 to $2,500 to reduce the renewal premium by $222 (new total: $1,256).",
+    "Notes that higher deductibles (up to $5,000) are available for further savings."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "North Carolina insurance rate regulations",
+    "Impact of coverage changes on premiums",
+    "Deductible adjustment strategies for policyholders"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services policy database",
+    "North Carolina Department of Insurance rate guidelines"
+  ],
+  "summary": "Jocelyn Harris disputes a homeowners insurance renewal premium increase, believing a discount was unapplied. Agent Jamie explains that state-mandated rate hikes and increased coverage values offset the discount. The agent suggests deductible adjustments as a potential solution, leaving the decision to Jocelyn for further consideration.",
+  "_model": "qwen3:14b",
+  "_eval_count": 352,
+  "_total_duration_ms": 43350,
+  "_source_file": "transcripts/parked-501-501-20260106-152522-1767731120.5433.txt",
+  "_direction": "parked",
+  "_char_count": 4092
+}

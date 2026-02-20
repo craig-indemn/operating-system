@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Gale Jefferies is inquiring about insurance options for a condo in Florida (near Naples) and her sister's properties in Florida and Greensboro, seeking assistance despite challenges in insuring Florida properties.",
+  "resolution_steps": [
+    "Cody acknowledges the complexity of insuring Florida properties due to hurricanes, politics, and high costs.",
+    "Cody explains that Alliance Insurance Services may need to consult their personal lines team for coastal insurance options in Florida.",
+    "Cody confirms the need to verify current insurance details and discusses the caller's sister's role in managing the property."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Florida insurance market challenges (hurricanes, politics, high costs)",
+    "Coastal property insurance options",
+    "Internal team coordination (personal lines department)"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services internal personal lines team"
+  ],
+  "summary": "Gale Jefferies discusses her sister's Florida condo insurance needs, highlighting challenges in the Florida market. Cody explains that Alliance Insurance Services may need to consult their personal lines team for coastal insurance options and confirms the need to verify current insurance details. The call ends with a commitment to follow up after internal checks.",
+  "_model": "qwen3:14b",
+  "_eval_count": 274,
+  "_total_duration_ms": 41872,
+  "_source_file": "transcripts/exten-207-+13365801058-20251209-162835-1765315715.7557.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4193
+}

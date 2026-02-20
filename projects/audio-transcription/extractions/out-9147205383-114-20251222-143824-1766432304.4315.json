@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The agent left a voicemail for Juan and Marva regarding policy renewals and requested a callback.",
+  "resolution_steps": [
+    "Left voicemail with contact information for callback"
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "An outbound call from Alliance Insurance left a voicemail for Juan and Marva, informing them about upcoming policy renewals and requesting a callback at the provided number.",
+  "_model": "qwen3:14b",
+  "_eval_count": 111,
+  "_total_duration_ms": 50775,
+  "_source_file": "transcripts/out-9147205383-114-20251222-143824-1766432304.4315.txt",
+  "_direction": "outbound",
+  "_char_count": 341
+}

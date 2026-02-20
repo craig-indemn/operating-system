@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking a homeowners insurance quote for a house they are purchasing, having previously discussed auto and renters insurance with the agent.",
+  "resolution_steps": [
+    "Agent confirms the caller's intent to obtain a homeowners insurance quote for a specific property.",
+    "Agent requests property details (address, number of bedrooms/baths, construction type).",
+    "Agent explains the process of sending the information to the quote team for evaluation after hours.",
+    "Agent arranges to send an email with a video explanation of the quotes and requests confirmation of the roof replacement date (2018) and closing date (November 3rd).",
+    "Agent offers to coordinate with the caller's current auto insurer for potential bundling."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Homeowners insurance underwriting criteria (roof age, property features, pets)",
+    "Quote generation process and follow-up timelines",
+    "Insurance bundling opportunities"
+  ],
+  "systems_referenced": [
+    "Internal quote team system",
+    "Email communication",
+    "Text messaging"
+  ],
+  "summary": "Lina McFarlane assists a caller in initiating a homeowners insurance quote for a new property, gathering necessary details and arranging follow-up communication. The caller agrees to confirm roof replacement date and closing date, with a promised callback on Monday. The agent also mentions potential bundling with the caller's existing auto insurance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 313,
+  "_total_duration_ms": 40068,
+  "_source_file": "transcripts/exten-107-+13363918979-20251003-165713-1759525033.21914.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3386
+}

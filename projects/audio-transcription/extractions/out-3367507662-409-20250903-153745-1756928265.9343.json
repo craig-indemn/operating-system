@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Miss Taylor is seeking insurance quotes and clarification on auto and home policy details, including rates, deductibles, and coverage options.",
+  "resolution_steps": [
+    "Agent provided auto insurance options with $165/month for 12 months, 100/300 liability limits, and current deductibles.",
+    "Discussed adjusting deductibles to $0/$500 for windshield coverage and added towing/rental coverage.",
+    "Noted client's daily commute (>10 miles) and 2-point history affecting rates.",
+    "Mentioned home insurance quote pending verification of home construction year (1995).",
+    "Admitted missing a quote from Northwest Farmers and scheduled follow-up for next day.",
+    "Clarified timeline for 2 points expiring (March 2027, 3 years from conviction date in September 2024)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Auto/home insurance rate structures",
+    "Deductible options and coverage implications",
+    "Point history impact on premiums",
+    "Policy expiration timelines",
+    "Carrier-specific quoting processes"
+  ],
+  "systems_referenced": [
+    "Northwest Farmers (insurance carrier)"
+  ],
+  "summary": "Agent provided auto insurance quotes with specific rates and coverage options, discussed deductible adjustments, and scheduled a follow-up for a missing home insurance quote. Client was informed about point expiration timelines and coverage details. Call concluded with agreement to check back the next day.",
+  "_model": "qwen3:14b",
+  "_eval_count": 333,
+  "_total_duration_ms": 50518,
+  "_source_file": "transcripts/out-3367507662-409-20250903-153745-1756928265.9343.txt",
+  "_direction": "outbound",
+  "_char_count": 2934
+}

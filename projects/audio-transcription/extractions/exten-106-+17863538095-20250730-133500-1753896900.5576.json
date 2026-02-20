@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking an insurance estimate from Alliance Insurance Services and needs it urgently, ideally by Monday, to provide information for a payment from a company they are working with.",
+  "resolution_steps": [
+    "Agent confirmed the caller's request for an insurance estimate.",
+    "Agent clarified the timeline for processing estimates (typically 1\u20137 days depending on business type).",
+    "Agent acknowledged the urgency and agreed to prioritize the request to meet the Monday deadline.",
+    "Agent offered to follow up with the estimate details after checking internal systems."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance underwriting timelines",
+    "Company experience (25 years mentioned)",
+    "Process for generating quotes/estimates"
+  ],
+  "systems_referenced": [
+    "Internal quote generation system",
+    "Carrier portals (implied through 'trabajando con las compa\u00f1\u00edas')"
+  ],
+  "summary": "A caller requested an urgent insurance estimate for a business client, needing it by Monday to facilitate a payment. The agent confirmed the timeline for processing estimates, acknowledged the urgency, and committed to follow up with details. The caller emphasized the need for quick action due to a pending payment deadline.",
+  "_model": "qwen3:14b",
+  "_eval_count": 270,
+  "_total_duration_ms": 40518,
+  "_source_file": "transcripts/exten-106-+17863538095-20250730-133500-1753896900.5576.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2323
+}

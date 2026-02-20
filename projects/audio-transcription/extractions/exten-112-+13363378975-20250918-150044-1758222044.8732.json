@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Caleb called back to confirm details about his canceled home and auto policy, including the refund amount and timeline, and to clarify his reason for switching providers.",
+  "resolution_steps": [
+    "Brandi confirmed the policy cancellation and asked Caleb about his new provider.",
+    "Caleb disclosed he switched due to a lower price.",
+    "Brandi verified the refund check details (amount: $2,850.32, sent today, expected arrival in 2 weeks).",
+    "Brandi offered to track the refund if it didn't arrive on time."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy cancellation processes",
+    "Refund calculation and disbursement timelines",
+    "Customer communication protocols for policy changes"
+  ],
+  "systems_referenced": [
+    "Internal insurance agency system for checking refund status",
+    "Policy management database"
+  ],
+  "summary": "Caleb confirmed his switch to a new provider due to lower pricing. Brandi provided details about his refund check ($2,850.32) and assured him it would arrive within two weeks. The conversation concluded with Caleb expressing gratitude and ending the call.",
+  "_model": "qwen3:14b",
+  "_eval_count": 268,
+  "_total_duration_ms": 29893,
+  "_source_file": "transcripts/exten-112-+13363378975-20250918-150044-1758222044.8732.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1025
+}

@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Ray is following up on insurance quotes for four vehicles, specifying full coverage for three and minimum coverage for a salvaged 2006 Jeep. He also mentions his current Auto Owners policy is expiring and needs confirmation of coverage details.",
+  "resolution_steps": [
+    "Heather confirms she will finalize quotes and email them back today.",
+    "She acknowledges the need for liability-only coverage on the salvaged Jeep.",
+    "She notes the current Auto Owners policy expiration date (January 23rd) and the reason for cancellation (prior wrecks).",
+    "She confirms follow-up on Friday after sending the quotes."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding insurance coverage types (full vs. minimum liability)",
+    "Handling policy cancellations due to prior claims",
+    "Managing quote timelines and client follow-ups"
+  ],
+  "systems_referenced": [
+    "Email (for sending quotes)"
+  ],
+  "summary": "Ray discusses vehicle coverage preferences and current policy issues with Heather. Heather confirms she'll send quotes today and follow up on Friday. The conversation includes details about salvaged vehicle coverage and Auto Owners policy cancellation reasons.",
+  "_model": "qwen3:14b",
+  "_eval_count": 260,
+  "_total_duration_ms": 38509,
+  "_source_file": "transcripts/exten-202-+13366690888-20251223-090603-1766498763.82.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1478
+}

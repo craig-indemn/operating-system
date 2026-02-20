@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking clarification about why their current insurance policy does not include rental car coverage and is inquiring about the cost and terms of adding it, as their children are questioning the absence of this coverage.",
+  "resolution_steps": [
+    "Lois explains that rental coverage is not currently part of the policy.",
+    "She details the cost ($23 every six months for $50 coverage) and limits (up to $50/day, $1,500 maximum).",
+    "Clarifies that rental coverage would only apply if the accident is someone else's fault, as the caller's current policy lacks it.",
+    "Acknowledges the caller's confusion about prior policies and confirms that rental coverage is an optional add-on."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy components (e.g., rental coverage as an optional add-on)",
+    "Knowledge of coverage limits and pricing for rental car insurance",
+    "Ability to explain liability coverage distinctions"
+  ],
+  "systems_referenced": [],
+  "summary": "The caller is confused about the absence of rental car coverage in their insurance policy. Lois explains that rental coverage is not included in the current policy, details the cost and coverage limits, and clarifies that it would require an additional add-on. The caller accepts the explanation and decides to handle rental needs independently.",
+  "_model": "qwen3:14b",
+  "_eval_count": 303,
+  "_total_duration_ms": 44680,
+  "_source_file": "transcripts/exten-702-+13367568472-20251017-093058-1760707858.503.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1329
+}

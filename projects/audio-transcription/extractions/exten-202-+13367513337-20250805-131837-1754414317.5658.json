@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Michael) needed assistance with signing a document, likely related to an insurance policy or form.",
+  "resolution_steps": [
+    "Heather guided Michael through the document signing process.",
+    "She instructed him to follow on-screen prompts until his signature appears.",
+    "She directed him to click the 'submit' or 'complete signature' button at the top of the page.",
+    "She confirmed the system would automatically receive the signed document after submission."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Document signing workflows for insurance policies",
+    "User interface navigation for digital forms",
+    "Post-submission processing steps"
+  ],
+  "systems_referenced": [],
+  "summary": "Heather assisted Michael in completing a document signature process by walking him through the steps to submit the form. The call concluded successfully with Michael understanding the required actions.",
+  "_model": "qwen3:14b",
+  "_eval_count": 198,
+  "_total_duration_ms": 32991,
+  "_source_file": "transcripts/exten-202-+13367513337-20250805-131837-1754414317.5658.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 362
+}

@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; caller mentions being sick but does not articulate a specific request or issue.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Very brief call where caller asks to speak to Jess and mentions being sick. Agent provides standard hold message but no meaningful conversation occurs. Transcript cuts off mid-sentence, making analysis incomplete.",
+  "_model": "qwen3:14b",
+  "_eval_count": 107,
+  "_total_duration_ms": 22495,
+  "_source_file": "transcripts/in-+13363779003-+13364016855-20260119-094423-1768833863.726.txt",
+  "_direction": "inbound",
+  "_char_count": 318
+}

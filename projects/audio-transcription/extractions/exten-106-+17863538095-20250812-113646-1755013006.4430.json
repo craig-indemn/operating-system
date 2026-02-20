@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Kennedy) is confirming receipt of documents related to insurance policies and inquiring about the cost of workers' compensation and general liability coverage.",
+  "resolution_steps": [
+    "Agent (Jessica) confirms the caller is Kennedy and acknowledges the documents sent.",
+    "Jessica explains the policies listed (workers' comp, general liability, commercial auto, and property coverage).",
+    "She provides cost details: $599/month for workers' comp and $600/month for general liability.",
+    "Requests the caller to send account routing and number details for payment setup."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy types (workers' comp, general liability, commercial auto, property coverage)",
+    "Pricing structures for insurance policies",
+    "Payment processing procedures"
+  ],
+  "systems_referenced": [
+    "Carrier portal/database for policy verification"
+  ],
+  "summary": "Kennedy confirmed receipt of insurance policy documents and inquired about costs. Jessica explained the $599/month workers' comp and $600/month general liability rates, then requested account details for payment setup. The caller agreed to send routing and account information via message.",
+  "_model": "qwen3:14b",
+  "_eval_count": 269,
+  "_total_duration_ms": 33914,
+  "_source_file": "transcripts/exten-106-+17863538095-20250812-113646-1755013006.4430.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1746
+}

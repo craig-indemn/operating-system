@@ -1,0 +1,22 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Leave a voicemail regarding auto insurance update and vehicle replacement",
+  "resolution_steps": [
+    "Agent left voicemail with contact details and office hours"
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [
+    "Insurance policy updates",
+    "Customer follow-up procedures"
+  ],
+  "systems_referenced": [
+    "Voicemail system"
+  ],
+  "summary": "Agent Holly left a voicemail to a client regarding an auto insurance update and vehicle replacement, providing contact information and office hours. The call was not answered and resulted in a voicemail.",
+  "_model": "qwen3:14b",
+  "_eval_count": 124,
+  "_total_duration_ms": 60015,
+  "_source_file": "transcripts/out-9414685064-504-20251201-095718-1764601038.1880.txt",
+  "_direction": "outbound",
+  "_char_count": 639
+}

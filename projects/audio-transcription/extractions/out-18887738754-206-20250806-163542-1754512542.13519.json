@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller sought a general liability insurance quote for a consignment warehouse with online auctions, where third parties store items and bid on them remotely.",
+  "resolution_steps": [
+    "Bruce confirmed the warehouse's purpose (storing consignment items with online auctions).",
+    "Bruce explained Alliance Insurance Services does not provide liability coverage for warehousing third-party goods."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding insurance coverage limitations for consignment warehouses",
+    "Recognizing that liability for third-party stored goods is excluded"
+  ],
+  "systems_referenced": [],
+  "summary": "Bruce informed Jeff Edmonds that Alliance Insurance Services cannot provide liability coverage for a consignment warehouse storing third-party items, as this falls outside their coverage scope. The caller accepted this explanation and ended the conversation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 189,
+  "_total_duration_ms": 26624,
+  "_source_file": "transcripts/out-18887738754-206-20250806-163542-1754512542.13519.txt",
+  "_direction": "outbound",
+  "_char_count": 1474
+}

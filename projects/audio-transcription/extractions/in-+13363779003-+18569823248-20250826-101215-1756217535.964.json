@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller (Crystal Diaz) attempted to reach an agent (JC) who previously assisted her with home insurance but could not recall the agent's name.",
+  "resolution_steps": [
+    "Agent greeted the caller",
+    "No further action taken as the call appears to be a voicemail or incomplete transfer"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A caller attempted to reach an agent but could not recall the agent's name. The call appears to be a voicemail or incomplete transfer with no resolution achieved.",
+  "_model": "qwen3:14b",
+  "_eval_count": 137,
+  "_total_duration_ms": 30401,
+  "_source_file": "transcripts/in-+13363779003-+18569823248-20250826-101215-1756217535.964.txt",
+  "_direction": "inbound",
+  "_char_count": 350
+}

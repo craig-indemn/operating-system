@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Kenny from Travelers Office is informing Gloria that Travelers cannot add American Security Living Inc as an additional insured due to the insured's operations falling outside their underwriting appetite, and is notifying her of a policy non-renewal decision.",
+  "resolution_steps": [
+    "Explained that the insured's operations (handy person/general contracting) are outside Travelers' appetite",
+    "Announced decision to decline the additional insured request and set the policy for non-renewal",
+    "Offered to send a follow-up email summarizing the conversation",
+    "Invited Gloria to reach out with further questions"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Travelers' underwriting guidelines for general contracting/handyman operations",
+    "Policy non-renewal procedures",
+    "Communication protocols for declining coverage requests"
+  ],
+  "systems_referenced": [],
+  "summary": "Kenny from Travelers Office informed Gloria that they cannot add American Security Living Inc as an additional insured due to the insured's operations being outside their appetite. He also announced a policy non-renewal decision, offering to send a follow-up email and inviting further questions. Gloria acknowledged the decision and thanked him.",
+  "_model": "qwen3:14b",
+  "_eval_count": 272,
+  "_total_duration_ms": 42876,
+  "_source_file": "transcripts/exten-102-+16072713116-20251014-141739-1760465859.5079.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1771
+}

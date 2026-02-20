@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "William is following up on a claim where paperwork from auto owners is missing, requesting an update on the adjuster's progress and resolution of the delay.",
+  "resolution_steps": [
+    "Brandy acknowledges the issue with missing paperwork from auto owners.",
+    "Brandy commits to contacting the adjuster to check the status and push for resolution."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Claims process and adjuster communication protocols",
+    "Handling delays caused by missing documentation from third parties"
+  ],
+  "systems_referenced": [],
+  "summary": "William reports delays in his claim due to missing paperwork from auto owners and requests an update. Brandy agrees to contact the adjuster to investigate and resolve the issue. The call concludes with Brandy committing to follow up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 186,
+  "_total_duration_ms": 43341,
+  "_source_file": "transcripts/out-3364089117-112-20251014-155117-1760471477.7066.txt",
+  "_direction": "outbound",
+  "_char_count": 898
+}

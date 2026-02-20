@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking assistance with a hazard insurance requirement issue, having received a letter from his mortgage company stating that hazard insurance is required on his property. He is confused about why this requirement was added and wants to resolve it quickly.",
+  "resolution_steps": [
+    "Agent acknowledged the caller's issue with the hazard insurance requirement letter.",
+    "Agent offered to transfer the call to another agent as requested by the caller."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of hazard insurance requirements and policy documentation processes",
+    "Ability to transfer calls to other agents"
+  ],
+  "systems_referenced": [
+    "Internal policy lookup system (implied by 'look up that way if you could')"
+  ],
+  "summary": "The caller contacted Alliance Insurance to address a confusion about a new hazard insurance requirement, having received a letter from his mortgage company. He requested assistance in finding his policy number using his address and was transferred to another agent for further help. The agent acknowledged the issue and initiated the transfer.",
+  "_model": "qwen3:14b",
+  "_eval_count": 234,
+  "_total_duration_ms": 32737,
+  "_source_file": "transcripts/in-+13363779003-+13368750989-20251017-121125-1760717485.2625.txt",
+  "_direction": "inbound",
+  "_char_count": 2061
+}

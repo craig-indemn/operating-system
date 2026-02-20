@@ -1,0 +1,19 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with Holly",
+  "resolution_steps": [
+    "Agent acknowledged transfer request",
+    "Agent thanked caller",
+    "System played hold music message"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Short inbound call where caller requested to speak with Holly. Agent initiated transfer and played standard hold music message. No substantive discussion occurred beyond transfer request.",
+  "_model": "qwen3:14b",
+  "_eval_count": 105,
+  "_total_duration_ms": 25340,
+  "_source_file": "transcripts/in-+13363544000-+13363392557-20250918-092526-1758201926.839.txt",
+  "_direction": "inbound",
+  "_char_count": 322
+}

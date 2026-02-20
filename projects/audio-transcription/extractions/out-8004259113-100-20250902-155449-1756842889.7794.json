@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller accidentally paid the full premium for a policy and requested to stop the payment and reissue it for the correct amount.",
+  "resolution_steps": [
+    "Agent Jude verified the policy number and insured details.",
+    "Confirmed the accidental full payment of $1,283 instead of the correct $1,121.",
+    "Deleted the recent payment to prevent processing.",
+    "Explained payment plan options (two-pay or four-pay) with associated fees.",
+    "Advised the caller to reissue the payment before the September 22 renewal effective date."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of policy payment structures and carrier systems",
+    "Ability to process payment cancellations",
+    "Knowledge of payment plan options and associated fees"
+  ],
+  "systems_referenced": [
+    "Carrier website/payment portal",
+    "Internal policy management system"
+  ],
+  "summary": "Ashley contacted Jude regarding an accidental full payment for a policy. Jude deleted the payment, explained payment plan options, and advised reissuing the correct amount before the renewal date. The issue was resolved with the caller agreeing to handle the payment later.",
+  "_model": "qwen3:14b",
+  "_eval_count": 261,
+  "_total_duration_ms": 37523,
+  "_source_file": "transcripts/out-8004259113-100-20250902-155449-1756842889.7794.txt",
+  "_direction": "outbound",
+  "_char_count": 4607
+}

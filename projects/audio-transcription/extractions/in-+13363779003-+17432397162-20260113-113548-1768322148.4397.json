@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear due to language barrier and incomplete conversation",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller encountered a language barrier (Spanish/English) and the conversation was cut short before any meaningful assistance could be provided. Agent asked if caller had a policy but no further details were exchanged.",
+  "_model": "qwen3:14b",
+  "_eval_count": 101,
+  "_total_duration_ms": 25309,
+  "_source_file": "transcripts/in-+13363779003-+17432397162-20260113-113548-1768322148.4397.txt",
+  "_direction": "inbound",
+  "_char_count": 233
+}

@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Not applicable (no meaningful interaction occurred)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The transcript contains only the agent's standard greeting and repetition of the company name. No substantive conversation or caller intent is evident in the provided text.",
+  "_model": "qwen3:14b",
+  "_eval_count": 90,
+  "_total_duration_ms": 23120,
+  "_source_file": "transcripts/in-+13363682529-+13366764077-20251016-115808-1760630288.4285.txt",
+  "_direction": "inbound",
+  "_char_count": 100
+}

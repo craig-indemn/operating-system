@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Gary is seeking insurance quotes for his son Alex's Mustang and an additional truck, but there is an issue with the driver's license number not fully populating in the carrier systems.",
+  "resolution_steps": [
+    "Amy Hill confirms she is following up on Alex's insurance quote.",
+    "Gary provides the driver's license number (4753-0601-01).",
+    "Amy explains that some carriers only display the last two or three digits of the license number.",
+    "Amy assures Gary she will provide quotes for both the Mustang and truck shortly."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance quoting processes",
+    "Carrier system limitations (e.g., partial license number visibility)"
+  ],
+  "systems_referenced": [
+    "Carrier portals/databases (implied, not explicitly named)"
+  ],
+  "summary": "Amy Hill is assisting Gary with insurance quotes for his son's Mustang and a truck. Gary provided a driver's license number, but Amy noted that some carriers only display partial numbers. She promised to follow up with the quotes later in the day.",
+  "_model": "qwen3:14b",
+  "_eval_count": 254,
+  "_total_duration_ms": 37881,
+  "_source_file": "transcripts/exten-113-+13362874668-20250915-094759-1757944079.1036.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 891
+}

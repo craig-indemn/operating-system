@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jean is seeking a home insurance quote for a rental property in Durham, NC, after being referred by Keyshia Pierre. She wants to compare rates and potentially bundle policies.",
+  "resolution_steps": [
+    "Agent Emma confirmed the property address (118 Longview Trail, Durham, NC 27703) and its history (purchased in 2014, rented since 2020).",
+    "Collected insurance carrier details (Utica) and clarified mortgage company (Freedom Mortgage).",
+    "Obtained personal information: Jean Providence, DOB 08/07/1976, single, LLC ownership (PiSoft Group LLC).",
+    "Noted property specifics: no pool, no pets, and discussed potential auto insurance bundling.",
+    "Agreed to follow up after researching quotes and confirming policy renewal dates.",
+    "Captured contact details (Weston1036@yahoo.com, cell phone number)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Home insurance quoting for rental properties",
+    "Understanding mortgage company vs. insurance carrier distinctions",
+    "LLC ownership structures in property insurance",
+    "Utica Insurance policy details and bundling strategies"
+  ],
+  "systems_referenced": [
+    "Utica Insurance",
+    "Freedom Mortgage",
+    "Movement Mortgage"
+  ],
+  "summary": "Jean Providence requested a home insurance quote for a Durham rental property, providing detailed property and personal information. The agent collected necessary data, clarified insurance carrier details, and agreed to follow up with quotes. The call included discussion of potential auto insurance bundling and LLC ownership implications.",
+  "_model": "qwen3:14b",
+  "_eval_count": 368,
+  "_total_duration_ms": 57889,
+  "_source_file": "transcripts/exten-401-+16176370257-20260105-143049-1767641449.11987.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 7180
+}

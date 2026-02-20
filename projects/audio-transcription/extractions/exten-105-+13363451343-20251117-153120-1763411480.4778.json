@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Rich) is discussing insuring a vacant property (a cabin on Cabin Trail House) that he plans to renovate and sell. He wants to confirm coverage details, including replacement value for the structure, policy ownership under 'Lazy Layla LLC,' and handling of the property's vacant status.",
+  "resolution_steps": [
+    "Agent confirmed the property is being insured as a vacant dwelling with replacement value coverage for the structure.",
+    "Clarified that the policy will be under 'Lazy Layla LLC' as the named insured.",
+    "Noted the absence of an alarm system and discussed potential security measures (e.g., cameras).",
+    "Confirmed the property's age (2014) and lack of features like pools or trampolines.",
+    "Agreed to proceed with the policy given the vacant status and renovation plans."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance requirements for vacant properties",
+    "Replacement value vs. actual cash value coverage",
+    "Policy ownership and naming insureds",
+    "Handling of unoccupied dwellings"
+  ],
+  "systems_referenced": [],
+  "summary": "Rich is insuring a vacant cabin he plans to renovate and sell. The agent confirmed coverage for the structure's replacement value, policy ownership under 'Lazy Layla LLC,' and addressed the property's vacant status. No alarm system is present, but cameras may be installed. The agent will proceed with the policy after confirming details.",
+  "_model": "qwen3:14b",
+  "_eval_count": 327,
+  "_total_duration_ms": 42650,
+  "_source_file": "transcripts/exten-105-+13363451343-20251117-153120-1763411480.4778.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3963
+}

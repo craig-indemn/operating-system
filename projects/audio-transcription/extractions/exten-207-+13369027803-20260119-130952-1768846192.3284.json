@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Daniel wants to make payments for his workers' comp and liability insurance policies and discuss payment setup options, including combining billing accounts into a single payment.",
+  "resolution_steps": [
+    "Cody confirms Daniel's intent to pay for workers' comp and liability policies.",
+    "Cody verifies Daniel's preference for payment method (debit card details provided).",
+    "Cody confirms bank (Truist) and account holder name (Daniel Benitez, with first name Swan).",
+    "Cody collects debit card information (number, expiration, CVV, ZIP code).",
+    "Cody agrees to combine two billing accounts into one for consolidated monthly payments."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Payment processing procedures",
+    "Billing account management",
+    "Credit/debit card verification protocols",
+    "Policy consolidation workflows"
+  ],
+  "systems_referenced": [
+    "billing account system"
+  ],
+  "summary": "Daniel Benitez (Swan) works with agent Cody to set up payments for his workers' comp and liability insurance. They discuss payment methods, verify bank details, and agree to consolidate two policies into a single billing account for monthly payments. The agent collects necessary card information and confirms the setup.",
+  "_model": "qwen3:14b",
+  "_eval_count": 275,
+  "_total_duration_ms": 51997,
+  "_source_file": "transcripts/exten-207-+13369027803-20260119-130952-1768846192.3284.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2704
+}

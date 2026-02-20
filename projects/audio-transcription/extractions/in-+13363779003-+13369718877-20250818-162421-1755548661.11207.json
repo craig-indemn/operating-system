@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to be connected to Corbin Dirks",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Very brief call where caller requested transfer to Corbin Dirks. Agent acknowledged request but no further interaction occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 85,
+  "_total_duration_ms": 25819,
+  "_source_file": "transcripts/in-+13363779003-+13369718877-20250818-162421-1755548661.11207.txt",
+  "_direction": "inbound",
+  "_char_count": 162
+}

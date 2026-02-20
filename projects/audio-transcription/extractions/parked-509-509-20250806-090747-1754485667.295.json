@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Tommy wants to set up bank drafts for his auto and motorcycle insurance policies using his bank account (True Line Federal Credit Union) instead of a debit card, and adjust the payment dates to the 13th of each month for both policies.",
+  "resolution_steps": [
+    "Agent confirms Tommy's bank routing and account numbers.",
+    "Agent checks Tommy's current auto policy draft date (September 2nd) and discusses changing it to the 13th.",
+    "Agent notes motorcycle policy is due August 11th and advises processing the August payment via credit card to avoid double billing if switching to bank draft.",
+    "Agrees to set up bank draft for September 13th after August payment is processed.",
+    "Agent offers to set up the EFT for both policies once the August payment is completed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Bank draft/EFT setup process for insurance payments",
+    "Handling payment date changes without causing double billing",
+    "Policy management system navigation"
+  ],
+  "systems_referenced": [
+    "Internal policy management system (to check draft dates and policy details)"
+  ],
+  "summary": "Tommy is transitioning from debit card payments to bank drafts for his auto and motorcycle insurance policies. The agent confirms bank details, adjusts draft dates to the 13th, and coordinates handling the August payment via credit card to avoid double billing. The agent will set up the bank draft for September 13th after the August payment is processed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 337,
+  "_total_duration_ms": 56357,
+  "_source_file": "transcripts/parked-509-509-20250806-090747-1754485667.295.txt",
+  "_direction": "parked",
+  "_char_count": 4057
+}

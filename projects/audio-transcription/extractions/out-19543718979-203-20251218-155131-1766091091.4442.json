@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jasmine is seeking a homeowners insurance quote for a new home she is closing on, potentially as a bundle with her existing Progressive policy. She wants to explore options and understand coverage requirements.",
+  "resolution_steps": [
+    "Agent Maria Bowman confirmed Jasmine's home closing date and reason for the call.",
+    "Collected detailed property information: single-family residence (2020, 2,850 sq ft, vinyl siding with stone, 3-car garage, no basement, slab foundation, 2 stories, central heating/AC).",
+    "Asked about financing (cash purchase), home value ($500k), appraisal status, and property address (2484 Mossy Meadow Trail, Kernersville, NC 27284).",
+    "Noted need to run a replacement cost estimator for accurate dwelling coverage."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Homeowners insurance quoting process",
+    "Replacement cost estimation methodologies",
+    "Property-specific risk factors (e.g., foundation type, exterior materials)",
+    "Insurance bundling options with existing carriers"
+  ],
+  "systems_referenced": [
+    "Replacement cost estimator tool"
+  ],
+  "summary": "Maria Bowman is assisting Jasmine with a homeowners insurance quote for a new 2,850 sq ft single-family home in Forsyth County. The agent has gathered key property details and will use a replacement cost estimator to determine appropriate coverage. The call is ongoing with follow-up needed for appraisal value confirmation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 335,
+  "_total_duration_ms": 46559,
+  "_source_file": "transcripts/out-19543718979-203-20251218-155131-1766091091.4442.txt",
+  "_direction": "outbound",
+  "_char_count": 2706
+}

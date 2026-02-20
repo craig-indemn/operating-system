@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "N/A (automated voicemail greeting with no caller interaction)",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [
+    "uticainsurance.com"
+  ],
+  "summary": "Automated voicemail greeting from Utica National Insurance Group directing callers to their website for payments/claims, with repeated menu options for caller categorization. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 104,
+  "_total_duration_ms": 39497,
+  "_source_file": "transcripts/out-8005988422-301-20251222-144630-1766432790.4357.txt",
+  "_direction": "outbound",
+  "_char_count": 3204
+}

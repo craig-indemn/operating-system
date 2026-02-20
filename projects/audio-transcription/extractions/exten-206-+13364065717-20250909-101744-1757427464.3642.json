@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Kathy is calling to set up an auto draft for an insurance policy with Progressive, providing banking details and confirming policy information.",
+  "resolution_steps": [
+    "Jeff collects the routing number (054000030) and account number (5341997315) for PNC Bank under Big Dog Auto Salvage LLC.",
+    "Confirms the business name, contact number (406-571-7), and email (BigDogAutoSalvage@gmail.com).",
+    "Informs Kathy about the Progressive auto policy setup, effective September 23rd, and the first payment of ~$167.",
+    "Explains the e-sign process via Conga Sign and provides next steps for policy activation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Progressive auto insurance policy setup",
+    "Conga Sign e-sign platform workflow",
+    "Bank account verification procedures",
+    "Policy effective dates and payment schedules"
+  ],
+  "systems_referenced": [
+    "Progressive auto insurance system",
+    "Conga Sign (e-sign platform)",
+    "PNC Bank account system"
+  ],
+  "summary": "Kathy coordinates with Jeff to set up automatic payments for a Progressive auto insurance policy, providing banking details and confirming policy terms. Jeff explains the e-sign process via Conga Sign and confirms the policy will take effect September 23rd. The call concludes with mutual agreement to proceed and follow-up instructions.",
+  "_model": "qwen3:14b",
+  "_eval_count": 335,
+  "_total_duration_ms": 52601,
+  "_source_file": "transcripts/exten-206-+13364065717-20250909-101744-1757427464.3642.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3781
+}

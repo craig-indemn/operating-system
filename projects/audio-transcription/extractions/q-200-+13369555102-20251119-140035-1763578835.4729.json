@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller inquired about the availability of temporary insurance policies for individuals without a vehicle.",
+  "resolution_steps": [
+    "Agent confirmed the caller's request for temporary insurance without a vehicle.",
+    "Agent stated Alliance Insurance Services does not offer such policies.",
+    "Agent provided an alternative phone number to a third-party service.",
+    "Agent repeated the number upon the caller's request."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of Alliance Insurance Services' product offerings (specifically temporary/no-vehicle insurance policies)",
+    "Access to external referral contact information"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller asked about temporary insurance for individuals without a vehicle. The agent confirmed Alliance does not offer this service and provided an alternative contact number. The caller requested the number be repeated for clarity before ending the call.",
+  "_model": "qwen3:14b",
+  "_eval_count": 199,
+  "_total_duration_ms": 37346,
+  "_source_file": "transcripts/q-200-+13369555102-20251119-140035-1763578835.4729.txt",
+  "_direction": "queue",
+  "_char_count": 447
+}

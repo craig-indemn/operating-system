@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Inform Megan that Alliance Insurance is only accepting applicants with an insurance background and license, and suggest future consideration if she gains relevant experience.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Heather from Alliance Insurance informed Megan that the agency is only accepting applicants with an insurance background and license, and suggested revisiting the opportunity if Megan gains relevant experience in the future.",
+  "_model": "qwen3:14b",
+  "_eval_count": 116,
+  "_total_duration_ms": 62142,
+  "_source_file": "transcripts/out-3369080123-202-20251118-164748-1763502468.7537.txt",
+  "_direction": "outbound",
+  "_char_count": 407
+}

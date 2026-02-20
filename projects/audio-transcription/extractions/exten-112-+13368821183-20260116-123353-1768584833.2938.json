@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Bill Bishop is seeking assistance with insurance coverage for a 2012 Chevy Cruze and addressing the expired tag and insurance status of a 2009 Audi to avoid potential fines.",
+  "resolution_steps": [
+    "Brandi confirms the need to turn in the Audi's tag before discontinuing insurance to avoid state fines.",
+    "Brandi collects the VIN number for the Chevy Cruze and agrees to obtain quotes.",
+    "Brandi confirms the client will maintain liability-only coverage, matching the current policy.",
+    "Brandi assures the caller she will run a driver's license report and provide a cost estimate before leaving for the day."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance requirements for vehicle tags and liability coverage",
+    "Consequences of lapsing insurance on expired tags",
+    "Process for obtaining insurance quotes and running driver reports"
+  ],
+  "systems_referenced": [
+    "Driver's license report system"
+  ],
+  "summary": "Bill Bishop discusses insurance needs for a Chevy Cruze and concerns about an Audi's expired tag. Brandi explains the importance of turning in the Audi's tag before discontinuing insurance to avoid fines, collects the VIN for the Chevy Cruze, and agrees to provide a quote and callback. The call concludes with confirmation of liability-only coverage and a commitment to follow up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 299,
+  "_total_duration_ms": 45480,
+  "_source_file": "transcripts/exten-112-+13368821183-20260116-123353-1768584833.2938.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2594
+}

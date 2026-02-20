@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Caller requested assistance with obtaining homeowners insurance.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Inbound call where caller requested homeowners insurance assistance. Agent acknowledged request and began transferring to an agent, but conversation was cut off mid-sentence with no resolution achieved.",
+  "_model": "qwen3:14b",
+  "_eval_count": 94,
+  "_total_duration_ms": 21720,
+  "_source_file": "transcripts/in-+13363779003-+13368983989-20250723-134011-1753292411.10400.txt",
+  "_direction": "inbound",
+  "_char_count": 257
+}

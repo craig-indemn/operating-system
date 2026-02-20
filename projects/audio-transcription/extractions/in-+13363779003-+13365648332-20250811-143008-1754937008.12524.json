@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; caller mentions 'renunciation' but does not clarify context or request",
+  "resolution_steps": [
+    "Agent offers to transfer to another agent",
+    "Call appears to disconnect/abandon before resolution"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller had difficulty articulating their request (mentioning 'renunciation'), leading to an incomplete interaction. Agent attempted to transfer but call ended without resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 119,
+  "_total_duration_ms": 22145,
+  "_source_file": "transcripts/in-+13363779003-+13365648332-20250811-143008-1754937008.12524.txt",
+  "_direction": "inbound",
+  "_char_count": 284
+}

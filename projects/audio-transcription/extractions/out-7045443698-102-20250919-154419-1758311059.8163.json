@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller aimed to finalize a short-term insurance policy with immediate effectiveness, seeking assistance to resolve a system issue preventing the submission.",
+  "resolution_steps": [
+    "Agent confirmed policy details (short-term, $772 premium, direct billing).",
+    "Attempted to process the policy submission but encountered a system error.",
+    "Notified caller of the system issue affecting short-rate policies.",
+    "Offered to follow up on Monday if the issue remained unresolved by day's end."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of short-rate policies and their system-specific processing challenges",
+    "Troubleshooting procedures for policy submission errors",
+    "Customer communication protocols for unresolved technical issues"
+  ],
+  "systems_referenced": [
+    "Policy submission system (with short-rate policy processing issues)",
+    "Internal ticketing system for technical support requests"
+  ],
+  "summary": "Agent assisted caller in finalizing a short-term insurance policy but encountered a system error preventing submission. The agent informed the caller of the technical issue, apologized for the inconvenience, and arranged to follow up on Monday if the problem remained unresolved. The interaction highlights challenges with system-specific processing for short-rate policies.",
+  "_model": "qwen3:14b",
+  "_eval_count": 271,
+  "_total_duration_ms": 39043,
+  "_source_file": "transcripts/out-7045443698-102-20250919-154419-1758311059.8163.txt",
+  "_direction": "outbound",
+  "_char_count": 2379
+}

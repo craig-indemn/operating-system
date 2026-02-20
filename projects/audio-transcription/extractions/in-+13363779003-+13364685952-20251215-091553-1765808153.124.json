@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; call was immediately transferred without clarification of purpose",
+  "resolution_steps": [
+    "Transferred caller to Brian DePoy's extension"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Inbound call was immediately transferred to Brian DePoy's extension without any substantive conversation occurring. The agent did not gather information or resolve any issues.",
+  "_model": "qwen3:14b",
+  "_eval_count": 106,
+  "_total_duration_ms": 22968,
+  "_source_file": "transcripts/in-+13363779003-+13364685952-20251215-091553-1765808153.124.txt",
+  "_direction": "inbound",
+  "_char_count": 237
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to make the first installment payment for their auto insurance policy, which they recently switched to Cincinnati under Hannah Blake's name. They also mentioned needing to pay an umbrella policy and are struggling with online payment due to forgotten login credentials.",
+  "resolution_steps": [
+    "Agent confirmed the policy details (Cincinnati, Hannah Blake, auto insurance).",
+    "Agent checked the payment system and found that only check payments are available through the current portal.",
+    "Agent advised the caller to reset their password via an email from sendin.com.",
+    "Agent confirmed the caller could proceed with the password reset process."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding Cincinnati's payment portal limitations",
+    "Password reset procedures for insurance carrier systems",
+    "Handling sensitive customer situations (e.g., recent family loss)"
+  ],
+  "systems_referenced": [
+    "Cincinnati insurance carrier portal",
+    "sendin.com email system"
+  ],
+  "summary": "A caller attempted to make their first auto insurance payment with Cincinnati but faced login issues due to forgotten credentials. The agent confirmed the policy details, explained the portal's check-only payment option, and guided the caller to reset their password via email. The call concluded with the caller able to proceed with the password reset.",
+  "_model": "qwen3:14b",
+  "_eval_count": 284,
+  "_total_duration_ms": 39716,
+  "_source_file": "transcripts/in-+13363779003-+13367822281-20250919-135259-1758304379.6117.txt",
+  "_direction": "inbound",
+  "_char_count": 2294
+}

@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Amy Smith attempted to reach Jeff Edmonds through Rick, who is Jeff's teammate, and requested assistance in connecting with Jeff.",
+  "resolution_steps": [
+    "Rick acknowledged Amy's request and offered to relay a message to Jeff.",
+    "Rick collected Amy's contact information (phone number: 704-556-01996).",
+    "Rick committed to sending a note to Jeff and requesting him to call Amy back."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Handling call transfers between colleagues",
+    "Relaying messages internally",
+    "Managing client contact information"
+  ],
+  "systems_referenced": [],
+  "summary": "Amy Smith attempted to reach Jeff Edmonds through Rick, who is Jeff's teammate. Rick collected Amy's contact details and promised to send a note to Jeff to arrange a callback. The call concluded with Rick committing to follow up internally.",
+  "_model": "qwen3:14b",
+  "_eval_count": 213,
+  "_total_duration_ms": 33871,
+  "_source_file": "transcripts/exten-105-+17045601996-20250919-104238-1758292958.1168.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 673
+}

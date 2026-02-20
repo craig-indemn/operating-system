@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "George is confirming the number of crews on his policy and investigating a potential double billing. He also requests an update to his phone number and discusses payroll adjustments for workers' comp insurance.",
+  "resolution_steps": [
+    "Agent verifies the policy details, confirming George has one crew currently.",
+    "Explains the billing was a one-time payment of $3,296 to cover a reinstatement, which caused a delay in July billing.",
+    "Clarifies the remaining installments are $165.083 due on specific dates.",
+    "Updates George's new phone number (749-7048) in the system.",
+    "Reviews current payroll ($239,300) and discusses potential adjustments based on current employee earnings (~$1,400/week)."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Workers' comp policy reinstatement processes",
+    "Billing structures for insurance policies",
+    "Payroll calculation methodologies for insurance premiums"
+  ],
+  "systems_referenced": [
+    "Internal policy administration system (used to check policy details and billing history)"
+  ],
+  "summary": "George confirmed policy details with Cody, who explained a one-time payment covered a reinstatement and clarified billing schedules. The agent updated George's phone number and discussed adjusting his workers' comp payroll based on current employee earnings.",
+  "_model": "qwen3:14b",
+  "_eval_count": 303,
+  "_total_duration_ms": 46399,
+  "_source_file": "transcripts/exten-207-+13367497048-20250903-113413-1756913653.3306.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3666
+}

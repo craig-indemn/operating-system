@@ -1,0 +1,35 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Heather wants to update her auto insurance policy by replacing a vehicle (a 2023 Mazda X with a 2026 Hyundai Santa Fe) and discuss her homeowners policy's recent rate increase. She also inquires about potential insurance options with AutoOwners and Progressive.",
+  "resolution_steps": [
+    "Agent Safa logs into Heather's account to update the vehicle replacement and checks policy details.",
+    "Confirms coverage amounts (liability, comprehensive, collision, etc.) and discusses removing roadside assistance while retaining rental coverage.",
+    "Processes a $15.96 pro-rated payment for the new vehicle addition.",
+    "Reviews Heather's homeowners policy rate increase, attributing it to inflation, replacement cost adjustments, and statewide rate hikes.",
+    "Mentions checking AutoOwners and Progressive for potential bundled policy discounts.",
+    "Notes Heather's DUI history (12 points from 2023) and explains its impact on rates, while promising to verify with National General.",
+    "Agrees to follow up with quotes from other insurers and leaves the policy unchanged for now."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Auto insurance policy updates (vehicle replacement, coverage adjustments, payment processing)",
+    "Homeowners policy rate calculation factors (inflation, replacement cost, statewide rate increases)",
+    "Impact of DUIs on insurance rates and how they are handled by carriers",
+    "Bundling discounts with AutoOwners and Progressive",
+    "Multi-factor authentication and policy portal navigation"
+  ],
+  "systems_referenced": [
+    "National General (current auto insurer)",
+    "AutoOwners",
+    "Progressive",
+    "Insurance policy portal (for updates and quotes)",
+    "BlueLink (Hyundai roadside assistance)"
+  ],
+  "summary": "Heather updates her auto policy to replace a Mazda with a Hyundai Santa Fe, adjusts coverage, and discusses a homeowners policy rate increase. The agent processes the change, explains rate factors, and plans to provide quotes from other insurers. The call concludes with Heather agreeing to wait for further information.",
+  "_model": "qwen3:14b",
+  "_eval_count": 445,
+  "_total_duration_ms": 70177,
+  "_source_file": "transcripts/exten-401-+19193896662-20260105-093434-1767623674.638.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 11281
+}

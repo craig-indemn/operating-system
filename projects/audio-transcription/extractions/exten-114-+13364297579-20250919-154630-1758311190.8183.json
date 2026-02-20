@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jos\u00e9 wants to update his home and auto insurance policies, clarify coverage for his roof (which he estimates is 10-12 years old), and understand how different deductible options (e.g., $1,000 vs. $2,500) affect his premiums. He also seeks guidance on switching providers without overlapping coverage.",
+  "resolution_steps": [
+    "Agent confirms Jos\u00e9's address (104 Miller Street, Mauneri Norte Carolina, 27030) and policy details.",
+    "Discusses roof age (2010-2012) and explains how insurers may limit coverage for roofs over 10 years old.",
+    "Explains deductible options ($1,000, $2,500, $5,000) and their impact on premiums.",
+    "Gathers home details: trampoline (no longer used), heat pump, no swimming pool, and electrical/plumbing ages (estimated 5 years for HVAC, unknown for others).",
+    "Notes Jos\u00e9's lack of claims history and confirms he has a central alarm system (fire only) and circuit breaker box.",
+    "Agrees to process new quotes and confirms Jos\u00e9's phone number for follow-up."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance coverage rules for aging roofs (e.g., 10-year thresholds)",
+    "Deductible structures and their effect on premiums",
+    "Home inspection requirements for insurance underwriting",
+    "Impact of home features (e.g., trampolines, heat pumps) on policy terms"
+  ],
+  "systems_referenced": [
+    "Internal policy database (to check roof age and claims history)"
+  ],
+  "summary": "Jos\u00e9 is updating his home and auto insurance policies, seeking clarification on roof coverage, deductible options, and cost implications. The agent gathered detailed home information and will process new quotes. Jos\u00e9 emphasized avoiding overlapping coverage and requested a follow-up call.",
+  "_model": "qwen3:14b",
+  "_eval_count": 430,
+  "_total_duration_ms": 65670,
+  "_source_file": "transcripts/exten-114-+13364297579-20250919-154630-1758311190.8183.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 11009
+}

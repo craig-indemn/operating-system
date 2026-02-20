@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Hannah is moving to Winston Salem and needs a home insurance quote for her new home, having been referred by Progressive (who cannot service the area).",
+  "resolution_steps": [
+    "Agent acknowledged the request and placed the caller on hold to connect with an appropriate agent.",
+    "System message played requesting patience, followed by an agent checking if the caller was still on the line.",
+    "Agent accidentally triggered a system message and attempted to restart the process."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Home insurance policies for different regions (Arizona vs. Winston Salem)",
+    "Handling referrals from other insurance carriers"
+  ],
+  "systems_referenced": [
+    "Progressive"
+  ],
+  "summary": "Hannah, moving to Winston Salem, requested a home insurance quote after Progressive referred her due to regional limitations. The agent placed her on hold to connect with another agent but the call was interrupted mid-process, requiring a follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 217,
+  "_total_duration_ms": 54584,
+  "_source_file": "transcripts/in-+13363779003-+17138515827-20250926-145927-1758913167.4462.txt",
+  "_direction": "inbound",
+  "_char_count": 1253
+}

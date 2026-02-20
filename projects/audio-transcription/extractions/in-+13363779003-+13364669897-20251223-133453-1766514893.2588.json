@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller intends to make a payment on their business insurance policy (policy number HP11831) and is seeking assistance with the process.",
+  "resolution_steps": [
+    "Agent asked for the caller's name and policy number.",
+    "Agent confirmed the policy type (business, not farm).",
+    "Agent apologized for delays in accessing the policy details.",
+    "Agent offered to transfer the call to a commercial agent for further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding business insurance policy payment processes",
+    "Recognizing when to escalate to a commercial agent",
+    "Handling policy number verification"
+  ],
+  "systems_referenced": [
+    "Internal policy database/portal (agent attempted to access policy details)"
+  ],
+  "summary": "A caller attempted to make a payment on their business insurance policy but encountered delays in system access. The agent confirmed the policy details and offered to transfer the call to a commercial agent for resolution. The call was not fully resolved but directed to the appropriate team.",
+  "_model": "qwen3:14b",
+  "_eval_count": 238,
+  "_total_duration_ms": 38544,
+  "_source_file": "transcripts/in-+13363779003-+13364669897-20251223-133453-1766514893.2588.txt",
+  "_direction": "inbound",
+  "_char_count": 774
+}

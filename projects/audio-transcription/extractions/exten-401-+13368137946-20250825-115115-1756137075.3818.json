@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Sylvia is clarifying details about an insurance quote, including costs for adding a new vehicle, collision coverage, rental car coverage, and the impact of these changes on the premium. She is also considering whether to keep rental car coverage on the new vehicle.",
+  "resolution_steps": [
+    "Heather explains the breakdown of the initial quote, including the cost of adding the new vehicle with collision and rental coverage.",
+    "Heather provides updated premium amounts for different scenarios (e.g., $14,677 annual premium with rental coverage, $2,278.81 pro-rated for immediate coverage).",
+    "Heather confirms that rental coverage can be added or removed based on Sylvia's needs and clarifies the deductible amounts for each vehicle.",
+    "Heather directs Sylvia to the Alliance office location for immediate payment of the premium if she proceeds with the quote."
+  ],
+  "outcome": "spam",
+  "knowledge_required": [
+    "Insurance policy structure (e.g., collision, comprehensive, rental coverage).",
+    "Premium calculation based on vehicle additions and coverage changes.",
+    "Process for adding/removing coverage and vehicles from a policy.",
+    "Location of Alliance Insurance Services offices for immediate payment."
+  ],
+  "systems_referenced": [
+    "Cincinnati Insurance Company (implied as the carrier handling the policy)."
+  ],
+  "summary": "Sylvia discusses an insurance quote with Heather, clarifying costs for adding a new vehicle, collision coverage, and rental car coverage. Heather provides detailed premium breakdowns and confirms the option to adjust coverage. Sylvia decides to proceed with the original quote without rental coverage and plans to pay the premium at the Alliance office.",
+  "_model": "qwen3:14b",
+  "_eval_count": 366,
+  "_total_duration_ms": 53413,
+  "_source_file": "transcripts/exten-401-+13368137946-20250825-115115-1756137075.3818.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4095
+}

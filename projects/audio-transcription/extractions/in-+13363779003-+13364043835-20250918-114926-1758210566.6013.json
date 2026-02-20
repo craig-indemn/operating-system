@@ -1,0 +1,19 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller attempted to reach Gary at Alliance Insurance Services.",
+  "resolution_steps": [
+    "Agent acknowledged the request",
+    "Agent attempted to transfer the call to Gary's extension",
+    "Agent asked the caller to hold"
+  ],
+  "outcome": "transferred",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A caller requested to speak to Gary, and the agent initiated a transfer. The call was brief and did not involve meaningful interaction beyond the transfer attempt.",
+  "_model": "qwen3:14b",
+  "_eval_count": 117,
+  "_total_duration_ms": 26582,
+  "_source_file": "transcripts/in-+13363779003-+13364043835-20250918-114926-1758210566.6013.txt",
+  "_direction": "inbound",
+  "_char_count": 216
+}

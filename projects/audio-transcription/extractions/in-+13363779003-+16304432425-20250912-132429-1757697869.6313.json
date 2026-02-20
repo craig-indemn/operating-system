@@ -1,0 +1,24 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Attempt to reach Jeff Edmonds at Alliance Insurance Services",
+  "resolution_steps": [
+    "Agent placed caller on hold to connect to Jeff Edmonds",
+    "Agent provided general information about online policy management and texting support"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Agency's standard hold procedures",
+    "Basic policy management portal information"
+  ],
+  "systems_referenced": [
+    "myallianceinsurance.com customer portal",
+    "texting support service (336-786-1133)"
+  ],
+  "summary": "Call was placed on hold while attempting to connect to Jeff Edmonds. No further action or resolution was provided during the call. The agent provided general information about online policy management and texting support.",
+  "_model": "qwen3:14b",
+  "_eval_count": 182,
+  "_total_duration_ms": 34665,
+  "_source_file": "transcripts/in-+13363779003-+16304432425-20250912-132429-1757697869.6313.txt",
+  "_direction": "inbound",
+  "_char_count": 776
+}

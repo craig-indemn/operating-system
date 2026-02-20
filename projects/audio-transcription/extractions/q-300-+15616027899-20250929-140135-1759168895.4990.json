@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to cancel their car insurance but is confused about the process after receiving an email with a link to sign a document, and is concerned about being charged.",
+  "resolution_steps": [
+    "Agent checks the system to confirm the email was sent to the correct address.",
+    "Agent helps the caller locate the email in the spam folder.",
+    "Agent instructs the caller to electronically sign the document and complete the process.",
+    "Agent offers to cancel the policy manually if the electronic process fails."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Cancellation process via electronic signature",
+    "Understanding of third-party document services (Cognizant/docu sign)",
+    "System navigation for policy management"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance customer portal (myallianceinsurance.com)",
+    "National General insurance system",
+    "Cognizant/docu sign platform",
+    "Internal email tracking system"
+  ],
+  "summary": "The caller struggled to cancel their car insurance via an email link, which the agent helped locate in the spam folder. The agent guided them to sign the document electronically and confirmed manual cancellation would be handled if needed. The call resolved with actionable steps provided.",
+  "_model": "qwen3:14b",
+  "_eval_count": 273,
+  "_total_duration_ms": 42631,
+  "_source_file": "transcripts/q-300-+15616027899-20250929-140135-1759168895.4990.txt",
+  "_direction": "queue",
+  "_char_count": 4208
+}

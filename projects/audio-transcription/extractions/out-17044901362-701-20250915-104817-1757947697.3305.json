@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Follow-up on a missed call to reconnect with the recipient.",
+  "resolution_steps": [],
+  "outcome": "not_applicable",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief outbound call where the agent (Jeremy) notified the recipient (Shannon) of a missed call and provided his contact number again. No substantive discussion about insurance services or actionable items occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 103,
+  "_total_duration_ms": 25458,
+  "_source_file": "transcripts/out-17044901362-701-20250915-104817-1757947697.3305.txt",
+  "_direction": "outbound",
+  "_char_count": 507
+}

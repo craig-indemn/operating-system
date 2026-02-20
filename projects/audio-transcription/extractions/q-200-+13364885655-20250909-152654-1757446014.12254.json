@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Chelsea Grease requested a quote for her 2022 Dodge Charger insurance premium, though she is not currently insured with Alliance Insurance Services and is currently with Farm Bureau, which provides both home and auto coverage.",
+  "resolution_steps": [
+    "Heather confirmed Chelsea is not currently insured with Alliance Insurance Services.",
+    "Heather explained that Alliance only offers bundled home and auto policies, not standalone auto policies.",
+    "Chelsea indicated she would need to review her current Farm Bureau homeowners policy before considering a switch."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Alliance Insurance Services' bundling policy requirements for home and auto insurance",
+    "Competitor carrier information (Farm Bureau) and their coverage offerings"
+  ],
+  "systems_referenced": [],
+  "summary": "Chelsea sought an auto insurance quote for her Dodge Charger but is currently with Farm Bureau, which provides bundled home and auto coverage. Heather explained Alliance's bundling requirement, which may prompt Chelsea to reconsider her options. The call ended with Chelsea agreeing to review her current policy before making a decision.",
+  "_model": "qwen3:14b",
+  "_eval_count": 245,
+  "_total_duration_ms": 39071,
+  "_source_file": "transcripts/q-200-+13364885655-20250909-152654-1757446014.12254.txt",
+  "_direction": "queue",
+  "_char_count": 1074
+}

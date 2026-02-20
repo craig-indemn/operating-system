@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Gary is correcting a vehicle detail in an insurance quote (2007 Chevrolet Silverado to 2019 Ford 250 Super Duty) and discussing potential cost differences with his current insurance provider.",
+  "resolution_steps": [
+    "Jimmy acknowledges the vehicle correction and confirms the need for updated information.",
+    "Jimmy explains that the newer Ford 250 Super Duty will likely cost more than the older Chevrolet.",
+    "Gary decides to stay with his current insurance provider but agrees to keep the quote for future reference.",
+    "Jimmy offers to revisit the quote if needed in the future."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding how vehicle make/model/year impacts insurance rates",
+    "Recognizing when policy changes may be necessary due to vehicle updates"
+  ],
+  "systems_referenced": [],
+  "summary": "Gary updates his vehicle information from a 2007 Chevrolet to a 2019 Ford 250 Super Duty and discusses potential insurance cost increases. The agent confirms the need for a new quote but Gary decides to stay with his current provider, agreeing to revisit the quote later. The conversation ends with mutual appreciation and open-ended follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 272,
+  "_total_duration_ms": 38341,
+  "_source_file": "transcripts/exten-113-+13363456451-20250814-104716-1755182836.1479.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1494
+}

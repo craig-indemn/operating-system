@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Confirm whether an annual EFT payment for a newly added vehicle on a policy (801.1349692) will automatically draft on the due date or require manual input.",
+  "resolution_steps": [
+    "Agent verifies the policy details for Clay Adams (801.1349692).",
+    "Agent explains that the EFT is set to draft automatically on the due date as it is configured as annual EFT.",
+    "Caller confirms understanding and ends the call."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of EFT payment configurations for policy additions",
+    "Ability to check policy details via internal systems (e.g., 'big summary screen')"
+  ],
+  "systems_referenced": [
+    "internal policy management system (referred to as 'big summary screen')"
+  ],
+  "summary": "Jeremy Palmer, an Alliance Insurance agent, confirmed with Personal Lines Billing that an annual EFT for a vehicle addition on policy 801.1349692 would automatically draft on the due date. The agent verified this via the policy's summary screen, resolving the caller's query.",
+  "_model": "qwen3:14b",
+  "_eval_count": 260,
+  "_total_duration_ms": 38273,
+  "_source_file": "transcripts/out-5138702002-701-20251126-120704-1764176824.2312.txt",
+  "_direction": "outbound",
+  "_char_count": 1567
+}

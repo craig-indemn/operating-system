@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller seeks cheaper homeowners insurance alternatives due to high renewal costs with Heritage and needs to resolve a pending cancellation notice for their son's National General car insurance, which was flagged for non-sufficient funds.",
+  "resolution_steps": [
+    "Agent verified the son's car insurance account, identified the pending cancellation was due to an NSF payment on August 14th.",
+    "Processed a manual payment to clear the overdue balance.",
+    "Explained future payments require adjusting the son's bank account to avoid recurrence.",
+    "Notified the caller's contact (Tracy) to initiate a homeowners insurance quote request for Heritage policy renewal.",
+    "Provided email contact details for follow-up."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance billing processes (NSF handling, auto-draft configurations)",
+    "Carrier-specific policies (Heritage, National General)",
+    "Internal systems for policy management and payment processing"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance customer portal (myallianceinsurance.com)",
+    "Email communication system"
+  ],
+  "summary": "A caller addressed two issues: resolving a car insurance payment dispute and seeking cheaper homeowners insurance alternatives. The agent cleared the son's NSF payment, explained account adjustments, and initiated a policy switch request for the homeowner's insurance. Both matters were resolved with actionable next steps provided.",
+  "_model": "qwen3:14b",
+  "_eval_count": 299,
+  "_total_duration_ms": 38517,
+  "_source_file": "transcripts/q-300-+13364296409-20251020-101932-1760969972.1399.txt",
+  "_direction": "queue",
+  "_char_count": 3663
+}

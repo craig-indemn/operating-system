@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Michelle followed up with Ashley to confirm that Cecilia was informed about the cancellation form details (10-16-25) and to ensure the form would be sent by 5 PM.",
+  "resolution_steps": [
+    "Ashley confirmed Cecilia was informed about the cancellation form details.",
+    "Ashley confirmed the form would be sent by 5 PM.",
+    "Ashley thanked Michelle for following up and ended the call politely."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of cancellation form processes",
+    "Internal communication protocols with team members (e.g., Cecilia)"
+  ],
+  "systems_referenced": [],
+  "summary": "Michelle followed up with Ashley at Alliance Insurance to confirm that Cecilia had been informed about a cancellation form and that it would be sent by 5 PM. Ashley confirmed the details and concluded the call with a polite goodbye. The call resolved a follow-up action related to document submission.",
+  "_model": "qwen3:14b",
+  "_eval_count": 221,
+  "_total_duration_ms": 35314,
+  "_source_file": "transcripts/out-+16073330743-100-20251006-163226-1759782746.14175.txt",
+  "_direction": "outbound",
+  "_char_count": 412
+}

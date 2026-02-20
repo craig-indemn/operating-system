@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Corbin) is requesting a three-digit security code for a credit card ending in 3089 to make a payment and is correcting a misspelled name (L A H K E N G H E N G instead of L A H K E N G H E N G with both H E N G in the last name).",
+  "resolution_steps": [
+    "Agent acknowledges the caller's request for the three-digit code.",
+    "Caller provides corrected full name details (L A H K E N G H E N G).",
+    "Agent agrees to update the name correction in their system."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Credit card security code verification process",
+    "Customer information correction procedures"
+  ],
+  "systems_referenced": [
+    "Customer database (for name correction)"
+  ],
+  "summary": "Corbin requested a credit card security code for a payment and corrected a name misspelling in Alliance's records. The agent confirmed the name correction but did not provide the code during this call. The interaction suggests a follow-up may be needed to resolve the payment request.",
+  "_model": "qwen3:14b",
+  "_eval_count": 260,
+  "_total_duration_ms": 45234,
+  "_source_file": "transcripts/out-3368133683-409-20250813-091242-1755090762.209.txt",
+  "_direction": "outbound",
+  "_char_count": 528
+}

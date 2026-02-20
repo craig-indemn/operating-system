@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with Maria; no further intent discernible due to call disconnection",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Call disconnected before meaningful interaction. Caller requested to speak to Maria, but conversation was cut off during hold message. No resolution or policy action discussed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 99,
+  "_total_duration_ms": 51480,
+  "_source_file": "transcripts/in-+13363779003-+17026045822-20260113-105954-1768319994.4163.txt",
+  "_direction": "inbound",
+  "_char_count": 454
+}

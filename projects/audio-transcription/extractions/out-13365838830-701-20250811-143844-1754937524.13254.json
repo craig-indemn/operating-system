@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Voicemail greeting from Alliance Insurance agent Jeremy, informing recipient of a missed call and providing contact number.",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Non-substantive voicemail message from Alliance Insurance agent Jeremy, leaving a contact number and informing the recipient of a missed call. No meaningful conversation or resolution occurs.",
+  "_model": "qwen3:14b",
+  "_eval_count": 104,
+  "_total_duration_ms": 21488,
+  "_source_file": "transcripts/out-13365838830-701-20250811-143844-1754937524.13254.txt",
+  "_direction": "outbound",
+  "_char_count": 361
+}

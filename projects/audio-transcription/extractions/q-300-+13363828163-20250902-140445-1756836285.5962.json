@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Gary is reporting water damage from a backed-up sewer line in his basement and seeking insurance coverage for repairs, specifically related to accessing plumbing in a concrete slab.",
+  "resolution_steps": [
+    "Agent Eric McMahon verified Gary's insurance policy (Liberty Mutual/Safe Code).",
+    "Asked for details: address (Pendleton Drive), incident date (Sunday), and extent of damage (baseboard, wall, flooring).",
+    "Noted plumber's assessment: roots in the waistline under the house, potential coverage for accessing plumbing but not pipe replacement.",
+    "Confirmed claim filing with Liberty Mutual and assured follow-up via phone/email.",
+    "Agreed to provide claim number once filed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance coverage for water damage from sewer backups",
+    "Policy specifics for plumbing repairs in concrete slabs",
+    "Claim filing procedures for Liberty Mutual"
+  ],
+  "systems_referenced": [
+    "Liberty Mutual (Safe Code) insurance claims system",
+    "Rotarouter plumbing service"
+  ],
+  "summary": "Gary reported basement water damage from a sewer backup, with a plumber identifying root obstruction in a concrete slab. The agent confirmed Liberty Mutual coverage for accessing the plumbing and initiated a claim, with the insurer to contact Gary for next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 293,
+  "_total_duration_ms": 43730,
+  "_source_file": "transcripts/q-300-+13363828163-20250902-140445-1756836285.5962.txt",
+  "_direction": "queue",
+  "_char_count": 3397
+}

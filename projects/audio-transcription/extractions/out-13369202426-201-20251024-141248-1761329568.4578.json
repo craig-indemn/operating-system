@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Sid) informed the agent that he is unable to make a previously discussed payment because he needs to visit the bank and deposit money.",
+  "resolution_steps": [
+    "Agent acknowledged the caller's inability to pay immediately.",
+    "Agent advised the caller to contact Alliance Insurance when he is able to make the payment."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Standard procedures for handling payment delays",
+    "Customer communication protocols for unresolved payments"
+  ],
+  "systems_referenced": [],
+  "summary": "Sid informed Amanda he cannot make a payment due to an urgent bank visit. Amanda advised him to contact the agency when he is able to pay. The conversation concluded with mutual acknowledgment and a polite goodbye.",
+  "_model": "qwen3:14b",
+  "_eval_count": 175,
+  "_total_duration_ms": 35440,
+  "_source_file": "transcripts/out-13369202426-201-20251024-141248-1761329568.4578.txt",
+  "_direction": "outbound",
+  "_char_count": 428
+}

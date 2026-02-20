@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to cancel their car insurance policy because they moved to Arkansas and received a DMV notice that their license plates were canceled.",
+  "resolution_steps": [
+    "Agent acknowledged the caller's request to cancel the policy due to relocation and license plate cancellation.",
+    "Agent offered to transfer the caller to a specialist who can assist with policy cancellation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy cancellation procedures for moving out of state",
+    "Handling license plate cancellation-related insurance adjustments"
+  ],
+  "systems_referenced": [],
+  "summary": "A customer contacted Alliance Insurance to cancel their car insurance policy after moving to Arkansas and receiving a DMV notice about canceled license plates. The agent acknowledged the request and offered to transfer the caller to an agent who can process the cancellation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 189,
+  "_total_duration_ms": 36910,
+  "_source_file": "transcripts/in-+13363779003-+13309794865-20250725-164541-1753476341.11849.txt",
+  "_direction": "inbound",
+  "_char_count": 348
+}

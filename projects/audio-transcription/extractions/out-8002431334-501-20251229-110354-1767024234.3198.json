@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "N/A (automated menu system without actual caller interaction)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [
+    "Travelers Agent Services automated menu system"
+  ],
+  "summary": "This is an automated menu system from Travelers Agent Services, not a substantive conversation. The transcript only shows system prompts for call routing options without any actual agent-caller interaction or issue resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 111,
+  "_total_duration_ms": 23439,
+  "_source_file": "transcripts/out-8002431334-501-20251229-110354-1767024234.3198.txt",
+  "_direction": "outbound",
+  "_char_count": 638
+}

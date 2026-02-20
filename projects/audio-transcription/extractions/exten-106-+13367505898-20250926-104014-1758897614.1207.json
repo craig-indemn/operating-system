@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to confirm payment status for workers' compensation insurance, address a past-due general liability (GL) bill, discuss payment methods, and resolve auto insurance and lien holder details for financed vehicles.",
+  "resolution_steps": [
+    "Agent placed the caller on hold to verify workers' comp payment status.",
+    "Agent informed the caller about a past-due GL bill and confirmed no double billing for workers' comp.",
+    "Agent provided payment options (online portal, email with billing details) and sent information via email.",
+    "Agent clarified auto insurance status, confirmed receipt of a quote, and requested lien holder details for financed vehicles.",
+    "Agent agreed to send requested bank information via email and confirmed next steps."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Workers' compensation and general liability insurance policies",
+    "Payment portals and billing systems",
+    "Auto insurance quoting process",
+    "Lien holder requirements for vehicle financing"
+  ],
+  "systems_referenced": [
+    "myallianceinsurance.com customer portal",
+    "Wood Forest National Bank",
+    "Internal billing and policy management systems"
+  ],
+  "summary": "The caller discussed multiple insurance-related issues, including past-due payments, payment methods, auto insurance quotes, and lien holder information. The agent provided solutions, sent necessary details via email, and confirmed next steps. The call concluded with the caller expressing satisfaction and thanking the agent.",
+  "_model": "qwen3:14b",
+  "_eval_count": 316,
+  "_total_duration_ms": 51290,
+  "_source_file": "transcripts/exten-106-+13367505898-20250926-104014-1758897614.1207.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3974
+}

@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Gary is providing detailed information about his property (roof age, heating system, structures, outbuildings, pets) and auto insurance provider to facilitate an insurance quote or assessment.",
+  "resolution_steps": [
+    "Shane gathers details about the property's metal roof (5-6 years old, installed by Piedmont Metal Roofing), heat pump (5 years old), and wooden carport with telephone poles.",
+    "Confirms presence of two outbuildings (Leonard's aluminum and Rhino sheds) in good condition, and pets (two cats, a non-vicious Great Pyrenees dog).",
+    "Notes that the mortgage company is Ashcroft, now under Mister Cooper, and that auto insurance is with State Farm.",
+    "Informs Gary he will contact him in a few days with rate estimates."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Home insurance factors (roof age, heating systems, property structures, outbuildings, pets)",
+    "Insurance carrier transitions (Mid America to Mister Cooper)",
+    "Auto insurance providers (State Farm)"
+  ],
+  "systems_referenced": [],
+  "summary": "Gary provides comprehensive property and insurance details to Shane during a consultation. Shane confirms key factors affecting insurance coverage and agrees to follow up with rate estimates. The conversation includes details about roof installations, heating systems, outbuildings, and carrier transitions.",
+  "_model": "qwen3:14b",
+  "_eval_count": 306,
+  "_total_duration_ms": 48756,
+  "_source_file": "transcripts/exten-113-+13367867659-20251212-095458-1765551298.928.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2320
+}

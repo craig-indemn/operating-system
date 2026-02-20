@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Attempting to leave a message for Randy at Alliance Insurance Services.",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Voicemail greeting from Randy indicating mailbox is full and unable to accept new messages. Caller instructed to send text or email instead.",
+  "_model": "qwen3:14b",
+  "_eval_count": 87,
+  "_total_duration_ms": 19570,
+  "_source_file": "transcripts/out-3364163902-701-20250730-124252-1753893772.4176.txt",
+  "_direction": "outbound",
+  "_char_count": 309
+}

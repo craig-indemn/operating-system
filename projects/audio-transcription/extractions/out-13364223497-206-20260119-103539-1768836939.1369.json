@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jeff Edmonds aims to send loss run documents to Chris Auto Company LLC via email, confirming the correct email address for delivery.",
+  "resolution_steps": [
+    "Agent confirms the email address for sending loss runs ('Chris Auto Company LLC at gmail.com')",
+    "Agent assures the caller the documents will be delivered within five minutes",
+    "Call concludes with mutual gratitude and closing remarks"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of loss run documents and their delivery process",
+    "Email confirmation protocols for document distribution"
+  ],
+  "systems_referenced": [
+    "Email system (gmail.com)"
+  ],
+  "summary": "Jeff Edmonds confirms with Tequisha that loss run documents will be emailed to Chris Auto Company LLC. The agent verifies the email address and schedules immediate delivery, resulting in a successful transaction with both parties expressing gratitude. The call demonstrates a straightforward document delivery process.",
+  "_model": "qwen3:14b",
+  "_eval_count": 209,
+  "_total_duration_ms": 36096,
+  "_source_file": "transcripts/out-13364223497-206-20260119-103539-1768836939.1369.txt",
+  "_direction": "outbound",
+  "_char_count": 326
+}

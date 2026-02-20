@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is concerned about an unexpected increase in their insurance billing fee from $106.37 to $108 and is seeking clarification on why the fee was applied and how to avoid it.",
+  "resolution_steps": [
+    "Agent explains the $2 billing fee is due to paper statements being sent by Auto Owners.",
+    "Agent clarifies that switching to paperless billing through Auto Owners' portal would eliminate the fee.",
+    "Agent sends a link via email to create an Auto Owners account and enable paperless billing.",
+    "Agent offers to assist in person if the caller prefers."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of Auto Owners' billing policies",
+    "Knowledge of paperless billing discounts",
+    "Ability to troubleshoot billing fee discrepancies"
+  ],
+  "systems_referenced": [
+    "Auto Owners insurance portal",
+    "Email communication system"
+  ],
+  "summary": "The caller was confused about a $2 billing fee increase and its connection to paper statements. The agent explained the fee structure, provided a link to enable paperless billing through Auto Owners' portal, and offered in-person assistance. The caller was directed to take action via email to eliminate the fee.",
+  "_model": "qwen3:14b",
+  "_eval_count": 272,
+  "_total_duration_ms": 32549,
+  "_source_file": "transcripts/out-3367251548-100-20250905-130817-1757092097.3301.txt",
+  "_direction": "outbound",
+  "_char_count": 3859
+}

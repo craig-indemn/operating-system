@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Susan Tonger attempts to reach Jamie Flippin at Alliance Insurance but is met with a transfer/hold situation.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller Susan Tonger requests to speak with Jamie Flippin, but the agent (Amanda) appears to be transferring the call. The conversation is cut off mid-transaction with no resolution achieved.",
+  "_model": "qwen3:14b",
+  "_eval_count": 116,
+  "_total_duration_ms": 22665,
+  "_source_file": "transcripts/in-+13363779003-+15418902882-20260105-124512-1767635112.8759.txt",
+  "_direction": "inbound",
+  "_char_count": 361
+}

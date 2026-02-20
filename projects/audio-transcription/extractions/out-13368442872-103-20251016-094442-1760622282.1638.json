@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "N/A",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Standard voicemail greeting message with no substantive conversation. Caller instructed to leave a message after the tone.",
+  "_model": "qwen3:14b",
+  "_eval_count": 73,
+  "_total_duration_ms": 21735,
+  "_source_file": "transcripts/out-13368442872-103-20251016-094442-1760622282.1638.txt",
+  "_direction": "outbound",
+  "_char_count": 103
+}

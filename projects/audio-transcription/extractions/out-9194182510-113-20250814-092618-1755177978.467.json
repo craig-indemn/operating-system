@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Jim) wants to switch his auto insurance policy to another provider after receiving a quote, while keeping his umbrella and homeowners policies with Alliance Insurance.",
+  "resolution_steps": [
+    "Agent Gary clarifies the caller's intent and confirms he has been a long-time client.",
+    "Caller explains he received a quote from another provider and decided to switch.",
+    "Agent asks for clarification on policy structure, confirming the auto policy to cancel is separate from umbrella/homeowners policies.",
+    "Caller initially misunderstands, thinking he has two auto policies, but corrects himself after reviewing documents.",
+    "Agent confirms the caller intends to keep umbrella and homeowners policies with Alliance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of policy bundling/structure (auto, umbrella, homeowners)",
+    "Cancellation process for auto policies",
+    "Client relationship management (acknowledging long-term service)"
+  ],
+  "systems_referenced": [
+    "Policy management system (checking policy numbers and structure)",
+    "Carrier portals (for quote comparison context)"
+  ],
+  "summary": "Jim is switching his auto insurance to another provider but wants to keep his umbrella and homeowners policies with Alliance. Gary clarifies policy details, resolves confusion about multiple auto policies, and confirms the client's intent to retain other policies. The call ends with mutual appreciation and a plan to proceed with cancellation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 306,
+  "_total_duration_ms": 35188,
+  "_source_file": "transcripts/out-9194182510-113-20250814-092618-1755177978.467.txt",
+  "_direction": "outbound",
+  "_char_count": 1472
+}

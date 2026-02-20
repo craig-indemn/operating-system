@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Robert Lumbres is checking the premium due dates for two rental properties (106 Ravenwood Court and 357 Ridgecrest in King) and inquiring about options to reinstate or renew policies for these properties, as well as a third property at Capella Ridge Road.",
+  "resolution_steps": [
+    "Holly confirms the policy status for 106 Ravenwood Court (canceled in 2022) and 357 Ridgecrest (non-renewed in February 2023).",
+    "Holly checks the active policy for Capella Ridge Road (renewal in April 2024, current premium $689).",
+    "Holly offers to consult with Corbin to explore options for reinstating or renewing the canceled/non-renewed policies.",
+    "Robert agrees to this follow-up and mentions plans to retenant one property and renovate another."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy status terminology (canceled, non-renewed, active).",
+    "Access to internal policy database to check renewal dates and premium amounts.",
+    "Coordination with other agents (e.g., Corbin) for policy options."
+  ],
+  "systems_referenced": [
+    "Internal policy management system (used to check policy statuses, renewal dates, and premiums)."
+  ],
+  "summary": "Robert Lumbres inquired about the status of three rental properties' insurance policies. Holly confirmed two were canceled/non-renewed and one was active with a $689 premium. She offered to consult with Corbin to find renewal options, which Robert accepted. The call concluded with a plan for follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 379,
+  "_total_duration_ms": 44237,
+  "_source_file": "transcripts/q-300-+13364139838-20251230-121404-1767114844.2629.txt",
+  "_direction": "queue",
+  "_char_count": 2498
+}

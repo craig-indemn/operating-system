@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Anna is seeking assistance with an account that keeps reopening after being closed, specifically related to unlinking a bill from a banking institution (Horizon) and resolving persistent access issues.",
+  "resolution_steps": [
+    "Agent acknowledged Anna's issue with the account reopening after closure.",
+    "Agent confirmed Anna had already unlinked the bill from Horizon.",
+    "Agent noted that previous attempts to resolve the issue via Joe resulted in automated responses with no resolution.",
+    "Agent informed Anna they would contact the 'back office' for further assistance.",
+    "Agent committed to calling Anna back within 20 minutes."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of account closure processes and banking system interactions",
+    "Knowledge of internal escalation procedures (e.g., contacting back office)",
+    "Familiarity with customer service protocols for unresolved technical issues"
+  ],
+  "systems_referenced": [
+    "Online profile management system",
+    "Horizon banking institution",
+    "Back office department"
+  ],
+  "summary": "Anna reported an account that repeatedly reopens after closure, linked to a bill unlinked from Horizon. The agent confirmed prior attempts to resolve the issue were unsuccessful and committed to contacting back office for further assistance, with a follow-up call promised within 20 minutes. The conversation highlights challenges with automated banking systems and internal escalation processes.",
+  "_model": "qwen3:14b",
+  "_eval_count": 300,
+  "_total_duration_ms": 40792,
+  "_source_file": "transcripts/exten-100-+13367144687-20251014-152409-1760469849.6235.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2104
+}

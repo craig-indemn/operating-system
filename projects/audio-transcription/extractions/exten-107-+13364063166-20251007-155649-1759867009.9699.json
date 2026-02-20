@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jerry Mason wants to modify his insurance policy by removing two vehicles and clarify his payment method (bank draft vs. annual billing).",
+  "resolution_steps": [
+    "Agent confirms Jerry's identity and acknowledges his request to adjust payment terms and policy coverage.",
+    "Explains that while bank draft is an option, annual billing is standard and confirms Jerry's acceptance.",
+    "Informs Jerry that the two vehicles will be removed from his policy effective November 10th during renewal.",
+    "Details that Jerry will receive two invoices: one for all four cars before removal, and another for the remaining two cars after removal.",
+    "Closes the request as the policy change will result in a lower premium."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy renewal processes and timelines",
+    "Billing methods (bank draft vs. annual billing)",
+    "Procedure for adjusting coverage and removing vehicles from a policy"
+  ],
+  "systems_referenced": [
+    "Policy management system (for adjusting coverage and renewal dates)",
+    "Billing/invoicing system"
+  ],
+  "summary": "Jerry Mason discusses updating his insurance policy by removing two vehicles and confirming his payment method. The agent explains the process for removing vehicles effective November 10th and confirms Jerry will receive two invoices reflecting the change. The agent closes the request as the premium will decrease after the adjustment.",
+  "_model": "qwen3:14b",
+  "_eval_count": 305,
+  "_total_duration_ms": 45622,
+  "_source_file": "transcripts/exten-107-+13364063166-20251007-155649-1759867009.9699.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1151
+}

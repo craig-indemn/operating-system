@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Edward wants to add Winburn Real Estate LLC to his insurance policy at an address in Winston Salem, NC, and confirm the process for updating his coverage.",
+  "resolution_steps": [
+    "JC confirms the company name (Winburn Real Estate LLC) and address (206 West 4th Street, Winston Salem, NC 27101) after clarifying the spelling with Edward.",
+    "JC explains that an endorsement must be emailed to add the company to the policy.",
+    "JC notes that the declaration page won't be available until next week but offers to provide a binder temporarily.",
+    "Edward agrees to wait until next week for the declaration page and requests it be emailed once available.",
+    "JC confirms the next steps and agrees to handle the endorsement and document delivery."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Process for adding endorsements to insurance policies",
+    "Timeline for generating and delivering declaration pages",
+    "Handling requests for policy updates involving real estate entities"
+  ],
+  "systems_referenced": [],
+  "summary": "Edward contacted JC to add Winburn Real Estate LLC to his insurance policy. JC confirmed the company details, explained the endorsement process, and agreed to send the declaration page once available. The call concluded with both parties confirming next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 286,
+  "_total_duration_ms": 52959,
+  "_source_file": "transcripts/exten-114-+13072001921-20251226-092728-1766759248.143.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2351
+}

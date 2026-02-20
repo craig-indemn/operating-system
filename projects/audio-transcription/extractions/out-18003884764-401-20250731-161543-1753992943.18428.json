@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Heather is seeking clarification on why removing a vehicle from a client's policy increased the premium, beyond the multi-vehicle discount explanation already provided.",
+  "resolution_steps": [
+    "Karen confirms the policy number and client details.",
+    "Karen explains that points from accidents and speeding tickets are now consolidated on the remaining vehicle, increasing its rating.",
+    "Karen details specific incidents (speeding ticket, at-fault accident, collision) contributing to the seven points on the policy.",
+    "Karen acknowledges the complexity of explaining the premium increase and confirms the policy is substandard due to the points."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy rating systems",
+    "Knowledge of how points from accidents/speeding affect premiums",
+    "Familiarity with multi-vehicle discount mechanics",
+    "Ability to interpret policy details and claims history"
+  ],
+  "systems_referenced": [
+    "Penn National Insurance policy portal"
+  ],
+  "summary": "Heather discusses a client's policy with Karen, seeking to understand why removing a vehicle increased premiums. Karen explains that points from multiple incidents (speeding, accidents) are now consolidated on the remaining vehicle, making it higher risk. The client's policy is deemed substandard due to the accumulated points, and Heather is left needing further clarification for the client.",
+  "_model": "qwen3:14b",
+  "_eval_count": 296,
+  "_total_duration_ms": 36871,
+  "_source_file": "transcripts/out-18003884764-401-20250731-161543-1753992943.18428.txt",
+  "_direction": "outbound",
+  "_char_count": 4099
+}

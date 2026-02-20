@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jaycee, an 18-year-old student, seeks to reinstate her canceled auto policy with National General by making partial payments over time instead of the full $348.50 required for reinstatement.",
+  "resolution_steps": [
+    "Mia explains National General requires full payment ($348.50) to reinstate the policy, not partial payments.",
+    "Jaycee proposes paying $348.50 this Friday and spreading subsequent payments over the next month.",
+    "Mia clarifies that since the policy is canceled, billing details cannot be accessed until reinstatement.",
+    "Mia advises Jaycee to call back on Friday (after receiving payment) to reinstate the policy and process payments.",
+    "Mia acknowledges inability to confirm payment plan feasibility without carrier input."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "National General's reinstatement policies (full payment requirement)",
+    "Billing procedures for canceled policies",
+    "Handling partial payment requests for reinstatement",
+    "Customer financial hardship scenarios"
+  ],
+  "systems_referenced": [
+    "National General (insurance carrier)",
+    "Billing system for canceled policies"
+  ],
+  "summary": "Jaycee, a financially strained student, attempts to reinstate her canceled auto policy with National General through partial payments. The agent explains the carrier's full-payment requirement, advises reinstatement after receiving funds on Friday, and acknowledges limitations in confirming payment plans without carrier input.",
+  "_model": "qwen3:14b",
+  "_eval_count": 325,
+  "_total_duration_ms": 49560,
+  "_source_file": "transcripts/q-300-+13364225325-20250820-091343-1755695623.255.txt",
+  "_direction": "queue",
+  "_char_count": 4309
+}

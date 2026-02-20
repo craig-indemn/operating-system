@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Vanessa is attempting to obtain an installment page for business auto insurance and related billing information, but there is confusion about whether workers' comp coverage is involved in the request.",
+  "resolution_steps": [
+    "Cody acknowledges Vanessa's request for the installment page and billing information.",
+    "Vanessa clarifies that the workers' comp discussion was separate from the business auto request.",
+    "Cody explains that he cannot generate or retrieve the installment schedule until the first payment is processed and the account exits 'cancel pending' status.",
+    "Vanessa accepts this explanation and agrees to wait for further communication."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy payment processes",
+    "Knowledge of carrier systems for checking payment statuses",
+    "Ability to distinguish between workers' comp and business auto insurance requirements"
+  ],
+  "systems_referenced": [
+    "Carrier portal for checking payment status",
+    "Internal email system for document sharing"
+  ],
+  "summary": "Vanessa requested business auto insurance installment information but faced confusion about workers' comp involvement. Cody explained that documents cannot be generated until the first payment is processed. Vanessa agreed to wait for follow-up communication after lunch. The conversation highlights the need for clear policy-specific documentation processes.",
+  "_model": "qwen3:14b",
+  "_eval_count": 281,
+  "_total_duration_ms": 39271,
+  "_source_file": "transcripts/exten-207-+13362020395-20250917-124802-1758127682.2370.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1831
+}

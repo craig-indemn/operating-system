@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller intended to purchase insurance but the conversation was cut off mid-transaction.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The call was interrupted before the agent could determine the type of insurance the caller wanted to purchase. The conversation ended with the caller requesting a moment, but no further dialogue was recorded.",
+  "_model": "qwen3:14b",
+  "_eval_count": 104,
+  "_total_duration_ms": 20838,
+  "_source_file": "transcripts/in-+13363779003-+17044087638-20250926-152629-1758914789.6793.txt",
+  "_direction": "inbound",
+  "_char_count": 279
+}

@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Andy Robertson needs a homeowner's declaration page for a mutual customer between First National Bank and Alliance Insurance.",
+  "resolution_steps": [
+    "Agent acknowledged the request and offered to connect Andy with an agent who can assist."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of homeowner's insurance documents and their retrieval process",
+    "Knowledge of internal systems to route calls to appropriate agents"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's internal agent routing system"
+  ],
+  "summary": "Andy Robertson requested a homeowner's declaration page for a mutual customer. The agent acknowledged the request and offered to transfer him to an agent who can assist, but the call ended before resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 171,
+  "_total_duration_ms": 39124,
+  "_source_file": "transcripts/in-+13367861133-+13365266379-20251014-133145-1760463105.4267.txt",
+  "_direction": "inbound",
+  "_char_count": 321
+}

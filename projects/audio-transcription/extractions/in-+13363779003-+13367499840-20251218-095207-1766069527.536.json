@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller received a previous call from Cecilia and wants to speak with her directly.",
+  "resolution_steps": [
+    "Agent apologizes for the inconvenience and asks the caller to wait while connecting them to Cecilia.",
+    "Agent plays a hold message requesting the caller to update contact information and mentions the online customer portal."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Handling requests to speak with specific agents",
+    "Hold message protocols and customer portal information"
+  ],
+  "systems_referenced": [
+    "myalliance customer portal"
+  ],
+  "summary": "Caller requested to speak with agent Cecilia. The agent apologized and placed the caller on hold, playing a message about updating contact information and promoting the online portal. The call was not resolved in the transcript.",
+  "_model": "qwen3:14b",
+  "_eval_count": 183,
+  "_total_duration_ms": 39070,
+  "_source_file": "transcripts/in-+13363779003-+13367499840-20251218-095207-1766069527.536.txt",
+  "_direction": "inbound",
+  "_char_count": 550
+}

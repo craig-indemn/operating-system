@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Lisa Brothers is seeking clarification on how to accurately report payroll for workers' comp insurance with Builders Mutual, as her existing policy shows low payroll due to business changes, and she wants to compare proposals from Penn National.",
+  "resolution_steps": [
+    "Jeff confirms Lisa does not need to leave Builders Mutual for the new proposal.",
+    "He explains that keeping workers' comp with Builders Mutual would require managing certificates through two agencies but is otherwise feasible.",
+    "Jeff acknowledges the complexity of payroll fluctuations in commercial construction and offers to provide a quote once Lisa clarifies the annual payroll amount.",
+    "He reassures Lisa that Builders Mutual's reporting form setup is understood and that the agency can accommodate her needs."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Workers' comp insurance mechanics, including reporting forms and payroll calculations.",
+    "Understanding of Builders Mutual and Penn National policy structures.",
+    "Handling of certificate of insurance (COI) requests across multiple agencies."
+  ],
+  "systems_referenced": [
+    "Builders Mutual (existing workers' comp policy)",
+    "Penn National (new proposal)",
+    "Reporting form ( Builders Mutual's payroll-based billing method)",
+    "Certificate of Insurance (COI) process"
+  ],
+  "summary": "Lisa Brothers discusses her confusion about payroll reporting for workers' comp insurance with her agent, Jeff Edmonds. She is transitioning from Builders Mutual to Penn National but is unsure about payroll figures due to past business changes. Jeff clarifies that she can retain Builders Mutual for workers' comp, though it would require managing certificates through two agencies. He offers to provide a quote once Lisa specifies the annual payroll amount, acknowledging the challenges of fluctuating payroll in construction.",
+  "_model": "qwen3:14b",
+  "_eval_count": 365,
+  "_total_duration_ms": 60201,
+  "_source_file": "transcripts/exten-206-+13368138051-20250917-123013-1758126613.1744.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4683
+}

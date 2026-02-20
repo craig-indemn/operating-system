@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to add a mortgage clause to a customer's homeowners policy",
+  "resolution_steps": [
+    "Agent Sharon acknowledges the request and offers to transfer the call"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A caller from Bank of K requested adding a mortgage clause to a policy. The agent immediately offered to transfer the call without further discussion.",
+  "_model": "qwen3:14b",
+  "_eval_count": 105,
+  "_total_duration_ms": 27130,
+  "_source_file": "transcripts/in-+13363779003-+18703918408-20250826-111040-1756221040.1826.txt",
+  "_direction": "inbound",
+  "_char_count": 250
+}

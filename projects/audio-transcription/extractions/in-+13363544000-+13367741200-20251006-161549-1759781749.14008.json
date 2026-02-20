@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Patty from AAA Insurance requests assistance retrieving previous insurance policy documents (specifically 'deck pages') for client Matt and Hilda Mayor, who recently started a policy with AAA.",
+  "resolution_steps": [
+    "Agent acknowledges request and confirms client details (Matt and Hilda Mayor, last name Mayor).",
+    "Agent offers to transfer the call to a specialist who can assist with document retrieval."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding insurance policy document retrieval processes",
+    "Procedures for transferring calls to appropriate specialists"
+  ],
+  "systems_referenced": [],
+  "summary": "Patty from AAA Insurance requested help retrieving previous insurance documents for a client. The agent confirmed details and offered to transfer the call to a specialist for further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 183,
+  "_total_duration_ms": 31598,
+  "_source_file": "transcripts/in-+13363544000-+13367741200-20251006-161549-1759781749.14008.txt",
+  "_direction": "inbound",
+  "_char_count": 707
+}

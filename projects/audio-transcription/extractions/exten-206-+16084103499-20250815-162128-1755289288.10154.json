@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Janice is following up about an application for Gladys Memorial Cemetery that was declined, seeking clarification on the reason and requesting documentation.",
+  "resolution_steps": [
+    "Jeff confirms the application was declined due to not meeting West Bend Specialty's special event program criteria (no actual event, only parking services).",
+    "Jeff explains that another agent had submitted a similar application two minutes earlier, which was also declined.",
+    "Jeff offers to send an email for documentation and confirms Janice will receive it."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "West Bend Specialty's special event program requirements (e.g., vendors must sell products at booths, not just provide parking services).",
+    "Internal application review process and how duplicate submissions are handled."
+  ],
+  "systems_referenced": [
+    "email (for documentation)"
+  ],
+  "summary": "Janice from West Bend Specialty discusses the decline of an application for Gladys Memorial Cemetery with Jeff. The application was rejected because the service (parking) doesn't meet the special event program's criteria. Jeff explains that another agent submitted a similar application two minutes earlier, which was also declined. He offers to send an email for documentation, and the call concludes with both parties agreeing to follow up via email.",
+  "_model": "qwen3:14b",
+  "_eval_count": 281,
+  "_total_duration_ms": 44685,
+  "_source_file": "transcripts/exten-206-+16084103499-20250815-162128-1755289288.10154.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1974
+}

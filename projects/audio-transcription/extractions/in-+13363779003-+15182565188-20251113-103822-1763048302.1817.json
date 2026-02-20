@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with Holly",
+  "resolution_steps": [],
+  "outcome": "transferred",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller requested to speak with Holly. The agent acknowledged the request but no further action was taken in the brief transcript.",
+  "_model": "qwen3:14b",
+  "_eval_count": 79,
+  "_total_duration_ms": 27159,
+  "_source_file": "transcripts/in-+13363779003-+15182565188-20251113-103822-1763048302.1817.txt",
+  "_direction": "inbound",
+  "_char_count": 136
+}

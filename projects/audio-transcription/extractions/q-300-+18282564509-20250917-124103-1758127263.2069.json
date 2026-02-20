@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jenny from Barclays Motors is informing the agent that a customer (Terry Love) purchased a car and needs the agency to update his insurance policy with the new vehicle details.",
+  "resolution_steps": [
+    "Holly asks for the customer's policy number, which Jenny provides (5414679900).",
+    "Holly confirms the customer's name (Terry Love) and checks the system for existing records.",
+    "Holly verifies the vehicle details (2011 Cadillac) and confirms the policy already includes the new vehicle.",
+    "Jenny states no further action is needed, and the call concludes."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Accessing and verifying customer policy records",
+    "Confirming vehicle details against policy coverage",
+    "Understanding insurance agency workflows for vehicle additions"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services customer database",
+    "Policy management system"
+  ],
+  "summary": "Jenny from Barclays Motors contacted Alliance Insurance to notify them of a customer's new car purchase. Holly verified the customer's policy details, confirmed the vehicle was already added to the policy, and resolved the call. No further action was required.",
+  "_model": "qwen3:14b",
+  "_eval_count": 274,
+  "_total_duration_ms": 34750,
+  "_source_file": "transcripts/q-300-+18282564509-20250917-124103-1758127263.2069.txt",
+  "_direction": "queue",
+  "_char_count": 783
+}

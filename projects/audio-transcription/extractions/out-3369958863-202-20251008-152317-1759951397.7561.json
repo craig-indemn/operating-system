@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Not applicable (voicemail greeting)",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Voicemail left for David Rodwell regarding tree removal and photo submission. No further action taken.",
+  "_model": "qwen3:14b",
+  "_eval_count": 76,
+  "_total_duration_ms": 30957,
+  "_source_file": "transcripts/out-3369958863-202-20251008-152317-1759951397.7561.txt",
+  "_direction": "outbound",
+  "_char_count": 599
+}

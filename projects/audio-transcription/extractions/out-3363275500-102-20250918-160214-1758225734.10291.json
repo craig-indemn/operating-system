@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jason from First Class Roofing wants to adjust policy dates for multiple insurance policies (general liability, workers compensation, and others) to align with a February 28th effective date and confirm payment processing for a current policy.",
+  "resolution_steps": [
+    "Gloria confirms receipt of a prior voicemail requesting a callback.",
+    "Jason clarifies he is calling on behalf of First Class Roofing and mentions payment for a current policy (amount unclear, possibly $16,200).",
+    "Jason requests changing policy effective dates to February 28th across all his insurance policies.",
+    "Gloria acknowledges the request and states she needs to consult with Jessica (the producer) to confirm the feasibility of adjusting dates.",
+    "Gloria commits to follow up with Jason by the next morning after discussing with Jessica."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy adjustment processes",
+    "Internal communication with producers (e.g., Jessica)",
+    "Handling payment confirmations for policies"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal account system (to pull up policy details)"
+  ],
+  "summary": "Jason from First Class Roofing contacted Gloria to confirm payment processing for a policy and request alignment of multiple insurance policies to a February 28th effective date. Gloria agreed to consult with the producer (Jessica) and follow up by the next day. The call involved coordination between the client, agent, and producer.",
+  "_model": "qwen3:14b",
+  "_eval_count": 330,
+  "_total_duration_ms": 37817,
+  "_source_file": "transcripts/out-3363275500-102-20250918-160214-1758225734.10291.txt",
+  "_direction": "outbound",
+  "_char_count": 2508
+}

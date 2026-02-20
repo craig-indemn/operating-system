@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to confirm the September 5th event date, verify the number of customized books needed based on headcount, and ensure logistics (location, equipment) for the meeting are prepared.",
+  "resolution_steps": [
+    "Confirmed the September 5th date remains valid.",
+    "Discussed headcount and customized book quantities (12 books total).",
+    "Clarified the event will be held at the remodeled Pilot office with a conference room setup.",
+    "Confirmed a TV screen is available for use.",
+    "Agreed to send reminders to attendees required to attend the session.",
+    "Scheduled follow-up communication the week of the first."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Event logistics and customization processes",
+    "Office locations and facility details",
+    "Meeting setup requirements (e.g., AV equipment)"
+  ],
+  "systems_referenced": [
+    "Email (for sending reminders)"
+  ],
+  "summary": "The caller confirmed event details with Frank, including the September 5th date, customized materials for 12 attendees, and logistics for the Pilot office meeting. They agreed to send reminders and follow up later. The conversation focused on preparing for an in-person session with specific setup needs.",
+  "_model": "qwen3:14b",
+  "_eval_count": 276,
+  "_total_duration_ms": 47830,
+  "_source_file": "transcripts/exten-107-+13368135604-20250822-131302-1755882782.10081.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2686
+}

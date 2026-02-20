@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Voicemail greeting and solicitation for callback regarding potential insurance needs",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Jeremy from Alliance Insurance Services left a voicemail for Amy, informing her of an email received regarding potential insurance needs and requesting a callback. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 95,
+  "_total_duration_ms": 24567,
+  "_source_file": "transcripts/out-3363994798-701-20250828-111053-1756393853.2661.txt",
+  "_direction": "outbound",
+  "_char_count": 583
+}

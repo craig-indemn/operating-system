@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "N/A",
+  "resolution_steps": [],
+  "outcome": "not_applicable",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The transcript contains only an automated greeting with no substantive conversation or caller interaction.",
+  "_model": "qwen3:14b",
+  "_eval_count": 69,
+  "_total_duration_ms": 16598,
+  "_source_file": "transcripts/in-+13363779003-+13369181243-20250723-101404-1753280044.2130.txt",
+  "_direction": "inbound",
+  "_char_count": 55
+}

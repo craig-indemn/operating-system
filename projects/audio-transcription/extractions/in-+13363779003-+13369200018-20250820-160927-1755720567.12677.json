@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is following up on a payment plan discussion from 2-3 weeks ago regarding an unresolved insurance audit, seeking resolution.",
+  "resolution_steps": [
+    "Agent asked whether the policy is personal or business.",
+    "Caller confirmed it's a business policy and provided policy number WWC3660683 through Wasco Insurance Company.",
+    "Agent offered to connect the caller with a commercial team agent."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Handling business insurance audits",
+    "Processing payment plans for commercial policies",
+    "Transferring calls to appropriate departments (commercial team)"
+  ],
+  "systems_referenced": [
+    "Wasco Insurance Company"
+  ],
+  "summary": "Caller followed up on an unresolved business insurance audit payment plan, provided policy details, and was referred to the commercial team for resolution. The agent initiated transfer to appropriate department.",
+  "_model": "qwen3:14b",
+  "_eval_count": 209,
+  "_total_duration_ms": 37740,
+  "_source_file": "transcripts/in-+13363779003-+13369200018-20250820-160927-1755720567.12677.txt",
+  "_direction": "inbound",
+  "_char_count": 881
+}

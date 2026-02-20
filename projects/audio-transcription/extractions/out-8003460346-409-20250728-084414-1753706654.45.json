@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Corbin from Alliance Insurance) wanted to change a client's billing mode from semiannual to annual for a policy.",
+  "resolution_steps": [
+    "Dana verified the client's account details (policy number, insurance name, agency code).",
+    "Dana guided Corbin to the 'payment schedule' section in the system to change the billing mode to 'full pay' (annual).",
+    "Dana confirmed the change would take 3-5 days to process and apply the discount.",
+    "Corbin confirmed the change was successfully saved in the system."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of AutoOwners Insurance's billing system and payment schedule modification process.",
+    "Ability to verify client account details and guide users through policy adjustments."
+  ],
+  "systems_referenced": [
+    "AutoOwners Insurance billing system",
+    "AutoOwners website (auto-owners.com)",
+    "Mobile app (App Store/Google Play)"
+  ],
+  "summary": "Corbin from Alliance Insurance requested assistance changing a client's billing mode from semiannual to annual. Dana verified the client's account details and guided Corbin through the AutoOwners system to update the payment schedule. The change was successfully implemented, with a 3-5 day processing window for the discount to take effect.",
+  "_model": "qwen3:14b",
+  "_eval_count": 292,
+  "_total_duration_ms": 41767,
+  "_source_file": "transcripts/out-8003460346-409-20250728-084414-1753706654.45.txt",
+  "_direction": "outbound",
+  "_char_count": 2918
+}

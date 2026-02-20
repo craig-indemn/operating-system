@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Cancel home and auto insurance policies effective November 1",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller requested cancellation of home and auto policies effective November 1. Call was placed on hold for an agent, but no further interaction occurred. Hold music and automated messages played while waiting.",
+  "_model": "qwen3:14b",
+  "_eval_count": 101,
+  "_total_duration_ms": 36903,
+  "_source_file": "transcripts/in-+13363779003-+12178166844-20251024-133717-1761327437.4302.txt",
+  "_direction": "inbound",
+  "_char_count": 930
+}

@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Kristen Hill wanted to speak with an agent at Alliance Insurance Services.",
+  "resolution_steps": [
+    "Agent placed the caller on hold for an agent."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The caller requested to speak with an agent, and the agent placed the call on hold for an agent. The conversation ended before any further action was taken.",
+  "_model": "qwen3:14b",
+  "_eval_count": 109,
+  "_total_duration_ms": 37974,
+  "_source_file": "transcripts/in-+13363779003-+19104449326-20251204-132755-1764872875.3450.txt",
+  "_direction": "inbound",
+  "_char_count": 211
+}

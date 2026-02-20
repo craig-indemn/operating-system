@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Nathan Hefner wants to cancel his auto insurance policy with National General.",
+  "resolution_steps": [
+    "Agent acknowledged the request to cancel the policy.",
+    "Agent offered to transfer Nathan to another agent for assistance with cancellation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Cancellation procedures for auto insurance policies",
+    "Internal transfer protocols to connect callers with appropriate agents"
+  ],
+  "systems_referenced": [
+    "National General (insurance carrier)"
+  ],
+  "summary": "Nathan Hefner requested to cancel his National General auto insurance policy. The agent initiated a transfer to another agent to handle the cancellation request, but the call ended before resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 163,
+  "_total_duration_ms": 35176,
+  "_source_file": "transcripts/in-+13363779003-+13365089974-20250822-094151-1755870111.2202.txt",
+  "_direction": "inbound",
+  "_char_count": 319
+}

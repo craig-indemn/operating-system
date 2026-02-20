@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Kathy Flynn is sharing personal updates about her father's health and family challenges, but there is no clear request for insurance-related assistance or action.",
+  "resolution_steps": [
+    "Heather acknowledges Kathy's situation and adds Jerry Brewer to her prayer list",
+    "Asks for Jerry's location (North Myrtle Beach)"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "This extension transfer call involves a personal conversation about family health struggles and caregiving challenges. No insurance-related matters or actionable requests are discussed. The agent provides empathetic responses but does not engage with any insurance systems or processes.",
+  "_model": "qwen3:14b",
+  "_eval_count": 154,
+  "_total_duration_ms": 38929,
+  "_source_file": "transcripts/exten-401-+13367572114-20260107-094006-1767796806.393.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4017
+}

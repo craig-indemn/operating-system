@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with Corbin Dirk",
+  "resolution_steps": [
+    "Agent acknowledged request",
+    "Agent placed caller on hold to transfer"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller requested to speak with Corbin Dirk. Agent placed the call on hold for transfer. No further details provided in the brief transcript.",
+  "_model": "qwen3:14b",
+  "_eval_count": 101,
+  "_total_duration_ms": 22371,
+  "_source_file": "transcripts/in-+13367861133-+16022849870-20250822-133006-1755883806.10468.txt",
+  "_direction": "inbound",
+  "_char_count": 147
+}

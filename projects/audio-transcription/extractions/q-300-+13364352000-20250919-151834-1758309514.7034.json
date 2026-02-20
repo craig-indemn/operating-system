@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Ya Fanfan) seeks to reinstate a canceled insurance policy and obtain a new quote for coverage on multiple vehicles.",
+  "resolution_steps": [
+    "Agent Heather confirms the policy number and name, identifying the policy was canceled in July 2023.",
+    "Explains reinstatement is not possible without paying the $546.82 outstanding balance and a full-year premium.",
+    "Processes immediate payment via credit card (ending in 7419) and confirms payment with confirmation number 085105.",
+    "Notes four vehicles requiring coverage (Audi, Toyota van, truck, and Porsche) and agrees to provide a new quote.",
+    "Requests updated contact information (phone: 336-624-1314, email: phet0313@gmail.com)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy reinstatement rules (e.g., requiring full payment for lapse periods)",
+    "Insurance premium calculation for multiple vehicles",
+    "Payment processing procedures",
+    "Customer communication for unresolved claims"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services policy management system",
+    "Payment processing platform"
+  ],
+  "summary": "The caller attempted to reinstate a canceled policy but was informed of a $546.82 balance and full-year payment requirement. The agent processed the payment and agreed to provide a new quote for four vehicles. The caller provided updated contact details, and the agent committed to follow-up with the new quote.",
+  "_model": "qwen3:14b",
+  "_eval_count": 348,
+  "_total_duration_ms": 43645,
+  "_source_file": "transcripts/q-300-+13364352000-20250919-151834-1758309514.7034.txt",
+  "_direction": "queue",
+  "_char_count": 3213
+}

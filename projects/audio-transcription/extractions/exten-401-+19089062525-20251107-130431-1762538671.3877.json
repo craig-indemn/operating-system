@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Not applicable",
+  "resolution_steps": [],
+  "outcome": "not_applicable",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Personal family conversation unrelated to insurance services. No business context or agency-related topics discussed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 71,
+  "_total_duration_ms": 25758,
+  "_source_file": "transcripts/exten-401-+19089062525-20251107-130431-1762538671.3877.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 244
+}

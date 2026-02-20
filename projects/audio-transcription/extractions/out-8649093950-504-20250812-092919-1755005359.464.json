@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Holly from Alliance Insurance is following up on a glass claim, explaining that the agent handling the claim (Piedmont Tried Auto Glass) is unavailable before 4 p.m. and providing instructions for the caller to contact the office after that time.",
+  "resolution_steps": [
+    "Notified caller that Piedmont Tried Auto Glass agent leaves before 4 p.m., which may explain missed communication.",
+    "Provided Piedmont Tried Auto Glass office number (336-722-2428) for after-4 p.m. contact.",
+    "Mentioned her own departure time (1 p.m.) and assured continuity of service via system notes.",
+    "Provided Alliance Insurance contact number (336-377-9003) for further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of claim-handling agent schedules",
+    "Access to client-specific claim notes in the system",
+    "Knowledge of carrier contact information"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal system (for notes and contact info)",
+    "Piedmont Tried Auto Glass office line"
+  ],
+  "summary": "Holly from Alliance Insurance informed Marty about a glass claim, explaining that the agent handling the claim (Piedmont Tried Auto Glass) is unavailable before 4 p.m. She provided the office number for after-hours contact and assured Marty that notes are in the system for continuity. The call ended with instructions for Marty to follow up after 4 p.m.",
+  "_model": "qwen3:14b",
+  "_eval_count": 344,
+  "_total_duration_ms": 49451,
+  "_source_file": "transcripts/out-8649093950-504-20250812-092919-1755005359.464.txt",
+  "_direction": "outbound",
+  "_char_count": 1089
+}

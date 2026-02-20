@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Gladys Hernandez wants to update her homeowner's policy to reflect a new HVAC system installed in September and inquire whether her policy covers mold repair.",
+  "resolution_steps": [
+    "Agent confirmed Gladys's name and policy details.",
+    "Agent agreed to update the policy to include the new HVAC system.",
+    "Agent checked the policy's coverage terms and informed Gladys that mold repair is not covered.",
+    "Agent clarified that gutter replacements do not require a separate policy update."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Homeowner's policy coverage terms (specifically mold and HVAC)",
+    "Policy update procedures for new home improvements"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services internal policy management system"
+  ],
+  "summary": "Gladys requested an update to her policy for a new HVAC system and asked about mold coverage. The agent confirmed the update and clarified that mold repair is not covered. Gladys also mentioned future gutter replacement, but the agent noted no separate action was needed. The call concluded with the agent committing to document the HVAC update.",
+  "_model": "qwen3:14b",
+  "_eval_count": 247,
+  "_total_duration_ms": 29984,
+  "_source_file": "transcripts/q-300-+13362314613-20260108-102549-1767885949.1748.txt",
+  "_direction": "queue",
+  "_char_count": 1204
+}

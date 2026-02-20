@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jeremy is seeking clarification about his expired property insurance policy and requesting information to update his coverage, including a rent roll, tenant liability details, and building updates.",
+  "resolution_steps": [
+    "Agent confirmed the policy expiration date and acknowledged the need to obtain the current policy from Jeremy's previous insurer.",
+    "Agent requested a rent roll detailing tenants, square footage, and monthly rent.",
+    "Agent inquired if tenants maintain their own liability policies with the landlord listed as an additional insured.",
+    "Agent asked about recent building updates (e.g., flooring, plumbing, electrical work, roof age).",
+    "Agent noted the need to verify roof upgrades with previous owners."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Property insurance policy requirements",
+    "Understanding of rent roll documentation",
+    "Knowledge of building maintenance impacts on insurance coverage",
+    "Procedures for verifying prior property upgrades"
+  ],
+  "systems_referenced": [],
+  "summary": "Jeremy discussed his expired property insurance policy with the agent, requesting assistance to update coverage. The agent gathered information about the building's current status, tenant liability arrangements, and needed documents like a rent roll. The call concluded with Jeremy agreeing to email the agent for further details.",
+  "_model": "qwen3:14b",
+  "_eval_count": 276,
+  "_total_duration_ms": 49482,
+  "_source_file": "transcripts/out-13368979104-701-20260113-113721-1768322241.4432.txt",
+  "_direction": "outbound",
+  "_char_count": 4236
+}

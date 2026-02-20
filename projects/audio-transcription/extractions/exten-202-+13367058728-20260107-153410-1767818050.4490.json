@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Allison needs assistance confirming how her mortgage company requires a specific insurance-related detail (likely policy information) to be listed, including her loan number, to ensure accuracy for a new policy.",
+  "resolution_steps": [
+    "Heather explains Allison needs to confirm with her mortgage company how the information should be listed.",
+    "Heather instructs Allison to include her loan number when communicating with the mortgage company.",
+    "Heather offers to finalize the policy details once Allison provides the confirmed information via email.",
+    "Heather assures Allison she will follow up if further clarification is needed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Mortgage insurance documentation requirements",
+    "Policy setup procedures",
+    "Client communication protocols for documentation verification"
+  ],
+  "systems_referenced": [
+    "Email (for sending confirmed information)"
+  ],
+  "summary": "Allison seeks guidance on correctly listing insurance details for her mortgage company. Heather directs her to confirm requirements with the mortgage company, use her loan number, and send the information via email. The call concludes with Heather offering to assist once the details are confirmed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 251,
+  "_total_duration_ms": 35717,
+  "_source_file": "transcripts/exten-202-+13367058728-20260107-153410-1767818050.4490.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1054
+}

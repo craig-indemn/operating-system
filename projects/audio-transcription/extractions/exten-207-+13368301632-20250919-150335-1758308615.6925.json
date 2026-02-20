@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jennifer needs to add a 2023 Jeep Grand Cherokee to her insurance policy because the DMV is citing the vehicle as uninsured, leading to a fine. She requires assistance to resolve this by adding the vehicle and obtaining an FS1 form.",
+  "resolution_steps": [
+    "Cody confirms the vehicle details (2023 Jeep Grand Cherokee) and requests the VIN and model number.",
+    "Cody asks if there is a loan on the vehicle that would require adding a loss payee.",
+    "Cody agrees to add the vehicle to the policy effective immediately.",
+    "Cody notes that the FS1 form will need to be submitted by the insurance company to clear the DMV fine."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Process for adding vehicles to insurance policies",
+    "Understanding of FS1 forms and DMV requirements",
+    "Handling loan payee information for vehicle additions"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's policy management system",
+    "DMV (Department of Motor Vehicles)",
+    "FS1 form submission process"
+  ],
+  "summary": "Jennifer contacted Alliance Insurance to add a 2023 Jeep Grand Cherokee to her policy after the DMV cited the vehicle as uninsured. Cody confirmed the vehicle details, requested necessary information, and agreed to add the vehicle immediately. The FS1 form will be submitted to resolve the DMV fine, though the fine itself may still apply.",
+  "_model": "qwen3:14b",
+  "_eval_count": 322,
+  "_total_duration_ms": 48885,
+  "_source_file": "transcripts/exten-207-+13368301632-20250919-150335-1758308615.6925.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4095
+}

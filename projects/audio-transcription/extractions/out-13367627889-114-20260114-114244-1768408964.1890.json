@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller requested a car insurance quote but was informed that the agent could not provide auto insurance alone due to policy requirements.",
+  "resolution_steps": [
+    "Agent confirmed the call was from Lions Insurance and asked how they could assist.",
+    "Caller requested a car insurance quote.",
+    "Agent explained that current carriers require either a homeowners or renters policy in addition to auto insurance.",
+    "Caller declined the offer and ended the conversation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy requirements (homeowners/renters vs. auto)",
+    "Carrier-specific underwriting rules"
+  ],
+  "systems_referenced": [
+    "Lions Insurance (carrier)"
+  ],
+  "summary": "A caller requested a car insurance quote but was informed that the agent could not provide auto insurance alone due to carrier requirements for additional coverage (homeowners/renters). The caller declined and ended the conversation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 212,
+  "_total_duration_ms": 23647,
+  "_source_file": "transcripts/out-13367627889-114-20260114-114244-1768408964.1890.txt",
+  "_direction": "outbound",
+  "_char_count": 551
+}

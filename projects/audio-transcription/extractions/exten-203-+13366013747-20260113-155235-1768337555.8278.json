@@ -1,0 +1,32 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Bill McClure is finalizing the setup of his auto insurance policy, making a down payment via eCheck, and addressing the status of his umbrella policy and refund from Safeco.",
+  "resolution_steps": [
+    "Agent confirms the auto policy payment details (eCheck to William T McClure Jr and Kelly A McClure's account).",
+    "Verifies routing and account numbers for the eCheck transaction.",
+    "Explains that the auto policy will be effective immediately with a monthly draft for $363.98.",
+    "Clarifies that the umbrella policy application is already completed and will be invoiced separately.",
+    "Informs Bill that an email from National General will follow for electronic signing of the auto application.",
+    "Notes that a cancellation for the previous policy will be sent after the auto application is processed.",
+    "Confirms the expected refund from Safeco for the prior policy."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Auto and umbrella insurance policy processes",
+    "eCheck payment setup and verification",
+    "Refund procedures with Safeco",
+    "Electronic application workflows (National General system)"
+  ],
+  "systems_referenced": [
+    "National General (auto application portal)",
+    "Safeco (refund processing)",
+    "Electronic payment system (eCheck)"
+  ],
+  "summary": "Maria assists Bill McClure in finalizing his auto insurance policy with an eCheck payment, confirms account details, and outlines next steps for the umbrella policy and refund. The client is informed about electronic application signing and expected communications from National General and Safeco.",
+  "_model": "qwen3:14b",
+  "_eval_count": 351,
+  "_total_duration_ms": 52565,
+  "_source_file": "transcripts/exten-203-+13366013747-20260113-155235-1768337555.8278.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3311
+}

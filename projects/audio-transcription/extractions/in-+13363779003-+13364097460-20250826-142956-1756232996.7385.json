@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Dina, aims to contact Chase (a client) to discuss insurance matters but cannot locate his cell phone number. She has a five-year relationship with Chase and seeks assistance in reaching him.",
+  "resolution_steps": [
+    "Agent acknowledges the request and offers to transfer the caller to Chase's voicemail.",
+    "Agent explains she cannot provide Chase's personal information but can facilitate a voicemail transfer or send a message.",
+    "Caller agrees to voicemail transfer after hesitation.",
+    "Agent transfers the caller to Chase's voicemail and ends the call."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Agency policy on not sharing personal client information",
+    "Procedures for transferring calls to voicemail or sending messages"
+  ],
+  "systems_referenced": [],
+  "summary": "Dina, a caller, seeks to contact Chase for insurance-related discussions but cannot find his number. The agent offers to transfer her to Chase's voicemail or send a message, and the call concludes with a voicemail transfer. The agent adheres to privacy policies by not disclosing personal information.",
+  "_model": "qwen3:14b",
+  "_eval_count": 250,
+  "_total_duration_ms": 40617,
+  "_source_file": "transcripts/in-+13363779003-+13364097460-20250826-142956-1756232996.7385.txt",
+  "_direction": "inbound",
+  "_char_count": 954
+}

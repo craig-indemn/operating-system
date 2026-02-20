@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Gary Alliance) aims to correct an insurance policy mismatch, ensuring the client's auto policy is with the same company as her homeowners policy to secure a bundling discount.",
+  "resolution_steps": [
+    "Informed the client about processing a return for the Progressive auto premium.",
+    "Requested her to visit the office next week to sign paperwork for policy transfer.",
+    "Highlighted that the new premium would be slightly lower and include a homeowners discount.",
+    "Offered flexibility for her to visit during the following week."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance bundling discounts",
+    "Policy transfer procedures",
+    "Premium calculation differences between carriers"
+  ],
+  "systems_referenced": [],
+  "summary": "Gary Alliance resolves a policy mismatch for Miss Tribbett by arranging a return of her Progressive auto premium and transferring the policy to her homeowners carrier, securing a discount. He schedules a follow-up visit for paperwork and confirms the financial benefit of the change.",
+  "_model": "qwen3:14b",
+  "_eval_count": 223,
+  "_total_duration_ms": 33349,
+  "_source_file": "transcripts/out-13369711243-113-20260109-134145-1767984105.4570.txt",
+  "_direction": "outbound",
+  "_char_count": 1734
+}

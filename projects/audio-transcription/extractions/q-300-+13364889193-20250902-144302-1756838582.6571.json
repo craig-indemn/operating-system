@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller was on hold for the Mount Airy office and disconnected after being informed there was no one available.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [
+    "myallianceinsurance.com",
+    "text support at 336-786-1133"
+  ],
+  "summary": "Automated hold message played to caller waiting for Mount Airy office. Caller disconnected after learning office was unavailable. No agent interaction occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 126,
+  "_total_duration_ms": 29415,
+  "_source_file": "transcripts/q-300-+13364889193-20250902-144302-1756838582.6571.txt",
+  "_direction": "queue",
+  "_char_count": 837
+}

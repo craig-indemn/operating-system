@@ -1,0 +1,19 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with Corbin Darks",
+  "resolution_steps": [
+    "Agent acknowledged request",
+    "Placed caller on hold",
+    "Provided standard hold message"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Brief inbound call where caller requested to speak with Corbin Darks. Agent placed caller on hold and provided standard hold message. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 110,
+  "_total_duration_ms": 25580,
+  "_source_file": "transcripts/in-+13363779003-+13135151162-20260115-100548-1768489548.1483.txt",
+  "_direction": "inbound",
+  "_char_count": 254
+}

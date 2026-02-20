@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Leave a voicemail for Crystal regarding a homeowner's policy inquiry and request a callback to obtain a loan number.",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Voicemail message from Holly at Alliance Insurance Services to Crystal regarding a homeowner's policy inquiry. Holly requests a callback to obtain a loan number and provides contact information. No substantive interaction occurred as the call was forwarded to voicemail.",
+  "_model": "qwen3:14b",
+  "_eval_count": 117,
+  "_total_duration_ms": 32087,
+  "_source_file": "transcripts/out-3363023457-504-20250813-124425-1755103465.5619.txt",
+  "_direction": "outbound",
+  "_char_count": 825
+}

@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Carrie Simpkins is concerned about an unexpected increase in her auto insurance payment, which she attributes to her daughter-in-law being added as a driver to her policy. She wants to resolve the issue and clarify why the daughter-in-law was added, as well as backdate the addition to July.",
+  "resolution_steps": [
+    "Holly asks for Carrie's address and the daughter-in-law's name to verify the policy details.",
+    "Holly checks the system but finds that backdating the daughter-in-law's addition to July is not possible through the current interface.",
+    "Holly commits to contacting National General (the carrier) directly to request backdating of the policy change."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding how to handle policy changes and backdating requests",
+    "Knowledge of carrier-specific procedures (National General)",
+    "Ability to verify household member details for insurance purposes"
+  ],
+  "systems_referenced": [
+    "National General (insurance carrier)",
+    "Internal policy management system"
+  ],
+  "summary": "Carrie Simpkins contacted Alliance Insurance Services to address an unexpected increase in her auto insurance payment, which she linked to her daughter-in-law being added as a driver. The agent verified details and will contact the carrier to backdate the policy change. The call concluded with a commitment to follow up with the carrier and inform Carrie of the resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 308,
+  "_total_duration_ms": 40606,
+  "_source_file": "transcripts/q-300-+12523612064-20250908-111721-1757344641.2857.txt",
+  "_direction": "queue",
+  "_char_count": 1702
+}

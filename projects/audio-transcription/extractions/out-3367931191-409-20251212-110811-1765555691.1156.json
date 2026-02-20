@@ -1,0 +1,20 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Requesting a certificate of insurance from Corbin Dirk at Alliance Insurance Services.",
+  "resolution_steps": [
+    "Voicemail system prompts caller to dial extension for office sales/maintenance.",
+    "System states the person is unavailable and asks if the caller wants to leave a message."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [
+    "Historic Broyles and Clemens voicemail system"
+  ],
+  "summary": "An outbound call from Alliance Insurance Services reached a voicemail system at Historic Broyles and Clemens. The caller requested a certificate of insurance, but the system indicated the recipient was unavailable and prompted the caller to leave a message.",
+  "_model": "qwen3:14b",
+  "_eval_count": 161,
+  "_total_duration_ms": 52188,
+  "_source_file": "transcripts/out-3367931191-409-20251212-110811-1765555691.1156.txt",
+  "_direction": "outbound",
+  "_char_count": 591
+}

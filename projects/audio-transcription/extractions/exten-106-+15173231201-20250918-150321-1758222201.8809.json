@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; fragmented conversation mentions insurance deductible but lacks clear purpose",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Brief, fragmented conversation where Jessica mentions a $1,000 deductible for replacement but fails to establish clear context or purpose. Too inconclusive to determine substantive intent.",
+  "_model": "qwen3:14b",
+  "_eval_count": 100,
+  "_total_duration_ms": 28383,
+  "_source_file": "transcripts/exten-106-+15173231201-20250918-150321-1758222201.8809.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 290
+}

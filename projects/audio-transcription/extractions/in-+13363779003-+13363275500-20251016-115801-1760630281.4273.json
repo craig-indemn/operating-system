@@ -1,0 +1,21 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller (Jason) had previously attempted to contact an agent but reached voicemail and was now on a recall call.",
+  "resolution_steps": [
+    "System message played requesting caller to think about recent contact information changes.",
+    "System promoted online policy management portal (myallianceinsurance.com) and text support (336-786-1133)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [
+    "myallianceinsurance.com",
+    "text support (336-786-1133)"
+  ],
+  "summary": "A recall call was placed to Jason after a previous voicemail attempt. The system message provided hold instructions and promoted digital self-service options while the agent was unavailable.",
+  "_model": "qwen3:14b",
+  "_eval_count": 185,
+  "_total_duration_ms": 35770,
+  "_source_file": "transcripts/in-+13363779003-+13363275500-20251016-115801-1760630281.4273.txt",
+  "_direction": "inbound",
+  "_char_count": 788
+}

@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller requested a quick insurance quote for a new vehicle they recently acquired after disposing of their old one.",
+  "resolution_steps": [
+    "Agent acknowledged the caller's need for a vehicle insurance quote.",
+    "Agent offered to transfer the call to a specialist to initiate the quoting process."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Vehicle insurance quoting procedures",
+    "Policy requirements for new vehicle coverage"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller requested a vehicle insurance quote after purchasing a new car. The agent acknowledged the request and offered to transfer the call to an agent who could start the quoting process. The conversation was brief but focused on initiating a new policy quote.",
+  "_model": "qwen3:14b",
+  "_eval_count": 172,
+  "_total_duration_ms": 28431,
+  "_source_file": "transcripts/in-+13363544000-+15408425803-20250811-131903-1754932743.9719.txt",
+  "_direction": "inbound",
+  "_char_count": 501
+}

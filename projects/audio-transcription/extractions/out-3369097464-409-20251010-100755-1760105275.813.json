@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "N/A (voicemail greeting, no substantive interaction)",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Voicemail greeting from Haden indicating he may be unavailable due to outdoor activities and requesting text messages instead of calls.",
+  "_model": "qwen3:14b",
+  "_eval_count": 84,
+  "_total_duration_ms": 20525,
+  "_source_file": "transcripts/out-3369097464-409-20251010-100755-1760105275.813.txt",
+  "_direction": "outbound",
+  "_char_count": 145
+}

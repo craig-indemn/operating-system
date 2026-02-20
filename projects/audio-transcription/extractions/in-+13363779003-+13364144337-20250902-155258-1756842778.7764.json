@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with Jerry",
+  "resolution_steps": [
+    "Transferred call to Jerry's extension"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller requested to speak with Jerry; call was transferred without further interaction. No substantive discussion occurred beyond the transfer request.",
+  "_model": "qwen3:14b",
+  "_eval_count": 90,
+  "_total_duration_ms": 31318,
+  "_source_file": "transcripts/in-+13363779003-+13364144337-20250902-155258-1756842778.7764.txt",
+  "_direction": "inbound",
+  "_char_count": 128
+}

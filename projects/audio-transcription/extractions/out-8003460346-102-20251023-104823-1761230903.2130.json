@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Glory from Alliance Insurance is following up on a request for an endorsement for JJJ Commercial and Residential Cleaning LLC, seeking assistance to process it and send the client a Certificate of Insurance (COI).",
+  "resolution_steps": [
+    "Glory left a voicemail message for Ali at AutoOwnersInsurance, referencing the endorsement request.",
+    "Requested processing of the endorsement to finalize the COI for the client."
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [
+    "Understanding of insurance endorsements and Certificate of Insurance (COI) processing",
+    "Knowledge of client account management and follow-up procedures"
+  ],
+  "systems_referenced": [
+    "AutoOwnersInsurance voicemail system"
+  ],
+  "summary": "Glory from Alliance Insurance followed up on an endorsement request for JJJ Commercial and Residential Cleaning LLC, leaving a voicemail for Ali at AutoOwnersInsurance to process the request and issue a COI. The call resulted in a voicemail since Ali was unavailable.",
+  "_model": "qwen3:14b",
+  "_eval_count": 224,
+  "_total_duration_ms": 34650,
+  "_source_file": "transcripts/out-8003460346-102-20251023-104823-1761230903.2130.txt",
+  "_direction": "outbound",
+  "_char_count": 1172
+}

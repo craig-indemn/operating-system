@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Josefina N\u00fa\u00f1ez is requesting assistance to receive documents related to Eri and Diana's security papers, which were previously sent to Cecilia but are now inaccessible due to Cecilia's unavailability.",
+  "resolution_steps": [
+    "Agent (J.C.) acknowledges the request and confirms the documents were sent to Cecilia via email last week.",
+    "Agent offers to contact Cecilia directly to resolve the issue.",
+    "Agent agrees to send the email address to Josefina so she can request the documents directly from Cecilia.",
+    "Agent arranges to follow up after work hours to ensure documents are received promptly."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Handling document requests for third parties",
+    "Email communication protocols",
+    "Coordinating with multiple stakeholders (Cecilia, Josefina, Eri, Diana)"
+  ],
+  "systems_referenced": [
+    "Email"
+  ],
+  "summary": "Josefina N\u00fa\u00f1ez requested assistance to retrieve security documents for Eri and Diana, which were mistakenly sent to Cecilia. The agent coordinated with Cecilia, provided an email address for direct communication, and arranged follow-up after work hours to ensure timely delivery. The call concluded with a resolution plan.",
+  "_model": "qwen3:14b",
+  "_eval_count": 274,
+  "_total_duration_ms": 37993,
+  "_source_file": "transcripts/exten-114-+13366181713-20260105-093823-1767623903.680.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2097
+}

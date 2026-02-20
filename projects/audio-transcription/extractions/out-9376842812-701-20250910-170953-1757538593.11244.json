@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jeremy is informing Emma about switching her insurance policies to Cincinnati Insurance Company, highlighting cost savings, coverage improvements, and finalizing payment arrangements.",
+  "resolution_steps": [
+    "Explained home insurance coverage details (rebuild cost, perils, wind/hail claim scenarios).",
+    "Compared current and new home insurance rates (from $2,720 to $2,136 annually).",
+    "Discussed auto insurance savings ($3,573 to $1,573.09 annually).",
+    "Mentioned included umbrella policy ($266 annually for $1M coverage).",
+    "Presented payment options (annual, monthly, quarterly, semi-annual).",
+    "Confirmed Emma's preference for monthly payments and upfront umbrella payment.",
+    "Arranged to email documents for signing and noted policies would be effective immediately."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy terminology (rebuild cost, replacement cost, deductibles).",
+    "Cincinnati Insurance Company's rate structures and coverage options.",
+    "Payment plan options for insurance policies.",
+    "Process for binding policies and sending documentation."
+  ],
+  "systems_referenced": [
+    "Cincinnati Insurance Company"
+  ],
+  "summary": "Jeremy from Alliance Insurance detailed switching Emma's home, auto, and umbrella insurance to Cincinnati Insurance, emphasizing $2,500 annual savings. They agreed on monthly payments for auto coverage and upfront payment for the umbrella policy, with documents to be emailed for signing. Policies would take effect immediately.",
+  "_model": "qwen3:14b",
+  "_eval_count": 347,
+  "_total_duration_ms": 43556,
+  "_source_file": "transcripts/out-9376842812-701-20250910-170953-1757538593.11244.txt",
+  "_direction": "outbound",
+  "_char_count": 4624
+}

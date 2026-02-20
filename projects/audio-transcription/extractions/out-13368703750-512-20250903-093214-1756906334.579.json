@@ -1,0 +1,19 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller (Joe) engaged in a casual conversation about recent weekend activities, traffic experiences, and an email that was not received, but there was no clear intent related to insurance services or business matters.",
+  "resolution_steps": [
+    "The caller and recipient discussed weekend activities and traffic experiences.",
+    "The caller mentioned an email that was not received and provided alternative email addresses.",
+    "The caller requested the email be resent to ensure delivery."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "This was a personal conversation between two friends discussing weekend activities, traffic, and an email issue. No insurance-related topics were discussed, and the call did not result in a business outcome.",
+  "_model": "qwen3:14b",
+  "_eval_count": 175,
+  "_total_duration_ms": 72198,
+  "_source_file": "transcripts/out-13368703750-512-20250903-093214-1756906334.579.txt",
+  "_direction": "outbound",
+  "_char_count": 3471
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Rick is trying to resolve a discrepancy in his farm insurance policy premium, specifically a charge related to horse exposure that he no longer has, and wants to ensure the premium is adjusted accordingly.",
+  "resolution_steps": [
+    "Agent acknowledges Rick's issue with the policy charge and confirms the policy was renewed recently.",
+    "Agent checks the policy details and identifies a line item for 'equine exposure' under the farm policy.",
+    "Agent explains that the charge may be due to the horse-related coverage and commits to escalating the request to a teammate for further investigation.",
+    "Agent promises to contact the carrier (Chub) to adjust the premium and remove the unnecessary charge.",
+    "Agent assures Rick of follow-up once the carrier responds."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of farm insurance policies and their components (e.g., equine exposure, liability coverage).",
+    "Knowledge of carrier-specific processes (e.g., Chub's rate adjustments for policy changes)."
+  ],
+  "systems_referenced": [
+    "Internal policy management system (to view policy details).",
+    "Chub (insurance carrier) for premium adjustments."
+  ],
+  "summary": "Rick contacted Alliance Insurance to address an unexpected charge in his farm policy premium related to horse exposure, which he no longer has. The agent confirmed the charge's presence in the policy, explained the potential cause, and committed to escalating the request to the carrier (Chub) for adjustment. The agent assured follow-up once the carrier responds, with the customer satisfied by the resolution plan.",
+  "_model": "qwen3:14b",
+  "_eval_count": 345,
+  "_total_duration_ms": 46517,
+  "_source_file": "transcripts/out-13364144971-105-20250811-150933-1754939373.14597.txt",
+  "_direction": "outbound",
+  "_char_count": 3847
+}

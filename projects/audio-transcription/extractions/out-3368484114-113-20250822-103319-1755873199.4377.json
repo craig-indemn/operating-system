@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Tommy needed to provide his second mortgage address and loan number to the underwriter, as he had previously shared this information with a receptionist but the agent could not locate the notes.",
+  "resolution_steps": [
+    "Agent Gary asked Tommy for the address and loan number for the second mortgage.",
+    "Tommy confirmed he provided the information to a receptionist but the agent could not find the notes.",
+    "Tommy manually provided the address: Lion Federal Credit Union, P.O. Box 2084, Carmel, IN 46082, and loan number 400062198093.",
+    "Agent confirmed the details and asked for the email to send the policy to the underwriter.",
+    "Tommy provided his personal email (ironworker1981@gmail.com) and work email (tcecil@loudersteel.net).",
+    "Agent assured Tommy the process would be initiated and the policy sent to the underwriter."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Handling second mortgage insurance applications",
+    "Underwriting process for mortgage policies",
+    "Obtaining and verifying customer contact information"
+  ],
+  "systems_referenced": [
+    "Lion Federal Credit Union",
+    "Email system (Gmail and loudersteel.net)"
+  ],
+  "summary": "Agent Gary assisted Tommy in providing the address and loan number for his second mortgage after the agent could not locate previous notes. Tommy shared the details manually, and the agent confirmed the information while arranging to send the policy to the underwriter via email. The call concluded with the agent promising to initiate the process.",
+  "_model": "qwen3:14b",
+  "_eval_count": 368,
+  "_total_duration_ms": 67699,
+  "_source_file": "transcripts/out-3368484114-113-20250822-103319-1755873199.4377.txt",
+  "_direction": "outbound",
+  "_char_count": 2064
+}

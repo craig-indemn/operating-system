@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Pat Kick is reporting a car accident that occurred earlier in the day and mentions having left a voicemail previously. He is seeking assistance with the insurance process, noting that no tickets were issued but a driver exchange form was provided.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's message and confirms the accident details.",
+    "Agent offers to transfer the caller to an available agent for further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Accident reporting procedures",
+    "Handling claims without police tickets",
+    "Understanding driver exchange forms"
+  ],
+  "systems_referenced": [],
+  "summary": "Pat Kick contacted Alliance Insurance to report a car accident with no tickets issued, only a driver exchange form. The agent acknowledged the call and offered to transfer him to an agent for further assistance. The call did not resolve the issue but initiated the claims process.",
+  "_model": "qwen3:14b",
+  "_eval_count": 205,
+  "_total_duration_ms": 39532,
+  "_source_file": "transcripts/in-+13365913091-+13365773297-20250801-131851-1754068731.4731.txt",
+  "_direction": "inbound",
+  "_char_count": 397
+}

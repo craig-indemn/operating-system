@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Deborah) needs assistance locating her business insurance renewal documents for Saponi Industries and wants to discuss lowering liability coverage on three vehicles from $500,000 to $300,000.",
+  "resolution_steps": [
+    "Agent confirmed the account details (Saponi Industries with National General).",
+    "Agent sent the renewal deck via email after the caller provided her email address (Lynn@SaponiIndustries.com).",
+    "Agent reviewed the current coverage details (2006 Lexus GX470 liability-only, 2010 Lexus and 2007 Honda with collision/comprehensive coverage).",
+    "Agent agreed to evaluate the requested coverage changes and provide a quote after lunch.",
+    "Agent advised that deductible adjustments would have minimal impact (5-10% premium difference)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy structures (liability, collision, comprehensive coverage).",
+    "Ability to navigate carrier portals and Alliance website systems.",
+    "Knowledge of rating systems and premium calculation impacts."
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services website",
+    "National General carrier portal",
+    "Email communication"
+  ],
+  "summary": "Deborah, representing Saponi Industries, sought help locating her auto insurance renewal documents and requested changes to liability coverage. The agent sent the documents via email, confirmed the current policy details, and agreed to evaluate the requested coverage adjustments. A quote will be provided after lunch, with the agent noting minimal premium impact from deductible changes.",
+  "_model": "qwen3:14b",
+  "_eval_count": 358,
+  "_total_duration_ms": 46141,
+  "_source_file": "transcripts/exten-302-+13364037207-20260113-104753-1768319273.4092.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3655
+}

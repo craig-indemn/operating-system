@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Delphina Lewis wanted to clarify an email she received about her policy renewal, confirm if there was any action needed, and verify the status of her upcoming renewals.",
+  "resolution_steps": [
+    "Cody acknowledged the email confusion and checked the agency's records.",
+    "Cody confirmed the policy renewal dates (homeowner's on January 13th, auto on February 5th).",
+    "Cody explained the email was a reminder from the agency, not a direct communication from Cody.",
+    "Cody advised Delphina to wait for the policy packet and offered future assistance if needed."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of agency email practices (reminder emails for renewals)",
+    "Policy renewal timelines and triggers for communication",
+    "Ability to check internal systems for policy details"
+  ],
+  "systems_referenced": [
+    "Agency email system",
+    "Policy renewal tracking system",
+    "Carrier portals (implied through renewal date references)"
+  ],
+  "summary": "Delphina Lewis called to clarify an email about her policy renewal. Cody explained the email was a standard agency reminder, confirmed her renewal dates, and advised her to wait for the policy packet. The conversation resolved her confusion and ended with mutual understanding.",
+  "_model": "qwen3:14b",
+  "_eval_count": 284,
+  "_total_duration_ms": 42406,
+  "_source_file": "transcripts/exten-207-+13368146641-20251113-092208-1763043728.679.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3663
+}

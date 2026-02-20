@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Wakina wanted to make a payment for her mother's homeowner's insurance policy, but had previously missed the closing time and needed assistance with the payment process.",
+  "resolution_steps": [
+    "Dana confirmed the payment intent and explained the new Friday closing time (3:30 PM).",
+    "They clarified the payment amount ($268.25) after initial confusion.",
+    "Wakina provided the Wells Fargo routing number (053000219) and account number (2380972477).",
+    "Dana processed the payment and offered to send a receipt via email.",
+    "Confirmed no additional payments were due for the policy."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance payment processing procedures",
+    "Handling account details and routing numbers",
+    "Understanding policy-specific payment requirements"
+  ],
+  "systems_referenced": [
+    "Internal payment processing system",
+    "Wells Fargo banking system (via routing number lookup)"
+  ],
+  "summary": "Wakina successfully made her mother's insurance payment after resolving confusion about the amount and providing banking details. Dana explained the new closing time and confirmed no additional payments were due. A receipt was sent for confirmation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 285,
+  "_total_duration_ms": 40417,
+  "_source_file": "transcripts/exten-509-+13365588707-20251229-133543-1767033343.9572.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4107
+}

@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Confirming an email address for follow-up communication",
+  "resolution_steps": [
+    "Reiterated email address",
+    "Confirmed sending information via email"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Brief message confirming email address for sending information. No substantive discussion occurred beyond confirming contact details.",
+  "_model": "qwen3:14b",
+  "_eval_count": 93,
+  "_total_duration_ms": 23424,
+  "_source_file": "transcripts/out-13362834587-112-20250916-143407-1758047647.9539.txt",
+  "_direction": "outbound",
+  "_char_count": 374
+}

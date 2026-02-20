@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Delphina is seeking assistance to make a payment for her auto insurance policy (policy number 3498) but is struggling with the amount due, mentioning she can only pay $157.95 instead of the originally quoted $315.90.",
+  "resolution_steps": [
+    "Agent Ashley confirms the policy type (auto insurance for a Mustang) and policy number.",
+    "Clarifies the payment amount discrepancy ($157.95 vs. $315.90) and confirms Delphina's ability to pay the lower amount.",
+    "Explains the deadline (December 13th) to maintain policy good standing and consequences of missing it.",
+    "Reaffirms Delphina's prior communication about deferring payment until later in the month."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Auto insurance policy management",
+    "Payment deadlines and consequences",
+    "Handling customer payment disputes or adjustments"
+  ],
+  "systems_referenced": [],
+  "summary": "Ashley from Alliance Insurance assists Delphina with her auto insurance payment, resolving a discrepancy in the amount due and confirming a revised payment plan. Delphina agrees to pay $157.95 by December 13th to keep her policy active. The call concludes with Delphina confirming no further action is needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 307,
+  "_total_duration_ms": 52039,
+  "_source_file": "transcripts/out-13368146641-100-20251126-124511-1764179111.2501.txt",
+  "_direction": "outbound",
+  "_char_count": 1245
+}

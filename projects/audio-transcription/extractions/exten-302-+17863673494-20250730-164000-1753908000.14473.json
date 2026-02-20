@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller sought clarification on insurance premiums for two vehicles (1998 Freightliner and 2007 Great Dane), including costs with and without collision/comprehensive coverage, and wanted to understand payment structures and coverage details.",
+  "resolution_steps": [
+    "Anna provided current annual premiums for the 1998 Freightliner ($4,466) and 2007 Great Dane ($3,905) with collision/comprehensive coverage.",
+    "Explained that without collision/comprehensive coverage, damages from accidents would not be covered.",
+    "Clarified that all vehicles have comprehensive/collision coverage with a $1,000 deductible and include liability coverage.",
+    "Discussed pro-rated payments for the newly added vehicle and estimated monthly payments ($1,031.21 until renewal, ~$1,000/month afterward).",
+    "Agreed to maintain current setup until the customer decides to make changes."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance premium calculations for commercial vehicles",
+    "Collision/comprehensive coverage implications",
+    "Deductible structures and liability coverage details",
+    "Pro-rating of insurance payments for mid-year vehicle additions",
+    "Policy renewal processes and payment schedules"
+  ],
+  "systems_referenced": [],
+  "summary": "The caller inquired about insurance costs and coverage for two trucks, including premium amounts, deductible impacts, and payment structures. Anna provided detailed cost breakdowns, coverage explanations, and payment timelines. The customer opted to maintain their current policy configuration until further notice.",
+  "_model": "qwen3:14b",
+  "_eval_count": 348,
+  "_total_duration_ms": 51987,
+  "_source_file": "transcripts/exten-302-+17863673494-20250730-164000-1753908000.14473.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2567
+}

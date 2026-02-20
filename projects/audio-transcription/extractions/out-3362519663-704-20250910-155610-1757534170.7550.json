@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Outbound call resulted in voicemail greeting with no substantive conversation. The recipient was unavailable, and no further interaction occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 74,
+  "_total_duration_ms": 18387,
+  "_source_file": "transcripts/out-3362519663-704-20250910-155610-1757534170.7550.txt",
+  "_direction": "outbound",
+  "_char_count": 158
+}

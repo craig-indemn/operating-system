@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller requested access to their commercial insurance policy's loss history.",
+  "resolution_steps": [
+    "Agent asked whether the policy is personal or commercial.",
+    "Caller confirmed it is a commercial policy.",
+    "Agent offered to connect the caller with an agent to assist further."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding how to retrieve loss history for commercial policies",
+    "Internal procedures for escalating requests to specialized agents"
+  ],
+  "systems_referenced": [],
+  "summary": "A commercial policyholder asked for their loss history. The agent confirmed the policy type and offered to escalate the request to a specialist. The call requires follow-up action.",
+  "_model": "qwen3:14b",
+  "_eval_count": 163,
+  "_total_duration_ms": 21781,
+  "_source_file": "transcripts/in-+13363779003-+13368968600-20251112-100329-1762959809.1496.txt",
+  "_direction": "inbound",
+  "_char_count": 242
+}

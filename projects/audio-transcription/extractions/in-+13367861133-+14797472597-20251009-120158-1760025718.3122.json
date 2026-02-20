@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with Code Jackson",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Brief inbound call where caller requested to speak with Code Jackson. Agent acknowledged and initiated transfer, but no substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 84,
+  "_total_duration_ms": 24844,
+  "_source_file": "transcripts/in-+13367861133-+14797472597-20251009-120158-1760025718.3122.txt",
+  "_direction": "inbound",
+  "_char_count": 132
+}

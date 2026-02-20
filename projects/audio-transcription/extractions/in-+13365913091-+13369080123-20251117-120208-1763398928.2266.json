@@ -1,0 +1,19 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller (Sam) is inquiring about hiring opportunities at Alliance Insurance Services.",
+  "resolution_steps": [
+    "Agent confirms the hiring inquiry and offers to transfer the call to Morgan.",
+    "Agent asks if the caller needs Morgan's email address.",
+    "Call is placed on hold for transfer."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "This inbound call is about a hiring inquiry, not insurance-related. The agent offers to transfer the caller to Morgan and asks if they need an email address, then places the call on hold. No insurance products, services, or policies were discussed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 159,
+  "_total_duration_ms": 24904,
+  "_source_file": "transcripts/in-+13365913091-+13369080123-20251117-120208-1763398928.2266.txt",
+  "_direction": "inbound",
+  "_char_count": 370
+}

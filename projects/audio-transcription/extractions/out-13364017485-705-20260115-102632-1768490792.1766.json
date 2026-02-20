@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Voicemail left to inform recipient about an email containing an invoice and request a callback.",
+  "resolution_steps": [
+    "Automated system forwards call",
+    "Joe leaves voicemail with instructions to check email and call back"
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Outbound call resulted in a voicemail message from Joe at Alliance Insurance, informing Daniel to review an email with an invoice and contact him for further steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 118,
+  "_total_duration_ms": 30301,
+  "_source_file": "transcripts/out-13364017485-705-20260115-102632-1768490792.1766.txt",
+  "_direction": "outbound",
+  "_char_count": 799
+}

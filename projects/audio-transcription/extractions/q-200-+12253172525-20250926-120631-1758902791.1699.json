@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Steve Barker seeks a homeowner's insurance quote for a second home in Fancy Gap, Virginia, which he plans to rent out short-term. He provided property details and requested coverage options.",
+  "resolution_steps": [
+    "Jeremy confirmed Steve's intent and requested property details (addresses, owners, roof condition).",
+    "Jeremy gathered addresses for both the property in Madisonville, Louisiana, and the cabin in Fancy Gap, Virginia.",
+    "Jeremy noted the roof type (metal) and inquired about replacement cost and deductible preferences.",
+    "Jeremy checked for alarm systems, mortgage status, and swimming pools.",
+    "Jeremy requested birth dates for Steve and co-owner Dale Staring.",
+    "Jeremy agreed to provide quotes for both 1% deductible and $5,000 deductible options."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance for second homes and rental properties",
+    "Property valuation and replacement cost estimation",
+    "Underwriting considerations (e.g., roof age, deductibles, alarm systems)"
+  ],
+  "systems_referenced": [
+    "Internal database for zip code lookup",
+    "Zillow (for property verification)",
+    "Progressive website (as referral source)"
+  ],
+  "summary": "Steve Barker requested a homeowner's insurance quote for a second home in Fancy Gap, Virginia, which he plans to rent out. Jeremy collected detailed property information, including addresses, roof condition, and deductible preferences. The agent will provide quotes for 1% and $5,000 deductibles after verifying replacement costs and other factors.",
+  "_model": "qwen3:14b",
+  "_eval_count": 343,
+  "_total_duration_ms": 49630,
+  "_source_file": "transcripts/q-200-+12253172525-20250926-120631-1758902791.1699.txt",
+  "_direction": "queue",
+  "_char_count": 4184
+}

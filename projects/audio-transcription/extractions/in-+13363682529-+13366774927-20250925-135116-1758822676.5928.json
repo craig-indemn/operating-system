@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Call was a standard inbound greeting with no substantive interaction or caller intent identified.",
+  "_model": "qwen3:14b",
+  "_eval_count": 68,
+  "_total_duration_ms": 23569,
+  "_source_file": "transcripts/in-+13363682529-+13366774927-20250925-135116-1758822676.5928.txt",
+  "_direction": "inbound",
+  "_char_count": 71
+}

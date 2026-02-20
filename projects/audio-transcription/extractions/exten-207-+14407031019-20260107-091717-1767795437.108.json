@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Connie McGurino, a collections agent for AmTrust Westco, is seeking confirmation whether McCarthy Burgess and Wolfe still insure a client named Andres Esquimaldo Arilano, and is requesting assistance with unresolved penalty audits and non-compliance issues related to the client.",
+  "resolution_steps": [
+    "Agent confirms McCarthy Burgess and Wolfe no longer insure the client.",
+    "Agent acknowledges the client's non-compliance history (2023-2024 penalty audits) and notes the client's lack of English proficiency.",
+    "Agent agrees to refer the client to Connie's team or suggest finding an English-speaking agent if the client contacts them.",
+    "Agent provides their contact number for future reference."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy management",
+    "Collections process for non-compliant clients",
+    "Handling multilingual client communication barriers"
+  ],
+  "systems_referenced": [
+    "AmTrust Westco (carrier)",
+    "Carrier work hub (internal system)"
+  ],
+  "summary": "A collections agent from AmTrust Westco contacted McCarthy Burgess and Wolfe to confirm coverage for a non-English-speaking client with a history of non-compliance and penalty audits. The agent confirmed they no longer insure the client and agreed to facilitate a referral if needed. The call ended with the agent providing their contact information for future follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 308,
+  "_total_duration_ms": 43614,
+  "_source_file": "transcripts/exten-207-+14407031019-20260107-091717-1767795437.108.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1789
+}

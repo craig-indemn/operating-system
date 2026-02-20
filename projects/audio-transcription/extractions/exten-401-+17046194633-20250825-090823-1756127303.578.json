@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Robert Vaughn seeks insurance quotes for his Virginia home, expressing dissatisfaction with his current provider (Rockingham Insurance) due to rising costs. He wants to explore cheaper alternatives while providing detailed property information.",
+  "resolution_steps": [
+    "Agent confirms Alliance Insurance Services operates in Virginia and agrees to provide quotes.",
+    "Agent collects property details: address (141 Alpine Way, Fancy Gap, VA 24328), square footage (2,732 heated sq ft including finished basement), number of stories (1.5), and property features (no garage, detached utility building, half-acre lot).",
+    "Agent notes the presence of an HLA (Homeowners' Association) and a gated community-like setup with signs, though the caller's wife disputes the 'gated community' classification.",
+    "Agent prepares to use a replacement cost estimator tool to generate quotes."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Virginia insurance market carriers (e.g., Liberty Mutual, Travelers, Cincinnati, Auto Owners)",
+    "Property valuation terms (replacement cost estimator, heated square footage, finished basements)",
+    "Homeowners' Association (HLA) and property classification nuances"
+  ],
+  "systems_referenced": [
+    "Replacement cost estimator tool",
+    "Alliance Insurance Services carrier database"
+  ],
+  "summary": "Robert Vaughn, a Virginia homeowner, requested insurance quotes after 17 years with Rockingham Insurance. Heather from Alliance Insurance collected detailed property information, including square footage, basement details, and HLA status, to generate quotes using their replacement cost estimator tool. The call concluded with a commitment to provide quotes after data collection.",
+  "_model": "qwen3:14b",
+  "_eval_count": 368,
+  "_total_duration_ms": 48015,
+  "_source_file": "transcripts/exten-401-+17046194633-20250825-090823-1756127303.578.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 6914
+}

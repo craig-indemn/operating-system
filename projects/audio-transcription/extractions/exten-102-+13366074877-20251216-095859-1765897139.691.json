@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to reinstate their general liability insurance for their business, Mark Wyatt DBA First Quality Shutters and Blindings.",
+  "resolution_steps": [
+    "Agent Gloria confirms the caller's business name and attempts to locate the account using the phone number and policy number.",
+    "Agent discovers the policy was canceled on August 21st, over 30 days ago, making reinstatement ineligible.",
+    "Agent explains that the policy must be rewritten instead of reinstated and mentions the need to set up EFT (Electronic Funds Transfer).",
+    "Agent offers to consult with a manager and call the caller back with next steps."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance reinstatement rules (e.g., 30-day window for reinstatement)",
+    "Policy rewrite procedures",
+    "EFT setup requirements"
+  ],
+  "systems_referenced": [
+    "Internal insurance account database"
+  ],
+  "summary": "The caller sought to reinstate a canceled general liability policy, but the agent determined it was too late (over 30 days past cancellation). The agent explained the need for a policy rewrite and EFT setup, then offered to consult with a manager and follow up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 270,
+  "_total_duration_ms": 39299,
+  "_source_file": "transcripts/exten-102-+13366074877-20251216-095859-1765897139.691.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1868
+}

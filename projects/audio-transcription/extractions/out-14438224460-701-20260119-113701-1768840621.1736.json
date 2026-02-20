@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Voicemail left for Luca regarding locked doors at Victoria Restaurant",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A voicemail message was left for Luca by Jeremy, informing him about locked doors at the Victoria Restaurant and providing a contact number.",
+  "_model": "qwen3:14b",
+  "_eval_count": 88,
+  "_total_duration_ms": 34437,
+  "_source_file": "transcripts/out-14438224460-701-20260119-113701-1768840621.1736.txt",
+  "_direction": "outbound",
+  "_char_count": 298
+}

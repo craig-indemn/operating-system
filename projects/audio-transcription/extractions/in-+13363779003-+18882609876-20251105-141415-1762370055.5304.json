@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to verify the issue date on a reinstatement document for a policyholder (Michelle and Scott Milford) with policy number 5544160.",
+  "resolution_steps": [
+    "Agent confirmed the caller's request to verify the issue date on a reinstatement document.",
+    "Agent asked for the policy number and names of the policyholders (received: 5544160, Michelle and Scott Milford).",
+    "Agent informed the caller they would transfer the call to an appropriate agent and placed the caller on hold ('rephone')."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy verification process",
+    "Call transfer procedures"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller from Bank of America requested verification of a reinstatement document's issue date for policy 5544160. The agent collected policy details and transferred the call to an appropriate agent for further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 227,
+  "_total_duration_ms": 34759,
+  "_source_file": "transcripts/in-+13363779003-+18882609876-20251105-141415-1762370055.5304.txt",
+  "_direction": "inbound",
+  "_char_count": 747
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Jerry Mason, wants to check insurance quotes for two vehicles: a 2001 Corvette (classic, low mileage) and a 1996 Mercedes SL500 (higher mileage), as he believes the current rates are lower than what he's been paying.",
+  "resolution_steps": [
+    "Agent verified the caller's ownership of Kerry Haggerty Insurance.",
+    "Agent acknowledged the caller's request to check insurance quotes for two specific vehicles.",
+    "Agent offered to connect the caller with an agent to review the quotes.",
+    "Agent initiated a transfer to an agent for further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of car insurance pricing factors (mileage, vehicle type, classic car considerations)",
+    "Process for transferring calls to appropriate agents",
+    "Ability to verify client insurance ownership"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's internal client verification system",
+    "Agent transfer protocol"
+  ],
+  "summary": "Jerry Mason contacted Alliance Insurance to inquire about lower insurance rates for two vehicles. The agent confirmed ownership and initiated a transfer to an agent to review the quotes. The call was transferred for further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 273,
+  "_total_duration_ms": 28313,
+  "_source_file": "transcripts/in-+13363544000-+13364063166-20251002-115412-1759420452.8037.txt",
+  "_direction": "inbound",
+  "_char_count": 941
+}

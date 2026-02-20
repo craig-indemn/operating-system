@@ -1,0 +1,24 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller left a voicemail confirming a payment and informing the recipient about policy delivery.",
+  "resolution_steps": [
+    "Left voicemail confirming payment receipt",
+    "Notified recipient about policy delivery via email",
+    "Provided follow-up contact information"
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [
+    "Policy delivery timelines",
+    "Email communication protocols"
+  ],
+  "systems_referenced": [
+    "Email system"
+  ],
+  "summary": "A voicemail was left confirming a homeowners insurance payment and informing the recipient about expected policy delivery via email. The caller provided a follow-up phone number and timeline for policy receipt.",
+  "_model": "qwen3:14b",
+  "_eval_count": 140,
+  "_total_duration_ms": 48858,
+  "_source_file": "transcripts/out-3367669409-409-20250808-105046-1754664646.5001.txt",
+  "_direction": "outbound",
+  "_char_count": 919
+}

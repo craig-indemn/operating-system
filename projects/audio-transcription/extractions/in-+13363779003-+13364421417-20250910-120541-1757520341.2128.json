@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with Jamie",
+  "resolution_steps": [
+    "Agent acknowledged request and placed caller on hold"
+  ],
+  "outcome": "transferred",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Very brief inbound call where caller requested to speak with Jamie. Agent placed caller on hold without further interaction. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 92,
+  "_total_duration_ms": 23130,
+  "_source_file": "transcripts/in-+13363779003-+13364421417-20250910-120541-1757520341.2128.txt",
+  "_direction": "inbound",
+  "_char_count": 133
+}

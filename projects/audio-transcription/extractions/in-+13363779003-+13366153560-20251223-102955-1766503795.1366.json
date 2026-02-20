@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller attempted to make a payment for their auto insurance policy and sought assistance from an agent.",
+  "resolution_steps": [
+    "Agent checked the caller's policy and identified it as a renters insurance policy, not auto insurance.",
+    "Notified the caller that the next payment is due on December 29th and cannot be processed yet.",
+    "Explained that payments can only be made around the next bill date due to system constraints.",
+    "Provided the caller with the specific date (December 29th) to call back for payment processing."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of billing cycles and payment processing timelines",
+    "Policy type differentiation (renters vs. auto insurance)",
+    "System limitations for payment processing outside of scheduled billing periods"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's internal policy management system"
+  ],
+  "summary": "The caller attempted to pay their auto insurance but was informed that their policy is renters insurance with the next payment due on December 29th. The agent explained that payments can only be processed around the next bill date and advised the caller to return near that time. The call concluded with the caller acknowledging the information and ending the conversation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 282,
+  "_total_duration_ms": 31828,
+  "_source_file": "transcripts/in-+13363779003-+13366153560-20251223-102955-1766503795.1366.txt",
+  "_direction": "inbound",
+  "_char_count": 1184
+}

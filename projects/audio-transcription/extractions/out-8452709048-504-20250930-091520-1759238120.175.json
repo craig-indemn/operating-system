@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Charles is concerned about a significant increase in his insurance premiums (auto up $600/year, home up $173/year) and is considering switching to Penn National based on a lower quote he received.",
+  "resolution_steps": [
+    "Holly explains the auto rate increase is due to a North Carolina state-mandated rate hike.",
+    "She clarifies the home insurance increase is tied to updated replacement cost estimates ($354,700 for rebuilding).",
+    "Holly confirms Penn National remains the best option after reviewing bundling/separating policies.",
+    "She outlines cancellation procedures: in-person signature at the office or electronic e-signature.",
+    "Offers to review Penn National's quote details if Charles wants to compare apples-to-apples coverage."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance rate factors (state-mandated increases, replacement cost calculations)",
+    "Cancellation procedures for insurance policies",
+    "Carrier-specific pricing strategies (Penn National vs. Safe Fund)"
+  ],
+  "systems_referenced": [
+    "Penn National Insurance",
+    "Safe Fund Insurance"
+  ],
+  "summary": "Charles is frustrated about recent insurance premium increases and is considering switching to Penn National after receiving a lower quote. Holly explains the rate increases are due to external factors (state mandates, updated replacement costs) and confirms Penn National is still the best option. She provides cancellation procedures and offers to review quotes further if needed. Charles will consult his wife before making a decision.",
+  "_model": "qwen3:14b",
+  "_eval_count": 334,
+  "_total_duration_ms": 43255,
+  "_source_file": "transcripts/out-8452709048-504-20250930-091520-1759238120.175.txt",
+  "_direction": "outbound",
+  "_char_count": 2751
+}

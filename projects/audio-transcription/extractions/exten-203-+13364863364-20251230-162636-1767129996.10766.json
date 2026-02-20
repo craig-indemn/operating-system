@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Mary Baker wants to adjust an insurance quote for her property from $500,000 to $100,000 coverage, as the current quote is too high for her needs. She also requests expedited processing by 5:00 PM.",
+  "resolution_steps": [
+    "Maria confirms receipt of the initial quote and acknowledges Mary's email.",
+    "Maria explains that carriers require a minimum of $500,000 for standalone policies, which cannot be reduced.",
+    "Maria reassures Mary that the $500,000 quote is acceptable and agrees to re-review it.",
+    "Maria notes the quote is saved in the file system for easy retrieval and printing."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy minimum coverage requirements set by carriers",
+    "Quote adjustment limitations based on carrier rules"
+  ],
+  "systems_referenced": [
+    "file system for storing quotes"
+  ],
+  "summary": "Mary Baker requested a lower insurance coverage amount ($100,000 vs. $500,000) but was informed by Maria that carriers require a minimum of $500,000 for standalone policies. Maria confirmed the quote would proceed at $500,000 and agreed to re-review it, with the quote already saved in the system for processing.",
+  "_model": "qwen3:14b",
+  "_eval_count": 309,
+  "_total_duration_ms": 48091,
+  "_source_file": "transcripts/exten-203-+13364863364-20251230-162636-1767129996.10766.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1856
+}

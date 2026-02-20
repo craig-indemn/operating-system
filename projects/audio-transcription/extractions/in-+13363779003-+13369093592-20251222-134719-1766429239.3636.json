@@ -1,0 +1,20 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller requested the declaration page for their homeowners insurance policy.",
+  "resolution_steps": [
+    "Agent acknowledged the request and asked the caller to wait while they retrieve the document."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of policy document retrieval processes",
+    "Access to internal systems for policy information"
+  ],
+  "systems_referenced": [],
+  "summary": "The caller requested their homeowners insurance declaration page. The agent acknowledged the request and put the caller on hold to retrieve the document. The call is on hold with resolution pending.",
+  "_model": "qwen3:14b",
+  "_eval_count": 140,
+  "_total_duration_ms": 50120,
+  "_source_file": "transcripts/in-+13363779003-+13369093592-20251222-134719-1766429239.3636.txt",
+  "_direction": "inbound",
+  "_char_count": 190
+}

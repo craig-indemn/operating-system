@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Michael Terry wants to verify his homeowners insurance renewal for 2025-26 and clarify why there are no active policies with Alliance Insurance, believing the agency was handling his policy through his mortgage company.",
+  "resolution_steps": [
+    "Agent confirmed Alliance handles auto insurance and acknowledged the lack of active homeowners policies.",
+    "Agent offered to transfer Michael to another agent for further investigation into the policy status.",
+    "Agent initiated the transfer to an agent for resolution."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of Alliance Insurance's service scope (auto/homeowners insurance)",
+    "Policy renewal timelines and inactivity resolution procedures",
+    "Call transfer protocols for complex policy inquiries"
+  ],
+  "systems_referenced": [],
+  "summary": "Michael Terry contacted Alliance Insurance to address a missing homeowners policy, believing the agency was handling his coverage through his mortgage company. The agent confirmed no active policies were found and transferred him to another agent for further investigation. The call highlights a potential gap in policy management and customer communication.",
+  "_model": "qwen3:14b",
+  "_eval_count": 237,
+  "_total_duration_ms": 34284,
+  "_source_file": "transcripts/in-+13363779003-+17049759120-20250918-135255-1758217975.7937.txt",
+  "_direction": "inbound",
+  "_char_count": 1529
+}

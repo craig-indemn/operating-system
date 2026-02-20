@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is asking if they can temporarily loan their uninsured vehicle to a friend and obtain insurance for it, as their friend needs the car but has lost theirs.",
+  "resolution_steps": [
+    "Agent confirmed Rachel was unavailable and asked if the caller had insurance with Alliance Insurance.",
+    "Caller confirmed existing insurance and explained the situation: their vehicle is not on the road but they want to loan it to a friend who needs temporary coverage.",
+    "Agent offered to transfer the caller to another agent who can address the specific insurance question."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of temporary insurance policies for loaned vehicles",
+    "Process for transferring calls to specialized agents",
+    "Knowledge of insurance requirements for non-operational vehicles"
+  ],
+  "systems_referenced": [],
+  "summary": "The caller inquired about insuring a non-operational vehicle for temporary use by a friend. The agent acknowledged the request and transferred the call to another agent who can provide details on temporary insurance options for loaned vehicles. The call is ongoing with a specialist.",
+  "_model": "qwen3:14b",
+  "_eval_count": 244,
+  "_total_duration_ms": 40400,
+  "_source_file": "transcripts/in-+13363682529-+13366552346-20250911-091536-1757596536.1101.txt",
+  "_direction": "inbound",
+  "_char_count": 845
+}

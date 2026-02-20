@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jenny Kelly from Auto Insurance is seeking clarification on a policy lapse for Pmart Horizon Properties LLC, specifically regarding the prior carrier (Foremost/Farmers) and the duration of the coverage gap caused by a non-payment cancellation in July.",
+  "resolution_steps": [
+    "Cecilia confirms the policy details for Pmart Horizon Properties LLC and verifies the prior carrier as Foremost or Farmers.",
+    "Cecilia identifies the cancellation date as July and notes the lack of coverage since then.",
+    "Cecilia explains the need for a signed statement of no loss to proceed.",
+    "Jenny agrees to provide the statement via email to Cecilia's provided address (jenny.kelly@aoins.com)."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of policy lapse handling for non-payment cancellations",
+    "Process for obtaining and verifying statements of no loss",
+    "Internal database access to check policy details and carrier history"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal policy database",
+    "Email communication system"
+  ],
+  "summary": "Cecilia from Alliance Insurance assists Jenny Kelly from Auto Insurance in resolving a policy lapse issue for Pmart Horizon Properties LLC. The prior carrier (Foremost/Farmers) canceled coverage in July due to non-payment. Cecilia explains the need for a signed statement of no loss, which Jenny agrees to send via email. The issue is resolved with a plan to process the statement and finalize the policy.",
+  "_model": "qwen3:14b",
+  "_eval_count": 329,
+  "_total_duration_ms": 40356,
+  "_source_file": "transcripts/exten-107-+17045499908-20251113-140730-1763060850.5295.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2266
+}

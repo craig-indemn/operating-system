@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Nina is following up on the cancellation of her insurance for a 2015 Honda Accord, expressing concern that no confirmation email has been sent and requesting clarification about the effective date and potential charges.",
+  "resolution_steps": [
+    "Agent confirms the cancellation is being processed and assures Nina an email confirmation will be sent once received.",
+    "Agent clarifies the effective date of cancellation is August 1st.",
+    "Agent addresses Nina's concern about being charged for August by confirming the cancellation process.",
+    "Agent asks about the license plate status for the Honda Accord to ensure proper cancellation procedures.",
+    "Agent clarifies that Nina is not selling the vehicle but transferring it to a new policy with a different insurer."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance cancellation procedures",
+    "Effective date calculations for policy changes",
+    "License plate transfer requirements",
+    "Handling policy transfers between insurers"
+  ],
+  "systems_referenced": [
+    "Email confirmation system (implied through reference to sending confirmation emails)"
+  ],
+  "summary": "Nina follows up on canceling her Honda Accord's insurance, seeking confirmation of the cancellation and clarification about charges. The agent confirms the process, effective date, and clarifies that the vehicle is being transferred to a new policy rather than sold. The agent also addresses confusion about license plate requirements.",
+  "_model": "qwen3:14b",
+  "_eval_count": 299,
+  "_total_duration_ms": 45615,
+  "_source_file": "transcripts/exten-401-+15719917607-20250728-153304-1753731184.12761.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4081
+}

@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller was attempting to reach a specific agent (Daniel or Jeremy) to obtain a new auto insurance quote from Homer Auto.",
+  "resolution_steps": [
+    "Agent confirmed no one named Daniel was available.",
+    "Caller clarified they were looking for someone named Jeremy or Jamie.",
+    "Agent checked for Jeremy but found no match.",
+    "Agent apologized for the confusion and offered to assist with a new quote directly."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Agent directory/tracking system to verify team member names",
+    "Process for initiating new auto insurance quotes"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal directory"
+  ],
+  "summary": "A caller sought assistance locating a specific agent to obtain a Homer Auto insurance quote. The agent could not find the requested individual but offered to help with a new quote directly. The call ended with the agent requesting clarification on next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 210,
+  "_total_duration_ms": 39358,
+  "_source_file": "transcripts/in-+13363779003-+17432161857-20250724-131830-1753377510.2992.txt",
+  "_direction": "inbound",
+  "_char_count": 520
+}

@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to update mortgage information (name and loan number) for a mutual customer.",
+  "resolution_steps": [
+    "Agent offered to transfer the call to another agent for assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller requested assistance updating mortgage details for a mutual customer. The agent offered to transfer the call to another agent but did not resolve the request directly.",
+  "_model": "qwen3:14b",
+  "_eval_count": 111,
+  "_total_duration_ms": 33144,
+  "_source_file": "transcripts/in-+13363779003-+12067454925-20251024-132653-1761326813.3387.txt",
+  "_direction": "inbound",
+  "_char_count": 487
+}

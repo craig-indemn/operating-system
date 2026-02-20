@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to check the list of vehicles covered under their personal auto insurance policy.",
+  "resolution_steps": [
+    "Agent asked whether the policy is commercial or personal.",
+    "Caller confirmed it's a personal policy.",
+    "Agent requested a moment to retrieve the information and connect with a specialist."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding how to access customer policy details",
+    "Differentiating between commercial and personal policies"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's internal policy database"
+  ],
+  "summary": "A caller requested information about vehicles on their personal auto policy. The agent asked clarifying questions and offered to retrieve the details. The call is pending a specialist's intervention to provide the requested information.",
+  "_model": "qwen3:14b",
+  "_eval_count": 179,
+  "_total_duration_ms": 27742,
+  "_source_file": "transcripts/in-+13363682529-+13364924092-20250729-122617-1753806377.4617.txt",
+  "_direction": "inbound",
+  "_char_count": 308
+}

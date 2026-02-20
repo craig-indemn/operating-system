@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to set up a new insurance policy with automatic monthly payments from their checking account (due to credit card fee issues) and cancel an existing policy that renews on the 31st.",
+  "resolution_steps": [
+    "Agent confirmed the caller's bank (Wood Forest) and verified routing/account numbers for auto draft setup.",
+    "Agent agreed to issue the new policy effective immediately and set up auto draft starting the next day.",
+    "Agent advised the caller to cancel the existing policy either on the 31st or immediately if they prefer to avoid a lapse.",
+    "Agent mentioned contingency plans (FS forms) in case of DMV issues."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy setup and cancellation processes",
+    "Bank auto draft configuration",
+    "Handling payment method restrictions (credit card fees)"
+  ],
+  "systems_referenced": [
+    "Wood Forest Bank (checking account details)",
+    "Insurance agency's policy management system"
+  ],
+  "summary": "Agent helped caller transition from credit card payments to checking account auto drafts for a new insurance policy, coordinated policy issuance, and advised on canceling an existing policy. The caller plans to cancel the old policy after receiving the new policy documents.",
+  "_model": "qwen3:14b",
+  "_eval_count": 281,
+  "_total_duration_ms": 41626,
+  "_source_file": "transcripts/exten-207-+13369180122-20251229-123009-1767029409.7913.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2695
+}

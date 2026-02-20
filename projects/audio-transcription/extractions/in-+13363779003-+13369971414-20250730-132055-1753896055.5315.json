@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Vicky Hill requested the Travelers insurance phone number and a copy of her declaration page for a new job, though she did not have her policy number on hand.",
+  "resolution_steps": [
+    "Agent provided Travelers' customer service phone number (877-824-6824) after confirming Vicky's identity.",
+    "Agent asked for Vicky's policy number but she admitted she did not have it.",
+    "Agent offered to send a copy of the declaration page via email after confirming Vicky's email address (vickiekayee317@gmail.com).",
+    "Agent estimated a 20-minute processing time for the document request, which Vicky agreed to."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Travelers insurance contact information",
+    "Policy lookup procedures",
+    "Declaration page retrieval process",
+    "Email/fax document transmission protocols"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal policy database",
+    "Email system for document transmission"
+  ],
+  "summary": "Vicky Hill requested Travelers insurance contact information and a declaration page for a new job. The agent provided the phone number, offered to send the declaration page via email after verifying Vicky's email address, and estimated a 20-minute processing time. The call concluded with Vicky agreeing to wait for the document.",
+  "_model": "qwen3:14b",
+  "_eval_count": 311,
+  "_total_duration_ms": 40931,
+  "_source_file": "transcripts/in-+13363779003-+13369971414-20250730-132055-1753896055.5315.txt",
+  "_direction": "inbound",
+  "_char_count": 1933
+}

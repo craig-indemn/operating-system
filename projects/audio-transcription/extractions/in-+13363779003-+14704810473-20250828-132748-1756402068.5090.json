@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, representing True West Bank Insurance Tracking Center, requested assistance in checking the policy status for Roy Steele Jr.'s hazard policy.",
+  "resolution_steps": [
+    "Agent Amanda explained that an email request would be sent to retrieve the information.",
+    "Amanda provided the email address 'support@myallianceinsurance.com' for submitting the request."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Standard procedure for handling policy status inquiries",
+    "Knowledge of internal communication channels (email system)"
+  ],
+  "systems_referenced": [
+    "Email system (support@myallianceinsurance.com)"
+  ],
+  "summary": "A caller requested policy status information for a client, and the agent directed them to submit a request via email. The agent provided the correct email address and confirmed a 24-hour response timeframe. The call concluded with the caller agreeing to submit the request.",
+  "_model": "qwen3:14b",
+  "_eval_count": 210,
+  "_total_duration_ms": 33869,
+  "_source_file": "transcripts/in-+13363779003-+14704810473-20250828-132748-1756402068.5090.txt",
+  "_direction": "inbound",
+  "_char_count": 770
+}

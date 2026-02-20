@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (client) needs to provide documentation for a sprinkler system inspection requested by the carrier, but currently lacks the documents and is seeking assistance to obtain them.",
+  "resolution_steps": [
+    "Agent confirmed the carrier's requirement for updated sprinkler inspection documentation.",
+    "Client mentioned an inspection was conducted in October by Alliance, but he does not have the report.",
+    "Agent offered to contact Christopher (likely an internal contact) to locate the report.",
+    "Agent clarified the inspection was originally scheduled for December but postponed to January 2026.",
+    "Agent agreed to communicate with Christopher and the carrier to resolve the documentation gap."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding carrier requirements for sprinkler system documentation",
+    "Knowledge of typical inspection schedules (annual basis)",
+    "Ability to coordinate with internal teams (e.g., Christopher) and carriers"
+  ],
+  "systems_referenced": [
+    "Carrier's documentation portal/system",
+    "Alliance Insurance's internal communication channels"
+  ],
+  "summary": "Alliance Insurance agent Glory is following up with a client to obtain sprinkler system inspection documentation required by the carrier. The client recalls an inspection was conducted in October but lacks the report, which the agent will attempt to locate through internal contacts. The inspection was postponed to January 2026, and the agent will coordinate with the carrier and team to resolve the documentation gap.",
+  "_model": "qwen3:14b",
+  "_eval_count": 317,
+  "_total_duration_ms": 39063,
+  "_source_file": "transcripts/out-4173881838-102-20251209-091319-1765289599.70.txt",
+  "_direction": "outbound",
+  "_char_count": 4425
+}

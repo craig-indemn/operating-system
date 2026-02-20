@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Farin from West Ridge Insurance) is following up on submitted insurance documents and requesting a specific 'deck page' that was previously sent but not accepted.",
+  "resolution_steps": [
+    "Agent (Eli) confirms the conversation from the previous day and acknowledges the document submission.",
+    "Agent clarifies the need for a 'deck page' and verifies what was sent previously.",
+    "Agent apologizes for the confusion and agrees to send the required deck page immediately."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding insurance document requirements (e.g., 'deck page')",
+    "Process for resubmitting or clarifying documentation"
+  ],
+  "systems_referenced": [
+    "Internal document portal (implied by 'pull it up' reference)"
+  ],
+  "summary": "Farin from West Ridge Insurance follows up with Eli about missing insurance documentation, specifically requesting a 'deck page' that was previously submitted. After clarification, Eli agrees to send the required document immediately. The call resolves the issue with a commitment to action.",
+  "_model": "qwen3:14b",
+  "_eval_count": 237,
+  "_total_duration_ms": 27098,
+  "_source_file": "transcripts/exten-301-+13363683347-20251223-123032-1766511032.2312.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 627
+}

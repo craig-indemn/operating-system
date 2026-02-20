@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller needs to update their renter's insurance policy by adding a new address for an upcoming move to a townhouse.",
+  "resolution_steps": [
+    "Agent asked clarifying questions about the purpose of the call.",
+    "Agent offered to transfer the caller to a specialist agent to handle policy updates."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy modification procedures",
+    "Customer service protocols for address updates"
+  ],
+  "systems_referenced": [],
+  "summary": "A customer needs to update their renter's insurance policy with a new address due to an upcoming move. The agent acknowledged the request and offered to transfer the caller to an agent who can handle policy modifications. The call ended with the agent putting the caller on hold for the transfer.",
+  "_model": "qwen3:14b",
+  "_eval_count": 185,
+  "_total_duration_ms": 27579,
+  "_source_file": "transcripts/in-+13363779003-+13364074381-20250730-131354-1753895634.4792.txt",
+  "_direction": "inbound",
+  "_char_count": 480
+}

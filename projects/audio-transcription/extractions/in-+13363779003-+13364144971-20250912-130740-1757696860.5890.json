@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unable to determine due to lack of clarity and brevity",
+  "resolution_steps": [
+    "Agent acknowledged caller's statement",
+    "Requested caller to wait while checking"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Call was too brief and unclear to determine purpose. Caller mentioned confusion about previous contacts (Jarvis/Rachel), but no specific issue or request was articulated.",
+  "_model": "qwen3:14b",
+  "_eval_count": 111,
+  "_total_duration_ms": 31207,
+  "_source_file": "transcripts/in-+13363779003-+13364144971-20250912-130740-1757696860.5890.txt",
+  "_direction": "inbound",
+  "_char_count": 227
+}

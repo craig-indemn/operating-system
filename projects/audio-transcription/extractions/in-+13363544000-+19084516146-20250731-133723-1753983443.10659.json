@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Confirm the status of a mailed check for policy renewal and request email confirmation if available.",
+  "resolution_steps": [
+    "Agent requested the caller's policyholder information to check payment status.",
+    "Agent accessed the policyholder's account to verify the check's processing status.",
+    "Agent informed the caller whether the check was received, processed, or still pending."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Payment processing procedures for mailed checks",
+    "Policyholder account verification protocols"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's policyholder database",
+    "Payment tracking system"
+  ],
+  "summary": "Josephine Machado contacted Alliance Insurance to check the status of her father's mailed policy renewal check. The agent verified the payment status through the policyholder's account and provided updates on whether the check was processed or still pending. The call concluded with the agent confirming the status and offering further assistance if needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 216,
+  "_total_duration_ms": 31190,
+  "_source_file": "transcripts/in-+13363544000-+19084516146-20250731-133723-1753983443.10659.txt",
+  "_direction": "inbound",
+  "_char_count": 453
+}

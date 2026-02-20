@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "N/A",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Voicemail greeting instructing caller to leave a message after the tone. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 73,
+  "_total_duration_ms": 15487,
+  "_source_file": "transcripts/axfer-+13363514900-113-20251015-122120-1760545097.1338.txt",
+  "_direction": "attended_transfer",
+  "_char_count": 84
+}

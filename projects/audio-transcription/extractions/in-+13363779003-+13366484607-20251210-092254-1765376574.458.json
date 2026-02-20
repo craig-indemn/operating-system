@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; caller mentions receiving a prior call and confirms identity, but no explicit request is made before the transfer.",
+  "resolution_steps": [
+    "Agent apologizes for confusion",
+    "Transfers call to Rachel"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief inbound call where the caller confirms identity and mentions receiving a prior call. The agent transfers the call to Rachel without resolving any specific request. The conversation lacks substantive content beyond the transfer.",
+  "_model": "qwen3:14b",
+  "_eval_count": 127,
+  "_total_duration_ms": 21885,
+  "_source_file": "transcripts/in-+13363779003-+13366484607-20251210-092254-1765376574.458.txt",
+  "_direction": "inbound",
+  "_char_count": 434
+}

@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking assistance in obtaining a North Carolina joint underwriting homeowners insurance policy, which she describes as a last-resort option for fire coverage when other insurers decline coverage due to property issues (e.g., roof conditions). She needs coverage until August 10th and is frustrated with repeated rejections from other companies.",
+  "resolution_steps": [
+    "Agent confirmed Alliance Insurance Services does not write North Carolina joint underwriting policies.",
+    "Agent explained that other carriers may also decline coverage due to strict underwriting criteria, particularly regarding roof conditions.",
+    "Agent apologized and offered no alternative solutions or referrals."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of North Carolina joint underwriting associations and their specific coverage limitations (e.g., fire-only policies).",
+    "Awareness of common underwriting criteria for homeowners insurance, such as roof conditions.",
+    "Knowledge of Alliance Insurance Services' policy offerings and limitations."
+  ],
+  "systems_referenced": [],
+  "summary": "The caller, facing repeated rejections from insurers due to property issues, sought help obtaining a North Carolina joint underwriting policy. The agent clarified Alliance does not offer this specific product and suggested other carriers may have similar restrictions. The call ended without a resolution but with acknowledgment of the caller's challenges.",
+  "_model": "qwen3:14b",
+  "_eval_count": 288,
+  "_total_duration_ms": 44050,
+  "_source_file": "transcripts/q-500-+13369781864-20250731-114721-1753976841.6910.txt",
+  "_direction": "queue",
+  "_char_count": 2632
+}

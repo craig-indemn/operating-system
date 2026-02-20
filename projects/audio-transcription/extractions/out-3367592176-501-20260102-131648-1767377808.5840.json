@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unknown (no caller speech present)",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Voicemail greeting from Northwest Farmers Mutual Insurance Company indicating office is closed for lunch. No substantive interaction occurred as call was automated and no conversation took place.",
+  "_model": "qwen3:14b",
+  "_eval_count": 87,
+  "_total_duration_ms": 24301,
+  "_source_file": "transcripts/out-3367592176-501-20260102-131648-1767377808.5840.txt",
+  "_direction": "outbound",
+  "_char_count": 262
+}

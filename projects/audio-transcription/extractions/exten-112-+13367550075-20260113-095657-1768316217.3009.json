@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Vicki Shepard is seeking to resolve an issue with her insurance policy related to a property she sold in March or May, aiming to backdate the policy and potentially receive a refund.",
+  "resolution_steps": [
+    "Brandi confirms the property address and policy details after initial confusion.",
+    "Explains backdating limitations (30 days without closing documents, full backdating with documents).",
+    "Asks Vicki to send closing documents via email or sign a cancel form if documents are unavailable.",
+    "Mentions an email sent the previous day and requests confirmation of receipt.",
+    "Offers to proceed with the cancel form if documents are not available."
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [
+    "Insurance policy backdating procedures",
+    "Refund eligibility based on policy duration and documentation",
+    "Handling customer inquiries about past property transactions"
+  ],
+  "systems_referenced": [
+    "Internal policy lookup system",
+    "Email communication for document exchange",
+    "Cancel form documentation process"
+  ],
+  "summary": "Vicki Shepard discusses a property insurance policy backdating issue with Brandi, who explains the need for closing documents to process a refund. The call concludes with instructions for Vicki to send documents via email or sign a cancel form. The conversation highlights the agent's knowledge of insurance policy timelines and documentation requirements.",
+  "_model": "qwen3:14b",
+  "_eval_count": 298,
+  "_total_duration_ms": 49552,
+  "_source_file": "transcripts/exten-112-+13367550075-20260113-095657-1768316217.3009.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2454
+}

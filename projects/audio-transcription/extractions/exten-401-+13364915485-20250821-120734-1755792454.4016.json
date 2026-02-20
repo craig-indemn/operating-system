@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Adrian is returning Heather's call to discuss auto and home insurance options, gather details about her current policies, and address her concerns about switching providers.",
+  "resolution_steps": [
+    "Adrian confirms Heather's current insurance with Progressive and American Strategic.",
+    "He gathers property details (address, construction year, square footage, heating type, flooring, and structures).",
+    "He explains the 30-day window for switching policies without penalty.",
+    "He acknowledges Heather's recent quote from another company."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance provider details (Progressive, American Strategic, Allstate)",
+    "Home insurance policy renewal periods",
+    "Property assessment factors (construction type, heating, flooring, etc.)"
+  ],
+  "systems_referenced": [
+    "Yahoo (for property research)"
+  ],
+  "summary": "Adrian assists Heather with insurance needs by gathering property details, confirming her current policies, and explaining options for switching providers. The call ends with Heather having a quote from another company and Adrian offering to provide competitive quotes.",
+  "_model": "qwen3:14b",
+  "_eval_count": 243,
+  "_total_duration_ms": 48129,
+  "_source_file": "transcripts/exten-401-+13364915485-20250821-120734-1755792454.4016.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3912
+}

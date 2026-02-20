@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Gary) wanted to confirm whether his cancellation request (policy #25) had been received and processed by the agent (Mr. John).",
+  "resolution_steps": [
+    "Agent confirmed receipt of the cancellation email.",
+    "Agent stated the cancellation had been submitted for processing.",
+    "Caller verified the policy number (25) and confirmed details."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Cancellation request processing workflow",
+    "Policy number verification procedures"
+  ],
+  "systems_referenced": [
+    "Internal claims/cancellations processing system"
+  ],
+  "summary": "Gary confirmed with Mr. John that his cancellation request for policy #25 had been received and submitted. The agent verified the policy number and confirmed processing was underway. The call concluded with mutual acknowledgment of the confirmation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 195,
+  "_total_duration_ms": 27267,
+  "_source_file": "transcripts/exten-113-+13365778596-20250828-160146-1756411306.9738.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 401
+}

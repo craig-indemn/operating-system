@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller seeks a new garage liability insurance quote for their auto dealership business, 'Always Auto Group LLC,' while providing details about their current policy and business operations.",
+  "resolution_steps": [
+    "Agent requested business details (name, address, phone, email).",
+    "Collected business information (operational start date, dealership type, vehicle count, coverage needs).",
+    "Noted current policy details (comprehensive/collision coverage, $60k limit).",
+    "Initiated new account setup in the system.",
+    "Requested current policy documents via email for comparison."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Garage liability insurance requirements",
+    "Business insurance underwriting criteria",
+    "Policy comparison processes"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal policy system",
+    "Email communication (allianceinsurance.com)"
+  ],
+  "summary": "Agent assisted a North Carolina auto dealership owner in initiating a new garage liability insurance quote. The caller provided detailed business information, including operational specifics and current coverage details. The agent began setting up a new account and requested the current policy documents via email for evaluation. Technical system issues were briefly mentioned but did not impede the initial information gathering.",
+  "_model": "qwen3:14b",
+  "_eval_count": 280,
+  "_total_duration_ms": 42778,
+  "_source_file": "transcripts/q-200-+19196382500-20260116-150748-1768594068.5450.txt",
+  "_direction": "queue",
+  "_char_count": 4617
+}

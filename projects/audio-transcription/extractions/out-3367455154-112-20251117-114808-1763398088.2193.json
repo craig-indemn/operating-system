@@ -1,0 +1,33 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Frank Harris wanted to review his insurance policies with Alliance Insurance, specifically his homeowners and renters policies, to ensure coverage details were accurate and up-to-date.",
+  "resolution_steps": [
+    "Agent Brandy confirmed Frank's contact information, mailing address, and email.",
+    "Verified Jennifer's contact details as a secondary contact.",
+    "Reviewed Frank's homeowners policy, explaining coverage amounts (home rebuild, other structures, personal property, loss of use, liability, medical payments).",
+    "Discussed deductible amounts for wind/hail and general claims.",
+    "Addressed roof construction date discrepancy and confirmed no updates.",
+    "Confirmed no rental income or home-based business.",
+    "Notified Frank about flood/earthquake coverage exclusions.",
+    "Verified Truist Bank as the mortgagee.",
+    "Noted existence of a renters policy for Chase at a different address."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Homeowners policy structure (coverages, deductibles, exclusions)",
+    "Mortgagee verification process",
+    "Insurance underwriting details (roof age, property use)",
+    "Flood/earthquake policy differentiation"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's internal policy database",
+    "Carrier portal for mortgage verification"
+  ],
+  "summary": "Brandy conducted an annual policy review with Frank Harris, confirming his homeowners policy details, explaining coverage limits, and identifying a separate renters policy. The call included verification of contact information, mortgage details, and clarification of coverage exclusions. Frank indicated no changes to his policy and no immediate questions.",
+  "_model": "qwen3:14b",
+  "_eval_count": 353,
+  "_total_duration_ms": 46209,
+  "_source_file": "transcripts/out-3367455154-112-20251117-114808-1763398088.2193.txt",
+  "_direction": "outbound",
+  "_char_count": 3977
+}

@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Preston wants to cancel his auto insurance policy with Alliance Insurance Services, specifically his National General policy tied to a 2016 Chevy Cruze that was recently repaid.",
+  "resolution_steps": [
+    "Jamie confirms Preston's active policy with National General and verifies the vehicle was repaid yesterday.",
+    "Jamie explains the need for a signed policy release form to cancel the policy.",
+    "Jamie offers to send an electronic form via Conga Son for Preston's signature.",
+    "Jamie mentions handling any leftover billing by screenshoting and emailing it to Preston.",
+    "Jamie apologizes for staffing issues causing delays and offers to put Preston on hold if needed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance cancellation procedures (including required documentation)",
+    "Handling prorated billing for mid-term policy cancellations",
+    "Use of electronic signature platforms (Conga Son)",
+    "Carrier-specific processes (National General)"
+  ],
+  "systems_referenced": [
+    "Conga Son (electronic signature platform)",
+    "National General (insurance carrier)",
+    "DMV (auto policy tie-in reference)"
+  ],
+  "summary": "Preston seeks to cancel his auto insurance policy after repaying his vehicle. Jamie guides him through the cancellation process, explains the need for a signed release form, and addresses potential prorated billing. The conversation highlights staffing challenges at the agency, with Jamie apologizing for the wait and offering to put Preston on hold if needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 329,
+  "_total_duration_ms": 45214,
+  "_source_file": "transcripts/parked-501-501-20251223-101108-1766502664.1227.txt",
+  "_direction": "parked",
+  "_char_count": 4143
+}

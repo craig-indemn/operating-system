@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jamie, an Alliance Insurance agent, needed to locate the NCRF 31 form for Ariel Bailey's policy (number 2021179090) to facilitate its signing and upload to the portal.",
+  "resolution_steps": [
+    "Daniel confirmed the policy details (Ariel Bailey, policy number 2021179090, mod 02).",
+    "Daniel searched the system for the NCRF 31 form.",
+    "Daniel instructed Jamie to find the form on page 7 of the 'renew' packet under 'certification of higher coverage limit.'",
+    "Jamie confirmed understanding and planned to have the client sign and upload the form to the portal."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of policy document structures (e.g., 'renew' packets, page numbers).",
+    "Familiarity with NCRF 31 form's purpose and location in policy documents."
+  ],
+  "systems_referenced": [
+    "National General Insurance's carrier portal",
+    "Policy management system (renew packet documentation)"
+  ],
+  "summary": "Jamie sought assistance locating the NCRF 31 form for a client's policy. Daniel guided Jamie to page 7 of the renew packet, where the form was found. Jamie will now have the client sign and upload it to the portal. The call concluded successfully with a clear resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 321,
+  "_total_duration_ms": 40108,
+  "_source_file": "transcripts/out-8774683466-501-20251230-173825-1767134305.11509.txt",
+  "_direction": "outbound",
+  "_char_count": 1664
+}

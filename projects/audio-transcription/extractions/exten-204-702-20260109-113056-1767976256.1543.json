@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Mario has recently signed insurance paperwork and is seeking clarification on next steps, including payment options, policy details, and future planning for his property insurance.",
+  "resolution_steps": [
+    "Agent confirmed Mario's contact information (phone number, office number, email).",
+    "Discussed policy details: $1,800 for a 90-day policy ($1,290 for property, $510 for building).",
+    "Agreed to follow up in 90 days for a long-term (annual) policy after Mario completes repairs.",
+    "Addressed potential future policy adjustments (e.g., combining towing business coverage).",
+    "Reassured Mario about current contract limitations preventing immediate policy consolidation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy terms (short-term vs. long-term policies)",
+    "Payment plan options for clients",
+    "Process for electronic policy setup and documentation",
+    "Understanding of property insurance cost breakdowns"
+  ],
+  "systems_referenced": [],
+  "summary": "Mario, a client who recently completed insurance paperwork, discusses next steps with his agent. They confirm contact details, clarify the 90-day policy cost structure, and agree to a follow-up after repairs are completed. The agent also notes current contract limitations preventing immediate policy adjustments. The conversation emphasizes long-term partnership and future policy planning.",
+  "_model": "qwen3:14b",
+  "_eval_count": 307,
+  "_total_duration_ms": 47895,
+  "_source_file": "transcripts/exten-204-702-20260109-113056-1767976256.1543.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4236
+}

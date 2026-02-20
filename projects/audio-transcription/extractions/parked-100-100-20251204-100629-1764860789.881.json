@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller is requesting assistance to gain access to a building on University Parkway to allow an appliance delivery, asking about the location of a key or code in a lot box.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The caller requested help accessing a building for an appliance delivery but the call was parked without agent interaction. The transcript only contains the caller's fragmented request with no resolution or agent response.",
+  "_model": "qwen3:14b",
+  "_eval_count": 122,
+  "_total_duration_ms": 34760,
+  "_source_file": "transcripts/parked-100-100-20251204-100629-1764860789.881.txt",
+  "_direction": "parked",
+  "_char_count": 294
+}

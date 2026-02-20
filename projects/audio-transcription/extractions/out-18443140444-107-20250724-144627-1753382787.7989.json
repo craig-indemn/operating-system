@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Cecilia) sought assistance in identifying the correct contact (JJ Clark) to address a policy access issue and requested guidance on submitting a policy change request via email.",
+  "resolution_steps": [
+    "Agent confirmed JJ Clark is the territory rep responsible for access-related issues.",
+    "Agent provided JJ Clark's email address (j.clarke@acg.aaa.com).",
+    "Agent clarified that policy changes should be handled directly by the client but directed the caller to contact JJ Clark for access-related assistance."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Internal contact structure (territory reps and their roles)",
+    "Email format and domain for internal communications (ACG.AAA.com)",
+    "Policy management workflow (client responsibility for changes vs. rep assistance for access)"
+  ],
+  "systems_referenced": [
+    "ACG.AAA.com email domain"
+  ],
+  "summary": "Cecilia from Alliance Assurance requested help locating the correct contact for policy access issues and email submission. The agent identified JJ Clark as the territory rep, provided his email, and clarified client responsibilities for policy changes. The call concluded with the caller having the necessary contact information.",
+  "_model": "qwen3:14b",
+  "_eval_count": 262,
+  "_total_duration_ms": 37817,
+  "_source_file": "transcripts/out-18443140444-107-20250724-144627-1753382787.7989.txt",
+  "_direction": "outbound",
+  "_char_count": 1009
+}

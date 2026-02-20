@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Carol is confirming whether her 2014 Ford Ecovan has roadside service coverage after a breakdown, as she was told by a service provider she did not have it despite recalling a previous claim.",
+  "resolution_steps": [
+    "Anna asked Carol to confirm the vehicle details (2014 Ford Ecovan).",
+    "Anna put Carol on hold multiple times while checking the account and contacting Nat Gen (the carrier).",
+    "Anna confirmed that towing coverage is on Carol's policy.",
+    "Anna instructed Carol to contact Nat Gen directly for towing assistance."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding insurance policy coverage details (e.g., towing, roadside service).",
+    "Knowledge of carrier procedures (e.g., Nat Gen's role in providing towing services)."
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services customer portal (myallianceinsurance.com)",
+    "Nat Gen (carrier for towing services)"
+  ],
+  "summary": "Carol contacted Alliance Insurance to confirm roadside service coverage for her van after a breakdown. Anna verified the coverage exists through Nat Gen and directed Carol to contact Nat Gen directly for towing assistance. The call resolved the customer's confusion about coverage.",
+  "_model": "qwen3:14b",
+  "_eval_count": 272,
+  "_total_duration_ms": 43987,
+  "_source_file": "transcripts/exten-302-+13369267675-20260115-094714-1768488434.1107.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4719
+}

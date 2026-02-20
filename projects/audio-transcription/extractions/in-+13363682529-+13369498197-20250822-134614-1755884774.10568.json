@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unknown (call ended prematurely after initial greeting)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Inbound call ended immediately after the automated greeting with no substantive conversation. The caller only said 'Hello' before the call disconnected or was abandoned.",
+  "_model": "qwen3:14b",
+  "_eval_count": 91,
+  "_total_duration_ms": 21216,
+  "_source_file": "transcripts/in-+13363682529-+13369498197-20250822-134614-1755884774.10568.txt",
+  "_direction": "inbound",
+  "_char_count": 84
+}

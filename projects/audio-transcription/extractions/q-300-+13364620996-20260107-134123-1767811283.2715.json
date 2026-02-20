@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Gary contacted Alliance Insurance Services to resolve an issue where his mortgage company (PHH Mortgage Services) had not received his updated homeowners insurance policy information.",
+  "resolution_steps": [
+    "Will confirmed Gary's identity and policy details (Travelers policy for homeowners insurance).",
+    "Will explained the process to send proof of coverage: faxing the policy with the loan number and property address (717 Catawba) to PHH Mortgage Services.",
+    "Will noted an alternative email option (mycoverageinfo.com) provided by Gary for faster delivery.",
+    "Will requested Gary's phone number (336-462-0996) to follow up if issues arose during document transmission."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Procedures for sending proof of insurance to mortgage companies",
+    "Understanding policy documentation requirements (loan numbers, property addresses)",
+    "Knowledge of carrier-specific communication methods (fax, email portals)"
+  ],
+  "systems_referenced": [
+    "Travelers insurance policy system",
+    "PHH Mortgage Services fax and mailing address",
+    "mycoverageinfo.com email portal"
+  ],
+  "summary": "Gary contacted Alliance Insurance Services to address a mortgage company's request for updated policy information. Will confirmed the policy details, explained the required documentation (loan number, property address), and arranged for fax or email delivery to PHH Mortgage Services. Gary provided contact information for follow-up, and the issue was resolved with clear next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 326,
+  "_total_duration_ms": 41217,
+  "_source_file": "transcripts/q-300-+13364620996-20260107-134123-1767811283.2715.txt",
+  "_direction": "queue",
+  "_char_count": 2992
+}

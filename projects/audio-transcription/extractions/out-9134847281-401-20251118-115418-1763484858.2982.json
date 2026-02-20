@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to review their auto insurance status and discuss bundling their renters insurance policy with the agent.",
+  "resolution_steps": [
+    "Agent confirmed the caller's auto insurance is up to date with no recent claims or lawsuits.",
+    "Agent inquired about the caller's renters insurance policy, noting they currently have Progressive.",
+    "Agent asked about the coverage amount for personal property and estimated based on the home's size (2,200 sq ft) and furnishings.",
+    "Agent explained liability requirements from the rental management company and discussed bundling options.",
+    "Agent guided the caller to assess personal property value for adequate coverage."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Auto and renters insurance policy details",
+    "Bundling insurance strategies",
+    "Personal property coverage assessment",
+    "Liability requirements for rental properties"
+  ],
+  "systems_referenced": [
+    "Progressive (current renters insurer)"
+  ],
+  "summary": "The agent reviewed the caller's auto insurance status and discussed bundling their renters insurance with Progressive. They assessed the caller's personal property coverage needs based on home size and furnishings, with the caller still determining the appropriate coverage amount.",
+  "_model": "qwen3:14b",
+  "_eval_count": 266,
+  "_total_duration_ms": 49016,
+  "_source_file": "transcripts/out-9134847281-401-20251118-115418-1763484858.2982.txt",
+  "_direction": "outbound",
+  "_char_count": 4178
+}

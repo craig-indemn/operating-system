@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Corbin from the commercial department) sought to send proof of insurance after issuing a policy and inquired about alternative methods if the system couldn't generate it automatically.",
+  "resolution_steps": [
+    "Michelle confirmed the caller's intent and acknowledged the policy issuance.",
+    "Michelle explained that the agency can manually issue a certificate of insurance.",
+    "The caller accepted this solution and ended the conversation."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Process for issuing certificates of insurance manually through the agency system",
+    "Understanding of policy issuance workflows and proof-of-insurance requirements"
+  ],
+  "systems_referenced": [
+    "Agency automation system (implied through reference to 'issuing a certificate of insurance from your agency')"
+  ],
+  "summary": "Corbin from the commercial department contacted Auto Owners Insurance to resolve an issue with proof of insurance after policy issuance. Michelle explained that the agency can manually generate a certificate of insurance, which Corbin accepted as a solution. The call concluded with both parties agreeing to this workaround.",
+  "_model": "qwen3:14b",
+  "_eval_count": 235,
+  "_total_duration_ms": 35009,
+  "_source_file": "transcripts/out-8003460346-409-20250723-141312-1753294392.10582.txt",
+  "_direction": "outbound",
+  "_char_count": 1764
+}

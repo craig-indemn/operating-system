@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is reporting a hit-and-run accident involving a rental car and seeks assistance in obtaining claim-related numbers (e.g., from an envelope or intercom page) to process the claim.",
+  "resolution_steps": [
+    "Agent confirmed caller's name (Isaac Seeger) and acknowledged the claim issue.",
+    "Agent asked clarifying questions about the claim process and required documentation.",
+    "Agent offered to transfer the caller to a specialist for further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Claims process for hit-and-run incidents",
+    "Documentation requirements (e.g., claim numbers, envelope/intercom page details)"
+  ],
+  "systems_referenced": [],
+  "summary": "Isaac Seeger reported a hit-and-run accident and requested help obtaining claim numbers from an envelope or intercom page. The agent clarified the situation and transferred him to an agent for specialized support. The caller appeared confused about the exact documentation needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 221,
+  "_total_duration_ms": 37621,
+  "_source_file": "transcripts/in-+13363779003-+14436267082-20251229-091741-1767017861.274.txt",
+  "_direction": "inbound",
+  "_char_count": 1117
+}

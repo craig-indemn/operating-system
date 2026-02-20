@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jason White wants to coordinate a three-way call with Anna and an insurance adjuster between 1:15-1:30 PM to discuss a claim, confirming the time works with Anna's availability.",
+  "resolution_steps": [
+    "Anna confirms she can join the three-way call at the proposed time.",
+    "Jason acknowledges the time window and agrees to answer the call if available.",
+    "Both parties finalize the arrangement for the call."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance claims coordination",
+    "Handling client communication for adjuster interactions"
+  ],
+  "systems_referenced": [],
+  "summary": "Jason White schedules a three-way call with Anna and an insurance adjuster for 1:15-1:30 PM. Anna confirms availability, and Jason agrees to participate if reachable during that window. The call is set up for later in the day.",
+  "_model": "qwen3:14b",
+  "_eval_count": 211,
+  "_total_duration_ms": 44391,
+  "_source_file": "transcripts/exten-302-+13366485001-20250902-104836-1756824516.2184.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 939
+}

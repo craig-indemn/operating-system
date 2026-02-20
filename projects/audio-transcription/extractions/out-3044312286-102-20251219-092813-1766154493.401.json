@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Glory requested confirmation of a policy renewal for Winston Salem Business Adventures and asked for a current EPI or deck page to be sent to her email.",
+  "resolution_steps": [
+    "Agent confirmed the policy in question (Winston Salem Business Adventures).",
+    "Agent requested Glory's email address for sending the EPI/deck page.",
+    "Agent verified the email address provided (T is in Tom, J is in Jack, Hurt HURT, F is in Frank, C is in Cat, B is in Boy. Inc. Dot com).",
+    "Agent committed to sending the requested documents via email."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy renewal status verification",
+    "Document retrieval (EPI/deck page)",
+    "Email address formatting and validation"
+  ],
+  "systems_referenced": [
+    "Internal policy management system",
+    "Email communication"
+  ],
+  "summary": "Glory contacted Alliance Insurance to check the renewal status of a business policy and request updated documents. The agent confirmed the policy, collected the email address, and agreed to send the requested materials. The call concluded with the agent preparing to send the documents.",
+  "_model": "qwen3:14b",
+  "_eval_count": 266,
+  "_total_duration_ms": 37748,
+  "_source_file": "transcripts/out-3044312286-102-20251219-092813-1766154493.401.txt",
+  "_direction": "outbound",
+  "_char_count": 757
+}

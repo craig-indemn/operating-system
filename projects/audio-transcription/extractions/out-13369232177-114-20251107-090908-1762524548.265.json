@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The agent is verifying the customer's insurance policy details (address, contact information, and policy status) as part of an annual check to prepare for policy renewal in July.",
+  "resolution_steps": [
+    "Confirmed customer's name, address, and contact information (email and phone number).",
+    "Notified customer of an annual policy review to ensure accuracy ahead of the July renewal.",
+    "Attempted to access the policy system but encountered technical issues.",
+    "Offered to call back later when the system is operational.",
+    "Acknowledged customer's prior payment for the year and confirmed no immediate changes were needed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Annual policy renewal process",
+    "System navigation (Foremost insurance platform)",
+    "Spanish language communication",
+    "Customer verification procedures"
+  ],
+  "systems_referenced": [
+    "Foremost (insurance system)"
+  ],
+  "summary": "An Alliance Insurance agent conducted an annual policy verification call with a Spanish-speaking customer, confirming their contact details and policy status ahead of a July renewal. A temporary system issue prevented immediate access to the policy, so the agent offered to follow up later. The customer agreed to this arrangement.",
+  "_model": "qwen3:14b",
+  "_eval_count": 268,
+  "_total_duration_ms": 42886,
+  "_source_file": "transcripts/out-13369232177-114-20251107-090908-1762524548.265.txt",
+  "_direction": "outbound",
+  "_char_count": 2840
+}

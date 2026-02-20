@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to make payments for her auto insurance policy (Penn National) and a renter's policy, which were both overdue. She mentioned confusion about a $100 minimum payment requirement for the renter's policy.",
+  "resolution_steps": [
+    "Agent confirmed the caller's identity and policy details (auto with Penn National, renter's policy).",
+    "Checked the auto policy's balance ($152.44, pending cancellation) and processed a $153 payment (including a $4 fee).",
+    "Reviewed the renter's policy, which was due on 12/11 with a balance of $45.80, and clarified the $100 minimum payment requirement.",
+    "Processed an additional $104 payment for the renter's policy (including the $4 fee) as requested by the caller.",
+    "Provided confirmation via email and confirmed no further assistance was needed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance payment processing procedures",
+    "Policy cancellation thresholds",
+    "Minimum payment requirements for different policy types",
+    "Credit card payment verification protocols"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's policy management system",
+    "Penn National insurance portal",
+    "Payment processing system"
+  ],
+  "summary": "The caller made payments for her auto and renter's insurance policies, with the agent resolving confusion about a $100 minimum payment requirement for the renter's policy. Both payments were processed successfully, and the caller confirmed she was up to date on her payments.",
+  "_model": "qwen3:14b",
+  "_eval_count": 356,
+  "_total_duration_ms": 39904,
+  "_source_file": "transcripts/in-+13363779003-+13363740199-20251212-112044-1765556444.1211.txt",
+  "_direction": "inbound",
+  "_char_count": 3158
+}

@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Lynetta requested insurance pricing quotes for home and auto policies and asked for the information to be emailed, along with payment breakdown details.",
+  "resolution_steps": [
+    "Jeremy provided home and auto insurance quotes ($940 and $1,007.74 respectively).",
+    "Lynetta requested the information be emailed to her Gmail address (BigCountryW@gmail.com).",
+    "Jeremy agreed to send the proposal via email, including payment details."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance product pricing structures",
+    "Email communication protocols",
+    "Proposal generation processes"
+  ],
+  "systems_referenced": [
+    "Email system (for sending proposals)"
+  ],
+  "summary": "Jeremy from Alliance Insurance provided Lynetta with home and auto insurance quotes during a busy day of appointments. Lynetta requested the details be emailed for review, and Jeremy confirmed he would send the proposal with payment breakdowns. The conversation concluded with mutual appreciation and plans to follow up via email.",
+  "_model": "qwen3:14b",
+  "_eval_count": 234,
+  "_total_duration_ms": 29838,
+  "_source_file": "transcripts/out-8432459614-701-20251218-134754-1766083674.3179.txt",
+  "_direction": "outbound",
+  "_char_count": 1308
+}

@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Melissa Lewis from Haco Construction is seeking assistance to correct errors in a Certificate of Insurance (COI) for Appalachian State University's Way Hall Game Vault, specifically addressing missing project and client addresses, and ensuring proper email communication with Alliance Insurance.",
+  "resolution_steps": [
+    "Agent acknowledges the issue with the COI and confirms the request is under Haco Construction.",
+    "Agent asks Melissa to forward the email containing the COI request and bid bond form for review.",
+    "Agent confirms Melissa's email address (Gloria Hammond at allianceinsurance.com) and notes delivery issues.",
+    "Agent attempts to locate the COI in the system and checks for missing details (project address, client address).",
+    "Agent promises to resolve the issue and send corrected documents."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of COI documentation and correction processes",
+    "Email tracking and support ticket management",
+    "Handling client communication during staffing shortages"
+  ],
+  "systems_referenced": [
+    "Internal email system",
+    "Support ticket/claim tracking portal"
+  ],
+  "summary": "Melissa Lewis from Haco Construction contacted Alliance Insurance to resolve issues with a COI for Appalachian State University, including missing addresses and email delivery problems. The agent confirmed the request, requested email details, and promised to address the corrections. The call ended with the agent committing to follow up after resolving internal system issues.",
+  "_model": "qwen3:14b",
+  "_eval_count": 316,
+  "_total_duration_ms": 47734,
+  "_source_file": "transcripts/exten-102-+13367823384-20251024-164957-1761338997.7562.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4003
+}

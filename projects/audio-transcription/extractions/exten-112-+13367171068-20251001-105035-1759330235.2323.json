@@ -1,0 +1,33 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking to finalize an insurance policy switch from Progressive to National General, clarify pricing implications based on a driver's license status, and set up payment methods.",
+  "resolution_steps": [
+    "Agent confirms the caller's intent to switch insurance providers.",
+    "Discusses the impact of the driver's license status on pricing and clarifies it remains suspended in the system.",
+    "Provides new quote details with National General: $1,326.80 down payment and $109/monthly payments.",
+    "Explains outstanding balance with Progressive ($99.25) and payment options (credit card or auto pay via check account).",
+    "Guides caller through setting up auto pay with a check account, including routing and account numbers.",
+    "Confirms payment schedule (initial payment on credit card, subsequent auto payments on the 4th of each month).",
+    "Collects credit card and banking details for immediate payment and auto pay setup.",
+    "Informs caller of confirmation emails from National General and the agent for policy documents."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy pricing factors (e.g., driver's license status)",
+    "Process for switching insurance providers",
+    "Auto pay setup procedures (credit card and check account)",
+    "Handling outstanding balances with previous insurers"
+  ],
+  "systems_referenced": [
+    "National General (insurance provider)",
+    "Progressive (previous insurer)",
+    "Auto pay system via check account"
+  ],
+  "summary": "The caller is transitioning from Progressive to National General, with the agent finalizing the new policy details, addressing license status impacts on pricing, and setting up payment methods. The caller agrees to pay the down payment via credit card and set up auto pay via check account, with confirmation emails to follow.",
+  "_model": "qwen3:14b",
+  "_eval_count": 399,
+  "_total_duration_ms": 57506,
+  "_source_file": "transcripts/exten-112-+13367171068-20251001-105035-1759330235.2323.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4214
+}

@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Rachel is attempting to reach Jeremy Palmer to discuss a compliance-related question about mandatory sexual abuse training requirements for a new business with volunteer interactions involving minors.",
+  "resolution_steps": [
+    "Agent transfers call to Jeremy Palmer after confirming Rachel's identity.",
+    "Jeremy consults with Tracy about whether a new business needs annual mandatory sexual abuse training for employees and volunteers.",
+    "Jeremy confirms that a training program must be implemented, even for new businesses.",
+    "Tracy agrees to establish a training program and explore using existing school system training resources.",
+    "Call concludes with confirmation of compliance action plan."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of mandatory employee/volunteer training requirements for businesses involving minors",
+    "Knowledge of compliance protocols for new businesses",
+    "Awareness of potential audit requirements for training programs"
+  ],
+  "systems_referenced": [],
+  "summary": "Rachel connects with Jeremy Palmer and Tracy to address a compliance question about mandatory sexual abuse training for a new business. The conversation confirms the need for a training program and plans to leverage existing school system resources. The call concludes with agreement to implement a compliance solution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 255,
+  "_total_duration_ms": 39208,
+  "_source_file": "transcripts/out-13367861133-702-20251105-143541-1762371341.5655.txt",
+  "_direction": "outbound",
+  "_char_count": 2208
+}

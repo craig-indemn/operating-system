@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Katie Romo from Greening Clean is seeking guidance on filing a claim for a damaged Toro skid loader (Toro Dingo TX) that was damaged during an incident on a job site, costing approximately $15,000 to repair.",
+  "resolution_steps": [
+    "Anna confirms the claim would fall under the policy's inland marine coverage and mentions the deductible is $250.",
+    "Anna explains that filing a claim may affect future premiums but emphasizes it's worth pursuing given the repair costs.",
+    "Anna initiates the claim setup process, requesting details: equipment description (Toro Dingo TX), incident date (approx. September 29, 2027), and incident specifics (machine tipping on a hill, engine damage).",
+    "Anna asks Katie to confirm being the main contact for the claim."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of inland marine coverage for equipment",
+    "Knowledge of claim filing processes and deductible structures",
+    "Awareness of how claims impact future premiums"
+  ],
+  "systems_referenced": [
+    "Internal claim setup system (implied by 'I'm setting up the account now')"
+  ],
+  "summary": "Katie Romo from Greening Clean contacted Alliance Insurance to file a claim for a damaged Toro skid loader. Anna explained the claim process, confirmed coverage under inland marine, and initiated the claim setup. The call concluded with Anna gathering necessary details and confirming Katie as the primary contact.",
+  "_model": "qwen3:14b",
+  "_eval_count": 331,
+  "_total_duration_ms": 53516,
+  "_source_file": "transcripts/exten-302-+13365750026-20251001-155956-1759348796.8313.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4246
+}

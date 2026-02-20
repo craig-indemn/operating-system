@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Carol Miller) is seeking to book a towing service for her 2014 Ford E360 Super Duty van, as instructed by someone else (possibly a third party or insurance representative).",
+  "resolution_steps": [
+    "Agent Frank verifies the caller's identity using her policy number (2015500591).",
+    "Requests the caller's current phone number (533-692-6767) and confirms it is a cell phone.",
+    "Asks for the mailing address on file and the vehicle details (year, make, model).",
+    "Caller provides vehicle details (2014 Ford E360 Super Duty van) but the conversation cuts off before address confirmation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding towing and roadside assistance claim procedures",
+    "Policy verification process",
+    "Data collection for claims (policy number, contact info, vehicle details)"
+  ],
+  "systems_referenced": [
+    "Internal policy database (to verify policy details)"
+  ],
+  "summary": "Carol Miller contacted the claims department to arrange towing services for her van. Agent Frank initiated verification of her policy and collected basic information, but the conversation was cut off before completion. The caller's mailing address and full vehicle details were not confirmed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 302,
+  "_total_duration_ms": 36341,
+  "_source_file": "transcripts/out-8774683466-+13369267675-20260115-134556-1768502756.5475.txt",
+  "_direction": "outbound",
+  "_char_count": 4219
+}

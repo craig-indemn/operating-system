@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "N/A (automated voicemail greeting with menu options)",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Standard voicemail greeting from Auto Owners Insurance providing menu options for callers. No substantive conversation occurred as the transcript only contains automated system prompts.",
+  "_model": "qwen3:14b",
+  "_eval_count": 89,
+  "_total_duration_ms": 20245,
+  "_source_file": "transcripts/out-8003460346-409-20260109-160123-1767992483.5919.txt",
+  "_direction": "outbound",
+  "_char_count": 589
+}

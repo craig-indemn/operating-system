@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Chris Seaver wants to get his insurance rates evaluated for his upcoming personal policy renewal.",
+  "resolution_steps": [
+    "Agent asked whether the policy is personal or business.",
+    "Agent instructed to 'turn the screen over,' likely preparing to access a system to check rates."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding how to access and navigate insurance rate-checking systems",
+    "Differentiating between personal and business policy processes"
+  ],
+  "systems_referenced": [],
+  "summary": "Chris Seaver contacted Alliance Insurance to inquire about his personal policy renewal rates. The agent confirmed the policy type and initiated a system check, but the conversation was cut off before resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 168,
+  "_total_duration_ms": 36119,
+  "_source_file": "transcripts/in-+13363544000-+13369090715-20250912-095942-1757685582.572.txt",
+  "_direction": "inbound",
+  "_char_count": 295
+}

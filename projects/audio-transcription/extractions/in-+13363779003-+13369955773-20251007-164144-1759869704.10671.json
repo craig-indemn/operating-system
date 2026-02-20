@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Inquiring about the cost to reestablish insurance after a lapse",
+  "resolution_steps": [
+    "Agent acknowledged the request",
+    "Agent transferred the call (no further details provided)"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller asked about reinstating lapsed insurance but was transferred without resolution. Transcript ends mid-transfer with no substantive information provided.",
+  "_model": "qwen3:14b",
+  "_eval_count": 106,
+  "_total_duration_ms": 18754,
+  "_source_file": "transcripts/in-+13363779003-+13369955773-20251007-164144-1759869704.10671.txt",
+  "_direction": "inbound",
+  "_char_count": 233
+}

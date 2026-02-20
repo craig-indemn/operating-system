@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Don Cuman wants to cancel his auto owner's insurance and general liability insurance because it was inadvertently switched to auto pay, which he does not use. He wishes to continue the policy without auto pay.",
+  "resolution_steps": [
+    "Agent Gloria Donald Fisher confirms the caller's identity and policy details (Don's Custom Carpentry).",
+    "Informs caller that a commercial package policy is active and explains cancellation options.",
+    "Verifies email address on file (Don's Custom Carpentry@gmail.com).",
+    "Sends a cancellation request form for the caller to sign.",
+    "Explains that the form requires authorization for cancellation.",
+    "Offers in-person signing at Alliance Insurance locations.",
+    "Mentions reimbursement for any return premium after carrier processes cancellation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance cancellation procedures",
+    "Authorization requirements for policy changes",
+    "Reimbursement policies for canceled policies"
+  ],
+  "systems_referenced": [
+    "Cancellation request form (paper-based process)"
+  ],
+  "summary": "Don Cuman seeks to cancel his insurance policy after it was switched to auto pay. The agent guides him through the cancellation process, explains the need for a signed form, and confirms reimbursement possibilities. The call concludes with the agent sending the form and offering in-person signing options.",
+  "_model": "qwen3:14b",
+  "_eval_count": 293,
+  "_total_duration_ms": 35414,
+  "_source_file": "transcripts/exten-102-+13369184809-20251222-150736-1766434056.4508.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1986
+}

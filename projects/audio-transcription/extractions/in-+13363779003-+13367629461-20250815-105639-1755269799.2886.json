@@ -1,0 +1,22 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Caller requested to speak with Jessica Nambi, though their specific reason for the call was not stated.",
+  "resolution_steps": [
+    "Agent confirmed limited English comprehension",
+    "Offered to transfer caller to Jessica Nambi",
+    "Requested caller to hold briefly"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Basic call handling protocols",
+    "Transfer procedures"
+  ],
+  "systems_referenced": [],
+  "summary": "A non-substantive call where the agent offered to transfer the caller to Jessica Nambi. No insurance-related discussion occurred, and the call ended with a transfer request.",
+  "_model": "qwen3:14b",
+  "_eval_count": 141,
+  "_total_duration_ms": 30069,
+  "_source_file": "transcripts/in-+13363779003-+13367629461-20250815-105639-1755269799.2886.txt",
+  "_direction": "inbound",
+  "_char_count": 328
+}

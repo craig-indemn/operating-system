@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The conversation appears to be a casual, non-substantive exchange between two individuals discussing unrelated topics (home ownership, insurance, and personal anecdotes) without a clear purpose or actionable request.",
+  "resolution_steps": [],
+  "outcome": "not_applicable",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The dialogue is a fragmented, informal conversation covering topics like home maintenance, insurance, and personal stories. No specific insurance-related inquiry or actionable task is identified. The discussion lacks focus and does not align with a structured call purpose.",
+  "_model": "qwen3:14b",
+  "_eval_count": 135,
+  "_total_duration_ms": 75110,
+  "_source_file": "transcripts/exten-401-+14693383818-20251222-103249-1766417569.1618.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 18080
+}

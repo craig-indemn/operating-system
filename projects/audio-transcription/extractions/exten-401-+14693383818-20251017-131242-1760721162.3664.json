@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Abby is asking if she can continue her current AAA insurance policy until December 17th and start a new policy on that date, while adjusting the payment schedule to avoid being charged the full amount next month.",
+  "resolution_steps": [
+    "Agent explains that if Abby cancels her current policy on the 30th, the payment will be pro-rated from December 17th to 30th.",
+    "Abby confirms she will not allow automatic payments until she follows up with the agent to confirm the first payment date.",
+    "Agent reassures Abby that the pro-rated amount will only cover the period from the 17th to the 30th."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy renewal and cancellation rules",
+    "Pro-rating of insurance payments",
+    "AAA insurance policy terms and payment schedules"
+  ],
+  "systems_referenced": [
+    "AAA insurance card",
+    "Triple A roadside assistance (contextual reference)"
+  ],
+  "summary": "Abby is adjusting her AAA insurance policy to align the expiration date with a new payment schedule. The agent explains pro-rating rules and confirms Abby will follow up before making any payments. The call ends with Abby agreeing to this approach.",
+  "_model": "qwen3:14b",
+  "_eval_count": 283,
+  "_total_duration_ms": 41461,
+  "_source_file": "transcripts/exten-401-+14693383818-20251017-131242-1760721162.3664.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1577
+}

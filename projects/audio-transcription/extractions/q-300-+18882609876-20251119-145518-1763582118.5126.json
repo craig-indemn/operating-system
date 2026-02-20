@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "John wanted to verify the annual premium and total outstanding balance for a policy held by William Wilson and Lori Chalaway.",
+  "resolution_steps": [
+    "Brandi asked for the policy number and confirmed the policyholders' names.",
+    "Brandi checked the policy details and informed John there was no outstanding balance.",
+    "Brandi confirmed the annual premium was $880 and the policy was paid in full."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Policy lookup procedures",
+    "Understanding of premium and balance terminology",
+    "Access to policy databases"
+  ],
+  "systems_referenced": [],
+  "summary": "John called to verify details about a policy held by William Wilson and Lori Chalaway. Brandi confirmed the policy had no outstanding balance and provided the annual premium amount. The caller was satisfied with the information provided.",
+  "_model": "qwen3:14b",
+  "_eval_count": 197,
+  "_total_duration_ms": 39504,
+  "_source_file": "transcripts/q-300-+18882609876-20251119-145518-1763582118.5126.txt",
+  "_direction": "queue",
+  "_char_count": 803
+}

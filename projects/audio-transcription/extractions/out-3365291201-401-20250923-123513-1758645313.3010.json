@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Anish wanted to confirm if Heather received his email about a vehicle registration issue with Cincinnati and discuss next steps for resolving it.",
+  "resolution_steps": [
+    "Heather confirmed she received the email regarding the unregistered Honda 2020 HRV.",
+    "Anish admitted he had not yet registered the vehicle but planned to do so within a couple of weeks.",
+    "Heather agreed to inform Cincinnati of the timeline and confirm Anish's intent to complete registration."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of vehicle registration requirements for insurance carriers like Cincinnati",
+    "Ability to manage client communication about pending administrative tasks"
+  ],
+  "systems_referenced": [
+    "email"
+  ],
+  "summary": "Heather and Anish discussed a Cincinnati insurance issue related to an unregistered 2020 Honda HRV. Anish confirmed he would register the vehicle within a few weeks, and Heather agreed to relay this timeline to Cincinnati. The call concluded with mutual agreement on next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 232,
+  "_total_duration_ms": 40941,
+  "_source_file": "transcripts/out-3365291201-401-20250923-123513-1758645313.3010.txt",
+  "_direction": "outbound",
+  "_char_count": 1161
+}

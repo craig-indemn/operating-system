@@ -1,0 +1,22 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller, Diane Conrad, attempted to reach Corbin but was informed he was unavailable and opted to leave a voicemail instead.",
+  "resolution_steps": [
+    "Agent informed caller Corbin was on the phone.",
+    "Offered to send call to voicemail or connect to another agent.",
+    "Caller declined assistance and requested voicemail option.",
+    "Agent confirmed voicemail request and paused call."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [
+    "voicemail system"
+  ],
+  "summary": "Caller Diane Conrad attempted to reach Corbin but was informed he was unavailable. She agreed to leave a voicemail message for him. The agent facilitated the voicemail transfer and ended the call.",
+  "_model": "qwen3:14b",
+  "_eval_count": 173,
+  "_total_duration_ms": 29174,
+  "_source_file": "transcripts/in-+13363779003-+13364073127-20251008-134731-1759945651.5246.txt",
+  "_direction": "inbound",
+  "_char_count": 542
+}

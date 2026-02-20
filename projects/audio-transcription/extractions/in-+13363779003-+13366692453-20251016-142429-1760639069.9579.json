@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller needs to file an auto insurance claim after an accident involving his wife, where the other party lied about the incident. He expresses frustration with the process but wants to proceed.",
+  "resolution_steps": [
+    "Agent listened to the caller's explanation of the accident and frustration with the situation.",
+    "Agent acknowledged the caller's concerns and confirmed the need to file a claim.",
+    "Agent offered to transfer the caller to an agent who can assist with filing the claim."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Auto insurance claims process",
+    "Handling customer frustration in claims situations",
+    "Internal transfer protocols to connect callers with appropriate agents"
+  ],
+  "systems_referenced": [],
+  "summary": "Ralph Kidley contacted Alliance Insurance to file an auto insurance claim after an accident involving his wife. He expressed frustration with the process but wanted to proceed. The agent offered to transfer him to an agent who can help file the claim.",
+  "_model": "qwen3:14b",
+  "_eval_count": 222,
+  "_total_duration_ms": 35921,
+  "_source_file": "transcripts/in-+13363779003-+13366692453-20251016-142429-1760639069.9579.txt",
+  "_direction": "inbound",
+  "_char_count": 742
+}

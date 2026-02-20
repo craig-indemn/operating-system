@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Patty is seeking guidance on configuring phone extensions for an organization, specifically moving extensions between locations for billing purposes and updating service agreements to reflect new office locations.",
+  "resolution_steps": [
+    "Cecilia confirms that extensions 501-512 (remote workers) will be billed under location one, despite being physically located elsewhere.",
+    "Cecilia explains that location five (currently labeled Philadelphia) will be renamed to Pilot Mountain and updated with the correct address (117 West Main Street, Pilot Mountain, NC 27041).",
+    "Cecilia proposes a service agreement amendment to update the location name and address without changing rates or terms.",
+    "Cecilia suggests canceling the service agreement for location four (which is no longer in use) after confirming it's acceptable to Patty.",
+    "Cecilia clarifies that call recordings are server-wide and not tied to specific locations, so deleting location four won't affect recordings."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of phone system billing configurations",
+    "Service agreement amendment processes",
+    "Location-based extension management",
+    "Call recording storage mechanisms"
+  ],
+  "systems_referenced": [
+    "Lightspeed Voice service agreement system",
+    "Extension management portal",
+    "Call recording server infrastructure"
+  ],
+  "summary": "Patty is working with Cecilia to reconfigure phone extensions and service agreements for billing accuracy, involving moving extensions between locations and updating addresses. The agent outlines the necessary steps and confirms data safety. The call requires follow-up to execute the service agreement amendment and cancellation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 356,
+  "_total_duration_ms": 56158,
+  "_source_file": "transcripts/exten-107-+19415643010-20250822-111634-1755875794.6193.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3978
+}

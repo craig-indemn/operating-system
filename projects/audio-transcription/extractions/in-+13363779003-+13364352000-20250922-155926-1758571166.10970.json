@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to know the renewal date, payment schedule, and whether the premium for his National General policy has increased, as he is considering shopping around for a new policy.",
+  "resolution_steps": [
+    "Agent asked for the policyholder's full name (Mike and Karen Howard) and carrier (National General).",
+    "Agent informed the caller they would transfer the call to another agent to provide the requested details."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy lookup procedures",
+    "Premium adjustment processes",
+    "Call transfer protocols"
+  ],
+  "systems_referenced": [
+    "Policy database"
+  ],
+  "summary": "Mike Howard contacted Alliance Insurance to inquire about his National General policy's renewal date, payment schedule, and potential premium increases. The agent collected basic policy details and promised to transfer him to another agent for further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 198,
+  "_total_duration_ms": 39324,
+  "_source_file": "transcripts/in-+13363779003-+13364352000-20250922-155926-1758571166.10970.txt",
+  "_direction": "inbound",
+  "_char_count": 549
+}

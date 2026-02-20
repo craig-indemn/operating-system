@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "N/A",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Voicemail greeting from Emma Bookman informing caller of absence until January 5th and requesting message details.",
+  "_model": "qwen3:14b",
+  "_eval_count": 74,
+  "_total_duration_ms": 32137,
+  "_source_file": "transcripts/out-19804033344-705-20251229-141843-1767035923.10169.txt",
+  "_direction": "outbound",
+  "_char_count": 214
+}

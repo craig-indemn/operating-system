@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Derek is following up on an unresolved document issue from a previous interaction, requesting resolution to process invoices and ensure compliance with the vendor's requirements.",
+  "resolution_steps": [
+    "Rick acknowledges the issue with the document not being processed despite the vendor uploading a link.",
+    "Rick commits to forwarding the issue to his support team to investigate the compliance problem.",
+    "Rick agrees to contact the vendor to clarify the specific compliance issue and resolve it.",
+    "Rick provides his personal number to Derek for updates and arranges for his team to text Derek once the issue is resolved."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Document compliance requirements for insurance renewals",
+    "Vendor communication protocols",
+    "Internal support case creation process"
+  ],
+  "systems_referenced": [
+    "Vendor Field (third-party vendor system)",
+    "Internal support team",
+    "Document upload portal (implied)"
+  ],
+  "summary": "Derek reports an unresolved document compliance issue preventing invoice processing. Rick confirms the vendor uploaded a link but the document remains non-compliant. He promises to escalate to support, contact the vendor for clarification, and notify Derek via text once resolved. Derek provides his number for follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 270,
+  "_total_duration_ms": 37985,
+  "_source_file": "transcripts/exten-105-+13362764167-20251020-090918-1760965758.402.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2393
+}

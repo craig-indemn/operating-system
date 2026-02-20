@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jamie Flippin, an Alliance Insurance agent, is contacting Cheryl Albert to conduct a routine account review to verify that her auto and home policy information is up to date.",
+  "resolution_steps": [
+    "Introduced himself as an Alliance Insurance agent.",
+    "Notified Cheryl Albert that he is in the office daily (except holidays) until 5:00 p.m. and provided his direct office number (336-377-9003).",
+    "Requested she call back at her convenience to complete the account review."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of standard insurance policy review procedures",
+    "Knowledge of office hours and contact protocols"
+  ],
+  "systems_referenced": [],
+  "summary": "An Alliance Insurance agent contacted a client to perform a routine account review, informing her of his availability and contact details for follow-up. The call did not resolve the account review but set up a potential callback.",
+  "_model": "qwen3:14b",
+  "_eval_count": 224,
+  "_total_duration_ms": 64492,
+  "_source_file": "transcripts/out-3367827747-501-20251119-124012-1763574012.3740.txt",
+  "_direction": "outbound",
+  "_char_count": 714
+}

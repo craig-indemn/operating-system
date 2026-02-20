@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Leaving a voicemail to remind Ozzy about an unresolved insurance payment issue and request a callback.",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A voicemail message from Jeremy at Alliance Insurance reminding Ozzy about an unresolved payment issue and requesting a callback. The call was not substantive as it was a voicemail greeting with no interactive conversation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 109,
+  "_total_duration_ms": 34451,
+  "_source_file": "transcripts/out-3368306897-701-20251008-102217-1759933337.1752.txt",
+  "_direction": "outbound",
+  "_char_count": 706
+}

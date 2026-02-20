@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to make a partial payment on their daughter's truck insurance policy to avoid the premium expiring, with the intention to complete the payment later in the week.",
+  "resolution_steps": [
+    "Agent verified Stephanie Bunker's policy details using her PO box number (391) and confirmed the policy was active.",
+    "Informed caller of the full renewal amount ($358.47 for six months) and minimum payment threshold ($62.37).",
+    "Processed a $200 credit card payment using Visa ending in 4031, with cardholder name Wendy Johnson and zip code 27030.",
+    "Provided confirmation of successful payment and advised caller would receive a transaction notification.",
+    "Allowed caller to schedule a follow-up payment before the end of the week."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy renewal processes",
+    "Payment plan options for partial payments",
+    "Credit card verification procedures",
+    "Policy lookup using contact information"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's policy database",
+    "Payment processing system"
+  ],
+  "summary": "A caller made a partial payment of $200 toward their daughter's truck insurance renewal, with plans to complete the remaining balance later. The agent processed the credit card transaction and confirmed the payment. The caller will follow up with the remaining payment before the week ends.",
+  "_model": "qwen3:14b",
+  "_eval_count": 324,
+  "_total_duration_ms": 33351,
+  "_source_file": "transcripts/in-+13363779003-+13369400825-20251001-092701-1759325221.751.txt",
+  "_direction": "inbound",
+  "_char_count": 2703
+}

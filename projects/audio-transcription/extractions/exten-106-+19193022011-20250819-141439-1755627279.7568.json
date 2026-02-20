@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Mark from Escola Roofing is clarifying coverage details on an insurance quote, specifically confirming whether pollution and umbrella liability are included, after discrepancies were noted in the document.",
+  "resolution_steps": [
+    "Jessica confirms that pollution and umbrella coverage were not highlighted in the quote.",
+    "Mark explains that Miguel's wife confirmed the umbrella coverage is maintained through another agent.",
+    "Jessica verifies that the umbrella coverage is active and will continue, while pollution coverage is missing."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding insurance policy coverage terms (e.g., pollution, umbrella liability)",
+    "Knowledge of how coverage is documented and communicated in quotes"
+  ],
+  "systems_referenced": [
+    "merge quote document"
+  ],
+  "summary": "Mark clarifies coverage gaps (pollution and umbrella liability) in an insurance quote with Jessica. Jessica confirms the umbrella coverage is active through another agent, while pollution coverage is missing. Mark will address the gap after confirmation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 218,
+  "_total_duration_ms": 34526,
+  "_source_file": "transcripts/exten-106-+19193022011-20250819-141439-1755627279.7568.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1139
+}

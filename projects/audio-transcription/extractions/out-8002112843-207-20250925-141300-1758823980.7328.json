@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Cody Jackson is seeking assistance with an issue where an auto pay setup (EFT) initiated on September 3rd is not reflecting in the system, despite submitting a signed EFT form. He wants to resolve the discrepancy between the form submission and the system's current status showing 'direct payment method'.",
+  "resolution_steps": [
+    "Agent Mike verifies the account number (302127167) and confirms the policyholder's name (Julio Installer LLC).",
+    "Cody explains he set up auto pay online on September 3rd but the system still shows 'direct payment method'.",
+    "Mike checks the system and finds that on September 2nd, only an 'easy check payment' was recorded, not the EFT setup.",
+    "Mike clarifies that the EFT form was signed but the system did not process it for recurring payments.",
+    "Mike acknowledges the system failure and explains that the EFT needs to be re-setup using the signed form and full account number (ending in 5823)."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of EFT setup process for auto pay",
+    "Navigation of Agent Center and billing account systems",
+    "Troubleshooting system discrepancies in payment method records"
+  ],
+  "systems_referenced": [
+    "Nationwide Commercial Lines Service Center",
+    "Agent Center (billing account system)",
+    "EFT form portal (for printing and submitting forms)"
+  ],
+  "summary": "Cody Jackson contacted Nationwide to resolve an issue where an EFT auto pay setup (initiated September 3rd) was not reflecting in the system. The agent verified the account and found the system only recorded an 'easy check payment' on September 2nd, not the EFT. The agent explained the EFT needed to be re-setup due to a system failure, requiring the full account number again. The call concluded with the agent guiding Cody through the re-setup process.",
+  "_model": "qwen3:14b",
+  "_eval_count": 430,
+  "_total_duration_ms": 55886,
+  "_source_file": "transcripts/out-8002112843-207-20250925-141300-1758823980.7328.txt",
+  "_direction": "outbound",
+  "_char_count": 4494
+}

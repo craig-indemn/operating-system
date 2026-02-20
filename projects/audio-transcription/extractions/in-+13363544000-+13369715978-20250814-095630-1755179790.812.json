@@ -1,0 +1,22 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Bob Kano attempted to reach Holly but was informed she was on another call and requested a transfer.",
+  "resolution_steps": [
+    "Agent informed Bob Kano that Holly was on another call.",
+    "Agent offered to transfer Bob Kano to Holly's voice line.",
+    "Caller expressed confusion about being transferred and mentioned noise on the line."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Call transfer procedures",
+    "Handling caller frustration"
+  ],
+  "systems_referenced": [],
+  "summary": "A brief interaction where Bob Kano attempted to reach Holly. The agent offered to transfer him but the conversation ended without resolution. The caller mentioned noise issues but ultimately agreed to wait for a callback.",
+  "_model": "qwen3:14b",
+  "_eval_count": 172,
+  "_total_duration_ms": 39286,
+  "_source_file": "transcripts/in-+13363544000-+13369715978-20250814-095630-1755179790.812.txt",
+  "_direction": "inbound",
+  "_char_count": 490
+}

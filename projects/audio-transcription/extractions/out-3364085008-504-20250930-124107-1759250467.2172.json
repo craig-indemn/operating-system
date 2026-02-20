@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Attempted to leave a message for Lauren at Windcare",
+  "resolution_steps": [],
+  "outcome": "not_applicable",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Voicemail greeting from Lauren at Windcare indicating mailbox is full. No substantive interaction occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 86,
+  "_total_duration_ms": 23196,
+  "_source_file": "transcripts/out-3364085008-504-20250930-124107-1759250467.2172.txt",
+  "_direction": "outbound",
+  "_char_count": 290
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Gina Morales, wants to follow up on a previous request regarding her insurance policy and express frustration about not receiving communication from the agency in over a year. She also seeks to connect with a Spanish-speaking agent (Daisy/JC) to address her concerns.",
+  "resolution_steps": [
+    "Agent confirmed the caller's identity and policy details (address, policyholder name 'Rogelina')",
+    "Agent checked availability of Spanish-speaking agent 'Daisy' but found her unavailable",
+    "Agent offered to transfer the call to another agent 'JC' and advised leaving a voicemail if JC was unavailable"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy review procedures for long-term customers",
+    "Spanish-speaking agent availability",
+    "Call transfer protocols",
+    "Customer communication standards"
+  ],
+  "systems_referenced": [
+    "Internal phone system (extensions)",
+    "Policy database (to verify address/name)"
+  ],
+  "summary": "Gina Morales, a long-term customer, expressed frustration about lack of communication from Alliance Insurance Services and requested to speak with a Spanish-speaking agent. The agent verified her policy details, checked agent availability, and transferred her to another agent while advising voicemail as a backup. The call was not resolved in this interaction but directed to the appropriate team.",
+  "_model": "qwen3:14b",
+  "_eval_count": 296,
+  "_total_duration_ms": 38526,
+  "_source_file": "transcripts/in-+13363779003-+18033714126-20251210-132423-1765391063.2702.txt",
+  "_direction": "inbound",
+  "_char_count": 2378
+}

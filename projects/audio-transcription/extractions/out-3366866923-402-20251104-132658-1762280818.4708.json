@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Brandon) aimed to gather information about the recipient's employment history, income, and net worth, likely for insurance or financial assessment purposes.",
+  "resolution_steps": [
+    "Asked the recipient about their previous employment (specifically clarifying miscommunication about school system work).",
+    "Requested details on gross income, job role (DSD receiver), employment duration, and weekly hours.",
+    "Inquired about net worth, including assets like homes and savings.",
+    "Offered assistance after completing the information-gathering process."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance application processes",
+    "Income and employment verification procedures",
+    "Financial assessment criteria"
+  ],
+  "systems_referenced": [],
+  "summary": "An Alliance Insurance agent conducted an information-gathering conversation about the recipient's employment history, income, and net worth. The agent clarified misunderstandings about the recipient's previous job and offered assistance after collecting the required details.",
+  "_model": "qwen3:14b",
+  "_eval_count": 222,
+  "_total_duration_ms": 33576,
+  "_source_file": "transcripts/out-3366866923-402-20251104-132658-1762280818.4708.txt",
+  "_direction": "outbound",
+  "_char_count": 1134
+}

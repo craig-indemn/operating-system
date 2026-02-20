@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; appears to be a non-interactive message or system test",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Non-substantive call consisting solely of repeated 'Gracias' followed by a disconnect. No meaningful interaction or request identified.",
+  "_model": "qwen3:14b",
+  "_eval_count": 93,
+  "_total_duration_ms": 18923,
+  "_source_file": "transcripts/q-300-+13364785424-20250730-132843-1753896523.5388.txt",
+  "_direction": "queue",
+  "_char_count": 56
+}

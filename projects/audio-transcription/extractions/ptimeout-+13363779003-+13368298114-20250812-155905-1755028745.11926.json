@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Tommy is seeking clarification about whether he needs to sign documents related to his insurance policy, as he received conflicting information from different representatives.",
+  "resolution_steps": [
+    "Agent confirms with JC (another representative) that no documents were sent to Tommy and that signing is not required.",
+    "Agent reassures Tommy that the previous confusion was due to a miscommunication with another staff member.",
+    "Agent explains that they are waiting for the motorcycle policy draft to proceed with setting up the routing and account number.",
+    "Agent confirms with Tommy that no further action is needed from him at this time."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy setup procedures",
+    "Document handling protocols",
+    "Motorcycle insurance processing steps"
+  ],
+  "systems_referenced": [],
+  "summary": "Tommy contacted the agent to resolve confusion about needing to sign documents for his insurance policy. The agent confirmed with another representative that no documents were required and clarified that the previous communication was a misunderstanding. The agent explained that they are waiting for the motorcycle policy draft before proceeding further, and Tommy was reassured that no action is needed from him at this time.",
+  "_model": "qwen3:14b",
+  "_eval_count": 262,
+  "_total_duration_ms": 38057,
+  "_source_file": "transcripts/ptimeout-+13363779003-+13368298114-20250812-155905-1755028745.11926.txt",
+  "_direction": "park_timeout",
+  "_char_count": 1872
+}

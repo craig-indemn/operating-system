@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to check the status of an invoice and confirm whether the My Alliance Insurance portal could provide access to policy documents or invoices.",
+  "resolution_steps": [
+    "Agent placed the caller on hold to consult with another team member.",
+    "Confirmed that the team member could not access the invoice from First Mutual and instructed the caller to contact First Mutual directly.",
+    "Verified the caller's email address (cabin229@gmail.com) for receiving the invoice.",
+    "Discussed the My Alliance Insurance portal, clarifying it does not store invoices but can be used to verify policy details.",
+    "Offered to send an invite for the portal if the caller wished to join."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of carrier-specific processes (e.g., First Mutual's invoice retrieval)",
+    "Familiarity with My Alliance Insurance portal features and limitations",
+    "Email verification procedures for policyholders"
+  ],
+  "systems_referenced": [
+    "My Alliance Insurance portal",
+    "First Mutual (carrier)",
+    "Email communication system"
+  ],
+  "summary": "The agent assisted the caller with an invoice retrieval issue, directing them to contact First Mutual directly while confirming their email address. The conversation also addressed the My Alliance Insurance portal's capabilities, clarifying it does not store invoices but can be used for policy verification. The caller agreed to follow up with First Mutual and remain on standby for the email.",
+  "_model": "qwen3:14b",
+  "_eval_count": 320,
+  "_total_duration_ms": 42514,
+  "_source_file": "transcripts/parked-100-100-20260119-100220-1768834940.901.txt",
+  "_direction": "parked",
+  "_char_count": 2187
+}

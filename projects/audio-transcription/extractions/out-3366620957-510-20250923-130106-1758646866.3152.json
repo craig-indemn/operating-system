@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Voicemail left regarding a voided electronic payment for claim number 30551512-2025.",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Voicemail left by Tracy from Alliance Insurance regarding a voided electronic payment for claim number 30551512-2025. The call was initially routed to Auto Owners Insurance, where Spencer and Garrett Graybill were unavailable.",
+  "_model": "qwen3:14b",
+  "_eval_count": 128,
+  "_total_duration_ms": 52288,
+  "_source_file": "transcripts/out-3366620957-510-20250923-130106-1758646866.3152.txt",
+  "_direction": "outbound",
+  "_char_count": 1234
+}

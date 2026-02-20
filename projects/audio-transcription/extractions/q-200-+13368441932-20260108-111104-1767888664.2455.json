@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Seth Russell is seeking insurance quotes for his car (2005 Nissan 350Z) and motorcycle (2024 Suzuki GSX8R), currently insured with Allstate, and wants to compare options with Alliance Insurance Services.",
+  "resolution_steps": [
+    "Agent Heather confirmed the type of insurance requested (auto and motorcycle).",
+    "Collected Seth's personal details (name, DOB, driver's license, address).",
+    "Obtained VINs for both vehicles and current coverage details (liability for both).",
+    "Verified Seth's insurance history (no claims, one reduced traffic ticket).",
+    "Captured contact information (phone number, email).",
+    "Informed Seth the quoting process would take 1-2 business days due to carrier comparisons."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance quoting process for auto and motorcycle policies",
+    "Carrier options available through an independent agency",
+    "Data collection for underwriting (VINs, coverage history, personal details)"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services quoting system"
+  ],
+  "summary": "Seth Russell requested insurance quotes for his car and motorcycle. Heather collected detailed information about his vehicles, insurance history, and personal details. The agent explained the quoting process would take 1-2 business days due to carrier comparisons. No immediate quote was provided, but the necessary data was gathered for follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 324,
+  "_total_duration_ms": 40787,
+  "_source_file": "transcripts/q-200-+13368441932-20260108-111104-1767888664.2455.txt",
+  "_direction": "queue",
+  "_char_count": 3893
+}

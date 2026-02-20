@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Shirley wants to obtain home insurance for a property that has been uninsured for approximately 7-9 months, purchased by her mother in 1979.",
+  "resolution_steps": [
+    "Agent Heather Scott confirmed Shirley's identity and referenced a prior outreach attempt.",
+    "Shirley disclosed the property's uninsured status and purchase date (1979).",
+    "Agent explained carriers require continuous insurance with no more than a 15-day lapse.",
+    "Shirley acknowledged the coverage gap and the agent concluded she would not qualify for new coverage."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Home insurance underwriting requirements",
+    "Carrier-specific coverage continuity rules",
+    "Lapse period thresholds for policy eligibility"
+  ],
+  "systems_referenced": [],
+  "summary": "Shirley contacted Alliance Insurance to obtain home insurance for a property with a 7-9 month coverage gap. The agent explained that carriers require continuous coverage (no more than 15-day lapse), making Shirley ineligible for new coverage. The conversation ended with Shirley understanding the limitation and the agent offering to help if she could provide proof of prior coverage.",
+  "_model": "qwen3:14b",
+  "_eval_count": 265,
+  "_total_duration_ms": 38106,
+  "_source_file": "transcripts/out-9806351823-401-20250903-105340-1756911220.2665.txt",
+  "_direction": "outbound",
+  "_char_count": 824
+}

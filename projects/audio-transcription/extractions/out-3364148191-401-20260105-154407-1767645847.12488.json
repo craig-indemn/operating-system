@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Frank wants to bundle his auto insurance (Progressive) with his existing homeowners insurance (Liberty Mutual) to potentially save money.",
+  "resolution_steps": [
+    "Heather confirms Frank's auto insurance renewal date and carrier (Progressive).",
+    "She explains a process to transfer Progressive policy details via a link to verifymyinsurance.com.",
+    "Requests Frank's email, driver's license number, and confirms dates of birth for him and Linda.",
+    "Provides instructions to select Progressive on the portal and input credentials.",
+    "Mentions a YouTube commercial ad that may appear during the process.",
+    "Checks if Frank has made any major home improvements affecting his homeowners policy."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Bundling insurance policies across carriers",
+    "Progressive and Liberty Mutual policy management processes",
+    "Customer verification procedures (DOB, DL numbers)",
+    "Third-party insurance verification tools"
+  ],
+  "systems_referenced": [
+    "verifymyinsurance.com portal",
+    "Progressive insurance system",
+    "Liberty Mutual insurance system"
+  ],
+  "summary": "Heather from Alliance Insurance helps Frank bundle his Progressive auto insurance with his Liberty Mutual homeowners policy. She guides him through a portal process to transfer policy details, verifies required documentation, and checks for home insurance updates. The call concludes with Frank agreeing to follow the steps to complete the bundling process.",
+  "_model": "qwen3:14b",
+  "_eval_count": 308,
+  "_total_duration_ms": 52946,
+  "_source_file": "transcripts/out-3364148191-401-20260105-154407-1767645847.12488.txt",
+  "_direction": "outbound",
+  "_char_count": 3990
+}

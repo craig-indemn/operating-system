@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Lennox needs assistance adding her mother's car (registered in her mother's name but with Lennox as the lienholder) to a commercial auto policy for business use in North Carolina, while navigating registration requirements and insurance documentation.",
+  "resolution_steps": [
+    "Gloria acknowledges the complexity of the situation involving title ownership, lienholder status, and commercial insurance.",
+    "Clarifies that Lennox is the lienholder but the car is in her mother's name, requiring coordination between personal and business insurance.",
+    "Agrees to research the specific steps needed for registration in North Carolina and Virginia, including DMV requirements and documentation.",
+    "Commits to calling back the next day with a detailed explanation and next steps."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Commercial auto insurance requirements",
+    "Title/lienholder distinctions in vehicle registration",
+    "Interstate vehicle registration processes (NC/VA)",
+    "Insurance documentation for non-title owners"
+  ],
+  "systems_referenced": [],
+  "summary": "Lennox seeks help adding her mother's car to a commercial policy, requiring clarification on title/lienholder status and registration requirements. Gloria agrees to research and provide a detailed plan the next day. The call involves complex insurance and registration coordination but is resolved with a commitment to follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 293,
+  "_total_duration_ms": 43260,
+  "_source_file": "transcripts/exten-102-+13364737646-20251112-160224-1762981344.8000.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2948
+}

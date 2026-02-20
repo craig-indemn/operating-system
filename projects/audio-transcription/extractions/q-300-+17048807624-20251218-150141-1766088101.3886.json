@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to make a payment and remove a vehicle (2018 Ram ProMaster) from their personal auto policy.",
+  "resolution_steps": [
+    "Agent verified the policyholder's name (Brian Wallace and Sandra Wallace) and confirmed the vehicle to be removed.",
+    "Agent checked the policy details, confirmed the vehicle's tag was turned in (date: 12/9/2025), and processed the removal.",
+    "Agent identified the payment due ($229.03) and selected a credit card (ending in 0390) to process the payment.",
+    "Agent explained the impact of removing the vehicle on the premium, noting a $24 reduction for the current month and a new monthly payment of $219.",
+    "Agent addressed the caller's follow-up questions about historical payments and policy renewal dates (February 8)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding how vehicle removal affects multi-car discounts and premium calculations.",
+    "Processing payments and updating policy details via the agency's system.",
+    "Communicating policy changes and payment adjustments to customers."
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services policy management system",
+    "Credit card payment processing tool"
+  ],
+  "summary": "The caller requested to remove a vehicle from their policy and make a payment. The agent processed the removal, confirmed the payment, and explained the resulting premium changes. The caller remained on hold briefly for additional calculations but ultimately accepted the explanation and next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 344,
+  "_total_duration_ms": 40392,
+  "_source_file": "transcripts/q-300-+17048807624-20251218-150141-1766088101.3886.txt",
+  "_direction": "queue",
+  "_char_count": 4081
+}

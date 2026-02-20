@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jamie seeks to reinstate a canceled workers' comp insurance policy that was affected by a hacked debit card, which caused automatic payments to be interrupted in August/September.",
+  "resolution_steps": [
+    "Agent confirms Jamie's account details and identifies the policy in question.",
+    "Agent explains they cannot directly handle the request and need to transfer to a commercial teammate.",
+    "Agent checks system and notes workers' comp is active but general liability (Farmers) is canceled.",
+    "Agent places caller on hold to connect with a commercial teammate."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of carrier-specific access limitations (personal vs. commercial policies)",
+    "Ability to check policy statuses in the agency's system",
+    "Process for transferring calls to appropriate teammates"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance customer portal (myallianceinsurance.com)",
+    "Internal policy management system"
+  ],
+  "summary": "Jamie requested reinstatement of a workers' comp policy canceled due to a debit card hack. The agent confirmed the policy status, identified a need to transfer to a commercial teammate, and placed the caller on hold for resolution. The agent also mentioned the customer portal and texting option for support.",
+  "_model": "qwen3:14b",
+  "_eval_count": 278,
+  "_total_duration_ms": 34911,
+  "_source_file": "transcripts/q-300-+13366074877-20251216-095741-1765897061.610.txt",
+  "_direction": "queue",
+  "_char_count": 2220
+}

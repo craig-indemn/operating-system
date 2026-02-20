@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Mark Hall wanted to schedule a time to sign documents that require a wet signature, as part of a process involving equipment drop-off and computer setup.",
+  "resolution_steps": [
+    "Cecilia confirmed the need for Mark to visit the Winston Office to sign documents.",
+    "They discussed potential dates (Monday or Tuesday) and times, with Mark indicating availability on Monday or Tuesday morning.",
+    "Cecilia provided the office address (348 Summit Square Boulevard) and confirmed the office opens at 8:30 AM.",
+    "Mark agreed to schedule the meeting for Tuesday morning, with flexibility to arrive earlier if needed."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Office hours and location details for the Winston Office",
+    "Process for obtaining wet signatures on documents",
+    "Coordination with third parties (e.g., Jacob for equipment, Christopher for appointments)"
+  ],
+  "systems_referenced": [
+    "Winston Office (348 Summit Square Boulevard)"
+  ],
+  "summary": "Cecilia and Mark Hall coordinated a visit to the Winston Office for document signing, agreeing on Tuesday morning. The conversation included confirming the office address, availability, and alignment with other appointments. The call concluded with mutual agreement on the schedule.",
+  "_model": "qwen3:14b",
+  "_eval_count": 276,
+  "_total_duration_ms": 33817,
+  "_source_file": "transcripts/exten-107-+13363025766-20251114-105529-1763135729.4327.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2130
+}

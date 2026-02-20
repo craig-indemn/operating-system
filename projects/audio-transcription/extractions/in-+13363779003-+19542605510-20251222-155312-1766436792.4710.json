@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller requested a quote for homeowners insurance and indicated they do not currently have any policies with Alliance Insurance.",
+  "resolution_steps": [
+    "Agent acknowledged the request for a homeowners insurance quote.",
+    "Agent asked if the caller currently has policies with Alliance Insurance (answered 'no').",
+    "Agent offered to transfer the caller to an agent and asked them to hold."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Process for transferring calls to agents for insurance quotes",
+    "Basic insurance product knowledge (homeowners insurance)"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller requested a homeowners insurance quote and was offered a transfer to an agent. The call was cut off before the transfer could be completed, requiring a follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 182,
+  "_total_duration_ms": 26524,
+  "_source_file": "transcripts/in-+13363779003-+19542605510-20251222-155312-1766436792.4710.txt",
+  "_direction": "inbound",
+  "_char_count": 246
+}

@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking clarification on why their RV claim was denied as a 'mechanical' issue and wants to understand the reasoning behind the denial, as well as resolve the frustration from the adjuster hanging up during the conversation.",
+  "resolution_steps": [
+    "Agent acknowledges the customer's frustration with the adjuster hanging up during the call.",
+    "Offers to contact Progressive to request the adjuster to call back and provide a clearer explanation of the 'mechanical' denial.",
+    "Apologizes for the poor customer experience with the adjuster."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Claims denial processes for mechanical issues",
+    "Adjuster communication protocols",
+    "Progressive insurance claim follow-up procedures"
+  ],
+  "systems_referenced": [
+    "Progressive (insurance carrier)",
+    "Claims department"
+  ],
+  "summary": "A customer is frustrated with the denial of their RV claim, labeled as a 'mechanical' issue, and the adjuster hanging up during a prior call. The agent from Lions Insurance offers to escalate the case to Progressive to secure a detailed explanation from the adjuster. The customer remains uncertain but agrees to wait for further clarification.",
+  "_model": "qwen3:14b",
+  "_eval_count": 268,
+  "_total_duration_ms": 40587,
+  "_source_file": "transcripts/out-13362027527-114-20251002-123657-1759423017.8700.txt",
+  "_direction": "outbound",
+  "_char_count": 4312
+}

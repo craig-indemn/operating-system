@@ -1,0 +1,25 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Attempt to reach a specific extension (2352) for customer support or payment-related assistance.",
+  "resolution_steps": [
+    "Automated system prompted caller to press numbers for different services.",
+    "Caller entered extension 2352, which was unavailable.",
+    "System instructed caller to leave a message after the tone."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of automated phone menu systems",
+    "Extension routing procedures"
+  ],
+  "systems_referenced": [
+    "Customer service portal",
+    "Automated phone system (ASR/TTS)"
+  ],
+  "summary": "Non-substantive outbound call to a North Carolina insurance association's automated system. Caller attempted to reach extension 2352 but was informed it was unavailable and directed to leave a voicemail. No agent interaction occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 199,
+  "_total_duration_ms": 26753,
+  "_source_file": "transcripts/out-8006627048-510-20250819-101437-1755612877.2691.txt",
+  "_direction": "outbound",
+  "_char_count": 756
+}

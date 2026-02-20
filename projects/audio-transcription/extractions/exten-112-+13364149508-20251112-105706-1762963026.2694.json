@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Earl Williams is confirming with Brandi that his home insurance policy has the correct roof date (2025) and verifying whether a roofing company's documentation was received, as he previously spoke with the company's owner about sending a copy.",
+  "resolution_steps": [
+    "Brandi confirms the roof date (2025) was verified with the underwriter and that the insurance is up to date.",
+    "Brandi explains that the roofing company's copy is not needed immediately but should be retained in case the client switches insurers within five years.",
+    "Brandi acknowledges the company owner's instruction to send the copy to Alliance and assures Earl she will monitor for it."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of insurance policy details (e.g., roof dates, underwriting processes)",
+    "Handling of third-party documentation for insurance records",
+    "Procedures for retaining documents for future policy changes"
+  ],
+  "systems_referenced": [
+    "Underwriter system (for verifying roof dates)",
+    "Alliance Insurance Services (internal documentation retention)",
+    "One Percent Roofing (external company mentioned)"
+  ],
+  "summary": "Earl Williams confirms with Brandi that his home insurance policy's roof date is correctly set to 2025, resolving his concern about the policy's validity. Brandi explains that while a roofing company's documentation is not immediately needed, it should be retained for potential future use if the client switches insurers. The call concludes with Earl agreeing to monitor for the document and Brandi offering to handle it if received.",
+  "_model": "qwen3:14b",
+  "_eval_count": 345,
+  "_total_duration_ms": 48814,
+  "_source_file": "transcripts/exten-112-+13364149508-20251112-105706-1762963026.2694.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1712
+}

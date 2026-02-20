@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "N/A",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Voicemail left by Heather Scott from Alliance Insurance regarding a prior inquiry about homeowners insurance. The message includes a callback number.",
+  "_model": "qwen3:14b",
+  "_eval_count": 77,
+  "_total_duration_ms": 20686,
+  "_source_file": "transcripts/out-3369306579-401-20251229-133800-1767033480.9598.txt",
+  "_direction": "outbound",
+  "_char_count": 622
+}

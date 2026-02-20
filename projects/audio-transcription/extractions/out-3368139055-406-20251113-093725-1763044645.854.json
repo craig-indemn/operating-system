@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Eugenia Spainhour) is informing the agent (Yasha) that she did not receive an email from Alliance Insurance, suspecting it may have been filtered into her junk mail and discarded.",
+  "resolution_steps": [
+    "Agent confirms the caller's email address (met rugs rugs@BellSouth.net).",
+    "Caller explains she saw an email from Alliance but didn't recognize it due to her last name (Spainhour) not matching the sender's name.",
+    "Agent asks caller to check her junk mail again for the email.",
+    "Caller admits she discarded the email from junk mail without recognizing it.",
+    "Agent offers to resend the email if needed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Email system functionality (junk mail filtering)",
+    "Customer service protocols for email follow-ups"
+  ],
+  "systems_referenced": [
+    "Email client (junk mail folder)"
+  ],
+  "summary": "Agent Yasha follows up with customer Eugenia Spainhour about an undelivered email. The customer explains she discarded an Alliance Insurance email from her junk mail without recognizing it. The agent asks her to check again and offers to resend the email if needed. The call ends with the customer agreeing to check her junk mail.",
+  "_model": "qwen3:14b",
+  "_eval_count": 287,
+  "_total_duration_ms": 47817,
+  "_source_file": "transcripts/out-3368139055-406-20251113-093725-1763044645.854.txt",
+  "_direction": "outbound",
+  "_char_count": 1185
+}

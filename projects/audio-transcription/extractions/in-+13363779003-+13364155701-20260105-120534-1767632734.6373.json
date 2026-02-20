@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Rhonda Slating is seeking clarification about why her car insurance policy is not being renewed, as indicated by a letter she received.",
+  "resolution_steps": [
+    "Agent acknowledged the caller's concern and requested a moment to transfer the call."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding insurance non-renewal policies and procedures",
+    "Knowledge of carrier communication protocols"
+  ],
+  "systems_referenced": [
+    "Carrier portal/database (implied by the letter about non-renewal)"
+  ],
+  "summary": "Rhonda Slating contacted Alliance Insurance to inquire about a non-renewal notice for her car insurance. The agent acknowledged her concern and transferred her for further assistance, indicating the need for additional information or escalation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 181,
+  "_total_duration_ms": 30396,
+  "_source_file": "transcripts/in-+13363779003-+13364155701-20260105-120534-1767632734.6373.txt",
+  "_direction": "inbound",
+  "_char_count": 320
+}

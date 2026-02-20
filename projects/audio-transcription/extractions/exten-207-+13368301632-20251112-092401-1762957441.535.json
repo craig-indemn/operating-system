@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking clarification on a payroll adjustment for an employee (Wilmer) and a claim related to an accident involving Oscar. They also need guidance on a certificate of liability insurance provided by a police officer.",
+  "resolution_steps": [
+    "Confirmed the document for Wilmer's payroll adjustment was signed and explained the process for submitting it to Travelers.",
+    "Checked for a claim related to Oscar's accident and confirmed no claim had been filed.",
+    "Discussed the certificate of liability insurance provided by the police officer and advised the caller to request a police report directly from the officer.",
+    "Explained the limitations of the certificate and the need for an incident report to file a claim."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of insurance policy adjustments and payroll-related premium calculations",
+    "Claims process for auto accidents",
+    "Interpretation of insurance documents (certificates of liability, incident reports)"
+  ],
+  "systems_referenced": [
+    "Travelers (insurance carrier)",
+    "Internal document tracking system for policy forms"
+  ],
+  "summary": "The caller discussed updating payroll for an employee and a claim related to an accident. The agent confirmed the payroll document was signed, checked for a claim (none found), and explained the certificate of liability insurance. The caller was advised to request a police report from the officer to proceed with the claim.",
+  "_model": "qwen3:14b",
+  "_eval_count": 304,
+  "_total_duration_ms": 46224,
+  "_source_file": "transcripts/exten-207-+13368301632-20251112-092401-1762957441.535.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4265
+}

@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jennifer Brock wants to transfer insurance coverage from a 2013 Chevrolet van to a new 2014 Chevy Express van for her husband's company, as part of purchasing a new vehicle.",
+  "resolution_steps": [
+    "Agent Jeff verified the policy details (four vehicles, including the 2013 van).",
+    "Obtained the VIN for the new 2014 Chevy Express van.",
+    "Confirmed coverage details (comp deductible of $1,000, no collision, towing up to $100).",
+    "Clarified the vehicle is for business use only and has no lien.",
+    "Agreed to send a proof of insurance email to Jennifer Brock at jenniferbrock1000@gmail.com."
+  ],
+  "outcome": "transferred",
+  "knowledge_required": [
+    "Auto insurance policy management",
+    "Vehicle coverage types (comp, towing)",
+    "VIN verification process",
+    "Business vs. personal use distinctions"
+  ],
+  "systems_referenced": [
+    "Auto Owners insurance system",
+    "Email for proof of insurance"
+  ],
+  "summary": "Jennifer Brock requested a vehicle insurance transfer from a 2013 Chevrolet van to a new 2014 Chevy Express van. The agent verified policy details, confirmed coverage parameters, and agreed to send a proof of insurance email. The transfer was completed during the call.",
+  "_model": "qwen3:14b",
+  "_eval_count": 312,
+  "_total_duration_ms": 35976,
+  "_source_file": "transcripts/exten-206-+13363268633-20250806-150722-1754507242.9128.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3529
+}

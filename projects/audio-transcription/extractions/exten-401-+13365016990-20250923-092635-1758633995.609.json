@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Heather is seeking assistance with a Department of Transportation letter revoking her insurance for her Toyota Camry, requesting confirmation that an FS1 form was properly submitted and ensuring her insurance remains active to avoid legal issues.",
+  "resolution_steps": [
+    "Agent acknowledges Heather's concern about the insurance revocation letter and confirms she needs to resend the FS1 form.",
+    "Agent offers to call the DMV again to refile the form and provide a confirmation.",
+    "Agent suggests Heather check online via DMV or the insurance portal to verify insurance status.",
+    "Agent assures Heather the issue is common and will follow up with a confirmation once resolved."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of FS1 form requirements for insurance verification",
+    "Knowledge of DMV processes for insurance filings",
+    "Ability to guide customers on checking insurance status online"
+  ],
+  "systems_referenced": [
+    "Department of Transportation (DOT)",
+    "DMV (Department of Motor Vehicles)",
+    "Insurance portal for status verification"
+  ],
+  "summary": "Heather contacted Alliance Insurance Services after receiving a letter revoking her Toyota Camry's insurance, believing an FS1 form was submitted but facing uncertainty. The agent reassured her, confirmed the need to refile the FS1, offered to contact DMV again, and advised checking online for verification. The call resolved her immediate concern with actionable steps to reestablish insurance validity.",
+  "_model": "qwen3:14b",
+  "_eval_count": 315,
+  "_total_duration_ms": 41070,
+  "_source_file": "transcripts/exten-401-+13365016990-20250923-092635-1758633995.609.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3817
+}

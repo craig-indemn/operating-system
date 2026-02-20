@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jacqueline Thornhill wanted to lower her auto insurance premium by increasing deductibles on her upcoming September policy renewal, as she has a clean driving record and can afford higher out-of-pocket costs.",
+  "resolution_steps": [
+    "Agent Jacey confirmed Jacqueline's identity and account details.",
+    "Reviewed current policy: comprehensive deductible at $100, collision at $500, with towing and rental coverage.",
+    "Proposed increasing comprehensive deductible to $500 and collision to $1000.",
+    "Calculated premium reduction of $282 after adjustments.",
+    "Noted Jacqueline's existing towing coverage (Mercedes/AAA) and removed redundant towing from the policy.",
+    "Processed the changes and informed Jacqueline of 24-hour billing update window."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Auto insurance policy structures (deductibles, coverage types)",
+    "Premium calculation mechanics",
+    "Policy adjustment procedures",
+    "Carrier-specific coverage options (e.g., towing, rental)"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services account management system"
+  ],
+  "summary": "Jacqueline sought to reduce her auto insurance premium by increasing deductibles. The agent reviewed her policy, adjusted comprehensive and collision deductibles, and calculated the resulting premium reduction. Changes were processed with a 24-hour billing update notice. The call concluded with Jacqueline satisfied with the adjusted terms.",
+  "_model": "qwen3:14b",
+  "_eval_count": 322,
+  "_total_duration_ms": 35165,
+  "_source_file": "transcripts/q-300-+17025923961-20250804-100246-1754316166.2653.txt",
+  "_direction": "queue",
+  "_char_count": 3206
+}

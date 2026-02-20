@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Bernadino Guerrero, seeks assistance with a homeowners insurance matter and is attempting to reach Corbin for help.",
+  "resolution_steps": [
+    "Agent Cody asks for the caller's name and phone number.",
+    "Cody checks Corbin's availability and confirms he is in a different office and busy with a client.",
+    "Cody informs the caller that Corbin will call back once available and notes the provided phone number (926-852-6)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Internal agent availability tracking",
+    "Transfer protocol for connecting with other agents",
+    "Basic insurance service terminology"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller seeking help with homeowners insurance is transferred to Corbin, who is unavailable. The agent notes the caller's number and promises Corbin will return the call. The interaction highlights the need for inter-agent coordination in an insurance agency.",
+  "_model": "qwen3:14b",
+  "_eval_count": 222,
+  "_total_duration_ms": 40608,
+  "_source_file": "transcripts/exten-207-+13369268526-20251201-105902-1764604742.4486.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 936
+}

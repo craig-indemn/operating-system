@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak to Chase (specific individual, likely an agent or representative)",
+  "resolution_steps": [
+    "Agent acknowledged request",
+    "Agent said 'one second' before ending call"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Very brief call where caller requested to speak to Chase. Agent responded with a transfer acknowledgment but did not provide further assistance or confirm if Chase was available. No meaningful conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 118,
+  "_total_duration_ms": 27088,
+  "_source_file": "transcripts/in-+13363779003-+13364930019-20251107-090031-1762524031.69.txt",
+  "_direction": "inbound",
+  "_char_count": 128
+}

@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Attempted to leave a voicemail message",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The call was forwarded to an automated voicemail system, which indicated the mailbox was full and could not accept new messages.",
+  "_model": "qwen3:14b",
+  "_eval_count": 84,
+  "_total_duration_ms": 25675,
+  "_source_file": "transcripts/out-3367507237-409-20251015-143349-1760553229.4692.txt",
+  "_direction": "outbound",
+  "_char_count": 192
+}

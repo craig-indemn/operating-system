@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "N/A",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Call directed to voicemail system; mailbox was full and could not accept messages. No further action taken.",
+  "_model": "qwen3:14b",
+  "_eval_count": 73,
+  "_total_duration_ms": 26910,
+  "_source_file": "transcripts/out-3367507662-409-20250903-152203-1756927323.9257.txt",
+  "_direction": "outbound",
+  "_char_count": 219
+}

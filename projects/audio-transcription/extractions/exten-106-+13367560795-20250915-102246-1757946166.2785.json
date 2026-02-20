@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Ricardo Guardado is seeking assistance to resolve an issue where he did not receive documents for signing via email and needs clarification on the signing process.",
+  "resolution_steps": [
+    "Jessica confirms Ricardo's email address (Ricky Guardado @aiclo.com) and corrects it to ensure proper delivery.",
+    "She explains the documents will be resent via email from 'consign' with a reference to 'Gloria' and instructions to sign digitally.",
+    "Jessica provides step-by-step guidance on opening the email, locating the document, and using the portal to sign where indicated.",
+    "She agrees to resend the documents immediately and follow up by the end of the day if Ricardo still hasn't received them."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Email portal systems (e.g., 'consign') and document signing workflows",
+    "Troubleshooting email delivery issues",
+    "Client communication for document signing processes"
+  ],
+  "systems_referenced": [
+    "consign",
+    "email system",
+    "document management portal"
+  ],
+  "summary": "Ricardo Guardado contacted Alliance Insurance Services to resolve an issue where he did not receive documents for signing via email. Jessica verified his email address, explained the signing process through the 'consign' portal, and agreed to resend the documents. She requested confirmation by the end of the day if the documents were still not received.",
+  "_model": "qwen3:14b",
+  "_eval_count": 311,
+  "_total_duration_ms": 47079,
+  "_source_file": "transcripts/exten-106-+13367560795-20250915-102246-1757946166.2785.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1951
+}

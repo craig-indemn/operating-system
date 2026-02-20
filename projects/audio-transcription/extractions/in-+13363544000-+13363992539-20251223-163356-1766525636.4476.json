@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to remove a vehicle from his insurance policy because the purchase fell through due to mechanical issues, and he never received the vehicle tags.",
+  "resolution_steps": [
+    "Agent asked if the caller had submitted the vehicle tags.",
+    "Caller explained the vehicle purchase had issues and the mechanical problems caused the cancellation.",
+    "Agent offered to transfer the caller to another agent to handle the policy modification."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy modification procedures",
+    "Vehicle removal process",
+    "Handling incomplete transactions"
+  ],
+  "systems_referenced": [],
+  "summary": "John Berger contacted Alliance Insurance to remove a vehicle from his policy after the purchase failed due to mechanical issues. The agent acknowledged the situation and offered to transfer him to another agent to process the removal. The call ended with the agent initiating a transfer.",
+  "_model": "qwen3:14b",
+  "_eval_count": 200,
+  "_total_duration_ms": 36313,
+  "_source_file": "transcripts/in-+13363544000-+13363992539-20251223-163356-1766525636.4476.txt",
+  "_direction": "inbound",
+  "_char_count": 617
+}

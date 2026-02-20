@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Gordy Gorgy, is assisting a member of State Employees Credit Union in obtaining auto insurance with State Employees as the first lien holder. He is seeking guidance on the required documentation.",
+  "resolution_steps": [
+    "Agent explains that the declaration page is needed for the insurance request.",
+    "Caller is informed that the declaration page can be requested via the support email.",
+    "Caller expresses urgency, prompting the agent to offer to transfer the call to the service team."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding insurance documentation requirements (e.g., declaration pages)",
+    "Knowledge of lien holder processes in auto insurance"
+  ],
+  "systems_referenced": [
+    "support email"
+  ],
+  "summary": "A caller from State Employees Credit Union seeks assistance with auto insurance documentation for a member, specifically requiring the declaration page. The agent explains the process and offers to transfer the call to the service team for urgent resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 218,
+  "_total_duration_ms": 35793,
+  "_source_file": "transcripts/in-+13363779003-+19192311601-20251125-144420-1764099860.6087.txt",
+  "_direction": "inbound",
+  "_char_count": 870
+}

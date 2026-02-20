@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking assistance with a claim they received, possibly related to a situation where the insured party was not covered, and is asking who they should contact for help.",
+  "resolution_steps": [
+    "Agent Alberto Jimenez acknowledges the caller's request for assistance with a claim.",
+    "Alberto informs the caller he will connect them with an agent who can help."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Claims process procedures",
+    "Internal agent transfer protocols"
+  ],
+  "systems_referenced": [],
+  "summary": "The caller contacted Alliance Insurance to seek help with a claim they received, possibly involving an uninsured party. Agent Alberto Jimenez offered to connect them with another agent to assist further, but the call ended before resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 181,
+  "_total_duration_ms": 43604,
+  "_source_file": "transcripts/in-+13363779003-+13364675457-20250910-091630-1757510190.109.txt",
+  "_direction": "inbound",
+  "_char_count": 361
+}

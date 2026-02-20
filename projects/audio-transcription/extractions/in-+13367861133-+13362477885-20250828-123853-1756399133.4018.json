@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller wanted to confirm if he still had homeowners insurance on his property.",
+  "resolution_steps": [
+    "Agent acknowledged the request",
+    "Agent stated they would get an agent to help but did not proceed further"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The caller inquired about his homeowners insurance status. The agent acknowledged the request but did not provide any resolution, instead indicating they would transfer the call but did not complete the action.",
+  "_model": "qwen3:14b",
+  "_eval_count": 125,
+  "_total_duration_ms": 34865,
+  "_source_file": "transcripts/in-+13367861133-+13362477885-20250828-123853-1756399133.4018.txt",
+  "_direction": "inbound",
+  "_char_count": 396
+}

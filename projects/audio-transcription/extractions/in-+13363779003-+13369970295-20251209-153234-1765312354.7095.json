@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller sought assistance with a Travelers insurance policy (policy number 6808680406406793) and mentioned a dog-related issue, possibly related to a claim or policy adjustment.",
+  "resolution_steps": [
+    "Agent asked for the caller's policy number and carrier.",
+    "Caller provided policy number and confirmed carrier as Travelers.",
+    "Agent acknowledged the caller's mention of a dog and office location (Winston office on University Parkway).",
+    "Agent confirmed the caller was in the Mount Airy office and apologized for not being available earlier.",
+    "Call concluded with polite farewells."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Travelers insurance policy structure and claims process",
+    "Office locations for Alliance Insurance (Mount Airy, Winston)",
+    "Handling customer inquiries about policy details and office visits"
+  ],
+  "systems_referenced": [
+    "Travelers insurance portal (implied by policy number format)"
+  ],
+  "summary": "A caller contacted Alliance Insurance to address a Travelers policy issue (policy number 6808680406406793) involving a dog. The agent confirmed policy details, discussed office locations, and concluded the call with a polite goodbye. The caller may need further assistance with a claim or policy adjustment.",
+  "_model": "qwen3:14b",
+  "_eval_count": 303,
+  "_total_duration_ms": 43043,
+  "_source_file": "transcripts/in-+13363779003-+13369970295-20251209-153234-1765312354.7095.txt",
+  "_direction": "inbound",
+  "_char_count": 1198
+}

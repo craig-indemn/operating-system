@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; caller identified himself as 'Jeremy in the forum' and requested a transfer but did not specify the purpose of the call.",
+  "resolution_steps": [
+    "Agent thanked caller and initiated transfer",
+    "Placed caller on hold with generic waiting instruction"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief inbound call where the caller requested a transfer but did not explain the purpose of the call. The agent initiated a transfer but did not resolve any specific issue due to incomplete information.",
+  "_model": "qwen3:14b",
+  "_eval_count": 135,
+  "_total_duration_ms": 35966,
+  "_source_file": "transcripts/in-+13363682529-+13365580117-20260119-093531-1768833331.574.txt",
+  "_direction": "inbound",
+  "_char_count": 327
+}

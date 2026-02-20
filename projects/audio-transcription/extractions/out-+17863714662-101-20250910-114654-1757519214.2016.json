@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Mauricio) wanted to resolve a small discrepancy in his insurance bills and requested clarification on the final amounts due, as well as options for payment (email, check, or electronic transfer).",
+  "resolution_steps": [
+    "Agent explained that the caller should have received two separate bills: one from Auto Owners (umbrella, auto, and package) and one from Travelers (workers comp).",
+    "Agent offered to send the confirmed amounts via email.",
+    "Agent proposed accepting account and routing numbers for electronic payment instead of a physical check.",
+    "Agreed to send receipts once payment details were provided."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance billing structures (Auto Owners and Travelers as separate carriers).",
+    "Payment processing procedures (electronic transfers via account/routing numbers).",
+    "Ability to clarify billing discrepancies and confirm payment amounts."
+  ],
+  "systems_referenced": [],
+  "summary": "Mauricio contacted Alliance Insurance to resolve a billing discrepancy, noting he had received two separate bills (Auto Owners and Travelers). The agent clarified the bills' contents, offered to confirm amounts via email, and proposed electronic payment using account details. The caller agreed to provide banking information for processing.",
+  "_model": "qwen3:14b",
+  "_eval_count": 284,
+  "_total_duration_ms": 43926,
+  "_source_file": "transcripts/out-+17863714662-101-20250910-114654-1757519214.2016.txt",
+  "_direction": "outbound",
+  "_char_count": 1488
+}

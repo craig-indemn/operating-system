@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to pay a commercial workers' compensation policy renewal for 'Flying Disc Company' directly over the phone, preferring a routing number payment to avoid fees.",
+  "resolution_steps": [
+    "Agent accessed the policy system to locate the Flying Disc Company's work comp policy.",
+    "Confirmed the payment amount ($333.33) and explained fee differences between routing number and card payments.",
+    "Collected the business's routing number (07200326), account number (897202138), and email (Tony@wildlife.com) for confirmation.",
+    "Processed the payment via routing number and scheduled email confirmation.",
+    "Confirmed completion and offered further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy management system navigation",
+    "Payment processing procedures",
+    "Fee structures for different payment methods",
+    "Commercial insurance policy details"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's internal policy management system",
+    "Email confirmation service"
+  ],
+  "summary": "Caller successfully processed a workers' compensation policy renewal payment for Flying Disc Company using a business checking account's routing number. The agent explained fee differences, collected banking details, and arranged email confirmation. The caller confirmed no further assistance was needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 293,
+  "_total_duration_ms": 32385,
+  "_source_file": "transcripts/in-+13363779003-+19842150785-20251110-131103-1762798263.3329.txt",
+  "_direction": "inbound",
+  "_char_count": 1717
+}

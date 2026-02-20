@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Seeking a business owner's policy for a new construction remodeling business in Winston Salem.",
+  "resolution_steps": [
+    "Agent offered to transfer call to appropriate department"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller Alex Bodine from Overall Repair and Remodeling requested a business owner's policy. The agent acknowledged the request and offered to transfer the call, but the conversation ended before any further details were exchanged.",
+  "_model": "qwen3:14b",
+  "_eval_count": 120,
+  "_total_duration_ms": 20619,
+  "_source_file": "transcripts/in-+13363779003-+13156516432-20250915-125504-1757955304.7798.txt",
+  "_direction": "inbound",
+  "_char_count": 425
+}

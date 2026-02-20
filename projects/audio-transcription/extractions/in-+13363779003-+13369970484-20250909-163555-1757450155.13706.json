@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, James Pettywool, wanted to correct a mistake where he provided his account number instead of his routing number to someone else and ensure the correct numbers are on file for an insurance policy.",
+  "resolution_steps": [
+    "Agent confirmed the caller's identity and the context of the error (wrong number provided).",
+    "Caller provided the correct routing number (253177887) and account number (14205302).",
+    "Agent verified the numbers with the caller and confirmed the policy is now on auto pay."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of banking terminology (routing numbers, account numbers).",
+    "Ability to verify policy details (auto pay status)."
+  ],
+  "systems_referenced": [],
+  "summary": "James Pettywool contacted Alliance Insurance to correct an error where he provided his account number instead of his routing number. The agent verified the correct numbers and confirmed the policy is now on auto pay. The call concluded with the issue resolved.",
+  "_model": "qwen3:14b",
+  "_eval_count": 239,
+  "_total_duration_ms": 37131,
+  "_source_file": "transcripts/in-+13363779003-+13369970484-20250909-163555-1757450155.13706.txt",
+  "_direction": "inbound",
+  "_char_count": 2134
+}

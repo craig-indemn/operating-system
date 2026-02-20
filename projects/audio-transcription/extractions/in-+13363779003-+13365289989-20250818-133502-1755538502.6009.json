@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; fragmented speech with no discernible intent related to insurance services.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Fragmented voicemail greeting with no substantive conversation. Caller (Jake) mentions 'He's better' but no clear request or topic is discussed. Agent responds with minimal acknowledgment before the call ends.",
+  "_model": "qwen3:14b",
+  "_eval_count": 107,
+  "_total_duration_ms": 24386,
+  "_source_file": "transcripts/in-+13363779003-+13365289989-20250818-133502-1755538502.6009.txt",
+  "_direction": "inbound",
+  "_char_count": 162
+}

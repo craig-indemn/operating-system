@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Matthew McMillan is seeking clarification about eligibility for a rental car after his truck repair was delayed, and he needs assistance reaching his claims representative (Anthony Jones) to resolve the issue before a deadline.",
+  "resolution_steps": [
+    "Agent Tracy confirmed Matthew's address and accident date (October 20th).",
+    "Matthew requested Beth Wright's (supervisor) contact information, which Tracy provided (919-845-5657).",
+    "Tracy committed to sending an email to Anthony Jones to prompt a response."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Claims process for rental car eligibility post-claim filing",
+    "Internal escalation procedures for unreachable representatives",
+    "Access to contact databases for supervisors and claims reps"
+  ],
+  "systems_referenced": [
+    "Internal email system (to contact Anthony Jones)",
+    "Agent's contact database (for Beth Wright's number)"
+  ],
+  "summary": "Matthew McMillan contacted Alliance Insurance to resolve a rental car eligibility issue for his delayed truck repair and requested assistance reaching his claims rep. The agent confirmed details, provided the supervisor's number, and committed to follow up with the rep via email. The call concluded with a plan to escalate if the rep remained unreachable.",
+  "_model": "qwen3:14b",
+  "_eval_count": 288,
+  "_total_duration_ms": 31839,
+  "_source_file": "transcripts/q-300-+18179412642-20250808-101407-1754662447.4313.txt",
+  "_direction": "queue",
+  "_char_count": 1580
+}

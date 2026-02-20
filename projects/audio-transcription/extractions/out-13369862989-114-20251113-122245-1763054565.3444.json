@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking clarification about why their insurance policy was canceled due to a missed renewal payment and wants to understand the process to reactivate it, as well as the associated costs.",
+  "resolution_steps": [
+    "Agent explains the policy was canceled because the renewal payment of $220.79 was not made.",
+    "Agent clarifies that the caller typically pays $160 after the 20th, but the policy is now canceled.",
+    "Agent states they cannot provide details on the monthly cost or reactivation fees since the policy is canceled.",
+    "Agent advises the caller to contact the central office (National General) to reactivate the policy.",
+    "Agent warns about a coverage gap if the policy is not reactivated before opening a new one."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy cancellation procedures",
+    "Renewal payment deadlines",
+    "Reactivation fees and coverage gaps",
+    "Carrier-specific processes (National General)"
+  ],
+  "systems_referenced": [
+    "National General",
+    "central office (carrier portal)"
+  ],
+  "summary": "The caller's policy was canceled due to a missed $220.79 renewal payment. The agent explained the cancellation, advised contacting National General's central office to reactivate the policy, and warned about potential coverage gaps. The caller plans to reach out to the carrier directly.",
+  "_model": "qwen3:14b",
+  "_eval_count": 309,
+  "_total_duration_ms": 38198,
+  "_source_file": "transcripts/out-13369862989-114-20251113-122245-1763054565.3444.txt",
+  "_direction": "outbound",
+  "_char_count": 1761
+}

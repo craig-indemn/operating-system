@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to remove towing labor and rental car coverage from their insurance policy because they already have AAA and two cars, to save money.",
+  "resolution_steps": [
+    "Agent confirmed the caller's identity using provided names and policy details.",
+    "Caller explained the request to remove towing labor and rental car coverage from a recent car endorsement.",
+    "Agent agreed to process the removal effective immediately.",
+    "Agent confirmed the change and noted the cost savings of $17/month."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy endorsement modifications",
+    "Understanding of coverage exclusions (AAA overlap)",
+    "Premium calculation adjustments"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance policy management system"
+  ],
+  "summary": "Customer requested removal of towing and rental car coverage from a new car endorsement, citing AAA coverage and dual vehicles. Agent confirmed the change would take effect immediately, resulting in $17/month savings. The customer expressed satisfaction with the adjustment.",
+  "_model": "qwen3:14b",
+  "_eval_count": 229,
+  "_total_duration_ms": 26546,
+  "_source_file": "transcripts/q-300-+18569791231-20250826-124355-1756226635.4403.txt",
+  "_direction": "queue",
+  "_char_count": 1342
+}

@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Linda) wants to lower her homeowners insurance costs and find a provider that offers monthly payment options, as she currently pays monthly for her SafeCo and Liberty Mutual policies but cannot switch to Northwest Farmers due to their quarterly payment requirement.",
+  "resolution_steps": [
+    "Agent Heather reviews Linda's current insurance policies (SafeCo/Liberty Mutual) and confirms payment methods.",
+    "Heather evaluates quotes from Northwest Farmers (best coverage/price but requires quarterly payments) and Progressive (offers monthly payments for auto but not home).",
+    "Heather acknowledges Linda's preference for monthly payments and notes the conflict with Northwest Farmers' payment terms.",
+    "Heather plans to revisit all proposals and contact Northwest Farmers to request an exception for monthly payments.",
+    "Heather confirms Linda's email address to send additional details and remains engaged despite technical difficulties."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance provider payment options (monthly vs. quarterly)",
+    "Policy comparison (coverage, price, carrier-specific terms)",
+    "Handling client objections to payment terms",
+    "Process for contacting carriers to request exceptions"
+  ],
+  "systems_referenced": [
+    "Internal account management system (to pull Linda's current policies)",
+    "Email (to send proposals and communicate with Linda)",
+    "Northwest Farmers customer service (for exception requests)"
+  ],
+  "summary": "Linda seeks to reduce homeowners insurance costs while maintaining monthly payments. Heather evaluates options, identifies Northwest Farmers as the best value but notes their quarterly payment requirement, and plans to contact the carrier for an exception. The call remains open as Heather revisits proposals and confirms follow-up steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 363,
+  "_total_duration_ms": 60751,
+  "_source_file": "transcripts/exten-401-+13365080981-20251017-102708-1760711228.1195.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4053
+}

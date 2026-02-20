@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking guidance on determining appropriate insurance coverage amounts for multiple dealership locations to avoid reinsurance requirements while ensuring adequate protection.",
+  "resolution_steps": [
+    "Agent confirmed details about the Subaru dealership's renovation timeline and location relationships.",
+    "Discussed current policy values (e.g., Utica's $7M coverage) and the caller's concern about potential over-insurance.",
+    "Explained reinsurance thresholds: $15M triggers reinsurance for auto dealerships, while $20M requires factored insurance.",
+    "Advised adjusting coverage to stay below $15M to avoid reinsurance costs.",
+    "Recommended verifying building-specific values and square footage for accurate TIV calculations."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy limits and reinsurance thresholds",
+    "Auto dealership coverage requirements",
+    "Total Insured Value (TIV) calculations",
+    "Underwriting guidelines for property insurance"
+  ],
+  "systems_referenced": [
+    "Utica insurance policy details",
+    "Underwriting guidelines (treaty rules)",
+    "Property value assessment worksheets"
+  ],
+  "summary": "The caller discussed insurance coverage for multiple dealership locations, seeking to avoid reinsurance costs. The agent explained that exceeding $15M in coverage for auto dealerships triggers reinsurance requirements and advised adjusting values to stay below this threshold. The conversation highlighted the need for accurate TIV calculations and verification of building details.",
+  "_model": "qwen3:14b",
+  "_eval_count": 320,
+  "_total_duration_ms": 49251,
+  "_source_file": "transcripts/exten-206-+13364323980-20260116-115519-1768582519.2446.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4298
+}

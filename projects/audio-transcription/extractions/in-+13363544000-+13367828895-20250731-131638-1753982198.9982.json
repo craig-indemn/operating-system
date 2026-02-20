@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Brent Wells wants to add his 16-year-old son, Tessie, to his insurance policy as a new driver.",
+  "resolution_steps": [
+    "Agent placed Brent on hold to connect him with an agent for assistance.",
+    "Agent acknowledged Brent's request and expressed understanding about needing to review the bill."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Process for adding new drivers to insurance policies",
+    "Understanding of insurance premium adjustments for new drivers"
+  ],
+  "systems_referenced": [],
+  "summary": "Brent Wells contacted Alliance Insurance to add his newly licensed 16-year-old son to his policy. The agent placed him on hold to connect with an agent and acknowledged the need to review the bill. The call ended with the agent preparing to assist further.",
+  "_model": "qwen3:14b",
+  "_eval_count": 190,
+  "_total_duration_ms": 30674,
+  "_source_file": "transcripts/in-+13363544000-+13367828895-20250731-131638-1753982198.9982.txt",
+  "_direction": "inbound",
+  "_char_count": 564
+}

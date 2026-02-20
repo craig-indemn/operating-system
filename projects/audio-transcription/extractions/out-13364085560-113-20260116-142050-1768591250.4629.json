@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Gary contacted Alliance Insurance to follow up on a recently filed auto insurance claim and to address a significant increase in his homeowners insurance premium.",
+  "resolution_steps": [
+    "Aaron confirmed Gary's auto claim was filed through the Auto Owners app and that a spare tire was provided by the dealership.",
+    "Aaron acknowledged Gary's concern about the $1,200 increase in homeowners insurance and explained potential factors (e.g., updated replacement valuations).",
+    "Aaron offered to review the policy details, check for possible adjustments (e.g., deductible changes), and explore alternative providers while considering the impact of splitting auto/homeowners policies.",
+    "Aaron committed to following up by Monday with findings and potential solutions."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of auto claims processes and dealership interactions",
+    "Knowledge of homeowners insurance rate factors (replacement valuations, discounts)",
+    "Ability to analyze policy renewals, mid-term cancellation penalties, and bundling benefits"
+  ],
+  "systems_referenced": [
+    "Auto Owners insurance app",
+    "Alliance Insurance internal quoting tools"
+  ],
+  "summary": "Gary followed up on an auto claim and raised concerns about a large homeowners insurance premium increase. The agent confirmed the auto claim was handled and explained potential reasons for the premium jump, offering to review the policy and explore alternatives. A follow-up was scheduled for Monday.",
+  "_model": "qwen3:14b",
+  "_eval_count": 308,
+  "_total_duration_ms": 47001,
+  "_source_file": "transcripts/out-13364085560-113-20260116-142050-1768591250.4629.txt",
+  "_direction": "outbound",
+  "_char_count": 4430
+}

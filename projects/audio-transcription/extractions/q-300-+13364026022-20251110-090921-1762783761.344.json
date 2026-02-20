@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Melinda McDowell is seeking resolution for a sudden increase in her home and auto insurance premium, frustration with delayed follow-up from Jamie, and clarification on policy consolidation issues.",
+  "resolution_steps": [
+    "Agent Gary asks for Melinda's phone number to track her case.",
+    "Gary states he will research the policy details and work to expedite a callback from the assigned agent.",
+    "Gary acknowledges the policy consolidation issue (two automobile policies with multiple cars) and confirms he will address it."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy structures (e.g., multi-car policies, premium calculations).",
+    "Handling customer complaints about premium increases and policy adjustments.",
+    "Knowledge of carrier-specific rules (e.g., Travelers' policy limits)."
+  ],
+  "systems_referenced": [],
+  "summary": "Melinda McDowell reports a significant increase in her home and auto insurance premium after policy adjustments, frustration with delayed resolution from Jamie, and a need to consolidate two automobile policies. Gary agrees to investigate and ensure the agent follows up. The issue remains unresolved but is being escalated.",
+  "_model": "qwen3:14b",
+  "_eval_count": 256,
+  "_total_duration_ms": 49997,
+  "_source_file": "transcripts/q-300-+13364026022-20251110-090921-1762783761.344.txt",
+  "_direction": "queue",
+  "_char_count": 2654
+}

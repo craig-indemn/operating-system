@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking assistance to resolve a vehicle registration issue for her son, who is at Western Carolina University. She needs the FS1 form sent to the DMV to prevent registration revocation, as her son requires the vehicle for classes and the insurance has been active (with payments drafted monthly).",
+  "resolution_steps": [
+    "Agent acknowledges the caller's issue with the FS1 form not being received by the DMV.",
+    "Agent clarifies that they cannot process the FS1 form directly.",
+    "Agent offers to transfer the caller to someone who can assist with the FS1 form."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of FS1 forms (likely related to vehicle registration in North Carolina)",
+    "Knowledge of DMV processes for vehicle registration and insurance validation",
+    "Awareness of internal transfer protocols for specialized requests"
+  ],
+  "systems_referenced": [
+    "DMV (Department of Motor Vehicles)",
+    "FS1 form (vehicle registration document)",
+    "Insurance payment tracking system (credit card drafts)"
+  ],
+  "summary": "A caller urgently seeks help to resolve a vehicle registration revocation for her son by ensuring the FS1 form is sent to the DMV. The agent explains they cannot process the form directly but will transfer her to the appropriate department. The caller is concerned about her son's ability to attend class without a vehicle and has confirmed VIN numbers match between the DMV and insurance records.",
+  "_model": "qwen3:14b",
+  "_eval_count": 323,
+  "_total_duration_ms": 40866,
+  "_source_file": "transcripts/in-+13363779003-+13369092038-20250919-091711-1758287831.496.txt",
+  "_direction": "inbound",
+  "_char_count": 1539
+}

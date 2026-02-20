@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Brandy from Alliance Insurance needed assistance adding a fifth vehicle to an existing auto policy, as the system required a call for this specific request.",
+  "resolution_steps": [
+    "Agent Aaron requested Brandy's name, policy number, and agency code to verify her account.",
+    "Aaron placed Brandy on hold to transfer her to agency services for policy updates.",
+    "Agent Heather explained the process: completing a service request form under 'policy updates' to add the fifth car.",
+    "Heather clarified that a binder (proof of insurance) could not be issued immediately but could be created using the existing policy number until the new policy was issued.",
+    "Heather provided a typical processing time of 2-3 business days for the fifth car policy to be finalized."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Safeco's policy update process for adding vehicles",
+    "Service request form navigation",
+    "Binder issuance rules for pending policy changes",
+    "Standard processing timelines for policy modifications"
+  ],
+  "systems_referenced": [
+    "Safeco service request forms",
+    "Policy management system (referenced via policy number)"
+  ],
+  "summary": "Brandy sought help adding a fifth vehicle to an auto policy. The agent transferred her to agency services, where she was guided through the service request form process. The agent explained that a binder couldn't be issued immediately but could be created using the existing policy number, with a typical 2-3 business day processing time for the update.",
+  "_model": "qwen3:14b",
+  "_eval_count": 333,
+  "_total_duration_ms": 40917,
+  "_source_file": "transcripts/out-8662723326-112-20250813-134255-1755106975.6427.txt",
+  "_direction": "outbound",
+  "_char_count": 3037
+}

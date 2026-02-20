@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Siggy is seeking resolution for a returned money order sent to Ascendo Insurance and is inquiring about the status of his insurance policies, expressing frustration with repeated issues.",
+  "resolution_steps": [
+    "Brandy acknowledges the returned money order and explains that Siggy should take it to his bank to cash it.",
+    "She suggests contacting the 'food line' (where he obtained the money order) for further assistance.",
+    "Brandy confirms that Siggy's insurance policies are being processed and will be finalized next week.",
+    "She arranges a meeting at the office to handle necessary paperwork once Siggy has documents ready."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Handling returned money orders and their cashing procedures",
+    "Insurance policy processing timelines",
+    "Customer service protocols for unresolved postal issues",
+    "Scheduling follow-up meetings for paperwork"
+  ],
+  "systems_referenced": [
+    "Ascendo Insurance",
+    "Lexington, KY PO box",
+    "Banking institutions",
+    "Insurance policy website"
+  ],
+  "summary": "Siggy discusses a returned money order from Ascendo Insurance and updates on his policies. Brandy advises cashing the money order at a bank, confirms policy processing timelines, and schedules a meeting for paperwork. The call ends with mutual agreement to follow up next week.",
+  "_model": "qwen3:14b",
+  "_eval_count": 299,
+  "_total_duration_ms": 50647,
+  "_source_file": "transcripts/exten-112-+13368309924-20251010-142752-1760120872.7855.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3793
+}

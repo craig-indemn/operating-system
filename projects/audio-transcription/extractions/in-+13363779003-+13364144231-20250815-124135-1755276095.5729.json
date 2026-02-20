@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller requested to speak with either Gloria or Jessica but did not specify the reason for the request.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The call was brief and cut off mid-sentence. The caller requested to speak with specific agents but no meaningful conversation occurred beyond the agent's standard hold message. No resolution or follow-up was established.",
+  "_model": "qwen3:14b",
+  "_eval_count": 113,
+  "_total_duration_ms": 23697,
+  "_source_file": "transcripts/in-+13363779003-+13364144231-20250815-124135-1755276095.5729.txt",
+  "_direction": "inbound",
+  "_char_count": 435
+}

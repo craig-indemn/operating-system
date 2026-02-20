@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Nancy Barlowson wants to confirm that her insurance was properly transferred from her traded-in Veloster to her new 2022 Jeep Compass after a recent vehicle trade, and ensure there is no coverage lapse.",
+  "resolution_steps": [
+    "Tracy confirms the new vehicle's details (2022 Jeep Compass, VIN 3D4NJDD1NT190036) and dealership (Foot Hill Ford).",
+    "Tracy notes Nancy hasn't transferred the tag yet and advises using a 30-day tag to avoid DMV issues.",
+    "Tracy proposes adjusting coverage: removing full coverage from the Jeep Compass (due to a loan) and keeping only liability coverage temporarily.",
+    "Tracy plans to contact Foot Hill Ford to obtain loan information for the Jeep Compass.",
+    "Tracy will update the Veloster policy to liability-only coverage until the tag is transferred."
+  ],
+  "outcome": "transferred",
+  "knowledge_required": [
+    "Vehicle insurance transfer processes",
+    "DMV requirements for temporary tags and coverage",
+    "Handling insurance policy adjustments for vehicle loans"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal policy database",
+    "Dealership (Foot Hill Ford) contact information"
+  ],
+  "summary": "Nancy Barlowson contacted Alliance Insurance to confirm her insurance transfer after trading her Veloster for a 2022 Jeep Compass. Tracy identified a coverage gap and proposed temporary liability-only coverage for the Jeep Compass while verifying loan details with the dealership. The call concluded with Tracy committing to resolve the transfer and prevent DMV fines.",
+  "_model": "qwen3:14b",
+  "_eval_count": 357,
+  "_total_duration_ms": 37311,
+  "_source_file": "transcripts/q-300-+13369783479-20250818-093942-1755524382.939.txt",
+  "_direction": "queue",
+  "_char_count": 2046
+}

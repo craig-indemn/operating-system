@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Attempting to reach Jasmine, likely for a follow-up or inquiry.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief, incomplete outbound call where the caller attempts to reach Jasmine but does not engage in meaningful conversation or provide context for the call.",
+  "_model": "qwen3:14b",
+  "_eval_count": 93,
+  "_total_duration_ms": 24252,
+  "_source_file": "transcripts/out-3364939025-409-20250923-082855-1758630535.61.txt",
+  "_direction": "outbound",
+  "_char_count": 64
+}

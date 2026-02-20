@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Ian called to correct an error in an insurance binder for Laura, which was sent with the wrong car model (2024 Camry instead of 2025 RAV4).",
+  "resolution_steps": [
+    "Holly confirmed Brandi was unavailable and took ownership of the request.",
+    "Ian provided the policy number (5457476300) and clarified the correct vehicle model needed.",
+    "Holly committed to resending the corrected binder immediately."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding insurance binder processes",
+    "Policy number verification procedures",
+    "Vehicle model-specific insurance documentation"
+  ],
+  "systems_referenced": [
+    "Internal agent system (checking Brandi's availability)",
+    "Policy management portal (processing binder requests)"
+  ],
+  "summary": "Ian contacted Alliance Insurance to correct an insurance binder error for Laura's 2025 RAV4, which had been mistakenly issued for a 2024 Camry. Holly resolved the issue by confirming the policy details and committing to send the corrected document.",
+  "_model": "qwen3:14b",
+  "_eval_count": 249,
+  "_total_duration_ms": 35949,
+  "_source_file": "transcripts/q-300-+13367853100-20250731-122102-1753978862.7999.txt",
+  "_direction": "queue",
+  "_char_count": 854
+}

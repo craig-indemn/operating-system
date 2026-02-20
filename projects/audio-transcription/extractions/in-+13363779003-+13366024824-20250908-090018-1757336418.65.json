@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Joe Silver is seeking assistance with an issue related to his house and the company, likely an insurance-related problem.",
+  "resolution_steps": [
+    "Agent acknowledges caller's limited English and confirms understanding.",
+    "Agent asks for caller's name and confirms it as Joe Silver.",
+    "Agent acknowledges the caller's issue with the company and his house.",
+    "Agent offers to transfer the caller to an agent for further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Basic language assistance for non-English speakers",
+    "Call transfer procedures",
+    "Initial issue triage for insurance-related problems"
+  ],
+  "systems_referenced": [
+    "Internal call routing system"
+  ],
+  "summary": "Joe Silver contacted Alliance Insurance Services with a house-related issue. The agent confirmed the problem and initiated a transfer to an agent for resolution. The call ended mid-transfer, requiring follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 206,
+  "_total_duration_ms": 31637,
+  "_source_file": "transcripts/in-+13363779003-+13366024824-20250908-090018-1757336418.65.txt",
+  "_direction": "inbound",
+  "_char_count": 608
+}

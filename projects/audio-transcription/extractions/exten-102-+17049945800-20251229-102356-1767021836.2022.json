@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to correct the certificate holder information on a Certificate of Insurance (COI) provided by a contractor.",
+  "resolution_steps": [
+    "Gloria acknowledges the caller's request to update the COI's certificate holder information.",
+    "Instructs the caller to email the COI they received along with a sample of the correct format.",
+    "Gloria will send the corrected COI via email after receiving the documents."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding Certificate of Insurance (COI) correction processes",
+    "Email communication for document exchange"
+  ],
+  "systems_referenced": [
+    "myallianceinsurance.com (email address)"
+  ],
+  "summary": "A caller requests assistance correcting a COI's certificate holder information. Gloria guides them to email the existing COI and a sample of the correct format. The caller agrees to send the documents via email, and the call concludes with mutual gratitude.",
+  "_model": "qwen3:14b",
+  "_eval_count": 223,
+  "_total_duration_ms": 35431,
+  "_source_file": "transcripts/exten-102-+17049945800-20251229-102356-1767021836.2022.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1126
+}

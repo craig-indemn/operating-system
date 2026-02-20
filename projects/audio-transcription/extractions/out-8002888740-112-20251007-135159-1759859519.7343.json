@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Brandy from Alliance Insurance Services wants to change the billing method for policy number 5620636700 from agency bill to direct bill (S grade bill).",
+  "resolution_steps": [
+    "Agent Maddie from Auto Owners Insurance confirmed Brandy's identity and requested her policy number.",
+    "Maddie transferred Brandy to the agency bill department voicemail system.",
+    "Brandy left a detailed voicemail message with her name, policy number, date of policy issuance, requested billing change, and contact information for callback."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of Auto Owners Insurance's billing methods (agency bill vs. direct/S grade bill)",
+    "Voicemail message structure for agency bill department",
+    "Policy number verification process"
+  ],
+  "systems_referenced": [
+    "Auto Owners Insurance Company agency bill department",
+    "Voicemail system with account/policy number entry"
+  ],
+  "summary": "Brandy from Alliance Insurance contacted Auto Owners to correct a billing method error on a policy. After being transferred to voicemail, she left a detailed message explaining the issue and requested a callback. The agent verified policy details before routing the call.",
+  "_model": "qwen3:14b",
+  "_eval_count": 274,
+  "_total_duration_ms": 34325,
+  "_source_file": "transcripts/out-8002888740-112-20251007-135159-1759859519.7343.txt",
+  "_direction": "outbound",
+  "_char_count": 2016
+}

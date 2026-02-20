@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller intends to make a one-time payment of $78.61 for a National General policy using a friend's debit card, as their own card is temporarily inactive.",
+  "resolution_steps": [
+    "Agent confirmed the caller's intent to make a payment and verified the amount ($78.61).",
+    "Caller explained their own card was inactive and requested to use a friend's card for a one-time payment.",
+    "Agent confirmed the use of the friend's card for a single transaction.",
+    "Agent collected the friend's debit card details (number, expiration date, and CVV).",
+    "Agent processed the payment and provided a confirmation number (034035).",
+    "Agent informed the caller that the recipient (Mr. Delgado) would receive an email voucher confirming the payment."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Payment processing procedures for one-time transactions",
+    "Handling card-on-file issues and temporary card inactivity",
+    "Verification of card details for security purposes"
+  ],
+  "systems_referenced": [
+    "National General insurance policy system",
+    "Payment processing platform (implied by card verification and transaction steps)",
+    "Email notification system for payment confirmation"
+  ],
+  "summary": "A caller successfully made a one-time payment of $78.61 for a National General policy using a friend's debit card after their own card was temporarily inactive. The agent verified the card details, processed the payment, and provided a confirmation number. The recipient was to receive an email voucher for the transaction.",
+  "_model": "qwen3:14b",
+  "_eval_count": 351,
+  "_total_duration_ms": 46146,
+  "_source_file": "transcripts/in-+13363779003-+12406055702-20251202-143615-1764704175.7241.txt",
+  "_direction": "inbound",
+  "_char_count": 2246
+}

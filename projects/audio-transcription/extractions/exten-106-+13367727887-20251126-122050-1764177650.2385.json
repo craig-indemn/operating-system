@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Alejandro Ben\u00edtez is seeking assistance with a home insurance estimate, addressing an automatic payment issue for a security policy, and inquiring about car insurance options for two vehicles, including potential coverage from out-of-state providers.",
+  "resolution_steps": [
+    "Agent acknowledges receipt of home insurance photos and confirms a revised estimate will be emailed after verification.",
+    "Agent agrees to remove the automatic payment for the security policy to prevent future charges.",
+    "Agent offers to check car insurance options using provided license and vehicle information, noting the need for out-of-state documentation.",
+    "Agent requests Social Security number and vehicle details to proceed with car insurance evaluation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Home insurance estimate processes",
+    "Automatic payment cancellation procedures",
+    "Multi-state car insurance requirements",
+    "Handling incomplete documentation for insurance applications"
+  ],
+  "systems_referenced": [
+    "Email communication for estimate sharing",
+    "Insurance policy management system",
+    "Automated payment portal",
+    "Car insurance provider databases (Progressive, National General)"
+  ],
+  "summary": "Alejandro Ben\u00edtez discusses home insurance estimate verification, automatic payment cancellation for a security policy, and car insurance inquiries for two vehicles. The agent confirms steps to resolve these issues, including email communication and documentation requests. The call requires follow-up for complete resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 303,
+  "_total_duration_ms": 38786,
+  "_source_file": "transcripts/exten-106-+13367727887-20251126-122050-1764177650.2385.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3728
+}

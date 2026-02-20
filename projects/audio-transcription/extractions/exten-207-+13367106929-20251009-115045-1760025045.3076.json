@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking clarification about a Travelers insurance bill showing an outstanding balance despite making payments, and wants to understand why the policy terms and payments are conflicting.",
+  "resolution_steps": [
+    "Agent reviewed the policy with the caller, confirming the recent payroll increase adjustment.",
+    "Explained that two payments were made (on 9/11 and 9/22) and how the payroll increase affected the premium.",
+    "Clarified that the October 22nd payment of $1,666 was the next installment after the policy renewal.",
+    "Noted that the remaining balance of $7,630 included the added payroll cost of $1,446, which increased monthly payments by ~$100.",
+    "Confirmed the caller\u2019s confusion about the policy term transition and ensured they understood the payment schedule."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of insurance policy renewals and premium calculations",
+    "Ability to interpret payment histories and policy adjustments",
+    "Knowledge of how payroll changes impact commercial insurance premiums"
+  ],
+  "systems_referenced": [
+    "Travelers policy portal (implied through discussion of payment dates and policy terms)"
+  ],
+  "summary": "The caller was confused about a Travelers insurance bill showing an outstanding balance after making payments. The agent clarified that two payments were made, explained the impact of a recent payroll increase on the premium, and outlined the new payment schedule for the policy term. The caller now understands the billing discrepancy and upcoming payments.",
+  "_model": "qwen3:14b",
+  "_eval_count": 337,
+  "_total_duration_ms": 40076,
+  "_source_file": "transcripts/exten-207-+13367106929-20251009-115045-1760025045.3076.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4051
+}

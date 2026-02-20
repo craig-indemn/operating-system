@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Leonard Rogers is seeking assistance to resolve an issue where a bank is rejecting an ID card and requesting a copy of a fine and bond policy. He also wants to add the bank as a 'lost pay' on an insurance declaration page and coordinate communication with his banker.",
+  "resolution_steps": [
+    "Agent confirmed understanding of the bank's document requirements (copy of fine and bond policy).",
+    "Requested email of the bank's information to update the declaration page.",
+    "Provided instructions for the banker to email the request directly to the agent for processing.",
+    "Clarified that the banker must initiate contact to receive information due to third-party restrictions."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance declaration page updates",
+    "Handling third-party document requests",
+    "Lost payee addition procedures"
+  ],
+  "systems_referenced": [],
+  "summary": "Leonard Rogers is working with Gloria to resolve a bank's document rejection issue, requiring updates to an insurance declaration page and coordination via email with his banker. The agent will facilitate communication and document sharing once the bank's information is provided.",
+  "_model": "qwen3:14b",
+  "_eval_count": 254,
+  "_total_duration_ms": 39461,
+  "_source_file": "transcripts/exten-102-+13364223221-20250828-130857-1756400937.5034.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1254
+}

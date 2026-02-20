@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Joe) is confirming details about a commercial property (Katy Co LLC) to adjust or cancel insurance coverage, specifically Workers Comp, and gather information for a new policy.",
+  "resolution_steps": [
+    "Confirmed property details (address, ownership, purchase date).",
+    "Identified existing coverage (Workers Comp policy).",
+    "Discussed cancellation of Workers Comp due to no current employees.",
+    "Requested property information (year built, updates, roof type) for policy assessment.",
+    "Planned to pull tax card and use estimates for property condition."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Commercial insurance policies (Workers Comp, property coverage).",
+    "Property assessment methods (tax cards, building updates).",
+    "Insurance policy cancellation and adjustment procedures."
+  ],
+  "systems_referenced": [
+    "tax card (property information document)"
+  ],
+  "summary": "Agent Joe is working with Brian to adjust insurance coverage for Katy Co LLC's commercial property. They confirmed existing Workers Comp coverage, discussed cancellation plans, and gathered property details (roof type, updates) for a new policy. The agent will use tax card data to assess the property.",
+  "_model": "qwen3:14b",
+  "_eval_count": 266,
+  "_total_duration_ms": 44141,
+  "_source_file": "transcripts/out-13364292246-705-20250804-132152-1754328112.6273.txt",
+  "_direction": "outbound",
+  "_char_count": 2582
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Will) seeks assistance for a customer (Cassandra Moore) who needs proof of full coverage insurance and wants to add a new Jeep to her existing policy, as she does not have her insurance card with her.",
+  "resolution_steps": [
+    "Agent confirmed Cassandra Moore's identity using provided details (name, address, phone number).",
+    "Agent retrieved Cassandra's existing insurance policy.",
+    "Agent initiated process to generate proof of full coverage insurance via email.",
+    "Agent began process to add the new Jeep to Cassandra's policy."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Access to customer policy database",
+    "Process for generating proof of insurance documents",
+    "Procedure for adding new vehicles to existing policies"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance customer database",
+    "Email system for document delivery"
+  ],
+  "summary": "Will from Jerry Hunt Super Center requested help for Cassandra Moore, who needs proof of insurance and to add a new Jeep to her policy. The agent retrieved her policy and began processing both requests, with a callback to follow up on the email delivery and vehicle addition.",
+  "_model": "qwen3:14b",
+  "_eval_count": 261,
+  "_total_duration_ms": 42068,
+  "_source_file": "transcripts/in-+13363779003-+13369441709-20251110-132702-1762799222.3523.txt",
+  "_direction": "inbound",
+  "_char_count": 834
+}

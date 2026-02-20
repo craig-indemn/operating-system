@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking clarification about a failed payment draft from SafeCo and wants to understand if funds will be available in time to avoid further attempts.",
+  "resolution_steps": [
+    "Agent explains SafeCo's policy on stopping drafts (only possible 7 days prior to the draft date).",
+    "Informs caller that the first draft attempt will occur tomorrow, with a 2-day waiting period before a second attempt if funds are unavailable.",
+    "Reassures caller that if the first attempt fails, the second attempt may succeed if funds are available by Wednesday night."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Payment processing timelines for insurance drafts",
+    "SafeCo's specific policies on draft scheduling and fund availability",
+    "Understanding of automated payment system retry mechanisms"
+  ],
+  "systems_referenced": [
+    "SafeCo (insurance carrier)",
+    "Automated payment processing system"
+  ],
+  "summary": "An Alliance Insurance agent clarifies a client's concerns about a failed draft from SafeCo, explaining the 2-day retry window and potential resolution if funds become available. The client appears satisfied with the explanation and the call concludes positively.",
+  "_model": "qwen3:14b",
+  "_eval_count": 259,
+  "_total_duration_ms": 38968,
+  "_source_file": "transcripts/out-12525615271-509-20251215-120640-1765818400.2553.txt",
+  "_direction": "outbound",
+  "_char_count": 1002
+}

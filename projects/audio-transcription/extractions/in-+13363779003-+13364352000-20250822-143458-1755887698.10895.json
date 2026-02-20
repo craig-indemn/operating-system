@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to remove a car from their insurance policy.",
+  "resolution_steps": [
+    "Agent acknowledged the request to remove a car from the policy.",
+    "Agent placed the caller on hold to transfer them to another agent who can assist with the policy change."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy modification procedures",
+    "When to escalate calls to other agents"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller requested to remove a vehicle from their insurance policy. The agent acknowledged the request and transferred the call to another agent for further assistance. The call is ongoing with no resolution yet.",
+  "_model": "qwen3:14b",
+  "_eval_count": 158,
+  "_total_duration_ms": 33016,
+  "_source_file": "transcripts/in-+13363779003-+13364352000-20250822-143458-1755887698.10895.txt",
+  "_direction": "inbound",
+  "_char_count": 252
+}

@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Melissa Nelson wants to add her daughter as a driver to her existing insurance policy after the daughter obtains her full license (currently on a learner's permit).",
+  "resolution_steps": [
+    "Agent would verify Melissa's policy details and confirm the daughter's current status on the policy.",
+    "Agent would guide Melissa through the process of adding the daughter as a new driver.",
+    "Agent may check for any changes in coverage, rates, or required documentation related to the daughter's license upgrade."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Adding new drivers to existing policies",
+    "Insurance requirements for transitioning from learner's permit to full license",
+    "Policy updates and rate adjustments for new drivers"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance policy management system"
+  ],
+  "summary": "Melissa Nelson is seeking to add her daughter as a driver to her insurance policy after the daughter obtains her full license. The agent would need to verify policy details and guide her through the necessary steps for the update.",
+  "_model": "qwen3:14b",
+  "_eval_count": 234,
+  "_total_duration_ms": 83486,
+  "_source_file": "transcripts/in-+13363779003-+13365801916-20250722-165536-1753217736.18071.txt",
+  "_direction": "inbound",
+  "_char_count": 467
+}

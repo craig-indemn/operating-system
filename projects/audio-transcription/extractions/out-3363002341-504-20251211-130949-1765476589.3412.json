@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Holly is informing Doris about the cost increase for adding a 2012 Nissan to her insurance policy and advising her not to proceed with the addition until further confirmation.",
+  "resolution_steps": [
+    "Provided the quote details for adding the Nissan to the policy.",
+    "Informed Doris of the $343 annual cost increase until April renewal.",
+    "Instructed Doris not to add the vehicle to the policy immediately.",
+    "Requested Doris to confirm before proceeding."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance quoting process",
+    "Policy modification procedures",
+    "Cost communication protocols"
+  ],
+  "systems_referenced": [],
+  "summary": "Holly from Alliance Insurance informed Doris about a $343 annual increase for adding a 2012 Nissan to her policy, advising her to wait for confirmation before proceeding. Doris acknowledged the information and ended the call.",
+  "_model": "qwen3:14b",
+  "_eval_count": 220,
+  "_total_duration_ms": 46568,
+  "_source_file": "transcripts/out-3363002341-504-20251211-130949-1765476589.3412.txt",
+  "_direction": "outbound",
+  "_char_count": 402
+}

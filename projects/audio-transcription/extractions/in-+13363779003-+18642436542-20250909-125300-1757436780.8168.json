@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller requested to speak with someone who understands Vietnamese, specifically mentioning John.",
+  "resolution_steps": [
+    "Agent acknowledged the caller's request for Vietnamese language support.",
+    "Agent offered to transfer the call to someone who can assist in Vietnamese."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Language-specific transfer protocols",
+    "Internal team structure for multilingual support"
+  ],
+  "systems_referenced": [
+    "Internal call transfer system"
+  ],
+  "summary": "A caller requested assistance in Vietnamese, prompting the agent to offer a transfer. The conversation was brief, with no confirmation of successful transfer or resolution of the language support request.",
+  "_model": "qwen3:14b",
+  "_eval_count": 157,
+  "_total_duration_ms": 54478,
+  "_source_file": "transcripts/in-+13363779003-+18642436542-20250909-125300-1757436780.8168.txt",
+  "_direction": "inbound",
+  "_char_count": 396
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Heather Scott is seeking insurance quotes for a multifamily property in Winston Salem, NC, as her current policy (with Guard and Traveler) is expiring next month. She wants to compare vendors and ensure coverage for three buildings with 12-14 units each.",
+  "resolution_steps": [
+    "Agent requested Heather's current carrier (Guard and Traveler) and confirmed her email (Heather.S@allianceinsurance.com).",
+    "Agent asked for property details: LLC structure, number of buildings (3), addresses (1631, 1641, 1651 Northwest Blvd), and unit counts (approx. 12-14 units per building).",
+    "Agent inquired about property features (central AC, unit-specific heating/AC, no grills on windows) and non-renewal status of current policy.",
+    "Agent offered to send a policy document via email and requested Heather to reply upon receipt."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Multifamily property insurance underwriting criteria",
+    "Handling non-renewal notices from carriers",
+    "Property classification (LLC vs individual ownership)",
+    "Email system for document sharing"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services email system (allianceinsurance.com)"
+  ],
+  "summary": "Heather Scott is seeking insurance quotes for a 3-building multifamily property in Winston Salem. The agent is gathering details about the property's structure, current coverage, and carrier-specific requirements (e.g., photos for Guard and Traveler). The agent will send a policy document for review and follow up after receiving confirmation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 370,
+  "_total_duration_ms": 53037,
+  "_source_file": "transcripts/exten-401-+19175395567-20250924-145433-1758740073.5465.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3944
+}

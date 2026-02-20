@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Monty is following up about a missing payment for his commercial auto insurance renewal and wants confirmation on the status.",
+  "resolution_steps": [
+    "Ross confirms the policy's renewal date is September 13th.",
+    "Ross checks the payment schedule and explains the payment has not been processed yet.",
+    "Monty acknowledges the clarification and ends the conversation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of policy renewal timelines",
+    "Ability to access and interpret policy details from internal systems"
+  ],
+  "systems_referenced": [],
+  "summary": "Monty contacted Ross to inquire about a missing payment for his commercial auto insurance renewal. Ross checked the policy details and clarified that the payment is scheduled for September 13th. Monty was satisfied with the explanation and ended the call.",
+  "_model": "qwen3:14b",
+  "_eval_count": 195,
+  "_total_duration_ms": 41152,
+  "_source_file": "transcripts/exten-101-+19196257612-20250827-142434-1756319074.5321.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 721
+}

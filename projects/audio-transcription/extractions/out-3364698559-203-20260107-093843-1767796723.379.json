@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Maria is following up with Crystal to check the status of a 1997 Toyota's sale and confirm that the vehicle remains insured despite a bid delay and the buyer's illness.",
+  "resolution_steps": [
+    "Maria confirms Crystal has not sold the 1997 Toyota due to a bid delay and the buyer's illness.",
+    "Maria assures Crystal the vehicle remains insured and will be moved forward once Crystal is ready to proceed.",
+    "Maria acknowledges Crystal's previous advice and offers to assist further upon contact."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy management for vehicle coverage",
+    "Handling bid delays and temporary hold scenarios",
+    "Communication protocols for client follow-ups"
+  ],
+  "systems_referenced": [],
+  "summary": "Maria from Alliance Insurance Services follows up with Crystal about a delayed sale of a 1997 Toyota, confirming the vehicle remains insured despite the buyer's illness. She offers to proceed once Crystal is ready and acknowledges prior advice. The call ends with an agreement to contact when the sale is finalized.",
+  "_model": "qwen3:14b",
+  "_eval_count": 245,
+  "_total_duration_ms": 43916,
+  "_source_file": "transcripts/out-3364698559-203-20260107-093843-1767796723.379.txt",
+  "_direction": "outbound",
+  "_char_count": 658
+}

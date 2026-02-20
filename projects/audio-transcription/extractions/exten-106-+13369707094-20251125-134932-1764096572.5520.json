@@ -1,0 +1,19 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; appears to be a transferred call with no clear request or issue raised by the caller.",
+  "resolution_steps": [
+    "Automated message played regarding policy management and contact information updates."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [
+    "myallianceinsurance.com customer portal"
+  ],
+  "summary": "A transferred call containing fragmented conversation snippets and an automated voicemail message promoting online policy management. No substantive interaction with an agent occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 120,
+  "_total_duration_ms": 33954,
+  "_source_file": "transcripts/exten-106-+13369707094-20251125-134932-1764096572.5520.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 642
+}

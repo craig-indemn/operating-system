@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, representing EXL Audit, seeks to speak with the agent handling JC Senses LLC's insurance account to facilitate an audit.",
+  "resolution_steps": [
+    "Agent asks for the company name again to clarify 'JC Senses LLC' (confirming it refers to a fencing business).",
+    "Caller provides a policy number and offers to share it if needed.",
+    "Agent initiates a transfer to the appropriate party."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of internal systems to identify and transfer calls to the correct agent.",
+    "Ability to handle account-specific queries for clients like JC Senses LLC."
+  ],
+  "systems_referenced": [],
+  "summary": "A caller from EXL Audit requested to speak with the agent for JC Senses LLC. The agent clarified the company name, confirmed a policy number, and transferred the call. The outcome was a transfer, but the call was substantive due to the agent's efforts to resolve the request.",
+  "_model": "qwen3:14b",
+  "_eval_count": 228,
+  "_total_duration_ms": 75904,
+  "_source_file": "transcripts/in-+13363779003-+13136482504-20250919-100249-1758290569.759.txt",
+  "_direction": "inbound",
+  "_char_count": 694
+}

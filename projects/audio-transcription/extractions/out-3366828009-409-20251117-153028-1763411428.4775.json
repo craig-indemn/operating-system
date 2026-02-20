@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Henry is seeking resolution for a missing home insurance bill and discussing payment preferences (check vs. AutoPay) after experiencing issues with online payment systems in the past.",
+  "resolution_steps": [
+    "Corbin confirms the home insurance bill was sent to the correct address (7703 Antoinette Drive, Richmond, VA 23227) and notes a waived fee of $19.",
+    "Discusses AutoPay options (quarterly, semi-annually, annually) but acknowledges Henry's preference for sending checks.",
+    "Agrees to email Henry the relevant documents and follow up the next day to ensure receipt and finalize payment arrangements."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance billing processes (e.g., waived fees, missing bills)",
+    "AutoPay setup procedures and limitations",
+    "Handling customer preferences for payment methods (online vs. check)",
+    "Follow-up protocols for unresolved issues"
+  ],
+  "systems_referenced": [
+    "AutoPay (payment automation system)",
+    "Insurance carrier portals (implied through bill details and waived fees)"
+  ],
+  "summary": "Henry reports a missing home insurance bill and expresses a preference for check payments due to past issues with online systems. Corbin verifies the bill details, explains AutoPay options, and arranges to email documents for review. The call concludes with a commitment to follow up the next day to resolve the payment issue.",
+  "_model": "qwen3:14b",
+  "_eval_count": 319,
+  "_total_duration_ms": 46324,
+  "_source_file": "transcripts/out-3366828009-409-20251117-153028-1763411428.4775.txt",
+  "_direction": "outbound",
+  "_char_count": 2375
+}

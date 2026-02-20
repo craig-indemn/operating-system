@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Derek needs assistance with making a payment to Liberty Mutual using cash he plans to deposit, and he is concerned about whether paying on Monday will be acceptable given the original due date of the 19th.",
+  "resolution_steps": [
+    "Anna confirms the payment due date was the 19th and acknowledges Derek's intention to pay on Monday.",
+    "Anna explains there is no explicit information about the last acceptable payment date before cancellation but advises paying by Monday at the latest.",
+    "Anna offers to set a reminder to call Derek on Monday at 11:00 AM to confirm the payment.",
+    "Derek agrees to the plan and confirms he will make the deposit on Monday."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of Liberty Mutual's payment policies and grace periods",
+    "Ability to set internal reminders or notes for follow-up calls"
+  ],
+  "systems_referenced": [
+    "Liberty Mutual's payment system",
+    "Alliance Insurance's internal note-taking or reminder system"
+  ],
+  "summary": "Anna assists Derek with a Liberty Mutual payment issue, advising him to pay by Monday and setting a reminder to follow up on the payment. Derek agrees to the plan and confirms he will deposit the cash on Monday.",
+  "_model": "qwen3:14b",
+  "_eval_count": 282,
+  "_total_duration_ms": 41237,
+  "_source_file": "transcripts/out-13362764167-302-20251226-141720-1766776640.2261.txt",
+  "_direction": "outbound",
+  "_char_count": 1527
+}

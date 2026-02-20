@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller checked if Jeremy Palmer was available.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief call where the caller inquired about Jeremy Palmer's availability. The agent confirmed availability and asked the caller to wait, but no further substantive discussion occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 94,
+  "_total_duration_ms": 29022,
+  "_source_file": "transcripts/in-+13363779003-+17047856941-20250807-135331-1754589211.9330.txt",
+  "_direction": "inbound",
+  "_char_count": 145
+}

@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller confirmed they resolved an address issue (Edwards Drive off Red Brush) and is awaiting quotes to be approved, expecting a follow-up call from the agent.",
+  "resolution_steps": [
+    "Agent confirmed they would contact the caller once quotes are approved.",
+    "Caller expressed gratitude and ended the conversation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Quoting process and approval timelines",
+    "Basic geographic knowledge of local addresses (Edwards Drive, Red Brush)"
+  ],
+  "systems_referenced": [],
+  "summary": "The caller resolved an address confusion and confirmed they would receive quotes. The agent committed to contacting them once approvals are complete. The conversation concluded with mutual thanks.",
+  "_model": "qwen3:14b",
+  "_eval_count": 170,
+  "_total_duration_ms": 38114,
+  "_source_file": "transcripts/exten-207-+13367103578-20250814-142722-1755196042.5788.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 424
+}

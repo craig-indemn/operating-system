@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Justin Horn wants to update his address on file with Alliance Insurance and cancel his home insurance policy since he sold his home.",
+  "resolution_steps": [
+    "Agent confirmed Justin's old address (344 Shelleybrook Drive, Pilot Mountain) and verified he has moved.",
+    "Agent requested and received Justin's new address (172 West Independence Boulevard, Mount Airy).",
+    "Agent noted need to update address in system for policies with Travelers and Progressive.",
+    "Justin clarified he needs to cancel his home insurance policy (with Travelers) as he sold his home.",
+    "Agent acknowledged policy renewal date (next month on the 28th) and offered to transfer Justin to an agent to finalize cancellation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy management processes",
+    "Address update procedures",
+    "Carrier-specific policy details (Travelers, Progressive)",
+    "Cancellation protocols for home insurance"
+  ],
+  "systems_referenced": [
+    "Travelers",
+    "Progressive"
+  ],
+  "summary": "Justin Horn contacted Alliance Insurance to update his address and cancel his home insurance policy after selling his home. The agent confirmed the new address, noted the need to update policies with Travelers and Progressive, and arranged for a specialist to handle the cancellation process. The call ended with a transfer to an agent for further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 301,
+  "_total_duration_ms": 32333,
+  "_source_file": "transcripts/exten-100-+13367109204-20250826-124004-1756226404.4280.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1249
+}

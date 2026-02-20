@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Annie Lacy is following up on an insurance quote for the Glade Homeowners Association, seeking clarification on the confusion between the Master Association and the condo building association, and ensuring the correct coverage requirements are met under North Carolina's 2023 condo act amendments.",
+  "resolution_steps": [
+    "Annie asks Rick to confirm the quote number (NPP025D41Z5) to locate the correct quote in the system.",
+    "Annie logs into Snap to access the quote and reviews details about the condominium owners association's insurance needs.",
+    "Annie explains the legal requirement for crime coverage under North Carolina's 2023 condo act, including the 125% formula for reserve accounts and annual income.",
+    "Annie discusses the need for a dedicated DNO contract and compares it to the existing Travelers BOP endorsement.",
+    "Annie seeks clarification on the structure of the HOA (master association vs. subassociations)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "North Carolina condo act amendments (2023), including the 125% reserve account/annual income formula for employee dishonesty coverage.",
+    "Insurance policy details (DNO contract, BOP with Travelers, endorsement requirements).",
+    "HOA structure distinctions (master association vs. subassociations)."
+  ],
+  "systems_referenced": [
+    "Snap (insurance quoting system)"
+  ],
+  "summary": "Annie Lacy from USLI follows up on an insurance quote for Glade HOA, clarifying confusion between master and condo associations and explaining new legal requirements for crime coverage under North Carolina's 2023 condo act. The agent uses Snap to access the quote and discusses policy details, but the call ends with pending clarification on HOA structure.",
+  "_model": "qwen3:14b",
+  "_eval_count": 399,
+  "_total_duration_ms": 60096,
+  "_source_file": "transcripts/exten-105-+14845854000-20251229-112610-1767025570.4816.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 5551
+}

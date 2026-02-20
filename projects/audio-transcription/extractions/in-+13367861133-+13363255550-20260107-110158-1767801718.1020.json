@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with Corbin Jurg",
+  "resolution_steps": [
+    "Call transferred, no further interaction recorded"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Short inbound call where caller requested to speak with Corbin Jurg. The agent instructed the caller to hold, but no further conversation or resolution was documented in the transcript.",
+  "_model": "qwen3:14b",
+  "_eval_count": 104,
+  "_total_duration_ms": 23893,
+  "_source_file": "transcripts/in-+13367861133-+13363255550-20260107-110158-1767801718.1020.txt",
+  "_direction": "inbound",
+  "_char_count": 98
+}

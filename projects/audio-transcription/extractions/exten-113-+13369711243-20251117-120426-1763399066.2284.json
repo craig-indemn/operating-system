@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Deborah Trivet is seeking assistance to obtain auto insurance quotes from Auto Owners through another agency (Hassadet Call Insurance Agency) and wants to compare options, while also updating her homeowners insurance details.",
+  "resolution_steps": [
+    "Agent confirmed Deborah's homeowners insurance renewal date and payment method.",
+    "Agent requested and noted Deborah's Auto Owners policy number (4791672901) through Hassadet Call Insurance Agency.",
+    "Agent agreed to check for quotes from Auto Owners and explore alternative options without cost to Deborah.",
+    "Agent requested additional details about Deborah's property (roof installation in 2016, heating system update in 2022) to ensure accurate quoting.",
+    "Agent instructed Deborah to delay payments until follow-up and scheduled a callback with results."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy renewal processes",
+    "Auto and homeowners insurance quoting procedures",
+    "Policy number verification",
+    "Property update impact on insurance rates"
+  ],
+  "systems_referenced": [
+    "Auto Owners (insurance carrier)",
+    "Hassadet Call Insurance Agency (third-party agency)",
+    "Internal quoting systems"
+  ],
+  "summary": "Deborah Trivet contacted Gary to address auto insurance renewal through Auto Owners and explore alternatives. Gary collected policy details, property information, and committed to providing quotes for comparison. Deborah was instructed to delay payments until follow-up. The call concluded with a promise to callback with results.",
+  "_model": "qwen3:14b",
+  "_eval_count": 333,
+  "_total_duration_ms": 48903,
+  "_source_file": "transcripts/exten-113-+13369711243-20251117-120426-1763399066.2284.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2226
+}

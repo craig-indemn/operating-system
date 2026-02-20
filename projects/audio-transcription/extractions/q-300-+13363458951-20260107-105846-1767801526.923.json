@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Greg Bailey is reporting water damage at a rental property (1706 Grant Avenue) and wants to understand the deductible for the policy under Esther May Myers' heirs to determine if filing a claim is worthwhile.",
+  "resolution_steps": [
+    "Agent Jamie confirms the policy exists for Esther May Myers' heirs and notes a $1,000 deductible based on system data (though unable to verify directly due to technical issues).",
+    "Jamie advises Greg to assess the damage cost: if over $1,000, proceed with a claim; if under, avoid filing.",
+    "Explains the claims process: carrier will assign an adjuster to evaluate coverage and determine next steps."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance deductibles and claims processes",
+    "Ability to navigate internal policy management systems",
+    "Judgment on when to recommend filing a claim based on damage estimates"
+  ],
+  "systems_referenced": [
+    "Internal policy management software (with technical issues)",
+    "Carrier portal (for verification)"
+  ],
+  "summary": "Greg Bailey reported water damage at a rental property and sought clarity on the deductible for the policy. Agent Jamie, despite system issues, estimated a $1,000 deductible and advised filing a claim if repairs exceed that amount. The call highlighted technical challenges with the policy management system and the need for carrier verification.",
+  "_model": "qwen3:14b",
+  "_eval_count": 313,
+  "_total_duration_ms": 37979,
+  "_source_file": "transcripts/q-300-+13363458951-20260107-105846-1767801526.923.txt",
+  "_direction": "queue",
+  "_char_count": 4391
+}

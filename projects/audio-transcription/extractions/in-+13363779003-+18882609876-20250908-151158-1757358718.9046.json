@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, representing Mister Cooper, requested renewal information for a Hazad Fire Policy (initially misstated as a Homeowners Policy).",
+  "resolution_steps": [
+    "Agent confirmed the policy type (Hazad Fire Policy) and clarified the request.",
+    "Asked caller to provide their name for record-keeping (Ashley PS).",
+    "Provided the support email address: support@myallianceinsurance.com.",
+    "Instructed caller to send a request to upload the declaration page to the website."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Hazad policy terminology (Fire vs. Homeowners)",
+    "Alliance Insurance's support email system",
+    "Document upload process for policy renewals"
+  ],
+  "systems_referenced": [
+    "support@myallianceinsurance.com"
+  ],
+  "summary": "A Mister Cooper representative requested renewal information for a Hazad Fire Policy. The agent clarified the policy type, verified the caller's identity, and directed them to send a request via the support email to upload the declaration page. The call concluded with the customer agreeing to proceed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 257,
+  "_total_duration_ms": 34131,
+  "_source_file": "transcripts/in-+13363779003-+18882609876-20250908-151158-1757358718.9046.txt",
+  "_direction": "inbound",
+  "_char_count": 1183
+}

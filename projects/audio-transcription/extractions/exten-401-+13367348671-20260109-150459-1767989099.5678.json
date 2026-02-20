@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "William Wilson is seeking assistance with a double payment issue on his insurance policy with Auto Owners, which has led to an escrow increase and a request to cancel escrow services.",
+  "resolution_steps": [
+    "Heather confirms the double payment occurred on 438 Berkwood and verifies the refund check was issued by Auto Owners on December 31.",
+    "Heather explains the refund should arrive soon and advises William to apply it back to his mortgage to avoid increased payments.",
+    "Heather acknowledges William's desire to cancel escrow services but notes the need to resolve the negative balance first.",
+    "Heather offers to follow up if the refund check hasn't arrived by midweek."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Escrow account management processes",
+    "Insurance refund issuance timelines",
+    "Handling duplicate payments and their impact on escrow balances"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services account management system",
+    "Auto Owners insurance portal"
+  ],
+  "summary": "William Wilson contacted Heather to resolve a double payment issue with Auto Owners, which caused an escrow increase. Heather confirmed the refund was issued and advised applying it to reduce mortgage payments. William also sought to cancel escrow services but was informed this requires resolving the negative balance first. The call concluded with Heather offering follow-up support if the refund check didn't arrive by midweek.",
+  "_model": "qwen3:14b",
+  "_eval_count": 310,
+  "_total_duration_ms": 41940,
+  "_source_file": "transcripts/exten-401-+13367348671-20260109-150459-1767989099.5678.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3831
+}

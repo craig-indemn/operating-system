@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Betty Stevens is asking whether her insurance policy covers repairs for a cracked windshield.",
+  "resolution_steps": [
+    "Agent acknowledges the inquiry and confirms the need for specialized assistance.",
+    "Agent offers to transfer the call to another agent who can address the specific insurance coverage question."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of auto insurance coverage details (e.g., windshield repair coverage)",
+    "Call routing procedures within the agency"
+  ],
+  "systems_referenced": [
+    "Internal call transfer system"
+  ],
+  "summary": "Betty Stevens inquired about her insurance coverage for a cracked windshield. The agent recognized the need for specialized assistance and initiated a call transfer to another agent. The conversation was cut off before resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 176,
+  "_total_duration_ms": 28835,
+  "_source_file": "transcripts/in-+13367861133-+13367104518-20260105-102725-1767626845.2018.txt",
+  "_direction": "inbound",
+  "_char_count": 278
+}

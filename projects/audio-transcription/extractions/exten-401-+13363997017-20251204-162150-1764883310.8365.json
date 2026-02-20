@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Don intended to continue a prior conversation but needed to reschedule due to technical issues (earbud malfunction).",
+  "resolution_steps": [
+    "Heather apologized for being unavailable due to a meeting/appointment.",
+    "Don requested to call back on his cell phone because his earbud was failing."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A transferred call where the agent (Heather) and caller (Don) discussed rescheduling the conversation due to technical issues. No substantive insurance-related discussion occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 141,
+  "_total_duration_ms": 41855,
+  "_source_file": "transcripts/exten-401-+13363997017-20251204-162150-1764883310.8365.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 575
+}

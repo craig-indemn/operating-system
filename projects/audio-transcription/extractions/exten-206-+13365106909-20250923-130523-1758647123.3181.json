@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking assistance to complete a bond form for a construction project, specifically clarifying fields related to contract date, amount, description, and location.",
+  "resolution_steps": [
+    "Agent confirms the contract date as '99' (likely 1999, though phrased ambiguously).",
+    "Verifies the bond amount matches the contract amount ($31,357).",
+    "Guides the caller to describe the project as 'installing a prefabricated metal building.'",
+    "Confirms the location as '3300 Pennsylvania Avenue, Charleston, WV 25302.'",
+    "Advises sending the signed bond form via email (with a raised corporate seal) and also mailing a physical copy for verification."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of construction bond forms and their required fields",
+    "Knowledge of corporate seal requirements for insurance documentation",
+    "Familiarity with construction project terminology (e.g., 'prefabricated metal building')"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller discusses finalizing a construction bond form with an agent, clarifying details about the contract date, amount, project description, and location. The agent confirms the information and advises submitting the form via email and mail to ensure acceptance. The caller agrees to proceed and will contact if further assistance is needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 316,
+  "_total_duration_ms": 41755,
+  "_source_file": "transcripts/exten-206-+13365106909-20250923-130523-1758647123.3181.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1807
+}

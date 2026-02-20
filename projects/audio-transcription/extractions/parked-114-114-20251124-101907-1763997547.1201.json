@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to confirm details about their auto insurance policy renewal and update contact information, while also expressing interest in consulting another agent for potential changes to their plan.",
+  "resolution_steps": [
+    "JC confirmed the caller's account details (phone number, email, address) and verified they were up to date.",
+    "JC explained the purpose of the call: to ensure policy information was accurate ahead of the January renewal.",
+    "JC acknowledged the caller's intent to consult John Nguyen for potential plan changes and agreed to let them proceed.",
+    "JC offered to follow up if further assistance was needed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy renewal processes",
+    "Contact information verification",
+    "Progressive insurance system integration",
+    "Client account management procedures"
+  ],
+  "systems_referenced": [
+    "Progressive system",
+    "Alliance Insurance Services internal account database"
+  ],
+  "summary": "JC from Alliance Insurance Services contacted a client to verify their auto policy details ahead of renewal, confirmed contact information, and facilitated the client's request to consult another agent. The client agreed to follow up with John Nguyen for potential plan changes, with JC offering continued support if needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 272,
+  "_total_duration_ms": 34684,
+  "_source_file": "transcripts/parked-114-114-20251124-101907-1763997547.1201.txt",
+  "_direction": "parked",
+  "_char_count": 1731
+}

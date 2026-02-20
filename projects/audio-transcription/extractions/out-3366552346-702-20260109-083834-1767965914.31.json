@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is providing detailed information about a policy cancellation and a car accident claim involving Gloria, seeking assistance with resolving the claim and confirming cancellation details.",
+  "resolution_steps": [
+    "Agent listens to caller's explanation of policy cancellation (address, date, account number, and policy number).",
+    "Agent clarifies account and policy number details with the caller.",
+    "Agent discusses the car accident claim, including vehicle details, accident circumstances, and police report.",
+    "Agent notes that the caller has already contacted Penn National's adjuster (James Black) and left a voicemail.",
+    "Agent requests the caller to send a copy of the letter received from James Black for further processing."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance claim procedures",
+    "Policy cancellation processes",
+    "Handling third-party claims (e.g., Penn National, Inagon)",
+    "Interpreting police reports and claim documentation"
+  ],
+  "systems_referenced": [
+    "Penn National",
+    "Inagon",
+    "Internal claim tracking system (reference to claim number 52022)"
+  ],
+  "summary": "The caller provided detailed information about a policy cancellation and a car accident claim involving Gloria. The agent gathered policy details, clarified the accident scenario, and requested documentation from the caller to proceed with the claim. The caller mentioned contacting Penn National's adjuster, and the agent requested a copy of the letter from James Black for further action.",
+  "_model": "qwen3:14b",
+  "_eval_count": 325,
+  "_total_duration_ms": 54759,
+  "_source_file": "transcripts/out-3366552346-702-20260109-083834-1767965914.31.txt",
+  "_direction": "outbound",
+  "_char_count": 3778
+}

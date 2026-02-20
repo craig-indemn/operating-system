@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to add their daughter to their existing insurance policy, despite the daughter not yet owning a car in North Carolina and the car purchase being delayed for two weeks.",
+  "resolution_steps": [
+    "Agent asked for the caller's name and policy details to look up their account.",
+    "Agent noted the policy number was only for support and needed to transfer the caller to the correct agent.",
+    "Agent paused to clarify the situation but did not resolve the request before the call ended."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Adding new drivers to policies",
+    "Handling temporary coverage scenarios",
+    "Verifying driver eligibility before policy changes"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services account management system"
+  ],
+  "summary": "Caller sought to add their daughter to their policy despite the daughter not yet owning a car in NC. Agent initiated account lookup but did not resolve the request before transferring the call. The situation requires verifying coverage eligibility for a driver without a vehicle.",
+  "_model": "qwen3:14b",
+  "_eval_count": 231,
+  "_total_duration_ms": 34860,
+  "_source_file": "transcripts/q-200-+17135827879-20250725-161459-1753474499.11443.txt",
+  "_direction": "queue",
+  "_char_count": 1112
+}

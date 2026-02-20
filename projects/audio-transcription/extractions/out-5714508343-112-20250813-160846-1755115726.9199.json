@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Brandy from Alliance Insurance is seeking mortgagee call information for a client to update their homeowner's policy, specifically for a loan serviced by Civic Federal Credit Union.",
+  "resolution_steps": [
+    "Asha confirms the loan number provided by Brandy (4003463390).",
+    "Asha provides the mortgagee call details: 'Civic Federal Credit Union Mortgage Association' (CUMA), followed by 'ISA OA/ETIMA'.",
+    "Asha shares the physical address: 10800 Main Street, Fairfax, Virginia, ZIP 22030."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Mortgagee call procedures for updating policies",
+    "Loan number verification process",
+    "Civic Federal Credit Union's mortgagee call format and contact details"
+  ],
+  "systems_referenced": [
+    "Civic Federal Credit Union's mortgagee call database"
+  ],
+  "summary": "Brandy from Alliance Insurance requested mortgagee call information for a client's loan with Civic Federal Credit Union. Asha confirmed the loan number and provided the required details, including the credit union's name, address, and ZIP code. The call concluded with Asha sharing the necessary information for the policy update.",
+  "_model": "qwen3:14b",
+  "_eval_count": 291,
+  "_total_duration_ms": 37226,
+  "_source_file": "transcripts/out-5714508343-112-20250813-160846-1755115726.9199.txt",
+  "_direction": "outbound",
+  "_char_count": 1811
+}

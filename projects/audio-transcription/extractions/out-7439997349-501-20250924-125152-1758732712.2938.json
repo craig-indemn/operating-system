@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Jamie Flippin from Lines Insurance) is requesting Chris Cooper to contact John Cheek immediately to arrange a rental car, as John is unwell after an accident and lacks transportation.",
+  "resolution_steps": [
+    "Provided John Cheek's phone number (336-253-5315) and email (Brad Cheek 1129@yahoo.com).",
+    "Mentioned John's medical concerns (possible concussion) and need for a rental car.",
+    "Offered to send an email with details for reference."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Handling emergency claims",
+    "Rental car arrangement procedures",
+    "Client communication protocols"
+  ],
+  "systems_referenced": [
+    "Email system"
+  ],
+  "summary": "Jamie Flippin from Lines Insurance contacted Chris Cooper to urgently request assistance for John Cheek, who needs a rental car after an accident and is experiencing health issues. Contact details were provided, and an email was offered for reference.",
+  "_model": "qwen3:14b",
+  "_eval_count": 237,
+  "_total_duration_ms": 35263,
+  "_source_file": "transcripts/out-7439997349-501-20250924-125152-1758732712.2938.txt",
+  "_direction": "outbound",
+  "_char_count": 1434
+}

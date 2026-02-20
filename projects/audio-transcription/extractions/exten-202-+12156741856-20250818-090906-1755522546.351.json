@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Brian Grundy from Worldline is seeking assistance to resolve a policy renewal issue, requiring documents to be emailed for underwriting and a merger document to change the policyholder's name. He is concerned about meeting the renewal deadline on the 14th of the month.",
+  "resolution_steps": [
+    "Heather acknowledges the need to email documents to the underwriter instead of relying on voicemail.",
+    "Mentions a potential merger document may be required to change the policyholder's name.",
+    "Notes the underwriter's system is currently down, causing delays.",
+    "Commits to emailing Brian the information and checking with the underwriter to expedite the process.",
+    "Agrees to follow up on payment confirmation once the system is operational."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance underwriting processes",
+    "Document requirements for policy changes (e.g., merger documents)",
+    "System status impacts on processing timelines"
+  ],
+  "systems_referenced": [
+    "Underwriter's system (currently down)",
+    "Payment confirmation system"
+  ],
+  "summary": "Brian Grundy is working with Heather to resolve a policy renewal issue requiring documents and underwriting approval. Heather will email the information and check the payment status once the system is operational, but delays are expected due to the underwriter's system being down. A merger document may also be needed to change the policyholder's name.",
+  "_model": "qwen3:14b",
+  "_eval_count": 316,
+  "_total_duration_ms": 46505,
+  "_source_file": "transcripts/exten-202-+12156741856-20250818-090906-1755522546.351.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2603
+}

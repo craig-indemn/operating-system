@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Inform Teresa about the status of Tim's life insurance application and provide options for completing the phone interview.",
+  "resolution_steps": [
+    "Notified Teresa that Tim's application was received but not yet signed.",
+    "Provided phone interview scheduling options (8 AM\u201310 PM Eastern time, Saturday 9 AM\u20133 PM).",
+    "Shared the contact number for the life company's interview line (888-928-6517).",
+    "Offered direct assistance by providing Jeremy's contact number (336-377-9003)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Life insurance application process",
+    "Carrier communication protocols",
+    "Scheduling procedures for underwriting interviews"
+  ],
+  "systems_referenced": [
+    "Life company's application tracking system",
+    "Alliance Insurance Services internal records"
+  ],
+  "summary": "Jeremy from Alliance Insurance Services informed Teresa about Tim's pending life insurance application and provided details for completing the required phone interview. He offered multiple scheduling options and his direct contact information for further assistance. The call concluded with Teresa being informed but no immediate action confirmed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 269,
+  "_total_duration_ms": 36292,
+  "_source_file": "transcripts/out-3368702682-701-20250922-114155-1758555715.3498.txt",
+  "_direction": "outbound",
+  "_char_count": 1105
+}

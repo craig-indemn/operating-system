@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Eddie is following up on an insurance quote, confirming acceptance of a $2,500 deductible and requesting premium information. He also needs guidance on providing square footage details for a project to complete the quote.",
+  "resolution_steps": [
+    "Jacy acknowledges Eddie's confirmation of the deductible and agrees to provide premium information.",
+    "Jacy explains the need for square footage of the 'entire completed project' to proceed.",
+    "Eddie clarifies he doesn't have the plans but will obtain the information from Irem and Gary.",
+    "They agree to communicate via email once the square footage details are available.",
+    "Eddie confirms he will send the information later and expresses no urgency."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy quoting process",
+    "Requirement for property details (square footage) in insurance calculations",
+    "Customer communication protocols for incomplete applications"
+  ],
+  "systems_referenced": [],
+  "summary": "Eddie confirms acceptance of a deductible and requests premium details for an insurance quote. The agent explains the need for square footage information, which Eddie will obtain later. They agree to continue communication via email once the details are available.",
+  "_model": "qwen3:14b",
+  "_eval_count": 269,
+  "_total_duration_ms": 37323,
+  "_source_file": "transcripts/exten-114-+18034877687-20250723-121152-1753287112.5887.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1645
+}

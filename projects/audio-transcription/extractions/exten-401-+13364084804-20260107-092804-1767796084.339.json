@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Tomas Figueroa wants to update his insurance policy after replacing a vehicle, requesting assistance to remove the old car and add the new one with the same coverage.",
+  "resolution_steps": [
+    "Heather confirms the need to update the policy due to a vehicle change.",
+    "Heather requests Tomas to email VIN numbers for both the removed and added vehicles.",
+    "Heather clarifies that coverage and lienholder details will remain the same.",
+    "Heather assures Tomas that the policy update will be processed promptly, with an ID card sent afterward."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy modification procedures",
+    "VIN number requirements for vehicle updates",
+    "Lienholder information handling",
+    "Email-based policy change workflows"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services email system"
+  ],
+  "summary": "Tomas contacted Heather to update his insurance policy after replacing a vehicle. Heather requested VIN numbers via email, confirmed coverage and lienholder details would remain unchanged, and assured processing would occur promptly. The call concluded with Tomas agreeing to send the required information.",
+  "_model": "qwen3:14b",
+  "_eval_count": 254,
+  "_total_duration_ms": 32387,
+  "_source_file": "transcripts/exten-401-+13364084804-20260107-092804-1767796084.339.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1801
+}

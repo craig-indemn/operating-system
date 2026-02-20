@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller was attempting to reach Chris Cook at Alliance Insurance but was informed he was unavailable.",
+  "resolution_steps": [
+    "Agent confirmed Chris Cook was not in today",
+    "Caller accepted the information and ended the call"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A caller inquired about Chris Cook's availability. The agent confirmed he was not present, and the caller indicated they would follow up after the weekend. No further action was required.",
+  "_model": "qwen3:14b",
+  "_eval_count": 127,
+  "_total_duration_ms": 27791,
+  "_source_file": "transcripts/in-+13363779003-+19198278473-20260102-112251-1767370971.2672.txt",
+  "_direction": "inbound",
+  "_char_count": 259
+}

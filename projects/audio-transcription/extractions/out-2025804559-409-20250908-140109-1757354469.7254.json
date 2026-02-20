@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Corbin is trying to resolve an issue with a policy document he sent, specifically confirming whether the latest version includes updated services like smoke and carbon monoxide detection. He is also seeking clarification on discrepancies between document versions.",
+  "resolution_steps": [
+    "Agent listened to Corbin's explanation about the document discrepancy and technical issues with file downloads.",
+    "Agent requested Corbin to send the updated combined PDF for verification.",
+    "Agent reviewed the documents Corbin provided, comparing them to the original policy version.",
+    "Agent identified differences in service details (e.g., smoke detection inclusion) between versions.",
+    "Agent acknowledged the need to check with Jessica for further resolution."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of policy document structure and versioning",
+    "Ability to verify service inclusions (e.g., ADT interactive, carbon monoxide detection)",
+    "Knowledge of internal systems for accessing policy history and carrier portals"
+  ],
+  "systems_referenced": [
+    "Carrier portal for policy document retrieval",
+    "Internal policy history system",
+    "ADT interactive service details"
+  ],
+  "summary": "Corbin contacted Alliance Insurance Services to resolve a discrepancy in a policy document he sent, ensuring the latest version included updated services. The agent verified document differences and requested further clarification from Jessica. The call ended with Corbin resending the updated document for review.",
+  "_model": "qwen3:14b",
+  "_eval_count": 309,
+  "_total_duration_ms": 59970,
+  "_source_file": "transcripts/out-2025804559-409-20250908-140109-1757354469.7254.txt",
+  "_direction": "outbound",
+  "_char_count": 3658
+}

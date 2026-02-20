@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "David Kerner is seeking advice on whether to use insurance or pay out-of-pocket for a minor car accident involving his son (who has a permit) that caused $870 in bumper damage.",
+  "resolution_steps": [
+    "Agent acknowledged the caller's situation and confirmed details about the accident (permit holder, parking lot collision, $870 repair estimate).",
+    "Agent offered to transfer the caller to agent Gary for a detailed review of the case."
+  ],
+  "outcome": "transferred",
+  "knowledge_required": [
+    "Insurance claims process for minor accidents",
+    "When to recommend using insurance vs. paying out-of-pocket",
+    "Internal agent transfer protocols"
+  ],
+  "systems_referenced": [],
+  "summary": "David Kerner contacted Alliance Insurance about a minor accident involving his son's permit-driven vehicle. The agent listened to the situation and offered to transfer him to agent Gary for further review. The call ended with the agent initiating a transfer to Gary.",
+  "_model": "qwen3:14b",
+  "_eval_count": 222,
+  "_total_duration_ms": 34743,
+  "_source_file": "transcripts/in-+13363544000-+13363549223-20251223-111408-1766506448.1673.txt",
+  "_direction": "inbound",
+  "_char_count": 891
+}

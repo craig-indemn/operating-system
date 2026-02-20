@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Cecilia is seeking help to resolve two issues: (1) deleting a booking page she created and (2) locating a missing email reply from LightSpeedVoice to an email sent on September 9th.",
+  "resolution_steps": [
+    "Agent acknowledges the booking issue but defers resolution until Cecilia can provide more details later.",
+    "Agent confirms the email was sent to LightSpeedVoice on September 9th and agrees to perform a message trace to locate the missing reply.",
+    "Agent requests Cecilia to call back when available to proceed with the message trace."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Email system navigation (Microsoft, LightSpeedVoice)",
+    "Message trace procedures for email recovery",
+    "Booking system troubleshooting"
+  ],
+  "systems_referenced": [
+    "Microsoft (email system)",
+    "LightSpeedVoice email domain",
+    "Message trace tool"
+  ],
+  "summary": "Cecilia contacted Stephen to address a booking deletion issue and a missing email reply from LightSpeedVoice. The agent agreed to perform a message trace to locate the email but required Cecilia to call back later for follow-up. The booking issue was deferred for further clarification.",
+  "_model": "qwen3:14b",
+  "_eval_count": 272,
+  "_total_duration_ms": 45733,
+  "_source_file": "transcripts/exten-107-+13364990749-20251112-143432-1762976072.6783.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2988
+}

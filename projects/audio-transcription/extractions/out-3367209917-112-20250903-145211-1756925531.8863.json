@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Brandi from Alliance Insurance is contacting Miss Cooper to review her upcoming home and auto insurance renewals, confirm policy details, and discuss payment schedules.",
+  "resolution_steps": [
+    "Confirmed Miss Cooper's address and vehicle details (2018 Nissan Kicks) for the auto policy.",
+    "Reviewed current coverage (comprehensive, collision, liability, towing, rental coverage) and confirmed she wants to keep them unchanged.",
+    "Adjusted payment method from semi-annual to annual for the auto policy.",
+    "Notified Miss Cooper about a home policy rate increase due to statewide adjustments and updated coverage limits (from $252,000 to $291,500).",
+    "Provided renewal amounts: $1,342.02 for auto (annual) and $1,435 for home (due Sept 14).",
+    "Noted that renewal documents had not yet been received and assured follow-up."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy renewal processes",
+    "Coverage types (comprehensive, collision, liability, towing, rental)",
+    "Rate adjustment mechanisms for home insurance",
+    "Payment schedule options (annual/semi-annual)",
+    "Policy document distribution timelines"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's internal policy management system",
+    "Carrier portals for rate and coverage data"
+  ],
+  "summary": "Brandi from Alliance Insurance reviewed Miss Cooper's home and auto insurance policies, confirmed coverage retention, adjusted payment terms, and informed her of a home policy rate increase. Miss Cooper had not yet received renewal documents and was unaware of the home policy's due date. The call concluded with a need for follow-up on documentation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 387,
+  "_total_duration_ms": 44909,
+  "_source_file": "transcripts/out-3367209917-112-20250903-145211-1756925531.8863.txt",
+  "_direction": "outbound",
+  "_char_count": 4351
+}

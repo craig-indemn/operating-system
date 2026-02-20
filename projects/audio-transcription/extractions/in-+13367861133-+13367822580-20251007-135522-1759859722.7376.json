@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller seeks a full insurance quote but mentions confusion about a previous message and a wrong number, requesting to speak directly with someone in the office.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's previous message and asks for clarification on the type of insurance needed.",
+    "Caller clarifies they did not call in for a quote but received a message and now needs to speak to someone in the office.",
+    "Agent offers to transfer the call to resolve the issue."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance quote process",
+    "Call transfer procedures",
+    "Handling customer confusion about previous communications"
+  ],
+  "systems_referenced": [],
+  "summary": "The caller requested a full insurance quote but expressed confusion about a prior message and a wrong number. The agent attempted to clarify the type of insurance needed and offered to transfer the call to address the issue.",
+  "_model": "qwen3:14b",
+  "_eval_count": 208,
+  "_total_duration_ms": 25650,
+  "_source_file": "transcripts/in-+13367861133-+13367822580-20251007-135522-1759859722.7376.txt",
+  "_direction": "inbound",
+  "_char_count": 471
+}

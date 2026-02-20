@@ -1,0 +1,19 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; appears to be a brief transfer request",
+  "resolution_steps": [
+    "Agent asked for extension number",
+    "Caller provided name and extension",
+    "Agent initiated transfer"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Very brief call where agent requested extension information and initiated a transfer. No meaningful conversation or issue resolution occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 104,
+  "_total_duration_ms": 27760,
+  "_source_file": "transcripts/in-+13363779003-+13363682209-20250908-122930-1757348970.5847.txt",
+  "_direction": "inbound",
+  "_char_count": 206
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Diane Johnson is requesting to add two jet skis to Jean Johnson's insurance policy, providing detailed specifications for each unit.",
+  "resolution_steps": [
+    "Cody confirms the request to add two jet skis to Jean's policy.",
+    "Collects make, model, year, value, and serial numbers for both jet skis (2025 CDO GTISE 170 and 2025 CDO RXT X325).",
+    "Verifies the effective date as 'today' and confirms the serial number details.",
+    "Notes that the client currently has Farm Bureau for home and auto insurance.",
+    "Agrees to process the addition and offers to review other policies if needed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of watercraft insurance policy modifications",
+    "Ability to collect and verify detailed equipment specifications",
+    "Knowledge of carrier-specific policy management processes"
+  ],
+  "systems_referenced": [
+    "Farm Bureau (carrier)"
+  ],
+  "summary": "Diane Johnson contacted Cody to add two jet skis to Jean Johnson's insurance policy, providing full details for both units. Cody confirmed the request, collected all necessary information, and noted the client's current insurer. The call concluded with Cody agreeing to process the addition.",
+  "_model": "qwen3:14b",
+  "_eval_count": 291,
+  "_total_duration_ms": 48026,
+  "_source_file": "transcripts/exten-207-+13364102581-20250723-104312-1753281792.3388.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2018
+}

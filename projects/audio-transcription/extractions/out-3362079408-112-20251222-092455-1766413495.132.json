@@ -1,0 +1,19 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Informing the recipient about liability coverage extension for a camper at Baden Lake and offering to send a declarations page for proof.",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [
+    "Insurance policy coverage extensions"
+  ],
+  "systems_referenced": [
+    "Lions Insurance"
+  ],
+  "summary": "Voicemail left for Marcia from Brandy at Lions Insurance regarding liability coverage extension for camper at Baden Lake. Contact info provided for follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 114,
+  "_total_duration_ms": 63045,
+  "_source_file": "transcripts/out-3362079408-112-20251222-092455-1766413495.132.txt",
+  "_direction": "outbound",
+  "_char_count": 735
+}

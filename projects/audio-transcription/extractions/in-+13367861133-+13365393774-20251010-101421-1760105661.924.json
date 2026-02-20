@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Kurt Vandry) wants to obtain detailed coverage information for his upcoming homeowner's policy renewal, which he has not received despite seeing a premium notice. He also expresses frustration about being unable to find this information on Auto Owners' website.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's request for coverage details via email.",
+    "Agent offers to transfer the call to another agent to review the policy and provide the necessary information."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding how to access and retrieve policy coverage details from internal systems",
+    "Knowledge of carrier portals (e.g., Auto Owners) and their limitations",
+    "Ability to escalate calls to appropriate agents for policy review"
+  ],
+  "systems_referenced": [
+    "Auto Owners (carrier portal)"
+  ],
+  "summary": "Kurt Vandry is seeking clarification on his homeowner's policy coverage details for renewal, which he has not received. He attempted to find information on Auto Owners' website but only found the renewal bill. The agent is transferring him to another agent to resolve the issue.",
+  "_model": "qwen3:14b",
+  "_eval_count": 250,
+  "_total_duration_ms": 42421,
+  "_source_file": "transcripts/in-+13367861133-+13365393774-20251010-101421-1760105661.924.txt",
+  "_direction": "inbound",
+  "_char_count": 599
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Ron inquired about insurance options in Florida, likely seeking coverage or services from Alliance Insurance Services.",
+  "resolution_steps": [
+    "Heather Johnson identified herself as an Alliance Insurance agent and acknowledged Ron's inquiry about Florida insurance.",
+    "She clarified that Alliance Insurance Services does not operate in Florida, explaining their primary service area is North Carolina and surrounding states.",
+    "She advised Ron to contact a local Florida-based agency for better assistance.",
+    "She provided her contact number for follow-up questions."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Alliance Insurance's geographic service area limitations",
+    "Insurance carrier partnerships in North Carolina vs. Florida",
+    "Referral protocols for out-of-market inquiries"
+  ],
+  "systems_referenced": [
+    "Internal agency database (to confirm Florida coverage status)",
+    "Carrier portal information (implied through service area knowledge)"
+  ],
+  "summary": "Heather Johnson from Alliance Insurance informed Ron that the agency does not provide insurance services in Florida, explaining their focus on North Carolina and surrounding states. She recommended contacting a local Florida agency and provided her contact information for further questions, leaving the conversation open for potential follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 266,
+  "_total_duration_ms": 33733,
+  "_source_file": "transcripts/out-9042507502-202-20251107-150652-1762546012.7405.txt",
+  "_direction": "outbound",
+  "_char_count": 675
+}

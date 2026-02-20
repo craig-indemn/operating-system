@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Bobby Jenkins wants to understand the new insurance premiums after his policy was changed with Travelers and clarify how payments will work.",
+  "resolution_steps": [
+    "Agent confirmed the policy change with Travelers effective November 25th for $1,641.",
+    "Agent explained Travelers should send payment notices but acknowledged none had been received yet.",
+    "Agent offered to check Travelers' system directly for precise premium details and payment schedules.",
+    "Agent requested Bobby's phone number (413-1326) to call back with the information."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Travelers insurance policy processing",
+    "Premium calculation and payment procedures",
+    "Cross-carrier policy verification protocols"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance customer portal (myallianceinsurance.com)",
+    "Travelers insurance system"
+  ],
+  "summary": "Bobby Jenkins contacted Alliance Insurance to inquire about new Travelers policy premiums after a recent change. The agent confirmed the policy details and offered to check Travelers' system directly for precise payment information, scheduling a callback to provide full details.",
+  "_model": "qwen3:14b",
+  "_eval_count": 263,
+  "_total_duration_ms": 30567,
+  "_source_file": "transcripts/q-300-+13364131326-20251219-093230-1766154750.545.txt",
+  "_direction": "queue",
+  "_char_count": 1800
+}

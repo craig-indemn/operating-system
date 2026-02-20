@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Shelly Kirkland is seeking assistance with her insurance renewal and is inquiring about rental insurance for her new residence, as she is moving and has no prior experience with rental insurance.",
+  "resolution_steps": [
+    "Brandi acknowledges Shelly's call and confirms she previously spoke with Heather about renewal matters.",
+    "Brandi explains rental insurance coverage (personal belongings up to a certain amount and liability protection), emphasizing the recommended $500,000 minimum versus typical landlord requirements.",
+    "Brandi puts Shelly on hold to retrieve a quote for the rental insurance policy.",
+    "The call is temporarily interrupted by Shelly's daughter's doctor, but Brandi reassures Shelly she will return to the conversation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Rental insurance policy details (coverage limits, liability requirements)",
+    "Agency's internal systems for retrieving quotes",
+    "Handling customer interruptions and resuming conversations"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services customer portal (myallianceinsurance.com)",
+    "Text support service (336-786-1133)"
+  ],
+  "summary": "Shelly Kirkland contacted Alliance Insurance Services to address her insurance renewal and seek guidance on rental insurance for her upcoming move. Agent Brandi explained rental insurance coverage options, put Shelly on hold to retrieve a quote, and managed an interruption from Shelly's daughter's doctor while maintaining the conversation. The call was paused but remains active for further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 337,
+  "_total_duration_ms": 35619,
+  "_source_file": "transcripts/q-300-+13368296133-20251215-112941-1765816181.2164.txt",
+  "_direction": "queue",
+  "_char_count": 2838
+}

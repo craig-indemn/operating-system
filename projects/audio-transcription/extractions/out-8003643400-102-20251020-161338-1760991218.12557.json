@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "N/A (automated message, no caller interaction)",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [
+    "Cincinnati Insurance Companies phone payment service"
+  ],
+  "summary": "Automated voicemail greeting for Cincinnati Insurance's payment service, offering Spanish language option. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 91,
+  "_total_duration_ms": 21246,
+  "_source_file": "transcripts/out-8003643400-102-20251020-161338-1760991218.12557.txt",
+  "_direction": "outbound",
+  "_char_count": 152
+}

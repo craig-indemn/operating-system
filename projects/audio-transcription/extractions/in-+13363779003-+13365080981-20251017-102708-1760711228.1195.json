@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Attempt to reach Heather Scott at Alliance Insurance",
+  "resolution_steps": [
+    "Agent confirmed need to transfer call",
+    "Agent stated 'one second' and 'I'll turn me over'"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Very brief call where caller requested to speak with Heather Scott. Agent acknowledged request and initiated transfer, but no further conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 110,
+  "_total_duration_ms": 26526,
+  "_source_file": "transcripts/in-+13363779003-+13365080981-20251017-102708-1760711228.1195.txt",
+  "_direction": "inbound",
+  "_char_count": 149
+}

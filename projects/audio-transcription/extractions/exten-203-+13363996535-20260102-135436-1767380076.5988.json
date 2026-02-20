@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Melissa Lail wants to change her insurance policy's deductible to $1,000 and inquire if her recent payment can be credited toward the new policy, affecting future payments.",
+  "resolution_steps": [
+    "Agent Maria confirms the caller's intent to change the deductible and checks the payment history.",
+    "Maria explains that the payment made on the first of the month cannot be backdated but can be applied effective immediately.",
+    "Maria calculates the adjusted payment amount ($129.94) after applying the new deductible.",
+    "Melissa agrees to proceed with the change."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy changes and premium calculations",
+    "Ability to access and review customer payment history",
+    "Knowledge of how deductible changes affect premium amounts"
+  ],
+  "systems_referenced": [
+    "customer account system (implied through 'here we go into your account')"
+  ],
+  "summary": "Melissa Lail contacted Alliance Insurance to adjust her policy's deductible to $1,000 and clarify how her recent payment would apply. Maria explained that while the payment couldn't be backdated, applying the new deductible would reduce future payments to $129.94. Melissa approved the change, and the agent processed the adjustment.",
+  "_model": "qwen3:14b",
+  "_eval_count": 290,
+  "_total_duration_ms": 44345,
+  "_source_file": "transcripts/exten-203-+13363996535-20260102-135436-1767380076.5988.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1345
+}

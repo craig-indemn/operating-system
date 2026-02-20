@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is concerned about receiving urgent policy coverage alerts from National General Insurance and seeks clarification on their meaning and next steps.",
+  "resolution_steps": [
+    "Agent checked the caller's policy and billing information in the system.",
+    "Confirmed no pending payments or policy issues were found (next payment due February 12).",
+    "Offered to transfer the caller to agent Justin for further review."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy status verification",
+    "Billing cycle understanding",
+    "Internal system navigation",
+    "Call transfer protocols"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal policy management system"
+  ],
+  "summary": "A caller received urgent alerts from National General Insurance and contacted Alliance for clarification. The agent checked their system, found no policy issues, and arranged a transfer to an agent for further review. The caller was informed of their next payment due date and advised to follow up with the assigned agent.",
+  "_model": "qwen3:14b",
+  "_eval_count": 225,
+  "_total_duration_ms": 28377,
+  "_source_file": "transcripts/in-+13363779003-+13364069829-20260119-122214-1768843334.2294.txt",
+  "_direction": "inbound",
+  "_char_count": 962
+}

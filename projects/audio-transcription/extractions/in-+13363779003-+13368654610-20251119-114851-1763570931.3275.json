@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller intended to speak with an agent about their policy but did not specify the issue.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The call was brief and inconclusive. The caller requested to speak with an agent but did not clarify their needs, and the agent did not take actionable steps to resolve the issue.",
+  "_model": "qwen3:14b",
+  "_eval_count": 107,
+  "_total_duration_ms": 20652,
+  "_source_file": "transcripts/in-+13363779003-+13368654610-20251119-114851-1763570931.3275.txt",
+  "_direction": "inbound",
+  "_char_count": 222
+}

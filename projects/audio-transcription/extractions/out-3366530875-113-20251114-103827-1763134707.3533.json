@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Miss Arpola) wanted to confirm that the claims process was progressing and that repairs to her vehicle were being addressed, as no repairs had been completed yet.",
+  "resolution_steps": [
+    "Agent Gary confirmed the caller had already contacted the claims department.",
+    "Gary assured her that Alliance Insurance was monitoring the situation to ensure the claims process wasn't stalled.",
+    "Offered to assist further if additional issues arose."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Claims process workflow",
+    "Post-accident repair coordination",
+    "Customer follow-up protocols"
+  ],
+  "systems_referenced": [
+    "claims department"
+  ],
+  "summary": "Gary from Alliance Insurance followed up with Miss Arpola to ensure the claims process was progressing after she reported no repairs had been completed. He confirmed she had contacted the claims department and offered further assistance if needed. The conversation ended with mutual gratitude and a positive closing.",
+  "_model": "qwen3:14b",
+  "_eval_count": 217,
+  "_total_duration_ms": 38887,
+  "_source_file": "transcripts/out-3366530875-113-20251114-103827-1763134707.3533.txt",
+  "_direction": "outbound",
+  "_char_count": 813
+}

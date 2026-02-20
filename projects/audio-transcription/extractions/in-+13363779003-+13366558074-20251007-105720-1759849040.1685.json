@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Karen, intends to make a payment for an auto insurance policy and requests confirmation of the payment details, including the amount ($538.42), address (1709 Bottle Street, Houston, Texas), and credit card information (ending in 2428). She also asks for a receipt and confirmation number.",
+  "resolution_steps": [
+    "Agent confirms the caller's address and verifies the payment is for the auto policy.",
+    "Agent processes the payment using the provided credit card details.",
+    "Agent provides a confirmation number (125125498498) and discusses sending the receipt via email or mail.",
+    "Caller clarifies she does not have an email address, so the agent agrees to send the receipt by mail.",
+    "Agent confirms the payment was processed and the receipt will be sent by the company directly."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Payment processing procedures for insurance policies",
+    "Receipt generation and distribution methods (email/mail)",
+    "Handling customer inquiries about confirmation numbers and payment status"
+  ],
+  "systems_referenced": [
+    "Payment processing system",
+    "Email/mailing system for receipt distribution"
+  ],
+  "summary": "Karen called to make an auto insurance payment of $538.42, confirming her address and credit card details. The agent processed the payment, provided a confirmation number, and arranged for the receipt to be sent by mail since Karen does not have an email. The call concluded with the payment confirmed and receipt arrangements finalized.",
+  "_model": "qwen3:14b",
+  "_eval_count": 348,
+  "_total_duration_ms": 51045,
+  "_source_file": "transcripts/in-+13363779003-+13366558074-20251007-105720-1759849040.1685.txt",
+  "_direction": "inbound",
+  "_char_count": 1612
+}

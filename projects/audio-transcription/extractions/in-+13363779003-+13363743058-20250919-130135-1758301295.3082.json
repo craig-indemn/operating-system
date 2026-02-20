@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Peggy from Brighton Sons Inc. (a trucking company) is confirming receipt of an insurance certificate request sent previously and seeking assistance to ensure it was processed correctly.",
+  "resolution_steps": [
+    "Agent acknowledges the call and asks for clarification on the certificate request.",
+    "Agent initially transfers Peggy to another department.",
+    "Agent realizes the transfer was incorrect, apologizes, and attempts to reconnect Peggy to the appropriate team.",
+    "Agent repeats the transfer process after clarifying the certificate was for home and auto insurance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Handling certificate of insurance requests",
+    "Transferring calls to appropriate departments",
+    "Understanding insurance needs for trucking companies"
+  ],
+  "systems_referenced": [],
+  "summary": "Peggy from Brighton Sons Inc. contacted Alliance Insurance to confirm receipt of an insurance certificate request. The agent initially transferred her but had to apologize and retry the transfer after realizing the first attempt was incorrect. The call remains open as the agent works to connect Peggy with the right team.",
+  "_model": "qwen3:14b",
+  "_eval_count": 242,
+  "_total_duration_ms": 42945,
+  "_source_file": "transcripts/in-+13363779003-+13363743058-20250919-130135-1758301295.3082.txt",
+  "_direction": "inbound",
+  "_char_count": 1223
+}

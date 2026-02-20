@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Voicemail message left by Jeremy from Alliance Insurance to Juliet, urging her to contact him to provide payment information and activate auto insurance coverage before a deadline.",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Jeremy from Alliance Insurance left a voicemail for Juliet, reminding her of an auto insurance deadline and offering to process payment information to activate coverage. The call was not substantive as it was a one-way voicemail message.",
+  "_model": "qwen3:14b",
+  "_eval_count": 123,
+  "_total_duration_ms": 44435,
+  "_source_file": "transcripts/out-3364570932-701-20251007-154519-1759866319.9158.txt",
+  "_direction": "outbound",
+  "_char_count": 620
+}

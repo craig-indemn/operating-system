@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Automated voicemail greeting with menu options for Travelers Business Insurance Billing. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 70,
+  "_total_duration_ms": 19148,
+  "_source_file": "transcripts/out-18002522268-404-20250902-144604-1756838764.6797.txt",
+  "_direction": "outbound",
+  "_char_count": 620
+}

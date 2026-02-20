@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Terry Daniels initially mentioned leaving a message for an insurance quote but the conversation quickly shifted to personal anecdotes and unrelated topics.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Non-substantive conversation dominated by personal stories about family, farming, and a funeral. No insurance-related discussion occurred beyond the initial vague reference to a prior message.",
+  "_model": "qwen3:14b",
+  "_eval_count": 110,
+  "_total_duration_ms": 35672,
+  "_source_file": "transcripts/exten-207-+13365297166-20251009-134447-1760031887.4098.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4007
+}

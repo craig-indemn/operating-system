@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Ignacio Solis is seeking a business insurance quote for his new LLC, I C Concrete, which will provide concrete installation and repair services, specifically requesting liability coverage.",
+  "resolution_steps": [
+    "Agent Kendall collects Ignacio's contact information (phone number, email address).",
+    "Confirms business details: company name (I C Concrete), business type (LLC), address (5140 Shadow Lane Drive, Winston Salem, NC), and business operations (concrete installation/repairs).",
+    "Asks about insurance needs (confirms liability coverage is the immediate priority).",
+    "Informs Ignacio that a producer will contact him for further assistance and estimates a follow-up within 24 hours."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Business insurance types (liability, auto, etc.)",
+    "Lead qualification process for insurance producers",
+    "Company-specific systems for transferring leads"
+  ],
+  "systems_referenced": [
+    "myallianceinsurance.com (customer portal)",
+    "Text support number: 336-786-1133"
+  ],
+  "summary": "Ignacio Solis, owner of I C Concrete (a new LLC), requested a business insurance quote for liability coverage. Agent Kendall collected contact and business details, then committed to having a producer reach out within 24 hours. The call included references to online portals and text support options.",
+  "_model": "qwen3:14b",
+  "_eval_count": 322,
+  "_total_duration_ms": 42593,
+  "_source_file": "transcripts/q-500-+13367019965-20250909-155312-1757447592.12905.txt",
+  "_direction": "queue",
+  "_char_count": 3215
+}

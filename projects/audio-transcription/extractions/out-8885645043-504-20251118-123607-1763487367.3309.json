@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Holly from Alliance Insurance is seeking assistance with reinstating a canceled property policy after a mortgage company sent a check, but the payment status is unclear.",
+  "resolution_steps": [
+    "Agent confirmed policy details (Cara Brown, policy number 6075863916571, zip code 27295).",
+    "Notified Holly about the reinstatement offer and payment deadline (November 23rd).",
+    "Provided check numbers (13599 and 136296) for verification.",
+    "Put Holly on hold to consult with an account specialist about the check status.",
+    "Requested Holly to confirm check numbers and listen to the call ahead for further verification."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy reinstatement procedures",
+    "Check verification processes",
+    "Handling customer inquiries about payment statuses"
+  ],
+  "systems_referenced": [
+    "Travelers automated payment inquiry system",
+    "Account specialist consultation",
+    "Internal check tracking database"
+  ],
+  "summary": "Holly from Alliance Insurance contacted Travelers to resolve a policy reinstatement issue after a mortgage check was sent. The agent verified policy details, provided check numbers, and put Holly on hold to consult with a specialist about the payment status. The call is pending further action from the account specialist.",
+  "_model": "qwen3:14b",
+  "_eval_count": 309,
+  "_total_duration_ms": 45080,
+  "_source_file": "transcripts/out-8885645043-504-20251118-123607-1763487367.3309.txt",
+  "_direction": "outbound",
+  "_char_count": 3326
+}

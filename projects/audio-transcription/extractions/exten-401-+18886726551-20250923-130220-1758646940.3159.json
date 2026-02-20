@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Sales outreach to introduce as a sales representative and promote ordering through Pants.com",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [
+    "Pants.com website"
+  ],
+  "summary": "A sales representative from Pants.com made a non-substantive outreach call to introduce herself and promote future orders. The recipient acknowledged the call but indicated no immediate intent to order.",
+  "_model": "qwen3:14b",
+  "_eval_count": 108,
+  "_total_duration_ms": 24145,
+  "_source_file": "transcripts/exten-401-+18886726551-20250923-130220-1758646940.3159.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 844
+}

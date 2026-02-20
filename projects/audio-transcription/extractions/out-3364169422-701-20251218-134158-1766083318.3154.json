@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Follow-up on previously provided insurance quotes and ensure the customer is aware they are available for review at the office.",
+  "resolution_steps": [
+    "Agent (Jeremy) reminds Grant about printed quotes left at the front desk from their previous conversation.",
+    "Confirms Grant had received the documents last week but hasn't reviewed them yet.",
+    "Acknowledges Grant's intention to compare quotes with other providers.",
+    "Reassures Grant that he remains a candidate for consideration."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of the customer's previous interaction (quotes provided last week)",
+    "Knowledge of office procedures (documents left at front desk)",
+    "Ability to manage customer expectations regarding quote comparisons"
+  ],
+  "systems_referenced": [],
+  "summary": "Jeremy from Alliance Insurance follows up with Grant about printed insurance quotes left at the front desk. Grant confirms he hasn't reviewed them yet but intends to compare options. Jeremy reassures him and encourages him to come by in the morning. The call focuses on ensuring the customer is aware of available materials and remains engaged in the process.",
+  "_model": "qwen3:14b",
+  "_eval_count": 250,
+  "_total_duration_ms": 42525,
+  "_source_file": "transcripts/out-3364169422-701-20251218-134158-1766083318.3154.txt",
+  "_direction": "outbound",
+  "_char_count": 1094
+}

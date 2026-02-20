@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with Jamie",
+  "resolution_steps": [
+    "Agent offered to transfer the call to Jamie",
+    "Instructed caller to remain on voicemail if Jamie did not answer"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller requested to speak with Jamie. Agent initiated transfer and provided voicemail instructions as a fallback.",
+  "_model": "qwen3:14b",
+  "_eval_count": 109,
+  "_total_duration_ms": 29200,
+  "_source_file": "transcripts/in-+13363779003-+13364978784-20250722-094015-1753191615.2975.txt",
+  "_direction": "inbound",
+  "_char_count": 308
+}

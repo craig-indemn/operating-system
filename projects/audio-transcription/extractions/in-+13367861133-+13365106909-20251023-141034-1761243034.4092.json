@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller inquired about the availability of a person named Cody.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief exchange where the caller asked if Cody was available, and the agent offered to check. The conversation was too short to determine further intent or resolve the inquiry.",
+  "_model": "qwen3:14b",
+  "_eval_count": 99,
+  "_total_duration_ms": 28470,
+  "_source_file": "transcripts/in-+13367861133-+13365106909-20251023-141034-1761243034.4092.txt",
+  "_direction": "inbound",
+  "_char_count": 154
+}

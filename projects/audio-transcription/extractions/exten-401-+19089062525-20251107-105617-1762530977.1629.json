@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to meet in person to discuss insurance matters, specifically needing the address of an office and their policy number for a loan.",
+  "resolution_steps": [
+    "Agent Heather confirms the caller's request to meet in person after their physical data.",
+    "Provides multiple office locations (Clemens, Winston Salem, Mount Airy, etc.) and suggests using Google or phone apps to determine the closest one.",
+    "Shares the specific address for the Clemens office: 2255 Louisville Clemens Road.",
+    "Agrees to text the caller the address and policy number for the loan.",
+    "Confirms the meeting will occur after the caller's physical data is completed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Office locations and addresses for Alliance Insurance Services",
+    "Process for providing policy numbers for loans",
+    "Communication methods (texting) for sharing information"
+  ],
+  "systems_referenced": [
+    "text messaging"
+  ],
+  "summary": "Heather assists a caller in arranging an in-person meeting by providing multiple office locations and agreeing to text the address and policy number. The caller will meet after their physical data is completed. The conversation includes detailed location information and confirmation of follow-up via text.",
+  "_model": "qwen3:14b",
+  "_eval_count": 278,
+  "_total_duration_ms": 38760,
+  "_source_file": "transcripts/exten-401-+19089062525-20251107-105617-1762530977.1629.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2215
+}

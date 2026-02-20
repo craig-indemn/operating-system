@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jamie Flippin from Alliance Insurance seeks clarification on Auto Owners Insurance coverage for a client's personal property during transit in a U-Haul and during temporary storage in Missouri while relocating.",
+  "resolution_steps": [
+    "Ellie confirms that Auto Owners' homeowners policy covers personal property in transit via U-Haul under coverage C.",
+    "Ellie explains that storage in a facility is limited to 10% of coverage C or $1,000, whichever is higher, unless the move is due to repair/rebuilding of the original residence.",
+    "Ellie advises that the client may need to purchase additional insurance from the storage facility for full coverage."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Auto Owners Insurance homeowners policy specifics (coverage C, transit, storage limitations)",
+    "Insurance exclusions for property in self-storage facilities"
+  ],
+  "systems_referenced": [
+    "Auto Owners Insurance policy documents"
+  ],
+  "summary": "Jamie Flippin consults Auto Owners Insurance about coverage for a client's belongings during a multi-state move. Ellie clarifies that transit in a U-Haul is covered under coverage C, but storage in Missouri would only be covered at 10% of coverage C unless the move is tied to home repairs. The client may need supplemental storage insurance from the facility.",
+  "_model": "qwen3:14b",
+  "_eval_count": 291,
+  "_total_duration_ms": 36483,
+  "_source_file": "transcripts/out-8003460346-501-20251015-152456-1760556296.5312.txt",
+  "_direction": "outbound",
+  "_char_count": 4121
+}

@@ -1,0 +1,25 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller attempted to reach Gloria but was instead directed to hold music and automated messages.",
+  "resolution_steps": [
+    "Agent attempted to transfer the call to Gloria.",
+    "Call was placed on hold with automated messaging about contact updates and policy management.",
+    "No further resolution steps taken by the agent."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Standard hold message protocols",
+    "Customer portal and texting support information"
+  ],
+  "systems_referenced": [
+    "myallianceinsurance.com customer portal",
+    "Texting support service (336-786-1133)"
+  ],
+  "summary": "The caller was unable to reach Gloria as the agent failed to complete the transfer. The call was placed on hold with automated messages about policy management and contact updates. No substantive resolution occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 198,
+  "_total_duration_ms": 39375,
+  "_source_file": "transcripts/in-+13363544000-+13364202510-20250904-103558-1756996558.3611.txt",
+  "_direction": "inbound",
+  "_char_count": 943
+}

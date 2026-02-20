@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Joe is discussing an issue with Frank Lemon's insurance payment, specifically that the A O's P I F discount isn't reflecting on the website despite manual calculation from renewal documents. He asks how Frank can pay in full to earn the discount.",
+  "resolution_steps": [
+    "Jeff acknowledges the issue with the discount not appearing on A O's website.",
+    "Agrees to check the billing details upon his arrival.",
+    "Plans to manually verify the discount calculation using renewal documents."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of A O's discount policies (P I F discount)",
+    "Billing system navigation",
+    "Manual calculation of insurance discounts"
+  ],
+  "systems_referenced": [
+    "A O's website",
+    "Renewal documents"
+  ],
+  "summary": "Joe discusses an issue with Frank Lemon's insurance payment where the A O's P I F discount isn't showing on the website. Jeff agrees to check the billing details in person and manually verify the discount. The call ends with a pending resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 241,
+  "_total_duration_ms": 35350,
+  "_source_file": "transcripts/exten-206-+13364143620-20251230-101829-1767107909.1078.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1257
+}

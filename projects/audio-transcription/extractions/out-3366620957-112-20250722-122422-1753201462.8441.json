@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Brandi is assisting Adele and Daniel Gibson in filing a claim for vandalism to a rental vehicle (a 2023 Chevrolet Silverado) that occurred in South Carolina in early July. The rental was provided by Modern Chevrolet, and the dealership repaired the damage but now requires the claim to be filed under the insured's policy.",
+  "resolution_steps": [
+    "Amber confirmed the policy number (5388740300) and insured names (Adele Gibson and Daniel S. Gibson).",
+    "Collected details about the incident: vehicle type (2023 Chevrolet Silverado), location (Fort Mill, South Carolina), date of loss (July 1st or 2nd), police report number (202507020), and contact information for the insured and Brandi.",
+    "Noted that the rental vehicle's back window was broken, and the dealership repaired it but requested the claim be filed under the insured's policy.",
+    "Submitted the claim and provided a claim number (300-045-5037-2025).",
+    "Shared the contact information for the North Carolina Auto Claims Branch (800-532-3786) for follow-up."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Claim submission process for vandalism incidents",
+    "Information required to file a claim (policy number, incident details, contact information)",
+    "Procedures for handling rental vehicle damage claims"
+  ],
+  "systems_referenced": [
+    "North Carolina Auto Claims Branch (contact number provided)"
+  ],
+  "summary": "Brandi from Alliance Insurance coordinated with Auto Owners Insurance to file a claim for vandalism to a rental vehicle. Amber gathered all necessary details, submitted the claim, and provided a claim number and contact information for the claims branch. The call concluded with the claim initiated and follow-up instructions given.",
+  "_model": "qwen3:14b",
+  "_eval_count": 425,
+  "_total_duration_ms": 59024,
+  "_source_file": "transcripts/out-3366620957-112-20250722-122422-1753201462.8441.txt",
+  "_direction": "outbound",
+  "_char_count": 3717
+}

@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Todd Fry from Haker Construction is asking whether a builder's risk policy covers theft or vandalism of materials on a construction site, specifically for a subcontractor's $1.2 million pre-engineered metal building project in Monroe, NC.",
+  "resolution_steps": [
+    "Agent confirmed builder's risk policies typically include theft/vandalism coverage as a standard provision.",
+    "Agent requested clarification on material value estimates (75% of $1.2M job) and project location (Monroe, NC).",
+    "Agent offered to verify policy specifics and ensure adequate coverage for the subcontractor's materials."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Builder's risk insurance policy provisions",
+    "Coverage for theft/vandalism of construction materials",
+    "Assessing material value estimates for insurance purposes"
+  ],
+  "systems_referenced": [
+    "Insurance policy database",
+    "Carrier portal for policy verification"
+  ],
+  "summary": "Todd Fry inquired about builder's risk coverage for theft/vandalism on a construction project in Monroe, NC. The agent confirmed standard coverage but needed details about material value and location to verify policy specifics. The call ended with a commitment to follow up after reviewing the policy.",
+  "_model": "qwen3:14b",
+  "_eval_count": 278,
+  "_total_duration_ms": 37016,
+  "_source_file": "transcripts/exten-101-+13364291181-20250731-111002-1753974602.5377.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2486
+}

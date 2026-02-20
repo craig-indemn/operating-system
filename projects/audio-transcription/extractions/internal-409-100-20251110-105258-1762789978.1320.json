@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking assistance with setting up autopay for a policyholder (B Inc.) and encountering issues with the online payment portal, specifically the inability to input payment details or confirm the draft account.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's issue with the Cincinnati policy portal and the inability to input payment information.",
+    "Agent explains the 'post payment to account' option and warns about potential policy cancellation if full payment isn't made.",
+    "Agent suggests contacting Cincinnati's billing department directly to resolve the payment setup issue.",
+    "Agent provides the Cincinnati billing phone number (877-942-2455) and offers to facilitate a conference call if needed.",
+    "Agent mentions the possibility of requiring underwriting approval for a monthly payment plan."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of Cincinnati insurance portal navigation and payment processes",
+    "Knowledge of autopay setup requirements and billing department contact procedures",
+    "Awareness of underwriting approval processes for payment plans"
+  ],
+  "systems_referenced": [
+    "Cincinnati insurance portal",
+    "Cincinnati billing department",
+    "Policyholder pay functionality"
+  ],
+  "summary": "The caller encountered issues setting up autopay for a Cincinnati policyholder, specifically with the online payment portal not allowing input of payment details. The agent guided the caller to contact Cincinnati's billing department directly, provided the contact number, and explained potential underwriting requirements for monthly payment plans. The call concluded with the caller planning to reach out to the billing department for resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 341,
+  "_total_duration_ms": 50156,
+  "_source_file": "transcripts/internal-409-100-20251110-105258-1762789978.1320.txt",
+  "_direction": "internal",
+  "_char_count": 4097
+}

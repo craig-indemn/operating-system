@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Obtain renewal information for a homeowner's policy (policy number H011287399) and confirm payment details, including the correct mailing address for premium payments.",
+  "resolution_steps": [
+    "Agent Jamie verified the policy details for Emily Gross/Stephen Hogan (policy H011287399) under Cincinnati Insurance.",
+    "Confirmed renewal dates (Jan 30, 2026\u2013Jan 30, 2027) and annual premium of $2,445 (fully outstanding).",
+    "Reviewed mortgage clause details for CMG Mortgage Inc. (loan number 0198388670) and confirmed it is listed as the first lien holder.",
+    "Provided correct payment mailing address (PO Box 740099, Cincinnati, OH 45274) after initial discrepancy.",
+    "Agreed to upload the declaration page to CMG Mortgage's website (www.mycoverageinfo.com)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy renewal processes",
+    "Mortgage clause verification procedures",
+    "Cincinnati Insurance policy details and payment protocols"
+  ],
+  "systems_referenced": [
+    "Cincinnati Insurance policy portal",
+    "www.mycoverageinfo.com (CMG Mortgage website)"
+  ],
+  "summary": "Heather Brownson from CMG Mortgage requested renewal details for a Cincinnati Insurance policy (H011287399) and confirmed payment information. Agent Jamie verified policy terms, resolved a mailing address discrepancy, and agreed to upload the declaration page to CMG's website. The call concluded with pending action to send documents.",
+  "_model": "qwen3:14b",
+  "_eval_count": 380,
+  "_total_duration_ms": 45416,
+  "_source_file": "transcripts/q-300-+18882609876-20260119-161906-1768857546.6489.txt",
+  "_direction": "queue",
+  "_char_count": 4454
+}

@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (John) wants to remove a Hyundai from his insurance policy and add a 2025 Subaru, following up on a previous voicemail.",
+  "resolution_steps": [
+    "Agent Allison confirms the caller's request to remove the Hyundai and add the 2025 Subaru.",
+    "Agent assures the caller the change will be processed immediately.",
+    "Agent mentions sending updated policy documents via email."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy modification procedures",
+    "Document generation workflows",
+    "Email communication protocols for policy updates"
+  ],
+  "systems_referenced": [
+    "Email system for document delivery"
+  ],
+  "summary": "John contacted Alliance Insurance to adjust his policy by removing a Hyundai and adding a 2025 Subaru. Agent Allison confirmed the change and committed to sending updated documents via email. The conversation concluded with mutual agreement on the next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 212,
+  "_total_duration_ms": 33111,
+  "_source_file": "transcripts/out-3364035567-301-20251218-160336-1766091816.4537.txt",
+  "_direction": "outbound",
+  "_char_count": 648
+}

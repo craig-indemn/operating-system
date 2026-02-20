@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "N/A (voicemail greeting)",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Voicemail message from Kim Costain informing caller of her absence until August 14th and directing email correspondence to pmmexpress@chub.com",
+  "_model": "qwen3:14b",
+  "_eval_count": 88,
+  "_total_duration_ms": 20588,
+  "_source_file": "transcripts/out-9085725216-409-20250812-161554-1755029754.12072.txt",
+  "_direction": "outbound",
+  "_char_count": 260
+}

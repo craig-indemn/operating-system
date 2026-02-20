@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to resolve a declined auto insurance payment and ensure future payments are processed successfully, as they were concerned about losing coverage and did not understand why the payment failed.",
+  "resolution_steps": [
+    "Agent confirmed the caller's identity and policy details (Progressive policy, name 'Smith').",
+    "Checked payment history, identifying a September 5th decline for $499.86.",
+    "Noted the credit card expiration date (04/28) and confirmed the card had sufficient funds.",
+    "Processed a manual payment using the provided credit card details.",
+    "Reset the auto-payment method to ensure future transactions.",
+    "Sent a confirmation email for the successful payment and updated policy.",
+    "Offered to escalate to the bank if the caller needed further clarification on the decline reason."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of auto-payment processing and decline reasons (e.g., expired cards, bank restrictions).",
+    "Ability to access and interpret payment history within Progressive's system.",
+    "Knowledge of credit card expiration dates and their impact on transactions."
+  ],
+  "systems_referenced": [
+    "Progressive's insurance policy management system",
+    "Payment processing platform (for manual payment execution)",
+    "Email confirmation system for policy updates"
+  ],
+  "summary": "A caller contacted Lines Insurance to resolve a declined auto-payment for their Progressive policy. The agent identified the card's expiration as a likely cause, processed a manual payment, reset auto-pay, and sent confirmation. The caller was reassured that coverage was maintained and future payments would be handled.",
+  "_model": "qwen3:14b",
+  "_eval_count": 351,
+  "_total_duration_ms": 52286,
+  "_source_file": "transcripts/in-+13363779003-+13367558620-20251007-120441-1759853081.3800.txt",
+  "_direction": "inbound",
+  "_char_count": 3429
+}

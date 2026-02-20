@@ -1,0 +1,768 @@
+{
+  "batch": 5,
+  "total_classified": 308,
+  "classifications": [
+    {"file": "out-7135827879-409-20250826-140143-1756231303.6579", "engagement_type": "follow-up", "confidence": "high"},
+    {"file": "out-7169696111-114-20251013-133256-1760376776.9647", "engagement_type": "document-request", "confidence": "high"},
+    {"file": "out-7186109735-401-20251110-142515-1762802715.6150", "engagement_type": "new-quote", "confidence": "medium"},
+    {"file": "out-7204253433-112-20250805-142504-1754418304.6405", "engagement_type": "mortgage-lender", "confidence": "high"},
+    {"file": "out-7274127739-102-20251229-113320-1767026000.5063", "engagement_type": "billing-question", "confidence": "medium"},
+    {"file": "out-7276927163-107-20250806-124710-1754498830.5269", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "out-7323229877-501-20250805-103959-1754404799.2871", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "out-7434441889-202-20251223-091418-1766499258.174", "engagement_type": "coverage-modification", "confidence": "medium"},
+    {"file": "out-7437620885-409-20251009-142130-1760034090.4296", "engagement_type": "billing-question", "confidence": "medium"},
+    {"file": "out-7439997349-501-20250924-125152-1758732712.2938", "engagement_type": "claims", "confidence": "high"},
+    {"file": "out-7632320816-113-20250910-145706-1757530626.6948", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "out-7705191246-409-20251120-140952-1763665792.2846", "engagement_type": "new-quote", "confidence": "medium"},
+    {"file": "out-7872242911-202-20251202-115642-1764694602.3006", "engagement_type": "follow-up", "confidence": "high"},
+    {"file": "out-8002112843-207-20250903-085753-1756904273.68", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "out-8002112843-207-20250925-141300-1758823980.7328", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "out-8002112843-207-20250930-082226-1759234946.46", "engagement_type": "reinstatement", "confidence": "high"},
+    {"file": "out-8002365010-503-20251112-160448-1762981488.8072", "engagement_type": "routing-triage", "confidence": "medium"},
+    {"file": "out-8002430210-207-20250917-083556-1758112556.64", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "out-8002430210-301-20250812-103238-1755009158.1458", "engagement_type": "cancellation", "confidence": "high"},
+    {"file": "out-8002522268-207-20251120-100737-1763651257.464", "engagement_type": "make-payment", "confidence": "medium"},
+    {"file": "out-8002888740-100-20250821-143120-1755801080.7397", "engagement_type": "make-payment", "confidence": "high"},
+    {"file": "out-8002888740-112-20250909-154921-1757447361.12465", "engagement_type": "make-payment", "confidence": "high"},
+    {"file": "out-8002888740-112-20251007-135159-1759859519.7343", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "out-8002888740-114-20251212-131547-1765563347.2298", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "out-8002888740-402-20250908-101004-1757340603.938", "engagement_type": "make-payment", "confidence": "high"},
+    {"file": "out-8002888740-404-20250812-150626-1755025586.10984", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "out-8002888740-504-20250908-091727-1757337447.203", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "out-8002888740-504-20251124-122724-1764005244.3459", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "out-8003323226-501-20250722-120405-1753200245.8137", "engagement_type": "make-payment", "confidence": "medium"},
+    {"file": "out-8003340328-114-20260106-125106-1767721866.2917", "engagement_type": "coverage-modification", "confidence": "medium"},
+    {"file": "out-8003340328-409-20251117-142006-1763407206.4015", "engagement_type": "claims", "confidence": "medium"},
+    {"file": "out-8003340328-503-20260109-123944-1767980384.2780", "engagement_type": "dmv-compliance", "confidence": "high"},
+    {"file": "out-8003340328-701-20260113-121748-1768324668.4941", "engagement_type": "coverage-question", "confidence": "high"},
+    {"file": "out-8003460346-102-20251023-104823-1761230903.2130", "engagement_type": "coi-request", "confidence": "high"},
+    {"file": "out-8003460346-409-20250723-141312-1753294392.10582", "engagement_type": "document-request", "confidence": "high"},
+    {"file": "out-8003460346-409-20250728-084414-1753706654.45", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "out-8003460346-409-20250903-114313-1756914193.3505", "engagement_type": "make-payment", "confidence": "high"},
+    {"file": "out-8003460346-501-20250903-102602-1756909562.1836", "engagement_type": "coverage-question", "confidence": "high"},
+    {"file": "out-8003460346-501-20251015-152456-1760556296.5312", "engagement_type": "coverage-question", "confidence": "high"},
+    {"file": "out-8003460346-501-20251212-134204-1765564924.3565", "engagement_type": "info-update", "confidence": "high"},
+    {"file": "out-8003460346-509-20251204-130808-1764871688.3387", "engagement_type": "reinstatement", "confidence": "high"},
+    {"file": "out-8003460346-510-20250925-103756-1758811076.1275", "engagement_type": "coverage-question", "confidence": "high"},
+    {"file": "out-8003460346-701-20250728-124818-1753721298.7585", "engagement_type": "coverage-question", "confidence": "high"},
+    {"file": "out-8003460346-701-20251024-082254-1761308574.29", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "out-8004259113-100-20250902-155449-1756842889.7794", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "out-8004877565-510-20250925-095321-1758808400.646", "engagement_type": "commercial-specialty", "confidence": "high"},
+    {"file": "out-8004877565-701-20250903-115251-1756914771.4029", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "out-8005988422-112-20251007-130132-1759856492.5406", "engagement_type": "document-request", "confidence": "high"},
+    {"file": "out-8005988422-409-20251210-094356-1765377836.691", "engagement_type": "make-payment", "confidence": "high"},
+    {"file": "out-8005988422-509-20250825-142858-1756146538.10142", "engagement_type": "cancellation", "confidence": "medium"},
+    {"file": "out-8006537893-103-20250725-115129-1753458689.6527", "engagement_type": "follow-up", "confidence": "high"},
+    {"file": "out-8007662245-101-20250723-104948-1753282188.4273", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "out-8007662245-509-20251209-140211-1765306931.5660", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "out-8008777366-103-20251107-111343-1762532023.1751", "engagement_type": "document-request", "confidence": "high"},
+    {"file": "out-8008777366-112-20251117-134531-1763405131.3729", "engagement_type": "document-request", "confidence": "high"},
+    {"file": "out-8008777366-703-20250926-092810-1758893290.417", "engagement_type": "routing-triage", "confidence": "medium"},
+    {"file": "out-8034877687-114-20251201-103317-1764603197.3717", "engagement_type": "coverage-question", "confidence": "high"},
+    {"file": "out-8187742233-512-20250904-113320-1757000000.4212", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "out-8282159244-406-20251107-100549-1762527949.1151", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "out-8327643649-504-20251204-121753-1764868673.2930", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "out-8432459614-701-20251218-134754-1766083674.3179", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "out-8452709048-504-20250930-091520-1759238120.175", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "out-8507281896-112-20251008-115340-1759938820.3405", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "out-8559791084-501-20251006-102327-1759760607.1478", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "out-8645611970-510-20250813-122910-1755102550.5525", "engagement_type": "coverage-question", "confidence": "high"},
+    {"file": "out-8649093950-504-20250812-092919-1755005359.464", "engagement_type": "claims", "confidence": "high"},
+    {"file": "out-8649804183-301-20260106-130925-1767722965.3238", "engagement_type": "document-request", "confidence": "high"},
+    {"file": "out-8662723326-112-20250813-134255-1755106975.6427", "engagement_type": "vehicle-change", "confidence": "high"},
+    {"file": "out-8662748765-112-20251117-121401-1763399641.2385", "engagement_type": "reinstatement", "confidence": "high"},
+    {"file": "out-8662748765-509-20251024-132815-1761326895.3485", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "out-8664127742-510-20250822-163515-1755894915.15203", "engagement_type": "claims", "confidence": "high"},
+    {"file": "out-8774683466-+13369267675-20260115-134556-1768502756.5475", "engagement_type": "claims", "confidence": "high"},
+    {"file": "out-8774683466-501-20251009-101412-1760019252.2316", "engagement_type": "document-request", "confidence": "high"},
+    {"file": "out-8774683466-501-20251230-173825-1767134305.11509", "engagement_type": "document-request", "confidence": "high"},
+    {"file": "out-8774683466-503-20251215-174134-1765838494.6064", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "out-8774683466-509-20250821-155257-1755805977.8381", "engagement_type": "reinstatement", "confidence": "high"},
+    {"file": "out-8774683466-701-20251211-143815-1765481895.7744", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "out-8777762436-112-20251219-123750-1766165870.4807", "engagement_type": "dmv-compliance", "confidence": "high"},
+    {"file": "out-8777762436-409-20250731-144154-1753987314.12824", "engagement_type": "coverage-question", "confidence": "high"},
+    {"file": "out-8777762436-409-20250818-110526-1755529526.2782", "engagement_type": "document-request", "confidence": "medium"},
+    {"file": "out-8777762436-409-20251001-144854-1759344534.7117", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "out-8777762436-409-20251114-082433-1763126673.60", "engagement_type": "info-update", "confidence": "high"},
+    {"file": "out-8777762436-501-20260105-101835-1767626315.1381", "engagement_type": "dmv-compliance", "confidence": "high"},
+    {"file": "out-8777762436-510-20250807-154917-1754596157.12353", "engagement_type": "billing-question", "confidence": "medium"},
+    {"file": "out-8777762436-701-20260108-092140-1767882100.662", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "out-8778728737-409-20250909-154624-1757447184.12356", "engagement_type": "cancellation", "confidence": "high"},
+    {"file": "out-8778782468-112-20250722-093217-1753191137.2833", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "out-8779275672-501-20260105-115016-1767631816.5775", "engagement_type": "document-request", "confidence": "high"},
+    {"file": "out-8885235545-102-20251204-131122-1764871882.3401", "engagement_type": "follow-up", "confidence": "medium"},
+    {"file": "out-8885645043-504-20251118-123607-1763487367.3309", "engagement_type": "reinstatement", "confidence": "high"},
+    {"file": "out-9042507502-202-20251107-150652-1762546012.7405", "engagement_type": "routing-triage", "confidence": "high"},
+    {"file": "out-9089062525-401-20251229-133210-1767033130.9537", "engagement_type": "follow-up", "confidence": "high"},
+    {"file": "out-9106925100-100-20250820-164212-1755722532.13629", "engagement_type": "billing-question", "confidence": "medium"},
+    {"file": "out-9134847281-401-20251118-115418-1763484858.2982", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "out-9176283741-401-20251110-142910-1762802950.6175", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "out-9192250270-409-20251208-145308-1765223588.11787", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "out-9193321741-501-20251124-141646-1764011806.4351", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "out-9194182510-113-20250814-092618-1755177978.467", "engagement_type": "cancellation", "confidence": "high"},
+    {"file": "out-9194208110-510-20251120-103543-1763652943.657", "engagement_type": "mortgage-lender", "confidence": "high"},
+    {"file": "out-9196184886-113-20250911-160520-1757621120.5369", "engagement_type": "vehicle-change", "confidence": "high"},
+    {"file": "out-9197409106-701-20251204-130158-1764871318.3255", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "out-9197503666-701-20250722-110622-1753196782.6637", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "out-9198211299-510-20251204-152709-1764880029.6599", "engagement_type": "new-quote", "confidence": "medium"},
+    {"file": "out-9376682600-202-20250908-144504-1757357104.8654", "engagement_type": "cancellation", "confidence": "high"},
+    {"file": "out-9376842812-701-20250910-170953-1757538593.11244", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "out-9498928351-114-20251211-102713-1765466833.957", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "out-9723532315-101-20250904-161627-1757016987.8411", "engagement_type": "follow-up", "confidence": "high"},
+    {"file": "out-9806351823-401-20250903-105340-1756911220.2665", "engagement_type": "new-quote", "confidence": "medium"},
+    {"file": "parked-100-100-20260119-100220-1768834940.901", "engagement_type": "document-request", "confidence": "medium"},
+    {"file": "parked-101-101-20250815-104615-1755269175.2292", "engagement_type": "follow-up", "confidence": "high"},
+    {"file": "parked-101-101-20250826-103240-1756218760.1506", "engagement_type": "workers-comp", "confidence": "high"},
+    {"file": "parked-105-105-20250919-135114-1758304274.6102", "engagement_type": "workers-comp", "confidence": "high"},
+    {"file": "parked-112-112-20250808-141150-1754676710.10624", "engagement_type": "cancellation", "confidence": "high"},
+    {"file": "parked-112-112-20251112-161534-1762982134.8177", "engagement_type": "new-quote", "confidence": "medium"},
+    {"file": "parked-112-112-20251204-095455-1764860095.822", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "parked-113-113-20250912-154410-1757706250.11420", "engagement_type": "dmv-compliance", "confidence": "high"},
+    {"file": "parked-113-113-20251006-122559-1759767959.5879", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "parked-114-114-20251124-101907-1763997547.1201", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "parked-201-201-20250929-111126-1759158686.2856", "engagement_type": "make-payment", "confidence": "high"},
+    {"file": "parked-202-202-20250725-133443-1753464883.8593", "engagement_type": "coverage-question", "confidence": "high"},
+    {"file": "parked-203-203-20251023-160551-1761249951.6043", "engagement_type": "info-update", "confidence": "high"},
+    {"file": "parked-205-205-20250812-165605-1755032165.12790", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "parked-301-301-20250922-121104-1758557463.3818", "engagement_type": "claims", "confidence": "medium"},
+    {"file": "parked-302-302-20250813-095150-1755093110.1656", "engagement_type": "info-update", "confidence": "high"},
+    {"file": "parked-302-302-20251124-113827-1764002307.2874", "engagement_type": "reinstatement", "confidence": "high"},
+    {"file": "parked-402-402-20250814-110219-1755183739.1945", "engagement_type": "routing-triage", "confidence": "high"},
+    {"file": "parked-501-501-20250804-143026-1754332224.7003", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "parked-501-501-20250812-163222-1755030740.12710", "engagement_type": "claims", "confidence": "medium"},
+    {"file": "parked-501-501-20251222-152807-1766435284.4589", "engagement_type": "follow-up", "confidence": "medium"},
+    {"file": "parked-501-501-20251223-101108-1766502664.1227", "engagement_type": "cancellation", "confidence": "high"},
+    {"file": "parked-501-501-20260106-152522-1767731120.5433", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "parked-502-502-20250922-145716-1758567432.10129", "engagement_type": "make-payment", "confidence": "high"},
+    {"file": "parked-502-502-20251010-170018-1760130015.12349", "engagement_type": "make-payment", "confidence": "high"},
+    {"file": "parked-502-502-20251229-153836-1767040713.12296", "engagement_type": "make-payment", "confidence": "high"},
+    {"file": "parked-504-504-20250806-115913-1754495951.4613", "engagement_type": "dmv-compliance", "confidence": "high"},
+    {"file": "parked-504-504-20260106-104547-1767714346.1481", "engagement_type": "claims", "confidence": "high"},
+    {"file": "parked-509-509-20250804-143109-1754332269.7083", "engagement_type": "make-payment", "confidence": "high"},
+    {"file": "parked-509-509-20250806-090747-1754485667.295", "engagement_type": "make-payment", "confidence": "high"},
+    {"file": "parked-509-509-20250820-091301-1755695581.254", "engagement_type": "document-request", "confidence": "high"},
+    {"file": "parked-509-509-20250925-105609-1758812169.1372", "engagement_type": "routing-triage", "confidence": "high"},
+    {"file": "parked-509-509-20251007-154143-1759866103.9114", "engagement_type": "routing-triage", "confidence": "high"},
+    {"file": "parked-510-510-20250723-142435-1753295071.10671", "engagement_type": "document-request", "confidence": "high"},
+    {"file": "parked-510-510-20251113-160625-1763067982.8431", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "ptimeout-+13363779003-+13364144231-20250815-150432-1755284672.8752", "engagement_type": "routing-triage", "confidence": "high"},
+    {"file": "ptimeout-+13363779003-+13367077543-20251007-132044-1759857644.6358", "engagement_type": "billing-question", "confidence": "medium"},
+    {"file": "ptimeout-+13363779003-+13368171873-20250902-095900-1756821540.823", "engagement_type": "routing-triage", "confidence": "high"},
+    {"file": "ptimeout-+13363779003-+13368298114-20250812-155905-1755028745.11926", "engagement_type": "follow-up", "confidence": "medium"},
+    {"file": "q-200-+12253172525-20250926-120631-1758902791.1699", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "q-200-+13362011686-20250911-125731-1757609851.2755", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "q-200-+13362795804-20251015-122209-1760545329.1513", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "q-200-+13364222033-20260106-151950-1767730790.5017", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "q-200-+13364533471-20250805-160257-1754424177.8403", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "q-200-+13364734752-20250822-093610-1755869770.2118", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "q-200-+13364863497-20250826-143140-1756233100.7409", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "q-200-+13364885655-20250909-152654-1757446014.12254", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "q-200-+13365753732-20251110-132037-1762798837.3355", "engagement_type": "new-quote", "confidence": "medium"},
+    {"file": "q-200-+13367826001-20250922-134707-1758563227.5536", "engagement_type": "billing-question", "confidence": "medium"},
+    {"file": "q-200-+13367837199-20250822-150323-1755889403.12608", "engagement_type": "commercial-specialty", "confidence": "high"},
+    {"file": "q-200-+13368441932-20260108-111104-1767888664.2455", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "q-200-+13369385672-20251117-143559-1763408159.4139", "engagement_type": "vehicle-change", "confidence": "high"},
+    {"file": "q-200-+13369555102-20251119-140035-1763578835.4729", "engagement_type": "new-quote", "confidence": "medium"},
+    {"file": "q-200-+13369797831-20251013-161001-1760386201.11972", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "q-200-+13369954287-20250922-153916-1758569956.10838", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "q-200-+13369956032-20251218-153920-1766090360.4192", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "q-200-+16788223778-20260119-141258-1768849978.4599", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "q-200-+17135827879-20250725-161459-1753474499.11443", "engagement_type": "driver-change", "confidence": "high"},
+    {"file": "q-200-+17432136710-20260116-133056-1768588256.3806", "engagement_type": "new-quote", "confidence": "medium"},
+    {"file": "q-200-+19108858818-20250815-101420-1755267260.1301", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "q-200-+19144839108-20250909-102543-1757427943.4351", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "q-200-+19453531701-20250902-162533-1756844733.8906", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "q-300-+12105008311-20251024-164042-1761338442.6597", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "q-300-+12134760469-20250828-145022-1756407022.8226", "engagement_type": "mortgage-lender", "confidence": "high"},
+    {"file": "q-300-+12134760469-20250904-130408-1757005448.5718", "engagement_type": "follow-up", "confidence": "high"},
+    {"file": "q-300-+12134760469-20251023-153720-1761248240.5534", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "q-300-+12523612064-20250908-111721-1757344641.2857", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "q-300-+12523614106-20250812-112402-1755012242.3180", "engagement_type": "claims", "confidence": "high"},
+    {"file": "q-300-+12627073641-20260106-134549-1767725149.3760", "engagement_type": "driver-change", "confidence": "high"},
+    {"file": "q-300-+13122676161-20251219-140434-1766171074.7110", "engagement_type": "claims", "confidence": "high"},
+    {"file": "q-300-+13302426449-20250909-122651-1757435211.7377", "engagement_type": "driver-change", "confidence": "high"},
+    {"file": "q-300-+13362090172-20251104-105126-1762271486.2580", "engagement_type": "renewal-review", "confidence": "medium"},
+    {"file": "q-300-+13362155548-20250908-103905-1757342345.1931", "engagement_type": "claims", "confidence": "high"},
+    {"file": "q-300-+13362156620-20250926-135413-1758909253.3216", "engagement_type": "coverage-question", "confidence": "high"},
+    {"file": "q-300-+13362314613-20260108-102549-1767885949.1748", "engagement_type": "info-update", "confidence": "high"},
+    {"file": "q-300-+13362502871-20250818-090105-1755522065.70", "engagement_type": "vehicle-change", "confidence": "high"},
+    {"file": "q-300-+13362765283-20260105-092631-1767623191.448", "engagement_type": "vehicle-change", "confidence": "high"},
+    {"file": "q-300-+13363012264-20250822-143549-1755887749.10938", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "q-300-+13363099021-20250829-101547-1756476947.1660", "engagement_type": "vehicle-change", "confidence": "high"},
+    {"file": "q-300-+13363177885-20250915-092638-1757942798.813", "engagement_type": "vehicle-change", "confidence": "high"},
+    {"file": "q-300-+13363286652-20251017-103011-1760711411.1224", "engagement_type": "reinstatement", "confidence": "medium"},
+    {"file": "q-300-+13363417188-20260109-101742-1767971862.733", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "q-300-+13363458951-20260107-105846-1767801526.923", "engagement_type": "claims", "confidence": "high"},
+    {"file": "q-300-+13363513244-20251210-135225-1765392745.2912", "engagement_type": "vehicle-change", "confidence": "high"},
+    {"file": "q-300-+13363523350-20251002-110934-1759417774.4320", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "q-300-+13363828163-20250902-140445-1756836285.5962", "engagement_type": "claims", "confidence": "high"},
+    {"file": "q-300-+13363910897-20251112-134303-1762972983.5930", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "q-300-+13363910897-20251216-110915-1765901355.1321", "engagement_type": "driver-change", "confidence": "medium"},
+    {"file": "q-300-+13364026022-20251110-090921-1762783761.344", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "q-300-+13364063166-20251125-090333-1764079413.119", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "q-300-+13364065821-20250814-102939-1755181779.953", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "q-300-+13364077638-20250911-110752-1757603272.2349", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "q-300-+13364085228-20251124-110657-1764000417.1810", "engagement_type": "vehicle-change", "confidence": "high"},
+    {"file": "q-300-+13364086961-20251110-090141-1762783301.125", "engagement_type": "vehicle-change", "confidence": "high"},
+    {"file": "q-300-+13364131326-20251219-093230-1766154750.545", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "q-300-+13364139838-20251230-121404-1767114844.2629", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "q-300-+13364144762-20251023-150300-1761246180.5058", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "q-300-+13364166034-20250805-160609-1754424369.8445", "engagement_type": "vehicle-change", "confidence": "high"},
+    {"file": "q-300-+13364225325-20250820-091343-1755695623.255", "engagement_type": "reinstatement", "confidence": "high"},
+    {"file": "q-300-+13364296409-20251020-101932-1760969972.1399", "engagement_type": "renewal-review", "confidence": "medium"},
+    {"file": "q-300-+13364302248-20250929-093432-1759152872.1599", "engagement_type": "vehicle-change", "confidence": "high"},
+    {"file": "q-300-+13364305499-20260105-102500-1767626700.1739", "engagement_type": "dmv-compliance", "confidence": "high"},
+    {"file": "q-300-+13364352000-20250919-151834-1758309514.7034", "engagement_type": "reinstatement", "confidence": "high"},
+    {"file": "q-300-+13364352000-20250922-094420-1758548660.931", "engagement_type": "coverage-question", "confidence": "high"},
+    {"file": "q-300-+13364425593-20260112-153539-1768250139.7450", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "q-300-+13364620996-20260107-134123-1767811283.2715", "engagement_type": "mortgage-lender", "confidence": "high"},
+    {"file": "q-300-+13364624987-20250904-161555-1757016955.8395", "engagement_type": "vehicle-change", "confidence": "high"},
+    {"file": "q-300-+13364685952-20251001-154837-1759348117.7874", "engagement_type": "vehicle-change", "confidence": "high"},
+    {"file": "q-300-+13364736071-20251112-091416-1762956856.330", "engagement_type": "coverage-modification", "confidence": "high"},
+    {"file": "q-300-+13364860228-20251114-094202-1763131322.1717", "engagement_type": "document-request", "confidence": "high"},
+    {"file": "q-300-+13364882732-20251209-150103-1765310463.6486", "engagement_type": "claims", "confidence": "high"},
+    {"file": "q-300-+13365541577-20250925-090359-1758805439.176", "engagement_type": "info-update", "confidence": "high"},
+    {"file": "q-300-+13365541577-20251014-115110-1760457070.2421", "engagement_type": "coverage-modification", "confidence": "high"},
+    {"file": "q-300-+13365675218-20250808-093754-1754660274.2088", "engagement_type": "coverage-modification", "confidence": "high"},
+    {"file": "q-300-+13365932457-20260109-105343-1767974023.1286", "engagement_type": "vehicle-change", "confidence": "high"},
+    {"file": "q-300-+13365965391-20251114-125257-1763142777.5377", "engagement_type": "workers-comp", "confidence": "high"},
+    {"file": "q-300-+13366023490-20250825-125011-1756140611.4622", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "q-300-+13366074877-20251216-095741-1765897061.610", "engagement_type": "reinstatement", "confidence": "high"},
+    {"file": "q-300-+13366081061-20251112-142848-1762975728.6655", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "q-300-+13366244218-20251006-103819-1759761499.1811", "engagement_type": "follow-up", "confidence": "high"},
+    {"file": "q-300-+13366484168-20250724-125604-1753376164.2783", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "q-300-+13366550626-20250828-153736-1756409856.9206", "engagement_type": "follow-up", "confidence": "high"},
+    {"file": "q-300-+13366620957-20250820-160100-1755720060.12252", "engagement_type": "claims", "confidence": "high"},
+    {"file": "q-300-+13366692453-20251009-160436-1760040276.6431", "engagement_type": "claims", "confidence": "high"},
+    {"file": "q-300-+13366716307-20251020-160031-1760990431.11478", "engagement_type": "claims", "confidence": "high"},
+    {"file": "q-300-+13366884369-20251219-104310-1766158990.2691", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "q-300-+13366897782-20251104-091518-1762265718.906", "engagement_type": "coverage-modification", "confidence": "high"},
+    {"file": "q-300-+13366928425-20250904-090708-1756991228.623", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "q-300-+13366955420-20260107-141957-1767813597.3766", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "q-300-+13366956121-20251002-151614-1759432574.11992", "engagement_type": "driver-change", "confidence": "high"},
+    {"file": "q-300-+13367094577-20250930-164243-1759264963.7811", "engagement_type": "vehicle-change", "confidence": "high"},
+    {"file": "q-300-+13367101812-20251201-150434-1764619474.13115", "engagement_type": "cancellation", "confidence": "high"},
+    {"file": "q-300-+13367103414-20250804-164320-1754340200.13224", "engagement_type": "vehicle-change", "confidence": "high"},
+    {"file": "q-300-+13367401564-20251112-124129-1762969289.4110", "engagement_type": "vehicle-change", "confidence": "high"},
+    {"file": "q-300-+13367401767-20251009-143009-1760034609.4307", "engagement_type": "dmv-compliance", "confidence": "high"},
+    {"file": "q-300-+13367440157-20251002-103105-1759415465.2754", "engagement_type": "mortgage-lender", "confidence": "high"},
+    {"file": "q-300-+13367490677-20260119-151836-1768853916.6130", "engagement_type": "claims", "confidence": "medium"},
+    {"file": "q-300-+13367515941-20251229-144625-1767037585.10721", "engagement_type": "claims", "confidence": "high"},
+    {"file": "q-300-+13367557406-20251006-102414-1759760654.1490", "engagement_type": "info-update", "confidence": "high"},
+    {"file": "q-300-+13367619136-20251202-112430-1764692670.2651", "engagement_type": "make-payment", "confidence": "high"},
+    {"file": "q-300-+13367708173-20251208-095943-1765205983.1117", "engagement_type": "driver-change", "confidence": "high"},
+    {"file": "q-300-+13367829386-20250729-162241-1753820561.14435", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "q-300-+13367853100-20250731-122102-1753978862.7999", "engagement_type": "document-request", "confidence": "high"},
+    {"file": "q-300-+13367894453-20250905-090100-1757077260.56", "engagement_type": "coverage-modification", "confidence": "high"},
+    {"file": "q-300-+13367897226-20250829-135525-1756490125.5744", "engagement_type": "info-update", "confidence": "high"},
+    {"file": "q-300-+13368130432-20250730-153740-1753904260.10593", "engagement_type": "info-update", "confidence": "high"},
+    {"file": "q-300-+13368160687-20251031-161218-1761941538.8348", "engagement_type": "claims", "confidence": "high"},
+    {"file": "q-300-+13368296133-20251215-112941-1765816181.2164", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "q-300-+13368296133-20260106-155012-1767732612.5510", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "q-300-+13368375379-20250919-153925-1758310765.7923", "engagement_type": "cancellation", "confidence": "high"},
+    {"file": "q-300-+13368800495-20251007-120030-1759852830.3738", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "q-300-+13368800695-20260105-124854-1767635334.8777", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "q-300-+13368813559-20260115-105907-1768492747.2064", "engagement_type": "routing-triage", "confidence": "medium"},
+    {"file": "q-300-+13369091493-20250924-105510-1758725710.1070", "engagement_type": "vehicle-change", "confidence": "high"},
+    {"file": "q-300-+13369093592-20250820-152753-1755718073.10282", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "q-300-+13369093948-20251112-094638-1762958798.1019", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "q-300-+13369128609-20251016-145520-1760640920.10002", "engagement_type": "make-payment", "confidence": "medium"},
+    {"file": "q-300-+13369178635-20251204-163935-1764884375.8603", "engagement_type": "coverage-question", "confidence": "high"},
+    {"file": "q-300-+13369345240-20250818-124908-1755535748.4409", "engagement_type": "coverage-question", "confidence": "high"},
+    {"file": "q-300-+13369461441-20250916-095456-1758030896.2786", "engagement_type": "vehicle-change", "confidence": "high"},
+    {"file": "q-300-+13369725785-20250725-101233-1753452753.3976", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "q-300-+13369783479-20250818-093942-1755524382.939", "engagement_type": "vehicle-change", "confidence": "high"},
+    {"file": "q-300-+13369832176-20250908-141421-1757355261.7378", "engagement_type": "billing-question", "confidence": "medium"},
+    {"file": "q-300-+13369954287-20250922-153916-1758569956.10838", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "q-300-+13369971414-20250730-152632-1753903592.9762", "engagement_type": "document-request", "confidence": "high"},
+    {"file": "q-300-+13369973570-20251223-144901-1766519341.3501", "engagement_type": "reinstatement", "confidence": "medium"},
+    {"file": "q-300-+13369994633-20251017-112644-1760714804.2185", "engagement_type": "vehicle-change", "confidence": "high"},
+    {"file": "q-300-+14784618155-20251017-145312-1760727192.4384", "engagement_type": "claims", "confidence": "high"},
+    {"file": "q-300-+14846405797-20251006-092614-1759757174.295", "engagement_type": "mortgage-lender", "confidence": "high"},
+    {"file": "q-300-+15019090616-20260114-144341-1768419821.4478", "engagement_type": "claims", "confidence": "high"},
+    {"file": "q-300-+15616027899-20250929-140135-1759168895.4990", "engagement_type": "cancellation", "confidence": "high"},
+    {"file": "q-300-+16026485364-20260106-121119-1767719479.2594", "engagement_type": "follow-up", "confidence": "medium"},
+    {"file": "q-300-+16035583033-20250925-131653-1758820613.3405", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "q-300-+16788134751-20250828-123949-1756399189.4071", "engagement_type": "mortgage-lender", "confidence": "high"},
+    {"file": "q-300-+17025923961-20250804-100246-1754316166.2653", "engagement_type": "coverage-modification", "confidence": "high"},
+    {"file": "q-300-+17043026541-20260106-101518-1767712518.1037", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "q-300-+17048807624-20251218-150141-1766088101.3886", "engagement_type": "vehicle-change", "confidence": "high"},
+    {"file": "q-300-+17065662679-20250820-105733-1755701853.2547", "engagement_type": "cancellation", "confidence": "high"},
+    {"file": "q-300-+17138758646-20260109-120647-1767978407.1805", "engagement_type": "claims", "confidence": "high"},
+    {"file": "q-300-+17432028411-20250903-111534-1756912534.2854", "engagement_type": "cancellation", "confidence": "high"},
+    {"file": "q-300-+17432248167-20251124-112622-1764001582.2253", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "q-300-+17864430043-20251114-093907-1763131147.1595", "engagement_type": "make-payment", "confidence": "high"},
+    {"file": "q-300-+18005216800-20250916-130107-1758042067.7182", "engagement_type": "document-request", "confidence": "high"},
+    {"file": "q-300-+18179412642-20250808-101407-1754662447.4313", "engagement_type": "claims", "confidence": "high"},
+    {"file": "q-300-+18184817563-20251218-124937-1766080177.2395", "engagement_type": "document-request", "confidence": "high"},
+    {"file": "q-300-+18282564509-20250917-124103-1758127263.2069", "engagement_type": "vehicle-change", "confidence": "medium"},
+    {"file": "q-300-+18569791231-20250826-124355-1756226635.4403", "engagement_type": "coverage-modification", "confidence": "high"},
+    {"file": "q-300-+18668536098-20251114-123901-1763141941.5102", "engagement_type": "document-request", "confidence": "high"},
+    {"file": "q-300-+18882609876-20250917-145002-1758135002.3966", "engagement_type": "renewal-review", "confidence": "high"},
+    {"file": "q-300-+18882609876-20251023-103422-1761230062.1955", "engagement_type": "follow-up", "confidence": "medium"},
+    {"file": "q-300-+18882609876-20251119-145518-1763582118.5126", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "q-300-+18882609876-20260119-161906-1768857546.6489", "engagement_type": "mortgage-lender", "confidence": "high"},
+    {"file": "q-300-+19143098807-20250908-102655-1757341615.984", "engagement_type": "claims", "confidence": "high"},
+    {"file": "q-300-+19175827387-20251125-120434-1764090274.2397", "engagement_type": "billing-question", "confidence": "high"},
+    {"file": "q-300-+19196415344-20251114-112215-1763137335.4662", "engagement_type": "vehicle-change", "confidence": "high"},
+    {"file": "q-500-+13367019965-20250909-155312-1757447592.12905", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "q-500-+13369781864-20250731-114721-1753976841.6910", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "q-500-+13369862626-20250724-091941-1753363181.126", "engagement_type": "new-quote", "confidence": "high"},
+    {"file": "q-500-+17045027888-20250731-153751-1753990671.16266", "engagement_type": "new-quote", "confidence": "high"}
+  ],
+  "type_digests": {
+    "new-quote": {
+      "count": 55,
+      "resolution_patterns": [
+        "Agent collects detailed personal information (name, DOB, DL, address, email) and property/vehicle details to initiate quoting process",
+        "Quote is shopped across multiple carriers (typically 15-20) with 1-2 business day turnaround, then sent via email or text for review",
+        "Agent explains bundling requirements (many carriers require home + auto together) and discusses coverage options, deductibles, and discount opportunities",
+        "For commercial quotes, agent collects business details, classifies risk, and may route to specialized producer or underwriting team",
+        "Outbound calls often present completed quotes comparing current rates to new options with specific savings figures"
+      ],
+      "knowledge_required": ["Multi-carrier quoting systems", "Underwriting criteria per carrier", "Coverage types and deductible structures", "Bundling requirements and discount eligibility", "Commercial insurance class codes and risk assessment", "North Carolina insurance regulations", "Property valuation and replacement cost estimation"],
+      "systems_referenced": ["Alliance Insurance quoting system", "Progressive", "National General", "Auto Owners", "Cincinnati Insurance", "SafeCo", "Utica National", "Canopy Connect portal", "Carrier-specific quoting portals"],
+      "outcome_distribution": {"callback_needed": 42, "resolved": 8, "voicemail": 1, "transferred": 1, "not_applicable": 1},
+      "edge_cases": [
+        "Caller denied coverage because Alliance requires bundled policies and caller only needed standalone auto or liability (files: q-200-+19453531701, q-200-+13369797831, q-200-+13369555102)",
+        "Caller seeking home insurance denied due to 7-9 month coverage lapse exceeding carrier requirements of max 15-day gap (file: out-9806351823-401)",
+        "Caller seeking NC Joint Underwriting policy which Alliance does not write, leaving no resolution (file: q-500-+13369781864)",
+        "Life insurance quote discussion including diabetes underwriting considerations and whole life vs term comparisons (file: parked-112-112-20251204)"
+      ],
+      "examples": [
+        {"file": "q-200-+13362011686-20250911-125731-1757609851.2755", "intent": "Karen Abruzo seeks a home insurance quote, believing her current Geico rate may be too high", "summary": "Karen Abruzo requested a home insurance quote after finding out through a friend that Travelers might offer better rates than her current Geico policy. Heather collected detailed personal, property, and insurance history information, and committed to sending a quote via text."},
+        {"file": "out-9376842812-701-20250910-170953-1757538593.11244", "intent": "Jeremy is informing Emma about switching her insurance policies to Cincinnati Insurance Company, highlighting cost savings, coverage improvements, and finalizing payment arrangements.", "summary": "Jeremy from Alliance Insurance detailed switching Emma's home, auto, and umbrella insurance to Cincinnati Insurance, emphasizing $2,500 annual savings. They agreed on monthly payments for auto coverage and upfront payment for the umbrella policy, with documents to be emailed for signing."},
+        {"file": "q-500-+13367019965-20250909-155312-1757447592.12905", "intent": "Ignacio Solis is seeking a business insurance quote for his new LLC, I C Concrete, which will provide concrete installation and repair services, specifically requesting liability coverage.", "summary": "Ignacio Solis, owner of I C Concrete (a new LLC), requested a business insurance quote for liability coverage. Agent Kendall collected contact and business details, then committed to having a producer reach out within 24 hours."}
+      ]
+    },
+    "billing-question": {
+      "count": 42,
+      "resolution_patterns": [
+        "Agent reviews billing history and payment records to identify the source of discrepancies (NSF payments, rate changes, paperless discount removal, etc.)",
+        "Agent explains premium calculation factors including state-mandated rate increases, coverage changes, multi-car discount loss, and accident surcharges",
+        "Agent contacts carrier directly to investigate system errors, billing account linkage issues, or payment processing failures",
+        "Agent resolves fee disputes by explaining carrier policies (e.g., one annual fee waiver) and processing waivers when eligible",
+        "Agent clarifies payment timing (1-2 business days for processing) and billing cycle mechanics (post-coverage billing vs. advance billing)"
+      ],
+      "knowledge_required": ["Premium calculation factors and rate change triggers", "Carrier billing systems and payment processing timelines", "NC state-mandated rate increases", "Short-rate cancellation calculations", "NSF payment handling and reinstatement fees", "Auto-pay/EFT setup processes", "Paperless discount policies"],
+      "systems_referenced": ["Progressive policy portal", "Auto Owners billing system", "Nationwide Commercial Lines", "Travelers billing system", "Penn National billing system", "National General portal", "Agent Center"],
+      "outcome_distribution": {"callback_needed": 29, "resolved": 13},
+      "edge_cases": [
+        "Billing account incorrectly linked to old canceled policy DBA after rewrite, showing outdated entity name (file: out-8002112843-207-20250903)",
+        "EFT setup appeared processed but system only recorded an easy check payment, requiring re-setup (file: out-8002112843-207-20250925)",
+        "Policy rate fluctuations caused by system failure to pull vehicle history reports after a date change (file: parked-510-510-20251113)",
+        "Customer double-charged due to confusion between home and auto policies on same Travelers billing page (file: q-300-+19175827387)"
+      ],
+      "examples": [
+        {"file": "out-8002888740-504-20251124-122724-1764005244.3459", "intent": "Holly from Alliance Insurance is seeking clarification on a billing discrepancy for a client's Auto Owners Insurance policy.", "summary": "Holly from Alliance Insurance resolved a billing confusion for a client with Auto Owners Insurance. The client's payment increased after adding a travel trailer, but missed automatic payments for the original policy created a shortfall. Patricia explained the adjusted payment structure and confirmed automatic payments were reactivated."},
+        {"file": "out-8662748765-509-20251024-132815-1761326895.3485", "intent": "Resolve confusion about a billing discrepancy on a Progressive insurance policy, specifically why a $1 balance appeared after a full payment was received.", "summary": "Bina from Alliance Insurance resolved a billing confusion for a client with a Progressive policy. A $1 balance appeared due to the removal of the paperless discount, causing a partial payment allocation."},
+        {"file": "q-300-+13368800695-20260105-124854-1767635334.8777", "intent": "The caller is seeking clarification on her calculated insurance premium ($479) vs the amounts quoted by an agent ($542.20)", "summary": "The caller was confused about a $68 discrepancy in her insurance premium after removing a vehicle. The agent explained that rate increases, loss of multi-car discounts, and pro-rated credits contributed to the difference."}
+      ]
+    },
+    "vehicle-change": {
+      "count": 28,
+      "resolution_patterns": [
+        "Agent collects VIN, vehicle details, and coverage preferences, then processes the addition/removal with 24-hour billing update window",
+        "Agent confirms license plate return to DMV before processing vehicle removal to avoid compliance issues",
+        "Agent matches coverage from existing vehicle to new vehicle (same deductibles, liability limits) and calculates premium impact",
+        "For vehicle replacements (trade-ins), agent coordinates with dealerships and lienholders to ensure proper coverage documentation",
+        "Agent emails proof of insurance/binder to customer, dealership, or lienholder after processing the change"
+      ],
+      "knowledge_required": ["VIN lookup and verification", "Coverage type matching (full coverage vs. liability)", "Lienholder requirements for financed vehicles", "DMV license plate return requirements", "Premium recalculation for added/removed vehicles", "NC 14-day coverage law for newly acquired vehicles"],
+      "systems_referenced": ["Alliance Insurance policy management system", "National General portal", "Progressive policy system", "Penn National", "Safeco service request forms", "Email/fax systems for proof of insurance"],
+      "outcome_distribution": {"callback_needed": 20, "resolved": 6, "transferred": 2},
+      "edge_cases": [
+        "Adding a 5th vehicle to Safeco policy required a phone call as the system did not support it online, with 2-3 day processing (file: out-8662723326-112)",
+        "Transferring motorcycle policy to different motorcycle while caller was unsure if old policy was canceled (file: q-200-+13369385672)",
+        "Vehicle removed but policy needed rewrite due to deceased named insured still listed (file: q-300-+13365932457)",
+        "Dealership notified agency of new vehicle purchase but agent found vehicle was already on policy (file: q-300-+18282564509)"
+      ],
+      "examples": [
+        {"file": "q-300-+13362502871-20250818-090105-1755522065.70", "intent": "Cynthia McMullen wants to update her car insurance policy after trading in her Jeep for a Nissan Pathfinder", "summary": "Cynthia contacted Alliance Insurance to update her policy after trading her Jeep for a Nissan Pathfinder. The agent processed the change, confirmed the new vehicle details, and explained that auto-pay billing would adjust automatically."},
+        {"file": "q-300-+13364166034-20250805-160609-1754424369.8445", "intent": "The caller wants to remove a 2012 Nissan Altima from their insurance policy and confirm the effective date of removal.", "summary": "A customer requested removal of a 2012 Nissan Altima from their policy. The agent confirmed DMV license plate return, and scheduled the removal effective January 1st."},
+        {"file": "q-300-+19196415344-20251114-112215-1763137335.4662", "intent": "Ingrid wants to add a new 2026 Tesla Model 3 to her insurance policy by removing her 2016 Mercedes", "summary": "Ingrid requested to replace her Mercedes with a Tesla on her policy. Agent resolved a VIN input issue, confirmed details, calculated the $426 annual premium increase, and arranged proof of insurance via email."}
+      ]
+    },
+    "renewal-review": {
+      "count": 28,
+      "resolution_patterns": [
+        "Agent proactively contacts customers 30 days before renewal to review policy details, verify contact info, and discuss changes",
+        "Agent explains premium increases citing NC state-mandated rate hikes (7.5%), inflation guard endorsements, and updated replacement cost estimates",
+        "Agent proposes cost-reduction strategies: increasing deductibles ($1K to $2.5K), adjusting coverage levels, removing optional coverages, or switching carriers",
+        "Agent shops renewal across multiple carriers and presents comparison options with specific savings figures",
+        "Agent confirms renewal dates, payment methods (escrow vs. direct), and ensures no coverage gaps"
+      ],
+      "knowledge_required": ["NC state rate mandates and their timing", "Replacement cost estimator tools and inflation guard endorsements", "Deductible adjustment impact on premiums", "Carrier comparison and remarketing strategies", "Escrow payment processes", "Policy renewal timelines and pre-renewal communication protocols"],
+      "systems_referenced": ["Policy management system", "Replacement cost estimator tool", "Auto Owners", "Progressive", "Heritage", "National General", "Penn National", "Cincinnati Insurance", "Travelers", "Glove Box app"],
+      "outcome_distribution": {"callback_needed": 18, "resolved": 8, "not_applicable": 1},
+      "edge_cases": [
+        "Customer confused by pre-renewal notice thinking it was an actual premature renewal (file: q-300-+13364144762)",
+        "Home policy renewal complicated by property not yet closed on, with confusion across multiple policy versions in Glove Box app (file: q-300-+12105008311)",
+        "Customer's premium increase driven by Dynamic Driver app being inactive, disabling discount (file: out-9192250270-409)",
+        "Non-renewal by carrier (NGM Insurance exiting NC) requiring transition to Main Street America (file: q-300-+18882609876-20250917)"
+      ],
+      "examples": [
+        {"file": "out-8452709048-504-20250930-091520-1759238120.175", "intent": "Charles is concerned about a significant increase in his insurance premiums (auto up $600/year, home up $173/year)", "summary": "Charles was frustrated about premium increases. Holly explained the increases were due to NC state mandates and updated replacement costs, confirmed Penn National was still the best option, and provided cancellation procedures if he chose to switch."},
+        {"file": "out-9498928351-114-20251211-102713-1765466833.957", "intent": "Follow up on Ellen's auto policy renewal to verify contact information, policy details, and ensure there are no updates needed.", "summary": "JC conducted a follow-up call with Ellen to verify her auto policy details ahead of renewal, covering coverage, deductibles, and potential discounts including Progressive's Snapshot app."},
+        {"file": "q-300-+13366928425-20250904-090708-1756991228.623", "intent": "Archie Reese is concerned about a recent increase in his insurance bill and wants to understand the reasons behind it", "summary": "Archie contacted Alliance about a $282 annual premium increase. Agent Holly explained state rate hikes and automatic dwelling coverage upgrades, explored deductible adjustments, and committed to shopping for alternative quotes."}
+      ]
+    },
+    "claims": {
+      "count": 23,
+      "resolution_patterns": [
+        "Agent collects incident details (date, location, damage description, police report) and files claim with carrier, providing claim number and adjuster contact info",
+        "Agent explains claims process: carrier assigns adjuster who evaluates coverage and determines next steps within 24-48 hours",
+        "For follow-ups, agent checks claim status in system, provides adjuster contact information, and offers to escalate if adjuster is unresponsive",
+        "Agent advises on documentation (photos, receipts, repair estimates) and explains deductible implications before filing",
+        "For third-party claims, agent directs caller to at-fault party's insurance carrier with claim filing instructions"
+      ],
+      "knowledge_required": ["Claims filing procedures across multiple carriers", "Adjuster roles and contact protocols", "Deductible implications and when to file vs. not file", "Subrogation rights", "Rental car eligibility post-claim", "Property damage documentation requirements", "Third-party vs. first-party claim processes"],
+      "systems_referenced": ["Liberty Mutual claims system", "Berkeley Aspire claims reporting line", "Progressive Claims", "Utica National", "Penn National", "National General", "Auto Owners", "Alliance Insurance internal claim lookup"],
+      "outcome_distribution": {"callback_needed": 14, "resolved": 5, "voicemail": 2, "transferred": 1},
+      "edge_cases": [
+        "Denied claim for long-term gradual toilet leak — excluded under policy terms (file: q-300-+13122676161)",
+        "Claim denied by carrier due to policy status discrepancy despite evidence of premium payments (file: q-300-+13366716307)",
+        "Duplicate claim charges across father and son policies for same incident due to similar names (file: out-8774683466-503)",
+        "Customer unsure whether to use existing claim number for new water damage or file new claim (file: q-300-+13364882732)",
+        "Contractor calling about homeowner's roof claim payment, agent clarified adjuster is sole authority on payment details (file: q-300-+19143098807)"
+      ],
+      "examples": [
+        {"file": "q-300-+13363828163-20250902-140445-1756836285.5962", "intent": "Gary is reporting water damage from a backed-up sewer line in his basement", "summary": "Gary reported basement water damage from a sewer backup. The agent confirmed Liberty Mutual coverage for accessing the plumbing and initiated a claim, with the insurer to contact Gary for next steps."},
+        {"file": "q-300-+13367515941-20251229-144625-1767037585.10721", "intent": "Kathy Bowman is reporting damage to her home caused by a fallen tree from her neighbor's yard", "summary": "Kathy reported tree damage to her home. The agent explained the claim process, filed with Utica, advised on documentation, and warned about subrogation risks with the neighbor."},
+        {"file": "q-300-+13362155548-20250908-103905-1757342345.1931", "intent": "Loretta Kittley reports a car accident where another driver ran a stop sign", "summary": "Loretta reported an accident caused by another driver. JC guided her to file the claim under the at-fault party's Progressive insurance, provided the claims number, and explained required documentation."}
+      ]
+    },
+    "document-request": {
+      "count": 22,
+      "resolution_patterns": [
+        "Agent retrieves and emails declaration pages, proof of insurance, or binders within 5-10 minutes",
+        "Agent locates specific forms in carrier portals (NCRF 31, endorsement forms, accident protection plan documents) and provides page references",
+        "Agent sends corrected documents (wrong date on binder, wrong vehicle on policy) after identifying errors",
+        "For legacy/old platform policies, agent redirects request to email submission (e.g., ICS support) when portal access is unavailable",
+        "Agent provides fax numbers and portal URLs for mortgage companies, dealerships, and lenders needing proof of coverage"
+      ],
+      "knowledge_required": ["Policy document types (dec pages, binders, COIs, FS-1 forms, loss runs)", "Carrier portal navigation for document retrieval", "E-signature platforms (Conga Sign, DocuSign)", "Fax and email protocols for document delivery", "Legacy system workarounds"],
+      "systems_referenced": ["Auto Owners policy database", "National General carrier portal", "Penn Plus/Pin Connect", "Utica National portal", "NSA/Main Street America portal", "Safeco", "Travelers", "Conga Sign", "Email/fax systems"],
+      "outcome_distribution": {"callback_needed": 10, "resolved": 9, "voicemail": 2, "transferred": 1},
+      "edge_cases": [
+        "Two-week delay obtaining declarations page from Utica National blocking a claim, requiring expedited ticket escalation (file: out-8005988422-112)",
+        "Policy on old platform making dec page inaccessible via current portal, requiring email to ICS support (file: out-8779275672-501)",
+        "Caller needed digital proof of insurance sent to DMV but agent could not locate DMV fax number (file: q-300-+13364860228)"
+      ],
+      "examples": [
+        {"file": "q-300-+13369971414-20250730-152632-1753903592.9762", "intent": "Vicky Hill needs a copy of her insurance declaration page for her employer", "summary": "Vicky Hill requested a copy of her Travelers insurance declaration page for her employer. Heather collected verification details and committed to sending the document within five minutes."},
+        {"file": "out-8774683466-501-20251230-173825-1767134305.11509", "intent": "Jamie needed to locate the NCRF 31 form for Ariel Bailey's policy to facilitate signing and upload", "summary": "Jamie sought assistance locating the NCRF 31 form. Daniel guided Jamie to page 7 of the renew packet, where the form was found. Jamie will now have the client sign and upload it to the portal."},
+        {"file": "out-8008777366-112-20251117-134531-1763405131.3729", "intent": "Brandy needed assistance retrieving applications for recently issued policies to send them for electronic signatures", "summary": "Brandy sought help retrieving applications for policies after encountering an error. Karen guided her through Penn Plus, using the e-signature feature, and manually handling the umbrella policy."}
+      ]
+    },
+    "make-payment": {
+      "count": 18,
+      "resolution_patterns": [
+        "Agent collects credit card or bank account details (routing/account numbers) and processes payment directly with carrier",
+        "Agent sets up auto-pay/EFT by collecting banking information and configuring recurring payments through carrier systems",
+        "Agent navigates carrier-specific secure credit card lines or billing departments to process payments on behalf of clients",
+        "Agent provides payment confirmation numbers and schedules follow-up for billing verification",
+        "Agent explains payment plan options (full pay, two-pay, four-pay, monthly) with associated fees and discounts"
+      ],
+      "knowledge_required": ["Carrier billing systems and payment processing", "Auto-pay/EFT setup procedures", "Credit card processing protocols", "Payment plan options and fee structures", "Agency code verification for carrier calls"],
+      "systems_referenced": ["Auto Owners billing system", "Progressive payment portal", "Utica National payment system", "Travelers payment system", "Secure credit card lines", "Pay Now (PNC)"],
+      "outcome_distribution": {"callback_needed": 10, "resolved": 8},
+      "edge_cases": [
+        "Auto-pay setup failed because card saved via online Pay Now system was not accessible in billing system — separate systems (file: out-8002888740-112-20250909)",
+        "Caller update auto draft but had difficulty communicating request through IVR system (file: out-8003323226-501)",
+        "Payment attempted on canceled account awaiting reinstatement — required underwriting flag before processing (file: out-8003460346-509)",
+        "Spanish-speaking caller making payment with limited English communication (file: parked-502-502-20250922)"
+      ],
+      "examples": [
+        {"file": "out-8002888740-100-20250821-143120-1755801080.7397", "intent": "Ashley aimed to set up a client on AutoPay with a credit card through AutoOwners Insurance.", "summary": "Ashley successfully facilitated AutoPay setup for a client with AutoOwners Insurance by providing detailed payment and policy information. The AutoOwners representative confirmed the setup."},
+        {"file": "parked-201-201-20250929-111126-1759158686.2856", "intent": "The caller intends to pay their insurance premiums using a credit card to earn points", "summary": "The caller successfully paid $5,859.92 in insurance premiums via credit card. The agent referred them to another agent for discount inquiries."},
+        {"file": "q-300-+13367619136-20251202-112430-1764692670.2651", "intent": "Rosa McIntosh wants to pay her home insurance premium and confirm the payment details.", "summary": "Rosa contacted Alliance to make a $117 payment for her home insurance. The agent verified her account, processed the payment via credit card, and provided a confirmation number."}
+      ]
+    },
+    "follow-up": {
+      "count": 15,
+      "resolution_patterns": [
+        "Agent checks system for status updates on pending quotes, policy changes, claims, or payment processing",
+        "Agent confirms prior request was completed (policy change processed, case closed, document sent) and updates customer",
+        "Agent identifies unresolved issues from prior interactions and escalates or re-initiates action",
+        "Agent provides callback arrangements when the needed person or information is unavailable",
+        "Agent verifies policy status for third parties (credit unions, lenders) on pending renewals or cancellations"
+      ],
+      "knowledge_required": ["Internal case tracking and note systems", "Carrier processing timelines", "Agent communication protocols", "Policy status verification"],
+      "systems_referenced": ["Alliance Insurance internal systems", "Progressive customer service", "Liberty Mutual", "Utica National", "Auto Owners"],
+      "outcome_distribution": {"callback_needed": 12, "resolved": 3},
+      "edge_cases": [
+        "Client informed her Progressive issue was resolved through direct carrier contact, agent just needed to close the case (file: out-7872242911-202)",
+        "Agent unable to reach client due to phone number issue, multiple attempts over weeks (file: out-9723532315-101)",
+        "Flood policy verification failed because policy could not be found in system (file: q-300-+16026485364)"
+      ],
+      "examples": [
+        {"file": "out-7135827879-409-20250826-140143-1756231303.6579", "intent": "Marcia is following up on a policy change she initiated with Progressive, checking the processing timeline", "summary": "Marcia followed up on a policy change with Progressive, discussing a 14-day processing timeline. Corbin provided updates, explained rate determinants, and scheduled a follow-up."},
+        {"file": "q-300-+13366244218-20251006-103819-1759761499.1811", "intent": "Peggy Folk wanted to confirm her insurance policies are up to date and address a notice from Westfield", "summary": "Peggy confirmed her insurance policies were current after receiving a Westfield notice. Agent JC verified her homeowners and auto policies, confirmed proof of insurance was submitted."},
+        {"file": "q-300-+13366550626-20250828-153736-1756409856.9206", "intent": "Caleb Porter is calling to confirm the status of his auto insurance policy after Main Street America ceased operations in NC", "summary": "Caleb contacted Alliance to resolve uncertainty about his auto policy after his carrier ceased NC operations. The agent confirmed his policy lapsed, explained DMV fines, and initiated underwriting checks."}
+      ]
+    },
+    "cancellation": {
+      "count": 12,
+      "resolution_patterns": [
+        "Agent confirms cancellation reason and effective date, then sends e-signature cancellation form via email (Conga Sign or similar)",
+        "Agent explains potential refund amounts (pro-rata for home/umbrella, short-rate for auto in NC) and processing timelines",
+        "Agent coordinates with carrier to cancel policies after client switches to new provider, sometimes requiring documentation of new coverage",
+        "Agent processes multi-policy cancellations (home + auto + umbrella) with aligned effective dates to prevent coverage gaps",
+        "Agent contacts carrier directly when system cannot process cancellation or when policies need documentation to confirm alternative coverage"
+      ],
+      "knowledge_required": ["Cancellation procedures per carrier", "NC short-rate fee calculations", "E-signature platform workflows", "Pro-rata refund calculations", "Coordination between old and new carriers", "Documentation requirements for cancellation"],
+      "systems_referenced": ["Conga Sign", "Westfield CL processing email", "Travelers email system", "Penn National", "National General", "Safeco", "Email systems"],
+      "outcome_distribution": {"callback_needed": 7, "resolved": 4, "transferred": 1},
+      "edge_cases": [
+        "Westfield policies needed cancellation documentation emailed to CL@westfield.com after client switched carriers (file: out-8002430210-301)",
+        "Caller could not find cancellation email — agent helped locate it in spam folder for e-signature (file: q-300-+15616027899)",
+        "Pending cancellation notice on policy with new mortgage company — agent explained NLC timeline and that actual cancellation occurs weeks later (file: out-8005988422-509)",
+        "Cancellation of three vehicles titled in Georgia after relocating from NC, requiring tag surrender date coordination (file: q-300-+17065662679)"
+      ],
+      "examples": [
+        {"file": "out-9376682600-202-20250908-144504-1757357104.8654", "intent": "Henry wants to cancel his home and auto insurance policies because he found a better rate", "summary": "Henry seeks to cancel his policies effective September 14th after finding a better rate. Heather confirms the request, collects Henry's email, and explains the e-sign process for the cancellation form."},
+        {"file": "out-9194182510-113-20250814-092618-1755177978.467", "intent": "Jim wants to switch his auto insurance policy to another provider while keeping umbrella and homeowners", "summary": "Jim is switching his auto insurance to another provider but wants to keep his umbrella and homeowners policies with Alliance. Gary clarifies policy details and confirms the intent."},
+        {"file": "q-300-+13367101812-20251201-150434-1764619474.13115", "intent": "Travis Hudson wants to cancel his car insurance policy after selling his vehicle", "summary": "Travis contacted Alliance to cancel his car insurance after selling his vehicle. Jacy confirmed policy details and explained the cancellation requires a signed form sent via email from Congressine."}
+      ]
+    },
+    "reinstatement": {
+      "count": 11,
+      "resolution_patterns": [
+        "Agent identifies cancellation reason (non-payment, NSF, missed draft) and checks reinstatement eligibility window (typically 30 days for most carriers)",
+        "Agent processes reinstatement payment (full balance required) and obtains verbal 'statement of no loss' from policyholder",
+        "Agent contacts carrier directly to request reinstatement approval when system shows canceled status, sometimes requiring underwriting flag activation",
+        "Agent explains that policies past reinstatement window must be rewritten as new policies",
+        "Agent addresses underlying payment issues (NSF, hacked debit cards, incorrect auto-pay) to prevent recurrence"
+      ],
+      "knowledge_required": ["Carrier-specific reinstatement windows and requirements", "Statement of no loss procedures", "NSF fee handling", "Underwriting approval processes for reinstatement", "Payment verification and reprocessing"],
+      "systems_referenced": ["National General policy management", "Progressive Home Umbrella Underwriting", "Auto Owners underwriting system", "Nationwide Commercial Lines", "Utica National"],
+      "outcome_distribution": {"callback_needed": 6, "resolved": 4, "transferred": 0},
+      "edge_cases": [
+        "Umbrella policy past 30-day Progressive reinstatement window, must be rewritten entirely (file: out-8662748765-112)",
+        "Worker's comp policy reinstatement needed after debit card hack disrupted auto-payments (file: q-300-+13366074877)",
+        "Home policy reinstatement blocked pending underwriting review of missed payment reason and farm size change (file: parked-302-302-20251124)",
+        "Multiple policies (GL, inland marine, business auto) all canceled due to single NSF payment (file: out-8002112843-207-20250930)"
+      ],
+      "examples": [
+        {"file": "out-8774683466-509-20250821-155257-1755805977.8381", "intent": "David Malia wants to reinstate his canceled insurance policy after non-renewal due to missed payment.", "summary": "David contacted Alliance to reinstate his canceled policy. After verifying his identity and confirming no recent claims, the agent explained reinstatement requirements and processed the full payment."},
+        {"file": "out-8002112843-207-20250930-082226-1759234946.46", "intent": "Cody Jackson is seeking clarification on why multiple policies were canceled despite a payment being made", "summary": "Cody contacted Nationwide to resolve confusion about canceled policies. The agent identified the payment was returned as NSF, leading to cancellation, and offered reinstatement assistance."},
+        {"file": "q-300-+13364352000-20250919-151834-1758309514.7034", "intent": "Ya Fanfan seeks to reinstate a canceled insurance policy and obtain a new quote for coverage on multiple vehicles.", "summary": "The caller attempted to reinstate a canceled policy but was informed of a $546.82 balance. The agent processed the payment and agreed to provide a new quote for four vehicles."}
+      ]
+    },
+    "info-update": {
+      "count": 11,
+      "resolution_patterns": [
+        "Agent verifies customer identity and updates address, email, phone, or name in the policy management system",
+        "Agent coordinates with carrier portals for account-level changes (email updates requiring portal login, password resets)",
+        "Agent updates lienholder/finance company information and sends updated documents via fax or email",
+        "Agent corrects policy details (address typos, incorrect DBA names) in carrier systems",
+        "Agent processes administrative changes like adding contacts to policies for communication purposes"
+      ],
+      "knowledge_required": ["Policy management system navigation", "Carrier portal account update procedures", "Lienholder update processes", "Identity verification protocols", "Email and fax document delivery"],
+      "systems_referenced": ["Auto Owners online portal", "National General portal", "Alliance Insurance policy database", "Electronic fax systems", "Email systems"],
+      "outcome_distribution": {"callback_needed": 7, "resolved": 4},
+      "edge_cases": [
+        "Email update required customer to log in with old email/password first before changing to new email (file: out-8003460346-501-20251212)",
+        "Correcting email address on Progressive policy to restore paperless discount before deadline (file: out-8777762436-409-20251114)",
+        "Address correction on insurance policy involving typo that agent confirmed did not affect the claim (file: parked-302-302-20250813)"
+      ],
+      "examples": [
+        {"file": "q-300-+13368130432-20250730-153740-1753904260.10593", "intent": "David needs to update his apartment insurance policy due to a move on August 1st", "summary": "David contacted Alliance to update his apartment insurance policy for a move. Heather confirmed policy details, new address, and committed to sending updated evidence of insurance."},
+        {"file": "q-300-+13365541577-20250925-090359-1758805439.176", "intent": "Christopher Miner wants to update his auto insurance policy to reflect a change in the financing company", "summary": "Christopher contacted Alliance to update his auto policy's finance company from Royalty Finance to Credit Financial Group. Agent Jamie processed the change and planned to fax the update with email confirmation."},
+        {"file": "out-8003460346-501-20251212-134204-1765564924.3565", "intent": "Agent Jamie is assisting client Mary with updating Jocelyn Harris's email address on her Auto Owners account", "summary": "Agent Jamie guided Mary through resolving Jocelyn's account access issue after losing Hotmail access. The solution involved using the old email/password to log in and update the email address."}
+      ]
+    },
+    "coverage-question": {
+      "count": 13,
+      "resolution_patterns": [
+        "Agent reviews policy details to answer 'am I covered for X' questions without making changes",
+        "Agent explains coverage mechanics: what is covered, exclusions, limits, and occurrence definitions",
+        "Agent consults carrier underwriters or specialists for complex coverage questions beyond standard knowledge",
+        "Agent provides educational materials (pamphlets, endorsement forms) to help customers understand their coverage",
+        "Agent clarifies distinctions between coverage types (e.g., towing coverage that follows vehicle vs. AAA that follows driver)"
+      ],
+      "knowledge_required": ["Policy coverage details and exclusions", "Coverage C transit and storage limitations", "Towing coverage mechanics", "Insurance class codes and applicability", "Builder's risk vs. homeowner coverage", "Carrier-specific pet and rental coverage rules", "State-specific coverage laws"],
+      "systems_referenced": ["Auto Owners policy documents", "National General", "Progressive", "Carrier underwriting departments"],
+      "outcome_distribution": {"callback_needed": 6, "resolved": 7},
+      "edge_cases": [
+        "Whether Handyman Class Code covers incidental roofing repair — agent confirmed acceptable for 2-3 annual repairs (file: out-8003340328-701-20260113)",
+        "Coverage for high-end Aston Martin rental — confirmed for temporary use but excluded racing and non-household drivers (file: parked-202-202-20250725)",
+        "Whether home insurance covers self-storage unit contents — agent needed to check carrier directly (file: q-300-+13369345240)",
+        "Coverage for personal property during multi-state move via U-Haul — covered in transit but limited to 10% of coverage C in storage (file: out-8003460346-501-20251015)"
+      ],
+      "examples": [
+        {"file": "out-8645611970-510-20250813-122910-1755102550.5525", "intent": "Pam is seeking clarification on towing coverage differences between her current policy and Auto Owners", "summary": "Pam sought clarification on towing coverage differences. Tracy explained policy details, occurrence limits, and offered to send a pamphlet. Pam agreed to add coverage to both cars."},
+        {"file": "out-8003460346-501-20250903-102602-1756909562.1836", "intent": "Jamie Flippin seeks clarification on whether Leviticus needs to be listed on the policy for occasional driving", "summary": "Jamie consulted Auto Owners about coverage for a vehicle occasionally driven by an adult son. The agent confirmed incidental use likely doesn't require listing but emphasized updating if usage increases."},
+        {"file": "q-300-+13362156620-20250926-135413-1758909253.3216", "intent": "Caller asking whether he needs to report an additional driver on his insurance for a temporarily loaned vehicle", "summary": "A caller inquired about insurance liability for temporarily loaning a vehicle. The agent offered to connect him with the carrier for clarification."}
+      ]
+    },
+    "coverage-modification": {
+      "count": 9,
+      "resolution_patterns": [
+        "Agent adjusts deductibles (typically from $500/$1,000 to $2,500) and calculates premium impact",
+        "Agent adds or removes specific coverages (comprehensive, collision, towing, rental, uninsured motorist) per customer request",
+        "Agent downgrades coverage level (full coverage to liability-only) on older or paid-off vehicles to reduce costs",
+        "Agent explains trade-offs between coverage changes and premium savings to help customers make informed decisions",
+        "Agent processes coverage changes with carrier and provides updated premium and billing information"
+      ],
+      "knowledge_required": ["Coverage types and their cost implications", "Deductible adjustment calculations", "Full coverage vs. liability distinctions", "Carrier-specific coverage options", "Impact of vehicle age on coverage value"],
+      "systems_referenced": ["Alliance Insurance policy management system", "National General portal", "Progressive system", "Auto Owners"],
+      "outcome_distribution": {"callback_needed": 5, "resolved": 4},
+      "edge_cases": [
+        "Customer requested adding uninsured/underinsured motorist coverage but agent found discrepancy in policy document showing 'no cost' — needed carrier consultation (file: q-300-+13365675218)",
+        "Deductible increase and coverage change prompted by billing dispute over premium increase (file: q-300-+13365541577-20251014)",
+        "Premium reduction from experience credit combined with vehicle removal discussion (file: out-7434441889-202)"
+      ],
+      "examples": [
+        {"file": "q-300-+17025923961-20250804-100246-1754316166.2653", "intent": "Jacqueline Thornhill wanted to lower her auto insurance premium by increasing deductibles", "summary": "Jacqueline sought to reduce her premium. The agent adjusted comprehensive and collision deductibles and removed redundant towing coverage, resulting in a $282 premium reduction."},
+        {"file": "q-300-+13366897782-20251104-091518-1762265718.906", "intent": "Elia wants to remove full coverage from her husband's Tundra and switch to liability insurance", "summary": "Elia requested to downgrade her husband's Tundra from full coverage to liability, resulting in monthly savings. She also requested help finding lower home insurance rates."},
+        {"file": "q-300-+13367894453-20250905-090100-1757077260.56", "intent": "David Buchanan wants to adjust his auto insurance policy by dropping full coverage on his Toyota Corolla to liability-only", "summary": "David seeks to adjust his Allstate policy by dropping full coverage on his aging Corolla. Jamie explains payout methodology, compares carrier options, and highlights switching risks."}
+      ]
+    },
+    "routing-triage": {
+      "count": 10,
+      "resolution_patterns": [
+        "Agent takes message and arranges callback when the requested person is unavailable",
+        "Agent transfers call to appropriate department or specialist (commercial underwriting, habitation queue, etc.)",
+        "Agent explains service area limitations (Alliance does not serve Florida) and refers caller to local agencies",
+        "Agent handles non-insurance inquiries (IT support, equipment logistics) by routing to appropriate staff",
+        "Agent addresses technical issues (call pop not working) by escalating to tier two support"
+      ],
+      "knowledge_required": ["Internal department structures and contact information", "Service area limitations", "Call routing procedures", "Agent schedules and availability"],
+      "systems_referenced": ["Internal call routing system", "Voicemail system", "Tier two support"],
+      "outcome_distribution": {"callback_needed": 10},
+      "edge_cases": [
+        "Caller requesting assistance in Spanish — not available, agreed to Monday callback (implied from routing-triage definition)",
+        "Laptop delivery logistics follow-up — entirely non-insurance matter (file: parked-402-402)",
+        "AOR process clarification between agencies after acquisition (file: q-300-+13368813559) — classified here due to primary intent being routing/process clarification between agencies",
+        "Technical call pop issue requiring tier two escalation (file: parked-509-509-20250925)"
+      ],
+      "examples": [
+        {"file": "ptimeout-+13363779003-+13368171873-20250902-095900-1756821540.823", "intent": "The caller needs assistance but the intended recipient is unavailable until 10:30 AM", "summary": "A caller reached out for assistance, but the intended recipient was unavailable. The agent arranged for a callback after the meeting."},
+        {"file": "out-9042507502-202-20251107-150652-1762546012.7405", "intent": "Ron inquired about insurance options in Florida", "summary": "Heather informed Ron that Alliance does not provide insurance services in Florida, explaining their focus on NC and surrounding states. She recommended a local Florida agency."},
+        {"file": "parked-509-509-20251007-154143-1759866103.9114", "intent": "Kevin is attempting to reach Gary, who left a voicemail", "summary": "Kevin is trying to reach Gary. The agent confirmed Gary would be notified and return the call, while addressing Kevin's concerns about voicemail history and area code identification."}
+      ]
+    },
+    "mortgage-lender": {
+      "count": 8,
+      "resolution_patterns": [
+        "Agent verifies mortgage clause details (lender name, address, loan number) and confirms mortgagee listing on policy",
+        "Agent sends proof of insurance/declaration pages to mortgage companies via fax, email, or carrier portal (mycoverageinfo.com)",
+        "Agent resolves discrepancies between insurer records and mortgage company expectations (wrong mortgagee name, missing payment)",
+        "Agent coordinates with mortgage servicers to ensure escrow payments are processed and policy remains active",
+        "Agent updates policy to add/change mortgagee build designation and provides payment mailing addresses"
+      ],
+      "knowledge_required": ["Mortgagee clause formatting and requirements", "Escrow payment processes", "mycoverageinfo.com portal usage", "Fax and email protocols for lender communication", "Policy verification for third parties"],
+      "systems_referenced": ["mycoverageinfo.com", "Travelers", "Cincinnati Insurance", "Auto Owners", "Safeco", "PHH Mortgage Services", "Movement Mortgage", "CMG Mortgage", "Truest Bank", "State Employees Credit Union"],
+      "outcome_distribution": {"callback_needed": 5, "resolved": 3},
+      "edge_cases": [
+        "Mortgage payment mailed October 9th but not received — agent traced through multiple department transfers (file: out-9194208110-510)",
+        "Policy needed mortgagee build change from 'insured build' to 'mortgagee build' (file: q-300-+12134760469-20250828)",
+        "Auto Owners billing issue where mortgage information not returned, requiring verification and resend (file: out-7204253433-112)"
+      ],
+      "examples": [
+        {"file": "q-300-+13364620996-20260107-134123-1767811283.2715", "intent": "Gary contacted Alliance to resolve an issue where his mortgage company had not received his updated policy information.", "summary": "Gary contacted Alliance to address a mortgage company's request for updated policy information. Will confirmed details and arranged for fax or email delivery to PHH Mortgage Services."},
+        {"file": "q-300-+14846405797-20251006-092614-1759757174.295", "intent": "Matthew from NewRes is confirming whether NewRes LLC is listed as a mortgagee on Francisco Flores' policy", "summary": "Brandy confirmed NewRes LLC's mortgagee status, arranged to fax proof of insurance, and agreed to send a binder with replacement cost details."},
+        {"file": "q-300-+16788134751-20250828-123949-1756399189.4071", "intent": "Nikitan is calling to obtain renewal information for a homeowners policy including payment address verification", "summary": "Holly assisted Nikitan with retrieving Safeco homeowners policy renewal details, updating the payment address, and providing the portal URL for uploading the declaration page."}
+      ]
+    },
+    "dmv-compliance": {
+      "count": 7,
+      "resolution_patterns": [
+        "Agent collects DMV letter details and submits FS-1 forms electronically to North Carolina DMV on behalf of client",
+        "Agent explains DMV lapse notices are triggered by policy cancellations and discusses reinstatement or new policy options",
+        "Agent temporarily reinstates vehicle coverage to prevent DMV flag fees caused by coverage gaps",
+        "Agent provides vehicle-specific details (VINs, policy dates) to carrier verification departments for FS-1 processing",
+        "Agent advises on DMV plate return requirements and coverage continuity to avoid future compliance issues"
+      ],
+      "knowledge_required": ["NC DMV FS-1 form requirements and submission process", "DMV lapse notice triggers and resolution", "Policy cancellation impact on DMV records", "Reinstatement vs. new policy for DMV compliance", "Progressive insurance verification department procedures"],
+      "systems_referenced": ["NC DMV", "Progressive insurance verification system", "Auto Owners policy database", "Alliance Insurance internal systems"],
+      "outcome_distribution": {"callback_needed": 4, "resolved": 3},
+      "edge_cases": [
+        "Client improperly removed vehicle from policy triggering DMV flag — agent reinstated coverage temporarily to prevent fee (file: out-8777762436-501-20260105)",
+        "Client had second Progressive policy purchased online through different account, bypassing agency — required contacting Progressive Direct for DMV docs (file: parked-113-113-20250912)",
+        "Terminated policy preventing wife from getting new license plate at DMV (file: q-300-+13367401767)"
+      ],
+      "examples": [
+        {"file": "out-8777762436-112-20251219-123750-1766165870.4807", "intent": "Brandi needs to submit FS1 forms for four vehicles across two policies related to Thurman Porter's account.", "summary": "Brandi requested FS1 form submission for four vehicles across two Progressive policies. The verification agent confirmed details and submitted all forms to North Carolina."},
+        {"file": "parked-504-504-20250806-115913-1754495951.4613", "intent": "Joseph Fernandez needs assistance addressing a DMV letter regarding an alleged insurance lapse and submitting an FS1 form", "summary": "Joseph contacted Alliance regarding a DMV letter about an insurance lapse. The agent collected his address but the call was cut off mid-conversation."},
+        {"file": "q-300-+13364305499-20260105-102500-1767626700.1739", "intent": "Dan Suter is seeking assistance with a letter from the NC DMV regarding an FS one submission for his Toyota Rav4", "summary": "Dan contacted Alliance about a DMV letter. The agent verified policy details, requested the letter for review, and explained the need for electronic submission by December 29, 2025."}
+      ]
+    },
+    "driver-change": {
+      "count": 7,
+      "resolution_patterns": [
+        "Agent adds driver as household member (non-rated) for minors without licenses, or as rated driver with permit/license number",
+        "Agent removes drivers from policy after they move out, marry, or obtain their own separate coverage",
+        "Agent explains NC inexperienced operator surcharge rules (now 8-year window under new law) and premium implications",
+        "Agent collects new driver personal details (DOB, DL number, driving history) and checks for tickets/accidents",
+        "Agent clarifies when occasional drivers need to be listed vs. when coverage follows the vehicle"
+      ],
+      "knowledge_required": ["NC inexperienced operator surcharge laws", "Household member vs. rated driver distinctions", "Driver addition/removal procedures", "Impact on premiums when adding young/new drivers", "Umbrella policy driver updates"],
+      "systems_referenced": ["Progressive umbrella system", "Auto Owners", "National General", "Alliance Insurance policy database"],
+      "outcome_distribution": {"callback_needed": 4, "resolved": 3},
+      "edge_cases": [
+        "Adding daughter before driver's test — needed coverage active by test date, agent explained new 8-year surcharge law (file: q-300-+12627073641)",
+        "Removing daughter from umbrella policy after she moved to different state and married (file: q-300-+13302426449)",
+        "Son listed as second driver with own insurance — no premium impact but needed address update when he moves (file: q-300-+13363910897-20251216)"
+      ],
+      "examples": [
+        {"file": "q-300-+12627073641-20260106-134549-1767725149.3760", "intent": "Existing policyholder wants to add their daughter to auto policy before she takes her driver's test on January 13th", "summary": "Jamie needed to add her daughter to the auto policy before her driver's test. The agent facilitated the addition and explained the new NC 8-year inexperienced operator surcharge law."},
+        {"file": "q-300-+13302426449-20250909-122651-1757435211.7377", "intent": "James Marshall wants to update his Progressive umbrella policy to remove his daughter after she moved to Ohio", "summary": "James updated his Progressive umbrella policy to remove his daughter. The agent confirmed auto/home insurance details and noted the umbrella policy update would be processed with a revised bill."},
+        {"file": "q-300-+13366956121-20251002-151614-1759432574.11992", "intent": "Jacqui Watson wants to add her 15-year-old son to her auto insurance policy", "summary": "Jacqui contacted Alliance to add her 15-year-old son. Jamie added Darian as a household member (non-rated driver) without premium changes, explaining he would need to be updated when he obtains a license."}
+      ]
+    },
+    "workers-comp": {
+      "count": 3,
+      "resolution_patterns": [
+        "Agent explains workers' comp audit processes and coordinates with carriers on outstanding payroll information",
+        "Agent clarifies ghost policy mechanics (no employees, standard $1,500 deposit premium through NC Rate Bureau) for certificate-of-insurance requirements",
+        "Agent addresses unexpected audit charges and transfers to commercial department for specialized handling"
+      ],
+      "knowledge_required": ["Workers' compensation audit processes", "NC Rate Bureau procedures and premium structures", "Ghost policy mechanics for no-employee scenarios", "Insurance exclusion clauses for corporate officers", "Payroll reporting requirements"],
+      "systems_referenced": ["Auto Owners", "NC Rate Bureau", "Commercial insurance department"],
+      "outcome_distribution": {"callback_needed": 3},
+      "edge_cases": [
+        "Unexpected $2,400 audit charge on ghost workers' comp policy that supposedly covers nothing (file: q-300-+13365965391)",
+        "Workers' comp exclusions for corporate officers leaving coverage reliant entirely on subcontractors (file: parked-105-105)"
+      ],
+      "examples": [
+        {"file": "parked-101-101-20250826-103240-1756218760.1506", "intent": "Colin requested Monty to contact Julie Hill and a church treasurer to expedite submission of outstanding payroll information for a workers comp audit.", "summary": "Colin requested Monty's assistance in accelerating a workers compensation audit by contacting Julie Hill and a church treasurer for missing payroll information."},
+        {"file": "parked-105-105-20250919-135114-1758304274.6102", "intent": "Amy Smith is following up on an insurance policy update, addressing general liability coverage and workers' compensation exclusions.", "summary": "Amy discussed updating her business's insurance policy with Jeff, focusing on workers' comp exclusions. Jeff explained the complexities when no employees are covered, suggesting a dummy policy through the NC Rate Bureau."},
+        {"file": "q-300-+13365965391-20251114-125257-1763142777.5377", "intent": "Caller is seeking clarification about an unexpected $2,400 audit charge for a ghost workers' comp policy", "summary": "A caller is confused about an unexpected audit charge for a ghost workers' comp policy. The agent transferred the caller to the commercial department for specialized support."}
+      ]
+    },
+    "commercial-specialty": {
+      "count": 2,
+      "resolution_patterns": [
+        "Agent explores specialized coverage options (builder's risk, HO-3/4, other structure coverage) for unusual property situations",
+        "Agent routes complex commercial inquiries to specialized teams (habitation queue, commercial department) or health insurance specialists"
+      ],
+      "knowledge_required": ["Builder's risk policies", "HO-3/4 coverage limitations", "Other structure coverage parameters", "Small business health insurance options", "Specialized underwriting for unique property situations"],
+      "systems_referenced": ["Internal policy database", "Habitation queue system", "Hartford Small Commercial"],
+      "outcome_distribution": {"callback_needed": 2},
+      "edge_cases": [
+        "Temporary outbuilding and contents on construction site — no standard policy fit found, transferred to habitation queue (file: out-8004877565-510)",
+        "Small business health insurance inquiry routed to health specialist Steve Edmund (file: q-200-+13367837199)"
+      ],
+      "examples": [
+        {"file": "out-8004877565-510-20250925-095321-1758808400.646", "intent": "Underwriter seeks assistance covering a temporary outbuilding and its contents for a client transitioning from a sold home to a construction site", "summary": "An underwriter sought help insuring a temporary outbuilding during home construction. The agent explored policy options but found no direct solution, transferring the case to the habitation queue."},
+        {"file": "q-200-+13367837199-20250822-150323-1755889403.12608", "intent": "Timothy Smith is seeking a health insurance quote for their small business with four employees", "summary": "A business owner seeks health insurance quotes for their four-employee auto service company. The agent connects them with the health insurance specialist and collects necessary details."}
+      ]
+    },
+    "coi-request": {
+      "count": 1,
+      "resolution_patterns": [
+        "Agent follows up with carrier to process endorsement and issue Certificate of Insurance for client"
+      ],
+      "knowledge_required": ["Insurance endorsement processing", "Certificate of Insurance generation and delivery"],
+      "systems_referenced": ["Auto Owners Insurance voicemail system"],
+      "outcome_distribution": {"voicemail": 1},
+      "edge_cases": [],
+      "examples": [
+        {"file": "out-8003460346-102-20251023-104823-1761230903.2130", "intent": "Glory from Alliance Insurance is following up on a request for an endorsement for JJJ Commercial and Residential Cleaning LLC, seeking assistance to process it and send the client a COI.", "summary": "Glory from Alliance Insurance followed up on an endorsement request for JJJ Commercial and Residential Cleaning LLC, leaving a voicemail for Ali at AutoOwnersInsurance to process the request and issue a COI."}
+      ]
+    }
+  }
+}

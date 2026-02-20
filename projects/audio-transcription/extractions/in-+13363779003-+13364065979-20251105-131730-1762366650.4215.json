@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to update their payment method to automatic and resolve a pending cancellation for their insurance policy, while also adding their car to the new system.",
+  "resolution_steps": [
+    "Agent confirmed the policyholder's name (Cerelo Vakera) and policy number (16606).",
+    "Agent processed the new Visa card details for automatic payments, including card number and security code.",
+    "Agent noted the pending cancellation status and handled it separately.",
+    "Agent scheduled the next payment for November 26 and confirmed automatic payment setup for the car policy.",
+    "Agent agreed to send a confirmation email and finalized the call."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy management (updating payment methods, handling cancellations)",
+    "Payment processing (card verification, automatic payment setup)",
+    "Customer service (resolving pending issues, scheduling payments)"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's internal policy management system",
+    "Payment processing tools"
+  ],
+  "summary": "The caller, Cerelo Vakera, worked with an agent to update their insurance payment method to automatic, resolve a pending cancellation, and schedule future payments. The agent processed card details, confirmed policy information, and arranged for email confirmation. The call concluded with the caller agreeing to the setup.",
+  "_model": "qwen3:14b",
+  "_eval_count": 295,
+  "_total_duration_ms": 44539,
+  "_source_file": "transcripts/in-+13363779003-+13364065979-20251105-131730-1762366650.4215.txt",
+  "_direction": "inbound",
+  "_char_count": 2230
+}

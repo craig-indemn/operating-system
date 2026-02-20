@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Matt) wants to finalize the first risk policy, confirm the mailing address, and clarify payment terms for the policy premium.",
+  "resolution_steps": [
+    "Confirmed the mailing address for the policy as 3325 C626 Highway.",
+    "Agreed on the premium amount of $28,190 to be paid at closing.",
+    "Scheduled sending of the bill via email to Kimberly.",
+    "Notified Matt that a Conga Sign document for signature would be emailed.",
+    "Noted the need to transition to a homeowner's policy after closing."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy finalization process",
+    "Billing procedures for insurance policies",
+    "Use of Conga Sign for electronic signatures"
+  ],
+  "systems_referenced": [
+    "Conga Sign (electronic signature platform)",
+    "Carrier portal for policy changes"
+  ],
+  "summary": "Agent Corbin finalized details for Matt's first risk policy, confirming the mailing address and payment terms. The premium of $28,190 will be paid at closing, with a Conga Sign document sent for signature. The policy will later transition to a homeowner's policy after closing.",
+  "_model": "qwen3:14b",
+  "_eval_count": 279,
+  "_total_duration_ms": 37242,
+  "_source_file": "transcripts/out-7705191246-409-20251120-140952-1763665792.2846.txt",
+  "_direction": "outbound",
+  "_char_count": 1608
+}

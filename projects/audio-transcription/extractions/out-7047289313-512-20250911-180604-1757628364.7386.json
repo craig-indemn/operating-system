@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Salman is seeking auto dealer insurance for a new used car sales business in Charlotte, NC, which includes coverage for an office with communal parking spaces dedicated to his use.",
+  "resolution_steps": [
+    "Agent Joe confirmed Salman's location (Charlotte, NC) and inquired about his experience in the auto industry.",
+    "Joe disclosed that Alliance Insurance cannot provide a competitive quote for new startups but offered to refer Salman to other agencies.",
+    "Salman requested contact information for these agencies, and Joe agreed to follow up via email with the details."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "North Carolina auto dealer insurance requirements",
+    "Insurance options for new businesses with limited liability coverage",
+    "Referral processes for agencies specializing in startup auto dealers"
+  ],
+  "systems_referenced": [],
+  "summary": "Salman, a new auto dealer in Charlotte, NC, sought insurance for his used car sales business. Agent Joe explained Alliance Insurance's limitations in providing competitive quotes for startups but committed to referring Salman to other agencies. They agreed to follow up via email.",
+  "_model": "qwen3:14b",
+  "_eval_count": 247,
+  "_total_duration_ms": 39421,
+  "_source_file": "transcripts/out-7047289313-512-20250911-180604-1757628364.7386.txt",
+  "_direction": "outbound",
+  "_char_count": 2859
+}

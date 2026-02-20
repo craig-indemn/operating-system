@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unknown (call transcript cuts off during transfer)",
+  "resolution_steps": [
+    "Agent transfers call"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Inbound call was transferred without any substantive conversation occurring. Transcript ends mid-transfer with no resolution or problem identification.",
+  "_model": "qwen3:14b",
+  "_eval_count": 88,
+  "_total_duration_ms": 25654,
+  "_source_file": "transcripts/in-+13363544000-+13365499700-20251202-090415-1764684255.148.txt",
+  "_direction": "inbound",
+  "_char_count": 156
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jeff Edmonds is seeking clarification on the status of an active policy (CP1883630) nearing expiration and requesting a renewal quote after a tenant vacated the insured property, changing the occupancy from a metal manufacturer to vacant.",
+  "resolution_steps": [
+    "Marisa Stratz transfers Jeff to a renewal underwriter after confirming the policy number.",
+    "Dr. Seabold acknowledges the call and requests details about the policy's exposure changes.",
+    "Jeff explains the tenant's early lease exit and the building's current vacancy status.",
+    "Dr. Seabold confirms the need to verify the policy's active status through October 29 and assess renewal options for the vacant property."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy renewal processes for commercial lines",
+    "Handling exposure changes mid-term",
+    "Differentiating between policy numbers and quote numbers"
+  ],
+  "systems_referenced": [
+    "USLI's internal policy database",
+    "Commercial Regional Renewal Team system"
+  ],
+  "summary": "Jeff Edmonds from Alliance Insurance discusses a policy nearing expiration with USLI, seeking confirmation of its active status and a renewal quote after a tenant vacated the insured property. The call is transferred to a renewal underwriter for further evaluation of the exposure change and potential renewal options.",
+  "_model": "qwen3:14b",
+  "_eval_count": 297,
+  "_total_duration_ms": 45030,
+  "_source_file": "transcripts/out-18885235545-206-20250923-082551-1758630351.55.txt",
+  "_direction": "outbound",
+  "_char_count": 4386
+}

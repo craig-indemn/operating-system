@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Joe is following up on a previous conversation regarding insurance renewal pricing and coverage adjustments for a client (S and S), while coordinating the receipt of auto and home insurance documentation via email.",
+  "resolution_steps": [
+    "Joe confirms he hasn't received definitive renewal pricing updates from the carrier but is actively negotiating.",
+    "Requests Sunny to resend emails to a specific address (Joe@myallianceinsurance.com) to ensure proper receipt of documents.",
+    "Mentions receiving two emails from Sunny (car information and licenses) and plans to process home/auto information.",
+    "Notes need to follow up on a car sale (title clarification) and expects additional emails about other vehicles."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance renewal processes and carrier negotiations",
+    "Email management for client documentation",
+    "Handling multiple policies (home, auto) and vehicle titles"
+  ],
+  "systems_referenced": [
+    "Email system (specific addresses: support@myallianceinsurance.com, Kiplani@BellSouth.net)"
+  ],
+  "summary": "Joe, an Alliance Insurance agent, is updating Sunny on ongoing efforts to secure better pricing for a policy renewal while coordinating the receipt of auto/home insurance documents via email. The conversation includes requests to resend emails to a specific address and notes about pending vehicle title clarification. The call sets up follow-up actions for both parties.",
+  "_model": "qwen3:14b",
+  "_eval_count": 305,
+  "_total_duration_ms": 50044,
+  "_source_file": "transcripts/out-3363062077-512-20251104-150656-1762286816.6007.txt",
+  "_direction": "outbound",
+  "_char_count": 3474
+}

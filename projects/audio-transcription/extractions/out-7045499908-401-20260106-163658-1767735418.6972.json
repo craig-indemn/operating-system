@@ -1,0 +1,19 @@
+{
+  "is_substantive": false,
+  "caller_intent": "N/A (automated menu prompt)",
+  "resolution_steps": [
+    "N/A"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [
+    "IVR system"
+  ],
+  "summary": "Automated menu prompt directing caller to press numbers for claims, billing, directory, or further assistance. No agent interaction occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 93,
+  "_total_duration_ms": 20792,
+  "_source_file": "transcripts/out-7045499908-401-20260106-163658-1767735418.6972.txt",
+  "_direction": "outbound",
+  "_char_count": 280
+}

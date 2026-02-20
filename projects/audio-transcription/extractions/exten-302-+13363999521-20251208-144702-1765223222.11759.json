@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Anna seeks clarification on an existing insurance policy's coverage limits, cost, and payment options, and wants to adjust the policy's value and location details.",
+  "resolution_steps": [
+    "Jason explains the policy covers actual cash value up to $50,000 for equipment loss or damage.",
+    "He retrieves the premium cost ($618 annually) and discusses payment options (annual or monthly).",
+    "Anna requests increasing the coverage limit to $60,000, prompting Jason to recalculate the premium.",
+    "Jason identifies a discrepancy in the policy's location (West Virginia vs. listed address) and updates the system.",
+    "He notes potential licensing issues for West Virginia and plans to confirm with upper management."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy terminology (actual cash value, replacement value)",
+    "Premium calculation and payment structures",
+    "State-specific licensing requirements for insurance agencies"
+  ],
+  "systems_referenced": [
+    "Insurance policy management system (for retrieving/updating policy details)"
+  ],
+  "summary": "Anna discusses an equipment insurance policy with Jason, clarifying coverage limits, costs, and payment options. She requests adjusting the policy's value and location, leading to a need to verify West Virginia licensing. Jason will follow up after confirming with management.",
+  "_model": "qwen3:14b",
+  "_eval_count": 297,
+  "_total_duration_ms": 46990,
+  "_source_file": "transcripts/exten-302-+13363999521-20251208-144702-1765223222.11759.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4174
+}

@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Rick Hendricks is following up with Tony Terelli to address a question about business income coverage limits on a policy quote and to discuss potential adjustments.",
+  "resolution_steps": [
+    "Rick acknowledges a previous conversation about a hospitality submission with Tony and Janelle.",
+    "He explains he needs to increase the business income limit and check for other coverage conditions beyond the 'one sixth monthly limit.'",
+    "Rick states he will send an email to Janelle (copying Tony) to initiate the discussion and request a follow-up."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of business income coverage terms in insurance policies",
+    "Knowledge of policy limit adjustments and coverage conditions"
+  ],
+  "systems_referenced": [
+    "Email (used to communicate with Janelle)"
+  ],
+  "summary": "Rick Hendricks follows up with Tony Terelli to address concerns about business income coverage limits on a hospitality policy. He plans to send an email to Janelle (copying Tony) to propose increasing the limit and inquire about alternative coverage conditions. The call concludes with an agreement to follow up later, either today or next week.",
+  "_model": "qwen3:14b",
+  "_eval_count": 258,
+  "_total_duration_ms": 41408,
+  "_source_file": "transcripts/out-12168108766-105-20250919-145756-1758308276.6879.txt",
+  "_direction": "outbound",
+  "_char_count": 1262
+}

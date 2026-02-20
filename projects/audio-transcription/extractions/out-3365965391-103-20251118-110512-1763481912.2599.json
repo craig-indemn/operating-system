@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "James is disputing an unexpected workers' compensation audit fee from AmTrust, believing the policy is a 'ghost policy' that doesn't cover his business operations and questioning the relevance of being asked for a PNL statement.",
+  "resolution_steps": [
+    "Wendell confirms the policy is a 'ghost policy' and acknowledges James's confusion about the audit charge.",
+    "Wendell explains the audit process and clarifies that AmTrust may be requesting documentation to verify the policy's validity.",
+    "Wendell guides James to contact AmTrust's audit department directly, providing the policy number (TWC4487451) and advising him to dispute the charge via email or phone.",
+    "Wendell confirms the current due amount ($306) and ensures James understands the payment options."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Workers' compensation audit processes",
+    "Understanding of 'ghost policies' and their implications",
+    "Handling disputes with insurance carriers",
+    "Navigating policy portals (e.g., AmTrust, TTI)"
+  ],
+  "systems_referenced": [
+    "AmTrust",
+    "TTI (Tectronic Technology Incorporated)",
+    "Policy portal for audit details"
+  ],
+  "summary": "James disputes an unexpected workers' compensation audit fee from AmTrust, believing the policy is invalid. Wendell explains the audit process, confirms the policy's status, and advises James to contact AmTrust directly to dispute the charge. The call concludes with James planning to reach out to AmTrust's audit department using the provided policy number and contact details.",
+  "_model": "qwen3:14b",
+  "_eval_count": 352,
+  "_total_duration_ms": 49623,
+  "_source_file": "transcripts/out-3365965391-103-20251118-110512-1763481912.2599.txt",
+  "_direction": "outbound",
+  "_char_count": 7313
+}

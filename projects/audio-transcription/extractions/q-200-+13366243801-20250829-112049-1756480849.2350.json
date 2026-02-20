@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; transcript appears to be a partial hold/queue message with no clear intent or problem stated",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Incomplete transcript appears to be a hold/queue message with no substantive conversation. Caller's intent and resolution steps cannot be determined due to incomplete recording and lack of meaningful dialogue.",
+  "_model": "qwen3:14b",
+  "_eval_count": 108,
+  "_total_duration_ms": 26350,
+  "_source_file": "transcripts/q-200-+13366243801-20250829-112049-1756480849.2350.txt",
+  "_direction": "queue",
+  "_char_count": 378
+}

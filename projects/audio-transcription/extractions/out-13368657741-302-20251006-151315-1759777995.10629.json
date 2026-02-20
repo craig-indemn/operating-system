@@ -1,0 +1,23 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller left a voicemail message for Elsie Hernandez, likely regarding a certificate of insurance request.",
+  "resolution_steps": [
+    "Voicemail greeting played",
+    "Anna from Alliance Insurance left a message with email instructions for certificate of insurance"
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [
+    "Certificate of insurance process",
+    "Email communication protocols"
+  ],
+  "systems_referenced": [
+    "myallianceinsurance.com email portal"
+  ],
+  "summary": "A voicemail was left for Elsie Hernandez, followed by a message from Alliance Insurance agent Anna providing email instructions for a certificate of insurance request. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 143,
+  "_total_duration_ms": 32874,
+  "_source_file": "transcripts/out-13368657741-302-20251006-151315-1759777995.10629.txt",
+  "_direction": "outbound",
+  "_char_count": 586
+}

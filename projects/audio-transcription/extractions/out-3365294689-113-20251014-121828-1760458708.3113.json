@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (David) wanted to confirm receipt of his insurance ID (needed for renewing vehicle tags) and inquire about his next bill's due date and renewal timeline.",
+  "resolution_steps": [
+    "Agent Gary confirmed the caller's need for the insurance ID and bill information.",
+    "Gary checked the policy details and informed David his policy was paid until December 15th.",
+    "Gary explained the renewal timeline (likely mid-November, 20-30 days before the due date).",
+    "Gary offered to recheck the email timeline if the insurance ID wasn't received by mid-November.",
+    "Gary confirmed the caller had already spoken to a front-end agent who would email the insurance ID."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Policy lookup procedures",
+    "Insurance ID distribution processes",
+    "Renewal timelines and billing cycles",
+    "Customer service follow-up protocols"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's policy management system (used to check payment status and due dates)"
+  ],
+  "summary": "Gary followed up on a previous call to confirm David's insurance ID was being sent and provided details about his policy's payment status (paid until December 15th) and renewal timeline (mid-November). David expressed appreciation and confirmed he had already spoken to a front-end agent who would email the insurance ID.",
+  "_model": "qwen3:14b",
+  "_eval_count": 309,
+  "_total_duration_ms": 46190,
+  "_source_file": "transcripts/out-3365294689-113-20251014-121828-1760458708.3113.txt",
+  "_direction": "outbound",
+  "_char_count": 2351
+}

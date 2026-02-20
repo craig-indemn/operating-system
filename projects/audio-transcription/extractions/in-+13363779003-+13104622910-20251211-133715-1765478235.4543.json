@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to add a mortgage to their insurance policy and is frustrated with a previous 40-minute hold that resulted in a disconnected call. They seek guidance on the next steps to resolve the issue.",
+  "resolution_steps": [
+    "Agent directed the caller to email support at myallianceinsurance.com.",
+    "Clarified the email address spelling and domain to ensure accuracy.",
+    "Informed the caller that support typically responds within 24 hours."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Correct support email address for Alliance Insurance",
+    "Standard response time for support inquiries"
+  ],
+  "systems_referenced": [
+    "myallianceinsurance.com (support email)"
+  ],
+  "summary": "A caller attempted to add a mortgage to their policy but faced a disconnected call after a long hold. The agent resolved the issue by directing them to email support at myallianceinsurance.com, with a note that responses typically arrive within 24 hours.",
+  "_model": "qwen3:14b",
+  "_eval_count": 227,
+  "_total_duration_ms": 29939,
+  "_source_file": "transcripts/in-+13363779003-+13104622910-20251211-133715-1765478235.4543.txt",
+  "_direction": "inbound",
+  "_char_count": 799
+}

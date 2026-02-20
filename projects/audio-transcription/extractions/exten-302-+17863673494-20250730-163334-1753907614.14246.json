@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Anna is seeking clarification about her insurance policy's remaining payments and wants to adjust coverage to remove collision/comprehensive insurance from her vehicles, keeping only physical damage and bobtail coverage.",
+  "resolution_steps": [
+    "Agent confirmed the current coverage: two freightliners have collision/comprehensive ($1,000 deductible), trailer has liability-only coverage.",
+    "Anna requested removal of full coverage (collision/comprehensive) and retention of physical damage and bobtail (non-trucking liability).",
+    "Agent agreed to process the change but noted a 24-hour processing delay due to a prior policy adjustment."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy structures (collision, comprehensive, liability, bobtail coverage)",
+    "Policy adjustment procedures and processing timelines"
+  ],
+  "systems_referenced": [
+    "Insurance policy management system (implied through reference to 'processing a change')"
+  ],
+  "summary": "Anna requested clarification about her insurance policy's remaining payments and sought to modify coverage by removing collision/comprehensive insurance from her vehicles. The agent confirmed the current coverage structure, agreed to the requested changes, and informed Anna that the adjustment would take 24 hours to process due to prior system activity.",
+  "_model": "qwen3:14b",
+  "_eval_count": 279,
+  "_total_duration_ms": 33781,
+  "_source_file": "transcripts/exten-302-+17863673494-20250730-163334-1753907614.14246.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1999
+}

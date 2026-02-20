@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, a long-time customer, is confused about a letter received from Alliance Insurance and seeks assistance with obtaining or updating insurance coverage, requesting the agent retrieve her paperwork to clarify the situation.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's confusion about the letter.",
+    "Agent requests the caller to provide paperwork to verify details.",
+    "Agent offers to assist once the paperwork is retrieved."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy management",
+    "Customer documentation procedures",
+    "Communication protocols for policy updates"
+  ],
+  "systems_referenced": [
+    "Internal customer paperwork system"
+  ],
+  "summary": "A long-time customer contacted Alliance Insurance regarding confusion about a letter requiring additional insurance. The agent requested her paperwork to address the issue, indicating a need for further clarification before resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 192,
+  "_total_duration_ms": 25255,
+  "_source_file": "transcripts/in-+13365913091-+13368163540-20260115-092323-1768487003.505.txt",
+  "_direction": "inbound",
+  "_char_count": 571
+}

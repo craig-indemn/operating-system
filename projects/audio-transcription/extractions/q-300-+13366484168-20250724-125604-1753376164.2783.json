@@ -1,0 +1,32 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller seeks assistance with adjusting home and auto insurance policies to reduce costs, specifically inquiring about coverage limits, replacement costs, deductibles, and exploring cheaper options for home insurance without bundling with auto insurance.",
+  "resolution_steps": [
+    "Brandy verifies the caller's mailing address (135 Carolina Avenue, Mount Airy, NC 27030).",
+    "Explains the home policy increase due to raised coverage limits and replacement cost ($427,000).",
+    "Proposes increasing the deductible from $1,000 to $2,500 to reduce premiums by ~$300.",
+    "Suggests moving auto insurance to Auto Owners for a full-year policy instead of a 6-month term.",
+    "Notes that only two companies offer standalone home insurance, while others require bundling with auto.",
+    "Acknowledges the need for proof of roof age (4 years) but assumes records are already on file.",
+    "Commit to providing alternative options by the beginning of next week."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Home insurance replacement cost calculations",
+    "Deductible adjustment impacts on premiums",
+    "Carrier-specific policy requirements (e.g., Auto Owners accepting standalone home policies)",
+    "Roof age documentation for insurance purposes"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services' new internal system",
+    "Auto Owners insurance portal",
+    "Historical policy records database"
+  ],
+  "summary": "The caller discusses home and auto insurance cost concerns with Brandy, focusing on reducing premiums through deductible adjustments and exploring standalone home insurance options. Brandy explains policy changes, proposes solutions, and commits to providing further options by the following week. The caller emphasizes financial constraints due to retirement planning and confirms roof documentation is already on file.",
+  "_model": "qwen3:14b",
+  "_eval_count": 405,
+  "_total_duration_ms": 48893,
+  "_source_file": "transcripts/q-300-+13366484168-20250724-125604-1753376164.2783.txt",
+  "_direction": "queue",
+  "_char_count": 4091
+}

@@ -1,0 +1,32 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking assistance to resolve an issue where a specific policy (errors and emissions) is not accessible in the Hartford portal, which is critical for the insured's ability to use the portal effectively.",
+  "resolution_steps": [
+    "Agent acknowledges the issue and confirms the policy number (ending in 7297) and the problem of inaccessibility in EBC.",
+    "Agent mentions sending the issue to the service team, which typically handles BOPs, comp, and auto policies.",
+    "Agent notes that a new user ID and password were set up for Hartford, but the policy remains inaccessible.",
+    "Agent checks with another agent (Jimmy Chan) who can see the policy, indicating a potential system issue.",
+    "Agent investigates a duplicate account (AE Construction LLC) and suggests contacting Anna Joyce for further details.",
+    "Agent recommends emailing Anna Joyce and following up with the producer if needed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of Hartford portal (EBC) and customer portal functionalities",
+    "Policy management processes, including handling duplicates/DBAs",
+    "Internal systems for tracking quotes and accounts",
+    "Procedures for escalating issues to service teams"
+  ],
+  "systems_referenced": [
+    "Hartford portal (EBC)",
+    "Customer portal",
+    "Internal opportunity tracking system",
+    "Daily spreadsheet of quotes"
+  ],
+  "summary": "The caller is experiencing issues accessing a specific errors and emissions policy in the Hartford portal, which is critical for the insured's operations. The agent is coordinating with the service team, checking for duplicate accounts, and suggesting follow-up with Anna Joyce for resolution. The problem involves both technical access issues and potential data entry discrepancies.",
+  "_model": "qwen3:14b",
+  "_eval_count": 379,
+  "_total_duration_ms": 65602,
+  "_source_file": "transcripts/exten-105-+13364601448-20251031-095551-1761918951.1224.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 8318
+}

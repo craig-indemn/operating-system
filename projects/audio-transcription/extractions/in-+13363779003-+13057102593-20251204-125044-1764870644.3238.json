@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller was involved in a school bus crash and wanted to file a claim but was unsure if Alliance Insurance Services was the correct insurer, as the police provided a policy number associated with 'Alliance Insurance.'",
+  "resolution_steps": [
+    "Agent asked for the policy number to verify if it was under Alliance Insurance Services.",
+    "Agent checked the policy number and confirmed it was not associated with their company.",
+    "Agent explained that 'Alliance Insurance' likely refers to a different entity (Alliance Insurance Company) and advised the caller to contact that company directly.",
+    "Agent acknowledged the caller's need to resolve the claim and offered further assistance if needed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding the distinction between Alliance Insurance Services (the agency) and Alliance Insurance Company (a separate insurer).",
+    "Process for verifying policy numbers through internal systems."
+  ],
+  "systems_referenced": [
+    "Internal policy verification database"
+  ],
+  "summary": "A caller sought assistance filing a claim after a school bus crash, believing Alliance Insurance Services was their insurer. The agent verified the policy number and clarified that the correct insurer was likely Alliance Insurance Company, directing the caller to contact that entity. The call ended with the caller needing to follow up with the correct insurer.",
+  "_model": "qwen3:14b",
+  "_eval_count": 286,
+  "_total_duration_ms": 33976,
+  "_source_file": "transcripts/in-+13363779003-+13057102593-20251204-125044-1764870644.3238.txt",
+  "_direction": "inbound",
+  "_char_count": 1479
+}

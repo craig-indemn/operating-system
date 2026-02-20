@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking clarification about their renters insurance coverage, specifically whether it protects personal belongings, and is concerned about the landlord's new insurance policy not covering tenant property.",
+  "resolution_steps": [
+    "Brandi confirms the caller's renters insurance policy covers personal belongings up to $25,000.",
+    "Explains the difference between landlord's property insurance (covering the building) and the caller's renters insurance (covering personal items).",
+    "Mentions annual policy review process to adjust coverage as needed.",
+    "Offers assistance with car insurance inquiry, though the conversation is cut off."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Renters insurance policy details (coverage limits, personal property protection)",
+    "Landlord-tenant insurance responsibilities",
+    "Annual policy review process"
+  ],
+  "systems_referenced": [],
+  "summary": "The caller was concerned about their renters insurance coverage after learning the landlord's new policy doesn't protect tenant belongings. Brandi clarified their policy covers personal items up to $25,000 and explained annual review options. The caller also expressed interest in discussing car insurance, though the conversation was cut off.",
+  "_model": "qwen3:14b",
+  "_eval_count": 265,
+  "_total_duration_ms": 38144,
+  "_source_file": "transcripts/exten-112-+13369970484-20260106-121739-1767719859.2676.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4514
+}

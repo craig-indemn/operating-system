@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, George Rogers, is seeking clarification about a significant increase in his insurance premium compared to the initial quote and requests assistance from Jesse.",
+  "resolution_steps": [
+    "Agent apologized for the wait and informed the caller that Jesse would assist him.",
+    "Agent provided hold music and automated messages about managing policies online and texting for support.",
+    "Agent transferred the call to Jesse as requested."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Handling premium discrepancy inquiries",
+    "Internal call transfer protocols",
+    "Customer portal features (online policy management)"
+  ],
+  "systems_referenced": [
+    "myallianceinsurance.com customer portal",
+    "Texting support service (336-786-1133)"
+  ],
+  "summary": "George Rogers contacted Alliance Insurance Services to address a premium increase discrepancy. The agent acknowledged the issue, provided hold instructions, and transferred the call to Jesse for further assistance. The conversation was cut off before resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 228,
+  "_total_duration_ms": 30450,
+  "_source_file": "transcripts/exten-102-+13364223221-20250903-160311-1756929791.9952.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1097
+}

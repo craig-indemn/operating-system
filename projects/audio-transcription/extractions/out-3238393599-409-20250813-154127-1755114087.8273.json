@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller needed assistance making a payment for their son's renters insurance and was confused about how to add the policy to their account portal.",
+  "resolution_steps": [
+    "Confirmed the payment amount ($82) for the renters insurance.",
+    "Guided the caller through adding the policy to their account portal using the billing information provided.",
+    "Processed a credit card payment for the policy.",
+    "Verified that other policies (homeowners and auto) were up to date.",
+    "Sent a payment confirmation email to the caller."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy portals and how to add policies.",
+    "Ability to process credit card payments over the phone.",
+    "Knowledge of checking policy statuses and payment histories."
+  ],
+  "systems_referenced": [
+    "Insurance carrier portal (referred to as 'common login')",
+    "Payment processing system"
+  ],
+  "summary": "The agent assisted a customer in making a payment for their son's renters insurance, guided them through adding the policy to their portal, processed the payment, and confirmed other policies were up to date. The customer was also reminded to refer others to Corbin.",
+  "_model": "qwen3:14b",
+  "_eval_count": 268,
+  "_total_duration_ms": 52333,
+  "_source_file": "transcripts/out-3238393599-409-20250813-154127-1755114087.8273.txt",
+  "_direction": "outbound",
+  "_char_count": 2920
+}

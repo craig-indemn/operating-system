@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Leaving a voicemail to follow up on a previous conversation regarding store closure insurance adjustments.",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [
+    "Automatic voice message system"
+  ],
+  "summary": "Agent Corbin left a voicemail for Sybil to confirm details about adjusting insurance for a store closure. The call was routed to an automated voicemail system.",
+  "_model": "qwen3:14b",
+  "_eval_count": 105,
+  "_total_duration_ms": 43160,
+  "_source_file": "transcripts/out-3366555561-409-20250903-151514-1756926914.9171.txt",
+  "_direction": "outbound",
+  "_char_count": 623
+}

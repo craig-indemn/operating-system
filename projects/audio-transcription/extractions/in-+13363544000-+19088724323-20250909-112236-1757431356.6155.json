@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Rich Master seeks home insurance quotes and wants to discuss a significant increase in his auto insurance premium (approximately $1,000).",
+  "resolution_steps": [
+    "Agent asks clarifying questions about the caller's needs.",
+    "Agent acknowledges the need for home insurance quotes and auto premium discussion.",
+    "Agent offers to transfer the caller to an agent for further assistance.",
+    "Agent places the caller on hold to facilitate the transfer."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance quoting processes",
+    "Knowledge of factors affecting auto insurance premiums"
+  ],
+  "systems_referenced": [],
+  "summary": "Rich Master contacted Alliance Insurance to request home insurance quotes and discuss a $1,000 auto premium increase. The agent acknowledged the request and placed the caller on hold to connect with an agent for further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 202,
+  "_total_duration_ms": 32392,
+  "_source_file": "transcripts/in-+13363544000-+19088724323-20250909-112236-1757431356.6155.txt",
+  "_direction": "inbound",
+  "_char_count": 539
+}

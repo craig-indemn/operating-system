@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "N/A (voicemail greeting)",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Standard voicemail greeting from National General Insurance, including website and Spanish language option.",
+  "_model": "qwen3:14b",
+  "_eval_count": 74,
+  "_total_duration_ms": 18855,
+  "_source_file": "transcripts/out-8774683466-503-20251009-105927-1760021967.2671.txt",
+  "_direction": "outbound",
+  "_char_count": 154
+}

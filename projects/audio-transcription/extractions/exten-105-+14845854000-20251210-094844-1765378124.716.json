@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Annie Lacy from USLI follows up on a homeowners association insurance quote, confirms the client's satisfaction with the online quoting system, discusses policy terms, and highlights USLI's competitive advantages (e.g., DNO coverage with lifetime extended reporting) over competitors like Cincinnati and CNA.",
+  "resolution_steps": [
+    "Annie acknowledges the client's use of the online quoting system and inquires about their experience.",
+    "Discusses the quote terms, noting competition from Cincinnati and CNA.",
+    "Explains USLI's DNO policy feature: lifetime extended reporting provision.",
+    "Offers to send marketing materials highlighting USLI's package policy.",
+    "Agrees to assist further if the client has questions during the board presentation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "USLI's DNO policy features (e.g., lifetime extended reporting)",
+    "Competitor carrier offerings (Cincinnati, CNA)",
+    "Online quoting system (Snap) functionality",
+    "Homeowners association insurance needs"
+  ],
+  "systems_referenced": [
+    "Snap (online quoting system)",
+    "USLI's DNO policy",
+    "Cincinnati and CNA insurance offerings"
+  ],
+  "summary": "Annie Lacy from USLI follows up on a homeowners association insurance quote, emphasizing USLI's competitive DNO coverage with a lifetime extended reporting benefit. The client plans to present the quote to the board and requests marketing materials. The agent offers ongoing support for any follow-up questions.",
+  "_model": "qwen3:14b",
+  "_eval_count": 334,
+  "_total_duration_ms": 55088,
+  "_source_file": "transcripts/exten-105-+14845854000-20251210-094844-1765378124.716.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3430
+}

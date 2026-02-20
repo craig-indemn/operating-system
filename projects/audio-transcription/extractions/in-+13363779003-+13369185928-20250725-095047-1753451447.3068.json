@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller requested a certificate of insurance that was promised by Gloria the previous day and is urgently needed.",
+  "resolution_steps": [
+    "Sharon acknowledged the caller's request and confirmed Gloria was on another call.",
+    "Sharon offered to transfer the caller to Gloria's voicemail for a callback."
+  ],
+  "outcome": "transferred",
+  "knowledge_required": [
+    "Call transfer procedures",
+    "Handling document request follow-ups"
+  ],
+  "systems_referenced": [
+    "Internal phone system (voicemail transfer)"
+  ],
+  "summary": "A caller requested a certificate of insurance that Gloria had promised to send but failed to deliver. Sharon informed the caller that Gloria was unavailable and offered to transfer them to Gloria's voicemail for a callback, which the caller accepted.",
+  "_model": "qwen3:14b",
+  "_eval_count": 181,
+  "_total_duration_ms": 28802,
+  "_source_file": "transcripts/in-+13363779003-+13369185928-20250725-095047-1753451447.3068.txt",
+  "_direction": "inbound",
+  "_char_count": 479
+}

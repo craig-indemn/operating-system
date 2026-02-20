@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller requested a home insurance quote.",
+  "resolution_steps": [
+    "Agent acknowledged the request and initiated a transfer."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A caller requested a home insurance quote, and the agent transferred the call. The conversation was too brief to determine further details or resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 98,
+  "_total_duration_ms": 34327,
+  "_source_file": "transcripts/in-+13363779003-+17432577486-20250812-122042-1755015642.6056.txt",
+  "_direction": "inbound",
+  "_char_count": 207
+}

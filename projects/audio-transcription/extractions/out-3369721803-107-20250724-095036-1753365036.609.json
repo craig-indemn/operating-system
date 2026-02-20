@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Inform Nancy about an outstanding bill from Travelers related to policy changes and cancellation.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Voicemail left by Cecilio from Alliance Insurance informing Nancy about an outstanding bill from Travelers related to policy changes and cancellation. The caller requested Nancy to contact them for further explanation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 104,
+  "_total_duration_ms": 62128,
+  "_source_file": "transcripts/out-3369721803-107-20250724-095036-1753365036.609.txt",
+  "_direction": "outbound",
+  "_char_count": 765
+}

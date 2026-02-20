@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Nikitan is calling to obtain renewal information for a homeowners policy, including effective/expiration dates, premium amount, coverage details, and payment address verification, and to update the payment address.",
+  "resolution_steps": [
+    "Holly requests policy number, name, address, and insurance company details.",
+    "Holly retrieves policy information from the system (Safeco).",
+    "Holly confirms renewal dates (9/25/25 to 9/25/26), premium ($3,138), dwelling coverage ($474,600), deductible ($2,500), and mortgage lender (Truest Bank).",
+    "Holly updates the payment address from P.O. Box 7952 to P.O. Box 7933 in Springfield, Ohio.",
+    "Holly verifies the loan number (6621849377) and confirms the payment address (Safeco P.O. Box 91017, Chicago, IL).",
+    "Holly provides the website (www.mycoverageinfor.com/agent) for uploading the declaration page using the loan number, ZIP code, and borrower's last name."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Accessing and retrieving policy details from insurance systems",
+    "Understanding homeowners policy terminology (dwelling coverage, deductible, replacement cost)",
+    "Updating payment addresses in policy records",
+    "Escrow payment processes for insurance policies"
+  ],
+  "systems_referenced": [
+    "Safeco Insurance policy system",
+    "www.mycoverageinfor.com/agent (declaration page portal)"
+  ],
+  "summary": "Holly assists Nikitan from SunTrust Insurance Bank with retrieving and confirming details for a Safeco homeowners policy renewal, including updating the payment address and providing a portal link for the declaration page. The caller confirms all information and prepares to proceed with payment.",
+  "_model": "qwen3:14b",
+  "_eval_count": 426,
+  "_total_duration_ms": 55485,
+  "_source_file": "transcripts/q-300-+16788134751-20250828-123949-1756399189.4071.txt",
+  "_direction": "queue",
+  "_char_count": 2870
+}

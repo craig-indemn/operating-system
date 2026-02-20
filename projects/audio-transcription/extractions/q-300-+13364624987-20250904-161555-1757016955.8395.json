@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Kelly Robinson wants to add a vehicle to her existing insurance plan and confirm details for processing.",
+  "resolution_steps": [
+    "Agent verified Kelly's account using her maiden name (Blackwood Robinson) and confirmed her address.",
+    "Kelly provided the VIN number of the vehicle to be added.",
+    "Agent clarified that the vehicle is not from a dealership and confirmed liability-only coverage was requested.",
+    "Agent verified Kelly's email address (Kmblackwo@gmail.com) for sending proof of insurance.",
+    "Agent confirmed the vehicle details (1997 Ford F-150) and assured processing."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy management (adding vehicles, verifying account details)",
+    "Handling customer account verification with name and address changes",
+    "Understanding insurance coverage types (liability-only vs. full coverage)",
+    "Email communication for proof of insurance delivery"
+  ],
+  "systems_referenced": [
+    "Internal insurance account management system",
+    "Email communication platform"
+  ],
+  "summary": "Kelly Robinson contacted Alliance Insurance to add a vehicle to her policy. The agent verified her identity, confirmed vehicle details (1997 Ford F-150), and clarified liability-only coverage. The agent will send proof of insurance via email to Kmblackwo@gmail.com. The call concluded with confirmation of processing.",
+  "_model": "qwen3:14b",
+  "_eval_count": 305,
+  "_total_duration_ms": 40438,
+  "_source_file": "transcripts/q-300-+13364624987-20250904-161555-1757016955.8395.txt",
+  "_direction": "queue",
+  "_char_count": 3396
+}

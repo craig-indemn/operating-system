@@ -1,0 +1,21 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller (Brandi from Alliance Insurance) intended to inform Bobby and Karen about changes to their home and auto insurance policies due to their current carrier leaving North Carolina and to schedule a review before their February renewal.",
+  "resolution_steps": [
+    "Left voicemail with details about policy changes",
+    "Provided contact number for callback"
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [
+    "Insurance policy renewal processes",
+    "Carrier-specific information (e.g., carrier exiting North Carolina)"
+  ],
+  "systems_referenced": [],
+  "summary": "A voicemail from Alliance Insurance informing Bobby and Karen about impending changes to their home insurance due to their carrier's exit from North Carolina, with a request to call back for a policy review. The call was not connected, and no live conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 178,
+  "_total_duration_ms": 32516,
+  "_source_file": "transcripts/out-3369838468-112-20251219-092832-1766154512.405.txt",
+  "_direction": "outbound",
+  "_char_count": 757
+}

@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is asking whether it would be more cost-effective to add their mother's non-operational car (used occasionally by them) to their existing insurance policy rather than maintaining it on her independent policy.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's question about policy cost comparison.",
+    "Agent confirms the vehicle is personal (not business-use) to clarify context.",
+    "Agent offers to transfer the call to a licensed agent for accurate guidance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding how adding vehicles to a policy affects premiums",
+    "Recognizing the need to consult a licensed agent for policy-specific advice"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller inquired about consolidating their mother's car insurance into their policy for potential cost savings. The agent confirmed vehicle details and offered to transfer the call to a licensed agent for further assistance, highlighting the need for specialized insurance knowledge.",
+  "_model": "qwen3:14b",
+  "_eval_count": 218,
+  "_total_duration_ms": 33256,
+  "_source_file": "transcripts/in-+13367861133-+13364140963-20250918-105426-1758207266.4406.txt",
+  "_direction": "inbound",
+  "_char_count": 739
+}

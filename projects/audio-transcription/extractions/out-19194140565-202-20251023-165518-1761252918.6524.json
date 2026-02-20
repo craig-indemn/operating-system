@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Roy Lynch) seeks a ballpark estimate for general liability and property insurance for a portable sawmill, despite expressing reluctance due to not technically needing it, as he is being asked by a company he works for during an audit.",
+  "resolution_steps": [
+    "Agent Joe Jessup acknowledges the caller's hesitation and confirms the portable sawmill context.",
+    "Provides a preliminary estimate of $2,500/year ($200\u2013$210/month) for liability and property coverage, noting potential adjustments based on detailed factors.",
+    "Explains standard coverage limits: $1 million liability per incident, $2 million aggregate, and property damage coverage for the sawmill.",
+    "Discusses scenarios where the insurance would apply (e.g., injury on a client's property, equipment damage).",
+    "Clarifies that the company requiring insurance likely expects at least $1 million liability coverage as a minimum."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance packages for portable sawmills",
+    "General liability and property coverage limits",
+    "Scenarios requiring liability insurance (e.g., injury on client property)",
+    "Distinction between auto/homeowners liability and standalone business liability"
+  ],
+  "systems_referenced": [],
+  "summary": "Agent Joe Jessup provides a preliminary insurance cost estimate ($2,500/year) and coverage details for a portable sawmill, explaining standard liability limits and use cases. The caller remains hesitant but gains clarity on requirements and potential scenarios for coverage.",
+  "_model": "qwen3:14b",
+  "_eval_count": 337,
+  "_total_duration_ms": 56310,
+  "_source_file": "transcripts/out-19194140565-202-20251023-165518-1761252918.6524.txt",
+  "_direction": "outbound",
+  "_char_count": 4532
+}

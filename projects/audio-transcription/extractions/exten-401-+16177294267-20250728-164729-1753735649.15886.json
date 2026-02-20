@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Brooke is verifying whether Betty Leak (a family member of policyholder Danielle Cameron) was listed as a driver on Danielle's policy, as Betty was involved in a single-vehicle accident and the claim is being processed.",
+  "resolution_steps": [
+    "Agent Heather checks the policy number 2026082416 for Danielle Cameron.",
+    "Confirms the policy inception date (December 7, 2024) and reviews the application.",
+    "Notes that Betty Leak is not listed as a driver or household member on the policy.",
+    "Discovers Frederick (a third party) was listed on the driver's page but not Betty.",
+    "Confirms Danielle is the only listed driver and Betty has no insurance or valid license.",
+    "Concludes no prior conversation about Betty's involvement was documented."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy structure (drivers, household members, coverage details)",
+    "Claim processing protocols for single-vehicle accidents",
+    "How to access and interpret policy applications and driver certifications"
+  ],
+  "systems_referenced": [
+    "Policy database (to retrieve policy number 2026082416)",
+    "Driver's certification records",
+    "Application documents"
+  ],
+  "summary": "Brooke confirms with Heather that Betty Leak is not listed as a driver on Danielle Cameron's policy, despite Betty being involved in a single-vehicle accident. Heather verifies policy details, finds no record of Betty, and notes Danielle is the sole listed driver. The call concludes with Brooke acknowledging the need to proceed with the claim based on available information.",
+  "_model": "qwen3:14b",
+  "_eval_count": 363,
+  "_total_duration_ms": 45012,
+  "_source_file": "transcripts/exten-401-+16177294267-20250728-164729-1753735649.15886.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4292
+}

@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Cody Jackson from Alliance Insurance is seeking assistance with a builder's risk policy for a new home construction project involving Abel and Giovanni Schumacher on a 110-acre property.",
+  "resolution_steps": [
+    "Agent Vicky Pickard confirmed the caller's identity and company.",
+    "Discussed details of the builder's risk policy request, including coverage amounts ($75,000 theft, $762,371 build cost).",
+    "Clarified the property context (new home for Abel, owned by Giovanni).",
+    "Noted need for escrow funding date and policy underwriting in Abel's name.",
+    "Agreed to follow up after gathering additional information."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Builder's risk insurance underwriting",
+    "New construction policy requirements",
+    "Handling multi-party insurance requests"
+  ],
+  "systems_referenced": [],
+  "summary": "Agent Vicky Pickard assisted Cody Jackson with a builder's risk policy inquiry for a new home construction project. The call clarified policy details, coverage needs, and ownership structure. Follow-up is required to confirm escrow dates and finalize underwriting in Abel's name.",
+  "_model": "qwen3:14b",
+  "_eval_count": 272,
+  "_total_duration_ms": 44409,
+  "_source_file": "transcripts/out-13363680668-207-20251202-120726-1764695246.3482.txt",
+  "_direction": "outbound",
+  "_char_count": 4121
+}

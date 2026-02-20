@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (mother of Nicole or Gabriel Sorico) aimed to confirm the correct address and apartment number for an insurance-related note that had been returned, ensuring it is updated in the system.",
+  "resolution_steps": [
+    "Agent confirmed the caller's identity as the parent of Nicole or Gabriel Sorico.",
+    "Agent provided the current address on file (151 Kimberly Drive, Boone, NC 28607) and asked about an apartment number.",
+    "Caller confirmed the apartment number was '7' after a brief delay in retrieving the information.",
+    "Agent assured the caller the address would be updated in the system and the note resent."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Process for updating client address information in insurance systems",
+    "Handling returned mail/notes and resending them after corrections"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services internal database/Customer Relationship Management (CRM) system"
+  ],
+  "summary": "An agent from Alliance Insurance Services contacted the parent of Nicole or Gabriel Sorico to verify an address and apartment number for a returned insurance note. After confirming the apartment number was '7', the agent committed to updating the system and resending the note. The call concluded with the caller expressing gratitude.",
+  "_model": "qwen3:14b",
+  "_eval_count": 289,
+  "_total_duration_ms": 35545,
+  "_source_file": "transcripts/out-2012488162-402-20250904-105343-1756997623.3846.txt",
+  "_direction": "outbound",
+  "_char_count": 928
+}

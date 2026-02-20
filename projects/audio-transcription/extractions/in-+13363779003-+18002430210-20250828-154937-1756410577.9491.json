@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is inquiring about a commercial insurance policy from Carlos Botanegra and Kathy Canestra's account, specifically regarding a cancellation or details related to the policy.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's reference to a commercial policy and policy number.",
+    "Caller mentions confusion about the policy being 'canceled,' prompting the agent to offer assistance.",
+    "Agent requests clarification from the caller before proceeding."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding how to retrieve and verify policy details from the agency's database",
+    "Handling inquiries about policy cancellations or status changes"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal policy database"
+  ],
+  "summary": "The caller sought assistance with a commercial insurance policy from Carlos Botanegra and Kathy Canestra's account, mentioning a cancellation. The agent acknowledged the policy number and attempted to clarify the caller's needs before offering to connect them with a specialist.",
+  "_model": "qwen3:14b",
+  "_eval_count": 222,
+  "_total_duration_ms": 35439,
+  "_source_file": "transcripts/in-+13363779003-+18002430210-20250828-154937-1756410577.9491.txt",
+  "_direction": "inbound",
+  "_char_count": 406
+}

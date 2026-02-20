@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Adina Salajin wanted to discuss her insurance policy renewal and clarify details about the renewal cost, referencing a previous payment amount.",
+  "resolution_steps": [
+    "Agent requested Adina's policy number and confirmed her name.",
+    "Agent accessed the account system to retrieve policy details.",
+    "Agent attempted to transfer Adina to the appropriate department for further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy renewal process",
+    "Account management system navigation",
+    "Call transfer protocols"
+  ],
+  "systems_referenced": [
+    "Internal account management system"
+  ],
+  "summary": "Adina contacted Alliance Insurance regarding her policy renewal and a question about the renewal cost. The agent gathered her policy details and initiated a transfer to the appropriate department, but the call ended before resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 188,
+  "_total_duration_ms": 41420,
+  "_source_file": "transcripts/exten-401-+13369067883-20250922-135651-1758563811.6195.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 745
+}

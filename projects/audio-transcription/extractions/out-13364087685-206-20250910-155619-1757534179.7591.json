@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jeff Edmonds is following up on a policy cancellation issue related to unpaid audit premiums, seeking clarification on invoices and steps to reinstate the policy.",
+  "resolution_steps": [
+    "Tracy explains the history of two invoices (1435 and 1445) related to audit premiums and policy updates.",
+    "She clarifies that the 1445 invoice remains unpaid and triggered cancellation.",
+    "Outlines steps to reinstate the policy: obtain a signed statement of no loss (e-signed) and pay the 1445 invoice.",
+    "Agrees to send the statement of no loss via email for e-signature."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance policy reinstatement processes",
+    "Audit premium invoicing and carrier-specific procedures (Westfield)",
+    "Handling of e-signed documents for policy updates"
+  ],
+  "systems_referenced": [
+    "Westfield site (for policy management and invoicing)",
+    "E-signature platform for the statement of no loss"
+  ],
+  "summary": "Tracy resolves a policy cancellation issue by clarifying outstanding audit premium invoices and guiding Jeff through reinstatement steps, including obtaining an e-signed statement of no loss and paying the remaining balance. The client agrees to proceed with the e-signature process.",
+  "_model": "qwen3:14b",
+  "_eval_count": 291,
+  "_total_duration_ms": 46699,
+  "_source_file": "transcripts/out-13364087685-206-20250910-155619-1757534179.7591.txt",
+  "_direction": "outbound",
+  "_char_count": 4242
+}

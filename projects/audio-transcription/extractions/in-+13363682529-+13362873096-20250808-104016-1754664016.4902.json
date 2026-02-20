@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Daniel Wilson wants to have Amani (another agent) call him back after being referred by Christopher Cook, who previously left a voicemail. He provides his phone number for this purpose.",
+  "resolution_steps": [
+    "Agent acknowledges the referral from Christopher Cook and confirms the need for Amani to contact Daniel.",
+    "Agent verifies the provided phone number (336-287-3096) and agrees to relay the request to Amani.",
+    "Agent assures Daniel that Amani will be informed to initiate a callback."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Referral handling procedures within the agency",
+    "Internal communication protocols for transferring client requests between agents"
+  ],
+  "systems_referenced": [],
+  "summary": "Daniel Wilson refers a call to Amani after being directed by Christopher Cook. He provides his contact information, and the agent agrees to coordinate with Amani to arrange a callback. The conversation is brief but clearly outlines the need for a follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 231,
+  "_total_duration_ms": 31159,
+  "_source_file": "transcripts/in-+13363682529-+13362873096-20250808-104016-1754664016.4902.txt",
+  "_direction": "inbound",
+  "_char_count": 555
+}

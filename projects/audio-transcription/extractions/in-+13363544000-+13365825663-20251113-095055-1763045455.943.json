@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller requested a budget/quote for obtaining insurance and mentioned they currently do not have any policy.",
+  "resolution_steps": [
+    "Agent acknowledged the caller's request for a budget/quote.",
+    "Agent informed the caller they would be transferred to a Spanish-speaking agent.",
+    "Agent instructed the caller to leave a voicemail if the Spanish-speaking agent was unavailable."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance quoting process",
+    "Call transfer procedures",
+    "Language support protocols"
+  ],
+  "systems_referenced": [
+    "Internal call routing system"
+  ],
+  "summary": "A caller requested a budget for insurance and mentioned having no existing policy. The agent transferred the call to a Spanish-speaking agent and instructed the caller to leave a voicemail if unavailable. The call was not resolved during this interaction.",
+  "_model": "qwen3:14b",
+  "_eval_count": 194,
+  "_total_duration_ms": 22869,
+  "_source_file": "transcripts/in-+13363544000-+13365825663-20251113-095055-1763045455.943.txt",
+  "_direction": "inbound",
+  "_char_count": 452
+}

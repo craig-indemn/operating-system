@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Lisa Tate wants to confirm if a faxed document to National General was received to cancel insurance on a vehicle she no longer owns and inquire about the timeline for processing the cancellation and refund.",
+  "resolution_steps": [
+    "Brandi acknowledges receiving the faxed document and confirms the need for National General to process it.",
+    "Explains the cancellation process will take 2-3 weeks due to backdating the policy change.",
+    "Offers to contact the original agent who handled the request to provide an update.",
+    "Clarifies that the policy cannot be canceled immediately without proof from National General."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "National General's policy change process",
+    "Documentation requirements for insurance cancellations",
+    "Intermediary steps between agent and carrier"
+  ],
+  "systems_referenced": [
+    "National General insurance system",
+    "Monetary office fax process"
+  ],
+  "summary": "Lisa Tate requested confirmation of a faxed document to cancel insurance on a vehicle she no longer owns. Brandi explained the 2-3 week processing timeline for National General to update the policy and refund overpaid premiums. The agent committed to contacting the original handler for an update and clarified that immediate cancellation is not possible without carrier verification.",
+  "_model": "qwen3:14b",
+  "_eval_count": 284,
+  "_total_duration_ms": 36088,
+  "_source_file": "transcripts/q-300-+13363513244-20251210-135225-1765392745.2912.txt",
+  "_direction": "queue",
+  "_char_count": 2285
+}

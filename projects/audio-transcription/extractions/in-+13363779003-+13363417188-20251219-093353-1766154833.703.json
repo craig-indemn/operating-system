@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Thurmond Porter is seeking assistance with unresolved insurance-related issues, including letters from North Carolina and a disputed bill from Progressive, indicating confusion about outstanding balances.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's concerns about letters from North Carolina and the Progressive bill.",
+    "Agent offers to connect the caller with a specialist to address the discrepancies and resolve the billing issue."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance billing processes",
+    "Handling disputes with carriers (e.g., Progressive)",
+    "Navigating state insurance correspondence (North Carolina)"
+  ],
+  "systems_referenced": [
+    "Progressive insurance billing system",
+    "North Carolina state insurance department communications"
+  ],
+  "summary": "Thurmond Porter contacted Alliance Insurance to resolve confusion about unresolved insurance letters from North Carolina and a disputed Progressive bill. The agent acknowledged the issues and offered to transfer him to a specialist for further assistance, indicating the need for a callback to resolve the matter.",
+  "_model": "qwen3:14b",
+  "_eval_count": 228,
+  "_total_duration_ms": 33642,
+  "_source_file": "transcripts/in-+13363779003-+13363417188-20251219-093353-1766154833.703.txt",
+  "_direction": "inbound",
+  "_char_count": 763
+}

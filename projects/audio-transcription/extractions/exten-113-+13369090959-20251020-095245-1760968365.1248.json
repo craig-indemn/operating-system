@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Gary needs assistance renewing his expiring home and car insurance policies. He received an email about his home insurance expiring and wants to secure replacement coverage, while also addressing his car insurance renewal.",
+  "resolution_steps": [
+    "Andre explains NGM Insurance has exited the North Carolina market, requiring a new carrier for home insurance.",
+    "Andre asks Gary about home updates (roof, heating) and potential risks (animals, pools, trampolines) to assess coverage needs.",
+    "Andre confirms Gary pays insurance bills directly and notes the home policy renews on the second of the month.",
+    "Andre offers to check car insurance renewal as a combined package or separately, depending on cost-effectiveness.",
+    "Andre schedules a follow-up call the next week to provide rate options and finalize renewals."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance carrier availability in North Carolina",
+    "Home insurance underwriting factors (property updates, risk elements)",
+    "Policy renewal processes and timelines",
+    "Ability to assess combined vs. separate insurance package costs"
+  ],
+  "systems_referenced": [
+    "NGM Insurance (exiting carrier)",
+    "Alliance Insurance Services internal systems for rate processing",
+    "Main office phone system for call routing"
+  ],
+  "summary": "Andre Bucan assists Gary with renewing expiring home and car insurance policies after NGM Insurance's withdrawal from North Carolina. Andre will follow up next week with rate options and processing details, while addressing both policies as a combined package or separately based on cost. Gary will contact the main office to be routed to Andre for further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 362,
+  "_total_duration_ms": 44475,
+  "_source_file": "transcripts/exten-113-+13369090959-20251020-095245-1760968365.1248.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2898
+}

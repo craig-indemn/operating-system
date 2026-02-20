@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Not applicable (no meaningful interaction)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Call was a transfer instruction with no meaningful interaction. The agent directed the caller to transfer to another extension and leave a voicemail if unanswered. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 92,
+  "_total_duration_ms": 28413,
+  "_source_file": "transcripts/parked-509-509-20251124-091714-1763993834.421.txt",
+  "_direction": "parked",
+  "_char_count": 133
+}

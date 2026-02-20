@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Rosa McIntosh wants to pay her home insurance premium and confirm the payment details.",
+  "resolution_steps": [
+    "Agent Jamie confirms Rosa's account details (name, address, policy information).",
+    "Agent checks Rosa's current payment plan (12-month monthly payment of $117 due by December 4).",
+    "Agent processes a one-time payment of $117 using Rosa's Visa card ending in 7649.",
+    "Agent provides a confirmation number (1307778786) for the transaction.",
+    "Agent assures Rosa the payment is recorded and offers further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance payment plans and billing cycles",
+    "Credit card payment processing procedures",
+    "Policyholder account verification protocols"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services payment processing system"
+  ],
+  "summary": "Rosa McIntosh contacted Alliance Insurance to make a one-time payment of $117 for her home insurance policy. The agent verified her account details, processed the payment via credit card, and provided a confirmation number. The call concluded with Rosa expressing gratitude and the agent offering further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 277,
+  "_total_duration_ms": 30779,
+  "_source_file": "transcripts/q-300-+13367619136-20251202-112430-1764692670.2651.txt",
+  "_direction": "queue",
+  "_char_count": 1879
+}

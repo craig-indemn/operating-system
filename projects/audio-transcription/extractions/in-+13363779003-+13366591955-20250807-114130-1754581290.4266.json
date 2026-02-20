@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Amy from True Alliance Federal Credit Union needs to verify a check that was received by another party.",
+  "resolution_steps": [
+    "Agent placed the caller on hold to connect her with the appropriate department for verification."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The caller requested verification of a check, and the agent placed her on hold to connect with the appropriate department. No further resolution steps were completed during the call.",
+  "_model": "qwen3:14b",
+  "_eval_count": 124,
+  "_total_duration_ms": 37728,
+  "_source_file": "transcripts/in-+13363779003-+13366591955-20250807-114130-1754581290.4266.txt",
+  "_direction": "inbound",
+  "_char_count": 1055
+}

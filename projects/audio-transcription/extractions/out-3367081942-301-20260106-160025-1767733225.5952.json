@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "To discuss quotes sent to Jeff Hendricks earlier that day.",
+  "resolution_steps": [
+    "Addison called the number provided for Jeff Hendricks.",
+    "Realized the call was with Jeff's mother instead.",
+    "Mother explained she didn't know how Addison got her number and suggested contacting Rick for Jeff's number.",
+    "Addison asked the mother to contact Rick for Jeff's number."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding the client's contact information",
+    "Knowing to refer to Rick for Jeff's number"
+  ],
+  "systems_referenced": [],
+  "summary": "Addison attempted to contact Jeff Hendricks to discuss quotes but spoke with his mother instead. The mother indicated she didn't have Jeff's number and suggested contacting Rick. Addison referred the matter to Rick for further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 196,
+  "_total_duration_ms": 57744,
+  "_source_file": "transcripts/out-3367081942-301-20260106-160025-1767733225.5952.txt",
+  "_direction": "outbound",
+  "_char_count": 506
+}

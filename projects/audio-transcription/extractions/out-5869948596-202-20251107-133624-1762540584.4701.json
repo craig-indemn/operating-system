@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Karen is seeking to compare insurance quotes from National General and Progressive, specifically evaluating liability coverage, deductible options, and payment methods (including auto pay discounts). She wants to understand cost differences and coverage trade-offs.",
+  "resolution_steps": [
+    "Heather provided a quote from National General, highlighting lower liability coverage (500k per person/500k per accident) vs. Progressive's 500k/1M coverage.",
+    "Discussed policy terms: National General's annual policy vs. Progressive's 6-month policy.",
+    "Explained deductible options (1k, 500/500, 100/500) and their impact on annual premiums (114/month for 1k deductible, 127/month for 500/500).",
+    "Agreed to send detailed quotes via email, including both auto pay and non-auto pay versions.",
+    "Confirmed Karen's email address (love.todance36@yahoo.com) for quote delivery."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance policy structures (liability limits, deductibles, coverage types)",
+    "Carrier-specific pricing models (National General vs. Progressive)",
+    "Auto pay discounts and payment method implications",
+    "Email quote generation and delivery processes"
+  ],
+  "systems_referenced": [
+    "National General insurance portal",
+    "Progressive insurance system",
+    "Internal quote generation tool",
+    "Email communication system"
+  ],
+  "summary": "Heather from Alliance Insurance Services provided Karen with detailed comparisons between National General and Progressive insurance quotes, explaining coverage differences, deductible options, and payment method impacts. Karen requested quotes be sent via email for review, and Heather agreed to deliver both auto pay and non-auto pay versions. The call concluded with Karen expressing intent to evaluate the options.",
+  "_model": "qwen3:14b",
+  "_eval_count": 406,
+  "_total_duration_ms": 48530,
+  "_source_file": "transcripts/out-5869948596-202-20251107-133624-1762540584.4701.txt",
+  "_direction": "outbound",
+  "_char_count": 3631
+}

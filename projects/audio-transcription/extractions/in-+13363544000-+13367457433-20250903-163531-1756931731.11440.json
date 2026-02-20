@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller needs to update their insurance policy by removing a totaled vehicle and adding a new car, as they recently purchased a replacement after an accident. They are concerned about returning license plates to avoid fines and ensuring the new vehicle is properly insured.",
+  "resolution_steps": [
+    "Agent clarifies they cannot handle the request immediately and will connect the caller with an agent.",
+    "Agent provides their contact number for follow-up.",
+    "Agent suggests the caller may visit the office in person if they prefer."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy modification procedures",
+    "DMV requirements for vehicle registration and license plates",
+    "Handling totaled vehicles and policy adjustments"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal policy management system"
+  ],
+  "summary": "A caller contacted Alliance Insurance to update their policy after a car accident, needing to remove a totaled vehicle and add a new car. The agent explained they would connect the caller with an agent for further assistance and suggested visiting the office if needed. The call ended with a promise to follow up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 245,
+  "_total_duration_ms": 39948,
+  "_source_file": "transcripts/in-+13363544000-+13367457433-20250903-163531-1756931731.11440.txt",
+  "_direction": "inbound",
+  "_char_count": 1999
+}

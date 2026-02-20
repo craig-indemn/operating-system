@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Britt Wells wants to cancel her auto, umbrella, and home insurance policies with Penn National and understand associated fees, particularly short-rate fees for auto insurance, and coordinate the effective date of cancellation.",
+  "resolution_steps": [
+    "Agent explains Penn National's short-rate fee structure for auto insurance (based on remaining months) and full refunds for home/umbrella policies.",
+    "Agent confirms cancellation effective September 1st, aligning with the start date of a new policy.",
+    "Agent arranges for Corbin to locate and share policy details about cancellation terms.",
+    "Agent clarifies that policy documents outline cancellation terms in the 'definitions' section and under 'contract cancellation' clauses."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance cancellation policies (short-rate fees, billing cycles, refund rules)",
+    "Policy document structure (e.g., 'definitions' section, cancellation clauses)",
+    "Coordination with internal team members (e.g., Corbin) for document retrieval"
+  ],
+  "systems_referenced": [
+    "Penn National auto/home/umbrella insurance policies",
+    "Internal agent collaboration (Corbin)"
+  ],
+  "summary": "Britt Wells seeks to cancel her Penn National insurance policies and clarify cancellation fees. The agent explains short-rate fees for auto insurance, full refunds for home/umbrella policies, and coordinates with Corbin to provide policy details. They agree to cancel all policies effective September 1st, aligning with a new policy start date.",
+  "_model": "qwen3:14b",
+  "_eval_count": 332,
+  "_total_duration_ms": 53519,
+  "_source_file": "transcripts/parked-112-112-20250808-141150-1754676710.10624.txt",
+  "_direction": "parked",
+  "_char_count": 3239
+}

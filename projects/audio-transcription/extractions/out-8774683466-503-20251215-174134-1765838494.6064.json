@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking to resolve a duplicate claim charge on two policies (father and son) for the same incident, which was incorrectly applied due to similar names and system errors.",
+  "resolution_steps": [
+    "Agent Tabatha confirms the policy numbers and incident details for Kong Sam and his son.",
+    "Caller explains the incident was reported under Nationwide insurance and needs documentation to prove the son was the driver.",
+    "Agent clarifies the need for a document from Nationwide specifying the driver's name and date of birth to resolve the duplicate charge.",
+    "Caller and agent agree that confirming the correct policy for the incident is necessary to avoid double charges."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of claim processing and policy assignment",
+    "Use of CLUE reports for accident data",
+    "Handling of duplicate claims across policies"
+  ],
+  "systems_referenced": [
+    "National General Insurance system",
+    "CLUE report database",
+    "Nationwide insurance records"
+  ],
+  "summary": "John Wayne from Alliance Insurance Services contacted National General to resolve a duplicate claim charge on two policies (father and son) for the same incident. The agent confirmed the policies and discussed the need for documentation from Nationwide to verify the driver. The call ended with the need to obtain proof of the son's involvement in the accident to correct the charge.",
+  "_model": "qwen3:14b",
+  "_eval_count": 302,
+  "_total_duration_ms": 50079,
+  "_source_file": "transcripts/out-8774683466-503-20251215-174134-1765838494.6064.txt",
+  "_direction": "outbound",
+  "_char_count": 4571
+}

@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Peter Chan wants to add another vehicle to his existing insurance policy and follow up on a quote sent via email by JC, which he believes hasn't been received.",
+  "resolution_steps": [
+    "Agent acknowledges the request to add a vehicle to the policy.",
+    "Agent attempts to connect Peter with JC (the agent who sent the quote) to resolve the quote follow-up and process the vehicle addition."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy updates (adding vehicles)",
+    "Quote follow-up procedures",
+    "Internal communication protocols to locate/transfer to the correct agent"
+  ],
+  "systems_referenced": [],
+  "summary": "Peter Chan is seeking to add a vehicle to his existing policy and resolve a quote follow-up. The agent is transferring the call to JC for direct handling. The call is ongoing with no resolution yet.",
+  "_model": "qwen3:14b",
+  "_eval_count": 201,
+  "_total_duration_ms": 39680,
+  "_source_file": "transcripts/in-+13363779003-+13369186212-20250905-162915-1757104155.6363.txt",
+  "_direction": "inbound",
+  "_char_count": 595
+}

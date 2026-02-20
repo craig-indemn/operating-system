@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Brian Sims is inquiring about whether his home insurance policy with Northwest Farmers covers a self-storage unit and needs a certificate to waive his own insurance.",
+  "resolution_steps": [
+    "Holly asks for Brian's address and confirms the carrier (Northwest Farmers).",
+    "Holly acknowledges the need to check for coverage related to self-storage units and mentions checking for an endorsement or policy language.",
+    "Holly requests Brian's correct phone number (336-934-5240) to contact Northwest Farmers directly.",
+    "Holly commits to following up with Brian after verifying the coverage details."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding home insurance policy coverage (specifically self-storage units)",
+    "Process for verifying endorsements or policy language with carriers",
+    "Procedures for obtaining certificates of insurance or waivers"
+  ],
+  "systems_referenced": [
+    "Northwest Farmers (carrier)"
+  ],
+  "summary": "Brian Sims contacted Alliance Insurance Services to inquire about self-storage unit coverage under his Northwest Farmers home policy and the need for a certificate to waive his own insurance. Agent Holly confirmed the policy details, requested Brian's correct contact information, and committed to contacting Northwest Farmers directly to verify coverage and provide a follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 282,
+  "_total_duration_ms": 40970,
+  "_source_file": "transcripts/q-300-+13369345240-20250818-124908-1755535748.4409.txt",
+  "_direction": "queue",
+  "_char_count": 1101
+}

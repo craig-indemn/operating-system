@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking clarification about insurance proposals from Auto Owners, specifically regarding monthly payment schedules for home and auto insurance, and whether their mortgage covers homeowners insurance.",
+  "resolution_steps": [
+    "Agent confirms the caller received proposals from Auto Owners for home and auto insurance.",
+    "Discusses payment timelines (starting December 15th) and clarifies that homeowners insurance may be escrowed through the mortgage.",
+    "Asks for mortgage provider details to process billing.",
+    "Agrees to follow up after documenting the conversation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance carrier processes (Auto Owners)",
+    "Mortgage escrow mechanics for insurance",
+    "Payment scheduling for home/auto policies"
+  ],
+  "systems_referenced": [
+    "Auto Owners (insurance carrier)"
+  ],
+  "summary": "Caller discusses Auto Owners insurance proposals, clarifying payment terms and mortgage coverage. Agent gathers mortgage details and agrees to follow up. The call remains open with a pending resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 226,
+  "_total_duration_ms": 37503,
+  "_source_file": "transcripts/exten-401-+13366559546-20251201-145011-1764618611.11890.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2044
+}

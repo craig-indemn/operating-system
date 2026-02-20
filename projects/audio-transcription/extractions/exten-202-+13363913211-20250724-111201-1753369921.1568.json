@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Michael is trying to confirm receipt of a form sent to Heather at Alliance Insurance Services, as he is having trouble locating it and wants to ensure it was properly received before leaving.",
+  "resolution_steps": [
+    "Heather confirms she is at Alliance and acknowledges Michael's request.",
+    "Michael explains the form was sent but not received, and Heather agrees to check with Jamie and Ashley.",
+    "Heather coordinates with Jamie to scan and send the form via email.",
+    "Michael confirms receipt of the form after Heather sends it to him.",
+    "Heather assures Michael the issue is resolved and will forward the form to Tracy for next steps."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Internal team member names (Jamie, Ashley, Tracy) and their roles in document handling.",
+    "Process for sending/receiving documents via email or fax.",
+    "Ability to coordinate with other staff members to resolve client issues."
+  ],
+  "systems_referenced": [
+    "Email (for sending the form)",
+    "Fax machine (mentioned as an alternative)",
+    "Internal messaging (e.g., messaging Karen)"
+  ],
+  "summary": "Michael and Heather resolve an issue where a form was not properly received. Heather coordinates with Jamie and Ashley to ensure the form is sent via email, and Michael confirms receipt. The call ends with the issue resolved and next steps outlined.",
+  "_model": "qwen3:14b",
+  "_eval_count": 302,
+  "_total_duration_ms": 47245,
+  "_source_file": "transcripts/exten-202-+13363913211-20250724-111201-1753369921.1568.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3418
+}

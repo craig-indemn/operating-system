@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with Tracy",
+  "resolution_steps": [
+    "Agent acknowledged request",
+    "Agent initiated transfer to Tracy"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller requested to speak with Tracy. Agent acknowledged the request and began transferring the call. No further details were provided in the transcript.",
+  "_model": "qwen3:14b",
+  "_eval_count": 97,
+  "_total_duration_ms": 19534,
+  "_source_file": "transcripts/in-+13363544000-+13364030731-20251002-105735-1759417055.4263.txt",
+  "_direction": "inbound",
+  "_char_count": 214
+}

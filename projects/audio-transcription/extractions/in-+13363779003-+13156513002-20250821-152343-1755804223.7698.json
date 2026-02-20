@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to confirm if his home and car insurance policies (with Travelers and Progressive, respectively) are bundled and clarify how payments are being processed (direct billing, credit card, or checking account).",
+  "resolution_steps": [
+    "Agent confirmed the caller's policies (Travelers for home, Progressive for auto).",
+    "Agent checked the payment method for the home insurance policy (credit card ending in 5469).",
+    "Agent noted the policy expiration date (September 6th) and acknowledged the need to investigate further.",
+    "Agent mentioned checking the car insurance payment method (Progressive) but was interrupted before completing the lookup."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance payment methods (direct billing, credit card, checking account).",
+    "Carrier-specific policy details (Travelers, Progressive).",
+    "Access to internal systems for policy lookup and payment method verification."
+  ],
+  "systems_referenced": [
+    "Travelers insurance portal",
+    "Progressive insurance portal",
+    "Internal policy management system"
+  ],
+  "summary": "Armando called to clarify how his home (Travelers) and car (Progressive) insurance payments are being processed and whether they are bundled. The agent checked the home policy's payment method (credit card) and noted the expiration date but was unable to fully resolve the query due to system delays and incomplete information. Further investigation is required.",
+  "_model": "qwen3:14b",
+  "_eval_count": 319,
+  "_total_duration_ms": 41299,
+  "_source_file": "transcripts/in-+13363779003-+13156513002-20250821-152343-1755804223.7698.txt",
+  "_direction": "inbound",
+  "_char_count": 4131
+}

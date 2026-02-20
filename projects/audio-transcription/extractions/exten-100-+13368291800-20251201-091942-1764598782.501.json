@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Angela Fulton wants to add a car to her existing personal car insurance policy.",
+  "resolution_steps": [
+    "Agent confirmed the policy is personal.",
+    "Agent requested time to consider recent changes to the policy.",
+    "Agent prepared to transfer the call to a specialist."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Process for adding vehicles to existing policies",
+    "Identification of appropriate agent resources"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal call routing system"
+  ],
+  "summary": "Angela requested to add a vehicle to her personal car insurance policy. The agent confirmed the policy type and began assessing recent changes before preparing to transfer the call to a specialist. The conversation was cut off mid-escalation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 178,
+  "_total_duration_ms": 34869,
+  "_source_file": "transcripts/exten-100-+13368291800-20251201-091942-1764598782.501.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 337
+}

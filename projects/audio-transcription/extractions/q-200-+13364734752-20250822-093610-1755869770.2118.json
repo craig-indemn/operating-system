@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Gonzalo Rosales, is seeking home and auto insurance quotes from Alliance Insurance Services, currently insured with Farmers Insurance and looking to compare options.",
+  "resolution_steps": [
+    "Agent Rosales logs into the system to initiate the quote process.",
+    "Collects caller's personal information (name, contact details, address).",
+    "Gathers details about current insurance policies (Farmers Insurance, renewal date, coverages).",
+    "Asks about home characteristics (age, roof replacement, plumbing, siding).",
+    "Obtains vehicle information (makes, models, financing status, coverages).",
+    "Notes additional details (security systems, heating, chickens, fireplace).",
+    "Explains process of shopping quotes from ~20 carriers, expected turnaround (1-2 business days)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Home insurance underwriting factors (roof age, plumbing, siding types)",
+    "Auto insurance coverages (liability limits, deductibles, financing status)",
+    "Carrier shopping process for independent brokers",
+    "Policy renewal timelines and escrow details"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's client information portal",
+    "Farmers Insurance policy details"
+  ],
+  "summary": "Gonzalo Rosales requested home and auto insurance quotes from Alliance Insurance Services. The agent collected detailed information about his current Farmers Insurance policies, home characteristics (1951 home with recent roof replacement), and vehicle details (Volvo and Toyota Sienna). The agent explained the process of obtaining quotes from multiple carriers and estimated a 1-2 business day turnaround. The call concluded with the agent committing to email proposals by the following week.",
+  "_model": "qwen3:14b",
+  "_eval_count": 379,
+  "_total_duration_ms": 48688,
+  "_source_file": "transcripts/q-200-+13364734752-20250822-093610-1755869770.2118.txt",
+  "_direction": "queue",
+  "_char_count": 8238
+}

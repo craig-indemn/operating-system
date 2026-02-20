@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Colin is confirming policy details and requesting assistance to ensure a fax is sent to the correct address for a customer (Holly) at Lindmark Financial Services.",
+  "resolution_steps": [
+    "Tracy confirms the policy number (129-0409326) and verifies the address (400 East Ames Mill Road) with Colin.",
+    "Tracy checks vehicle details (O8 Dodge Dakota) and confirms the fax number (336-604-6550) to send the fax.",
+    "Tracy agrees to process the fax after verifying all information."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy verification process",
+    "Address and vehicle information cross-checking",
+    "Fax request handling procedures"
+  ],
+  "systems_referenced": [],
+  "summary": "Tracy assists Colin in verifying policy details for Lindmark Financial Services, confirming the address, vehicle information, and fax number before agreeing to send the fax. The call concludes with Tracy committing to process the request.",
+  "_model": "qwen3:14b",
+  "_eval_count": 242,
+  "_total_duration_ms": 35339,
+  "_source_file": "transcripts/out-3363772011-504-20251120-093912-1763649552.352.txt",
+  "_direction": "outbound",
+  "_char_count": 1227
+}

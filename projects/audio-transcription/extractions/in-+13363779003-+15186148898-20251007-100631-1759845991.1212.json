@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Requesting flood declaration aid for Nicholas Alshain's personal property through Coastal Federal Credit Union.",
+  "resolution_steps": [
+    "Agent asked whether the flood declaration is for personal or business property.",
+    "Agent offered to transfer the caller to the appropriate department after clarification."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Flood insurance claims process",
+    "Differentiation between personal and business property claims"
+  ],
+  "systems_referenced": [],
+  "summary": "Bonnie Cho from Coastal Federal Credit Union contacted Atlantic Insurance to request flood aid for Nicholas Alshain's personal property. The agent clarified the claim type and offered to transfer the call. The conversation ended with the agent preparing to transfer the caller.",
+  "_model": "qwen3:14b",
+  "_eval_count": 174,
+  "_total_duration_ms": 31795,
+  "_source_file": "transcripts/in-+13363779003-+15186148898-20251007-100631-1759845991.1212.txt",
+  "_direction": "inbound",
+  "_char_count": 423
+}

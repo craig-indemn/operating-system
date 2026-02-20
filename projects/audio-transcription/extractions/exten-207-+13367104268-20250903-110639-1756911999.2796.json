@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jennifer is seeking assistance to add two new 2025 Ford F350 trucks to an insurance policy, but is encountering issues with VIN numbers not pulling correctly from Auto Owners, and needs guidance on next steps.",
+  "resolution_steps": [
+    "Cody confirms the trucks are brand new 2025s, explaining that VINs for new vehicles sometimes fail to pull correctly.",
+    "Cody requests documentation (e.g., bill of sale) to submit directly to the insurance company for accurate sub-model details.",
+    "Cody clarifies the effective date for adding the trucks should be October 27th (when Oscar took ownership).",
+    "Cody instructs Jennifer to email the required paperwork so he can process the request."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy updates for new vehicles",
+    "Handling VIN discrepancies with Auto Owners",
+    "Documentation requirements for vehicle additions"
+  ],
+  "systems_referenced": [
+    "Auto Owners (insurance carrier)"
+  ],
+  "summary": "Jennifer needs to add two new trucks to an insurance policy but faces VIN lookup issues. Cody explains that brand-new VINs may not pull correctly and requests documentation to submit directly to Auto Owners. The effective date for the policy update is set for October 27th, and Jennifer agrees to send the required paperwork for processing.",
+  "_model": "qwen3:14b",
+  "_eval_count": 303,
+  "_total_duration_ms": 47212,
+  "_source_file": "transcripts/exten-207-+13367104268-20250903-110639-1756911999.2796.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4102
+}

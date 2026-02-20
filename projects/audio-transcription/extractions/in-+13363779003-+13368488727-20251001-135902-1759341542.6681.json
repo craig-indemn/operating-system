@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Inquiring about the availability of Joe Jessup",
+  "resolution_steps": [
+    "Agent checked for Joe Jessup's availability",
+    "Agent requested a moment to verify"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief inbound call where the caller asked about Joe Jessup's availability. The agent checked but did not provide further information before the call ended.",
+  "_model": "qwen3:14b",
+  "_eval_count": 109,
+  "_total_duration_ms": 24886,
+  "_source_file": "transcripts/in-+13363779003-+13368488727-20251001-135902-1759341542.6681.txt",
+  "_direction": "inbound",
+  "_char_count": 148
+}

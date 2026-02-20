@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to inform Hunter about a system issue preventing policy renewal, assure him the renewal is guaranteed, and coordinate next steps once resolved.",
+  "resolution_steps": [
+    "Explained the policy was canceled for non-payment, then reinstated with an updated producer code, causing a system blockage.",
+    "Mentioned involving the manager, territory manager, and internal process team to resolve the technical issue.",
+    "Assured Hunter the renewal is guaranteed and would be issued regardless of the system delay.",
+    "Agreed to notify Hunter via email once the internal team resolves the issue."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy renewal processes",
+    "System limitations and internal team roles (e.g., internal process team for coding/programming)",
+    "Billing department coordination"
+  ],
+  "systems_referenced": [
+    "Policy management system (blocking renewals due to producer code update)",
+    "Internal process team (handling technical fixes)",
+    "Billing department (no bills generated until resolution)"
+  ],
+  "summary": "Agent informed Hunter about a technical blockage preventing policy renewal due to a producer code update, assured the renewal would proceed once resolved, and agreed to notify Hunter via email. The issue requires internal technical team intervention.",
+  "_model": "qwen3:14b",
+  "_eval_count": 282,
+  "_total_duration_ms": 43288,
+  "_source_file": "transcripts/exten-207-+16142490098-20251024-125520-1761324920.3028.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1956
+}

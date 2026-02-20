@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Heather) wants to address her insurance renewals, particularly due to increased payments, and find cheaper options. She is seeking quotes for new insurance and is considering switching providers.",
+  "resolution_steps": [
+    "Agent confirmed Heather's current insurance policies (Auto Owners and Homeowners) and their renewal dates.",
+    "Agent advised Heather to contact her lender to stop payments for Auto Owners and Homeowners policies to avoid automatic renewal.",
+    "Agent provided information about Cincinnati Insurance as a potential provider for a new quote.",
+    "Agent noted that the messy drive policy (likely a typo for 'homeowners' or another policy) would be reviewed in February.",
+    "Agent agreed to follow up on the Cincinnati quote and reassess options when the February renewal comes due."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding insurance policy renewal processes",
+    "Knowledge of insurance providers (e.g., Auto Owners, Cincinnati)",
+    "Ability to advise on lender communication for policy cancellations",
+    "Familiarity with rate changes and their impact on customers"
+  ],
+  "systems_referenced": [
+    "Cincinnati Insurance",
+    "Auto Owners",
+    "First Horizon (bank)",
+    "Huntington Bank"
+  ],
+  "summary": "Heather, a 68-year-old customer, discusses rising insurance costs after losing her job and transitioning to a new bank. She is seeking cheaper insurance options and needs guidance on switching providers. The agent provides quotes for Cincinnati Insurance, advises contacting her lender to stop payments, and schedules a follow-up for February when her policies are due for renewal.",
+  "_model": "qwen3:14b",
+  "_eval_count": 354,
+  "_total_duration_ms": 53807,
+  "_source_file": "transcripts/exten-401-+13364136401-20251024-162848-1761337728.6376.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4048
+}

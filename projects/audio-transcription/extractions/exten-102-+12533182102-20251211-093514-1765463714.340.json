@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller requested a copy of his current insurance policy be emailed to him as proof of insurance for a client's job board event.",
+  "resolution_steps": [
+    "Agent confirmed the caller's request for policy documentation.",
+    "Agent asked for clarification on whether specific details were needed beyond proof of insurance.",
+    "Caller confirmed only proof of insurance was required.",
+    "Agent agreed to send the policy document via email."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy retrieval procedures",
+    "Emailing documentation to clients",
+    "Differentiating between proof of insurance and detailed policy documents"
+  ],
+  "systems_referenced": [
+    "Internal policy database"
+  ],
+  "summary": "Josh Ryder Baker from Pinnacle Tree Service requested proof of insurance via email for a client's job board. The agent confirmed the request and agreed to send the document, clarifying that only proof of insurance was needed. The call concluded with the agent committing to fulfill the request.",
+  "_model": "qwen3:14b",
+  "_eval_count": 221,
+  "_total_duration_ms": 32219,
+  "_source_file": "transcripts/exten-102-+12533182102-20251211-093514-1765463714.340.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 753
+}

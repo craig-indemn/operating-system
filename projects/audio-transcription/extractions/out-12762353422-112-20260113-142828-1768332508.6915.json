@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Leaving a voicemail to follow up on business insurance locations and discuss a benefits package based on employee inquiries.",
+  "resolution_steps": [
+    "Voicemail left with automated system",
+    "Message includes contact information and request for callback"
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A voicemail from Alliance Insurance Services requesting a callback to review business insurance locations and discuss benefits package details. The message mentions an employee's questions but does not indicate a live conversation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 125,
+  "_total_duration_ms": 29563,
+  "_source_file": "transcripts/out-12762353422-112-20260113-142828-1768332508.6915.txt",
+  "_direction": "outbound",
+  "_char_count": 820
+}

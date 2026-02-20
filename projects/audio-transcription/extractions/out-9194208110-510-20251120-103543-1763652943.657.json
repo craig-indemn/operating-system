@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Tracy from Alliance Insurance is following up on a client's issue where a mortgage-related payment was mailed on October 9th but not received, seeking resolution by connecting with the correct department.",
+  "resolution_steps": [
+    "Agent Erin acknowledges the issue and attempts to reach Pamela directly.",
+    "Erin transfers the call to the mortgage department after failing to contact Pamela.",
+    "Erin requests the client's mortgage number to facilitate the transfer.",
+    "After unsuccessful attempts to reach Pamela, Erin transfers the call to another representative (Tracy) for further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of internal department structures (mortgage vs. loan servicing)",
+    "Process for transferring calls between departments",
+    "Handling client escalations for unresolved issues"
+  ],
+  "systems_referenced": [
+    "Coastal's internal call transfer system",
+    "Coastal's online banking/mobile app (mentioned in automated messages)"
+  ],
+  "summary": "Tracy from Alliance Insurance follows up on a client's unresolved issue regarding a missed mortgage payment. The agent attempts to connect with the correct department but faces delays, ultimately transferring the call to another representative for resolution. The client remains on hold with automated messages about Coastal's digital tools.",
+  "_model": "qwen3:14b",
+  "_eval_count": 284,
+  "_total_duration_ms": 39080,
+  "_source_file": "transcripts/out-9194208110-510-20251120-103543-1763652943.657.txt",
+  "_direction": "outbound",
+  "_char_count": 4643
+}

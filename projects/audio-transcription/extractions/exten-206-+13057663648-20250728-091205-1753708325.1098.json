@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Irma Ortiz wants to renew an expired bond for Under Garage Motors Twenty Six LLC, which was previously issued through Auto Owners.",
+  "resolution_steps": [
+    "Agent Jeff verifies the caller's identity and the bond details (name: Under Garage Motors Twenty Six LLC, carrier: Auto Owners).",
+    "Jeff checks the bond number provided (66430485) and confirms the bond was canceled.",
+    "Jeff explains the need to contact Auto Owners directly to determine if the bond can be renewed via payment or requires a new issuance.",
+    "Jeff requests Irma's contact number (305-766-3648) to follow up after consulting with Auto Owners."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Bond renewal processes for auto-related policies",
+    "Understanding of canceled vs. expired bond statuses",
+    "Carrier-specific procedures for Auto Owners"
+  ],
+  "systems_referenced": [
+    "Auto Owners (carrier)"
+  ],
+  "summary": "Irma Ortiz contacted Alliance Insurance to renew an expired Auto Owners bond for her business. The agent verified the bond's canceled status and planned to contact Auto Owners directly to resolve the renewal. A follow-up call was scheduled after consulting with the carrier.",
+  "_model": "qwen3:14b",
+  "_eval_count": 278,
+  "_total_duration_ms": 38500,
+  "_source_file": "transcripts/exten-206-+13057663648-20250728-091205-1753708325.1098.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1660
+}

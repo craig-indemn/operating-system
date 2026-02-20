@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Mike Haley is seeking guidance on allowing his friend Will to use his 4Runner without selling it, while managing insurance and legal risks. He also inquires about potential solutions like using Will's insurance or legal documentation.",
+  "resolution_steps": [
+    "Rachel explains that the vehicle must remain titled in Mike's name, requiring Will to be listed as a driver on the policy.",
+    "She highlights the liability risks if Will is involved in an accident, emphasizing potential lawsuits against both the driver and owner.",
+    "Rachel suggests consulting Will's insurance company for alternative solutions, noting that titling the vehicle in both names may not be feasible.",
+    "She recommends legal documentation (e.g., notarized agreements) to handle scenarios where Will can no longer drive the vehicle.",
+    "Rachel advises against adding Will to Mike's policy due to risk exposure and suggests consulting an attorney for complex legal arrangements."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy requirements for drivers and vehicle ownership",
+    "Liability implications for vehicle owners and drivers",
+    "Legal considerations for vehicle use agreements",
+    "Impact of adding drivers to insurance policies",
+    "Multi-car discount rules for young drivers"
+  ],
+  "systems_referenced": [],
+  "summary": "Mike Haley discusses allowing his friend Will to use his 4Runner without selling it, seeking insurance and legal advice. Rachel explains the need for proper titling, insurance policy adjustments, and potential liability risks. She recommends consulting Will's insurance company and a lawyer for legal agreements, while noting the impact on his son's insurance discounts if the vehicle were transferred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 353,
+  "_total_duration_ms": 55071,
+  "_source_file": "transcripts/exten-702-+13366552346-20250912-095816-1757685496.551.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4050
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Susan and Terry White) wanted to resolve a discrepancy where they received a notice of an additional $52.71 charge on their auto policy, despite being told by another party that their account was paid in full.",
+  "resolution_steps": [
+    "Agent requested the caller's name, policy number, and contact information to verify the account.",
+    "Agent checked the policy details and identified the charge as a company error.",
+    "Agent informed the caller the charge would be waived and instructed them to disregard the notice.",
+    "Agent offered additional contact methods (portal and texting) for future reference."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Policy verification and billing error identification",
+    "Waiving premiums for company errors",
+    "Customer portal and contact method familiarity"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services customer portal (myallianceinsurance.com)",
+    "Texting service (3367861133)"
+  ],
+  "summary": "A customer disputed an unexpected auto policy charge, which the agent resolved by identifying it as a company error and waiving the fee. The agent also provided digital support options to the caller.",
+  "_model": "qwen3:14b",
+  "_eval_count": 269,
+  "_total_duration_ms": 36051,
+  "_source_file": "transcripts/q-300-+13368800495-20251007-120030-1759852830.3738.txt",
+  "_direction": "queue",
+  "_char_count": 1674
+}

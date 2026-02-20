@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller wanted to remove a vehicle from their insurance policy.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller requested to remove a vehicle from their policy. Agent offered to transfer to another agent but the conversation ended abruptly without resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 89,
+  "_total_duration_ms": 20460,
+  "_source_file": "transcripts/in-+13363779003-+13366986897-20250903-160737-1756930057.10340.txt",
+  "_direction": "inbound",
+  "_char_count": 251
+}

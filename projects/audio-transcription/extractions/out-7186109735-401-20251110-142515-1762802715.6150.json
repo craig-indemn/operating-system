@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Carrie is being contacted to finalize a home insurance policy through Cincinnati, with questions about the auto insurance being packaged with the home policy and coordination with her husband Marvin.",
+  "resolution_steps": [
+    "Heather explains the lender requested binding the home policy and confirms the closing date (12/15).",
+    "Heather clarifies that Cincinnati requires home and auto insurance to be packaged together.",
+    "Heather asks Carrie about her husband Marvin's availability to discuss auto insurance.",
+    "Heather offers to send a text to Marvin with details and confirms Carrie's preference to contact him later.",
+    "Heather reassures Carrie that the auto policy can be issued within 30 days if needed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of Cincinnati Insurance's packaging requirements for home and auto policies",
+    "Process for issuing auto insurance after a 30-day period",
+    "Coordination between lender, agent, and policyholder"
+  ],
+  "systems_referenced": [
+    "Cincinnati Insurance"
+  ],
+  "summary": "Heather Scott from Alliance Insurance is coordinating with Carrie to bind a home insurance policy through Cincinnati, addressing the need to package auto insurance with the home policy. She arranges to contact Carrie's husband Marvin to discuss auto insurance details and confirms the closing date. The call ends with Heather sending a text to Marvin and outlining next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 308,
+  "_total_duration_ms": 41689,
+  "_source_file": "transcripts/out-7186109735-401-20251110-142515-1762802715.6150.txt",
+  "_direction": "outbound",
+  "_char_count": 2285
+}

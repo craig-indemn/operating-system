@@ -1,0 +1,23 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Attempt to reach Heather Scott at Alliance Insurance Services, possibly for a business-related matter (caller identifies as from 'Pens dot com National Pens').",
+  "resolution_steps": [
+    "Agent Mariana acknowledges the call and confirms the request to speak with Heather Scott.",
+    "Agent attempts to connect the caller with Heather Scott."
+  ],
+  "outcome": "transferred",
+  "knowledge_required": [
+    "Basic call routing procedures",
+    "Internal directory access to locate Heather Scott"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal phone system"
+  ],
+  "summary": "A brief inbound call where the caller attempts to reach Heather Scott at Alliance Insurance. The agent acknowledges the request and attempts to transfer the call, but no substantive discussion about insurance services or issues occurs.",
+  "_model": "qwen3:14b",
+  "_eval_count": 182,
+  "_total_duration_ms": 32027,
+  "_source_file": "transcripts/in-+13363544000-+18886726551-20251015-104735-1760539655.1103.txt",
+  "_direction": "inbound",
+  "_char_count": 346
+}

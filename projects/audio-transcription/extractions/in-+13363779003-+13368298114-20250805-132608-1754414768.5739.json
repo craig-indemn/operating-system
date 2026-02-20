@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unknown (call is too brief and fragmented to determine intent)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Call was too brief and fragmented to analyze meaningfully. Only a greeting and fragmented conversation about transferring to 'Kathy' are present, with no clear purpose or resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 99,
+  "_total_duration_ms": 25275,
+  "_source_file": "transcripts/in-+13363779003-+13368298114-20250805-132608-1754414768.5739.txt",
+  "_direction": "inbound",
+  "_char_count": 154
+}

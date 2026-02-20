@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Heather from Alliance Insurance seeks to waive a $15 billing fee on account 102494680, citing an agency error in failing to reinstate AutoPay, which led to a cancellation.",
+  "resolution_steps": [
+    "Laura confirms Heather's agency code and billing account number.",
+    "Laura checks the system and identifies a previous fee waiver in May.",
+    "Laura explains Auto Owners' policy of allowing only one annual fee waiver.",
+    "Laura agrees to waive the current $15 late fee while leaving the billing charge intact."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Auto Owners Insurance billing policies (e.g., fee waiver limits)",
+    "AutoPay system functionality and error resolution processes"
+  ],
+  "systems_referenced": [
+    "Auto Owners Insurance billing system",
+    "AutoPay portal"
+  ],
+  "summary": "Heather from Alliance Insurance requested a $15 fee waiver on a billing account due to an AutoPay error. After verifying the account and confirming a prior waiver, Laura agreed to waive the current fee under the agency's annual policy limit. The call concluded with the fee waived and mutual agreement.",
+  "_model": "qwen3:14b",
+  "_eval_count": 263,
+  "_total_duration_ms": 38167,
+  "_source_file": "transcripts/out-8002888740-404-20250812-150626-1755025586.10984.txt",
+  "_direction": "outbound",
+  "_char_count": 2597
+}

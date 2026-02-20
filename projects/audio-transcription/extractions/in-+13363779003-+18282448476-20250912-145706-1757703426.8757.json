@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Caller (Joe Gillen) attempted to report a collision and wanted to provide contact information for another party involved so they could initiate a claim for truck repairs.",
+  "resolution_steps": [
+    "Agent acknowledged the call",
+    "Agent requested a moment to connect with another agent (but no further action was completed due to call interruption)"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller attempted to report a collision and provide contact information for another party, but the conversation was cut off before any claim process could be initiated. The agent did not complete any resolution steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 149,
+  "_total_duration_ms": 31851,
+  "_source_file": "transcripts/in-+13363779003-+18282448476-20250912-145706-1757703426.8757.txt",
+  "_direction": "inbound",
+  "_char_count": 384
+}

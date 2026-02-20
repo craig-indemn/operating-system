@@ -1,0 +1,21 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; initial mention of needing to contact 'Holly' but conversation becomes incoherent and unrelated to insurance matters.",
+  "resolution_steps": [
+    "Standard hold message played",
+    "No actionable steps taken by agent due to unclear request"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [
+    "customer portal (myallianceinsurance.com)",
+    "text support (3367861133)"
+  ],
+  "summary": "Call begins with a request to contact 'Holly' but devolves into incoherent speech. Agent plays standard hold message without addressing the caller's request. No meaningful resolution achieved.",
+  "_model": "qwen3:14b",
+  "_eval_count": 157,
+  "_total_duration_ms": 37937,
+  "_source_file": "transcripts/in-+13363544000-+17433334358-20260106-110527-1767715527.1684.txt",
+  "_direction": "inbound",
+  "_char_count": 1333
+}

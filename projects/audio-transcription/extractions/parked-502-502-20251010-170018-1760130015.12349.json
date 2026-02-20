@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to confirm a payment for an insurance policy and ensure they received the corresponding receipt, while also addressing an issue with the email not appearing in their inbox.",
+  "resolution_steps": [
+    "Agent provided the payment confirmation number (3149200424) and confirmed the policy details.",
+    "Agent sent a copy of the receipt via email to the caller's business email (Lenren Services at gmail.com).",
+    "Agent checked with the caller to confirm receipt of the email, troubleshooting by suggesting the spam folder.",
+    "Agent assured the caller the email was sent successfully and offered further assistance if needed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy management processes",
+    "Payment confirmation procedures",
+    "Email troubleshooting basics"
+  ],
+  "systems_referenced": [
+    "Internal insurance policy management system",
+    "Email communication platform"
+  ],
+  "summary": "The caller confirmed a payment for an insurance policy and requested a receipt. The agent provided the confirmation number, sent the receipt via email, and helped troubleshoot the email delivery issue by checking the spam folder. The call concluded with the agent confirming the email was successfully sent and offering further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 274,
+  "_total_duration_ms": 35906,
+  "_source_file": "transcripts/parked-502-502-20251010-170018-1760130015.12349.txt",
+  "_direction": "parked",
+  "_char_count": 2306
+}

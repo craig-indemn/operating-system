@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller attempted to reach Jeff Edmonds but was redirected to a voicemail option and opted to send an email instead.",
+  "resolution_steps": [
+    "Agent informed caller that Jeff Edmonds was on the line and asked if they wanted to leave a voicemail.",
+    "Caller declined voicemail and stated they would send an email."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "This was a voicemail greeting scenario where the caller was redirected to leave a message but chose to send an email instead. No substantive discussion about insurance services occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 149,
+  "_total_duration_ms": 29590,
+  "_source_file": "transcripts/in-+13363779003-+13368945684-20250827-161206-1756325526.7376.txt",
+  "_direction": "inbound",
+  "_char_count": 322
+}

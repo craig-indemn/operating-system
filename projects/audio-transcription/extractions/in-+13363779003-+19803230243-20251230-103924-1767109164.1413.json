@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Not applicable (call is a transfer message with no substantive conversation)",
+  "resolution_steps": [
+    "Agent transfers call to Maria"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Inbound call consists of an agent transferring the call to Maria with no substantive conversation or resolution. The caller's intent is unknown, and no insurance-related information is exchanged.",
+  "_model": "qwen3:14b",
+  "_eval_count": 106,
+  "_total_duration_ms": 25896,
+  "_source_file": "transcripts/in-+13363779003-+19803230243-20251230-103924-1767109164.1413.txt",
+  "_direction": "inbound",
+  "_char_count": 288
+}

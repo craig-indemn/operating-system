@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Dylan is seeking help with an issue where the Canopy Connect app redirects him to YouTube unexpectedly after adding a driver, leaving him unsure of the next steps.",
+  "resolution_steps": [
+    "Agent (Heather) listens to Dylan's description of the problem.",
+    "Heather acknowledges Dylan's explanation and confirms understanding of the issue."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of Canopy Connect app functionality",
+    "Troubleshooting app navigation issues"
+  ],
+  "systems_referenced": [
+    "Canopy Connect"
+  ],
+  "summary": "Dylan described an issue with the Canopy Connect app where adding a driver redirects him to YouTube, leaving him confused about next steps. Heather listened and acknowledged the problem but did not provide resolution steps. The call ended with Dylan feeling heard but the issue unresolved.",
+  "_model": "qwen3:14b",
+  "_eval_count": 195,
+  "_total_duration_ms": 43457,
+  "_source_file": "transcripts/exten-401-+17439006517-20260119-132359-1768847039.3442.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 857
+}

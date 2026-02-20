@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Attempt to reach Missus Scott",
+  "resolution_steps": [
+    "Agent confirmed connection",
+    "Call was interrupted before resolution"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Very brief call where agent confirmed connection to Missus Scott but conversation was cut off before any meaningful interaction could occur. No resolution or problem description provided.",
+  "_model": "qwen3:14b",
+  "_eval_count": 102,
+  "_total_duration_ms": 23777,
+  "_source_file": "transcripts/in-+13363779003-+19089062525-20251107-130431-1762538671.3877.txt",
+  "_direction": "inbound",
+  "_char_count": 136
+}

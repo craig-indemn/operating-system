@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Caller is inquiring about an auto policy and requesting assistance.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The caller mentioned an auto policy and requested assistance, but the conversation was cut short with no resolution or detailed discussion.",
+  "_model": "qwen3:14b",
+  "_eval_count": 87,
+  "_total_duration_ms": 76031,
+  "_source_file": "transcripts/in-+13363779003-+13367019613-20251008-140831-1759946911.5571.txt",
+  "_direction": "inbound",
+  "_char_count": 310
+}

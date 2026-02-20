@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Resolve confusion about a billing discrepancy on a Progressive insurance policy (NCA143950), specifically why a $1 balance appeared after a full payment was received.",
+  "resolution_steps": [
+    "Verified policy details (policy number, insured name, address, agent information).",
+    "Explained that the $1 balance originated from the removal of the paperless discount in the previous term (2024-2025).",
+    "Clarified that the full payment received on October 23rd was split: $1 applied to the previous term's balance, and $495 applied to the renewal term.",
+    "Noted that the system automatically changed to a two-pay plan due to the partial payment.",
+    "Advised that the $1 balance cannot be waived unless the client re-enrolls in the paperless discount via the Progressive website.",
+    "Provided step-by-step instructions for the client to re-enroll in paperless (login to progressive.com, navigate to account preferences, accept terms)."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Progressive's billing system and payment allocation rules",
+    "Paperless discount policy and its impact on billing",
+    "Client communication protocols for resolving payment discrepancies"
+  ],
+  "systems_referenced": [
+    "Progressive website (progressive.com)",
+    "Progressive account preferences portal"
+  ],
+  "summary": "Bina from Alliance Insurance resolved a billing confusion for a client with a Progressive policy. A $1 balance appeared due to the removal of the paperless discount, causing a partial payment allocation. Jay explained the system's logic and advised re-enrolling in paperless via the Progressive website to resolve the discrepancy. The client was instructed to contact their mortgage company for further action.",
+  "_model": "qwen3:14b",
+  "_eval_count": 388,
+  "_total_duration_ms": 48576,
+  "_source_file": "transcripts/out-8662748765-509-20251024-132815-1761326895.3485.txt",
+  "_direction": "outbound",
+  "_char_count": 4383
+}

@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to leave a voicemail for a specific number",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A voicemail greeting requesting the caller to leave a message for the number 6578787. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 90,
+  "_total_duration_ms": 41003,
+  "_source_file": "transcripts/out-6578779178-409-20251208-094248-1765204968.975.txt",
+  "_direction": "outbound",
+  "_char_count": 57
+}

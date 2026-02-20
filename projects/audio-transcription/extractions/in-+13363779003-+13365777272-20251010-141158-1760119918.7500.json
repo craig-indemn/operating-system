@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unknown (no meaningful conversation occurred)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The transcript contains only the automated greeting from Alliance Insurance. No substantive conversation or caller intent is evident in the provided text.",
+  "_model": "qwen3:14b",
+  "_eval_count": 85,
+  "_total_duration_ms": 18683,
+  "_source_file": "transcripts/in-+13363779003-+13365777272-20251010-141158-1760119918.7500.txt",
+  "_direction": "inbound",
+  "_char_count": 97
+}

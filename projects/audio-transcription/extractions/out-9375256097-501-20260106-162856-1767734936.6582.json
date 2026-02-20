@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Leaving a voicemail regarding Tracy Estep's homeowner's policy with Main Street America, informing the recipient about the carrier's decision to non-renew the policy and next steps.",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Agent Jamie Flippin left a voicemail message regarding Tracy Estep's expiring homeowner's policy with Main Street America, explaining the carrier's decision to non-renew and plans to reshop the policy. The call was a voicemail and not a substantive conversation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 141,
+  "_total_duration_ms": 70721,
+  "_source_file": "transcripts/out-9375256097-501-20260106-162856-1767734936.6582.txt",
+  "_direction": "outbound",
+  "_char_count": 1536
+}

@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Video) aimed to follow up on a commercial auto policy for an insured, likely regarding a claim or policy update.",
+  "resolution_steps": [
+    "Agent asked for the policy number, which was provided as 977346967.",
+    "Agent confirmed the policy number and began searching for the appropriate agent (Gloria) to handle the request.",
+    "Agent requested the policy number again to ensure accuracy before transferring the call."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Commercial auto policy handling procedures",
+    "Internal agent directory for policy-specific support"
+  ],
+  "systems_referenced": [],
+  "summary": "The caller followed up on a commercial auto policy, and the agent obtained the policy number and initiated a transfer to Gloria for further assistance. The call was cut off before resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 200,
+  "_total_duration_ms": 62742,
+  "_source_file": "transcripts/in-+13363779003-+14409108130-20251009-130100-1760029260.3493.txt",
+  "_direction": "inbound",
+  "_char_count": 692
+}

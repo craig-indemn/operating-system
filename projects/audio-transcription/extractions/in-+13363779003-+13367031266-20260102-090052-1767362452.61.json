@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to pay their insurance bill using a credit card.",
+  "resolution_steps": [
+    "Agent confirmed the payment amount ($75.04) and requested credit card details.",
+    "Caller provided card number, expiration date, and confirmed details when repeated back.",
+    "Agent processed the payment and offered a confirmation number or email receipt.",
+    "Caller accepted the email receipt as confirmation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Payment processing procedures",
+    "Credit card verification protocols",
+    "Insurance billing systems"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance payment portal/system"
+  ],
+  "summary": "A caller contacted Alliance Insurance to pay their bill. The agent guided them through providing credit card details, confirmed the payment, and sent an email receipt. The call concluded with the caller confirming no further assistance was needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 205,
+  "_total_duration_ms": 28233,
+  "_source_file": "transcripts/in-+13363779003-+13367031266-20260102-090052-1767362452.61.txt",
+  "_direction": "inbound",
+  "_char_count": 1283
+}

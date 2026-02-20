@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Ashley from Heritage Mortgage seeks assistance in obtaining a crime and fidelity policy endorsement for a North Carolina homeowners association, clarifying that it's a Fannie Mae guideline (not a state law) and addressing delays in securing the endorsement from Westfield Insurance.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's request and clarifies the absence of a North Carolina statute requiring the policy.",
+    "Explains that Westfield Insurance has not filed the required endorsement in North Carolina.",
+    "Notes ongoing communication with Westfield's underwriter via email and voicemail.",
+    "Mentions delays due to carrier staff vacations and the need to await confirmation on endorsement availability and cost.",
+    "Commitment to update Ashley once a resolution is determined."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of North Carolina insurance regulations",
+    "Fannie Mae guideline requirements for mortgage lending",
+    "Process for adding endorsements to insurance policies",
+    "Carrier-specific procedures (e.g., Westfield Insurance filing requirements)"
+  ],
+  "systems_referenced": [
+    "Westfield Insurance",
+    "North Carolina Insurance Commissioner's Office",
+    "Fannie Mae guidelines"
+  ],
+  "summary": "Ashley from Heritage Mortgage discusses challenges in obtaining a crime policy endorsement for a North Carolina HOA, emphasizing it's a Fannie Mae requirement. The agent explains Westfield Insurance's lack of filing for the endorsement and ongoing delays with carrier communication. Resolution depends on carrier action and potential cost implications.",
+  "_model": "qwen3:14b",
+  "_eval_count": 326,
+  "_total_duration_ms": 44800,
+  "_source_file": "transcripts/exten-105-+19086564672-20251229-162258-1767043378.12651.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4468
+}

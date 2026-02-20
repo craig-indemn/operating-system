@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Oscar is following up on submitted insurance quotes that are pending approval and wants confirmation of their status, hoping to receive them by the end of the day to proceed with loading on Monday.",
+  "resolution_steps": [
+    "Agent explains that quotes require underwriter approval and cannot be issued instantly.",
+    "Agent confirms they emailed the underwriter to expedite processing and aim for approval by end of day.",
+    "Agent promises to call Oscar back once quotes are approved and will email them for review."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "underwriting process for insurance quotes",
+    "internal communication with underwriters",
+    "policy issuance timelines"
+  ],
+  "systems_referenced": [
+    "email system (for communicating with underwriter)",
+    "underwriting approval system"
+  ],
+  "summary": "Oscar is waiting on approved insurance quotes for a policy to be loaded on Monday. The agent explains the quotes require underwriter approval, confirms they've expedited the process, and will notify Oscar once approved. A follow-up call is promised once quotes are received.",
+  "_model": "qwen3:14b",
+  "_eval_count": 247,
+  "_total_duration_ms": 34174,
+  "_source_file": "transcripts/exten-207-+13363710778-20250827-093852-1756301932.717.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1324
+}

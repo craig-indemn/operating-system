@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Inform the recipient about a car accident involving their wife and offer to contact the wife (Lucy) directly using her phone number.",
+  "resolution_steps": [
+    "Agent (Tracy) introduces herself from Alliance Insurance and mentions a car accident involving the recipient's wife.",
+    "Recipient confirms the number is correct and provides Lucy's phone number (478-333-5410).",
+    "Agent agrees to call Lucy immediately."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Handling claims related to vehicle accidents",
+    "Client communication protocols"
+  ],
+  "systems_referenced": [],
+  "summary": "Tracy from Alliance Insurance informed the recipient about a car accident involving their wife and offered to contact the wife (Lucy) using her provided phone number. The call concluded with Tracy agreeing to reach out to Lucy directly.",
+  "_model": "qwen3:14b",
+  "_eval_count": 203,
+  "_total_duration_ms": 29078,
+  "_source_file": "transcripts/out-4784618155-510-20250925-160819-1758830899.11269.txt",
+  "_direction": "outbound",
+  "_char_count": 484
+}

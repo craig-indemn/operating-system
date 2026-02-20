@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller intends to provide the VIN number for a car, likely for use by a body shop, and agrees to send it via email.",
+  "resolution_steps": [
+    "Agent (Jamie) requests the VIN number for the car.",
+    "Caller agrees to send the VIN via email.",
+    "Agent confirms they will email the VIN to the body shop."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding the need for VIN numbers in insurance claims or body shop communications",
+    "Emailing client information securely"
+  ],
+  "systems_referenced": [
+    "Email"
+  ],
+  "summary": "The caller agrees to provide a VIN number via email for a body shop, with the agent facilitating the process. The conversation concludes with the caller confirming they will send the information.",
+  "_model": "qwen3:14b",
+  "_eval_count": 189,
+  "_total_duration_ms": 47123,
+  "_source_file": "transcripts/parked-501-501-20250812-163222-1755030740.12710.txt",
+  "_direction": "parked",
+  "_char_count": 475
+}

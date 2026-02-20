@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Josefina wanted to confirm the requirement for proof of insurance and ensure the agent was aware of the situation to avoid additional charges. She also aimed to coordinate sending the required document.",
+  "resolution_steps": [
+    "Agent explained the insurance company required proof of insurance, not just the address document.",
+    "Confirmed Josefina had just seen the previous message and was now following up.",
+    "Agreed on sending the proof of insurance via email, with a timeline of Monday if not sooner.",
+    "Set up a follow-up plan: Josefina would notify the agent once sent, and the agent would confirm receipt."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding insurance company requirements for proof of insurance",
+    "Internal system checks for client status (e.g., reference to 'diecisiete' as a date in the system)"
+  ],
+  "systems_referenced": [
+    "Internal client tracking system (mentioned 'sistema' and 'diecisiete' as a date reference)"
+  ],
+  "summary": "Agent followed up with Josefina to clarify the need for proof of insurance, confirmed she would send it via email, and coordinated next steps. The client agreed to send the document by Monday, with a plan to notify the agent upon submission. The call ended with mutual agreement on the timeline and follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 295,
+  "_total_duration_ms": 45523,
+  "_source_file": "transcripts/out-13366181713-100-20260108-164008-1767908408.6596.txt",
+  "_direction": "outbound",
+  "_char_count": 2530
+}

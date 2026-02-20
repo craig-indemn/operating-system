@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Amanda Lyndbury is following up on a request to confirm if her policy has been updated to list her as the 'first and only marketing under policy' after sending an email requesting the change.",
+  "resolution_steps": [
+    "Agent asked when the email was sent and confirmed it was sent the previous day.",
+    "Agent inquired about the email's content to verify details.",
+    "Agent attempted to contact Gary Belcher (mentioned by caller) to clarify the request."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy change processing timelines (24-hour window)",
+    "Email verification procedures for policy updates",
+    "Internal escalation protocols for unresolved requests"
+  ],
+  "systems_referenced": [
+    "Email system (for policy change requests)"
+  ],
+  "summary": "Amanda Lyndbury follows up on a policy update request, confirming she sent an email yesterday. The agent verifies details and escalates to Gary Belcher for further clarification, with the call being transferred mid-conversation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 231,
+  "_total_duration_ms": 42899,
+  "_source_file": "transcripts/in-+13363779003-+17706924631-20251010-151811-1760123891.10381.txt",
+  "_direction": "inbound",
+  "_char_count": 994
+}

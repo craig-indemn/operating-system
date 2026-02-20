@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Stephen Killes is seeking an alternate insurance quote (specifically from Utica) after the previous Auto Owners quote disappeared, and he wants assurance that the new quote won't disappear again.",
+  "resolution_steps": [
+    "Heather confirms that Auto Owners is a top carrier and acknowledges the issue with the missing quote.",
+    "She checks the Utica quote and agrees to send a revised version.",
+    "Heather assures Stephen she will revise and resend the correct quote."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Knowledge of insurance carriers (Auto Owners, Utica) and their pricing structures.",
+    "Ability to retrieve and resend quotes via email.",
+    "Understanding of customer concerns about quote reliability."
+  ],
+  "systems_referenced": [
+    "Email system (mention of emails disappearing and needing to resend)."
+  ],
+  "summary": "Stephen Killes requested an alternate insurance quote after the Auto Owners quote disappeared. Heather confirmed Auto Owners' reliability, checked the Utica quote, and agreed to send a revised version. The call concluded with Heather committing to resend the correct information.",
+  "_model": "qwen3:14b",
+  "_eval_count": 246,
+  "_total_duration_ms": 40503,
+  "_source_file": "transcripts/exten-401-+13366074323-20251015-143636-1760553396.4704.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2583
+}

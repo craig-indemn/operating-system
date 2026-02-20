@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Pam is checking in on Gary to ensure he has properly transitioned his insurance policies after retiring and moving, specifically confirming he received non-renewal notices and secured new coverage.",
+  "resolution_steps": [
+    "Gary confirms he handled all insurance transitions himself, including non-renewal from Northwest and securing new homeowner/car insurance.",
+    "He reveals he is now working with an independent agent named Tyler (affiliated with Colonial Life) after leaving his previous agency.",
+    "Discusses increased insurance costs due to property tax hikes and confirms he found more affordable coverage through his new agent."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy non-renewal processes",
+    "Handling client transitions during agent retirement",
+    "Comparing insurance quotes across carriers",
+    "Understanding impacts of property tax changes on premiums"
+  ],
+  "systems_referenced": [
+    "Northwest",
+    "Colonial Life"
+  ],
+  "summary": "Pam checks in with Gary about his insurance status post-retirement, confirming he independently managed policy transitions. Gary reveals he now works with a new agent, Tyler, through Colonial Life, and discusses challenges with rising insurance costs. The conversation highlights client agency transitions and insurance market dynamics.",
+  "_model": "qwen3:14b",
+  "_eval_count": 272,
+  "_total_duration_ms": 47782,
+  "_source_file": "transcripts/exten-113-+13367621446-20251023-155552-1761249352.5829.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4129
+}

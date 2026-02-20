@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wishes to make a payment for their home insurance policy.",
+  "resolution_steps": [
+    "Agent acknowledges the payment request for the home insurance policy.",
+    "Agent confirms the policy is with NMG Insurance Co. and notes lack of direct access to the carrier's system.",
+    "Agent explains inability to process the payment directly and offers to transfer the call to a specialist.",
+    "Agent initiates transfer to another representative who can assist with the payment."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of Alliance Insurance's carrier partnerships and system access limitations",
+    "Ability to identify insurance providers (NMG, Farmers, Dwelling) and their respective systems"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance customer portal (myallianceinsurance.com)",
+    "Internal agent transfer system"
+  ],
+  "summary": "A caller attempted to make a home insurance payment, but the agent could not access the carrier's system directly. The agent identified the policy was with NMG Insurance Co. and transferred the call to a specialist who could handle the payment request.",
+  "_model": "qwen3:14b",
+  "_eval_count": 250,
+  "_total_duration_ms": 35148,
+  "_source_file": "transcripts/in-+13363779003-+19802101980-20250908-112812-1757345292.3421.txt",
+  "_direction": "inbound",
+  "_char_count": 1775
+}

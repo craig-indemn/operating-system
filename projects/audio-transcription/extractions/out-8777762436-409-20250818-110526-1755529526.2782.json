@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Corbin, an agent for Living Goods, needed to obtain missing drivers' license numbers for policyholders Paula, Haley, and Alan to process an insurance matter.",
+  "resolution_steps": [
+    "Agent verified Corbin's identity using his name and agent code.",
+    "Agent accessed the policy file for Paula and retrieved her North Carolina license number (21143064) with leading zeros.",
+    "Agent provided Haley's North Carolina license number (000040378345) after confirming the format.",
+    "Agent retrieved Alan's North Carolina license number (000024712915) and confirmed the details with Corbin.",
+    "Agent confirmed no further assistance was needed and ended the call."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Access to Progressive's policyholder database to retrieve license numbers",
+    "Understanding of license number formatting requirements (including leading zeros)",
+    "Verification protocols for agent identity and policy details"
+  ],
+  "systems_referenced": [
+    "Progressive's internal policy management system"
+  ],
+  "summary": "Corbin, an agent for Living Goods, contacted Progressive to retrieve missing drivers' license numbers for three policyholders. The agent successfully located and provided the numbers after verifying Corbin's credentials and confirming the required format. The call concluded with Corbin indicating no further needs.",
+  "_model": "qwen3:14b",
+  "_eval_count": 313,
+  "_total_duration_ms": 36693,
+  "_source_file": "transcripts/out-8777762436-409-20250818-110526-1755529526.2782.txt",
+  "_direction": "outbound",
+  "_char_count": 1716
+}

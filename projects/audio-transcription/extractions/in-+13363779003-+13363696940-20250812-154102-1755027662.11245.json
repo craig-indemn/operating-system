@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Melissa Beasley from First Bank attempted to contact Anna Joy through Alliance Insurance Services but did not clearly articulate a specific request beyond being connected to her.",
+  "resolution_steps": [
+    "Agent offered to send a text to Anna Joy informing her of the call.",
+    "Agent requested Melissa's name and affiliation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The call was cut off mid-transaction with no resolution. The agent initiated a text notification to Anna Joy but did not confirm if it was sent or if the call was completed. The caller's intent remained unclear beyond requesting to speak with Anna Joy.",
+  "_model": "qwen3:14b",
+  "_eval_count": 162,
+  "_total_duration_ms": 31508,
+  "_source_file": "transcripts/in-+13363779003-+13363696940-20250812-154102-1755027662.11245.txt",
+  "_direction": "inbound",
+  "_char_count": 707
+}

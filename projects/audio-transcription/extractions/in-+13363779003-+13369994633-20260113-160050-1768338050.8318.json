@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with Corbin",
+  "resolution_steps": [
+    "Agent acknowledged request",
+    "Call transferred to Corbin"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Brief transfer to Corbin with no substantive discussion about insurance needs or issues.",
+  "_model": "qwen3:14b",
+  "_eval_count": 86,
+  "_total_duration_ms": 21944,
+  "_source_file": "transcripts/in-+13363779003-+13369994633-20260113-160050-1768338050.8318.txt",
+  "_direction": "inbound",
+  "_char_count": 204
+}

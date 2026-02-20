@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear, as the conversation appears fragmented and lacks a clear purpose or problem statement.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The call contains disjointed dialogue with unclear context, including mentions of insurance policy numbers but no coherent discussion of insurance-related issues. The conversation appears to drift between unrelated topics (e.g., leaf blowing, scheduling) without resolving any specific client need.",
+  "_model": "qwen3:14b",
+  "_eval_count": 119,
+  "_total_duration_ms": 33603,
+  "_source_file": "transcripts/out-13363252214-702-20251110-101047-1762787447.912.txt",
+  "_direction": "outbound",
+  "_char_count": 1193
+}

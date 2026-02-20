@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jeff is requesting the Certificate of Insurance (COI) in the format Keith previously used and emphasizes the need to correctly list clinicians (e.g., Carrie Fox, Bill Fox). He also informs Khalil of an upcoming trip to Minnesota, which will delay a scheduled meeting.",
+  "resolution_steps": [
+    "Khalil confirms he received the email and forwarded it to processing, estimating a 2-day turnaround.",
+    "Khalil assures Jeff he will address any issues with clinician listings and notify him if problems arise.",
+    "Khalil acknowledges Jeff's travel plans to Minnesota and agrees to reschedule the meeting for after Jeff's return on Thursday.",
+    "Khalil agrees to inform Joe of Jeff's unavailability until Thursday."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding COI processing workflows",
+    "Handling client communication for insurance documentation",
+    "Managing meeting rescheduling due to client unavailability"
+  ],
+  "systems_referenced": [
+    "email",
+    "processing system"
+  ],
+  "summary": "Jeff requested a specific COI format and clarified clinician listing requirements. Khalil confirmed processing steps and rescheduled a meeting due to Jeff's travel. The call concluded with mutual agreement to follow up after Jeff's return on Thursday.",
+  "_model": "qwen3:14b",
+  "_eval_count": 282,
+  "_total_duration_ms": 42486,
+  "_source_file": "transcripts/exten-206-+13368133908-20250929-155637-1759175797.6383.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1817
+}

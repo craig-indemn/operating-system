@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller, Armando, attempted to reach an agent (Gloria) to obtain a loss history on his policy but was not connected.",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Armando left a voicemail reporting difficulties reaching an agent to obtain policy loss history information. The call appears to be a disconnected attempt with no agent interaction.",
+  "_model": "qwen3:14b",
+  "_eval_count": 110,
+  "_total_duration_ms": 38553,
+  "_source_file": "transcripts/in-+13363779003-+13364161507-20251112-153830-1762979910.7574.txt",
+  "_direction": "inbound",
+  "_char_count": 345
+}

@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Amy Gravely is seeking assistance to resolve a DMV notice indicating a lapse in vehicle insurance, which she disputes, and needs help filing an electronic FS-1 form.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's concern about the DMV notice and the alleged insurance lapse.",
+    "Agent offers to connect the caller with another agent who can assist with filing the required FS-1 form."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of DMV insurance-related forms (e.g., FS-1)",
+    "Process for addressing insurance lapse notices"
+  ],
+  "systems_referenced": [],
+  "summary": "Amy Gravely contacted Alliance Insurance to address a DMV notice claiming a vehicle insurance lapse. The agent acknowledged the issue and offered to transfer her to another agent who can assist with filing the required electronic FS-1 form.",
+  "_model": "qwen3:14b",
+  "_eval_count": 205,
+  "_total_duration_ms": 33848,
+  "_source_file": "transcripts/in-+13363779003-+13367559825-20250911-104859-1757602139.2123.txt",
+  "_direction": "inbound",
+  "_char_count": 495
+}

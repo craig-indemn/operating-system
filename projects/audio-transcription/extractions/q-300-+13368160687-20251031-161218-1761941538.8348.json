@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Christy is seeking clarification on time limits for vehicle repairs after an accident and is concerned about a check labeled 'full and final settlement' from the insurance adjuster, which she is hesitant to accept.",
+  "resolution_steps": [
+    "Jamie explains that carriers vary in their processes and advises Christy to communicate directly with the adjuster to clarify timelines.",
+    "Jamie acknowledges the check issue and explains that initial checks are often partial payments, with additional funds released as repairs progress.",
+    "Jamie shares a personal anecdote about a similar experience to reassure Christy that additional repairs often emerge during the process."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance claims process",
+    "Adjuster responsibilities",
+    "Carrier-specific procedures",
+    "Handling partial payments and settlement checks"
+  ],
+  "systems_referenced": [
+    "National General insurance carrier",
+    "Adjuster communication channels"
+  ],
+  "summary": "Christy sought guidance on repair timelines and a confusing settlement check after her son's accident. Jamie explained carrier variability, advised direct communication with the adjuster, and clarified that initial checks are often partial payments. Jamie also reassured Christy with a personal example of similar experiences, emphasizing the need for ongoing adjuster engagement.",
+  "_model": "qwen3:14b",
+  "_eval_count": 275,
+  "_total_duration_ms": 36600,
+  "_source_file": "transcripts/q-300-+13368160687-20251031-161218-1761941538.8348.txt",
+  "_direction": "queue",
+  "_char_count": 4739
+}

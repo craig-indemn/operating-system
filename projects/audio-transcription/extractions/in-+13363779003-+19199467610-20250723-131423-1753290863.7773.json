@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jasmine is following up on a previous conversation with Gloria regarding a commercial auto policy to check if there was a coverage lapse and to confirm if Gloria is available for a callback.",
+  "resolution_steps": [
+    "Agent acknowledges Jasmine's request and confirms the previous interaction with Gloria.",
+    "Agent offers to check Gloria's current availability."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Commercial auto policy procedures",
+    "Internal agent availability tracking"
+  ],
+  "systems_referenced": [
+    "Internal agent tracking system"
+  ],
+  "summary": "Jasmine contacted Alliance Insurance to follow up on a commercial auto policy inquiry and a promised callback from Gloria. The agent confirmed the previous interaction and offered to check Gloria's availability, leaving the call unresolved but setting up a potential follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 188,
+  "_total_duration_ms": 32602,
+  "_source_file": "transcripts/in-+13363779003-+19199467610-20250723-131423-1753290863.7773.txt",
+  "_direction": "inbound",
+  "_char_count": 431
+}

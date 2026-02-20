@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Provide a brief follow-up about certificate delivery and offer further assistance.",
+  "resolution_steps": [],
+  "outcome": "not_applicable",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief informational call confirming certificate delivery with no actionable items or problem-solving involved.",
+  "_model": "qwen3:14b",
+  "_eval_count": 82,
+  "_total_duration_ms": 26431,
+  "_source_file": "transcripts/out-13363748453-207-20251107-131759-1762539479.4471.txt",
+  "_direction": "outbound",
+  "_char_count": 297
+}

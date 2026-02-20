@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Carlos wants to remove his 2012 Honda Accord from his insurance policy and reverse the license plate transfer to the van, ensuring no additional charges are applied.",
+  "resolution_steps": [
+    "Brandy confirms the details of the vehicle removal request.",
+    "Acknowledges the prior communication with Jamie and the unresolved issue.",
+    "Agrees to process the removal of the Honda Accord from the policy.",
+    "Notes that the license plate transfer to the van is already completed and will not incur additional charges."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy management procedures for vehicle removals",
+    "License plate transfer reversal processes",
+    "Handling customer disputes over prior communications"
+  ],
+  "systems_referenced": [
+    "Insurance policy management system",
+    "Vehicle registration database"
+  ],
+  "summary": "Carlos requested removal of his Honda Accord from his policy and reversal of a license plate transfer to a van. Brandy confirmed the action would be taken without additional charges. The call concluded with Brandy agreeing to handle the removal.",
+  "_model": "qwen3:14b",
+  "_eval_count": 241,
+  "_total_duration_ms": 33110,
+  "_source_file": "transcripts/q-300-+13369994633-20251017-112644-1760714804.2185.txt",
+  "_direction": "queue",
+  "_char_count": 950
+}

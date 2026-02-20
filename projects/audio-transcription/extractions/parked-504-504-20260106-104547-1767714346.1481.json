@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Holly is following up on a previous voicemail to update Taylor's roof insurance claim, verify details about the roof repair, and request an invoice from the roofing company.",
+  "resolution_steps": [
+    "Holly asks Taylor to confirm the address (1621 Princeton Street, Winston Salem, 27103).",
+    "Holly confirms the roof work was completed on December 11, 2025.",
+    "Holly requests an invoice from the roofing company to process the claim.",
+    "Taylor provides his email (TMCA...@gmail.com) for receiving the invoice.",
+    "Holly states she will send the invoice and update the carrier's system."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance claims process for property damage",
+    "Verification of repair dates and documentation",
+    "Carrier-specific procedures for roof updates"
+  ],
+  "systems_referenced": [
+    "Carrier portal (referenced as 'the carrier')",
+    "Email system (for sending/receiving invoices)"
+  ],
+  "summary": "Holly from Alliance Insurance Services follows up with Taylor to verify details about a completed roof repair (date, address) and request an invoice to update the insurance claim. Taylor confirms the details and provides his email for receiving the invoice. Holly commits to sending the invoice and processing the carrier update.",
+  "_model": "qwen3:14b",
+  "_eval_count": 305,
+  "_total_duration_ms": 32178,
+  "_source_file": "transcripts/parked-504-504-20260106-104547-1767714346.1481.txt",
+  "_direction": "parked",
+  "_char_count": 1202
+}

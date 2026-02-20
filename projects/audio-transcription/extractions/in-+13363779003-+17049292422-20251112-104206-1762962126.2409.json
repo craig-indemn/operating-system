@@ -1,0 +1,20 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Not applicable (automated hold message with no direct caller interaction)",
+  "resolution_steps": [
+    "Placed caller on hold",
+    "Provided general information about customer portal and texting options"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [
+    "myallianceinsurance.com customer portal"
+  ],
+  "summary": "Automated hold message informing caller of available online services and texting option. No substantive interaction occurred as the call was placed on hold without addressing a specific request.",
+  "_model": "qwen3:14b",
+  "_eval_count": 123,
+  "_total_duration_ms": 21503,
+  "_source_file": "transcripts/in-+13363779003-+17049292422-20251112-104206-1762962126.2409.txt",
+  "_direction": "inbound",
+  "_char_count": 798
+}

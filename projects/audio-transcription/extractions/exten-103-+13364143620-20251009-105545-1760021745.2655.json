@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Joe is coordinating with Kendall to review a 130-page insurance proposal, address exclusions, and ensure proper tracking of documents in Salesforce. He also seeks clarification on system navigation (cases vs. opportunities) and plans a follow-up call.",
+  "resolution_steps": [
+    "Kendall explains that the 130-page proposal is stored in Salesforce under a case, not an opportunity.",
+    "Clarifies that emails related to the case are kept under the case for better organization.",
+    "Acknowledges Joe's confusion about Salesforce structure and confirms the need to review exclusions via a call.",
+    "Agrees to relay critical information through Salesforce chatter if a call isn't feasible."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Salesforce navigation (cases, opportunities, carrier submissions)",
+    "Insurance proposal documentation (exclusions, endorsements)",
+    "Coordination between teams and carriers"
+  ],
+  "systems_referenced": [
+    "Salesforce (cases, opportunities, carrier submissions)",
+    "Microsoft Teams",
+    "Jupiter (likely a CRM or internal system)",
+    "Carrier submission portals"
+  ],
+  "summary": "Kendall and Joe discuss organizing a client's insurance proposal, with Kendall guiding Joe on Salesforce document management (cases vs. opportunities) and confirming a follow-up call to address exclusions. The conversation highlights system navigation challenges and coordination between teams.",
+  "_model": "qwen3:14b",
+  "_eval_count": 306,
+  "_total_duration_ms": 47640,
+  "_source_file": "transcripts/exten-103-+13364143620-20251009-105545-1760021745.2655.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3308
+}

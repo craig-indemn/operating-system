@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Crystal is seeking assistance with an audit-related debt of $9,000 that has been sent to collections. She wants to resolve the issue by reopening the audit and submitting required documentation.",
+  "resolution_steps": [
+    "Cody acknowledges the audit issue and confirms the debt amount.",
+    "Cody advises sending an email to the collection agency, CCing Crystal, to reopen the audit.",
+    "He explains that the audit will be resolved once completed, potentially resulting in a refund.",
+    "Cody provides details about an upcoming policy expiration (Travelers policy ending September 22) and anticipates documentation requests in mid-October.",
+    "He instructs Crystal to submit available documents (yearly taxes, if quarterly records are missing) and assures her that Interest will not demand excessive payments."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Audit resolution processes for insurance carriers",
+    "Handling of overdue payments and collections",
+    "Policy term timelines (e.g., 2023-2024 vs. 2024-2025 terms)",
+    "Communication strategies for unresolved claims"
+  ],
+  "systems_referenced": [
+    "Travelers insurance policy system",
+    "Email communication with collection agencies"
+  ],
+  "summary": "Crystal discusses an unresolved audit leading to a $9,000 debt sent to collections. Cody assists by advising email communication to reopen the audit, explains policy timelines, and outlines next steps for submitting documentation. The call concludes with instructions to monitor for follow-up and submit available records.",
+  "_model": "qwen3:14b",
+  "_eval_count": 347,
+  "_total_duration_ms": 49149,
+  "_source_file": "transcripts/exten-207-+13367106929-20250902-090502-1756818302.151.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4246
+}

@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unknown (caller only said 'Hello' after greeting)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Very brief call where caller only responded with 'Hello' after a lottery center greeting. No meaningful conversation or intent identified.",
+  "_model": "qwen3:14b",
+  "_eval_count": 88,
+  "_total_duration_ms": 22103,
+  "_source_file": "transcripts/in-+13363682529-+14342401437-20251013-115232-1760370752.4345.txt",
+  "_direction": "inbound",
+  "_char_count": 80
+}

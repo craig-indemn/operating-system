@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is requesting assistance to resolve a missing email confirmation for a new car added to their insurance policy, which is needed for a bank submission.",
+  "resolution_steps": [
+    "Agent Olanka acknowledged the caller's issue with the missing email.",
+    "Olanka offered to check if an agent is available to assist further.",
+    "The call was transferred to another agent for resolution."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy management processes",
+    "Email notification system for policy updates"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's internal policy management system"
+  ],
+  "summary": "A caller reported not receiving an email confirmation for a new car added to their policy, which is required for a bank submission. The agent acknowledged the issue and transferred the call to another agent for further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 198,
+  "_total_duration_ms": 23367,
+  "_source_file": "transcripts/in-+13363779003-+19803783399-20250909-143705-1757443025.10437.txt",
+  "_direction": "inbound",
+  "_char_count": 432
+}

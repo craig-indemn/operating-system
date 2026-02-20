@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Attempt to reach Corbin Dirks at Alliance Insurance",
+  "resolution_steps": [
+    "Agent acknowledges call",
+    "States 'One second' while attempting transfer"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Very brief call where caller requested transfer to Corbin Dirks. Agent responded with 'One second' but no further action or resolution was completed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 107,
+  "_total_duration_ms": 24938,
+  "_source_file": "transcripts/in-+13363779003-+19802959211-20251222-134300-1766428980.3609.txt",
+  "_direction": "inbound",
+  "_char_count": 129
+}

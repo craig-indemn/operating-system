@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking assistance to obtain a commercial insurance quote for a box truck and is inquiring whether Alliance Insurance works with agents to facilitate this.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's request for a commercial insurance quote.",
+    "Agent confirms they will connect the caller with a commercial insurance agent."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Commercial insurance products",
+    "Call routing procedures for specialty insurance needs"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller requested a commercial insurance quote for a box truck and asked if Alliance Insurance works with agents. The agent confirmed they would connect the caller with a commercial insurance agent to assist with the quote request.",
+  "_model": "qwen3:14b",
+  "_eval_count": 171,
+  "_total_duration_ms": 37205,
+  "_source_file": "transcripts/in-+13363779003-+17438370295-20250812-111509-1755011709.2719.txt",
+  "_direction": "inbound",
+  "_char_count": 380
+}

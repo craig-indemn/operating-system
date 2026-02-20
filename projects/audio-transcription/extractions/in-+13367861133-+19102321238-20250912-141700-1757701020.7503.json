@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Caller sought assistance with their insurance policy and requested to speak with Corbin.",
+  "resolution_steps": [
+    "Receptionist acknowledged the request and stated they would retrieve Corbin."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller requested to speak with Corbin about their policy. Receptionist confirmed they would connect the caller but no further conversation or resolution was recorded.",
+  "_model": "qwen3:14b",
+  "_eval_count": 111,
+  "_total_duration_ms": 25613,
+  "_source_file": "transcripts/in-+13367861133-+19102321238-20250912-141700-1757701020.7503.txt",
+  "_direction": "inbound",
+  "_char_count": 177
+}

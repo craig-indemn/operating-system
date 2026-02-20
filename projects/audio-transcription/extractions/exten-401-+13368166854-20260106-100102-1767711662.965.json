@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Brandy Gray called to follow up on a previous outreach, review her insurance policies, and discuss potential changes (e.g., life insurance, home renovations) after encountering issues with her insurance being canceled and experiencing home-related incidents.",
+  "resolution_steps": [
+    "Heather confirmed Brandy's homeowners policy renewal date (Feb 17) and noted a $100 rate increase.",
+    "Discussed Brandy's auto insurance through her father's Nationwide policy.",
+    "Offered to provide life insurance quotes if Brandy's mother is interested.",
+    "Inquired about home renovations (bathroom, kitchen, basement) and past issues (air conditioning failure, frozen unit, water leaks).",
+    "Acknowledged Brandy's past insurance cancellation and ongoing home repairs."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy review processes",
+    "Rate increase calculations",
+    "Handling policyholder inquiries about coverage changes",
+    "Understanding impacts of home renovations on insurance",
+    "Managing claims and cancellations"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services internal account system",
+    "Nationwide (auto and homeowners insurance provider)",
+    "Online portal (mentioned by Brandy)"
+  ],
+  "summary": "Heather from Alliance Insurance Services reviewed Brandy Gray's homeowners policy, discussed a rate increase, and explored potential coverage changes. Brandy mentioned her auto insurance through her father's Nationwide policy, life insurance through her job, and home renovation plans. Heather offered to provide quotes for her parents' insurance if they wanted to switch from Nationwide. The call ended with Brandy agreeing to check with her mother and follow up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 365,
+  "_total_duration_ms": 56481,
+  "_source_file": "transcripts/exten-401-+13368166854-20260106-100102-1767711662.965.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4189
+}

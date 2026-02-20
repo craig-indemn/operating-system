@@ -1,0 +1,23 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; caller only mentions trying to reach Brian Leftwich and references 'mod advisor' without elaborating on their request.",
+  "resolution_steps": [
+    "Agent confirmed Brian Leftwich was unavailable.",
+    "Agent offered to transfer the call or leave a voicemail.",
+    "Caller agreed to leave a voicemail.",
+    "Agent began looking up Brian's new extension number."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Internal directory updates (new extensions)",
+    "Call transfer protocols"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller attempted to reach Brian Leftwich but did not clearly state their purpose. The agent initiated a voicemail transfer but was interrupted while looking up the updated extension number. The conversation lacks resolution of the caller's underlying need.",
+  "_model": "qwen3:14b",
+  "_eval_count": 188,
+  "_total_duration_ms": 37683,
+  "_source_file": "transcripts/in-+13363779003-+13363319203-20251104-151746-1762287466.6462.txt",
+  "_direction": "inbound",
+  "_char_count": 694
+}

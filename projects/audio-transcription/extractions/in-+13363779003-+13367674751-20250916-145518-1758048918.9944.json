@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Carol Rowe wants to speak to an agent who handles homeowners insurance policies.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's request for a homeowners insurance specialist.",
+    "Agent puts the caller on hold to connect her with the appropriate department."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy types (homeowners)",
+    "Process for transferring calls to specialized departments"
+  ],
+  "systems_referenced": [],
+  "summary": "Carol Rowe requested assistance with homeowners insurance. The agent acknowledged the request and is transferring the call to the appropriate department. The call is ongoing, and resolution is pending the transfer.",
+  "_model": "qwen3:14b",
+  "_eval_count": 157,
+  "_total_duration_ms": 40214,
+  "_source_file": "transcripts/in-+13363779003-+13367674751-20250916-145518-1758048918.9944.txt",
+  "_direction": "inbound",
+  "_char_count": 248
+}

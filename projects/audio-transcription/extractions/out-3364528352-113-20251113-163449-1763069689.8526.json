@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is following up on an insurance policy request, seeking clarification on sending policy documents via email, handling a safe code refund, and addressing coverage for outbuildings.",
+  "resolution_steps": [
+    "Agent confirms email address (CarringtonCovered.com) for sending policy documents.",
+    "Explains process for handling safe code refund and check issuance.",
+    "Mentions need for electronic signatures on application and cancel request.",
+    "Informs caller about Grange policy issuance timeline (2 weeks) and potential home inspection.",
+    "Discusses coverage implications for wooden outbuildings and clarifies content coverage.",
+    "Confirms next steps: processing documents the next morning and adjusting policy effective dates to November\u2013November."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy issuance procedures",
+    "Handling safe code refunds and check reconciliation",
+    "Coverage exclusions for outbuildings",
+    "Electronic signature workflows for insurance documents"
+  ],
+  "systems_referenced": [
+    "Grange (insurance provider)",
+    "CarringtonCovered.com (email portal)",
+    "Safe code refund process"
+  ],
+  "summary": "The caller is finalizing an insurance policy with Alliance Insurance Services, requiring guidance on document submission, refund coordination, and coverage clarification for outbuildings. The agent outlines next steps, including electronic signatures, policy processing with Grange, and potential home inspections. The caller agrees to proceed with processing the next day, with effective dates adjusted to November\u2013November.",
+  "_model": "qwen3:14b",
+  "_eval_count": 333,
+  "_total_duration_ms": 45044,
+  "_source_file": "transcripts/out-3364528352-113-20251113-163449-1763069689.8526.txt",
+  "_direction": "outbound",
+  "_char_count": 4363
+}

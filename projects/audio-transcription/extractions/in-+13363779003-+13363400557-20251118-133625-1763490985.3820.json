@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "William McElroy wants to switch his insurance policy after purchasing a new car, as he had previously been contacted about his insurance and is now ready to update it.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's intent to switch insurance due to a new car.",
+    "Agent states they will connect the caller to an available agent for further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding insurance policy changes (e.g., updating coverage for a new vehicle)",
+    "Process for transferring or modifying insurance policies when acquiring a new car"
+  ],
+  "systems_referenced": [],
+  "summary": "William McElroy contacted Alliance Insurance Services to update his insurance policy after purchasing a new car. The agent acknowledged his request and offered to connect him to an available agent for further assistance. The call is ongoing, with resolution pending agent availability.",
+  "_model": "qwen3:14b",
+  "_eval_count": 204,
+  "_total_duration_ms": 42726,
+  "_source_file": "transcripts/in-+13363779003-+13363400557-20251118-133625-1763490985.3820.txt",
+  "_direction": "inbound",
+  "_char_count": 380
+}

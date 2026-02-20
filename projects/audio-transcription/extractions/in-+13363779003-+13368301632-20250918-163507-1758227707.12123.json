@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unknown (no conversation beyond automated greeting)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Automated greeting played with no further interaction. No meaningful conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 76,
+  "_total_duration_ms": 16771,
+  "_source_file": "transcripts/in-+13363779003-+13368301632-20250918-163507-1758227707.12123.txt",
+  "_direction": "inbound",
+  "_char_count": 57
+}

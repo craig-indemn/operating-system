@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Stephen Burton wants to renew his son Spencer Burton's renter's insurance policy with Auto Owners, but needs assistance with updating or removing coverage details.",
+  "resolution_steps": [
+    "Agent acknowledges the request for policy renewal with Auto Owners.",
+    "Agent apologizes for the delay and states they need to transfer the call to another agent to handle the update/removal request."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of Auto Owners insurance policies",
+    "Process for updating/removing coverage details",
+    "Internal system navigation for policy management"
+  ],
+  "systems_referenced": [
+    "Auto Owners (insurance carrier)"
+  ],
+  "summary": "Stephen Burton is seeking to renew his son's renter's policy with Auto Owners but requires assistance with coverage adjustments. The agent acknowledges the request and initiates a transfer to another agent for further assistance. The call remains unresolved with a pending callback.",
+  "_model": "qwen3:14b",
+  "_eval_count": 209,
+  "_total_duration_ms": 37635,
+  "_source_file": "transcripts/in-+13363779003-+13363170192-20250722-154527-1753213527.16408.txt",
+  "_direction": "inbound",
+  "_char_count": 515
+}

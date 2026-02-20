@@ -1,0 +1,23 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Trying to reach Heather Scott",
+  "resolution_steps": [
+    "Checked if Heather Scott was available",
+    "Offered to leave a voicemail",
+    "Transferred the call to her voicemail"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Internal system to check agent availability"
+  ],
+  "systems_referenced": [
+    "Internal system"
+  ],
+  "summary": "Caller attempted to reach Heather Scott; agent transferred the call to her voicemail.",
+  "_model": "qwen3:14b",
+  "_eval_count": 111,
+  "_total_duration_ms": 89283,
+  "_source_file": "transcripts/in-+13363544000-+12527679173-20250811-113317-1754926397.6830.txt",
+  "_direction": "inbound",
+  "_char_count": 449
+}

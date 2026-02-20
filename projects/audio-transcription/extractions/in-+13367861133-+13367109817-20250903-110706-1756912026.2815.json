@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller needs to pay his insurance bill but requires assistance locating the Mount Airy office and speaking to Amanda. He mentions being in the hospital and not having returned home yet, which may impact his ability to pay.",
+  "resolution_steps": [
+    "Agent asks for the caller's name (John Wendell) and confirms he needs to speak to Amanda.",
+    "Agent puts the caller on hold to connect him to the Mount Airy office.",
+    "Agent provides hold music information, including the customer portal (myallianceinsurance.com) and texting option (336-786-1133)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Routing calls to specific offices (Mount Airy).",
+    "Handling billing inquiries and payment-related issues.",
+    "Providing hold music information and customer support channels."
+  ],
+  "systems_referenced": [
+    "myallianceinsurance.com (customer portal)",
+    "Texting service (336-786-1133)"
+  ],
+  "summary": "John Wendell calls Alliance Insurance to pay his bill but needs help locating the Mount Airy office and speaking to Amanda. The agent puts him on hold and provides hold music information, including the customer portal and texting option. The call is ongoing, and resolution is pending.",
+  "_model": "qwen3:14b",
+  "_eval_count": 299,
+  "_total_duration_ms": 57339,
+  "_source_file": "transcripts/in-+13367861133-+13367109817-20250903-110706-1756912026.2815.txt",
+  "_direction": "inbound",
+  "_char_count": 1733
+}

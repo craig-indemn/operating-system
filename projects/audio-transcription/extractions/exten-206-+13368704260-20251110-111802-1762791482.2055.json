@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Tyler Adams is reaching out to discuss potential re-engagement of Scenic Motors as a client, leveraging recent loss cost reductions in North Carolina and opportunities for workers' comp remarketing.",
+  "resolution_steps": [
+    "Keith confirms Scenic Motors' openness to re-engagement despite their current relationship with Entrust.",
+    "Discusses recent loss cost improvements (22-23% reduction for North Carolina dealerships) and exception filings for specific class codes.",
+    "Mentions ongoing efforts to remarket Scenic Motors' workers' comp business and integrate payroll systems for automation.",
+    "Agrees to send an email summarizing the conversation, including loss cost data and next steps, with a copy to Rick for internal coordination."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Loss cost adjustment mechanisms in workers' comp insurance",
+    "Carrier-specific details (Entrust, Security National Paper)",
+    "Payroll integration systems for insurance automation"
+  ],
+  "systems_referenced": [
+    "Entrust (current carrier)",
+    "Security National Paper (potential carrier)",
+    "Payroll integration systems"
+  ],
+  "summary": "Tyler Adams discusses opportunities to re-engage Scenic Motors with Alliance Insurance Services, highlighting recent loss cost reductions and remarketing potential. Keith confirms interest and agrees to follow up with detailed information. The conversation covers carrier-specific details, payroll integration benefits, and internal coordination with Rick.",
+  "_model": "qwen3:14b",
+  "_eval_count": 314,
+  "_total_duration_ms": 47335,
+  "_source_file": "transcripts/exten-206-+13368704260-20251110-111802-1762791482.2055.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4172
+}

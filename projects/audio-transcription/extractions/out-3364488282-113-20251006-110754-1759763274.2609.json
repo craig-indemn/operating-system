@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The transcript appears to be a voicemail greeting from Sam, but the call direction is outbound, making the content unclear and likely not substantive.",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The transcript contains a voicemail greeting from Sam and a message from Gary at Alliance Insurance, but the call direction is outbound, leading to ambiguity. The content does not clearly indicate a substantive conversation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 118,
+  "_total_duration_ms": 89352,
+  "_source_file": "transcripts/out-3364488282-113-20251006-110754-1759763274.2609.txt",
+  "_direction": "outbound",
+  "_char_count": 455
+}

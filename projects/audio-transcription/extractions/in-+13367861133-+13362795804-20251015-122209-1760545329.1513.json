@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking to compare homeowners insurance rates for three properties and is not currently with Alliance Insurance.",
+  "resolution_steps": [
+    "Agent confirmed the caller's intent to obtain homeowners insurance.",
+    "Agent asked if the caller currently has insurance with Alliance, to which the caller replied 'No.'",
+    "Agent requested a moment to process the request."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Homeowners insurance products",
+    "Rate comparison processes",
+    "Customer onboarding procedures"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller inquired about obtaining homeowners insurance for three properties and expressed interest in finding a better rate than their current provider. The agent confirmed the caller is not currently with Alliance and requested time to assist further. The conversation was cut off before resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 192,
+  "_total_duration_ms": 42250,
+  "_source_file": "transcripts/in-+13367861133-+13362795804-20251015-122209-1760545329.1513.txt",
+  "_direction": "inbound",
+  "_char_count": 358
+}

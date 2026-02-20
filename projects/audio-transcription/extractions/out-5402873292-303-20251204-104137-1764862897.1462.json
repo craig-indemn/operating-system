@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Mark from Alliance Insurance) aimed to thank the client (Miss Claiborne) for her business and verify her contact information and household details.",
+  "resolution_steps": [
+    "Confirmed the client's phone number as her best contact number.",
+    "Verified her mailing address (610 Mahala Avenue, Salisbury).",
+    "Asked if there had been any major changes in her household (e.g., new vehicles, drivers).",
+    "Reassured the client of her value as a customer and offered further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Client verification procedures for existing policyholders",
+    "Standard customer appreciation protocols"
+  ],
+  "systems_referenced": [],
+  "summary": "An Alliance Insurance agent called a client to express gratitude for her business, verify her contact information, and confirm no recent household changes. The conversation was friendly and concluded with the client expressing appreciation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 215,
+  "_total_duration_ms": 33537,
+  "_source_file": "transcripts/out-5402873292-303-20251204-104137-1764862897.1462.txt",
+  "_direction": "outbound",
+  "_char_count": 1302
+}

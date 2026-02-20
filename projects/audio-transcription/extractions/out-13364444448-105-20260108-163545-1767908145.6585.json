@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking assistance with modifying the date on an existing bond document without redoing the entire document, as they are confused about whether this is possible and need guidance on resolving discrepancies between bond forms from different insurers.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's confusion about modifying the date on a bond document.",
+    "Agent reviews the documents in question (Red Street Tunnel bid bond, Liberty Mutual vs. Cincinnati forms).",
+    "Agent explains that changing the date on an existing sealed bond may require issuing a new document.",
+    "Agent plans to send an email to Brian (a colleague) to request help editing the PDF to adjust the date.",
+    "Agent intends to follow up with a phone call to Brian for further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of bid bond forms and insurance carrier requirements (Liberty Mutual, Cincinnati).",
+    "Knowledge of document editing workflows and PDF manipulation.",
+    "Experience with insurance document redrafting processes."
+  ],
+  "systems_referenced": [
+    "Liberty Mutual bond form",
+    "Cincinnati bond form",
+    "PDF editing tools (implied, though not named)"
+  ],
+  "summary": "The caller is struggling with a bid bond document discrepancy, needing to adjust the date on an existing sealed document. The agent is working through the issue by reviewing documents, explaining limitations, and planning to contact a colleague for PDF editing assistance. The call remains unresolved but is progressing toward a potential solution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 331,
+  "_total_duration_ms": 50242,
+  "_source_file": "transcripts/out-13364444448-105-20260108-163545-1767908145.6585.txt",
+  "_direction": "outbound",
+  "_char_count": 3982
+}

@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Luis Castillo seeks assistance to obtain insurance for himself and \u00c1ngel to secure a driver's license, specifically requesting non-owners insurance which Alliance Insurance does not provide.",
+  "resolution_steps": [
+    "Agent clarifies Alliance Insurance does not offer non-owners insurance but can refer Luis to another agency.",
+    "Agent requests Luis to provide photos of vehicle VINs, address, phone number, email, and the name of the shop.",
+    "Agent agrees to send the information and the other agency's contact details via message.",
+    "Resolves confusion about phone numbers by confirming Luis's number and agreeing to send the information today or tomorrow."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of non-owners insurance and its availability (or lack thereof) at Alliance Insurance",
+    "Process for obtaining driver's license insurance",
+    "Referral procedures to external agencies"
+  ],
+  "systems_referenced": [
+    "messaging platform (implicit, for sending photos and information)"
+  ],
+  "summary": "Luis Castillo requested non-owners insurance for himself and \u00c1ngel to obtain a driver's license. The agent explained Alliance Insurance does not provide this coverage but offered to refer him to another agency. The agent collected necessary documentation details and agreed to send the information and referral details via message. The call concluded with the agent confirming they would send the information today or tomorrow.",
+  "_model": "qwen3:14b",
+  "_eval_count": 307,
+  "_total_duration_ms": 48222,
+  "_source_file": "transcripts/exten-100-+17432859061-20250930-110815-1759244895.1381.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2276
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Theron Porter is confused about receiving a $40 bill from Progressive after paying in full on November 4th and wants clarification on the charges related to a paperless discount.",
+  "resolution_steps": [
+    "Tracy checks Theron's policy and identifies a $40 charge linked to a paperless discount change processed on December 19th.",
+    "Tracy explains the charge stems from an automatic paperless enrollment adjustment, not a dispute or error.",
+    "Theron refuses to complete the paperless enrollment process and opts to pay the $40 charge directly.",
+    "Tracy processes the payment using the provided credit card details."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Progressive's billing processes for paperless discounts",
+    "Policy management system navigation",
+    "Handling customer disputes over unexpected charges"
+  ],
+  "systems_referenced": [
+    "Progressive's policy management system",
+    "Payment processing system"
+  ],
+  "summary": "Theron Porter disputed a $40 Progressive bill after full payment in November, which Tracy traced to a December paperless discount adjustment. Theron refused to complete paperless enrollment and paid the $40 directly. Tracy processed the payment, resolving the immediate issue but leaving the underlying policy adjustment unaddressed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 290,
+  "_total_duration_ms": 38536,
+  "_source_file": "transcripts/q-300-+13363417188-20260109-101742-1767971862.733.txt",
+  "_direction": "queue",
+  "_char_count": 3411
+}

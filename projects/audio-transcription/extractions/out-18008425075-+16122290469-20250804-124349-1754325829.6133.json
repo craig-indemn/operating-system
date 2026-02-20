@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Taylor) wants to add a new home in Minnesota to their existing Travelers policy in North Carolina but is confused about whether Alliance Insurance Services can handle this and how to proceed.",
+  "resolution_steps": [
+    "Agent Crystal clarifies that the Minnesota home cannot be added to the existing policy but can have its own separate policy with a multi-policy discount if both policies are with Travelers.",
+    "Crystal requests the Minnesota zip code (55416) to find a local agent.",
+    "Crystal identifies Dyste Agency (nearby in Minnesota) and provides contact details (phone number, address).",
+    "Crystal offers an alternative agent option: Brown and Brown Insurance Services."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Travelers' policy bundling rules and multi-policy discount eligibility",
+    "Process for connecting customers with local agents in different states",
+    "Travelers' agent directory and location-based agent matching"
+  ],
+  "systems_referenced": [
+    "Travelers' internal agent directory system"
+  ],
+  "summary": "Taylor sought to add a Minnesota home to their existing Travelers policy but faced conflicting guidance from their agent (Alliance). Crystal clarified that a separate policy would be needed for Minnesota, explained multi-policy discount eligibility, and connected Taylor with local Minnesota agents (Dyste Agency and Brown and Brown Insurance Services) to proceed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 310,
+  "_total_duration_ms": 59065,
+  "_source_file": "transcripts/out-18008425075-+16122290469-20250804-124349-1754325829.6133.txt",
+  "_direction": "outbound",
+  "_char_count": 4260
+}

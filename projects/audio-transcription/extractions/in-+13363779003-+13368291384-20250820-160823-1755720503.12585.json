@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; fragmented conversation with ambiguous references to 'a plan' and 'the house'",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Fragmented and incoherent conversation with no clear request or resolution. Caller mentions 'a plan' and 'the house' but no actionable intent is identified. Agent responds with minimal acknowledgment.",
+  "_model": "qwen3:14b",
+  "_eval_count": 109,
+  "_total_duration_ms": 24278,
+  "_source_file": "transcripts/in-+13363779003-+13368291384-20250820-160823-1755720503.12585.txt",
+  "_direction": "inbound",
+  "_char_count": 231
+}

@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Victoria is following up on a previous conversation to check the status of an insurance quote and confirm the correct email address for communication.",
+  "resolution_steps": [
+    "Agent confirmed they are working on obtaining quotes from other carriers to potentially reduce the premium.",
+    "Agent verified the email address on file (Victoria Hawkins @ Gmail.com) and confirmed it was correct.",
+    "Agent assured Victoria an email with the quote would be sent by Friday."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance quoting process",
+    "Carrier options for premium adjustments",
+    "Email communication protocols"
+  ],
+  "systems_referenced": [
+    "Internal quote tracking system"
+  ],
+  "summary": "Victoria followed up on an insurance quote status. The agent confirmed they were working on alternative carrier quotes, verified the email address, and scheduled a follow-up email by Friday. The call concluded with mutual agreement on next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 212,
+  "_total_duration_ms": 32183,
+  "_source_file": "transcripts/exten-102-+13364076845-20251230-102153-1767108113.1158.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1256
+}

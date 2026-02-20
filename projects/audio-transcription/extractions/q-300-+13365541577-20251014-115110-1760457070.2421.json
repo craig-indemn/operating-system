@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Christopher Minor wants to understand if increasing his deductible from $500 to $1,000 would lower his monthly insurance payments and is concerned about recent billing discrepancies, including a reinstatement fee and unexpected payment increases.",
+  "resolution_steps": [
+    "Agent confirmed Christopher's policy details (2015 Chevy Cruze, $500 deductible).",
+    "Agent calculated the impact of raising the deductible to $1,000, noting a $47 monthly reduction (from $392 to $345).",
+    "Agent reviewed billing history, identifying two payments due on the same day and a prior reinstatement fee.",
+    "Agent decided to contact National General to investigate the billing anomalies and resolve the payment discrepancies."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance deductibles and their impact on premiums",
+    "Billing process for auto insurance policies",
+    "Carrier-specific reinstatement fees and payment structures"
+  ],
+  "systems_referenced": [
+    "National General (insurance carrier)"
+  ],
+  "summary": "Christopher Minor sought to reduce his monthly insurance payments by increasing his deductible but found the savings minimal. The agent identified billing irregularities, including duplicate payments and a reinstatement fee, and committed to contacting the carrier for resolution. The call concluded with a promise to follow up after investigating the billing discrepancies.",
+  "_model": "qwen3:14b",
+  "_eval_count": 306,
+  "_total_duration_ms": 36227,
+  "_source_file": "transcripts/q-300-+13365541577-20251014-115110-1760457070.2421.txt",
+  "_direction": "queue",
+  "_char_count": 2797
+}

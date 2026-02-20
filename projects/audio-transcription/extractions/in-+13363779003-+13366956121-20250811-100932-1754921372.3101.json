@@ -1,0 +1,23 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller attempted to reach their agent, Tracy, regarding their rental insurance.",
+  "resolution_steps": [
+    "Agent informed caller Tracy was on another call.",
+    "Agent offered to transfer the call to Tracy's voicemail."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Standard call transfer procedures",
+    "Voicemail system usage"
+  ],
+  "systems_referenced": [
+    "Voicemail system"
+  ],
+  "summary": "Caller attempted to reach their agent but was directed to voicemail due to agent being unavailable. No substantive resolution occurred beyond the transfer.",
+  "_model": "qwen3:14b",
+  "_eval_count": 145,
+  "_total_duration_ms": 38310,
+  "_source_file": "transcripts/in-+13363779003-+13366956121-20250811-100932-1754921372.3101.txt",
+  "_direction": "inbound",
+  "_char_count": 303
+}

@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Attempt to transfer a call, though the purpose or context of the transfer is unclear.",
+  "resolution_steps": [
+    "Agent agrees to transfer the call",
+    "Caller places the call on hold"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief, unclear conversation where the caller (Steve York) attempts to transfer a call but provides no context or specific request. The agent agrees to transfer, but the call lacks substantive content about insurance services.",
+  "_model": "qwen3:14b",
+  "_eval_count": 126,
+  "_total_duration_ms": 30185,
+  "_source_file": "transcripts/in-+13363779003-+13369711395-20250729-141039-1753812639.8451.txt",
+  "_direction": "inbound",
+  "_char_count": 299
+}

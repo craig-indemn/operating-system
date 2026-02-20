@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Elia wants to remove full coverage from her husband's 2014 Tundra and switch to liability insurance, while also seeking lower home insurance rates with National General.",
+  "resolution_steps": [
+    "Agent confirmed policy details (2014 Tundra, National General, policy number provided).",
+    "Calculated new auto premium: $351/month for liability coverage on the Tundra, reducing total auto cost to $2,220.90 annually.",
+    "Checked home insurance premium: $1,408 annually (or $352 every three months) on a four-pay plan.",
+    "Agent agreed to explore options for lowering home insurance rates."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Auto insurance coverage types (full vs. liability)",
+    "Premium calculation for policy changes",
+    "National General policy management",
+    "Home insurance rate factors and discount eligibility"
+  ],
+  "systems_referenced": [
+    "National General insurance portal",
+    "Internal policy management system"
+  ],
+  "summary": "Elia requested to downgrade her husband's Tundra from full coverage to liability insurance, resulting in a $351/month savings. She also expressed concern about high home insurance rates ($1,408 annually) and requested assistance finding a better provider. The agent confirmed the auto change and agreed to investigate home insurance options.",
+  "_model": "qwen3:14b",
+  "_eval_count": 313,
+  "_total_duration_ms": 36877,
+  "_source_file": "transcripts/q-300-+13366897782-20251104-091518-1762265718.906.txt",
+  "_direction": "queue",
+  "_char_count": 2762
+}

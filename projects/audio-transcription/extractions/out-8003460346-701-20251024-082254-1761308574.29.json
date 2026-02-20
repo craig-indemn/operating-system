@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Alliance Insurance agent) seeks clarification on why a payment processed on Monday for a client's policy has not yet appeared in the client's checking account, despite an adjustment being posted today.",
+  "resolution_steps": [
+    "Ann from Auto Owners confirms the payment was processed on Monday but explains it may take 1-2 business days to post to the account after processing.",
+    "Ann clarifies there were no errors on the caller's end and no deficiencies in the policies.",
+    "The caller agrees to inform the insured about the expected timing of the payment."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of Auto Owners' payment processing timelines (delay between processing and posting to accounts)",
+    "Ability to check policy status for deficiencies"
+  ],
+  "systems_referenced": [
+    "Auto Owners Insurance's internal system"
+  ],
+  "summary": "An Alliance Insurance agent discusses a payment delay with Auto Owners Insurance's Ann. Ann explains that payments can take 1-2 business days to post to accounts after processing, and confirms no errors were found on the agent's end. The agent will relay this information to their client.",
+  "_model": "qwen3:14b",
+  "_eval_count": 259,
+  "_total_duration_ms": 44048,
+  "_source_file": "transcripts/out-8003460346-701-20251024-082254-1761308574.29.txt",
+  "_direction": "outbound",
+  "_char_count": 2723
+}

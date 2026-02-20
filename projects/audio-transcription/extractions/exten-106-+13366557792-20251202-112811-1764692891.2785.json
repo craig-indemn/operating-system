@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Ricardo Castillo requests a certificate from Generability for a company (Martin Roys Drago) and inquires about a collection notice from Alianza Insurance Services, expressing confusion about a payment due on December 4th.",
+  "resolution_steps": [
+    "Agent acknowledges receipt of a voicemail/email about the certificate request.",
+    "Agent confirms the certificate is in the system and will send a copy.",
+    "Agent addresses the collection notice inquiry, noting the payment due date and acknowledging the confusion."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance certificate issuance processes",
+    "Collection notice procedures",
+    "Email communication protocols"
+  ],
+  "systems_referenced": [
+    "Email system",
+    "Alianza Insurance Services collection portal",
+    "Generability certificate database"
+  ],
+  "summary": "Ricardo Castillo requested a Generability certificate for Martin Roys Drago and inquired about a collection notice from Alianza. The agent confirmed the certificate would be sent and acknowledged the collection inquiry, noting the payment due date. The caller expressed confusion about the collection notice despite having a payment scheduled.",
+  "_model": "qwen3:14b",
+  "_eval_count": 254,
+  "_total_duration_ms": 35427,
+  "_source_file": "transcripts/exten-106-+13366557792-20251202-112811-1764692891.2785.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2786
+}

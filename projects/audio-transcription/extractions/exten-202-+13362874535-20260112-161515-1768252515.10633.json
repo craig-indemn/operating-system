@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Grid Valencia is seeking clarification on why their 2019 Volkswagen's insurance coverage was downgraded from full coverage to liability-only, and how to potentially restore full coverage, particularly after a totaled car incident.",
+  "resolution_steps": [
+    "Agent Heather explains that coverage was likely removed in 2024 due to Jose (a household member) failing to provide license information, which is required for full coverage.",
+    "Heather clarifies that lienholders typically require full coverage, and the removal may have been triggered by Jose's lack of licensing.",
+    "Heather offers to investigate further to determine if the coverage change can be reversed, acknowledging the totaled car situation.",
+    "Caller agrees to wait for Heather's follow-up call the next day after lunch."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy requirements for lienholders and full coverage",
+    "Impact of household members' licensing status on policy changes",
+    "Process for reversing policy changes due to missing documentation"
+  ],
+  "systems_referenced": [
+    "Insurance carrier's policy database (implied through discussion of coverage changes)"
+  ],
+  "summary": "Grid Valencia discovered their Volkswagen's insurance was liability-only after a totaled car incident and sought clarification. The agent explained the coverage change likely stemmed from missing license info from a household member (Jose). The agent offered to investigate further and agreed to follow up the next day.",
+  "_model": "qwen3:14b",
+  "_eval_count": 314,
+  "_total_duration_ms": 42345,
+  "_source_file": "transcripts/exten-202-+13362874535-20260112-161515-1768252515.10633.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2848
+}

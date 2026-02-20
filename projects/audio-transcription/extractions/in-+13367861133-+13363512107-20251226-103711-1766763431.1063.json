@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller was attempting to reach Rachel Hall at Alliance Insurance and requested a transfer to her extension.",
+  "resolution_steps": [
+    "Agent confirmed Rachel Hall works at Alliance Insurance.",
+    "Agent attempted to transfer the call to Rachel Hall's extension (72).",
+    "Agent informed the caller they would hold while attempting the transfer.",
+    "Agent offered to assist further if the transfer was unsuccessful."
+  ],
+  "outcome": "transferred",
+  "knowledge_required": [
+    "Internal directory access to verify employee information",
+    "Call transfer procedures"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller attempted to reach Rachel Hall at Alliance Insurance. The agent confirmed Rachel's employment, attempted to transfer the call to her extension, and offered to assist further if needed. The call ended with the agent placing the caller on hold during the transfer attempt.",
+  "_model": "qwen3:14b",
+  "_eval_count": 197,
+  "_total_duration_ms": 55800,
+  "_source_file": "transcripts/in-+13367861133-+13363512107-20251226-103711-1766763431.1063.txt",
+  "_direction": "inbound",
+  "_char_count": 559
+}

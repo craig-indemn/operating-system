@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Dana needs a liability certificate from an insurance company (Dairyland or Century) to present in court on the 26th to dismiss a case related to a truck payment dispute.",
+  "resolution_steps": [
+    "Agent acknowledges Dana's request for a liability certificate.",
+    "Agent offers to put Dana on hold to transfer her to an agent who can process the request.",
+    "Agent confirms the court date (26th) and acknowledges the urgency."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance documents (liability certificates)",
+    "Process for transferring calls to appropriate insurance agents",
+    "Knowledge of court procedures related to insurance liability"
+  ],
+  "systems_referenced": [
+    "Insurance company's claims/underwriting system (Dairyland/Century)"
+  ],
+  "summary": "Dana is seeking a liability certificate from her insurance provider to use in a court case on the 26th. The agent recognizes the need but cannot fulfill the request directly and offers to transfer Dana to an agent who can process the document. The conversation highlights the importance of specific insurance documentation for legal proceedings.",
+  "_model": "qwen3:14b",
+  "_eval_count": 260,
+  "_total_duration_ms": 34054,
+  "_source_file": "transcripts/parked-509-509-20250820-091301-1755695581.254.txt",
+  "_direction": "parked",
+  "_char_count": 1467
+}

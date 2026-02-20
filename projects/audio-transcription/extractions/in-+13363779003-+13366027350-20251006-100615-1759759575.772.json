@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller, Carlos Gonz\u00e1lez, mentions needing to renew a home insurance policy from the previous year and appears to request assistance with transferring to someone who can help with the process.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The call appears to be incomplete, with the caller expressing intent to renew a home insurance policy but no agent response or resolution steps captured in the transcript.",
+  "_model": "qwen3:14b",
+  "_eval_count": 118,
+  "_total_duration_ms": 47150,
+  "_source_file": "transcripts/in-+13363779003-+13366027350-20251006-100615-1759759575.772.txt",
+  "_direction": "inbound",
+  "_char_count": 392
+}

@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Veronica is seeking resolution for an issue where National General insurance did not update Trinity's license status from a permit to a full license, potentially affecting coverage or reimbursement.",
+  "resolution_steps": [
+    "JC requested Trinity's license details and date of issuance.",
+    "JC stated he would contact National General to send the license information and await their system update.",
+    "JC acknowledged the discrepancy in National General's records and committed to follow up with them.",
+    "Veronica requested clarification on potential reimbursement or policy adjustments due to the error."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding insurance policy updates and carrier systems",
+    "Handling disputes over driver license status verification",
+    "Communicating with third-party insurers (National General)"
+  ],
+  "systems_referenced": [
+    "National General"
+  ],
+  "summary": "Veronica reported an issue with National General not updating Trinity's license status from a permit to a full license, causing potential coverage discrepancies. JC confirmed he would contact National General to investigate and resolve the error, while Veronica requested clarification on reimbursement options. The call concluded with JC committing to follow up with the insurer.",
+  "_model": "qwen3:14b",
+  "_eval_count": 252,
+  "_total_duration_ms": 35392,
+  "_source_file": "transcripts/exten-114-+13369787645-20250904-141047-1757009447.6792.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1846
+}

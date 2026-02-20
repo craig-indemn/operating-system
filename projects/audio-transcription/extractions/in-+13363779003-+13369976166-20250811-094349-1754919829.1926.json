@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to update their credit card information for their auto insurance policy.",
+  "resolution_steps": [
+    "Agent confirms the caller's identity (Laura) and verifies the policy type (auto).",
+    "Agent collects new credit card details: number, expiration, security code, and cardholder name.",
+    "Agent requests the zip code associated with the card.",
+    "Agent confirms all details with the caller and states they will process the update."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Procedure for updating payment methods in insurance policies",
+    "Verification of customer identity and policy details",
+    "Handling sensitive financial information securely"
+  ],
+  "systems_referenced": [
+    "Internal policy management system (to view current payment details)"
+  ],
+  "summary": "Laura contacted Alliance Insurance to update her auto policy's payment card. The agent collected her new credit card information, confirmed details, and stated they would process the change. The call concluded with the agent committing to follow up if any issues arose during the update.",
+  "_model": "qwen3:14b",
+  "_eval_count": 237,
+  "_total_duration_ms": 31774,
+  "_source_file": "transcripts/in-+13363779003-+13369976166-20250811-094349-1754919829.1926.txt",
+  "_direction": "inbound",
+  "_char_count": 2234
+}

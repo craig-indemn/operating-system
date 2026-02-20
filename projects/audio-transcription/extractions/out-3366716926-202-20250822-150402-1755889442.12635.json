@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Margaret wants to switch her National General insurance policy billing method to monthly direct bill (instead of auto pay) and make an immediate payment for the upcoming billing cycle.",
+  "resolution_steps": [
+    "Agent Heather confirms the policy details and billing change request.",
+    "Explains the new billing schedule (due on the 23rd of each month) and processes immediate payment.",
+    "Accepts credit card payment over the phone (card number, expiration, and CVV provided).",
+    "Provides confirmation number and sends email receipt.",
+    "Informs client of future payment amounts and schedules."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "National General insurance policy management",
+    "Billing options (direct bill vs. auto pay)",
+    "Payment processing procedures",
+    "Policy renewal schedules"
+  ],
+  "systems_referenced": [
+    "National General policy portal",
+    "Payment processing system"
+  ],
+  "summary": "Heather assists Margaret in switching her National General insurance billing to monthly direct payments, processes an immediate credit card payment, and confirms the change with a confirmation number and email receipt. The client is informed of future payment amounts and schedules.",
+  "_model": "qwen3:14b",
+  "_eval_count": 265,
+  "_total_duration_ms": 33054,
+  "_source_file": "transcripts/out-3366716926-202-20250822-150402-1755889442.12635.txt",
+  "_direction": "outbound",
+  "_char_count": 1681
+}

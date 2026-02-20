@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Attempt to reach a specific individual (Miss Coleman) at Alliance Insurance",
+  "resolution_steps": [
+    "Agent acknowledged caller",
+    "Placed caller on hold"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Very brief inbound call where caller requested to speak with Miss Coleman. Agent placed caller on hold but no further information was exchanged. The call lacks sufficient context to determine any insurance-related intent or resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 118,
+  "_total_duration_ms": 26547,
+  "_source_file": "transcripts/in-+13363779003-+15163162743-20250731-134810-1753984090.11674.txt",
+  "_direction": "inbound",
+  "_char_count": 94
+}

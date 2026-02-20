@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jennifer is confirming whether Wilmer Colleen still has active workers' comp and liability coverage, requesting a commercial auto insurance quote for Wilmer, and seeking assistance with switching insurance providers due to Wilmer's driving record issues.",
+  "resolution_steps": [
+    "Cody confirms Wilmer's workers' comp is active and explains the package policy includes general liability.",
+    "Agrees to retrieve Progressive's lost runs and claims history for Wilmer.",
+    "Requests Wilmer's policy details, registration documents, and current insurance costs from Jennifer.",
+    "Discusses the need for an agent/record change form to transfer Wilmer's policy to Alliance Insurance.",
+    "Notes the challenge of insuring Wilmer due to multiple speeding tickets and suggests staying with Progressive unless the renewal allows a change."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Workers' comp and package policy structures",
+    "Commercial auto insurance underwriting criteria",
+    "Progressive's claims history requirements",
+    "Agent/record change procedures",
+    "Impact of driving records on insurance eligibility"
+  ],
+  "systems_referenced": [
+    "Internal policy management system",
+    "Progressive's claims database",
+    "Email system for certificate distribution"
+  ],
+  "summary": "Jennifer confirms Wilmer's insurance status, requests a commercial auto quote, and seeks to switch providers due to Wilmer's driving record. Cody will gather Progressive's lost runs, verify policy details, and prepare a quote while noting the difficulty of insuring Wilmer due to his speeding tickets. The call concludes with pending actions requiring additional information from Jennifer.",
+  "_model": "qwen3:14b",
+  "_eval_count": 349,
+  "_total_duration_ms": 51498,
+  "_source_file": "transcripts/exten-207-+13368301632-20260113-121436-1768324476.4925.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4082
+}

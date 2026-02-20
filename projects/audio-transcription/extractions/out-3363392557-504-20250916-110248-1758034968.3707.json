@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Not applicable (brief greeting with no substantive content)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "This outbound call consists of a brief greeting between Holly and Tom with no substantive discussion. The conversation is too short and lacks any meaningful interaction related to insurance services.",
+  "_model": "qwen3:14b",
+  "_eval_count": 95,
+  "_total_duration_ms": 21443,
+  "_source_file": "transcripts/out-3363392557-504-20250916-110248-1758034968.3707.txt",
+  "_direction": "outbound",
+  "_char_count": 86
+}

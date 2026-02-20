@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Paula Lopez, sought assistance in Spanish, likely related to insurance services, and provided her contact information for a callback.",
+  "resolution_steps": [
+    "Agent confirmed inability to speak Spanish but offered to have someone call back.",
+    "Agent requested and recorded the caller's name (Paula Lopez) and phone number (336-918-1774).",
+    "Agent confirmed callback arrangement and ended the call."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Language support capabilities of the agency",
+    "Callback procedures for unresolved language requests"
+  ],
+  "systems_referenced": [],
+  "summary": "Paula Lopez called Alliance Insurance seeking Spanish-language assistance. The agent could not speak Spanish but arranged for a callback, recording the caller's details. The call concluded with confirmation of the callback arrangement.",
+  "_model": "qwen3:14b",
+  "_eval_count": 198,
+  "_total_duration_ms": 38714,
+  "_source_file": "transcripts/in-+13363779003-+13369181774-20260119-123546-1768844146.2919.txt",
+  "_direction": "inbound",
+  "_char_count": 419
+}

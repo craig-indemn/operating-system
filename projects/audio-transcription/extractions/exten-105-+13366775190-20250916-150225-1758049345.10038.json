@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Solicitation attempt regarding website changes (unrelated to insurance services)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Non-substantive solicitation call about website changes, unrelated to insurance services. Recipient declined engagement.",
+  "_model": "qwen3:14b",
+  "_eval_count": 89,
+  "_total_duration_ms": 28178,
+  "_source_file": "transcripts/exten-105-+13366775190-20250916-150225-1758049345.10038.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 210
+}

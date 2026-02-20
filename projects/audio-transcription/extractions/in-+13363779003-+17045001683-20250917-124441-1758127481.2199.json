@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to understand their Progressive insurance policy details, specifically why their old Kia Optima has a $132/month premium despite being rarely used.",
+  "resolution_steps": [
+    "Agent asked clarifying questions about the caller's reference to a 'dashboard' and confirmed it was the Progressive app.",
+    "Agent acknowledged the caller's confusion about the policy's cost and scope.",
+    "Agent offered to put the caller on hold for a specialist to address the specific premium inquiry."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Progressive insurance policy structure",
+    "How to interpret insurance dashboards/portals",
+    "Premium calculation factors for older vehicles"
+  ],
+  "systems_referenced": [
+    "Progressive app",
+    "Alliance Insurance internal transfer system"
+  ],
+  "summary": "Caller sought clarification about their Progressive insurance policy for an old vehicle, expressing confusion about the $132/month premium. The agent recognized the need for a specialist and offered to transfer the call for detailed assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 231,
+  "_total_duration_ms": 26607,
+  "_source_file": "transcripts/in-+13363779003-+17045001683-20250917-124441-1758127481.2199.txt",
+  "_direction": "inbound",
+  "_char_count": 1215
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Nancy Holmes is seeking resolution for a $72 billing discrepancy caused by an insurance policy reinstatement following her husband's death and vehicle changes, requesting the fee be waived due to financial hardship.",
+  "resolution_steps": [
+    "Agent confirmed policy changes (vehicle switch in February, removing Mark's name in May) and the resulting reinstatement issue.",
+    "Agent agreed to check billing details (specifically the $72 shortfall) and verify if the discrepancy was due to incorrect dates or reinstatement charges.",
+    "Agent offered to contact the carrier to request a waiver of the $72 fee, citing the husband's death and lack of financial burden from the error."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of insurance policy reinstatement processes",
+    "Billing discrepancy analysis",
+    "Waiver policies for exceptional circumstances (e.g., death of a policyholder)",
+    "Carrier-specific billing systems and terminology"
+  ],
+  "systems_referenced": [
+    "Billing page (used to verify payment discrepancies)",
+    "Carrier's policy management system (for reinstatement and rate changes)"
+  ],
+  "summary": "Nancy Holmes discussed a $72 billing discrepancy caused by an insurance policy reinstatement after her husband's death and vehicle changes. The agent confirmed the issue stemmed from incorrect dates and reinstatement charges, and agreed to request a waiver of the fee due to her financial situation. The call resulted in a resolution with the agent taking action to address the discrepancy.",
+  "_model": "qwen3:14b",
+  "_eval_count": 325,
+  "_total_duration_ms": 48983,
+  "_source_file": "transcripts/exten-107-+13369721803-20250724-100352-1753365832.627.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4420
+}

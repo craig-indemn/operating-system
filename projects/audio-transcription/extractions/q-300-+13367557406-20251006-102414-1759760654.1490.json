@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jena is seeking clarification on whether her current insurance policies can be used after relocating to Virginia, and she needs guidance on updating her insurance to reflect her new permanent address and vehicle registration.",
+  "resolution_steps": [
+    "Agent confirmed Jena's account details (name, account number, and current policies).",
+    "Agent verified that Auto Owners (vehicle insurance) covers Virginia and that the new address (80 Little Dan River Road) is already on file for billing.",
+    "Agent noted that the home insurance (Travelers) for the property being sold will be canceled post-closing.",
+    "Agent explained that vehicle registration and license changes will occur after the move (planned for Friday, October 10th).",
+    "Agent assured Jena that no immediate changes are needed to her insurance policies until after the move."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of insurance coverage by state (Virginia-specific policies).",
+    "Process for updating insurance policies during a home sale and relocation.",
+    "Familiarity with vehicle registration and license requirements in Virginia."
+  ],
+  "systems_referenced": [
+    "Alliance Insurance customer portal (myallianceinsurance.com)",
+    "Internal policy management system for checking account details"
+  ],
+  "summary": "Jena is relocating to Virginia and needs to confirm if her current insurance can be used at her new address. The agent confirmed that Auto Owners covers Virginia and that changes to her policies will occur after the home sale closes. Vehicle registration and license updates are planned for October 10th. The call concluded with Jena assured that her insurance will be adjusted post-move.",
+  "_model": "qwen3:14b",
+  "_eval_count": 361,
+  "_total_duration_ms": 52254,
+  "_source_file": "transcripts/q-300-+13367557406-20251006-102414-1759760654.1490.txt",
+  "_direction": "queue",
+  "_char_count": 4191
+}

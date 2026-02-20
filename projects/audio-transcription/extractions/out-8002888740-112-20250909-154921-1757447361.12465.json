@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Brandy is trying to set up Auto Pay for a policy but is unable to access saved card information from the online portal in the billing system.",
+  "resolution_steps": [
+    "Madison explains that card information saved via the online Pay Now system (PNC) is not accessible in the billing system.",
+    "Madison offers to transfer Brandy to the secure credit card line to enable Auto Pay.",
+    "Madison requests Brandy's account/policy number to proceed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of Auto Owners' internal systems (Pay Now vs. billing)",
+    "Process for setting up Auto Pay via credit card",
+    "PNC integration details"
+  ],
+  "systems_referenced": [
+    "Pay Now (PNC)",
+    "Billing system",
+    "Secure credit card line"
+  ],
+  "summary": "Brandy is attempting to activate Auto Pay but cannot access previously saved card information from the online portal. Madison explains the systems are separate and offers to transfer her to the credit card line for setup. The call is pending account number verification.",
+  "_model": "qwen3:14b",
+  "_eval_count": 252,
+  "_total_duration_ms": 38317,
+  "_source_file": "transcripts/out-8002888740-112-20250909-154921-1757447361.12465.txt",
+  "_direction": "outbound",
+  "_char_count": 1686
+}

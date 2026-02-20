@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Joy) is confirming the status of desserts ordered for pickup and coordinating a later pickup time (around 4:30 PM) due to scheduling conflicts.",
+  "resolution_steps": [
+    "Agent Heather Scott confirms the caller's identity and references a prior conversation about dessert orders.",
+    "Caller clarifies that desserts were supposed to be ready for pickup at 9:00 AM but could not be collected earlier.",
+    "Agent assures the caller the desserts will be held in the corner until pickup.",
+    "Caller confirms they will arrive around 4:30 PM and requests the desserts be kept safe."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of Food Lion's pickup process and order tracking",
+    "Handling customer requests for delayed pickups",
+    "Communication protocols for order fulfillment"
+  ],
+  "systems_referenced": [
+    "Food Lion's internal order tracking system (implied through conversation about readiness and storage)"
+  ],
+  "summary": "A customer confirms dessert pickup details with a store employee, adjusting the pickup time to 4:30 PM. The agent assures the order will be held in the corner until then. The call resolves with mutual confirmation of the new timeline.",
+  "_model": "qwen3:14b",
+  "_eval_count": 276,
+  "_total_duration_ms": 48236,
+  "_source_file": "transcripts/out-3367511673-401-20251023-124630-1761237990.3281.txt",
+  "_direction": "outbound",
+  "_char_count": 1565
+}

@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Dina from Alliance Insurance needs to make a payment on a canceled Auto Owners Insurance account (103610335) that is awaiting reinstatement after receiving a signed statement of no loss. She seeks confirmation if the payment can be processed immediately or if she must wait for underwriting approval.",
+  "resolution_steps": [
+    "Agent Lisa confirms the account is marked as canceled in the system despite verbal approval for reinstatement.",
+    "Lisa attempts to locate Kelly Jenny (underwriter) in the underwriting division to notify her about the pending payment.",
+    "After finding Kelly Jenny's extension (50622), Lisa transfers Dina to the underwriter.",
+    "Dina leaves a voicemail for Kelly Jenny with account details and payment information."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding Auto Owners Insurance account statuses (canceled vs. reinstated)",
+    "Reinstatement process requiring underwriting flags",
+    "Internal system navigation for underwriter lookups",
+    "Payment processing limitations for canceled accounts"
+  ],
+  "systems_referenced": [
+    "Auto Owners Insurance policy/account management system",
+    "Underwriting division database",
+    "Phone system with extension lookup capabilities"
+  ],
+  "summary": "Dina from Alliance Insurance attempts to process a payment on a canceled Auto Owners account awaiting reinstatement. The agent confirms the account requires an underwriting flag to be active before processing. After locating the responsible underwriter, Dina is transferred to leave a voicemail for final approval. The payment remains pending until the underwriting flag is activated.",
+  "_model": "qwen3:14b",
+  "_eval_count": 350,
+  "_total_duration_ms": 45191,
+  "_source_file": "transcripts/out-8003460346-509-20251204-130808-1764871688.3387.txt",
+  "_direction": "outbound",
+  "_char_count": 4336
+}

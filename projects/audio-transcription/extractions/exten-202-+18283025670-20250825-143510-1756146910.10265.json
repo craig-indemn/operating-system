@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Scott is inquiring about potential cost savings by switching his auto insurance to liability-only coverage (excluding his wife) and is seeking clarification on current policy details, including coverage for his van, deductibles, and the impact of adding his son Tristan as a driver once he obtains a license.",
+  "resolution_steps": [
+    "Heather confirms Scott's current policy details with Auto Owners (AO) and National General, including deductibles for different vehicles.",
+    "Explains that switching to liability-only coverage for his wife would reduce costs slightly but maintains full coverage on other vehicles.",
+    "Clarifies that National General no longer writes home policies in North Carolina, so bundling with AO provides a discount.",
+    "Notes that adding Tristan as a driver once he turns 18 will require proof of ID/permit and may affect premiums.",
+    "Confirms the adjusted monthly rate of $232.52 after resolving coverage discrepancies."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Auto insurance coverage types (liability vs. full comp)",
+    "Deductible differences between carriers (e.g., Ultima, Cintura)",
+    "Bundling discounts for home and auto policies",
+    "Process for adding new drivers to policies"
+  ],
+  "systems_referenced": [
+    "Auto Owners (AO)",
+    "National General",
+    "Ultima",
+    "Cintura"
+  ],
+  "summary": "Scott discusses his auto and home insurance policies with Heather, seeking cost reductions by adjusting coverage. Heather explains current rates, deductibles, and bundling discounts, confirming a slight rate reduction while maintaining full coverage on key vehicles. Scott decides to keep the current setup, with future considerations for adding his son as a driver.",
+  "_model": "qwen3:14b",
+  "_eval_count": 378,
+  "_total_duration_ms": 54758,
+  "_source_file": "transcripts/exten-202-+18283025670-20250825-143510-1756146910.10265.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3868
+}

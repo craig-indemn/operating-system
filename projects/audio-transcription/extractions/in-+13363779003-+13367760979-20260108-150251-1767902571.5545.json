@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to pay their auto insurance premium for a policy with Auto Owners.",
+  "resolution_steps": [
+    "Agent retrieved the caller's account showing a balance of $1,232.90.",
+    "Agent confirmed payment method (credit card) and accessed a payment portal.",
+    "Agent used a saved Visa card ending in 5581 for payment.",
+    "Agent requested the caller's preferred email address for confirmation (Gmail).",
+    "Agent confirmed payment processing and sent confirmation email."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy management",
+    "Payment processing procedures",
+    "Customer account lookup",
+    "Email confirmation protocols"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal account system",
+    "Payment portal website"
+  ],
+  "summary": "Customer called to pay their Auto Owners auto insurance premium. Agent processed the payment using a saved credit card and sent confirmation via Gmail. The call concluded with standard closing remarks.",
+  "_model": "qwen3:14b",
+  "_eval_count": 232,
+  "_total_duration_ms": 28336,
+  "_source_file": "transcripts/in-+13363779003-+13367760979-20260108-150251-1767902571.5545.txt",
+  "_direction": "inbound",
+  "_char_count": 756
+}

@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; caller mentions a missed call and appears confused about the call's purpose.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Very brief and unclear conversation where the caller expresses confusion about a missed call. The agent identifies themselves but no meaningful dialogue or issue resolution occurs.",
+  "_model": "qwen3:14b",
+  "_eval_count": 98,
+  "_total_duration_ms": 20802,
+  "_source_file": "transcripts/in-+13363779003-+13364860086-20251013-161856-1760386736.12041.txt",
+  "_direction": "inbound",
+  "_char_count": 187
+}

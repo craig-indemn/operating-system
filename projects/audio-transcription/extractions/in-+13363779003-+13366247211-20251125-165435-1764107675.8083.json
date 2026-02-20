@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Acknowledgment of service and intent to speak with Jamie, but no explicit request or purpose stated.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Very brief exchange with no meaningful interaction or resolution. Caller thanks the agency and mentions speaking with Jamie, but no further details or action items are present.",
+  "_model": "qwen3:14b",
+  "_eval_count": 102,
+  "_total_duration_ms": 23447,
+  "_source_file": "transcripts/in-+13363779003-+13366247211-20251125-165435-1764107675.8083.txt",
+  "_direction": "inbound",
+  "_char_count": 78
+}

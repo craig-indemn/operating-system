@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Sunny) is assisting Cody in navigating the process of setting up a DOT number, addressing challenges related to vehicle titling and proper classification for the DOT application.",
+  "resolution_steps": [
+    "Directed Cody to the FMCSA website (dot.gov) for DOT setup guidance.",
+    "Explained the need for a lease agreement between Cody and the cousin (vehicle title holder) to align the DOT application with Cody's name.",
+    "Emphasized selecting 'private property, not authorized for hire' as the operation classification.",
+    "Advised ensuring the carrier operation is classified as 'interstate' and selecting appropriate cargo categories (e.g., building materials)."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "DOT regulations for commercial vehicle operations",
+    "Legal requirements for vehicle titling and lease agreements",
+    "FMCSA application processes and classifications"
+  ],
+  "systems_referenced": [
+    "FMCSA (Federal Motor Carrier Safety Administration) website",
+    "Online lease agreement templates"
+  ],
+  "summary": "Sunny guided Cody through setting up a DOT number, addressing complications from the vehicle being titled under a family member's name. Key steps included securing a lease agreement, selecting correct classifications ('private property, interstate'), and contacting FMCSA directly for application assistance. The conversation highlighted legal and regulatory nuances for DOT compliance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 302,
+  "_total_duration_ms": 40059,
+  "_source_file": "transcripts/exten-207-+13362448945-20251119-094058-1763563258.1073.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4414
+}

@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Frederick Johnson wants to confirm whether his Cincinnati Insurance policy was canceled or reactivated after receiving a refund check and ensure he has active coverage on his property.",
+  "resolution_steps": [
+    "Agent acknowledges the refund check and letter from Cincinnati Insurance.",
+    "Agent confirms the policy was reactivated but clarifies the check was sent due to cancellation processing.",
+    "Agent offers to contact Cincinnati Insurance to verify the policy status and provide a callback."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding insurance policy cancellation/reattachment processes",
+    "Handling refund checks for unearned premiums",
+    "Communicating with carriers to verify policy status"
+  ],
+  "systems_referenced": [
+    "Cincinnati Insurance Company system"
+  ],
+  "summary": "Frederick Johnson received a refund check from Cincinnati Insurance after a policy cancellation but believes the policy was reactivated. The agent will verify the policy status with Cincinnati Insurance and provide a callback to resolve the discrepancy and confirm coverage.",
+  "_model": "qwen3:14b",
+  "_eval_count": 229,
+  "_total_duration_ms": 34388,
+  "_source_file": "transcripts/exten-107-+13367862401-20251020-135234-1760982754.7387.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1324
+}

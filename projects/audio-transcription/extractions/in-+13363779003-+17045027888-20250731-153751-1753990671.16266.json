@@ -1,0 +1,19 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Inquirer asked if Alliance Insurance provides garage liability quotes but the conversation was cut off before clarification.",
+  "resolution_steps": [
+    "Agent acknowledged the request",
+    "Agent stated they would connect the caller with an agent",
+    "Call ended abruptly mid-sentence"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A caller inquired about garage liability insurance, but the conversation was cut off before the agent could confirm availability or proceed with assistance. The call ended prematurely with no resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 131,
+  "_total_duration_ms": 21416,
+  "_source_file": "transcripts/in-+13363779003-+17045027888-20250731-153751-1753990671.16266.txt",
+  "_direction": "inbound",
+  "_char_count": 293
+}

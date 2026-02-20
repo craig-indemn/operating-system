@@ -1,0 +1,20 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Sam wanted to confirm if Pilot Now Park Golf course and fairways were open for play.",
+  "resolution_steps": [
+    "Agent confirmed the golf course is open.",
+    "Agent confirmed the fairways are open."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Current operational status of golf courses and facilities"
+  ],
+  "systems_referenced": [],
+  "summary": "Sam inquired about the availability of Pilot Now Park Golf course and fairways. The agent confirmed both are open, and the conversation concluded with Sam expressing gratitude.",
+  "_model": "qwen3:14b",
+  "_eval_count": 138,
+  "_total_duration_ms": 29628,
+  "_source_file": "transcripts/out-13363682828-705-20250811-133927-1754933967.10829.txt",
+  "_direction": "outbound",
+  "_char_count": 236
+}

@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is providing their driver's license number (39385827) for verification purposes, likely to confirm their identity or complete a transaction.",
+  "resolution_steps": [
+    "Heather confirms the caller's driver's license number and state (Carolina).",
+    "The caller indicates they believe they have provided all necessary information."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Verification processes requiring driver's license information",
+    "Handling sensitive personal data during calls"
+  ],
+  "systems_referenced": [],
+  "summary": "The caller provides their Carolina driver's license number to Heather, who confirms the details. The caller ends the conversation, indicating they believe the process is complete.",
+  "_model": "qwen3:14b",
+  "_eval_count": 173,
+  "_total_duration_ms": 48032,
+  "_source_file": "transcripts/exten-401-+16176370257-20260105-150011-1767643211.12079.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 461
+}

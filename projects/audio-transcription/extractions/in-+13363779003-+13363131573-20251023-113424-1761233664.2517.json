@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller needs to make a car insurance payment that was supposed to be automatic but became overdue due to an error in adding a vehicle. They mention a specific payment amount ($612.82) and deadline (October 31) and are seeking assistance to resolve the issue.",
+  "resolution_steps": [
+    "Agent confirms the caller's intent to pay an overdue insurance premium.",
+    "Agent checks the system to verify payment history, policy details, and deadlines.",
+    "Agent clarifies the payment breakdown ($67.60 by October 31 and $548 starting November) and confirms the caller's recent payment on the 19th.",
+    "Agent processes the overdue payment of $67.60 using the caller's credit card details.",
+    "Agent arranges to send a confirmation text message for the payment."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy payment schedules and deadlines",
+    "Handling overdue payments and partial payments",
+    "Navigating carrier portals to verify policy details"
+  ],
+  "systems_referenced": [
+    "Insurance carrier's policy management system",
+    "Payment processing platform"
+  ],
+  "summary": "The caller contacted Alliance Insurance Services to resolve an overdue car insurance payment that became late after adding a vehicle. The agent verified the payment schedule, processed the overdue amount, and confirmed the payment via text. The caller requested a confirmation of the transaction, which the agent agreed to send.",
+  "_model": "qwen3:14b",
+  "_eval_count": 327,
+  "_total_duration_ms": 50035,
+  "_source_file": "transcripts/in-+13363779003-+13363131573-20251023-113424-1761233664.2517.txt",
+  "_direction": "inbound",
+  "_char_count": 3336
+}

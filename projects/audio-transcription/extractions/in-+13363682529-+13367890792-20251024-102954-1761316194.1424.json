@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Sandra Haymore wants to make a payment for her automobile insurance policy, specifically the monthly installment.",
+  "resolution_steps": [
+    "Agent confirmed the policy type (automobile) and policyholders (Sandra and Wilson).",
+    "Agent informed the caller about a $4 payment processing fee.",
+    "Agent collected credit card details (Visa ending in 4564, expiration 12/25, CVV 981, zip code 27043).",
+    "Agent processed the payment for $354 (monthly installment).",
+    "Agent sent confirmation email to the provided email address (297314)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Payment processing procedures including fee disclosure",
+    "Credit card verification and security protocols",
+    "Policyholder verification processes",
+    "Email confirmation system operations"
+  ],
+  "systems_referenced": [
+    "Internal payment processing system",
+    "Email confirmation portal"
+  ],
+  "summary": "Sandra Haymore contacted Alliance Insurance to make a monthly auto insurance payment. The agent processed the $354 payment via Visa, informed her about the $4 fee, and sent a confirmation email. The call concluded with the customer confirming she had the email on hand and no further assistance was needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 299,
+  "_total_duration_ms": 45775,
+  "_source_file": "transcripts/in-+13363682529-+13367890792-20251024-102954-1761316194.1424.txt",
+  "_direction": "inbound",
+  "_char_count": 1488
+}

@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Lib Harris is seeking clarification about insurance coverage for Spearpoint Properties, specifically why the building's insurance is required and whether she and her husband are properly named as additional insureds on the policy.",
+  "resolution_steps": [
+    "Jeff Edmonds confirms the policy details for Resurrection and Spearpoint Properties.",
+    "He checks the policy history, noting coverage was removed in March and an endorsement was submitted in August to add Lib and her husband as additional insureds.",
+    "Jeff explains the endorsement is still in the carrier's processing queue with a delay noted on September 4th.",
+    "He clarifies that the lease agreement (likely a triple net lease) would require tenants to carry building insurance, necessitating the endorsement to protect the owners."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance endorsements and additional insured designations",
+    "Knowledge of lease agreements (e.g., triple net leases) and their insurance implications",
+    "Familiarity with carrier processing timelines and policy management systems"
+  ],
+  "systems_referenced": [
+    "Insurance carrier's policy management system",
+    "Email communication (Debbie's email regarding endorsement request)",
+    "Declaration page review"
+  ],
+  "summary": "Lib Harris contacted Alliance Insurance to resolve confusion about building insurance coverage for Spearpoint Properties. Jeff Edmonds explained that an endorsement to add her and her husband as additional insureds was submitted but delayed. The conversation highlighted the need for proper lease agreements to ensure coverage requirements are met.",
+  "_model": "qwen3:14b",
+  "_eval_count": 330,
+  "_total_duration_ms": 51012,
+  "_source_file": "transcripts/exten-206-+19198159523-20250922-124806-1758559686.4105.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4412
+}

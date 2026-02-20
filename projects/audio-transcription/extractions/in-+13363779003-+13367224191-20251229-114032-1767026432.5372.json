@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Verify that a newly purchased vehicle (2026 Trailblazer) has been added to Alicia Winfrey and Randy's insurance policy, and confirm the deductible and effective date.",
+  "resolution_steps": [
+    "Agent retrieved the auto policy using the provided policy number (963407533) and address (3955 Lean Beach Drive).",
+    "Agent acknowledged uncertainty about the policy details and offered to transfer the call to another agent for verification.",
+    "Call was paused while the agent coordinated the transfer."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Auto insurance policy verification process",
+    "Understanding of deductible and effective date terminology",
+    "Internal system navigation for policy lookup"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal policy database"
+  ],
+  "summary": "Lena from Motor and Chevy requested verification of insurance coverage for a newly purchased vehicle under Alicia Winfrey and Randy's policy. The agent retrieved the policy but deferred to another agent for detailed confirmation, citing uncertainty about the display. The call was paused to facilitate the transfer.",
+  "_model": "qwen3:14b",
+  "_eval_count": 249,
+  "_total_duration_ms": 30388,
+  "_source_file": "transcripts/in-+13363779003-+13367224191-20251229-114032-1767026432.5372.txt",
+  "_direction": "inbound",
+  "_char_count": 1255
+}

@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to check if new coats had been approved and if emails about them had been sent, expressing concern they might have provided the wrong email address.",
+  "resolution_steps": [
+    "Agent confirmed the underwriter was still processing the coats.",
+    "Agent apologized for the delay and explained underwriters often take time.",
+    "Agent assured the caller they would be contacted once approval was finalized."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Underwriting process timelines",
+    "Email communication protocols",
+    "Policy approval workflows"
+  ],
+  "systems_referenced": [
+    "Underwriting system (implied through reference to 'underwriter')"
+  ],
+  "summary": "A caller inquired about delayed coat approvals and email communication. The agent explained the underwriter was still processing the request, apologized for the delay, and committed to contacting the caller once approved. The conversation highlighted the need for clear communication about processing timelines.",
+  "_model": "qwen3:14b",
+  "_eval_count": 217,
+  "_total_duration_ms": 28254,
+  "_source_file": "transcripts/exten-207-+13367106991-20251013-134042-1760377242.9654.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 933
+}

@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Elaine Chandler needs to add coverage for a newly purchased 2025 Bobcat E48 compact excavator to her existing insurance policy or determine if it requires a separate policy, as the equipment was purchased without coverage.",
+  "resolution_steps": [
+    "Agent requested the excavator's serial number (B6E C13613) and financing value ($884).",
+    "Agent confirmed the need to check existing policies (specifically Auto Owners and the tree lift policy) to determine if the excavator can be added or requires a new policy.",
+    "Agent agreed to investigate and provide a resolution before submitting the request."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of equipment insurance policies (e.g., differences in coverage for excavators vs. skid steers/lifts).",
+    "Ability to assess policy eligibility for adding new equipment.",
+    "Knowledge of carrier-specific requirements (e.g., Auto Owners)."
+  ],
+  "systems_referenced": [
+    "Auto Owners (insurance carrier)"
+  ],
+  "summary": "Elaine Chandler contacted Alliance Insurance Services to add coverage for a newly purchased Bobcat E48 excavator. The agent gathered details about the equipment and confirmed they would check existing policies (including Auto Owners) to determine if the excavator can be added or requires a separate policy. The call concluded with the agent agreeing to investigate and provide a resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 315,
+  "_total_duration_ms": 45208,
+  "_source_file": "transcripts/exten-101-+13363514900-20250815-091535-1755263735.398.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2153
+}

@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Attempt to reach Jessica at Alliance Insurance Services from Longhorn Steel Structures",
+  "resolution_steps": [
+    "Agent Ashley acknowledged the transfer request",
+    "Agent Ashley initiated transfer to Jessica's extension"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief call where the caller attempted to reach Jessica at Alliance Insurance. The agent Ashley facilitated a transfer to Jessica's extension, but no substantive conversation occurred about insurance services or issues.",
+  "_model": "qwen3:14b",
+  "_eval_count": 120,
+  "_total_duration_ms": 28348,
+  "_source_file": "transcripts/in-+13363779003-+19802229935-20251113-152516-1763065516.6676.txt",
+  "_direction": "inbound",
+  "_char_count": 312
+}

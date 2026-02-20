@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller attempted to return a message left by Jeremy but provided no further context or specific request.",
+  "resolution_steps": [
+    "Agent acknowledged the caller's intent briefly",
+    "Agent said 'Just one moment' before the call ended abruptly"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief, inconclusive call where the caller mentioned returning a message from Jeremy. The agent did not take actionable steps, and the conversation ended abruptly without resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 126,
+  "_total_duration_ms": 25470,
+  "_source_file": "transcripts/in-+13363779003-+13366924884-20251113-123038-1763055038.3804.txt",
+  "_direction": "inbound",
+  "_char_count": 232
+}

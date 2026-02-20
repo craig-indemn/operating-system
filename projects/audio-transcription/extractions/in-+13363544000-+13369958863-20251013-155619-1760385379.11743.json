@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Voicemail greeting/transfer message with no substantive conversation or caller intent expressed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 65,
+  "_total_duration_ms": 19928,
+  "_source_file": "transcripts/in-+13363544000-+13369958863-20251013-155619-1760385379.11743.txt",
+  "_direction": "inbound",
+  "_char_count": 106
+}

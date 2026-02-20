@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Bennett Jones from Johnson and Johnson Insurance wanted to schedule an in-person meeting with Rick but adjusted to a virtual meeting after learning Rick's Wednesday schedule was unavailable.",
+  "resolution_steps": [
+    "Bennett proposed an in-person meeting on Wednesday, December 12th at 11 AM.",
+    "Rick explained his Wednesday schedule was fully booked with agency meetings.",
+    "Bennett offered alternative virtual meeting times: December 13th at 10 AM or December 11th at 4 PM.",
+    "Rick selected December 11th at 4 PM as the preferred virtual meeting time.",
+    "Bennett requested Rick's email address to send a calendar invite."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of scheduling conflicts and alternative meeting formats (virtual vs. in-person)",
+    "Ability to adjust meeting times based on client availability",
+    "Knowledge of sending calendar invites via email"
+  ],
+  "systems_referenced": [
+    "Email system (for sending calendar invites)"
+  ],
+  "summary": "Bennett Jones from Johnson and Johnson Insurance called Rick to schedule a meeting. After learning Rick's Wednesday schedule was unavailable, they agreed to a virtual meeting on December 11th at 4 PM. Bennett will send a calendar invite via email to confirm the arrangement.",
+  "_model": "qwen3:14b",
+  "_eval_count": 298,
+  "_total_duration_ms": 41765,
+  "_source_file": "transcripts/exten-105-+18438600522-20251105-111932-1762359572.2807.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1733
+}

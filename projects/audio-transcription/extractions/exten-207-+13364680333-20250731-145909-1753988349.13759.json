@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Dallas is requesting a certificate holder for steel buildings and structures, as the previous email with the certificate was not received by the recipient.",
+  "resolution_steps": [
+    "Cody confirms the email was sent to Brenda at Steel Buildings and CC'd Dallas.",
+    "Cody agrees to forward the certificate email again to Brenda and CC Dallas.",
+    "Cody offers to print a physical copy of the certificate for Dallas to pick up."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Handling certificate requests for steel buildings",
+    "Email tracking and management"
+  ],
+  "systems_referenced": [
+    "Email client (referenced sending/receiving emails)"
+  ],
+  "summary": "Dallas contacted Cody to resolve an issue where a certificate for steel buildings was not received by the recipient. Cody confirmed the email was sent to Brenda and offered to forward it again or provide a printed copy. The call concluded with Cody agreeing to handle the request and Dallas preparing to pick up the physical copy.",
+  "_model": "qwen3:14b",
+  "_eval_count": 224,
+  "_total_duration_ms": 31886,
+  "_source_file": "transcripts/exten-207-+13364680333-20250731-145909-1753988349.13759.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1896
+}

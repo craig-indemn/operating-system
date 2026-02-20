@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to check if their newly purchased used vehicle has been added to their insurance policy and inquire about the cost of coverage.",
+  "resolution_steps": [
+    "Agent acknowledged the caller's request to verify vehicle addition to the policy.",
+    "Agent asked for clarification on the vehicle details (used vehicle, recently purchased).",
+    "Agent placed the caller on hold to transfer to another agent who can assist with adding the vehicle to the policy."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy updates and vehicle addition procedures",
+    "Knowledge of how to transfer calls for specialized assistance"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller requested verification of their new used vehicle's insurance coverage and asked about costs. The agent clarified details and transferred the call to another agent for further assistance. The call is ongoing with a callback required.",
+  "_model": "qwen3:14b",
+  "_eval_count": 206,
+  "_total_duration_ms": 32192,
+  "_source_file": "transcripts/in-+13363779003-+13367401767-20250825-105716-1756133836.2704.txt",
+  "_direction": "inbound",
+  "_char_count": 402
+}

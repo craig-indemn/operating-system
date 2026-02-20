@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Leave a voicemail about policy renewal reminders and request a callback.",
+  "resolution_steps": [
+    "Forwarded to voicemail",
+    "Left message with contact number"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A voicemail was left by Alliance Insurance regarding policy renewals, asking the recipient to call back at the provided number. No live conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 107,
+  "_total_duration_ms": 22735,
+  "_source_file": "transcripts/out-13363548613-114-20251125-095811-1764082691.544.txt",
+  "_direction": "outbound",
+  "_char_count": 590
+}

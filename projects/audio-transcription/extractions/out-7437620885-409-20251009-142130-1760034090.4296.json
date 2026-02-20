@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Claire wants to adjust her auto insurance policy's payment date and ensure coverage remains active while exploring potential upgrades (e.g., roadside assistance). She also needs clarification on billing processes and payment methods.",
+  "resolution_steps": [
+    "Agent confirmed Claire's current policy details and explained the need to rewrite the policy to adjust the payment date.",
+    "Discussed setting up auto draft payments, requiring Claire's routing and account number.",
+    "Addressed paperless billing as a cost-effective option and clarified it's optional.",
+    "Confirmed the new monthly rate ($128) and assured Claire the policy would not lapse if payment is processed.",
+    "Offered to assist with the change over the phone or in person at the Clemens office.",
+    "Agreed to call back in 10 minutes after Claire provided banking details."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Auto insurance policy adjustments (date changes, billing methods)",
+    "Payment processing (auto draft, paperless billing)",
+    "Policy lapse prevention procedures",
+    "Coverage upgrade options (e.g., roadside assistance)"
+  ],
+  "systems_referenced": [
+    "Internal policy management system (to check policy details)",
+    "Auto draft payment setup portal",
+    "Paperless billing platform"
+  ],
+  "summary": "Claire is adjusting her auto insurance policy's payment schedule and seeking reassurance about coverage continuity. The agent guided her through payment setup options, clarified billing processes, and offered in-person/phone assistance. The call concluded with Claire requesting a 10-minute delay to provide banking details before proceeding.",
+  "_model": "qwen3:14b",
+  "_eval_count": 350,
+  "_total_duration_ms": 51319,
+  "_source_file": "transcripts/out-7437620885-409-20251009-142130-1760034090.4296.txt",
+  "_direction": "outbound",
+  "_char_count": 3934
+}

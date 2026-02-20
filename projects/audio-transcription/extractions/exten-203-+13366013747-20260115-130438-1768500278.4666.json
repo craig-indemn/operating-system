@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Bill McCuller is providing detailed information about two incidents (his daughter's car theft attack and his own accident) to assist with an umbrella policy underwriting request.",
+  "resolution_steps": [
+    "Maria confirms the need for incident details from the underwriter.",
+    "Bill explains Kylie's 2023 incident involving a car theft attack and subsequent vehicle damage.",
+    "Bill describes his 2024 accident where his car high-centered on a curb.",
+    "Maria offers to handle the paperwork and input the details for him."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Underwriting requirements for umbrella policies",
+    "Handling sensitive claims involving personal safety",
+    "Documenting incident details for insurance purposes"
+  ],
+  "systems_referenced": [],
+  "summary": "Bill McCuller provided detailed accounts of two incidents (a 2023 car theft attack on his daughter and a 2024 accident) to Maria at Alliance Insurance Services for an umbrella policy underwriting request. Maria documented the details and offered to handle the paperwork, ensuring the underwriter receives necessary information.",
+  "_model": "qwen3:14b",
+  "_eval_count": 254,
+  "_total_duration_ms": 53863,
+  "_source_file": "transcripts/exten-203-+13366013747-20260115-130438-1768500278.4666.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4099
+}

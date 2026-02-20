@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jerry Mason is reporting a discrepancy in his auto insurance coverage, claiming two of his four vehicles are no longer insured despite paying $1500, and is concerned about potential legal issues due to lack of coverage.",
+  "resolution_steps": [
+    "Agent Addison confirms the Haggerty policy includes a 2001 Chevrolet and 1996 Mercedes.",
+    "Notices the $1500 payment was for National General covering a 2021 Ram and 2023 Hyundai.",
+    "Identifies a potential gap in communication with Cecilia regarding the Haggerty policy.",
+    "Plans to contact Cecilia to investigate the application process and billing discrepancy.",
+    "Agrees to follow up with Jerry after resolving the policy and billing issues."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of insurance policy structures and coverage details",
+    "Billing processes for multi-vehicle policies",
+    "Communication with third-party agents (e.g., Cecilia) to resolve application discrepancies"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services app",
+    "Haggerty insurance policy system",
+    "National General insurance portal"
+  ],
+  "summary": "Jerry Mason contacted Alliance Insurance to resolve confusion about his auto insurance coverage, where two vehicles appeared uninsured despite payments. Agent Addison clarified the policies involved, identified a billing mix-up between National General and Haggerty, and committed to contacting Cecilia to resolve the application gap. The call ended with a promise to follow up after investigating the billing issue.",
+  "_model": "qwen3:14b",
+  "_eval_count": 340,
+  "_total_duration_ms": 35287,
+  "_source_file": "transcripts/q-300-+13364063166-20251125-090333-1764079413.119.txt",
+  "_direction": "queue",
+  "_char_count": 2200
+}

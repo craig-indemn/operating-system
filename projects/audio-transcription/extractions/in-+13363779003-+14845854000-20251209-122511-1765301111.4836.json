@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller intended to speak with Gloria Dow.",
+  "resolution_steps": [
+    "Agent acknowledged the request and attempted to transfer the call."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief inbound call where the caller requested to speak with Gloria Dow. The agent acknowledged the request but did not complete the transfer or provide further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 104,
+  "_total_duration_ms": 29689,
+  "_source_file": "transcripts/in-+13363779003-+14845854000-20251209-122511-1765301111.4836.txt",
+  "_direction": "inbound",
+  "_char_count": 194
+}

@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Verify a policy for a mutual customer by providing a policy number.",
+  "resolution_steps": [
+    "Agent confirmed policy number was provided",
+    "Agent stated they would retrieve an agent to assist further"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief call where the caller requested policy verification. The agent acknowledged the request and indicated they would connect the caller with an agent, but no further resolution was achieved during the call.",
+  "_model": "qwen3:14b",
+  "_eval_count": 120,
+  "_total_duration_ms": 60887,
+  "_source_file": "transcripts/in-+13363779003-+19192051094-20260116-150727-1768594047.5440.txt",
+  "_direction": "inbound",
+  "_char_count": 378
+}

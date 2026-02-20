@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Kathy Collins wants to resolve an issue where her son William Shore is listed as a second driver on her insurance policy and confirm details for renewing her policy.",
+  "resolution_steps": [
+    "Agent Gary confirms that William's status as a second driver with a clean driving record does not affect the premium.",
+    "Gary verifies William's insurance details and current address, noting he will soon move to Forest City.",
+    "Gary checks National General's system to confirm William is listed as a household member with his own insurance, not affecting Kathy's premium.",
+    "Gary confirms Kathy's policy renewal date (January 15) and provides the premium amount ($982.78).",
+    "Gary advises Kathy to notify the agency when William moves to update his policy information."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy structure (household members vs. drivers)",
+    "Premium calculation factors (driving records, additional drivers)",
+    "Policy renewal processes and timelines"
+  ],
+  "systems_referenced": [
+    "National General's insurance portal"
+  ],
+  "summary": "Kathy Collins discusses her son William's status on her insurance policy and confirms her renewal details. The agent clarifies that William's separate insurance means no premium impact and sets up policy renewal for January 15. A follow-up is needed when William moves to update his address.",
+  "_model": "qwen3:14b",
+  "_eval_count": 309,
+  "_total_duration_ms": 44325,
+  "_source_file": "transcripts/q-300-+13363910897-20251216-110915-1765901355.1321.txt",
+  "_direction": "queue",
+  "_char_count": 3321
+}

@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller intended to make a payment for their home and auto insurance policy, initially confusing the policy type but later clarifying it.",
+  "resolution_steps": [
+    "Agent confirmed the caller's policy type (home with auto owners) and checked the outstanding balance ($1,364).",
+    "Processed the payment using the provided credit card details (ending in 5700-7219).",
+    "Entered the email address (karinitaderes91@gmail.com) to send a confirmation.",
+    "Sent the confirmation email and confirmed the payment was processed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Access to policyholder account information",
+    "Payment processing procedures",
+    "Handling credit card details securely",
+    "Email confirmation protocols"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's internal policy management system",
+    "Payment processing website",
+    "Email confirmation system"
+  ],
+  "summary": "The caller successfully made a payment for their home and auto insurance policy after clarifying the policy type. The agent processed the payment, confirmed the email address, and sent a confirmation. The call concluded with the caller satisfied and no further assistance needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 274,
+  "_total_duration_ms": 43232,
+  "_source_file": "transcripts/in-+13363779003-+13369293115-20250811-121901-1754929141.8580.txt",
+  "_direction": "inbound",
+  "_char_count": 1521
+}

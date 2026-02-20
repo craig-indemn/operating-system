@@ -1,0 +1,20 @@
+{
+  "is_substantive": true,
+  "caller_intent": "JC wants to renew their car insurance policy and is engaging with the agent to initiate the process.",
+  "resolution_steps": [
+    "Agent asked JC to confirm their address to verify their information for the insurance renewal."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Car insurance renewal procedures",
+    "Customer verification protocols"
+  ],
+  "systems_referenced": [],
+  "summary": "JC contacted Alliance Insurance Services to renew their car insurance. The agent requested address confirmation as part of the verification process. The call appears to be in progress, requiring additional information to proceed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 144,
+  "_total_duration_ms": 30899,
+  "_source_file": "transcripts/q-300-+13362090172-20251104-105126-1762271486.2580.txt",
+  "_direction": "queue",
+  "_char_count": 254
+}

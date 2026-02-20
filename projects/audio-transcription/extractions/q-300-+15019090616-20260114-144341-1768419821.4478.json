@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to file a claim for a commercial vehicle that was involved in an accident but does not have a policy number, only the owner's name (Anna M. Meralda Chavez) and vehicle information.",
+  "resolution_steps": [
+    "Agent confirmed the caller does not have a policy number and explained it is required to file a claim.",
+    "Caller provided the owner's full name and mentioned the vehicle is commercial.",
+    "Agent asked for the phone number used yesterday to trace the previous interaction.",
+    "Caller provided the phone number (540-877-4992) and confirmed the owner's name again.",
+    "Agent attempted to locate the person the caller spoke to yesterday.",
+    "Agent played hold music and provided information about the customer portal (myallianceinsurance.com) and texting support."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Claim filing requirements (policy number necessity)",
+    "Customer information lookup procedures",
+    "Handling incomplete claims with missing identifiers"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services customer portal (myallianceinsurance.com)",
+    "Internal customer database for call tracing"
+  ],
+  "summary": "A caller attempted to file a claim for a commercial vehicle accident but lacked a policy number. The agent requested the owner's name and phone number, traced a previous interaction, and provided hold music with portal/texting options while searching for the relevant policy. The call remains unresolved pending database lookup.",
+  "_model": "qwen3:14b",
+  "_eval_count": 331,
+  "_total_duration_ms": 46787,
+  "_source_file": "transcripts/q-300-+15019090616-20260114-144341-1768419821.4478.txt",
+  "_direction": "queue",
+  "_char_count": 1765
+}

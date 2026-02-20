@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking clarification on where to download their renewed bond and is confused about the process, having received an email with a bond execution report but no actual bond document.",
+  "resolution_steps": [
+    "Agent Jeff checks the caller's email to locate the bond documents.",
+    "Identifies the correct case (Garage Motors Twenty Six LLC) and retrieves the 'reinstatement of dealer bond' documents.",
+    "Explains that the bond execution report serves as a continuance of the existing bond, not a new document.",
+    "Clarifies that the DMV typically accepts the existing bond with the execution report, avoiding the need for a new bond annually.",
+    "Addresses the caller's confusion about Florida's process, noting differences in terminology (e.g., 'verification' forms) across carriers."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of bond renewal processes and document types (execution reports, continuance forms).",
+    "Ability to access and retrieve case-specific documents from internal systems.",
+    "Knowledge of DMV requirements and carrier-specific terminology for bond documentation."
+  ],
+  "systems_referenced": [
+    "Internal case management system (to retrieve bond documents).",
+    "Email system (to check for sent correspondence)."
+  ],
+  "summary": "The caller needed guidance on accessing their renewed bond and understanding the documents provided. Jeff retrieved the bond execution report, explained its purpose as a continuance of the existing bond, and clarified DMV requirements. The caller left with a clear understanding of the process and the necessary documents to present.",
+  "_model": "qwen3:14b",
+  "_eval_count": 341,
+  "_total_duration_ms": 49727,
+  "_source_file": "transcripts/exten-206-+17864955900-20250729-093726-1753796246.1946.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3017
+}

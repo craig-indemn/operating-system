@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Heather from Alliance Insurance needed to change the effective date of a policy for a client (Joshua Newman) due to a revised closing date.",
+  "resolution_steps": [
+    "Agent Casey confirmed the policy number and agent code provided by Heather.",
+    "Casey explained that changing the effective date requires using the Safeco Agent Portal.",
+    "Guided Heather to navigate to the 'Service Forms' section in the portal, then to 'Policy Updates' and 'Policy Inception Date Change'.",
+    "Informed Heather that the service team would process the request and issue new evidence of insurance for the lender."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Safeco's policy modification procedures",
+    "Navigation of the Safeco Agent Portal",
+    "Handling of policy effective date changes"
+  ],
+  "systems_referenced": [
+    "Safeco Agent Portal",
+    "Service Forms section",
+    "Policy Updates tool"
+  ],
+  "summary": "Heather from Alliance Insurance requested assistance changing a policy's effective date due to a revised closing date. Casey guided her through the Safeco Agent Portal to submit the change via the 'Policy Inception Date Change' form. The agent also noted that some carriers require full policy rewrites for such changes, but Safeco allows updates through the portal. The process was completed, with new evidence of insurance to be issued.",
+  "_model": "qwen3:14b",
+  "_eval_count": 305,
+  "_total_duration_ms": 40594,
+  "_source_file": "transcripts/out-18775666001-401-20251104-152854-1762288134.7453.txt",
+  "_direction": "outbound",
+  "_char_count": 4118
+}

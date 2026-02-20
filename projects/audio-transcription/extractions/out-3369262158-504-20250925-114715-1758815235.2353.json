@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Beverly) requested activation codes for insurance policies and clarification about policy numbers, while the agent (Holly Alliance) provided these details and additional information about a multi-policy discount.",
+  "resolution_steps": [
+    "Agent provided activation code (QBA) and policy number (203124782800).",
+    "Agent explained activation code format (phonetic letters) and confirmed policy number.",
+    "Agent mentioned sending a new application via email for Beverly to sign.",
+    "Agent informed Beverly about a multi-policy discount (saving $130/year) for bundling home and auto insurance.",
+    "Agent offered to retrieve activation codes from National General if needed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Activation code generation and formatting rules",
+    "Policy number lookup and verification",
+    "Multi-policy discount eligibility and calculation",
+    "Application submission process via email",
+    "Carrier-specific procedures (National General)"
+  ],
+  "systems_referenced": [
+    "National General (carrier portal)",
+    "Email application submission system"
+  ],
+  "summary": "Holly Alliance provided Beverly with activation codes, policy numbers, and details about a multi-policy discount. She also sent an application for Beverly to sign and offered to retrieve codes from National General if needed. The call concluded with Beverly expressing gratitude and confirmation of next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 309,
+  "_total_duration_ms": 45951,
+  "_source_file": "transcripts/out-3369262158-504-20250925-114715-1758815235.2353.txt",
+  "_direction": "outbound",
+  "_char_count": 2000
+}

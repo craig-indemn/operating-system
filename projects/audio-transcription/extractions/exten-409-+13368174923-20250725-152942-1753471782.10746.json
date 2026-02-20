@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jerry Howerton informed Corbin that he had emailed insurance quotes (Auto Owners and homeowners policies) and sought confirmation of their contents.",
+  "resolution_steps": [
+    "Corbin confirmed the quotes were separated and Auto Owners was highlighted as the best option.",
+    "Corbin mentioned the quotes included AG7 policy details and invited Jerry to ask questions if needed.",
+    "Jerry thanked Corbin and ended the conversation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance quoting processes",
+    "Understanding of Auto Owners and AG7 policy specifics"
+  ],
+  "systems_referenced": [
+    "Quote server (email system)"
+  ],
+  "summary": "Jerry shared emailed insurance quotes with Corbin, confirming Auto Owners was the recommended option. Corbin verified the quotes included separated auto and homeowners policies with AG7 coverage. The conversation ended with Jerry thanking Corbin and no immediate resolution, but an invitation for follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 215,
+  "_total_duration_ms": 32430,
+  "_source_file": "transcripts/exten-409-+13368174923-20250725-152942-1753471782.10746.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 737
+}

@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to add insurance for a stationary camper and resolve an outstanding auto insurance bill related to a deceased spouse's name on the policy.",
+  "resolution_steps": [
+    "Agent Jeff collects camper details (location: Battle Ridge campground, ownership status: already purchased) and contact information (401-1916).",
+    "Agent notes the need to address an auto insurance bill and deceased spouse's name on the policy.",
+    "Agent checks the policy, confirms the bill amount ($1,243.17), and explains payment options.",
+    "Agent agrees to remove the deceased spouse from the policy and schedule a callback for the camper insurance.",
+    "Agent assures the caller someone will contact them shortly for next steps."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Handling stationary camper insurance",
+    "Policy updates for deceased drivers",
+    "Billing processes for auto insurance",
+    "Understanding driver eligibility and policy adjustments"
+  ],
+  "systems_referenced": [
+    "Insurance agency's policy management system",
+    "Billing portal for auto insurance"
+  ],
+  "summary": "Johnny requested insurance for a stationary camper and discussed an auto insurance bill with a deceased spouse's name on the policy. The agent collected details, confirmed the bill amount, and agreed to remove the deceased driver while scheduling a callback for the camper insurance. The call concluded with a promise to follow up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 310,
+  "_total_duration_ms": 37430,
+  "_source_file": "transcripts/exten-206-+13363568305-20260112-105204-1768233124.1147.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3288
+}

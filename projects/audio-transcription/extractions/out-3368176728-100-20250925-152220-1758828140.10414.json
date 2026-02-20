@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Leaving a voicemail to inform Chad about needing a renters policy for his girlfriend and requesting a callback.",
+  "resolution_steps": [
+    "Voicemail left with policy update details and callback number"
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A voicemail message left by Brandi from Alliance Insurance informing Chad about a renters policy for his girlfriend and requesting a callback. The call is not substantive as it is a one-way voicemail message.",
+  "_model": "qwen3:14b",
+  "_eval_count": 123,
+  "_total_duration_ms": 24991,
+  "_source_file": "transcripts/out-3368176728-100-20250925-152220-1758828140.10414.txt",
+  "_direction": "outbound",
+  "_char_count": 423
+}

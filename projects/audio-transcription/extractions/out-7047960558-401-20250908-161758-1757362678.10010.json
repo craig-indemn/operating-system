@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Howard is seeking clarification on why Cincinnati Insurance hasn't approved a claim, despite Penn's approval, and is trying to resolve discrepancies in loss reports and dates of accidents to potentially lower the premium.",
+  "resolution_steps": [
+    "Agent Heather compiled and emailed documents to the underwriter at Penn.",
+    "Clarified confusion between two accidents: one on 12/10/22 (Mustang, $28,337.22 payout) and another on 11/5/23 (Leveraged Challenger).",
+    "Noted that Penn's underwriter didn't see the 11/5/23 accident date in the loss report and asked if Howard had additional information.",
+    "Acknowledged Howard's frustration with delays and personal issues (identity theft, business sale) but focused on resolving the insurance claim."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance underwriting processes",
+    "Handling claim disputes between carriers",
+    "Interpreting loss reports and accident date discrepancies"
+  ],
+  "systems_referenced": [
+    "Email communication with underwriters",
+    "State Farm loss reports",
+    "Insurance portal (USLI)"
+  ],
+  "summary": "Howard Hitchcock is working with Heather to resolve a Cincinnati Insurance claim denial, despite Penn's approval. Heather clarified discrepancies in accident dates and loss reports, while Howard expressed frustration with delays and personal challenges. The call ended with agreement to proceed with the approved policy, pending further premium adjustments.",
+  "_model": "qwen3:14b",
+  "_eval_count": 331,
+  "_total_duration_ms": 45010,
+  "_source_file": "transcripts/out-7047960558-401-20250908-161758-1757362678.10010.txt",
+  "_direction": "outbound",
+  "_char_count": 3949
+}

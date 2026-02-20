@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Kyle is seeking clarification on whether he can get a refund for a canceled insurance policy after making a partial payment of $300, which was not fully applied by the bank.",
+  "resolution_steps": [
+    "Gary explains that if the bank paid part of the premium, a pro rata refund for the unused portion of the canceled policy should be issued.",
+    "Gary notes that the policy was canceled on October 27th of the previous year and confirms the timeline of the partial payment and cancellation.",
+    "Gary clarifies that no refund would be issued if the policy was canceled with an outstanding balance but coverage was never active."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy cancellation processes",
+    "Pro rata refund calculations for partial payments",
+    "Handling of outstanding balances on canceled policies"
+  ],
+  "systems_referenced": [],
+  "summary": "Kyle contacted Alliance Insurance to inquire about a refund for a canceled policy after a partial payment was made by his bank. Gary explained that a pro rata refund should be issued for the unused portion of the canceled policy if the bank paid part of the premium. Kyle confirmed he now has active coverage but remains uncertain about the refund status. The call ended with Kyle thanking Gary and indicating he would follow up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 290,
+  "_total_duration_ms": 55776,
+  "_source_file": "transcripts/out-7632320816-113-20250910-145706-1757530626.6948.txt",
+  "_direction": "outbound",
+  "_char_count": 2345
+}

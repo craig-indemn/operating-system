@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "",
+  "resolution_steps": [],
+  "outcome": "not_applicable",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Fragmented and unclear conversation with potential mishearing of 'foreign alliance insurance' and 'bait form.' No meaningful interaction or intent identified.",
+  "_model": "qwen3:14b",
+  "_eval_count": 86,
+  "_total_duration_ms": 22971,
+  "_source_file": "transcripts/in-+13363779003-+13369922343-20260112-130621-1768241181.4162.txt",
+  "_direction": "inbound",
+  "_char_count": 154
+}

@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller (Claudia Clausen) attempted to reach Jeremy at Alliance Insurance Services.",
+  "resolution_steps": [
+    "Agent acknowledged the caller",
+    "Agent placed the caller on hold to connect to Jeremy"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief inbound call where the caller requested to speak to Jeremy. The agent placed the caller on hold but no further details or resolution were provided in the transcript.",
+  "_model": "qwen3:14b",
+  "_eval_count": 120,
+  "_total_duration_ms": 33585,
+  "_source_file": "transcripts/in-+13363779003-+13308876486-20251001-150001-1759345201.7158.txt",
+  "_direction": "inbound",
+  "_char_count": 243
+}

@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Anna) intends to pay for multiple insurance policies (commercial auto, package, and workers comp) in full before the activation date of October 20th, seeking confirmation on payment methods and total costs.",
+  "resolution_steps": [
+    "Agent (Laura) confirmed the caller's intent to pay in full and verified the insurance policies involved.",
+    "Discussed payment options (check or direct bank transfer) and obtained account details (account number, routing number, and business name).",
+    "Checked policy amounts: Auto Owners (auto and package) totaled $3,945.58, while Hartford workers comp was $5,341 (system issues prevented direct verification).",
+    "Notified caller that payments would be processed in two separate transactions due to different carriers.",
+    "Planned to handle the Hartford payment via phone due to their online portal being unavailable."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance payment processes (full payment discounts, carrier-specific procedures)",
+    "Handling commercial insurance policies (auto, package, workers comp)",
+    "Troubleshooting carrier system outages (Hartford portal downtime)"
+  ],
+  "systems_referenced": [
+    "Auto Owners insurance system",
+    "Hartford online portal (temporarily unavailable)",
+    "Internal agency payment verification tools"
+  ],
+  "summary": "Anna contacted Laura to finalize full payment for multiple insurance policies before activation on October 20th. Laura confirmed payment details, verified policy amounts, and addressed a system outage with Hartford, planning to resolve it via phone. The caller was informed of separate transactions for different carriers and assured of processing on the activation date.",
+  "_model": "qwen3:14b",
+  "_eval_count": 365,
+  "_total_duration_ms": 46299,
+  "_source_file": "transcripts/exten-302-+13369342930-20251017-154030-1760730030.4728.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4114
+}

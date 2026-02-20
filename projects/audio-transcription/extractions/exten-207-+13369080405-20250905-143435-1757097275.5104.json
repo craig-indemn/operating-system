@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Juan wants to cancel his workers' compensation and general liability insurance policies because he is no longer working as an installer and does not plan to return to the trade.",
+  "resolution_steps": [
+    "Agent confirmed the cancellation effective immediately.",
+    "Agent agreed to email cancellation forms for Juan to sign.",
+    "Agent explained the need to complete audits for existing policies, even after cancellation.",
+    "Agent noted that an audit for the 2024 policy was completed but the 2023 audit was outstanding.",
+    "Agent emphasized compliance with audit requirements to avoid financial penalties."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance cancellation procedures",
+    "Audit requirements for commercial policies",
+    "Handling mid-term policy cancellations"
+  ],
+  "systems_referenced": [
+    "Email (for sending cancellation forms)"
+  ],
+  "summary": "Juan requested cancellation of his commercial insurance policies due to ceasing business operations. The agent confirmed cancellation steps, explained audit obligations, and committed to sending forms via email. The conversation concluded with Juan understanding the audit requirements and next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 246,
+  "_total_duration_ms": 39664,
+  "_source_file": "transcripts/exten-207-+13369080405-20250905-143435-1757097275.5104.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2944
+}

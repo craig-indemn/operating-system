@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Demaryd Cloud, intended to make a payment for their personal car insurance policy.",
+  "resolution_steps": [
+    "Agent confirmed the payment was for personal car insurance (not business).",
+    "Agent verified the payment amount ($103) and credit card details (ending in 7708).",
+    "Agent processed the payment through National General's system.",
+    "Agent confirmed the payment was received and informed the caller an email confirmation would be sent."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Payment processing procedures for car insurance policies",
+    "Credit card verification protocols",
+    "National General carrier-specific payment systems"
+  ],
+  "systems_referenced": [
+    "National General insurance system",
+    "Email confirmation portal"
+  ],
+  "summary": "Demaryd Cloud successfully made a $103 car insurance payment via credit card. The agent processed the transaction through National General's system and confirmed an email receipt would be sent. The call concluded with standard closing remarks.",
+  "_model": "qwen3:14b",
+  "_eval_count": 236,
+  "_total_duration_ms": 32566,
+  "_source_file": "transcripts/in-+13363779003-+13364064886-20251008-144828-1759949308.6727.txt",
+  "_direction": "inbound",
+  "_char_count": 748
+}

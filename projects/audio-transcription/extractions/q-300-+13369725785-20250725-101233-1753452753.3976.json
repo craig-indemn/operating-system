@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Byron Carson wants to add renters insurance for his son (Byron Hall) to his existing policy, as his son is starting college and requires coverage for his apartment in Raleigh.",
+  "resolution_steps": [
+    "Heather confirms the policyholder's details (Byron and Angela Carson) and the insured's information (Byron Hall, DOB 2005).",
+    "Heather gathers the apartment address (1402 Gorman Street, Raleigh, NC 27606) and management company (Rhyne Management Associates).",
+    "Discusses coverage details: $25,000 personal property, $500,000 liability, $500 deductible.",
+    "Clarifies whether Byron Hall or Angela Carson should be listed on the policy (lease is in Byron's name, so only he needs to be listed).",
+    "Notes moving date (August 1) and agrees to send a quote for review by the weekend, with finalization next week."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Renters insurance policy structures",
+    "Coverage options (personal property, liability, deductibles)",
+    "Underwriting requirements for adding new insureds",
+    "Apartment management company verification processes"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services quoting system"
+  ],
+  "summary": "Byron Carson requested renters insurance for his son starting college. Heather collected policy details, apartment information, coverage preferences, and lease terms. A quote will be sent for review, with finalization planned for next week. The call resolved the initial request with clear next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 359,
+  "_total_duration_ms": 50036,
+  "_source_file": "transcripts/q-300-+13369725785-20250725-101233-1753452753.3976.txt",
+  "_direction": "queue",
+  "_char_count": 3138
+}

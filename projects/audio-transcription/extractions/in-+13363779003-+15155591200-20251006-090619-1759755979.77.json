@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with Tracy",
+  "resolution_steps": [
+    "Agent confirmed Tracy's availability",
+    "Agent initiated transfer to Tracy"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller requested to speak with Tracy. Agent confirmed availability and initiated transfer. No substantive insurance-related discussion occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 93,
+  "_total_duration_ms": 20562,
+  "_source_file": "transcripts/in-+13363779003-+15155591200-20251006-090619-1759755979.77.txt",
+  "_direction": "inbound",
+  "_char_count": 157
+}

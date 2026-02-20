@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "James Preston wants to add a newly purchased 2018 Nissan Altima to his existing insurance policy with the same coverage as his 2021 Jeep Gladiator.",
+  "resolution_steps": [
+    "Agent verified James's identity using his name and address.",
+    "Agent requested and confirmed the VIN number of the new vehicle.",
+    "Agent confirmed the vehicle details (2018 Nissan Altima) and purchase date (January 3, 2026).",
+    "Agent confirmed the intent to apply the same full coverage as the existing Jeep Gladiator.",
+    "Agent informed James the request would be processed immediately with a 24-hour billing update window.",
+    "Agent addressed James's question (specifics not detailed in transcript)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Vehicle addition process to existing policies",
+    "Customer verification protocols",
+    "Insurance coverage types (full coverage)",
+    "Billing system processing timelines"
+  ],
+  "systems_referenced": [
+    "Internal policy management system"
+  ],
+  "summary": "James Preston contacted Alliance Insurance to add his newly purchased 2018 Nissan Altima to his policy. The agent verified his identity, confirmed vehicle details, and arranged for processing with a 24-hour billing update. The call concluded with the agent confirming the request would be handled and addressing James's question.",
+  "_model": "qwen3:14b",
+  "_eval_count": 304,
+  "_total_duration_ms": 47336,
+  "_source_file": "transcripts/q-300-+13362765283-20260105-092631-1767623191.448.txt",
+  "_direction": "queue",
+  "_char_count": 1391
+}

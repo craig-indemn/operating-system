@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Tim Holt is reporting a truck accident involving his 2021 Ram at 6:00 AM in Rocky Mountain, NC, and seeks guidance on filing a claim, getting an adjuster, and understanding next steps.",
+  "resolution_steps": [
+    "Agent confirms accident details (time, location, vehicle involved).",
+    "Agent verifies policy information (Holt's Agriculture under Auto Owners).",
+    "Agent collects driver's name (Juan Ramon Alvarado) and vehicle details (VIN 7545).",
+    "Agent provides adjuster contact information (710-4904, Timothy Holt 1970@gmail.com).",
+    "Agent notes need for police report and other party information.",
+    "Agent confirms claim submission and adjuster visit."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Accident claim reporting process",
+    "Policy verification procedures",
+    "Adjuster coordination",
+    "Documentation requirements (police reports, VINs)"
+  ],
+  "systems_referenced": [
+    "Auto Owners insurance system",
+    "Adjuster contact database"
+  ],
+  "summary": "Tim Holt reported a truck accident involving his 2021 Ram in Rocky Mountain, NC. The agent verified policy details, collected necessary information, and provided adjuster contact details. The call concluded with Holt agreeing to submit the claim and await an adjuster's assessment. Further action requires a police report and other party information.",
+  "_model": "qwen3:14b",
+  "_eval_count": 328,
+  "_total_duration_ms": 46112,
+  "_source_file": "transcripts/exten-206-+13367104904-20250814-094425-1755179065.719.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4001
+}

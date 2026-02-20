@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak to Brandy",
+  "resolution_steps": [
+    "Agent acknowledged request and transferred call"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Brief inbound call where caller requested to speak to Brandy. Agent acknowledged and transferred the call, but no further details were provided in the transcript.",
+  "_model": "qwen3:14b",
+  "_eval_count": 96,
+  "_total_duration_ms": 23044,
+  "_source_file": "transcripts/in-+13365913091-+13368165159-20260112-100209-1768230129.559.txt",
+  "_direction": "inbound",
+  "_char_count": 105
+}

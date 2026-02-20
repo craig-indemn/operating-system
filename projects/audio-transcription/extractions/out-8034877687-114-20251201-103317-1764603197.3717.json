@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "JT and her husband Gary want to clarify the coverage details of their builder's rent insurance policy, specifically confirming what the 'insulation floater' covers, whether rebuild costs are included, and verifying the deductible and start date on the November quote.",
+  "resolution_steps": [
+    "JC explains that the 'insulation floater' covers building materials before installation, while the building limit covers the structure after installation.",
+    "JC checks the November quote to confirm the deductible is $2,500 and the start date was updated to today.",
+    "JC clarifies that the rebuild cost is covered under the building limit of $500,000.",
+    "JC acknowledges the absence of square footage on the quote and agrees to follow up if needed.",
+    "JC confirms the customer's understanding and agrees to proceed with putting the policy on a card."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Builder's rent insurance terminology (e.g., 'insulation floater,' 'building limit')",
+    "Policy coverage distinctions (pre-installation vs. post-installation)",
+    "Quote structure and adjustment processes (start dates, deductibles)"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's quote system (November and July quotes)",
+    "Carrier portal/application for square footage data"
+  ],
+  "summary": "JT and Gary clarified their builder's rent insurance coverage with JC, confirming the 'insulation floater' covers pre-installation materials and the building limit covers post-installation rebuilds. JC verified the deductible and start date on the November quote, and the customer agreed to proceed with the policy.",
+  "_model": "qwen3:14b",
+  "_eval_count": 358,
+  "_total_duration_ms": 53831,
+  "_source_file": "transcripts/out-8034877687-114-20251201-103317-1764603197.3717.txt",
+  "_direction": "outbound",
+  "_char_count": 4342
+}

@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with Steve Edmonds",
+  "resolution_steps": [
+    "Agent confirmed Steve Edmonds' availability status",
+    "Offered to transfer the call to his extension"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller Ben inquired about Steve Edmonds' availability. Agent offered to transfer the call but did not confirm if the transfer was completed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 109,
+  "_total_duration_ms": 24782,
+  "_source_file": "transcripts/in-+13363779003-+13364090478-20251104-100257-1762268577.1907.txt",
+  "_direction": "inbound",
+  "_char_count": 281
+}

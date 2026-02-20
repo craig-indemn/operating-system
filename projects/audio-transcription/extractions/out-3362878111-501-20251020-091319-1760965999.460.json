@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Teresa left a message regarding collision coverage on a 2016 Chrysler Town and Country and other policy changes, prompting Jamie to confirm details and discuss updates.",
+  "resolution_steps": [
+    "Jamie confirmed the 2016 Chrysler Town and Country has full coverage (comp and collision with 500 deductible), towing, and rental reimbursement.",
+    "Offered to discuss policy changes further over the phone.",
+    "Provided office hours (Monday-Friday until 5 p.m.) and direct contact number (336-3779003)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance coverage terminology (comp, collision, deductibles, towing, rental reimbursement)",
+    "Policy verification process",
+    "Client communication protocols"
+  ],
+  "systems_referenced": [
+    "Internal policy verification system (implied by 'looking at it live in front of me')"
+  ],
+  "summary": "Jamie confirmed insurance coverage details for Teresa's Chrysler Town and Country and offered to discuss additional policy changes, leaving his contact information for a callback. The call focused on verifying coverage specifics and ensuring alignment with the client's needs.",
+  "_model": "qwen3:14b",
+  "_eval_count": 264,
+  "_total_duration_ms": 36433,
+  "_source_file": "transcripts/out-3362878111-501-20251020-091319-1760965999.460.txt",
+  "_direction": "outbound",
+  "_char_count": 1076
+}

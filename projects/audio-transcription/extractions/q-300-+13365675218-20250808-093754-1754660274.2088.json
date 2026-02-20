@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jasmine wants to know the additional cost to add uninsured/underinsured motorist coverage (both bodily injury and property damage) to two vehicles on her policy.",
+  "resolution_steps": [
+    "Jacy confirms Jasmine's identity and account details (name, address, policy information).",
+    "Jacy checks Jasmine's policy to verify existing coverage and vehicle details (Mazda 2006 and GMC 2025).",
+    "Jacy notes that the policy currently lacks the requested coverages and identifies a discrepancy in the document showing 'no cost' for some vehicles.",
+    "Jacy explains the need to consult National General (the carrier) for accurate pricing details.",
+    "Jacy offers to call Jasmine back with the information since the answer requires external verification."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy coverage details (uninsured/underinsured motorist)",
+    "Ability to interpret policy documents and carrier-specific pricing structures",
+    "Process for escalating to carrier representatives for precise cost information"
+  ],
+  "systems_referenced": [
+    "National General (insurance carrier)"
+  ],
+  "summary": "Jasmine inquired about the cost to add uninsured/underinsured motorist coverage to two vehicles on her policy. The agent verified her account, identified discrepancies in the policy document, and determined that a callback from the carrier was needed for accurate pricing. The agent offered to follow up with the information.",
+  "_model": "qwen3:14b",
+  "_eval_count": 324,
+  "_total_duration_ms": 38848,
+  "_source_file": "transcripts/q-300-+13365675218-20250808-093754-1754660274.2088.txt",
+  "_direction": "queue",
+  "_char_count": 2607
+}

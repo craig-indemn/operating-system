@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Amando (or Jackie) is addressing an issue with a 40% debit on an insurance policy, likely related to a rate increase in Virginia, and seeks to reduce the debit to 20%.",
+  "resolution_steps": [
+    "Agent Cody acknowledges the issue and agrees to reduce the debit from 40% to 20%.",
+    "Discusses the context of the rate increase in Virginia and the agent's previous handling of similar cases.",
+    "Notes that the adjustment may require approval from Virginia's system, with uncertainty about acceptance."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of insurance rate adjustments in Virginia",
+    "Policies around applying debits to accounts",
+    "Carrier-specific procedures for modifying rates"
+  ],
+  "systems_referenced": [
+    "Virginia's rate adjustment system",
+    "carrier portal for policy modifications"
+  ],
+  "summary": "The call involves resolving a 40% debit on an insurance policy by reducing it to 20%, with discussion about Virginia's rate increases and the agent's prior practices. The agent plans to make the adjustment but notes potential challenges with Virginia's approval process.",
+  "_model": "qwen3:14b",
+  "_eval_count": 257,
+  "_total_duration_ms": 43273,
+  "_source_file": "transcripts/exten-207-+17045499908-20250730-140446-1753898686.6244.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4205
+}

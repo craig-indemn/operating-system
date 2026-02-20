@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Melba seeks to resolve pending cancellations of her River Creek insurance policies due to non-payment, clarify the status of an unsigned umbrella policy reinstatement form, and understand the implications of non-payment versus cancellation. She also inquires about 'ghost policies' for businesses with no payroll.",
+  "resolution_steps": [
+    "Jessica confirms the River Creek policies are pending cancellation for non-payment and explains the unsigned umbrella reinstatement form.",
+    "Discusses Melba's intent to discontinue the policies and clarifies that the umbrella reinstatement is unnecessary if she's no longer using the coverage.",
+    "Explains 'ghost policies' as workers' comp policies for businesses with no true payroll, noting Alliance no longer writes them.",
+    "Advises letting policies cancel for non-payment rather than formally canceling, as audits will charge based on actual payroll periods.",
+    "Agrees to note the policies for non-payment cancellation and confirms Melba's understanding."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy cancellation/reinstatement processes",
+    "Workers' comp 'ghost policy' terminology and underwriting practices",
+    "Audit procedures for non-payment cancellations",
+    "Payroll-based insurance cost calculations"
+  ],
+  "systems_referenced": [
+    "River Creek policy portal (implied)",
+    "Alliance internal note-taking system"
+  ],
+  "summary": "Melba discusses pending cancellations of her River Creek insurance policies due to non-payment and an unsigned umbrella reinstatement form. Jessica clarifies policy implications, explains 'ghost policies,' and advises proceeding with non-payment cancellation. The call concludes with Melba agreeing to let policies cancel automatically.",
+  "_model": "qwen3:14b",
+  "_eval_count": 357,
+  "_total_duration_ms": 51383,
+  "_source_file": "transcripts/exten-106-+13364048139-20250926-105702-1758898622.1467.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3142
+}

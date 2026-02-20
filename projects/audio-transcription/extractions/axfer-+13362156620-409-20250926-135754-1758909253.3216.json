@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Corbin seeks professional advice about temporarily allowing an associate pastor to use his insured vehicle, questioning if this creates insurance risks or requires policy updates.",
+  "resolution_steps": [
+    "Lee confirms that temporary use of the vehicle does not require adding the pastor as a driver to the policy.",
+    "Advises that if the arrangement becomes long-term (e.g., beyond a few weeks), adding the driver would be necessary.",
+    "Reassures Corbin that the current situation is low-risk since the pastor will only use the car temporarily.",
+    "Offers to assist further if the arrangement extends beyond the expected timeframe."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy requirements for temporary vehicle use",
+    "Knowledge of how driver additions affect coverage",
+    "Ability to assess risk exposure for short-term vs. long-term scenarios"
+  ],
+  "systems_referenced": [],
+  "summary": "Corbin consulted Lee about temporarily allowing a church associate pastor to use his insured vehicle. Lee explained that temporary use doesn't require adding the driver to the policy but recommended updating the policy if the arrangement becomes long-term. Corbin expressed willingness to follow up if the situation changes, and the conversation concluded with plans to meet locally.",
+  "_model": "qwen3:14b",
+  "_eval_count": 278,
+  "_total_duration_ms": 45022,
+  "_source_file": "transcripts/axfer-+13362156620-409-20250926-135754-1758909253.3216.txt",
+  "_direction": "attended_transfer",
+  "_char_count": 4089
+}

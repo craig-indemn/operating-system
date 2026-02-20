@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Holly wants to adjust her home insurance policy, specifically increasing the deductible, reviewing dwelling coverage, and reducing personal property coverage. She also seeks verification of policy details like square footage and garage information.",
+  "resolution_steps": [
+    "Agent pulled up Holly's policy for her Surrey home.",
+    "Discussed the increase in dwelling coverage from $400 to $345,000 and inflation's impact on premiums.",
+    "Adjusted personal property coverage from 70% to 50% of dwelling value ($170,000).",
+    "Verified square footage (1612 vs. 1892 listed online) and corrected the absence of a garage in the policy details."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Home insurance policy adjustments (deductibles, coverage limits)",
+    "Replacement cost calculations",
+    "Tax record verification for property details",
+    "Inflation's impact on insurance premiums"
+  ],
+  "systems_referenced": [
+    "Policy management system (to pull and adjust policy details)",
+    "Tax records database (for square footage verification)"
+  ],
+  "summary": "Holly is adjusting her home insurance policy, increasing the deductible to $2500, reducing personal property coverage to 50% of dwelling value, and verifying property details. The agent corrected policy inaccuracies (square footage, garage absence) and will confirm adjustments.",
+  "_model": "qwen3:14b",
+  "_eval_count": 320,
+  "_total_duration_ms": 46707,
+  "_source_file": "transcripts/q-300-+13364736071-20251112-091416-1762956856.330.txt",
+  "_direction": "queue",
+  "_char_count": 3716
+}

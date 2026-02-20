@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Brad) is seeking clarification on whether his existing liability insurance policy can be used for a Carvana car purchase he is paying for in full, and he offers to provide documentation for verification.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's request and confirms they will email insurance ID cards and coverage documentation.",
+    "Agent requests the caller to provide the VIN number of the vehicle once available."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy portability for vehicle purchases",
+    "Carvana's insurance requirements for full-payment buyers"
+  ],
+  "systems_referenced": [
+    "Email (for document exchange)"
+  ],
+  "summary": "Brad inquires about using his existing liability insurance for a Carvana purchase. The agent agrees to send verification documents and requests the VIN number for processing. The caller commits to providing the VIN when available.",
+  "_model": "qwen3:14b",
+  "_eval_count": 205,
+  "_total_duration_ms": 52000,
+  "_source_file": "transcripts/out-3362535315-501-20251031-092750-1761917270.897.txt",
+  "_direction": "outbound",
+  "_char_count": 740
+}

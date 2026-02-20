@@ -1,0 +1,20 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request a home insurance quote for multiple properties",
+  "resolution_steps": [
+    "Agent acknowledged request",
+    "Agent initiated transfer to another line"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Basic insurance quoting process"
+  ],
+  "systems_referenced": [],
+  "summary": "Caller requested home insurance quotes; agent began transfer process but call ended abruptly before resolution. No substantive interaction completed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 101,
+  "_total_duration_ms": 46876,
+  "_source_file": "transcripts/in-+13363779003-+13364825035-20251031-101548-1761920148.1318.txt",
+  "_direction": "inbound",
+  "_char_count": 259
+}

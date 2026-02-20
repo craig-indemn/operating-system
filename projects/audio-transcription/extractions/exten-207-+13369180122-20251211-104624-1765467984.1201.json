@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is discussing insurance quotes sent via email and exploring policy options, including liability limits, deductibles, and coverage details with the agent.",
+  "resolution_steps": [
+    "Agent confirms email was sent with quotes from Cincinnati Insurance.",
+    "Explains Cincinnati's coverage: higher liability limits, renters coverage, towing coverage, and monthly cost (~$400).",
+    "Advises on liability limits (recommending 100k/300k bodily injury and 100k property damage) due to two young drivers.",
+    "Discusses deductible options (e.g., 100 compen/500 collision) and their cost impact (~$20\u201330/month).",
+    "Leaves decision to caller, emphasizing cost considerations."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy structures (liability limits, deductibles, coverage types)",
+    "Carrier-specific details (Cincinnati Insurance's offerings)",
+    "Cost implications of policy adjustments"
+  ],
+  "systems_referenced": [
+    "Cincinnati Insurance"
+  ],
+  "summary": "Agent discusses Cincinnati Insurance quotes with caller, emphasizing higher liability limits and deductible options. Caller considers recommendations but awaits final cost confirmation. Conversation focuses on policy details and risk mitigation strategies.",
+  "_model": "qwen3:14b",
+  "_eval_count": 288,
+  "_total_duration_ms": 48270,
+  "_source_file": "transcripts/exten-207-+13369180122-20251211-104624-1765467984.1201.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3998
+}

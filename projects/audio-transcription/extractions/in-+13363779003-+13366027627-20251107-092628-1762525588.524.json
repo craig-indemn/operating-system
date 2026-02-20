@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller wanted to make a change to their auto insurance policy.",
+  "resolution_steps": [
+    "Agent offered to transfer the caller to an agent",
+    "Call ended with polite farewells"
+  ],
+  "outcome": "not_applicable",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief call where the caller requested a policy change, and the agent offered to transfer them but no further details were provided. The conversation was too short to determine if the transfer occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 121,
+  "_total_duration_ms": 25966,
+  "_source_file": "transcripts/in-+13363779003-+13366027627-20251107-092628-1762525588.524.txt",
+  "_direction": "inbound",
+  "_char_count": 238
+}

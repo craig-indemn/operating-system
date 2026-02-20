@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jeremy is providing Courtney with a new insurance quote from National General, highlighting cost savings and improved coverage compared to her current provider (Progressive), and guiding her through the process of switching policies.",
+  "resolution_steps": [
+    "Jeremy explains a potential $1700 annual savings by switching to National General for auto and rental property insurance.",
+    "Details coverage options: $100 deductible for windshield/comprehensive, increased property damage liability from $50k to $100k.",
+    "Discusses payment structures: $73/month for auto, $89/month for auto with windshield coverage.",
+    "Advises Courtney to cancel her Progressive policy by calling them tomorrow, with a prorated refund.",
+    "Mentions setting up the new policy on a credit card."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Auto insurance pricing models",
+    "Liability and property damage coverage distinctions",
+    "Insurance switching processes",
+    "Deductible structures (comprehensive vs. collision)",
+    "Cancellation policies for existing insurance providers"
+  ],
+  "systems_referenced": [
+    "National General (insurance provider)",
+    "Progressive (current provider)"
+  ],
+  "summary": "Jeremy from Alliance Insurance presents Courtney with a detailed quote from National General, offering significant cost savings and enhanced coverage compared to her current Progressive policy. He explains the financial benefits, coverage details, and steps to cancel her existing insurance. The call concludes with Courtney planning to switch providers after confirming the details.",
+  "_model": "qwen3:14b",
+  "_eval_count": 335,
+  "_total_duration_ms": 56394,
+  "_source_file": "transcripts/out-9197503666-701-20250722-110622-1753196782.6637.txt",
+  "_direction": "outbound",
+  "_char_count": 4466
+}

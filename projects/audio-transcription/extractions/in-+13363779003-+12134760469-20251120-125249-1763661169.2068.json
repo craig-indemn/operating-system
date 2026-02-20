@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is initiating the 2025-2026 policy term for Megan Hubbard's medical insurance and providing the policy number for processing.",
+  "resolution_steps": [
+    "Agent asked for the policy number again after not hearing it clearly.",
+    "Agent confirmed the policy number (5494907500) and client name (Megan Hubbard).",
+    "Agent stated they would retrieve an agent to assist with the policy term initiation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy renewal procedures for medical insurance",
+    "Access to internal database to verify policy details"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's internal policy management system"
+  ],
+  "summary": "A representative from Piedmont Federal Savings Bank contacted Alliance Insurance to start a new medical policy term for Megan Hubbard. The agent verified the policy number and indicated they would connect the caller with a specialist. The call was not fully resolved but transitioned to an agent for further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 236,
+  "_total_duration_ms": 36588,
+  "_source_file": "transcripts/in-+13363779003-+12134760469-20251120-125249-1763661169.2068.txt",
+  "_direction": "inbound",
+  "_char_count": 704
+}

@@ -1,0 +1,21 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; transcript cuts off before caller's request is identified",
+  "resolution_steps": [
+    "Agent (Cody) acknowledges transfer from another extension",
+    "Places caller on hold",
+    "Delivers standard hold message with company information"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [
+    "myallianceinsurance.com customer portal"
+  ],
+  "summary": "A transferred call where the agent placed the caller on hold and delivered a standard hold message. No substantive conversation or resolution occurred before the transcript ends.",
+  "_model": "qwen3:14b",
+  "_eval_count": 136,
+  "_total_duration_ms": 23232,
+  "_source_file": "transcripts/exten-207-+13367264966-20251009-125249-1760028769.3379.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 896
+}

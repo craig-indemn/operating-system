@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with Jeff Evans",
+  "resolution_steps": [
+    "Agent acknowledged request",
+    "Agent initiated transfer to Jeff Evans"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller requested to speak with Jeff Evans. Agent acknowledged the request and initiated a transfer, but the conversation ended before the transfer was completed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 100,
+  "_total_duration_ms": 59919,
+  "_source_file": "transcripts/in-+13363779003-+13369701866-20251202-095857-1764687537.832.txt",
+  "_direction": "inbound",
+  "_char_count": 146
+}

@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Tracy Kinder wants to finalize an insurance policy after receiving a quote, specifically opting for full coverage and paying in full. She also mentions her recent loss of her dog, which adds emotional context to the conversation.",
+  "resolution_steps": [
+    "Agent confirmed Tracy's preference for full coverage (Sequoia policy with $500 deductible) over liability-only coverage.",
+    "Processed payment of $1,145.80 via Wells Fargo Visa debit card (zip code 27030) for annual coverage effective September 1.",
+    "Arranged for electronic application signing via email (TracyCKindergarten@gmail.com) and sent separate emails for ID cards, receipt, and document instructions.",
+    "Noted Tracy's request for a hard copy of the policy despite the paperless option."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy details (full vs. liability coverage, deductibles, roadside assistance)",
+    "Payment processing (debit card verification, billing zip codes)",
+    "Document handling (electronic signatures, paper vs. digital delivery)",
+    "Empathy in handling sensitive topics (grief counseling)"
+  ],
+  "systems_referenced": [
+    "National General (insurance provider)",
+    "Email system for document delivery",
+    "Payment processing system"
+  ],
+  "summary": "Tracy Kinder finalized an annual auto insurance policy with full coverage through National General, paying $1,145.80 in full via debit card. The agent arranged electronic document delivery while accommodating her request for a hard copy policy. The conversation included empathetic support after Tracy shared her recent loss of her 14-year-old rescue dog.",
+  "_model": "qwen3:14b",
+  "_eval_count": 370,
+  "_total_duration_ms": 52725,
+  "_source_file": "transcripts/exten-401-+13366483431-20250821-125939-1755795579.5355.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3823
+}

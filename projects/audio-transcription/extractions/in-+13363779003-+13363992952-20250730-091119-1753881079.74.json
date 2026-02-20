@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller asked whether they need to add a young person to their insurance policy to obtain a learner's permit.",
+  "resolution_steps": [
+    "Agent confirmed the caller's question about insurance requirements for a learner's permit.",
+    "Agent checked internal documentation/forms to verify requirements.",
+    "Agent clarified that insurance documentation is not required for the permit itself but would need to list the individual on the policy for future license issuance.",
+    "Agent offered to proceed with adding the individual to the policy."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance requirements for learner's permits and driver's licenses",
+    "Policy modification procedures"
+  ],
+  "systems_referenced": [
+    "Internal insurance forms/documentation"
+  ],
+  "summary": "The caller inquired about insurance requirements for a learner's permit. The agent verified that while insurance documentation isn't needed for the permit, adding the individual to the policy would be necessary for future license issuance. The caller agreed to proceed with adding the person to their policy.",
+  "_model": "qwen3:14b",
+  "_eval_count": 224,
+  "_total_duration_ms": 27528,
+  "_source_file": "transcripts/in-+13363779003-+13363992952-20250730-091119-1753881079.74.txt",
+  "_direction": "inbound",
+  "_char_count": 1066
+}

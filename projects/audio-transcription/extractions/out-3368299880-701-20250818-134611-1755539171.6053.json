@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Marcellus) is seeking a non-owner's liability insurance policy, likely for a driver without a vehicle, and is inquiring about coverage options through Alliance Insurance Services.",
+  "resolution_steps": [
+    "Agent Jeremy confirms the caller's need for a non-owner's liability policy.",
+    "Explains that Alliance Insurance Services does not offer this specific policy type.",
+    "Provides a referral to Access Agency in Winston Salem, NC, which specializes in non-owner's liability policies.",
+    "Shares the contact number for Access Agency and confirms the caller's readiness to proceed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of non-owner's liability insurance policies",
+    "Referral process for policies outside Alliance's offerings",
+    "Knowledge of partner agencies and their specialties"
+  ],
+  "systems_referenced": [
+    "Access Agency (external insurance provider in Winston Salem, NC)"
+  ],
+  "summary": "Jeremy from Alliance Insurance Services assists Marcellus in identifying the need for a non-owner's liability policy. Since Alliance does not offer this coverage, Jeremy refers Marcellus to Access Agency in Winston Salem, providing their contact information. The call concludes with Marcellus expressing gratitude and readiness to contact the referred agency.",
+  "_model": "qwen3:14b",
+  "_eval_count": 280,
+  "_total_duration_ms": 36204,
+  "_source_file": "transcripts/out-3368299880-701-20250818-134611-1755539171.6053.txt",
+  "_direction": "outbound",
+  "_char_count": 1430
+}

@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller is inquiring about their auto insurance policy and wants to know what steps they need to take.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The caller contacted Alliance Insurance to inquire about their auto insurance policy and the steps needed to proceed. The agent indicated they would connect the caller with an agent but did not provide immediate assistance. The call appears to be a brief inquiry without resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 122,
+  "_total_duration_ms": 114559,
+  "_source_file": "transcripts/in-+13363544000-+13367494335-20251023-093000-1761226200.329.txt",
+  "_direction": "inbound",
+  "_char_count": 292
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Courtney is attempting to set up a bank draft payment method for her homeowner's insurance, providing her bank details and inquiring about payment plan options and associated fees.",
+  "resolution_steps": [
+    "Gary confirms Courtney's bank details (Civic Federal Credit Union, routing number 253184537, account number 1077542475424).",
+    "Gary explains that breaking payments into installments incurs a small monthly fee, but bank drafts avoid this fee.",
+    "Gary confirms Courtney's preference for a bank draft and assures her the application will be processed.",
+    "Gary mentions documents will be sent to her email for signing and that the process will prevent coverage lapses."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance payment plan structures (monthly, quarterly, bank drafts)",
+    "Bank draft processing procedures",
+    "Fee structures for installment payments",
+    "Customer communication for document signing and coverage continuity"
+  ],
+  "systems_referenced": [
+    "Civic Federal Credit Union"
+  ],
+  "summary": "Courtney discusses setting up a bank draft for her homeowner's insurance with Gary, providing bank details and confirming payment preferences. Gary explains fee structures and confirms the process will be set up to avoid coverage lapses. The call ends with Courtney satisfied and ready to proceed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 302,
+  "_total_duration_ms": 50363,
+  "_source_file": "transcripts/exten-113-+13369714291-20251023-145304-1761245584.4652.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2079
+}

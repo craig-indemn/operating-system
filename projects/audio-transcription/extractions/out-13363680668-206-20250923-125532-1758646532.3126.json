@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jeff Edmonds from Alliance Insurance attempted to reach Vicki to follow up on a prior message left about an hour and a half earlier, requesting to leave another message and email Vicki.",
+  "resolution_steps": [
+    "Maribella confirmed Jeff's identity and origin.",
+    "Maribella checked Vicki's availability and informed Jeff she was unavailable.",
+    "Maribella offered to take a message and confirm a callback number.",
+    "Jeff provided his phone number (336-377-9003) and confirmed willingness to leave another message.",
+    "Maribella agreed to relay the message and ensure Vicki contacts Jeff."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Call handling procedures for unavailable contacts",
+    "Message-taking protocols",
+    "Contact information verification"
+  ],
+  "systems_referenced": [],
+  "summary": "Jeff Edmonds from Alliance Insurance attempted to reach Vicki but was informed she was unavailable. The agent, Maribella, took a message and confirmed a callback number. Jeff provided his contact details and mentioned a prior message, leading to a promise of follow-up by Vicki.",
+  "_model": "qwen3:14b",
+  "_eval_count": 262,
+  "_total_duration_ms": 41684,
+  "_source_file": "transcripts/out-13363680668-206-20250923-125532-1758646532.3126.txt",
+  "_direction": "outbound",
+  "_char_count": 1344
+}

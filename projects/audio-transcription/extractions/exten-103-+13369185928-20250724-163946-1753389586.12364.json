@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Levan Gatsin needs to obtain annual proof of insurance compliance verification for his business but is confused about a request from Core Value SCS and unsure of the required documentation format.",
+  "resolution_steps": [
+    "Gloria confirms the need for annual compliance verification and acknowledges the confusion about Core Value SCS.",
+    "Gloria asks for the insurance provider's name and details to generate the proof of insurance certificate.",
+    "Levan struggles to recall the insurance company name and details, prompting Gloria to explain the certificate requirements (holder name, address).",
+    "Gloria clarifies that the certificate must include the certificate holder's information to be valid for compliance purposes."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of annual insurance compliance verification processes",
+    "Knowledge of proof of insurance certificate requirements (holder name, address, policy details)",
+    "Ability to navigate Alliance Insurance's account system to retrieve policy information"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance account system (for retrieving policy details)"
+  ],
+  "summary": "Levan Gatsin seeks clarification on annual insurance compliance verification and the proper format for proof of insurance requested by Core Value SCS. Gloria guides him through the process, emphasizing the need for certificate holder information and insurance provider details. The call remains open as Levan needs to provide additional information to proceed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 307,
+  "_total_duration_ms": 45574,
+  "_source_file": "transcripts/exten-103-+13369185928-20250724-163946-1753389586.12364.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4382
+}

@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller received a letter indicating his car insurance payment was unpaid and seeks clarification on the issue.",
+  "resolution_steps": [
+    "Agent confirmed the caller's identity and asked to clarify which policy (car or motorcycle) the letter pertains to.",
+    "Agent checked the billing information for the car policy to determine the payment due date.",
+    "Agent and caller discussed the payment due date (initial confusion about the day of the month)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy verification process",
+    "Billing cycle and payment due date information",
+    "Standard procedures for addressing payment discrepancies"
+  ],
+  "systems_referenced": [
+    "Internal policy/billing database"
+  ],
+  "summary": "The caller contacted Lines Insurance about a letter indicating his car insurance payment was unpaid. The agent verified the policy type and checked billing details to identify the payment due date, but the conversation was cut off before resolution. The caller likely needs further assistance to resolve the payment issue.",
+  "_model": "qwen3:14b",
+  "_eval_count": 224,
+  "_total_duration_ms": 38278,
+  "_source_file": "transcripts/in-+13367861133-+13366487739-20251126-100227-1764169347.1188.txt",
+  "_direction": "inbound",
+  "_char_count": 779
+}

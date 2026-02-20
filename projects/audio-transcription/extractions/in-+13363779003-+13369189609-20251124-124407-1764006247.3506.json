@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Navanda Harris wanted to make a payment for her auto insurance policy.",
+  "resolution_steps": [
+    "Agent confirmed Navanda's identity and accessed her policy details.",
+    "Agent verified the payment amount ($126.81) and confirmed credit card details (ending in 6986).",
+    "Agent processed the payment through the Auto Owners system.",
+    "Agent informed Navanda that a confirmation email would be sent upon successful processing."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Auto insurance payment procedures",
+    "Policy lookup and verification",
+    "Credit card payment processing",
+    "Email confirmation protocols"
+  ],
+  "systems_referenced": [
+    "Auto Owners insurance system",
+    "Email notification service"
+  ],
+  "summary": "Navanda Harris contacted Auto Insurance to pay her auto policy. The agent processed a $126.81 payment via credit card and confirmed the transaction would be emailed. Navanda did not require further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 229,
+  "_total_duration_ms": 28608,
+  "_source_file": "transcripts/in-+13363779003-+13369189609-20251124-124407-1764006247.3506.txt",
+  "_direction": "inbound",
+  "_char_count": 817
+}

@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller intended to cancel insurance on a travel trailer and requested to speak with an agent to remove a policy.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The caller attempted to cancel travel trailer insurance but the transcript only captures the initial request and no agent interaction occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 97,
+  "_total_duration_ms": 28688,
+  "_source_file": "transcripts/in-+13363779003-+17046622875-20251003-165540-1759524940.21754.txt",
+  "_direction": "inbound",
+  "_char_count": 221
+}

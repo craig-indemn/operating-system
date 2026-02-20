@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking to resolve an $83 balance on a policy after providing all required documentation, believing the balance should be removed now that documentation is complete.",
+  "resolution_steps": [
+    "Agent Melissa Tumda verifies the policy number (865-765-8199) and confirms the account details.",
+    "Agent explains the $83 balance persists because the multi-product discount was not applied (no business owner's policy/GL policy with Progressive).",
+    "Agent instructs the caller to provide a copy of the general liability (GL) policy's declaration pages to the Commercial Auto team at commercialauto@progressive.com.",
+    "Agent clarifies that the adjustment will take 24 hours after the documentation is received."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Progressive's discount policies (multi-product and proof of prior discounts)",
+    "Process for submitting documentation to Commercial Auto team",
+    "Policy adjustment timelines (24-hour processing window)"
+  ],
+  "systems_referenced": [
+    "Progressive Commercial Lines system",
+    "Commercial Auto email (commercialauto@progressive.com)"
+  ],
+  "summary": "A Progressive Commercial Lines agent assists a customer in resolving an $83 policy balance. The agent explains the balance remains due to an unapplied multi-product discount and instructs the customer to submit GL policy declaration pages to the Commercial Auto team. The customer agrees to send the documents and wait 24 hours for the adjustment. The call concludes with both parties confirming next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 343,
+  "_total_duration_ms": 54815,
+  "_source_file": "transcripts/out-8777762436-701-20260108-092140-1767882100.662.txt",
+  "_direction": "outbound",
+  "_char_count": 3797
+}

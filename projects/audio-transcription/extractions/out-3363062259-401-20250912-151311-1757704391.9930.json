@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Henry wanted to check a homeowners insurance proposal sent by Heather, and Heather aimed to follow up on whether he received it and clarify details about the quote.",
+  "resolution_steps": [
+    "Heather confirmed she sent a homeowners proposal from Northwest Farmers earlier in the week.",
+    "She offered to resend the email if Henry hadn't received it.",
+    "Clarified that the auto insurance remains with National General, while the homeowners quote is separate (not bundled).",
+    "Mentioned the agency discount for using their service.",
+    "Agreed to forward the email again to Henry's whymail.com address."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance carriers (Northwest Farmers, National General)",
+    "Bundling policies and agency discounts",
+    "Email communication protocols"
+  ],
+  "systems_referenced": [
+    "Email (whymail.com)",
+    "Agency internal proposal system"
+  ],
+  "summary": "Heather followed up with Henry about a homeowners insurance proposal, clarified it was from Northwest Farmers and not bundled with his auto policy, and agreed to resend the email. Henry confirmed he would check the resent email, and the call concluded with mutual agreement to proceed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 264,
+  "_total_duration_ms": 35564,
+  "_source_file": "transcripts/out-3363062259-401-20250912-151311-1757704391.9930.txt",
+  "_direction": "outbound",
+  "_char_count": 1698
+}

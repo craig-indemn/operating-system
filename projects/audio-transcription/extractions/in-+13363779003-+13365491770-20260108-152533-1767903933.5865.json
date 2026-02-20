@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Susie Perkins is reporting an issue with a driver's license (DL) form for her daughter, where the last name is misspelled and needs correction.",
+  "resolution_steps": [
+    "Agent attempted to identify the person who submitted the DL form.",
+    "Agent offered to transfer the call to another agent to resolve the issue."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Document submission processes for DL applications",
+    "Handling of name correction requests"
+  ],
+  "systems_referenced": [
+    "Internal agent transfer system"
+  ],
+  "summary": "Susie Perkins contacted Alliance Insurance about a DL form with an incorrect last name for her daughter. The agent attempted to identify the submitter and offered to transfer the call for further assistance, but the issue remained unresolved at the end of the call.",
+  "_model": "qwen3:14b",
+  "_eval_count": 193,
+  "_total_duration_ms": 44766,
+  "_source_file": "transcripts/in-+13363779003-+13365491770-20260108-152533-1767903933.5865.txt",
+  "_direction": "inbound",
+  "_char_count": 450
+}

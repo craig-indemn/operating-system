@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller attempted to reach Brandi to respond to a text she sent, avoiding the need to relay information through other agents.",
+  "resolution_steps": [
+    "Agent checked Brandi's availability and confirmed she was on another call.",
+    "Agent offered to send the caller to Brandi's voicemail or connect with another agent.",
+    "Caller requested to be sent to voicemail instead of speaking with another agent."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Handling requests to connect with specific agents",
+    "Voicemail system operations"
+  ],
+  "systems_referenced": [],
+  "summary": "The caller tried to reach Brandi, who was unavailable. The agent offered voicemail as an alternative, which the caller accepted. The call ended with the caller being directed to Brandi's voicemail.",
+  "_model": "qwen3:14b",
+  "_eval_count": 193,
+  "_total_duration_ms": 53888,
+  "_source_file": "transcripts/in-+13367861133-+13366489698-20251008-102241-1759933361.1756.txt",
+  "_direction": "inbound",
+  "_char_count": 557
+}

@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Mandy is seeking assistance with a workers' compensation claim where her employee is waiting for a claims adjuster to call and answer questions before proceeding with treatment.",
+  "resolution_steps": [
+    "Anna confirms the claim number and checks the status online.",
+    "Anna identifies the assigned adjuster (Caitlin Jimenez) and provides her contact information (561-348-5069).",
+    "Anna instructs Mandy to contact the adjuster directly to resolve the questionnaire issue.",
+    "Anna offers to assist further if the adjuster does not respond."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Workers' compensation claims process",
+    "Adjuster assignment timelines (24-hour window)",
+    "Access to claims database/portal to retrieve adjuster details"
+  ],
+  "systems_referenced": [
+    "Claims database/portal (used to check adjuster assignment)"
+  ],
+  "summary": "Mandy contacted Alliance Insurance Services about a workers' compensation claim where her employee was waiting for an adjuster to call before proceeding with treatment. Anna checked the claim status, identified the assigned adjuster (Caitlin Jimenez), and provided her contact information. The call concluded with Mandy instructed to contact the adjuster directly to resolve the questionnaire issue.",
+  "_model": "qwen3:14b",
+  "_eval_count": 287,
+  "_total_duration_ms": 38304,
+  "_source_file": "transcripts/exten-302-+13365261340-20250918-110844-1758208124.4694.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2110
+}

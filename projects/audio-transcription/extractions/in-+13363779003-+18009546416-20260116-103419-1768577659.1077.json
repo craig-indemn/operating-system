@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller attempted to reach Morgan and Campbell at Alliance Insurance Services.",
+  "resolution_steps": [
+    "Agent Krista acknowledged the call and offered to check availability of Morgan and Campbell."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief inbound call where the caller sought to contact Morgan and Campbell. The agent offered to check their availability but no further action or resolution was achieved.",
+  "_model": "qwen3:14b",
+  "_eval_count": 113,
+  "_total_duration_ms": 32294,
+  "_source_file": "transcripts/in-+13363779003-+18009546416-20260116-103419-1768577659.1077.txt",
+  "_direction": "inbound",
+  "_char_count": 333
+}

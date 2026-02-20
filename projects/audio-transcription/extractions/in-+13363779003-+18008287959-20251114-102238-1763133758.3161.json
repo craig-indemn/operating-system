@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Caller Raphael from Cruise Bank sought to reach Morgan Campbell.",
+  "resolution_steps": [
+    "Agent offered to transfer caller to Morgan Campbell's extension",
+    "Transfer initiated"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller Raphael from Cruise Bank requested to be connected to Morgan Campbell. The agent facilitated the transfer to her extension.",
+  "_model": "qwen3:14b",
+  "_eval_count": 101,
+  "_total_duration_ms": 34004,
+  "_source_file": "transcripts/in-+13363779003-+18008287959-20251114-102238-1763133758.3161.txt",
+  "_direction": "inbound",
+  "_char_count": 368
+}

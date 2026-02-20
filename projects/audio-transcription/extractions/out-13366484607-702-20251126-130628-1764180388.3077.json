@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Informing recipient about office closure and re-opening schedule",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Voicemail from Rachel informing Wilson about office closure today after 2:30 and on Friday, with re-opening on Monday.",
+  "_model": "qwen3:14b",
+  "_eval_count": 87,
+  "_total_duration_ms": 46756,
+  "_source_file": "transcripts/out-13366484607-702-20251126-130628-1764180388.3077.txt",
+  "_direction": "outbound",
+  "_char_count": 489
+}

@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller requested a quote for commercial insurance on a cargo van, explaining they are working for someone else and need guidance on the required information for the quote.",
+  "resolution_steps": [
+    "Agent asked for the caller's email address and phone number to send a detailed request for information.",
+    "Agent confirmed the contact details (email: luis3729292@gmail.com, phone: 336-986-2626).",
+    "Agent inquired if the caller currently has insurance coverage (answered: no, without coverage for about a week).",
+    "Agent assured the caller an email would be sent with next steps after providing the requested details."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Commercial insurance for cargo vans",
+    "Process for obtaining quotes for business-related insurance",
+    "Information typically required for insurance applications (contact details, business context, coverage history)"
+  ],
+  "systems_referenced": [
+    "Email system (to send request for details)"
+  ],
+  "summary": "A caller sought a commercial insurance quote for a cargo van. The agent collected contact information and confirmed the caller's lack of current coverage. The agent will send an email with next steps, requiring the caller to provide additional details. The call concluded with a promise to follow up via email.",
+  "_model": "qwen3:14b",
+  "_eval_count": 297,
+  "_total_duration_ms": 45200,
+  "_source_file": "transcripts/q-500-+13369862626-20250724-091941-1753363181.126.txt",
+  "_direction": "queue",
+  "_char_count": 2009
+}

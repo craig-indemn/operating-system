@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Voicemail message indicating recipient's mailbox is full and unavailable. No substantive interaction occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 70,
+  "_total_duration_ms": 23367,
+  "_source_file": "transcripts/out-3364692541-113-20250908-162348-1757363028.10144.txt",
+  "_direction": "outbound",
+  "_char_count": 175
+}

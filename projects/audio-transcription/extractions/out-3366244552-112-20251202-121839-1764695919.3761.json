@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "To leave a voicemail regarding policy review for home and auto insurance",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A voicemail message from Brandy at Alliance Insurance Services informing the recipient about a policy review and requesting a callback. No live conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 92,
+  "_total_duration_ms": 27730,
+  "_source_file": "transcripts/out-3366244552-112-20251202-121839-1764695919.3761.txt",
+  "_direction": "outbound",
+  "_char_count": 587
+}

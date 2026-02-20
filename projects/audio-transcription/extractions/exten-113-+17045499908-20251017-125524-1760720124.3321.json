@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Gary is seeking assistance to update a policyholder's address (including country change) and process a cancellation for Reagan Mitchell, but his system is blocking country updates during cancellation transactions.",
+  "resolution_steps": [
+    "Ellie confirms the need to first process a policy change to update the Canadian address.",
+    "Gary is guided to start a new transaction with 'name and address change' instead of cancellation.",
+    "Ellie explains that after submitting the address change, a cancellation can be processed on the same 1010 date.",
+    "Gary verifies the system now allows Canadian address entry during the policy change process.",
+    "Ellie advises adding 'moved' in agent remarks for documentation."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Policy change vs. cancellation transaction workflows in insurance systems",
+    "Address update limitations in Auto Owners' backend system",
+    "Handling international address changes in policy administration"
+  ],
+  "systems_referenced": [
+    "Auto Owners' policy administration system",
+    "1010 date reference for transaction processing"
+  ],
+  "summary": "Gary needed to update a Canadian address for a policyholder while processing a cancellation, but his system blocked country changes during cancellations. Ellie guided him to first process a policy change to update the address, then handle cancellation separately. The system was confirmed to accept Canadian addresses during policy changes, resolving the immediate issue.",
+  "_model": "qwen3:14b",
+  "_eval_count": 307,
+  "_total_duration_ms": 38356,
+  "_source_file": "transcripts/exten-113-+17045499908-20251017-125524-1760720124.3321.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4344
+}

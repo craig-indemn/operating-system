@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Frances Keller seeks assistance from Alliance Insurance Services to lower her insurance costs, specifically for her homeowners and car insurance with State Farm, and to evaluate coverage for an inherited property.",
+  "resolution_steps": [
+    "Heather collects Frances's personal information (name, DOB, address, phone number).",
+    "Heather gathers details about Frances's current State Farm policies (homeowners, car insurance, and inherited property).",
+    "Heather asks about property specifics (home age, roof type, garage, claims history).",
+    "Heather collects vehicle details (Chevy Malibu, VIN, coverage types).",
+    "Heather discusses the inherited property's insurance status and legal complexities.",
+    "Heather explains quote timelines and next steps for comparison shopping."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy evaluation processes",
+    "Underwriting criteria for homeowners/car insurance",
+    "Handling inherited property insurance scenarios",
+    "Quote generation timelines and limitations",
+    "Claims history impact on premiums"
+  ],
+  "systems_referenced": [
+    "State Farm (current insurer)",
+    "Quote generation tools (implied but not named)"
+  ],
+  "summary": "Frances Keller contacted Alliance Insurance Services to explore lowering her insurance costs with State Farm. Heather collected detailed information about her policies, home, vehicle, and an inherited property with complex legal status. The agent explained quote timelines and will provide comparisons, with Frances agreeing to proceed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 324,
+  "_total_duration_ms": 56252,
+  "_source_file": "transcripts/exten-401-+13367226069-20260119-133257-1768847577.3586.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 7927
+}

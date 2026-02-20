@@ -1,0 +1,32 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Paula is seeking insurance quotes for her company, Bias Structures LLC, specifically for workers' comp, general liability, and commercial auto insurance. She is shopping for cheaper options compared to her current provider, By Burke, and wants to understand renewal costs and potential savings.",
+  "resolution_steps": [
+    "Cody gathers details about Paula's company (Bias Structures LLC), current insurance with By Burke, and payroll information ($80k).",
+    "Discusses current policy costs ($3,400/year for workers' comp, $3,200/year for general liability).",
+    "Explains that cheaper quotes may not be feasible due to payroll and current rates, but suggests verifying with By Burke for lost runs and audit data.",
+    "Addresses commercial auto insurance with Progressive ($700/month for one truck/trailer).",
+    "Notes the need to check Paula's husband's driving record (two recent speeding tickets) for potential policy adjustments.",
+    "Advises Paula to contact By Burke and Progressive for lost runs and audit information to finalize quotes."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Workers' comp and general liability insurance pricing factors (payroll, claims history).",
+    "Insurance audit processes and lost runs verification.",
+    "Impact of driving records on commercial auto insurance rates.",
+    "North Carolina insurance regulations for LLCs and policy renewals."
+  ],
+  "systems_referenced": [
+    "By Burke (current insurance provider)",
+    "Progressive (commercial auto insurance)",
+    "NC Carports and Elkin (referral source)",
+    "Audit requests from insurance companies"
+  ],
+  "summary": "Paula, owner of Bias Structures LLC, is seeking insurance quotes for workers' comp, general liability, and commercial auto coverage. Cody explains that her current rates with By Burke are likely competitive given her $80k payroll and lack of claims. He advises verifying lost runs and audit data with By Burke and Progressive, while noting that adding her husband (with two recent speeding tickets) may increase costs. The call concludes with a need for further information to finalize quotes.",
+  "_model": "qwen3:14b",
+  "_eval_count": 457,
+  "_total_duration_ms": 64369,
+  "_source_file": "transcripts/exten-207-+13176969890-20250924-104145-1758724905.1015.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 6976
+}

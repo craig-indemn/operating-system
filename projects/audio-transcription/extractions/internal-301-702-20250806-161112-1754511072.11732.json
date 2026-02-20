@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Rachel is updating Addison on the status of Patty and Dale Falk's insurance policy, resolving confusion about an accord form, and delegating a commercial insurance request for Jeff's collectible property.",
+  "resolution_steps": [
+    "Confirmed with Chub that Dale Falk's policy is active and set to renew.",
+    "Explained the confusion around the accord form, clarifying it likely originated from Chub.",
+    "Printed and provided Dale with a copy of the policy documentation.",
+    "Sent a commercial insurance request for Jeff's collectible property to Jeff, specifying the need for liability coverage on antiques and collectibles.",
+    "Ensured Dale would pay the premium before the 23rd to avoid cancellation."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of insurance policy renewals and accord forms",
+    "Knowledge of commercial insurance processes for collectible property",
+    "Ability to delegate tasks to appropriate team members (e.g., Jeff for commercial accounts)"
+  ],
+  "systems_referenced": [
+    "Chub (insurance carrier)",
+    "Internal communication tools (email/phone for sending requests to Jeff)"
+  ],
+  "summary": "Rachel confirmed Dale Falk's policy remains active despite confusion over an accord form and delegated a commercial insurance request for Jeff's collectible property to Jeff. The call concluded with confirmation that all matters were resolved.",
+  "_model": "qwen3:14b",
+  "_eval_count": 299,
+  "_total_duration_ms": 45525,
+  "_source_file": "transcripts/internal-301-702-20250806-161112-1754511072.11732.txt",
+  "_direction": "internal",
+  "_char_count": 3130
+}

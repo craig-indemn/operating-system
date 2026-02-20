@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Bill Jones) is concerned about not receiving confirmation after signing a document and is seeking resolution, mentioning he may have missed a step in the process.",
+  "resolution_steps": [
+    "Agent confirms the caller signed a document but hasn't received confirmation.",
+    "Agent checks the document status and confirms it shows as 'signing complete'.",
+    "Agent suggests waiting until Monday to see if the confirmation arrives.",
+    "Agent offers to make alternative arrangements if the confirmation does not appear."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Document signing process and confirmation mechanisms",
+    "Troubleshooting cloud-based document tracking systems",
+    "Understanding of follow-up procedures for unconfirmed signatures"
+  ],
+  "systems_referenced": [
+    "Cloud-based document storage system",
+    "Document signing portal/software"
+  ],
+  "summary": "Bill Jones contacted Alliance Insurance Services about not receiving confirmation after signing a document. The agent confirmed the document was marked as 'complete' in the system but acknowledged the delay in receiving confirmation. The agent advised waiting until Monday and offered to explore alternatives if the confirmation did not arrive. The call concluded with the caller agreeing to this plan.",
+  "_model": "qwen3:14b",
+  "_eval_count": 266,
+  "_total_duration_ms": 40510,
+  "_source_file": "transcripts/exten-113-+13363098269-20250815-104753-1755269273.2329.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1248
+}

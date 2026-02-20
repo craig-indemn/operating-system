@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Chris from Conterra Marble and Granite requests a certificate of insurance for Perrier Builders to be added and sent to Brandon Perrier via email.",
+  "resolution_steps": [
+    "Agent confirms the company name (Perrier Builders Inc.) and address (3160 Twins Place, Booneville, TN 27011).",
+    "Agent requests the email address for sending the certificate and receives 'BPerrierPBI@gmail.com'.",
+    "Agent confirms the recipient's name (Brandon Perrier) and agrees to generate and send the certificate."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Process for generating and sending certificates of insurance",
+    "Handling requests to add new insured parties to existing policies"
+  ],
+  "systems_referenced": [
+    "certificate generator system (implied by 'When I get this generator for you')"
+  ],
+  "summary": "Chris requested a certificate of insurance for Perrier Builders, providing details like the company name, address, and recipient email. The agent confirmed the information and agreed to generate and send the certificate via email. The call concluded with both parties expressing gratitude.",
+  "_model": "qwen3:14b",
+  "_eval_count": 255,
+  "_total_duration_ms": 42060,
+  "_source_file": "transcripts/exten-101-+13369368007-20250925-162506-1758831906.11999.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1261
+}

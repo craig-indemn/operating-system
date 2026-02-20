@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Attempt to reach Tracy at Alliance Insurance Services",
+  "resolution_steps": [
+    "Caller asked for Tracy",
+    "Agent responded with 'give me one second'"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Brief call where caller requested to speak with Tracy. Agent acknowledged the request but did not provide further information or resolve the caller's intent.",
+  "_model": "qwen3:14b",
+  "_eval_count": 106,
+  "_total_duration_ms": 27054,
+  "_source_file": "transcripts/in-+13365913091-+13368179725-20250827-123955-1756312795.4327.txt",
+  "_direction": "inbound",
+  "_char_count": 107
+}

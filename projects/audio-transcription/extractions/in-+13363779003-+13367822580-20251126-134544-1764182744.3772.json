@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; fragmented speech with no discernible request or purpose.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The transcript is too brief and fragmented to determine intent or context. Contains unclear references to 'mutual colony alliance insurance' and name confusion (Yossi/JC). No meaningful conversation or resolution evident.",
+  "_model": "qwen3:14b",
+  "_eval_count": 107,
+  "_total_duration_ms": 26544,
+  "_source_file": "transcripts/in-+13363779003-+13367822580-20251126-134544-1764182744.3772.txt",
+  "_direction": "inbound",
+  "_char_count": 160
+}

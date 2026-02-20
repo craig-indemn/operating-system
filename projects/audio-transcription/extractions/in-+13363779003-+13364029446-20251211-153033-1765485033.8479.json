@@ -1,0 +1,19 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller requested to speak with Celia and agreed to be transferred to her extension.",
+  "resolution_steps": [
+    "Agent offered to transfer the caller to Celia's extension.",
+    "Agent confirmed Celia was in the office but unsure if she was at her desk.",
+    "Agent initiated the transfer."
+  ],
+  "outcome": "transferred",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A caller requested to speak with Celia. The agent confirmed Celia was in the office and transferred the call to her extension. No substantive discussion occurred beyond the transfer request.",
+  "_model": "qwen3:14b",
+  "_eval_count": 145,
+  "_total_duration_ms": 27049,
+  "_source_file": "transcripts/in-+13363779003-+13364029446-20251211-153033-1765485033.8479.txt",
+  "_direction": "inbound",
+  "_char_count": 378
+}

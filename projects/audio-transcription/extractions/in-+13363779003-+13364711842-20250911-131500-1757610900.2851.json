@@ -1,0 +1,21 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller intends to cancel their insurance policy.",
+  "resolution_steps": [
+    "Agent acknowledged cancellation request",
+    "Agent initiated transfer to another agent"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy cancellation procedures",
+    "Customer transfer protocols"
+  ],
+  "systems_referenced": [],
+  "summary": "The caller requested to cancel their policy. The agent began transferring the call to an agent but the conversation ended abruptly without resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 109,
+  "_total_duration_ms": 43949,
+  "_source_file": "transcripts/in-+13363779003-+13364711842-20250911-131500-1757610900.2851.txt",
+  "_direction": "inbound",
+  "_char_count": 226
+}

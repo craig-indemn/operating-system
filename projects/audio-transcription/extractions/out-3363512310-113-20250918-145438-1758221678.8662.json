@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller (Jessica Gregory from Lions Insurance) intended to follow up on a windshield replacement service to ensure it was completed successfully.",
+  "resolution_steps": [
+    "Automated voicemail system informed caller of unavailability and requested name/number for callback.",
+    "Caller left a voicemail message to check on the service and provided contact information."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "An outbound call from Lions Insurance left a voicemail to follow up on a windshield replacement. The recipient's voicemail system was activated, and no direct conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 151,
+  "_total_duration_ms": 64769,
+  "_source_file": "transcripts/out-3363512310-113-20250918-145438-1758221678.8662.txt",
+  "_direction": "outbound",
+  "_char_count": 507
+}

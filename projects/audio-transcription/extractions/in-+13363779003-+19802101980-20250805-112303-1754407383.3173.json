@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "N/A",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Fragmented greeting and transfer attempt with no meaningful conversation. Agent mentions attempting to connect caller with 'Miss Denise' but dialogue is incomplete and unclear.",
+  "_model": "qwen3:14b",
+  "_eval_count": 85,
+  "_total_duration_ms": 27800,
+  "_source_file": "transcripts/in-+13363779003-+19802101980-20250805-112303-1754407383.3173.txt",
+  "_direction": "inbound",
+  "_char_count": 209
+}

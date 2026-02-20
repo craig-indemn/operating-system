@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to change their insurance representative and sought guidance on the process. They attempted to reach Christopher Cook, who they believed was the managing member/owner, but he was unavailable.",
+  "resolution_steps": [
+    "Agent confirmed Christopher Cook was on vacation and unavailable.",
+    "Offered to send the caller to Christopher Cook's voicemail or connect them with another representative.",
+    "Caller declined to provide their current agent's name when asked.",
+    "Agent agreed to send the caller to Christopher Cook's voicemail."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Process for changing insurance representatives",
+    "Agency protocol for handling requests when primary contact is unavailable",
+    "Understanding of caller's right to privacy (refusal to disclose current agent)"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller attempted to reach Christopher Cook at Alliance Insurance to discuss changing representatives but found him unavailable. The agent offered voicemail or alternative assistance, but the caller declined to provide their current agent's name. The call was sent to Christopher Cook's voicemail, leaving the request unresolved.",
+  "_model": "qwen3:14b",
+  "_eval_count": 250,
+  "_total_duration_ms": 37946,
+  "_source_file": "transcripts/in-+13363779003-+13366014476-20250723-113741-1753285061.4944.txt",
+  "_direction": "inbound",
+  "_char_count": 1106
+}

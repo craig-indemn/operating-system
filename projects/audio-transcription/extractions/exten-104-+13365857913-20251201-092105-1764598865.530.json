@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Isabella from Salesforce is following up with Brian to confirm details about an upcoming Salesforce renewal meeting scheduled for December 11th and to ensure Brian's team is prepared to review their service utilization.",
+  "resolution_steps": [
+    "Isabella confirms the meeting date (December 11th) and purpose (reviewing renewal for the upcoming year).",
+    "Brian indicates no specific concerns but emphasizes the need to ensure they are utilizing services effectively.",
+    "Isabella agrees to relay this information to David and confirm the meeting details."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Salesforce renewal process",
+    "Client onboarding and service utilization review procedures",
+    "Meeting scheduling and follow-up protocols"
+  ],
+  "systems_referenced": [
+    "Salesforce"
+  ],
+  "summary": "Isabella from Salesforce checks in with Brian about an upcoming renewal meeting, confirms the date, and ensures there are no outstanding issues. Brian emphasizes the need to review service utilization before the meeting. Isabella will relay this information to David and confirm the meeting details.",
+  "_model": "qwen3:14b",
+  "_eval_count": 241,
+  "_total_duration_ms": 38770,
+  "_source_file": "transcripts/exten-104-+13365857913-20251201-092105-1764598865.530.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1215
+}

@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jeff Edmonds from Alliance Insurance is seeking the policy number for a Utica package policy to complete paperwork for an agent-of-record arrangement previously discussed with Justin at Scenic Motors.",
+  "resolution_steps": [
+    "Left a voicemail for Ronda Parker requesting the policy number.",
+    "Provided a callback number (336-377-9003) and mentioned sending a follow-up email."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy documentation processes",
+    "Agent-of-record procedures",
+    "Utica insurance carrier specifics"
+  ],
+  "systems_referenced": [
+    "email"
+  ],
+  "summary": "Alliance Insurance agent Jeff Edmonds contacted Scenic Motors to obtain a Utica policy number for an agent-of-record transition. He left a voicemail with Ronda Parker and promised to send an email for clarification, requesting a callback if needed. The call focused on policy documentation and carrier-specific procedures.",
+  "_model": "qwen3:14b",
+  "_eval_count": 222,
+  "_total_duration_ms": 43231,
+  "_source_file": "transcripts/out-3367899591-206-20251118-080602-1763471162.26.txt",
+  "_direction": "outbound",
+  "_char_count": 1090
+}

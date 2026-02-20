@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jessica is seeking to renew an insurance placard, set up online payments, and clarify coverage details for a vehicle under Miguel's name. She also needs assistance with obtaining lost runs and confirming coverage types.",
+  "resolution_steps": [
+    "Agent confirmed payment method (online monthly payments) and processed credit card details.",
+    "Discussed liability coverage on the 'town and country' vehicle and clarified full coverage options.",
+    "Noted need to obtain lost runs and instructed Jessica to contact the agent for this.",
+    "Sent email with application and ID card signing links.",
+    "Confirmed next steps for policy renewal and coverage adjustments."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy renewal procedures",
+    "Coverage types (liability vs. full coverage)",
+    "Payment setup processes",
+    "Lost runs documentation requirements"
+  ],
+  "systems_referenced": [
+    "Online insurance portal (for application signing)",
+    "Credit card processing system",
+    "Policy management system (for coverage adjustments)"
+  ],
+  "summary": "Jessica is renewing an insurance policy, setting up online payments, and discussing coverage options for a vehicle. The agent processed payment details, clarified coverage types, and outlined next steps for lost runs and policy adjustments. The call concluded with the agent initiating the renewal process and confirming follow-up actions.",
+  "_model": "qwen3:14b",
+  "_eval_count": 296,
+  "_total_duration_ms": 43668,
+  "_source_file": "transcripts/out-3367505898-106-20250924-131751-1758734271.4356.txt",
+  "_direction": "outbound",
+  "_char_count": 2682
+}

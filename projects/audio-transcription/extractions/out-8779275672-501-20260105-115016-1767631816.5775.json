@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jamie, an Alliance Insurance agent, seeks assistance retrieving a debt page for client Marisol Isadora Morales (policy #51P4485Q) from the portal, which is failing to display the document.",
+  "resolution_steps": [
+    "Nikki confirms the policy is on the old platform, making the debt page inaccessible via the current portal.",
+    "Nikki provides the correct email address for submitting the request: ICS support@NSA Group.com.",
+    "Nikki estimates a turnaround time of 'relatively fast,' likely by the next day."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of portal systems and their limitations (old vs. new platform)",
+    "Knowledge of internal/external contact channels (email addresses for processing departments)"
+  ],
+  "systems_referenced": [
+    "Main Street America customer assistance line (automated menu)",
+    "NSA Insurance portal",
+    "Old platform (legacy system)",
+    "ICS support@NSA Group.com email address"
+  ],
+  "summary": "An Alliance Insurance agent encountered issues accessing a debt page for a client via the portal. The NSA Insurance representative explained the policy was on the old platform and directed the agent to email the request to ICS support@NSA Group.com, estimating a quick turnaround. The agent agreed to proceed with the email submission.",
+  "_model": "qwen3:14b",
+  "_eval_count": 299,
+  "_total_duration_ms": 43459,
+  "_source_file": "transcripts/out-8779275672-501-20260105-115016-1767631816.5775.txt",
+  "_direction": "outbound",
+  "_char_count": 2785
+}

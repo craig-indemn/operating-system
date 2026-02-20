@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is attempting to take over a mobile home insurance policy that was canceled by another party (Audrey) and seeks clarification on coverage details, including storage insurance.",
+  "resolution_steps": [
+    "Agent confirms the mobile home's address (1646 Chardell Drive, Unit 39) and acknowledges the cancellation.",
+    "Agent commits to generating a quote and sending it via email by the end of the week.",
+    "Agent explains storage coverage terms (10% of personal property amount applies to stored items).",
+    "Agent schedules a follow-up discussion to review the quote and finalize the policy."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Mobile home insurance policies",
+    "Cancellation and transfer procedures",
+    "Storage coverage calculations (personal property percentages)"
+  ],
+  "systems_referenced": [
+    "Email communication for quote delivery"
+  ],
+  "summary": "A caller seeks to assume a canceled mobile home insurance policy and clarify storage coverage terms. The agent confirms details, commits to providing a quote by Friday, and explains storage coverage as 10% of personal property value. The conversation concludes with a plan to email the quote and schedule a follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 267,
+  "_total_duration_ms": 41498,
+  "_source_file": "transcripts/exten-112-+13366550162-20250930-134909-1759254549.4030.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2727
+}

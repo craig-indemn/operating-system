@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Christina Forni wants to update her insurance policy by adding a new vehicle (a Chevy Malibu with a different VIN) and inquire about the cost, coverage terms, and payment schedule.",
+  "resolution_steps": [
+    "Maria verifies the new VIN number and confirms the vehicle details (Chevy Malibu, lower mileage).",
+    "Maria calculates the full-term premium for the new vehicle ($3,072.89 annually, ~$256/month).",
+    "Maria explains the total monthly cost including the existing policy (~$708/month).",
+    "Maria checks the client's payment history, confirms a past due amount was paid, and outlines the new payment schedule (down payment of $182, next installment $687).",
+    "Maria clarifies the monthly premium ($732/month for all vehicles) and acknowledges the client's request for total fees over ten months."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Processing vehicle VIN updates in insurance policies",
+    "Calculating annual and monthly premiums based on vehicle details",
+    "Handling payment schedules and past due amounts",
+    "Explaining insurance coverage terms (full coverage, deductibles, rental/towing)"
+  ],
+  "systems_referenced": [
+    "Insurance quoting system (for premium calculation)",
+    "Policy management database (for VIN verification and policy updates)",
+    "Billing/accounting system (for payment history and installment tracking)"
+  ],
+  "summary": "Christina Forni updates her insurance policy with a new Chevy Malibu, and Maria calculates the premium, explains the payment terms, and confirms the client's request for a detailed breakdown of fees over ten months. The call requires further clarification on total fees before finalizing the policy change.",
+  "_model": "qwen3:14b",
+  "_eval_count": 388,
+  "_total_duration_ms": 52464,
+  "_source_file": "transcripts/exten-203-+17047633482-20251226-100637-1766761597.647.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3900
+}

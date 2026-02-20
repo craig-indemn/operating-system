@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller seeks assistance to obtain a 'fr guion 10' form for their sister's recent accident in South Carolina and wants clarification on insurance points and legal implications from the accident.",
+  "resolution_steps": [
+    "Agent confirmed the caller's sister's address in South Carolina.",
+    "Explained that the 'fr guion 10' form is a South Carolina-specific document, not handled by their agency.",
+    "Requested the caller to send all accident-related documents for verification.",
+    "Clarified that the insurance policy would renew on 29th of the month and the accident would not affect the premium.",
+    "Addressed the caller's concern about traffic tickets and legal advice, noting that South Carolina tickets would impact points."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of South Carolina-specific insurance forms and accident reporting processes",
+    "Knowledge of insurance policy renewal timelines and premium adjustments",
+    "Awareness of inter-state traffic ticket implications and legal considerations"
+  ],
+  "systems_referenced": [
+    "Internal policy management system (to check renewal dates and payment status)"
+  ],
+  "summary": "The caller needed help navigating a South Carolina accident claim form, insurance implications, and legal advice. The agent clarified form requirements, confirmed policy status, and advised document submission for further assistance. The caller was directed to send documents and consider legal consultation for the South Carolina ticket.",
+  "_model": "qwen3:14b",
+  "_eval_count": 313,
+  "_total_duration_ms": 56597,
+  "_source_file": "transcripts/exten-114-+13364234380-20251120-161855-1763673535.3913.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3875
+}

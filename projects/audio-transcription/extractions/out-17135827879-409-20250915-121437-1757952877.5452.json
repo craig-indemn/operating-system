@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking clarification on unexpected insurance billing discrepancies (a $905 first-month charge vs. $304 for subsequent months), a sudden increase in the final month's charge to $696, and concerns about automatic credit card charges. She also wants to resolve confusion about how her daughter's driving experience (specifically provisional license dates) impacts the policy.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's confusion and confirms they are working on sending additional documents to resolve the billing issue.",
+    "Agent agrees to review the policy breakdown ($2,428 total) and clarify the $905 vs. $304 monthly rate discrepancy.",
+    "Agent commits to checking the driving experience data (provisional license dates) to address the carrier's assessment of risk.",
+    "Agent notes the caller's intent to cancel her credit card if charges proceed and promises to escalate the issue."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy billing structures (e.g., prorated rates, multi-year policies)",
+    "Impact of driving experience (e.g., provisional licenses) on insurance premiums",
+    "Carrier-specific underwriting criteria for new drivers"
+  ],
+  "systems_referenced": [
+    "Account portal (for policy details and payment history)",
+    "Credit card processing system (automatic charges)",
+    "Carrier underwriting system (driving experience data)"
+  ],
+  "summary": "Marcia is confused about her insurance billing, including a $905 first-month charge, a $696 final-month charge, and automatic credit card deductions. She also disputes the carrier's assessment of her daughter's driving experience (provisional license dates). The agent acknowledges the issues, confirms they are reviewing documents, and agrees to escalate the matter for resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 396,
+  "_total_duration_ms": 49903,
+  "_source_file": "transcripts/out-17135827879-409-20250915-121437-1757952877.5452.txt",
+  "_direction": "outbound",
+  "_char_count": 4434
+}

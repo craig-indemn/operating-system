@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Leslie Jones from Travelers Insurance is seeking clarification on a workers' compensation claim involving an injured worker (Juan Cabello) and resolving confusion between two insureds (Marissa Arroyo Solis and Carolina Carports Company).",
+  "resolution_steps": [
+    "Cody confirmed the details of the claim (October 22nd injury, TBI, and multiple injuries).",
+    "Cody provided Marissa Arroyo Solis's phone number (479-747-2597) for direct contact.",
+    "Cody suggested contacting Ruby at Carolina Carports (ruby@carolinascarports.com) if Marissa could not be reached.",
+    "Cody explained the confusion between the two claims and the need to verify the correct policyholder."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Workers' compensation claims process",
+    "Handling multiple claims under different insureds",
+    "Contacting policyholders and third-party contractors"
+  ],
+  "systems_referenced": [
+    "Travelers Insurance Company",
+    "Carolina Carports Company",
+    "Form 18s (workers' compensation forms)"
+  ],
+  "summary": "Leslie Jones from Travelers Insurance discussed a workers' compensation claim confusion involving two insureds (Marissa Arroyo Solis and Carolina Carports Company). Cody provided contact information for Marissa and Ruby at Carolina Carports to resolve the issue. The call concluded with Leslie thanking Cody and committing to follow up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 335,
+  "_total_duration_ms": 53457,
+  "_source_file": "transcripts/exten-207-+18049344820-20251107-122400-1762536240.2612.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3144
+}

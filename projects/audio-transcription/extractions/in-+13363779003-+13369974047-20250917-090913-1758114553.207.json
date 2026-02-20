@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller requested proof of insurance (likely for a loan company) to be sent to their email address.",
+  "resolution_steps": [
+    "Agent confirmed the ability to email a copy of the policy.",
+    "Agent asked for the caller's email address (lamocain@gmail.com).",
+    "Agent assured the caller the document would be sent shortly."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Process for sending policy documents via email",
+    "Verification of email addresses for document delivery"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller requested proof of insurance via email for a loan company. The agent confirmed the request, collected the email address (lamocain@gmail.com), and agreed to send the policy document. The call concluded with both parties expressing gratitude.",
+  "_model": "qwen3:14b",
+  "_eval_count": 186,
+  "_total_duration_ms": 28414,
+  "_source_file": "transcripts/in-+13363779003-+13369974047-20250917-090913-1758114553.207.txt",
+  "_direction": "inbound",
+  "_char_count": 812
+}

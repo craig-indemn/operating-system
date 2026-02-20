@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; appears to be a fragmented, non-specific rant with no discernible request or purpose.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Non-substantive inbound call containing incoherent language with no actionable intent or context. The caller's statement appears to be a disjointed expression of frustration without specific reference to insurance services or requests.",
+  "_model": "qwen3:14b",
+  "_eval_count": 113,
+  "_total_duration_ms": 22170,
+  "_source_file": "transcripts/in-+13363779003-+17049759120-20250918-135209-1758217929.7918.txt",
+  "_direction": "inbound",
+  "_char_count": 64
+}

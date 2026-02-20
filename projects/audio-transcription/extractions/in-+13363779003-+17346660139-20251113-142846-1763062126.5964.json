@@ -1,0 +1,22 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller (Christy from Davies) is initiating a call regarding an audit for D Laura Construction and seeks to speak with the appropriate agent.",
+  "resolution_steps": [
+    "Agent checks the client's assigned agent (Gloria).",
+    "Agent transfers the call to Gloria."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Internal client-agent routing system"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's internal database (to identify agent)"
+  ],
+  "summary": "A call regarding an audit for D Laura Construction was routed to the appropriate agent (Gloria) by the receptionist. The conversation was brief and focused on transferring the call.",
+  "_model": "qwen3:14b",
+  "_eval_count": 168,
+  "_total_duration_ms": 35417,
+  "_source_file": "transcripts/in-+13363779003-+17346660139-20251113-142846-1763062126.5964.txt",
+  "_direction": "inbound",
+  "_char_count": 353
+}

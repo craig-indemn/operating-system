@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to confirm whether their insurance payment was processed and inquire about switching to a different bank if the payment failed.",
+  "resolution_steps": [
+    "Agent looked up the caller's insurance account (Jack Bailey).",
+    "Notified the caller that the payment was due on January 5th for $230.48 and was marked as 'cancel pending' with a deadline of January 25th.",
+    "Explained that switching to a different bank was possible if the payment was made by January 25th.",
+    "Caller agreed to pay by the deadline and call back the next day with the necessary information."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Payment processing timelines",
+    "Policy management procedures",
+    "Bank switching protocols"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal database"
+  ],
+  "summary": "The caller confirmed their payment was not processed and was advised to pay by January 25th to switch banks. The agent provided clear next steps, and the caller agreed to follow up the next day with payment confirmation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 253,
+  "_total_duration_ms": 27149,
+  "_source_file": "transcripts/in-+13363779003-+17046210226-20260112-112226-1768234946.1297.txt",
+  "_direction": "inbound",
+  "_char_count": 875
+}

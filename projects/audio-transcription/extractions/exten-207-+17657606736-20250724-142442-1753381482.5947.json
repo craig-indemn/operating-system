@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Fabian asked if his insurance payment due on the 27th of the month could be processed early to avoid another payment being drafted, and wanted confirmation about the automatic EFT setup.",
+  "resolution_steps": [
+    "Cody confirmed Fabian's policies were set up for EFT and would auto-draft payments.",
+    "Cody checked the billing account and confirmed the payment amount ($993.37) and schedule (drafting around the 27th of each month).",
+    "Cody explained that the payment would typically draft on or near the 27th, with a possible delay to the 28th or within a day or two.",
+    "Cody assured Fabian no action was needed and offered to assist if the payment didn't process by Monday/Tuesday."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "EFT payment processing timelines",
+    "Billing account consolidation for combined policies",
+    "Understanding of monthly payment schedules and draft day variations"
+  ],
+  "systems_referenced": [
+    "billing account system (implied through agent's check of payment details)"
+  ],
+  "summary": "Fabian inquired about early processing of his insurance payment and confirmation of EFT setup. Cody verified the payment would auto-draft around the 27th of each month, explained the timeline, and assured Fabian no action was needed. The call concluded with Fabian satisfied and Cody offering follow-up support.",
+  "_model": "qwen3:14b",
+  "_eval_count": 320,
+  "_total_duration_ms": 47593,
+  "_source_file": "transcripts/exten-207-+17657606736-20250724-142442-1753381482.5947.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3751
+}

@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Sylvie Hernandez is following up on a previous call regarding an escrow-related insurance adjustment (likely a policy increase) effective October, and she wants to speak with Sharon or an agent.",
+  "resolution_steps": [
+    "Agent acknowledged Sylvie's previous call and attempted to transfer her to Gary.",
+    "When Gary was unavailable, the agent offered to transfer her to another agent.",
+    "Agent asked for clarification on the specific issue (escrow, increment, increase starting October)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of escrow processes in insurance",
+    "Policy adjustment procedures",
+    "Call transfer protocols"
+  ],
+  "systems_referenced": [],
+  "summary": "Sylvie Hernandez is following up on a previous call about an escrow-related insurance adjustment effective October. The agent attempted to connect her with Gary but transferred her to another agent when he was unavailable. The conversation highlights a need for clarification on the specific policy change she is inquiring about.",
+  "_model": "qwen3:14b",
+  "_eval_count": 230,
+  "_total_duration_ms": 36964,
+  "_source_file": "transcripts/in-+13363779003-+13363060388-20250826-115925-1756223965.3414.txt",
+  "_direction": "inbound",
+  "_char_count": 786
+}

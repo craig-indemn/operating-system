@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Gina Foreman needs to update her insurance documents with her new address, obtain a declaration page showing her house's current address, and resolve insurance-related questions about a travel trailer she is in the process of transferring to her brother-in-law.",
+  "resolution_steps": [
+    "Jana checks Gina's account to confirm address updates and verifies the current policy details.",
+    "Jana offers to email Gina a copy of the updated declaration page with the new address (80 Little Dan River Road, Lodgeville, Virginia).",
+    "Jana discusses options for the travel trailer: transferring ownership to Gina's brother-in-law or updating the garage address on the existing policy.",
+    "Jana explains potential coverage changes based on county differences and the need for the brother-in-law's address if the trailer remains in Gina's name."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy updates and address change procedures",
+    "Declaration page generation and delivery methods",
+    "Handling vehicle ownership transfers and liens",
+    "Impact of location changes (county, city) on insurance rates"
+  ],
+  "systems_referenced": [
+    "Internal insurance account management system",
+    "Email delivery of documents"
+  ],
+  "summary": "Gina Foreman is updating her insurance details with a new address and needs a declaration page reflecting her house's current location. She is also seeking guidance on handling a travel trailer in the process of being transferred to her brother-in-law's ownership. Jana explains options for updating the policy, including potential address changes or ownership transfers, while noting that coverage adjustments may depend on the county.",
+  "_model": "qwen3:14b",
+  "_eval_count": 354,
+  "_total_duration_ms": 50540,
+  "_source_file": "transcripts/parked-203-203-20251023-160551-1761249951.6043.txt",
+  "_direction": "parked",
+  "_char_count": 4127
+}

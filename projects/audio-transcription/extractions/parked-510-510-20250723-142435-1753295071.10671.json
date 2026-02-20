@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Debbie from First Community Bank wanted to confirm if Blue Water Air LLC renewed their flood insurance and requested the policy deck page for reference.",
+  "resolution_steps": [
+    "Tracy confirmed Blue Water Air LLC had renewed their flood insurance.",
+    "Tracy asked Debbie for her email address to send the policy deck page.",
+    "Tracy agreed to send the document and concluded the call."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding how to check policy renewal status",
+    "Ability to send documents via email"
+  ],
+  "systems_referenced": [],
+  "summary": "Debbie confirmed Blue Water Air LLC's flood insurance renewal and requested the policy deck page. Tracy verified the renewal, collected Debbie's email, and committed to sending the document. The call concluded with both parties expressing gratitude.",
+  "_model": "qwen3:14b",
+  "_eval_count": 193,
+  "_total_duration_ms": 37913,
+  "_source_file": "transcripts/parked-510-510-20250723-142435-1753295071.10671.txt",
+  "_direction": "parked",
+  "_char_count": 604
+}

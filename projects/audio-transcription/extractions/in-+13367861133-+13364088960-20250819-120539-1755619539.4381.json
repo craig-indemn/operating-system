@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Donette Sikes needs assistance changing workers' comp class codes from 8848 to 8826/8824 after an audit, as her carrier (Paychecks) indicated this requires a new policy.",
+  "resolution_steps": [
+    "Agent acknowledged the need to change class codes following a workers' comp audit.",
+    "Offered to transfer the caller to a specialized team for policy adjustments.",
+    "Provided alternative contact methods (voicemail, email: support@myallianceinsurance.com) in case of transfer failure due to staffing shortages."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Workers' compensation policy administration",
+    "Class code modification processes",
+    "Carrier-specific procedures (Paychecks)"
+  ],
+  "systems_referenced": [
+    "Paychecks (insurance carrier)",
+    "myallianceinsurance.com email support"
+  ],
+  "summary": "Donette Sikes requires help updating workers' comp class codes after an audit, as her carrier indicated this necessitates a new policy. The agent offered to connect her with the appropriate team and provided backup contact options.",
+  "_model": "qwen3:14b",
+  "_eval_count": 255,
+  "_total_duration_ms": 29168,
+  "_source_file": "transcripts/in-+13367861133-+13364088960-20250819-120539-1755619539.4381.txt",
+  "_direction": "inbound",
+  "_char_count": 1056
+}

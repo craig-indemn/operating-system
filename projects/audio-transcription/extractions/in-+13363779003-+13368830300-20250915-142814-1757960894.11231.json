@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Caller was involved in a car accident and intended to file an insurance claim but was uncertain whether to speak directly with Alliance Insurance or their agent.",
+  "resolution_steps": [
+    "Agent acknowledged the situation and offered to connect the caller with an agent, but the call was cut off before further action could be taken."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller reported a car accident and intent to file a claim but the conversation was interrupted before the agent could provide guidance or connect them with an agent. The call was too brief to determine if the issue was resolved.",
+  "_model": "qwen3:14b",
+  "_eval_count": 151,
+  "_total_duration_ms": 25458,
+  "_source_file": "transcripts/in-+13363779003-+13368830300-20250915-142814-1757960894.11231.txt",
+  "_direction": "inbound",
+  "_char_count": 274
+}

@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Heather Scott is following up with John to check if he's interested in any insurance proposals and requests a callback.",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Heather Scott left a voicemail for John, attempting to reconnect about insurance proposals and providing her contact number. The call was not substantive as it consisted solely of a voicemail message.",
+  "_model": "qwen3:14b",
+  "_eval_count": 110,
+  "_total_duration_ms": 25892,
+  "_source_file": "transcripts/out-3362795804-401-20251112-145930-1762977570.7150.txt",
+  "_direction": "outbound",
+  "_char_count": 337
+}

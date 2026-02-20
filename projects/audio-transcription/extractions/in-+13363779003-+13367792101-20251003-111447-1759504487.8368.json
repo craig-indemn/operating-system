@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Miguel Trejo, wants to make changes to his insurance policy and previously left a voice message seeking assistance.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's request to modify his policy.",
+    "Apologizes for prior lack of assistance and acknowledges the voice message.",
+    "Informs caller that the agency is short-staffed but offers to put him on hold to find an available agent."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Handling customer service requests for policy modifications",
+    "Managing staffing shortages during high-volume periods"
+  ],
+  "systems_referenced": [],
+  "summary": "Miguel Trejo contacted Alliance Insurance to make changes to his policy after a prior failed attempt. The agent apologized for previous shortcomings and offered to put him on hold to connect him with an available agent, though no resolution was achieved during this call.",
+  "_model": "qwen3:14b",
+  "_eval_count": 206,
+  "_total_duration_ms": 56686,
+  "_source_file": "transcripts/in-+13363779003-+13367792101-20251003-111447-1759504487.8368.txt",
+  "_direction": "inbound",
+  "_char_count": 574
+}

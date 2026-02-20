@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking a better auto insurance quote by comparing their current Progressive policy with a potential National General quote, while also discussing bundling options for homeowner's insurance.",
+  "resolution_steps": [
+    "Agent gathered caller's personal details (name, contact info, address, DOB).",
+    "Collected vehicle information (2015 Toyota Camry, VIN, financing details).",
+    "Inquired about current coverage (full coverage, $500 deductible).",
+    "Checked Progressive policy details (renewal date, payment plan, current rate).",
+    "Mentioned Telematics discount as a potential savings opportunity.",
+    "Noted caller's preference to decline Telematics monitoring."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Auto insurance quoting process",
+    "Discount programs (e.g., Telematics)",
+    "Policy bundling strategies",
+    "Underwriting criteria for coverage and deductibles"
+  ],
+  "systems_referenced": [
+    "Insurance portal/database for policy lookup",
+    "National General quoting system"
+  ],
+  "summary": "Willat Scott, a homeowner with a Progressive policy, sought a better auto insurance quote. The agent collected detailed information about his policy, vehicle, and driving history, while discussing bundling options and the Telematics discount. The agent is running reports to provide a National General quote, with the caller declining the Telematics program.",
+  "_model": "qwen3:14b",
+  "_eval_count": 319,
+  "_total_duration_ms": 39784,
+  "_source_file": "transcripts/q-200-+13369956032-20251218-153920-1766090360.4192.txt",
+  "_direction": "queue",
+  "_char_count": 3965
+}

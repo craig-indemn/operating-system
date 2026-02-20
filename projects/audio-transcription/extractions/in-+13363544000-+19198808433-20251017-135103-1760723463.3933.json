@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller requested assistance in Spanish, which was not available, and agreed to a callback on Monday.",
+  "resolution_steps": [
+    "Agent apologized for not having a Spanish-speaking representative available.",
+    "Offered to have someone call back on Monday.",
+    "Requested the caller's name and phone number.",
+    "Confirmed the callback arrangement."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Language support availability",
+    "Callback scheduling process"
+  ],
+  "systems_referenced": [],
+  "summary": "Caller requested Spanish-speaking assistance, which was unavailable. Agent arranged for a callback on Monday and collected the caller's contact information. The caller agreed to this arrangement.",
+  "_model": "qwen3:14b",
+  "_eval_count": 162,
+  "_total_duration_ms": 27044,
+  "_source_file": "transcripts/in-+13363544000-+19198808433-20251017-135103-1760723463.3933.txt",
+  "_direction": "inbound",
+  "_char_count": 505
+}

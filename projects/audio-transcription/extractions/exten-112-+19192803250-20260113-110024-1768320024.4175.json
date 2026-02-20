@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Mindy McPeak is reviewing two insurance policies (Haggerty and Progressive) to confirm details for renewal, specifically addressing policy information accuracy, contact details, and exploring deductible adjustments to reduce monthly premiums.",
+  "resolution_steps": [
+    "Brandy confirmed Mindy's contact information (address, email, phone number).",
+    "Brandy reviewed policy details: Progressive motor home policy (renewing in September) with current deductibles, and Haggerty policy (1971 Chevrolet C10) with zero-dollar deductibles for comprehensive and collision.",
+    "Mindy requested quotes for adjusted deductibles (e.g., $250 comprehensive/$500 collision) to lower monthly costs.",
+    "Brandy agreed to generate and email quotes for comparison."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy renewal processes",
+    "Impact of deductible changes on premium costs",
+    "Policy-specific details (coverage limits, vehicle information)"
+  ],
+  "systems_referenced": [
+    "Agency's policy management system (for retrieving policy details)",
+    "Quote generation tool (to compare deductible scenarios)"
+  ],
+  "summary": "Mindy McPeak reviewed her insurance policies with Brandy, confirming contact details and policy specifics. She requested quotes for adjusted deductibles on the Haggerty policy to reduce premiums. Brandy agreed to provide comparative quotes for review.",
+  "_model": "qwen3:14b",
+  "_eval_count": 309,
+  "_total_duration_ms": 42287,
+  "_source_file": "transcripts/exten-112-+19192803250-20260113-110024-1768320024.4175.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3957
+}

@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Caller attempted to reach 'Armani' at 'my lines insurance' but was informed Armani no longer works there.",
+  "resolution_steps": [
+    "Agent acknowledged Armani's departure",
+    "Agent offered to connect caller with new policy agent"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller reached out to inquire about Armani, who no longer works at the agency. Agent attempted to transfer the call but the conversation was cut short before resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 127,
+  "_total_duration_ms": 36626,
+  "_source_file": "transcripts/in-+13363779003-+17372011721-20251009-134725-1760032045.4110.txt",
+  "_direction": "inbound",
+  "_char_count": 261
+}

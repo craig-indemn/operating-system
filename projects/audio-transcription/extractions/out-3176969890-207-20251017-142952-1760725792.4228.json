@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "N/A",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Voicemail greeting indicating the recipient's voicemail is not yet configured. The caller is directed to try again later.",
+  "_model": "qwen3:14b",
+  "_eval_count": 77,
+  "_total_duration_ms": 16974,
+  "_source_file": "transcripts/out-3176969890-207-20251017-142952-1760725792.4228.txt",
+  "_direction": "outbound",
+  "_char_count": 134
+}

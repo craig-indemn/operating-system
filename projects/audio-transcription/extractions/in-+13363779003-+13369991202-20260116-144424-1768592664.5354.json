@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Stephen Curtis wants to make a payment on his homeowners insurance policy and clarify discrepancies in his payment history.",
+  "resolution_steps": [
+    "Agent logged into Foremost system to access Stephen's account.",
+    "Agent placed Stephen on hold while retrieving payment details.",
+    "Agent confirmed payment amount ($49.22) and Stephen requested to pay $100 instead.",
+    "Agent processed the $100 payment via debit card, collecting card details and billing zip code.",
+    "Agent clarified Stephen's confusion about past payments and upcoming due dates.",
+    "Agent confirmed the updated balance after applying the payment."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance billing processes",
+    "Policy payment schedules and due dates",
+    "Payment processing via debit card",
+    "Handling customer confusion about payment history"
+  ],
+  "systems_referenced": [
+    "Foremost (insurance carrier system)",
+    "Alliance Insurance customer portal (myallianceinsurance.com)"
+  ],
+  "summary": "Stephen Curtis contacted Alliance Insurance to make a $100 payment on his homeowners insurance, despite the system showing a lower amount due. The agent processed the payment, clarified that the policy's next due date was January 26, and addressed Stephen's confusion about prior payments made in November and December. The balance was updated to $823.21 after applying the payment.",
+  "_model": "qwen3:14b",
+  "_eval_count": 307,
+  "_total_duration_ms": 44826,
+  "_source_file": "transcripts/in-+13363779003-+13369991202-20260116-144424-1768592664.5354.txt",
+  "_direction": "inbound",
+  "_char_count": 4261
+}

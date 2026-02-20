@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is inquiring about walk-in availability, waiting times, pricing, and payment methods for a haircut and beard trim service.",
+  "resolution_steps": [
+    "Agent confirms walk-in availability and discusses waiting times (10-15 minutes vs. 30 minutes).",
+    "Agent states the price for the service ($20) and clarifies payment is cash-only.",
+    "Caller agrees to a 20-minute wait and confirms the appointment time (1 o'clock) and name (Joe)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Salon's walk-in policy",
+    "Service pricing and payment methods",
+    "Appointment scheduling procedures"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller inquired about haircut and beard trim services at a salon, including availability, waiting times, and payment options. The agent provided details about pricing ($20 cash-only) and confirmed a 1 o'clock appointment with the caller named Joe. The call concluded with the caller agreeing to arrive in 20 minutes.",
+  "_model": "qwen3:14b",
+  "_eval_count": 245,
+  "_total_duration_ms": 42176,
+  "_source_file": "transcripts/out-13367893939-204-20251202-122903-1764696543.4259.txt",
+  "_direction": "outbound",
+  "_char_count": 478
+}

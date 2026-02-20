@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Dale Faulk wants to finalize an insurance policy by sending signed documents and clarify how to handle the payment process.",
+  "resolution_steps": [
+    "Jeff confirms Dale has signed the documents and explains the next steps.",
+    "Jeff clarifies that billing will be handled directly between Dale and Cincinnati Specialty.",
+    "Jeff checks the status of the signed documents and confirms they have been received.",
+    "Jeff commits to initiating the binding process once documents are confirmed and informs Dale of next steps."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy activation process",
+    "Binding request procedures",
+    "Billing arrangements with carriers (Cincinnati Specialty)"
+  ],
+  "systems_referenced": [
+    "Cincinnati Specialty (carrier)",
+    "Document e-signing system"
+  ],
+  "summary": "Dale Faulk discusses finalizing an insurance policy with Jeff, who guides him through submitting signed documents and explains that Cincinnati Specialty will handle direct billing. Jeff confirms document receipt and commits to initiating the binding process.",
+  "_model": "qwen3:14b",
+  "_eval_count": 233,
+  "_total_duration_ms": 36351,
+  "_source_file": "transcripts/exten-206-+13369701866-20250808-095238-1754661158.3366.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1867
+}

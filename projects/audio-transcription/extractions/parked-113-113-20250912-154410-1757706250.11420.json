@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Todd seeks assistance with a DMV lapse notice related to his Liberty Insurance policy, aiming to prevent account lapsing and understand next steps.",
+  "resolution_steps": [
+    "Agent confirms Todd's active policies and checks Progressive auto policy status, finding it canceled on July 2.",
+    "Agent explains the cancellation date is beyond reinstatement and suggests re-quoting a new policy.",
+    "Agent clarifies DMV lapse notices are triggered by policy cancellations and cannot be avoided without reactivating the policy.",
+    "Agent discovers Todd has a second Progressive policy purchased online through a different account.",
+    "Agent informs Todd that online purchases bypass the agency, requiring direct contact with Progressive Direct for DMV documentation.",
+    "Agent provides Progressive Direct's phone number and the second account number for reference."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Policy reinstatement timelines",
+    "DMV notice processes",
+    "Differentiation between agency-placed and online-purchased policies",
+    "Progressive Direct contact procedures"
+  ],
+  "systems_referenced": [
+    "Progressive auto policy portal",
+    "NCDMV (North Carolina DMV)",
+    "Progressive Direct customer service"
+  ],
+  "summary": "Todd contacted Alliance Insurance to address a DMV lapse notice for his canceled Progressive policy. The agent confirmed the policy's cancellation date, explained reinstatement limitations, and directed Todd to contact Progressive Direct directly for DMV documentation. The agent also clarified that Todd's second policy, purchased online, required separate action through Progressive Direct.",
+  "_model": "qwen3:14b",
+  "_eval_count": 336,
+  "_total_duration_ms": 36478,
+  "_source_file": "transcripts/parked-113-113-20250912-154410-1757706250.11420.txt",
+  "_direction": "parked",
+  "_char_count": 4209
+}

@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Stephen is seeking assistance to obtain a homeowner's insurance policy for his son's house in Salisbury, NC, which is undergoing a roof replacement. He is concerned about previous policy cancellation due to roof conditions and wants coverage before the current policy expires in December.",
+  "resolution_steps": [
+    "Heather confirms the property address (525 Trexler Loop, Salisbury, NC 28144) and details about the house (4 bedrooms, 2400 sq ft, new roof installation planned).",
+    "Discusses the current policy expiration date (December 7) and the need to secure coverage before then.",
+    "Notes the previous policy cancellation was linked to roof age requirements and the need for the roof to be installed before new coverage can be effective.",
+    "Agrees to quote a policy starting November 1, contingent on the roof being completed and the property being deeded to the son.",
+    "Highlights the importance of insuring the property despite the low remaining loan balance and tax value."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance requirements for new roof installations",
+    "Policy cancellation reasons related to roof age",
+    "Timing for policy activation post-construction",
+    "Handling of properties with pending deed transfers"
+  ],
+  "systems_referenced": [],
+  "summary": "Stephen is working to secure homeowner's insurance for his son's house in Salisbury, NC, which is getting a new roof. The previous policy was canceled due to roof age requirements, and the current policy expires in December. Heather agrees to provide a quote starting November 1, pending roof completion and deed transfer. The caller emphasizes the need for coverage despite the property's low loan balance and tax value.",
+  "_model": "qwen3:14b",
+  "_eval_count": 376,
+  "_total_duration_ms": 56030,
+  "_source_file": "transcripts/exten-401-+13366074323-20251008-145006-1759949406.6744.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4231
+}

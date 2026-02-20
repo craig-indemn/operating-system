@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to start a new insurance policy and specifically requested to speak with Corbin, indicating a preference for working with him.",
+  "resolution_steps": [
+    "Agent confirmed Corbin's availability status was unknown.",
+    "Offered to transfer the call to Corbin.",
+    "Caller agreed to leave a voicemail if Corbin was unavailable."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Agency's process for transferring calls to specific agents",
+    "Handling new policy inquiries"
+  ],
+  "systems_referenced": [],
+  "summary": "Caller sought to initiate a new policy with Corbin. Agent attempted to transfer the call but could not confirm Corbin's availability, leading to a voicemail offer. The conversation highlights the need for better call routing systems to connect clients with preferred agents.",
+  "_model": "qwen3:14b",
+  "_eval_count": 191,
+  "_total_duration_ms": 24889,
+  "_source_file": "transcripts/in-+13363544000-+19084219049-20251015-153752-1760557072.5429.txt",
+  "_direction": "inbound",
+  "_char_count": 454
+}

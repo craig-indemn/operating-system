@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Scotty wants to pay his insurance premium in full, confirm the payment method, and ensure the policy starts on the correct date after his current policy expires.",
+  "resolution_steps": [
+    "Agent verifies Scotty's account and confirms the payment amount ($3,398.06).",
+    "Scotty provides credit card details (number, expiration, CVV) for payment.",
+    "Agent confirms the policy will take effect on the same date as the current policy's expiration.",
+    "Agent promises to email the application, ID card, and receipt for electronic signature."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance payment processing",
+    "Policy effective date coordination",
+    "Electronic document delivery procedures"
+  ],
+  "systems_referenced": [
+    "Internal account management system",
+    "Email communication system"
+  ],
+  "summary": "Scotty confirms payment of his insurance premium in full using a credit card. The agent verifies details, confirms policy effective date alignment, and promises to send required documents via email. The call concludes with holiday greetings and confirmation of next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 251,
+  "_total_duration_ms": 34024,
+  "_source_file": "transcripts/out-3368170479-510-20251222-164934-1766440174.5562.txt",
+  "_direction": "outbound",
+  "_char_count": 1649
+}

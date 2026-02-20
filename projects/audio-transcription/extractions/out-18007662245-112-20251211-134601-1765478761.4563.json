@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Brandy from Alliance Insurance is seeking clarification on billing discrepancies after a policy change and wants to set up auto-pay for a client (Debbie Belleville) to ensure consistent monthly payments.",
+  "resolution_steps": [
+    "Agent Kayla confirmed the account number and policyholder name.",
+    "Kayla checked the account for endorsements and confirmed a $718.30 adjustment was applied.",
+    "Explained that the billing discrepancy would resolve itself once a payment plan change request was processed.",
+    "Confirmed no pending endorsements and assured the client the future billing would stabilize for auto-pay setup."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of policy endorsements and their impact on billing",
+    "Process for modifying payment plans",
+    "Billing adjustment workflows post-policy changes"
+  ],
+  "systems_referenced": [
+    "Penn National Insurance customer contact center system"
+  ],
+  "summary": "Brandy from Alliance Insurance consulted Kayla about billing irregularities after a policy change for Debbie Belleville. Kayla confirmed a $718.30 endorsement adjustment was applied and explained that processing a payment plan change would resolve the billing inconsistency, enabling auto-pay setup. The call concluded with Kayla assuring Brandy the billing would stabilize.",
+  "_model": "qwen3:14b",
+  "_eval_count": 282,
+  "_total_duration_ms": 42314,
+  "_source_file": "transcripts/out-18007662245-112-20251211-134601-1765478761.4563.txt",
+  "_direction": "outbound",
+  "_char_count": 3378
+}

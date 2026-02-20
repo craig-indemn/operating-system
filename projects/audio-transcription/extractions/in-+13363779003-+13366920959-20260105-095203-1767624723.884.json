@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unknown (call abandoned before intent could be expressed)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Very brief call where the caller requested to speak with Cecilia, but the conversation was cut off before any meaningful interaction could occur. No substantive information was exchanged.",
+  "_model": "qwen3:14b",
+  "_eval_count": 95,
+  "_total_duration_ms": 25349,
+  "_source_file": "transcripts/in-+13363779003-+13366920959-20260105-095203-1767624723.884.txt",
+  "_direction": "inbound",
+  "_char_count": 136
+}

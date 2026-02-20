@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller attempted to add a new policy but encountered an issue causing the call to hang up.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The call was cut off mid-conversation when the caller mentioned an issue adding a policy. No resolution steps were completed due to the call ending prematurely.",
+  "_model": "qwen3:14b",
+  "_eval_count": 100,
+  "_total_duration_ms": 16068,
+  "_source_file": "transcripts/in-+13363544000-+13364520461-20260116-103324-1768577604.960.txt",
+  "_direction": "inbound",
+  "_char_count": 155
+}

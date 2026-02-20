@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to confirm that an automatic payment for a workers' compensation claim was being processed correctly and verify the payment amount.",
+  "resolution_steps": [
+    "Agent confirmed the payment was set up for auto pay.",
+    "Agent verified the payment amount ($986.10) with the customer.",
+    "Agent assured the customer the payment was scheduled for the same day.",
+    "Agent offered further assistance, which the customer declined."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Workers' compensation claim processing",
+    "Auto pay system functionality",
+    "Payment scheduling procedures"
+  ],
+  "systems_referenced": [
+    "Auto pay system",
+    "Payment portal"
+  ],
+  "summary": "Agent Amanda confirmed with a customer that their workers' compensation payment was set up for auto pay and verified the $986.10 amount. The customer confirmed the payment was scheduled and expressed no further concerns. The call concluded with both parties confirming the payment would proceed as expected.",
+  "_model": "qwen3:14b",
+  "_eval_count": 227,
+  "_total_duration_ms": 35201,
+  "_source_file": "transcripts/out-13369088352-201-20250917-140001-1758132001.2930.txt",
+  "_direction": "outbound",
+  "_char_count": 727
+}

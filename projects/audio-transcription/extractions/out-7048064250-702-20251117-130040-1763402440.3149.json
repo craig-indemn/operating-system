@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller seeks to contact Robin Carey, the executor of an estate, to discuss the status of property (house and car) and payment arrangements for an insurance policy, as well as the disposition of vehicles.",
+  "resolution_steps": [
+    "Agent confirmed Robin Carey's phone number (704-556-4317) and provided it to the caller.",
+    "Agent checked the payment schedule and confirmed a recurring payment is due on November 27th.",
+    "Agent clarified that the policy is set up for monthly payments and no immediate action is required.",
+    "Agent discussed the need to sell vehicles (Buick, Honda Accord, Traverse) and confirmed Maggie is driving the Honda Accord."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of executor roles in estate administration",
+    "Insurance policy payment structures",
+    "Procedures for handling property and vehicle disposition in estates"
+  ],
+  "systems_referenced": [
+    "Payment scheduling system (referenced November 27th payment date)",
+    "Policy management database (for recurring payment details)"
+  ],
+  "summary": "The agent assisted a caller in obtaining contact information for an estate executor to address property and payment matters. The caller was informed about an upcoming payment due date and vehicle disposition requirements. The conversation highlighted ongoing estate administration challenges and the need for further coordination with the executor.",
+  "_model": "qwen3:14b",
+  "_eval_count": 307,
+  "_total_duration_ms": 47037,
+  "_source_file": "transcripts/out-7048064250-702-20251117-130040-1763402440.3149.txt",
+  "_direction": "outbound",
+  "_char_count": 2648
+}

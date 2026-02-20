@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Kevin is attempting to reach Gary, who left a voicemail, and is seeking confirmation that Gary will return his call. He also inquires about the area code associated with the call to identify incoming calls from Gary.",
+  "resolution_steps": [
+    "Agent informs Kevin that Gary is unavailable but has been notified of the call and will return it.",
+    "Agent explains that voicemail systems may not always display recent call history from the same number.",
+    "Agent confirms that Gary's return call would likely use the same area code (336) if Gary is using a cell phone.",
+    "Agent offers to send a message to Gary to ensure he follows up."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Voicemail system functionality",
+    "Call history display limitations",
+    "Area code identification for mobile numbers"
+  ],
+  "systems_referenced": [
+    "Voicemail system"
+  ],
+  "summary": "Kevin is trying to reach Gary, who left a voicemail. The agent confirms Gary will be notified and will return the call, while addressing Kevin's concerns about voicemail history and area code identification. The call concludes with Kevin agreeing to wait for Gary's callback.",
+  "_model": "qwen3:14b",
+  "_eval_count": 270,
+  "_total_duration_ms": 44512,
+  "_source_file": "transcripts/parked-509-509-20251007-154143-1759866103.9114.txt",
+  "_direction": "parked",
+  "_char_count": 1997
+}

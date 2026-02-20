@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Voicemail greeting requesting caller's name and number",
+  "_model": "qwen3:14b",
+  "_eval_count": 60,
+  "_total_duration_ms": 24314,
+  "_source_file": "transcripts/out-3366902771-401-20260105-135752-1767639472.11423.txt",
+  "_direction": "outbound",
+  "_char_count": 70
+}

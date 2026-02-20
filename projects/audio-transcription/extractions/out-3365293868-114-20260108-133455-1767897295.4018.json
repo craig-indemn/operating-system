@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Resolve an error where Edward Bacon was mistakenly added to the client's insurance policy during renewal by obtaining a signed document confirming he is not a household member.",
+  "resolution_steps": [
+    "Explained that Safeco added Edward Bacon to the policy due to missing signed documentation confirming he is not a household member.",
+    "Informed the client that an email with the required form was sent for e-signing.",
+    "Guided the client through the e-signing process step-by-step, including locating the document, agreeing to terms, and digitally signing.",
+    "Confirmed the client completed the e-signing and that the document was successfully sent via email."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Policy renewal process",
+    "Handling household member discrepancies",
+    "E-signing procedures for document verification",
+    "Safeco's requirements for policy updates"
+  ],
+  "systems_referenced": [
+    "Safeco (insurance carrier)",
+    "Email communication",
+    "E-signing platform (unnamed)"
+  ],
+  "summary": "An agent from Lions Insurance resolved an issue where Edward Bacon was mistakenly added to a client's policy during renewal. The client e-signed a document confirming Edward was not a household member, which was then sent to Safeco to remove him from the policy. The call concluded successfully with both parties confirming the resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 299,
+  "_total_duration_ms": 47364,
+  "_source_file": "transcripts/out-3365293868-114-20260108-133455-1767897295.4018.txt",
+  "_direction": "outbound",
+  "_char_count": 2926
+}

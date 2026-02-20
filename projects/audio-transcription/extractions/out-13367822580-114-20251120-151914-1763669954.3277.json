@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Left a voicemail regarding a home insurance quote follow-up",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [
+    "Automatic voice message system"
+  ],
+  "summary": "Voicemail left by JC (3363779003) requesting a callback for a home insurance quote. The call was forwarded to a voicemail system as the recipient was unavailable.",
+  "_model": "qwen3:14b",
+  "_eval_count": 111,
+  "_total_duration_ms": 35459,
+  "_source_file": "transcripts/out-13367822580-114-20251120-151914-1763669954.3277.txt",
+  "_direction": "outbound",
+  "_char_count": 456
+}

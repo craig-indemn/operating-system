@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, John Phil Handy, wanted to retrieve his insurance policy number because he was unable to log in to access it online.",
+  "resolution_steps": [
+    "The agent asked the caller to provide his policy number when ready.",
+    "The caller provided the policy number: '02J11402' (as pronounced: 'zero two J one one four zero two').",
+    "The agent confirmed receipt of the policy number."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding how to retrieve policy numbers for customers who cannot access their accounts.",
+    "Ability to confirm policy numbers verbally without system lookup (since no system was referenced)."
+  ],
+  "systems_referenced": [],
+  "summary": "A caller contacted Alliance Insurance to retrieve his policy number after being unable to log in. The agent successfully obtained the policy number verbally, and the call concluded with confirmation of receipt. No systems or tools were referenced during the interaction.",
+  "_model": "qwen3:14b",
+  "_eval_count": 223,
+  "_total_duration_ms": 35181,
+  "_source_file": "transcripts/in-+13363779003-+13363548758-20251002-151430-1759432470.11959.txt",
+  "_direction": "inbound",
+  "_char_count": 437
+}

@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Follow-up on a previous pet insurance inquiry to encourage the caller to contact the agency for a quote.",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Voicemail left by Jeremy from Alliance Insurance Services following up on a previous pet insurance inquiry, providing contact information and mentioning other insurance services offered.",
+  "_model": "qwen3:14b",
+  "_eval_count": 98,
+  "_total_duration_ms": 35304,
+  "_source_file": "transcripts/out-3366082852-701-20250723-165046-1753303846.13588.txt",
+  "_direction": "outbound",
+  "_char_count": 1015
+}

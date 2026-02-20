@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Josefina Luna requested assistance with car insurance information and needed to speak with someone who speaks Spanish.",
+  "resolution_steps": [
+    "Agent acknowledged the caller's request to speak with someone in Spanish.",
+    "Agent informed caller there were no current Spanish-speaking agents available.",
+    "Agent offered to have someone call back and requested the caller's phone number.",
+    "Agent confirmed receipt of the number and assured follow-up."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Multilingual support protocols",
+    "Callback procedures for language assistance"
+  ],
+  "systems_referenced": [
+    "Internal agent coordination system"
+  ],
+  "summary": "Josefina Luna called to request car insurance information and Spanish-language support. The agent could not immediately assist but arranged for a callback. The caller provided her contact information, and the agent confirmed follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 195,
+  "_total_duration_ms": 26575,
+  "_source_file": "transcripts/in-+13363779003-+13366181713-20251210-104807-1765381687.1432.txt",
+  "_direction": "inbound",
+  "_char_count": 912
+}

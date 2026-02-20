@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Matthew Adela (Matt) is seeking auto insurance quotes, possibly through a bundle with his existing State Farm home insurance. He mentions his current State Farm rate is $260/month and a past claim involving his wife's accident.",
+  "resolution_steps": [
+    "Jeremy asks for personal details (DOB, phone number, driver's license, email, wife's information, and address).",
+    "Jeremy sends an email with a link to log into State Farm's portal to retrieve VIN numbers and coverage details.",
+    "Jeremy requests Ashley's driver's license number via email once the portal login is completed.",
+    "Jeremy schedules a follow-up call the next day to provide bundle pricing options."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance bundling processes",
+    "State Farm portal login procedures",
+    "Handling claims history and its impact on rates",
+    "Email-based customer onboarding for quote generation"
+  ],
+  "systems_referenced": [
+    "State Farm's customer portal",
+    "Email system (allianceinsurance.com)",
+    "Internal quoting system for bundle pricing"
+  ],
+  "summary": "Matthew Adela seeks auto insurance quotes through Alliance Insurance Services, potentially bundled with his existing State Farm home insurance. Agent Jeremy collects personal and policy details, sends a portal login link for State Farm data retrieval, and schedules a follow-up call for pricing. The customer is directed to check spam for the email and provide additional information via email.",
+  "_model": "qwen3:14b",
+  "_eval_count": 324,
+  "_total_duration_ms": 52007,
+  "_source_file": "transcripts/q-200-+16788223778-20260119-141258-1768849978.4599.txt",
+  "_direction": "queue",
+  "_char_count": 4189
+}

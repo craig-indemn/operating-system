@@ -1,0 +1,32 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Kathy Bowman is reporting damage to her home caused by a fallen tree from her neighbor's yard and seeks assistance in filing an insurance claim with Utica. She also mentions a power line issue requiring Duke Power's intervention.",
+  "resolution_steps": [
+    "Confirmed Kathy's homeowner's policy with Utica and identified the $1,000 deductible.",
+    "Explained that Utica is responsible for the claim since the tree landed on her property, regardless of ownership.",
+    "Advised Kathy to save receipts, photos, and obtain repair estimates.",
+    "Offered to email photos for documentation and file the claim with Utica.",
+    "Warned against discussing the incident with the neighbor to avoid subrogation complications.",
+    "Mentioned contacting Duke Power to address the tree on the power line.",
+    "Provided Utica's contact number and estimated 24-48 hour response time."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance claim procedures for property damage",
+    "Subrogation rights and neighbor liability",
+    "Deductible calculations and policy terms",
+    "Utility company coordination for tree removal"
+  ],
+  "systems_referenced": [
+    "Utica Insurance",
+    "Duke Power",
+    "Email communication"
+  ],
+  "summary": "Kathy Bowman reported tree damage to her home and power line issue. The agent explained Utica's claim process, filed the claim, advised on documentation, and coordinated with Duke Power. The caller was warned about subrogation risks and provided next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 344,
+  "_total_duration_ms": 56783,
+  "_source_file": "transcripts/q-300-+13367515941-20251229-144625-1767037585.10721.txt",
+  "_direction": "queue",
+  "_char_count": 4156
+}

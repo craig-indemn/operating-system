@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Robin Nelson wants to update her auto insurance policy by removing two vehicles (a 2002 Chevrolet Silverado and a 2007 Honda Odyssey) and adding a new 2007 Cadillac, effective Saturday, with liability-only coverage.",
+  "resolution_steps": [
+    "Verified Robin's mailing address (280 Bethesda Drive, Lexington, KY 40505).",
+    "Confirmed the vehicles being removed (Chevrolet truck and Honda Odyssey) and the new vehicle (2007 Cadillac).",
+    "Guided Robin to locate the VIN on the new vehicle's windshield or driver-side door.",
+    "Obtained the VIN number (1G6DM57T570148631) and confirmed the vehicle is not financed.",
+    "Clarified coverage type (liability-only) for the new vehicle.",
+    "Notified Robin the update will take 24 hours and she will receive an email confirmation.",
+    "Suggested using an existing policy ID card for proof of insurance until the update is complete."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Auto insurance policy modification process",
+    "VIN location on vehicles",
+    "Insurance coverage types (liability vs. comprehensive)",
+    "Policy update processing timelines"
+  ],
+  "systems_referenced": [
+    "Internal policy management system"
+  ],
+  "summary": "Robin Nelson contacted Alliance Insurance Services to update her auto insurance policy by removing two vehicles and adding a new one. The agent verified details, guided her to locate the VIN, and explained the 24-hour processing timeline. The call concluded with confirmation that an email notification would be sent upon completion.",
+  "_model": "qwen3:14b",
+  "_eval_count": 370,
+  "_total_duration_ms": 38937,
+  "_source_file": "transcripts/q-300-+13364086961-20251110-090141-1762783301.125.txt",
+  "_direction": "queue",
+  "_char_count": 2607
+}

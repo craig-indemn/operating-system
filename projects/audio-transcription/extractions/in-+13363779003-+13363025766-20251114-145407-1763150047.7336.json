@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Mark Fall is following up on a previous interaction with Cecilia at the Winston office regarding starting remote learning on Tuesday and seeks assistance with the process.",
+  "resolution_steps": [
+    "Agent confirms no employee named Delia exists but notes a Dina.",
+    "Agent asks for caller's name and clarifies the context (remote learning start on Tuesday).",
+    "Agent checks internal system for Mark Fall but finds no record.",
+    "Caller explains he recently completed I-9 paperwork at the Winston office.",
+    "Agent asks who he spoke with directly (Cecilia) and offers to transfer the call to her."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Internal employee directory (names like Delia/Dina/Cecilia)",
+    "Understanding of remote learning enrollment processes",
+    "Familiarity with I-9 paperwork procedures",
+    "Call transfer protocols"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal database/Customer Relationship Management (CRM) system"
+  ],
+  "summary": "Mark Fall follows up on a prior conversation with Cecilia about starting remote learning on Tuesday. The agent verifies his identity, checks the system for records, and transfers him to Cecilia for direct assistance after confirming he recently completed I-9 paperwork at the Winston office.",
+  "_model": "qwen3:14b",
+  "_eval_count": 290,
+  "_total_duration_ms": 46401,
+  "_source_file": "transcripts/in-+13363779003-+13363025766-20251114-145407-1763150047.7336.txt",
+  "_direction": "inbound",
+  "_char_count": 1316
+}

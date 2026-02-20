@@ -1,0 +1,20 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Attempt to reach Corbin (possibly for a prior interaction or follow-up)",
+  "resolution_steps": [
+    "Agent confirmed Corbin was already gone for the day",
+    "Offered to leave a voicemail",
+    "Checked call history (1:32 PM call mentioned)",
+    "Attempted to transfer the call"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller attempted to reach Corbin, but the agent confirmed he had already left for the day. The agent offered to leave a voicemail and attempted a transfer, but the call ended without resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 155,
+  "_total_duration_ms": 32706,
+  "_source_file": "transcripts/in-+13363779003-+13363071761-20250829-134851-1756489731.5629.txt",
+  "_direction": "inbound",
+  "_char_count": 347
+}

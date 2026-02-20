@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Barbara Adams attempted to reach Corbin at Alliance Insurance Services.",
+  "resolution_steps": [
+    "Agent confirmed they would not transfer the call",
+    "Agent asked Barbara to hold"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Very brief call where Barbara Adams requested to speak to Corbin. The agent declined to transfer the call and asked her to hold, but no further action or resolution was achieved.",
+  "_model": "qwen3:14b",
+  "_eval_count": 117,
+  "_total_duration_ms": 25221,
+  "_source_file": "transcripts/in-+13363779003-+16578779178-20250929-105810-1759157890.2662.txt",
+  "_direction": "inbound",
+  "_char_count": 188
+}

@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Miss Gina is following up on a previous conversation with Travelers Insurance regarding setting up payments for a claim related to her wife's broken back, seeking confirmation of the process and timeline.",
+  "resolution_steps": [
+    "Little Rob confirms Travelers Insurance is processing the claim and requires 2-3 business days to reinstate payments.",
+    "Rob offers to call back on Friday to collect the payment of $237.80.",
+    "Gina agrees to the proposed timeline and payment amount."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance claims processing",
+    "Payment reinstatement procedures for injured policyholders"
+  ],
+  "systems_referenced": [
+    "Travelers Insurance"
+  ],
+  "summary": "Little Rob from First Quality Auto confirms with Miss Gina that Travelers Insurance will reinstate her payments for a claim related to her wife's broken back after 2-3 business days. Rob will call back on Friday to collect the $237.80 monthly payment. Gina agrees to the arrangement.",
+  "_model": "qwen3:14b",
+  "_eval_count": 238,
+  "_total_duration_ms": 29559,
+  "_source_file": "transcripts/out-3362998535-406-20251112-135605-1762973765.6196.txt",
+  "_direction": "outbound",
+  "_char_count": 2071
+}

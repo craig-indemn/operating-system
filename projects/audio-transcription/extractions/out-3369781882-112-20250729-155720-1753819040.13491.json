@@ -1,0 +1,23 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller left a voicemail requesting a callback, but the subsequent outbound call from Brandi with Alliance Insurance was a follow-up regarding an email sent to National General, aiming to clarify contact information.",
+  "resolution_steps": [
+    "Brandi confirmed the email was sent to National General and clarified it should not be directed to Alliance Insurance.",
+    "Provided the correct contact number for Alliance Insurance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Email routing between carriers and agencies",
+    "Customer contact protocols"
+  ],
+  "systems_referenced": [
+    "National General email system"
+  ],
+  "summary": "An outbound call from Alliance Insurance followed up on an email sent to National General, clarifying contact information and providing a callback number. The initial voicemail was non-substantive, but the subsequent interaction was a service follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 201,
+  "_total_duration_ms": 116857,
+  "_source_file": "transcripts/out-3369781882-112-20250729-155720-1753819040.13491.txt",
+  "_direction": "outbound",
+  "_char_count": 703
+}

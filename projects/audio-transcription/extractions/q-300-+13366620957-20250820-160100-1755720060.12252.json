@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Arrange for the insured (Julieton Deloro) to drop off damaged jewelry at the Clemens office so the field adjuster can collect it for a claim settlement after a dog incident.",
+  "resolution_steps": [
+    "Agent verified the insured's name (Julieton Deloro) and policy number (54493476-00).",
+    "Confirmed the jewelry claim details (dog damage, unrepairable).",
+    "Agreed to have the insured drop off the jewelry at the Clemens office.",
+    "Scheduled pickup by the adjuster (targeting Friday by 5:00 PM).",
+    "Provided office address: 2255 Louisville Clemens Road, Sweet C."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Claims processing for inland marine jewelry policies",
+    "Handling damaged property collection procedures",
+    "Office locations and hours for Clemens branch"
+  ],
+  "systems_referenced": [],
+  "summary": "A field adjuster from Auto Owners Insurance coordinated with an agent to facilitate jewelry claim collection after a dog incident. The insured was instructed to drop off the damaged item at the Clemens office, with the adjuster planning to pick it up by Friday. The agent confirmed policy details and location information to resolve the claim efficiently.",
+  "_model": "qwen3:14b",
+  "_eval_count": 295,
+  "_total_duration_ms": 41696,
+  "_source_file": "transcripts/q-300-+13366620957-20250820-160100-1755720060.12252.txt",
+  "_direction": "queue",
+  "_char_count": 2166
+}

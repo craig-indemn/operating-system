@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unknown (call was left on voicemail)",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A voicemail greeting from Alliance Insurance Services. The agent thanked the caller and promised to return the call, but no substantive conversation occurred. The call was left on voicemail.",
+  "_model": "qwen3:14b",
+  "_eval_count": 94,
+  "_total_duration_ms": 23832,
+  "_source_file": "transcripts/out-14049894875-105-20250722-112153-1753197713.7359.txt",
+  "_direction": "outbound",
+  "_char_count": 143
+}

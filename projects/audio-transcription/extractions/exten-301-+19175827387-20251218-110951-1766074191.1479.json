@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking resolution for a billing discrepancy in their auto insurance policy, noting incorrect amounts on their account and a bank return that should apply to a different account.",
+  "resolution_steps": [
+    "Agent acknowledges the dropped call and apologizes.",
+    "Caller explains the billing issue: a $79,701 bill for six months, a $1,671 bank return incorrectly applied, and a conflicting $2,468 renewal premium shown in the system.",
+    "Agent confirms the caller's original quote and discusses the discrepancy with the Traveler system.",
+    "Agent offers to text a number for the caller to send a screenshot of the bill for further investigation.",
+    "Caller mentions Jamie (another agent) is also involved in the conversation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance billing systems (specifically Traveler system errors)",
+    "Ability to troubleshoot account discrepancies involving bank returns and premium calculations",
+    "Knowledge of customer communication protocols for resolving technical issues"
+  ],
+  "systems_referenced": [
+    "Traveler system",
+    "Insurance account portal"
+  ],
+  "summary": "The caller reports a billing error in their auto insurance policy, with conflicting amounts shown in the system and a bank return incorrectly applied. The agent is investigating the discrepancy in the Traveler system and offers to text a number for the caller to send a screenshot of the bill. The conversation is ongoing with another agent (Jamie) also involved.",
+  "_model": "qwen3:14b",
+  "_eval_count": 330,
+  "_total_duration_ms": 54959,
+  "_source_file": "transcripts/exten-301-+19175827387-20251218-110951-1766074191.1479.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1869
+}

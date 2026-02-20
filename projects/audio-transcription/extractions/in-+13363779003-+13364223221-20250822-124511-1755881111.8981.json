@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller initially requested to speak with Gloria but was met with an automated voicemail message and unrelated conversation fragments.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [
+    "myallianceinsurance.com customer portal",
+    "texting service (3367861133)"
+  ],
+  "summary": "The call contained an automated voicemail message and unrelated incoherent speech. No meaningful interaction occurred, and the caller's request to speak with Gloria was not addressed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 133,
+  "_total_duration_ms": 30989,
+  "_source_file": "transcripts/in-+13363779003-+13364223221-20250822-124511-1755881111.8981.txt",
+  "_direction": "inbound",
+  "_char_count": 1166
+}

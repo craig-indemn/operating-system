@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Timothy is confirming with Jeff whether the documents he has (verification certificate and original bond) are sufficient for the DMV, and whether Travelers might need additional paperwork like the LT 49 form.",
+  "resolution_steps": [
+    "Jeff confirms that the verification certificate from Travelers (with current dates) and the original bond should suffice for the DMV.",
+    "Jeff explains that Travelers does not reissue the bond annually but generates a new verification certificate each year.",
+    "Jeff offers to resend documents if needed and advises Timothy to contact them if the DMV requests additional paperwork.",
+    "Timothy confirms he will visit the DMV the next day and agrees to follow up if issues arise."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance bonds and verification certificates",
+    "DMV requirements for motor vehicle dealer security bonds",
+    "Travelers' process for bond renewals and verification certificates"
+  ],
+  "systems_referenced": [
+    "Travelers (insurance carrier)",
+    "DMV (Department of Motor Vehicles)",
+    "LT 49 form (specific bond paperwork)"
+  ],
+  "summary": "Timothy discusses with Jeff whether his submitted documents (verification certificate and original bond) meet DMV requirements for his auto sales business. Jeff confirms the documents should suffice but advises to contact Travelers if the DMV requests additional paperwork. Timothy plans to visit the DMV the next day and agrees to follow up if needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 326,
+  "_total_duration_ms": 48875,
+  "_source_file": "transcripts/exten-206-+13368170846-20250728-161431-1753733671.14173.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4335
+}

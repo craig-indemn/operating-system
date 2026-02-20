@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking assistance with a missing email confirmation for canceling their insurance license, which was supposedly sent by an agent they spoke with earlier.",
+  "resolution_steps": [
+    "Agent attempted to clarify the caller's issue with the missing email.",
+    "Agent asked for the name of the agent the caller spoke with to look up the interaction.",
+    "Caller struggled to recall the agent's name and had difficulty communicating clearly."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Email confirmation process for license cancellation",
+    "CRM system to look up past interactions"
+  ],
+  "systems_referenced": [
+    "CRM system"
+  ],
+  "summary": "Caller reported not receiving an email confirmation for canceling their insurance license, sent by an agent they previously spoke with. The agent attempted to resolve the issue by asking for the agent's name to look up the interaction, but the caller struggled to recall the name and had communication difficulties. Further assistance may be required.",
+  "_model": "qwen3:14b",
+  "_eval_count": 221,
+  "_total_duration_ms": 29944,
+  "_source_file": "transcripts/in-+13363779003-+13464349994-20251010-125035-1760115035.6583.txt",
+  "_direction": "inbound",
+  "_char_count": 600
+}

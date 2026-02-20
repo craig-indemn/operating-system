@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Morris needs to rewrite his insurance policy because his building is no longer covered, and he wants to confirm the address details to proceed.",
+  "resolution_steps": [
+    "Gloria confirms with Morris that the policy needs to be rewritten due to lack of coverage.",
+    "She requests the full address details since the system only has partial information (\"zero mineral f\" and Winston Salem without street number).",
+    "Morris provides the complete address: 4311 Mineral Avenue, Winston Salem, NC 27105.",
+    "Gloria agrees to run the policy calculation and call back with the cost details."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding insurance policy rewrite processes",
+    "Address verification for coverage eligibility",
+    "Policy cost calculation procedures"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's internal policy management system"
+  ],
+  "summary": "Gloria from Alliance Insurance is helping Morris rewrite his insurance policy after discovering his building is not covered. She confirmed the address details (4311 Mineral Avenue, Winston Salem, NC 27105) and will calculate the policy cost before calling back with the results.",
+  "_model": "qwen3:14b",
+  "_eval_count": 275,
+  "_total_duration_ms": 36469,
+  "_source_file": "transcripts/out-3366559916-102-20251114-102214-1763133734.3154.txt",
+  "_direction": "outbound",
+  "_char_count": 1438
+}

@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is following up on a previous conversation regarding an accident involving a client (Charlie Brown) and seeks assistance in locating the correct contact information for the policy.",
+  "resolution_steps": [
+    "Teresa Ward confirms she spoke with someone on Friday about an accident involving a client.",
+    "Caller provides policy number (9920013271011) and details (Charlie Brown, 200 Cell Street, Winston Salem).",
+    "Teresa checks the policy in the system and identifies Tracy as the correct contact person.",
+    "Teresa attempts to connect the caller with Tracy."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy lookup procedures",
+    "Client contact information retrieval",
+    "Handling follow-up claims"
+  ],
+  "systems_referenced": [
+    "Internal policy database/Customer Relationship Management (CRM) system"
+  ],
+  "summary": "A caller follows up on an accident claim involving policy number 9920013271011 for Charlie Brown. Teresa Ward verifies the policy details and identifies Tracy as the correct contact, then attempts to connect the caller with Tracy. The call appears to be cut off before resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 275,
+  "_total_duration_ms": 38968,
+  "_source_file": "transcripts/in-+13363544000-+13368999505-20250804-094612-1754315172.1820.txt",
+  "_direction": "inbound",
+  "_char_count": 1388
+}

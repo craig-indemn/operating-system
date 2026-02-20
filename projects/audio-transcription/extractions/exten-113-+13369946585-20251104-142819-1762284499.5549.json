@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Gary) wants to find a cheaper car insurance option after his All State policy rate increased from $70.60 to $90/month, despite not driving much and believing the increase may be due to North Carolina rate hikes.",
+  "resolution_steps": [
+    "Agent (Bobby) confirmed the caller's current provider (All State), vehicle details (2004 Mercury Marquis), and current rate ($90/month).",
+    "Noted the caller's concern about rate increases and desire for the cheapest available option.",
+    "Promised to research alternatives and call back the next day with options.",
+    "Acknowledged the caller's mention of North Carolina rate changes as a potential factor."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance rate factors (state regulations, driving habits)",
+    "Ability to compare providers and rates",
+    "Knowledge of carrier-specific policies (All State)"
+  ],
+  "systems_referenced": [
+    "All State"
+  ],
+  "summary": "Gary is dissatisfied with his All State insurance rate increase and seeks cheaper alternatives. Bobby will follow up the next day to provide options. The conversation highlights the customer's concern over rate hikes and the agent's commitment to finding better rates.",
+  "_model": "qwen3:14b",
+  "_eval_count": 280,
+  "_total_duration_ms": 44639,
+  "_source_file": "transcripts/exten-113-+13369946585-20251104-142819-1762284499.5549.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2021
+}

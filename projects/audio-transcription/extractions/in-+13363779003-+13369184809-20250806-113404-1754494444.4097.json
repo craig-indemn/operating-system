@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Don Cuman is seeking assistance to reinstate his canceled insurance policy and is frustrated that Gloria, presumably an agent, has not responded to his voicemails in two days.",
+  "resolution_steps": [
+    "Agent acknowledges the call and confirms the issue (insurance cancellation and need for reinstatement).",
+    "Agent offers to send a message to Gloria to inform her of the call and follow-up request."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Process for reinstating canceled insurance policies",
+    "Internal communication protocols for notifying other agents"
+  ],
+  "systems_referenced": [],
+  "summary": "Don Cuman calls to request reinstatement of his canceled insurance policy and express frustration over lack of response from Gloria. The agent acknowledges the issue and offers to notify Gloria via internal messaging. The call ends without immediate resolution but with a commitment to follow up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 204,
+  "_total_duration_ms": 32000,
+  "_source_file": "transcripts/in-+13363779003-+13369184809-20250806-113404-1754494444.4097.txt",
+  "_direction": "inbound",
+  "_char_count": 832
+}

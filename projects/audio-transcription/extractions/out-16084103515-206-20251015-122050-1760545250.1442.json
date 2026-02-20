@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Left a voicemail inquiring about inland marine coverage for well equipment under a specific policy.",
+  "resolution_steps": [
+    "Voicemail greeting played",
+    "Jeff Edmonds left a message with policy details and requested a callback"
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Jeff Edmonds left a voicemail with Riley Hayes Dorfuth regarding a coverage question about inland marine policy B769394 for Heritage Farm LLC. He requested a callback to discuss well equipment coverage.",
+  "_model": "qwen3:14b",
+  "_eval_count": 131,
+  "_total_duration_ms": 50436,
+  "_source_file": "transcripts/out-16084103515-206-20251015-122050-1760545250.1442.txt",
+  "_direction": "outbound",
+  "_char_count": 1183
+}

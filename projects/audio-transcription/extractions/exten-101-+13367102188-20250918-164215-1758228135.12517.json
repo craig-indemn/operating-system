@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Shag Glass is updating Amani on progress with Greystone insurance proposals, discussing roof inspection status, and confirming policy details for a condominium association's renewal.",
+  "resolution_steps": [
+    "Amani confirms receipt of favorable proposals from Greystone.",
+    "Shag clarifies that no roofs have been replaced yet, though inspections occurred a year ago.",
+    "Discusses the association's history of no claims and preference for home inspectors over roofing companies.",
+    "Confirms the use of 'guaranteed replacement value' clause in their policy.",
+    "Agrees to provide a proposal by the end of the week for board review."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy terminology (e.g., guaranteed replacement value)",
+    "Roof inspection processes for condominium associations",
+    "Handling of reserve funds for property maintenance"
+  ],
+  "systems_referenced": [
+    "Greystone (insurance provider)",
+    "Home inspector services",
+    "Roofing company evaluations"
+  ],
+  "summary": "Shag Glass updates Amani on Greystone insurance proposals for a condominium association, addressing roof inspection timelines, claim history, and policy specifics. Amani confirms details and agrees to provide a proposal by the end of the week. The conversation highlights the association's proactive approach to maintenance and insurance coverage.",
+  "_model": "qwen3:14b",
+  "_eval_count": 295,
+  "_total_duration_ms": 40224,
+  "_source_file": "transcripts/exten-101-+13367102188-20250918-164215-1758228135.12517.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4316
+}

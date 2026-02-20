@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Mark from Cyber Gear followed up on the status of a laptop being sent to Mount Airy and sought confirmation of next steps.",
+  "resolution_steps": [
+    "Karen confirmed the laptop had not yet been sent to Mount Airy.",
+    "Karen contacted her supervisor, who informed Mark that another agent would handle the pickup next week."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of internal logistics/processes for handling equipment shipments",
+    "Ability to escalate to supervisor for updates on unresolved issues"
+  ],
+  "systems_referenced": [],
+  "summary": "Mark followed up on a laptop delivery to Mount Airy. Karen confirmed the issue was unresolved but informed him another agent would handle the pickup next week. Mark expressed satisfaction with the update and ended the call.",
+  "_model": "qwen3:14b",
+  "_eval_count": 185,
+  "_total_duration_ms": 35473,
+  "_source_file": "transcripts/parked-402-402-20250814-110219-1755183739.1945.txt",
+  "_direction": "parked",
+  "_char_count": 538
+}

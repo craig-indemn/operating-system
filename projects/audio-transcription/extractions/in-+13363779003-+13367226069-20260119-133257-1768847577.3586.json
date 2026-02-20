@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak to Heather Scott (intent unclear due to call truncation)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Very brief call where caller requested to speak to Heather Scott and was briefly placed on hold. No meaningful conversation or resolution occurred due to transcript truncation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 98,
+  "_total_duration_ms": 24623,
+  "_source_file": "transcripts/in-+13363779003-+13367226069-20260119-133257-1768847577.3586.txt",
+  "_direction": "inbound",
+  "_char_count": 109
+}

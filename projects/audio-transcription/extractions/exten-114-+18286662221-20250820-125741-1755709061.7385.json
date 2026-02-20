@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller reports not receiving an auto insurance document (folista) but received one for 'inquilino' (possibly a tenant or related party), seeking clarification or resolution.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's message in Spanish.",
+    "Confirms the auto insurance document will be resent (tarjeta).",
+    "Offers to assist further if needed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Spanish language communication",
+    "Insurance document resubmission processes",
+    "Differentiating between tenant-related and auto insurance documents"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller informed Jace about not receiving an auto insurance document but receiving one for 'inquilino.' Jace confirmed the auto document would be resent and offered further assistance. The call concluded with mutual gratitude.",
+  "_model": "qwen3:14b",
+  "_eval_count": 197,
+  "_total_duration_ms": 37197,
+  "_source_file": "transcripts/exten-114-+18286662221-20250820-125741-1755709061.7385.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 508
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Cody Jackson from Alliance Insurance wants to combine two billing accounts into one and set up EFT payments after making manual payments on multiple policies. He provides account details for verification.",
+  "resolution_steps": [
+    "Faith verifies the account holder's name, address, and policy details (workers' compensation and small business commercial policies).",
+    "Confirms the second account number (ending in '7') to combine with the primary account.",
+    "Asks if the customer wants both policies moved to the account ending in '7' (package policy).",
+    "Places the customer on hold to process the account consolidation and EFT setup."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Account consolidation procedures for insurance policies",
+    "EFT setup workflows",
+    "Verification of policy details (type, account numbers, addresses)"
+  ],
+  "systems_referenced": [
+    "Westfield's automated account management system",
+    "My Westfield portal (mentioned as a customer resource)"
+  ],
+  "summary": "Cody Jackson requested to combine two Westfield insurance billing accounts and set up EFT payments. Faith verified account details, confirmed the consolidation plan, and placed the call on hold to process the request. The conversation included promotional messaging about Westfield's services and digital tools.",
+  "_model": "qwen3:14b",
+  "_eval_count": 290,
+  "_total_duration_ms": 51970,
+  "_source_file": "transcripts/out-8002430210-207-20250917-083556-1758112556.64.txt",
+  "_direction": "outbound",
+  "_char_count": 4798
+}

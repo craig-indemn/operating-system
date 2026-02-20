@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Debbie Franklin is trying to finalize her auto and homeowners insurance with Pan National, specifically needing assistance with payment setup for auto insurance and confirming the homeowners policy will be sent to her lender.",
+  "resolution_steps": [
+    "Heather confirms Debbie's email was sent on October 7th and discusses the North Carolina homeowners policy.",
+    "They agree to set up auto insurance payments quarterly via direct draft.",
+    "Heather explains the need for Debbie's routing and account numbers for payment setup.",
+    "Debbie provides partial bank details and realizes she needs the full account number from her bank statement.",
+    "Heather advises Debbie to verify the full account number with her bank to avoid NSF issues."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance payment options (quarterly, semi-annual)",
+    "Process for sending homeowners insurance invoices to lenders",
+    "How to obtain and verify bank account details for direct payments"
+  ],
+  "systems_referenced": [
+    "Email (for policy documents)",
+    "Pan National (insurance carrier)",
+    "Family Credit Union (Debbie's bank)",
+    "Internal insurance agency systems for payment setup"
+  ],
+  "summary": "Debbie Franklin works with Heather to finalize auto and homeowners insurance with Pan National. They resolve an email discrepancy, agree on quarterly auto payments, and address the need for full bank details to set up direct payments. Debbie must confirm her account number with her bank before proceeding.",
+  "_model": "qwen3:14b",
+  "_eval_count": 321,
+  "_total_duration_ms": 51631,
+  "_source_file": "transcripts/exten-401-+13369717366-20251016-123631-1760632591.4724.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3759
+}

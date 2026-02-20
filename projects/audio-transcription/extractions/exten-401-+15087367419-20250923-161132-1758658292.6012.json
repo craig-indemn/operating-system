@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to update their auto insurance policy to cover a new 2026 Volvo XC40, effective October 8th, and switch to the Cincinnati package. They also need assistance with adding the lienholder information for the leased vehicle.",
+  "resolution_steps": [
+    "Agent confirmed the caller's current insurance coverage for the 2023 Subaru Outback extends up to seven days post-purchase.",
+    "Agent clarified the policy change would occur on October 8th, aligning with the closing date for the new vehicle.",
+    "Agent noted the need to replace the 2023 Outback with the 2026 Volvo XC40 in the policy and requested the VIN for the new vehicle.",
+    "Agent confirmed the necessity of adding the lienholder information for the leased Volvo XC40.",
+    "Agent arranged to receive the lienholder details via email and mentioned processing the Cincinnati package change by Friday."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of auto insurance policy changes, including coverage timelines for vehicle trades.",
+    "Knowledge of lienholder requirements for leased vehicles.",
+    "Familiarity with the Cincinnati insurance package and its implementation process."
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services' internal policy management system",
+    "Cincinnati insurance package portal"
+  ],
+  "summary": "The caller is transitioning from a leased 2023 Subaru Outback to a new 2026 Volvo XC40 and needs their insurance policy updated to reflect the change, effective October 8th. The agent confirmed the coverage timeline, requested the new VIN and lienholder details, and arranged for the Cincinnati package to be processed by Friday. The caller will provide the lienholder information via email.",
+  "_model": "qwen3:14b",
+  "_eval_count": 391,
+  "_total_duration_ms": 53308,
+  "_source_file": "transcripts/exten-401-+15087367419-20250923-161132-1758658292.6012.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3909
+}

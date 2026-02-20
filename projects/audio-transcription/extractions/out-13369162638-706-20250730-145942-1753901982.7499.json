@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Voicemail greeting; no specific intent identified",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Outbound call transcript contains only a standard voicemail recording prompt with no substantive conversation or interaction.",
+  "_model": "qwen3:14b",
+  "_eval_count": 78,
+  "_total_duration_ms": 16740,
+  "_source_file": "transcripts/out-13369162638-706-20250730-145942-1753901982.7499.txt",
+  "_direction": "outbound",
+  "_char_count": 75
+}

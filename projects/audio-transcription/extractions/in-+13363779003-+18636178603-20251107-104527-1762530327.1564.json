@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unknown (call ended prematurely with only a greeting)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Inbound call ended prematurely after a brief greeting exchange. No meaningful conversation or intent was communicated by the caller.",
+  "_model": "qwen3:14b",
+  "_eval_count": 85,
+  "_total_duration_ms": 24549,
+  "_source_file": "transcripts/in-+13363779003-+18636178603-20251107-104527-1762530327.1564.txt",
+  "_direction": "inbound",
+  "_char_count": 82
+}

@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Not applicable (automated message)",
+  "resolution_steps": [],
+  "outcome": "not_applicable",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Automated message providing a verification code for auto owners with instructions to contact automation support if the code was not initiated. No substantive interaction occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 87,
+  "_total_duration_ms": 22602,
+  "_source_file": "transcripts/in-+13363779003-+13187065407-20250905-165213-1757105533.7867.txt",
+  "_direction": "inbound",
+  "_char_count": 203
+}

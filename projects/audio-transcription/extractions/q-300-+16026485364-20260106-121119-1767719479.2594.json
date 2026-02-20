@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Cynthia from Lakeview Loans is verifying a flood policy for a client named Charlie Haoxi Zhang (policy number 1252555130) and is seeking confirmation that the policy exists in the system.",
+  "resolution_steps": [
+    "Agent asked for the policy number, which Cynthia provided (initially misstated as 125259, then corrected to 1252555130).",
+    "Agent attempted to pull up the policy in the system but found no match.",
+    "Agent confirmed the client's full name (Charlie Haoxi Zhang) again.",
+    "Agent acknowledged the discrepancy and stated they would contact the insured directly to resolve the issue."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy lookup procedures in the insurance database",
+    "Handling cases where policy records are not found",
+    "Client communication protocols for unresolved policy discrepancies"
+  ],
+  "systems_referenced": [
+    "insurance policy database"
+  ],
+  "summary": "Cynthia from Lakeview Loans called to verify a flood policy for Charlie Haoxi Zhang (policy #1252555130), but the agent could not find the policy in the system. After confirming the details, the agent agreed to contact the insured directly to resolve the issue.",
+  "_model": "qwen3:14b",
+  "_eval_count": 295,
+  "_total_duration_ms": 54745,
+  "_source_file": "transcripts/q-300-+16026485364-20260106-121119-1767719479.2594.txt",
+  "_direction": "queue",
+  "_char_count": 1113
+}

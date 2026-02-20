@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Attempted to reach the underwriting department for an unspecified request.",
+  "resolution_steps": [
+    "Voicemail greeting played",
+    "No agent available to take the call"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Voicemail greeting from underwriting department mailbox informing caller no one is available. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 101,
+  "_total_duration_ms": 22814,
+  "_source_file": "transcripts/out-3362945336-301-20251229-091144-1767017504.258.txt",
+  "_direction": "outbound",
+  "_char_count": 177
+}

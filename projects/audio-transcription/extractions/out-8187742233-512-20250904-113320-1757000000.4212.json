@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Mario is seeking assistance to obtain property and liability insurance for a commercial building. He allows the agent to inspect the property and take photos to facilitate the underwriting process.",
+  "resolution_steps": [
+    "Agent Joe confirms the call with Mario and explains the purpose of the visit to assess the property.",
+    "Joe schedules a 20-minute visit to take photos and inspect the property, specifically addressing discrepancies between the tax card and Google Maps.",
+    "Joe outlines the need for property and liability coverage, explaining their importance for the business.",
+    "Joe commits to following up later that afternoon with additional questions to finalize the insurance quote."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Commercial property insurance requirements",
+    "Underwriting processes for insurance policies",
+    "Liability coverage explanations for business owners",
+    "Property inspection protocols"
+  ],
+  "systems_referenced": [
+    "underwriting process"
+  ],
+  "summary": "Joe from Alliance Insurance is assisting Mario with obtaining property and liability insurance for a commercial building. The agent will inspect the property, take photos, and later follow up with Mario to discuss details and finalize the quote. The conversation emphasizes the importance of both property coverage and liability protection for the business.",
+  "_model": "qwen3:14b",
+  "_eval_count": 272,
+  "_total_duration_ms": 45375,
+  "_source_file": "transcripts/out-8187742233-512-20250904-113320-1757000000.4212.txt",
+  "_direction": "outbound",
+  "_char_count": 4039
+}

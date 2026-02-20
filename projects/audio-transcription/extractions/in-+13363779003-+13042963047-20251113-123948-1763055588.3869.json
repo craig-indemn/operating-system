@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Donnie from MPE Rentals is seeking assistance to resolve an issue with a certificate of liability insurance from Fraline Marian, specifically regarding missing details about rented equipment valued up to $80,000 and a potential need to contact Cody Jackson for resolution.",
+  "resolution_steps": [
+    "Donnie explains the certificate issue (missing equipment valuation details) and mentions Sam Moudio as the certificate holder.",
+    "Notes the contact name Cody Jackson as the person handling the matter.",
+    "Declares himself unlicensed to resolve the issue and offers to transfer the call to Cody Jackson."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance certificates and their required details",
+    "Process for transferring calls to appropriate contacts",
+    "Awareness of licensing limitations for non-agent personnel"
+  ],
+  "systems_referenced": [],
+  "summary": "Donnie from MPE Rentals contacted Horizon Insurance to address an incomplete certificate of liability insurance from Fraline Marian, noting missing equipment valuation details. He identified Cody Jackson as the contact person and offered to transfer the call since he is not licensed to resolve the issue. The call is being transferred for further action.",
+  "_model": "qwen3:14b",
+  "_eval_count": 266,
+  "_total_duration_ms": 42036,
+  "_source_file": "transcripts/in-+13363779003-+13042963047-20251113-123948-1763055588.3869.txt",
+  "_direction": "inbound",
+  "_char_count": 845
+}

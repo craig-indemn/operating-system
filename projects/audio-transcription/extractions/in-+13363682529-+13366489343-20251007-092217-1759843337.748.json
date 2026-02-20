@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, John Stanley, is inquiring whether the Montgomery office is closed and expressing confusion about its operational status on the day of the call.",
+  "resolution_steps": [
+    "Agent confirms the Montgomery office is still open but acknowledges some team members are at other locations.",
+    "Agent clarifies the office is not closed today, only closed on Fridays due to a festival.",
+    "Caller mentions visiting Powell Mountain, which the agent acknowledges.",
+    "Agent ends the call after addressing the caller's initial concern."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Office operational hours and closure policies",
+    "Location-specific events (e.g., festivals affecting operations)",
+    "Staffing distribution across multiple office locations"
+  ],
+  "systems_referenced": [],
+  "summary": "John Stanley called to confirm if the Montgomery office was closed. The agent clarified it remains open but noted some staff are at other locations. The caller expressed confusion about the office's status, which the agent partially resolved by explaining the festival-related Friday closure. The conversation ended with the caller being informed but not fully satisfied.",
+  "_model": "qwen3:14b",
+  "_eval_count": 249,
+  "_total_duration_ms": 35402,
+  "_source_file": "transcripts/in-+13363682529-+13366489343-20251007-092217-1759843337.748.txt",
+  "_direction": "inbound",
+  "_char_count": 761
+}

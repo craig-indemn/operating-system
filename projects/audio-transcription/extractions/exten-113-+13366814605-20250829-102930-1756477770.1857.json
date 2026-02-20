@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is addressing concerns about an insurance endorsement affecting roof replacement cost coverage and confirming cleanup requirements for a property, while also seeking clarification on received documentation.",
+  "resolution_steps": [
+    "Agent explains the underwriter's endorsement limiting roof replacement cost coverage.",
+    "Advisor directs caller to check paperwork for documentation of prior roof work.",
+    "Discusses debris cleanup and pressure washing mold as prerequisites for claim processing.",
+    "Offers to mail documentation if email delivery fails.",
+    "Confirms caller's understanding and agrees to proceed with cleanup and document verification."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance claim procedures",
+    "Policy endorsements and exclusions",
+    "Document handling for claims",
+    "Communication with underwriters"
+  ],
+  "systems_referenced": [
+    "Email delivery system",
+    "Mailing services",
+    "Underwriter documentation portal"
+  ],
+  "summary": "The caller discusses an insurance endorsement limiting roof replacement coverage and confirms cleanup requirements for a property. The agent guides them to verify documentation, address mold cleanup, and confirms email/mailing options for paperwork. The call concludes with the caller agreeing to take action and the agent offering further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 266,
+  "_total_duration_ms": 39895,
+  "_source_file": "transcripts/exten-113-+13366814605-20250829-102930-1756477770.1857.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1537
+}

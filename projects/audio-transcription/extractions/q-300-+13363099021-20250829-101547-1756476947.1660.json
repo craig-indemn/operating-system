@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Albert Ham wants to add a new vehicle (2012 model) to his existing insurance policy, which already includes a 2011 GMC Yukon, and also add his brother Brian Jerome Ham to the policy.",
+  "resolution_steps": [
+    "Confirmed vehicle details (2012 model, loan through Atlas Auto Motors, effective date today).",
+    "Obtained bin number and address for Atlas Auto Sales (3715 Renata Road, Nancyville, ZIP 27106).",
+    "Reviewed existing coverage (comp/collision deductibles, rental/towing) and confirmed matching coverage for the new vehicle.",
+    "Collected Brian Jerome Ham's personal details (DOB: 8/7/1971, DL: 2315282828), confirmed no recent tickets/accidents.",
+    "Agreed to email proof of coverage and billing information, and send a copy to sales@atlasautosales.com."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy management (adding vehicles, updating coverage).",
+    "Loan and financing details for vehicle insurance.",
+    "Data entry for policyholders and additional drivers.",
+    "Emailing documentation and coordinating with third-party entities (e.g., Atlas Auto Sales)."
+  ],
+  "systems_referenced": [
+    "Internal insurance policy management system",
+    "Carrier portal for proof of coverage",
+    "Email system for sending documentation"
+  ],
+  "summary": "Albert Ham added a 2012 vehicle to his existing policy, including loan details from Atlas Auto Motors, and requested his brother Brian Jerome Ham be added as a driver. The agent confirmed all details, reviewed coverage, and agreed to email proof of coverage and billing information. A follow-up was promised if issues arose.",
+  "_model": "qwen3:14b",
+  "_eval_count": 402,
+  "_total_duration_ms": 43545,
+  "_source_file": "transcripts/q-300-+13363099021-20250829-101547-1756476947.1660.txt",
+  "_direction": "queue",
+  "_char_count": 3976
+}

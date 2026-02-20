@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller attempted to reach Gina at Alliance Insurance but did not specify a clear request or issue.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief inbound call where the caller inquired about Gina's availability. The agent acknowledged the call but did not provide any further information or resolution before the conversation ended abruptly.",
+  "_model": "qwen3:14b",
+  "_eval_count": 106,
+  "_total_duration_ms": 25329,
+  "_source_file": "transcripts/in-+13363779003-+13364081296-20250925-093601-1758807361.468.txt",
+  "_direction": "inbound",
+  "_char_count": 151
+}

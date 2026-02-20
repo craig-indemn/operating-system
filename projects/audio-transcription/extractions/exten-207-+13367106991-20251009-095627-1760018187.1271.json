@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller needs workers' compensation and general liability insurance for their installation crew business (A and A Sierra Structures LLC) and is seeking guidance on policy costs and requirements.",
+  "resolution_steps": [
+    "Agent confirmed the caller's LLC name, business address, and ownership structure.",
+    "Collected EIN, social security number, and date of birth for underwriting.",
+    "Discussed policy types (workers' comp, general liability, inland marine) and provided ballpark cost estimates ($1,500\u2013$1,800/month).",
+    "Emphasized industry-specific risks and safety practices to avoid claims.",
+    "Clarified payroll details for the LLC and the caller's dual employment roles."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Workers' compensation and general liability insurance requirements for construction/installation businesses",
+    "LLC underwriting processes",
+    "Industry-specific risk factors for carport installers",
+    "Payroll calculations for multi-employer scenarios"
+  ],
+  "systems_referenced": [
+    "Internal LLC database for verification",
+    "Carrier portals for policy quoting"
+  ],
+  "summary": "Brenda Benitez, owner of A and A Sierra Structures LLC, sought insurance for her installation crew. The agent gathered business details, explained policy costs, and emphasized safety practices to avoid claims. The caller will need to follow up for formal quoting after verification.",
+  "_model": "qwen3:14b",
+  "_eval_count": 314,
+  "_total_duration_ms": 45582,
+  "_source_file": "transcripts/exten-207-+13367106991-20251009-095627-1760018187.1271.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 8476
+}

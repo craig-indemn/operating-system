@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to remove a 2012 Nissan Altima from their insurance policy and confirm the effective date of removal.",
+  "resolution_steps": [
+    "Agent Heather asks for the policyholder's name (Sylvia Louise Garcia) and address (4809 Tully Ridge Lane, Winston Salem, NC 27106).",
+    "Confirms the vehicle to be removed (2012 Nissan Altima) and verifies the remaining vehicle (1996 F150).",
+    "Asks about returning the license plate to DMV, which the caller confirms was done on Friday, January 1st.",
+    "Informs the caller the vehicle will be removed effective Friday, January 1st."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Process for removing vehicles from insurance policies",
+    "Requirement to confirm DMV license plate return before removal",
+    "Policy update procedures and effective dates"
+  ],
+  "systems_referenced": [],
+  "summary": "A customer requested removal of a 2012 Nissan Altima from their policy. The agent confirmed policy details, verified DMV license plate return, and scheduled the removal effective January 1st. The caller expressed gratitude and no further action was requested.",
+  "_model": "qwen3:14b",
+  "_eval_count": 289,
+  "_total_duration_ms": 39964,
+  "_source_file": "transcripts/q-300-+13364166034-20250805-160609-1754424369.8445.txt",
+  "_direction": "queue",
+  "_char_count": 837
+}

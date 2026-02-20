@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "N/A (voicemail greeting, no caller interaction)",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Standard voicemail greeting from Riley Heisdorf informing caller of unavailability and providing contact instructions. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 85,
+  "_total_duration_ms": 21396,
+  "_source_file": "transcripts/out-16084103515-206-20250915-150917-1757963357.13228.txt",
+  "_direction": "outbound",
+  "_char_count": 393
+}

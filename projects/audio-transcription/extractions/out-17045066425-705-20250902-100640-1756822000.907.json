@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Jerry) is seeking reimbursement for a $500 deductible he paid on a Jeep claim where another party was at fault, and he also wants to understand his commercial insurance policy better.",
+  "resolution_steps": [
+    "Agent acknowledges the deductible issue and explains that the carrier (Auto Owners) typically handles reimbursement through their claims process.",
+    "Agent offers to check the claim details (claim number, policy number) and contact the in-house claims rep to resolve the deductible reimbursement.",
+    "Agent notes the caller's request to review the commercial policy and schedules a follow-up to explain coverage details."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance claims process for deductible reimbursement when another party is at fault",
+    "Commercial insurance policy structures and coverage details"
+  ],
+  "systems_referenced": [
+    "Internal claims database (to look up claim numbers and policy details)",
+    "Auto Owners carrier process for handling third-party claims"
+  ],
+  "summary": "Jerry contacted Alliance Insurance to resolve a deductible reimbursement issue from a Jeep accident and requested clarification on his commercial policy. The agent confirmed the process for reimbursement and scheduled a follow-up to review the policy. The call concluded with the agent committing to escalate the claim to the claims rep and address the policy questions.",
+  "_model": "qwen3:14b",
+  "_eval_count": 283,
+  "_total_duration_ms": 41770,
+  "_source_file": "transcripts/out-17045066425-705-20250902-100640-1756822000.907.txt",
+  "_direction": "outbound",
+  "_char_count": 4095
+}

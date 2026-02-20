@@ -1,0 +1,20 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller attempted to reach a personal lines underwriter in North Carolina but was connected to a marketing representative.",
+  "resolution_steps": [
+    "Agent acknowledged the caller and attempted to transfer the call.",
+    "Agent mentioned Emma as the marketing rep and said 'one moment' before the transcript cuts off."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of internal department structures and transfer protocols"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller attempted to reach a personal lines underwriter in North Carolina but was connected to a marketing representative. The agent initiated a transfer but the conversation was cut short, leaving the outcome unclear.",
+  "_model": "qwen3:14b",
+  "_eval_count": 161,
+  "_total_duration_ms": 36802,
+  "_source_file": "transcripts/out-8003340328-202-20251002-160005-1759435205.12829.txt",
+  "_direction": "outbound",
+  "_char_count": 282
+}

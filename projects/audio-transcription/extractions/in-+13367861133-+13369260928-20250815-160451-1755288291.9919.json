@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to pay their car insurance premium immediately using a debit card and set up auto-pay for future payments once they have their banking details.",
+  "resolution_steps": [
+    "Confirmed the caller's Progressive policy and payment amount ($286.15).",
+    "Processed a one-time debit card payment using the provided card number (4224...2548) and expiration date (Feb 2028).",
+    "Offered to email a payment confirmation receipt.",
+    "Clarified that the debit card information would not be saved for auto-pay setup.",
+    "Informed the caller they would need to contact the agency again next week to establish auto-pay with their checking account details."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Progressive insurance payment processing",
+    "Auto-pay setup procedures",
+    "Payment method differentiation (one-time vs. recurring)",
+    "Data security protocols for handling card information"
+  ],
+  "systems_referenced": [
+    "Progressive insurance policy system",
+    "Payment processing platform",
+    "Email confirmation system"
+  ],
+  "summary": "A Progressive policyholder made a one-time car insurance payment via debit card and scheduled a follow-up to set up auto-pay. The agent processed the payment, sent a confirmation email, and explained that auto-pay requires a separate banking information setup.",
+  "_model": "qwen3:14b",
+  "_eval_count": 305,
+  "_total_duration_ms": 37562,
+  "_source_file": "transcripts/in-+13367861133-+13369260928-20250815-160451-1755288291.9919.txt",
+  "_direction": "inbound",
+  "_char_count": 1573
+}

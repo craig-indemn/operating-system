@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jeff Edmonds is contacting Casey to correct a spelling error in the middle name of a minor on a bond previously issued by Alliance Insurance Services.",
+  "resolution_steps": [
+    "Casey asks for the bond number and details of the error.",
+    "Jeff provides the bond number (CBE1065414) and clarifies the middle name should be 'NOELLE' instead of the current spelling.",
+    "Casey confirms the correction and requests Jeff's email address for sending the updated information.",
+    "Jeff provides his email (jeff@allianceinsurance.com), and Casey agrees to send the correction immediately."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding how to access and modify bond records",
+    "Knowledge of proper email communication for document corrections"
+  ],
+  "systems_referenced": [
+    "email"
+  ],
+  "summary": "Jeff Edmonds contacted Casey to correct a spelling error in a minor's middle name on a bond. Casey confirmed the bond details, requested the corrected spelling, and agreed to send the updated information via email. The call concluded with Casey taking action to resolve the issue.",
+  "_model": "qwen3:14b",
+  "_eval_count": 253,
+  "_total_duration_ms": 37274,
+  "_source_file": "transcripts/out-15136035860-206-20251113-101605-1763046965.1243.txt",
+  "_direction": "outbound",
+  "_char_count": 973
+}

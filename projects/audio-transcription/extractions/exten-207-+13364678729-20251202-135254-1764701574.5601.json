@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Victor Santiago needs assistance completing a Workers Comp policy audit for Travelers, which is currently non-compliant, and forgot to do it earlier.",
+  "resolution_steps": [
+    "Agent confirms the audit is non-compliant and explains Victor needs to contact Travelers directly to open the audit.",
+    "Agent provides Travelers' registration portal (www.travelers.com/register/biz) to create an online account.",
+    "Agent directs Victor to the audit portal (www.travelers.com/audit) after account creation.",
+    "Agent offers to email Victor a letter with Travelers' contact details and audit instructions.",
+    "Agent reassures Victor he'll follow up via email with necessary information."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Travelers Workers Comp policy audit process",
+    "Travelers online account registration and audit portals",
+    "Handling non-compliant audits for insurance policies"
+  ],
+  "systems_referenced": [
+    "www.travelers.com",
+    "www.travelers.com/register/biz",
+    "www.travelers.com/audit"
+  ],
+  "summary": "Victor Santiago needed help completing a non-compliant Workers Comp audit for Travelers. The agent guided him to create an online account via Travelers' registration portal, directed him to the audit portal, and offered to email him a letter with Travelers' contact details and instructions. The agent emphasized contacting Travelers directly to resolve the non-compliance issue.",
+  "_model": "qwen3:14b",
+  "_eval_count": 321,
+  "_total_duration_ms": 40823,
+  "_source_file": "transcripts/exten-207-+13364678729-20251202-135254-1764701574.5601.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3683
+}

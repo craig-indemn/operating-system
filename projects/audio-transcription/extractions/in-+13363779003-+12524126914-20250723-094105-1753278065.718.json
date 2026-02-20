@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to reinstate an automatic payment for her husband's disability insurance policy after a previous cancellation and confirm the payment is active.",
+  "resolution_steps": [
+    "Agent confirmed the policy type (disability) and checked the current balance ($155.53).",
+    "Agent verified the payment method (existing routing/account numbers from prior documentation).",
+    "Agent processed the automatic payment using the joint business account details.",
+    "Agent sent a confirmation email to ambervarner@hotmail.com with payment details."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Policy management for disability insurance",
+    "Automatic payment setup and reinstatement process",
+    "Handling joint account information",
+    "Email confirmation procedures"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's policy management system",
+    "Email confirmation tool"
+  ],
+  "summary": "A caller contacted Alliance Insurance to reinstate an automatic payment for her husband's disability policy after a prior cancellation. The agent verified the policy details, confirmed the payment method, processed the reinstatement, and sent a confirmation email. The issue was resolved successfully.",
+  "_model": "qwen3:14b",
+  "_eval_count": 253,
+  "_total_duration_ms": 41698,
+  "_source_file": "transcripts/in-+13363779003-+12524126914-20250723-094105-1753278065.718.txt",
+  "_direction": "inbound",
+  "_char_count": 3936
+}

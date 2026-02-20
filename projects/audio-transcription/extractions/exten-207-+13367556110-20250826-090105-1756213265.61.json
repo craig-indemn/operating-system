@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (German) needs to update his insurance policy to include specific vehicles and drivers for an installation project, ensuring the insurer knows which vehicles are used and verifying driver information.",
+  "resolution_steps": [
+    "Cody confirms the caller's request to update policy vehicles and drivers for installation work.",
+    "They identify three vehicles (2006, 2016, and 2024 Dodge Rams) to be added, excluding a recently added truck with VIN ending in 4566.",
+    "Cody verifies that drivers (Geronimo, Alexis, Ronnie Simmons) are already on the policy as they have worked with the company previously.",
+    "Cody agrees to communicate the vehicle and driver details to the insurer to process coverage updates (general liability, inland marine)."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance policy updates for vehicle and driver information",
+    "Understanding of coverage types (general liability, inland marine)",
+    "Process for adding drivers to a policy"
+  ],
+  "systems_referenced": [],
+  "summary": "German is updating his insurance policy to include specific vehicles and drivers for an installation project. Cody helps identify the correct vehicles (excluding a recently added truck) and confirms existing drivers on the policy, ensuring proper coverage updates are processed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 290,
+  "_total_duration_ms": 44994,
+  "_source_file": "transcripts/exten-207-+13367556110-20250826-090105-1756213265.61.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4338
+}

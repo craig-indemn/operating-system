@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Cecilia Cruz, an agent from Alliance Insurance Services, is seeking clarification on a $448 billing discrepancy related to a canceled auto policy and requesting cancellation of an umbrella policy that was submitted for cancellation but not processed.",
+  "resolution_steps": [
+    "Agent Rex confirms the auto policy was canceled effective January 1st and explains the payment covered coverage from November 3rd to December 3rd.",
+    "Rex clarifies that the $448 payment relates to coverage used before premium collection.",
+    "Cecilia requests cancellation of the umbrella policy, which Rex agrees to process.",
+    "Rex checks the umbrella policy details, noting two vehicles (Tesla 2021 and 2013 model) listed on the policy."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy cancellation procedures",
+    "Billing cycles and coverage periods",
+    "Umbrella policy management",
+    "Internal system navigation for policy verification and cancellations"
+  ],
+  "systems_referenced": [
+    "Internal insurance agency policy management system"
+  ],
+  "summary": "Cecilia Cruz, an agent from Alliance Insurance Services, discusses a billing discrepancy for a canceled auto policy and requests cancellation of an umbrella policy. Agent Rex explains the coverage timeline for the auto policy's final payment and initiates the umbrella policy cancellation process, noting the vehicles listed on the umbrella policy.",
+  "_model": "qwen3:14b",
+  "_eval_count": 311,
+  "_total_duration_ms": 55353,
+  "_source_file": "transcripts/out-18002550332-107-20260115-164630-1768513590.9161.txt",
+  "_direction": "outbound",
+  "_char_count": 4675
+}

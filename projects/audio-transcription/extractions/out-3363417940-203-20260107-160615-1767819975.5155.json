@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Maria Bowman, an insurance agent from Alliance Insurance Services, is coordinating with Jamie at True Line Mortgage to adjust an insurance policy for a client (Miss Rodriguez and Pedro) due to a change in residency status from primary resident to landlord, and to ensure proper escrow setup for a closing on a mobile home.",
+  "resolution_steps": [
+    "Maria explains the client's need to change their insurance policy from landlord to primary resident due to moving into a new home and renting out the current one.",
+    "She requests Jamie's email address to send the mortgage clause, loan number, and closing date.",
+    "Maria confirms the client's new rental property address (4801 Rabbit Run Road) and primary residence address (4939 Nature Lane).",
+    "She agrees to adjust the insurance quote and send the necessary documents via email for underwriting review."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of insurance policy types (landlord vs. primary resident)",
+    "Mortgage escrow requirements",
+    "Coordination with mortgage underwriting processes"
+  ],
+  "systems_referenced": [
+    "Email communication (Jamie's email: jamie.heel@truelinemortgage.com)"
+  ],
+  "summary": "Maria Bowman coordinates with Jamie at True Line Mortgage to adjust an insurance policy for a client transitioning from primary resident to landlord status. She secures necessary mortgage details via email and confirms property addresses to ensure proper policy quoting before underwriting. The call concludes with Jamie confirming receipt of information and Maria sending required documents.",
+  "_model": "qwen3:14b",
+  "_eval_count": 336,
+  "_total_duration_ms": 47698,
+  "_source_file": "transcripts/out-3363417940-203-20260107-160615-1767819975.5155.txt",
+  "_direction": "outbound",
+  "_char_count": 2918
+}

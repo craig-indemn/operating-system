@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller attempted to reach Heather Jones regarding an unresolved issue, expressing concern that Heather had not responded to previous messages despite being at work.",
+  "resolution_steps": [
+    "Agent informed caller Heather Jones was out of the office until 2:00 PM.",
+    "Agent asked if caller wanted to leave a voicemail for Heather.",
+    "Caller declined and requested to speak with another agent.",
+    "Agent transferred the call to another agent."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Heather Jones' work schedule and availability",
+    "Standard procedures for handling calls when an agent is unavailable",
+    "Transfer protocols to other agents"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller attempted to reach Heather Jones but was informed she was out of the office. The caller expressed concern about not receiving a response to previous messages. The agent transferred the call to another agent to address the issue.",
+  "_model": "qwen3:14b",
+  "_eval_count": 216,
+  "_total_duration_ms": 30074,
+  "_source_file": "transcripts/in-+13367861133-+13366690888-20260112-100832-1768230512.625.txt",
+  "_direction": "inbound",
+  "_char_count": 831
+}

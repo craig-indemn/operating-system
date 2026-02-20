@@ -1,0 +1,22 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Connor wanted to speak with the person handling the business phone system and service (Heather) but was informed she was unavailable.",
+  "resolution_steps": [
+    "Agent informed Connor Heather was on a meeting.",
+    "Agent offered to take a voicemail message."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Handling call transfers and voicemail procedures"
+  ],
+  "systems_referenced": [
+    "Voicemail system"
+  ],
+  "summary": "A brief inbound call where the caller requested to speak with Heather (business phone system handler) but was informed she was unavailable. The agent offered to take a voicemail message, but no further resolution was achieved.",
+  "_model": "qwen3:14b",
+  "_eval_count": 164,
+  "_total_duration_ms": 41051,
+  "_source_file": "transcripts/in-+13363779003-+15715718815-20251118-161145-1763500305.6345.txt",
+  "_direction": "inbound",
+  "_char_count": 341
+}

@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Voicemail greeting from Gabriel Perez requesting caller to leave name and number for follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 67,
+  "_total_duration_ms": 38220,
+  "_source_file": "transcripts/out-5619629425-102-20251230-151226-1767125546.9667.txt",
+  "_direction": "outbound",
+  "_char_count": 261
+}

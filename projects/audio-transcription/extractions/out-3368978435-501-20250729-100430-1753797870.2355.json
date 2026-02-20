@@ -1,0 +1,32 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jamie Flippin from Lions Insurance is conducting a routine account review with Evelyn to ensure her and Jack's insurance information is up to date for upcoming renewals in September, and to discuss potential changes in coverage and rates.",
+  "resolution_steps": [
+    "Confirmed contact information (phone numbers, emails, mailing address) for Evelyn and Jack.",
+    "Reviewed home policy details (coverage amount, deductible, mortgage status).",
+    "Discussed auto policy renewal date, rate increases due to North Carolina base rate hikes, and potential coverage adjustments from Inflation Guard endorsements.",
+    "Addressed coverage for non-listed drivers (son-in-law) and explained risks of not adding them to the policy.",
+    "Clarified rental reimbursement coverage limits and advised purchasing rental coverage directly from rental companies to avoid liability issues.",
+    "Noted no immediate changes to policies but left door open for future updates."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance renewal processes and timelines",
+    "North Carolina auto/home insurance rate regulations",
+    "Inflation Guard endorsement mechanics",
+    "Coverage implications for non-listed drivers",
+    "Rental reimbursement policy specifics"
+  ],
+  "systems_referenced": [
+    "Auto Owners Insurance",
+    "Inflation Guard endorsement",
+    "Rental reimbursement coverage details"
+  ],
+  "summary": "Jamie Flippin conducted a comprehensive insurance review with Evelyn, confirming policy details, discussing upcoming rate increases, and explaining coverage nuances. The conversation covered home/auto renewals, driver coverage implications, and rental policy best practices. Evelyn remained engaged but no immediate changes were requested.",
+  "_model": "qwen3:14b",
+  "_eval_count": 351,
+  "_total_duration_ms": 53997,
+  "_source_file": "transcripts/out-3368978435-501-20250729-100430-1753797870.2355.txt",
+  "_direction": "outbound",
+  "_char_count": 8920
+}

@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Teresa is seeking auto insurance for her daughter Lauren's new 2025 Lexus NX in Winston-Salem, NC, while Lauren is a medical student at Wake. She needs assistance with policy details, coverage options, and quotes.",
+  "resolution_steps": [
+    "Agent Corbin gathered Lauren's personal details (name, DOB, contact info, address, VIN, license number, past address).",
+    "Discussed vehicle specifics (2025 Lexus NX, financing with Truist as lienholder, usage for hospital trips).",
+    "Explored coverage options: liability limits (100/300 vs 25500), medical payments, deductibles (0 comprehensive, 500 collision), and rental car reimbursement.",
+    "Provided quotes: $2,080.46/year for 100/300 liability, $2,199.61/year for 25500 liability, and adjusted rates with higher collision deductibles.",
+    "Mentioned the Dynamic Driver app discount (10% off) for safe driving monitoring."
+  ],
+  "outcome": "transferred",
+  "knowledge_required": [
+    "North Carolina auto insurance requirements (minimum limits, deductible structures).",
+    "Insurance policy terminology (liability splits, comprehensive/collision deductibles).",
+    "Discount programs (e.g., Dynamic Driver app).",
+    "Handling financed vehicles with lienholders."
+  ],
+  "systems_referenced": [
+    "Motor vehicle report (MVR) system",
+    "Dynamic Driver app (discount program)"
+  ],
+  "summary": "Corbin assisted Teresa in obtaining auto insurance quotes for her daughter's new Lexus NX in NC. He collected detailed information, explained coverage options, and provided rates for different liability and deductible levels. The call concluded with Teresa having pricing options and knowledge of a discount program.",
+  "_model": "qwen3:14b",
+  "_eval_count": 413,
+  "_total_duration_ms": 60160,
+  "_source_file": "transcripts/out-2145324387-409-20250730-091650-1753881410.98.txt",
+  "_direction": "outbound",
+  "_char_count": 6358
+}

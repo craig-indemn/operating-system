@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Steve Adams is seeking clarification about receiving a health insurance packet from Signa Insurance after canceling his policy in December, questioning why the policy is listed as effective January 1st.",
+  "resolution_steps": [
+    "Agent acknowledges Steve's confusion about the received insurance packet.",
+    "Agent confirms Steve's claim that he canceled the policy in early December.",
+    "Agent offers to research the discrepancy between the cancellation date and the policy's effective date.",
+    "Agent asks Steve to confirm if other materials (e.g., pocket cards) were included in the mailing."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance cancellation processes and effective dates",
+    "Ability to investigate policy status and mailing discrepancies"
+  ],
+  "systems_referenced": [],
+  "summary": "Steve Adams contacted Mike Henshu after receiving an unexpected health insurance packet from Signa Insurance, which he believed he had canceled in December. Mike offered to research the discrepancy between the cancellation date and the policy's January 1st effective date. The call concluded with Mike committing to investigate further and provide updates.",
+  "_model": "qwen3:14b",
+  "_eval_count": 247,
+  "_total_duration_ms": 43125,
+  "_source_file": "transcripts/out-3364133696-+13362871371-20260119-090645-1768831605.73.txt",
+  "_direction": "outbound",
+  "_char_count": 1507
+}

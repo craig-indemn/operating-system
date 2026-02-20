@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (a contractor) seeks clarification on a payment received by a homeowner (Oscar and Juana Macedo) for a roof damage claim, specifically requesting an itemized breakdown of the payment and guidance on next steps due to concerns about the payment amount.",
+  "resolution_steps": [
+    "JC confirms the claim details (names, address) and checks the system to verify the claim.",
+    "Informs the caller that the adjuster is the primary contact for payment details and claim resolution.",
+    "Explains that Alliance Insurance Services only handles reporting the claim, not the adjuster's decisions.",
+    "Advises the caller to communicate directly with the assigned adjuster for further clarification or disputes.",
+    "Notes that if the adjuster determines insufficient damage, the homeowner must follow the adjuster's process for appeals."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Claim processing workflow",
+    "Role of adjusters in insurance claims",
+    "Handling disputes or appeals with carriers",
+    "Communication protocols between agents and adjusters"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services internal claim lookup system"
+  ],
+  "summary": "A contractor contacts Alliance Insurance Services to clarify a payment received by a homeowner for a roof damage claim. The agent explains that the adjuster is responsible for providing payment details and resolving disputes, while Alliance only handles initial claim reporting. The caller is directed to contact the adjuster directly for further action.",
+  "_model": "qwen3:14b",
+  "_eval_count": 324,
+  "_total_duration_ms": 47327,
+  "_source_file": "transcripts/q-300-+19143098807-20250908-102655-1757341615.984.txt",
+  "_direction": "queue",
+  "_char_count": 3594
+}

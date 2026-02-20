@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Heather is following up on insurance rate increases, specifically for her home and auto policies with Travelers, and is seeking alternatives to reduce costs. She mentions receiving proposals via email and wants to discuss options.",
+  "resolution_steps": [
+    "Debbie confirms Heather's current home insurance rate with Travelers ($1,733/year) and explains a proposal from Pen National ($1,431/year).",
+    "Debbie discusses the possibility of increasing the deductible from $1,000 to $2,500 to lower premiums.",
+    "Debbie provides auto insurance options, noting a potential switch to Pen National at $728.68/year.",
+    "Heather considers switching auto insurance but the conversation is cut off mid-sentence."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance rate structures, deductibles, and carrier-specific pricing.",
+    "Ability to compare proposals and explain financial trade-offs (e.g., deductible vs. premium)."
+  ],
+  "systems_referenced": [
+    "Email (proposals sent to Heather)",
+    "Travelers (current home/auto insurance provider)",
+    "Pen National (alternative carrier proposal)"
+  ],
+  "summary": "Debbie Franklin discusses with Heather the increase in her Travelers home insurance premium and presents a Pen National proposal with potential savings. They explore deductible adjustments and auto insurance alternatives, though the call ends abruptly before resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 320,
+  "_total_duration_ms": 53613,
+  "_source_file": "transcripts/exten-401-+13369717366-20251007-154520-1759866320.9159.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4180
+}

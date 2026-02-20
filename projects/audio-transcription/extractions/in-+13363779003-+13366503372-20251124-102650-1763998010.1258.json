@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller is disputing a bill for insurance they claim they never received, referencing a prior conversation with an agent named Jamie Slipins.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The caller raised a dispute about an unexpected insurance bill and mentioned a prior interaction with Jamie Slipins. The conversation was cut off mid-escalation, with the agent (Mister Hayes) attempting to connect the caller to Jamie but the call ending abruptly.",
+  "_model": "qwen3:14b",
+  "_eval_count": 131,
+  "_total_duration_ms": 27903,
+  "_source_file": "transcripts/in-+13363779003-+13366503372-20251124-102650-1763998010.1258.txt",
+  "_direction": "inbound",
+  "_char_count": 483
+}

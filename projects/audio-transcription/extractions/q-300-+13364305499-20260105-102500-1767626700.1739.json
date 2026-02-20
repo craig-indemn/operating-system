@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Dan Suter is seeking assistance with a letter from the North Carolina DMV regarding an FS one submission for his Toyota Rav4, and he wants to ensure his insurance policy meets the required proof of coverage.",
+  "resolution_steps": [
+    "Agent verified Dan's mailing address and policy name (Desmond Daniel Suter).",
+    "Agent requested Dan to send a photo of the DMV letter via text to 336-786-1133 for review.",
+    "Agent explained the need to submit proof of coverage electronically by December 29, 2025.",
+    "Agent confirmed the letter would be forwarded to DMV and followed up within 24 hours.",
+    "Agent assured Dan he could drive the vehicle once the DMV processed the submission."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of DMV requirements for proof of insurance (FS one submissions)",
+    "Policy verification process",
+    "Handling of electronic submissions for vehicle registration"
+  ],
+  "systems_referenced": [
+    "North Carolina DMV",
+    "Alliance Insurance Services internal policy database"
+  ],
+  "summary": "Dan Suter contacted Alliance Insurance Services to address a DMV letter regarding an FS one submission for his Toyota Rav4. The agent verified his policy details, requested the letter for review, and explained the need for electronic submission by December 29, 2025. The agent committed to follow up within 24 hours after receiving the letter and assured Dan he could legally drive the vehicle once the DMV processed the submission.",
+  "_model": "qwen3:14b",
+  "_eval_count": 352,
+  "_total_duration_ms": 36821,
+  "_source_file": "transcripts/q-300-+13364305499-20260105-102500-1767626700.1739.txt",
+  "_direction": "queue",
+  "_char_count": 2609
+}

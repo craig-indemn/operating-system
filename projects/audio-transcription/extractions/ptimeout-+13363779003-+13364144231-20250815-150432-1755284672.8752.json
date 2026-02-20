@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is requesting that Monica be informed to call them back, as she did not respond to a previous message. They provided their phone number and emphasized urgency.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's request to inform Monica to call back.",
+    "Agent asks for and records the caller's phone number (336-414-4231).",
+    "Agent confirms the caller's name (Monica) and assures them they will relay the message."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Customer service protocols for handling follow-up requests",
+    "Basic communication skills to manage urgent client inquiries"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller requested that Monica be informed to contact them urgently, providing their phone number. The agent confirmed details and committed to relaying the message. No specific systems were referenced, and the interaction focused on manual follow-up coordination.",
+  "_model": "qwen3:14b",
+  "_eval_count": 219,
+  "_total_duration_ms": 39285,
+  "_source_file": "transcripts/ptimeout-+13363779003-+13364144231-20250815-150432-1755284672.8752.txt",
+  "_direction": "park_timeout",
+  "_char_count": 537
+}

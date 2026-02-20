@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Heather Johnson from Alliance Insurance is reaching out to Vivian to check if she needs assistance after a previous upset call and to inform her about the closure of the Walnut Cove office due to an emergency.",
+  "resolution_steps": [
+    "Heather explains that Walnut Cove has been closed due to an emergency and is out of their control.",
+    "She informs Vivian the office will reopen next Monday and offers to assist if she needs to visit.",
+    "Provides her direct phone number for follow-up."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Awareness of office closure due to emergency",
+    "Ability to provide alternative assistance options"
+  ],
+  "systems_referenced": [],
+  "summary": "Heather Johnson from Alliance Insurance contacted Vivian to check on her well-being after a previous upset call and to inform her about the temporary closure of the Walnut Cove office. She offered assistance and provided her contact number for further communication.",
+  "_model": "qwen3:14b",
+  "_eval_count": 218,
+  "_total_duration_ms": 34905,
+  "_source_file": "transcripts/out-3364070528-404-20250821-091345-1755782025.184.txt",
+  "_direction": "outbound",
+  "_char_count": 889
+}

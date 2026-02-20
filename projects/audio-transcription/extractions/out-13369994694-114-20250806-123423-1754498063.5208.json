@@ -1,0 +1,23 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The agent (JC) is following up on a previous voicemail regarding assistance with an auto policy and requesting a callback.",
+  "resolution_steps": [
+    "Agent left a voicemail message stating they are returning a call about an auto policy.",
+    "Provided contact information (phone number) and mentioned sending an email for reply."
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [
+    "Auto insurance policy procedures",
+    "Follow-up communication protocols"
+  ],
+  "systems_referenced": [
+    "Email system"
+  ],
+  "summary": "Agent JC from Alliance Insurance left a voicemail following up on a previous message about an auto policy, requesting a callback and providing contact details.",
+  "_model": "qwen3:14b",
+  "_eval_count": 164,
+  "_total_duration_ms": 49809,
+  "_source_file": "transcripts/out-13369994694-114-20250806-123423-1754498063.5208.txt",
+  "_direction": "outbound",
+  "_char_count": 593
+}

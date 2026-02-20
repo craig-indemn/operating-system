@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "David Malia wants to reinstate his canceled insurance policy (Policy #2004135270) after non-renewal due to missed payment.",
+  "resolution_steps": [
+    "Agent Eddie verifies David's identity using address, phone number, and billing information.",
+    "Eddie explains the policy was canceled for non-renewal payment on August 18.",
+    "Eddie informs David of reinstatement requirements: full payment of $1,414.71 and a 'statement of no loss' (confirming no claims/accidents).",
+    "Eddie initiates the statement of no loss recording process and prepares the policy for reinstatement.",
+    "David verbally approves the statement, enabling payment processing."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Policy reinstatement procedures for non-renewal due to missed payments",
+    "Statement of no loss requirements and verification process",
+    "Billing address vs. policyholder address distinctions"
+  ],
+  "systems_referenced": [
+    "National General Insurance's policy management system",
+    "Payment processing portal (www.dotmynetgenpolicy.dotcom)"
+  ],
+  "summary": "David Malia contacted Alliance Insurance to reinstate his canceled policy. After verifying his identity and confirming no recent claims, the agent explained reinstatement requirements and processed the full payment. The call concluded with the policy being reinstated pending payment confirmation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 317,
+  "_total_duration_ms": 55058,
+  "_source_file": "transcripts/out-8774683466-509-20250821-155257-1755805977.8381.txt",
+  "_direction": "outbound",
+  "_char_count": 4301
+}

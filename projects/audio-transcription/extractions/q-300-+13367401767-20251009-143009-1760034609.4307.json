@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller seeks assistance with a terminated insurance policy for their wife, which is preventing her from obtaining a new license plate through the DMV. They provided a policy number for verification.",
+  "resolution_steps": [
+    "Agent asked for the policy number to check the account status.",
+    "Caller provided the policy number: 2020428438.",
+    "Agent requested time to verify the policy details."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding how to check policy termination status",
+    "Knowledge of DMV requirements for license plate renewals",
+    "Ability to access internal systems to verify policy details"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller reported their wife's insurance policy with Sugai was terminated, preventing her from obtaining a new license plate. The agent requested the policy number (2020428438) and is verifying the account status. The call is ongoing, requiring further action to resolve the termination issue.",
+  "_model": "qwen3:14b",
+  "_eval_count": 234,
+  "_total_duration_ms": 42731,
+  "_source_file": "transcripts/q-300-+13367401767-20251009-143009-1760034609.4307.txt",
+  "_direction": "queue",
+  "_char_count": 742
+}

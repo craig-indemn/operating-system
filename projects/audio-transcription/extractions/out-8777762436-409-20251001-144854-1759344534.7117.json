@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Corbin Dirks, is seeking assistance with a commercial auto quote for a hauling business in North Carolina and needs guidance on state/federal filing requirements and associated fees.",
+  "resolution_steps": [
+    "Agent Amber confirmed the caller's request for a commercial auto quote and verified the agent code.",
+    "Explained the process for adding state/federal filings (e.g., North Carolina) during the quoting process.",
+    "Clarified that a $35 one-time fee applies per filing (state/federal) and that filings require specific vehicle information (owned/operated by the business).",
+    "Guided the caller on navigating the quote system to select filings and specify required details (e.g., liability, cargo).",
+    "Noted that vehicles not owned/operated by the business (e.g., personal vehicles) would not qualify for filings."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Progressive's commercial auto quoting system",
+    "State/federal filing requirements for commercial policies",
+    "Fee structures for filings in North Carolina",
+    "Policy eligibility criteria for filings"
+  ],
+  "systems_referenced": [
+    "Progressive's commercial auto quote portal",
+    "North Carolina state filing process"
+  ],
+  "summary": "Corbin Dirks requested help finalizing a commercial auto quote for a hauling business, specifically needing guidance on state/federal filings. Agent Amber walked him through the quoting system, explained the $35 filing fee, and clarified that only vehicles owned/operated by the business qualify for filings. The caller gained clarity on the process and next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 353,
+  "_total_duration_ms": 41367,
+  "_source_file": "transcripts/out-8777762436-409-20251001-144854-1759344534.7117.txt",
+  "_direction": "outbound",
+  "_char_count": 4231
+}

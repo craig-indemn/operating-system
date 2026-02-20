@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller (James) is attempting to reach Jessica Hernandez.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Brief call where the caller inquires about Jessica Hernandez's availability. The response is minimal (\"One second, please. Thank you.\") and no resolution is achieved.",
+  "_model": "qwen3:14b",
+  "_eval_count": 99,
+  "_total_duration_ms": 26250,
+  "_source_file": "transcripts/in-+13363779003-+13363316327-20251119-125450-1763574890.3817.txt",
+  "_direction": "inbound",
+  "_char_count": 99
+}

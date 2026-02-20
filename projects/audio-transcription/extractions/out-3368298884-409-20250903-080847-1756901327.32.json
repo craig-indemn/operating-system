@@ -1,0 +1,32 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Michael is seeking assistance to finalize a homeowners insurance policy with Alliance Insurance, specifically addressing coverage details, discounts, and paperwork submission for Bank of America escrow.",
+  "resolution_steps": [
+    "Corbin confirms Michael's home details (roof age, square footage, basement, etc.) and runs a rate check.",
+    "Discusses coverage specifics: $25,000 water backup, $2,500 deductible, liability limits, and potential discounts.",
+    "Addresses Michael's confusion about Northwest Farmers' pricing and bundling options.",
+    "Guides Michael through electronic policy signing via E-signature.",
+    "Provides policy number (NWF-2020251250) and explains next steps: declaration page issuance, potential exterior inspection, and document submission to Bank of America."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Homeowners insurance coverage terminology (deductibles, liability limits, discounts)",
+    "Carrier-specific processes (Northwest Farmers policy issuance, bundling rules)",
+    "Escrow and document submission workflows with Bank of America",
+    "Electronic signature and policy issuance procedures"
+  ],
+  "systems_referenced": [
+    "Northwest Farmers (carrier)",
+    "Bank of America (escrow)",
+    "Canopy Connect (document portal)",
+    "E-signature platform",
+    "Alliance Insurance internal systems"
+  ],
+  "summary": "Corbin assists Michael in finalizing a homeowners insurance policy with Northwest Farmers, clarifying coverage details, discounts, and paperwork requirements. The call concludes with Michael electronically signing the policy and receiving a policy number, with follow-up steps involving declaration pages and potential inspections.",
+  "_model": "qwen3:14b",
+  "_eval_count": 367,
+  "_total_duration_ms": 56252,
+  "_source_file": "transcripts/out-3368298884-409-20250903-080847-1756901327.32.txt",
+  "_direction": "outbound",
+  "_char_count": 8209
+}

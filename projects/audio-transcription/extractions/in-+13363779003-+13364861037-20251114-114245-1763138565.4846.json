@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller intended to request a home insurance quote but the conversation was cut off before details could be clarified.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief, incomplete call where the caller mentioned seeking a home insurance quote. The agent's response was unclear, and the conversation ended abruptly without resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 103,
+  "_total_duration_ms": 26388,
+  "_source_file": "transcripts/in-+13363779003-+13364861037-20251114-114245-1763138565.4846.txt",
+  "_direction": "inbound",
+  "_char_count": 179
+}

@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Joe Patton is checking in with Rick to confirm details about the Adam building in Winston (specifically construction status, electrical systems, and roof condition) to ensure he can provide accurate insurance terms without reservations.",
+  "resolution_steps": [
+    "Rick confirms the building is fully completed with no ongoing construction and is fully sprinkled.",
+    "Rick acknowledges the need to verify specifics about electrical panels (stab lock, pre-1950s) with the insurer.",
+    "They discuss the roof's condition, agreeing to be reasonable with underwriting terms (e.g., ACV endorsement with wind deductible).",
+    "Rick emphasizes flexibility in underwriting around unresolved issues, with Joe agreeing to proceed without making demands."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance underwriting principles",
+    "Property condition assessments (construction, electrical systems, roof)",
+    "Insurance terminology (ACV endorsements, deductibles)"
+  ],
+  "systems_referenced": [
+    "my system (general reference to Joe's internal tool for inputting data)"
+  ],
+  "summary": "Joe and Rick discuss the Adam building's insurance details, confirming its operational status and addressing concerns about electrical systems and the roof. They agree to proceed with flexible underwriting terms, with Rick committing to consult the insurer on specific electrical questions.",
+  "_model": "qwen3:14b",
+  "_eval_count": 285,
+  "_total_duration_ms": 52822,
+  "_source_file": "transcripts/exten-105-+15134906990-20251110-153108-1762806668.6779.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4250
+}

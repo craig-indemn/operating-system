@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Gloria is following up with Mark to update him on the progress of obtaining insurance quotes for his business and setting a timeline for sending a proposal by the 11th.",
+  "resolution_steps": [
+    "Gloria informs Mark that Alliance Insurance is working on quotes for his business.",
+    "She confirms a timeline to call back and send a proposal by the 11th (Thursday or tomorrow evening).",
+    "Mentions that further discussion will occur after the proposal is sent."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance quoting process",
+    "Client communication protocols",
+    "Policy reinstatement procedures"
+  ],
+  "systems_referenced": [],
+  "summary": "Gloria from Alliance Insurance updates Mark on the status of his business insurance quotes, setting a timeline for a proposal by the 11th and confirming follow-up discussions. The call focuses on progress updates and next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 216,
+  "_total_duration_ms": 43653,
+  "_source_file": "transcripts/out-3366074877-102-20251216-153440-1765917280.4661.txt",
+  "_direction": "outbound",
+  "_char_count": 522
+}

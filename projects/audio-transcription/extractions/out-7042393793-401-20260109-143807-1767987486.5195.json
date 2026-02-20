@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Heather Scott from Alliance Insurance is requesting a copy of the caller's auto policy declaration to provide a bundled home and auto insurance quote.",
+  "resolution_steps": [
+    "Agent left a voicemail message requesting the auto policy declaration.",
+    "Provided email address (heather s s and sam) and website (myallianceinsurance.com) for document submission.",
+    "Mentioned sending a link and separate email for additional information.",
+    "Included phone number (336-377-9003) for direct contact."
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [
+    "Insurance quoting process",
+    "Document collection procedures for policy bundling"
+  ],
+  "systems_referenced": [
+    "myallianceinsurance.com",
+    "Email communication"
+  ],
+  "summary": "Heather Scott from Alliance Insurance left a voicemail requesting an auto policy declaration to provide a bundled insurance quote. She provided contact details for document submission and follow-up. The call was not connected to a live agent but included actionable instructions for the recipient.",
+  "_model": "qwen3:14b",
+  "_eval_count": 240,
+  "_total_duration_ms": 43345,
+  "_source_file": "transcripts/out-7042393793-401-20260109-143807-1767987486.5195.txt",
+  "_direction": "outbound",
+  "_char_count": 882
+}

@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to contact Steve Edmonds to review 'maker advantage plans' related to their existing policy, which was renewed by their pastor's associate.",
+  "resolution_steps": [
+    "Agent confirmed the caller is referring to Steve Edmonds.",
+    "Agent initiated a transfer to Steve Edmonds to handle the request."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Agent names and their areas of expertise (e.g., Steve Edmonds handling 'maker advantage plans')",
+    "Internal call transfer protocols"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller sought assistance with 'maker advantage plans' and requested to be connected to Steve Edmonds. The agent confirmed the agent's name and initiated a transfer, but the transcript cuts off before confirming if the transfer was completed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 190,
+  "_total_duration_ms": 46391,
+  "_source_file": "transcripts/in-+13363779003-+13364091732-20251112-162125-1762982485.8309.txt",
+  "_direction": "inbound",
+  "_char_count": 1029
+}

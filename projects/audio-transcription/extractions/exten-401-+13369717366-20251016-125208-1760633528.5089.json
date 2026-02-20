@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Daddy) is confirming phone number and routing details for an insurance application and seeking confirmation that the process is progressing.",
+  "resolution_steps": [
+    "Heather confirms the phone number and routing information provided by the caller.",
+    "Heather assures the caller that the application will be sent electronically by Penn National.",
+    "Heather outlines next steps: electronic signing of the application and completion of the process."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance application process",
+    "Carrier-specific procedures (Penn National)",
+    "Electronic document signing workflows"
+  ],
+  "systems_referenced": [
+    "Penn National (carrier)"
+  ],
+  "summary": "This call involves finalizing an insurance application. The caller confirms contact details while the agent outlines next steps, including electronic submission via Penn National. The conversation concludes with mutual confirmation of the process status.",
+  "_model": "qwen3:14b",
+  "_eval_count": 206,
+  "_total_duration_ms": 31460,
+  "_source_file": "transcripts/exten-401-+13369717366-20251016-125208-1760633528.5089.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 836
+}

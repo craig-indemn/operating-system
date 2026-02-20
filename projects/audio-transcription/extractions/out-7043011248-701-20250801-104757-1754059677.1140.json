@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jeremy aims to gather information from Tracy to initiate an insurance process, specifically related to home and auto coverages, by directing her to an email with a link to her current carrier's portal.",
+  "resolution_steps": [
+    "Sent an email to Tracy with a link to her current carrier's home/auto insurance portal to populate coverage details.",
+    "Requested Tracy to provide driver's license number and date of birth via email.",
+    "Provided his direct phone number for follow-up questions."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy setup process",
+    "Data collection methods for home/auto insurance",
+    "Email-based client communication protocols"
+  ],
+  "systems_referenced": [
+    "Email system (Jeremy@myallianceinsurance.com)",
+    "Home/auto insurance carrier portals"
+  ],
+  "summary": "Jeremy from Alliance Insurance contacted Tracy to initiate an insurance process, directing her to an email with a link to her current carrier's portal for coverage data. He requested additional personal information via email and provided his contact number for follow-up. The call concluded with a request for Tracy to act on the email instructions.",
+  "_model": "qwen3:14b",
+  "_eval_count": 258,
+  "_total_duration_ms": 53107,
+  "_source_file": "transcripts/out-7043011248-701-20250801-104757-1754059677.1140.txt",
+  "_direction": "outbound",
+  "_char_count": 1272
+}

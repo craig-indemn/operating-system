@@ -1,0 +1,21 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to verify insurance coverage for a mutual customer's personal car",
+  "resolution_steps": [
+    "Agent acknowledged the request",
+    "Agent placed caller on hold for an agent"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance coverage verification procedures",
+    "Customer account lookup protocols"
+  ],
+  "systems_referenced": [],
+  "summary": "Caller requested coverage verification for a mutual customer's personal vehicle. The agent acknowledged the request and placed the caller on hold for an agent, but the conversation was cut off before resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 128,
+  "_total_duration_ms": 39491,
+  "_source_file": "transcripts/in-+13363779003-+13367224191-20250930-100332-1759241012.593.txt",
+  "_direction": "inbound",
+  "_char_count": 285
+}

@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Moises is seeking clarification on why his insurance provider (Nationwide) is not covering the stolen materials on his trailer, only the tools, and wants to resolve the claim discrepancy.",
+  "resolution_steps": [
+    "Cody asks Moises to explain the claim details.",
+    "Cody identifies the issue: Nationwide is denying coverage for materials but covering tools.",
+    "Cody explains that the subcontractor agreement may determine ownership of materials on the trailer.",
+    "Cody advises Moises to obtain and send the subcontractor agreement to the adjuster to prove material ownership.",
+    "Cody acknowledges the lack of trailer security measures and suggests alternative storage solutions."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of insurance claim processes for property theft",
+    "Knowledge of subcontractor agreements and their impact on coverage",
+    "Familiarity with Nationwide's policy on material ownership in trailers"
+  ],
+  "systems_referenced": [
+    "Nationwide insurance system",
+    "Adjuster communication process"
+  ],
+  "summary": "Moises reported a stolen trailer with tools and materials, but Nationwide only covered the tools. Cody explained that the subcontractor agreement determines material ownership and advised submitting it to the adjuster. The call concluded with recommendations for better trailer security and alternative storage.",
+  "_model": "qwen3:14b",
+  "_eval_count": 285,
+  "_total_duration_ms": 39533,
+  "_source_file": "transcripts/exten-207-+13369268120-20251210-133036-1765391436.2742.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4391
+}

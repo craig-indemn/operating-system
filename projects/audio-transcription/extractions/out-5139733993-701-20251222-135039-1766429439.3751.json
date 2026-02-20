@@ -1,0 +1,19 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Jeremy from Alliance Insurance Services attempted to contact Heather to discuss a wind claim affecting a client's homeowners premium and seek guidance on resolving the rate increase.",
+  "resolution_steps": [
+    "Voicemail greeting played",
+    "Jeremy left a message with quote number, client name, and issue details",
+    "Provided contact information for follow-up"
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Jeremy from Alliance Insurance Services left a voicemail for Heather at Cincinnati Insurance Companies regarding a wind claim affecting a client's premium. He provided the quote number and requested assistance in addressing the rate increase.",
+  "_model": "qwen3:14b",
+  "_eval_count": 149,
+  "_total_duration_ms": 69153,
+  "_source_file": "transcripts/out-5139733993-701-20251222-135039-1766429439.3751.txt",
+  "_direction": "outbound",
+  "_char_count": 1337
+}

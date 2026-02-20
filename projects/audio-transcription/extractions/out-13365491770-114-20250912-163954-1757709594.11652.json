@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to confirm whether additional auto insurance coverage is required for their daughter, who has a learner's permit but is not yet licensed.",
+  "resolution_steps": [
+    "Agent confirmed the caller's identity and policy details by requesting their address and name.",
+    "Agent checked the policy to verify if the daughter was already listed as a permit holder.",
+    "Agent informed the caller that the daughter was already on the policy and no additional coverage was needed until she obtained a driver's license.",
+    "Agent clarified that the premium would not increase until the daughter got her license."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of insurance requirements for permit holders vs. licensed drivers",
+    "Policy administration procedures for adding drivers"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance policy database"
+  ],
+  "summary": "The agent confirmed that the caller's daughter, who has a permit, is already covered under the existing policy and no additional coverage is required until she obtains a driver's license. The agent verified policy details using the caller's address and name, and clarified that premiums would not increase until the daughter is licensed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 257,
+  "_total_duration_ms": 35747,
+  "_source_file": "transcripts/out-13365491770-114-20250912-163954-1757709594.11652.txt",
+  "_direction": "outbound",
+  "_char_count": 1630
+}

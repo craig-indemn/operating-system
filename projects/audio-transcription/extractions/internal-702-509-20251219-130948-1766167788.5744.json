@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Internal discussion about outreach attempts to a client (number 336-374-0199), with no clear resolution or client interaction.",
+  "resolution_steps": [],
+  "outcome": "not_applicable",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Internal conversation between employees discussing repeated failed attempts to contact a client. No client interaction or resolution occurs. The call includes holiday-related context and casual farewells.",
+  "_model": "qwen3:14b",
+  "_eval_count": 116,
+  "_total_duration_ms": 31059,
+  "_source_file": "transcripts/internal-702-509-20251219-130948-1766167788.5744.txt",
+  "_direction": "internal",
+  "_char_count": 470
+}

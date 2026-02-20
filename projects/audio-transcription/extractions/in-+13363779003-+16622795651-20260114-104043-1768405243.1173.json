@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller followed up about a missing ID document for her husband's insurance, which was supposed to be sent via email but had not been received.",
+  "resolution_steps": [
+    "Agent checked the system to locate the insurance request.",
+    "Agent confirmed the request was logged but determined it requires escalation to Cody for resolution.",
+    "Agent offered to transfer the call to Cody."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Internal call tracking system navigation",
+    "Policy request escalation procedures"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal call tracking system"
+  ],
+  "summary": "Caller followed up about a missing insurance ID document. Agent checked the system, confirmed the request was logged, and escalated the case to Cody for resolution. The call was transferred to Cody.",
+  "_model": "qwen3:14b",
+  "_eval_count": 191,
+  "_total_duration_ms": 20881,
+  "_source_file": "transcripts/in-+13363779003-+16622795651-20260114-104043-1768405243.1173.txt",
+  "_direction": "inbound",
+  "_char_count": 622
+}

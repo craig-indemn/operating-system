@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Heather) is following up on a cancellation, seeking clarification on how removing a vehicle from her policy will affect her insurance costs and discussing adding life insurance.",
+  "resolution_steps": [
+    "Agent (Nina) explains that removing a vehicle would eliminate the multi-vehicle discount, increasing costs.",
+    "Caller confirms she wants to remove her daughter's vehicle (Honda Civic) but keeps her own (Honda Accord).",
+    "Agent requests details about the daughter's driver's license, birthdate, and driving history to update the policy.",
+    "Caller provides daughter's name, birthdate (September 9, 2002), and notes the daughter has a special needs vehicle that cannot be driven by others."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of multi-vehicle discounts and their impact on premiums",
+    "Process for adding life insurance to a policy",
+    "Policyholder information requirements (e.g., driver's license, birthdate, driving history)"
+  ],
+  "systems_referenced": [
+    "Internal quoting system (agent mentions logging in to show costs)",
+    "Policy management database (for updating driver information)"
+  ],
+  "summary": "Heather discusses with agent Nina the implications of removing her daughter's vehicle from her insurance policy, including increased costs due to loss of multi-vehicle discounts. Nina gathers necessary information about the daughter's driving details to adjust the policy and provide an updated quote.",
+  "_model": "qwen3:14b",
+  "_eval_count": 322,
+  "_total_duration_ms": 50254,
+  "_source_file": "transcripts/exten-401-+15719917607-20250731-131001-1753981801.9848.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3913
+}

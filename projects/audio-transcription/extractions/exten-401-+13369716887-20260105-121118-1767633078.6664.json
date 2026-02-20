@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Luis Garcia Figueroa wants to add a new truck to his insurance policy, specifically a 2013 Ford F-250 pickup, under his commercial auto policy with National General. He needs liability coverage and is seeking clarification on costs and next steps.",
+  "resolution_steps": [
+    "Agent Nadia confirms the policy details and verifies the truck's VIN (provided by Luis).",
+    "Identifies the vehicle as a 2013 Ford F-250 pickup and confirms it's for commercial use.",
+    "Asks about coverage type (liability only) and confirms no lien on the vehicle.",
+    "Calculates the cost for adding the truck: $246.70 for six months until June 17th.",
+    "Requests Luis to provide proof of insurance to a specified email address (Craig)."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance policy management (adding vehicles to commercial auto policies)",
+    "Understanding of VIN verification and vehicle classification",
+    "Pricing for temporary coverage (six-month term)",
+    "Proof of insurance documentation procedures"
+  ],
+  "systems_referenced": [
+    "National General commercial auto policy database",
+    "Insurance agency's policy management system",
+    "Email portal for proof of insurance submission"
+  ],
+  "summary": "Luis Garcia Figueroa contacted Alliance Insurance Services to add a 2013 Ford F-250 pickup to his commercial auto policy with National General. Agent Nadia verified the VIN, confirmed liability coverage, calculated the six-month cost of $246.70, and requested proof of insurance via email. The call concluded with Luis agreeing to the terms and next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 378,
+  "_total_duration_ms": 49098,
+  "_source_file": "transcripts/exten-401-+13369716887-20260105-121118-1767633078.6664.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3764
+}

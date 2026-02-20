@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller wished to speak with an agent about Jennifer Williams' insurance policy and offered to provide the policy number.",
+  "resolution_steps": [
+    "Agent stated they would transfer the call to an agent."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief inbound call where the caller requested to speak with an agent about a policy but the conversation was cut short before any resolution. The agent mentioned transferring the call but no further details were provided.",
+  "_model": "qwen3:14b",
+  "_eval_count": 126,
+  "_total_duration_ms": 29790,
+  "_source_file": "transcripts/in-+13363779003-+17045499908-20251006-123513-1759768513.6062.txt",
+  "_direction": "inbound",
+  "_char_count": 334
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking assistance with resolving a financial crisis caused by an unexpected increase in mortgage payments following the cancellation of their insurance policy, which was handled by a third-party service.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's distress and confirms understanding of the situation.",
+    "Agent advises the caller to contact the mortgage company directly to address the escrow discrepancy.",
+    "Agent commits to following up with the mortgage company to check the status of the required check for the escrow adjustment.",
+    "Agent assures the caller they will call back or leave a message if unable to reach them."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy cancellation processes",
+    "Knowledge of escrow account mechanics in mortgage payments",
+    "Ability to coordinate with third-party service providers"
+  ],
+  "systems_referenced": [
+    "Mortgage company's escrow system",
+    "Insurance policy management portal"
+  ],
+  "summary": "A caller is experiencing severe financial strain due to an unexpected increase in mortgage payments following an insurance policy cancellation. The agent acknowledges the situation, advises contacting the mortgage company, and commits to following up with the third-party service provider. The caller is in urgent need of resolution to avoid further financial hardship.",
+  "_model": "qwen3:14b",
+  "_eval_count": 282,
+  "_total_duration_ms": 35203,
+  "_source_file": "transcripts/exten-113-+13364528352-20260109-100726-1767971246.699.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2206
+}

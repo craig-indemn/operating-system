@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Claudia is informing Cody about an error in approving a workers' compensation (work comp) quote for a sole proprietor, which was mistakenly allowed despite policies against it. She acknowledges her oversight and seeks clarification on the insurance requirements for sole proprietors.",
+  "resolution_steps": [
+    "Claudia admits approving the work comp quote for a sole proprietor without verifying their eligibility.",
+    "She acknowledges the mistake and plans to inform the client of the error.",
+    "Discusses confusion around insurance rules for sole proprietors versus LLCs and the distinction between inclusion/exclusion in work comp policies.",
+    "Cody explains that sole proprietors are typically excluded from work comp by statute but may still have options to include themselves, depending on state regulations."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Workers' compensation regulations for sole proprietors and LLCs",
+    "Insurance inclusion/exclusion policies based on business structure",
+    "State-specific statutory requirements for work comp eligibility"
+  ],
+  "systems_referenced": [],
+  "summary": "Claudia admits approving a work comp quote for a sole proprietor in error and discusses the confusion around insurance rules for different business structures. Cody explains statutory differences but does not resolve the issue, leaving it to be addressed with the client. The call highlights a need for clearer policy adherence and system checks to prevent similar mistakes.",
+  "_model": "qwen3:14b",
+  "_eval_count": 302,
+  "_total_duration_ms": 51599,
+  "_source_file": "transcripts/exten-207-+18002430210-20251120-102541-1763652341.539.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4246
+}

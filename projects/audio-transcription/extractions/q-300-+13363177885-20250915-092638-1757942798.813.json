@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Cancel insurance on a 2020 Honda Civic and confirm the impact on the policy's premium.",
+  "resolution_steps": [
+    "Agent confirmed the vehicle details (2020 Honda Civic) and other vehicles on the policy (78 Chevy K10, 23 Honda CRV, 2003 Chevy Impala).",
+    "Agent processed the cancellation of the Honda Civic.",
+    "Agent provided a premium estimate: old premium $3,711, new premium $2,462, with a $550.90 refund.",
+    "Agent reminded caller to return the license tag to BNV to avoid issues."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy cancellation procedures",
+    "Insurance premium calculation",
+    "BNV (likely Bureau of Motor Vehicles or similar agency) tag return requirements"
+  ],
+  "systems_referenced": [
+    "Lawrence Insurance internal system for policy management and premium calculation"
+  ],
+  "summary": "Jamie assisted Jacob in canceling insurance on his 2020 Honda Civic, confirmed remaining vehicles on the policy, and provided a premium adjustment estimate. The agent emphasized returning the license tag to BNV. The call concluded with Jacob satisfied and no further action needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 285,
+  "_total_duration_ms": 33289,
+  "_source_file": "transcripts/q-300-+13363177885-20250915-092638-1757942798.813.txt",
+  "_direction": "queue",
+  "_char_count": 2029
+}

@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller left a voicemail message for Linda, requesting a callback regarding auto policy changes.",
+  "resolution_steps": [
+    "Agent Holly left a voicemail message to Linda, referencing a prior voicemail and offering assistance with auto policy changes."
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "This transcript appears to be a voicemail message from Linda followed by a voicemail from Holly at Alliance Insurance. The call is not substantive as it lacks a live conversation and consists of automated messages.",
+  "_model": "qwen3:14b",
+  "_eval_count": 135,
+  "_total_duration_ms": 80204,
+  "_source_file": "transcripts/out-3046330977-504-20250805-111319-1754406799.3086.txt",
+  "_direction": "outbound",
+  "_char_count": 487
+}

@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Inform the policyholder that her current policy does not cover theft, clarify coverage for vandalism, and request a callback to proceed with a claim.",
+  "resolution_steps": [
+    "Explained that the policy form does not include theft coverage.",
+    "Noted that vandalism may be covered under the same policy form.",
+    "Offered to file a claim if requested.",
+    "Requested a callback from the policyholder to discuss next steps."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy forms and their coverage details (theft, vandalism)."
+  ],
+  "systems_referenced": [],
+  "summary": "Gary from Alliance Insurance left a voicemail clarifying that the policyholder's current policy excludes theft coverage but may include vandalism. He requested a callback to assist with filing a claim if needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 192,
+  "_total_duration_ms": 42438,
+  "_source_file": "transcripts/out-13362594327-113-20251212-124620-1765561580.1756.txt",
+  "_direction": "outbound",
+  "_char_count": 787
+}

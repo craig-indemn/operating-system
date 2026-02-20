@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller intended to speak directly with Heather Johnson, likely regarding an insurance-related matter.",
+  "resolution_steps": [
+    "Agent checked Heather Johnson's availability.",
+    "Informed caller Heather was unavailable but in the office.",
+    "Offered to leave a voice message for Heather.",
+    "Caller declined to leave a message and insisted on speaking to Heather.",
+    "Agent agreed to relay the caller's request to Heather."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Agent availability tracking",
+    "Call routing procedures",
+    "Message relay protocols"
+  ],
+  "systems_referenced": [
+    "Internal agent availability system"
+  ],
+  "summary": "Caller attempted to reach Heather Johnson at Alliance Insurance. Agent confirmed Heather was in the office but unavailable, and the caller refused to leave a message. Agent committed to informing Heather of the call. No immediate resolution achieved, but follow-up was arranged.",
+  "_model": "qwen3:14b",
+  "_eval_count": 212,
+  "_total_duration_ms": 34973,
+  "_source_file": "transcripts/in-+13363779003-+13366922515-20251003-093801-1759498681.2396.txt",
+  "_direction": "inbound",
+  "_char_count": 581
+}

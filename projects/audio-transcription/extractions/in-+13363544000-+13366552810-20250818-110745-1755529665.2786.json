@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wishes to inform the agent that they have switched their insurance to the Auto Club, which offers a cheaper rate, and may need assistance with any required documentation for the policy change.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's intent to switch providers.",
+    "Agent offers to connect the caller with another agent to handle the policy transition.",
+    "Agent pauses briefly (likely to transfer the call)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Process for handling policy cancellations or transitions",
+    "Documentation requirements for switching insurance providers"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller informs Atlantic Insurance that they have switched to the Auto Club for cheaper coverage and requests assistance with any necessary paperwork. The agent offers to transfer them to another agent to handle the transition.",
+  "_model": "qwen3:14b",
+  "_eval_count": 194,
+  "_total_duration_ms": 30308,
+  "_source_file": "transcripts/in-+13363544000-+13366552810-20250818-110745-1755529665.2786.txt",
+  "_direction": "inbound",
+  "_char_count": 652
+}

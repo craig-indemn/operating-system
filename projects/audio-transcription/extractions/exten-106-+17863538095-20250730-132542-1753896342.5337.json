@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Kendrick Cabrera is seeking general liability and workers' compensation insurance for his new construction company in Burlington, NC, which builds single-family homes (new and repairs) and employs 2 people (himself and his spouse). He needs coverage for both employees and himself.",
+  "resolution_steps": [
+    "Agent confirmed caller's business details (DGKL LLC, construction type, location, and employee count).",
+    "Clarified insurance needs (general liability and workers' comp).",
+    "Collected contact information (phone number: 786-353-895, email: DJDK@company.com).",
+    "Noted business scale (4-6 homes/month, 2-story buildings)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Construction industry insurance requirements",
+    "Workers' compensation and general liability policy distinctions",
+    "Small business insurance underwriting criteria"
+  ],
+  "systems_referenced": [],
+  "summary": "Kendrick Cabrera, owner of DGKL LLC (a new NC-based construction company), requested insurance quotes for general liability and workers' comp. The agent gathered business details, including company structure, construction scope, and contact information. The call concluded with the agent preparing to provide insurance options.",
+  "_model": "qwen3:14b",
+  "_eval_count": 287,
+  "_total_duration_ms": 45751,
+  "_source_file": "transcripts/exten-106-+17863538095-20250730-132542-1753896342.5337.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3610
+}

@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Gloria needs assistance retrieving a VIN number to proceed with removing a key, likely related to an insurance claim or policy adjustment.",
+  "resolution_steps": [
+    "Vanessa confirms she spoke to Gloria earlier and acknowledges the need for the VIN number.",
+    "Vanessa offers to text the VIN number to Gloria directly.",
+    "Gloria agrees to receive the text and confirms she will remove the key once she receives it.",
+    "Vanessa states she will call back after transferring the information."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance claim/policy processes involving VIN numbers",
+    "Internal systems for retrieving VIN information",
+    "Customer service protocols for transferring information via text"
+  ],
+  "systems_referenced": [
+    "Internal database/portals for VIN retrieval"
+  ],
+  "summary": "Gloria contacted Vanessa to resolve an issue requiring a VIN number to remove a key. Vanessa offered to text the VIN directly, and Gloria agreed to proceed. The call concluded with Vanessa promising to follow up after transferring the information.",
+  "_model": "qwen3:14b",
+  "_eval_count": 233,
+  "_total_duration_ms": 35784,
+  "_source_file": "transcripts/exten-102-+13362873866-20251229-142635-1767036395.10234.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1112
+}

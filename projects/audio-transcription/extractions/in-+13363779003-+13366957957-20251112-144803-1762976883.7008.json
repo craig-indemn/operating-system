@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with Corbin",
+  "resolution_steps": [
+    "Acknowledged caller's request",
+    "Transferred call to Corbin's extension"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller requested to speak with Corbin; call was transferred to his extension.",
+  "_model": "qwen3:14b",
+  "_eval_count": 91,
+  "_total_duration_ms": 23028,
+  "_source_file": "transcripts/in-+13363779003-+13366957957-20251112-144803-1762976883.7008.txt",
+  "_direction": "inbound",
+  "_char_count": 150
+}

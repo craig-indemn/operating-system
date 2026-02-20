@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to make a payment on their auto insurance policy with Progressive.",
+  "resolution_steps": [
+    "Agent asked for the policyholder's phone number to locate the account.",
+    "Agent resolved a brief system delay and confirmed the policy is with Progressive.",
+    "Agent verified the payment amount ($223.20) and processed the credit card payment.",
+    "Agent sent a confirmation email to the customer."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Accessing and navigating the agency's billing system",
+    "Handling credit card payments securely",
+    "Confirming payment details with customers",
+    "Sending confirmation emails post-payment"
+  ],
+  "systems_referenced": [
+    "Progressive (insurance carrier)",
+    "Agency billing system"
+  ],
+  "summary": "A customer called to make a payment on their Progressive auto insurance policy. The agent overcame a brief system delay, confirmed the payment amount, processed the credit card transaction, and sent a confirmation email. The interaction was resolved successfully with both parties expressing satisfaction.",
+  "_model": "qwen3:14b",
+  "_eval_count": 241,
+  "_total_duration_ms": 40256,
+  "_source_file": "transcripts/in-+13363779003-+13364869125-20260116-144024-1768592424.5136.txt",
+  "_direction": "inbound",
+  "_char_count": 1283
+}

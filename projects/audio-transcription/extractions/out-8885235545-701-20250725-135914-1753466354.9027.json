@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Not applicable (automated hold message with no agent interaction)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [
+    "www.usli.com"
+  ],
+  "summary": "Outbound call resulted in an automated hold message informing the caller all product specialists were unavailable. No agent interaction occurred, and the call ended with repetitive prompts for the caller to remain on hold.",
+  "_model": "qwen3:14b",
+  "_eval_count": 108,
+  "_total_duration_ms": 28904,
+  "_source_file": "transcripts/out-8885235545-701-20250725-135914-1753466354.9027.txt",
+  "_direction": "outbound",
+  "_char_count": 5724
+}

@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Melvin Flores is seeking clarification about a payment discrepancy for his commercial van insurance with Progressive. He is concerned about why a payment was removed and then put back, and whether it can be taken off again immediately.",
+  "resolution_steps": [
+    "Agent accessed Melvin's account to check payment history for his Progressive commercial policy.",
+    "Identified a payment of $132.72 processed on August 2nd that was later reversed.",
+    "Noted Melvin's concern about insufficient funds and the reversal causing a coverage gap.",
+    "Determined the need to escalate to Anna for further resolution."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Progressive insurance payment processing workflows",
+    "Commercial auto policy management",
+    "Handling payment reversal scenarios"
+  ],
+  "systems_referenced": [
+    "Progressive insurance portal"
+  ],
+  "summary": "Melvin Flores contacted Alliance Insurance to resolve confusion about a reversed payment on his Progressive commercial van policy. The agent checked the payment history, confirmed a reversal occurred, and referred him to Anna for further assistance. The call ended with a transfer to Anna for resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 255,
+  "_total_duration_ms": 38162,
+  "_source_file": "transcripts/in-+13363779003-+13364228402-20250807-103820-1754577500.2466.txt",
+  "_direction": "inbound",
+  "_char_count": 1264
+}

@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Roxanne is seeking assistance to transition to a new home insurance policy with NC Grange but has questions about a second home on the same property (104 Nathan Avenue) and its impact on coverage and pricing.",
+  "resolution_steps": [
+    "Brandi confirms the property address and verifies the existence of two homes on the property.",
+    "Discusses NC Grange policy details: $305,000 coverage for the main home, $1,000 deductible, and a quoted price of $1,412 (compared to a previous policy at $1,177).",
+    "Notes that NC Grange is no longer operating in North Carolina due to financial losses from low pricing.",
+    "Identifies the mortgage lender (Freedom Mortgage) and confirms the need to contact underwriting for the second home.",
+    "Explains potential requirements for the second home (exclusion form or separate insurance) and the possibility of multiple policies."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Homeowners insurance policy structures for multi-home properties",
+    "NC Grange's operational status in North Carolina",
+    "Mortgage company integration with insurance underwriting",
+    "Tax card interpretation for property verification"
+  ],
+  "systems_referenced": [
+    "NC Grange (insurance provider)",
+    "Freedom Mortgage (lender)",
+    "Underwriting process"
+  ],
+  "summary": "Roxanne is transitioning to a new NC Grange policy but faces complications due to a second home on the same property. Brandi explains pricing differences, confirms mortgage details, and notes the need to consult underwriting for the second home. The call requires follow-up to resolve policy requirements and costs.",
+  "_model": "qwen3:14b",
+  "_eval_count": 379,
+  "_total_duration_ms": 55186,
+  "_source_file": "transcripts/exten-112-+13364737667-20251014-133806-1760463486.4949.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4068
+}

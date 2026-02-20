@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jeff Edmonds wants to obtain a motorsports insurance quote.",
+  "resolution_steps": [
+    "Agent answered the call and confirmed Jeff's request for a motorsports quote.",
+    "Agent initiated transfer to the appropriate department or representative."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of motorsports insurance products",
+    "Call routing procedures within the agency"
+  ],
+  "systems_referenced": [],
+  "summary": "Jeff Edmonds requested a motorsports insurance quote. The agent acknowledged the request and transferred the call to the appropriate department. The conversation ended with the transfer in progress.",
+  "_model": "qwen3:14b",
+  "_eval_count": 149,
+  "_total_duration_ms": 55140,
+  "_source_file": "transcripts/out-12604595000-206-20250805-151309-1754421189.7151.txt",
+  "_direction": "outbound",
+  "_char_count": 589
+}

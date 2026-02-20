@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to pay their homeowner's insurance quarterly premium.",
+  "resolution_steps": [
+    "Agent Janice Missouri acknowledges the caller's request.",
+    "Agent attempts to transfer the caller but states she doesn't have access to the carrier's system.",
+    "Agent pauses the call, possibly to escalate or seek assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Carrier access protocols",
+    "Payment process workflows"
+  ],
+  "systems_referenced": [
+    "Carrier's payment system"
+  ],
+  "summary": "A caller attempted to pay their homeowner's insurance premium, but the agent could not proceed due to lack of access to the carrier's system. The agent paused the call, possibly to escalate the issue or seek assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 180,
+  "_total_duration_ms": 42152,
+  "_source_file": "transcripts/in-+13363544000-+13364711094-20260102-122745-1767374865.4741.txt",
+  "_direction": "inbound",
+  "_char_count": 259
+}

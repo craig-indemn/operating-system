@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Corbin from Alliance Insurance Services is attempting to reach Michael to follow up on a policy issuance.",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A voicemail message was left for Michael by Corbin from Alliance Insurance Services, requesting a callback to proceed with policy issuance. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 99,
+  "_total_duration_ms": 24812,
+  "_source_file": "transcripts/out-3364693180-409-20251013-145727-1760381847.11086.txt",
+  "_direction": "outbound",
+  "_char_count": 407
+}

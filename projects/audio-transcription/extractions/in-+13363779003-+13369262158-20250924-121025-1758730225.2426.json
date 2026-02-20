@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller sought assistance with an auto insurance matter, initially inquiring about Heather Johnson's availability before clarifying their request.",
+  "resolution_steps": [
+    "Agent confirmed Heather Johnson was unavailable and would return the next day.",
+    "Agent asked if the caller needed assistance with home or auto insurance.",
+    "Caller specified auto insurance.",
+    "Agent stated they would connect the caller with another agent."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Agent availability and scheduling",
+    "Insurance product categories (home/auto)"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller inquired about auto insurance after being informed Heather Johnson was unavailable. The agent offered to transfer the call to another agent, but the conversation ended before the transfer was completed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 183,
+  "_total_duration_ms": 60943,
+  "_source_file": "transcripts/in-+13363779003-+13369262158-20250924-121025-1758730225.2426.txt",
+  "_direction": "inbound",
+  "_char_count": 389
+}

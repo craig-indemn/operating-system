@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Matthew from NewRes is confirming whether NewRes LLC is listed as a mortgagee on Francisco Flores' policy and ensuring coverage for a second mortgage. He also requests a binder and replacement cost estimate.",
+  "resolution_steps": [
+    "Brandy confirms the policy number and customer name.",
+    "Verifies mortgagee clause details (NewRes LLC address and loan number).",
+    "Agrees to fax proof of insurance to the provided fax number.",
+    "Offers to send a binder immediately and confirm replacement cost basis.",
+    "Confirms policy is paid in full and dwelling limit details."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding mortgagee clauses and policy documentation",
+    "Process for updating mortgagee information",
+    "Handling binders and replacement cost estimates",
+    "Faxing procedures for insurance documents"
+  ],
+  "systems_referenced": [
+    "Insurance agency database (for policy verification)",
+    "Fax machine (for document transmission)",
+    "Carrier portal (for binder generation)"
+  ],
+  "summary": "Brandy from Alliance Insurance Services confirms NewRes LLC's mortgagee status on Francisco Flores' policy, arranges to fax proof of insurance, and agrees to send a binder with replacement cost details. The call concludes with confirmation of policy status and next steps for document delivery.",
+  "_model": "qwen3:14b",
+  "_eval_count": 291,
+  "_total_duration_ms": 40458,
+  "_source_file": "transcripts/q-300-+14846405797-20251006-092614-1759757174.295.txt",
+  "_direction": "queue",
+  "_char_count": 1845
+}

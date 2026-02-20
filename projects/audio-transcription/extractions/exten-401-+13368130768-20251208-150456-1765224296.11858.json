@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Edward Herman is seeking new home and auto insurance quotes, expressing dissatisfaction with his current Farm Bureau rates. He also mentioned a life insurance policy through work and wants to explore switching providers.",
+  "resolution_steps": [
+    "Agent confirmed caller's intent to obtain new insurance quotes.",
+    "Collected detailed personal information (names, DOB, address, email, license number).",
+    "Noted existing Farm Bureau policies (home, auto, and life insurance).",
+    "Identified potential duplicate quote entry from March 2024.",
+    "Acknowledged need to verify policy renewal dates and additional coverage details."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance underwriting requirements (personal info, policy history, claims data)",
+    "Carrier-specific policy details (Farm Bureau coverage terms)",
+    "Quote system navigation (checking duplicate entries)"
+  ],
+  "systems_referenced": [
+    "Internal customer database (checking duplicate quotes)",
+    "Quote generation system"
+  ],
+  "summary": "Edward Herman requested home and auto insurance quotes while transitioning from Farm Bureau. The agent gathered comprehensive personal and policy details, identified a potential duplicate quote from March 2024, and will need to verify policy renewal dates before proceeding. The call requires follow-up to finalize quote generation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 289,
+  "_total_duration_ms": 39804,
+  "_source_file": "transcripts/exten-401-+13368130768-20251208-150456-1765224296.11858.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4038
+}

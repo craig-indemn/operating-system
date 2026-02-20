@@ -1,0 +1,23 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Attempt to connect with a specific individual named John Nguyen.",
+  "resolution_steps": [
+    "Agent Laura attempted to transfer the call to John Nguyen.",
+    "Encountered confusion due to multiple contacts named John with the same last name."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Internal directory navigation",
+    "Handling duplicate contact entries"
+  ],
+  "systems_referenced": [
+    "Internal phone system"
+  ],
+  "summary": "A transfer attempt was made to connect the caller with John Nguyen, but the agent encountered multiple contacts with the same name, requiring further clarification to proceed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 149,
+  "_total_duration_ms": 40261,
+  "_source_file": "transcripts/in-+13363779003-+14433531063-20250827-122645-1756312005.3456.txt",
+  "_direction": "inbound",
+  "_char_count": 363
+}

@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller attempted to reach Gloria but was informed she was unavailable. They expressed frustration about prior failed attempts to contact her and sought alternative ways to communicate.",
+  "resolution_steps": [
+    "Agent informed caller that Gloria was temporarily unavailable and would return in a few minutes.",
+    "Offered to send a voicemail to Gloria.",
+    "Provided Gloria's usual arrival time (8:30 AM) and office hours (open at 9:00 AM).",
+    "Suggested sending an email as an alternative communication method.",
+    "Caller agreed to send an email and attempt contact again the next day."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of internal staff schedules and office hours",
+    "Ability to manage customer expectations during staff unavailability",
+    "Knowledge of alternative communication methods (email)"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller attempted to reach Gloria at Alliance Insurance but was informed she was temporarily unavailable. The agent provided her schedule and suggested email as an alternative. The caller agreed to send an email and will retry contact the next day. The call concluded with the caller planning to follow up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 264,
+  "_total_duration_ms": 48431,
+  "_source_file": "transcripts/in-+13363779003-+13366615429-20251015-145959-1760554799.4825.txt",
+  "_direction": "inbound",
+  "_char_count": 778
+}

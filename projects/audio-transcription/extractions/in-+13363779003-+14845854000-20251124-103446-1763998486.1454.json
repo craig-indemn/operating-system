@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Eric Guitar from USLI wanted to reach Gloria Bell, who was out of the office, and requested to be sent to her voicemail.",
+  "resolution_steps": [
+    "Agent confirmed Gloria Bell was out of the office.",
+    "Agent agreed to send the caller to Gloria Bell's voicemail.",
+    "Agent facilitated the voicemail transfer."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Voicemail system navigation",
+    "Handling calls for absent agents"
+  ],
+  "systems_referenced": [
+    "Voicemail system"
+  ],
+  "summary": "Eric Guitar from USLI attempted to reach Gloria Bell, who was out of the office. The agent sent him to her voicemail, and the call concluded with Eric thanking the agent.",
+  "_model": "qwen3:14b",
+  "_eval_count": 181,
+  "_total_duration_ms": 66583,
+  "_source_file": "transcripts/in-+13363779003-+14845854000-20251124-103446-1763998486.1454.txt",
+  "_direction": "inbound",
+  "_char_count": 439
+}

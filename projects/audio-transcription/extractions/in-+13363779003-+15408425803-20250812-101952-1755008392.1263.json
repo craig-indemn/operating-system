@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Attempt to reach Heather Johnson (possibly for insurance-related matters)",
+  "resolution_steps": [
+    "Agent confirmed transfer to Heather Johnson",
+    "Call was transferred"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller attempted to reach Heather Johnson at Alliance Insurance. Agent facilitated transfer but did not confirm availability or resolve the caller's intent.",
+  "_model": "qwen3:14b",
+  "_eval_count": 101,
+  "_total_duration_ms": 22669,
+  "_source_file": "transcripts/in-+13363779003-+15408425803-20250812-101952-1755008392.1263.txt",
+  "_direction": "inbound",
+  "_char_count": 243
+}

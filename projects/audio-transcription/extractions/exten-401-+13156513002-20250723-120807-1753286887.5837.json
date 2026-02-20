@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Sandy is following up on insurance renewals, specifically home insurance with Travelers, and wants to consolidate policies again after a previous attempt in 2030. She seeks advice on bundling options and premium changes.",
+  "resolution_steps": [
+    "Confirmed Sandy's home address and moved-in date to verify policy details.",
+    "Discussed renewal amounts for home insurance (Travelers) and noted a $146 annual increase.",
+    "Explored bundling options, suggesting keeping home insurance with Travelers and switching auto insurance to Progressive for potential discounts.",
+    "Advised Sandy not to make any payments until further contact.",
+    "Planned to follow up with additional information on bundling and carrier comparisons."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance bundling strategies",
+    "Carrier-specific premium structures (Travelers, Progressive)",
+    "Policy renewal processes",
+    "Discount eligibility criteria"
+  ],
+  "systems_referenced": [
+    "Travelers (home insurance carrier)",
+    "Progressive (auto insurance carrier)"
+  ],
+  "summary": "Sandy discusses her home insurance renewal with Heather, noting a $146 increase with Travelers. Heather explores bundling options, suggests switching auto insurance to Progressive for discounts, and advises against immediate payment. A follow-up is planned to finalize recommendations.",
+  "_model": "qwen3:14b",
+  "_eval_count": 299,
+  "_total_duration_ms": 55320,
+  "_source_file": "transcripts/exten-401-+13156513002-20250723-120807-1753286887.5837.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3801
+}

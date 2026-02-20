@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Hector's daughter) is inquiring about the status of insurance documents that were supposedly sent to her.",
+  "resolution_steps": [
+    "Agent (Gary) acknowledges the inquiry and requests time to check the status.",
+    "Agent commits to following up with the caller after verifying the information."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding how to check the status of client documents (e.g., policies, forms) in the agency's system.",
+    "Ability to schedule a follow-up communication with the client."
+  ],
+  "systems_referenced": [],
+  "summary": "Hector's daughter asked if insurance documents had been sent. Gary explained he needed to check and promised to follow up. The call concluded with a commitment to resolve the inquiry later.",
+  "_model": "qwen3:14b",
+  "_eval_count": 186,
+  "_total_duration_ms": 32598,
+  "_source_file": "transcripts/exten-113-+13365772253-20250819-160743-1755634063.10606.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 312
+}

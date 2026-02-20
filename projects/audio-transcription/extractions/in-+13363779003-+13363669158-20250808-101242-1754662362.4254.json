@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Debbie Holbrook needs a certificate of insurance emailed to the town of Elkin to confirm Holbrook Plumbing Company has general liability, workers compensation, and commercial package coverage.",
+  "resolution_steps": [
+    "Agent acknowledges the request for a certificate of insurance.",
+    "Agent offers to transfer the caller to the commercial insurance department for assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding certificate of insurance requests for commercial clients",
+    "Internal transfer protocols for specialized insurance departments"
+  ],
+  "systems_referenced": [
+    "Internal call transfer system"
+  ],
+  "summary": "Debbie Holbrook from Holbrook Plumbing Company requested a certificate of insurance for general liability and workers compensation coverage. The agent offered to transfer her to the commercial insurance team to fulfill the request.",
+  "_model": "qwen3:14b",
+  "_eval_count": 183,
+  "_total_duration_ms": 31668,
+  "_source_file": "transcripts/in-+13363779003-+13363669158-20250808-101242-1754662362.4254.txt",
+  "_direction": "inbound",
+  "_char_count": 463
+}

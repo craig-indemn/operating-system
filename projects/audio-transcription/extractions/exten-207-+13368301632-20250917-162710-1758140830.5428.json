@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jennifer is coordinating the setup of workers' comp and package insurance policies for Mario, ensuring payment is set up via monthly auto draft and policies are issued by the next morning.",
+  "resolution_steps": [
+    "Confirmed policy details (workers' comp and package policy) with payroll figures.",
+    "Arranged for monthly auto draft payment method, requesting checking account information.",
+    "Scheduled policy issuance for the next morning and certificate delivery to Brenda at SBS.",
+    "Agreed to send e-signature documents for Mario's approval.",
+    "Noted need to wait for billing account setup before processing first payments."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Workers' compensation and package policy structures",
+    "Insurance billing setup processes",
+    "E-signature document workflows",
+    "Policy issuance timelines"
+  ],
+  "systems_referenced": [
+    "Internal policy management system",
+    "Email communication for documents",
+    "Carrier portal for certificate delivery"
+  ],
+  "summary": "Jennifer and Cody finalize details for Mario's workers' comp and package policies, including payment setup, policy issuance timing, and document coordination. The agent will issue policies by 8:30 AM, send a certificate to SBS, and handle billing account setup after receiving bank details.",
+  "_model": "qwen3:14b",
+  "_eval_count": 285,
+  "_total_duration_ms": 42241,
+  "_source_file": "transcripts/exten-207-+13368301632-20250917-162710-1758140830.5428.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2947
+}

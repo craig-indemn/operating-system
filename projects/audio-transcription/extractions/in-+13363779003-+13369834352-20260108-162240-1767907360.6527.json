@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller (Christopher Cook) is attempting to reach someone at Stokes Tire regarding a van issue but is unable to locate the correct contact information.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's request but notes the person is unavailable.",
+    "Agent suggests leaving a voicemail for Christopher Cook to contact Tracy at Stokes Tire directly."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A non-substantive call where the caller was unable to reach a specific individual at Stokes Tire. The agent directed the caller to leave a voicemail for follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 151,
+  "_total_duration_ms": 38728,
+  "_source_file": "transcripts/in-+13363779003-+13369834352-20260108-162240-1767907360.6527.txt",
+  "_direction": "inbound",
+  "_char_count": 606
+}

@@ -1,0 +1,19 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Caller is attempting to reach Rachel at Alliance Insurance but is experiencing difficulties with the phone line and transfer process.",
+  "resolution_steps": [
+    "Agent (Michael Myers) attempts to connect caller to Rachel multiple times.",
+    "Agent tries dialing extension 702.",
+    "Call appears to be on hold or disconnected repeatedly."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The call involves a caller struggling to reach Rachel at Alliance Insurance, with the agent repeatedly attempting transfers and extensions without success. The conversation is fragmented and does not resolve the issue.",
+  "_model": "qwen3:14b",
+  "_eval_count": 151,
+  "_total_duration_ms": 36578,
+  "_source_file": "transcripts/in-+13367861133-+13366820077-20251020-130315-1760979795.6819.txt",
+  "_direction": "inbound",
+  "_char_count": 694
+}

@@ -1,0 +1,23 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller is attempting to reconnect with Jamie, likely for a follow-up on a prior interaction, and is frustrated by repeated disconnections.",
+  "resolution_steps": [
+    "Agent confirms caller's identity (Robert) and asks if Jamie is 'fixing' them (possibly referring to a prior issue).",
+    "Agent places caller on hold and plays a standard hold message requesting the caller consider recent contact information changes."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Basic customer service protocols",
+    "Hold message standardization"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services hold music/system"
+  ],
+  "summary": "A caller struggling with disconnections attempts to reach Jamie at Alliance Insurance. The agent confirms the caller's identity but fails to resolve the disconnection issue, placing the caller on hold with a generic message. No substantive problem resolution occurs.",
+  "_model": "qwen3:14b",
+  "_eval_count": 207,
+  "_total_duration_ms": 39899,
+  "_source_file": "transcripts/in-+13363779003-+19175827387-20251218-112930-1766075370.1768.txt",
+  "_direction": "inbound",
+  "_char_count": 596
+}

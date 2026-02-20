@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unknown (call is too brief and lacks meaningful conversation)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Very brief exchange where agent confirms employee's presence and offers to connect caller. No meaningful conversation or resolution occurs.",
+  "_model": "qwen3:14b",
+  "_eval_count": 86,
+  "_total_duration_ms": 21456,
+  "_source_file": "transcripts/in-+13367861133-+13364693180-20251218-143249-1766086369.3635.txt",
+  "_direction": "inbound",
+  "_char_count": 164
+}

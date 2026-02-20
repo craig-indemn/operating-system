@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller added full coverage to two vehicles and is concerned about the high premium, questioning if it was a mistake and considering whether to keep the coverage.",
+  "resolution_steps": [
+    "Agent confirmed the caller's address and vehicle details (2012 Dodge Ram, 2003 Ford Mustang, 2002 Lexus).",
+    "Agent checked the policy to verify coverage (comprehensive $100 deductible, collision $500 deductible with towing).",
+    "Agent explained that pricing is determined by Progressive based on VIN, vehicle type, and coverage.",
+    "Agent clarified that billing occurs immediately upon adding a vehicle, not in the next billing cycle.",
+    "Agent acknowledged the caller's concern about the sudden increase and discussed potential options."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance pricing factors (VIN, vehicle type, coverage type)",
+    "Billing practices for adding vehicles to policies",
+    "Progressive's premium calculation methodology"
+  ],
+  "systems_referenced": [
+    "Progressive insurance system",
+    "Alliance Insurance policy management tools"
+  ],
+  "summary": "A customer added full coverage to two vehicles and expressed concern about a sudden premium increase. The agent verified policy details, explained that pricing is determined by Progressive based on VIN and coverage type, and clarified that billing occurs immediately upon adding vehicles. The customer is considering making the payment but may revert to previous coverage if costs remain high.",
+  "_model": "qwen3:14b",
+  "_eval_count": 323,
+  "_total_duration_ms": 53339,
+  "_source_file": "transcripts/out-13362011011-114-20251003-114157-1759506117.9970.txt",
+  "_direction": "outbound",
+  "_char_count": 4092
+}

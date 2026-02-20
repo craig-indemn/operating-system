@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Confirm that a payment was successfully processed using the card provided by the caller last week.",
+  "resolution_steps": [
+    "Brady confirms the payment was processed using the card provided by Leslie.",
+    "Provides contact information (phone number) for further questions."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Payment processing confirmation",
+    "Customer communication protocols"
+  ],
+  "systems_referenced": [],
+  "summary": "Brady from Alliance Insurance confirms a payment was processed using Leslie's card from last week and provides a phone number for follow-up questions. The call is brief but serves as a confirmation and offers further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 156,
+  "_total_duration_ms": 40897,
+  "_source_file": "transcripts/out-3365758648-100-20251013-125501-1760374501.8321.txt",
+  "_direction": "outbound",
+  "_char_count": 344
+}

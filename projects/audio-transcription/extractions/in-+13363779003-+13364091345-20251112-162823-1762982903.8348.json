@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to be transferred to Gary",
+  "resolution_steps": [
+    "Agent acknowledged the request and initiated transfer to Gary"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller requested transfer to Gary. Agent acknowledged and transferred the call. No substantive discussion occurred about the caller's needs or issues.",
+  "_model": "qwen3:14b",
+  "_eval_count": 95,
+  "_total_duration_ms": 27545,
+  "_source_file": "transcripts/in-+13363779003-+13364091345-20251112-162823-1762982903.8348.txt",
+  "_direction": "inbound",
+  "_char_count": 213
+}

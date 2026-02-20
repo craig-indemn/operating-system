@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Voicemail left requesting policy review follow-up",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A voicemail from Mark with Alliance Insurance requesting a callback to review insurance policies. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 80,
+  "_total_duration_ms": 29584,
+  "_source_file": "transcripts/out-3366921781-303-20251204-111804-1764865084.1655.txt",
+  "_direction": "outbound",
+  "_char_count": 599
+}

@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "N/A (no meaningful interaction occurred)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Brief inbound call consisting only of a standard greeting from the agent. No substantive conversation or caller intent was identified.",
+  "_model": "qwen3:14b",
+  "_eval_count": 83,
+  "_total_duration_ms": 21587,
+  "_source_file": "transcripts/in-+13363544000-+17816332201-20251208-145857-1765223937.11806.txt",
+  "_direction": "inbound",
+  "_char_count": 76
+}

@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Attempted to leave a voicemail for Bailey Benson",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [
+    "automated voicemail system"
+  ],
+  "summary": "Automated system message indicating mailbox is full and unavailable. No agent interaction occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 83,
+  "_total_duration_ms": 22370,
+  "_source_file": "transcripts/out-13364692541-114-20250723-112423-1753284263.4731.txt",
+  "_direction": "outbound",
+  "_char_count": 165
+}

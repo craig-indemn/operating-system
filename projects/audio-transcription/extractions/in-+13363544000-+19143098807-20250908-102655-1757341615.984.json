@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "George, a contractor, wants to discuss a claim related to a manufactured home policy for Juana and Oscar Maseto, providing the policy number and claim number.",
+  "resolution_steps": [
+    "Agent verified the caller's intent and confirmed the policyholder names (Juana and Oscar Maseto).",
+    "Agent requested and confirmed the policy number (103-06906-14724-20).",
+    "Agent checked the policy type and confirmed it is a personal policy for a manufactured home.",
+    "Agent informed the caller that the claim number might not be sufficient for lookup and offered to transfer to an agent."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy lookup procedures",
+    "Differentiation between commercial and personal policies",
+    "Claim processing workflows"
+  ],
+  "systems_referenced": [
+    "Internal policy database"
+  ],
+  "summary": "George, a contractor, contacted Alliance Insurance to discuss a claim for a manufactured home policy held by Juana and Oscar Maseto. The agent verified the policy details, confirmed it was a personal policy, and transferred the call to an agent for further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 269,
+  "_total_duration_ms": 30383,
+  "_source_file": "transcripts/in-+13363544000-+19143098807-20250908-102655-1757341615.984.txt",
+  "_direction": "inbound",
+  "_char_count": 1619
+}

@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Returning a previous phone call to Brandy",
+  "resolution_steps": [
+    "Agent (Chris) acknowledges the call",
+    "Transfers the caller to Brandy"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Brief inbound call where the agent (Chris) attempts to transfer the caller to Brandy. No substantive conversation or issue resolution occurs.",
+  "_model": "qwen3:14b",
+  "_eval_count": 105,
+  "_total_duration_ms": 22116,
+  "_source_file": "transcripts/in-+13363779003-+17045499908-20260109-132913-1767983353.4238.txt",
+  "_direction": "inbound",
+  "_char_count": 211
+}

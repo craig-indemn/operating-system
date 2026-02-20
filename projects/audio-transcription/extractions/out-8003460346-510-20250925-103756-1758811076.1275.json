@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Tracy is seeking guidance on insuring a travel trailer's contents and a separate outbuilding, specifically asking about HO4 policies and coverage for the outbuilding's dwelling.",
+  "resolution_steps": [
+    "Ellie confirms an HO4 policy can cover the contents at the friend's address.",
+    "Ellie explains that an additional structure policy would cover the outbuilding's dwelling but not its contents.",
+    "Ellie clarifies that the other structures policy falls under personal lines, not commercial lines."
+  ],
+  "outcome": "transferred",
+  "knowledge_required": [
+    "Understanding of HO4 insurance policies for renters' contents coverage",
+    "Knowledge of other structures coverage under homeowners policies",
+    "Ability to distinguish between personal and commercial lines insurance"
+  ],
+  "systems_referenced": [],
+  "summary": "Tracy discusses insuring a travel trailer's contents and a 44x60 outbuilding with Ellie. Ellie advises using an HO4 policy for the contents and a separate structure policy for the outbuilding, clarifying that the latter is a personal lines option. Tracy plans to obtain a quote for the additional policy.",
+  "_model": "qwen3:14b",
+  "_eval_count": 255,
+  "_total_duration_ms": 42164,
+  "_source_file": "transcripts/out-8003460346-510-20250925-103756-1758811076.1275.txt",
+  "_direction": "outbound",
+  "_char_count": 2456
+}

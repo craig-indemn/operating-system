@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to authorize a monthly payment via debit card for an insurance policy, requesting automatic deductions.",
+  "resolution_steps": [
+    "Agent Karen acknowledged the request and offered assistance with the payment.",
+    "Caller clarified the payment was not due yet but wanted to set up a recurring debit card payment.",
+    "Agent placed the caller on hold to access the system.",
+    "Agent encountered system access issues and informed the caller a colleague would handle the request.",
+    "Call was transferred to another colleague for payment setup."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Payment processing procedures for insurance policies",
+    "System access protocols for customer accounts",
+    "Recurring payment authorization workflows"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance customer portal (myallianceinsurance.com)",
+    "Text support service (336-786-1133)"
+  ],
+  "summary": "A caller requested authorization for monthly debit card payments for an insurance policy. The agent attempted to process the request but encountered system access issues, transferring the call to a colleague for resolution. The caller was informed they would receive further assistance shortly.",
+  "_model": "qwen3:14b",
+  "_eval_count": 263,
+  "_total_duration_ms": 33483,
+  "_source_file": "transcripts/in-+13363682529-+13365824646-20250821-120743-1755792463.4035.txt",
+  "_direction": "inbound",
+  "_char_count": 1736
+}

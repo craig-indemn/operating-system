@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller requested to speak with Rachel Plain.",
+  "resolution_steps": [
+    "Agent acknowledged the request and said 'one sec.'"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief inbound call where the caller requested to speak with Rachel Plain. The agent acknowledged the request but did not provide further assistance or confirm if the transfer was completed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 106,
+  "_total_duration_ms": 26080,
+  "_source_file": "transcripts/in-+13367861133-+13364011678-20251110-091446-1762784086.441.txt",
+  "_direction": "inbound",
+  "_char_count": 129
+}

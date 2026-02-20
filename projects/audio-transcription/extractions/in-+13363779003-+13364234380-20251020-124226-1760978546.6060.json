@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to confirm the amount of their upcoming insurance payment, resolve a pending balance, and make a payment to avoid further penalties.",
+  "resolution_steps": [
+    "Agent checked the caller's account to verify the pending balance of $76.82.",
+    "Explained that the pending balance was from a previous payment ($759.95) and clarified the new annual balance of $1,259.35.",
+    "Informed the caller about a discount applicable if the full annual payment was made.",
+    "Processed the payment using the caller's Discovery card (ending in 6859).",
+    "Confirmed the payment was successful and sent an electronic receipt."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy payment structures and discounts",
+    "Ability to access and interpret policyholder account balances",
+    "Knowledge of payment processing systems and credit card verification"
+  ],
+  "systems_referenced": [
+    "Internal policyholder account management system",
+    "Payment processing platform"
+  ],
+  "summary": "The caller contacted Alliance Insurance to resolve a pending payment balance and confirm their upcoming payment amount. The agent clarified the balance, explained discount options, and processed a full annual payment via credit card. The caller was informed the payment was successful and a receipt would be emailed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 300,
+  "_total_duration_ms": 47550,
+  "_source_file": "transcripts/in-+13363779003-+13364234380-20251020-124226-1760978546.6060.txt",
+  "_direction": "inbound",
+  "_char_count": 2421
+}

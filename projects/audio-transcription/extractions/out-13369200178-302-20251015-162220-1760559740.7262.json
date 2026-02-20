@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Matthew, owner of D L G Hard Skate LLC, sought a general liability insurance quote for his newly formed retaining wall construction business, which he has not yet insured.",
+  "resolution_steps": [
+    "Anna confirmed the company name (D L G Hard Skate LLC) and clarified the type of insurance requested (general liability).",
+    "Anna explained that producers would contact Matthew to discuss details and generate quotes.",
+    "Matthew agreed to a producer callback, specifying availability for the next day."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding business insurance types (general liability for construction services)",
+    "Onboarding process for new business clients",
+    "Producer assignment workflow"
+  ],
+  "systems_referenced": [],
+  "summary": "Matthew, owner of a new retaining wall construction company, requested general liability insurance through Alliance Insurance. Anna confirmed details and scheduled a producer callback for the next day. The call established a lead for business insurance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 217,
+  "_total_duration_ms": 35499,
+  "_source_file": "transcripts/out-13369200178-302-20251015-162220-1760559740.7262.txt",
+  "_direction": "outbound",
+  "_char_count": 1277
+}

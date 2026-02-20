@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller sought assistance after being non-renewed by Erie Insurance due to four claims on their equipment breakdown rider policy and needed help finding a new provider.",
+  "resolution_steps": [
+    "Agent confirmed the caller's previous interaction with Erie Insurance and acknowledged their non-renewal due to multiple claims.",
+    "Agent explained Alliance Insurance does not carry Erie as a carrier but provided alternative options (Orion Insurance, Brown Phillips, Tom Needham Insurance).",
+    "Agent suggested contacting Orion Insurance or other local agents mentioned by Progressive for potential coverage.",
+    "Call concluded with agent offering further assistance if the caller contacted the recommended agents."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance carrier relationships (Erie, Orion, Brown Phillips, Tom Needham).",
+    "Knowledge of equipment breakdown coverage and common reasons for non-renewal.",
+    "Ability to recommend alternative agents based on geographic proximity (Greensboro)."
+  ],
+  "systems_referenced": [
+    "Erie Insurance",
+    "Orion Insurance Agents",
+    "Brown Phillips",
+    "Tom Needham Insurance",
+    "Progressive"
+  ],
+  "summary": "A customer was non-renewed by Erie Insurance after four claims on their equipment breakdown rider policy and sought help finding a new provider. The agent provided alternative insurance agents but could not directly assist due to carrier restrictions. The call ended with the customer being directed to contact Orion or other local agents.",
+  "_model": "qwen3:14b",
+  "_eval_count": 323,
+  "_total_duration_ms": 43533,
+  "_source_file": "transcripts/out-2313402888-409-20250815-160500-1755288300.9933.txt",
+  "_direction": "outbound",
+  "_char_count": 2400
+}

@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with Brandi Stanfelippo",
+  "resolution_steps": [
+    "Agent provided standard hold message"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Short inbound call where caller requested to speak with Brandi Stanfelippo. Agent provided standard hold message with no further interaction. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 99,
+  "_total_duration_ms": 22309,
+  "_source_file": "transcripts/in-+13363779003-+14845854000-20251114-112936-1763137776.4766.txt",
+  "_direction": "inbound",
+  "_char_count": 130
+}

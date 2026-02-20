@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Verify the premium for a commercial insurance policy (number 35990316) that was quoted by 'General' for a 'monsoon line'.",
+  "resolution_steps": [
+    "Agent asked for the policy number, which the caller provided (35990316).",
+    "Agent confirmed the policy is commercial.",
+    "Agent offered to transfer the caller to a commercial agent for verification."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Commercial insurance policy verification process",
+    "Call transfer procedures for specialized agents"
+  ],
+  "systems_referenced": [],
+  "summary": "David from P H H Mortgage requested verification of a commercial policy premium (number 35990316). The agent confirmed the policy type and initiated a transfer to a commercial insurance specialist for further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 201,
+  "_total_duration_ms": 28434,
+  "_source_file": "transcripts/in-+13363779003-+18882609698-20250801-155616-1754078176.6005.txt",
+  "_direction": "inbound",
+  "_char_count": 500
+}

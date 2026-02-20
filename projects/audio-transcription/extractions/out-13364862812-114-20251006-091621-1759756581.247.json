@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is informing the customer that their home insurance in North Carolina is no longer available and offering to provide alternative quotes. They also discuss challenges with car insurance due to drivers having only Mexican licenses.",
+  "resolution_steps": [
+    "Informed the customer about discontinuation of home insurance in North Carolina.",
+    "Offered to provide alternative quotes for home insurance.",
+    "Noted that the customer's home insurance would renew in two days.",
+    "Clarified that no repairs or renovations had been made to the home.",
+    "Confirmed the customer has a mortgage and no pets, trampoline, or solar panels.",
+    "Discussed car insurance challenges: drivers have only Mexican licenses, limiting options.",
+    "Mentioned National General as the only provider offering coverage for drivers without licenses.",
+    "Offered to follow up with details and new quotes."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy changes in North Carolina",
+    "Alternative insurance providers for home coverage",
+    "Car insurance requirements for drivers with Mexican licenses",
+    "Handling policy renewals and customer-specific property details"
+  ],
+  "systems_referenced": [
+    "National General (insurance provider)"
+  ],
+  "summary": "An agent from Lions Insurance notified a customer that their home insurance in North Carolina is no longer available and offered to provide alternative quotes. The agent also discussed challenges with car insurance due to the customer's drivers having only Mexican licenses, noting National General as the only viable option. The agent committed to following up with details and new quotes.",
+  "_model": "qwen3:14b",
+  "_eval_count": 337,
+  "_total_duration_ms": 45472,
+  "_source_file": "transcripts/out-13364862812-114-20251006-091621-1759756581.247.txt",
+  "_direction": "outbound",
+  "_char_count": 1757
+}

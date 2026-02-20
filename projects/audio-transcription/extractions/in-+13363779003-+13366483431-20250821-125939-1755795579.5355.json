@@ -1,0 +1,23 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Attempt to reach Heather (likely Heather Scott) for auto insurance-related matters",
+  "resolution_steps": [
+    "Agent confirmed caller's name (Tracy Kinder)",
+    "Agent verified Heather's identity (Heather Scott) in the system"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Basic customer service protocols",
+    "Internal contact lookup procedures"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal database"
+  ],
+  "summary": "Caller attempted to reach Heather for auto insurance; agent confirmed identity but did not provide resolution as call was cut off mid-connection",
+  "_model": "qwen3:14b",
+  "_eval_count": 150,
+  "_total_duration_ms": 95498,
+  "_source_file": "transcripts/in-+13363779003-+13366483431-20250821-125939-1755795579.5355.txt",
+  "_direction": "inbound",
+  "_char_count": 353
+}

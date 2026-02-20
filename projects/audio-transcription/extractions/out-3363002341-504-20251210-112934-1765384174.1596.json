@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to add a vehicle to their auto policy, check their driving record for points, and obtain a quote from Progressive for both of their cars. They are frustrated with their current insurer's rates and considering switching.",
+  "resolution_steps": [
+    "Agent confirmed the caller has no points on their driving record.",
+    "Agent explained current insurer's low rates and the reason for the high quote from Progressive.",
+    "Agent clarified deductible requirements (agency requires $100\u2013$300, caller wants $1,000).",
+    "Agent mentioned needing to wait for a quote from Progressive to add the vehicle.",
+    "Agent noted a separate house insurance quote for a mobile home was double the current rate."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance carrier rate structures (e.g., Main Street America, Progressive).",
+    "Process for checking driving records and policy details.",
+    "Deductible requirements and agency limitations."
+  ],
+  "systems_referenced": [
+    "Agency's internal system for checking driving records and policy details.",
+    "Progressive insurance quoting system.",
+    "Foremost insurance (for mobile home quote)."
+  ],
+  "summary": "The caller is seeking to add a vehicle to their auto policy and is frustrated with high quotes from Progressive compared to their current insurer. The agent confirmed no points on their record, explained deductible limitations, and noted the need to wait for a Progressive quote. The caller may consider switching insurers if their deductible requirements cannot be met.",
+  "_model": "qwen3:14b",
+  "_eval_count": 338,
+  "_total_duration_ms": 43206,
+  "_source_file": "transcripts/out-3363002341-504-20251210-112934-1765384174.1596.txt",
+  "_direction": "outbound",
+  "_char_count": 2093
+}

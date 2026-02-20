@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; caller only mentions prior conversation with Dina and requests a moment",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Very brief call where caller identifies herself and references a prior conversation with Dina. No actionable intent or resolution steps evident. Too short to determine meaningful outcome.",
+  "_model": "qwen3:14b",
+  "_eval_count": 101,
+  "_total_duration_ms": 26714,
+  "_source_file": "transcripts/in-+13363544000-+13366920635-20260109-131217-1767982337.3925.txt",
+  "_direction": "inbound",
+  "_char_count": 167
+}

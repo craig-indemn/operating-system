@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; conversation is cut off before intent is expressed",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Brief, inconclusive exchange where agent appears to be clarifying caller's name, but conversation is cut off before any substantive discussion occurs.",
+  "_model": "qwen3:14b",
+  "_eval_count": 92,
+  "_total_duration_ms": 19940,
+  "_source_file": "transcripts/in-+13363779003-+13367579976-20250915-100522-1757945122.1448.txt",
+  "_direction": "inbound",
+  "_char_count": 136
+}

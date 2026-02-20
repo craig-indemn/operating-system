@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Heather) wants to confirm an auto insurance quote from National General and schedule a follow-up to finalize details, particularly regarding payment timing and next steps.",
+  "resolution_steps": [
+    "Agent (Maria and Lena) confirmed Heather's intent to proceed with the National General quote.",
+    "Discussed Heather's payment timeline (Friday) and agreed to schedule a follow-up call the next day.",
+    "Negotiated a tentative time window for the follow-up (after 11 AM, with flexibility to call at 4 PM or 5 PM).",
+    "Agreed to call back if Heather is unavailable during the scheduled window."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of National General insurance products and quoting process",
+    "Ability to handle scheduling and customer availability coordination",
+    "Knowledge of auto insurance payment timelines and policy activation requirements"
+  ],
+  "systems_referenced": [],
+  "summary": "Heather is finalizing an auto insurance quote with National General and needs assistance with next steps. The agent confirmed her intent and scheduled a follow-up call for the next day, with flexibility to accommodate Heather's availability (tentatively after 11 AM). The agent will call back if Heather is unavailable during the agreed window.",
+  "_model": "qwen3:14b",
+  "_eval_count": 283,
+  "_total_duration_ms": 45173,
+  "_source_file": "transcripts/exten-401-+13367185856-20250729-163100-1753821060.14699.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1892
+}

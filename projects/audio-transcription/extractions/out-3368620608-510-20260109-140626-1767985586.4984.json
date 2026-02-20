@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller left a voicemail message requesting a callback to provide an updated driver's license.",
+  "resolution_steps": [
+    "Agent Tracy left a voicemail message asking the recipient to call back with their updated driver's license."
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Tracy from Alliance Insurance left a voicemail requesting a callback to obtain an updated driver's license. The call was not substantive as it involved only a voicemail message.",
+  "_model": "qwen3:14b",
+  "_eval_count": 126,
+  "_total_duration_ms": 26783,
+  "_source_file": "transcripts/out-3368620608-510-20260109-140626-1767985586.4984.txt",
+  "_direction": "outbound",
+  "_char_count": 530
+}

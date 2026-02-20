@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "",
+  "_model": "qwen3:14b",
+  "_eval_count": 52,
+  "_total_duration_ms": 26840,
+  "_source_file": "transcripts/q-300-+13363549223-20251223-115127-1766508687.1895.txt",
+  "_direction": "queue",
+  "_char_count": 135
+}

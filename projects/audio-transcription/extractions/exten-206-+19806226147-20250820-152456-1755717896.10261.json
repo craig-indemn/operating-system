@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Chuck Scales is seeking guidance on whether to cancel his general liability insurance policy after being forced to evacuate his business due to a property sale, and he wants to understand the implications of policy cancellation during a potential business relocation.",
+  "resolution_steps": [
+    "Agent verified the policy details (Auto Owners, $400/year, General Liability coverage for Best Life Buildings).",
+    "Agent explained risks of canceling the policy, emphasizing potential underwriting issues and higher future premiums due to coverage gaps.",
+    "Agent recommended maintaining the policy for now, noting the low premium and potential difficulty in securing similar terms later.",
+    "Agent offered to cancel the policy if Chuck confirms relocation plans after a reasonable period."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Commercial insurance underwriting standards",
+    "Impact of policy lapses on future coverage",
+    "Market rates for commercial general liability insurance"
+  ],
+  "systems_referenced": [
+    "Auto Owners (insurer)",
+    "Policy management system (for checking coverage details)"
+  ],
+  "summary": "Chuck Scales, owner of Best Life Buildings, discusses relocating his business after a property sale and seeks advice on his insurance policy. The agent advises against cancellation to avoid coverage gaps and higher future premiums, highlighting the policy's low cost and potential difficulty in securing similar terms later. The conversation underscores the importance of maintaining continuous coverage to avoid underwriting complications.",
+  "_model": "qwen3:14b",
+  "_eval_count": 314,
+  "_total_duration_ms": 44223,
+  "_source_file": "transcripts/exten-206-+19806226147-20250820-152456-1755717896.10261.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4393
+}

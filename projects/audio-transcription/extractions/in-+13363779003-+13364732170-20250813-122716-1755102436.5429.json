@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller intended to renew their insurance policy with Brian Ludwig but found him unavailable.",
+  "resolution_steps": [
+    "Agent offered to connect the caller with another agent",
+    "Call appears to end abruptly without confirmation of transfer or next steps"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Fragmented conversation where caller attempts to renew insurance with unavailable agent. Agent offers to transfer but call ends without resolution confirmation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 117,
+  "_total_duration_ms": 25687,
+  "_source_file": "transcripts/in-+13363779003-+13364732170-20250813-122716-1755102436.5429.txt",
+  "_direction": "inbound",
+  "_char_count": 250
+}

@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Karen from Lakeview Loan Servicing wants to verify homeowner's insurance for a mutual customer.",
+  "resolution_steps": [
+    "Agent offered to transfer the call to an available agent.",
+    "Agent provided the support email address (support@myallianceinsurance.com) as an alternative if an agent was unavailable.",
+    "Agent asked if the caller wanted to be put on hold for an agent."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Support email address for Alliance Insurance",
+    "Process for transferring calls to agents"
+  ],
+  "systems_referenced": [
+    "support@myallianceinsurance.com"
+  ],
+  "summary": "Karen from Lakeview Loan Servicing contacted Alliance Insurance to verify a mutual customer's homeowner's insurance. The agent offered to connect her with an agent or provided the support email as an alternative. The caller requested the email address, which was shared, and the agent offered to put her on hold for an agent.",
+  "_model": "qwen3:14b",
+  "_eval_count": 223,
+  "_total_duration_ms": 58147,
+  "_source_file": "transcripts/in-+13363779003-+18882609698-20250825-104938-1756133378.2585.txt",
+  "_direction": "inbound",
+  "_char_count": 667
+}

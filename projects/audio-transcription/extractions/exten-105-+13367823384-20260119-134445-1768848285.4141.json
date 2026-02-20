@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Melissa is seeking clarification on how to correctly complete insurance forms, specifically regarding the handling of dates (contract vs. execution) and adherence to Cincinnati's form requirements.",
+  "resolution_steps": [
+    "Agent (Rick) acknowledges Melissa's explanation about form requirements from Cincinnati.",
+    "Agent confirms Melissa's understanding of needing to use specific forms without variations.",
+    "Agent addresses Melissa's question about leaving dates blank but does not explicitly resolve the ambiguity in the transcript."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of Cincinnati's form submission policies",
+    "Procedures for handling contract and execution dates on insurance forms",
+    "Familiarity with AIA form requirements"
+  ],
+  "systems_referenced": [
+    "Cincinnati (insurance carrier)",
+    "AIA forms"
+  ],
+  "summary": "Melissa discusses form submission requirements with Rick, emphasizing adherence to Cincinnati's guidelines. She seeks clarification on whether to leave contract and execution dates blank. The agent acknowledges her concerns but does not fully resolve the issue, suggesting further follow-up may be needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 244,
+  "_total_duration_ms": 52623,
+  "_source_file": "transcripts/exten-105-+13367823384-20260119-134445-1768848285.4141.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1482
+}

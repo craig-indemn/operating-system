@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller requested an auto insurance quote for a truck and a car in Virginia, clarifying their location after initial confusion about being in North Carolina.",
+  "resolution_steps": [
+    "Agent asked for clarification on the caller's location (Mount Airy, NC vs. Virginia).",
+    "Agent confirmed the caller's need for auto insurance in Virginia.",
+    "Agent stated they would check for an available agent to assist."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Auto insurance policies for multi-vehicle (truck and car) coverage",
+    "Geographic coverage distinctions (Virginia vs. North Carolina)"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's internal agent routing system"
+  ],
+  "summary": "A caller requested an auto insurance quote for vehicles in Virginia after initial confusion about their location. The agent clarified the state and began routing the call to an appropriate agent, but the conversation ended before resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 214,
+  "_total_duration_ms": 46770,
+  "_source_file": "transcripts/in-+13367861133-+13366489233-20250915-162205-1757967725.17621.txt",
+  "_direction": "inbound",
+  "_char_count": 517
+}

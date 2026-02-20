@@ -1,0 +1,22 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Requesting a callback regarding auto umbrella and homeowner's policy with Main Street",
+  "resolution_steps": [
+    "Left voicemail with contact information and reason for callback"
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [
+    "Auto umbrella policy details",
+    "Homeowner's insurance policies"
+  ],
+  "systems_referenced": [
+    "Main Street (carrier)"
+  ],
+  "summary": "Voicemail message left by Gary from Alliance Insurance requesting a callback regarding auto umbrella and homeowner's policy with Main Street. Tristan Sands was unavailable, and Gary provided his contact number for follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 132,
+  "_total_duration_ms": 61975,
+  "_source_file": "transcripts/out-2398509381-113-20250922-125852-1758560332.4130.txt",
+  "_direction": "outbound",
+  "_char_count": 473
+}

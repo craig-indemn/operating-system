@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Jack Gordon, wants to confirm that his email to cancel his auto insurance policy was received and processed.",
+  "resolution_steps": [
+    "Agent asked for clarification on the type of policy (auto or home).",
+    "Caller confirmed it was an auto policy.",
+    "Agent stated they would connect the caller with another agent to assist with the cancellation request."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Cancellation procedures for auto insurance policies",
+    "Email tracking and confirmation processes"
+  ],
+  "systems_referenced": [],
+  "summary": "Jack Gordon called to confirm his auto insurance cancellation email was received. The agent confirmed the policy type and promised to transfer him to another agent for further assistance. The call is pending resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 180,
+  "_total_duration_ms": 28028,
+  "_source_file": "transcripts/in-+13363779003-+17049634265-20250723-100842-1753279722.1780.txt",
+  "_direction": "inbound",
+  "_char_count": 352
+}

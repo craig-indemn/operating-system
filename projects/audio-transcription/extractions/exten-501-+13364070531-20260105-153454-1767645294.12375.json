@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Andrea is following up on a home insurance quote for a new property purchase, seeking clarification on discrepancies in coverage amounts and ensuring the quote aligns with closing requirements.",
+  "resolution_steps": [
+    "Agent verifies client details (Joel Lang's DOB, marital status) and updates the Secco system to apply a marriage discount.",
+    "Agent confirms home details: 2004-built single-family dwelling with crawlspace, three-car garage, and architectural shingles.",
+    "Agent explains that the RCE quote excludes land value, which could cause issues with the mortgage lender if not addressed.",
+    "Agent plans to email the updated quote to Andrea for review by her lender and offers to connect Andrea directly with the lender if needed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Home insurance policy specifics (e.g., land exclusion, replacement cost estimation)",
+    "Secco system navigation for policy adjustments",
+    "Mortgage lending requirements for insurance coverage"
+  ],
+  "systems_referenced": [
+    "Secco system (insurance quoting platform)",
+    "RCE (Replacement Cost Estimator tool)"
+  ],
+  "summary": "Andrea discusses finalizing home insurance for a new property with Jamie, who verifies client details, adjusts the quote for home specifics, and highlights the need to confirm coverage with the mortgage lender. The call concludes with plans to email the quote and potentially connect Andrea with the lender.",
+  "_model": "qwen3:14b",
+  "_eval_count": 318,
+  "_total_duration_ms": 46977,
+  "_source_file": "transcripts/exten-501-+13364070531-20260105-153454-1767645294.12375.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3976
+}

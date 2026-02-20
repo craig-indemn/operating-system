@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Armando, requested assistance with a slow computer and wanted to open a ticket for a technician to resolve the issue remotely.",
+  "resolution_steps": [
+    "Agent confirmed the caller's name and contact information.",
+    "Agent collected details about the computer issue (slow performance).",
+    "Agent asked for the caller's full name (Armando Pamela) and confirmed the company phone number as the best contact.",
+    "Agent assured the caller a technician would be assigned and contacted them."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Ticketing system process for opening support requests",
+    "Standard troubleshooting procedures for remote computer assistance"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's internal ticketing system"
+  ],
+  "summary": "Armando contacted Alliance Insurance to report a slow computer and request remote technician assistance. The agent collected necessary details and confirmed a ticket would be opened for follow-up. The call concluded with the agent promising to assign the first available technician.",
+  "_model": "qwen3:14b",
+  "_eval_count": 227,
+  "_total_duration_ms": 32806,
+  "_source_file": "transcripts/out-3364990749-502-20260114-121404-1768410844.2751.txt",
+  "_direction": "outbound",
+  "_char_count": 964
+}

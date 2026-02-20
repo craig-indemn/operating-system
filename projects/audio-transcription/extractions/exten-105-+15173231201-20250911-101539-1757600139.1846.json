@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Kelsey from Auto Owners) aimed to inform Rick about an updated portal access configuration and verify whether a new team member (Kendall) had been granted portal access.",
+  "resolution_steps": [
+    "Kelsey logged into the Auto Owners portal to check Kendall's user status.",
+    "Confirmed Kendall had been appointed and had portal access (no 'no portal access' label visible).",
+    "Verified other team members were active in the system.",
+    "Provided confirmation to Rick that all access issues were resolved."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of Auto Owners portal user management workflows",
+    "Ability to check user appointment status and access permissions"
+  ],
+  "systems_referenced": [
+    "Auto Owners portal"
+  ],
+  "summary": "Kelsey from Auto Owners confirmed a portal access update for Rick and verified that new team member Kendall had been properly granted access. The agent checked the portal, confirmed all users were active, and concluded the call with a resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 227,
+  "_total_duration_ms": 37636,
+  "_source_file": "transcripts/exten-105-+15173231201-20250911-101539-1757600139.1846.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1360
+}

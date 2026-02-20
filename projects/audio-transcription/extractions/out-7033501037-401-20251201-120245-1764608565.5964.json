@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Voicemail left for Davni from Heather Scott, providing contact information.",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Voicemail left for Davni from Heather Scott, providing contact information.",
+  "_model": "qwen3:14b",
+  "_eval_count": 79,
+  "_total_duration_ms": 31711,
+  "_source_file": "transcripts/out-7033501037-401-20251201-120245-1764608565.5964.txt",
+  "_direction": "outbound",
+  "_char_count": 395
+}

@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Cody) is assisting Judy in obtaining a commercial insurance quote for Christian Lopez, who is starting an installation crew. The call involves gathering details about Christian and verifying his insurance needs.",
+  "resolution_steps": [
+    "Cody confirms the call is about a commercial insurance quote for Christian Lopez.",
+    "Gathers Christian's full name, address, and confirms the policy will be in his personal name.",
+    "Notifies Judy that Christian's cell phone number is needed but is temporarily using Judy's contact information.",
+    "Transfers the call to Judy's son for additional clarification.",
+    "Connects with Steve Rodriguez (owner of Bison) to confirm Christian's employment status and insurance history.",
+    "Obtains manufacturer details (Bison and Metalworks) and location (Dobson, NC)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Commercial insurance policies for installation crews",
+    "Client information gathering for insurance quotes",
+    "Understanding of DOT requirements and insurance history verification"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal database (implied for storing client information)"
+  ],
+  "summary": "Cody from Alliance Insurance Services assists Judy in gathering details for a commercial insurance quote for Christian Lopez, an installation crew member. The call involves verifying Christian's personal information, confirming his insurance needs, and connecting with Steve Rodriguez (Bison owner) to clarify employment and insurance history. The agent needs to follow up to finalize the quote.",
+  "_model": "qwen3:14b",
+  "_eval_count": 326,
+  "_total_duration_ms": 49107,
+  "_source_file": "transcripts/out-13364015705-207-20251124-142728-1764012448.4388.txt",
+  "_direction": "outbound",
+  "_char_count": 3986
+}

@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Greg is updating Jeremy on their current insurance situation, including providers (Heritage, Jewelers Mutual, National General), issues with National General's auto insurance premiums after an accident, and requesting assistance with Medicare supplement plans and prescription drug coverage.",
+  "resolution_steps": [
+    "Jeremy will send Greg an email with policy documents.",
+    "Greg will provide his and Lori's driver's license numbers and dates of birth via email.",
+    "Jeremy will coordinate with Steve to address Medicare supplement and prescription plan D needs.",
+    "Greg will maintain the National General auto policy through a financing program, with a plan to reassess premiums after the accident anniversary date."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance carriers (Heritage, Jewelers Mutual, National General, New Jersey Manufacturers), policy types (HO6, dwelling policies), and regional insurance considerations for coastal North Carolina.",
+    "Knowledge of Medicare supplement plans, prescription drug coverage (Plan D), and insurance financing programs."
+  ],
+  "systems_referenced": [
+    "Email communication",
+    "National General (auto insurance)",
+    "New Jersey Manufacturers (condo insurance)",
+    "Medicare supplement plans",
+    "Prescription plan D"
+  ],
+  "summary": "Greg discusses his current insurance portfolio with Jeremy, highlighting issues with National General's auto premiums after an accident and requesting help with Medicare and prescription plans. Jeremy agrees to send documents via email and coordinate with Steve for Medicare needs. Greg plans to maintain National General through a financing program while monitoring premium changes.",
+  "_model": "qwen3:14b",
+  "_eval_count": 338,
+  "_total_duration_ms": 45720,
+  "_source_file": "transcripts/out-2012479628-701-20251211-115809-1765472289.2658.txt",
+  "_direction": "outbound",
+  "_char_count": 4179
+}

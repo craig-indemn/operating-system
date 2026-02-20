@@ -1,0 +1,19 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Requesting callback to discuss a glass claim",
+  "resolution_steps": [
+    "Left voicemail with contact information"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Claims process for glass-related insurance"
+  ],
+  "systems_referenced": [],
+  "summary": "Agent Gary left a voicemail for Amy Spener requesting a callback to discuss a glass claim. The call was not connected to a live agent and was left as a message.",
+  "_model": "qwen3:14b",
+  "_eval_count": 117,
+  "_total_duration_ms": 46242,
+  "_source_file": "transcripts/out-7045066440-113-20251202-161648-1764710208.8845.txt",
+  "_direction": "outbound",
+  "_char_count": 484
+}

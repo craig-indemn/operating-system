@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, April Gravely of Alliance Insurance Services, is following up on a previous conversation with Eva Presley regarding a billing dispute. She wants clarification on charges for pest control services during a renovation period (October 2024\u2013March 2025) when the business was closed, specifically questioning why full charges were applied for exterior work without interior service.",
+  "resolution_steps": [
+    "Agent Sheree verifies the caller's account details (account number, business name, contact information, and address).",
+    "Sheree acknowledges the billing dispute and confirms the dates of the renovation period.",
+    "Sheree notes the customer's concern about being charged for exterior services without interior work during the closure.",
+    "Sheree offers to check the proof of service records and mentions a service date (March 12, 2025) from her system.",
+    "Sheree places the caller on hold to investigate further and commit to sending proof of service documentation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Billing policies for service periods during business closures",
+    "Process for verifying proof of service (e.g., service dates, scope of work)",
+    "Handling disputes over partial service vs. full charges"
+  ],
+  "systems_referenced": [
+    "Internal account verification system",
+    "Proof of service records database"
+  ],
+  "summary": "April Gravely of Alliance Insurance Services disputes charges for pest control services during a renovation period, arguing that full charges were applied despite the business being closed. Agent Sheree verifies account details, acknowledges the dispute, and commits to checking proof of service records to resolve the issue. The call is placed on hold for further investigation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 375,
+  "_total_duration_ms": 46270,
+  "_source_file": "transcripts/out-18772846881-704-20250915-161936-1757967576.17616.txt",
+  "_direction": "outbound",
+  "_char_count": 4488
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Sherilyn wanted to make a payment for a flood insurance renewal and sought assistance from Alliance Insurance.",
+  "resolution_steps": [
+    "Polly confirmed receipt of Sherilyn's message regarding the flood renewal payment.",
+    "Offered to help process the payment directly or directed Sherilyn to National General using the Beyond Flood number from the invoice.",
+    "Provided her own contact number for follow-up and mentioned the option to email if Sherilyn couldn't reach her before leaving for the day."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Flood insurance payment procedures",
+    "Carrier-specific contact information (National General, Beyond Flood)",
+    "Internal follow-up protocols for unresolved client requests"
+  ],
+  "systems_referenced": [
+    "National General (carrier)",
+    "Beyond Flood (carrier)",
+    "Email communication system"
+  ],
+  "summary": "Polly from Alliance Insurance assisted Sherilyn with flood renewal payment options, provided multiple pathways for payment, and arranged follow-up if Sherilyn needed further help after hours. The call concluded with Polly leaving for the day but offering to continue assistance via email.",
+  "_model": "qwen3:14b",
+  "_eval_count": 253,
+  "_total_duration_ms": 33367,
+  "_source_file": "transcripts/out-3368164137-504-20250811-125713-1754931433.9437.txt",
+  "_direction": "outbound",
+  "_char_count": 1020
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Andrew is seeking assistance to set up auto pay for a workers' comp policy renewal under Senator Nolasco Rosano, as the policy was moved to a single bill and auto pay information is missing.",
+  "resolution_steps": [
+    "Jessica confirms the policy renewal and notes the auto pay information was lost when the account was moved from a shared billing account to a single bill.",
+    "Jessica explains the system only retains the last four digits of the account number and cannot transfer previous payment method data.",
+    "Jessica acknowledges the manual payment made on July 21 and agrees to contact the client again to retrieve the full auto pay details.",
+    "Jessica commits to follow up and set up auto pay once the information is obtained."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Workers' comp policy administration",
+    "Auto pay setup processes",
+    "Billing account transitions and data retention policies"
+  ],
+  "systems_referenced": [
+    "Insurance agency's policy management system",
+    "Carrier portal for auto pay setup"
+  ],
+  "summary": "Andrew requested help setting up auto pay for a workers' comp policy after the account was moved to a single bill, causing previous auto pay data to be lost. Jessica explained the system's limitations in retaining full payment details and agreed to contact the client again for the necessary information. The call concluded with a commitment to follow up and complete the auto pay setup.",
+  "_model": "qwen3:14b",
+  "_eval_count": 312,
+  "_total_duration_ms": 41632,
+  "_source_file": "transcripts/exten-106-+17277991229-20250722-161528-1753215328.17642.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2815
+}

@@ -1,0 +1,21 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unknown (caller requested to speak to Heather Johnson but no further details provided)",
+  "resolution_steps": [
+    "Agent placed caller on hold",
+    "Played automated hold message with policy management information"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [
+    "myallianceinsurance.com customer portal",
+    "texting service (3367861133)"
+  ],
+  "summary": "Non-substantive call featuring an automated hold message. Caller requested to speak to Heather Johnson but no meaningful conversation occurred. Agent provided hold message with policy management information and contact options.",
+  "_model": "qwen3:14b",
+  "_eval_count": 146,
+  "_total_duration_ms": 26878,
+  "_source_file": "transcripts/in-+13363779003-+13369782094-20250806-093837-1754487517.883.txt",
+  "_direction": "inbound",
+  "_char_count": 812
+}

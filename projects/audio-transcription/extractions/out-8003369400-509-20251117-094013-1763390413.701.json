@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "N/A",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Pre-recorded voicemail greeting from Allstate Agency Support Line informing callers of updated digital support options and directing them to online resources. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 85,
+  "_total_duration_ms": 38226,
+  "_source_file": "transcripts/out-8003369400-509-20251117-094013-1763390413.701.txt",
+  "_direction": "outbound",
+  "_char_count": 1045
+}

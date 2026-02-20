@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Gavin from the North Carolina Home Builders Association is attempting to reach Joe Jessup to confirm his availability for a meeting or communication.",
+  "resolution_steps": [
+    "Agent greeted caller and asked how they could assist.",
+    "Caller identified himself and explained he was checking on Joe Jessup's availability.",
+    "Agent confirmed Joe's usual work locations and offered to transfer the call.",
+    "Caller agreed to leave a message if Joe was unavailable.",
+    "Agent thanked the caller and ended the conversation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Standard call handling procedures for transferring calls or taking messages",
+    "Understanding of internal directory structure for employee extensions"
+  ],
+  "systems_referenced": [],
+  "summary": "Gavin from the North Carolina Home Builders Association contacted Alliance Insurance to check on Joe Jessup's availability. The agent offered to transfer the call to Joe's extension but noted uncertainty about his current availability. The caller agreed to leave a message if needed, and the conversation concluded with the agent's offer to assist further.",
+  "_model": "qwen3:14b",
+  "_eval_count": 239,
+  "_total_duration_ms": 39728,
+  "_source_file": "transcripts/in-+13363779003-+19522488089-20250813-094640-1755092800.1207.txt",
+  "_direction": "inbound",
+  "_char_count": 580
+}

@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "David Samuel wants to make a payment for his canceled homeowners and farm insurance policies and is seeking clarification on next steps.",
+  "resolution_steps": [
+    "Agent confirms David's attempt to pay and checks text message communication.",
+    "Agent explains policy is canceled and reinstatement by underwriter is required before payment.",
+    "Agent clarifies underwriter must review missed payment reason (1 month delay) and farm size change.",
+    "Agent assures David underwriter typically responds quickly and will follow up once reinstatement is approved.",
+    "David provides alternative contact number for future communication."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy reinstatement process after cancellation",
+    "Underwriting review criteria for missed payments",
+    "Carrier-specific procedures for policy reinstatement"
+  ],
+  "systems_referenced": [
+    "Carrier's underwriting system",
+    "Policy management portal (implied by 'already canceled')"
+  ],
+  "summary": "David Samuel attempts to pay for his canceled insurance policies but is blocked due to policy cancellation. The agent explains reinstatement is required, underwriter review is needed, and confirms they'll follow up once approval is received. David provides an alternative contact number for future communication.",
+  "_model": "qwen3:14b",
+  "_eval_count": 271,
+  "_total_duration_ms": 37082,
+  "_source_file": "transcripts/parked-302-302-20251124-113827-1764002307.2874.txt",
+  "_direction": "parked",
+  "_char_count": 3207
+}

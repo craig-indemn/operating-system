@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unknown (call was forwarded to voicemail without interaction)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Outbound call resulted in voicemail forwarding with no substantive interaction. The recipient was unavailable, and no conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 87,
+  "_total_duration_ms": 17928,
+  "_source_file": "transcripts/out-13363243147-503-20251020-165748-1760993868.13118.txt",
+  "_direction": "outbound",
+  "_char_count": 94
+}

@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Eden Cruz is following up on previously emailed insurance proposals for home and auto coverage, seeking confirmation of receipt, requesting driver's license numbers to finalize the auto quote, and ensuring the client does not cancel their current State Farm policy prematurely.",
+  "resolution_steps": [
+    "Eden confirms the client received the insurance proposals from Penn National.",
+    "Requests driver's license numbers for the client and their spouse (Christian) to update the auto insurance quote.",
+    "Explains the current home insurance quote (premium: $1,964/year) and auto insurance details (deductibles, coverage).",
+    "Advises against canceling the current State Farm auto policy until the new proposal is finalized.",
+    "Agrees to revise the proposals with the provided DL numbers and email the updated versions."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance quoting process for home and auto policies",
+    "Handling of proposal packages and client follow-up",
+    "Understanding of policy renewals and cancellation procedures"
+  ],
+  "systems_referenced": [
+    "Penn National (insurance provider for proposals)",
+    "State Farm (current auto insurance carrier)"
+  ],
+  "summary": "Eden Cruz follows up on insurance proposals for home and auto coverage, gathers necessary driver's license information, and ensures the client does not cancel their current policy prematurely. The agent will revise the proposals and send updated versions for review.",
+  "_model": "qwen3:14b",
+  "_eval_count": 314,
+  "_total_duration_ms": 49438,
+  "_source_file": "transcripts/exten-401-+19089062525-20251105-161648-1762377408.6390.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4133
+}

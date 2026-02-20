@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Confirming insurance payment schedule details and ensuring automatic payment setup for a client.",
+  "resolution_steps": [
+    "Verified the client's insurance plan is on a 12-pay schedule.",
+    "Provided the client with the first payment date (November 14th) and amount ($821.66).",
+    "Confirmed the client's preference for automatic payments from their Wells Fargo account.",
+    "Agreed to email the full payment schedule to the client."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance payment plan structures (e.g., 12-pay schedules)",
+    "Automatic payment setup processes with banks (Wells Fargo)",
+    "Emailing policy documents to clients"
+  ],
+  "systems_referenced": [
+    "Email system (for sending payment schedules)",
+    "Wells Fargo auto draft portal"
+  ],
+  "summary": "Kendall from Alliance Insurance confirmed a client's 12-pay insurance plan details, verified automatic payment setup with Wells Fargo, and committed to emailing the full payment schedule. The client expressed satisfaction with the arrangement.",
+  "_model": "qwen3:14b",
+  "_eval_count": 250,
+  "_total_duration_ms": 27537,
+  "_source_file": "transcripts/out-3364315821-103-20251023-101412-1761228852.1286.txt",
+  "_direction": "outbound",
+  "_char_count": 669
+}

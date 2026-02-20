@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to process a payment of $2,099.88 for Dale Falk to National General using his checking account details, specifically the routing and account numbers provided by the caller.",
+  "resolution_steps": [
+    "Agent confirms the payment amount and recipient (Dale Falk to National General).",
+    "Caller provides full name, routing number (053100300), and account number (007175203966) for Dale Falk and Patty M. Falk.",
+    "Agent verifies banking details with the caller, reiterating the account number for accuracy.",
+    "Agent confirms the payment will be processed as an e-check through Arthur Citizens Bank.",
+    "Agent states confirmation will be emailed to the caller for delivery to Dale Falk."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Processing e-check payments",
+    "Verifying banking details for insurance-related payments",
+    "Using internal systems to send payment confirmations"
+  ],
+  "systems_referenced": [
+    "National General (insurance carrier)",
+    "Arthur Citizens Bank",
+    "Internal email system for sending confirmations"
+  ],
+  "summary": "Agent Amanda processes a $2,099.88 e-check payment for Dale Falk to National General using provided banking details. The caller confirms the routing and account numbers, and Amanda agrees to send a confirmation email. The call concludes with both parties expressing gratitude.",
+  "_model": "qwen3:14b",
+  "_eval_count": 324,
+  "_total_duration_ms": 39109,
+  "_source_file": "transcripts/internal-201-702-20251201-135340-1764615220.10160.txt",
+  "_direction": "internal",
+  "_char_count": 1491
+}

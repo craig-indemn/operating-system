@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Christopher wants to confirm that his newly purchased GMC Yukon was added to his existing auto insurance policy after the dealership contacted the agency.",
+  "resolution_steps": [
+    "Jamie verifies the dealership contacted the agency and Gina submitted the vehicle details to Penn National.",
+    "Explains Penn National's annual policy process requires manual underwriting adjustments, which are pending.",
+    "Clarifies North Carolina law provides 14-day coverage for newly acquired vehicles with an existing policy.",
+    "Reassures Christopher the submission was processed and coverage is active while awaiting carrier confirmation.",
+    "Advises verifying with dealerships to avoid past issues with coverage gaps."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Penn National's annual policy underwriting requirements",
+    "North Carolina auto insurance laws (14-day coverage for new vehicles)",
+    "Dealership communication protocols for policy updates"
+  ],
+  "systems_referenced": [
+    "Penn National insurance system",
+    "Agency's internal service case tracking"
+  ],
+  "summary": "Christopher confirms his Yukon was added to his Penn National policy, but processing delays remain. The agent explains legal coverage for new vehicles and advises verifying dealership communication. Coverage is active while awaiting carrier confirmation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 276,
+  "_total_duration_ms": 36647,
+  "_source_file": "transcripts/q-300-+13364685952-20251001-154837-1759348117.7874.txt",
+  "_direction": "queue",
+  "_char_count": 4049
+}

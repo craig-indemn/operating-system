@@ -1,0 +1,24 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller (Jerry) is following up on a previous conversation about changing his insurance policy due to moving vehicles to South Carolina and expects a callback.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's request and says, 'Just one moment.'",
+    "Automated hold music and pre-recorded message play, asking the caller to think about recent contact information changes and promoting the customer portal and text support."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Basic customer service protocols",
+    "Knowledge of company resources (customer portal, text support)"
+  ],
+  "systems_referenced": [
+    "myallianceinsurance.com customer portal",
+    "text support at 336-786-1133"
+  ],
+  "summary": "The caller followed up on a previous policy change request, but the agent only placed him on hold with no resolution. The call transitioned to automated hold messages promoting company resources rather than addressing the caller's specific request.",
+  "_model": "qwen3:14b",
+  "_eval_count": 229,
+  "_total_duration_ms": 38289,
+  "_source_file": "transcripts/in-+13363779003-+17049572549-20260113-152100-1768335660.7731.txt",
+  "_direction": "inbound",
+  "_char_count": 961
+}

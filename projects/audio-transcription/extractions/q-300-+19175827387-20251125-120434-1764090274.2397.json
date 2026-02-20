@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Robert reports being double-charged for insurance payments, believing his mortgage company already paid the premium, and seeks resolution for the duplicate $1,671 charge to his personal account.",
+  "resolution_steps": [
+    "Jamie confirms Robert's identity and policy details.",
+    "Jamie checks the system to verify policy information and payment history.",
+    "Jamie identifies confusion between Robert's home and auto policies on the same billing page.",
+    "Jamie notes the mortgage company's payment on November 4th and the duplicate charge from Travelers.",
+    "Jamie determines the need to contact Travelers directly to resolve the billing discrepancy."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of mortgage escrow accounts and insurance payment processes",
+    "Familiarity with Travelers' billing systems and policy structures"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services internal policy database",
+    "Travelers insurance billing system"
+  ],
+  "summary": "Robert was double-charged for insurance payments due to confusion between his home and auto policies on the same Travelers billing page. Jamie confirmed the mortgage payment but identified a system error requiring direct contact with Travelers to resolve the duplicate charge.",
+  "_model": "qwen3:14b",
+  "_eval_count": 270,
+  "_total_duration_ms": 39559,
+  "_source_file": "transcripts/q-300-+19175827387-20251125-120434-1764090274.2397.txt",
+  "_direction": "queue",
+  "_char_count": 4350
+}

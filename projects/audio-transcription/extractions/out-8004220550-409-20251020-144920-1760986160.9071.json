@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "N/A (automated voicemail greeting with menu options)",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Automated voicemail greeting from Grange and Integrity Insurance, providing menu options for callers (e.g., policyholders, agents, other inquiries). No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 96,
+  "_total_duration_ms": 22191,
+  "_source_file": "transcripts/out-8004220550-409-20251020-144920-1760986160.9071.txt",
+  "_direction": "outbound",
+  "_char_count": 619
+}

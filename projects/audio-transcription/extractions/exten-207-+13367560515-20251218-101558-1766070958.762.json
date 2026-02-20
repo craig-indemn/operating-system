@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Cody) is discussing with the agent about adjusting insurance policies for HTR and Install Solutions LLC to accommodate a second crew, specifically addressing payroll increases for workers' comp and general liability coverage.",
+  "resolution_steps": [
+    "Agent confirmed current payroll figures for HTR (120,000 for helpers, 59,300 for the owner on workers' comp).",
+    "Explained that adding a second crew would require increasing payroll on both policies to avoid audit penalties.",
+    "Provided an estimate of potential audit costs if payroll remains unchanged (e.g., $5,000+ for Install Solutions LLC).",
+    "Noted that increasing payroll now would spread additional premium costs over the remaining policy term.",
+    "Mentioned the need to adjust policies at renewal in February to align with expected payroll increases."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Workers' comp and general liability insurance calculations",
+    "Payroll audit processes and penalties",
+    "Policy renewal timelines and premium adjustments"
+  ],
+  "systems_referenced": [
+    "Insurance policy databases (for checking current payroll figures)"
+  ],
+  "summary": "Cody discussed with the agent the need to adjust insurance policies for HTR and Install Solutions LLC to account for a second crew. The agent explained that increasing payroll on both policies is necessary to avoid audit penalties and provided cost estimates. The caller was advised to plan for policy adjustments at the February renewal to align with expected payroll increases.",
+  "_model": "qwen3:14b",
+  "_eval_count": 336,
+  "_total_duration_ms": 59429,
+  "_source_file": "transcripts/exten-207-+13367560515-20251218-101558-1766070958.762.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 8880
+}

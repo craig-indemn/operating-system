@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Rosa Romero, acting on behalf of her mother) wants to add herself as a policyholder to an existing insurance policy under Rosa and Victor.",
+  "resolution_steps": [
+    "Agent acknowledges the request to add the caller to the insurance policy.",
+    "Agent offers to transfer the call to a specialist who can assist with policy modifications."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy modification procedures",
+    "Call transfer protocols for insurance inquiries"
+  ],
+  "systems_referenced": [],
+  "summary": "Rosa Romero requested to add herself to an existing insurance policy under Rosa and Victor. The agent acknowledged the request and offered to transfer the call to a specialist for further assistance. The call ended with the agent initiating the transfer.",
+  "_model": "qwen3:14b",
+  "_eval_count": 182,
+  "_total_duration_ms": 56407,
+  "_source_file": "transcripts/in-+13363544000-+13365611899-20250806-125038-1754499038.5274.txt",
+  "_direction": "inbound",
+  "_char_count": 446
+}

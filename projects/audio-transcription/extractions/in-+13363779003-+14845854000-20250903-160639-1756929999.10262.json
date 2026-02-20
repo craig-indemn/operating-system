@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller appears to be attempting to reach Jeremy Palmer at Alliance Insurance Services, possibly mistaking Michael Palmer for the correct contact.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Very brief call where the caller inquires about Jeremy Palmer's availability. The agent responds with a transfer prompt but no further details are provided. Too short to determine full context or resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 115,
+  "_total_duration_ms": 28960,
+  "_source_file": "transcripts/in-+13363779003-+14845854000-20250903-160639-1756929999.10262.txt",
+  "_direction": "inbound",
+  "_char_count": 142
+}

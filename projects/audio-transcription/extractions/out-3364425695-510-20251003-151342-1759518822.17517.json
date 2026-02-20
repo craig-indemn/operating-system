@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Josh) wanted to clarify insurance card details and update policy information regarding mortgage company listings and payment schedules for home insurance.",
+  "resolution_steps": [
+    "Confirmed insurance card only lists named insured (caller and spouse) as standard practice.",
+    "Addressed discrepancy in home insurance billing (single invoice vs. monthly drafts).",
+    "Clarified caller does not have a mortgage, so agent agreed to remove mortgage company from policy.",
+    "Agreed to update policy to apply monthly payment structure to home insurance.",
+    "Agent committed to processing changes immediately to avoid claim complications."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of insurance policy documentation practices",
+    "Knowledge of how mortgage companies interface with insurance policies",
+    "Ability to modify policy payment structures"
+  ],
+  "systems_referenced": [
+    "Insurance carrier portal (Cincinnati Financial)",
+    "Agency policy management system"
+  ],
+  "summary": "Agent helped caller correct policy details by removing incorrect mortgage company information and adjusting home insurance payment structure to monthly drafts. The caller confirmed no mortgage exists, so agent ensured policy would not include mortgage company details to prevent claim complications. Changes were committed to be processed immediately.",
+  "_model": "qwen3:14b",
+  "_eval_count": 266,
+  "_total_duration_ms": 32918,
+  "_source_file": "transcripts/out-3364425695-510-20251003-151342-1759518822.17517.txt",
+  "_direction": "outbound",
+  "_char_count": 1020
+}

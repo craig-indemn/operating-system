@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Susan) is comparing insurance quotes, specifically discussing discrepancies in pricing for homeowners and auto insurance policies, and inquiring about additional coverage options like umbrella insurance.",
+  "resolution_steps": [
+    "Agent Jeremy explains the difference between the caller's current policy costs and the quoted rates.",
+    "Calculates total annual savings by comparing six-month payments for Honda and other vehicles.",
+    "Mentions an additional $340 umbrella insurance policy and explains its purpose.",
+    "Highlights potential savings even after including the umbrella policy."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy pricing structures",
+    "Umbrella insurance benefits and cost",
+    "Ability to perform on-the-fly cost comparisons"
+  ],
+  "systems_referenced": [
+    "insurance quoting system"
+  ],
+  "summary": "The call involves a detailed discussion about insurance cost comparisons, with the agent calculating savings for homeowners and auto policies. The agent also introduces an umbrella insurance option, explaining its value in legal scenarios. The caller appears interested in switching providers due to the savings identified.",
+  "_model": "qwen3:14b",
+  "_eval_count": 240,
+  "_total_duration_ms": 38989,
+  "_source_file": "transcripts/out-3364063509-701-20250822-160702-1755893222.14007.txt",
+  "_direction": "outbound",
+  "_char_count": 3783
+}

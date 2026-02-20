@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Addison is informing Vivian about a car repair estimate he received, explaining the cost ($1,700 with a $500 deductible), and plans to bring the estimate to her later for review.",
+  "resolution_steps": [
+    "Vivian acknowledges Addison's explanation about the repair estimate.",
+    "Vivian confirms she will be in the office to receive the estimate from Addison."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of car repair processes and insurance deductibles",
+    "Ability to handle client updates about repair estimates"
+  ],
+  "systems_referenced": [],
+  "summary": "Addison discusses a car repair estimate with Vivian, detailing the cost and deductible, and agrees to bring the estimate to her office later. Vivian confirms she will be available to review it.",
+  "_model": "qwen3:14b",
+  "_eval_count": 195,
+  "_total_duration_ms": 42112,
+  "_source_file": "transcripts/parked-301-301-20250922-121104-1758557463.3818.txt",
+  "_direction": "parked",
+  "_char_count": 614
+}

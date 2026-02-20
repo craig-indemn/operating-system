@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Tracy needs to update her homeowners policy information ahead of its February 19th expiration due to Main Street America's non-renewal, and she wants to ensure the cheapest possible replacement policy.",
+  "resolution_steps": [
+    "Jamie confirmed Tracy's policy details (address, coverage, deductible, mortgage lender).",
+    "Asked Tracy about roof age (15 years), pets (golden doodle), and property features (no pool/children).",
+    "Notified Tracy that Main Street America is non-renewing all NC policies.",
+    "Planned to reshop her policy with multiple carriers, highlighting Safe Co Insurance (Liberty Mutual sister company) as a competitive option.",
+    "Acknowledged Tracy's concern about rising costs and assured her the system would provide rate indications."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance carrier non-renewal processes",
+    "Homeowners policy reshopping procedures",
+    "Carrier-specific rate competitiveness (e.g., Safe Co vs. Progressive)",
+    "Policy underwriting factors (roof age, pets, mortgage status)"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's internal policy management system",
+    "Carrier rate indication system",
+    "Safe Co Insurance (Liberty Mutual affiliate)",
+    "Progressive Insurance"
+  ],
+  "summary": "Jamie from Alliance Insurance informed Tracy that her Main Street America homeowners policy would not be renewed and needed updated information to reshop her coverage. Tracy provided details about her property, roof age, and pets, while Jamie emphasized Safe Co Insurance as a potential competitive replacement. The call concluded with Jamie planning to push her information to carriers for rate indications.",
+  "_model": "qwen3:14b",
+  "_eval_count": 366,
+  "_total_duration_ms": 41489,
+  "_source_file": "transcripts/out-3366240059-501-20260106-151703-1767730623.4835.txt",
+  "_direction": "outbound",
+  "_char_count": 4493
+}

@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "N/A (automated message with no direct caller intent)",
+  "resolution_steps": [
+    "Played automated menu options",
+    "Routed call based on user input (press 1 for claims, wait for company transfer)"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Automated voicemail greeting providing call routing instructions. No agent-caller interaction occurred. Caller directed to press 1 for claims or wait for company transfer.",
+  "_model": "qwen3:14b",
+  "_eval_count": 123,
+  "_total_duration_ms": 26238,
+  "_source_file": "transcripts/out-8003340328-503-20250910-152602-1757532362.7142.txt",
+  "_direction": "outbound",
+  "_char_count": 179
+}

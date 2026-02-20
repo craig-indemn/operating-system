@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Not applicable (automated system message)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Automated voicemail greeting from Westfield providing account/billing options. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 80,
+  "_total_duration_ms": 19667,
+  "_source_file": "transcripts/out-8002430210-409-20250902-105530-1756824930.2326.txt",
+  "_direction": "outbound",
+  "_char_count": 464
+}

@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking assistance with a refund for an auto insurance policy they canceled approximately 2-3 months ago, which they believe they should have received but have not yet received.",
+  "resolution_steps": [
+    "Agent asked clarifying questions about the policy cancellation (specifically whether the caller removed a vehicle or canceled a policy).",
+    "Agent requested the caller provide details about the vehicle (1995 Ranger) and the timeline of the cancellation.",
+    "Agent informed the caller they would transfer the call to another agent to assist further."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy cancellation processes",
+    "Refund timelines and procedures for canceled policies",
+    "Internal systems to check refund status"
+  ],
+  "systems_referenced": [
+    "Internal agent transfer system"
+  ],
+  "summary": "A caller contacted Alliance Insurance to inquire about a refund for an auto insurance policy canceled 2-3 months prior. The agent gathered details about the policy and vehicle involved, then offered to transfer the call to a specialist for further assistance. The outcome is pending as the call was not fully resolved.",
+  "_model": "qwen3:14b",
+  "_eval_count": 257,
+  "_total_duration_ms": 26968,
+  "_source_file": "transcripts/in-+13363779003-+13369182152-20250826-121943-1756225183.3987.txt",
+  "_direction": "inbound",
+  "_char_count": 837
+}

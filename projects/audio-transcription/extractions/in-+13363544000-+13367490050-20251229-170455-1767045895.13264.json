@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with Jamie Phillips regarding land insurance",
+  "resolution_steps": [
+    "Agent acknowledges call",
+    "States 'On second' (likely transferring call)"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Short inbound call where caller requested to speak with Jamie Phillips. Agent acknowledged the request but did not provide further assistance beyond transferring the call.",
+  "_model": "qwen3:14b",
+  "_eval_count": 106,
+  "_total_duration_ms": 21979,
+  "_source_file": "transcripts/in-+13363544000-+13367490050-20251229-170455-1767045895.13264.txt",
+  "_direction": "inbound",
+  "_char_count": 124
+}

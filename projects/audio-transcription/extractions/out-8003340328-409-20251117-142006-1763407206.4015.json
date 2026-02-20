@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Corbin is assisting a client (Nat) with a claim inquiry for Brady Hill's home policy, seeking clarification on coverage after multiple property losses.",
+  "resolution_steps": [
+    "Corbin requested Nat's agency code to look up Brady Hill's policy details.",
+    "Used the quoting system to access Brady Hill's home policy information.",
+    "Reviewed claim history, noting three losses within five years (including one in March 2022) at different locations.",
+    "Explained underwriting guidelines: refusal to cover risks with more than one loss in the past three years, regardless of location."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Underwriting guidelines for property insurance (specifically loss history thresholds)",
+    "Policy lookup procedures using agency codes and quoting systems"
+  ],
+  "systems_referenced": [
+    "Quoting system (for policy lookup)",
+    "Agency code database"
+  ],
+  "summary": "Corbin from Alliance Insurance discussed a claim denial for Brady Hill's home policy due to multiple property losses within three years. The agent checked the policy via agency code and quoting system, confirming underwriting rules prohibit coverage for clients with more than one loss in the past three years, even across different locations. The client was informed of the denial but no alternative solutions were proposed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 292,
+  "_total_duration_ms": 38915,
+  "_source_file": "transcripts/out-8003340328-409-20251117-142006-1763407206.4015.txt",
+  "_direction": "outbound",
+  "_char_count": 2398
+}

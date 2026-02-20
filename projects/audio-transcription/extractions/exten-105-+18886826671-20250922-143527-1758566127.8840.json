@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Rick needed assistance resolving a login error on the Employers website portal, specifically an issue where his computer clock was reported as five minutes off, preventing access.",
+  "resolution_steps": [
+    "Rachel confirmed Rick's agency (Alliance Insurance Services) and verified his identity using his first name and last name initial.",
+    "Rachel checked Rick's email logs to diagnose the issue.",
+    "Rachel advised Rick to close all browser tabs and clear his browsing data to reset the portal session.",
+    "Rachel warned Rick about potential logout issues if Microsoft Office or cloud apps were open during the process.",
+    "Rachel suggested avoiding saved login links and instead using the direct Employers website login (theemployers.com).",
+    "Rick tested the direct login link, which resolved the issue."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Browser cache and cookie management",
+    "Employers portal login procedures",
+    "Troubleshooting time synchronization errors in web applications"
+  ],
+  "systems_referenced": [
+    "Employers website portal",
+    "theemployers.com"
+  ],
+  "summary": "Rick contacted Employers tech support to resolve a login error on their portal, caused by a time synchronization issue. The agent guided him to clear his browser cache and use the direct login link, which fixed the problem. The call concluded successfully with Rick able to access the portal.",
+  "_model": "qwen3:14b",
+  "_eval_count": 302,
+  "_total_duration_ms": 39072,
+  "_source_file": "transcripts/exten-105-+18886826671-20250922-143527-1758566127.8840.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3316
+}

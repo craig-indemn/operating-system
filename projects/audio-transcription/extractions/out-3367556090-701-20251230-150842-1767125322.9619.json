@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Agent left a voicemail message for David, requesting a callback.",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Agent left a voicemail message for David, requesting a callback. The call was answered by voicemail, and no further conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 90,
+  "_total_duration_ms": 81824,
+  "_source_file": "transcripts/out-3367556090-701-20251230-150842-1767125322.9619.txt",
+  "_direction": "outbound",
+  "_char_count": 439
+}

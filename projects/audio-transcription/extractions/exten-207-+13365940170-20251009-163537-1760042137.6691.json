@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Linda from North Edge Steel is requesting a certificate of insurance with her company as the certificate holder, providing details about the installer and company information.",
+  "resolution_steps": [
+    "Cody confirms the caller's identity and purpose.",
+    "Collects the installer's name (Maria Rubio Lopez), company name (North Edge Steel LLC), address (350 Forum Parkway, Rural Hall, 27045), and email (lvasquez@northedgesteel.us).",
+    "Informs Linda that the certificate will be sent via email, requiring her to respond with a thank you to trigger the attachment in their system."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Process for issuing certificates of insurance",
+    "Required information for certificate requests (installer name, company details, contact information)"
+  ],
+  "systems_referenced": [
+    "internal system for certificate attachment"
+  ],
+  "summary": "Linda from North Edge Steel requested a certificate of insurance, providing necessary details. Cody confirmed the information and explained the process for sending the certificate via email. The call concluded with Linda agreeing to respond to the email to complete the request.",
+  "_model": "qwen3:14b",
+  "_eval_count": 260,
+  "_total_duration_ms": 44744,
+  "_source_file": "transcripts/exten-207-+13365940170-20251009-163537-1760042137.6691.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1584
+}

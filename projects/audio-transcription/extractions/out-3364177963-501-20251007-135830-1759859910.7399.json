@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jamie Flippin is following up with Jennifer to confirm whether repairs were made to a hot water heater that caused an incident months prior, as requested by the carrier Auto Workers Insurance.",
+  "resolution_steps": [
+    "Jamie explains that Auto Workers Insurance emailed a request for confirmation about hot water heater repairs.",
+    "Jamie mentions that Jennifer had previously received the email and provides her with options to respond (call back or reply via email).",
+    "Jamie shares his direct office number for follow-up."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding insurance claims processes",
+    "Carrier communication protocols",
+    "Policyholder follow-up procedures"
+  ],
+  "systems_referenced": [
+    "Auto Workers Insurance (carrier)"
+  ],
+  "summary": "Jamie Flippin from Alliance Insurance follows up with Jennifer to confirm repairs to a hot water heater, as requested by Auto Workers Insurance. He provides contact details for her to respond via phone or email. The call emphasizes the need for prompt communication with the carrier to resolve the claim-related inquiry.",
+  "_model": "qwen3:14b",
+  "_eval_count": 239,
+  "_total_duration_ms": 32628,
+  "_source_file": "transcripts/out-3364177963-501-20251007-135830-1759859910.7399.txt",
+  "_direction": "outbound",
+  "_char_count": 799
+}

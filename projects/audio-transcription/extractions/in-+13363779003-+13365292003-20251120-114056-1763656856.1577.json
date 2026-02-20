@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to confirm that a received bill for $88.50 was specifically for their renter's insurance and not another type of insurance or unrelated charge.",
+  "resolution_steps": [
+    "Agent confirmed the bill was for the caller's renter's insurance policy.",
+    "Agent clarified the amount due ($88.50) and the due date (first of December).",
+    "Agent acknowledged the caller's concern about the bill not being incorporated with their regular insurance.",
+    "Agent offered to transfer the call to another agent for cheaper options, but the caller declined further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of renter's insurance billing processes",
+    "Ability to differentiate between policy types (renter's vs. regular insurance)",
+    "Knowledge of standard policy amounts and due dates"
+  ],
+  "systems_referenced": [],
+  "summary": "The caller confirmed a renter's insurance bill amount and due date, ensuring it was not related to their regular insurance. The agent provided confirmation and offered to transfer for cheaper options, but the caller concluded the conversation satisfied with the clarification.",
+  "_model": "qwen3:14b",
+  "_eval_count": 259,
+  "_total_duration_ms": 40219,
+  "_source_file": "transcripts/in-+13363779003-+13365292003-20251120-114056-1763656856.1577.txt",
+  "_direction": "inbound",
+  "_char_count": 1262
+}

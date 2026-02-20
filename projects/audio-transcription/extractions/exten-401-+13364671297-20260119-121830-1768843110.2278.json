@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Deborah Wellborn is assisting Catherine J. Wellborn in setting up renters and auto insurance policies, confirming details like address, coverage amounts, payment schedules, and policy numbers.",
+  "resolution_steps": [
+    "Heather confirms Catherine's full name, address (including apartment number), and email.",
+    "Discusses policy details: $20,000 personal property coverage, $500,000 liability, $1,000 deductible, and $5,000 medical payments for renters insurance.",
+    "Clarifies auto insurance cost ($99/month) vs. renters insurance ($79/month).",
+    "Agrees to set policies effective on the 19th but defer payment until the 4th/5th of the month.",
+    "Adds property management company as a contact field.",
+    "Provides Heather's direct phone number for Catherine to contact later."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy terminology (coverage limits, deductibles, liability)",
+    "Payment scheduling for insurance policies",
+    "Address formatting for policy documentation"
+  ],
+  "systems_referenced": [],
+  "summary": "Deborah Wellborn coordinates with Heather to finalize renters and auto insurance details for Catherine J. Wellborn, including address verification, coverage amounts, and payment terms. Policies will be effective on the 19th but deferred until the 4th/5th of the month. Catherine will contact Heather directly for final confirmation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 330,
+  "_total_duration_ms": 55488,
+  "_source_file": "transcripts/exten-401-+13364671297-20260119-121830-1768843110.2278.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4016
+}

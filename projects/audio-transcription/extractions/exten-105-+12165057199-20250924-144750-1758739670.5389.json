@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Brian is following up on a voicemail to discuss potential business opportunities in hospitality, convenience stores, and trucking, and to seek guidance on resolving a system issue preventing him from making corrections to an insurance submission.",
+  "resolution_steps": [
+    "Agent confirmed understanding of Brian's remote work context and HVAC project.",
+    "Agent explained the brokerage structure, clarifying roles of program sales managers and the need to contact Tony (hotel sales manager) for specific program issues.",
+    "Agent acknowledged Brian's system access issue and advised contacting Tony or Janelle for resolution.",
+    "Agent offered to assist further if Brian needed clarification on next steps."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of Alliance Insurance Services' internal structure (e.g., program managers, brokerage teams).",
+    "Knowledge of carrier portal workflows and submission correction processes.",
+    "Awareness of industry-specific programs (hospitality, trucking)."
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services' carrier portal/database (mentioned as 'website access')."
+  ],
+  "summary": "Brian, a remote worker from Cleveland, Ohio, contacted Alliance Insurance Services to discuss generating business in hospitality and other sectors, while seeking help with a system issue blocking submission corrections. The agent clarified internal workflows, identified Tony as the hotel sales manager, and directed Brian to contact Tony or Janelle for resolution. The call ended with Brian requesting a callback if needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 322,
+  "_total_duration_ms": 46861,
+  "_source_file": "transcripts/exten-105-+12165057199-20250924-144750-1758739670.5389.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3973
+}

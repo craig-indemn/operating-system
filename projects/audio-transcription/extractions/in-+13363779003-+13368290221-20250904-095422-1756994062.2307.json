@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unknown (call too short to determine)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Very brief inbound call where agent is just beginning the conversation. No meaningful interaction or intent expressed by caller. Transcript cuts off mid-conversation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 90,
+  "_total_duration_ms": 23771,
+  "_source_file": "transcripts/in-+13363779003-+13368290221-20250904-095422-1756994062.2307.txt",
+  "_direction": "inbound",
+  "_char_count": 117
+}

@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Not applicable (no meaningful interaction with caller)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Agent's internal conversation about placing a caller on hold again after a timeout. No substantive interaction with the caller occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 85,
+  "_total_duration_ms": 26108,
+  "_source_file": "transcripts/ptimeout-+13363779003-+13369973266-20250724-105550-1753368950.1158.txt",
+  "_direction": "park_timeout",
+  "_char_count": 131
+}

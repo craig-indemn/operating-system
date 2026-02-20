@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jena from Alliance Insurance is contacting Calvin to review his policy renewal and confirm details, requesting a callback for further discussion.",
+  "resolution_steps": [
+    "Jena greets Calvin and introduces herself as an Alliance Insurance agent.",
+    "She mentions she is reaching out to review his policy renewal and ensure accuracy.",
+    "Calvin responds that he is in the middle of a job and agrees to call back at his convenience.",
+    "Jena thanks him and ends the call."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy renewal process",
+    "Client communication protocols"
+  ],
+  "systems_referenced": [],
+  "summary": "Jena from Alliance Insurance contacted Calvin to discuss his upcoming policy renewal, confirming the need for a callback to finalize details. Calvin agreed to reach out later, resulting in a successful arrangement for follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 200,
+  "_total_duration_ms": 33384,
+  "_source_file": "transcripts/out-8282159244-406-20251107-100549-1762527949.1151.txt",
+  "_direction": "outbound",
+  "_char_count": 404
+}

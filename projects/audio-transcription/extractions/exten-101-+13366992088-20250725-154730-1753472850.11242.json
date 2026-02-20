@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Sherry seeks guidance on handling a workers' compensation claim for an employee who fell through a porch, causing numbness in his leg. She asks about medical steps, claim filing, and required documentation.",
+  "resolution_steps": [
+    "Amani advises sending the employee to a doctor immediately for evaluation.",
+    "Explains the need to file a workers' comp claim to cover future medical costs.",
+    "Requests and confirms the correct workers' comp policy number (B938660) after initial confusion.",
+    "Collects details: employee's name (Trevor Therring), address (4124 Union Hill Road, Easton), and company name (Lynn Windley).",
+    "Confirms she will initiate the claim process and notify Sherry once filed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Workers' compensation claim procedures",
+    "Documentation requirements (policy numbers, employee details, incident location)",
+    "Insurance provider-specific policy formats (e.g., West Bend Insurance Corporation)"
+  ],
+  "systems_referenced": [
+    "West Bend Insurance Corporation"
+  ],
+  "summary": "Sherry contacted Alliance Insurance Services to file a workers' comp claim for an employee injured at work. Amani guided her through immediate medical steps, clarified policy number requirements, and collected necessary details to process the claim. The agent confirmed the claim would be filed and notified Sherry once completed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 317,
+  "_total_duration_ms": 47528,
+  "_source_file": "transcripts/exten-101-+13366992088-20250725-154730-1753472850.11242.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3304
+}

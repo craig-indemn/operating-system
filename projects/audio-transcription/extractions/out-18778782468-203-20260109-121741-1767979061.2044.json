@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Maria from Alliance Insurance is informing a Travelers underwriter about a client's policy non-renewal issue and seeking options to resolve it.",
+  "resolution_steps": [
+    "Maria provides the policy number and client name (Antonio Piazza) to the underwriter.",
+    "The underwriter explains the non-renewal reason: missing roof shingles noted in a document to be sent on February 2, 2026, with non-renewal effective March 9, 2026.",
+    "The underwriter suggests repairing the roof, submitting photos of the repairs, and providing an invoice to potentially reverse the cancellation."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding Travelers' non-renewal policies for home insurance",
+    "Process for submitting repair documentation to overturn policy cancellations",
+    "Interpreting policy cancellation notices and their effective dates"
+  ],
+  "systems_referenced": [
+    "Travelers' internal policy management system (document referenced as 'notice')",
+    "Client communication process for submitting repair proof"
+  ],
+  "summary": "Maria from Alliance Insurance contacted a Travelers underwriter about a client's policy non-renewal due to missing roof shingles. The underwriter explained the cancellation was based on a document to be sent in February 2026 and offered options to resolve the issue by repairing the roof and submitting proof. The call concluded with the underwriter agreeing to inform the client of these steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 327,
+  "_total_duration_ms": 43492,
+  "_source_file": "transcripts/out-18778782468-203-20260109-121741-1767979061.2044.txt",
+  "_direction": "outbound",
+  "_char_count": 2606
+}

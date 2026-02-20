@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Mark is seeking assistance with two issues: 1) resolving a printer malfunction where a document isn't appearing as a printable option for a colleague (Kendall), and 2) restoring a deleted email account (Laura at My Alliance Insurance) that was deleted approximately 30 days ago.",
+  "resolution_steps": [
+    "Agent confirms Kendall's extension number (103) and notes the printer issue.",
+    "Agent acknowledges the request to restore a deleted email account and checks the 30-day restoration policy.",
+    "Agent agrees to log in to verify the email account's status and follow up with Kendall."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Email restoration policies (e.g., 30-day window for recovery)",
+    "Printer configuration troubleshooting",
+    "Access to internal systems for checking email account status"
+  ],
+  "systems_referenced": [
+    "Email server (mention of 'scan to email', 'copier', and 'email account')",
+    "Internal admin portal for email restoration"
+  ],
+  "summary": "Mark reports a printer issue preventing a colleague from printing documents and requests restoration of a deleted email account. The agent confirms details, acknowledges the request, and agrees to investigate the email account's status while planning to contact Kendall for further printer troubleshooting. The call concludes with a pending resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 300,
+  "_total_duration_ms": 43820,
+  "_source_file": "transcripts/exten-107-+13364990749-20251017-102210-1760710930.1157.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1366
+}

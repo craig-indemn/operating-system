@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Tracy from Alliance Insurance seeks to reinstate a cancelled policy for Chad Harrell using fire marshal information and requests a prompt response via email.",
+  "resolution_steps": [
+    "Heather Circum (Cincinnati Insurance) will review the voicemail and email from Tracy.",
+    "Heather will investigate the reinstatement process for the policy, potentially requiring fire marshal documentation.",
+    "Heather will follow up with Tracy once the status is determined."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy reinstatement procedures for Cincinnati Insurance",
+    "Fire marshal documentation requirements",
+    "Handling of cancellation downloads"
+  ],
+  "systems_referenced": [
+    "Cincinnati Insurance's internal systems",
+    "Email communication"
+  ],
+  "summary": "Tracy from Alliance Insurance left a voicemail with Cincinnati Insurance's Heather Circum regarding a policy cancellation for Chad Harrell and requested reinstatement using fire marshal information. Tracy also sent an email for follow-up. Heather will review the request and respond after evaluating the reinstatement process.",
+  "_model": "qwen3:14b",
+  "_eval_count": 236,
+  "_total_duration_ms": 47710,
+  "_source_file": "transcripts/out-5139733993-510-20251212-150413-1765569853.4340.txt",
+  "_direction": "outbound",
+  "_char_count": 775
+}

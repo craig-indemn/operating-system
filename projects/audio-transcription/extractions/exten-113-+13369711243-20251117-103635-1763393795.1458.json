@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Gary called to review his insurance policy details and discuss potential coverage combinations for savings. He confirmed his current auto policy details and home ownership status.",
+  "resolution_steps": [
+    "Deborah Trivet confirmed Gary's contact information (email and address).",
+    "She verified that Gary's drivers and vehicle usage details were accurate.",
+    "Asked about Gary's homeowners insurance carrier and renewal dates.",
+    "Explained the possibility of combining auto and homeowners coverage at renewal to save money.",
+    "Informed Gary about potential penalties for canceling auto coverage mid-term.",
+    "Requested Gary check his homeowners policy renewal date and contact back if interested in bundling."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy renewal processes",
+    "Auto/homeowners coverage bundling strategies",
+    "Penalties for mid-term policy cancellation",
+    "Carrier-specific renewal date implications"
+  ],
+  "systems_referenced": [],
+  "summary": "Deborah Trivet conducted a policy review with Gary, confirming his auto details and exploring potential homeowners coverage bundling. She explained renewal timing implications and requested Gary check his homeowners policy dates before proceeding. The call concluded with Gary agreeing to follow up later.",
+  "_model": "qwen3:14b",
+  "_eval_count": 267,
+  "_total_duration_ms": 38846,
+  "_source_file": "transcripts/exten-113-+13369711243-20251117-103635-1763393795.1458.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1815
+}

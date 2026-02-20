@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Ellen Rucker wants to confirm her 2025 insurance premiums and understand why her auto insurance increased significantly, particularly after a recent claim. She also inquires about options to potentially find lower rates.",
+  "resolution_steps": [
+    "Addison confirms Ellen's account details (PO Box and address) to access her records.",
+    "Addison retrieves and shares Ellen's 2024 premiums ($1,557 for homeowners, $134,167 for auto).",
+    "Addison explains that the auto premium increase may be linked to Ellen's recent garage door claim, though no insurance points were added.",
+    "Addison offers to shop around with over 20 carriers to find better rates for Ellen's renewal (due on 14th).",
+    "Addison commits to emailing proposals and following up with a call after reviewing options."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Accessing customer accounts via carrier portals (Pin National)",
+    "Understanding premium calculation factors (claims impact)",
+    "Carrier shopping process and timelines",
+    "Handling customer concerns about rate increases"
+  ],
+  "systems_referenced": [
+    "Pin National insurance portal",
+    "Alliance Insurance internal account management system"
+  ],
+  "summary": "Ellen Rucker, a long-term customer, seeks clarification on her 2025 insurance premiums and the significant increase in her auto policy after a recent claim. Agent Addison confirms her 2024 rates, explains potential claim-related rate impacts, and offers to shop with multiple carriers to find better rates for her upcoming renewal. A follow-up call is scheduled after proposal reviews.",
+  "_model": "qwen3:14b",
+  "_eval_count": 369,
+  "_total_duration_ms": 49207,
+  "_source_file": "transcripts/q-300-+13366884369-20251219-104310-1766158990.2691.txt",
+  "_direction": "queue",
+  "_char_count": 3861
+}

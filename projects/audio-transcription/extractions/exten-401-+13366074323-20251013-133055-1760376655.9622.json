@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Stephen Keels wants to send photos of his roof replacement to Heather for his home insurance claim, as he did not receive previous quotes and needs to confirm the email address for submission.",
+  "resolution_steps": [
+    "Heather confirms her email address (Heather@myallianceinsurance.com) for receiving photos.",
+    "Stephen provides his email (StephenKeels@gmail.com) and clarifies the roof replacement is paid out-of-pocket, not a claim.",
+    "Heather agrees to send photos and requests a paid invoice for documentation.",
+    "Location details (Peace Haven and Louisville Clemens Road) are confirmed for reference."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Home insurance claims process",
+    "Documentation requirements (photos, invoices)",
+    "Customer communication for quote follow-ups"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance email system",
+    "Homeowner's insurance portal (implied)"
+  ],
+  "summary": "Stephen Keels follows up on a home insurance quote, seeking to submit photos of his roof replacement. Heather confirms contact details, clarifies claim status, and arranges for documentation. The call concludes with mutual agreement to proceed with photo submission and invoice verification.",
+  "_model": "qwen3:14b",
+  "_eval_count": 275,
+  "_total_duration_ms": 42196,
+  "_source_file": "transcripts/exten-401-+13366074323-20251013-133055-1760376655.9622.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3310
+}

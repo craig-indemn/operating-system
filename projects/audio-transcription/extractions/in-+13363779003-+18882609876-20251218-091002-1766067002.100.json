@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Inquiring about homeowners insurance policy details, possibly seeking assistance with a claim or policy-related issue.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Very brief call where the caller (posing as a Wells Fargo representative) asked about a homeowners policy. The agent asked for a policy number but no further information was exchanged. The conversation was too short to determine intent or resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 116,
+  "_total_duration_ms": 25863,
+  "_source_file": "transcripts/in-+13363779003-+18882609876-20251218-091002-1766067002.100.txt",
+  "_direction": "inbound",
+  "_char_count": 222
+}

@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Angela wants to discontinue auto insurance coverage on her recently sold car while ensuring she isn't penalized again and is not liable for any incidents involving the new driver (a 17-year-old) who will use the car.",
+  "resolution_steps": [
+    "Agent Clemens confirmed Angela's policy details and explained that she can keep the existing coverage active by transferring the vehicle tag to her new car.",
+    "Clemens clarified that once the tag is transferred, Angela would no longer be responsible for the sold Audi.",
+    "Angela agreed to provide vehicle details later and will call back once she locates the necessary documents."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of auto insurance policy discontinuation processes",
+    "Knowledge of vehicle tag transfer procedures",
+    "Ability to explain liability implications when transferring coverage"
+  ],
+  "systems_referenced": [],
+  "summary": "Angela sold her car and wants to discontinue coverage without penalties. The agent explained that transferring the vehicle tag to her new car would keep her protected while ensuring she's not liable for the sold vehicle. Angela will follow up with documentation once located.",
+  "_model": "qwen3:14b",
+  "_eval_count": 259,
+  "_total_duration_ms": 33692,
+  "_source_file": "transcripts/q-300-+13364302248-20250929-093432-1759152872.1599.txt",
+  "_direction": "queue",
+  "_char_count": 2181
+}

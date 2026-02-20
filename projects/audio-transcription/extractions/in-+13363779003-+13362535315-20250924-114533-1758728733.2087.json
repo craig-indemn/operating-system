@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (John Cheek) wants to make a payment for his National General insurance policy through Alliance Insurance Services and follow up on a car accident claim he previously discussed with Jamie.",
+  "resolution_steps": [
+    "Agent verified John's mailing address (9120 Fox Lair Drive, Kernersville, NC 27284).",
+    "Agent confirmed an outstanding balance of $82.22 for the month.",
+    "Agent processed a Visa payment using the provided card details (ending in 8084, exp. 10/30, CVV 618).",
+    "Agent offered to email a receipt for the payment.",
+    "Agent checked Jamie's availability to discuss the car accident claim and placed John on hold briefly."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Payment processing procedures for National General insurance policies",
+    "Verification of policyholder information (address, billing zip code)",
+    "Handling of claims follow-ups with agents (e.g., Jamie)"
+  ],
+  "systems_referenced": [
+    "National General insurance portal (for balance verification)",
+    "Payment processing system (Visa transaction)",
+    "Internal agent availability check system"
+  ],
+  "summary": "John Cheek called Alliance Insurance Services to make a $82.22 payment for his National General policy and follow up on a car accident claim discussed with Jamie. The agent processed the Visa payment, confirmed details, and checked Jamie's availability. The call concluded with the agent offering to email a receipt and confirming Jamie would be contacted.",
+  "_model": "qwen3:14b",
+  "_eval_count": 350,
+  "_total_duration_ms": 36649,
+  "_source_file": "transcripts/in-+13363779003-+13362535315-20250924-114533-1758728733.2087.txt",
+  "_direction": "inbound",
+  "_char_count": 1377
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Robin is discussing a renter's insurance quote for her sister's apartment, seeking clarification on the policy details and next steps to proceed with the coverage.",
+  "resolution_steps": [
+    "Brandi confirms the quote amount ($131.15/year) from Progressive and clarifies it covers the same coverage as the existing policy.",
+    "Explains the process: Robin needs approval from her sister, who would issue a check made payable to Alliance Insurance.",
+    "Notes that the sister can pay via check (as she prefers this over card payments).",
+    "Agrees to follow up with Brandi after consulting her sister."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Renter's insurance policy details and pricing",
+    "Carrier-specific quoting processes (Progressive)",
+    "Payment procedures for agency (Alliance Insurance)"
+  ],
+  "systems_referenced": [
+    "Progressive (insurance carrier)",
+    "Alliance Insurance (agency)"
+  ],
+  "summary": "Brandi provides a renter's insurance quote for Robin's sister's apartment, confirms coverage details, and outlines steps to finalize the policy via a check from the sister. Robin agrees to follow up with her sister and return to Brandi for next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 279,
+  "_total_duration_ms": 42774,
+  "_source_file": "transcripts/out-3364883677-100-20251013-113735-1760369855.3342.txt",
+  "_direction": "outbound",
+  "_char_count": 1355
+}

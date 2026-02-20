@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking a quote for garage liability insurance and is asking about requirements, coverage types, and the application process.",
+  "resolution_steps": [
+    "Jessica explains that a quote requires two years of prior insurance, which the caller does not currently have.",
+    "She outlines the need for loss runs and declaration pages to process the quote, with a 3-7 business day turnaround.",
+    "Jessica clarifies the difference between premise liability (for slips/falls) and DMV tag liability (for test drives).",
+    "She confirms the caller's dealership address and notes the need for the declaration pages to proceed.",
+    "Offers to send an email template for the caller to provide necessary information."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Garage insurance requirements (e.g., two years of prior insurance)",
+    "Types of liability coverage (premise vs. DMV tag)",
+    "Quote processing timelines and documentation needs"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller inquires about obtaining a garage liability insurance quote, requirements, and coverage types. The agent explains the two-year insurance history requirement, clarifies coverage distinctions, and arranges for the caller to provide loss runs and declaration pages via email. The caller agrees to send the required information.",
+  "_model": "qwen3:14b",
+  "_eval_count": 291,
+  "_total_duration_ms": 45637,
+  "_source_file": "transcripts/q-500-+17045027888-20250731-153751-1753990671.16266.txt",
+  "_direction": "queue",
+  "_char_count": 4213
+}

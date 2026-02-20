@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Tracy) is informing the client that Auto Owners lifted a non-renewal on their current policy but clarifying that the client has already secured a cheaper auto insurance policy through National General. The client wants to cancel the Auto Owners policy and confirm the effective date of the new policy.",
+  "resolution_steps": [
+    "Tracy acknowledges the client's cancellation request and confirms the effective date of the new policy (yesterday).",
+    "Tracy offers to send a cancellation form to the client for signing to process the Auto Owners policy cancellation.",
+    "Tracy agrees to investigate the rate discrepancy between the quoted rate (from Alliance) and the rate the client secured through National General."
+  ],
+  "outcome": "transferred",
+  "knowledge_required": [
+    "Auto insurance cancellation procedures",
+    "Carrier-specific policy effective date tracking",
+    "Rate discrepancy resolution processes with carriers"
+  ],
+  "systems_referenced": [
+    "Auto Owners (carrier)",
+    "National General (carrier)",
+    "Internal cancellation form documentation"
+  ],
+  "summary": "Tracy from Alliance Insurance discusses a client's request to cancel an Auto Owners policy after securing a cheaper rate through National General. Tracy confirms the effective date of the new policy, offers to send a cancellation form, and agrees to investigate the rate discrepancy. The client retains their homeowners policy but cancels the auto insurance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 304,
+  "_total_duration_ms": 45097,
+  "_source_file": "transcripts/out-3368302187-510-20251001-092728-1759325248.771.txt",
+  "_direction": "outbound",
+  "_char_count": 1218
+}

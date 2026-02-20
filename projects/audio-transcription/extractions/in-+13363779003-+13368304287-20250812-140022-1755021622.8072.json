@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Brief greeting and transfer request; insufficient context for substantive analysis",
+  "_model": "qwen3:14b",
+  "_eval_count": 65,
+  "_total_duration_ms": 29187,
+  "_source_file": "transcripts/in-+13363779003-+13368304287-20250812-140022-1755021622.8072.txt",
+  "_direction": "inbound",
+  "_char_count": 115
+}

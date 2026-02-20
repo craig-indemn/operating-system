@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unknown (no specific request or issue mentioned)",
+  "resolution_steps": [
+    "Agent (Anna) attempts to connect caller with another party"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Standard voicemail greeting and transfer attempt. No substantive discussion occurred. Caller was directed to wait while Anna attempted to locate another party.",
+  "_model": "qwen3:14b",
+  "_eval_count": 100,
+  "_total_duration_ms": 26803,
+  "_source_file": "transcripts/in-+13363779003-+18289640430-20250805-111144-1754406704.3066.txt",
+  "_direction": "inbound",
+  "_char_count": 169
+}

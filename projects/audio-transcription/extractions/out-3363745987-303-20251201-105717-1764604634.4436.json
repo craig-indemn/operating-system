@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Mark from Alliance Insurance) needed the customer to provide a picture of the VIN number via email to proceed with underwriting a policy.",
+  "resolution_steps": [
+    "Mark explained the need for the VIN number and provided his email address (My Alliance Insurance Dot com).",
+    "The customer agreed to take a picture of the VIN from a dealership document and email it.",
+    "They discussed potential issues with the email not arriving and checking spam folders.",
+    "Mark confirmed he would follow up with the underwriter and ensure the process was completed.",
+    "The customer assured Mark the VIN was sent and agreed to contact if further action was needed."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Underwriting process requirements",
+    "Email submission protocols for VIN verification",
+    "Handling customer confusion about email addresses",
+    "Post-submission follow-up procedures"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance email system (My Alliance Insurance Dot com)",
+    "Underwriting system",
+    "Claims department (for Ally Bank check status)"
+  ],
+  "summary": "Mark from Alliance Insurance guided a customer through submitting a VIN number image via email to complete underwriting. After resolving confusion about the email address and ensuring the document was sent, Mark confirmed he would handle the rest of the process. The customer felt reassured and agreed to follow up if needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 305,
+  "_total_duration_ms": 52321,
+  "_source_file": "transcripts/out-3363745987-303-20251201-105717-1764604634.4436.txt",
+  "_direction": "outbound",
+  "_char_count": 3895
+}

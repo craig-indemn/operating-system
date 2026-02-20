@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Herb Hester is seeking to acquire commercial liability insurance (specifically an umbrella policy) for his furniture sourcing business, Artanis Sourcing LLC, due to concerns about tariffs and potential risks.",
+  "resolution_steps": [
+    "Agent Heather confirmed the business name (Artanis Sourcing LLC) and its structure (pass-through company owned by Herb and his wife).",
+    "Asked about the business's annual income (estimated $1\u20132M) and employee details (1 employee, his daughter Emily, with a $12K annual salary).",
+    "Noted Herb's lack of existing insurance and his focus on liability coverage.",
+    "Indicated intent to generate a quote after confirming details."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Commercial insurance products (umbrella/liability policies)",
+    "Business risk assessment based on income and operations",
+    "Understanding of pass-through company structures"
+  ],
+  "systems_referenced": [],
+  "summary": "Herb Hester, owner of Artanis Sourcing LLC (a furniture sourcing business), contacted Alliance Insurance Services to inquire about commercial liability insurance. Heather gathered details about the business's structure, income, and employee information to prepare a quote. The call concluded with Heather indicating she would follow up with a proposal.",
+  "_model": "qwen3:14b",
+  "_eval_count": 290,
+  "_total_duration_ms": 51080,
+  "_source_file": "transcripts/exten-401-+16624885118-20250925-111328-1758813208.1656.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4137
+}

@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Monica McDaniel requested a copy of a recently renewed bond from Alliance Insurance Services.",
+  "resolution_steps": [
+    "Gloria acknowledged the request and offered to contact her supervisor to obtain the bond copy.",
+    "Gloria asked for Monica's phone number to facilitate communication, as it was not on file.",
+    "Monica provided her cell phone number (336-414-4231) for follow-up."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Bond renewal documentation processes",
+    "Internal procedures for retrieving non-filed documents",
+    "Customer contact protocols"
+  ],
+  "systems_referenced": [],
+  "summary": "Monica requested a bond copy, and Gloria committed to contacting her supervisor to obtain it. They exchanged phone numbers as the system did not have Monica's contact information on file. The call concluded with mutual thanks and Gloria offering to follow up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 215,
+  "_total_duration_ms": 34621,
+  "_source_file": "transcripts/exten-102-+13364144231-20251211-122020-1765473620.2724.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1183
+}

@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, JC Dominguez from Alliance Insurance, inquired about the status of a claim (NC230100408Z322) and sought updates on when a payment check would be issued to the insured.",
+  "resolution_steps": [
+    "Agent Sheldon Sweeney confirmed the claim number and verified the insured's details (Lucy Herrera at 5707 Greenview Drive, Grantsboro, NC).",
+    "Sweeney checked the claim status and informed the caller that the claim was being processed by the management department (Upper Management).",
+    "Sweeney provided an estimated timeline of 7\u201310 business days for the check to be issued and mailed after final approval."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Claims processing workflow (e.g., roles of dust examiners and management departments)",
+    "Standard timelines for claim resolution and check issuance",
+    "Policyholder verification procedures"
+  ],
+  "systems_referenced": [
+    "Universal Property Casualty Insurance Company's claims management system"
+  ],
+  "summary": "JC Dominguez from Alliance Insurance checked on the status of a claim (NC230100408Z322) for Lucy Herrera. The agent confirmed the claim was with Upper Management and provided a 7\u201310 business day estimate for check issuance. The caller agreed to follow up after this period.",
+  "_model": "qwen3:14b",
+  "_eval_count": 315,
+  "_total_duration_ms": 44152,
+  "_source_file": "transcripts/out-18004259113-114-20251230-125909-1767117549.3770.txt",
+  "_direction": "outbound",
+  "_char_count": 3939
+}

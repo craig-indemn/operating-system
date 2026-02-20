@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Voicemail left to follow up on auto policy discussion with Miss Adams",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Jerry from Alliance left a voicemail for Miss Adams regarding an auto policy follow-up, asking her to call back at the provided number.",
+  "_model": "qwen3:14b",
+  "_eval_count": 92,
+  "_total_duration_ms": 27079,
+  "_source_file": "transcripts/out-6578779178-113-20251210-141940-1765394380.3502.txt",
+  "_direction": "outbound",
+  "_char_count": 294
+}

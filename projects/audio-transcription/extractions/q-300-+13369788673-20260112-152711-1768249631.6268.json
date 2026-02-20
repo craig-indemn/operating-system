@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Initial greeting and language check (Spanish)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Brief greeting where caller checks if agent speaks Spanish. No substantive discussion about insurance services occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 79,
+  "_total_duration_ms": 24815,
+  "_source_file": "transcripts/q-300-+13369788673-20260112-152711-1768249631.6268.txt",
+  "_direction": "queue",
+  "_char_count": 160
+}

@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Byron seeks to resolve insurance issues for his Thunderbird (canceled) and Explorer (removed), obtain a refund for the Thunderbird, and correct DMV records. He needs guidance on submitting a 'statement of no loss' and understanding next steps.",
+  "resolution_steps": [
+    "Heather explains the need for a 'statement of no loss' to confirm no claims between 2008 and the present for the Explorer.",
+    "Offers Byron options to submit the form via email or mail (Byron chooses mail).",
+    "Notes that the Thunderbird's insurance was canceled, and the Explorer's removal is being corrected.",
+    "Mentions a pending refund for the Thunderbird due to a vehicle mishap and assures follow-up.",
+    "Informs Byron that an FS-1 form will be filed electronically, and he must bring a copy to the DMV.",
+    "Schedules Byron to meet Addison on Monday to sign documents."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance cancellation and reinstatement processes",
+    "DMV requirements for vehicle records",
+    "Handling of 'statement of no loss' forms",
+    "Refund timelines for canceled policies"
+  ],
+  "systems_referenced": [
+    "DMV (Department of Motor Vehicles)",
+    "FS-1 form (likely a state-specific insurance form)"
+  ],
+  "summary": "Heather assists Byron in resolving insurance discrepancies for his vehicles, coordinating document submission, and addressing a pending refund. They schedule a Monday meeting to finalize paperwork, with DMV and electronic filing steps outlined.",
+  "_model": "qwen3:14b",
+  "_eval_count": 349,
+  "_total_duration_ms": 50050,
+  "_source_file": "transcripts/out-3367821583-202-20250919-140821-1758305301.6190.txt",
+  "_direction": "outbound",
+  "_char_count": 1837
+}

@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Susan Toner is following up on a previous insurance quote, checking if there are more competitive rates after state increases, and wants to pay her premium via credit card while traveling.",
+  "resolution_steps": [
+    "JC confirms Susan's policy details and rechecks available quotes.",
+    "Notifies Susan that Progressive remains the most competitive option with no significant rate changes.",
+    "Discusses payment options, confirms Susan's intent to pay in full via credit card.",
+    "Processes credit card payment (amount: $1,059.47) and mentions the discount for paying in full."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance quoting processes",
+    "Carrier rate comparisons (specifically Progressive)",
+    "Payment methods and discounts for full payment",
+    "Policy management system navigation"
+  ],
+  "systems_referenced": [
+    "Agency's policy management system",
+    "Credit card processing system"
+  ],
+  "summary": "Susan Toner follows up on an insurance quote, confirms Progressive remains the best option despite state rate increases, and arranges to pay her premium via credit card while traveling. The agent processes the payment and confirms the full-payment discount.",
+  "_model": "qwen3:14b",
+  "_eval_count": 267,
+  "_total_duration_ms": 35082,
+  "_source_file": "transcripts/exten-114-+15418902882-20250908-145652-1757357812.8964.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1922
+}

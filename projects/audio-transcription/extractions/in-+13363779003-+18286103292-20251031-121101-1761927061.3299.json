@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "",
+  "resolution_steps": [
+    "Agent placed caller on hold",
+    "Agent announced transfer to 'Joe'"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Non-substantive call consisting of a voicemail greeting and transfer announcement. No meaningful conversation occurred beyond the agent placing the caller on hold and mentioning a transfer to Joe.",
+  "_model": "qwen3:14b",
+  "_eval_count": 102,
+  "_total_duration_ms": 21935,
+  "_source_file": "transcripts/in-+13363779003-+18286103292-20251031-121101-1761927061.3299.txt",
+  "_direction": "inbound",
+  "_char_count": 168
+}

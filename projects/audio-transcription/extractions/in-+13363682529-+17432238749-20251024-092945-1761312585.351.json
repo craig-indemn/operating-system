@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Attempt to reach the business owner at Alliance Insurance Services",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The call was cut off before any meaningful conversation could occur. The caller (Daisy) requested to speak to the business owner, but the agent only began checking availability before the transcript ends.",
+  "_model": "qwen3:14b",
+  "_eval_count": 102,
+  "_total_duration_ms": 23616,
+  "_source_file": "transcripts/in-+13363682529-+17432238749-20251024-092945-1761312585.351.txt",
+  "_direction": "inbound",
+  "_char_count": 254
+}

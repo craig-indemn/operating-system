@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Daniel Basso needs to obtain new home insurance after his previous policy with Main Street America canceled on October 25th.",
+  "resolution_steps": [
+    "Brandi verifies Daniel's mailing address (249 Karen Circle, Winston Salem, NC 27105).",
+    "Brandi checks Daniel's insurance history, noting the cancellation date of Main Street America on October 25th.",
+    "Brandi explains the need to contact the new carrier to determine if they will accept the lapse in coverage.",
+    "Brandi estimates a 1-day timeline for underwriting review and plans to send an email to the carrier immediately.",
+    "Brandi assures Daniel that the agency will follow up once the underwriter responds, likely the next morning."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance underwriting processes for lapse coverage",
+    "Carrier communication protocols",
+    "Handling policy cancellations and reinstatements"
+  ],
+  "systems_referenced": [
+    "email communication with underwriting department"
+  ],
+  "summary": "Daniel Basso seeks new home insurance after a lapse in coverage. Brandi verifies details, initiates contact with the new carrier, and schedules a follow-up once underwriting confirms acceptance of the lapse. The call concludes with Daniel satisfied and a promise to contact him tomorrow.",
+  "_model": "qwen3:14b",
+  "_eval_count": 294,
+  "_total_duration_ms": 46047,
+  "_source_file": "transcripts/q-300-+13366081061-20251112-142848-1762975728.6655.txt",
+  "_direction": "queue",
+  "_char_count": 1344
+}

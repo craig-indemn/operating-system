@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Tracy is following up on insurance claims with Utica, seeking clarification on missing payments to a contractor and resolving discrepancies in the amounts received versus invoices submitted.",
+  "resolution_steps": [
+    "Agent confirmed Tracy's claim details and verified checks sent to the contractor.",
+    "Discussed discrepancies in payments, identifying a $1,700 gap between Utica's payments and invoices.",
+    "Advised Tracy to obtain detailed invoices from the contractor for both properties to reconcile the balance.",
+    "Explained Utica's process for supplemental claims if additional damages are discovered.",
+    "Noted the policy renewal date (November 15th) and Tracy's intent to switch insurers due to unresolved issues.",
+    "Provided Tracy's email (tracy@allianceinsurance.com) for future communication."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance claims reconciliation processes",
+    "Handling contractor payment disputes",
+    "Utica's scope of practice and supplemental claim procedures",
+    "Policy renewal timelines and customer retention strategies"
+  ],
+  "systems_referenced": [
+    "Utica Insurance",
+    "Alliance Insurance Services portal",
+    "Policy management system (for renewal dates)"
+  ],
+  "summary": "Tracy followed up on unresolved insurance claims with Utica, discussing missing contractor receipts and a $1,700 payment discrepancy. The agent guided her to obtain detailed invoices from the contractor for reconciliation and explained Utica's supplemental claim process. Tracy expressed intent to switch insurers due to ongoing issues, and the agent provided contact details for future follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 347,
+  "_total_duration_ms": 59619,
+  "_source_file": "transcripts/axfer-+13363095754-510-20250805-114611-1754408636.3989.txt",
+  "_direction": "attended_transfer",
+  "_char_count": 8685
+}

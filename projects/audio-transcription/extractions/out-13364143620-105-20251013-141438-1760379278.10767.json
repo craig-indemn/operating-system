@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Joe) is following up on a previous email to coordinate a lunch meeting with the agent and other teammates, specifically discussing construction-related business and rescheduling due to a busy calendar.",
+  "resolution_steps": [
+    "Agent checks calendar for available dates after the initial requested Monday.",
+    "Agent proposes alternative dates (21st, 22nd, 23rd) but finds conflicts with existing appointments (policy reviews, account meetings).",
+    "Agent agrees to send an email to Daniel (the new rep) to reschedule and coordinate with other team members.",
+    "Agent commits to keeping the caller informed and adjusting the meeting to accommodate the caller's schedule."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of the caller's calendar conflicts and priorities",
+    "Knowledge of construction-related business and team members (e.g., Daniel, Travis, Jeff, Christopher)",
+    "Ability to reschedule meetings and coordinate with internal teams"
+  ],
+  "systems_referenced": [
+    "calendar",
+    "email"
+  ],
+  "summary": "The agent coordinated with Joe to reschedule a construction-related meeting with Daniel due to calendar conflicts. The agent will send an email to Daniel to adjust the date and involve other team members if needed, keeping Joe informed of progress.",
+  "_model": "qwen3:14b",
+  "_eval_count": 286,
+  "_total_duration_ms": 49506,
+  "_source_file": "transcripts/out-13364143620-105-20251013-141438-1760379278.10767.txt",
+  "_direction": "outbound",
+  "_char_count": 4066
+}

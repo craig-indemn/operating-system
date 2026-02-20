@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, An\u00edllo, seeks assistance in obtaining insurance for a company they've contracted with and specifically requests to speak with Jessica, the only Spanish-speaking commercial agent at the agency.",
+  "resolution_steps": [
+    "Agent informs caller that Jessica is unavailable today but will return on Monday.",
+    "Agent suggests contacting the office on Monday at 9:00 AM to speak with Jessica.",
+    "Caller agrees to follow up on Monday and thanks the agent."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Jessica's availability (Monday at 9:00 AM)",
+    "Language-specific agent allocation (Spanish-speaking commercial agent)"
+  ],
+  "systems_referenced": [
+    "Agency internal schedule (Jessica's return date/time)"
+  ],
+  "summary": "A caller from North Lila requested assistance with commercial insurance and specifically asked to speak with Jessica, the Spanish-speaking agent. The agent informed them Jessica would return on Monday at 9:00 AM and arranged a follow-up call. The caller agreed to contact back on Monday.",
+  "_model": "qwen3:14b",
+  "_eval_count": 240,
+  "_total_duration_ms": 32485,
+  "_source_file": "transcripts/in-+13363779003-+17867952468-20250725-130951-1753463391.8090.txt",
+  "_direction": "inbound",
+  "_char_count": 1209
+}

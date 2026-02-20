@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking guidance on how to properly list Arbor's apartments as an additional insured on an insurance contract, providing specific details about the property and insurance requirements.",
+  "resolution_steps": [
+    "Agent listened to the caller's request about additional insured requirements.",
+    "Confirmed details provided by the caller: property name (Arbor's Apartments), address (4981 Hunt Club Road, Apartment G, Winston Salem, NC 27104), and the $100K insurance requirement.",
+    "Caller expressed satisfaction with the confirmation and ended the conversation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of additional insured requirements in insurance contracts",
+    "Familiarity with property insurance terminology and documentation"
+  ],
+  "systems_referenced": [],
+  "summary": "The caller requested clarification on listing Arbor's apartments as an additional insured, providing property details and confirming the $100K insurance requirement. The agent confirmed the information, and the caller ended the conversation with gratitude.",
+  "_model": "qwen3:14b",
+  "_eval_count": 233,
+  "_total_duration_ms": 46099,
+  "_source_file": "transcripts/out-3367655061-409-20250926-110100-1758898860.1480.txt",
+  "_direction": "outbound",
+  "_char_count": 881
+}

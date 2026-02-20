@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller initially attempted to reach Matt at Alliance Insurance but became confused about her insurance provider, mistakenly believing she was with Alliance instead of Nationwide. She sought clarification and assistance in connecting with Matt.",
+  "resolution_steps": [
+    "Agent clarified that Alliance Insurance is a broker working with multiple carriers, including Nationwide, but is not the same as Nationwide.",
+    "Agent asked the caller to provide her name to look her up in the system.",
+    "Caller identified herself as Susan C. Marshall.",
+    "Agent stated they could not find Susan Marshall in their system.",
+    "Agent made a confusing statement: 'This is Matt calling. It Matt. Okay. Calling. Thank you.' (likely a miscommunication or error)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding Alliance Insurance's role as a broker working with multiple carriers (e.g., Nationwide).",
+    "Ability to search internal systems for client information."
+  ],
+  "systems_referenced": [
+    "Internal client database/CMS"
+  ],
+  "summary": "A caller confused about her insurance provider (Nationwide vs. Alliance) sought to reach Matt at Alliance. The agent clarified the broker relationship, attempted to look up the caller's information, but could not find Susan Marshall in the system. The call ended with a confusing statement from the agent about 'Matt calling.'",
+  "_model": "qwen3:14b",
+  "_eval_count": 301,
+  "_total_duration_ms": 60017,
+  "_source_file": "transcripts/in-+13363779003-+13364036893-20250903-145652-1756925812.9050.txt",
+  "_direction": "inbound",
+  "_char_count": 990
+}

@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to transfer a client case to Holly for handling a rate increase adjustment, aiming to avoid an increase until the renewal date. They also mention another case involving Hamza needing a policy change reverted.",
+  "resolution_steps": [
+    "Caller requests Holly to create a follow-up for the client whose husband died, to delay the rate increase until renewal.",
+    "Holly agrees to handle the follow-up and update the client on changes closer to the renewal date.",
+    "Caller mentions Hamza's policy cancellation and requests Holly to check and revert the policy change if needed.",
+    "Caller references Marblebox quotes and a car purchase for a client's son, asking Holly to review documents via email."
+  ],
+  "outcome": "transferred",
+  "knowledge_required": [
+    "Understanding insurance rate adjustments and client management",
+    "Handling sensitive client situations (e.g., spouse's death)",
+    "Policy cancellation/reversion processes",
+    "Internal case management systems"
+  ],
+  "systems_referenced": [
+    "Safeco (insurance carrier)",
+    "Marblebox (quoting tool)",
+    "Internal case management system"
+  ],
+  "summary": "The call involves transferring a client case to avoid an insurance rate increase, discussing policy changes for another client, and coordinating follow-ups. The agent seeks assistance from Holly to manage these tasks, including reviewing quotes and handling policy reversion requests.",
+  "_model": "qwen3:14b",
+  "_eval_count": 304,
+  "_total_duration_ms": 44798,
+  "_source_file": "transcripts/internal-409-504-20251110-111953-1762791593.2227.txt",
+  "_direction": "internal",
+  "_char_count": 3938
+}

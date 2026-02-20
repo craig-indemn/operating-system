@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Adrian is calling to correct an error in a claim filed for a court bar incident, specifically the incorrect date (used yesterday instead of Friday, the 22nd), and to ensure the policyholder (Tony) is properly contacted for further details.",
+  "resolution_steps": [
+    "Agent confirmed the incident occurred on Friday, the 22nd, and noted the need to update the date in the system (data loss change).",
+    "Agent mentioned initiating a policy change and data loss change in the system.",
+    "Agent coordinated with the policyholder (Tony) via text to request follow-up contact.",
+    "Agent clarified that the minor claimant (17-year-old) cannot provide a recorded statement and that the policyholder (Tony) is the primary contact.",
+    "Agent confirmed Adrian's contact number (336-331-6327) for future communication."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Claim processing procedures",
+    "Policyholder communication protocols",
+    "Handling claims involving minors",
+    "System workflows for data loss and policy changes"
+  ],
+  "systems_referenced": [
+    "Internal claim management system (data loss change, policy change)",
+    "Texting platform for policyholder communication"
+  ],
+  "summary": "Adrian contacted the agent to correct a claim date error (Friday, 22nd instead of yesterday) and ensure the policyholder (Tony) is contacted. The agent agreed to update the claim details, initiate policy changes, and coordinate follow-up with Tony via text. Adrian provided his contact information for future reference.",
+  "_model": "qwen3:14b",
+  "_eval_count": 356,
+  "_total_duration_ms": 52315,
+  "_source_file": "transcripts/exten-409-+13363316327-20250826-113729-1756222649.2918.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2536
+}

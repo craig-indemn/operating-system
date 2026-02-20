@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Karen wanted to make a full payment for an umbrella insurance policy after receiving the application via email. She confirmed readiness to proceed with payment details.",
+  "resolution_steps": [
+    "Agent Brandy confirmed sending the umbrella application via email for Karen to sign.",
+    "Karen agreed to pay $2,320 in full.",
+    "Brandy collected Karen's credit card details (number, expiration date, billing zip code).",
+    "Payment was processed, and a receipt was promised via email.",
+    "Brandy reminded Karen that the umbrella policy is not on auto pay and requires manual renewal."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Umbrella insurance policy procedures",
+    "Payment processing via credit card",
+    "Auto pay vs. manual payment requirements",
+    "Email communication for document signing"
+  ],
+  "systems_referenced": [
+    "Email system for sending/receiving documents",
+    "Payment processing system",
+    "Alliance Insurance's umbrella policy management system"
+  ],
+  "summary": "Agent Brandy facilitated Karen's full payment for an umbrella insurance policy, collected credit card details, and reminded her about manual renewal requirements. The call concluded with confirmation of payment processing and receipt delivery via email.",
+  "_model": "qwen3:14b",
+  "_eval_count": 277,
+  "_total_duration_ms": 45241,
+  "_source_file": "transcripts/out-3365491990-112-20251119-143332-1763580812.4961.txt",
+  "_direction": "outbound",
+  "_char_count": 1607
+}

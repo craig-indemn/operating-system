@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller attempted to reach Holly, a part-time agent, but was informed she was unavailable. They sought guidance on leaving a voicemail and confirmed her work schedule.",
+  "resolution_steps": [
+    "Agent explained Holly's part-time schedule (9 AM\u20131 PM, Monday\u2013Friday, with Friday off).",
+    "Offered to send the caller's message to Holly's voicemail.",
+    "Informed the caller Holly would see the voicemail the next day and contact them."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Holly's work hours and availability",
+    "Voicemail system functionality"
+  ],
+  "systems_referenced": [],
+  "summary": "The caller tried to reach Holly but was informed she was unavailable. The agent explained Holly's schedule, facilitated a voicemail, and assured the caller Holly would contact them the next day.",
+  "_model": "qwen3:14b",
+  "_eval_count": 204,
+  "_total_duration_ms": 44355,
+  "_source_file": "transcripts/in-+13363779003-Anonymous-20250902-134057-1756834857.5698.txt",
+  "_direction": "inbound",
+  "_char_count": 917
+}

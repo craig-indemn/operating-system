@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "A customer attempted to make a payment and requested to change billing to installments, but there was confusion about the correct account and entity involved.",
+  "resolution_steps": [
+    "Dina checked the customer-provided account number in AutoOwners, which pulled up 'Sun House Petroleum' instead of the expected 'Sun House Hospitality'.",
+    "She called the number on file for the account but spoke to an unrelated party who denied the customer's request.",
+    "Realizing the confusion between entities, Dina decided not to make changes without further clarification.",
+    "Notified Jeff of the unresolved issue and potential miscommunication."
+  ],
+  "outcome": "unresolved",
+  "knowledge_required": [
+    "Understanding AutoOwners system navigation",
+    "Handling payment cancellation/reinstatement processes",
+    "Differentiating between affiliated entities (Sun House Hospitality vs. Petroleum)"
+  ],
+  "systems_referenced": [
+    "AutoOwners",
+    "billing portal"
+  ],
+  "summary": "A customer's payment request led to confusion between two Sun House entities. Dina verified the account in AutoOwners but encountered discrepancies when contacting the on-file number. The issue remains unresolved due to potential misidentification of the correct policyholder.",
+  "_model": "qwen3:14b",
+  "_eval_count": 260,
+  "_total_duration_ms": 35838,
+  "_source_file": "transcripts/internal-509-206-20250929-160402-1759176242.6520.txt",
+  "_direction": "internal",
+  "_char_count": 4221
+}

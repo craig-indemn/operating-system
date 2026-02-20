@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "N/A",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Outbound call resulted in a voicemail message indicating the mailbox was full. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 73,
+  "_total_duration_ms": 17504,
+  "_source_file": "transcripts/out-5408083639-401-20260105-155513-1767646513.12528.txt",
+  "_direction": "outbound",
+  "_char_count": 73
+}

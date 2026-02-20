@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to verify the status and details of a surety bond policy under the account 'Big Easy Cars' to ensure it was active and correctly dated.",
+  "resolution_steps": [
+    "Agent requested the account name and bond number from the caller.",
+    "Agent checked the policy in the system using the provided details.",
+    "Agent confirmed the policy was active and provided the effective (3/3/25) and expiration dates (3/3/28)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of surety bond policies",
+    "Access to internal policy database/system",
+    "Ability to retrieve policy dates and status"
+  ],
+  "systems_referenced": [
+    "policy database",
+    "internal system"
+  ],
+  "summary": "A caller verified their surety bond policy's status with Alliance Insurance. The agent confirmed the policy was active and provided the effective and expiration dates. The caller expressed gratitude and ended the conversation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 222,
+  "_total_duration_ms": 44732,
+  "_source_file": "transcripts/in-+13363779003-+13365297668-20250722-104112-1753195272.5218.txt",
+  "_direction": "inbound",
+  "_char_count": 955
+}

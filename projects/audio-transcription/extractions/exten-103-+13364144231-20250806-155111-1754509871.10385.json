@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking assistance with an audit notice related to a closed business location and needs help verifying the current business address for Better Way Auto Notice.",
+  "resolution_steps": [
+    "Gloria asks the caller to confirm the current business address after learning the audit notice references a closed location (621 Coliseum Drive).",
+    "The caller provides the current address: 1055 Salisbury Ridge Road, Winston Salem, 27127 (repair shop location)."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Handling audit notices for insurance policies",
+    "Verifying business location details for policy accuracy"
+  ],
+  "systems_referenced": [
+    "Better Way Auto Notice (likely an insurance carrier or audit system)"
+  ],
+  "summary": "The caller contacted Alliance Insurance to address an audit notice tied to a closed location. Gloria helped verify the current business address (1055 Salisbury Ridge Road) to ensure the audit is correctly associated with the active location. The call resolved the immediate issue of location verification.",
+  "_model": "qwen3:14b",
+  "_eval_count": 238,
+  "_total_duration_ms": 36058,
+  "_source_file": "transcripts/exten-103-+13364144231-20250806-155111-1754509871.10385.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 917
+}

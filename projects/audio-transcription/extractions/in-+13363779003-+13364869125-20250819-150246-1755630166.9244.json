@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to make a payment for her auto insurance policy.",
+  "resolution_steps": [
+    "Agent asked for the caller's name (Darlene Duncan).",
+    "Confirmed the payment amount ($330.24).",
+    "Requested credit card details (processed securely).",
+    "Processed the payment and confirmed its success.",
+    "Offered confirmation number or email receipt; caller opted for email."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Payment processing procedures",
+    "Handling sensitive financial information securely",
+    "Confirming policyholder details"
+  ],
+  "systems_referenced": [],
+  "summary": "Darlene Duncan called to pay her auto insurance. The agent processed the $330.24 payment using her credit card details, confirmed the transaction, and sent an email receipt. The caller did not request further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 204,
+  "_total_duration_ms": 43935,
+  "_source_file": "transcripts/in-+13363779003-+13364869125-20250819-150246-1755630166.9244.txt",
+  "_direction": "inbound",
+  "_char_count": 969
+}

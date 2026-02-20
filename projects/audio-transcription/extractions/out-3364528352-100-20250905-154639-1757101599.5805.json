@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Juanita wanted clarification about policy changes related to John's new vehicle and the impact on her monthly billing.",
+  "resolution_steps": [
+    "Brandy informed Juanita that John's new vehicle would be removed from the policy, changing his status to 'title purposes only' (no driver rating).",
+    "Brandy confirmed that Juanita would not incur additional costs for John's status change.",
+    "Brandy verified that John had been consulted and that the process was initiated.",
+    "Brandy explained the new monthly balance would be emailed after processing, expected by Wednesday."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy changes for vehicle removal and driver status updates",
+    "Billing calculation logic for title-only vs. driver status",
+    "Internal process timelines for policy updates"
+  ],
+  "systems_referenced": [
+    "email notification system for billing updates"
+  ],
+  "summary": "Brandy informed Juanita about a policy update removing John's new vehicle from coverage while keeping him on the policy for title purposes. The agent clarified no additional costs would apply and confirmed the new monthly billing would be emailed by Wednesday. The call ended with Juanita acknowledging the information and a brief technical check confirming audio clarity.",
+  "_model": "qwen3:14b",
+  "_eval_count": 272,
+  "_total_duration_ms": 38405,
+  "_source_file": "transcripts/out-3364528352-100-20250905-154639-1757101599.5805.txt",
+  "_direction": "outbound",
+  "_char_count": 1181
+}

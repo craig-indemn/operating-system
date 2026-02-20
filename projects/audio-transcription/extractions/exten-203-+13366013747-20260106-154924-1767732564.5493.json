@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Bill McClure is inquiring about potential charges for canceling his insurance policy mid-term and wants to adjust coverage amounts on his National General policy, including increasing property damage limits and exploring an umbrella policy.",
+  "resolution_steps": [
+    "Maria explains the cancellation calculation: subtracting unearned premium from the most recent payment to determine a potential refund.",
+    "Maria checks the National General quote for adjusting property damage coverage from $1,000 to $250.",
+    "Maria confirms there is no existing umbrella policy and suggests adding one.",
+    "Maria adjusts collision deductible to $250 and increases liability limits to $500,000, resulting in a $100 premium increase.",
+    "Maria reviews additional coverages (e.g., towing, rental) and confirms Bill's intent to proceed with changes."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance cancellation calculations (earned/unearned premium)",
+    "Policy adjustment procedures for coverage limits and deductibles",
+    "Umbrella policy eligibility and benefits",
+    "National General quoting system navigation"
+  ],
+  "systems_referenced": [
+    "Carrier underwriting portal (for cancellation calculations)",
+    "National General quoting system"
+  ],
+  "summary": "Bill McClure consults about mid-term cancellation charges and policy adjustments. Maria explains refund calculations, modifies coverage limits, increases liability, and recommends an umbrella policy. The call concludes with Bill approving changes, requiring follow-up for final adjustments.",
+  "_model": "qwen3:14b",
+  "_eval_count": 330,
+  "_total_duration_ms": 44216,
+  "_source_file": "transcripts/exten-203-+13366013747-20260106-154924-1767732564.5493.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4297
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to make a payment for their auto insurance policy but initially requested assistance in Spanish due to language barriers.",
+  "resolution_steps": [
+    "Agent confirmed the caller's intent to make a payment and offered to assist in English.",
+    "Agent verified the policy type (auto), address (1709 Baltimore Street), and payment amount ($538.42).",
+    "Agent processed the payment using a credit card ending in 2428.",
+    "Agent provided a confirmation number (10202034) and confirmed the payment was applied."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Payment processing procedures",
+    "Access to customer policy details (address, payment amounts)",
+    "Handling multilingual customer interactions"
+  ],
+  "systems_referenced": [
+    "Internal policy database (to retrieve payment details)",
+    "Payment processing system (to apply the payment and generate confirmation numbers)"
+  ],
+  "summary": "A caller attempted to make an auto insurance payment but initially requested Spanish-speaking assistance. The agent helped them complete the payment in English after confirming policy details, processing the payment, and providing a confirmation number. The call concluded successfully with the payment applied.",
+  "_model": "qwen3:14b",
+  "_eval_count": 276,
+  "_total_duration_ms": 47799,
+  "_source_file": "transcripts/in-+13363779003-+13366558074-20260106-142145-1767727305.4341.txt",
+  "_direction": "inbound",
+  "_char_count": 1551
+}

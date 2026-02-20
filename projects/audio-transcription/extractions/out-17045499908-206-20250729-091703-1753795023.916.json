@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jeff Edmonds seeks guidance on whether a commercial construction project (demolition, site prep, infrastructure) for Visikon Company in Fort Mill, SC, falls under their existing policy or requires a builder's risk endorsement.",
+  "resolution_steps": [
+    "Jeff left a detailed voicemail with Michelle Hider, including client name, policy number, project details, and urgency.",
+    "Michelle would need to review Visikon's existing policy and assess the project scope to determine coverage applicability."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Commercial insurance policy structures",
+    "Builder's risk coverage criteria",
+    "Construction project risk assessment"
+  ],
+  "systems_referenced": [
+    "Auto Owners Insurance system",
+    "Policy database for existing coverage checks"
+  ],
+  "summary": "Jeff Edmonds from Alliance Insurance requested urgent clarification on coverage for a $3.2M commercial construction project. He left a detailed voicemail for Michelle Hider at Auto Owners, outlining the project scope and asking whether it requires a builder's risk endorsement or is covered under Visikon's existing policy. The call ended with a request for immediate callback.",
+  "_model": "qwen3:14b",
+  "_eval_count": 260,
+  "_total_duration_ms": 43092,
+  "_source_file": "transcripts/out-17045499908-206-20250729-091703-1753795023.916.txt",
+  "_direction": "outbound",
+  "_char_count": 2203
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Myrtle wanted to understand why her auto insurance rate increased by $13 after updating her garaging address and explore options to reduce the cost.",
+  "resolution_steps": [
+    "Randy explained the $13 increase was due to the zip code change from updating the garaging address.",
+    "He presented a renter's policy option that would reduce the auto premium by $3 if purchased in full ($126/year for $25K coverage and $500K liability).",
+    "Agreed to delay adding the renter's policy until February 24th when the auto policy renews.",
+    "Randy committed to sending a quote for review before proceeding."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance rate factors (zip code, garaging address)",
+    "Renter's policy pricing and coverage details",
+    "Policy renewal timelines and discount structures"
+  ],
+  "systems_referenced": [
+    "insurance quoting system",
+    "policy management portal"
+  ],
+  "summary": "Randy from Lions Insurance clarified a $13 auto insurance increase caused by a zip code change and offered a renter's policy discount. Myrtle agreed to wait until her February 24th auto policy renewal to add the renter's coverage, with a quote to be sent for review. The call resolved her concerns about the rate change and next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 303,
+  "_total_duration_ms": 35883,
+  "_source_file": "transcripts/out-3364869012-112-20260116-092200-1768573320.271.txt",
+  "_direction": "outbound",
+  "_char_count": 1766
+}

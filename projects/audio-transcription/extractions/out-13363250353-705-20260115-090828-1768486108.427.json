@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is reporting a car accident where they believe they are not at fault and seeks guidance on filing a claim. They are concerned about potential disputes with the other party\u2019s insurance and want to ensure their insurer handles the situation properly.",
+  "resolution_steps": [
+    "Agent clarifies that a police report is not required to file a claim but can be helpful.",
+    "Agent asks for details about the accident (location, circumstances, other party\u2019s actions).",
+    "Agent explains they will document the caller\u2019s account of not being at fault and involve the carriers (Progressive and the other party\u2019s insurer) if needed to determine fault.",
+    "Agent requests the caller to provide a detailed account of the incident."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Auto insurance claims process",
+    "Handling fault determination without police reports",
+    "Documentation procedures for disputed claims"
+  ],
+  "systems_referenced": [
+    "Progressive (caller's insurer)",
+    "Other party's insurer (unspecified)"
+  ],
+  "summary": "A caller reports a car accident involving a tractor truck and an SUV, claiming they are not at fault. The agent explains the claim process, asks for incident details, and plans to document the claim to address potential disputes with the other party\u2019s insurance. The caller agrees to provide a detailed account of the event.",
+  "_model": "qwen3:14b",
+  "_eval_count": 298,
+  "_total_duration_ms": 47133,
+  "_source_file": "transcripts/out-13363250353-705-20260115-090828-1768486108.427.txt",
+  "_direction": "outbound",
+  "_char_count": 3995
+}

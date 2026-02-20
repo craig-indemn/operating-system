@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Heather needs her insurance documents sent to her email or provided via the Clemens office address to facilitate pickup.",
+  "resolution_steps": [
+    "Heather confirms she hasn't received her insurance documents.",
+    "Agent suggests sending documents via email or providing the Clemens office address for pickup.",
+    "Heather agrees to receive documents via email and requests the Clemens address be sent."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance document distribution processes",
+    "Office location details for policyholders"
+  ],
+  "systems_referenced": [
+    "Email communication"
+  ],
+  "summary": "Heather discusses unresolved insurance document delivery with the agent. The agent proposes email delivery or providing the Clemens office address for pickup. Heather agrees to the email solution and requests the address be sent.",
+  "_model": "qwen3:14b",
+  "_eval_count": 191,
+  "_total_duration_ms": 30968,
+  "_source_file": "transcripts/exten-202-+13367513337-20250723-161725-1753301845.13067.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 729
+}

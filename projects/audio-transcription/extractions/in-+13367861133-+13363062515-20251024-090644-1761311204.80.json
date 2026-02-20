@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to make a payment for an auto insurance policy held by Travis and Brandy Anders.",
+  "resolution_steps": [
+    "Agent asked for the policyholders' names and confirmed the payment type (auto insurance).",
+    "Agent retrieved the payment amount ($411.51) from the system.",
+    "Caller provided credit card details (Visa ending in 2269) for payment processing.",
+    "Agent confirmed the payment method was valid and initiated the transaction.",
+    "Agent offered further assistance, which the caller declined."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Payment processing procedures",
+    "Access to policyholder account information",
+    "Credit card verification protocols"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance policy management system"
+  ],
+  "summary": "A caller made a payment for Travis and Brandy Anders' auto insurance policy. The agent retrieved the payment amount, confirmed credit card details, and processed the transaction. The caller did not require further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 238,
+  "_total_duration_ms": 36204,
+  "_source_file": "transcripts/in-+13367861133-+13363062515-20251024-090644-1761311204.80.txt",
+  "_direction": "inbound",
+  "_char_count": 561
+}

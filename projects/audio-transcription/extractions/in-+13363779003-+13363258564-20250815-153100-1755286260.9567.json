@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with Rachel",
+  "resolution_steps": [
+    "Agent acknowledged request",
+    "Agent attempted to transfer call to Rachel"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Brief transfer attempt where caller requested to speak with Rachel. Agent acknowledged the request and began transferring the call, but the conversation was too short to determine if the transfer was successful.",
+  "_model": "qwen3:14b",
+  "_eval_count": 108,
+  "_total_duration_ms": 20008,
+  "_source_file": "transcripts/in-+13363779003-+13363258564-20250815-153100-1755286260.9567.txt",
+  "_direction": "inbound",
+  "_char_count": 172
+}

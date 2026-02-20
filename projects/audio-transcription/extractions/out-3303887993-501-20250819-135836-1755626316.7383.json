@@ -1,0 +1,22 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Returning a missed call and providing contact information for follow-up.",
+  "resolution_steps": [
+    "Agent Jamie Flippin identifies the missed call from Mark.",
+    "Provides Mark's direct office number and office hours (until 5:00 p.m.).",
+    "Informs Mark of availability for further assistance."
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [
+    "Standard call return procedures",
+    "Office contact information"
+  ],
+  "systems_referenced": [],
+  "summary": "Agent Jamie Flippin returns a missed call to Mark, providing contact details and office hours but no substantive discussion occurs. The call serves as a follow-up message rather than a problem-solving interaction.",
+  "_model": "qwen3:14b",
+  "_eval_count": 165,
+  "_total_duration_ms": 29050,
+  "_source_file": "transcripts/out-3303887993-501-20250819-135836-1755626316.7383.txt",
+  "_direction": "outbound",
+  "_char_count": 592
+}

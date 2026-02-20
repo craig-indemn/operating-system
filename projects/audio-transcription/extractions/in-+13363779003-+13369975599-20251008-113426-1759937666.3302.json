@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear/fragmented message about insurance, possibly a voicemail or incomplete request",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Incoherent and incomplete message with no clear intent or actionable information. Likely a voicemail greeting or disconnected conversation fragment.",
+  "_model": "qwen3:14b",
+  "_eval_count": 93,
+  "_total_duration_ms": 22156,
+  "_source_file": "transcripts/in-+13363779003-+13369975599-20251008-113426-1759937666.3302.txt",
+  "_direction": "inbound",
+  "_char_count": 121
+}

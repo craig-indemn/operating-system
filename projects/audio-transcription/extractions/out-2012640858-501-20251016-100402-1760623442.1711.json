@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Karen seeks confirmation on forwarding a check to a body shop for a 2022 Dodge Durango claim and ensures the claims adjuster is informed of the instructions.",
+  "resolution_steps": [
+    "Jamie confirms Karen's voicemail and acknowledges the check forwarding request.",
+    "Jamie sends an email to Drew Settums, the assigned claims adjuster, documenting the instructions to forward the check to the body shop.",
+    "Jamie assures Karen that the adjuster will contact her directly if there are issues with the check.",
+    "Karen confirms she will drop the check off at the body shop and discusses the body shop's repair timeline (December 20th).",
+    "Jamie agrees to copy Karen on the email to Drew for a paper trail."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Claims adjuster communication protocols",
+    "Insurance claim check disbursement procedures",
+    "Body shop coordination processes"
+  ],
+  "systems_referenced": [
+    "Email system (for communication with adjuster)"
+  ],
+  "summary": "Jamie from Life Insurance confirms with Karen that she can forward the check to the body shop for her 2022 Dodge Durango claim and sends a note to the adjuster, Drew Settums, to document the instructions. Karen agrees to proceed and discusses the body shop's repair schedule. The call concludes with Jamie copying Karen on the email to ensure transparency.",
+  "_model": "qwen3:14b",
+  "_eval_count": 312,
+  "_total_duration_ms": 51612,
+  "_source_file": "transcripts/out-2012640858-501-20251016-100402-1760623442.1711.txt",
+  "_direction": "outbound",
+  "_char_count": 2862
+}

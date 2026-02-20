@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller needs assistance making a one-time payment for their Cincinnati Insurance homeowner's policy but only has the policy number, not the account number required for payment.",
+  "resolution_steps": [
+    "Agent acknowledged the caller's issue with missing account number for payment.",
+    "Agent attempted to access the account using the provided policy number.",
+    "System failed to retrieve account information.",
+    "Agent offered to transfer the call to another agent for further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding Cincinnati Insurance's payment process",
+    "Ability to access customer accounts via policy numbers",
+    "Knowledge of when to escalate calls to other agents"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance customer portal (myallianceinsurance.com)",
+    "Internal account management system"
+  ],
+  "summary": "A caller needed help making a payment for their Cincinnati Insurance policy but lacked the required account number. The agent attempted to access the account using the policy number but failed, transferring the call to another agent for resolution. The caller was directed to the customer portal for future reference.",
+  "_model": "qwen3:14b",
+  "_eval_count": 250,
+  "_total_duration_ms": 34267,
+  "_source_file": "transcripts/in-+13363779003-+13364303205-20260119-095147-1768834307.805.txt",
+  "_direction": "inbound",
+  "_char_count": 1140
+}

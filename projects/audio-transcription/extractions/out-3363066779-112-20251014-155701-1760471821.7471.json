@@ -1,0 +1,22 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Brandy from Alliance Insurance attempted to reach Tim via voicemail to follow up on previous questions.",
+  "resolution_steps": [
+    "Voicemail left informing Tim of Brandy's availability until 5 PM and unavailability the next day between 11 AM and 1 PM"
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [
+    "voicemail procedures",
+    "caller availability communication"
+  ],
+  "systems_referenced": [
+    "automated voice messaging system"
+  ],
+  "summary": "Brandy left a voicemail for Tim, informing him of her availability until 5 PM and unavailability the next day between 11 AM and 1 PM. The call was routed through an automated voicemail system.",
+  "_model": "qwen3:14b",
+  "_eval_count": 159,
+  "_total_duration_ms": 30614,
+  "_source_file": "transcripts/out-3363066779-112-20251014-155701-1760471821.7471.txt",
+  "_direction": "outbound",
+  "_char_count": 593
+}

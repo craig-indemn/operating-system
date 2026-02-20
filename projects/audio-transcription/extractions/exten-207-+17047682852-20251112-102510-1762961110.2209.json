@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Verify insurance coverage for an installer (Francisco Ponce Estrada) and discuss strategies to separate installer insurance from manufacturer policies to avoid liability risks.",
+  "resolution_steps": [
+    "Agent confirmed the caller's identity (Paul Lamb, Pineview Buildings) and location (Statesville).",
+    "Agent verified the installer's name (Francisco Ponce Estrada) and checked insurance details.",
+    "Discussed Pineview's insurance structure, including separation of installer and manufacturer policies.",
+    "Mentioned current insurance carriers (Progressive, State Farm, First Insurance Agency, Gotham Insurance, Pi Insurance).",
+    "Agreed to send an insurance certificate via email to Paul Lamb.",
+    "Offered ongoing assistance for Pineview's installers."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance verification processes for contractors/installers",
+    "Workers' Comp, General Liability (GL), and Inland Marine insurance policies",
+    "Risk management strategies for separating manufacturer and installer insurance",
+    "Carrier-specific underwriting practices and cost trends"
+  ],
+  "systems_referenced": [
+    "Email system (for sending certificate)",
+    "COIS (insurance information database)"
+  ],
+  "summary": "Paul Lamb from Pineview Buildings verified insurance for an installer and discussed risk mitigation strategies. The agent confirmed the installer's details, explained Pineview's insurance setup, and sent an insurance certificate. The conversation highlighted challenges with installer insurance costs and the importance of separating risks between manufacturers and subcontractors.",
+  "_model": "qwen3:14b",
+  "_eval_count": 327,
+  "_total_duration_ms": 55569,
+  "_source_file": "transcripts/exten-207-+17047682852-20251112-102510-1762961110.2209.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 8960
+}

@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Yuridia Ciero Losano is confirming that a new vehicle (2019 Toyota Tundra) was correctly added to her insurance policy and inquiring why the payment has not been processed yet, as well as the next payment date.",
+  "resolution_steps": [
+    "Agent confirms Yuridia's identity and address (808 Tiperady Drive, Brunswick, NC).",
+    "Agent checks the system and verifies the 2019 Toyota Tundra was added on August 25.",
+    "Agent explains the vehicle was added but the payment was not processed due to an incorrect email address in the system.",
+    "Agent informs Yuridia the next automatic payment will be on September 15 for $79.03.",
+    "Agent confirms the policy will renew after the September payment."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance policy management process",
+    "Handling vehicle additions to policies",
+    "Automatic payment schedules",
+    "System navigation for policy verification"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's internal policy management system",
+    "National General (insurance carrier)"
+  ],
+  "summary": "Agent JC confirms with Yuridia Ciero Losano that her 2019 Toyota Tundra was successfully added to her policy on August 25. The agent explains the next automatic payment of $79.03 will occur on September 15 and assures her the policy will renew after that payment. The call concludes with Yuridia expressing gratitude and satisfaction.",
+  "_model": "qwen3:14b",
+  "_eval_count": 342,
+  "_total_duration_ms": 47634,
+  "_source_file": "transcripts/out-13363402207-114-20250827-164819-1756327698.7705.txt",
+  "_direction": "outbound",
+  "_char_count": 2493
+}

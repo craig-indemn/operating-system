@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Evelyn Gordon wants to cancel two insurance policies: an auto policy with National General and a homeowner's policy with Auto Owners Insurance.",
+  "resolution_steps": [
+    "Agent asked for clarification on the types of policies Evelyn wanted to cancel.",
+    "Agent offered to transfer her to a specialist agent to handle the cancellation request."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding cancellation procedures for auto and homeowner's policies",
+    "Knowledge of carrier-specific requirements (National General, Auto Owners Insurance)"
+  ],
+  "systems_referenced": [],
+  "summary": "Evelyn Gordon requested cancellation of two insurance policies. The agent collected policy details and initiated a transfer to a specialist agent to handle the cancellation. The call ended with the agent preparing to connect her to the appropriate team.",
+  "_model": "qwen3:14b",
+  "_eval_count": 188,
+  "_total_duration_ms": 42075,
+  "_source_file": "transcripts/in-+13363779003-+13362501880-20251126-095120-1764168680.755.txt",
+  "_direction": "inbound",
+  "_char_count": 444
+}

@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Judith Moore, is moving to North Carolina from Pennsylvania and wants assistance with car registration and obtaining North Carolina license plates.",
+  "resolution_steps": [
+    "Rachel confirms the caller's name, origin (Pennsylvania), and current residence (North Carolina).",
+    "Rachel explains she cannot provide quotes directly and transfers the call to Jeremy Palmer for further assistance.",
+    "Rachel provides Jeremy's contact number (814-883-4134) and arranges for him to call the caller back."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding North Carolina vehicle registration requirements",
+    "Internal call transfer protocols",
+    "Customer information verification procedures"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services phone system"
+  ],
+  "summary": "Rachel transferred Judith Moore's call to Jeremy Palmer after confirming her move to North Carolina and need for car registration assistance. Rachel provided Jeremy's contact information and arranged for a callback.",
+  "_model": "qwen3:14b",
+  "_eval_count": 222,
+  "_total_duration_ms": 29599,
+  "_source_file": "transcripts/exten-702-+18148834134-20251003-140332-1759514612.16550.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1481
+}

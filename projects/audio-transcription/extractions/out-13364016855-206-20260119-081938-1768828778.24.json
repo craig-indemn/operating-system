@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jeff Edmonds is following up on a review email sent to Cheryl on Thursday, checking if she received it, addressing questions raised, and discussing action items from the review.",
+  "resolution_steps": [
+    "Jeff references an email sent on Thursday with review details and answers to previous questions.",
+    "He mentions there are action items requiring Cheryl's input.",
+    "Provides his phone number (336-377-9003) and asks Cheryl to call back after 9:00 a.m. when the office opens.",
+    "Requests she ask for Jeff Edmonds when contacting the office."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of the prior review discussion and email content",
+    "Knowledge of office hours and contact procedures"
+  ],
+  "systems_referenced": [
+    "email"
+  ],
+  "summary": "Jeff Edmonds from Alliance Insurance follows up with Cheryl about a review email sent on Thursday, discusses action items, and requests a callback after 9:00 a.m. to address unresolved questions. The call emphasizes follow-up on prior communication and next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 252,
+  "_total_duration_ms": 38153,
+  "_source_file": "transcripts/out-13364016855-206-20260119-081938-1768828778.24.txt",
+  "_direction": "outbound",
+  "_char_count": 994
+}

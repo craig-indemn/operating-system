@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller intended to make a payment through Progressive insurance.",
+  "resolution_steps": [
+    "Agent confirmed the caller's intent to make a payment.",
+    "Agent guided the caller through entering credit card details (number, expiration date).",
+    "Agent confirmed payment processing and offered to send a confirmation email.",
+    "Caller confirmed satisfaction and ended the conversation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Progressive insurance payment process",
+    "Credit card payment verification procedures"
+  ],
+  "systems_referenced": [
+    "Progressive"
+  ],
+  "summary": "Tyra's Barber called Alliance Insurance to make a payment through Progressive. The agent assisted with processing the payment via credit card, confirmed details, and offered email confirmation. The caller expressed satisfaction and ended the conversation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 184,
+  "_total_duration_ms": 37059,
+  "_source_file": "transcripts/in-+13367861133-+13366481886-20250925-122401-1758817441.2502.txt",
+  "_direction": "inbound",
+  "_char_count": 711
+}

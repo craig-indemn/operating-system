@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Joseph Fernandez needs assistance addressing a DMV letter regarding an alleged insurance lapse and submitting an FS1 form to prove no lapse occurred.",
+  "resolution_steps": [
+    "Agent confirmed willingness to help and requested Joseph's address.",
+    "Joseph provided his address: 16 Downing Ridge Court, Greensboro, NC 27407."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding DMV insurance requirements and FS1 form process",
+    "Knowledge of insurance lapse documentation procedures"
+  ],
+  "systems_referenced": [
+    "DMV FS1 form"
+  ],
+  "summary": "Joseph contacted Alliance Insurance regarding a DMV letter about an insurance lapse. The agent collected his address but the call was cut off mid-conversation. The caller needs help submitting an FS1 form to resolve the lapse issue.",
+  "_model": "qwen3:14b",
+  "_eval_count": 193,
+  "_total_duration_ms": 31517,
+  "_source_file": "transcripts/parked-504-504-20250806-115913-1754495951.4613.txt",
+  "_direction": "parked",
+  "_char_count": 393
+}

@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Inform the caller about an insurance quote for two vehicles (Volkswagen and Acura) with liability-only coverage, including premium details and payment options.",
+  "resolution_steps": [
+    "Provided the monthly premium amount ($12.95) for the quoted policy.",
+    "Explained payment options: bank draft or annual full payment (12x monthly rate).",
+    "Offered to follow up if the caller had questions or needed further assistance.",
+    "Provided contact information (phone number and extension)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance quoting process",
+    "Payment methods for insurance policies (bank draft, annual payment)",
+    "Carrier-specific details (National General)"
+  ],
+  "systems_referenced": [
+    "National General (insurance carrier)"
+  ],
+  "summary": "Gary from Alliance Insurance provided an insurance quote for liability-only coverage on two vehicles, outlined payment options, and offered to follow up. The caller was informed of the $12.95 monthly premium and instructed to contact Gary directly for next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 247,
+  "_total_duration_ms": 32755,
+  "_source_file": "transcripts/out-3364488282-113-20251006-114510-1759765510.3667.txt",
+  "_direction": "outbound",
+  "_char_count": 649
+}

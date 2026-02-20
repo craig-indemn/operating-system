@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to change their insurance policies (reducing coverage due to having too many cars and unused motorcycle) and seeks assistance with their sister and brother-in-law's upcoming October insurance renewal.",
+  "resolution_steps": [
+    "Heather acknowledges the caller's intent to change policies and mentions family insurance needs.",
+    "Caller emphasizes urgency and requests Heather to contact them directly via cell number.",
+    "Call appears to be cut off mid-conversation with no explicit resolution confirmed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy modification procedures",
+    "Customer service protocols for transferring calls",
+    "Handling urgent client requests"
+  ],
+  "systems_referenced": [],
+  "summary": "A long-time client discusses changing their insurance policies and requests assistance with family coverage. They express frustration with previous agent interactions and urgency to resolve matters before October. The call ends abruptly with the caller requesting direct contact.",
+  "_model": "qwen3:14b",
+  "_eval_count": 211,
+  "_total_duration_ms": 28337,
+  "_source_file": "transcripts/exten-401-+13367855768-20250912-160847-1757707727.11467.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1887
+}

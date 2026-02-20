@@ -1,0 +1,20 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Attempt to reach Jamie at Alliance Insurance",
+  "resolution_steps": [
+    "Agent confirmed caller was holding for Jamie",
+    "Agent asked if caller wanted to leave a voicemail",
+    "Caller requested to leave a message",
+    "Agent directed caller to wait while retrieving extension"
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller attempted to reach Jamie at Alliance Insurance but was directed to leave a voicemail since Jamie was unavailable. The agent facilitated the voicemail process.",
+  "_model": "qwen3:14b",
+  "_eval_count": 133,
+  "_total_duration_ms": 33635,
+  "_source_file": "transcripts/ptimeout-+13363779003-+19104449326-20251211-151235-1765483955.7992.txt",
+  "_direction": "park_timeout",
+  "_char_count": 247
+}

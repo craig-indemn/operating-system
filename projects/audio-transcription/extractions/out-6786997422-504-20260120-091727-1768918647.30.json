@@ -1,0 +1,20 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The agent (Holly) intended to conduct an account review for Suzanne regarding upcoming insurance policy renewals in March.",
+  "resolution_steps": [
+    "Left a voicemail message with contact information for Suzanne to call back"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy renewals",
+    "Client account management"
+  ],
+  "systems_referenced": [],
+  "summary": "Holly from Alliance Insurance left a voicemail for Suzanne regarding upcoming policy renewals in March, requesting a callback for an account review. The call was not answered and went to voicemail.",
+  "_model": "qwen3:14b",
+  "_eval_count": 138,
+  "_total_duration_ms": 34332,
+  "_source_file": "transcripts/out-6786997422-504-20260120-091727-1768918647.30.txt",
+  "_direction": "outbound",
+  "_char_count": 612
+}

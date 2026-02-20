@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Regan Tid is following up on a previous conversation to confirm whether Heather received an email about renters insurance and to discuss coverage options for a storage unit, while also mentioning a son's driving license situation.",
+  "resolution_steps": [
+    "Heather confirms she received Regan's email.",
+    "Regan clarifies they will not pursue a renters policy at this time, opting to keep existing coverage.",
+    "Discusses storage unit coverage, noting that personal property coverage extends to storage units but requires no loss within the first 90 days.",
+    "Agrees to revisit renters insurance when an apartment is in play.",
+    "Mentions a son's unsuccessful driver's license attempt, confirming existing DL one two three coverage handled by Jamie."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Renters insurance policy details",
+    "Storage unit coverage extensions",
+    "Policy exclusions (e.g., 90-day loss period)",
+    "Driver's license-related insurance coverage (DL one two three)"
+  ],
+  "systems_referenced": [
+    "email",
+    "DL one two three"
+  ],
+  "summary": "Regan Tid follows up with Heather to confirm email receipt and discuss insurance coverage decisions, including storage unit coverage and delaying renters insurance. Heather confirms existing policies and agrees to revisit renters insurance later. The conversation also briefly mentions a son's driver's license situation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 306,
+  "_total_duration_ms": 34027,
+  "_source_file": "transcripts/exten-202-+13367560906-20250820-103841-1755700721.2377.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1452
+}

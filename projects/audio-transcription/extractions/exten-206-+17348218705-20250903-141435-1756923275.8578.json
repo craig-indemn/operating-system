@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Kaylin from Davies is seeking contact information for the insurer (USLI) to send an audit form related to a liability policy for Kate's Co LLC, as the client has not received responses from the insurer and is at risk of noncompliance.",
+  "resolution_steps": [
+    "Jeff confirms he can provide contact information via email.",
+    "Kaylin agrees to email the audit form containing contact details to Jeff.",
+    "Jeff commits to forwarding the email to the insurer to encourage them to respond."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance audit processes",
+    "Handling client compliance risks",
+    "Communicating with insurers on behalf of clients"
+  ],
+  "systems_referenced": [
+    "Allianceinsurance.com email system",
+    "USLI (United States Liability Insurance) policy database"
+  ],
+  "summary": "Kaylin from Davies contacted Jeff at Alliance Insurance Services to address a nonresponsive USLI insurer regarding an audit for Kate's Cocktail Lounge's liability policy. Jeff agreed to email an audit form with contact information, which Kaylin would forward to the insurer to resolve the compliance risk. The call concluded with a plan to send the email immediately.",
+  "_model": "qwen3:14b",
+  "_eval_count": 263,
+  "_total_duration_ms": 33334,
+  "_source_file": "transcripts/exten-206-+17348218705-20250903-141435-1756923275.8578.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1013
+}

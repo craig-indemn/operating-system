@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Bob Grumfield, an insurance inspector, is attempting to complete an exterior photo inspection for a property at 11 Mount Vista Drive but is encountering confusion because the address corresponds to a vacant lot instead of the insured property (Robert Budwaneck's new construction). He seeks clarification and resolution.",
+  "resolution_steps": [
+    "Agent Heather acknowledges the address discrepancy and confirms the address is listed as a vacant lot on Zillow.",
+    "Heather attempts to contact another Bob (possibly the policyholder) via phone but is unsuccessful, leaving a voicemail.",
+    "Heather suggests alternative solutions: taking photos of the vacant lot or arranging a self-inspection if the policyholder cannot be reached.",
+    "Heather confirms the address details with Bob and notes the confusion with another Bob from Ohio."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance inspection processes",
+    "Address verification using online tools (e.g., Zillow)",
+    "Handling discrepancies between policyholder-provided addresses and actual property data",
+    "Self-inspection procedures as an alternative"
+  ],
+  "systems_referenced": [
+    "Zillow (property verification)",
+    "Alliance Insurance Services customer portal (myallianceinsurance.com)",
+    "Texting support (336-786-1133)"
+  ],
+  "summary": "Bob Grumfield, an insurance inspector, is struggling to complete an inspection at 11 Mount Vista Drive, which he believes is a vacant lot instead of the insured property. Alliance Insurance Services agent Heather verifies the address discrepancy via Zillow, attempts to contact the policyholder (unsuccessfully), and proposes alternatives like self-inspection. The call remains unresolved, pending further contact with the policyholder.",
+  "_model": "qwen3:14b",
+  "_eval_count": 381,
+  "_total_duration_ms": 54465,
+  "_source_file": "transcripts/exten-401-+15403092502-20251008-105513-1759935313.2439.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4004
+}

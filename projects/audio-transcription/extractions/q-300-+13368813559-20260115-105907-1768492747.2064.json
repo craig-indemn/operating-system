@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Belinda from HPB Insurance seeks clarification on whether to list 'Pilot Mountain Insurance' or 'Alliance' as the prior agency for an AOR (Agency of Record) process on a Progressive boat policy for Freddie and Gloria Willis. She also asks about the prior agency code and discusses policy timelines.",
+  "resolution_steps": [
+    "Heather confirms the prior agency is 'Alliance,' noting Pilot Mountain was acquired by Alliance 3-4 years ago.",
+    "Explains the prior agency code (98263) is not required for the AOR process as long as the signature is provided.",
+    "Clarifies that the website still displays 'Pilot Mountain' but the correct agency is Alliance.",
+    "Advises Belinda to ensure the client signs the AOR document to ensure timely processing before the boat policy's April effective date.",
+    "Recommends the client contact Alliance directly for further assistance."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of AOR processes for insurance policies",
+    "Knowledge of agency acquisitions (Pilot Mountain by Alliance)",
+    "Familiarity with Progressive's policy documentation requirements"
+  ],
+  "systems_referenced": [
+    "Progressive's deck page",
+    "Umbrella policy documentation",
+    "Alliance Insurance Services website"
+  ],
+  "summary": "Belinda from HPB Insurance consults Heather at Alliance Insurance Services about completing an AOR for a Progressive boat policy. Heather clarifies that the prior agency is Alliance (not Pilot Mountain), explains the agency code is unnecessary for the AOR, and advises on next steps for policy transfer. The call concludes with Belinda planning to have the client contact Alliance directly for finalization.",
+  "_model": "qwen3:14b",
+  "_eval_count": 374,
+  "_total_duration_ms": 40887,
+  "_source_file": "transcripts/q-300-+13368813559-20260115-105907-1768492747.2064.txt",
+  "_direction": "queue",
+  "_char_count": 2508
+}

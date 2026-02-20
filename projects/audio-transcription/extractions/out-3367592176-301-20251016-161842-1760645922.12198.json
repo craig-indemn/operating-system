@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Addison is seeking assistance to resolve an issue with an insurance policy submission where the second named insured (Kenos) was not properly assessed, leading to incorrect tier selection (select instead of standard).",
+  "resolution_steps": [
+    "Susie explains that the second named insured was not pulled, causing the system to allow select tier selection.",
+    "She advises unsubmitting the policy and changing it to standard tier to avoid wiping the rating tab.",
+    "Susie recommends ordering a three-tab proof inspection due to the property's age (17 years) to check for potential exclusions.",
+    "She clarifies the process for pulling the second named insured and emphasizes the importance of verifying eligibility manually.",
+    "Susie instructs Addison to email her once the policy is updated to standard tier for further assistance."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance policy submission process",
+    "Differences between select and standard insurance tiers",
+    "Importance of verifying named insured eligibility",
+    "Property inspection requirements for older homes"
+  ],
+  "systems_referenced": [
+    "Policy submission system",
+    "Insured screen (for checking eligibility)",
+    "Billing section (for email access once policy is active)"
+  ],
+  "summary": "Susie assists Addison in correcting an insurance policy submission error by switching from select to standard tier after realizing the second named insured was not properly assessed. She advises unsubmitting the policy, ordering an inspection for an older property, and clarifies manual verification steps. Addison agrees to make the change and will notify Susie once completed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 345,
+  "_total_duration_ms": 45399,
+  "_source_file": "transcripts/out-3367592176-301-20251016-161842-1760645922.12198.txt",
+  "_direction": "outbound",
+  "_char_count": 3072
+}

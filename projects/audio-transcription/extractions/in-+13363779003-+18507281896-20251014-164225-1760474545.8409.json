@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Short inbound call where the agent transferred the caller to Brandi without addressing any specific issues.",
+  "_model": "qwen3:14b",
+  "_eval_count": 72,
+  "_total_duration_ms": 26658,
+  "_source_file": "transcripts/in-+13363779003-+18507281896-20251014-164225-1760474545.8409.txt",
+  "_direction": "inbound",
+  "_char_count": 185
+}

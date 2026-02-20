@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jackie wants to set up an auto insurance policy with Auto Owners, specifically a $50,000 coverage plan with a $10,000 deductible, and discuss the payment structure and medical requirements.",
+  "resolution_steps": [
+    "Brandi verifies Jackie's insurance details and confirms the selected policy ($50k coverage, $10k deductible).",
+    "Discusses the need for medical tests (blood work and medical records) to determine insurance rates and potential upgrades to 'preferred' status.",
+    "Collects banking information (checking account details, routing number, and payment date).",
+    "Handles beneficiary information (primary beneficiary Megan McMahon, with backup details to be added later).",
+    "Notes Jackie's medications (Lipitor, Zyrtec, Contrave) and confirms no recent drug use or criminal history.",
+    "Mentions sending an after-visit summary email and congratulates Jackie on her recent wedding."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Auto insurance underwriting process",
+    "Medical testing requirements for life/health insurance",
+    "Policy payment structures (e.g., auto pay over 10 years)",
+    "Beneficiary documentation procedures"
+  ],
+  "systems_referenced": [
+    "Auto Owners insurance application portal",
+    "Medical records database",
+    "Banking information verification system"
+  ],
+  "summary": "Jackie is finalizing an Auto Owners auto insurance policy with $50k coverage. Brandi guides her through medical testing requirements, collects banking details for payment setup, and documents beneficiary information. The process is pending medical test results and approval.",
+  "_model": "qwen3:14b",
+  "_eval_count": 361,
+  "_total_duration_ms": 58431,
+  "_source_file": "transcripts/out-13365499700-112-20250930-101652-1759241812.863.txt",
+  "_direction": "outbound",
+  "_char_count": 8214
+}

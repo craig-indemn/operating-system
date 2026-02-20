@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Not identifiable (brief automated message)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Automated voicemail greeting with call transfer announcement. No meaningful conversation or actionable information provided.",
+  "_model": "qwen3:14b",
+  "_eval_count": 78,
+  "_total_duration_ms": 22421,
+  "_source_file": "transcripts/in-+13363779003-+15087367419-20250926-130136-1758906095.2379.txt",
+  "_direction": "inbound",
+  "_char_count": 154
+}

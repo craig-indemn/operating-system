@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Armando is informing Rachel about a client (Larry Madlock) who mentioned a 30-year deadline for vehicle inspections, seeking clarification on whether the client's vehicle (model 93) required inspection.",
+  "resolution_steps": [
+    "Armando explains Larry Madlock called to share a DMV-mentioned 30-year inspection rule.",
+    "Rachel clarifies that vehicles over 30 years old are exempt from inspection, referencing DMV website confirmation.",
+    "Armando confirms Larry Madlock already found the same information online and does not need further action."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "DMV vehicle inspection regulations",
+    "exemption rules for older vehicles"
+  ],
+  "systems_referenced": [
+    "DMV website"
+  ],
+  "summary": "Armando relays a client's inquiry about a 30-year vehicle inspection deadline. Rachel confirms via DMV that vehicles over 30 years are exempt from inspection. The client already found this information online, so no further action is required.",
+  "_model": "qwen3:14b",
+  "_eval_count": 242,
+  "_total_duration_ms": 29575,
+  "_source_file": "transcripts/internal-702-502-20251229-135759-1767034679.9814.txt",
+  "_direction": "internal",
+  "_char_count": 1174
+}

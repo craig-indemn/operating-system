@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller engaged in casual conversation with Madison, sharing personal updates about pregnancy, selling a motorcycle, and discussing home-buying plans, but did not express intent to engage with Alliance Insurance Services.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "This appears to be a personal conversation between acquaintances discussing life updates (pregnancy, home purchase) with no reference to insurance services. The call lacks any substantive interaction related to Alliance Insurance Services' business operations.",
+  "_model": "qwen3:14b",
+  "_eval_count": 133,
+  "_total_duration_ms": 35700,
+  "_source_file": "transcripts/exten-401-+15705333951-20251211-095339-1765464819.454.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4021
+}

@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller requested assistance in Spanish and confirmed they had already received a callback, seeking resolution for an unspecified issue.",
+  "resolution_steps": [
+    "Agent apologized for lacking Spanish-speaking staff and offered to have someone call back.",
+    "Caller confirmed they had already received a callback.",
+    "Agent checked their system to see if JC (possibly a contact) had attempted to call.",
+    "Agent stated they would try to connect the caller with someone."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Multilingual support protocols",
+    "Callback request procedures",
+    "Internal call log system navigation"
+  ],
+  "systems_referenced": [
+    "Internal call log system"
+  ],
+  "summary": "A Spanish-speaking caller requested assistance after confirming they had already received a callback. The agent checked their system for prior contact attempts and committed to connecting the caller with appropriate support, though the call ended before resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 208,
+  "_total_duration_ms": 28642,
+  "_source_file": "transcripts/in-+13363779003-+13363402207-20250827-145410-1756320850.6620.txt",
+  "_direction": "inbound",
+  "_char_count": 417
+}

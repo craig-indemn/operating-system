@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Aurelio Garc\u00eda is questioning a $2,000 business insurance bill from Amtras/Travelers, claiming it was unexpected after disconnecting automatic payments and canceling a workers' comp audit. He seeks clarification on why the charge occurred and how to resolve it.",
+  "resolution_steps": [
+    "Agent confirmed the bill was related to a recently completed workers' comp audit for the police department, which was active during the audit period.",
+    "Agent explained the audit required employee data (e.g., 'tasas los diez noventa y nueves') from December 27, 2024, to finalize the adjustment.",
+    "Agent offered to assist in initiating the audit process and gathering necessary documentation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Workers' compensation insurance audits",
+    "Insurance billing processes for Amtras/Travelers",
+    "Handling disputes over automatic payments and policy cancellations"
+  ],
+  "systems_referenced": [
+    "Insurance carrier portals (Amtras/Travelers)",
+    "Workers' comp audit documentation systems"
+  ],
+  "summary": "Aurelio Garc\u00eda disputed an unexpected $2,000 business insurance bill, linked to a workers' comp audit for the police department. The agent clarified the charge was tied to an audit requiring employee data from December 2024 and offered to help resolve the issue through the audit process. The call ended with a commitment to follow up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 325,
+  "_total_duration_ms": 42904,
+  "_source_file": "transcripts/exten-106-+13367826357-20250903-140440-1756922680.8540.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1513
+}

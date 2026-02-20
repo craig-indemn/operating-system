@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Gloria Vaud from Alliance Insurance is seeking clarification on a billing discrepancy for Rose Logistics LLC's policy, specifically why a payment was refunded and what the current balance is after the client made a second payment.",
+  "resolution_steps": [
+    "Agent verified the policy number (992271481) and confirmed the client's name (Gloria Vaud).",
+    "Agent reviewed billing history, explaining that a July cancellation (due to missing vehicle info) triggered a refund of $633.30.",
+    "Agent clarified that the client's second payment ($633.30) was a reimbursement for the refund, not a new payment.",
+    "Agent detailed the current balance of $1,728.14 for July and August, with a due date of August 27.",
+    "Agent mentioned a pending cancellation letter would be sent if payment isn't received by the due date."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Policy cancellation processes (e.g., refunds when coverage is terminated mid-term)",
+    "Billing cycles and how refunds affect outstanding balances",
+    "Progressive's procedures for pending cancellations and communication with clients"
+  ],
+  "systems_referenced": [
+    "Progressive's internal billing system",
+    "Policy management portal (for checking cancellation dates and vehicle info)"
+  ],
+  "summary": "Gloria Vaud from Alliance Insurance called Progressive to resolve confusion about a refunded payment for Rose Logistics LLC's policy. The agent explained that a July cancellation (due to missing vehicle details) caused a refund, and the client's subsequent $633.30 payment was a reimbursement. The current balance of $1,728.14 is due by August 27, with a pending cancellation letter to be sent if unpaid. Gloria was satisfied with the explanation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 407,
+  "_total_duration_ms": 53295,
+  "_source_file": "transcripts/out-18777762436-103-20250807-122803-1754584083.5612.txt",
+  "_direction": "outbound",
+  "_char_count": 4458
+}

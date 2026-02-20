@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Checking if the call is connected and if the agent can hear them",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Brief inbound call where the caller repeatedly asked if the agent could hear them. No meaningful conversation or resolution occurred due to the call's brevity and lack of substantive interaction.",
+  "_model": "qwen3:14b",
+  "_eval_count": 102,
+  "_total_duration_ms": 21265,
+  "_source_file": "transcripts/in-+13363779003-+13366551606-20260119-114640-1768841200.1915.txt",
+  "_direction": "inbound",
+  "_char_count": 83
+}

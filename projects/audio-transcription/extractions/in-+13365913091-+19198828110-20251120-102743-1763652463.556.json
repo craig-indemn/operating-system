@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Agent's voicemail greeting with no substantive conversation. Caller did not provide intent or context before the call ended.",
+  "_model": "qwen3:14b",
+  "_eval_count": 76,
+  "_total_duration_ms": 20459,
+  "_source_file": "transcripts/in-+13365913091-+19198828110-20251120-102743-1763652463.556.txt",
+  "_direction": "inbound",
+  "_char_count": 71
+}

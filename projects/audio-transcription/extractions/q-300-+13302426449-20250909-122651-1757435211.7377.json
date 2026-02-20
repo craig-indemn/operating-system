@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "James Marshall wants to update his Progressive umbrella insurance policy to remove his daughter from the policy after she moved to Ohio and married, and confirm how his auto/home insurance renewals will proceed.",
+  "resolution_steps": [
+    "Agent verified James's address and confirmed policy details (vehicles, daughter's Jeep).",
+    "Agent updated the umbrella policy to remove the daughter.",
+    "Agent checked auto insurance status (auto-renewing via auto pay).",
+    "Agent confirmed home insurance is escrowed through Wells Fargo and will be paid off in November 2026.",
+    "Agent informed James the umbrella policy update would take a few days and result in a revised bill."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Progressive umbrella policy administration",
+    "Auto/home insurance renewal processes",
+    "Escrow account management for home insurance",
+    "Policyholder information updates across carriers"
+  ],
+  "systems_referenced": [
+    "Progressive insurance system",
+    "Wells Fargo escrow portal"
+  ],
+  "summary": "James Marshall updated his Progressive umbrella policy to remove his daughter after her move to Ohio. The agent confirmed auto/home insurance details, noting auto would renew automatically and home insurance would transition to direct billing after mortgage payoff. The umbrella policy update will be processed with a revised bill.",
+  "_model": "qwen3:14b",
+  "_eval_count": 296,
+  "_total_duration_ms": 37099,
+  "_source_file": "transcripts/q-300-+13302426449-20250909-122651-1757435211.7377.txt",
+  "_direction": "queue",
+  "_char_count": 2170
+}

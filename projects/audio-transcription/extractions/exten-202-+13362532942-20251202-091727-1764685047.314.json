@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Wiley Fisher wanted to confirm that a payment he made via bill pay the previous day had been received and processed by the agency.",
+  "resolution_steps": [
+    "Heather checked the payment status in the system.",
+    "Notified Wiley the payment had not yet cleared as of the current day.",
+    "Agreed to monitor the payment and follow up if it did not clear by Thursday.",
+    "Wiley acknowledged the plan and ended the call."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of payment processing timelines",
+    "Ability to check payment statuses in the agency's system",
+    "Communication of follow-up timelines to customers"
+  ],
+  "systems_referenced": [
+    "Payment processing system (bill pay portal)"
+  ],
+  "summary": "Wiley Fisher followed up on a payment he made via bill pay, confirming it was processed the previous day. Heather checked the system and confirmed the payment had not yet cleared, agreeing to monitor it and follow up by Thursday if unresolved. The call concluded with Wiley appreciating the assistance and Heather offering further help if needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 250,
+  "_total_duration_ms": 37101,
+  "_source_file": "transcripts/exten-202-+13362532942-20251202-091727-1764685047.314.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 940
+}

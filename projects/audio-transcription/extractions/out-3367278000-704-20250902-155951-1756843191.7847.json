@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Gloria, is inquiring about a discrepancy in her water bill (only 59 cents) and why her account was closed despite still receiving water service at her location (348 Summit Square Road).",
+  "resolution_steps": [
+    "Agent requested Gloria's account number (2192277) and verified the last four digits of her Federal ID.",
+    "Agent checked the account and found it was closed on July 1st, with the last bill covering April 23 to June 30.",
+    "Agent explained that the account cycle ended on July 1st, leading to the closure, but Gloria remains at the same address and is still receiving water.",
+    "Agent acknowledged Gloria's concern about a potential mix-up with another company due to the neighboring location's closure."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of utility account billing cycles and closure procedures",
+    "Ability to access and interpret customer account details",
+    "Knowledge of Winston Salem City Services operations"
+  ],
+  "systems_referenced": [
+    "Winston Salem City utility account management system"
+  ],
+  "summary": "Gloria contacted CityLink 311 to resolve confusion about her water bill and account closure. The agent confirmed the account was closed on July 1st, but Gloria remains at the address and is still receiving water. The agent explained the billing cycle but did not resolve the discrepancy in service continuation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 322,
+  "_total_duration_ms": 73322,
+  "_source_file": "transcripts/out-3367278000-704-20250902-155951-1756843191.7847.txt",
+  "_direction": "outbound",
+  "_char_count": 7073
+}

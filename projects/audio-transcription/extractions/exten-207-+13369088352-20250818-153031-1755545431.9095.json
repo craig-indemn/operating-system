@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Alex) wanted to clarify confusion about a workers' comp insurance renewal bill of $3,000 and discuss options to pay it in installments instead of a lump sum.",
+  "resolution_steps": [
+    "Agent confirmed the caller's confusion about the $3,000 renewal bill and explained it was a 25% down payment for the renewal.",
+    "Agent proposed changing the billing account to a 10-equal-payment plan to reduce the immediate amount owed.",
+    "Caller agreed to proceed and provided bank routing and account numbers for EFT setup.",
+    "Agent planned to contact Travelers to adjust the payment plan and process the payment once confirmed.",
+    "Caller requested setting up auto-draft to avoid future delays."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Workers' compensation insurance billing processes",
+    "Payment plan options for insurance renewals",
+    "EFT (Electronic Funds Transfer) setup procedures",
+    "Carrier-specific renewal policies (e.g., Travelers)"
+  ],
+  "systems_referenced": [
+    "Travelers (insurance carrier)",
+    "EFT banking system"
+  ],
+  "summary": "Alex contacted Cody to resolve confusion about a $3,000 workers' comp renewal bill. Cody explained it was a 25% down payment and arranged a 10-installment plan. Alex provided banking details for EFT setup and agreed to auto-draft payments to avoid delays. Cody planned to contact Travelers to finalize the payment plan adjustments.",
+  "_model": "qwen3:14b",
+  "_eval_count": 335,
+  "_total_duration_ms": 44092,
+  "_source_file": "transcripts/exten-207-+13369088352-20250818-153031-1755545431.9095.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4293
+}

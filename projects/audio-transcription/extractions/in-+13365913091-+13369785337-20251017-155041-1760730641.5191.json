@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Angela Lowe seeks assistance with accessing the insurance portal to make a payment and inquires about the settlement amount from a recent car accident involving her son.",
+  "resolution_steps": [
+    "Agent verified Angela's identity and policy details (address, name, email).",
+    "Agent confirmed the auto policy payment amount ($383.45) and applied the payment using the on-file debit card.",
+    "Agent offered to provide National General's contact information for further portal assistance.",
+    "Agent acknowledged Angela's secondary inquiry about a car accident settlement and offered to transfer her to another agent for detailed claim information."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of insurance portal login processes and troubleshooting steps",
+    "Ability to access and modify policy payment information",
+    "Knowledge of internal transfer protocols for complex claims inquiries"
+  ],
+  "systems_referenced": [
+    "Agency portal system",
+    "National General insurance carrier",
+    "Email verification system"
+  ],
+  "summary": "Angela Lowe contacted Alliance Insurance to resolve persistent portal login issues for her auto policy payment and inquire about a car accident settlement. The agent resolved the payment issue by applying the overdue amount and offered portal troubleshooting assistance. The agent also transferred Angela to another agent to address her claim-related inquiry about a recent accident involving her son.",
+  "_model": "qwen3:14b",
+  "_eval_count": 291,
+  "_total_duration_ms": 35546,
+  "_source_file": "transcripts/in-+13365913091-+13369785337-20251017-155041-1760730641.5191.txt",
+  "_direction": "inbound",
+  "_char_count": 3816
+}

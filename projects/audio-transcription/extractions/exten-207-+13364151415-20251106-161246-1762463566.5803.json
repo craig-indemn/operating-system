@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Lily is seeking assistance with an unexpected charge from Travelers Insurance due to an audit on a canceled workers' compensation policy and needs help retrieving archived premium information and understanding the audit process.",
+  "resolution_steps": [
+    "Cody acknowledges Lily's frustration about the unexpected charge and confirms the policy was canceled in July.",
+    "Cody explains that Travelers requires audit documentation (payroll records, tax forms like 941) to finalize the audit and refund the overcharge.",
+    "Cody helps Lily recall the policy's payroll details (100k in payroll with 2 employees) and clarifies that workers' comp audits are mandatory annually, regardless of policy duration.",
+    "Cody advises Lily to provide tax documents to complete the audit and resolve the charge."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Workers' compensation audit processes",
+    "EFT (Electronic Funds Transfer) billing practices",
+    "Insurance policy cancellation procedures",
+    "Required documentation for audits (payroll records, tax forms)"
+  ],
+  "systems_referenced": [
+    "Travelers Insurance",
+    "Workers' compensation policy system"
+  ],
+  "summary": "Lily contacted Cody after being charged by Travelers for a canceled workers' comp policy. Cody explained that audits are mandatory for workers' comp policies and guided her on providing payroll and tax documentation to resolve the overcharge. The call concluded with Lily understanding the audit process and next steps to complete the required paperwork.",
+  "_model": "qwen3:14b",
+  "_eval_count": 324,
+  "_total_duration_ms": 42706,
+  "_source_file": "transcripts/exten-207-+13364151415-20251106-161246-1762463566.5803.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4427
+}

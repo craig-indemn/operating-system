@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Kobe is checking on the status of an insurance quote for Jupiter LLC, a new startup, and inquiring about the ETA for General Liability (GL) coverage and potential excess liability options.",
+  "resolution_steps": [
+    "Joe confirms he has received all necessary documents (contracts, resumes) and is finalizing the GL quote.",
+    "He explains that excess liability cannot be quoted immediately due to Jupiter LLC's new venture status, suggesting a one-year waiting period.",
+    "Proposes a higher GL limit (up to $2M) as a temporary workaround, acknowledging the risk of the startup's uncertain future operations.",
+    "Advises Kobe to focus on securing GL coverage first and to wait until Jupiter LLC establishes contracts and clarifies their niche before addressing excess liability."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Underwriting guidelines for new ventures in commercial insurance",
+    "GL and excess liability coverage parameters",
+    "Risk assessment for startups with uncertain operational scope"
+  ],
+  "systems_referenced": [
+    "Internal email system (update sent to Kendall)",
+    "Carrier portals for GL quote setup",
+    "Document management system (contracts, resumes)"
+  ],
+  "summary": "Joe updates Kobe on the GL quote for Jupiter LLC, explaining delays in excess liability due to the startup's new status. He suggests a higher GL limit as a temporary measure and recommends waiting until the company establishes contracts and clarifies its niche. The call ends with mutual agreement to follow up after Jupiter LLC gains more operational stability.",
+  "_model": "qwen3:14b",
+  "_eval_count": 336,
+  "_total_duration_ms": 51996,
+  "_source_file": "transcripts/out-3368945684-512-20251007-153940-1759865980.9094.txt",
+  "_direction": "outbound",
+  "_char_count": 4479
+}

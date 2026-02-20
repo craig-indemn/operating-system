@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Cedric, representing Truend Federal Credit Union, seeks to obtain policy details (2055-2056) for Sonan Panzit, including coverage amounts, deductibles, premium information, and to adjust the policy from 'insured build' to 'mortgagee build'.",
+  "resolution_steps": [
+    "Agent Addison verifies the policyholder's name (Sonan Panzit) and policy number (5555044820).",
+    "Confirms property address (1505 Hughes Court, High Point, NC 27263).",
+    "Retrieves and shares dwelling coverage ($239,000), all-peril deductible ($1,000), and window deductible details.",
+    "Checks for extended replacement cost coverage (found but specific percentage unknown).",
+    "Confirms premium amount ($1,405) and payment due date (Sept 13, 2025).",
+    "Verifies mailing address for payments (PO Box 740312, Cincinnati, OH).",
+    "Adjusts policy from 'insured build' to 'mortgagee build' as requested."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy terminology (e.g., dwelling coverage, extended replacement cost).",
+    "Process for adjusting policy types (insured/mortgagee build).",
+    "Access to carrier databases for policy verification and modification."
+  ],
+  "systems_referenced": [
+    "Carrier database/portal for policy lookup and adjustments."
+  ],
+  "summary": "Cedric, acting on behalf of a mortgagee, requested detailed information about a homeowner's insurance policy for Sonan Panzit, including coverage amounts, deductibles, and premium details. The agent retrieved the information, confirmed key policy details, and adjusted the policy to 'mortgagee build' as requested. The call concluded with the agent preparing to send the updated policy documentation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 443,
+  "_total_duration_ms": 44719,
+  "_source_file": "transcripts/q-300-+12134760469-20250828-145022-1756407022.8226.txt",
+  "_direction": "queue",
+  "_char_count": 2856
+}

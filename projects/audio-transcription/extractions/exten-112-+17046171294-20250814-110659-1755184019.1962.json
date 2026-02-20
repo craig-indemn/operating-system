@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Holly Shields is seeking assistance with unresolved billing issues on her auto insurance policy and a separate policy for Whitman, including discrepancies in coverage and required documentation (permit and proof of insurance).",
+  "resolution_steps": [
+    "Brandi confirms the caller's identity and policy type (auto insurance).",
+    "Identifies the core issues: Whitman's policy has a significant outstanding balance, and Rosco (likely a driver) lacks a valid license (only has a permit).",
+    "Notes that Holly has already submitted required documentation but needs to resend Whitman's insurance proof.",
+    "Plans to contact National General (the carrier) to resolve policy discrepancies and billing errors.",
+    "Requests Holly to send a photo of Whitman's permit to expedite resolution.",
+    "Commitment to follow up with Holly after resolving the issues with National General."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of auto insurance policy structures and billing processes",
+    "Knowledge of documentation requirements for drivers (permits, insurance proof)",
+    "Ability to interface with carrier systems (National General) to resolve policy issues"
+  ],
+  "systems_referenced": [
+    "Internal policy management system (to check policy details)",
+    "National General (insurance carrier)"
+  ],
+  "summary": "Holly Shields contacted Brandi to resolve billing discrepancies on her auto insurance policy and a separate policy for Whitman. Brandi identified issues with Whitman's policy balance and Rosco's lack of a valid license, planned to contact National General for resolution, and requested additional documentation from Holly. A follow-up call is pending after carrier intervention.",
+  "_model": "qwen3:14b",
+  "_eval_count": 356,
+  "_total_duration_ms": 41373,
+  "_source_file": "transcripts/exten-112-+17046171294-20250814-110659-1755184019.1962.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1965
+}

@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Cody is seeking clarification on a non-compliant audit bill from Travelers, specifically how paying the $2,456 fee now would allow him to complete his audit and potentially receive a refund later, while ensuring his policy doesn't cancel by January.",
+  "resolution_steps": [
+    "Agent confirmed the total amount due ($442,820) and the breakdown including the non-compliant audit bill.",
+    "Explained that paying the $2,456 non-compliant fee first would prevent policy cancellation and allow Cody to complete the audit.",
+    "Clarified that after the audit, any overpayment would be refunded.",
+    "Agreed to let Cody pay the $2,456 immediately and settle the remaining balance by December 17th.",
+    "Offered to assist with transitioning to a new policy once the audit is resolved."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Travelers insurance audit processes",
+    "Non-compliant audit bill implications",
+    "Payment deadlines and refund policies for audits",
+    "Policy cancellation procedures"
+  ],
+  "systems_referenced": [
+    "Travelers insurance portal",
+    "Internal payment tracking system"
+  ],
+  "summary": "Cody is dealing with a non-compliant audit bill from Travelers, requiring immediate payment to avoid policy cancellation. The agent explained the payment structure, confirmed the $2,456 fee would be refunded after audit completion, and agreed to a payment plan. Cody will pay the non-compliant fee first and settle the rest by December 17th, with a follow-up call to finalize the audit and policy transition.",
+  "_model": "qwen3:14b",
+  "_eval_count": 365,
+  "_total_duration_ms": 44585,
+  "_source_file": "transcripts/out-13369088352-207-20251208-113626-1765211786.4457.txt",
+  "_direction": "outbound",
+  "_char_count": 3175
+}

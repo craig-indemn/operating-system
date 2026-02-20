@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller attempted to request a reevaluation of their insurance policy but the conversation was cut off before details could be clarified.",
+  "resolution_steps": [
+    "Agent acknowledged the request but did not proceed with any actionable steps due to incomplete conversation"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief inbound call where the caller mentioned needing an insurance reestimation, but the conversation was interrupted before the agent could take any action. No resolution or follow-up was established.",
+  "_model": "qwen3:14b",
+  "_eval_count": 130,
+  "_total_duration_ms": 22752,
+  "_source_file": "transcripts/in-+13363779003-+13368377594-20250807-130415-1754586255.6338.txt",
+  "_direction": "inbound",
+  "_char_count": 225
+}

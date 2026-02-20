@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "To speak with Jessica",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller requested to speak with Jessica, but the transcript ends mid-conversation without further interaction or resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 78,
+  "_total_duration_ms": 67928,
+  "_source_file": "transcripts/in-+13363779003-+13367505898-20250821-154652-1755805612.8324.txt",
+  "_direction": "inbound",
+  "_char_count": 111
+}

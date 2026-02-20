@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to make a payment for their insurance policy.",
+  "resolution_steps": [
+    "Agent Cassandra Bennett accessed the caller's account to verify policy details (National General insurance).",
+    "Confirmed the payment amount ($180.40) and requested credit card information.",
+    "Processed the payment through National General's system.",
+    "Notified the caller of successful payment and confirmed email confirmation from National General.",
+    "Updated internal records to reflect the payment."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Accessing and managing customer insurance accounts",
+    "Processing payments through carrier systems",
+    "Confirming payment details with carriers"
+  ],
+  "systems_referenced": [
+    "National General insurance portal",
+    "Alliance Insurance internal records system"
+  ],
+  "summary": "Cassandra Bennett assisted a caller in making a $180.40 insurance payment for their National General policy. The agent processed the payment through the carrier's system, confirmed the transaction, and informed the caller they would receive an email confirmation. The caller indicated no further assistance was needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 251,
+  "_total_duration_ms": 29935,
+  "_source_file": "transcripts/in-+13363779003-+13368978584-20251120-161608-1763673368.3888.txt",
+  "_direction": "inbound",
+  "_char_count": 842
+}

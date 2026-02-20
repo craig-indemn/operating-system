@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "N/A (voicemail greeting, no interaction)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Voicemail greeting from Molly Woods at Inova indicating unavailability. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 81,
+  "_total_duration_ms": 21971,
+  "_source_file": "transcripts/out-6146296008-207-20250911-145708-1757617028.4169.txt",
+  "_direction": "outbound",
+  "_char_count": 116
+}

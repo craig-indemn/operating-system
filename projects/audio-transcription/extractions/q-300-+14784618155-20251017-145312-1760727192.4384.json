@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Roosevelt Williams is following up on a car accident claim involving his wife's vehicle, which is currently in the shop, and inquires about the status of the claim and payment.",
+  "resolution_steps": [
+    "Agent Jana confirms the caller's identity and retrieves his account information.",
+    "Jana verifies the policy number provided by the caller.",
+    "Jana confirms the claim is active and checks the adjuster's contact details.",
+    "Jana provides the claim number and adjuster's phone number (Perry Sade) to the caller.",
+    "Jana offers to transfer the call to the adjuster if needed."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Access to internal systems to retrieve account, policy, and claim details.",
+    "Knowledge of adjuster contact information and claim status tracking.",
+    "Familiarity with customer support channels (portal, text support)."
+  ],
+  "systems_referenced": [
+    "Alliance Insurance customer portal (myallianceinsurance.com)",
+    "Internal account management system",
+    "Penn National insurance carrier (mentioned as the claim-filing entity)"
+  ],
+  "summary": "Roosevelt Williams contacted Alliance Insurance to follow up on a car accident claim. Agent Jana retrieved his policy and claim details, confirmed the claim was active, and provided the adjuster's contact information. The call concluded with Jana offering to transfer the caller to the adjuster for further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 320,
+  "_total_duration_ms": 45870,
+  "_source_file": "transcripts/q-300-+14784618155-20251017-145312-1760727192.4384.txt",
+  "_direction": "queue",
+  "_char_count": 2300
+}

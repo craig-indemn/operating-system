@@ -1,0 +1,32 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Simon Yeung is trying to renew his homeowners policy for a house he hasn't closed on yet, seeking clarification on discrepancies in policy coverage limits, premium amounts, and how to apply the paid-in-full discount. He is confused about multiple policies, billing inconsistencies, and coverage for a swimming pool.",
+  "resolution_steps": [
+    "Agent Brandy confirms Simon's identity and acknowledges his request to renew the policy.",
+    "Brandy explains that the policy is currently set up on a quarterly payment plan and clarifies the effective dates (October 28, 2025, to October 28, 2026).",
+    "Brandy clarifies that the paid-in-full discount requires a system update on their end, which takes 2\u20133 business days to process, and explains the adjusted premium amount ($2,191) after the discount.",
+    "Brandy identifies and deletes outdated policy documents from Simon's Glove Box app to avoid confusion.",
+    "Brandy directs Simon to check the correct policy document (October 28, 2025\u20132026) in Glove Box and explains where to find the updated declarations page.",
+    "Brandy confirms the current premium without the discount ($2,640) and advises Simon to attempt payment again on Monday/Tuesday after the system update."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of homeowners policy renewal processes for properties not yet closed.",
+    "Knowledge of paid-in-full discount mechanics and system processing times.",
+    "Familiarity with Glove Box app functionality and document management.",
+    "Ability to interpret policy effective dates and coverage limits.",
+    "Experience resolving billing discrepancies and customer confusion over multiple policy versions."
+  ],
+  "systems_referenced": [
+    "Glove Box app (customer portal for policy documents and payments)",
+    "Alliance Insurance Services internal policy management system",
+    "Insurance carrier's billing and policy adjustment tools"
+  ],
+  "summary": "Simon Yeung sought clarification on discrepancies in his homeowners policy renewal, including coverage limits, premium amounts, and the paid-in-full discount. Agent Brandy resolved the confusion by explaining the policy's effective dates, the discount process, and guided Simon to the correct documents in Glove Box. The call concluded with Simon planning to recheck the policy details after the system update on Monday.",
+  "_model": "qwen3:14b",
+  "_eval_count": 508,
+  "_total_duration_ms": 61429,
+  "_source_file": "transcripts/q-300-+12105008311-20251024-164042-1761338442.6597.txt",
+  "_direction": "queue",
+  "_char_count": 8243
+}

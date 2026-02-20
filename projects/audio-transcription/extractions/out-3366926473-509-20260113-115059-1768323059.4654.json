@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Sarah wants to switch her auto policy from a 'pay in full' arrangement to monthly installments, as previously agreed with her agent Brandi.",
+  "resolution_steps": [
+    "Dina connects Sarah with Travelers representative Stephen to address the billing discrepancy.",
+    "Stephen confirms the policy was incorrectly set to 'direct pay in full' despite Sarah's prior communication with her agent.",
+    "Stephen initiates a policy adjustment to switch to monthly installments and places the call on hold for 1-2 minutes to process the change."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance billing options (e.g., direct pay vs. installments)",
+    "Process for correcting policy errors on the carrier's end",
+    "Communication protocols between agents and carriers"
+  ],
+  "systems_referenced": [
+    "Travelers insurance system",
+    "Alliance Insurance internal communication tools"
+  ],
+  "summary": "Sarah requested a correction to her auto policy billing arrangement, which was initially set to 'pay in full' but should be monthly installments. The Alliance agent coordinated with Travelers to address the error, and the carrier began processing the change during the call.",
+  "_model": "qwen3:14b",
+  "_eval_count": 266,
+  "_total_duration_ms": 34265,
+  "_source_file": "transcripts/out-3366926473-509-20260113-115059-1768323059.4654.txt",
+  "_direction": "outbound",
+  "_char_count": 2296
+}

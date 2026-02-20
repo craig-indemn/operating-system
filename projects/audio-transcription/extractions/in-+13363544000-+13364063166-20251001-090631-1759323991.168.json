@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jerry Mason wants to confirm that his insurance premium payment made yesterday has been processed, as it is not showing in his online banking.",
+  "resolution_steps": [
+    "Receptionist confirms payment was made and checks internal records.",
+    "Receptionist informs Jerry the payment is 'in process' but not yet reflected in banking.",
+    "Receptionist offers to escalate to an agent to contact the North Carolina Underwriter Association for further clarification."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of insurance payment processing timelines (e.g., 24-hour window)",
+    "Access to internal systems to verify payment status",
+    "Knowledge of state-specific underwriting associations (e.g., North Carolina)"
+  ],
+  "systems_referenced": [
+    "Online banking portal (caller's system)",
+    "North Carolina Underwriter Association (external entity)"
+  ],
+  "summary": "Jerry Mason contacted Lions Insurance to resolve a discrepancy where his premium payment was not reflected in his online banking. The receptionist confirmed the payment was in process and arranged for an agent to contact the North Carolina Underwriter Association to investigate further. The issue was escalated for resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 262,
+  "_total_duration_ms": 33556,
+  "_source_file": "transcripts/in-+13363544000-+13364063166-20251001-090631-1759323991.168.txt",
+  "_direction": "inbound",
+  "_char_count": 1465
+}

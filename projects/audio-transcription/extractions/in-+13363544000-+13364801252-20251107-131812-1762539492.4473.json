@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Gary Smith wants to update his homeowner's insurance policy due to a change in mortgage servicer (from Movement Mortgage to Lakeview Loan Servicing) and needs assistance with the process.",
+  "resolution_steps": [
+    "Agent explains need to provide the letter from Lakeview Loan Servicing to update the policy.",
+    "Agent suggests emailing the letter or taking a clear photo of it for texting.",
+    "Agent offers to send a message to the store to prepare a copy of the letter when Gary arrives in 30 minutes."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Process for updating policies with mortgage servicer changes",
+    "Document submission methods (email/text/in-person)"
+  ],
+  "systems_referenced": [
+    "text number for document submission",
+    "internal store coordination system"
+  ],
+  "summary": "Gary Smith contacted Alliance Insurance to update his homeowner's insurance policy after his mortgage servicer changed. The agent guided him to submit a letter via text or in-person, coordinating with the store to prepare documents upon his arrival. The call concluded with Gary planning to visit the store in 30 minutes.",
+  "_model": "qwen3:14b",
+  "_eval_count": 248,
+  "_total_duration_ms": 38207,
+  "_source_file": "transcripts/in-+13363544000-+13364801252-20251107-131812-1762539492.4473.txt",
+  "_direction": "inbound",
+  "_char_count": 1549
+}

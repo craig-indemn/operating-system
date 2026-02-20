@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unknown (call ended before intent could be expressed)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Very brief inbound call where the caller only said 'Hello' after the agent's greeting. No meaningful conversation or intent was established.",
+  "_model": "qwen3:14b",
+  "_eval_count": 89,
+  "_total_duration_ms": 23419,
+  "_source_file": "transcripts/in-+13363779003-+13369103097-20250916-125218-1758041538.6812.txt",
+  "_direction": "inbound",
+  "_char_count": 85
+}

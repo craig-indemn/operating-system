@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Mr. Smith) is following up on the status of his medical records requested by a life insurance company, specifically inquiring about delays and whether they can be expedited.",
+  "resolution_steps": [
+    "Agent explains that Novant Health typically takes 10\u201314 days to provide medical records for life insurance applications.",
+    "Agent clarifies that there is no direct way to expedite the process through the insurance agency.",
+    "Agent acknowledges the client's upcoming doctor appointment and reassures him that the delay is standard."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of medical record processing timelines for Novant Health",
+    "Knowledge of life insurance underwriting procedures",
+    "Awareness of client communication protocols for insurance applications"
+  ],
+  "systems_referenced": [
+    "Novant Health",
+    "Life insurance company portal"
+  ],
+  "summary": "Mr. Smith followed up about delayed medical records for his life insurance application. The agent explained that Novant Health typically takes 10\u201314 days to process such requests and that there is no direct way to expedite the process. The client was reassured that this is standard and that the agent would not be able to intervene further.",
+  "_model": "qwen3:14b",
+  "_eval_count": 275,
+  "_total_duration_ms": 41734,
+  "_source_file": "transcripts/out-13362579534-701-20251229-115629-1767027389.7057.txt",
+  "_direction": "outbound",
+  "_char_count": 1499
+}

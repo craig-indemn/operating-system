@@ -1,0 +1,19 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Transfer call to Stan (no substantive issue discussed)",
+  "resolution_steps": [
+    "Agent facilitated transfer to Stan"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Call transfer procedures"
+  ],
+  "systems_referenced": [],
+  "summary": "Brief call where agent transferred the call to Stan without addressing any specific insurance-related request or issue.",
+  "_model": "qwen3:14b",
+  "_eval_count": 92,
+  "_total_duration_ms": 26159,
+  "_source_file": "transcripts/exten-206-+13363258130-20251230-110019-1767110419.1524.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 299
+}

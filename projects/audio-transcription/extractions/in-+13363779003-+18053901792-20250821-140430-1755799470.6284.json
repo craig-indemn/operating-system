@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller needs a property insurance quote for a renewal in Statesville, NC, after their previous insurer is no longer operational.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's request for a property insurance quote.",
+    "Agent offers to connect the caller with an agent to assist with the renewal process."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Property insurance quoting process",
+    "Handling insurance renewals",
+    "Managing cases where previous insurers are no longer active"
+  ],
+  "systems_referenced": [],
+  "summary": "The caller requested a property insurance quote for renewal in Statesville, NC, after their previous insurer is out of business. The agent acknowledged the request and offered to connect them with an agent to proceed, but the call ended before further action was taken.",
+  "_model": "qwen3:14b",
+  "_eval_count": 190,
+  "_total_duration_ms": 54073,
+  "_source_file": "transcripts/in-+13363779003-+18053901792-20250821-140430-1755799470.6284.txt",
+  "_direction": "inbound",
+  "_char_count": 396
+}

@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The agent (Corbin) left a voicemail to inform Gary about needing to update his mailing address and to request follow-up communication.",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Agent left a voicemail to Gary regarding updating his mailing address and requesting follow-up. The agent mentioned being out of town and provided a phone number for contact.",
+  "_model": "qwen3:14b",
+  "_eval_count": 109,
+  "_total_duration_ms": 52987,
+  "_source_file": "transcripts/out-3363837239-409-20250930-163120-1759264280.7595.txt",
+  "_direction": "outbound",
+  "_char_count": 1028
+}

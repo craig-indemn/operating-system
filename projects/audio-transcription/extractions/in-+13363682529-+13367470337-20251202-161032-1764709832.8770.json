@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Ron Marshall, is the treasurer of Pilot Mountain Masonic Lodge and needs assistance with paying the lodge's insurance.",
+  "resolution_steps": [
+    "Agent confirmed Alliance Insurance offers commercial insurance services.",
+    "Agent attempted to transfer the caller to a commercial agent.",
+    "Agent placed the caller on hold with a message about the customer portal and text support options."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Commercial insurance policies for organizations",
+    "Transfer protocols to specialized agents",
+    "Customer portal and support channels"
+  ],
+  "systems_referenced": [
+    "myallianceinsurance.com customer portal",
+    "Text support at 336-786-1133"
+  ],
+  "summary": "Ron Marshall, treasurer of Pilot Mountain Masonic Lodge, sought help paying the lodge's insurance. The agent attempted to transfer him to a commercial agent but placed him on hold, offering the customer portal and text support as alternatives. The call was not fully resolved but directed to appropriate resources.",
+  "_model": "qwen3:14b",
+  "_eval_count": 238,
+  "_total_duration_ms": 67599,
+  "_source_file": "transcripts/in-+13363682529-+13367470337-20251202-161032-1764709832.8770.txt",
+  "_direction": "inbound",
+  "_char_count": 1098
+}

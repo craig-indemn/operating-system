@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Juan is seeking a refund for a canceled insurance policy, which was drafted before cancellation and is being held pending an audit. He is frustrated with the process and wants the money released immediately.",
+  "resolution_steps": [
+    "Cody acknowledges Juan's issue and explains that the refund is being held until the audit is completed.",
+    "Cody clarifies that he submitted the cancellation request as soon as he received the signed form but emphasizes he cannot control the insurance company's actions.",
+    "Cody states he is waiting for the underwriter's response on whether the refund can be issued before the audit.",
+    "Cody apologizes for the inconvenience and assures Juan he will follow up once he has more information."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance cancellation and refund processes",
+    "Handling disputes over policy cancellations and audits",
+    "Understanding carrier-specific refund policies"
+  ],
+  "systems_referenced": [
+    "Underwriting system (via underwriter communication)"
+  ],
+  "summary": "Juan is disputing a refund delay for a canceled insurance policy, with the carrier holding funds until an audit is completed. Cody explains the situation, clarifies his role, and confirms he is waiting for the underwriter's decision. The call ends with a promise to follow up once more information is available.",
+  "_model": "qwen3:14b",
+  "_eval_count": 291,
+  "_total_duration_ms": 46883,
+  "_source_file": "transcripts/exten-207-+13369080405-20250911-150500-1757617500.4187.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4382
+}

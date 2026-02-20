@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Shea Glass, president of Greystone Condos, is seeking clarification about an unauthorized $15.47 credit card charge by Auto Owners, which he believes was mistakenly processed despite his policies being set to auto-pay. He also mentions a pending check that was supposed to resolve the payment issue.",
+  "resolution_steps": [
+    "Gloria acknowledges the charge and explains that Shea made the payment himself via the Auto Owners portal.",
+    "Shea admits he forgot about a prior agreement to send a check and mistakenly initiated the online payment.",
+    "Gloria offers to contact Auto Owners to request a refund for the $15.47 charge.",
+    "Shea confirms the check has not yet been received and agrees to follow up with his treasurer."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding Auto Owners' payment systems and refund processes",
+    "Knowledge of HO6 and condo insurance policy management",
+    "Ability to reconcile client payment methods (auto-pay vs. manual checks)"
+  ],
+  "systems_referenced": [
+    "Auto Owners insurance carrier portal",
+    "Greystone Condo policy management system",
+    "Credit card payment processing system"
+  ],
+  "summary": "Shea Glass contacted Gloria Galassi about an unexpected $15.47 credit card charge by Auto Owners, which he mistakenly processed online despite having auto-pay set up. Gloria clarified the error, acknowledged the confusion, and committed to contacting Auto Owners for a refund. The call concluded with Shea agreeing to follow up with his treasurer about the pending check.",
+  "_model": "qwen3:14b",
+  "_eval_count": 341,
+  "_total_duration_ms": 54509,
+  "_source_file": "transcripts/exten-102-+13367102188-20251222-160656-1766437616.4850.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4035
+}

@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking clarification about an unexpected audit charge of $2,400 for a 'ghost' workers' compensation policy they switched from M Trust to another provider, questioning why they were charged when the policy doesn't cover anything and they have no employees.",
+  "resolution_steps": [
+    "Brandy acknowledges the caller's confusion about the audit charge.",
+    "Brandy explains she cannot resolve the issue directly and needs to transfer the caller to the commercial insurance department.",
+    "Brandy advises the caller to specify which account (personal vs. commercial) they are referring to in future calls to avoid confusion."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Workers' compensation policy mechanics",
+    "Audit processes for insurance policies",
+    "Account management across personal and commercial insurance lines"
+  ],
+  "systems_referenced": [
+    "Internal call transfer system",
+    "Commercial insurance department portal"
+  ],
+  "summary": "A caller is confused about an unexpected audit charge for a 'ghost' workers' comp policy they no longer use. The agent explains she cannot resolve the issue directly and transfers the caller to the commercial department for specialized support. The caller is advised to specify account type in future calls to avoid confusion.",
+  "_model": "qwen3:14b",
+  "_eval_count": 277,
+  "_total_duration_ms": 31907,
+  "_source_file": "transcripts/q-300-+13365965391-20251114-125257-1763142777.5377.txt",
+  "_direction": "queue",
+  "_char_count": 1266
+}

@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Caller is assisting a customer from an auto wash shop to file a business auto insurance claim and verifying they contacted the correct number.",
+  "resolution_steps": [
+    "Agent confirmed the caller provided a business auto policy number (DAT-2026713-17).",
+    "Agent acknowledged the request to file a claim.",
+    "Agent initiated transfer to a specialist to handle the claim filing."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Business auto insurance claims process",
+    "Policy number verification procedures",
+    "Call transfer protocols for claim assistance"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller from an auto wash shop requested assistance filing a business auto insurance claim, providing a policy number. The agent confirmed the request and transferred the call to a specialist for further processing. The call is ongoing with the transfer completed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 204,
+  "_total_duration_ms": 35989,
+  "_source_file": "transcripts/in-+13363779003-+13364883777-20251215-150347-1765829027.4358.txt",
+  "_direction": "inbound",
+  "_char_count": 596
+}

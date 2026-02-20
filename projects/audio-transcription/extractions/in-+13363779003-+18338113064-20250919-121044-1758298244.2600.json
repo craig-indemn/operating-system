@@ -1,0 +1,24 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller aimed to verify renewal information for a homeowners insurance policy by providing the policy number.",
+  "resolution_steps": [
+    "Agent Juliette confirmed the call's purpose and requested the policy number.",
+    "Customer provided the policy number (518714E).",
+    "Agent stated she would connect the caller to an agent but did not proceed further."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy verification procedures",
+    "Internal system navigation for policy lookup"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's internal policy database"
+  ],
+  "summary": "The call was cut off before any resolution occurred. The agent confirmed the policy number but did not provide renewal details or transfer the call to another agent.",
+  "_model": "qwen3:14b",
+  "_eval_count": 183,
+  "_total_duration_ms": 40930,
+  "_source_file": "transcripts/in-+13363779003-+18338113064-20250919-121044-1758298244.2600.txt",
+  "_direction": "inbound",
+  "_char_count": 562
+}

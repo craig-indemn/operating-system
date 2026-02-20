@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Amanda Tessback, who recently started an event rental business, requested a quote for general liability insurance.",
+  "resolution_steps": [
+    "Agent placed the caller on hold to connect her with an agent.",
+    "Agent asked if Amanda had any existing policies with Alliance Insurance (she did not)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "General liability insurance for small businesses",
+    "Process for obtaining insurance quotes"
+  ],
+  "systems_referenced": [],
+  "summary": "Amanda Tessback contacted Alliance Insurance to request a general liability insurance quote for her new event rental business. The agent confirmed she had no existing policies and placed her on hold to transfer her to an agent for further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 173,
+  "_total_duration_ms": 35767,
+  "_source_file": "transcripts/in-+13363779003-+13524256774-20250801-120946-1754064586.3492.txt",
+  "_direction": "inbound",
+  "_char_count": 529
+}

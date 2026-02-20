@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Gary) wants to adjust his insurance policy by removing two vehicles (Astro van and Ford Explorer) and update coverage details, including roof replacement dates for his house and shop, to potentially lower premiums.",
+  "resolution_steps": [
+    "Agent confirms roof replacement dates for the house (10 years ago) and shop (1.5 years ago).",
+    "Discusses removing two vehicles from the policy, confirming tags have been turned in.",
+    "Explains that removing vehicles will reduce the premium from $205/month.",
+    "Agrees to adjust the policy and contact the caller back later in the week for final adjustments.",
+    "Notes that the homeowner's insurance quote will be based on square footage and replacement value."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy adjustments (removing vehicles, updating coverage).",
+    "Impact of roof replacement dates on homeowner's insurance calculations.",
+    "Handling vehicle removals and tag turnover for auto insurance policies."
+  ],
+  "systems_referenced": [],
+  "summary": "Gary is adjusting his insurance policy by removing two vehicles and updating coverage details. The agent will process the changes and contact him back later in the week to finalize adjustments. The caller is satisfied with the plan to reduce premiums and update coverage based on property details.",
+  "_model": "qwen3:14b",
+  "_eval_count": 294,
+  "_total_duration_ms": 51279,
+  "_source_file": "transcripts/exten-113-+13364237951-20250815-151143-1755285103.8806.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3113
+}

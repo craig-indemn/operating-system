@@ -1,0 +1,23 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Holly from Alliance Insurance attempted to reach Margaret to discuss auto policy renewal and update contact information.",
+  "resolution_steps": [
+    "Voicemail greeting played",
+    "Holly left message about policy review and email update request"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Voicemail handling procedures",
+    "Auto policy renewal process"
+  ],
+  "systems_referenced": [
+    "Voicemail system"
+  ],
+  "summary": "Outbound call to Margaret resulted in voicemail. Holly left a message about auto policy renewal and requested updated contact information. No direct interaction occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 133,
+  "_total_duration_ms": 26174,
+  "_source_file": "transcripts/out-3366243565-504-20251210-115734-1765385854.1654.txt",
+  "_direction": "outbound",
+  "_char_count": 775
+}

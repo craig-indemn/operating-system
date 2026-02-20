@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unable to determine due to insufficient information",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Fragmented and unclear conversation with potential misdirects (mention of 'Deutsche Bank' and 'money policy' unrelated to insurance). No clear intent or actionable information provided.",
+  "_model": "qwen3:14b",
+  "_eval_count": 95,
+  "_total_duration_ms": 28032,
+  "_source_file": "transcripts/in-+13363779003-+18008287959-20251212-103850-1765553930.1061.txt",
+  "_direction": "inbound",
+  "_char_count": 223
+}

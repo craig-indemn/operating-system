@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Heather from Alliance Insurance needed to resolve a claim related to electrical damage caused by an electrician, adjust coverage based on subrogation, and ensure proper documentation for future reference.",
+  "resolution_steps": [
+    "Susie confirmed the claim involved an electrician's error causing a power surge, not a roof or home issue.",
+    "Susie updated notes to clarify the claim was subrogated to the electrician's insurance, leaving $1,000 as an exception.",
+    "Agreed to maintain $1,000 coverage for now, with a planned increase to $2,500 at renewal to apply a premium discount.",
+    "Ensured documentation would be noted in the system for future reference to avoid confusion."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance claims process",
+    "Subrogation procedures",
+    "Policy adjustment strategies",
+    "Documentation protocols for claims"
+  ],
+  "systems_referenced": [
+    "Internal notes system for claim documentation",
+    "Carrier portal for subrogation tracking"
+  ],
+  "summary": "Heather and Susie resolved a claim involving electrical damage caused by an electrician, adjusting coverage to account for subrogation. They agreed to maintain $1,000 coverage temporarily and increase it to $2,500 at renewal. Proper documentation was emphasized to ensure clarity for future reference. The call concluded with mutual appreciation and confirmation of next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 320,
+  "_total_duration_ms": 38505,
+  "_source_file": "transcripts/out-3367592176-202-20250822-131728-1755883048.10206.txt",
+  "_direction": "outbound",
+  "_char_count": 3365
+}

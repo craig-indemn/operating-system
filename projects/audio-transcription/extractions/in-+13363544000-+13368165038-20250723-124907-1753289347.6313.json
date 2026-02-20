@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Inquiring about the availability of Heather Scott",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Very brief call where caller asked about Heather Scott's availability. Agent offered to check but no further details were exchanged. Insufficient information for substantive analysis.",
+  "_model": "qwen3:14b",
+  "_eval_count": 93,
+  "_total_duration_ms": 21807,
+  "_source_file": "transcripts/in-+13363544000-+13368165038-20250723-124907-1753289347.6313.txt",
+  "_direction": "inbound",
+  "_char_count": 123
+}

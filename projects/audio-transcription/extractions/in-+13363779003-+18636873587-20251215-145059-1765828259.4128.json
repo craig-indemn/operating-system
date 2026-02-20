@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Lisa is reporting a disconnected call from an unknown person and attempting to identify the caller's purpose.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Lisa from Auto Owners reported a disconnected call from an unknown individual and attempted to recall details but was unsuccessful. The conversation did not reach a resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 101,
+  "_total_duration_ms": 33958,
+  "_source_file": "transcripts/in-+13363779003-+18636873587-20251215-145059-1765828259.4128.txt",
+  "_direction": "inbound",
+  "_char_count": 432
+}

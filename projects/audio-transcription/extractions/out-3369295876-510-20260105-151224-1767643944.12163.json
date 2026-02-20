@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Tracy is updating Jeremy about unresolved billing discrepancies related to cancellation and reinstatement notices, confirming partial resolution (cancellation notice removed) and requesting expedited processing.",
+  "resolution_steps": [
+    "Confirmed cancellation notice was removed by the carrier",
+    "Notified Jeremy that amounts were miscalculated (originally reported as $6/$3, now corrected to ~$2.14)",
+    "Requested expedited processing of the reinstatement",
+    "Confirmed Jeremy was current on payments for the upcoming month"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Billing dispute resolution processes",
+    "Cancellation/reinstatement notice procedures",
+    "Carrier communication protocols",
+    "Payment status verification"
+  ],
+  "systems_referenced": [],
+  "summary": "Tracy provided Jeremy with an update on his unresolved billing issue, confirming the cancellation notice had been removed but amounts remained miscalculated. She requested expedited processing while confirming his payment status. The conversation concluded with Jeremy expressing gratitude and both parties ending the call.",
+  "_model": "qwen3:14b",
+  "_eval_count": 235,
+  "_total_duration_ms": 38639,
+  "_source_file": "transcripts/out-3369295876-510-20260105-151224-1767643944.12163.txt",
+  "_direction": "outbound",
+  "_char_count": 1090
+}

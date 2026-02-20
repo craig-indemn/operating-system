@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jeremy Palmer needs a flood insurance quote revised for a residential property in North Carolina, as his flood specialist is unavailable. He requires updates to details like construction year, building specifications, and effective date.",
+  "resolution_steps": [
+    "Agent transferred caller to the flood team at Johnson and Johnson.",
+    "Provided quote number (31327481) and confirmed it's a residential primary flood policy for Raheem at 1785 Mallard Drive, Kernersville.",
+    "Updated policy details: construction year from 2024 to 2025, number of stories from 0 to 2, square footage to 2345, and confirmed slab-on-fill construction.",
+    "Discussed effective date change to September 22nd (aligned with closing date to avoid 7-day wait)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Flood insurance policy specifics (effective dates, coverage amounts, construction details)",
+    "Understanding of flood zone classifications (Zone X)",
+    "Process for revising quotes via Johnson and Johnson's portal"
+  ],
+  "systems_referenced": [
+    "Johnson and Johnson's internal quote management system"
+  ],
+  "summary": "Jeremy Palmer requested revisions to a flood insurance quote for a North Carolina property while his specialist was unavailable. The agent at Johnson and Johnson assisted in updating key details like construction year, building specifications, and effective date, but the call was cut off mid-transaction when the agent requested the cost-to-build figure.",
+  "_model": "qwen3:14b",
+  "_eval_count": 342,
+  "_total_duration_ms": 42550,
+  "_source_file": "transcripts/out-8004877565-701-20250903-115251-1756914771.4029.txt",
+  "_direction": "outbound",
+  "_char_count": 4038
+}

@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear/fragmented; appears to be a disconnected call or caller hanging up before articulating a request",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Very brief and fragmented interaction where caller appears to hang up before communicating a clear request. No meaningful conversation occurs beyond initial greeting and disconnected attempt.",
+  "_model": "qwen3:14b",
+  "_eval_count": 103,
+  "_total_duration_ms": 25486,
+  "_source_file": "transcripts/in-+13363779003-+17433335700-20250730-151712-1753903032.9092.txt",
+  "_direction": "inbound",
+  "_char_count": 205
+}

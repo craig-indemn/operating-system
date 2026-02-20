@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Karen Abruzo seeks a home insurance quote, believing her current Geico rate may be too high. She wants to explore alternatives through Alliance Insurance Services.",
+  "resolution_steps": [
+    "Heather collects Karen's personal details (name, DOB, spouse info, address, driver's license).",
+    "Heather gathers property details (home type, roof age, updates, pool, pets).",
+    "Heather notes Karen's current insurance (Geico with Stillwater underwriting) and policy renewal uncertainty.",
+    "Heather confirms Karen's location (North Carolina) and mentions Alliance's presence in nearby areas.",
+    "Heather explains the quoting process (1-2 business days) and agrees to send a quote via text."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Home insurance underwriting criteria",
+    "Quote generation process for multiple carriers",
+    "Policy renewal timelines and payment methods",
+    "Geico and Travelers insurance carrier specifics"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal quoting system",
+    "Travelers insurance carrier portal"
+  ],
+  "summary": "Karen Abruzo requested a home insurance quote after finding out through a friend that Travelers might offer better rates than her current Geico policy. Heather collected detailed personal, property, and insurance history information, and committed to sending a quote via text. The call included informal conversation about Karen's vacation and social circle, but the primary focus remained on insurance needs.",
+  "_model": "qwen3:14b",
+  "_eval_count": 321,
+  "_total_duration_ms": 47083,
+  "_source_file": "transcripts/q-200-+13362011686-20250911-125731-1757609851.2755.txt",
+  "_direction": "queue",
+  "_char_count": 8139
+}

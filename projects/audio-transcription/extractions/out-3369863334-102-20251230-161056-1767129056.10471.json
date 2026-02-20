@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller (Miss Gloria) is informing the agent that she is waiting to speak with an underwriter to clarify details before providing a response, and she will follow up between tomorrow and Friday.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The caller indicated she is awaiting communication from an underwriter and will provide a response between tomorrow and Friday. The agent did not take any action beyond acknowledging the message.",
+  "_model": "qwen3:14b",
+  "_eval_count": 124,
+  "_total_duration_ms": 27667,
+  "_source_file": "transcripts/out-3369863334-102-20251230-161056-1767129056.10471.txt",
+  "_direction": "outbound",
+  "_char_count": 540
+}

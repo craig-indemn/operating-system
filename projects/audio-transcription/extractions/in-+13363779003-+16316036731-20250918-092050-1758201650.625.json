@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to inquire about windshield coverage under their personal vehicle insurance policy.",
+  "resolution_steps": [
+    "Agent acknowledged the inquiry and requested a moment to transfer the call.",
+    "Agent confirmed the policy was for a personal vehicle."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of auto insurance policy coverage details",
+    "Ability to route calls to appropriate departments"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance internal policy database"
+  ],
+  "summary": "A caller inquired about windshield coverage on their personal vehicle policy. The agent initiated a transfer but the conversation was cut off mid-transaction, requiring a callback to resolve the inquiry.",
+  "_model": "qwen3:14b",
+  "_eval_count": 162,
+  "_total_duration_ms": 19634,
+  "_source_file": "transcripts/in-+13363779003-+16316036731-20250918-092050-1758201650.625.txt",
+  "_direction": "inbound",
+  "_char_count": 402
+}

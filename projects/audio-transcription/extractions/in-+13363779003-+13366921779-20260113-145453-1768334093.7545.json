@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Mark Beach, wants to understand the process for reimbursement after his car was towed for repairs.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's request regarding reimbursement for towing costs.",
+    "Agent informs the caller they will connect him with a specialist to assist with the claim."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Claims process for vehicle towing reimbursement",
+    "Internal procedures for routing customer inquiries to specialists"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's internal customer support system"
+  ],
+  "summary": "Mark Beach called to inquire about reimbursement for towing his car. The agent acknowledged the request and offered to connect him with a specialist. The call ended with a promise to follow up, but no immediate resolution was provided.",
+  "_model": "qwen3:14b",
+  "_eval_count": 188,
+  "_total_duration_ms": 30212,
+  "_source_file": "transcripts/in-+13363779003-+13366921779-20260113-145453-1768334093.7545.txt",
+  "_direction": "inbound",
+  "_char_count": 271
+}

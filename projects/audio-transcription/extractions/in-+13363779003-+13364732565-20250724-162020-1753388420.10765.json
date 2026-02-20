@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to cancel their insurance coverage with Alliance Insurance and is asking what documents they need to send via email and whether they need to speak to someone.",
+  "resolution_steps": [
+    "Agent explains that sending a declaration page via email is a step in the cancellation process.",
+    "Agent clarifies that the caller will still need to speak to someone to sign a cancellation form.",
+    "Agent offers to provide the email address for submitting the declaration page.",
+    "Agent agrees to connect the caller with someone to proceed with the cancellation."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance cancellation procedures",
+    "Required documentation for policy termination",
+    "Internal contact protocols for policyholder interactions"
+  ],
+  "systems_referenced": [
+    "email (general reference, no specific system mentioned)"
+  ],
+  "summary": "A caller inquires about canceling their insurance policy with Alliance Insurance. The agent explains the need to send a declaration page via email and confirm the cancellation with a representative. The agent offers to provide the email address and connect the caller with the appropriate department to complete the process.",
+  "_model": "qwen3:14b",
+  "_eval_count": 245,
+  "_total_duration_ms": 33779,
+  "_source_file": "transcripts/in-+13363779003-+13364732565-20250724-162020-1753388420.10765.txt",
+  "_direction": "inbound",
+  "_char_count": 1036
+}

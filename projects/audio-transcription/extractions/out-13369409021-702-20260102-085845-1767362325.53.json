@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Rachel attempted to reach Sandy via phone and left a voicemail message requesting a callback with contact information.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "This is a voicemail message where Rachel left a callback request for Sandy, providing phone numbers and an extension. The call was not answered by an agent and was forwarded to voicemail.",
+  "_model": "qwen3:14b",
+  "_eval_count": 110,
+  "_total_duration_ms": 26814,
+  "_source_file": "transcripts/out-13369409021-702-20260102-085845-1767362325.53.txt",
+  "_direction": "outbound",
+  "_char_count": 371
+}

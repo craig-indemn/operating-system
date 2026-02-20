@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; fragmented utterance possibly referencing 'speed ahead' and a name 'Scott', but intent not clearly communicated.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Very brief and fragmented interaction where caller's intent is unclear. Agent provided standard greeting but no meaningful conversation occurred before call likely disconnected.",
+  "_model": "qwen3:14b",
+  "_eval_count": 103,
+  "_total_duration_ms": 27774,
+  "_source_file": "transcripts/in-+13363779003-+13364868456-20251204-115549-1764867349.2707.txt",
+  "_direction": "inbound",
+  "_char_count": 140
+}

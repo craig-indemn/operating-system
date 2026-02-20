@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "John Thompson is seeking insurance quotes for his three properties (primary home and two rentals) and wants to consolidate policies with Alliance Insurance Services. He mentions previous dissatisfaction with follow-up from the agency and is looking for updated coverage options.",
+  "resolution_steps": [
+    "Heather verifies John's identity using personal details (name, phone number, email, DOB, DL number).",
+    "She gathers information about his properties: primary residence at 186 North Main Road, rentals at 2118 North Main and 536 Riverside Drive.",
+    "Heather collects details about home renovations (new floors, decks, pool, roof replacement in 2021).",
+    "She notes John's current auto insurance with First Insurance and his intent to consolidate policies.",
+    "Heather confirms marital status, spouse's details (Carrie TEROY), and addresses gaps in information (spouse's DL number)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy renewal processes",
+    "Property valuation and coverage assessment",
+    "Client onboarding procedures",
+    "Management system navigation for client records"
+  ],
+  "systems_referenced": [
+    "New management system for client information"
+  ],
+  "summary": "John Thompson, a client with three insured properties, is seeking updated insurance quotes and policy consolidation with Alliance Insurance Services. Heather is gathering detailed property, personal, and policy information to create proposals, while addressing previous service gaps. The call is ongoing with resolution pending full information collection.",
+  "_model": "qwen3:14b",
+  "_eval_count": 339,
+  "_total_duration_ms": 54085,
+  "_source_file": "transcripts/q-200-+13362795804-20251015-122209-1760545329.1513.txt",
+  "_direction": "queue",
+  "_char_count": 3919
+}

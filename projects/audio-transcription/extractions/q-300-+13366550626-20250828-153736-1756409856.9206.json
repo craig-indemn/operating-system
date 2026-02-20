@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Caleb Porter is calling to confirm the status of his auto insurance policy after his previous carrier (Main Street America) ceased operations in North Carolina and to resolve potential gaps in coverage.",
+  "resolution_steps": [
+    "Agent Jamie verifies Caleb's policy history, confirming Main Street America's coverage ended on August 13th due to their exit from NC.",
+    "Jamie explains the need to requote coverage due to the lapse and contacts underwriting to check Auto Owners' willingness to accept a lapsed policy.",
+    "Jamie notes the potential for a DMV fine related to the lapse and confirms Caleb's contact information for follow-up.",
+    "Jamie commits to calling back after consulting underwriting to determine next steps (requote with Auto Owners or Progressive)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of carrier-specific policy changes (Main Street America exiting NC)",
+    "Handling lapsed auto policies and DMV implications",
+    "Underwriting processes for new/reattachment quotes"
+  ],
+  "systems_referenced": [
+    "Internal phone system (policy lookup)",
+    "Auto Owners insurance",
+    "Progressive (as a potential alternative carrier)",
+    "DMV system (for lapsing coverage penalties)"
+  ],
+  "summary": "Caleb Porter contacted Alliance Insurance to resolve uncertainty about his auto policy after his previous carrier (Main Street America) ceased NC operations. The agent confirmed his policy lapsed on August 13th, explained potential DMV fines, and initiated underwriting checks to requote coverage with Auto Owners or Progressive. A callback was promised for follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 353,
+  "_total_duration_ms": 43485,
+  "_source_file": "transcripts/q-300-+13366550626-20250828-153736-1756409856.9206.txt",
+  "_direction": "queue",
+  "_char_count": 4270
+}

@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; appears to be a fragmented conversation about a 'setup process' and attempting to reach someone (Joe) who is driving and intermittently disconnecting.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Fragmented conversation where caller attempts to communicate with Joe about a setup process but faces intermittent disconnections. No clear resolution or actionable information extracted.",
+  "_model": "qwen3:14b",
+  "_eval_count": 113,
+  "_total_duration_ms": 24999,
+  "_source_file": "transcripts/exten-206-+13364143620-20250731-125914-1753981154.9776.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 721
+}

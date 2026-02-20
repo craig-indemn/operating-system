@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to purchase a motorhome insurance policy for a $72,000 motorhome, specifically seeking coverage for the vehicle itself (not contents) and clarification on why the premium is higher than expected.",
+  "resolution_steps": [
+    "Agent explained that motorhome policies require insuring the replacement value of the entire RV, including permanently attached equipment and contents, not just the vehicle's base value.",
+    "Agent clarified that the $35,000 'value' mentioned in the quote refers to the motorhome's base value, but the policy must cover the full replacement cost (including contents) to ensure proper protection.",
+    "Agent confirmed that the customer can exclude personal effects coverage if they prefer, but the policy must still cover the RV's full replacement value.",
+    "Agent ensured the policy would be effective by Monday and confirmed payment options."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Motorhome insurance policy structure (replacement value vs. actual cash value)",
+    "Coverage distinctions between vehicle, permanently attached equipment, and personal effects",
+    "Premium calculation factors for specialty vehicles"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services policy quoting system",
+    "Carrier-specific motorhome insurance portal"
+  ],
+  "summary": "The agent clarified that motorhome insurance requires full replacement value coverage (including contents) to ensure proper protection, even if the customer only wants to insure the vehicle itself. The customer was reassured that personal effects coverage could be adjusted, and the policy was confirmed for Monday activation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 339,
+  "_total_duration_ms": 66110,
+  "_source_file": "transcripts/out-3364162137-409-20250815-135553-1755280553.7347.txt",
+  "_direction": "outbound",
+  "_char_count": 16265
+}

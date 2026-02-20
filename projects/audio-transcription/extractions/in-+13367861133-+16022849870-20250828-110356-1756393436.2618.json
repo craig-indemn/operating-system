@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Karen wants to process a payment for her auto insurance policy and inquire about a health insurance policy that was previously taken out by Corbin Dirk, seeking confirmation of its status.",
+  "resolution_steps": [
+    "Agent Sam confirms Karen's identity and acknowledges her voicemail.",
+    "Sam verifies the auto policy payment amount ($1,864.56) and prepares to process it.",
+    "Karen raises a follow-up question about a health insurance policy Corbin Dirk removed, which she believes was linked to a hospital bill.",
+    "Sam explains they cannot access policy details directly due to licensing restrictions but offers to transfer Karen to Corbin for further assistance.",
+    "Sam initiates transfer to Corbin and provides hold music with customer portal/text support information."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Auto insurance payment processing procedures",
+    "Agent licensing limitations regarding policy access",
+    "Internal transfer protocols"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance customer portal (myallianceinsurance.com)",
+    "Text support service (336-786-1133)"
+  ],
+  "summary": "Karen contacted Alliance Insurance to process an auto policy payment and inquire about a health insurance policy Corbin Dirk removed. The agent confirmed the payment details but could not verify the health insurance status due to licensing restrictions, transferring Karen to Corbin for resolution. The agent also promoted digital support options during the hold.",
+  "_model": "qwen3:14b",
+  "_eval_count": 322,
+  "_total_duration_ms": 44876,
+  "_source_file": "transcripts/in-+13367861133-+16022849870-20250828-110356-1756393436.2618.txt",
+  "_direction": "inbound",
+  "_char_count": 2731
+}

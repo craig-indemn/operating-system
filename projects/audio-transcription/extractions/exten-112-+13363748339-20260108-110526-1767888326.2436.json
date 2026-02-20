@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Scott is discussing his home and auto insurance policies with Brandy, seeking clarification on recent rate increases, coverage for animals on his property, and potential adjustments to his policies, including transitioning to a farm insurance plan.",
+  "resolution_steps": [
+    "Brandy retrieves Scott's account details and acknowledges previous communication issues.",
+    "Discusses Scott's home insurance increase, attributing it to expanded coverage and state rate hikes.",
+    "Explores coverage for animals (cows, horses, etc.) and their location relative to the home.",
+    "Reviews auto insurance details, including vehicle types, liability coverage, and potential impacts of adding a new driver.",
+    "Considers transitioning to a farm policy for consolidated coverage and potential cost savings.",
+    "Outlines next steps, including consulting with specialists and revisiting policy options in February."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Home and auto insurance rate calculation factors (coverage limits, state regulations, property details)",
+    "Farm insurance policy structures and eligibility criteria",
+    "Impact of adding animals/liability coverage to homeowners policies",
+    "Inexperienced driver rate adjustments and insurance company-specific discounts"
+  ],
+  "systems_referenced": [
+    "Auto Owners Insurance",
+    "National General Insurance",
+    "Internal policy management systems (account retrieval, coverage analysis)"
+  ],
+  "summary": "Scott discusses his home and auto insurance policies with Brandy, addressing rate increases, animal coverage, and potential policy adjustments. Brandy explains the home insurance hike due to expanded coverage and state rates, reviews auto policy details, and explores transitioning to a farm policy for consolidated coverage. The conversation concludes with plans to consult specialists and revisit options in February.",
+  "_model": "qwen3:14b",
+  "_eval_count": 369,
+  "_total_duration_ms": 72557,
+  "_source_file": "transcripts/exten-112-+13363748339-20260108-110526-1767888326.2436.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 12627
+}

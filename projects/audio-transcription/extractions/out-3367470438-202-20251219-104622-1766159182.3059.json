@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Wayne wanted to finalize an insurance policy payment with a $10,000 deductible, confirming the premium amount and providing payment details via Discover card.",
+  "resolution_steps": [
+    "Heather confirmed the policy details (premium: $2,165, deductible: $10,000).",
+    "Wayne provided Discover card information (number, expiration date, zip code, and name).",
+    "Heather acknowledged receipt of payment details and confirmed she would email the receipt.",
+    "Heather offered to reassess rates next year and wished Wayne a merry Christmas."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy structures (deductibles, premiums).",
+    "Payment processing procedures (card details, verification).",
+    "Customer communication (confirming receipt, next steps)."
+  ],
+  "systems_referenced": [
+    "Email system (for sending receipt)."
+  ],
+  "summary": "Heather processed Wayne's insurance payment via Discover card after confirming policy details. Wayne provided card information, and Heather committed to emailing the receipt. The conversation concluded with a holiday greeting and a note to reassess rates next year.",
+  "_model": "qwen3:14b",
+  "_eval_count": 269,
+  "_total_duration_ms": 38948,
+  "_source_file": "transcripts/out-3367470438-202-20251219-104622-1766159182.3059.txt",
+  "_direction": "outbound",
+  "_char_count": 1937
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Ashley from Alliance Insurance Services aimed to set up a client (Yulies Garcia Mendoza) on AutoPay with a credit card through AutoOwners Insurance.",
+  "resolution_steps": [
+    "Ashley connected to AutoOwners' billing department and requested assistance with AutoPay setup.",
+    "Provided the client's policy number, card details (number: 4737...9841, expiration: 03/28, billing zip: 27030), and confirmed the cardholder's name (Yulies Garcia Mendoza).",
+    "AutoOwners representative verified the information and confirmed the AutoPay setup.",
+    "Call concluded with mutual acknowledgment and closing remarks."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "AutoOwners' billing system navigation",
+    "AutoPay setup procedures",
+    "Client policy and payment information verification protocols"
+  ],
+  "systems_referenced": [
+    "AutoOwners Insurance billing department",
+    "Secure card line for payment setup"
+  ],
+  "summary": "Ashley from Alliance Insurance Services successfully facilitated AutoPay setup for a client with AutoOwners Insurance by providing detailed payment and policy information. The AutoOwners representative confirmed the setup, and the call concluded with both parties expressing satisfaction. The interaction required knowledge of AutoOwners' billing processes and payment verification protocols.",
+  "_model": "qwen3:14b",
+  "_eval_count": 295,
+  "_total_duration_ms": 38360,
+  "_source_file": "transcripts/out-8002888740-100-20250821-143120-1755801080.7397.txt",
+  "_direction": "outbound",
+  "_char_count": 1881
+}

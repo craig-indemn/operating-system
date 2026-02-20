@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Mark Corey wants to cancel auto insurance on three vehicles titled in Georgia after turning in North Carolina tags and update his mailing address to his new Georgia location.",
+  "resolution_steps": [
+    "Holly confirmed Mark's policy details (address, vehicles, and policies).",
+    "Identified three vehicles to cancel (2014 Jeep, 2004 Chevrolet truck, 2010 Ford Escape).",
+    "Noted tag surrender date (August 15) and Georgia title date (July 18).",
+    "Confirmed cancellation would occur on August 15 for the three vehicles.",
+    "Updated mailing address to 117 Hoot Owl Lane, Eaton, GA 31024 for both auto and homeowner's policies."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy cancellation procedures tied to tag surrender dates",
+    "Address update processes for multi-policy holders",
+    "State-specific insurance requirements (Georgia vs. North Carolina)"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services policy management system"
+  ],
+  "summary": "Mark Corey requested cancellation of three auto policies and an address update after relocating to Georgia. Holly confirmed the cancellation dates, identified the vehicles, and scheduled the address change for both auto and homeowner's policies. The changes were to be processed by the agent.",
+  "_model": "qwen3:14b",
+  "_eval_count": 306,
+  "_total_duration_ms": 41159,
+  "_source_file": "transcripts/q-300-+17065662679-20250820-105733-1755701853.2547.txt",
+  "_direction": "queue",
+  "_char_count": 2447
+}

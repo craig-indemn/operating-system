@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Bunny wants to add her boyfriend, Bishop Anderson, to her car insurance policy and clarify why she only received a partial refund ($20) after paying $315 for her policy renewal, when her new balance was $230 (a $60 discrepancy).",
+  "resolution_steps": [
+    "Jamie confirms Bunny's identity and policy details (National General, 1520 Runabout Road, Littlefield, NC).",
+    "Jamie adds Bishop Anderson to the policy using provided details (DOB: 6/20/2002, NC license).",
+    "Jamie explains the $81 annual premium increase for adding Bishop.",
+    "Jamie addresses the refund discrepancy by explaining system recalculations after removing a vehicle, which increased the single-vehicle premium.",
+    "Jamie clarifies that the $19 refund was processed after the new year of driving experience was applied, but the $60 difference may stem from delayed system updates."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance pricing mechanics (multi-car discounts, risk assessment for single vs. multiple vehicles).",
+    "Policy renewal processes and billing system delays.",
+    "Address change impacts on insurance rates."
+  ],
+  "systems_referenced": [
+    "National General (insurer)",
+    "Policy management system",
+    "Billing system"
+  ],
+  "summary": "Bunny added her boyfriend to her car insurance policy and discussed a billing discrepancy. Jamie explained that removing a vehicle increased her single-vehicle premium and clarified the refund was processed after system updates, though a $60 gap remained unexplained. The call concluded with Bunny understanding the premium changes and refund timeline.",
+  "_model": "qwen3:14b",
+  "_eval_count": 367,
+  "_total_duration_ms": 56807,
+  "_source_file": "transcripts/q-300-+13367708173-20251208-095943-1765205983.1117.txt",
+  "_direction": "queue",
+  "_char_count": 8783
+}

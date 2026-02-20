@@ -1,0 +1,20 @@
+{
+  "is_substantive": false,
+  "caller_intent": "To inform the customer about reviewing their insurance policies and request a callback",
+  "resolution_steps": [
+    "Left voicemail message",
+    "Provided contact number"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Basic insurance policy review procedures"
+  ],
+  "systems_referenced": [],
+  "summary": "Agent left a voicemail message about reviewing insurance policies and requested a callback. The call was forwarded to voicemail, and no direct conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 122,
+  "_total_duration_ms": 33573,
+  "_source_file": "transcripts/out-13369183699-114-20251113-112310-1763050990.2077.txt",
+  "_direction": "outbound",
+  "_char_count": 651
+}

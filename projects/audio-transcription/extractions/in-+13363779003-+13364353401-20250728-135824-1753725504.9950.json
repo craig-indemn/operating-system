@@ -1,0 +1,19 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with Steve (specific intent unclear from transcript)",
+  "resolution_steps": [
+    "Agent acknowledges request",
+    "Agent states they will check availability",
+    "Call placed on hold"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller requested to speak with Steve. Agent confirmed they would check availability and placed the call on hold. No further details provided about Steve's availability or the purpose of the call.",
+  "_model": "qwen3:14b",
+  "_eval_count": 118,
+  "_total_duration_ms": 26714,
+  "_source_file": "transcripts/in-+13363779003-+13364353401-20250728-135824-1753725504.9950.txt",
+  "_direction": "inbound",
+  "_char_count": 284
+}

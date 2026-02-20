@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Carolyn sought assistance with an auto policy issue related to moving to Florida and potential DMV complications, though she had already contacted Progressive directly.",
+  "resolution_steps": [
+    "Agent returned a voicemail regarding Carolyn's auto policy with Progressive.",
+    "Clarified confusion about whether North Carolina or Florida DMV was causing issues.",
+    "Confirmed Carolyn had already contacted Progressive directly the previous day.",
+    "Offered further assistance but Carolyn concluded the conversation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of Progressive's auto policy processes",
+    "Handling policyholder inquiries about DMV-related issues",
+    "Post-move policy adjustments"
+  ],
+  "systems_referenced": [
+    "Progressive"
+  ],
+  "summary": "Agent Sammy followed up on a voicemail about Carolyn's auto policy after she moved to Florida, clarifying DMV-related confusion and confirming she had already contacted Progressive directly. The conversation concluded with Carolyn thanking the agent and expressing willingness for future assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 223,
+  "_total_duration_ms": 42725,
+  "_source_file": "transcripts/out-3013572307-501-20250729-124338-1753807418.5278.txt",
+  "_direction": "outbound",
+  "_char_count": 989
+}

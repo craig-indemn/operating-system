@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Shabaz Khan from Atlantic Bay Mortgage sought information about home insurance policies, likely for a client or to facilitate mortgage-related services.",
+  "resolution_steps": [
+    "Agent greeted caller and asked for first name and high school (unusual request).",
+    "Caller offered to transfer to an agent.",
+    "Agent thanked caller and ended the call without addressing the insurance inquiry."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Proper handling of mortgage-related insurance inquiries",
+    "Verification protocols for caller identity",
+    "Understanding of home insurance policy details"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller from Atlantic Bay Mortgage sought information about home insurance policies, but the agent's response included an unusual request for personal details and failed to address the inquiry. The call ended without resolution, requiring follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 197,
+  "_total_duration_ms": 45369,
+  "_source_file": "transcripts/in-+13363779003-+18882609876-20250822-105405-1755874445.5331.txt",
+  "_direction": "inbound",
+  "_char_count": 451
+}

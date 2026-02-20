@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, representing First National Bank of Pennsylvania's Insurance Center, requested the email address for Alliance Insurance's support team to facilitate future communication.",
+  "resolution_steps": [
+    "Agent confirmed the caller's request for an email address.",
+    "Agent provided the email address: support@myallianceinsurance.com.",
+    "Caller acknowledged receipt and confirmed understanding.",
+    "Caller apologized for potential audio delays and thanked the agent."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Alliance Insurance's support email address",
+    "Standard communication protocols for client inquiries"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's email system (support@myallianceinsurance.com)"
+  ],
+  "summary": "A representative from First National Bank of Pennsylvania requested Alliance Insurance's support email address. The agent provided the correct email, and the caller confirmed receipt. The conversation concluded with mutual gratitude, despite brief audio issues.",
+  "_model": "qwen3:14b",
+  "_eval_count": 211,
+  "_total_duration_ms": 28790,
+  "_source_file": "transcripts/in-+13363682529-+18664721280-20251007-142444-1759861484.7771.txt",
+  "_direction": "inbound",
+  "_char_count": 889
+}

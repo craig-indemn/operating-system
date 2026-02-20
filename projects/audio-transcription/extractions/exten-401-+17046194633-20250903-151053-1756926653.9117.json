@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Heather wants to adjust her home insurance policy's dwelling coverage limit (from 392 to 425), reduce the deductible (from 2500 to 1000), and clarify coverage details for a secondary home in Virginia, while expressing concerns about Auto Owners' coverage and policy specifics.",
+  "resolution_steps": [
+    "Agent adjusted dwelling coverage to 425 and deductible to 1000 as requested.",
+    "Explained that Auto Owners is a top-rated carrier used by the agency, along with Cincinnati and Penn National.",
+    "Clarified that some coverages (e.g., refrigerated product coverage, tree debris removal) are optional endorsements, not standard policy features.",
+    "Addressed Heather's questions about coverage limits, policy forms specific to Virginia, and the role of HOA fees.",
+    "Provided updated premium details after adjustments: $1,376.85 annually (previously $1,195.11 with full payment discount)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Home insurance policy structures (dwelling limits, deductibles, coverage types)",
+    "Carrier-specific details (Auto Owners, Cincinnati, Penn National)",
+    "State-specific insurance forms (Virginia vs. North Carolina differences)",
+    "HOA and utility-related insurance considerations"
+  ],
+  "systems_referenced": [
+    "Auto Owners' carrier portal",
+    "Cincinnati Insurance",
+    "Penn National Insurance"
+  ],
+  "summary": "Heather, a client unfamiliar with insurance, worked with an agent to adjust her secondary home's policy with Auto Owners, increasing dwelling coverage and reducing the deductible. The agent explained carrier options, coverage specifics, and state form differences, providing updated premium details. Heather requested further review before finalizing changes.",
+  "_model": "qwen3:14b",
+  "_eval_count": 397,
+  "_total_duration_ms": 71690,
+  "_source_file": "transcripts/exten-401-+17046194633-20250903-151053-1756926653.9117.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 11635
+}

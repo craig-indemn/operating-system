@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Mario is seeking guidance on when to proceed with insurance for a property purchase, as he is waiting for an attorney's confirmation about the sale of the property and is unsure about the insurance timeline.",
+  "resolution_steps": [
+    "Joe acknowledges Mario's situation and explains that insurance is typically required before closing on a property.",
+    "Joe clarifies that in this case, since there is no escrow company, insurance must be handled through the attorney.",
+    "Joe reassures Mario that Alliance Insurance has a quote ready and that proposals are valid for 30 days.",
+    "Joe offers to follow up in 1.5 weeks to check on Mario's progress and assist when ready.",
+    "Joe emphasizes Alliance's readiness to help once Mario has the necessary paperwork."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance requirements for property purchases",
+    "Escrow and attorney involvement in real estate transactions",
+    "Insurance proposal validity periods"
+  ],
+  "systems_referenced": [],
+  "summary": "Joe from Alliance Insurance discusses with Mario the need to secure property insurance before closing, addressing Mario's uncertainty about the attorney's timeline. They agree to follow up in 1.5 weeks to finalize insurance arrangements once Mario has clarity on the sale. The conversation highlights the importance of aligning insurance timelines with real estate transaction processes.",
+  "_model": "qwen3:14b",
+  "_eval_count": 297,
+  "_total_duration_ms": 39258,
+  "_source_file": "transcripts/out-18187742233-705-20250929-083142-1759149102.46.txt",
+  "_direction": "outbound",
+  "_char_count": 2966
+}

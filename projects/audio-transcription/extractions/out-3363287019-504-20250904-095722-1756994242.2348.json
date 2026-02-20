@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jerry wants to cancel his son Timothy's car insurance policy on a Nissan, as he found a cheaper rate at Progressive with the same coverage.",
+  "resolution_steps": [
+    "Holly confirms the policy details (Nissan, Timothy) and reason for cancellation (cheaper rate at Progressive).",
+    "Requests Jerry's email address to send a cancellation form for signature.",
+    "Notifies Jerry that the policy is on a credit card (ending in 7834) and confirms stopping the bank draft.",
+    "Ensures cancellation takes effect immediately, noting the payment was scheduled for tomorrow."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Policy cancellation procedures",
+    "Handling bank draft/credit card payments",
+    "Processing rate comparison requests"
+  ],
+  "systems_referenced": [
+    "Email communication (Randy21361@aol.com)",
+    "Policy management system (bank draft details, card ending 7834)"
+  ],
+  "summary": "Jerry contacted Alliance Insurance to cancel his son's Nissan car insurance policy due to a cheaper rate at Progressive. Holly guided him through the cancellation process, including sending a form for signature, stopping the bank draft, and ensuring immediate cancellation. The call concluded with Jerry's approval.",
+  "_model": "qwen3:14b",
+  "_eval_count": 281,
+  "_total_duration_ms": 37822,
+  "_source_file": "transcripts/out-3363287019-504-20250904-095722-1756994242.2348.txt",
+  "_direction": "outbound",
+  "_char_count": 1241
+}

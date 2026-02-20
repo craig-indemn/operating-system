@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Heather is following up on a water damage claim from three years ago related to an HVAC defect, seeking confirmation on whether Farm Bureau recovered funds through subrogation and if any further action is required.",
+  "resolution_steps": [
+    "Agent confirmed they are working on retrieving documents related to the claim and subrogation process.",
+    "Agent stated they may have results by the end of the day but will definitely send all documents to Heather by the next day.",
+    "Agent assured Heather no further action is needed from her side at this time."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance claims processes",
+    "Knowledge of subrogation procedures",
+    "Ability to retrieve historical claim documents"
+  ],
+  "systems_referenced": [
+    "Farm Bureau (insurance carrier)"
+  ],
+  "summary": "Heather discussed a water damage claim from three years ago caused by an HVAC defect. The agent confirmed they are retrieving documents related to the subrogation process and will provide them by the next day. Heather was reassured no further action is needed from her side.",
+  "_model": "qwen3:14b",
+  "_eval_count": 250,
+  "_total_duration_ms": 41675,
+  "_source_file": "transcripts/exten-401-+13364084804-20250923-160012-1758657612.5974.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2594
+}

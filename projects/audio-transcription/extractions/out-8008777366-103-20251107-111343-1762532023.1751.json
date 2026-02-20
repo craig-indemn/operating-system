@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Kendall Worley from Alliance Insurance Services) is seeking a formal letter from Penn National Insurance for a closed commercial auto claim (number 09176960) to assist a client in resolving traffic charges outside of court.",
+  "resolution_steps": [
+    "Agent identified the claim number and insured party (High Country Springs LLC).",
+    "Attempted to transfer the call to adjuster Mahogany Austin but reached voicemail.",
+    "Left a voicemail message with the claim number, client's request for a letter, and contact information (336-377-9003).",
+    "Provided alternative contact methods (email: cllmmaiil@pnat.com) in case of delayed response."
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [
+    "Claims processing procedures for commercial auto insurance",
+    "Adjuster contact protocols",
+    "Handling post-closure claim documentation requests"
+  ],
+  "systems_referenced": [
+    "Penn National Insurance claims database",
+    "Internal adjuster directory",
+    "Voicemail system",
+    "Email support channel (cllmmaiil@pnat.com)"
+  ],
+  "summary": "Kendall Worley from Alliance Insurance Services contacted Penn National Insurance to request a formal letter for a closed commercial auto claim (09176960) related to traffic charge resolution. After being transferred to adjuster Mahogany Austin's voicemail, the caller left a detailed message with the claim number, client's request, and contact information. The call highlights the need for post-closure documentation and adjuster communication protocols.",
+  "_model": "qwen3:14b",
+  "_eval_count": 359,
+  "_total_duration_ms": 44921,
+  "_source_file": "transcripts/out-8008777366-103-20251107-111343-1762532023.1751.txt",
+  "_direction": "outbound",
+  "_char_count": 2244
+}

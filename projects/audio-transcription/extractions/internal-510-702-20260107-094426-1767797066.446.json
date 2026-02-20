@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to confirm if four properties are listed on Kathy George's Cincinnati insurance policy (number 0018676) and whether professional liability coverage exists. They also request the locations be emailed.",
+  "resolution_steps": [
+    "Agent accesses Cincinnati's insurance system using the provided policy number.",
+    "Verifies if the four properties are listed on the policy.",
+    "Checks for the presence of professional liability coverage.",
+    "Prepares and emails the requested property locations to the caller."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Accessing and navigating Cincinnati's insurance portal",
+    "Understanding policy coverage details (e.g., professional liability)",
+    "Emailing policy-related documents to clients"
+  ],
+  "systems_referenced": [
+    "Cincinnati insurance system"
+  ],
+  "summary": "Tracy assists a caller in verifying property listings and coverage on a Cincinnati policy for Kathy George. The caller requests the locations be emailed. The agent needs to check the policy details and send the information via email.",
+  "_model": "qwen3:14b",
+  "_eval_count": 238,
+  "_total_duration_ms": 50113,
+  "_source_file": "transcripts/internal-510-702-20260107-094426-1767797066.446.txt",
+  "_direction": "internal",
+  "_char_count": 514
+}

@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller needs to return a signed form within three days but is concerned about mail delays and is seeking alternative arrangements to meet the deadline.",
+  "resolution_steps": [
+    "Agent confirmed the form requires a signature and explained the mail delay issue.",
+    "Agent suggested an in-person visit on Tuesday morning to avoid delays.",
+    "Caller agreed to meet in person at the office on Tuesday at 8:30 AM."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of form submission deadlines and mail processing times",
+    "Ability to coordinate in-person meetings for document signing"
+  ],
+  "systems_referenced": [],
+  "summary": "The caller discussed a missing signature on a form and concerns about returning it via mail due to local postal delays. The agent resolved the issue by arranging an in-person meeting on Tuesday morning to ensure the form is submitted on time. The caller agreed to this solution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 212,
+  "_total_duration_ms": 31481,
+  "_source_file": "transcripts/exten-107-+13363025766-20251114-145407-1763150047.7336.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1477
+}

@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Colley Baird is informing Donna about a failed payment due to a wrong account number, a stop payment on a check, and concerns about potential insurance policy cancellation. They want to resolve the payment discrepancy and ensure no further deductions occur.",
+  "resolution_steps": [
+    "Donna acknowledges the payment issue and confirms the wrong account number was provided.",
+    "Donna checks the payment status online and confirms the initial payment was applied but later reversed due to insufficient funds.",
+    "Donna explains that the stop payment on the first check and the subsequent payment made by the caller are being reviewed.",
+    "Donna assures the caller she will follow up to resolve the confusion and prevent further issues."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Payment processing workflows",
+    "Stop payment procedures",
+    "Insurance policy cancellation triggers",
+    "Bank account reconciliation"
+  ],
+  "systems_referenced": [
+    "State Employees Credit Union banking portal",
+    "Alliance Insurance internal payment tracking system",
+    "Insurance carrier's policy management system"
+  ],
+  "summary": "Colley Baird discusses a failed payment to Alliance Insurance due to a wrong account number and a stop payment on a check, leading to confusion about insurance policy cancellation. Donna confirms the payment was reversed and agrees to investigate further. The caller is concerned about duplicate deductions and the need to verify payment status to prevent policy cancellation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 308,
+  "_total_duration_ms": 40128,
+  "_source_file": "transcripts/exten-302-+18289640430-20250804-101905-1754317145.3270.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4393
+}

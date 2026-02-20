@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is asking to confirm whether their recent insurance payment was successfully processed, as they were previously informed it had not gone through and are concerned about their automatic payment setup.",
+  "resolution_steps": [
+    "Agent confirmed the payment was received on October 10th of the current month.",
+    "Agent verified the automatic payment setup associated with the policy (reference: '97 19').",
+    "Agent assured the caller that the payment is processed correctly and there are no issues with the automatic payment method."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Payment processing confirmation",
+    "Automatic payment system operations",
+    "Policy number verification"
+  ],
+  "systems_referenced": [
+    "Payment processing system",
+    "Customer account portal (implied by policy number reference)"
+  ],
+  "summary": "A long-time client confirmed their October payment was processed successfully after being concerned about a previous payment issue. The agent verified the automatic payment setup and confirmed no errors were detected. The caller expressed gratitude for the confirmation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 238,
+  "_total_duration_ms": 26334,
+  "_source_file": "transcripts/in-+13363779003-+13366555941-20251114-124910-1763142550.5313.txt",
+  "_direction": "inbound",
+  "_char_count": 534
+}

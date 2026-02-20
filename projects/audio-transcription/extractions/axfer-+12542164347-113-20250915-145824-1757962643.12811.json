@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Gary sought a car insurance quote from Alliance Insurance Services.",
+  "resolution_steps": [
+    "Anthony Yates clarified that Alliance Insurance Services only offers bundled home and auto policies, not standalone auto policies.",
+    "Anthony ended the call after informing Gary of the policy limitation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of Alliance Insurance Services' product offerings (specifically, their focus on bundled policies)."
+  ],
+  "systems_referenced": [
+    "myallianceinsurance.com (mentioned in the voicemail greeting, though not referenced during the conversation)."
+  ],
+  "summary": "Gary requested a car insurance quote, but the agent explained that Alliance Insurance Services only provides bundled home and auto policies. The call concluded with Gary being informed of this limitation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 184,
+  "_total_duration_ms": 59521,
+  "_source_file": "transcripts/axfer-+12542164347-113-20250915-145824-1757962643.12811.txt",
+  "_direction": "attended_transfer",
+  "_char_count": 820
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Christy Anderson wants to remove a 1999 Amigo vehicle from her insurance policy after transferring ownership, and clarify how a recent full payment will be handled.",
+  "resolution_steps": [
+    "Maria confirms Christy's identity and account details (account number 5460976).",
+    "Maria checks the policy and notes the vehicle (1999 Amigo) is still listed with Christy's deceased husband, Jesse Anderson, as the first named insured.",
+    "Maria explains removing the vehicle requires a policy rewrite due to the deceased named insured.",
+    "Maria assures Christy the credit for the recent full payment will be processed later.",
+    "Maria confirms the change will be effective immediately."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Handling policy changes for deceased named insureds",
+    "Processing vehicle removals and policy rewrites",
+    "Credit/refund procedures for overpayments"
+  ],
+  "systems_referenced": [
+    "Insurance policy database (to check account details and policy information)"
+  ],
+  "summary": "Christy Anderson requested removal of a 1999 Amigo from her policy after transferring ownership. Maria confirmed the vehicle was still linked to Christy's deceased husband as the primary insured, requiring a policy rewrite. Maria assured Christy a credit would be issued for her recent full payment. The call concluded with Maria confirming immediate effectiveness of the change and follow-up on the credit.",
+  "_model": "qwen3:14b",
+  "_eval_count": 324,
+  "_total_duration_ms": 40929,
+  "_source_file": "transcripts/q-300-+13365932457-20260109-105343-1767974023.1286.txt",
+  "_direction": "queue",
+  "_char_count": 1654
+}

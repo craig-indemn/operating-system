@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Gary is seeking resolution for an insurance policy transfer issue, specifically addressing a gap in auto coverage and a potential lapse in homeowner's policy due to improper agent of record (AOR) changes.",
+  "resolution_steps": [
+    "Renee explains that the homeowner's policy was transferred via AOR but the auto policy was not, limiting her ability to cancel the old policy.",
+    "She advises Gary to obtain a copy of his current coverage from Alliance and provide it to his previous agent (Auto Owners) to request backdating the auto policy.",
+    "Renee clarifies that the previous agent can backdate up to 20 days, though she suspects a 30-day window might be possible.",
+    "She confirms the homeowner's policy was transferred on April 14 and the National General policy was issued on November 21, but notes no records of the old auto policy exist."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy transfer procedures via AOR",
+    "Backdating insurance policies",
+    "Carrier-specific cancellation authority limits",
+    "Coverage gap resolution strategies"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's internal system",
+    "National General policy portal",
+    "Auto Owners agent system"
+  ],
+  "summary": "Gary's call centers on resolving coverage gaps caused by incomplete policy transfers. Renee explains the limitations of her authority to cancel policies and provides steps for Gary to work with his previous agent. The conversation highlights system discrepancies and carrier-specific backdating rules, with resolution pending action by the Auto Owners agent.",
+  "_model": "qwen3:14b",
+  "_eval_count": 349,
+  "_total_duration_ms": 50870,
+  "_source_file": "transcripts/out-13364425593-113-20260112-154849-1768250929.8968.txt",
+  "_direction": "outbound",
+  "_char_count": 2563
+}

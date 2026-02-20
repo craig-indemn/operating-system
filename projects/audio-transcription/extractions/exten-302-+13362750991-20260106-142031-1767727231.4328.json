@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Kendall requests an updated copy of Meadows Automotive's tow truck policy, which was previously handled by Joe and associated with Progressive insurance.",
+  "resolution_steps": [
+    "Jordan acknowledges the request and confirms understanding of needing an updated tow truck policy for Meadows Automotive.",
+    "Jordan agrees to retrieve the policy from the file and mentions the account is under Kendall's former management.",
+    "Jordan confirms the policy was previously with Progressive and assures Kendall the request will be addressed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy documentation processes",
+    "Familiarity with client account management and file retrieval",
+    "Knowledge of tow truck policy specifics and carrier information"
+  ],
+  "systems_referenced": [
+    "Internal client file database",
+    "Progressive insurance portal (implied)"
+  ],
+  "summary": "Kendall requests an updated tow truck policy for Meadows Automotive from Jordan, who confirms the policy was previously with Progressive and agrees to retrieve it from the file. The conversation includes context about account management transitions and current business operations. The call concludes with Jordan committing to fulfill the request.",
+  "_model": "qwen3:14b",
+  "_eval_count": 254,
+  "_total_duration_ms": 33572,
+  "_source_file": "transcripts/exten-302-+13362750991-20260106-142031-1767727231.4328.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1635
+}

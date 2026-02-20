@@ -1,0 +1,23 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Instructing the recipient to set up AutoPay for auto insurance, mentioning the need for a card and a form.",
+  "resolution_steps": [
+    "Left voicemail message",
+    "Provided contact number for follow-up"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "AutoPay setup process",
+    "Form requirements for payment methods"
+  ],
+  "systems_referenced": [
+    "AutoPay system"
+  ],
+  "summary": "Voicemail message from Alliance Insurance regarding AutoPay setup for auto insurance. Caller mentioned needing a card and form, and provided a receptionist's number for follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 138,
+  "_total_duration_ms": 23401,
+  "_source_file": "transcripts/out-3368486177-112-20250916-103919-1758033559.3396.txt",
+  "_direction": "outbound",
+  "_char_count": 573
+}

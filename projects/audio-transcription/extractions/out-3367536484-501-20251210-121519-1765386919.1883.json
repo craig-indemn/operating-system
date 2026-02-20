@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Jamie Flippin from Alliance Insurance) aimed to review the customer's homeowner's policy details and confirm that their information is up to date ahead of the February 12th renewal date.",
+  "resolution_steps": [
+    "Introduced himself as an Alliance Insurance agent and stated the purpose of the call (policy review).",
+    "Notified the customer of their upcoming policy renewal date (February 12th).",
+    "Provided his direct contact number (363-779003) and availability until 5:00 p.m. daily.",
+    "Expressed appreciation for the customer's business and invited further communication."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy renewal processes",
+    "Customer service protocols for policy verification",
+    "Access to internal systems to confirm policy details"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's internal policy database"
+  ],
+  "summary": "Jamie Flippin from Alliance Insurance contacted a customer to review their active homeowner's policy ahead of its February 12th renewal. He confirmed policy details, provided his contact information, and invited the customer to reach out for further discussion. The call concluded with a request for the customer to contact the agent if they needed assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 294,
+  "_total_duration_ms": 39184,
+  "_source_file": "transcripts/out-3367536484-501-20251210-121519-1765386919.1883.txt",
+  "_direction": "outbound",
+  "_char_count": 830
+}

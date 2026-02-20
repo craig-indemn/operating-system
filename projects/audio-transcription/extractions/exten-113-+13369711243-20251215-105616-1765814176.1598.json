@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is inquiring about the due date and cost of her homeowners insurance policy, as well as potential discounts for bundling with auto insurance.",
+  "resolution_steps": [
+    "Agent confirms the policy is due on March 1st and explains automatic renewal.",
+    "Clarifies that current year's premium is already paid, but renewal cost details are unavailable until early February.",
+    "Mentions potential discount for bundling auto and homeowners policies, though exact amount depends on carrier data.",
+    "Provides a previous auto policy quote ($12,232.50 annually) and confirms payment terms.",
+    "Agrees to send documents this week and follow up before the March 19th due date."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy renewal processes",
+    "Premium calculation timelines",
+    "Discounts for bundling insurance products",
+    "Policy documentation procedures"
+  ],
+  "systems_referenced": [
+    "Carrier's premium calculation system",
+    "Policy management portal"
+  ],
+  "summary": "Miss Trivet discusses her insurance policy renewal with an agent, clarifying the March 1st due date, current year's paid premium, and uncertainty around future costs. The agent explains potential bundling discounts, provides a previous auto policy quote, and commits to sending documents and following up before the March 19th deadline.",
+  "_model": "qwen3:14b",
+  "_eval_count": 307,
+  "_total_duration_ms": 34989,
+  "_source_file": "transcripts/exten-113-+13369711243-20251215-105616-1765814176.1598.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2440
+}

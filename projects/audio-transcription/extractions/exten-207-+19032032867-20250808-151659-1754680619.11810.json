@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Abraham Ortiz) wants to add a new company (Athens Steel Building Corporation) to his existing insurance policy under his father's name (Antonio Ortiz) without creating a new policy, likely for side jobs.",
+  "resolution_steps": [
+    "Agent Cody confirmed the policyholder's name (Antonio Ortiz) and primary employer (Carolina Carports).",
+    "Verified the policy's renewal date (September 2025) and payroll details.",
+    "Confirmed the new company's name and address (Athens Steel Building Corporation, 900 NE Loop 7, Athens, TX 75752).",
+    "Obtained the email address (Ortiz121@icloud.com) for sending the certificate of insurance.",
+    "Informed the caller the certificate would be sent immediately and would expire on 9/12/25."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding how to add additional insured parties to existing policies",
+    "Access to policy databases for verification",
+    "Knowledge of certificate of insurance generation and distribution"
+  ],
+  "systems_referenced": [
+    "Internal policy management system",
+    "Email communication system"
+  ],
+  "summary": "Abraham Ortiz requested to add Athens Steel Building Corporation to his father's existing insurance policy. Agent Cody verified policy details, confirmed company information, and arranged for a certificate of insurance to be emailed. The call concluded with the certificate being sent and the customer instructed to check his email.",
+  "_model": "qwen3:14b",
+  "_eval_count": 341,
+  "_total_duration_ms": 39422,
+  "_source_file": "transcripts/exten-207-+19032032867-20250808-151659-1754680619.11810.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3428
+}

@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Voicemail greeting prompting caller to leave a message and hang up or press the pound key. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 74,
+  "_total_duration_ms": 23916,
+  "_source_file": "transcripts/axfer-+13367100758-113-20251117-122033-1763399564.2367.txt",
+  "_direction": "attended_transfer",
+  "_char_count": 89
+}

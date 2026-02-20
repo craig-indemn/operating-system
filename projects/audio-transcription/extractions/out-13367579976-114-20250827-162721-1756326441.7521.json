@@ -1,0 +1,22 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The agent (Jay) is following up on a previous conversation to schedule a call and finalize a home insurance quote, leaving a voicemail with contact details and proposed times.",
+  "resolution_steps": [
+    "Left a voicemail apologizing for not returning a previous call.",
+    "Provided specific times for follow-up calls (9:30 AM and 4:30 PM).",
+    "Included a phone number for the client to return the call."
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [
+    "Understanding of home insurance quoting process",
+    "Client communication protocols"
+  ],
+  "systems_referenced": [],
+  "summary": "Agent Jay left a voicemail following up on a home insurance quote, offering to call at specific times and providing contact information. The call was not answered and resulted in a voicemail.",
+  "_model": "qwen3:14b",
+  "_eval_count": 194,
+  "_total_duration_ms": 35877,
+  "_source_file": "transcripts/out-13367579976-114-20250827-162721-1756326441.7521.txt",
+  "_direction": "outbound",
+  "_char_count": 788
+}

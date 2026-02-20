@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Not applicable (voicemail greeting with no substantive conversation)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Voicemail greeting from Alliance Insurance Services. No substantive conversation occurred as the call was transferred to Heather Scott with no further interaction.",
+  "_model": "qwen3:14b",
+  "_eval_count": 89,
+  "_total_duration_ms": 20481,
+  "_source_file": "transcripts/in-+13367861133-+17046194633-20250902-130752-1756832872.5022.txt",
+  "_direction": "inbound",
+  "_char_count": 98
+}

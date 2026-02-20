@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Heather from Alliance Insurance called to inform Hank about two payments issued two days prior and to check in on his insurance needs, while also addressing a previous call from someone claiming to be from Ottawa.",
+  "resolution_steps": [
+    "Heather notified Hank about two payments being issued and mailed to him.",
+    "Heather mentioned a previous call from someone claiming to be from Ottawa on Friday.",
+    "Heather offered further assistance if needed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Payment processing and issuance procedures",
+    "Customer communication protocols",
+    "Handling of potential fraud or misrepresentation claims (Ottawa caller reference)"
+  ],
+  "systems_referenced": [
+    "Payment processing system (implied through payment issuance mention)"
+  ],
+  "summary": "Heather from Alliance Insurance contacted Hank to inform him about two recent payments and to check in on his account. The conversation also referenced a previous call from someone claiming to be from Ottawa, though no resolution was provided for that issue. Hank shared unrelated updates about storm damage and tree removal, but the call primarily focused on payment notification and account check-in.",
+  "_model": "qwen3:14b",
+  "_eval_count": 253,
+  "_total_duration_ms": 40641,
+  "_source_file": "transcripts/out-3369718013-202-20250904-150450-1757012690.7358.txt",
+  "_direction": "outbound",
+  "_char_count": 878
+}

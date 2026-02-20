@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Monica from Better Way Automotive, requested a copy of their recently renewed bond.",
+  "resolution_steps": [
+    "Agent acknowledged the request and asked for confirmation of the business name (Better Way Automotive).",
+    "Agent attempted to transfer the caller to 'Gloria' for assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of bond renewal processes for automotive businesses",
+    "Ability to route calls to appropriate personnel (e.g., Gloria)"
+  ],
+  "systems_referenced": [],
+  "summary": "Monica from Better Way Automotive requested a copy of their renewed bond. The agent confirmed the business name and attempted to transfer the call to Gloria, but the conversation ended before confirmation of the transfer's success.",
+  "_model": "qwen3:14b",
+  "_eval_count": 179,
+  "_total_duration_ms": 38557,
+  "_source_file": "transcripts/in-+13363779003-+13364144231-20251211-122020-1765473620.2724.txt",
+  "_direction": "inbound",
+  "_char_count": 415
+}

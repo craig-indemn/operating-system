@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Inform the caller about next steps for a homeowner's policy, including an exclusion form for a shed and requesting proof of roof replacement.",
+  "resolution_steps": [
+    "Sent an exclusion form via email using CongaSign for electronic signature.",
+    "Requested proof of roof replacement (paid receipt/invoice) and sent a separate email for that purpose.",
+    "Offered in-person assistance at the office if electronic methods are not preferred.",
+    "Provided office contact number for follow-up questions."
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [
+    "Underwriting process for homeowner's policies",
+    "Electronic signature tools (CongaSign)",
+    "Documentation requirements for insurance claims"
+  ],
+  "systems_referenced": [
+    "CongaSign (electronic signature software)"
+  ],
+  "summary": "Jamie Flippin from Alliance Insurance left a voicemail informing Daniel about an exclusion form for a shed and requesting proof of roof replacement. She provided electronic and in-person options for completing paperwork, sent two emails with instructions, and shared her office contact number for further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 241,
+  "_total_duration_ms": 38294,
+  "_source_file": "transcripts/out-3364063278-501-20250929-113222-1759159942.3047.txt",
+  "_direction": "outbound",
+  "_char_count": 1739
+}

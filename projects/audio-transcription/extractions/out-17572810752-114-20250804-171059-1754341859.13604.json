@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jay is trying to add a car to his insurance policy with full coverage but is encountering a system error that prevents him from doing so. He believes the issue may be related to his daughter's accident history or the type of vehicle.",
+  "resolution_steps": [
+    "Agent acknowledges the system error preventing full coverage addition.",
+    "Agent checks the system and confirms no accident record is present for the daughter.",
+    "Agent hypothesizes the issue may be related to the vehicle type or other system-specific restrictions.",
+    "Agent offers to verify directly with the insurance company to resolve the blockage.",
+    "Agent requests time to follow up with the company and promises to return with confirmation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance system error codes and coverage restrictions",
+    "Knowledge of how accident records and vehicle types affect coverage eligibility",
+    "Process for verifying policy details directly with the insurance carrier"
+  ],
+  "systems_referenced": [
+    "Insurance policy management system",
+    "Carrier verification tools"
+  ],
+  "summary": "Jay is unable to add a vehicle to his insurance policy due to a system error blocking full coverage. The agent is investigating potential causes (accident history, vehicle type) and will verify directly with the carrier. Resolution requires further confirmation from the insurance company.",
+  "_model": "qwen3:14b",
+  "_eval_count": 292,
+  "_total_duration_ms": 59306,
+  "_source_file": "transcripts/out-17572810752-114-20250804-171059-1754341859.13604.txt",
+  "_direction": "outbound",
+  "_char_count": 1993
+}

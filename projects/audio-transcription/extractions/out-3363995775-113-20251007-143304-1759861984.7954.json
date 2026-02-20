@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Stephen) sought confirmation about a lien on his Cadillac and next steps after a recent trade-in, while the agent (Gary) provided updates and guidance.",
+  "resolution_steps": [
+    "Gary confirmed the lien is on the Cadillac and verified it via a morning check.",
+    "Discussed Truist Bank's potential to send a letter if the address is incorrect.",
+    "Noted that the dealership was supposed to send a trade-in confirmation but had not yet.",
+    "Advised Stephen to wait a few days and contact Gary if any letters arrive."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of liens and vehicle title processes",
+    "Knowledge of Truist Bank's procedures for address verification",
+    "Awareness of dealership communication timelines post-trade"
+  ],
+  "systems_referenced": [
+    "Truist Bank"
+  ],
+  "summary": "Gary confirmed a lien on Stephen's Cadillac and explained that Truist Bank may send a letter for address verification. He advised waiting for potential dealership communications and offered further assistance if letters arrive. The call concluded with Stephen being informed of next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 256,
+  "_total_duration_ms": 39991,
+  "_source_file": "transcripts/out-3363995775-113-20251007-143304-1759861984.7954.txt",
+  "_direction": "outbound",
+  "_char_count": 1218
+}

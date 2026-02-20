@@ -1,0 +1,21 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Confirm that a vehicle was added to the insurance policy as requested in a voicemail",
+  "resolution_steps": [
+    "Agent Cecilia called back to follow up on the voicemail request",
+    "Customer Jessica confirmed the vehicle was already added that morning"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy updates",
+    "Ability to confirm customer actions via phone"
+  ],
+  "systems_referenced": [],
+  "summary": "Agent Cecilia followed up on a voicemail request to add a vehicle, but customer Jessica confirmed the action was already completed that morning. The call ended with mutual acknowledgment and no further action required.",
+  "_model": "qwen3:14b",
+  "_eval_count": 161,
+  "_total_duration_ms": 123002,
+  "_source_file": "transcripts/out-7043977411-107-20251008-133908-1759945148.5089.txt",
+  "_direction": "outbound",
+  "_char_count": 411
+}

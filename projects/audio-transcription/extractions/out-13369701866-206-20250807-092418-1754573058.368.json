@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jeff Edmonds is informing Dale that insurance carriers have requested details about building security measures and structural updates for a quote, seeking clarification on garage door security and building conditions.",
+  "resolution_steps": [
+    "Jeff asks Dale about the security of the automatic garage doors (e.g., whether they are locked, how they operate, and power outage contingencies).",
+    "Jeff inquires about building updates and the presence of HVAC systems, clarifying that Dale does not own the building.",
+    "Dale confirms the building is a shell structure with metal roof, wood construction, and no HVAC, but notes its suitability for Dale's needs.",
+    "Jeff requests Dale to notify him when he receives confirmation from carriers and agrees to follow up."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of building security requirements for insurance underwriting",
+    "Ability to interpret client descriptions of property features",
+    "Knowledge of insurance carrier due diligence processes"
+  ],
+  "systems_referenced": [],
+  "summary": "Jeff Edmonds follows up with Dale to clarify building security details (garage door access, power backup) and structural information (building type, HVAC) requested by insurance carriers. Dale provides specifics about the property, and Jeff agrees to wait for carrier confirmations before proceeding.",
+  "_model": "qwen3:14b",
+  "_eval_count": 286,
+  "_total_duration_ms": 43630,
+  "_source_file": "transcripts/out-13369701866-206-20250807-092418-1754573058.368.txt",
+  "_direction": "outbound",
+  "_char_count": 1944
+}

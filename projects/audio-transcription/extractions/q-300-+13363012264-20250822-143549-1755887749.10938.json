@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Heidi Joyce wants to check insurance options for a new vehicle she plans to trade in (a 2000 model) and verify her current auto and home insurance policies, including concerns about full coverage costs and recent carrier changes.",
+  "resolution_steps": [
+    "Jamie confirms Heidi's active auto policy with Progressive and her home policy with Utica Mutual Insurance.",
+    "Explains how older vehicles (like the 2000 model) are valued at actual cash value, which decreases over time, affecting full coverage costs.",
+    "Discusses North Carolina's recent auto/home rate increases (7.5% minimum) and 2026 adjustments impacting all carriers.",
+    "Suggests reviewing policies annually and considering Utica for home insurance quotes to compare rates.",
+    "Offers to provide a quote for the new vehicle and check Utica's home insurance options in October."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "North Carolina auto insurance regulations (actual cash value, rate increases, 2026 adjustments)",
+    "Progressive's limitations on home insurance (roof age requirements)",
+    "Utica Mutual Insurance's competitiveness in home/auto policies",
+    "Impact of vehicle age on insurance costs and loan requirements"
+  ],
+  "systems_referenced": [
+    "Progressive portal",
+    "Utica Mutual Insurance",
+    "Alliance Insurance Services internal systems"
+  ],
+  "summary": "Heidi Joyce consults Jamie about insuring a new 2000-model vehicle and verifying her current policies. Jamie explains coverage for older vehicles, confirms her active Progressive auto policy and Utica home policy, and discusses North Carolina's rate increases. He suggests checking Utica for home insurance and offers to provide quotes in October. The call ends with Heidi planning to follow up for further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 397,
+  "_total_duration_ms": 64892,
+  "_source_file": "transcripts/q-300-+13363012264-20250822-143549-1755887749.10938.txt",
+  "_direction": "queue",
+  "_char_count": 8912
+}

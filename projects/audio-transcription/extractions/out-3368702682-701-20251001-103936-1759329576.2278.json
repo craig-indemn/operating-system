@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Leaving a voicemail to inform the recipient about pending life insurance application actions and potential case closure.",
+  "resolution_steps": [
+    "Voicemail greeting played",
+    "Agent left message about application status and contact information"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A voicemail message from Alliance Insurance informing the recipient about pending life insurance application actions and potential case closure on Friday if no response is received.",
+  "_model": "qwen3:14b",
+  "_eval_count": 116,
+  "_total_duration_ms": 27624,
+  "_source_file": "transcripts/out-3368702682-701-20251001-103936-1759329576.2278.txt",
+  "_direction": "outbound",
+  "_char_count": 950
+}

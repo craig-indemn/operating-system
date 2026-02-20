@@ -1,0 +1,21 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Connie Bayard is attempting to reach someone named Donna at Alliance Insurance Services.",
+  "resolution_steps": [
+    "Agent confirms caller's name as Connie Bayard.",
+    "Agent checks records for 'Donna' and finds no match.",
+    "Caller suggests 'Anna Joyce,' which agent confirms exists in records."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Internal contact directory lookup"
+  ],
+  "systems_referenced": [],
+  "summary": "A brief inbound call where the caller attempts to reach 'Donna' but the agent finds a matching contact named 'Anna Joyce.' The conversation ends without resolution beyond confirming the name discrepancy.",
+  "_model": "qwen3:14b",
+  "_eval_count": 159,
+  "_total_duration_ms": 37311,
+  "_source_file": "transcripts/in-+13363779003-+18289640430-20250804-101905-1754317145.3270.txt",
+  "_direction": "inbound",
+  "_char_count": 348
+}

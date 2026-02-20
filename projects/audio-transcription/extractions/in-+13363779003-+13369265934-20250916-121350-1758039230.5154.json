@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; appears to be a call transfer request with no explicit purpose stated",
+  "resolution_steps": [
+    "Agent acknowledged caller's mention of prior call from 'JC'",
+    "Agent attempted to connect caller with JC"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Non-substantive call involving a transfer request with no clear insurance-related intent. The conversation only mentions attempting to connect with 'JC' and contains no actionable information for analysis.",
+  "_model": "qwen3:14b",
+  "_eval_count": 125,
+  "_total_duration_ms": 23513,
+  "_source_file": "transcripts/in-+13363779003-+13369265934-20250916-121350-1758039230.5154.txt",
+  "_direction": "inbound",
+  "_char_count": 355
+}

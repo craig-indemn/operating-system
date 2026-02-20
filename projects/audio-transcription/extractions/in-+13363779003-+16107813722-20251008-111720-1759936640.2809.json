@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Lucy Sauer wants to renew auto and homeowners insurance policies previously quoted by Gary Belcher, but notes the policies are transitioning to a new company and have not yet been issued.",
+  "resolution_steps": [
+    "Agent informed Lucy they would notify Gary Belcher that she was on the line.",
+    "Agent placed Lucy on hold while waiting for Gary to return.",
+    "Agent provided hold message with information about the customer portal (myallianceinsurance.com) and texting support (336-786-1133)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy renewal process",
+    "Internal communication protocols between agents",
+    "Customer portal and support channels"
+  ],
+  "systems_referenced": [
+    "myallianceinsurance.com customer portal",
+    "Texting support (336-786-1133)"
+  ],
+  "summary": "Lucy Sauer is attempting to renew insurance policies quoted by Gary Belcher, but the agent is waiting for Gary to return to proceed. The agent provided hold message details about online policy management and texting support. The call remains pending resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 263,
+  "_total_duration_ms": 41440,
+  "_source_file": "transcripts/in-+13363779003-+16107813722-20251008-111720-1759936640.2809.txt",
+  "_direction": "inbound",
+  "_char_count": 1309
+}

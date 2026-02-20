@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; appears to be a conversation about locating an office address (Clemens Road) and nearby landmarks, but no explicit insurance-related request is made.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Parked call with fragmented conversation about an address (2255 Louisville Clemens Road) and nearby landmarks. No clear insurance-related intent or resolution steps identified. The dialogue appears to be between individuals coordinating a visit to a location, but no actionable information for Alliance Insurance Services is present.",
+  "_model": "qwen3:14b",
+  "_eval_count": 144,
+  "_total_duration_ms": 55435,
+  "_source_file": "transcripts/parked-202-202-20250723-162936-1753302576.13184.txt",
+  "_direction": "parked",
+  "_char_count": 925
+}

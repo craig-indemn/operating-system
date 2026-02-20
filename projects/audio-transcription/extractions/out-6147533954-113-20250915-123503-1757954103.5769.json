@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Amelia) aims to resolve an issue with Progressive Insurance incorrectly listing her Florida driver's license while she now holds a North Carolina license, and seeks clarification on insurance rates for bundling home and auto policies.",
+  "resolution_steps": [
+    "Gary confirms the caller's current North Carolina license and clarifies the discrepancy with Progressive's records.",
+    "He explains that bundling home and auto insurance may yield better rates.",
+    "Notes that the homeowner's premium is similar to last year, while auto premium is slightly lower.",
+    "Agrees to follow up with definitive answers after processing the updated license information."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy packaging rules",
+    "Impact of out-of-state licenses on underwriting",
+    "Progressive's quoting system",
+    "Bundling discounts for home/auto insurance"
+  ],
+  "systems_referenced": [
+    "Progressive Insurance database"
+  ],
+  "summary": "Gary addresses a licensing discrepancy with Progressive Insurance, discusses potential rate changes for bundled policies, and schedules a follow-up to resolve the issue and provide final quotes.",
+  "_model": "qwen3:14b",
+  "_eval_count": 253,
+  "_total_duration_ms": 35017,
+  "_source_file": "transcripts/out-6147533954-113-20250915-123503-1757954103.5769.txt",
+  "_direction": "outbound",
+  "_char_count": 1388
+}

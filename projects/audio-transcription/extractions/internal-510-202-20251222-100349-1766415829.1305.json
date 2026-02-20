@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (agent) is assisting a client (Mark Johnson) in finalizing a JUA insurance policy, addressing questions about effective dates, deductibles, and protection class ratings.",
+  "resolution_steps": [
+    "Agent confirms effective date with client.",
+    "Clarifies that NC JUA policies have no waiting period.",
+    "Reviews deductible options (500, 1000, etc.) and explains cost differences.",
+    "Checks client's current policy details (deductible, protection class).",
+    "Recommends 500 deductible as the most cost-effective option.",
+    "Confirms client's decision and proceeds with policy setup."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "JUA policy terms (deductibles, waiting periods)",
+    "Protection class ratings and their implications",
+    "Insurance quoting systems and premium calculations"
+  ],
+  "systems_referenced": [
+    "Internal client database (pulling up Mark and Paula's information)",
+    "JUA policy portal (checking deductible tiers and protection class)"
+  ],
+  "summary": "An agent assists Mark Johnson in finalizing a JUA insurance policy, explaining deductible options and confirming the 500 deductible as optimal. The agent also verifies the client's protection class (3) and addresses concerns about fire department response times. The call concludes with agreement to proceed with the policy.",
+  "_model": "qwen3:14b",
+  "_eval_count": 305,
+  "_total_duration_ms": 43511,
+  "_source_file": "transcripts/internal-510-202-20251222-100349-1766415829.1305.txt",
+  "_direction": "internal",
+  "_char_count": 3625
+}

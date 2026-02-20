@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Abani is following up on a previous call regarding Vintage Rose Chapel, but encountered issues reaching the insured party (Charlotte) due to a phone number problem.",
+  "resolution_steps": [
+    "Luke acknowledges the communication issue with the phone number.",
+    "Confirms the number was operational two weeks prior and suggests leaving another message.",
+    "Agrees to follow up if Charlotte remains unreachable."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Handling client communication issues",
+    "Insurance follow-up procedures",
+    "Escalation protocols for unreachable clients"
+  ],
+  "systems_referenced": [],
+  "summary": "Abani reported difficulty reaching Charlotte at Vintage Rose Chapel due to a phone number issue. Luke confirmed the number was functional two weeks prior and advised leaving another message. Abani agreed to follow up next week and contact Luke if unsuccessful.",
+  "_model": "qwen3:14b",
+  "_eval_count": 199,
+  "_total_duration_ms": 40911,
+  "_source_file": "transcripts/out-9723532315-101-20250904-161627-1757016987.8411.txt",
+  "_direction": "outbound",
+  "_char_count": 1466
+}

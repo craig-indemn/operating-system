@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Follow-up callback to Jose regarding a previous interaction",
+  "resolution_steps": [
+    "Left voicemail message with callback request",
+    "Provided contact number for Jose to call back"
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Agent left a voicemail callback to Jose, requesting a return call using the provided phone number. The call was not substantive as it involved only a voicemail message.",
+  "_model": "qwen3:14b",
+  "_eval_count": 117,
+  "_total_duration_ms": 28207,
+  "_source_file": "transcripts/out-13367560515-207-20251218-090930-1766066970.98.txt",
+  "_direction": "outbound",
+  "_char_count": 491
+}

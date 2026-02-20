@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to inform Alliance Insurance about a mortgage transfer and update their policy details to reflect the new mortgage information, including the escrow and new mortgagee clause.",
+  "resolution_steps": [
+    "Agent explains the need for a letter containing the updated mortgagee clause, new loan number, and address.",
+    "Agent provides the email address (support@myallianceinsurance.com) for sending the letter directly to an agent.",
+    "Agent clarifies that the letter should include specific details to facilitate policy updates and communication with the new mortgage company.",
+    "Agent suggests including a note in the email to notify the caller once the update is completed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Process for updating mortgage insurance policies during loan transfers",
+    "Required documentation (letter with mortgagee clause, loan number, address)",
+    "Internal communication protocols for policy updates"
+  ],
+  "systems_referenced": [
+    "support@myallianceinsurance.com (email system for agent communication)"
+  ],
+  "summary": "A caller notified Alliance Insurance of a mortgage transfer and requested policy updates. The agent guided them to send a letter with specific details (new mortgagee clause, loan number, address) to a dedicated email address. The agent also mentioned they would notify the caller via email once the update was completed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 296,
+  "_total_duration_ms": 42566,
+  "_source_file": "transcripts/in-+13363779003-+13364084391-20250728-114958-1753717798.4382.txt",
+  "_direction": "inbound",
+  "_char_count": 2178
+}

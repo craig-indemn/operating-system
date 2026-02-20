@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Misty needs to add a new Jeep Wrangler to her father's insurance policy after he purchased it, and she wants to confirm coverage details and costs.",
+  "resolution_steps": [
+    "Jamie confirmed the VIN number for the new vehicle after Misty initially struggled to retrieve it.",
+    "Jamie verified that the vehicle was already added to the policy earlier in the day.",
+    "Discussed existing coverage details (liability at $100,000, comprehensive with $250 deductible, no collision, roadside assistance).",
+    "Noted a potential discrepancy in liability coverage amounts and confirmed Misty's preference to maintain current levels.",
+    "Provided the cost for the new coverage ($313.58 annually)."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding insurance policy structure (liability, comprehensive, deductibles).",
+    "Ability to access and verify policy details via internal systems.",
+    "Knowledge of carrier-specific coverage options (National General)."
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services customer portal (myallianceinsurance.com)",
+    "Internal policy management system"
+  ],
+  "summary": "Misty contacted Alliance Insurance to add a new Jeep Wrangler to her father's policy. After being transferred from Heather to Jamie, the agent confirmed the vehicle details, reviewed existing coverage, addressed a potential liability adjustment, and provided the cost for the new coverage. The call concluded with the policy update being processed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 327,
+  "_total_duration_ms": 41427,
+  "_source_file": "transcripts/exten-401-+13364622612-20250821-161343-1755807223.8870.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4108
+}

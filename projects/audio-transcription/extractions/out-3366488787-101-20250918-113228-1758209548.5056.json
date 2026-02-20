@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Amani Duke from Reliance Insurance is following up on insurance proposals and quotes sent to Stephanie, seeking to confirm her receipt and arrange a callback.",
+  "resolution_steps": [
+    "Maddie (agent) checks Stephanie's availability and informs Amani she is currently busy in the kitchen.",
+    "Amani agrees to leave a message for Stephanie.",
+    "Maddie confirms Stephanie will call back this afternoon as previously agreed.",
+    "Call concludes with mutual thanks and goodbye."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Standard message-taking procedures",
+    "Follow-up protocols for insurance proposals",
+    "Client communication expectations"
+  ],
+  "systems_referenced": [],
+  "summary": "Amani Duke from Reliance Insurance follows up on insurance proposals for Stephanie, who is unavailable. The agent takes a message and confirms Stephanie will call back this afternoon. The call concludes with a pending callback from Stephanie.",
+  "_model": "qwen3:14b",
+  "_eval_count": 213,
+  "_total_duration_ms": 38372,
+  "_source_file": "transcripts/out-3366488787-101-20250918-113228-1758209548.5056.txt",
+  "_direction": "outbound",
+  "_char_count": 704
+}

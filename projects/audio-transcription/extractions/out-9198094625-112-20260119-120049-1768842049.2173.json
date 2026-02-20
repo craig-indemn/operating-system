@@ -1,0 +1,22 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The agent (Brandi) intended to follow up with Michael Tran to review his auto policy with National General.",
+  "resolution_steps": [
+    "Brandi left a voicemail message with Michael's voicemail system, providing her contact number for callback."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Auto insurance policy review process",
+    "National General carrier details"
+  ],
+  "systems_referenced": [
+    "National General auto policy system"
+  ],
+  "summary": "An outbound call was made to Michael Tran by Brandi from Alliance Insurance to review his National General auto policy. The call went to voicemail, and Brandi left a message requesting a callback.",
+  "_model": "qwen3:14b",
+  "_eval_count": 153,
+  "_total_duration_ms": 48224,
+  "_source_file": "transcripts/out-9198094625-112-20260119-120049-1768842049.2173.txt",
+  "_direction": "outbound",
+  "_char_count": 456
+}

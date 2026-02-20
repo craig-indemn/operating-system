@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Linda Redwine is following up on an insurance proposal, seeking clarification on policy options and cost-saving measures for her auto and homeowners insurance.",
+  "resolution_steps": [
+    "Agent explains Cincinnati's bundled policy option and calculates annual costs based on monthly payments.",
+    "Identifies that Linda's auto premium is high due to a recent at-fault accident (though Linda clarifies she hasn't had one recently).",
+    "Proposes splitting policies: Northwest Farmers for homeowners and Progressive for auto to achieve cost savings.",
+    "Calculates homeowners premium ($1,140 annually) and confirms Progressive auto rate matches Linda's current premium.",
+    "Offers to cancel existing policies immediately and start new ones, with refund of overage.",
+    "Provides options for electronic signing of applications via email or in-person signing."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance carrier pricing structures (Cincinnati, Northwest Farmers, Progressive)",
+    "Impact of accident history on auto insurance rates",
+    "Policy cancellation/refund processes",
+    "Electronic application signing procedures"
+  ],
+  "systems_referenced": [
+    "Email communication for proposal sharing and application signing",
+    "Carrier portals for policy comparisons",
+    "Insurance quoting systems for rate calculations"
+  ],
+  "summary": "Linda Redwine works with her agent to switch insurance providers to reduce costs. After analyzing proposals, they settle on splitting policies between Northwest Farmers (homeowners) and Progressive (auto) to achieve savings. The agent will initiate the switch immediately, with electronic application signing options provided.",
+  "_model": "qwen3:14b",
+  "_eval_count": 338,
+  "_total_duration_ms": 43673,
+  "_source_file": "transcripts/exten-401-+13365080981-20251024-101935-1761315575.991.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4234
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Kurt Snyder is following up on a previous message regarding a mistaken payment by National General Insurance, seeking confirmation that the policy cancellation and refund process is underway.",
+  "resolution_steps": [
+    "Brandi confirms that National General has been contacted and the policy is canceled with a refund pending.",
+    "Brandi assures Kurt the refund will be processed within 72 hours and advises checking by next Wednesday.",
+    "Brandi agrees to monitor the refund status and check on Monday morning.",
+    "Brandi apologizes for the inconvenience caused by the error."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy cancellation and refund procedures",
+    "Handling customer disputes with carriers",
+    "Banking direct deposit timelines"
+  ],
+  "systems_referenced": [
+    "National General Insurance",
+    "Banking direct deposit system"
+  ],
+  "summary": "Kurt Snyder discusses a mistaken payment by National General Insurance with Brandi, confirming the policy is canceled and a refund is pending. Brandi assures him of monitoring the refund process and provides a follow-up timeline. The conversation concludes with mutual understanding and a plan to check on the refund status by Monday.",
+  "_model": "qwen3:14b",
+  "_eval_count": 263,
+  "_total_duration_ms": 43586,
+  "_source_file": "transcripts/exten-112-+13364696809-20251107-122525-1762536325.2632.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2787
+}

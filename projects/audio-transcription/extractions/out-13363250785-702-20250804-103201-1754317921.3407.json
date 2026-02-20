@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Rachel is seeking to pay her overdue insurance premium, which she acknowledges is past due and needs to be settled before a specific date.",
+  "resolution_steps": [
+    "Agent (Sandra) confirms Rachel's overdue payment amount ($3,397.60).",
+    "Rachel provides credit card details to process the payment, including card number, expiration date, security code, and zip code.",
+    "Agent informs Rachel of a $4 service fee from the credit card company.",
+    "Payment is processed, and confirmation is sent to Rachel's email (shaymore1128@gmail.com)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance premium payment procedures",
+    "Credit card transaction processing",
+    "Handling late payment fees and deadlines"
+  ],
+  "systems_referenced": [
+    "Credit card payment processing system",
+    "Insurance agency's billing portal"
+  ],
+  "summary": "Rachel contacted Alliance Insurance Services to settle her overdue insurance premium. After confirming the amount and providing credit card details, the agent processed the payment, including a service fee. Rachel received a confirmation email, and the call concluded with mutual gratitude.",
+  "_model": "qwen3:14b",
+  "_eval_count": 264,
+  "_total_duration_ms": 39882,
+  "_source_file": "transcripts/out-13363250785-702-20250804-103201-1754317921.3407.txt",
+  "_direction": "outbound",
+  "_char_count": 3610
+}

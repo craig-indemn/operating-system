@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking assistance to locate policy information (NPP161544B) on the Agent Portal, which they cannot find, and is asking about changes to the agency of record for the policy.",
+  "resolution_steps": [
+    "Agent Gloria confirms the policy number and identifies the policy is associated with North Carolina Farm Bureau, not Alliance Insurance.",
+    "Gloria provides the phone number for North Carolina Farm Bureau (919-782-1705) to contact for policy details.",
+    "Gloria explains she cannot confirm when the agency of record changed and directs the caller to contact Farm Bureau directly."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding how to look up policy information in the Agent Portal",
+    "Knowledge of carrier relationships and agency of record changes",
+    "Ability to identify correct contact information for associated carriers"
+  ],
+  "systems_referenced": [
+    "Agent Portal (USLI system)",
+    "North Carolina Farm Bureau contact information"
+  ],
+  "summary": "A caller from Alliance Insurance sought help locating policy NPP161544B on the Agent Portal. The agent identified the policy was associated with North Carolina Farm Bureau and provided their contact number. The caller was directed to contact Farm Bureau directly for policy details, as the agent could not confirm agency of record changes.",
+  "_model": "qwen3:14b",
+  "_eval_count": 307,
+  "_total_duration_ms": 41048,
+  "_source_file": "transcripts/out-8885235545-102-20251204-131122-1764871882.3401.txt",
+  "_direction": "outbound",
+  "_char_count": 4136
+}

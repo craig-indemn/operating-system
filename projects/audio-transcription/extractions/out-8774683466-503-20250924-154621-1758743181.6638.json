@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Outbound call failed due to technical difficulties. The system provided a generic error message and disconnected.",
+  "_model": "qwen3:14b",
+  "_eval_count": 70,
+  "_total_duration_ms": 20359,
+  "_source_file": "transcripts/out-8774683466-503-20250924-154621-1758743181.6638.txt",
+  "_direction": "outbound",
+  "_char_count": 99
+}

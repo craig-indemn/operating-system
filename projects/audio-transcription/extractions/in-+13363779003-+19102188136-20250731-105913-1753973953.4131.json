@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller attempted to reach Brian but was informed he was unavailable.",
+  "resolution_steps": [
+    "Agent informed caller Brian was away from his desk",
+    "Offered to take a voicemail"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief call where the caller sought Brian but was directed to leave a voicemail. The conversation was too short to determine further intent or resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 114,
+  "_total_duration_ms": 32226,
+  "_source_file": "transcripts/in-+13363779003-+19102188136-20250731-105913-1753973953.4131.txt",
+  "_direction": "inbound",
+  "_char_count": 248
+}

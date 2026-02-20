@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Dalia's property insurance policy with Ncjua was canceled due to lack of proof of roof repair, and she needs guidance to reinstate it.",
+  "resolution_steps": [
+    "Informed Dalia that Ncjua canceled her policy for missing proof of roof repair.",
+    "Offered to send an email to her (ester.saraia@gmail.com) requesting photos of the repair.",
+    "Mentioned sending a 'statement of no loss' via Conga Sign for electronic signing.",
+    "Notified her of a $163.78 payment required to reinstate the policy (covering two months of billing).",
+    "Committed to follow up via email once documents are received and payment is made."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Ncjua's policy reinstatement requirements (proof of repair, statement of no loss).",
+    "Process for electronic document signing via Conga Sign.",
+    "Billing calculations for policy reinstatement."
+  ],
+  "systems_referenced": [
+    "Ncjua (insurance carrier)",
+    "Conga Sign (electronic signature platform)",
+    "Email communication (ester.saraia@gmail.com)"
+  ],
+  "summary": "Jamie from Alliance Insurance informed Dalia that her Ncjua policy was canceled due to missing roof repair proof. She outlined steps to reinstate it: submitting photos of repairs, signing a statement of no loss via Conga Sign, and paying $163.78. Jamie will email her the necessary documents and follow up once completed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 344,
+  "_total_duration_ms": 51862,
+  "_source_file": "transcripts/out-3362878382-501-20251215-103622-1765812982.1227.txt",
+  "_direction": "outbound",
+  "_char_count": 2278
+}

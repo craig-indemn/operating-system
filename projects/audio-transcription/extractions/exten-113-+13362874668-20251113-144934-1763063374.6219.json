@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller discovered a discrepancy between the VIN number on their insurance policy (listed as a 2001 Nissan) and the actual vehicle (a 2000 Nissan), which caused a premium adjustment. They seek assistance to correct the policy and resolve the resulting billing issue.",
+  "resolution_steps": [
+    "Agent explains the need for a copy of the registration card and a signed statement of no losses since October 10th.",
+    "Agent offers to send an electronic signature form via email to the caller's address.",
+    "Clarifies that Alex (the registration card holder) must sign the statement and that the registration card must be legible (e.g., via photo).",
+    "Agent mentions sending two emails: one for the electronic signature and one for the registration card, or alternatively texting the documents.",
+    "Agent updates the caller's contact number to Mike's number and confirms next steps."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy correction procedures",
+    "VIN verification and premium adjustment processes",
+    "Document submission requirements for policy changes",
+    "Handling electronic signatures and document verification"
+  ],
+  "systems_referenced": [
+    "Email communication for document exchange",
+    "Electronic signature portal (implied)",
+    "Insurance carrier policy management system"
+  ],
+  "summary": "The caller discovered a VIN discrepancy on their insurance policy, leading to a premium change and document requirements. The agent guided them through obtaining a registration card, a signed statement of no losses, and submitting these via email or text. The call concluded with the caller agreeing to collect the documents and send them back for resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 360,
+  "_total_duration_ms": 54288,
+  "_source_file": "transcripts/exten-113-+13362874668-20251113-144934-1763063374.6219.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3569
+}

@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Debbie Franklin sought guidance on how to electronically sign documents received from Penn, specifically asking about using DocuSign and confirming the number of documents required.",
+  "resolution_steps": [
+    "Heather confirmed that DocuSign is the correct method for signing the documents.",
+    "Heather clarified that there are two documents: one for home and one for auto insurance.",
+    "Heather offered to print the documents if Debbie encountered difficulties with the DocuSign app.",
+    "Debbie agreed to proceed with DocuSign and acknowledged the alternative option of in-person signing."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "DocuSign electronic signature process",
+    "Insurance document types (home/auto policies)",
+    "Alternative in-person signing procedures"
+  ],
+  "systems_referenced": [
+    "DocuSign"
+  ],
+  "summary": "Debbie Franklin contacted Heather to resolve confusion about signing documents received from Penn via DocuSign. Heather guided her through the electronic signing process, confirmed the two required documents, and provided a backup plan for in-person signing if needed. The conversation concluded with Debbie feeling confident to proceed with DocuSign.",
+  "_model": "qwen3:14b",
+  "_eval_count": 257,
+  "_total_duration_ms": 46786,
+  "_source_file": "transcripts/exten-401-+13369717366-20251020-135833-1760983113.7578.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1631
+}

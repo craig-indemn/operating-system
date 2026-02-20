@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Attempted to reach Maria at Alliance Insurance Services",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller requested to speak with Maria, who was said to be 'one moment' before the call ended abruptly. No meaningful interaction or resolution occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 92,
+  "_total_duration_ms": 29823,
+  "_source_file": "transcripts/in-+13363779003-+13364224636-20260107-105111-1767801071.815.txt",
+  "_direction": "inbound",
+  "_char_count": 199
+}

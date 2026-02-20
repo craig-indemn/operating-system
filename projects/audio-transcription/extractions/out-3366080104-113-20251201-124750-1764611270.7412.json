@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to update the agent on the status of their car repair claim, confirm the $500 deductible, and ensure there were no further actions needed for their auto policy.",
+  "resolution_steps": [
+    "Agent checked in on the claim status and confirmed parts would be ready by 3 PM the next day.",
+    "Discussed the $500 deductible with the caller and confirmed it would be their responsibility.",
+    "Reassured the caller about the repair guarantee and advised them to report any issues post-repair.",
+    "Confirmed no further policy updates were needed and closed the call."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of auto insurance claims processes",
+    "Knowledge of deductible responsibilities",
+    "Familiarity with repair guarantees and post-repair procedures"
+  ],
+  "systems_referenced": [
+    "Insurance adjuster (mentioned in conversation)",
+    "Enterprise rental car service (mentioned as coverage expiration point)"
+  ],
+  "summary": "Agent followed up on a customer's car repair claim, addressing delays in parts, confirming the deductible, and ensuring the customer understood repair guarantees. The customer had no further requests and was satisfied with the resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 270,
+  "_total_duration_ms": 50438,
+  "_source_file": "transcripts/out-3366080104-113-20251201-124750-1764611270.7412.txt",
+  "_direction": "outbound",
+  "_char_count": 2213
+}

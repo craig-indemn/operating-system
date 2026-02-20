@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Michael is explaining a previous insurance loss involving a suspected scam where a fake client arranged roofing work on a property in Dobson, NC, leading to a police report. He wants to provide details for the insurance claim.",
+  "resolution_steps": [
+    "Agent requested a detailed description of the incident via email, including dates, property owner's name, and physical address.",
+    "Agent confirmed the need for documentation to verify the scam and process the claim.",
+    "Agent acknowledged the police report and fraud investigation details provided by Michael."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance claims related to property fraud/scams",
+    "Verification processes for suspicious client activity",
+    "Handling claims involving police reports and third-party investigations"
+  ],
+  "systems_referenced": [
+    "Internal insurance claim documentation system",
+    "Police report records"
+  ],
+  "summary": "Michael reported a suspected scam involving a fake client who arranged roofing work on a property in Dobson, NC, leading to a police report. The agent requested detailed documentation to verify the claim and process the loss. The caller emphasized the need for the insurance agency to confirm the scam and handle the fraudulent activity.",
+  "_model": "qwen3:14b",
+  "_eval_count": 266,
+  "_total_duration_ms": 37691,
+  "_source_file": "transcripts/out-13364678288-705-20251110-120649-1762794409.2873.txt",
+  "_direction": "outbound",
+  "_char_count": 4644
+}

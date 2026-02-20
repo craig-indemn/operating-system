@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Sandra is being contacted by Jeremy from Alliance Insurance to gather information for a home and auto insurance policy renewal. The agent is collecting details about the property, deductible preferences, home updates, and vehicle information to finalize the quote.",
+  "resolution_steps": [
+    "Jeremy asks about home features (pool, trampoline, recent updates, roof year, alarm system, pets).",
+    "Discusses deductible preferences (current $1,000 deductible).",
+    "Inquires about mortgage status, electrical systems, HVAC, water source, and claims history.",
+    "Confirms auto insurance details (vehicles, comprehensive coverage, driving frequency).",
+    "Notes payment preference (monthly payments).",
+    "Agrees to input data into the system and provide a quote by the next business day."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Home insurance underwriting factors (deductibles, roof age, alarm systems, pets).",
+    "Auto insurance details (comprehensive coverage, vehicle information).",
+    "Policy renewal processes and carrier systems."
+  ],
+  "systems_referenced": [
+    "Internal system for processing insurance data",
+    "Carrier databases for quote generation"
+  ],
+  "summary": "Jeremy from Alliance Insurance collects detailed information from Sandra about her home and auto insurance policies to prepare a renewal quote. Key details include home features, deductible preferences, roof age, and payment method. The agent commits to providing a quote by the next business day.",
+  "_model": "qwen3:14b",
+  "_eval_count": 325,
+  "_total_duration_ms": 53226,
+  "_source_file": "transcripts/out-3363456926-701-20251209-111325-1765296805.2158.txt",
+  "_direction": "outbound",
+  "_char_count": 4115
+}

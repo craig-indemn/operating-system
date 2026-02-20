@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Brian wants to obtain the cheapest liability coverage for his 2004 Lexus RX 330 and needs proof of insurance sent via text or email.",
+  "resolution_steps": [
+    "Agent Gary confirms Brian's request for liability coverage and notes it's the cheapest option.",
+    "Asks for car details (model: 2004 Lexus RX 330) after initial confusion about the make.",
+    "Acknowledges missing VIN but states he'll follow up with another agent who previously spoke to Brian.",
+    "Offers to send proof of insurance via text or email, confirming Brian's email address (Simmons_Services@Outlook.com).",
+    "Agrees to prioritize text message delivery, with email as a backup."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance coverage types (liability)",
+    "Car model identification (Lexus RX 330)",
+    "Customer communication protocols (text/email delivery of documents)",
+    "Handling incomplete information (missing VIN)"
+  ],
+  "systems_referenced": [
+    "Customer email database (to retrieve Simmons_Services@Outlook.com)",
+    "Internal communication tools (text/email for proof of insurance delivery)"
+  ],
+  "summary": "Gary from Alliance Insurance Services helps Brian set up liability insurance for his 2004 Lexus RX 330. Despite missing a VIN, Gary commits to follow up with another agent and arranges proof of insurance delivery via text or email. Brian confirms his email address and agrees to the plan.",
+  "_model": "qwen3:14b",
+  "_eval_count": 342,
+  "_total_duration_ms": 47834,
+  "_source_file": "transcripts/out-3364298182-113-20251125-153746-1764103066.6673.txt",
+  "_direction": "outbound",
+  "_char_count": 1063
+}

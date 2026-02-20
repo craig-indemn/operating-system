@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Patricia needs to resolve a past due balance on her Frank Winston Chrome general liability insurance policy and confirm payment details for another upcoming payment.",
+  "resolution_steps": [
+    "Agent confirms the past due balance of $303.38 and its due date (January 10th).",
+    "Agent offers to process payment via credit card immediately.",
+    "Agent checks the system to confirm the next payment due date (January 24th) for another policy.",
+    "Agent processes the $303.38 payment using the provided credit card details.",
+    "Agent confirms receipt of payment and offers to email a receipt."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy payment tracking",
+    "Credit card payment processing procedures",
+    "Policy cancellation timelines for unpaid balances"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services internal policy management system"
+  ],
+  "summary": "Patricia contacted Alliance Insurance to address a past due insurance payment of $303.38. The agent confirmed the overdue balance, processed immediate payment via credit card, and verified the next payment due date. The agent will email a payment receipt after processing.",
+  "_model": "qwen3:14b",
+  "_eval_count": 272,
+  "_total_duration_ms": 34479,
+  "_source_file": "transcripts/exten-207-+17439990602-20260112-153315-1768249995.7075.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1847
+}

@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jeremy is presenting a revised insurance proposal to Sonya, detailing changes to her auto and home policies with Auto Owners, including coverage adjustments, premium savings, and additional benefits.",
+  "resolution_steps": [
+    "Jeremy explains the proposed start date (January 19th) and outlines premium savings ($900 annually) by adjusting liability coverage and deductibles.",
+    "He details specific changes: increasing auto liability from $50k to $100k, raising the horse trailer deductible to $500 collision, and adding coverage buffers for homeowners policy.",
+    "Jeremy explains additional benefits like mortgage-free discount, personal property replacement cost, equipment breakdown coverage ($100k), and service line coverage (up to $10k with $500 deductible).",
+    "He clarifies deductible options for wind/hail ($2k) and other perils ($1k) and invites Sonya to ask questions."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Auto insurance policy structures (liability, property damage, deductibles)",
+    "Homeowners coverage calculations (rebuilding costs, coverage buffers)",
+    "Insurance company-specific details (Auto Owners, Grange)",
+    "Coverage types (service line, equipment breakdown, mortgage-free discount)"
+  ],
+  "systems_referenced": [
+    "Auto Owners (insurance carrier)",
+    "Grange (current insurer for renewal reference)",
+    "Homeowners policy calculation tools",
+    "Auto insurance quoting systems"
+  ],
+  "summary": "Jeremy from Alliance Insurance Services discusses a revised insurance proposal with Sonya, detailing $900 annual savings through coverage adjustments, additional coverage buffers, and new benefits like service line coverage. He explains policy changes and invites Sonya to ask questions, concluding with her inquiry about the carrier (Auto Owners).",
+  "_model": "qwen3:14b",
+  "_eval_count": 396,
+  "_total_duration_ms": 59564,
+  "_source_file": "transcripts/out-3369646145-701-20251219-100106-1766156466.2264.txt",
+  "_direction": "outbound",
+  "_char_count": 4035
+}

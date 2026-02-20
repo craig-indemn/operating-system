@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is following up on a voicemail from Heather Scott or Taylor Scott regarding a renters policy for their son and wants to confirm the correct email address to ensure they receive the information.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's request to confirm the email address for Heather Scott.",
+    "Agent attempts to connect the caller with Heather Scott."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Internal call transfer procedures",
+    "Understanding of previous client interactions (voicemail reference)"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller followed up on a voicemail about a renters policy and requested confirmation of Heather Scott's email address. The agent attempted to connect the caller with Heather Scott, but the call ended before resolution. Further follow-up is required to address the email issue and provide policy details.",
+  "_model": "qwen3:14b",
+  "_eval_count": 197,
+  "_total_duration_ms": 37251,
+  "_source_file": "transcripts/in-+13363779003-+13363091667-20250812-101420-1755008060.1220.txt",
+  "_direction": "inbound",
+  "_char_count": 470
+}

@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Don Hensar is checking in about the status of his insurance approval with AutoOwners, specifically addressing discrepancies in claim records related to Hurricane damage repairs and ensuring policies are finalized.",
+  "resolution_steps": [
+    "Heather confirms AutoOwners' underwriter approved the claim after verifying repairs were completed and the claim was closed.",
+    "She explains the system discrepancy (claim showing as open despite closure) and clarifies it may stem from two payments to a contractor being misinterpreted as separate claims.",
+    "Heather mentions splitting home/auto policies but advises against separating from Cincinnati (current carrier) due to complexity.",
+    "She commits to finalizing all three policies (home, auto, umbrella) and running reports for verification."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance claim processing",
+    "Underwriting approval criteria",
+    "Handling claim status discrepancies",
+    "Carrier-specific policies (AutoOwners, Cincinnati)"
+  ],
+  "systems_referenced": [
+    "AutoOwners insurance system",
+    "Cincinnati Insurance",
+    "Loss history reports"
+  ],
+  "summary": "Heather and Don discuss resolving an AutoOwners insurance approval issue stemming from a Hurricane-related claim discrepancy. Heather clarifies the claim was closed but the system shows it as open, likely due to two contractor payments being misinterpreted as separate claims. She confirms underwriting approval and commits to finalizing policies, while advising against switching carriers. The call concludes with Heather promising to send finalized documents via email.",
+  "_model": "qwen3:14b",
+  "_eval_count": 323,
+  "_total_duration_ms": 40903,
+  "_source_file": "transcripts/exten-401-+13366016016-20251125-155808-1764104288.6795.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4080
+}

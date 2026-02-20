@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Lori) sought to make a payment on a life insurance policy and requested a waiver of a late payment fee that had accrued due to prior payment difficulties.",
+  "resolution_steps": [
+    "Agent confirmed the billing account number (17319850) and identified the account holder (Winburn Real Estate LLC).",
+    "Agent reviewed the account status, noting a past-due balance of $447 and a $35 late fee.",
+    "Agent acknowledged the customer's request to waive the late fee and agreed to do so.",
+    "Agent updated the balance to $412 (excluding the waived fee) and confirmed the customer would proceed with payment."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Late payment fee policies and waiver procedures",
+    "Access to billing account details and payment history",
+    "Ability to adjust account balances and apply fee waivers"
+  ],
+  "systems_referenced": [
+    "The Hartford's billing system (for account lookup and balance verification)",
+    "Payment processing tools (for applying the waived fee and confirming payment)"
+  ],
+  "summary": "A customer contacted The Hartford to resolve a past-due life insurance payment and requested a waiver of a $35 late fee. The agent confirmed the account details, waived the fee, and facilitated the payment process. The call concluded with the customer satisfied and prepared to settle the remaining balance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 313,
+  "_total_duration_ms": 43937,
+  "_source_file": "transcripts/out-18778532582-102-20251211-152003-1765484403.8045.txt",
+  "_direction": "outbound",
+  "_char_count": 3636
+}

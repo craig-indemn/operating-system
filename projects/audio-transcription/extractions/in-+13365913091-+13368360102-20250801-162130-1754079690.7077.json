@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Joan) reports that her insurance policy was canceled without explanation and seeks clarification on the reason and steps to obtain replacement coverage.",
+  "resolution_steps": [
+    "Agent requested the caller's policy-associated phone number (336-836-0102) for verification.",
+    "Agent accessed the policy system and identified a cancellation notice from 'NG' citing 'retired' as the reason.",
+    "Agent informed the caller of the cancellation reason and placed her on hold to connect with a specialist for replacement coverage options."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy cancellation reasons and carrier-specific notices (e.g., 'NG' reference)",
+    "Procedure for handling retirement-related policy changes",
+    "Access to internal policy management systems"
+  ],
+  "systems_referenced": [
+    "Policy management database",
+    "Carrier notice portal (NG)"
+  ],
+  "summary": "Joan contacted Alliance Insurance to report an unexpected policy cancellation. The agent identified the cancellation was due to retirement, as noted in a notice from NG, and is transferring her to a specialist for replacement coverage options.",
+  "_model": "qwen3:14b",
+  "_eval_count": 254,
+  "_total_duration_ms": 34949,
+  "_source_file": "transcripts/in-+13365913091-+13368360102-20250801-162130-1754079690.7077.txt",
+  "_direction": "inbound",
+  "_char_count": 981
+}

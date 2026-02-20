@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Maggie called to make a payment for 'the Gio' and inquire about updates on an umbrella policy from another agent and a pending email regarding Harmony Apartments.",
+  "resolution_steps": [
+    "Jessica acknowledged the payment request and stated she would review documents to determine the payment process.",
+    "She offered to contact Maggie back via call or email after verifying the required steps.",
+    "Jessica mentioned checking emails related to the umbrella policy from the other agent and the Harmony Apartments email.",
+    "She confirmed she would address the Harmony Apartments email shortly and send out documents today."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance payment procedures",
+    "Handling client communications",
+    "Policy documentation processes",
+    "Email tracking for client correspondence"
+  ],
+  "systems_referenced": [
+    "Email system (mention of checking emails)",
+    "Carrier portal for umbrella policy (Escola)",
+    "Policy management system for 'the Gio'"
+  ],
+  "summary": "Maggie contacted Jessica to make a payment for an insurance policy ('the Gio') and check on updates for an umbrella policy from another agent. Jessica agreed to review the payment process and follow up, while also addressing a pending email about Harmony Apartments. The call concluded with Jessica committing to contact Maggie back after verifying details.",
+  "_model": "qwen3:14b",
+  "_eval_count": 288,
+  "_total_duration_ms": 38113,
+  "_source_file": "transcripts/exten-106-+13367505898-20250829-112242-1756480962.2422.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1318
+}

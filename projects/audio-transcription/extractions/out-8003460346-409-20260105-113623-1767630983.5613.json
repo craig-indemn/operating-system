@@ -1,0 +1,19 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Not applicable (automated voicemail greeting)",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [
+    "auto-owners.com",
+    "App Store",
+    "Google Play"
+  ],
+  "summary": "Automated voicemail greeting from Auto Owners Insurance providing call options, queue notice, and online access promotion. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 99,
+  "_total_duration_ms": 19014,
+  "_source_file": "transcripts/out-8003460346-409-20260105-113623-1767630983.5613.txt",
+  "_direction": "outbound",
+  "_char_count": 1941
+}

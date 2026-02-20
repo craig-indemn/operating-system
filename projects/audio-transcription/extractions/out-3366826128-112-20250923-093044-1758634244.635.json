@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Beverly is being contacted regarding a homeowners insurance policy for a home in a trust, with the underwriter requiring trust documents to verify ownership. The agent also discusses an insurance quote and potential adjustments to the deductible.",
+  "resolution_steps": [
+    "Agent explains the underwriter needs trust documents to confirm ownership of the home in the trust.",
+    "Beverly agrees to retrieve the documents from Brian Fulp, who is nearby.",
+    "Agent addresses Beverly's question about the insurance quote, noting the lack of a discount for the alarm system and the cost increase.",
+    "Agent suggests increasing the deductible to lower the premium, which Beverly agrees is acceptable.",
+    "Agent confirms the additional monthly insurance cost is $22 and schedules the policy issuance once documents are provided."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance underwriting requirements for trust-owned properties",
+    "Homeowners insurance policy adjustments (deductibles, discounts)",
+    "Process for submitting trust documents for policy verification"
+  ],
+  "systems_referenced": [
+    "Insurance policy management system (for quotes and policy issuance)",
+    "Underwriting portal (for document submission)"
+  ],
+  "summary": "Agent Brandy from Alliance Insurance discusses with Beverly the need for trust documents to finalize a homeowners policy for a property owned by Brian Fulp in a trust. Beverly agrees to retrieve the documents, and the agent explains the insurance quote details, including the impact of deductible adjustments. The call concludes with Beverly agreeing to provide the trust papers for policy processing.",
+  "_model": "qwen3:14b",
+  "_eval_count": 337,
+  "_total_duration_ms": 45243,
+  "_source_file": "transcripts/out-3366826128-112-20250923-093044-1758634244.635.txt",
+  "_direction": "outbound",
+  "_char_count": 4172
+}

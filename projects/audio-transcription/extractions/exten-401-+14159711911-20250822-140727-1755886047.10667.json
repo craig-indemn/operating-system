@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Heather is seeking assistance to obtain copies of her expired home insurance policy and auto insurance policy, and is discussing challenges in contacting her lender and Progressive directly.",
+  "resolution_steps": [
+    "Sam confirms Heather's policy expiration date (July 5th) and acknowledges her request for policy copies.",
+    "Sam advises Heather to contact Progressive directly using the provided phone number (800-876-5581) to request emailed copies of her auto and home insurance policies.",
+    "Sam clarifies that Progressive can provide the necessary contact information for home insurance if needed.",
+    "Heather agrees to call Progressive immediately and send the requested documents via email."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding insurance policy expiration processes",
+    "Knowledge of carrier contact procedures (e.g., Progressive)",
+    "Ability to guide customers on obtaining policy documents via email"
+  ],
+  "systems_referenced": [
+    "Progressive (carrier)",
+    "Email communication"
+  ],
+  "summary": "Heather discusses her expired home insurance policy and needs to obtain copies of both her home and auto policies. Sam guides her to contact Progressive directly using the provided phone number to request emailed documents. Heather agrees to proceed with the call and will send the documents once received. The conversation concludes with mutual appreciation and a plan for Heather to follow up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 303,
+  "_total_duration_ms": 46216,
+  "_source_file": "transcripts/exten-401-+14159711911-20250822-140727-1755886047.10667.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2374
+}

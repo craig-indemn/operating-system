@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Junior wanted to finalize an insurance policy for a modular home after receiving a quote, had questions about the cost, and needed clarification on insurability and payment terms.",
+  "resolution_steps": [
+    "Agent explained insurability and provided an example of liability coverage for property damage.",
+    "Discussed payment options (semi-annual vs. monthly/quarterly) and agreed on semi-annual payments.",
+    "Collected banking details for auto draft setup.",
+    "Confirmed policy initiation and document delivery via email (declarations page, receipt, electronic application)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance terminology (insurability, liability coverage)",
+    "Premium calculation factors for mobile homes in suburban areas",
+    "Payment plan options and auto draft setup process"
+  ],
+  "systems_referenced": [
+    "Agency's email system for document delivery",
+    "Auto draft payment processing system"
+  ],
+  "summary": "Junior finalized a modular home insurance policy after addressing cost concerns and clarifying coverage terms. The agent explained insurability, agreed to semi-annual payments, and set up auto draft with banking details. Documents will be emailed for electronic signing, with the first payment due June 21st.",
+  "_model": "qwen3:14b",
+  "_eval_count": 279,
+  "_total_duration_ms": 39927,
+  "_source_file": "transcripts/out-3369202237-510-20260107-163812-1767821892.5751.txt",
+  "_direction": "outbound",
+  "_char_count": 3598
+}

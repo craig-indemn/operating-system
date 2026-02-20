@@ -1,0 +1,32 @@
+{
+  "is_substantive": true,
+  "caller_intent": "William is finalizing insurance policy details with the agent, ensuring correct names, credit card information, mailing address, and policy activation dates. He also wants to cancel existing policies without causing a lapse.",
+  "resolution_steps": [
+    "Agent confirms William's full legal name and his wife's name on the policy.",
+    "Verifies credit card details (number, expiration date, security code), and confirms the mailing address (PO Box 1122, Jefferson, NC).",
+    "Discusses policy activation date (effective 11/15) and cancellation of existing policies (Travelers, All State) on the same date to avoid lapses.",
+    "Explains process for Auto Owners to send applications for electronic signing and email receipts.",
+    "Mentions Alliance Insurance's website for accessing documents, ID cards, and making payments.",
+    "Reassures William that any errors can be corrected post-issuance but pre-activation details must be accurate."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy setup and activation processes",
+    "Handling credit card information securely",
+    "Mailing address verification for policy documents",
+    "Policy cancellation procedures to avoid coverage gaps",
+    "Auto Owners and Alliance Insurance portal functionalities"
+  ],
+  "systems_referenced": [
+    "Auto Owners (for application submission and electronic signing)",
+    "Alliance Insurance website (for document access and payments)",
+    "Travelers and All State (existing policies to cancel)"
+  ],
+  "summary": "William is finalizing new insurance policies with Alliance Insurance, confirming personal and policy details. The agent verifies credit card information, mailing address, and activation dates, and plans to cancel existing policies on the same date to avoid lapses. The agent also explains access to policy documents via Auto Owners and Alliance Insurance portals.",
+  "_model": "qwen3:14b",
+  "_eval_count": 398,
+  "_total_duration_ms": 64705,
+  "_source_file": "transcripts/exten-401-+13367348671-20251112-151307-1762978387.7201.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4100
+}

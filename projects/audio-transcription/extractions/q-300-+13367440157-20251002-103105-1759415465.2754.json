@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Brian Griswold is seeking clarification about a conflicting notice from Progressive regarding his homeowners policy, which claims the renewal was unpaid, despite an email from his mortgage company (Citizens) stating the payment was made via escrow.",
+  "resolution_steps": [
+    "Brandy verifies Brian's identity using his address (1114 Scout Road, Lexington, NC 27292) after noting a name discrepancy (system lists 'James Griswold').",
+    "She checks the policy system to confirm the payment date (September 26) and explains the notice (dated September 19) was delayed in the mail.",
+    "Brandy clarifies that American Strategic Insurance Corporation (mentioned in the notice) is a subsidiary of Progressive, addressing Brian's concern about potential scams.",
+    "She confirms the payment was processed and assures Brian there is no issue with his coverage."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Progressive's policy administration and affiliated entities (e.g., American Strategic Insurance Corporation).",
+    "Escrow payment processing timelines and how they interact with insurance carriers.",
+    "How to interpret and resolve discrepancies between carrier notices and third-party (e.g., mortgage company) confirmations."
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services' internal policy management system (used to verify payment dates)."
+  ],
+  "summary": "Brian Griswold contacted Alliance Insurance Services to resolve confusion about a Progressive notice claiming his homeowners policy was unpaid. Brandy confirmed the payment was made on September 26 via escrow, explaining the notice (dated September 19) was delayed. She clarified that American Strategic Insurance Corporation is a Progressive subsidiary, resolving Brian's concerns about potential scams. The call ended with Brian reassured that his coverage was valid.",
+  "_model": "qwen3:14b",
+  "_eval_count": 394,
+  "_total_duration_ms": 66705,
+  "_source_file": "transcripts/q-300-+13367440157-20251002-103105-1759415465.2754.txt",
+  "_direction": "queue",
+  "_char_count": 2934
+}

@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Sandra Hayes wants to pay her auto insurance premium by check for her Progressive policy.",
+  "resolution_steps": [
+    "Agent confirmed the policy type (Progressive) and requested payment details.",
+    "Collected routing number (253177049) and account number (31712123) for the check payment.",
+    "Processed the payment of $251.05.",
+    "Notified Sandra the payment was successful and offered to send a confirmation number via email."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Progressive insurance policy processing",
+    "Check payment verification procedures",
+    "Email confirmation protocols for payments"
+  ],
+  "systems_referenced": [
+    "Email system (for confirmation number delivery)"
+  ],
+  "summary": "Sandra Hayes called Alliance Insurance to pay her Progressive auto insurance premium by check. The agent verified banking details, processed the $251.05 payment, and confirmed successful transaction with an email confirmation offer. The call concluded with Sandra indicating no further assistance was needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 245,
+  "_total_duration_ms": 35986,
+  "_source_file": "transcripts/in-+13363779003-+13362530031-20250925-121710-1758817030.2483.txt",
+  "_direction": "inbound",
+  "_char_count": 1133
+}

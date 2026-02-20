@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Charlie McCon, seeks to resolve a three-week-long insurance lapse issue for his customer Byron Full, where the wrong vehicle (Explorer instead of Thunderbird) was mistakenly canceled, causing ongoing coverage problems.",
+  "resolution_steps": [
+    "Agent requested policy number, customer name, and address to verify details.",
+    "Agent acknowledged the issue with the incorrect cancellation and offered to transfer the caller to another agent for resolution.",
+    "Agent placed the caller on hold to facilitate the transfer."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding insurance policy cancellation processes",
+    "Handling customer disputes over incorrect coverage lapses",
+    "Internal call transfer protocols"
+  ],
+  "systems_referenced": [],
+  "summary": "Charlie McCon, working at a license plate office, reports a persistent insurance lapse issue for customer Byron Full due to an incorrect cancellation of the Explorer instead of the Thunderbird. The agent verifies details and initiates a transfer to another agent to resolve the problem, with the caller instructed to call back if the transfer fails.",
+  "_model": "qwen3:14b",
+  "_eval_count": 241,
+  "_total_duration_ms": 33117,
+  "_source_file": "transcripts/in-+13363779003-+13367037550-20251002-134432-1759427072.9598.txt",
+  "_direction": "inbound",
+  "_char_count": 1697
+}

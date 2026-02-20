@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Leave a voicemail follow-up regarding home insurance",
+  "resolution_steps": [
+    "Voicemail greeting played",
+    "Agent left message requesting callback"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Voicemail left by Alliance Insurance agent Corbin for Ryan, requesting a callback to discuss home insurance. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 101,
+  "_total_duration_ms": 29846,
+  "_source_file": "transcripts/out-3042700503-409-20251201-150536-1764619536.13281.txt",
+  "_direction": "outbound",
+  "_char_count": 462
+}

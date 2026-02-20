@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Dave is seeking clarification about his disability insurance billing structure and wants to update his policy's beneficiary from Ronda Harrison to Saint Jude's. He is confused about why he is being charged $184.82 monthly and whether the payments are pre-tax.",
+  "resolution_steps": [
+    "Brandi explains that the policy is after-tax and payments are deducted monthly from Dave's checking account.",
+    "Brandi offers to email Dave the past billing schedule for reference.",
+    "Dave requests to remove Ronda Harrison as a beneficiary and add Saint Jude's instead.",
+    "Brandi agrees to contact Auto Owners to obtain the necessary form for the beneficiary change.",
+    "Brandi confirms she will follow up with the form and ensure the change is processed."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of disability insurance billing structures (after-tax deductions, recurring payments).",
+    "Process for updating beneficiaries on insurance policies.",
+    "Knowledge of Auto Owners' requirements for beneficiary change forms."
+  ],
+  "systems_referenced": [
+    "Email system (for sending billing schedules).",
+    "Auto Owners (carrier for beneficiary form)."
+  ],
+  "summary": "Brandi, an Alliance Insurance agent, clarifies Dave's confusion about his disability insurance billing and assists him in updating his policy's beneficiary. She sends a billing schedule, confirms the need for a form from Auto Owners, and agrees to handle the beneficiary change. The call concludes with both parties satisfied and next steps outlined.",
+  "_model": "qwen3:14b",
+  "_eval_count": 327,
+  "_total_duration_ms": 49806,
+  "_source_file": "transcripts/out-7049292422-112-20251112-142042-1762975242.6531.txt",
+  "_direction": "outbound",
+  "_char_count": 3071
+}

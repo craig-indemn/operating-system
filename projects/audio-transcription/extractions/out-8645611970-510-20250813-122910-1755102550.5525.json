@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Pam is seeking clarification on towing coverage differences between her current policy (with a $100 cap) and Auto Owners' 'all reasonable expenses' policy. She also wants to add coverage to both cars and understand how coverage applies in scenarios like breakdowns far from home.",
+  "resolution_steps": [
+    "Tracy explains towing coverage: $100 cap vs. 'all reasonable expenses' (with state-specific laws like Virginia's $3,000 cap).",
+    "Clarifies Auto Owners follows the vehicle, while AAA follows the driver (e.g., rental car breakdowns in Florida).",
+    "Explains occurrence limits: Towing to a shop and later to home counts as one occurrence; separate incidents are separate occurrences.",
+    "Offers to email a pamphlet detailing Auto Owners' coverage and contact numbers.",
+    "Confirms adding coverage to both cars and sends pamphlet via email."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Towing coverage policies (caps vs. 'all reasonable expenses')",
+    "State-specific insurance laws (e.g., Virginia's towing caps)",
+    "Differences between Auto Owners and AAA (vehicle vs. driver follow-up)",
+    "Insurance occurrence limits and claim submission processes"
+  ],
+  "systems_referenced": [
+    "Auto Owners (insurance provider)",
+    "AAA (insurance provider)",
+    "Alliance Insurance internal pamphlet/resource"
+  ],
+  "summary": "Pam sought clarification on towing coverage differences between her current policy and Auto Owners, including state-specific laws and provider distinctions. Tracy explained policy details, occurrence limits, and offered to send a pamphlet. Pam agreed to add coverage to both cars, resolving the call with a clear next step.",
+  "_model": "qwen3:14b",
+  "_eval_count": 376,
+  "_total_duration_ms": 54052,
+  "_source_file": "transcripts/out-8645611970-510-20250813-122910-1755102550.5525.txt",
+  "_direction": "outbound",
+  "_char_count": 3730
+}

@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Attempting to leave a voicemail message",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The call resulted in a voicemail message indicating the recipient's mailbox was full. No agent was involved in the conversation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 83,
+  "_total_duration_ms": 27762,
+  "_source_file": "transcripts/out-7044384223-504-20251210-103733-1765381053.1331.txt",
+  "_direction": "outbound",
+  "_char_count": 145
+}

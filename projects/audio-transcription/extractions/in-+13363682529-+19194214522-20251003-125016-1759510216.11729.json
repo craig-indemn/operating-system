@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, John from Spectrum Business, intended to speak with the manager or owner of Alliance Insurance Services.",
+  "resolution_steps": [
+    "Agent informed caller that the manager is in a meeting.",
+    "Agent offered to transfer the caller to voicemail.",
+    "Caller requested the manager's contact number to call back directly.",
+    "Agent attempted to connect the caller to voicemail but the conversation ended before completion."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Standard procedures for handling calls when key personnel are unavailable",
+    "Voicemail system navigation protocols"
+  ],
+  "systems_referenced": [
+    "voicemail system"
+  ],
+  "summary": "John from Spectrum Business attempted to reach Alliance Insurance's manager, who was unavailable. The agent offered voicemail as an alternative, but the caller requested direct contact information. The call ended before resolution, with the agent preparing to transfer the caller to voicemail.",
+  "_model": "qwen3:14b",
+  "_eval_count": 211,
+  "_total_duration_ms": 64982,
+  "_source_file": "transcripts/in-+13363682529-+19194214522-20251003-125016-1759510216.11729.txt",
+  "_direction": "inbound",
+  "_char_count": 905
+}

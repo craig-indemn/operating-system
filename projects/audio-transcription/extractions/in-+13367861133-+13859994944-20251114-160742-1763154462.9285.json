@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller (Kim from Engage Local) sought to identify who manages Alliance Insurance's agency listing for client reviews.",
+  "resolution_steps": [
+    "Agent denied responsibility",
+    "Agent attempted to transfer but did not provide actionable steps"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief, unresolved call where the caller inquired about managing an agency listing for reviews. The agent did not provide a clear resolution or transfer method.",
+  "_model": "qwen3:14b",
+  "_eval_count": 122,
+  "_total_duration_ms": 35022,
+  "_source_file": "transcripts/in-+13367861133-+13859994944-20251114-160742-1763154462.9285.txt",
+  "_direction": "inbound",
+  "_char_count": 333
+}

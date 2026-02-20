@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Glory called to confirm whether her general liability policy was issued correctly after mistakenly selecting the wrong option (SGM instead of clear blue) and to ensure it aligns with her active workers' compensation policy under Frank Winston.",
+  "resolution_steps": [
+    "Pedro confirmed that the policy numbers (SGM vs. clear blue) do not affect the alignment with the active workers' compensation policy under Frank Winston.",
+    "Explained that workers' compensation policies under Frank Winston use the SWNC prefix, while general liability policies use FG.",
+    "Clarified that policy prefixes vary by carrier and policy type (e.g., Benchmark Insurance Company uses TW for workers' comp and BG for general liability).",
+    "Reassured Glory that her current setup is correct and no action is needed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of policy number prefixes for different carriers (Frank Winston, Benchmark Insurance Company).",
+    "Knowledge of how policy numbers align with specific insurance types (workers' compensation vs. general liability)."
+  ],
+  "systems_referenced": [
+    "Frank Winston (workers' compensation and general liability policies)",
+    "Benchmark Insurance Company (TW and BG prefixes)",
+    "Policy number structure conventions"
+  ],
+  "summary": "Glory contacted Pedro to resolve confusion about her general liability policy number after mistakenly issuing it with the wrong option. Pedro clarified that the current setup is correct, explaining the distinction between policy prefixes for Frank Winston and Benchmark Insurance Company. Glory was reassured and the call concluded with no further action required.",
+  "_model": "qwen3:14b",
+  "_eval_count": 343,
+  "_total_duration_ms": 46185,
+  "_source_file": "transcripts/out-7274127739-102-20251229-113320-1767026000.5063.txt",
+  "_direction": "outbound",
+  "_char_count": 2307
+}

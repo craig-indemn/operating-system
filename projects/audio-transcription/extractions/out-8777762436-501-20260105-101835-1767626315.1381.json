@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jamie Flippin, an Alliance Insurance agent, seeks to resolve an issue where a client (Delana Curry) improperly removed a vehicle from her policy, potentially triggering a DMV flag fee. He requests Progressive to temporarily reinstate the vehicle's coverage to avoid a coverage breach while the client completes DMV procedures.",
+  "resolution_steps": [
+    "Susan from Progressive confirms the policy number and identifies the client.",
+    "Jamie explains the situation: Delana removed a Ford Mustang from her policy, leading to a potential DMV flag fee.",
+    "Susan agrees to reinstate the vehicle's coverage temporarily, focusing on liability coverage.",
+    "Jamie notes a possible state-specific option (e.g., California) to self-report vehicle disposal to DMV, but confirms Progressive will handle the immediate reinstatement."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of policy adjustments and coverage breaches",
+    "Knowledge of DMV requirements for vehicle removal",
+    "Awareness of state-specific options for liability coverage termination"
+  ],
+  "systems_referenced": [
+    "Progressive's policy management system",
+    "DMV portal (implied)"
+  ],
+  "summary": "An Alliance Insurance agent collaborates with Progressive to reinstate a vehicle on a client's policy to avoid a coverage breach after improper removal. The agent requests temporary reinstatement of liability coverage, with plans to remove the vehicle later once DMV procedures are completed. The call concludes with Progressive agreeing to the adjustment.",
+  "_model": "qwen3:14b",
+  "_eval_count": 323,
+  "_total_duration_ms": 40780,
+  "_source_file": "transcripts/out-8777762436-501-20260105-101835-1767626315.1381.txt",
+  "_direction": "outbound",
+  "_char_count": 4290
+}

@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Joe from Alliance Insurance) is following up with McKenzie to finalize an insurance policy effective November 1st, requesting confirmation of details and payment plan arrangements.",
+  "resolution_steps": [
+    "Joe left a voicemail message for McKenzie.",
+    "Requested McKenzie contact the office (phone number provided) or email Gloria.",
+    "Specified need for confirmation of November 1st effective date, bank account details, and payment plan selection (full payment, quarterly, monthly)."
+  ],
+  "outcome": "voicemail",
+  "knowledge_required": [
+    "Insurance policy activation processes",
+    "Payment plan options (installments, full payment)",
+    "Bank account verification procedures"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance office phone system",
+    "Email communication"
+  ],
+  "summary": "Joe from Alliance Insurance left a voicemail for McKenzie to finalize an insurance policy effective November 1st. He requested confirmation of bank details, payment plan selection, and contact via phone or email. The call focused on policy activation and payment arrangements.",
+  "_model": "qwen3:14b",
+  "_eval_count": 237,
+  "_total_duration_ms": 30450,
+  "_source_file": "transcripts/out-2514024229-512-20251031-105909-1761922749.1633.txt",
+  "_direction": "outbound",
+  "_char_count": 1275
+}

@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Caller wishes to speak with an agent about auto insurance.",
+  "resolution_steps": [
+    "Agent confirmed the caller's intent (auto insurance), then stated they would transfer the call to an available agent."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief inbound call where the caller requested to speak with an agent about auto insurance. The agent acknowledged the request and initiated a transfer, but the conversation ended before further details could be discussed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 125,
+  "_total_duration_ms": 47425,
+  "_source_file": "transcripts/in-+13363779003-+13368303555-20250925-145253-1758826373.10057.txt",
+  "_direction": "inbound",
+  "_char_count": 282
+}

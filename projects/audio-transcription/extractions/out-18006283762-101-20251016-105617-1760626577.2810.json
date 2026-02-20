@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Cecilia Cruz requested a copy of a policy renewal for Brookdale Properties LLC after making a payment.",
+  "resolution_steps": [
+    "Agent asked for the policy number (V0205042) and insured name (Brookdale Properties LLC).",
+    "Agent accessed the policy system to retrieve the renewal document.",
+    "Agent sent the document via email to support@myallianceinsurance.com.",
+    "Agent suggested contacting customer service at The Colonial Group for future email requests."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy management system access",
+    "Email communication protocols",
+    "Customer service email addresses"
+  ],
+  "systems_referenced": [
+    "Policy management website",
+    "Email system"
+  ],
+  "summary": "Cecilia requested a policy renewal document, which the agent retrieved using the policy number and insured name, then emailed to her. The agent also directed her to use The Colonial Group's customer service email for future requests.",
+  "_model": "qwen3:14b",
+  "_eval_count": 230,
+  "_total_duration_ms": 29996,
+  "_source_file": "transcripts/out-18006283762-101-20251016-105617-1760626577.2810.txt",
+  "_direction": "outbound",
+  "_char_count": 1361
+}

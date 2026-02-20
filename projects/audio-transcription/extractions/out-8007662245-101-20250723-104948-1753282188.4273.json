@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Amania from Alliance Insurance) sought assistance to change the payment schedule of an Exodus Holding policy from an 11-pay plan back to a 12-pay plan.",
+  "resolution_steps": [
+    "Kirsten confirmed the policyholder's request to revert to a 12-pay schedule.",
+    "Calculated the required payment of $1,898.98 to bring the policy up to date based on prior billing cycles.",
+    "Warned about a pending $1,902.04 automatic payment if the adjustment wasn't processed before August 10th.",
+    "Recommended initiating the payment via routing and checking information to avoid overdrafts.",
+    "Confirmed the payment amount and timeline with the caller."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of insurance payment plans (11-pay vs. 12-pay)",
+    "Billing cycle calculations",
+    "Handling of automatic payment drafts"
+  ],
+  "systems_referenced": [
+    "Penn National Insurance billing system",
+    "Policyholder account portal (Penn Connect)"
+  ],
+  "summary": "An Alliance Insurance agent coordinated with Penn National Insurance to adjust a policy's payment schedule from 11-pay to 12-pay. The agent calculated a required payment of $1,898.98 to avoid a pending $1,902.04 automatic draft, ensuring the policyholder could transition smoothly back to the 12-pay plan by August 10th.",
+  "_model": "qwen3:14b",
+  "_eval_count": 334,
+  "_total_duration_ms": 41592,
+  "_source_file": "transcripts/out-8007662245-101-20250723-104948-1753282188.4273.txt",
+  "_direction": "outbound",
+  "_char_count": 4286
+}

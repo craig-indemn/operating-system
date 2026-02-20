@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Leave a voicemail message for Ashley Patterson regarding an auto policy",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Maria from Alliance Insurance Services left a voicemail for Ashley Patterson, requesting a callback regarding an auto policy and providing a contact number.",
+  "_model": "qwen3:14b",
+  "_eval_count": 93,
+  "_total_duration_ms": 29654,
+  "_source_file": "transcripts/out-3367402298-203-20260112-124412-1768239852.3810.txt",
+  "_direction": "outbound",
+  "_char_count": 384
+}

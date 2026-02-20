@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jimmy called to follow up on a previous request regarding a performance bond for a delayed project in Bristol, Virginia, and to confirm whether the bond covers the 30-day delay.",
+  "resolution_steps": [
+    "Joe confirmed the performance bond was already delivered and covers through April 30th.",
+    "He explained that performance bonds are typically issued for two years, with the first year included, and that the 30-day delay does not require immediate action.",
+    "Joe noted that the bond's duration would be reviewed when the project ends to determine if any additional premium is needed.",
+    "He assured Jimmy that the bond can be reused if there is no significant overrun."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of performance bond terms and duration (typically 2 years with the first year included).",
+    "Knowledge of how project delays affect bond coverage.",
+    "Ability to confirm bond details based on prior communication and email references."
+  ],
+  "systems_referenced": [
+    "InvictaCon"
+  ],
+  "summary": "Joe and Jimmy discussed a performance bond for a delayed project in Bristol, Virginia. Joe confirmed the bond was already issued and covers the 30-day delay, explaining that the bond's duration would be reviewed later. The call concluded with reassurance that the bond can be reused if no overruns occur.",
+  "_model": "qwen3:14b",
+  "_eval_count": 298,
+  "_total_duration_ms": 49392,
+  "_source_file": "transcripts/out-17046190807-512-20251119-142558-1763580358.4940.txt",
+  "_direction": "outbound",
+  "_char_count": 2615
+}

@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to understand why their Progressive auto insurance premium increased from $200 to $450 per month.",
+  "resolution_steps": [
+    "Agent confirmed the caller's policy details (address, vehicle, coverage).",
+    "Explained a 7.5% North Carolina base rate increase effective July 1, 2025.",
+    "Notified the caller of a March 21, 2025, major-at-fault accident with 3 points added to their record.",
+    "Clarified the accident caused an additional rate increase on the July 28, 2025, policy renewal.",
+    "Noted North Carolina's new 5-year surcharge window for accidents (previously 3 years).",
+    "Mentioned no alternative carriers with better pricing for Progressive's current policy structure."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "North Carolina auto insurance rate regulations",
+    "Impact of accident points on premium calculations",
+    "Progressive policy renewal processes",
+    "Insurance industry trends (inflation, claim costs)"
+  ],
+  "systems_referenced": [
+    "Progressive's policy portal",
+    "Insurance carrier database for accident records"
+  ],
+  "summary": "The caller's premium increased due to a 7.5% state-mandated rate hike and a recent accident with 3 points. The agent explained both factors and noted the new 5-year surcharge window in North Carolina. No alternative carriers were available with better pricing for the current policy structure.",
+  "_model": "qwen3:14b",
+  "_eval_count": 346,
+  "_total_duration_ms": 42874,
+  "_source_file": "transcripts/q-300-+16035583033-20250925-131653-1758820613.3405.txt",
+  "_direction": "queue",
+  "_char_count": 4656
+}

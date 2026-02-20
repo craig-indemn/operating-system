@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Kate Patel is seeking assistance to finalize a certificate of insurance after a policy was approved, involving payment processing and carrier assignment.",
+  "resolution_steps": [
+    "Agent confirmed payment details (routing and account numbers) for the insurance premium.",
+    "Submitted the payment and confirmed receipt.",
+    "Notified Kate that the carrier assignment (e.g., Travelers Insurance) would be communicated via email.",
+    "Explained the process of generating the certificate of insurance once the carrier is assigned.",
+    "Agreed to issue a blank certificate with 'for information only' wording until the correct carrier is identified."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy approval and certificate of insurance issuance process",
+    "State rate bureau portal operations",
+    "Carrier assignment procedures for state programs",
+    "Payment processing for insurance premiums"
+  ],
+  "systems_referenced": [
+    "Rate bureau's state agency portal",
+    "Carrier assignment system (Travelers Insurance example)",
+    "Payment processing system (First Citizens' Banking Trust referenced)"
+  ],
+  "summary": "Kate Patel discusses finalizing an insurance certificate after policy approval. The agent processes the payment, confirms carrier assignment via email, and explains the certificate issuance timeline. A follow-up is needed once the carrier is assigned.",
+  "_model": "qwen3:14b",
+  "_eval_count": 285,
+  "_total_duration_ms": 36836,
+  "_source_file": "transcripts/exten-105-+19196210900-20251204-154944-1764881384.7580.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4215
+}

@@ -1,0 +1,19 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller attempted to reach Rachel but was unsure if she was available and wanted to confirm her schedule.",
+  "resolution_steps": [
+    "Agent confirmed Rachel's work schedule (Monday, Wednesday, Friday 9:00 AM - 3:30 PM)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Rachel's work schedule"
+  ],
+  "systems_referenced": [],
+  "summary": "Caller inquired about Rachel's availability after not receiving a message. Agent provided her schedule, and caller agreed to follow up tomorrow.",
+  "_model": "qwen3:14b",
+  "_eval_count": 139,
+  "_total_duration_ms": 33149,
+  "_source_file": "transcripts/in-+13363779003-+13363748825-20251016-103134-1760625094.2367.txt",
+  "_direction": "inbound",
+  "_char_count": 413
+}

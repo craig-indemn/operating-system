@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking clarification about duplicate payment attempts for a policy reinstatement fee and requests a hard copy of documents and an insurance card.",
+  "resolution_steps": [
+    "Agent confirmed the caller spoke with Holly and clarified Holly's availability.",
+    "Agent reviewed the policy and payment history, noting a $217.54 payment was processed on August 13th.",
+    "Agent explained the $25 reinstatement fee and auto-pay setup from August 13th.",
+    "Agent clarified the current payment due is $96.27, not the $217.54 amount on the document.",
+    "Agent offered to mail a hard copy of the payment schedule and insurance card."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Policy reinstatement processes",
+    "Auto-pay setup procedures",
+    "Payment schedule interpretation",
+    "Document mailing protocols"
+  ],
+  "systems_referenced": [
+    "Policy management system",
+    "Payment processing system",
+    "Auto-pay enrollment portal"
+  ],
+  "summary": "The caller disputed a duplicate $217.54 payment for policy reinstatement and requested clarification. The agent reviewed the policy, confirmed the payment was processed on August 13th, and explained the current $96.27 monthly payment. The agent offered to mail a hard copy of the payment schedule and insurance card to resolve the confusion.",
+  "_model": "qwen3:14b",
+  "_eval_count": 312,
+  "_total_duration_ms": 33506,
+  "_source_file": "transcripts/in-+13363779003-+13369975930-20250903-150432-1756926272.9091.txt",
+  "_direction": "inbound",
+  "_char_count": 2878
+}

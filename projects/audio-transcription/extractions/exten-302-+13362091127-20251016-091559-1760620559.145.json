@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jay Straight Gill is seeking resolution for canceled insurance policies and clarification on a $41.79 charge, believing he was overcharged and needs reinstatement of his insurance coverage.",
+  "resolution_steps": [
+    "Anna confirms the account details and explains that Amani attempted to rewrite Jay's package with West Band but faced issues with auto coverage.",
+    "Anna clarifies that Progressive was used for auto insurance, but a missed payment led to cancellation.",
+    "Anna notes that Jay's package (general liability, property) was canceled and only workers' compensation remains active.",
+    "Anna offers to investigate reinstating policies and securing quotes from other carriers.",
+    "Anna agrees to follow up with an update after contacting carriers."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy cancellation reasons (non-payment, carrier incompatibility)",
+    "Familiarity with carriers (West Band, Progressive, Auto Owners)",
+    "Process for reinstating policies and obtaining quotes from alternative carriers"
+  ],
+  "systems_referenced": [
+    "Account management system (to pull policy details)"
+  ],
+  "summary": "Jay contacted Alliance Insurance after discovering his insurance was canceled and he was charged a lower amount than expected. Anna explained the cancellation was due to a missed payment after Amani's failed attempt to rewrite his policy. Anna will work to reinstate coverage and contact carriers for alternatives, promising to follow up with an update.",
+  "_model": "qwen3:14b",
+  "_eval_count": 318,
+  "_total_duration_ms": 40706,
+  "_source_file": "transcripts/exten-302-+13362091127-20251016-091559-1760620559.145.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4151
+}

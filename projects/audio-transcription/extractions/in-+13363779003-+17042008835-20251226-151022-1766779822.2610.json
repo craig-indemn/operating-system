@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Laura Taylor from EHC Realty needs confirmation that a required rider for HOA management company coverage is included in the crime and fidelity policy for Sir John's Hill condo community to satisfy Fannie Mae lender guidelines for a closing on Monday.",
+  "resolution_steps": [
+    "Agent Dina acknowledged the request and confirmed the policy details (crime and fidelity for the complex).",
+    "Dina attempted to contact Anna Joyce (possibly the primary agent) but found her unreachable.",
+    "Laura requested Dina forward the email with policy details to Anna and/or another commercial agent for resolution.",
+    "Dina agreed to send the email to Anna (using the same email address with 'Dina' added) and check with other agents if needed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy riders for HOA management company coverage under Fannie Mae guidelines",
+    "Familiarity with North Carolina insurance regulations for condo communities",
+    "Process for verifying policy details and contacting other agents"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance customer portal (myallianceinsurance.com)",
+    "Email system for policy documentation"
+  ],
+  "summary": "Laura Taylor from EHC Realty urgently requested confirmation that a required rider for HOA management company coverage is included in the crime and fidelity policy for Sir John's Hill condo community to meet Fannie Mae guidelines for a closing on Monday. Agent Dina acknowledged the request, attempted to contact the primary agent (Anna Joyce) without success, and agreed to forward policy details via email to Anna or another agent for resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 350,
+  "_total_duration_ms": 52202,
+  "_source_file": "transcripts/in-+13363779003-+17042008835-20251226-151022-1766779822.2610.txt",
+  "_direction": "inbound",
+  "_char_count": 4157
+}

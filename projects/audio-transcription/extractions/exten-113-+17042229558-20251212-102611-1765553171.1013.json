@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Gary from Alliance Insurance wanted to check if Miss Kala had made any changes to her rental property insurance policy that needed updating.",
+  "resolution_steps": [
+    "Gary greeted Miss Kala and inquired about her well-being.",
+    "He introduced himself and explained the purpose of the call: an annual check for updates to her rental property insurance.",
+    "Asked if there were any changes to the property or policy over the past year.",
+    "Notified her that the renewal paperwork would arrive by mid-next month and is due in February.",
+    "Advised her to review the documents and contact the agency if changes were needed.",
+    "Confirmed no changes had occurred and closed the conversation with polite farewells."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Annual insurance policy update procedures",
+    "Renewal timelines and documentation processes",
+    "Client communication protocols for policy verification"
+  ],
+  "systems_referenced": [],
+  "summary": "Gary from Alliance Insurance conducted an annual check with Miss Kala regarding her rental property insurance. She confirmed no changes to her policy, and Gary provided details about the upcoming renewal timeline and documentation process. The conversation concluded with mutual thanks and a plan for Miss Kala to review the paperwork when received.",
+  "_model": "qwen3:14b",
+  "_eval_count": 281,
+  "_total_duration_ms": 56458,
+  "_source_file": "transcripts/exten-113-+17042229558-20251212-102611-1765553171.1013.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1173
+}

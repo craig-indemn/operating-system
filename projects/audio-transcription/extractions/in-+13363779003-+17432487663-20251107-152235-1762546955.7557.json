@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Caller wants to remove a vehicle from their insurance policy.",
+  "resolution_steps": [
+    "Agent offered to transfer the call to an agent to begin the process."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The caller requested to remove a vehicle from their policy. The agent acknowledged the request and offered to transfer the call to an agent to initiate the process. The conversation was too brief to determine further details.",
+  "_model": "qwen3:14b",
+  "_eval_count": 118,
+  "_total_duration_ms": 22775,
+  "_source_file": "transcripts/in-+13363779003-+17432487663-20251107-152235-1762546955.7557.txt",
+  "_direction": "inbound",
+  "_char_count": 220
+}

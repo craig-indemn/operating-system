@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller needed guidance on completing an Auto Owners insurance policy, including electronic signature, payment options, and adding an additional interest (property management company) to the policy.",
+  "resolution_steps": [
+    "Heather confirmed the caller received an electronic invitation from Auto Owners to sign the policy.",
+    "Explained payment options: portal (credit card) or phone payment.",
+    "Addressed the need to add an additional interest (property management company) to the policy.",
+    "Offered to update the policy with the management company's details once provided.",
+    "Mentioned resending evidence of insurance after updates."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Auto Owners insurance policy process",
+    "Handling electronic signatures and payments",
+    "Adding additional interests to policies",
+    "Evidence of insurance documentation"
+  ],
+  "systems_referenced": [
+    "Auto Owners portal (for electronic signature and payment)",
+    "Alliance Insurance internal systems (for policy updates)"
+  ],
+  "summary": "Heather assisted the caller with completing an Auto Owners insurance policy, clarified payment options, and discussed adding a property management company as an additional interest. The caller agreed to handle payment via the portal and provide details for the additional interest update.",
+  "_model": "qwen3:14b",
+  "_eval_count": 275,
+  "_total_duration_ms": 31514,
+  "_source_file": "transcripts/out-5084982582-202-20250729-102425-1753799065.2834.txt",
+  "_direction": "outbound",
+  "_char_count": 2340
+}

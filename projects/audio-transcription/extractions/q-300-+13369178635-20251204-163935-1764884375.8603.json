@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to confirm if they had active Progressive insurance coverage in April during a car accident while driving their husband's vehicle and seeks resolution for being added to his State Farm policy, which increased premiums.",
+  "resolution_steps": [
+    "Agent explains that being listed on parents' Progressive policy does not cover driving a husband's vehicle under State Farm.",
+    "Agent advises caller to provide a copy of the State Farm policy and the date they were added to it.",
+    "Agent offers to remove the caller from the parents' Progressive policy effective the same day they were added to State Farm.",
+    "Agent mentions potential partial refunds from State Farm if the caller's presence on the policy impacted premiums.",
+    "Agent provides email contact (Tracy@myallianceinsurance.com) for sending proof of State Farm policy and requests parents' names to link documents."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy coverage scopes (e.g., driving non-policy vehicles)",
+    "Process for removing individuals from policies and refund calculations",
+    "How insurance points are assigned based on accident damage amounts"
+  ],
+  "systems_referenced": [
+    "State Farm insurance policies",
+    "Progressive insurance policies",
+    "Email communication system"
+  ],
+  "summary": "The caller sought clarification about insurance coverage during an April accident and resolution for being added to their husband's State Farm policy. The agent explained policy limitations, outlined steps to remove them from the parents' Progressive policy, and provided email instructions for document submission. The call concluded with the caller agreeing to send proof of the State Farm policy for further action.",
+  "_model": "qwen3:14b",
+  "_eval_count": 355,
+  "_total_duration_ms": 45091,
+  "_source_file": "transcripts/q-300-+13369178635-20251204-163935-1764884375.8603.txt",
+  "_direction": "queue",
+  "_char_count": 3570
+}

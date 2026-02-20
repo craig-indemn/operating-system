@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Cancel auto insurance policy.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [
+    "myallianceinsurance.com",
+    "text us at 3367861133"
+  ],
+  "summary": "The caller requested to cancel an auto insurance policy but was placed on hold. The agent provided information about the customer portal and texting support before the call was interrupted.",
+  "_model": "qwen3:14b",
+  "_eval_count": 112,
+  "_total_duration_ms": 82916,
+  "_source_file": "transcripts/in-+13363544000-+13363287019-20250904-110045-1756998045.3898.txt",
+  "_direction": "inbound",
+  "_char_count": 852
+}

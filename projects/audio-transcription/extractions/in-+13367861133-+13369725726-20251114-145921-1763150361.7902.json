@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking a liability insurance quote for a moped.",
+  "resolution_steps": [
+    "Agent confirmed Alliance Insurance provides moped insurance.",
+    "Agent stated they would check for an available agent to assist further."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of Alliance Insurance's coverage options for mopeds",
+    "Process for routing calls to appropriate agents"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller requested a liability insurance quote for a moped. The agent confirmed coverage availability and initiated a transfer to an agent, but the call was cut off before resolution. The caller was placed on hold for an agent.",
+  "_model": "qwen3:14b",
+  "_eval_count": 163,
+  "_total_duration_ms": 35319,
+  "_source_file": "transcripts/in-+13367861133-+13369725726-20251114-145921-1763150361.7902.txt",
+  "_direction": "inbound",
+  "_char_count": 274
+}

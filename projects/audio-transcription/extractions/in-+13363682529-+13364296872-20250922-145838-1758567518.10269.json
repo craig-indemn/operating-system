@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with Rachel (no specific issue mentioned)",
+  "resolution_steps": [
+    "Agent offered to transfer call to Rachel",
+    "Call was placed on hold"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Short inbound call where caller requested to speak with Rachel. Agent initiated transfer but no substantive conversation occurred before call ended.",
+  "_model": "qwen3:14b",
+  "_eval_count": 102,
+  "_total_duration_ms": 18975,
+  "_source_file": "transcripts/in-+13363682529-+13364296872-20250922-145838-1758567518.10269.txt",
+  "_direction": "inbound",
+  "_char_count": 194
+}

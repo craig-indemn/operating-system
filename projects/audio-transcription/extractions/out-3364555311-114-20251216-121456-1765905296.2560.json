@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unknown (transcript incomplete)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Incomplete transcript showing only a generic voicemail message. No substantive conversation or caller intent is evident. The agent's response is a standard hold message rather than a meaningful interaction.",
+  "_model": "qwen3:14b",
+  "_eval_count": 93,
+  "_total_duration_ms": 20307,
+  "_source_file": "transcripts/out-3364555311-114-20251216-121456-1765905296.2560.txt",
+  "_direction": "outbound",
+  "_char_count": 82
+}

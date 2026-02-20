@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is reporting an issue with a call pop feature not working, possibly related to technical problems on the agency's end, and seeking resolution.",
+  "resolution_steps": [
+    "Agent acknowledges the issue and confirms it's on their end, not the caller's computer.",
+    "Agent explains they need to escalate the problem to tier two support.",
+    "Agent assures the caller the issue will be resolved soon and promises to inform them once fixed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Troubleshooting call pop functionality issues",
+    "Escalation procedures for technical support",
+    "Communication protocols for unresolved customer issues"
+  ],
+  "systems_referenced": [
+    "tier two support"
+  ],
+  "summary": "Agent acknowledges a technical issue with call pop functionality, escalates it to tier two support, and assures the caller they'll be informed once resolved. The conversation focuses on troubleshooting a system-related problem affecting call features.",
+  "_model": "qwen3:14b",
+  "_eval_count": 216,
+  "_total_duration_ms": 40015,
+  "_source_file": "transcripts/parked-509-509-20250925-105609-1758812169.1372.txt",
+  "_direction": "parked",
+  "_char_count": 868
+}

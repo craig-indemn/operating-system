@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to resolve an issue where Progressive canceled the wrong policy (motor home instead of auto) and ensure there was no coverage lapse.",
+  "resolution_steps": [
+    "Agent confirmed Progressive reinstated the auto policy effective the date it was canceled.",
+    "Agent clarified the motor home policy was intentionally canceled to prevent a lapse.",
+    "Agent assured the client no lapse would occur and mentioned retaining records of the error in Progressive's system.",
+    "Agent offered to file an FS form if the client received any documentation related to the error."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding insurance policy reinstatement processes",
+    "Handling coverage lapse prevention",
+    "Knowledge of Progressive's policy management system"
+  ],
+  "systems_referenced": [
+    "Progressive's insurance system",
+    "Internal record-keeping system for tracking policy errors"
+  ],
+  "summary": "Agent resolved a policy error where Progressive canceled the wrong policy (motor home instead of auto), ensuring no coverage lapse by reinstating the auto policy. The client was reassured and informed of the agency's record of the error, with an offer to assist further if needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 258,
+  "_total_duration_ms": 26423,
+  "_source_file": "transcripts/out-13363910990-114-20250916-141236-1758046356.8803.txt",
+  "_direction": "outbound",
+  "_char_count": 756
+}

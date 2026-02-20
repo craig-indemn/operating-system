@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is attempting to contact Monica Southern through Alliance Insurance's phone number and is inquiring if this is possible.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's request to contact Monica Southern.",
+    "Agent checks internal records for an employee named Monica Southern.",
+    "Agent informs the caller that no employee by that name exists in their records.",
+    "Agent offers to check further if needed."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Access to internal employee directory or HR system",
+    "Understanding of agency's employee contact protocols"
+  ],
+  "systems_referenced": [
+    "Internal employee directory (implied but not explicitly named)"
+  ],
+  "summary": "A caller inquired about contacting Monica Southern through Alliance Insurance. The agent checked their records, found no employee by that name, and offered to investigate further. The call ended with the caller thanking the agent.",
+  "_model": "qwen3:14b",
+  "_eval_count": 207,
+  "_total_duration_ms": 32977,
+  "_source_file": "transcripts/in-+13363779003-+13368378131-20251104-102120-1762269680.2069.txt",
+  "_direction": "inbound",
+  "_char_count": 272
+}

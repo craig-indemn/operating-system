@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Robert is seeking assistance with paying an insurance policy, inquiring about available payment methods and requesting guidance on the process.",
+  "resolution_steps": [
+    "Agent (Corbin) suggests online payment as the easiest option.",
+    "Offers to arrange a check from the office for payment.",
+    "Discusses alternative options of paying by card or over the phone.",
+    "Agrees to email Robert the necessary details (number, policy number) for the office to process the payment."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance payment methods (online, check, card, phone)",
+    "Internal office procedures for handling payments",
+    "Customer communication protocols for follow-up"
+  ],
+  "systems_referenced": [
+    "Carrier portal (implied by 'go online')",
+    "Email communication system"
+  ],
+  "summary": "Robert discusses payment options for his insurance policy with Corbin. They agree to email the necessary details for the office to process the payment. The conversation highlights multiple payment methods and confirms a follow-up via email.",
+  "_model": "qwen3:14b",
+  "_eval_count": 241,
+  "_total_duration_ms": 39084,
+  "_source_file": "transcripts/exten-409-+13365777775-20250930-114151-1759246911.1595.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 843
+}

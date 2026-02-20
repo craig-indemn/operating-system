@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jason Newman wants to review his bundled auto, home, and personal umbrella insurance policies with Auto Owners, particularly after a tax assessment increase in Davy County affected his homeowners insurance costs. He seeks alternatives to ensure he's getting the best deal.",
+  "resolution_steps": [
+    "Agent confirmed Jason's current policies (auto, home, umbrella) with Auto Owners and noted the mid-policy period (renews in August).",
+    "Explained penalties for changing policies mid-term (higher daily rates on auto insurance).",
+    "Proposed waiting until July to renew and shop for better rates collectively.",
+    "Offered to adjust homeowners deductible for potential savings.",
+    "Agreed to set a July reminder and reassess options."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy renewal terms and mid-term penalty rules",
+    "Impact of tax assessments on homeowners insurance rates",
+    "Strategies for bundling insurance policies to retain discounts"
+  ],
+  "systems_referenced": [
+    "Auto Owners insurance carrier system",
+    "Policy renewal calendar"
+  ],
+  "summary": "Jason Newman discussed his bundled insurance policies with his agent, seeking alternatives after a tax assessment increase raised his homeowners insurance costs. The agent explained mid-term change penalties and proposed reassessing in July when the policy renews. Jason agreed to wait and explore options then, with the agent offering to adjust deductibles for potential savings.",
+  "_model": "qwen3:14b",
+  "_eval_count": 314,
+  "_total_duration_ms": 42846,
+  "_source_file": "transcripts/exten-203-+15402392260-20251226-143303-1766777583.2311.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3138
+}

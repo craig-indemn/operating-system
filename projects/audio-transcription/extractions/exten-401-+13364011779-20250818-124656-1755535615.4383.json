@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Linda Johnson is confirming license numbers and discussing insurance services with Heather, including office locations and communication preferences.",
+  "resolution_steps": [
+    "Heather confirms license numbers provided by Linda (Larry's number and Linda's number).",
+    "Heather explains the process of sending proposals via email and following up with calls.",
+    "They discuss Alliance Insurance Services' office locations (Clemens, Mount Airy, Winston Salem, etc.) and their accessibility.",
+    "Heather reassures Linda that all locations can access policies and assist customers."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of Alliance Insurance Services' office locations and operations.",
+    "Knowledge of client communication protocols (email proposals, follow-up calls)."
+  ],
+  "systems_referenced": [
+    "email (for sending proposals)"
+  ],
+  "summary": "Linda Johnson and Heather discuss license numbers, confirm communication preferences, and review Alliance Insurance Services' office locations and operational structure. Heather explains email-based proposal delivery and emphasizes the agency's multi-location accessibility. The conversation concludes with mutual thanks and a commitment to follow up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 250,
+  "_total_duration_ms": 41110,
+  "_source_file": "transcripts/exten-401-+13364011779-20250818-124656-1755535615.4383.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3139
+}

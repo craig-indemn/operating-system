@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Christopher Miner wants to update his auto insurance policy with National General to reflect a change in the financing company for his 2015 Chevy Cruze, now financed through Credit Financial Group instead of Royalty Finance.",
+  "resolution_steps": [
+    "Agent Jamie logs into National General's portal to access Christopher's active policy.",
+    "Confirms the current policy details (2015 Chevy Cruze, previously financed through Royalty Finance).",
+    "Collects new finance company information: Credit Financial Group's address (5818 West Highway 74, Indian Trail, NC 28079), fax number (704-261-0146), and email (contact@NCCFG.com).",
+    "Plans to fax the updated information to Credit Financial Group and email a copy to Christopher for confirmation.",
+    "Explains the electronic fax system will provide delivery confirmation once the fax is successfully queued."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Accessing and updating policy details in National General's carrier portal",
+    "Handling finance company information changes for auto policies",
+    "Using electronic fax systems to track document delivery confirmations"
+  ],
+  "systems_referenced": [
+    "National General's carrier portal",
+    "Electronic fax system"
+  ],
+  "summary": "Christopher Miner contacted Alliance Insurance to update his auto policy's finance company information from Royalty Finance to Credit Financial Group. Agent Jamie processed the change by collecting the new finance company's details, planned to fax the update with email confirmation, and explained the electronic fax tracking process. The call concluded with Christopher satisfied and no further action needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 366,
+  "_total_duration_ms": 45419,
+  "_source_file": "transcripts/q-300-+13365541577-20250925-090359-1758805439.176.txt",
+  "_direction": "queue",
+  "_char_count": 3941
+}

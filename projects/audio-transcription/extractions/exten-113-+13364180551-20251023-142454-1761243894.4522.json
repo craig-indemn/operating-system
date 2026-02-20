@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Gary needed assistance resolving an issue where a signed document was not being properly transferred back to Alliance Insurance Services after signing.",
+  "resolution_steps": [
+    "Michael confirmed the document signing process with Gary.",
+    "Michael instructed Gary to click the 'complete' button at the top of the document after signing to ensure it was sent back.",
+    "Michael offered to mail the document as an alternative if the digital process failed."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Document signing workflows (e.g., electronic forms)",
+    "Email tracking and confirmation processes"
+  ],
+  "systems_referenced": [
+    "Email client (mention of sent items and email confirmation)"
+  ],
+  "summary": "Gary contacted Michael Adamson to resolve an issue where a signed document was not being transferred back after signing. Michael guided Gary to use the 'complete' button in the document interface and offered mailing as a backup. The call concluded with Gary agreeing to follow the steps and contact back if needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 224,
+  "_total_duration_ms": 30345,
+  "_source_file": "transcripts/exten-113-+13364180551-20251023-142454-1761243894.4522.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1264
+}

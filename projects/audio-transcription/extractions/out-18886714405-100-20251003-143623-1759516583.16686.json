@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Ashley from Alliance Insurance Services is trying to set up auto pay for a client, Colleen Cox, but is encountering issues on the Progressive portal where the enrollment option is not visible.",
+  "resolution_steps": [
+    "Agent Desmond verifies the policy number and agency code with Ashley.",
+    "Desmond guides Ashley through the Progressive portal steps: clicking on the insured's name, navigating to 'billing and payments,' and locating the 'enroll in automatic payments' option.",
+    "Desmond suggests logging out and back into the portal if the option remains unavailable.",
+    "Desmond notes that processing auto pay on the phone would require contacting the insured for authorization."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Progressive portal navigation for auto pay enrollment",
+    "Policy renewal term status checks",
+    "Agency code verification process",
+    "Authorization requirements for auto pay setup"
+  ],
+  "systems_referenced": [
+    "Progressive insurance portal",
+    "Policy management system"
+  ],
+  "summary": "Ashley from Alliance Insurance Services encountered issues setting up auto pay for Colleen Cox on the Progressive portal. Agent Desmond guided her through the portal's navigation steps to locate the enrollment option and explained the need for insured authorization if further assistance was required. The call concluded with Ashley following the provided instructions.",
+  "_model": "qwen3:14b",
+  "_eval_count": 293,
+  "_total_duration_ms": 45136,
+  "_source_file": "transcripts/out-18886714405-100-20251003-143623-1759516583.16686.txt",
+  "_direction": "outbound",
+  "_char_count": 2604
+}

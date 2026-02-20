@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Linda requested a certificate of insurance for general liability and workers comp under North Edge Steel, specifically for an installer named Diego Alvarado affiliated with Maria Rubio Lopez's company.",
+  "resolution_steps": [
+    "Cody confirmed the installer's name (Diego Alvarado) and company (Alvarado Installations).",
+    "Cody verified the policyholder's name (Maria Del Sol Rubio Lopez) and email address (L.Vasquez@northedgesteel.us).",
+    "Cody agreed to prepare and email the certificate of insurance."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Certificate of insurance request process",
+    "Policyholder and insured party verification procedures",
+    "Email communication protocols for documentation"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services internal policy database",
+    "Email system for document delivery"
+  ],
+  "summary": "Linda from North Edge Steel requested a certificate of insurance for an installer under Maria Rubio Lopez's company. Cody confirmed details and agreed to email the certificate. The call concluded with a resolution to send the document via email.",
+  "_model": "qwen3:14b",
+  "_eval_count": 251,
+  "_total_duration_ms": 28274,
+  "_source_file": "transcripts/exten-207-+13365940170-20250917-140823-1758132503.3279.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1208
+}

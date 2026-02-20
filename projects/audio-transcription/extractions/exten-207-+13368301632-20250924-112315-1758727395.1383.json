@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jennifer is confirming receipt of policy documents, verifying the removal of a vehicle from the policy, and ensuring proper policy setup for a client.",
+  "resolution_steps": [
+    "Cody confirms Jennifer received the certificate and acknowledges the client will receive policy packets by mail.",
+    "Cody agrees to remove the vehicle from the policy (originally added by Jerry) and notes Brandy will handle the removal.",
+    "Cody confirms the client's new policy started on Friday and will automatically draft future policies."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy administration",
+    "Vehicle removal procedures",
+    "Policy document distribution processes"
+  ],
+  "systems_referenced": [
+    "Internal messaging system (to notify Brandy)",
+    "Carrier portal for policy drafting"
+  ],
+  "summary": "Jennifer confirms policy document receipt and discusses removing a vehicle from the policy. Cody agrees to handle the removal and confirms the client's new policy is active. The call concludes with mutual confirmation of next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 232,
+  "_total_duration_ms": 32882,
+  "_source_file": "transcripts/exten-207-+13368301632-20250924-112315-1758727395.1383.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1419
+}

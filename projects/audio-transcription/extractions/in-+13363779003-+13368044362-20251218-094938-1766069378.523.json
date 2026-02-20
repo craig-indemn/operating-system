@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear; appears to be a fragmented, incoherent statement about a car accident and unrelated tasks, with no clear intent to engage with Alliance Insurance Services.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The caller made a disjointed, incoherent statement about a car accident and unrelated tasks, with no clear intent to seek insurance assistance. The conversation lacked clarity and actionable information.",
+  "_model": "qwen3:14b",
+  "_eval_count": 121,
+  "_total_duration_ms": 32687,
+  "_source_file": "transcripts/in-+13363779003-+13368044362-20251218-094938-1766069378.523.txt",
+  "_direction": "inbound",
+  "_char_count": 528
+}

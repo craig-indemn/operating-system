@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "John wants to dispute an audit by ensuring subcontractors are correctly classified (electrician vs. carpenter) and address a referral fee paid to someone who did not perform work on a job.",
+  "resolution_steps": [
+    "Jessica asks clarifying questions about the subcontractors' roles and the nature of the referral fee.",
+    "John explains the subcontractors' roles and clarifies that one was paid a referral fee without performing work.",
+    "Jessica advises disputing the audit by reclassifying the electrician and documenting the referral fee situation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance audit processes",
+    "Subcontractor classification rules (e.g., electrician vs. carpenter)",
+    "Handling of referral fees in audit disputes"
+  ],
+  "systems_referenced": [],
+  "summary": "John discusses an audit dispute with Jessica, explaining that a subcontractor was misclassified and a referral fee was paid without work being performed. Jessica guides him on reclassifying subcontractors and documenting the referral fee to resolve the audit issue. The call ends with John expressing gratitude and hope for resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 256,
+  "_total_duration_ms": 46668,
+  "_source_file": "transcripts/out-3362311126-106-20250812-141434-1755022474.8717.txt",
+  "_direction": "outbound",
+  "_char_count": 2109
+}

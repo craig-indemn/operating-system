@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller wanted to reinstate a policy and switch cars (drop one and add another).",
+  "resolution_steps": [
+    "Agent acknowledged the request and stated they would transfer the call to another agent."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The caller requested assistance with reinstating a policy and switching vehicles. The agent acknowledged the request and indicated they would transfer the call to another agent, but no further details or resolution were provided in the transcript.",
+  "_model": "qwen3:14b",
+  "_eval_count": 129,
+  "_total_duration_ms": 55479,
+  "_source_file": "transcripts/in-+13363779003-+13015253726-20250814-144954-1755197394.6200.txt",
+  "_direction": "inbound",
+  "_char_count": 338
+}

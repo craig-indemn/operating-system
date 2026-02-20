@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Eric Leopold is following up on a previous inquiry about whether his commercial insurance policy covers potential lawsuits related to legally authorized GPS tracking in his investigative work.",
+  "resolution_steps": [
+    "Jeff checked Eric's account to review prior interactions and policy details.",
+    "Jeff confirmed that Gloria had previously discussed the policy's limitations regarding GPS tracking coverage.",
+    "Jeff committed to contacting Gloria directly to expedite an update on her research into the coverage question.",
+    "Jeff provided Eric with a timeline for follow-up (same day) and confirmed contact details for future communication."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Commercial insurance policy coverage (general liability vs. professional investigative services)",
+    "North Carolina General Statute 74c regarding GPS tracking legality",
+    "Internal account management system to retrieve policy history"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance Services internal account management system"
+  ],
+  "summary": "Eric followed up on a prior inquiry about GPS tracking coverage under his commercial policy. Jeff reviewed account history, confirmed Gloria's prior discussion of policy limitations, and committed to contacting Gloria directly for an update. The call concluded with a promise to resolve the matter by the end of the day.",
+  "_model": "qwen3:14b",
+  "_eval_count": 277,
+  "_total_duration_ms": 39320,
+  "_source_file": "transcripts/exten-206-+13364302726-20250821-112537-1755789937.3152.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3991
+}

@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Leaving a voicemail to inform the recipient about a policy renewal/cancellation and request a callback.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Voicemail message from Alliance Insurance agent Gary informing Mister Berino about a policy renewal/cancellation and requesting a callback. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 101,
+  "_total_duration_ms": 25617,
+  "_source_file": "transcripts/out-3365803666-113-20250918-160418-1758225858.10503.txt",
+  "_direction": "outbound",
+  "_char_count": 708
+}

@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Nick Materia wants to review his home and auto insurance policies with Brandy to ensure they are up to date before his renewal, and to discuss potential changes or coverage adjustments.",
+  "resolution_steps": [
+    "Brandy confirms Nick's contact information, including phone number, email, and mailing address.",
+    "Brandy reviews Nick's auto policy, detailing coverage for two vehicles (2013 Chevy Malibu and 2000 Chrysler 300), liability, comprehensive, and collision coverage, and confirms drivers and usage.",
+    "Brandy reviews the home policy, confirming coverage amount, deductible, and the presence of an alarm system for discounts.",
+    "Brandy informs Nick about the absence of earthquake and flood coverage in the homeowner's policy and offers assistance to add them.",
+    "Brandy asks about additional insurance needs (rental properties, golf carts, secondary homes) and mentions the agency's services for life/health/Medicare insurance.",
+    "Brandy addresses Nick's concern about rate increases and reassures him that the agency can help if he seeks alternatives."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy details (auto and home coverage types, deductibles, discounts)",
+    "Coverage exclusions (earthquake, flood)",
+    "Renewal timelines and rate adjustment processes",
+    "Carrier-specific policy management systems"
+  ],
+  "systems_referenced": [
+    "policy management system"
+  ],
+  "summary": "Brandy reviews Nick Materia's auto and home insurance policies, confirms details, and discusses coverage options. She addresses his concerns about rate increases and offers assistance with potential coverage adjustments. The call ends with Nick indicating he may seek alternative carriers if rates rise again, and Brandy offering to help with that.",
+  "_model": "qwen3:14b",
+  "_eval_count": 384,
+  "_total_duration_ms": 67411,
+  "_source_file": "transcripts/exten-112-+13365889896-20251210-092807-1765376887.491.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4247
+}

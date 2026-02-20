@@ -1,0 +1,22 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with JC",
+  "resolution_steps": [
+    "Agent offered to check availability of JC",
+    "Placed caller on hold",
+    "Played hold message with prompt about contact information updates"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Standard hold message protocols",
+    "Basic customer service procedures"
+  ],
+  "systems_referenced": [],
+  "summary": "Caller requested to speak with JC. Agent placed the call on hold and played a standard hold message prompting the caller to consider recent contact information changes. No resolution was achieved as the call was not connected to JC.",
+  "_model": "qwen3:14b",
+  "_eval_count": 149,
+  "_total_duration_ms": 70081,
+  "_source_file": "transcripts/in-+13363779003-+13363415095-20250804-093606-1754314566.1414.txt",
+  "_direction": "inbound",
+  "_char_count": 571
+}

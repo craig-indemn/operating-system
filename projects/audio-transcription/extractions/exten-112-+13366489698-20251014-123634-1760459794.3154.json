@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Alan is trying to send pictures to Alliance Insurance Services via text but is experiencing issues with the message not going through. He is seeking confirmation if the pictures were received or alternative methods to send them.",
+  "resolution_steps": [
+    "Brandy confirms she is not seeing the text message from Alan.",
+    "Alan explains he is sending pictures to the number 786-1133 via text.",
+    "Brandy suggests sending the pictures via email as an alternative method.",
+    "Alan agrees to send the pictures via email instead."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Troubleshooting text message delivery issues",
+    "Alternative communication methods (email vs. text)"
+  ],
+  "systems_referenced": [
+    "email"
+  ],
+  "summary": "Alan is unable to send pictures via text to Alliance Insurance Services and is seeking assistance. Brandy suggests using email as an alternative method, which Alan agrees to. The call concludes with Alan committing to send the pictures via email.",
+  "_model": "qwen3:14b",
+  "_eval_count": 229,
+  "_total_duration_ms": 32740,
+  "_source_file": "transcripts/exten-112-+13366489698-20251014-123634-1760459794.3154.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1754
+}

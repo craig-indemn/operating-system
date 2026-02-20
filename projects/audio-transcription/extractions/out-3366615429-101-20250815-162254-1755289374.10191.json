@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Monte Duke from Over the Lines Insurance) is following up on a lead regarding potential insurance services for repair work, seeking to schedule a discussion with the recipient.",
+  "resolution_steps": [
+    "Agent introduced himself and mentioned following up on a lead related to repairment work.",
+    "Recipient indicated they could not discuss details immediately but agreed to schedule a call for Monday morning.",
+    "Agent confirmed office hours (8:30 AM) and agreed to contact the recipient early Monday to gather more information."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance services for repair/replacement work",
+    "Scheduling follow-up calls",
+    "Handling leads through phone conversations"
+  ],
+  "systems_referenced": [],
+  "summary": "Monte Duke from Over the Lines Insurance followed up on a lead regarding repair work insurance, scheduling a Monday morning call with the recipient. The recipient agreed to discuss details further but could not provide specifics during the call. The agent confirmed availability and will contact the recipient early Monday to proceed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 241,
+  "_total_duration_ms": 37184,
+  "_source_file": "transcripts/out-3366615429-101-20250815-162254-1755289374.10191.txt",
+  "_direction": "outbound",
+  "_char_count": 1310
+}

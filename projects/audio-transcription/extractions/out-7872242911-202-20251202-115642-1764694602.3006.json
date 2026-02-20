@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Linda informed Heather that her issue with Progressive was resolved through direct customer service contact and requested the case be closed.",
+  "resolution_steps": [
+    "Heather acknowledged Linda's update about Progressive resolving the issue",
+    "Heather confirmed she would close the case in the system",
+    "Both parties exchanged polite farewells"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Case management procedures",
+    "Carrier-specific resolution protocols (Progressive)"
+  ],
+  "systems_referenced": [
+    "Progressive customer service portal"
+  ],
+  "summary": "Linda confirmed her Progressive insurance issue was resolved through direct carrier contact. Heather acknowledged the resolution and committed to closing the case. The conversation concluded with mutual goodbyes.",
+  "_model": "qwen3:14b",
+  "_eval_count": 175,
+  "_total_duration_ms": 27381,
+  "_source_file": "transcripts/out-7872242911-202-20251202-115642-1764694602.3006.txt",
+  "_direction": "outbound",
+  "_char_count": 380
+}

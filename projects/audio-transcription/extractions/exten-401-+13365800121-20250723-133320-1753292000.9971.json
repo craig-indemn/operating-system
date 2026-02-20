@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Johnny Redwine is seeking clarification about his insurance policy, specifically regarding replacement costs, deductibles, and the need for inspections. He also wants to schedule a follow-up call.",
+  "resolution_steps": [
+    "Heather explains that replacement cost estimators are used to determine coverage amounts.",
+    "Heather clarifies that deductibles are based on the policy's terms and that inspections may be required for certain claims.",
+    "Heather schedules a follow-up call with Johnny for further discussion."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy terms (replacement cost, deductibles)",
+    "Knowledge of inspection requirements for claims",
+    "Ability to schedule follow-up appointments"
+  ],
+  "systems_referenced": [],
+  "summary": "Johnny Redwine contacted Alliance Insurance Services to clarify details about his insurance policy, including replacement costs, deductibles, and inspection requirements. Heather provided explanations and scheduled a follow-up call to address further questions.",
+  "_model": "qwen3:14b",
+  "_eval_count": 222,
+  "_total_duration_ms": 68570,
+  "_source_file": "transcripts/exten-401-+13365800121-20250723-133320-1753292000.9971.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 15992
+}

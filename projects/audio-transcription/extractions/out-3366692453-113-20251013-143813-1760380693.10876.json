@@ -1,0 +1,33 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Gary from Lions Insurance is providing updated insurance quotes for home, auto, and umbrella policies, explaining coverage changes, payment options, and deductible adjustments to Mr. Kidley.",
+  "resolution_steps": [
+    "Gary ran quotes for home, auto, and umbrella insurance policies.",
+    "Explained homeowners coverage increase (from $1,400 to $2,165) due to higher coverage limits (up to $425,000 replacement value).",
+    "Discussed auto insurance rates ($2,686 for four cars with full coverage) and savings option for paying annually ($2,365 vs. monthly payments).",
+    "Mentioned umbrella coverage cost ($294/year for $1M coverage).",
+    "Noted that escrow payments for homeowners prevent full-pay discounts but auto payments can be adjusted.",
+    "Offered to email quotes and requested follow-up after Mr. Kidley consults his wife.",
+    "Emphasized need to finalize before policy renewal on the first of the month."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy structures (home, auto, umbrella)",
+    "Escrow payment implications for discounts",
+    "Coverage limit adjustments and their cost impacts",
+    "Deductible trade-offs for premium savings",
+    "Multi-policy bundling benefits"
+  ],
+  "systems_referenced": [
+    "Auto Owners Insurance",
+    "Main Street (previous insurer)",
+    "Email for quote delivery"
+  ],
+  "summary": "Gary from Lions Insurance provided Mr. Kidley with updated insurance quotes, explaining increased home coverage costs, auto payment options, and umbrella policy pricing. He emphasized the need to finalize decisions before the policy renewal date and requested a callback after Mr. Kidley consults his wife. The agent highlighted the benefits of bundling policies and adjusting deductibles for cost savings.",
+  "_model": "qwen3:14b",
+  "_eval_count": 411,
+  "_total_duration_ms": 55929,
+  "_source_file": "transcripts/out-3366692453-113-20251013-143813-1760380693.10876.txt",
+  "_direction": "outbound",
+  "_char_count": 3883
+}

@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Attempting to reach Jamie, possibly leaving a message or requesting a transfer.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Fragmented audio with no clear conversation between caller and agent. Likely a voicemail greeting or transfer attempt with insufficient context for analysis.",
+  "_model": "qwen3:14b",
+  "_eval_count": 93,
+  "_total_duration_ms": 22793,
+  "_source_file": "transcripts/in-+13363779003-+13362871816-20251008-130125-1759942885.4550.txt",
+  "_direction": "inbound",
+  "_char_count": 72
+}

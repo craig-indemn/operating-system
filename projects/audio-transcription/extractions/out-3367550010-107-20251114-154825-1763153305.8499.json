@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Cecilia from Alliance Insurance Services is attempting to reach Micah Chamberlain to discuss potential changes to his auto insurance policy.",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A voicemail message from Cecilia of Alliance Insurance Services to Micah Chamberlain, informing him of a follow-up call regarding an auto policy change. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 110,
+  "_total_duration_ms": 26528,
+  "_source_file": "transcripts/out-3367550010-107-20251114-154825-1763153305.8499.txt",
+  "_direction": "outbound",
+  "_char_count": 768
+}

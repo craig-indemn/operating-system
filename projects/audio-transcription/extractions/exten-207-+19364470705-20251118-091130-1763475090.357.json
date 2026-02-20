@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Cody is seeking to resolve an issue where a payment was not processed due to an account closure error, requiring updated banking details (First Horizon Bank routing/account numbers) to reinstate a policy and set up EFT. He also needs confirmation to send a loan form to Jennifer at the company.",
+  "resolution_steps": [
+    "Cynthia confirms receipt of Cody's voicemail and email.",
+    "Cody provides First Horizon Bank routing number (067011760) and account number (101880302067).",
+    "Cody states he will contact the company to make the payment and reinstate the policy using the provided details.",
+    "Cody requests Cynthia to send a loan form to Jennifer at the company to confirm the policy is active.",
+    "Cynthia agrees to send the loan form to Jennifer and inform the company."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy reinstatement processes",
+    "EFT setup procedures",
+    "Handling payment errors related to banking details",
+    "Internal document routing (loan forms to Jennifer)"
+  ],
+  "systems_referenced": [
+    "First Horizon Bank",
+    "EFT system",
+    "Insurance policy management system",
+    "Internal email/document transfer system"
+  ],
+  "summary": "Cody resolves a payment issue by providing updated banking details for First Horizon Bank to reinstate a policy and set up EFT. He coordinates with Cynthia to send a loan form to Jennifer at the company to confirm the policy is active. The call concludes with Cynthia agreeing to send the necessary documents.",
+  "_model": "qwen3:14b",
+  "_eval_count": 359,
+  "_total_duration_ms": 46895,
+  "_source_file": "transcripts/exten-207-+19364470705-20251118-091130-1763475090.357.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1920
+}

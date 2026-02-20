@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller, Braden from G-Pack, aimed to connect with Christopher Cook at Alliance Insurance for recruitment purposes.",
+  "resolution_steps": [
+    "Agent confirmed Christopher Cook's role in hiring",
+    "Agent offered to connect the caller with Christopher Cook"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A recruiter from G-Pack attempted to connect with Alliance Insurance's hiring contact, Christopher Cook. The agent acknowledged the request and offered to facilitate the connection, but the call was cut off before resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 135,
+  "_total_duration_ms": 41296,
+  "_source_file": "transcripts/in-+13367861133-+15732174760-20251024-154436-1761335076.6058.txt",
+  "_direction": "inbound",
+  "_char_count": 294
+}

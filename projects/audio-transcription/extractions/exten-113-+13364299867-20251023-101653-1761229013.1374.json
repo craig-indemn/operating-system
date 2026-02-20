@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wants to add a trailer to their insurance policy and needs clarification on coverage details, specifically regarding liability, comprehensive, and collision coverage for the trailer.",
+  "resolution_steps": [
+    "Agent confirmed the need for the trailer's make and serial number (found on the recently received title).",
+    "Explained that liability coverage follows the towing vehicle, not the trailer.",
+    "Discussed adding comprehensive and collision coverage for the trailer.",
+    "Caller provided the trailer's VIN (7P...5611000561) and model year (2026)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy structure (liability, comp/collision coverage)",
+    "Trailer titling and registration processes",
+    "How liability follows towing vehicles"
+  ],
+  "systems_referenced": [],
+  "summary": "Caller seeks to add a trailer to their insurance, requiring serial number verification and coverage clarification. Agent explained liability rules and confirmed trailer details (2026 model, VIN provided). Outcome requires follow-up to finalize policy changes.",
+  "_model": "qwen3:14b",
+  "_eval_count": 250,
+  "_total_duration_ms": 42427,
+  "_source_file": "transcripts/exten-113-+13364299867-20251023-101653-1761229013.1374.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1159
+}

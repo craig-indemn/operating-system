@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Mrs. Heather called to follow up on a previous conversation about home insurance, but there was confusion about the location (DC vs. Ridgeway, Virginia).",
+  "resolution_steps": [
+    "Agent Elizabeth Alexander apologized for missing the initial call and asked for clarification.",
+    "Caller confirmed she had previously discussed home insurance but there was a mix-up in location details.",
+    "Agent acknowledged the confusion and transferred the call to another extension for further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy locations and customer service protocols",
+    "Ability to handle call transfers and clarify customer inquiries"
+  ],
+  "systems_referenced": [
+    "internal call transfer system"
+  ],
+  "summary": "Mrs. Heather called to resolve confusion about a previous home insurance inquiry, with a mix-up between Washington DC and Ridgeway, Virginia. The agent acknowledged the issue and transferred the call for further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 213,
+  "_total_duration_ms": 36074,
+  "_source_file": "transcripts/exten-401-+12022940343-20250822-122852-1755880132.8906.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1251
+}

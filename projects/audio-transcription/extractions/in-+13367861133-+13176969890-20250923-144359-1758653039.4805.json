@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller was seeking a quote for commercial general liability and workers' compensation insurance for a small business.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller requested insurance quotes but the agent only acknowledged the request without providing next steps. The conversation was too brief to determine if the caller was connected to an agent or given a callback.",
+  "_model": "qwen3:14b",
+  "_eval_count": 109,
+  "_total_duration_ms": 25570,
+  "_source_file": "transcripts/in-+13367861133-+13176969890-20250923-144359-1758653039.4805.txt",
+  "_direction": "inbound",
+  "_char_count": 281
+}

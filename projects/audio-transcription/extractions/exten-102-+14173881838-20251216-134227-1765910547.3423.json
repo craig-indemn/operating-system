@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jim York, President of Spencer's Loft Condos HOA, received an unexpected refund check and sought clarification on its origin.",
+  "resolution_steps": [
+    "Gloria checked the caller's policy on the carrier's system.",
+    "She identified the refund was likely due to a discount from a full payment plan.",
+    "Gloria offered to contact the HOA's owners to confirm the refund's legitimacy.",
+    "She requested Jim's cell number for follow-up communication."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance payment plans and discounts",
+    "Ability to access and interpret carrier policy details"
+  ],
+  "systems_referenced": [
+    "Carrier's insurance portal"
+  ],
+  "summary": "Jim York received a refund check and contacted Alliance Insurance for clarification. Gloria investigated via the carrier's system, identified the refund likely stemmed from a full payment discount, and planned to verify with HOA owners. She will follow up with Jim after confirmation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 229,
+  "_total_duration_ms": 28801,
+  "_source_file": "transcripts/exten-102-+14173881838-20251216-134227-1765910547.3423.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2095
+}

@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with Christopher Cook",
+  "resolution_steps": [
+    "Agent acknowledged request",
+    "Agent initiated transfer"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Short inbound call where caller requested to speak with Christopher Cook. Agent confirmed transfer but no further conversation occurred. Insufficient information to determine if call was substantive.",
+  "_model": "qwen3:14b",
+  "_eval_count": 100,
+  "_total_duration_ms": 26194,
+  "_source_file": "transcripts/in-+13363779003-+13369696179-20251007-120839-1759853319.3865.txt",
+  "_direction": "inbound",
+  "_char_count": 175
+}

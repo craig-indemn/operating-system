@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Cecilia Cruz wanted to confirm the time frame for a scheduled service pickup at her location (348 Summit Square Boulevard) and requested an estimated arrival time (ETA) for the technician.",
+  "resolution_steps": [
+    "Agent Teresa asked Cecilia for a work order number (96263022) to reference the service request.",
+    "Teresa placed Cecilia on hold to contact the scheduler for the ETA.",
+    "After a delay, Teresa informed Cecilia that the technician was unavailable and the scheduler was still finishing another task.",
+    "Teresa assured Cecilia that a callback would be made within an hour to provide the ETA."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Service scheduling processes",
+    "Handling customer inquiries about technician availability",
+    "Communicating delays and follow-up procedures"
+  ],
+  "systems_referenced": [
+    "Internal scheduler system (to coordinate with technicians)"
+  ],
+  "summary": "Cecilia called Culligan Quench to confirm the ETA for a scheduled service pickup. The agent retrieved the work order number, contacted the scheduler, and informed Cecilia that a callback would be made within an hour to provide the technician's arrival time. The call ended with the agent apologizing for the delay and confirming the follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 293,
+  "_total_duration_ms": 56575,
+  "_source_file": "transcripts/out-18885542782-107-20260106-100724-1767712044.1007.txt",
+  "_direction": "outbound",
+  "_char_count": 3822
+}

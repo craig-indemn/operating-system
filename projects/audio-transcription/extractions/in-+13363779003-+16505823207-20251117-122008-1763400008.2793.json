@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller attempted to reach Ryan Levesque at Alliance Insurance.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief inbound call where the caller requested to speak with Ryan Levesque. The agent acknowledged the request but did not provide further details or resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 95,
+  "_total_duration_ms": 30061,
+  "_source_file": "transcripts/in-+13363779003-+16505823207-20251117-122008-1763400008.2793.txt",
+  "_direction": "inbound",
+  "_char_count": 219
+}

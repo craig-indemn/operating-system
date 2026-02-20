@@ -1,0 +1,18 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller (John from Insurance Journal) sought to confirm whether Jessica Hernandez was still an active agent at Alliance Insurance for a publication update.",
+  "resolution_steps": [
+    "Agent acknowledged the inquiry",
+    "Agent offered to connect the caller with Jessica Hernandez directly"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief inquiry about an agent's employment status was made, but the agent did not confirm the information and instead offered to transfer the call to the agent in question.",
+  "_model": "qwen3:14b",
+  "_eval_count": 130,
+  "_total_duration_ms": 40866,
+  "_source_file": "transcripts/in-+13363779003-+12522980082-20251013-155525-1760385325.11716.txt",
+  "_direction": "inbound",
+  "_char_count": 489
+}

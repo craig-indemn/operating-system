@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear, appears to be a disjointed conversation with fragmented references to dates (22nd, 23rd, 24th), being 'judged,' and a vague mention of Florida travel in December.",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "The caller had an unclear, incoherent conversation with the agent, referencing dates and being 'judged' but not articulating a specific request or issue. The agent did not resolve any problem, and the call ended without clear next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 147,
+  "_total_duration_ms": 25386,
+  "_source_file": "transcripts/out-3367758325-112-20251201-161225-1764623545.14286.txt",
+  "_direction": "outbound",
+  "_char_count": 1084
+}

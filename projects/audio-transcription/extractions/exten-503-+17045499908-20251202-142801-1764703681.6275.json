@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Judy is following up on documents related to Don Tao's policy, specifically the roof receipt and rental contract, and seeks clarification on the status of these documents.",
+  "resolution_steps": [
+    "Judy requests the policy number and confirms the customer's name and address.",
+    "Discusses the roof receipt already received and the pending rental contract.",
+    "Asks John to send an email for further communication.",
+    "John agrees to send the email."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy documentation requirements (e.g., roof receipts, rental contracts)",
+    "Customer verification procedures",
+    "Follow-up communication protocols"
+  ],
+  "systems_referenced": [],
+  "summary": "Judy, representing Auto Owners, follows up with John Weena about documents for Don Tao's policy, confirming details and requesting an email for further steps. The call ends with John agreeing to send an email.",
+  "_model": "qwen3:14b",
+  "_eval_count": 214,
+  "_total_duration_ms": 42049,
+  "_source_file": "transcripts/exten-503-+17045499908-20251202-142801-1764703681.6275.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1494
+}

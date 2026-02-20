@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Nancy Dixon wants to remove someone's name from an insurance policy and confirm the action via email.",
+  "resolution_steps": [
+    "Jeff acknowledges the request to remove a name from the policy.",
+    "Jeff states he will review the request and check for discrepancies.",
+    "Jeff confirms he will send an email with the confirmation details."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy modification procedures",
+    "Email confirmation protocols"
+  ],
+  "systems_referenced": [],
+  "summary": "Nancy Dixon requested to remove a name from an insurance policy. Jeff confirmed he would process the request and send an email confirmation. The call concluded with Nancy expressing gratitude and a polite goodbye.",
+  "_model": "qwen3:14b",
+  "_eval_count": 169,
+  "_total_duration_ms": 24837,
+  "_source_file": "transcripts/exten-206-+13367557045-20250731-094037-1753969237.1901.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 393
+}

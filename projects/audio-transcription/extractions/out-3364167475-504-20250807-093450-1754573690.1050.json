@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Bessy from Holiday Alliance Insurance) aimed to inform the customer about a canceled homeowner's policy from Travelers and offer reinstatement options.",
+  "resolution_steps": [
+    "Notified the customer of a policy cancellation notice from Travelers.",
+    "Offered reinstatement of the policy upon payment of $871.39.",
+    "Allowed the customer to request a callback after consulting their sister."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of policy cancellation/reinstatement processes",
+    "Travelers insurance policy procedures",
+    "Payment calculation for reinstatement"
+  ],
+  "systems_referenced": [
+    "Travelers insurance system (policy status check)"
+  ],
+  "summary": "Bessy from Holiday Alliance Insurance informed a customer about a canceled Travelers homeowner's policy and offered reinstatement for $871.39. The customer requested time to consult their sister before proceeding. The call ended with a commitment to follow up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 224,
+  "_total_duration_ms": 32432,
+  "_source_file": "transcripts/out-3364167475-504-20250807-093450-1754573690.1050.txt",
+  "_direction": "outbound",
+  "_char_count": 554
+}

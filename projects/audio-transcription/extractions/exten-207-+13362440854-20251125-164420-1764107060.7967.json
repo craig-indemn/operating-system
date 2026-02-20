@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Alex from Custom Built Structures) wants to add Jesus as a driver to their insurance policy but faces complications due to Jesus's current insurance situation and personal circumstances.",
+  "resolution_steps": [
+    "Agent confirms Jesus is moving companies due to a better offer, which requires canceling existing policies.",
+    "Agent inquires about Jesus's current insurance provider (Allstate via CMS Insurance).",
+    "Agent identifies a gap: Jesus is not listed as a driver on his wife's policy despite driving vehicles.",
+    "Agent explains legal requirements for being listed as a driver on policies for vehicles he uses.",
+    "Agent notes Jesus's current use of a work truck (not in his name) and a borrowed car, complicating coverage verification.",
+    "Agent references Jesus's motor vehicle record with multiple tickets but confirms no license suspension."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy requirements for driver listings",
+    "Impact of personal circumstances (e.g., divorce, child support) on insurance coverage",
+    "Handling of vehicles not titled to the driver"
+  ],
+  "systems_referenced": [
+    "CMS Insurance",
+    "Allstate",
+    "motor vehicle record (MVR) database"
+  ],
+  "summary": "Jesus is attempting to transition to a new insurance provider but faces challenges due to his current lack of coverage and complex personal situation. The agent highlights the need for Jesus to be properly listed as a driver on his wife's policy, despite vehicles being titled in her name. The conversation reveals gaps in coverage and potential legal/insurance compliance issues that require further resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 345,
+  "_total_duration_ms": 54491,
+  "_source_file": "transcripts/exten-207-+13362440854-20251125-164420-1764107060.7967.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4145
+}

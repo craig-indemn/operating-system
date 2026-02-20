@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Ellie seeks clarification on two insurance-related matters: 1) Auto Owners' coverage for a log cabin home with mixed construction dates, and 2) Eligibility for Auto Owners' insurance programs despite a client's recent accident history.",
+  "resolution_steps": [
+    "Jeremy explains Auto Owners' options for log cabin coverage: standard replacement cost (RCE) vs. functional replacement cost (modern materials).",
+    "He clarifies that functional replacement cost requires selecting the option on the policy screen under coverage J.",
+    "Regarding the second query, Jeremy outlines Auto Owners' three programs (Owners, Premier, Standard) and explains that recent at-fault accidents disqualify clients from higher tiers but may allow eligibility in the Standard program if the accident is older than 12 months."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Auto Owners' coverage options for historic homes",
+    "RCE (Replacement Cost Estimate) process and policy adjustments",
+    "Auto Owners' program eligibility criteria (accident history impact)"
+  ],
+  "systems_referenced": [
+    "RCE (Replacement Cost Estimate) tool",
+    "Auto Owners policy management system (coverage J selection)"
+  ],
+  "summary": "Ellie consults Jeremy about Auto Owners' coverage for a log cabin with modern upgrades and eligibility for insurance programs despite a client's accident history. Jeremy explains functional replacement cost options and program tier requirements, noting state-specific variations and the 12-month accident disqualification rule.",
+  "_model": "qwen3:14b",
+  "_eval_count": 331,
+  "_total_duration_ms": 38137,
+  "_source_file": "transcripts/exten-701-+17045499908-20251216-161101-1765919461.5246.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4514
+}

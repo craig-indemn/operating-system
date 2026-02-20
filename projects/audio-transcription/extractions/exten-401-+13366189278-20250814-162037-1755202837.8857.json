@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Yolanda is addressing a $55 liability charge from the Department of Transportation (DOT) related to a vehicle insured by Alliance Insurance, seeking clarification and resolution.",
+  "resolution_steps": [
+    "Agent advises Yolanda not to pay the $55 charge immediately.",
+    "Requests Yolanda to resend the DOT email/form via email to 'support@myallianceinsurance.com' (specifically the support team, not the agent's personal email).",
+    "Explains that the support team (Brandy, JC, and others) will handle the claim and that delays may be due to DMV processing issues.",
+    "Schedules a follow-up in one week to check on the status."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of DMV claim processes and liability charges",
+    "Knowledge of internal support team structure and communication protocols",
+    "Ability to differentiate between legitimate claims and potential errors in billing"
+  ],
+  "systems_referenced": [
+    "support@myallianceinsurance.com (internal support email)"
+  ],
+  "summary": "Yolanda discusses a $55 liability charge from the DOT related to an insured vehicle. The agent reassures her not to pay immediately, directs her to send documentation to the support team, and schedules a follow-up in one week. The agent attributes potential delays to DMV processing issues and confirms the support team will handle the claim.",
+  "_model": "qwen3:14b",
+  "_eval_count": 317,
+  "_total_duration_ms": 45143,
+  "_source_file": "transcripts/exten-401-+13366189278-20250814-162037-1755202837.8857.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2473
+}

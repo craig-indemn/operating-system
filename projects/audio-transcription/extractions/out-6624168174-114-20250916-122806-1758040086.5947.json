@@ -1,0 +1,22 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller (JC from Lions Insurance) is following up on a previous voicemail to confirm that the recipient's insurance matter was resolved through Progressive.",
+  "resolution_steps": [
+    "JC confirms resolution through Progressive",
+    "Exchanges brief gratitude"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Progressive insurance services"
+  ],
+  "systems_referenced": [
+    "Progressive"
+  ],
+  "summary": "A brief follow-up call confirming that the recipient's insurance issue was resolved through Progressive. No further action required.",
+  "_model": "qwen3:14b",
+  "_eval_count": 124,
+  "_total_duration_ms": 39138,
+  "_source_file": "transcripts/out-6624168174-114-20250916-122806-1758040086.5947.txt",
+  "_direction": "outbound",
+  "_char_count": 214
+}

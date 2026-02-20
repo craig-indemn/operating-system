@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is seeking assistance with covering the first month's rent while transitioning out of a detox program and starting a new job search, believing Alliance Insurance may offer such support.",
+  "resolution_steps": [
+    "Agent acknowledged the caller's situation and clarified Alliance Insurance's role as an insurance agency.",
+    "Agent explained that they cannot directly assist with rent payments but can help explore insurance options (e.g., renters insurance).",
+    "Agent offered to connect the caller with community resources or housing assistance programs."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding Alliance Insurance's service boundaries (insurance vs. rent assistance)",
+    "Knowledge of local housing support programs",
+    "Ability to empathize with the caller's situation while maintaining professional boundaries"
+  ],
+  "systems_referenced": [
+    "Internal knowledge base for service limitations",
+    "Community resource databases for housing assistance"
+  ],
+  "summary": "A caller in need of temporary housing support sought help from Alliance Insurance, which clarified its inability to assist with rent payments but offered to connect them with appropriate resources. The agent emphasized insurance-related services while acknowledging the caller's urgent needs.",
+  "_model": "qwen3:14b",
+  "_eval_count": 258,
+  "_total_duration_ms": 30689,
+  "_source_file": "transcripts/in-+13363779003-+19843901598-20251222-102053-1766416853.1464.txt",
+  "_direction": "inbound",
+  "_char_count": 528
+}

@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Patricia needs assistance paying a $4,715 bill for two months of insurance and a non-compliant audit, but she cannot use her credit card and must use cash from the bank.",
+  "resolution_steps": [
+    "Agent confirmed the total amount due ($4,715) for the two months and audit.",
+    "Agent advised Patricia to visit Wells Fargo to deposit cash into her account.",
+    "Agent instructed Patricia to call back after the bank visit to process the payment.",
+    "Agent cautioned Patricia to verify Wells Fargo's operating hours directly, as online information may be unreliable."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance audit payment processes",
+    "Banking procedures for cash deposits",
+    "Handling customer payments via third-party institutions"
+  ],
+  "systems_referenced": [
+    "Internal insurance billing system (to check amount due)",
+    "Wells Fargo bank website (for operational hours verification)"
+  ],
+  "summary": "Patricia needed help paying an insurance audit bill but faced cash payment constraints. The agent guided her to deposit cash at Wells Fargo and promised to process the payment after confirmation. The agent also emphasized verifying bank hours directly due to potential discrepancies in online information.",
+  "_model": "qwen3:14b",
+  "_eval_count": 275,
+  "_total_duration_ms": 46086,
+  "_source_file": "transcripts/exten-207-+17439990602-20251226-103226-1766763146.1025.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2075
+}

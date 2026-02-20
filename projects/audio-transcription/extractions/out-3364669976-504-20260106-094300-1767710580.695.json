@@ -1,0 +1,17 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller appears to be responding to a previous voicemail about an auto policy but is unable to communicate effectively due to language barriers.",
+  "resolution_steps": [
+    "Agent Holly acknowledges the caller's language barrier and offers to have someone else contact them."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A brief outbound call where the caller indicates they do not speak English or Spanish, leading the agent to promise a follow-up by another representative. The conversation lacks sufficient detail to determine policy specifics or next steps.",
+  "_model": "qwen3:14b",
+  "_eval_count": 139,
+  "_total_duration_ms": 33251,
+  "_source_file": "transcripts/out-3364669976-504-20260106-094300-1767710580.695.txt",
+  "_direction": "outbound",
+  "_char_count": 245
+}

@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Cecilia is seeking assistance to resolve an issue with a Sharp copier at the Clemens office, specifically related to computer connectivity and user access configuration.",
+  "resolution_steps": [
+    "Agent (Mark) confirms the location (Clemens office) and identifies the Sharp copier.",
+    "Discusses computer naming conventions and logs into the system using the desktop name 'desktop-a-h59cu2j'.",
+    "Navigates to the copier's configuration to add users (Laura, Shannon, Morgan, Karen, Gina) and verifies their presence.",
+    "Tests the copier's functionality by printing names and confirms successful operation.",
+    "Checks email confirmation to ensure settings were properly applied."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Technical knowledge of copier configuration and network settings",
+    "Understanding of user management in office systems",
+    "Troubleshooting skills for IT-related issues"
+  ],
+  "systems_referenced": [
+    "Sharp copier system",
+    "Computer network infrastructure",
+    "Email system"
+  ],
+  "summary": "Cecilia contacted Mark for help resolving a Sharp copier issue at the Clemens office. Mark guided her through identifying the correct computer, configuring user access, testing the copier, and confirming email settings. The problem was successfully resolved with all users properly added and functionality verified.",
+  "_model": "qwen3:14b",
+  "_eval_count": 299,
+  "_total_duration_ms": 45599,
+  "_source_file": "transcripts/exten-107-+13364990749-20250919-131257-1758301977.3915.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1931
+}

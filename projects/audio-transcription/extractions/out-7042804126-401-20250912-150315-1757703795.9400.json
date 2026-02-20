@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Voicemail left to follow up on insurance proposals and request a callback.",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Voicemail left by Heather Scott from Alliance Insurance requesting a callback regarding insurance proposals. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 85,
+  "_total_duration_ms": 25650,
+  "_source_file": "transcripts/out-7042804126-401-20250912-150315-1757703795.9400.txt",
+  "_direction": "outbound",
+  "_char_count": 475
+}

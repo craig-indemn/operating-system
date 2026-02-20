@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Call is too short to analyze meaningfully; only initial greeting and request to speak with Anna",
+  "_model": "qwen3:14b",
+  "_eval_count": 71,
+  "_total_duration_ms": 31367,
+  "_source_file": "transcripts/in-+13363779003-+13369850885-20250915-110121-1757948481.3497.txt",
+  "_direction": "inbound",
+  "_char_count": 175
+}

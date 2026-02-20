@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Tony is following up on an email from Janelle to adjust the ITV calculation for a limited-service hotel and discuss adding specific coverages (equipment breakdown, hired non-owned auto liability, and property expansion) to the insurance quote.",
+  "resolution_steps": [
+    "Rick confirms he is reviewing the file and acknowledges the need to adjust the ITV from the original full-service hotel calculation.",
+    "Tony requests adding optional coverages and confirms they are not already included in the proposal.",
+    "Rick agrees to adjust the ITV to a more accurate level for a limited-service property and offset the cost.",
+    "They discuss potential competition from Erie and acknowledge the challenging market for mid-scale hotels.",
+    "Rick agrees to relay the discussion to Janelle on the underwriting team and set a timeline for next week."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of insurance terminology (ITV, coverage types, underwriting processes)",
+    "Knowledge of hotel insurance market dynamics (limited-service vs. full-service properties, competitor pricing)",
+    "Familiarity with carrier-specific offerings (e.g., Excel's property expansion coverage)"
+  ],
+  "systems_referenced": [
+    "Novum Underwriting (carrier)",
+    "Erie (competitor carrier)"
+  ],
+  "summary": "Rick and Tony discuss adjusting an insurance quote for a limited-service hotel, recalculating ITV, adding coverages, and addressing market competitiveness. The agent will relay the details to the underwriting team with a next-week timeline for resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 332,
+  "_total_duration_ms": 55728,
+  "_source_file": "transcripts/exten-105-+12168108766-20250919-144233-1758307353.6750.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4128
+}

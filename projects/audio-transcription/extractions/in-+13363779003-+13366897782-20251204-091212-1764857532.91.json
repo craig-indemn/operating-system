@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Juan Jose wants to reinstate full coverage on his Tundra's insurance policy, referencing a 500 deductible similar to the Honda's policy.",
+  "resolution_steps": [
+    "Agent asked for the policy number.",
+    "Agent retrieved the policy number (2020-314177) from the database.",
+    "Agent offered to transfer the call to a specialist to handle the coverage adjustment request."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy lookup procedures",
+    "Coverage adjustment processes",
+    "Call transfer protocols"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance policy database"
+  ],
+  "summary": "Aelia called on behalf of her husband Juan Jose to reinstate full coverage on his Tundra's policy with a 500 deductible. The agent retrieved the policy number and transferred the call to a specialist for further assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 212,
+  "_total_duration_ms": 32663,
+  "_source_file": "transcripts/in-+13363779003-+13366897782-20251204-091212-1764857532.91.txt",
+  "_direction": "inbound",
+  "_char_count": 672
+}

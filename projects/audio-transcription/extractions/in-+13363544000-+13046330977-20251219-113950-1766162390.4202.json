@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request for assistance with car insurance",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Caller requested assistance with car insurance; agent acknowledged and initiated transfer. Call transcript truncated before resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 79,
+  "_total_duration_ms": 63078,
+  "_source_file": "transcripts/in-+13363544000-+13046330977-20251219-113950-1766162390.4202.txt",
+  "_direction": "inbound",
+  "_char_count": 203
+}

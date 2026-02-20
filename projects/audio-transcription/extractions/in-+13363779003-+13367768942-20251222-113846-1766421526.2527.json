@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Isa Josefina, needs assistance with her canceled insurance policy and requires communication in Spanish.",
+  "resolution_steps": [
+    "Agent acknowledges the caller's request for Spanish-speaking assistance.",
+    "Agent notes the caller's name (Isa Josefina) and phone number (776-894-2).",
+    "Agent assures the caller that a Spanish-speaking representative will call her back."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Language assistance protocols for non-English speakers",
+    "Customer service procedures for scheduling callbacks"
+  ],
+  "systems_referenced": [],
+  "summary": "Isa Josefina contacted Alliance Insurance to address her canceled policy but required Spanish-speaking support. The agent collected her contact information and promised to arrange a callback with a Spanish-speaking representative. The call concluded with the agent confirming the follow-up action.",
+  "_model": "qwen3:14b",
+  "_eval_count": 203,
+  "_total_duration_ms": 31684,
+  "_source_file": "transcripts/in-+13363779003-+13367768942-20251222-113846-1766421526.2527.txt",
+  "_direction": "inbound",
+  "_char_count": 713
+}

@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller is clarifying the monthly insurance premium for two vehicles, discussing the impact of a past accident on the quote, and considering adding a vehicle to the policy.",
+  "resolution_steps": [
+    "Agent confirmed the monthly premium of $1295 for liability-only coverage on two vehicles (Jetta and Acura).",
+    "Discussed the possibility of removing the Jetta from the policy if sold to a friend.",
+    "Explained that the accident report (with no points on the driving record) affected the quote but did not add insurance points due to zero payout.",
+    "Noted that National General's quote included the accident's impact, resulting in a ~$50 annual difference compared to a quote without the accident.",
+    "Advised the caller to consult their fianc\u00e9 before finalizing the policy and offered to assist further after their decision."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance quoting processes",
+    "Impact of accident reports on premiums",
+    "DMV/insurance record distinctions",
+    "Policy adjustment procedures"
+  ],
+  "systems_referenced": [
+    "National General insurance portal",
+    "DMV driving record system"
+  ],
+  "summary": "The caller discussed insurance premiums for two vehicles, clarified the impact of a dismissed accident on their quote, and considered policy adjustments. The agent explained that while the accident affected the quote, no insurance points were added due to zero payout. The caller agreed to consult their fianc\u00e9 before proceeding and may call back later.",
+  "_model": "qwen3:14b",
+  "_eval_count": 333,
+  "_total_duration_ms": 46934,
+  "_source_file": "transcripts/parked-113-113-20251006-122559-1759767959.5879.txt",
+  "_direction": "parked",
+  "_char_count": 4173
+}

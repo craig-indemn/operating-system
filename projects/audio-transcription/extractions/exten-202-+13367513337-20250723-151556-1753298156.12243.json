@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Heather is seeking assistance with a denied State Farm insurance claim following a car accident and wants guidance on next steps to resolve the issue.",
+  "resolution_steps": [
+    "Michael confirms the claim is with State Farm and asks for details about the denial.",
+    "Heather provides the date of the claim (17th of the month) and explains the accident circumstances.",
+    "Michael requests the denial letter from State Farm to forward to Tracy for further action.",
+    "Heather provides her wife's cell phone number for receiving the document.",
+    "Michael advises that Tracy can use the letter to pursue reimbursement from State Farm or file with Travelers if Heather is currently with them."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance claims denial processes",
+    "Coordination between carriers (State Farm and Travelers)",
+    "Handling third-party liability claims"
+  ],
+  "systems_referenced": [
+    "State Farm",
+    "Travelers",
+    "Internal agency system (Tracy's involvement)"
+  ],
+  "summary": "Heather discusses a denied State Farm claim with Michael, who guides her to obtain the denial letter and involves Tracy for further action. Michael suggests potential reimbursement options through Travelers if applicable. The call concludes with Heather agreeing to send the document for follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 286,
+  "_total_duration_ms": 38898,
+  "_source_file": "transcripts/exten-202-+13367513337-20250723-151556-1753298156.12243.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2242
+}

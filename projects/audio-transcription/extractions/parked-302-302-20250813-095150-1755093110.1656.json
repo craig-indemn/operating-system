@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Donna is seeking to correct a typo in an address listed on her insurance policy, specifically changing 'Highway Eleven' to 'SC Eleven' for a claim location in Campbello, South Carolina.",
+  "resolution_steps": [
+    "Agent confirms the four addresses on the policy and identifies a discrepancy in one address (74 61 Highway Eleven vs. 74 61 SC Eleven).",
+    "Agent checks the current policy page and endorsement documents to verify the correct address for the claim location.",
+    "Agent explains that the printed policy may not include the latest endorsements and directs Donna to review the most recent endorsements for updates.",
+    "Agent concludes that the address typo likely does not affect the claim and confirms the policy is up to date."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of insurance policy structures and endorsements",
+    "Ability to navigate policy management systems to retrieve current and historical policy documents",
+    "Knowledge of address correction procedures for claims"
+  ],
+  "systems_referenced": [
+    "Policy management system (used to retrieve policy pages and endorsements)",
+    "Endorsement documents"
+  ],
+  "summary": "Donna contacted the agent to correct an address typo on her insurance policy related to a claim in Campbello, South Carolina. The agent verified the policy details, checked the latest endorsements, and confirmed the typo did not impact the claim. The agent explained the process of reviewing endorsements for policy updates, resolving the issue.",
+  "_model": "qwen3:14b",
+  "_eval_count": 324,
+  "_total_duration_ms": 41908,
+  "_source_file": "transcripts/parked-302-302-20250813-095150-1755093110.1656.txt",
+  "_direction": "parked",
+  "_char_count": 2857
+}

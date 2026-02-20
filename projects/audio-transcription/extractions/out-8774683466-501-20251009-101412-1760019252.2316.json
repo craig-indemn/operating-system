@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Jamie, an agent from Wise Insurance, seeks a summary document explaining the accident protection plan level one to send to a client who is considering canceling the coverage and wants to understand its benefits.",
+  "resolution_steps": [
+    "Linda confirms the policy number (2025506130, mod 01) and client name (Earl Pepper).",
+    "Linda searches the renewal documents and locates the endorsement form (11533) in the 'last year's term' section of the bonded new business documents.",
+    "Linda identifies the relevant pages (63\u201365) containing definitions and details about the accident protection plan.",
+    "Linda explains that the form is included in the renewal documents and provides guidance on accessing it."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Navigating insurance policy documents and endorsements",
+    "Understanding accident protection plan terminology and coverage details",
+    "Locating specific forms within renewal documents"
+  ],
+  "systems_referenced": [
+    "National General Insurance policy portal",
+    "Renewal documents",
+    "Endorsement form 11533"
+  ],
+  "summary": "Jamie, an agent, needed a summary of the accident protection plan to address a client's concerns. Linda located the relevant endorsement form (11533) in the policy's renewal documents and provided the page numbers (63\u201365) where the coverage details are outlined, enabling Jamie to send the information to the client.",
+  "_model": "qwen3:14b",
+  "_eval_count": 337,
+  "_total_duration_ms": 51610,
+  "_source_file": "transcripts/out-8774683466-501-20251009-101412-1760019252.2316.txt",
+  "_direction": "outbound",
+  "_char_count": 4209
+}

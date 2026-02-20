@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Barbara Greenbaum contacted Alliance Insurance to clarify a confusing document received from Cincinnati Insurance, which she mistakenly thought was a bill rather than policy-related information. She wanted to confirm whether she needed to pay it, given her homeowners insurance is escrowed through her mortgage company.",
+  "resolution_steps": [
+    "Agent verified Barbara's identity using her name, address, and account details.",
+    "Agent checked Barbara's account to identify the source of the email and policy details.",
+    "Agent explained the document was related to a March 2026 policy renewal and clarified it was a bill sent to her mortgage company (Atlantic Bay Mortgage Group), with Barbara receiving a copy as part of the process.",
+    "Agent confirmed the $1,411 premium was due on March 3, 2026, and noted the mortgage company was listed as the 'mortgagee' on the invoice."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of policy renewal processes and escrow billing for homeowners insurance",
+    "Ability to access and interpret client account details",
+    "Knowledge of how mortgage companies interact with insurance carriers"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance customer portal (myallianceinsurance.com)",
+    "Internal account management system for policy details"
+  ],
+  "summary": "Barbara Greenbaum contacted Alliance Insurance to clarify a confusing document from Cincinnati Insurance, which she thought was a bill. The agent explained it was a policy renewal notice sent to her mortgage company, with Barbara receiving a copy. The agent confirmed the document's purpose and due date, resolving her confusion.",
+  "_model": "qwen3:14b",
+  "_eval_count": 354,
+  "_total_duration_ms": 51687,
+  "_source_file": "transcripts/in-+13363779003-+18605591342-20260113-103055-1768318255.3518.txt",
+  "_direction": "inbound",
+  "_char_count": 4007
+}

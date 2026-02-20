@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Follow-up on auto insurance quote request",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Jeremy from Alliance Insurance Services left a voicemail follow-up to Tyron regarding an auto insurance quote, requesting a callback if further assistance was needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 88,
+  "_total_duration_ms": 32385,
+  "_source_file": "transcripts/out-3104846079-701-20250731-091202-1753967522.925.txt",
+  "_direction": "outbound",
+  "_char_count": 575
+}

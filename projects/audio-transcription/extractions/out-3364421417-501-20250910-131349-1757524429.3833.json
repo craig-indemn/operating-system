@@ -1,0 +1,31 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Kevin wanted to confirm and adjust his insurance coverage for his Chrysler Pacifica (adding collision coverage) and review deductible options on his Honda Accord. He also wanted to update payment information and ensure other policies (e.g., travel trailer) were up to date.",
+  "resolution_steps": [
+    "Jamie reviewed Kevin's current policy details, confirming no collision coverage on the Chrysler Pacifica and comp/towing on the Honda Accord.",
+    "Added collision coverage with a $500 deductible to the Chrysler Pacifica, increasing the annual premium by $249.98 to $1,957.18.",
+    "Discussed removing collision from the Honda Accord, leaving comp/towing with a $100 deductible, and acknowledged Kevin's preference for the $100 deductible for windshield coverage.",
+    "Updated payment information using Kevin's savings account (routing number 253177049, account number 61215754) and scheduled a $2,292 payment.",
+    "Confirmed the travel trailer policy was active and paid in full through Progressive.",
+    "Sent proof of coverage, receipts, and policy updates via email to klj35781.com."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance coverage types (collision, comp, towing) and their cost implications.",
+    "Ability to calculate premium changes based on coverage adjustments.",
+    "Familiarity with payment processing systems (e.g., Auto One) and secure handling of financial information.",
+    "Knowledge of vehicle valuation and deductible trade-offs for coverage adequacy."
+  ],
+  "systems_referenced": [
+    "Auto One system (for policy management and payment history)",
+    "Email (klj35781.com for document delivery)",
+    "Progressive (for travel trailer policy)"
+  ],
+  "summary": "Kevin contacted Jamie to adjust his insurance coverage, adding collision to his Chrysler Pacifica and reviewing deductible options on his Honda Accord. Jamie made the necessary changes, updated payment information, and confirmed other policies. The call concluded successfully with all actions completed and documents sent via email.",
+  "_model": "qwen3:14b",
+  "_eval_count": 467,
+  "_total_duration_ms": 64672,
+  "_source_file": "transcripts/out-3364421417-501-20250910-131349-1757524429.3833.txt",
+  "_direction": "outbound",
+  "_char_count": 8732
+}

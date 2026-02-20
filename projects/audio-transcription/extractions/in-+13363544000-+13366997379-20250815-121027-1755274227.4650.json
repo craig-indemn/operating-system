@@ -1,0 +1,19 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller attempted to add a car to their existing insurance policy but did not clarify details beyond the policyholder's name.",
+  "resolution_steps": [
+    "Agent confirmed policy existence",
+    "Requested policyholder's name",
+    "Informed caller an agent would assist (no further steps taken)"
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A caller tried to add a car to their policy but the conversation was cut off before resolution. The agent only confirmed policy details and promised to transfer to another agent, with no actual assistance provided.",
+  "_model": "qwen3:14b",
+  "_eval_count": 143,
+  "_total_duration_ms": 26048,
+  "_source_file": "transcripts/in-+13363544000-+13366997379-20250815-121027-1755274227.4650.txt",
+  "_direction": "inbound",
+  "_char_count": 308
+}

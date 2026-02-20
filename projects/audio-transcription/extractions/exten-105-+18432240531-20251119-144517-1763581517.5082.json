@@ -1,0 +1,29 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Rick) seeks clarification on insurance documentation requirements for the University of South Carolina, specifically whether the Certificate of Insurance (COI) should list the University or the architect as the entity to receive cancellation notices. He also raises concerns about missing documents (waiver of rights endorsement) and the removal of a blanket additional insured form.",
+  "resolution_steps": [
+    "Marie confirms that the University of South Carolina should be listed as the entity requiring cancellation notices, as per the documents.",
+    "She acknowledges the missing waiver of rights (subrogation) endorsement and agrees to scan and attach it to the COI.",
+    "Marie explains the removal of the blanket additional insured form due to the University's preference for specific endorsements over blanket forms.",
+    "She notes the exclusion of a North Carolina-specific form, as South Carolina does not have an equivalent, and confirms no such form was requested by USC.",
+    "Marie commits to resending the updated documents with the missing waiver attached."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance document requirements (COI, notice of cancellation procedures)",
+    "Workers' compensation policy endorsements",
+    "State-specific insurance form differences (North Carolina vs. South Carolina)",
+    "Public entity preferences for additional insured endorsements"
+  ],
+  "systems_referenced": [
+    "Certificate of Insurance (COI) generation system",
+    "Document management system for attaching endorsements"
+  ],
+  "summary": "Rick clarifies requirements for COI documents related to the University of South Carolina, ensuring correct entities are listed and missing forms are addressed. Marie resolves the issues by attaching the missing waiver endorsement, removing non-applicable forms, and resending the updated documents.",
+  "_model": "qwen3:14b",
+  "_eval_count": 369,
+  "_total_duration_ms": 59136,
+  "_source_file": "transcripts/exten-105-+18432240531-20251119-144517-1763581517.5082.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4565
+}

@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Helen wanted to confirm that her cancellation request applied only to the Pleasant View policy and not the general liability policy, and clarify whether she needed to sign forms for both policies.",
+  "resolution_steps": [
+    "Rick confirmed the cancellation request was limited to the Pleasant View policy.",
+    "Explained that the general liability policy would require an endorsement, not cancellation.",
+    "Clarified no form was needed for the endorsement.",
+    "Notified Helen the cancellation would take a few days to process.",
+    "Mentioned the liability policy endorsement likely had no premium impact."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy cancellation vs. endorsement processes",
+    "Carrier-specific procedures (Foremost, Auto Owners)",
+    "Premium impact analysis for endorsements"
+  ],
+  "systems_referenced": [
+    "Foremost",
+    "Auto Owners"
+  ],
+  "summary": "Helen confirmed cancellation of a specific policy and clarified endorsement requirements for another. Rick explained processing timelines, confirmed no forms were needed for the endorsement, and noted potential premium neutrality. The call concluded with mutual understanding and holiday wishes.",
+  "_model": "qwen3:14b",
+  "_eval_count": 247,
+  "_total_duration_ms": 40604,
+  "_source_file": "transcripts/exten-105-+13365952852-20251125-105220-1764085940.1069.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1878
+}

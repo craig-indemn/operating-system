@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "N/A",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Standard voicemail greeting played with no substantive conversation. Caller did not engage in dialogue or request assistance.",
+  "_model": "qwen3:14b",
+  "_eval_count": 73,
+  "_total_duration_ms": 19441,
+  "_source_file": "transcripts/in-+13365913091-+19084838969-20251124-123810-1764005890.3472.txt",
+  "_direction": "inbound",
+  "_char_count": 60
+}

@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Julia sought assistance to obtain a business insurance quote for her fitness instructor work, specifically requesting a cheaper alternative to her current provider (K and K) due to high costs.",
+  "resolution_steps": [
+    "Jessica confirmed Julia's need for general liability insurance for her fitness instructor business.",
+    "Asked for business details: business name (none, personal), location (Turkey Hill Road), and annual revenue (~$10k).",
+    "Provided a quote for a basic general liability policy at $250/year.",
+    "Noted Julia's current insurance with K and K and clarified she could keep her existing policy if the new quote wasn't better."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of business insurance types (general liability, property coverage).",
+    "Ability to assess risk based on revenue and claims history.",
+    "Quote generation process for small businesses with low revenue."
+  ],
+  "systems_referenced": [
+    "Alliance Insurance systems (for pulling existing insurance records and generating quotes)"
+  ],
+  "summary": "Jessica from Alliance Insurance provided Julia with a $250/year general liability insurance quote for her fitness instructor business. After discussing details like revenue and claims history, Julia decided to keep her current insurance but appreciated the alternative option.",
+  "_model": "qwen3:14b",
+  "_eval_count": 282,
+  "_total_duration_ms": 47170,
+  "_source_file": "transcripts/out-3367037160-106-20250812-114533-1755013533.4615.txt",
+  "_direction": "outbound",
+  "_char_count": 3278
+}

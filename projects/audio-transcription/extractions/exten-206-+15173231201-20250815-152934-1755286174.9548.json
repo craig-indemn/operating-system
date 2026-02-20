@@ -1,0 +1,25 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Christy from Auto Owners is following up on a renewal review for the M5 Group, inquiring about updates on building renovations post-fire, fire extinguisher status, and a handrail compliance issue.",
+  "resolution_steps": [
+    "Jeff confirms three of four tenants have moved back into the M5 Group building, with the fourth expected by month-end.",
+    "He notes fire extinguishers are in place but highlights a pending handrail issue in the rear stairway, which Stan (M5 employee) is hesitant to address due to city code concerns.",
+    "Jeff agrees to send photos of fire extinguishers and follow up on occupant and step compliance issues.",
+    "He commits to pushing the renewal forward after confirming the current status."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Post-fire building renovation compliance",
+    "Fire safety regulations (extinguishers, handrails)",
+    "Insurance renewal processes",
+    "Navigating municipal code challenges for older buildings"
+  ],
+  "systems_referenced": [],
+  "summary": "Christy from Auto Owners discusses the M5 Group's insurance renewal with Jeff, updating on building renovations post-fire. Three tenants have returned, fire extinguishers are installed, but a handrail issue remains unresolved due to city code concerns. Jeff agrees to send photos and follow up on compliance matters before finalizing the renewal.",
+  "_model": "qwen3:14b",
+  "_eval_count": 306,
+  "_total_duration_ms": 56426,
+  "_source_file": "transcripts/exten-206-+15173231201-20250815-152934-1755286174.9548.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3641
+}

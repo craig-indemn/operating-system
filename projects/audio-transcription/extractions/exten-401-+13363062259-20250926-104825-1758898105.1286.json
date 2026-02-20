@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Henry is addressing a premium increase from Northwest Farmers, verifying his insurance history with Travelers, and confirming details about a roof replacement from 2014 to resolve policy issues.",
+  "resolution_steps": [
+    "Heather explains the $115 premium increase due to an insurance score 'no hit' on Henry's credit.",
+    "Henry agrees to accept the increase.",
+    "Heather verifies Henry's current insurance carrier (Travelers) and confirms policy details (number: 614954343-6331, effective dates: December 2014).",
+    "Discusses roof replacement in 2014 and checks for roof damage.",
+    "Mentions need to contact mortgage company (Lakeside/M& T) for documentation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance scoring and credit impact on premiums",
+    "Policy verification processes",
+    "Roof replacement timelines and coverage implications",
+    "Mortgage company documentation requirements"
+  ],
+  "systems_referenced": [
+    "Northwest Farmers (insurance carrier)",
+    "Travelers (current carrier)",
+    "Lakeside/M& T (mortgage company)"
+  ],
+  "summary": "Henry discusses a premium increase with Heather, confirms his Travelers policy details, and addresses roof replacement history. Heather verifies information and notes the need to contact his mortgage company. The call remains open for further resolution.",
+  "_model": "qwen3:14b",
+  "_eval_count": 323,
+  "_total_duration_ms": 48138,
+  "_source_file": "transcripts/exten-401-+13363062259-20250926-104825-1758898105.1286.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3988
+}

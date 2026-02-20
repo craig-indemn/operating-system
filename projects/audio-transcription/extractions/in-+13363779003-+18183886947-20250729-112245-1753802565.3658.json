@@ -1,0 +1,21 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wishes to cancel a motorcycle insurance policy because they sold the motorcycle.",
+  "resolution_steps": [
+    "Agent acknowledges the cancellation request.",
+    "Agent offers to transfer the call to another agent to process the cancellation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Cancellation process for motorcycle policies",
+    "Call transfer procedures"
+  ],
+  "systems_referenced": [],
+  "summary": "A caller requested cancellation of a motorcycle insurance policy after selling the vehicle. The agent acknowledged the request and offered to transfer the call to an agent who can process the cancellation immediately.",
+  "_model": "qwen3:14b",
+  "_eval_count": 145,
+  "_total_duration_ms": 21005,
+  "_source_file": "transcripts/in-+13363779003-+18183886947-20250729-112245-1753802565.3658.txt",
+  "_direction": "inbound",
+  "_char_count": 348
+}

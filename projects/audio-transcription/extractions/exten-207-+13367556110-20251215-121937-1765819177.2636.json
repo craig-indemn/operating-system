@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "German seeks guidance on adding a new SUV purchased under NC Steel Buildings to his insurance policy, clarifying whether it can be covered under a personal policy or must remain on the commercial policy, and inquiring about potential costs and implications.",
+  "resolution_steps": [
+    "Cody explains that vehicles purchased under a company name (NC Steel) must be added to the commercial auto policy, not a personal one.",
+    "Discusses German's use of the SUV for both business (job sites, errands) and personal purposes, confirming it qualifies as a private passenger vehicle under the commercial policy.",
+    "Addresses German's concern about separating the SUV from existing policies, clarifying that the commercial policy is required due to the company name.",
+    "Agrees to request vehicle details (year, make, model, VIN) and confirms the wife is a policy driver.",
+    "Mentions the need to contact the underwriter to assess whether the auto line can be dropped while retaining other coverage (general liability, workers' comp).",
+    "Reviews current policy details, noting existing coverage for three trucks and three trailers with a $10,100 annual premium."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Commercial auto insurance requirements for company-owned vehicles",
+    "Policy structure differentiation (personal vs. commercial)",
+    "Handling of legal claims and their impact on insurance coverage",
+    "Premium calculation for multi-vehicle commercial policies"
+  ],
+  "systems_referenced": [
+    "Policy database (reviewing current coverage details)",
+    "Underwriting system (to assess policy adjustments)"
+  ],
+  "summary": "German inquires about adding a new SUV to his insurance policy, purchased under NC Steel Buildings. Cody clarifies that the vehicle must be added to the commercial auto policy due to the company name, despite mixed personal/business use. The discussion includes reviewing existing policy details, addressing a prior accident claim, and planning to consult the underwriter about potential policy adjustments. Current premiums for three trucks and trailers are noted at $10,100 annually.",
+  "_model": "qwen3:14b",
+  "_eval_count": 444,
+  "_total_duration_ms": 61978,
+  "_source_file": "transcripts/exten-207-+13367556110-20251215-121937-1765819177.2636.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 8773
+}

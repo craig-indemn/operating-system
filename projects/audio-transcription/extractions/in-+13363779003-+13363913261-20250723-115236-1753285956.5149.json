@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Cassandra Mitchell contacted Alliance Insurance to resolve confusion about a notice from her landlord stating her renter's insurance had expired, and to clarify the policy status and payment details.",
+  "resolution_steps": [
+    "Agent confirmed Cassandra's renter's policy was still active.",
+    "Agent explained the $127.50 payment was due on August 10th and auto-pay was set up.",
+    "Cassandra requested to forward the landlord's notice to Alliance's support email for documentation.",
+    "Agent provided the support email address (support@allianceinsurance.com) and confirmed the email would be sent to the team.",
+    "Agent sent the email and confirmed receipt with Cassandra."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Policy status verification",
+    "Auto-pay processing timelines",
+    "Support email procedures for documentation sharing"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance support email system"
+  ],
+  "summary": "Cassandra Mitchell contacted Alliance Insurance to address a landlord notice claiming her renter's insurance had expired. The agent clarified the policy was active, explained the upcoming auto-pay, and facilitated forwarding the notice to the support team via email. The call concluded with confirmation that the email was sent and the issue resolved.",
+  "_model": "qwen3:14b",
+  "_eval_count": 281,
+  "_total_duration_ms": 37083,
+  "_source_file": "transcripts/in-+13363779003-+13363913261-20250723-115236-1753285956.5149.txt",
+  "_direction": "inbound",
+  "_char_count": 1748
+}

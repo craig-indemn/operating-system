@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Briefly request to speak with Cody, no specific issue mentioned",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Very short call where caller (Amanda) requests to speak with Cody but no substantive conversation occurs. The call appears to be a transfer or hold with no meaningful interaction.",
+  "_model": "qwen3:14b",
+  "_eval_count": 101,
+  "_total_duration_ms": 25966,
+  "_source_file": "transcripts/in-+13367861133-+13363265206-20250825-153108-1756150268.12431.txt",
+  "_direction": "inbound",
+  "_char_count": 250
+}

@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Anchored Medlock, needs an endorsement page with both himself and his son Julian listed as drivers for a dealership transaction, as the vehicle will be transferred to his son's name.",
+  "resolution_steps": [
+    "Brandi explains that the dealership typically uses the binder as is since the caller is the policy owner.",
+    "Clarifies that transferring ownership to Julian requires making him a named insured, which cannot be done immediately due to a pending 24-48 hour policy change.",
+    "Offers to create a new binder with both names and the lienholder (JP Morgan Chase Bank) for immediate use.",
+    "Agrees to follow up on formalizing Julian as a named insured after the pending change is processed."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance policy endorsement processes",
+    "Dealership document requirements",
+    "Named insured vs. driver distinctions",
+    "Lienholder documentation protocols"
+  ],
+  "systems_referenced": [
+    "Binder documents",
+    "Policy processing system (implied)"
+  ],
+  "summary": "Anchored Medlock requested an endorsement document for a dealership transaction involving vehicle ownership transfer to his son. Brandi explained the need for a new binder with both names and the lienholder, while noting the 24-48 hour delay for formal ownership changes. The call concluded with Brandi agreeing to send the binder and follow up on the named insured process.",
+  "_model": "qwen3:14b",
+  "_eval_count": 314,
+  "_total_duration_ms": 47135,
+  "_source_file": "transcripts/exten-112-+19196415344-20251114-151804-1763151484.8183.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 2855
+}

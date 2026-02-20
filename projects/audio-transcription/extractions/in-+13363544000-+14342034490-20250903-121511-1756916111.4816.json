@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Request to speak with Corbin",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Brief inbound call where caller requested to speak with Corbin. Agent acknowledged and attempted to transfer, but no further details or resolution were discussed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 88,
+  "_total_duration_ms": 23138,
+  "_source_file": "transcripts/in-+13363544000-+14342034490-20250903-121511-1756916111.4816.txt",
+  "_direction": "inbound",
+  "_char_count": 201
+}

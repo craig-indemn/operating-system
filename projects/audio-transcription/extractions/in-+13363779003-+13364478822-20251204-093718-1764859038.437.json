@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller wanted to speak with Holly Moore at Alliance Insurance but was informed she was unavailable until 10:30 AM.",
+  "resolution_steps": [
+    "Agent informed caller that Holly Moore was unavailable until 10:30 AM.",
+    "Agent offered to leave a message for Holly or direct the caller to her voicemail."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Agent availability and scheduling",
+    "Voicemail procedures"
+  ],
+  "systems_referenced": [
+    "Voicemail system"
+  ],
+  "summary": "The caller attempted to reach Holly Moore but was informed she was unavailable. The agent offered to leave a message or direct the caller to voicemail. The call concluded with the caller agreeing to leave a message.",
+  "_model": "qwen3:14b",
+  "_eval_count": 183,
+  "_total_duration_ms": 51271,
+  "_source_file": "transcripts/in-+13363779003-+13364478822-20251204-093718-1764859038.437.txt",
+  "_direction": "inbound",
+  "_char_count": 507
+}

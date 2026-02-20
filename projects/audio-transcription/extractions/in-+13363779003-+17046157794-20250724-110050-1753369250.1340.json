@@ -1,0 +1,22 @@
+{
+  "is_substantive": true,
+  "caller_intent": "David Butler is seeking assistance with obtaining homeowner's insurance, clarifying he does not currently have a policy with Alliance Insurance but has Auto insurance with them.",
+  "resolution_steps": [
+    "Agent asked if David has a policy with Alliance Insurance.",
+    "David confirmed he has Auto insurance but no homeowner's policy.",
+    "Agent offered to transfer David to an agent specializing in homeowner's insurance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance product types (Auto vs. Homeowner's)",
+    "Call transfer procedures for specialty insurance lines"
+  ],
+  "systems_referenced": [],
+  "summary": "David Butler contacted Alliance Insurance to inquire about homeowner's insurance, revealing he has Auto insurance with the agency. The agent acknowledged his Auto policy and offered to connect him with a specialist for homeowner's insurance needs.",
+  "_model": "qwen3:14b",
+  "_eval_count": 196,
+  "_total_duration_ms": 34940,
+  "_source_file": "transcripts/in-+13363779003-+17046157794-20250724-110050-1753369250.1340.txt",
+  "_direction": "inbound",
+  "_char_count": 420
+}

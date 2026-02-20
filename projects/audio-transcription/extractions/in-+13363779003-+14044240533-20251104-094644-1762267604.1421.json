@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller requested assistance with changing the mortgagee on an insurance policy, specifically removing the current Mare Safe mortgage and transferring it to the previous mortgagee.",
+  "resolution_steps": [
+    "Agent Brandy confirmed the caller's status as the insured and requested the policy number.",
+    "Caller provided policy number 5394503102 for Teresa and George Taylor.",
+    "Agent verified the current mortgagee (Mare Safe) and explained the need to identify the new mortgagee.",
+    "Caller admitted they did not know the new mortgagee and were instructed to contact the policyholder for this information."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Mortgagee change procedures in insurance policies",
+    "Policy number verification process",
+    "Handling incomplete information during claims or policy updates"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance policy database (implied through policy number lookup)"
+  ],
+  "summary": "A caller requested assistance with updating a mortgagee on an insurance policy, providing the policy number and current mortgagee details. The agent explained that the new mortgagee information must be obtained from the policyholder, and the call concluded with the caller acknowledging this requirement.",
+  "_model": "qwen3:14b",
+  "_eval_count": 273,
+  "_total_duration_ms": 46445,
+  "_source_file": "transcripts/in-+13363779003-+14044240533-20251104-094644-1762267604.1421.txt",
+  "_direction": "inbound",
+  "_char_count": 746
+}

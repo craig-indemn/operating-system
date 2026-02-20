@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Mike Bailey seeks assistance in adjusting a Travelers insurance quote for a customer whose payment has increased due to tax hikes, aiming to reduce it below $1,400 to retain the client.",
+  "resolution_steps": [
+    "Corbin requests customer details (names, DOB, address) to access the Travelers binder.",
+    "Discusses computer issues delaying access to the appraisal and roof age information.",
+    "Reviews mortgage report to confirm credit scores (mid-600s) and payment history.",
+    "Analyzes Travelers binder to assess current coverage (e.g., deductible, replacement cost) and potential adjustments.",
+    "Considers modifying deductible or coverage limits to lower the annual payment."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance policy adjustments (deductibles, coverage limits)",
+    "Travelers' specific requirements (replacement cost, dwelling coverage)",
+    "Credit score impact on insurance rates",
+    "Handling technical issues with policy documents"
+  ],
+  "systems_referenced": [
+    "Travelers binder system",
+    "Mortgage report database",
+    "Computer system for accessing appraisals and policy details"
+  ],
+  "summary": "Mike Bailey requests help reducing a Travelers insurance quote for a customer facing increased payments due to taxes. Corbin gathers details, reviews the binder, and discusses potential adjustments like deductible changes. The call highlights technical delays and policy specifics, with resolution pending further analysis.",
+  "_model": "qwen3:14b",
+  "_eval_count": 320,
+  "_total_duration_ms": 43811,
+  "_source_file": "transcripts/exten-409-+13364134949-20250814-110139-1755183699.1923.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4166
+}

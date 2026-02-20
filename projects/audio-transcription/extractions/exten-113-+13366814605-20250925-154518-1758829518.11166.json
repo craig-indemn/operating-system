@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Charlie Moore wanted to confirm whether Gary received his email regarding a claim and inquire about the insurance company's next steps.",
+  "resolution_steps": [
+    "Gary confirmed he received the email and forwarded it to the insurance company.",
+    "Gary explained the insurance company would contact Charlie if further information was needed.",
+    "Charlie expressed gratitude and ended the conversation."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance claims process",
+    "Communication protocols between agents and carriers"
+  ],
+  "systems_referenced": [
+    "Insurance company's internal claim handling system"
+  ],
+  "summary": "Charlie Moore confirmed his email was received by Gary, who assured him it was forwarded to the insurance company. Gary indicated the carrier would reach out if additional information was required. The conversation concluded with mutual thanks.",
+  "_model": "qwen3:14b",
+  "_eval_count": 190,
+  "_total_duration_ms": 27878,
+  "_source_file": "transcripts/exten-113-+13366814605-20250925-154518-1758829518.11166.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 587
+}

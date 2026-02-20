@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller (Helen) intends to cancel her home and auto insurance policies due to relocating to a new state and dissatisfaction with the home insurance cost. She also seeks clarification on refund processes for canceled policies.",
+  "resolution_steps": [
+    "Agent (Julia) confirms the caller's intent to cancel home and auto insurance policies effective immediately.",
+    "Discusses refund procedures, noting that refunds will be pro-rated and applied back to the original payment method (American Express) or mailed as a check.",
+    "Reassures the caller that the new insurance provider offers comparable or better coverage at a lower cost.",
+    "Confirms cancellation dates and ensures the caller understands the refund timeline."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance cancellation procedures",
+    "Refund policies for canceled policies",
+    "Understanding of home vs. auto insurance cost structures",
+    "Carrier-specific refund processing (e.g., American Express)"
+  ],
+  "systems_referenced": [
+    "Carrier refund system",
+    "Payment processing (American Express)"
+  ],
+  "summary": "Helen is canceling her home and auto insurance policies due to relocation and cost concerns. Julia confirms the cancellation, explains refund processes, and ensures coverage details. Helen is informed about refund timelines and methods, with further assistance offered.",
+  "_model": "qwen3:14b",
+  "_eval_count": 292,
+  "_total_duration_ms": 48698,
+  "_source_file": "transcripts/exten-401-+13367037160-20251226-105836-1766764716.1323.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 3186
+}

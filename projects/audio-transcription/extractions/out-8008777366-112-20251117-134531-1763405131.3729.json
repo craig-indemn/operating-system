@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Brandy needed assistance retrieving applications for recently issued policies (auto, home, and umbrella) to send them for electronic signatures, as she encountered an error during the process.",
+  "resolution_steps": [
+    "Karen confirmed Brandy was logged into Pin Connect and guided her to access the policy via Penn Plus.",
+    "Karen instructed Brandy to navigate to the 'reports' tab and use the 'manage e-signature' feature to send applications for signatures.",
+    "Karen clarified that the umbrella policy required manual input via the 'deck page' since it didn't automatically download into the system.",
+    "Brandy confirmed she completed the process for all policies and thanked Karen."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of Penn Plus and Pin Connect systems",
+    "Workflow for retrieving and sending policy applications for e-signature",
+    "Differentiation between policy types (auto, home, umbrella) and their processing behaviors"
+  ],
+  "systems_referenced": [
+    "Penn Plus",
+    "Pin Connect",
+    "deck page (manual input interface)"
+  ],
+  "summary": "Brandy from Alliance Insurance sought help retrieving applications for recently issued policies after encountering an error. Karen guided her through accessing the policies in Penn Plus, using the e-signature feature, and manually handling the umbrella policy. Brandy successfully completed the process and confirmed she had all necessary information.",
+  "_model": "qwen3:14b",
+  "_eval_count": 308,
+  "_total_duration_ms": 38615,
+  "_source_file": "transcripts/out-8008777366-112-20251117-134531-1763405131.3729.txt",
+  "_direction": "outbound",
+  "_char_count": 3129
+}

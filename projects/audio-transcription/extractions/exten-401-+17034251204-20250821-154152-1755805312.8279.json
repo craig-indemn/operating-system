@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Waquisha is assisting Nicole Baker in resolving an insurance payment issue by requesting a physical bill to process a refund and attempting to adjust escrow settings, despite lender restrictions.",
+  "resolution_steps": [
+    "Heather confirms client details (Nicole Baker) and property information (27330 Sanford, NC).",
+    "Heather explains the need for a physical bill to process the refund.",
+    "Waquisha provides her email (W.Smith@CUMortgage.net) for communication.",
+    "Heather clarifies that the lender (Civic) prohibits changing escrow status due to loan conversion policies.",
+    "Heather explains escrow mechanics, emphasizing it functions like a savings account for taxes/insurance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Escrow account operations and how they relate to insurance payments",
+    "Lender-specific policies (Civic's restrictions on escrow adjustments)",
+    "Insurance refund processes requiring physical bills"
+  ],
+  "systems_referenced": [
+    "CUMortgage.net (email system)",
+    "Civic (lender/loan servicer)"
+  ],
+  "summary": "Waquisha from Kuma discusses Nicole Baker's insurance payment issue with Heather at Alliance Insurance. Heather confirms the need for a physical bill to process a refund but explains Civic's policy prevents adjusting escrow status. The conversation clarifies escrow mechanics and highlights lender restrictions, requiring further follow-up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 323,
+  "_total_duration_ms": 52353,
+  "_source_file": "transcripts/exten-401-+17034251204-20250821-154152-1755805312.8279.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 4187
+}

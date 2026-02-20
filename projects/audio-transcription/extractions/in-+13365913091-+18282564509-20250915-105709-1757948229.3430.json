@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unknown (no meaningful conversation occurred)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Brief inbound call where the agent greeted the caller and attempted to transfer them to Chase. No substantive conversation or issue resolution occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 85,
+  "_total_duration_ms": 21694,
+  "_source_file": "transcripts/in-+13365913091-+18282564509-20250915-105709-1757948229.3430.txt",
+  "_direction": "inbound",
+  "_char_count": 168
+}

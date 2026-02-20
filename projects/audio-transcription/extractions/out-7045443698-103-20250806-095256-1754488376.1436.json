@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Not applicable (automated message, no caller interaction)",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Automated message informing caller that the underwriter is unavailable and offering to leave a message or press 1. No substantive conversation occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 91,
+  "_total_duration_ms": 18518,
+  "_source_file": "transcripts/out-7045443698-103-20250806-095256-1754488376.1436.txt",
+  "_direction": "outbound",
+  "_char_count": 198
+}

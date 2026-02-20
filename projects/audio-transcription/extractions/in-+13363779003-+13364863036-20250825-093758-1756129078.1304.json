@@ -1,0 +1,24 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Confirm that a home insurance invoice was paid by the mortgage lender (Truvises) and refer a friend for car insurance assistance.",
+  "resolution_steps": [
+    "Agent checked the payment status for the home insurance invoice.",
+    "Confirmed the payment was processed on the 11th of the month by Truvises.",
+    "Accepted the referral for the caller's friend seeking car insurance."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of escrow processes and mortgage lender payment workflows",
+    "Access to payment processing systems to verify insurance payments"
+  ],
+  "systems_referenced": [
+    "Alliance Insurance's internal payment tracking system"
+  ],
+  "summary": "Melchor confirmed his home insurance payment was handled by Truvises and referred a friend for car insurance assistance. The agent verified the payment status and agreed to help the referred individual. The call concluded with both parties satisfied.",
+  "_model": "qwen3:14b",
+  "_eval_count": 212,
+  "_total_duration_ms": 28175,
+  "_source_file": "transcripts/in-+13363779003-+13364863036-20250825-093758-1756129078.1304.txt",
+  "_direction": "inbound",
+  "_char_count": 1072
+}

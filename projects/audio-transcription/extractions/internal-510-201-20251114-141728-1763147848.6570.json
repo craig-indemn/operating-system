@@ -1,0 +1,30 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller needs to change the insurance coverage on two vehicles (a 2019 Cruz and a Silverado) from current coverage to liability-only before making a payment.",
+  "resolution_steps": [
+    "Agent checks the customer's account to review current coverage and premium details.",
+    "Identifies that Heather previously worked on the quote but is unavailable, so agent decides to proceed independently.",
+    "Calculates new premium after switching both vehicles to liability-only (new total: $793.96, down from $717.64).",
+    "Explains that the system needs time to process the change and will update by Monday.",
+    "Estimates a partial payment of $426.64 (based on subtracting the $291 credit from the original $717.64) as a temporary solution.",
+    "Advises customer to wait until Monday for final confirmation of the updated premium and payment amount."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Insurance policy adjustments (specifically liability coverage changes)",
+    "Premium calculation logic for Auto Owners insurance",
+    "System limitations regarding pending updates and grace periods",
+    "Customer service protocols for partial payments during policy changes"
+  ],
+  "systems_referenced": [
+    "Auto Owners insurance system",
+    "Internal account management portal"
+  ],
+  "summary": "An agent assists a customer in adjusting their insurance coverage to liability-only on two vehicles. The agent calculates the new premium, explains the need to wait for system updates, and suggests a temporary partial payment. The resolution is pending system processing, with final confirmation expected by Monday.",
+  "_model": "qwen3:14b",
+  "_eval_count": 359,
+  "_total_duration_ms": 47264,
+  "_source_file": "transcripts/internal-510-201-20251114-141728-1763147848.6570.txt",
+  "_direction": "internal",
+  "_char_count": 3744
+}

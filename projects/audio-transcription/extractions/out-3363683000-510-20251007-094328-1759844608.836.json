@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Tracy from Alliance Insurance aimed to follow up about a potential insurance claim and requested a callback or email contact.",
+  "resolution_steps": [
+    "Agent informed recipient that Johnny was unavailable and directed them to leave a voicemail.",
+    "Tracy introduced herself, mentioned the purpose of the call (claim follow-up), and provided her phone number.",
+    "Tracy offered to send an email as an alternative contact method."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Insurance claims process",
+    "Customer communication protocols",
+    "Voicemail and email follow-up procedures"
+  ],
+  "systems_referenced": [
+    "Voicemail system",
+    "Email client"
+  ],
+  "summary": "Tracy from Alliance Insurance attempted to reach a client about a potential claim but was directed to voicemail. She left a message with her contact details and offered an email alternative. The call ended with the client instructed to callback or respond via email.",
+  "_model": "qwen3:14b",
+  "_eval_count": 220,
+  "_total_duration_ms": 37183,
+  "_source_file": "transcripts/out-3363683000-510-20251007-094328-1759844608.836.txt",
+  "_direction": "outbound",
+  "_char_count": 720
+}

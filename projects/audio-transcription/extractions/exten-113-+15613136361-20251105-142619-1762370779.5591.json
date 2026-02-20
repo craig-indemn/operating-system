@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Unclear, appears to be a fragmented follow-up on an unspecified task",
+  "resolution_steps": [],
+  "outcome": "callback_needed",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "Fragmented extension transfer with no clear purpose or resolution. Caller apologizes for being unavailable and promises to follow up, but no specific task or issue is identified.",
+  "_model": "qwen3:14b",
+  "_eval_count": 100,
+  "_total_duration_ms": 24854,
+  "_source_file": "transcripts/exten-113-+15613136361-20251105-142619-1762370779.5591.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 513
+}

@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Alan wanted to resolve an overdue payment related to an audit invoice to avoid collections and ensure proper payment processing.",
+  "resolution_steps": [
+    "Anna confirmed the invoice was sent via third-party billing (Ascend) and asked if Alan received it.",
+    "Alan confirmed he saw the invoice but was behind on payments due to a new bookkeeper.",
+    "Anna assured him the payment process was straightforward and offered assistance if issues arose.",
+    "Alan agreed to pay $20,000 immediately."
+  ],
+  "outcome": "resolved",
+  "knowledge_required": [
+    "Understanding of third-party billing processes (Ascend)",
+    "Procedures for handling overdue payments and collections",
+    "Payment workflows for audit invoices"
+  ],
+  "systems_referenced": [
+    "Ascend (third-party billing system)"
+  ],
+  "summary": "Anna from Alliance Insurance contacted Alan to address an overdue audit payment invoice sent via Ascend. Alan confirmed receipt and agreed to pay $20,000 immediately to avoid collections. The agent ensured the process was straightforward and offered further assistance if needed.",
+  "_model": "qwen3:14b",
+  "_eval_count": 240,
+  "_total_duration_ms": 43650,
+  "_source_file": "transcripts/out-12142440302-302-20251006-113531-1759764931.3569.txt",
+  "_direction": "outbound",
+  "_char_count": 1099
+}

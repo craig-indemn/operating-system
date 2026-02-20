@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Inform Alliance Insurance Services about the denial of Shelton Stevens' claim related to a long-term toilet leak, explaining the reason for denial and ensuring alignment between agencies.",
+  "resolution_steps": [
+    "Agent confirmed the claim details (policyholder: Shelton Stevens, policy number provided, claim type: toilet leak from wax ring).",
+    "Explained denial reason: long-term gradual leakage excluded under policy terms.",
+    "Noted that customer was informed of the denial and instructed to contact for updates on inspection/mitigation.",
+    "Agreed to document the interaction and relay claim status to relevant parties."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance claim denial criteria for gradual water damage",
+    "Policy language related to excluded perils",
+    "Claim mitigation/inspection process protocols"
+  ],
+  "systems_referenced": [
+    "Carrier's claim status portal (implied through reference to 'denied at this time')"
+  ],
+  "summary": "Kelsey from State Co Insurance notified Alliance of Shelton Stevens' denied claim due to long-term toilet leak, explaining the exclusion for gradual damage. She confirmed customer was informed and agreed to document the interaction. The call highlights the need for inter-agency communication on claim denials.",
+  "_model": "qwen3:14b",
+  "_eval_count": 282,
+  "_total_duration_ms": 32830,
+  "_source_file": "transcripts/q-300-+13122676161-20251219-140434-1766171074.7110.txt",
+  "_direction": "queue",
+  "_char_count": 1033
+}

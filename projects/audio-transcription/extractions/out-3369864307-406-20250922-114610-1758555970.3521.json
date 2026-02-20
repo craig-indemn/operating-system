@@ -1,0 +1,23 @@
+{
+  "is_substantive": false,
+  "caller_intent": "Agent Jane and Colin from Alliance Insurance attempted to contact Zineda and left a voicemail requesting a callback.",
+  "resolution_steps": [
+    "Call was forwarded to an automated voicemail system.",
+    "Agent left a message with a callback number (336-377-9003)."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Voicemail protocols",
+    "Basic customer communication"
+  ],
+  "systems_referenced": [
+    "Automated voice messaging system"
+  ],
+  "summary": "Outbound call resulted in voicemail. Agent left a message for Zineda requesting a callback at the provided number.",
+  "_model": "qwen3:14b",
+  "_eval_count": 162,
+  "_total_duration_ms": 45148,
+  "_source_file": "transcripts/out-3369864307-406-20250922-114610-1758555970.3521.txt",
+  "_direction": "outbound",
+  "_char_count": 502
+}

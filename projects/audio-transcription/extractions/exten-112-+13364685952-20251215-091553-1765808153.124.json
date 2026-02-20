@@ -1,0 +1,28 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Chris Bryant wants to update his insurance policy to liability-only coverage, pay the premium in full, cancel an existing policy, and obtain necessary documents electronically.",
+  "resolution_steps": [
+    "Brandy confirms the policy update to liability-only coverage.",
+    "Processes payment via credit card (provided by caller).",
+    "Informs caller that the new policy will be issued and documents sent by email.",
+    "Schedules cancellation form for the old policy to be sent by end-of-day.",
+    "Confirms Sarah's last name change to Bryant on the new policy."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Policy modification procedures",
+    "Payment processing methods",
+    "Document generation and electronic signing workflows",
+    "Policy cancellation protocols"
+  ],
+  "systems_referenced": [
+    "email (for document delivery)"
+  ],
+  "summary": "Chris Bryant works with Brandy to update his insurance coverage to liability-only, make a full payment via credit card, and cancel an existing policy. Brandy confirms she'll issue the new policy, process payment, and send documents and cancellation forms electronically. The call concludes with confirmation of next steps and document delivery timelines.",
+  "_model": "qwen3:14b",
+  "_eval_count": 262,
+  "_total_duration_ms": 40011,
+  "_source_file": "transcripts/exten-112-+13364685952-20251215-091553-1765808153.124.txt",
+  "_direction": "extension_transfer",
+  "_char_count": 1972
+}

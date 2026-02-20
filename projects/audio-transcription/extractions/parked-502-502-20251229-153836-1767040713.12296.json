@@ -1,0 +1,27 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller intended to make a payment of $717.56 and check if another policy (referred to as 'foremost') had a pending renewal or payment due.",
+  "resolution_steps": [
+    "Agent confirmed the payment of $717.56 was processed successfully from the caller's checking account.",
+    "Agent informed the caller an email from Auto Owners would confirm the payment.",
+    "Agent checked the 'foremost' policy and identified a due date of February 13.",
+    "Agent assured the caller there were no other immediate payments due."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Payment processing workflows",
+    "Policy renewal tracking",
+    "Insurance carrier communication protocols (Auto Owners)"
+  ],
+  "systems_referenced": [
+    "Auto Owners (insurance carrier)",
+    "Internal policy management system"
+  ],
+  "summary": "Agent assisted caller with processing a $717.56 payment and checking a 'foremost' policy's due date (February 13). Payment confirmation email was promised, and no other immediate payments were found. The caller expressed gratitude and ended the conversation.",
+  "_model": "qwen3:14b",
+  "_eval_count": 262,
+  "_total_duration_ms": 40805,
+  "_source_file": "transcripts/parked-502-502-20251229-153836-1767040713.12296.txt",
+  "_direction": "parked",
+  "_char_count": 1239
+}

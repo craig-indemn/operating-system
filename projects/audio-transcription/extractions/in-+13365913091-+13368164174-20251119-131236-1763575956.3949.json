@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Brenda is seeking clarification about a discrepancy between her auto insurance bill ($171.42) and a recent Progressive policy change letter stating a lower premium ($79) effective November 3, 2025, and confusion about why she received the bill after her car loan was paid off.",
+  "resolution_steps": [
+    "Agent acknowledges Brenda's confusion about the billing discrepancy and policy change details.",
+    "Agent offers to transfer Brenda to an agent for further assistance."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of auto insurance billing cycles and policy changes",
+    "Ability to identify discrepancies between customer statements and carrier communications"
+  ],
+  "systems_referenced": [
+    "Progressive Auto Insurance (mentioned as carrier in letter)"
+  ],
+  "summary": "Brenda is confused about a recent auto insurance bill and a Progressive policy change letter. The agent acknowledges her concerns and offers to transfer her to an agent for resolution. The call ends with the agent preparing to connect her to an agent.",
+  "_model": "qwen3:14b",
+  "_eval_count": 236,
+  "_total_duration_ms": 38661,
+  "_source_file": "transcripts/in-+13365913091-+13368164174-20251119-131236-1763575956.3949.txt",
+  "_direction": "inbound",
+  "_char_count": 1900
+}

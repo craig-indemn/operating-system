@@ -1,0 +1,26 @@
+{
+  "is_substantive": true,
+  "caller_intent": "The caller, Jana, intended to contact the underwriting department of Penn National Insurance to address a personal policy (likely related to homeowners insurance) and provided an account/policy number for reference.",
+  "resolution_steps": [
+    "Agent Lori greeted the caller and requested her name.",
+    "Lori asked for the account number and policy number.",
+    "Jana provided the numbers (5610370400), which Lori checked in the system.",
+    "Lori informed Jana the number was not valid for Penn National's homeowners policies (which start with 559).",
+    "Jana realized she may have called the wrong company and ended the call."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Penn National Insurance policy number formats (e.g., homeowners starting with 559)",
+    "Ability to check policy numbers in the customer contact center system"
+  ],
+  "systems_referenced": [
+    "customer contact center system"
+  ],
+  "summary": "Jana attempted to contact Penn National Insurance's underwriting department but provided a policy number that did not match the agency's records. The agent identified the mismatch, leading Jana to conclude she had contacted the wrong company. The call ended with Jana apologizing and hanging up.",
+  "_model": "qwen3:14b",
+  "_eval_count": 287,
+  "_total_duration_ms": 49661,
+  "_source_file": "transcripts/out-8008777366-703-20250926-092810-1758893290.417.txt",
+  "_direction": "outbound",
+  "_char_count": 1527
+}

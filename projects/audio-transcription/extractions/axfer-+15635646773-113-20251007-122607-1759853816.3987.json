@@ -1,0 +1,15 @@
+{
+  "is_substantive": false,
+  "caller_intent": "The caller is attempting to renew or obtain a new commercial insurance policy and urgently requests a callback.",
+  "resolution_steps": [],
+  "outcome": "voicemail",
+  "knowledge_required": [],
+  "systems_referenced": [],
+  "summary": "A caller left a voicemail message requesting assistance with a commercial insurance policy renewal, emphasizing urgency and providing contact information. No agent interaction occurred.",
+  "_model": "qwen3:14b",
+  "_eval_count": 97,
+  "_total_duration_ms": 42880,
+  "_source_file": "transcripts/axfer-+15635646773-113-20251007-122607-1759853816.3987.txt",
+  "_direction": "attended_transfer",
+  "_char_count": 447
+}

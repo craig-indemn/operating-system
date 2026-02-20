@@ -1,0 +1,23 @@
+{
+  "is_substantive": true,
+  "caller_intent": "Steve wants to evaluate the cost impact of replacing his Volvo with a Colorado in his insurance policy and adjusting coverage (full coverage on the Colorado, removing liability from the Volvo) to determine if it's cheaper than his son having his own policy.",
+  "resolution_steps": [
+    "Agent confirms Steve's intent to replace the Volvo with the Colorado and adjust coverage.",
+    "Agent clarifies details: Colorado will have full coverage, Volvo will have liability removed.",
+    "Agent agrees to run the numbers and provide a cost comparison.",
+    "Agent commits to calling back with results."
+  ],
+  "outcome": "callback_needed",
+  "knowledge_required": [
+    "Understanding of insurance policy structures (coverage types, vehicle additions/removals)",
+    "Ability to calculate premium changes based on vehicle and coverage adjustments"
+  ],
+  "systems_referenced": [],
+  "summary": "Steve is considering replacing his Volvo with a Colorado and adjusting coverage to reduce costs. The agent will analyze the policy changes and provide a cost comparison. The call ends with the agent promising to follow up with results.",
+  "_model": "qwen3:14b",
+  "_eval_count": 239,
+  "_total_duration_ms": 43036,
+  "_source_file": "transcripts/out-13364072580-113-20251226-090256-1766757776.39.txt",
+  "_direction": "outbound",
+  "_char_count": 1652
+}
