@@ -3,20 +3,19 @@
 End-to-end development of the Indemn agent platform — spanning indemn-platform-v2 (V2 agent builder + Jarvis), the evaluation harness, copilot-dashboard (Angular config UI), and supporting services. Covers debugging, feature development, and refinement of the full stack from agent configuration through evaluation and deployment.
 
 ## Status
-**Session 2026-02-19-d**: Designed and validated the backend/frontend separation plan. Created epic `p0l` with 15 tasks across 3 phases. Design reviewed 3 times against the actual codebase — all corrections applied. Percy-service repo exists on GitHub (empty, ready for code). Architecture bead `5q2` superseded by this epic.
+**Session 2026-02-20-e**: Executed the full backend/frontend separation. Epic `p0l` complete (15/15 tasks closed). percy-service running on dev EC2 (port 8013, healthy). copilot-dashboard-react deployed as frontend-only container. devplatform.indemn.ai working end-to-end. Dev runner set up for percy-service.
 
 **Next session should**:
-1. Read the design doc: `artifacts/2026-02-19-backend-separation-design.md`
-2. Read initial context: `artifacts/2026-02-19-initial-context.md`
-3. Run `bd ready` to see what's unblocked
-4. Start executing epic `p0l` — first task is `p0l.1` (scaffold percy-service repo with backend code)
-5. Background tasks still open: bead `nlw` (P1, Jarvis duplicate creation), stuck eval run from Feb 9
+1. Set up remaining runners: copilot-dashboard-react dev runner, both prod runners
+2. Deploy separation to production (see artifact for steps)
+3. Background tasks still open: bead `nlw` (P1, Jarvis duplicate creation), stuck eval run from Feb 9
+4. Rotate credentials that were in `test_env` (now removed from repo but keys may be compromised)
 
 ## External Resources
 | Resource | Type | Link |
 |----------|------|------|
 | indemn-platform-v2 | GitHub repo + local | indemn-ai/copilot-dashboard-react (org), craig-indemn/indemn-platform-v2 (personal) |
-| percy-service | GitHub repo | indemn-ai/percy-service (empty, awaiting backend code) |
+| percy-service | GitHub repo + local | indemn-ai/percy-service, `/Users/home/Repositories/percy-service` |
 | evaluations | GitHub repo + local | indemn-ai/evaluations, `/Users/home/Repositories/evaluations` |
 | copilot-dashboard | GitHub repo + local | indemn-ai/copilot-dashboard, `/Users/home/Repositories/copilot-dashboard` |
 | bot-service | GitHub repo + local | indemn-ai/bot-service, `/Users/home/Repositories/bot-service` |
@@ -35,6 +34,7 @@ End-to-end development of the Indemn agent platform — spanning indemn-platform
 | 2026-02-19 | [session-c-evals-fix](artifacts/2026-02-19-session-c-evals-fix.md) | Evaluations fix — EVALUATION_SERVICE_URL missing, Jarvis avatar fix, proxy.indemn.ai outage resolution |
 | 2026-02-19 | [backend-separation-design](artifacts/2026-02-19-backend-separation-design.md) | Design for separating Python backend into percy-service repo, keeping React frontend in copilot-dashboard-react |
 | 2026-02-19 | [session-d-separation-planning](artifacts/2026-02-19-session-d-separation-planning.md) | Session summary — designed separation, 3 review rounds, beads epic p0l with 15 tasks |
+| 2026-02-20 | [session-e-separation-execution](artifacts/2026-02-20-session-e-separation-execution.md) | Executed full separation — percy-service live, frontend-only container deployed, runners set up |
 
 ## Decisions
 - 2026-02-19: Project scope is full platform — evals, federation, V2 builder, Jarvis, deployment — all active areas equally.
@@ -47,11 +47,14 @@ End-to-end development of the Indemn agent platform — spanning indemn-platform
 - 2026-02-19: Backend/frontend separation — percy-service gets Python backend, copilot-dashboard-react keeps React frontend. Two containers, nginx proxies to percy-service. Design doc reviewed 3x.
 - 2026-02-19: Jarvis → Percy rename is repo-name only. Code stays "Jarvis" internally.
 - 2026-02-19: uvicorn must run with --workers 1 (background tasks + in-memory state). Current --workers 2 is a latent bug.
+- 2026-02-20: nginx:alpine needs explicit `mkdir -p` for `/var/lib/nginx` and `/var/cache/nginx` before `chown` — these dirs don't exist by default.
+- 2026-02-20: percy-service dev port is 8013 (not 8003) because old combined container still uses 8003. Switch after old container is retired.
+- 2026-02-20: Self-hosted runners are per-repo at `~/actions-runner-<service>/` on EC2, installed as systemd services.
 
 ## Open Questions
 - ~~What architecture choices need to be made? (bead `5q2`)~~ → Superseded by separation epic `p0l`
-- Is the CI/CD runner for copilot-dashboard-react fixable, or should we set up a new one? Craig now has access to set up runners.
+- ~~Is the CI/CD runner for copilot-dashboard-react fixable, or should we set up a new one?~~ → percy-service dev runner set up. copilot-dashboard-react dev runner still needed.
+- ~~`deepagents>=0.2` — is this a private package?~~ → CI build passed, so it resolves. Not a private package.
 - Should `INDEMN_EVALUATION_SERVICE_URL` in dev `.env` be renamed to `EVALUATION_SERVICE_URL` to match the code? Or should the code support both?
 - Stuck evaluation run from Feb 9 (0/40 completed) — clean up or leave?
-- `deepagents>=0.2` — is this a private package? Needs to resolve in percy-service's `uv sync`.
-- `test_env` file in copilot-dashboard-react contains real API keys committed to git — credentials should be rotated.
+- ~~`test_env` file in copilot-dashboard-react contains real API keys committed to git~~ → File removed. Credentials should still be rotated since they were in git history.
