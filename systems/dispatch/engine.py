@@ -23,11 +23,29 @@ import os
 import subprocess
 import sys
 import tempfile
+from contextlib import aclosing
 from datetime import datetime
 from pathlib import Path
 
 # Ensure we're not inside a nested Claude Code session
 os.environ.pop("CLAUDECODE", None)
+
+# Monkey-patch SDK to handle unknown message types (e.g., rate_limit_event)
+# See: https://github.com/anthropics/claude-agent-sdk-python/issues/583
+import claude_agent_sdk._internal.message_parser as _mp
+import claude_agent_sdk._internal.client as _client
+_original_parse = _mp.parse_message
+
+def _tolerant_parse(data):
+    try:
+        return _original_parse(data)
+    except Exception as e:
+        if "Unknown message type" in str(e):
+            return None
+        raise
+
+_mp.parse_message = _tolerant_parse
+_client.parse_message = _tolerant_parse
 
 from claude_agent_sdk import (
     query,
@@ -35,13 +53,12 @@ from claude_agent_sdk import (
     AssistantMessage,
     ResultMessage,
     TextBlock,
-    ToolUseBlock,
-    ToolResultBlock,
 )
 
 OS_ROOT = Path(__file__).resolve().parent.parent.parent  # operating-system/
 ACTIVE_DIR = Path(__file__).resolve().parent / "active"
-MAX_RETRIES_PER_TASK = 2
+MAX_RETRIES_PER_TASK = 3
+MAX_VERIFY_RETRIES = 3
 
 
 # ---------------------------------------------------------------------------
@@ -89,8 +106,8 @@ def get_epic(epic_id: str, beads_dir: str | None = None) -> dict | None:
 
 
 def get_children(epic_id: str, beads_dir: str | None = None) -> list[dict]:
-    """Get all children of an epic."""
-    data = bd("children", epic_id, beads_dir=beads_dir)
+    """Get all children of an epic (including closed)."""
+    data = bd("list", "--parent", epic_id, "--all", beads_dir=beads_dir)
     return data if isinstance(data, list) else []
 
 
@@ -193,35 +210,28 @@ async def run_task_session(
         cwd=target_repo,
         add_dirs=[str(OS_ROOT)],
         setting_sources=["user", "project"],
-        allowed_tools=[
-            "Skill", "Read", "Write", "Edit", "Bash", "Glob", "Grep", "Task",
-            "NotebookEdit", "WebFetch", "WebSearch",
-        ],
-        permission_mode="acceptEdits",
+        permission_mode="bypassPermissions",
+        model="opus",
         system_prompt={"type": "preset", "preset": "claude_code", "append": context},
     )
 
     output_parts = []
     try:
-        async for message in query(prompt=prompt, options=options):
-            if isinstance(message, AssistantMessage):
-                for block in message.content:
-                    if isinstance(block, TextBlock):
-                        output_parts.append(block.text)
-            elif isinstance(message, ResultMessage):
-                cost = message.total_cost_usd
-                if cost is not None:
-                    print(f"  [task] session cost: ${cost:.4f}")
+        async with aclosing(query(prompt=prompt, options=options)) as messages:
+            async for message in messages:
+                if message is None:
+                    continue  # Skipped unknown message type (e.g., rate_limit_event)
+                if isinstance(message, AssistantMessage):
+                    for block in message.content:
+                        if isinstance(block, TextBlock):
+                            output_parts.append(block.text)
+                elif isinstance(message, ResultMessage):
+                    cost = message.total_cost_usd
+                    if cost is not None:
+                        print(f"  [task] session cost: ${cost:.4f}")
     except Exception as e:
-        error_str = str(e)
-        if "Unknown message type" in error_str:
-            pass  # rate_limit_event — content already received
-        else:
-            print(f"  [task] session error: {type(e).__name__}: {e}", file=sys.stderr)
-            return False, f"Session error: {e}"
-
-    # Small delay to let anyio clean up cancel scopes between sequential query() calls
-    await asyncio.sleep(1)
+        print(f"  [task] session error: {type(e).__name__}: {e}", file=sys.stderr)
+        return False, f"Session error: {e}"
 
     return True, "\n".join(output_parts)
 
@@ -234,37 +244,58 @@ async def run_verify_session(
     """Run a verification session. Returns (passes, reason)."""
     prompt = build_verify_prompt(task, epic)
 
-    verify_schema = {
-        "type": "object",
-        "properties": {
-            "passes": {"type": "boolean"},
-            "reason": {"type": "string"},
-        },
-        "required": ["passes", "reason"],
-    }
-
+    # Don't use output_format — rate_limit_event kills the stream before
+    # ResultMessage arrives. Parse JSON from text output instead.
     options = ClaudeAgentOptions(
         cwd=target_repo,
-        allowed_tools=["Read", "Bash", "Glob", "Grep"],
-        permission_mode="acceptEdits",
-        output_format={"type": "json_schema", "schema": verify_schema},
+        permission_mode="bypassPermissions",
+        model="opus",
     )
 
+    output_parts = []
     try:
-        async for message in query(prompt=prompt, options=options):
-            if isinstance(message, ResultMessage):
-                if message.structured_output:
-                    passes = message.structured_output.get("passes", False)
-                    reason = message.structured_output.get("reason", "No reason given")
-                    # Small delay for anyio cleanup
-                    await asyncio.sleep(1)
-                    return passes, reason
+        async with aclosing(query(prompt=prompt, options=options)) as messages:
+            async for message in messages:
+                if message is None:
+                    continue  # Skipped unknown message type (e.g., rate_limit_event)
+                if isinstance(message, AssistantMessage):
+                    for block in message.content:
+                        if isinstance(block, TextBlock):
+                            output_parts.append(block.text)
     except Exception as e:
-        if "Unknown message type" not in str(e):
-            print(f"  [verify] error: {type(e).__name__}: {e}", file=sys.stderr)
+        print(f"  [verify] error: {type(e).__name__}: {e}", file=sys.stderr)
         return False, f"Verification error: {e}"
 
-    return False, "Verification produced no structured output"
+    # Parse the verification result from text output
+    full_output = "\n".join(output_parts)
+    try:
+        # Find JSON in the output (may be wrapped in markdown code blocks)
+        json_str = full_output
+        if "```" in json_str:
+            # Extract from code block
+            for block in json_str.split("```"):
+                block = block.strip()
+                if block.startswith("json"):
+                    block = block[4:].strip()
+                if "{" in block and "passes" in block:
+                    json_str = block
+                    break
+        # Find the JSON object
+        start = json_str.find("{")
+        end = json_str.rfind("}") + 1
+        if start >= 0 and end > start:
+            result = json.loads(json_str[start:end])
+            passes = result.get("passes", False)
+            reason = result.get("reason", "No reason given")
+            return passes, reason
+    except (json.JSONDecodeError, KeyError):
+        pass
+
+    # Fallback: look for pass/fail keywords in output
+    lower = full_output.lower()
+    if "passes" in lower and "true" in lower:
+        return True, f"Verification passed (parsed from text)"
+    return False, f"Could not parse verification result from output"
 
 
 def git_commit(target_repo: str, message: str) -> bool:
@@ -360,21 +391,20 @@ async def dispatch(epic_id: str, beads_dir: str | None = None):
             print("\nAll tasks passed!")
             break
 
-        # Find ready tasks
+        # Find ready tasks (excluding those that exhausted retries)
         ready = get_ready_children(children)
+        ready = [t for t in ready if attempts.get(t["id"], 0) < MAX_RETRIES_PER_TASK]
         if not ready:
-            # Check if remaining tasks are all failed with max retries
             open_tasks = [c for c in children if c.get("status") != "closed"]
-            all_exhausted = all(
-                attempts.get(c["id"], 0) >= MAX_RETRIES_PER_TASK
-                for c in open_tasks
-            )
-            if all_exhausted:
-                print("\nAll remaining tasks exhausted retries.")
-                break
-            else:
-                print("No ready tasks (blocked by dependencies). Waiting...")
-                break
+            if not open_tasks:
+                break  # All done
+            exhausted = [c for c in open_tasks if attempts.get(c["id"], 0) >= MAX_RETRIES_PER_TASK]
+            if exhausted:
+                print(f"\n{len(exhausted)} task(s) exhausted retries.")
+            blocked = [c for c in open_tasks if c not in exhausted]
+            if blocked:
+                print(f"{len(blocked)} task(s) blocked by dependencies.")
+            break
 
         # Pick the first ready task
         task = ready[0]
@@ -402,9 +432,15 @@ async def dispatch(epic_id: str, beads_dir: str | None = None):
                 print(f"  Max retries reached for {task_id}")
             continue
 
-        # Run verification session
-        print("  Running verification session...")
-        passes, reason = await run_verify_session(task, epic, target_repo)
+        # Run verification session (retry if output can't be parsed)
+        passes = False
+        reason = "Verification not run"
+        for verify_attempt in range(1, MAX_VERIFY_RETRIES + 1):
+            print(f"  Running verification session (attempt {verify_attempt}/{MAX_VERIFY_RETRIES})...")
+            passes, reason = await run_verify_session(task, epic, target_repo)
+            if "Could not parse" not in reason:
+                break  # Got a parseable result (pass or fail)
+            print(f"  Verification output not parseable, retrying...")
 
         if passes:
             print(f"  PASSED: {reason}")

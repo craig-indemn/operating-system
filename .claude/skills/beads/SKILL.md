@@ -89,7 +89,8 @@ bd create "Wire into evaluation detail view" \
   --deps "<first-child-id>,<second-child-id>"
 
 # View the epic structure
-bd children <epic-id> --pretty
+bd children <epic-id> --pretty          # Open children only
+bd list --parent <epic-id> --all        # All children including closed
 bd graph <epic-id>
 ```
 
@@ -223,7 +224,7 @@ The path from conversation to autonomous execution:
 
 ```
 1. Work on a project, discuss what needs building
-2. /beads epic → create epic with --repo and --acceptance (backstop)
+2. /beads epic → create epic with --notes "target_repo: /path" and --acceptance (backstop)
 3. Create children under the epic with per-task --acceptance criteria
 4. /beads lint → verify all tasks have acceptance criteria
 5. /dispatch <epic-id> → engine grinds through tasks autonomously
@@ -290,11 +291,16 @@ bd swarm create <epic-id>              # Create parallel swarm from epic
 bd swarm status                        # Swarm progress
 ```
 
+## Gotchas
+
+- **`bd children` only returns open children.** Use `bd list --parent <epic-id> --all` to include closed tasks. This matters when checking dependency resolution — closed tasks won't appear in `bd children` output.
+- **`--repo` routes to a different beads database** (multi-repo feature). It does NOT store the repo as metadata. Use `--notes "target_repo: /path"` instead for dispatch target repos.
+
 ## Conventions
 
 - Always `cd` into the project directory before running `bd` commands
 - Use `--acceptance` on every task destined for dispatch
-- Use `--type epic` + `--repo` for dispatch containers
+- Use `--type epic` + `--notes "target_repo: /path"` for dispatch containers
 - Priority scale: P0 (critical) → P4 (nice-to-have), default P2
 - Use `bd q` for quick capture during conversation, fill in details later
 - Use `--suggest-next` when closing tasks to surface newly unblocked work
