@@ -1,149 +1,371 @@
 ---
 name: onboarding
-description: Set up all tools for your role at Indemn. Checks what's installed, installs what's missing, and verifies authentication. Run this first.
+description: Set up a new team member's entire development environment. Clones repos, installs dependencies, configures credentials, starts services, and verifies everything works. Run this first on any new machine.
+argument-hint: [engineer | executive | sales]
 ---
 
 # Onboarding
 
-Role-based setup for the Indemn Operating System. Detects what's installed, installs what's missing, verifies authentication.
+Full environment setup for Indemn team members. Detects platform, installs prerequisites, clones repos, configures credentials, installs dependencies, starts services, and verifies everything works.
 
 ## CRITICAL: You Are the Installer
 
 **YOU (Claude Code) run every command. DO NOT ask the user to copy-paste commands into their terminal.** You have full Bash access — use it. The user's only jobs are:
 
 1. **Approve** when you ask to run a command (they click Allow)
-2. **Click through browser flows** (Google OAuth, GitHub login) when a command opens their browser
-3. **Provide information** you can't determine yourself (e.g., "where did you save the credentials file?", "what's your email?")
+2. **Click through browser flows** (GitHub login) when a command opens their browser
+3. **Provide files or information** you can't determine yourself (e.g., "download .env.dev from 1Password")
 
-Never say "run this command" or "paste this into your terminal." Instead, just run it. If it needs sudo and fails, explain why and ask them to approve the elevated command.
+Never say "run this command" — just run it.
 
-## What You'll Need From the User
+## Phase 1: Environment Detection
 
-Before starting, here's what each tool requires. Some are fully self-service (you install everything), some need the user to provide a credential or click through a browser flow.
-
-| Tool | What You Do | What the User Does |
-|------|------------|-------------------|
-| Google Workspace (`gog`) | Install binary, load credentials, run auth command | Provides credentials JSON file location, clicks through Google consent in browser |
-| GitHub (`gh`) | Install CLI, run auth command | Clicks through GitHub login in browser |
-| Slack (`slack_sdk`) | Install Python package, write .env | Provides Slack token (or you extract browser token) |
-| Linear (`linearis`) | Install CLI, write .env | Provides API key from Linear settings |
-| Vercel (`vercel`) | Install CLI, run auth command | Clicks through Vercel login in browser |
-| Stripe (`stripe`) | Install CLI, run auth command | Clicks through Stripe login in browser |
-| Postgres (`psql`) | Install client, write connection string to .env | Nothing — connection string is provided |
-| MongoDB (`mongosh`) | Install shell, write connection string to .env | Nothing — connection strings are provided |
-| Airtable (curl) | Write .env | Provides Personal Access Token from Airtable |
-| Apollo (curl) | Write .env | Provides API key (requires paid plan) |
-
-## Step 1: Determine Role
-
-Ask the user their role if not already known:
-- **Engineer**: All tools — slack, google-workspace, linear, github, stripe, airtable, apollo, vercel, postgres, mongodb
-- **Executive**: Core tools — google-workspace, slack, postgres (read-only via meeting-intelligence skill)
-- **Sales**: Customer tools — slack, google-workspace, postgres (read-only via meeting-intelligence skill), apollo
-
-## Step 2: Detect Platform and Check Prerequisites
-
-Run these commands yourself:
+Detect everything about the machine. Run all of these yourself:
 
 ```bash
 echo "=== Platform ==="
-uname -s  # Darwin = macOS, Linux = Linux
-uname -m  # x86_64 or arm64
+uname -s       # Darwin = macOS, Linux = Linux
+uname -m       # arm64 (Apple Silicon), x86_64 (Intel)
+echo "=== Shell ==="
+echo "$SHELL"
+echo "=== Existing Tools ==="
+which brew 2>/dev/null && echo "Homebrew: $(brew --version | head -1)" || echo "Homebrew: NOT INSTALLED"
+which bash && echo "Bash: $(bash --version | head -1)" || echo "Bash: MISSING"
+which node && echo "Node: $(node --version)" || echo "Node: NOT INSTALLED"
+which uv && echo "uv: $(uv --version)" || echo "uv: NOT INSTALLED"
+which gh && echo "gh: $(gh --version | head -1)" || echo "gh: NOT INSTALLED"
+which git && echo "Git: $(git --version)" || echo "Git: NOT INSTALLED"
+which mongosh && echo "mongosh: $(mongosh --version 2>/dev/null)" || echo "mongosh: NOT INSTALLED"
+which psql 2>/dev/null && echo "psql: OK" || (which /opt/homebrew/opt/libpq/bin/psql 2>/dev/null && echo "psql: OK (homebrew path)" || echo "psql: NOT INSTALLED")
 ```
 
+Then ask the user: **"Where would you like your workspace directory?"** (e.g., `~/Repositories`, `~/code`, `~/dev`). Default to `~/Repositories` if they have no preference. Create it if it doesn't exist.
+
+## Phase 2: Prerequisites
+
+Install everything that's missing. Detect platform and use the right commands:
+
+### macOS
+
 ```bash
-echo "=== Prerequisites ==="
-which node && echo "Node.js: OK" || echo "Node.js: MISSING"
-which npm && echo "npm: OK" || echo "npm: MISSING"
-which curl && echo "curl: OK" || echo "curl: MISSING"
-which jq && echo "jq: OK" || echo "jq: MISSING"
-which python3 && echo "Python3: OK" || echo "Python3: MISSING"
-python3 -c "import slack_sdk" 2>/dev/null && echo "slack_sdk: OK" || echo "slack_sdk: MISSING"
+# Homebrew (if missing)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Core tools
+brew install bash node@22 uv gh mongosh
+brew install libpq  # PostgreSQL client
+
+# Link node@22 if needed
+brew link node@22
+
+# Verify bash 4+
+/opt/homebrew/bin/bash --version | head -1
 ```
 
-**Install anything that's missing — do not ask the user to do it:**
-- macOS: `brew install node jq` (if Homebrew is missing, install it: `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`)
-- Linux: `sudo apt update && sudo apt install -y nodejs npm jq python3 python3-pip curl`
+### Linux (Ubuntu/Debian)
 
-## Step 3: Run Status Checks
-
-For each tool in the user's role, run the status check from its skill yourself. Collect results into a summary and show the user:
-
-| Tool | Installed | Authenticated |
-|------|-----------|---------------|
-| Each tool... | Yes/No | Yes/No |
-
-## Step 4: Install Missing Tools
-
-**Run the install commands yourself.** Detect the platform and use the right command:
-
-| Tool | macOS | Linux (Ubuntu/Debian) |
-|------|-------|----------------------|
-| gog (Google Workspace) | `brew install steipete/tap/gogcli` | Download binary from GitHub releases (see `/google-workspace` skill) |
-| linearis (Linear) | `npm install -g linearis` | `npm install -g linearis` |
-| gh (GitHub) | `brew install gh` | `sudo apt install gh` or see [install instructions](https://github.com/cli/cli/blob/trunk/docs/install_linux.md) |
-| stripe | `brew install stripe/stripe-cli/stripe` | Download from https://github.com/stripe/stripe-cli/releases |
-| vercel | `npm install -g vercel` | `npm install -g vercel` |
-| neonctl | `npm install -g neonctl` | `npm install -g neonctl` |
-| psql | `brew install libpq` | `sudo apt install postgresql-client` |
-| mongosh (MongoDB) | `brew install mongosh` | See https://www.mongodb.com/docs/mongodb-shell/install/ |
-| slack_sdk (Python) | `pip3 install slack_sdk` | `pip3 install slack_sdk` |
-
-**Note:** On Linux, if `npm` is not available, install Node.js first: `sudo apt install nodejs npm`
-
-## Step 5: Authenticate
-
-For each tool that needs authentication, **run the commands yourself**. The user only interacts when a browser opens or when you need a credential they must provide.
-
-1. **Google Workspace** — Ask the user: "Do you have a credentials JSON file that was shared with you? Where is it saved?" Then run:
-   - `gog auth credentials set <path-they-gave-you>`
-   - `gog auth add their-email@indemn.ai` — this opens a browser. Tell the user: "A browser window should open. Sign in with your Google account and approve the permissions. Let me know when you're done."
-2. **GitHub** — Run `gh auth login --web`. Tell the user a browser will open for GitHub login.
-3. **Vercel** — Run `vercel login`. Browser flow.
-4. **Stripe** — Run `stripe login`. Browser flow (note: connects to sandbox by default).
-5. **Linear** — Ask the user for their API key (from Linear > Settings > Personal API Keys). Write it to `.env` yourself.
-6. **Airtable** — Ask the user for their PAT. Write it to `.env` yourself.
-7. **MongoDB** — Connection strings are provided. Write `MONGODB_PROD_URI` and `MONGODB_DEV_URI` to `.env` yourself (see `/mongodb` skill).
-8. **Slack** — Ask the user if they have a Slack token. If not, see `/slack` skill for options. Write token(s) to `.env` yourself.
-9. **Apollo** — Ask the user for their API key. Write it to `.env` yourself (requires paid plan).
-
-## Step 6: Set Environment Variables
-
-**Create and configure the .env file yourself.** Do not ask the user to edit files.
-
-Check current state:
 ```bash
-REPO_ROOT=$(git rev-parse --show-toplevel) && [ -f "$REPO_ROOT/.env" ] && echo ".env exists" || echo ".env does not exist"
+sudo apt update
+
+# bash 4+ is pre-installed on modern Linux
+# Node 22
+curl -fsSL https://deb.nodesource.com/setup_22.x | sudo bash -
+sudo apt install -y nodejs
+
+# uv
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# gh CLI
+sudo apt install gh
+
+# mongosh
+# See https://www.mongodb.com/docs/mongodb-shell/install/
+
+# psql
+sudo apt install -y postgresql-client
 ```
 
-If `.env` doesn't exist, create it yourself using the Write tool. Include any credentials collected during Step 5.
-
-Then add the auto-source line to the user's shell rc file. Detect which shell and write it yourself:
+After installing, verify:
 ```bash
-REPO_ROOT=$(git rev-parse --show-toplevel)
-SHELL_RC="$HOME/.bashrc"
-[ "$(basename $SHELL)" = "zsh" ] && SHELL_RC="$HOME/.zshrc"
-if ! grep -q "operating-system/.env" "$SHELL_RC" 2>/dev/null; then
-  echo "[ -f \"$REPO_ROOT/.env\" ] && source \"$REPO_ROOT/.env\"" >> "$SHELL_RC"
-  echo "Added .env sourcing to $SHELL_RC"
+bash --version | head -1
+node --version
+uv --version
+gh --version | head -1
+```
+
+## Phase 3: Repository Setup
+
+### 3a. GitHub Authentication
+
+```bash
+gh auth status
+# If not authenticated:
+gh auth login --web -h github.com
+```
+
+Verify org access:
+```bash
+gh repo list indemn-ai --limit 1 && echo "ORG ACCESS OK" || echo "NO ORG ACCESS - ask admin for invite"
+```
+
+### 3b. Clone Repositories
+
+Clone all platform repos from the `indemn-ai` org into the workspace directory:
+
+```bash
+WORKSPACE="<their chosen workspace directory>"
+cd "$WORKSPACE"
+
+# Core platform services
+REPOS=(
+  "indemn-ai/bot-service"
+  "indemn-ai/copilot-server"
+  "indemn-ai/copilot-dashboard"
+  "indemn-ai/copilot-dashboard-react"
+  "indemn-ai/evaluations"
+  "indemn-ai/Indemn-observatory"
+  "indemn-ai/middleware-socket-service"
+  "indemn-ai/conversation-service"
+  "indemn-ai/kb-service"
+  "indemn-ai/copilot-sync-service"
+  "indemn-ai/point-of-sale"
+  "indemn-ai/voice-service"
+  "indemn-ai/payment-service"
+)
+
+for repo in "${REPOS[@]}"; do
+  name="${repo#*/}"
+  if [ -d "$name" ]; then
+    echo "SKIP: $name (already exists)"
+  else
+    echo "Cloning $repo..."
+    gh repo clone "$repo"
+  fi
+done
+```
+
+### 3c. Clone Operating System
+
+```bash
+cd "$WORKSPACE"
+if [ -d "operating-system" ]; then
+  echo "SKIP: operating-system (already exists)"
+else
+  gh repo clone craig-indemn/operating-system -- -b onboarding
 fi
 ```
 
-## Step 7: Verify Everything
+### 3d. Copy local-dev.sh
 
-Run all status checks again yourself. Print a final summary showing all green, or highlight what still needs attention.
-
-## Step 8: First Commands
-
-Run one test command per tool to confirm end-to-end. **You run these, not the user:**
+The `local-dev.sh` script lives in the operating-system repo but runs from the workspace root:
 
 ```bash
-gog gmail search "newer_than:1d" --max 1 --json
+cp "$WORKSPACE/operating-system/local-dev.sh" "$WORKSPACE/local-dev.sh"
+# Also copy the env template
+cp "$WORKSPACE/operating-system/.env.template" "$WORKSPACE/.env.template" 2>/dev/null || true
 ```
 
-For tools that need .env loaded:
+**Note:** `local-dev.sh` auto-detects directory names — works with both org names (`copilot-dashboard-react`, `Indemn-observatory`) and legacy names (`indemn-platform-v2`, `indemn-observability`).
+
+## Phase 4: Environment Configuration
+
+### 4a. Get .env.dev from 1Password
+
+Ask the user:
+
+> "Download the `.env.dev` file from 1Password (it's in the Engineering vault, named 'Local Dev Environment'). Save it anywhere and tell me where you put it."
+
+Then copy it:
 ```bash
-REPO_ROOT=$(git rev-parse --show-toplevel) && source "$REPO_ROOT/.env" && PYTHONPATH="$REPO_ROOT/lib" python3 -c "from slack_client import get_client; r = get_client().auth_test(); print(f'Slack: {r[\"user\"]}@{r[\"team\"]}')"
+cp "<path they give you>" "$WORKSPACE/.env.dev"
 ```
 
-Report results to the user. If everything passes, tell them they're all set and show them a few example things they can ask you to do.
+If they don't have 1Password access yet, fall back to the template:
+```bash
+cp "$WORKSPACE/.env.template" "$WORKSPACE/.env.dev"
+echo "MANUAL SETUP NEEDED: Edit .env.dev with real credentials"
+```
+
+### 4b. Validate Connections
+
+```bash
+cd "$WORKSPACE"
+/opt/homebrew/bin/bash ./local-dev.sh validate --env=dev
+```
+
+On Linux, use the system bash (which is 4+ by default):
+```bash
+bash ./local-dev.sh validate --env=dev
+```
+
+This checks: MongoDB, Redis, RabbitMQ, API keys, port availability.
+
+### 4c. Shell Configuration (optional)
+
+Add auto-sourcing of the env file to their shell:
+```bash
+SHELL_RC="$HOME/.bashrc"
+[ "$(basename $SHELL)" = "zsh" ] && SHELL_RC="$HOME/.zshrc"
+WORKSPACE_ABS="$(cd "$WORKSPACE" && pwd)"
+if ! grep -q ".env.dev" "$SHELL_RC" 2>/dev/null; then
+  echo "[ -f \"$WORKSPACE_ABS/.env.dev\" ] && source \"$WORKSPACE_ABS/.env.dev\"" >> "$SHELL_RC"
+  echo "Added .env.dev sourcing to $SHELL_RC"
+fi
+```
+
+## Phase 5: Install Dependencies
+
+```bash
+cd "$WORKSPACE"
+
+# Run local-dev.sh setup (installs Node dependencies + sharp fix)
+/opt/homebrew/bin/bash ./local-dev.sh setup
+# Linux: bash ./local-dev.sh setup
+
+# Python services use `uv run` which auto-installs — but pre-sync for faster first start:
+for dir in bot-service evaluations kb-service conversation-service; do
+  if [ -d "$WORKSPACE/$dir" ] && [ -f "$WORKSPACE/$dir/pyproject.toml" ]; then
+    echo "Syncing $dir..."
+    (cd "$WORKSPACE/$dir" && uv sync)
+  fi
+done
+
+# Observatory uses venv instead of uv
+OBSERVATORY_DIR=$(ls -d "$WORKSPACE"/Indemn-observatory "$WORKSPACE"/indemn-observability 2>/dev/null | head -1)
+if [ -n "$OBSERVATORY_DIR" ] && [ -f "$OBSERVATORY_DIR/requirements.txt" ]; then
+  echo "Setting up observatory venv..."
+  (cd "$OBSERVATORY_DIR" && python3 -m venv venv && source venv/bin/activate && pip install -r requirements.txt)
+fi
+```
+
+## Phase 6: Start & Verify
+
+### 6a. Start Services
+
+```bash
+cd "$WORKSPACE"
+# macOS:
+/opt/homebrew/bin/bash ./local-dev.sh start platform --env=dev
+# Linux:
+# bash ./local-dev.sh start platform --env=dev
+```
+
+The `platform` group starts: bot-service (8001), platform-v2 (8003), platform-v2-ui (5173), evaluations (8002).
+
+### 6b. Health Check
+
+Wait for services to start (local-dev.sh does this automatically), then verify:
+
+```bash
+echo "=== Service Health ==="
+curl -sf http://localhost:8001/health && echo "bot-service: OK" || echo "bot-service: FAIL"
+curl -sf http://localhost:8003/health && echo "platform-v2: OK" || echo "platform-v2: FAIL"
+curl -sf http://localhost:8002/health && echo "evaluations: OK" || echo "evaluations: FAIL"
+curl -sf http://localhost:3000/ && echo "copilot-server: OK" || echo "copilot-server: FAIL"
+```
+
+### 6c. Smoke Test
+
+```bash
+# Login via API
+TOKEN=$(curl -s -X POST http://localhost:3000/auth/signin \
+  -H "Content-Type: application/json" \
+  -d '{"email":"support@indemn.ai","password":"nzrjW3tZ9K3YiwtMWzBm"}' \
+  | python3 -c "import sys,json; print(json.load(sys.stdin).get('token','FAILED'))")
+
+if [ "$TOKEN" != "FAILED" ] && [ -n "$TOKEN" ]; then
+  echo "LOGIN: OK (token received)"
+else
+  echo "LOGIN: FAILED (check copilot-server logs)"
+fi
+```
+
+### 6d. Report
+
+Present the user with a summary:
+
+```
+Onboarding Complete!
+
+Services Running:
+  bot-service         http://localhost:8001
+  platform-v2         http://localhost:8003
+  platform-v2-ui      http://localhost:5173
+  evaluations         http://localhost:8002
+
+Dashboard:           http://localhost:4500
+Login:               support@indemn.ai / nzrjW3tZ9K3YiwtMWzBm
+
+Key Commands:
+  ./local-dev.sh status              # Check what's running
+  ./local-dev.sh start <group> --env=dev  # Start a group
+  ./local-dev.sh stop all            # Stop everything
+  ./local-dev.sh logs <service>      # View logs
+  ./local-dev.sh logs combined       # All logs interleaved
+
+Service Groups:
+  minimal   - bot-service + evaluations (agent testing)
+  platform  - bot + platform + evaluations (agent builder)
+  chat      - full chat stack (widget testing)
+  analytics - observability dashboard
+```
+
+## Role-Specific Flows
+
+### Engineer (default)
+
+All six phases. Full repo clone, full service stack.
+
+### Executive
+
+Phases 1-2 only (detect + prerequisites), then:
+- Install only: `gog` (Google Workspace), Slack SDK, `psql`
+- Authenticate Google Workspace (browser flow)
+- Configure `.env` with Postgres connection string (read-only meetings DB)
+- Skip repo cloning, dependency installation, and service startup
+- Verify: `gog gmail search "newer_than:1d" --max 1`
+
+### Sales
+
+Phases 1-2 only, then:
+- Install only: `gog` (Google Workspace), Slack SDK
+- Authenticate Google Workspace
+- Skip everything else
+- Verify: `gog gmail search "newer_than:1d" --max 1`
+
+## Troubleshooting
+
+### "Port already in use"
+```bash
+# Find what's using a port
+lsof -i :<port> -P | grep LISTEN
+# Kill it
+lsof -ti :<port> | xargs kill -9
+```
+
+### "Directory not found" when starting services
+The service directory name may not match. Check `local-dev.sh` output — it auto-detects both org and legacy directory names.
+
+### MongoDB connection fails
+- Check `.env.dev` has the correct `MONGODB_URI`
+- Verify your IP is whitelisted in MongoDB Atlas (Settings → Network Access)
+- Ask admin to add your IP if needed
+
+### Node service won't start
+```bash
+cd <service-dir> && rm -rf node_modules && npm install
+```
+
+### Python service won't start
+```bash
+cd <service-dir> && uv sync
+```
+
+## Conventions
+
+- Workspace directory is user's choice — never assume `~/Repositories`
+- All infrastructure is remote (MongoDB Atlas, Redis Cloud, Amazon MQ) — nothing runs locally except application services
+- `.env.dev` for development, `.env.prod` for production data (read-only)
+- `local-dev.sh` is the single entry point for service management
+- Python services use `uv`, Node services use `npm`
+- Observatory is the exception — uses `venv` + `pip`, not `uv`
