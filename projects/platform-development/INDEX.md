@@ -3,20 +3,25 @@
 End-to-end development of the Indemn agent platform — spanning indemn-platform-v2 (V2 agent builder + Jarvis), the evaluation harness, copilot-dashboard (Angular config UI), and supporting services. Covers debugging, feature development, and refinement of the full stack from agent configuration through evaluation and deployment.
 
 ## Status
-**Session 2026-02-23-c**: Jarvis skills architecture fully validated end-to-end. The v2 evaluation (run `b17c6fff`) completed: 14/14 items, 9 passed, 5 failed, criteria 45/51 (88%), rubric 65/69 (94%). The v2 rubric has 5 universal rules (down from 18 workflow-specific in v1) — directive allocation works correctly. All 5 failures identify real Wedding Bot issues (no agent identity on greeting, broken data modification flow, human handoff tool errors, no re-quoting after budget change, lost flow state after FAQ). Fixed headless polling loop (commit 1bd5a9a). Updated local evaluations repo to main branch.
+**Session 2026-02-23-d**: Baseline generation feature declared production-ready. Ran 3 total evaluations against Wedding Bot validating iterative skill improvements. Cleaned up stale resources (4 rubrics, 1 test set deleted). Strengthened skills: mandatory safety baselines in rubric, no criteria/rubric overlap in test sets, session init limitation documented. Run 3 results: 15/15 completed, 10 passed, 5 failed, criteria 41/42 (98%), rubric 82/90 (91%). Confirmed bot echo bug is real (bot echoes user message on handoff tool failure, not a UI issue). Created production readiness checklist artifact.
 
 **What's done:**
-- Jarvis skills architecture: 6 commits on percy-service main, deployed to dev EC2
+- Jarvis skills architecture: 9 commits on percy-service main, deployed to dev EC2
 - Skills framework: FilesystemBackend + SkillsMiddleware + 3 SKILL.md files
-- End-to-end evaluation: rubric creation → test set creation → evaluation trigger → results
-- Directive allocation: correctly classifies universal vs workflow-specific directives
+- 3 successful evaluation runs validating quality improvements across iterations
+- Rubric: 6 universal rules including no_harmful_content (up from 5)
+- Test set: 15 items, 98% criteria pass rate, no criteria/rubric overlap
+- Stale resources cleaned up (only 1 rubric + 1 test set per run remain)
+- Production readiness checklist created with full deployment plan
 
 **Next session should**:
-1. Clean up stale rubrics/test sets from failed attempts (4 rubrics, multiple test sets in eval service)
-2. Run a second evaluation to verify reproducibility (do the same 5 items fail consistently?)
-3. Address the `LengthFinishReasonError` — one rubric evaluator hitting 32K token limit on long scenarios
-4. Still open: CI/CD runners, prod deployment, credential rotation
-5. Consider evaluating other bots beyond Wedding Bot to validate generalization
+1. Set up Docker containers for percy-service and evaluations on prod EC2
+2. Install self-hosted GitHub Actions runners (prod tags) for both repos
+3. Configure prod `.env` files (prod MongoDB Atlas, prod bot-service URL, LangSmith project)
+4. Seed `jarvis_evaluation_v2` template on prod MongoDB
+5. Push percy-service and evaluations to `prod` branch
+6. Create copilot-dashboard PR from `main` to `prod` for team approval
+7. Smoke test baseline generation against a prod bot
 
 ## External Resources
 | Resource | Type | Link |
@@ -45,6 +50,7 @@ End-to-end development of the Indemn agent platform — spanning indemn-platform
 | 2026-02-23 | [eventguard-evaluation-audit](artifacts/2026-02-23-eventguard-evaluation-audit.md) | Comprehensive audit of EventGuard baseline evaluation — rubric has 18 rules (should be 5-8), test set has context-dependent single-turn tests, Jarvis prompts match code but subagent isn't following them |
 | 2026-02-23 | [rubric-root-cause-analysis](artifacts/2026-02-23-rubric-root-cause-analysis.md) | Deep root cause analysis — rubric_creator IS following its prompt, the issue is systemic: V1 bot prompts mix universal/workflow directives with equal language, and the filter is guidance not structure. Full data flow trace, corrected findings, solution options. |
 | 2026-02-23 | [jarvis-skills-architecture](artifacts/2026-02-23-jarvis-skills-architecture.md) | Jarvis skills architecture — replaced subagents with SKILL.md files, directive allocation workflow, end-to-end validation against Wedding Bot (9/14 passed, rubric 5 rules, criteria 88%, rubric rules 94%) |
+| 2026-02-23 | [prod-readiness-checklist](artifacts/2026-02-23-prod-readiness-checklist.md) | Production readiness checklist for Jarvis baseline generation — Docker setup, runners, env vars, template seeding, deploy order, smoke test |
 
 ## Decisions
 - 2026-02-19: Project scope is full platform — evals, federation, V2 builder, Jarvis, deployment — all active areas equally.
@@ -73,6 +79,11 @@ End-to-end development of the Indemn agent platform — spanning indemn-platform
 - 2026-02-23: V2 rubric should have exactly 3-6 universal rules. The directive allocation 3-message test (greeting, off-topic, utility) is the hard structural gate, not soft guidance.
 - 2026-02-23: Headless Jarvis must NOT poll run status. Report IDs and stop. The job runner handles completion tracking.
 - 2026-02-23: Local evaluations repo was on `feat/ff_evaluation` branch (stale). Deployed version is from `main`. Always use `main` branch.
+- 2026-02-23: Baseline generation feature is production-ready. Generates quality rubrics (6 rules) and test sets (15 items) consistently across 3 runs.
+- 2026-02-23: Bot echo on handoff failure is a real bot-service bug, not a UI or eval harness issue. Confirmed via raw conversation transcript in MongoDB.
+- 2026-02-23: Single-turn items having extra scenario fields (max_turns, persona, initial_message) is cosmetically wrong but functionally harmless — engine dispatches by `type` field and only reads `message` for single-turn.
+- 2026-02-23: percy-service and evaluations deploy to prod via pushing to `prod` branch (no PR needed). copilot-dashboard requires PR from `main` to `prod` with team approval.
+- 2026-02-23: Evaluations container uses `MONGODB_URI` and `MONGODB_DATABASE` env vars (not `MONGO_URL`/`MONGO_DB_NAME` like percy-service).
 
 ## Open Questions
 - ~~What architecture choices need to be made? (bead `5q2`)~~ → Superseded by separation epic `p0l`
