@@ -24,6 +24,7 @@ Session 2026-02-23-b complete. Wired Indemn brand voice into content pipeline (k
 ## Artifacts
 | Date | Artifact | Ask |
 |------|----------|-----|
+| 2026-02-23 | [writing-psychology-reference](artifacts/2026-02-23-writing-psychology-reference.md) | Deep research on psychology and craft of writing that grips readers — permanent reference for content system |
 
 ## Decisions
 - 2026-02-23: Content system stays as a separate repo for now; OS project tracks the work and context
