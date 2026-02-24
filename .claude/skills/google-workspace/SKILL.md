@@ -47,11 +47,12 @@ gog needs a **Google Cloud OAuth credentials JSON** (Desktop app type) to access
 
 **Note**: While the app is in "Testing" mode, only test users you added in step 4 can authorize. This is fine for personal use. To let other team members use the same project, add their emails as test users or publish the app.
 
-### Option B: Use the Indemn Shared Project
+### Option B: Use the Indemn Shared Credentials (recommended for team members)
 
-- **GCP Project**: `indemn-claude-mcp` (owned by Kyle)
-- You need either editor access to the project, or Kyle to create a Desktop app client and send you the JSON
-- **Important**: The existing web-type client in this project will NOT work with gog — it uses dynamic localhost redirect URIs that are incompatible with web-type clients (fails with `redirect_uri_mismatch`). A Desktop app client must be created.
+1. Download `google-oauth-credentials.json` from 1Password (Engineering vault → "Google Workspace OAuth — gog CLI")
+2. Continue to Setup below.
+
+If the file isn't in 1Password yet, ask Craig to upload it or follow Option A to create your own.
 
 Either option produces the same result: a credentials JSON file that gog uses to authenticate.
 

@@ -186,7 +186,20 @@ cp "$WORKSPACE/.env.template" "$WORKSPACE/.env.dev"
 echo "MANUAL SETUP NEEDED: Edit .env.dev with real credentials"
 ```
 
-### 4b. Validate Connections
+### 4b. MongoDB IP Whitelisting
+
+MongoDB Atlas requires your IP address on the Network Access allow list. Without this, all database connections will fail.
+
+```bash
+echo "Your public IP: $(curl -s ifconfig.me)"
+```
+
+Tell the user:
+> "Your IP needs to be added to MongoDB Atlas Network Access before services can connect. Ask Dhruv or another admin with Atlas access to add your IP. Share the IP shown above."
+
+**Do not proceed to validation until IP whitelisting is confirmed.** This is the most common onboarding blocker.
+
+### 4c. Validate Connections
 
 ```bash
 cd "$WORKSPACE"
@@ -200,7 +213,7 @@ bash ./local-dev.sh validate --env=dev
 
 This checks: MongoDB, Redis, RabbitMQ, API keys, port availability.
 
-### 4c. Shell Configuration (optional)
+### 4d. Shell Configuration (optional)
 
 Add auto-sourcing of the env file to their shell:
 ```bash

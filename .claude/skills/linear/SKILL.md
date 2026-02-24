@@ -34,15 +34,9 @@ npm install -g linearis
 ### Authenticate
 1. Go to Linear > Settings > Account > Security & Access
 2. Create Personal API Key (select Read + Write scopes)
-3. Set environment variable:
+3. Set environment variable in your `.env` file:
 ```bash
-export LINEAR_API_KEY="lin_api_..."
-```
-Add to your `.env` file to persist.
-
-**Important**: linearis expects `LINEAR_API_TOKEN`. Add this bridge to `.env`:
-```bash
-export LINEAR_API_TOKEN="${LINEAR_API_KEY}"
+export LINEAR_API_TOKEN="lin_api_..."
 ```
 
 Rate limit: 1,500 requests/hour. All commands output JSON — pipe to `jq` for filtering.

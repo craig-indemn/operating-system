@@ -1,34 +1,62 @@
 """Slack client initialization for Indemn OS.
 
-Handles both token types:
-- xoxp- (OAuth user token) — set SLACK_TOKEN in .env
-- xoxc- (browser token) — set SLACK_XOXC_TOKEN + SLACK_XOXD_COOKIE in .env
+Token resolution order:
+1. SLACK_TOKEN env var (xoxp- OAuth user token)
+2. macOS Keychain via agent-slack (xoxc- browser token) — preferred for security
+3. SLACK_XOXC_TOKEN + SLACK_XOXD_COOKIE env vars (legacy fallback)
+
+To set up: npx agent-slack auth import-desktop
 """
 
 import os
+import platform
+import subprocess
 import urllib.parse
+from typing import Optional
 from slack_sdk import WebClient
 
 
+def _read_keychain(account: str) -> Optional[str]:
+    """Read a value from macOS Keychain stored by agent-slack."""
+    if platform.system() != "Darwin":
+        return None
+    try:
+        result = subprocess.run(
+            ["security", "find-generic-password", "-s", "agent-slack", "-a", account, "-w"],
+            capture_output=True, text=True, timeout=5,
+        )
+        if result.returncode == 0:
+            return result.stdout.strip()
+    except (subprocess.TimeoutExpired, FileNotFoundError):
+        pass
+    return None
+
+
 def get_client() -> WebClient:
-    # Prefer OAuth token if available
+    # 1. Prefer OAuth token if available
     token = os.environ.get("SLACK_TOKEN")
     if token:
         return WebClient(token=token)
 
-    # Fall back to browser token + cookie
-    xoxc = os.environ.get("SLACK_XOXC_TOKEN")
-    xoxd = os.environ.get("SLACK_XOXD_COOKIE")
-    if not xoxc:
-        raise RuntimeError(
-            "No Slack token found. Set SLACK_TOKEN (xoxp-) or SLACK_XOXC_TOKEN + SLACK_XOXD_COOKIE in .env"
-        )
-    if not xoxd:
-        raise RuntimeError(
-            "SLACK_XOXC_TOKEN is set but SLACK_XOXD_COOKIE is missing. Browser tokens require both."
+    # 2. Try macOS Keychain (agent-slack stores tokens here)
+    xoxc = _read_keychain("xoxc:https://indemn.slack.com")
+    xoxd = _read_keychain("xoxd")
+    if xoxc and xoxd:
+        return WebClient(
+            token=xoxc,
+            headers={"Cookie": f"d={urllib.parse.quote(xoxd, safe='')}"},
         )
 
-    return WebClient(
-        token=xoxc,
-        headers={"Cookie": f"d={urllib.parse.quote(xoxd, safe='')}"},
+    # 3. Fall back to env vars
+    xoxc = os.environ.get("SLACK_XOXC_TOKEN")
+    xoxd = os.environ.get("SLACK_XOXD_COOKIE")
+    if xoxc and xoxd:
+        return WebClient(
+            token=xoxc,
+            headers={"Cookie": f"d={urllib.parse.quote(xoxd, safe='')}"},
+        )
+
+    raise RuntimeError(
+        "No Slack token found. Run 'npx agent-slack auth import-desktop' "
+        "or set SLACK_TOKEN (xoxp-) in .env"
     )

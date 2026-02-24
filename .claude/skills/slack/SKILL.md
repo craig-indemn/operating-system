@@ -10,7 +10,7 @@ Full Slack Web API access via the Python SDK (`slack_sdk`). Supports every Slack
 ## Status Check
 
 ```bash
-REPO_ROOT=$(git rev-parse --show-toplevel) && source "$REPO_ROOT/.env" && PYTHONPATH="$REPO_ROOT/lib" /usr/bin/python3 -c "
+REPO_ROOT=$(git rev-parse --show-toplevel) && SLACK_PY=$(/usr/bin/python3 -c "import slack_sdk" 2>/dev/null && echo /usr/bin/python3 || echo python3) && PYTHONPATH="$REPO_ROOT/lib" $SLACK_PY -c "
 from slack_client import get_client
 r = get_client().auth_test()
 print(f'OK — {r[\"user\"]}@{r[\"team\"]}')
@@ -20,9 +20,8 @@ print(f'OK — {r[\"user\"]}@{r[\"team\"]}')
 ## Prerequisites
 
 - **Node.js** (for `npx agent-slack` — used for automated token extraction)
-- **Python 3** with `slack_sdk` installed (`pip3 install slack_sdk`)
+- **Python 3** with `slack_sdk` installed (system or venv)
 - **Slack Desktop** running and signed in to the Indemn workspace
-- Token stored in the repo root `.env` file
 
 ## Setup
 
@@ -31,10 +30,11 @@ print(f'OK — {r[\"user\"]}@{r[\"team\"]}')
 ### 1. Install the SDK
 
 ```bash
-pip3 install slack_sdk
+# Newer macOS/Homebrew Python blocks pip3 install (PEP 668). Try in order:
+pip3 install slack_sdk 2>/dev/null || pip3 install --break-system-packages slack_sdk 2>/dev/null || uv pip install --system slack_sdk
 ```
 
-### 2. Extract Token from Slack Desktop (automated)
+### 2. Extract Token from Slack Desktop
 
 This uses `agent-slack` (runs via npx, no install needed) to pull the browser token directly from Slack Desktop's local data:
 
@@ -42,34 +42,19 @@ This uses `agent-slack` (runs via npx, no install needed) to pull the browser to
 npx agent-slack auth import-desktop
 ```
 
-This extracts the `xoxc` token and `xoxd` cookie from Slack Desktop and stores them in macOS Keychain.
+**macOS:** Tokens are stored in the macOS Keychain. `slack_client.py` reads them automatically — no `.env` configuration needed.
 
-### 3. Write Token to .env
-
-Read the tokens from agent-slack and write them into the project `.env`:
-
+**Linux:** agent-slack stores tokens in `~/.config/agent-slack/credentials.json` but references the system keyring. If the keyring isn't available, you'll need to set env vars manually:
 ```bash
-REPO_ROOT=$(git rev-parse --show-toplevel)
-CREDS=$(npx agent-slack auth whoami 2>/dev/null)
-XOXC=$(echo "$CREDS" | python3 -c "import sys,json; ws=json.load(sys.stdin)['workspaces'][0]; print(ws['token'])")
-XOXD=$(echo "$CREDS" | python3 -c "import sys,json; ws=json.load(sys.stdin)['workspaces'][0]; print(ws['cookie_d'])")
-
-# Append to .env if not already present
-if ! grep -q "SLACK_XOXC_TOKEN" "$REPO_ROOT/.env" 2>/dev/null; then
-  echo "" >> "$REPO_ROOT/.env"
-  echo "# Slack (extracted from Slack Desktop via agent-slack)" >> "$REPO_ROOT/.env"
-  echo "export SLACK_XOXC_TOKEN='$XOXC'" >> "$REPO_ROOT/.env"
-  echo "export SLACK_XOXD_COOKIE='$XOXD'" >> "$REPO_ROOT/.env"
-  echo "Slack tokens written to .env"
-else
-  echo "Slack tokens already in .env"
-fi
+# Get tokens from agent-slack's keyring, then add to .env:
+export SLACK_XOXC_TOKEN='xoxc-...'
+export SLACK_XOXD_COOKIE='xoxd-...'
 ```
 
-### 4. Verify
+### 3. Verify
 
 ```bash
-REPO_ROOT=$(git rev-parse --show-toplevel) && source "$REPO_ROOT/.env" && PYTHONPATH="$REPO_ROOT/lib" /usr/bin/python3 -c "
+REPO_ROOT=$(git rev-parse --show-toplevel) && SLACK_PY=$(/usr/bin/python3 -c "import slack_sdk" 2>/dev/null && echo /usr/bin/python3 || echo python3) && PYTHONPATH="$REPO_ROOT/lib" $SLACK_PY -c "
 from slack_client import get_client
 r = get_client().auth_test()
 print(f'OK — {r[\"user\"]}@{r[\"team\"]} ({r[\"user_id\"]})')
@@ -78,7 +63,7 @@ print(f'OK — {r[\"user\"]}@{r[\"team\"]} ({r[\"user_id\"]})')
 
 ### Token Refresh
 
-Browser tokens can expire. If auth starts failing, re-run steps 2-4 to re-extract from Slack Desktop.
+Browser tokens can expire. If auth starts failing, re-run step 2 to re-extract from Slack Desktop.
 
 ### Alternative: Slack App Token (long-lived, requires admin)
 
@@ -95,7 +80,7 @@ If browser tokens expire too often, create a Slack app for a permanent `xoxp-` t
 Every Slack operation follows this pattern:
 
 ```bash
-REPO_ROOT=$(git rev-parse --show-toplevel) && source "$REPO_ROOT/.env" && PYTHONPATH="$REPO_ROOT/lib" /usr/bin/python3 << 'PYEOF'
+REPO_ROOT=$(git rev-parse --show-toplevel) && SLACK_PY=$(/usr/bin/python3 -c "import slack_sdk" 2>/dev/null && echo /usr/bin/python3 || echo python3) && PYTHONPATH="$REPO_ROOT/lib" $SLACK_PY << 'PYEOF'
 from slack_client import get_client
 
 client = get_client()
@@ -103,11 +88,10 @@ client = get_client()
 PYEOF
 ```
 
-- `source .env` loads credentials
+- `SLACK_PY` detects which Python has `slack_sdk` — `/usr/bin/python3` on macOS, `python3` on Linux
 - `PYTHONPATH=.../lib` makes the `slack_client` helper importable
-- `/usr/bin/python3` uses system Python (has slack_sdk)
 - Single-quoted heredoc (`'PYEOF'`) prevents shell interpretation
-- `get_client()` handles both token types (xoxp- or xoxc-) automatically
+- `get_client()` reads tokens from macOS Keychain automatically, falls back to env vars on Linux
 
 ## Quick Reference
 
