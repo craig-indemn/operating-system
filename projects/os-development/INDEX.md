@@ -3,25 +3,26 @@
 Development of the operating system itself — the skills, systems, and infrastructure that make Indemn's connected intelligence layer work. Covers the dispatch system, systems framework, skill improvements, and meta-level architecture of the OS.
 
 ## Status
-**Session 2026-02-19-c**: Fixed all dispatch engine bugs and achieved full end-to-end success — 2/2 tasks passed autonomously. Three bugs fixed: (1) `contextlib.aclosing()` for anyio cancel scope cleanup between sequential `query()` calls, (2) monkey-patch for SDK `rate_limit_event` crash ([Issue #583](https://github.com/anthropics/claude-agent-sdk-python/issues/583)), (3) `bd children` only returns open tasks — switched to `bd list --parent --all`. Also added verification retry loop and proper max-retry enforcement. SDK updated to v0.1.39. Total test cost: ~$0.28 for 2 tasks (implement + verify each).
+**Session 2026-02-24-a**: Addressed all 6 onboarding issues from Kai's first use of the system. Committed and pushed to main.
 
-**Test results (epic `os-development-26e`):**
-- Task 1 "Create hello.txt" — PASSED, verified, committed ($0.16)
-- Task 2 "Create goodbye.txt" — PASSED, verified with backstop check, committed ($0.06)
-- Dependencies respected, learnings accumulated, git history clean
+**Fixes applied:**
+1. **Slack token extraction** — `slack_client.py` now reads from macOS Keychain first (where `agent-slack` stores tokens), env vars as fallback for Linux. No Slack tokens needed in `.env` on macOS.
+2. **Linear env var mismatch** — skill now says `LINEAR_API_TOKEN` directly, removed confusing `LINEAR_API_KEY` bridge.
+3. **MongoDB IP whitelisting** — added as explicit Phase 4b blocker in onboarding skill. Added to onboarding instructions artifact prereqs.
+4. **Google Workspace credentials.json** — skill now references 1Password (Engineering vault → "Google Workspace OAuth — gog CLI"). Craig needs to upload `craig_secret.json` there.
+5. **Python PEP 668** — Slack SDK install uses 3-tier fallback: `pip3` → `--break-system-packages` → `uv pip install --system`.
+6. **`.env` special chars** — added quoting guidance to `.env.template`. Main offender (Slack cookie) no longer in `.env`.
 
-**What's working:**
-- Full ralph loop: read epic → pick ready task → implement → verify → close bead → git commit → next task
-- SDK subscription auth
-- Fresh context per task with full OS framework (`setting_sources=["user", "project"]`)
-- Separate verification sessions with text-based JSON parsing
-- Dependency-aware task ordering
-- Retry logic (3 impl retries, 3 verify retries per task)
+**Platform awareness** — Slack skill now auto-detects which Python has `slack_sdk` (`SLACK_PY` pattern), documents macOS vs Linux token storage paths. `slack_client.py` uses `platform.system()` to gate keychain access.
+
+**Onboarding branch** — is 40+ commits behind main. Needs rebasing but DO NOT rebase while parallel sessions are active on main. Do it in a quiet moment.
 
 **Next session should:**
-1. Run a real dispatch against an actual service repo (not just test files)
-2. Determine which OS skills to symlink to `~/.claude/skills/` for global access
-3. Consider whether to clean up test beads or keep them as examples
+1. Build a `/1password` skill and evaluate 1Password CLI (`op`) for secrets management — Craig endorsed this direction
+2. Consider `op run` for injecting secrets at runtime instead of plaintext `.env` files
+3. Evaluate splitting `.env` into `.env.urls` (safe to commit) and secrets in 1Password
+4. Upload `craig_secret.json` to 1Password Engineering vault (manual action for Craig)
+5. Update onboarding branch when no parallel sessions are running
 
 ## External Resources
 | Resource | Type | Link |
@@ -34,6 +35,7 @@ Development of the operating system itself — the skills, systems, and infrastr
 | SDK rate_limit_event bug | GitHub | https://github.com/anthropics/claude-agent-sdk-python/issues/583 |
 | Claude Code headless docs | Web | https://code.claude.com/docs/en/headless |
 | Design doc | Local | projects/os-development/artifacts/2026-02-19-dispatch-system-design.md |
+| Kai's onboarding DM | Slack | DM channel D0A36TW1YSK (Craig ↔ Kai) |
 
 ## Artifacts
 | Date | Artifact | Ask |
@@ -41,6 +43,7 @@ Development of the operating system itself — the skills, systems, and infrastr
 | 2026-02-19 | [dispatch-system-design](artifacts/2026-02-19-dispatch-system-design.md) | Full architecture for dispatch system, OS primitives, SDK findings, ralph loop design |
 | 2026-02-19 | [dispatch-system-implementation](artifacts/2026-02-19-dispatch-system-implementation.md) | Build the dispatch engine, skills, beads skill, and systems framework |
 | 2026-02-19 | [dispatch-engine-fixes](artifacts/2026-02-19-dispatch-engine-fixes.md) | Fix engine bugs (anyio, rate_limit_event, bd children), configure agent sessions, end-to-end test passing |
+| 2026-02-23 | [onboarding-instructions](artifacts/2026-02-23-onboarding-instructions.md) | Instructions for a new developer to get set up with the operating system and local dev environment |
 
 ## Decisions
 - 2026-02-19: OS has three primitives: Skills (capabilities), Projects (memory), Systems (processes)
@@ -64,7 +67,12 @@ Development of the operating system itself — the skills, systems, and infrastr
 - 2026-02-19: Verification sessions can write/edit (not read-only) — enables auto-fixes
 - 2026-02-19: No `max_turns` or `max_budget_usd` limits — subscription covers it, `MAX_RETRIES_PER_TASK=3` is the circuit breaker
 - 2026-02-19: Cost display in engine output is informational only (subscription, not per-session billing)
+- 2026-02-24: Slack tokens read from macOS Keychain first, env vars as fallback — no plaintext tokens needed on macOS
+- 2026-02-24: Skills should be platform-aware — detect OS and adjust (e.g., keychain on macOS, env vars on Linux, Python path detection)
+- 2026-02-24: Adopt 1Password CLI (`op`) for secrets management — endorsed by Craig, next session priority
 
 ## Open Questions
 - Which OS skills should be symlinked to `~/.claude/skills/` for global access in dispatched sessions?
 - When SDK Issue #583 is fixed, remove the monkey-patch from engine.py
+- 1Password: `op run` vs `op read` for secret injection? Split `.env` into urls + secrets?
+- Should onboarding branch be maintained separately, or just point new engineers at main?
