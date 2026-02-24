@@ -2,17 +2,17 @@
 ask: "Deep dive into COP-325 Issue 6: Matrix not showing for new evaluation run"
 created: 2026-02-24
 workstream: platform-development
-session: 2026-02-24-a
+session: 2026-02-24-b
 sources:
   - type: github
-    description: "indemn-platform-v2/ui/src — EvaluationRunDetail.tsx, FederatedEvaluationRunDetail.tsx, EvaluationMatrix.tsx, utils.ts"
+    description: "evaluations/src/indemn_evals/api/routes/evaluations.py — V2 trigger endpoint, scope filter logic lines 632-648, run creation lines 786-806"
   - type: mongodb
-    description: "Dev evaluations DB — run 8970c070, evaluator-configs for agent 676be5cbab56400012077f4a"
+    description: "Dev evaluations DB — run 7c5ce17d (rubric_rules_passed=0, rubric_rules_total=0), rubric 6ece933d (6 rules, all prompt/general scope)"
   - type: linear
     description: "COP-325 Issue 6"
 ---
 
-# Issue 6: Matrix Not Showing for New Evaluation
+# Issue 6: Matrix Not Showing — Scope Filter Silently Eliminates All Rubric Rules
 
 ## Feedback (from Dhruv)
 
@@ -20,81 +20,99 @@ The matrix view isn't showing for the new evaluation run.
 
 ## Assessment
 
-Dhruv's run `8970c070` (14 items, 5 passed, test set `7be041da`, rubric `6ece933d`).
+Investigated run `7c5ce17d` (15 items, 14 passed, rubric `6ece933d`, test set `3e3c1f7c`).
 
-### Data verification — everything is present
+### What we see in the UI
 
-Verified against live dev API:
+- Rubric shows "Wedding Bot Rubric v1" — present
+- Matrix renders but every cell is a dash, every compliance row is 0%
+- The matrix IS visible (the view toggle works), but the scores are empty
 
-1. **Run has a rubric**: `rubric_id: 6ece933d`, `rubric_version: 1` — confirmed
-2. **Evaluator config exists**: `/evaluator-configs?agent_id=676be5cbab56400012077f4a` returns 4 configs, including one for rubric `6ece933d` with 6 enabled evaluators
-3. **Results have V1 scores field populated**: Each result has `scores` with keys matching the evaluator `feedback_key`s (`rule_01_professional_and_userfri`, etc.)
-4. **Results also have V2 fields**: `criteria_scores` array and `rubric_scores` array
+### Data from API
 
-The previous session's hypothesis about "V1/V2 data format mismatch" is **incorrect** — the backend populates both formats on the same result. The V1 `scores[key]` lookup in `buildMatrixData()` (utils.ts line 121) works because the V1 keys are present.
+```
+GET /api/v1/runs/7c5ce17d-cf2a-4c1b-9552-3fab2425175d
 
-### Root cause: V2 runs default to "cards" view, not matrix
-
-The rendering code:
-
-```tsx
-// EvaluationRunDetail.tsx line 25
-const [viewMode, setViewMode] = useState<ViewMode>('cards');
+rubric_id: 6ece933d-0f8b-4020-ab52-987dc0c4d0ad
+rubric_version: 1
+component_scope_filter: "function"
+rubric_rules_passed: 0
+rubric_rules_total: 0
+criteria_passed: 41
+criteria_total: 42
 ```
 
-For V2 runs (`isV2Run = true`), the component renders:
-1. Summary dashboard
-2. A view toggle (`Per-Item View` | `Matrix View`)
-3. Default: cards view (Per-Item)
+Individual results confirm: `rubric_scores: null`, `rubric_passed: null`. Only `criteria_scores` is populated. The rubric evaluator never ran.
 
-For V1 runs (non-V2), the matrix renders **directly** — no toggle, no cards view.
+### Root cause: component_scope filter eliminated all rules
 
-So Dhruv likely opened the run detail, saw the cards view, and expected to see the matrix (like V1 runs show). The view toggle exists but may not be obvious — it's a small segmented control that could be missed.
+The rubric has 6 rules:
 
-### Additional risk: evaluator config API failure
+| Rule | component_scope |
+|------|----------------|
+| Professional and User-Friendly Tone | prompt |
+| No Fabrication or Assumption | prompt |
+| Stays Within Wedding Insurance Scope | prompt |
+| No Harmful or Inappropriate Content | general |
+| Response Clarity and Coherence | general |
+| Empathetic and Persistent Information Collection | prompt |
 
-If the `/evaluator-configs` API call fails silently (CORS, network, timeout), `evaluatorConfig?.evaluators` would be falsy and clicking "Matrix View" would show: *"Matrix view requires evaluator configuration (rubric)."*
+The run was triggered with `component_scope: "function"`. The filter in `evaluations.py` lines 633-637:
 
-This applies to both standalone (`EvaluationRunDetail.tsx` line 239) and federated (`FederatedEvaluationRunDetail.tsx` line 290).
+```python
+rules = [r for r in rules if (
+    r.get("component_scope") == body.component_scope or
+    r.get("component_scope") is None
+)]
+```
+
+This keeps rules where scope is `"function"` or `None`. All 6 rules are `"prompt"` or `"general"` — none match. `rules` becomes empty, `evaluator_config` stays `None`, and no rubric evaluators are built.
+
+**But `rubric_id` is still written to the run** (line 795: `rubric_id=body.rubric_id`). So the UI shows a rubric is attached, but there are no scores — a misleading state.
+
+### The bug
+
+The backend allows a run to be created with a `rubric_id` even when the scope filter eliminates all of that rubric's rules. The run appears to have a rubric (UI shows it, matrix renders), but rubric evaluation never executed (all dashes, 0%).
 
 ## Resolution
 
-Two options depending on what Dhruv wants:
+If the scope filter eliminates all rubric rules, proceed as criteria-only **without attaching the rubric to the run**.
 
-### Option A (Recommended): Default to matrix view for V2 runs that have a rubric
+### Backend fix — `evaluations/src/indemn_evals/api/routes/evaluations.py`
 
-```tsx
-// EvaluationRunDetail.tsx line 25
-// Default to matrix if evaluator config is available
-const [viewMode, setViewMode] = useState<ViewMode>('cards');
+After the scope filter (line 646), check if rules survived. If not, clear the rubric reference so the run accurately reflects what was evaluated:
 
-// After evaluatorConfig loads, switch to matrix if available
-useEffect(() => {
-  if (evaluatorConfig?.evaluators) {
-    setViewMode('matrix');
-  }
-}, [evaluatorConfig]);
+```python
+# Line 646 (after existing scope filters)
+rules_count = len(rules)
+
+# If scope filter eliminated all rules, treat as criteria-only run
+if not rules:
+    # Don't attach rubric — no rules survived the scope filter
+    body.rubric_id = None
 ```
 
-Same change in `FederatedEvaluationRunDetail.tsx`.
+This ensures:
+- `rubric_id` on the run is `None` → UI correctly shows no rubric
+- `rubric_version` on the run is `None` (line 796: `rubric_version=rubric_version if body.rubric_id else None`)
+- No evaluator config is created (line 699: `if evaluator_config:` stays falsy)
+- Matrix view shows "no rubric" instead of misleading empty scores
+- Criteria evaluation still runs normally
 
-This gives V2 runs with a rubric the same default experience as V1 runs (matrix first), while runs without a rubric still default to cards.
+### Frontend — no changes needed
 
-### Option B: Keep cards as default, make the toggle more prominent
-
-If the per-item cards view is the intended default for V2, make the view toggle more visible — larger buttons, a label, or a hint that "Matrix View" is available.
+If the backend correctly omits `rubric_id` when no rules survive, the UI already handles criteria-only runs correctly (no matrix, no rubric label).
 
 ## Files Changed
 
 | File | Change | Lines |
 |------|--------|-------|
-| `ui/src/pages/EvaluationRunDetail.tsx` | Default to matrix when rubric available | 25 (+ useEffect) |
-| `ui/src/federation/components/FederatedEvaluationRunDetail.tsx` | Same | ~28 (+ useEffect) |
+| `evaluations/src/indemn_evals/api/routes/evaluations.py` | Clear rubric_id when scope filter eliminates all rules | After line 646 |
 
 ## Complexity
 
-Low — add a `useEffect` to switch default view mode when evaluator config loads.
+Low — add a 2-line guard after the existing scope filter.
 
 ## Linear Response (draft)
 
-> Fixed. V2 evaluation runs now default to Matrix View when a rubric is configured (matching V1 behavior). Runs without a rubric still default to Per-Item View. The view toggle remains available for switching between modes.
+> Fixed. When the component scope filter eliminates all rubric rules, the run now proceeds as criteria-only without attaching the rubric. Previously, the rubric was recorded on the run even though no rules were evaluated, causing the matrix to show all empty scores. Now the UI accurately reflects what was evaluated.

@@ -3,7 +3,7 @@
 End-to-end development of the Indemn agent platform — spanning indemn-platform-v2 (V2 agent builder + Jarvis), the evaluation harness, copilot-dashboard (Angular config UI), and supporting services. Covers debugging, feature development, and refinement of the full stack from agent configuration through evaluation and deployment.
 
 ## Status
-**Session 2026-02-24-a** (IN PROGRESS): Deep-diving into Dhruv's evaluations feedback (COP-325 — 10 issues + 3 from Dolly + 3 strategic asks from Slack). Building comprehensive spec for each item before implementing. Issues 1-6 fully written up (Issue 4 folded into Issue 3). Issues 7-14 + strategic asks S1-S3 still need spec files. Key finding: federated component colors must match the copilot-dashboard Angular host (`$brand-primary: #1E40AF`, blue/slate palette), NOT the React app's own design system. All context preserved in `artifacts/2026-02-24-evaluations-feedback/CONTEXT.md` — READ THIS FILE to resume.
+**Session 2026-02-24-b** (COMPLETE): Issues 1-10 fully spec'd. Issue 6 rewritten (original was wrong — real cause is scope filter eliminating rubric rules). Issues 7, 8, 9, 10 spec'd this session. Issues 8+9 are Linear responses only (no code). Issue 10 is a scoring fallback bug. Implementation plan created in beads. Dolly's 11-14 + Dhruv's S1-S3 still need spec. READ `artifacts/2026-02-24-evaluations-feedback/CONTEXT.md` to resume.
 
 **Previous session (2026-02-23-d)**: Baseline generation feature declared production-ready. Ran 3 evaluations against Wedding Bot. Run 3 results: 15/15 completed, 10 passed, 5 failed, criteria 98%, rubric 91%.
 
@@ -17,13 +17,10 @@ End-to-end development of the Indemn agent platform — spanning indemn-platform
 - Production readiness checklist created with full deployment plan
 
 **Next session should**:
-1. Set up Docker containers for percy-service and evaluations on prod EC2
-2. Install self-hosted GitHub Actions runners (prod tags) for both repos
-3. Configure prod `.env` files (prod MongoDB Atlas, prod bot-service URL, LangSmith project)
-4. Seed `jarvis_evaluation_v2` template on prod MongoDB
-5. Push percy-service and evaluations to `prod` branch
-6. Create copilot-dashboard PR from `main` to `prod` for team approval
-7. Smoke test baseline generation against a prod bot
+1. Implement Issues 1-10 following the beads epic (trivial UI → data bugs → backend → evaluator logic)
+2. Test all fixes on dev against Wedding Bot
+3. Post Linear responses for Issues 8 and 9
+4. Spec Dolly's Issues 11-14, then Dhruv's S1-S3
 
 ## External Resources
 | Resource | Type | Link |
@@ -58,7 +55,11 @@ End-to-end development of the Indemn agent platform — spanning indemn-platform
 | 2026-02-24 | [evaluations-feedback/issue-02](artifacts/2026-02-24-evaluations-feedback/issue-02-date-rendering.md) | Issue 2: Date column wrapping — needs whitespace-nowrap |
 | 2026-02-24 | [evaluations-feedback/issue-03](artifacts/2026-02-24-evaluations-feedback/issue-03-purple-theme.md) | Issue 3+4: Purple theme + card background — 4 violations across 6 files, grounded in Angular host colors |
 | 2026-02-24 | [evaluations-feedback/issue-05](artifacts/2026-02-24-evaluations-feedback/issue-05-remove-metadata.md) | Issue 5: Remove Run ID + Agent ID from run detail — internal IDs not for end users |
-| 2026-02-24 | [evaluations-feedback/issue-06](artifacts/2026-02-24-evaluations-feedback/issue-06-matrix-not-showing.md) | Issue 6: Matrix not showing — V2 defaults to cards view, not data issue. Default to matrix when rubric present |
+| 2026-02-24 | [evaluations-feedback/issue-06](artifacts/2026-02-24-evaluations-feedback/issue-06-matrix-not-showing.md) | Issue 6: Matrix all dashes — scope filter eliminated all rubric rules but rubric_id still attached (REWRITTEN) |
+| 2026-02-24 | [evaluations-feedback/issue-07](artifacts/2026-02-24-evaluations-feedback/issue-07-test-set-not-showing.md) | Issue 7: Test set shows "—" — reads V1 question_set_id instead of V2 test_set_id |
+| 2026-02-24 | [evaluations-feedback/issue-08](artifacts/2026-02-24-evaluations-feedback/issue-08-instruction-compliance.md) | Issue 8: instruction_compliance is a category label — Linear response only |
+| 2026-02-24 | [evaluations-feedback/issue-09](artifacts/2026-02-24-evaluations-feedback/issue-09-criteria-only-option.md) | Issue 9: "None (criteria only)" is by design — Linear response only |
+| 2026-02-24 | [evaluations-feedback/issue-10](artifacts/2026-02-24-evaluations-feedback/issue-10-two-scores.md) | Issue 10: 93% rubric score is wrong — scoring fallback misinterprets component_scores |
 
 ## Decisions
 - 2026-02-19: Project scope is full platform — evals, federation, V2 builder, Jarvis, deployment — all active areas equally.
@@ -96,6 +97,11 @@ End-to-end development of the Indemn agent platform — spanning indemn-platform
 - 2026-02-24: Scenario vs single_turn type badges use different blue shades (blue-500 vs blue-800) to maintain differentiation within the Angular palette.
 - 2026-02-24: Issue 4 (card background `#f8f9fc`) folded into Issue 3 — same root cause (federated components not matching Angular host).
 - 2026-02-24: V1/V2 data format mismatch hypothesis was wrong — backend populates BOTH `scores` (V1 keys) and `rubric_scores`/`criteria_scores` (V2 arrays) on the same result. `buildMatrixData()` works fine with V2 results.
+- 2026-02-24: Issue 6 rewritten — original "view toggle" hypothesis was wrong. Real cause: scope filter (`component_scope: "function"`) eliminated all rubric rules (all are `prompt`/`general`), but `rubric_id` was still attached to the run.
+- 2026-02-24: When scope filter eliminates all rubric rules, proceed criteria-only without attaching rubric_id to the run.
+- 2026-02-24: `FederatedEvaluationRunDetail.tsx` reads V1 `question_set_id` (always null) instead of V2 `test_set_id`. All runs show "—" for test set.
+- 2026-02-24: `scoring.ts` fallback treats `rubric_rules_total: 0` same as `undefined`, misreading `component_scores` as rubric data. Fix: check `!== undefined` not `> 0`.
+- 2026-02-24: Issues 8 and 9 are not bugs — Linear responses explaining categories and criteria-only scoring.
 
 ## Open Questions
 - ~~What architecture choices need to be made? (bead `5q2`)~~ → Superseded by separation epic `p0l`
