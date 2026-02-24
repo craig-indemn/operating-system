@@ -3,30 +3,28 @@
 Add a usage analytics overview to the Indemn Observatory — organization and agent usage metrics broken out by month for the last 6 months, sourced from the tiledesk MongoDB database. Provides Kyle with visibility into platform adoption and activity trends.
 
 ## Status
-Session 2026-02-24-d complete — **code committed and pushed** to `demo-gic` branch on `indemn-ai/Indemn-observatory`. Two commits: feature implementation (15 files, 837 lines) + CI build fix (2 files).
+**Feature complete and deployed to prod.** Session 2026-02-24-e closed out the project.
 
-**CI build status**: Second push triggered rebuild after fixing two TypeScript errors (TrendChart missing `usage` key in MetricCategory record, unused `index` param in VoiceReportCallLog). Awaiting successful build.
+- PR #13 (`demo-gic` → `main`) merged
+- PR #14 (`main` → `prod`) merged — prod CI deploying
+- All 12 beads tasks closed
+- Linear COP-326 moved to "Ready for Testing"
+- Dev EC2 verified working (containers healthy, API returns correct data)
 
-**Dev environment blocker**: The dev EC2 (`ec2-44-196-55-84`) points at the **dev MongoDB Atlas cluster** (`dev-indemn.pj4xyep.mongodb.net`) which is **over its 5GB storage quota** (using 5139 MB of 5120 MB). This causes replica set primary election failure → auth fails → app unusable. This is pre-existing and unrelated to our code. Needs Atlas cleanup or tier upgrade.
-
-**Next session**:
-1. Verify CI build succeeded and containers deployed on dev EC2
-2. Fix dev MongoDB quota issue (or switch demo-gic env to prod MongoDB)
-3. Test on deployed environment
-4. Close beads tasks (all 12 still open)
-5. Update Linear COP-326
-6. Get Kyle's feedback on the table
+**Awaiting**: Kyle's review on prod once deployment completes.
 
 ## External Resources
 | Resource | Type | Link |
 |----------|------|------|
-| Indemn Observatory | GitHub repo | indemn-ai/indemn-observability |
+| Indemn Observatory | GitHub repo | indemn-ai/Indemn-observatory |
 | Tiledesk DB | MongoDB Atlas | tiledesk database |
-| Linear Task | Linear | COP-326 (In Progress, Cycle 73, assigned Craig) |
+| Linear Task | Linear | COP-326 (Ready for Testing, Cycle 73, assigned Craig) |
 | Observatory CLAUDE.md | Docs | indemn-observability/CLAUDE.md (503 lines, implementation guide) |
 | Overview Page | Code | indemn-observability/frontend/src/components/overview/OverviewView.tsx |
 | API Endpoints | Code | indemn-observability/src/observatory/api/routers/usage.py |
 | Types | Code | indemn-observability/frontend/src/types/api.ts |
+| PR #13 | GitHub | indemn-ai/Indemn-observatory/pull/13 (demo-gic → main) |
+| PR #14 | GitHub | indemn-ai/Indemn-observatory/pull/14 (main → prod) |
 | Dev EC2 | Infrastructure | ssh -i ptrkdy.pem ubuntu@ec2-44-196-55-84.compute-1.amazonaws.com |
 | PEM Key | File | /Users/home/Repositories/ptrkdy.pem |
 
@@ -61,10 +59,9 @@ Session 2026-02-24-d complete — **code committed and pushed** to `demo-gic` br
 - 2026-02-24: Platform default snaps to month boundaries: 1st of (current month - 6) through end of previous month.
 - 2026-02-24: Weekly bucket headers show "Feb 17 – 23" format instead of ISO week "W08".
 - 2026-02-24: Table has title "Conversation Volume" and subtitle describing scope: "Billable web chat conversations by organization... Excludes test mode and internal orgs."
-- 2026-02-24: CI/CD — `demo-gic` branch deploys to dev via `build-demo.yml`, `main` also deploys to dev via `build.yml`, `prod` deploys via manual dispatch.
-- 2026-02-24: Dev MongoDB Atlas cluster (`dev-indemn.pj4xyep.mongodb.net`) is over 5GB quota — causes auth failures on dev EC2.
+- 2026-02-24: CI/CD flow: `demo-gic` → `main` (PR) → `prod` (PR). `demo-gic` deploys to dev via `build-demo.yml`, `prod` deploys on push via `build-prod.yml`.
+- 2026-02-24: Dev MongoDB is NOT over quota — connection works fine. The dev database simply has different org IDs than prod. Demo auth hardcodes a prod org ID (`GIC_ORG_ID`), which caused empty results on dev.
+- 2026-02-24: Excluded org IDs are prod-specific — dev database has different ObjectIds for test orgs, so they show in dev (expected, not a bug).
 
 ## Open Questions
-- Dev MongoDB quota: clean up data or upgrade tier? Affects all dev Observatory functionality.
-- Should the demo-gic deployment switch to prod MongoDB to unblock testing?
 - Family First has 41 Feb conversations all flagged `isTestMode: true` — is their widget misconfigured?
