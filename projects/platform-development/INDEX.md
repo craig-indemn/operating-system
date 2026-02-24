@@ -3,7 +3,9 @@
 End-to-end development of the Indemn agent platform — spanning indemn-platform-v2 (V2 agent builder + Jarvis), the evaluation harness, copilot-dashboard (Angular config UI), and supporting services. Covers debugging, feature development, and refinement of the full stack from agent configuration through evaluation and deployment.
 
 ## Status
-**Session 2026-02-23-d**: Baseline generation feature declared production-ready. Ran 3 total evaluations against Wedding Bot validating iterative skill improvements. Cleaned up stale resources (4 rubrics, 1 test set deleted). Strengthened skills: mandatory safety baselines in rubric, no criteria/rubric overlap in test sets, session init limitation documented. Run 3 results: 15/15 completed, 10 passed, 5 failed, criteria 41/42 (98%), rubric 82/90 (91%). Confirmed bot echo bug is real (bot echoes user message on handoff tool failure, not a UI issue). Created production readiness checklist artifact.
+**Session 2026-02-24-a** (IN PROGRESS): Deep-diving into Dhruv's evaluations feedback (COP-325 — 10 issues + 3 from Dolly + 3 strategic asks from Slack). Building comprehensive spec for each item before implementing. Issues 1-6 fully written up (Issue 4 folded into Issue 3). Issues 7-14 + strategic asks S1-S3 still need spec files. Key finding: federated component colors must match the copilot-dashboard Angular host (`$brand-primary: #1E40AF`, blue/slate palette), NOT the React app's own design system. All context preserved in `artifacts/2026-02-24-evaluations-feedback/CONTEXT.md` — READ THIS FILE to resume.
+
+**Previous session (2026-02-23-d)**: Baseline generation feature declared production-ready. Ran 3 evaluations against Wedding Bot. Run 3 results: 15/15 completed, 10 passed, 5 failed, criteria 98%, rubric 91%.
 
 **What's done:**
 - Jarvis skills architecture: 9 commits on percy-service main, deployed to dev EC2
@@ -51,6 +53,12 @@ End-to-end development of the Indemn agent platform — spanning indemn-platform
 | 2026-02-23 | [rubric-root-cause-analysis](artifacts/2026-02-23-rubric-root-cause-analysis.md) | Deep root cause analysis — rubric_creator IS following its prompt, the issue is systemic: V1 bot prompts mix universal/workflow directives with equal language, and the filter is guidance not structure. Full data flow trace, corrected findings, solution options. |
 | 2026-02-23 | [jarvis-skills-architecture](artifacts/2026-02-23-jarvis-skills-architecture.md) | Jarvis skills architecture — replaced subagents with SKILL.md files, directive allocation workflow, end-to-end validation against Wedding Bot (9/14 passed, rubric 5 rules, criteria 88%, rubric rules 94%) |
 | 2026-02-23 | [prod-readiness-checklist](artifacts/2026-02-23-prod-readiness-checklist.md) | Production readiness checklist for Jarvis baseline generation — Docker setup, runners, env vars, template seeding, deploy order, smoke test |
+| 2026-02-24 | [evaluations-feedback/CONTEXT.md](artifacts/2026-02-24-evaluations-feedback/CONTEXT.md) | COP-325 deep dive master context — methodology, architecture, all 17 issues, progress tracker, dev access, next steps |
+| 2026-02-24 | [evaluations-feedback/issue-01](artifacts/2026-02-24-evaluations-feedback/issue-01-matrix-question-and-tool-log.md) | Issue 1: Raw dict in matrix + tool log causing false R05 failures — root caused with live data |
+| 2026-02-24 | [evaluations-feedback/issue-02](artifacts/2026-02-24-evaluations-feedback/issue-02-date-rendering.md) | Issue 2: Date column wrapping — needs whitespace-nowrap |
+| 2026-02-24 | [evaluations-feedback/issue-03](artifacts/2026-02-24-evaluations-feedback/issue-03-purple-theme.md) | Issue 3+4: Purple theme + card background — 4 violations across 6 files, grounded in Angular host colors |
+| 2026-02-24 | [evaluations-feedback/issue-05](artifacts/2026-02-24-evaluations-feedback/issue-05-remove-metadata.md) | Issue 5: Remove Run ID + Agent ID from run detail — internal IDs not for end users |
+| 2026-02-24 | [evaluations-feedback/issue-06](artifacts/2026-02-24-evaluations-feedback/issue-06-matrix-not-showing.md) | Issue 6: Matrix not showing — V2 defaults to cards view, not data issue. Default to matrix when rubric present |
 
 ## Decisions
 - 2026-02-19: Project scope is full platform — evals, federation, V2 builder, Jarvis, deployment — all active areas equally.
@@ -84,6 +92,10 @@ End-to-end development of the Indemn agent platform — spanning indemn-platform
 - 2026-02-23: Single-turn items having extra scenario fields (max_turns, persona, initial_message) is cosmetically wrong but functionally harmless — engine dispatches by `type` field and only reads `message` for single-turn.
 - 2026-02-23: percy-service and evaluations deploy to prod via pushing to `prod` branch (no PR needed). copilot-dashboard requires PR from `main` to `prod` with team approval.
 - 2026-02-23: Evaluations container uses `MONGODB_URI` and `MONGODB_DATABASE` env vars (not `MONGO_URL`/`MONGO_DB_NAME` like percy-service).
+- 2026-02-24: Federated React component colors must match the copilot-dashboard Angular host palette (`$brand-primary: #1E40AF`, `tw-bg-white`, `tw-text-slate-800`, Tailwind blue family), NOT the React app's own `index.css` design system (`--color-iris: #4752a3`).
+- 2026-02-24: Scenario vs single_turn type badges use different blue shades (blue-500 vs blue-800) to maintain differentiation within the Angular palette.
+- 2026-02-24: Issue 4 (card background `#f8f9fc`) folded into Issue 3 — same root cause (federated components not matching Angular host).
+- 2026-02-24: V1/V2 data format mismatch hypothesis was wrong — backend populates BOTH `scores` (V1 keys) and `rubric_scores`/`criteria_scores` (V2 arrays) on the same result. `buildMatrixData()` works fine with V2 results.
 
 ## Open Questions
 - ~~What architecture choices need to be made? (bead `5q2`)~~ → Superseded by separation epic `p0l`
