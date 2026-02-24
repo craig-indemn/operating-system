@@ -19,50 +19,54 @@ print(f'OK — {r[\"user\"]}@{r[\"team\"]}')
 
 ## Prerequisites
 
+- **Node.js** (for `npx agent-slack` — used for automated token extraction)
 - **Python 3** with `slack_sdk` installed (`pip3 install slack_sdk`)
-- **Slack token** — one of:
-  - `SLACK_TOKEN` (xoxp-) — from an approved Slack app (preferred)
-  - `SLACK_XOXC_TOKEN` + `SLACK_XOXD_COOKIE` — from Slack Desktop browser session (quick path)
+- **Slack Desktop** running and signed in to the Indemn workspace
 - Token stored in the repo root `.env` file
 
 ## Setup
 
-### Install the SDK
+**YOU (Claude Code) run all of this. The user just needs Slack Desktop running.**
+
+### 1. Install the SDK
 
 ```bash
 pip3 install slack_sdk
 ```
 
-### Get a Token
+### 2. Extract Token from Slack Desktop (automated)
 
-**Option A: Slack App (preferred — requires workspace admin approval)**
+This uses `agent-slack` (runs via npx, no install needed) to pull the browser token directly from Slack Desktop's local data:
 
-1. Go to https://api.slack.com/apps → **Create New App** → **From scratch**
-2. Name: `Indemn OS`, Workspace: Indemn
-3. Sidebar → **OAuth & Permissions** → scroll to **User Token Scopes**
-4. Add all scopes listed in `references/slack-scopes.md`
-5. Scroll up → **Install to Workspace** → Authorize
-6. Copy the **User OAuth Token** (starts with `xoxp-`)
-7. Add to `.env`:
 ```bash
-export SLACK_TOKEN='xoxp-your-token-here'
+npx agent-slack auth import-desktop
 ```
 
-**Option B: Browser Token (no admin needed — extract from Slack Desktop)**
+This extracts the `xoxc` token and `xoxd` cookie from Slack Desktop and stores them in macOS Keychain.
 
-1. Make sure Slack Desktop is running and you're signed in
-2. Extract token and cookie from macOS Keychain or Slack's local storage
-3. Add to `.env`:
+### 3. Write Token to .env
+
+Read the tokens from agent-slack and write them into the project `.env`:
+
 ```bash
-export SLACK_XOXC_TOKEN='xoxc-...'
-export SLACK_XOXD_COOKIE='xoxd-...'
+REPO_ROOT=$(git rev-parse --show-toplevel)
+CREDS=$(npx agent-slack auth whoami 2>/dev/null)
+XOXC=$(echo "$CREDS" | python3 -c "import sys,json; ws=json.load(sys.stdin)['workspaces'][0]; print(ws['token'])")
+XOXD=$(echo "$CREDS" | python3 -c "import sys,json; ws=json.load(sys.stdin)['workspaces'][0]; print(ws['cookie_d'])")
+
+# Append to .env if not already present
+if ! grep -q "SLACK_XOXC_TOKEN" "$REPO_ROOT/.env" 2>/dev/null; then
+  echo "" >> "$REPO_ROOT/.env"
+  echo "# Slack (extracted from Slack Desktop via agent-slack)" >> "$REPO_ROOT/.env"
+  echo "export SLACK_XOXC_TOKEN='$XOXC'" >> "$REPO_ROOT/.env"
+  echo "export SLACK_XOXD_COOKIE='$XOXD'" >> "$REPO_ROOT/.env"
+  echo "Slack tokens written to .env"
+else
+  echo "Slack tokens already in .env"
+fi
 ```
 
-Use single quotes — the cookie contains `/` and `+` characters.
-
-Note: Browser tokens can expire. If auth starts failing, re-extract from Slack Desktop.
-
-### Verify
+### 4. Verify
 
 ```bash
 REPO_ROOT=$(git rev-parse --show-toplevel) && source "$REPO_ROOT/.env" && PYTHONPATH="$REPO_ROOT/lib" /usr/bin/python3 -c "
@@ -71,6 +75,20 @@ r = get_client().auth_test()
 print(f'OK — {r[\"user\"]}@{r[\"team\"]} ({r[\"user_id\"]})')
 "
 ```
+
+### Token Refresh
+
+Browser tokens can expire. If auth starts failing, re-run steps 2-4 to re-extract from Slack Desktop.
+
+### Alternative: Slack App Token (long-lived, requires admin)
+
+If browser tokens expire too often, create a Slack app for a permanent `xoxp-` token:
+
+1. https://api.slack.com/apps → **Create New App** → **From scratch**
+2. Name: `Indemn OS`, Workspace: Indemn
+3. **OAuth & Permissions** → **User Token Scopes** → add scopes from `references/slack-scopes.md`
+4. **Install to Workspace** → copy the **User OAuth Token** (`xoxp-`)
+5. Add to `.env`: `export SLACK_TOKEN='xoxp-...'`
 
 ## Execution Model
 
