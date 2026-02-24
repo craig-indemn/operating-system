@@ -3,14 +3,19 @@
 Add a usage analytics overview to the Indemn Observatory — organization and agent usage metrics broken out by month for the last 6 months, sourced from the tiledesk MongoDB database. Provides Kyle with visibility into platform adoption and activity trends.
 
 ## Status
-Session 2026-02-24-c complete — **full implementation done**, all 12 tasks built and verified. Backend endpoint works at all 3 scope levels, frontend renders with expand/collapse, numbers match billing data. **Not yet committed** in indemn-observability repo.
+Session 2026-02-24-d complete — **code committed and pushed** to `demo-gic` branch on `indemn-ai/Indemn-observatory`. Two commits: feature implementation (15 files, 837 lines) + CI build fix (2 files).
 
-**Blocker for next session**: Data presentation needs tuning before showing Kyle:
-1. **Date range**: 183-day default lands on Aug 25, creating a partial August column. Should snap to month boundaries (e.g., Sep 1 – Feb 28).
-2. **Unattributed sort order**: Unattributed row sorts first for GIC (54% unattributed) — should sort last within expansion.
-3. **Needs Kyle review**: Numbers are real billing data, but the partial month + Unattributed prominence may confuse without context.
+**CI build status**: Second push triggered rebuild after fixing two TypeScript errors (TrendChart missing `usage` key in MetricCategory record, unused `index` param in VoiceReportCallLog). Awaiting successful build.
 
-**Next session**: Fix date default (snap to month boundary), move Unattributed to bottom of expansion, commit code, get Kyle's feedback on the table.
+**Dev environment blocker**: The dev EC2 (`ec2-44-196-55-84`) points at the **dev MongoDB Atlas cluster** (`dev-indemn.pj4xyep.mongodb.net`) which is **over its 5GB storage quota** (using 5139 MB of 5120 MB). This causes replica set primary election failure → auth fails → app unusable. This is pre-existing and unrelated to our code. Needs Atlas cleanup or tier upgrade.
+
+**Next session**:
+1. Verify CI build succeeded and containers deployed on dev EC2
+2. Fix dev MongoDB quota issue (or switch demo-gic env to prod MongoDB)
+3. Test on deployed environment
+4. Close beads tasks (all 12 still open)
+5. Update Linear COP-326
+6. Get Kyle's feedback on the table
 
 ## External Resources
 | Resource | Type | Link |
@@ -20,8 +25,10 @@ Session 2026-02-24-c complete — **full implementation done**, all 12 tasks bui
 | Linear Task | Linear | COP-326 (In Progress, Cycle 73, assigned Craig) |
 | Observatory CLAUDE.md | Docs | indemn-observability/CLAUDE.md (503 lines, implementation guide) |
 | Overview Page | Code | indemn-observability/frontend/src/components/overview/OverviewView.tsx |
-| API Endpoints | Code | indemn-observability/src/observatory/api/routers/aggregations.py |
+| API Endpoints | Code | indemn-observability/src/observatory/api/routers/usage.py |
 | Types | Code | indemn-observability/frontend/src/types/api.ts |
+| Dev EC2 | Infrastructure | ssh -i ptrkdy.pem ubuntu@ec2-44-196-55-84.compute-1.amazonaws.com |
+| PEM Key | File | /Users/home/Repositories/ptrkdy.pem |
 
 ## Artifacts
 | Date | Artifact | Ask |
@@ -46,11 +53,18 @@ Session 2026-02-24-c complete — **full implementation done**, all 12 tasks bui
 - 2026-02-24: Conversation count only for now — shape supports adding unique_users, avg_depth etc. later
 - 2026-02-24: test-dolly-prod correct ObjectId is `65e18830a0616000137bb854` (not `66fc8ab493b5a40013596cd7` from initial research)
 - 2026-02-24: Usage is a CategoryTab (MetricCategory), not a top-level route. OverviewView has CategoryTabs (Volume/Outcomes/etc.) — Usage added as first category.
-- 2026-02-24: ~22% of billable requests have empty participantsBots — show "Unattributed" row in agent drill-down to maintain total consistency
-- 2026-02-24: participantsBots values are strings, faq_kbs._id is ObjectId — must use $toObjectId in $lookup pipeline
 - 2026-02-24: API uses ValidatedScope dependency for auth — platform scope restricted to Indemn employees, external users forced to customer scope
+- 2026-02-24: **Use `attributes.bot_id` for agent attribution** — NOT `participantsBots`. Tiledesk clears participantsBots on human handoff, but attributes.bot_id persists. Eliminates the false "Unattributed" category. Every billable conversation has attributes.bot_id (verified: 16,015 with both fields agree, 4,973 only in attributes, zero mismatches).
+- 2026-02-24: GIC "Unattributed" was actually human handoff conversations — Maria Gonzalez (2,181), Coralia Nunez (1,808), etc. joined bot conversations. Bot started every conversation.
+- 2026-02-24: Data is web chat only (all channel=chat21). Voice conversations use a different system, not in tiledesk.requests.
+- 2026-02-24: Date range presets use `days - 1` offset for inclusive counting ("Last 7 days" = 7 days inclusive → daily bucketing).
+- 2026-02-24: Platform default snaps to month boundaries: 1st of (current month - 6) through end of previous month.
+- 2026-02-24: Weekly bucket headers show "Feb 17 – 23" format instead of ISO week "W08".
+- 2026-02-24: Table has title "Conversation Volume" and subtitle describing scope: "Billable web chat conversations by organization... Excludes test mode and internal orgs."
+- 2026-02-24: CI/CD — `demo-gic` branch deploys to dev via `build-demo.yml`, `main` also deploys to dev via `build.yml`, `prod` deploys via manual dispatch.
+- 2026-02-24: Dev MongoDB Atlas cluster (`dev-indemn.pj4xyep.mongodb.net`) is over 5GB quota — causes auth failures on dev EC2.
 
 ## Open Questions
-- Should "Last 6 months" snap to the 1st of (current month - 6), or keep the rolling 183-day window?
-- Why does GIC have ~54% unattributed conversations vs ~22% platform average? Widget config issue or expected behavior?
-- Should Unattributed row always sort last in agent expansion, or stay sorted by total?
+- Dev MongoDB quota: clean up data or upgrade tier? Affects all dev Observatory functionality.
+- Should the demo-gic deployment switch to prod MongoDB to unblock testing?
+- Family First has 41 Feb conversations all flagged `isTestMode: true` — is their widget misconfigured?
