@@ -391,6 +391,92 @@ source .env && mongosh "$MONGODB_PROD_URI/quotes" --quiet --eval "
 
 ---
 
+## BILLING-ALIGNED USAGE FILTER
+
+When counting conversations for usage reporting that should match Stripe billing numbers, apply this filter to the `requests` collection:
+
+```javascript
+{
+  status: 1000,            // closed conversations only
+  isTestMode: { $ne: true }, // exclude test mode
+  depth: { $gt: 2 }        // more than 2 messages (bot greeting + user msg + bot response minimum)
+}
+```
+
+**Why this filter:**
+- `stripe_meters` collection (29.5K docs) is the billing source of truth — one entry per billable conversation
+- `stripe_meters` has two meter types: `chat_conv_count` and `voice_duration_minutes`
+- This filter on `requests` matches `stripe_meters` counts within ~1-2% (small diffs are timing: meter event timestamp vs request createdAt may cross month boundaries)
+- Verified empirically 2026-02-24 across GIC, Bonzah, Rankin, Distinguished, Open Enrolment
+
+**Test/internal organizations to exclude from customer-facing usage reports:**
+
+| Org Name | ID | Reason |
+|----------|-----|--------|
+| Indemn | `65e18047b26fd2526e096cd0` | Internal |
+| Demos | `66c0920c358d3f001351c22c` | Demo showcase (50+ bots) |
+| Voice Demos | `66d196e9cc5cd70013e46565` | Voice prototypes |
+| test-dolly-prod | `66fc8ab493b5a40013596cd7` | Test account |
+| InsuranceTrak | `65e60f70683d12001386515a` | Legacy test |
+
+**EventGuard is NOT a test org** — it's a real customer (Jewelers Mutual product) despite high volume.
+
+### PATTERN: Billable conversations by org by month
+```javascript
+var excludeOrgs = [
+  ObjectId("65e18047b26fd2526e096cd0"), // Indemn
+  ObjectId("66c0920c358d3f001351c22c"), // Demos
+  ObjectId("66d196e9cc5cd70013e46565"), // Voice Demos
+  ObjectId("66fc8ab493b5a40013596cd7"), // test-dolly-prod
+  ObjectId("65e60f70683d12001386515a")  // InsuranceTrak
+]
+
+db.getCollection("requests").aggregate([
+  { $match: {
+    createdAt: { $gte: new Date("2025-09-01") },
+    status: 1000,
+    isTestMode: { $ne: true },
+    depth: { $gt: 2 },
+    id_organization: { $nin: excludeOrgs }
+  }},
+  { $group: {
+    _id: {
+      org: "$id_organization",
+      month: { $dateToString: { format: "%Y-%m", date: "$createdAt" } }
+    },
+    conversations: { $sum: 1 }
+  }},
+  { $sort: { "_id.month": 1, conversations: -1 } }
+]).toArray()
+```
+
+### PATTERN: Billable conversations by agent by month
+```javascript
+db.getCollection("requests").aggregate([
+  { $match: {
+    createdAt: { $gte: new Date("2025-09-01") },
+    status: 1000,
+    isTestMode: { $ne: true },
+    depth: { $gt: 2 },
+    id_organization: { $nin: excludeOrgs },
+    hasBot: true,
+    participantsBots: { $exists: true, $ne: [] }
+  }},
+  { $unwind: "$participantsBots" },
+  { $group: {
+    _id: {
+      bot: "$participantsBots",
+      org: "$id_organization",
+      month: { $dateToString: { format: "%Y-%m", date: "$createdAt" } }
+    },
+    conversations: { $sum: 1 }
+  }},
+  { $sort: { "_id.month": 1, conversations: -1 } }
+]).toArray()
+```
+
+---
+
 ## IMPORTANT NOTES
 
 - **Read-only** — never insert, update, or delete without explicit authorization
