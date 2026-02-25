@@ -3,24 +3,30 @@
 End-to-end development of the Indemn agent platform — spanning indemn-platform-v2 (V2 agent builder + Jarvis), the evaluation harness, copilot-dashboard (Angular config UI), and supporting services. Covers debugging, feature development, and refinement of the full stack from agent configuration through evaluation and deployment.
 
 ## Status
-**Session 2026-02-24-b** (COMPLETE): Issues 1-10 fully spec'd. Issue 6 rewritten (original was wrong — real cause is scope filter eliminating rubric rules). Issues 7, 8, 9, 10 spec'd this session. Issues 8+9 are Linear responses only (no code). Issue 10 is a scoring fallback bug. Implementation plan created in beads. Dolly's 11-14 + Dhruv's S1-S3 still need spec. READ `artifacts/2026-02-24-evaluations-feedback/CONTEXT.md` to resume.
+**Session 2026-02-25-c** (COMPLETE): COP-325 Issues 1-10 ALL IMPLEMENTED and deployed to dev. Additional fixes: Issue 15 (criteria-only dropdown bug), purple button/accent fixes, agent overview metadata removal. Linear issues created for Dolly's feature requests (COP-329 through COP-332). Prod deployment prepared — platform-v2 and evaluations `prod` branches pushed, CI builds triggered. Copilot-dashboard PR #964 (Jarvis FOB) still needs reviewer approval before main→prod PR.
 
-**Previous session (2026-02-23-d)**: Baseline generation feature declared production-ready. Ran 3 evaluations against Wedding Bot. Run 3 results: 15/15 completed, 10 passed, 5 failed, criteria 98%, rubric 91%.
+**PROD DEPLOYMENT IN PROGRESS:**
+- `indemn-platform-v2`: prod branch pushed, CI building Docker image (`ghcr.io/indemn-ai/copilot-dashboard-react:latest`)
+- `evaluations`: prod branch pushed, CI building Docker image (`ghcr.io/indemn-ai/evaluations:latest`)
+- `copilot-dashboard`: PR #964 needs merge → then main→prod PR needed (branch protection)
+- **Deploy order matters**: platform-v2 FIRST (serves remoteEntry.js), then evaluations (independent), then copilot-dashboard (loads federation from platform-v2)
+- User needs to SSH into prod EC2 to pull images and deploy (self-hosted runners may or may not be configured)
 
 **What's done:**
-- Jarvis skills architecture: 9 commits on percy-service main, deployed to dev EC2
-- Skills framework: FilesystemBackend + SkillsMiddleware + 3 SKILL.md files
-- 3 successful evaluation runs validating quality improvements across iterations
-- Rubric: 6 universal rules including no_harmful_content (up from 5)
-- Test set: 15 items, 98% criteria pass rate, no criteria/rubric overlap
-- Stale resources cleaned up (only 1 rubric + 1 test set per run remain)
-- Production readiness checklist created with full deployment plan
+- COP-325 Issues 1-10: All implemented across indemn-platform-v2 (8 files) + evaluations (1 file)
+- Issue 15: Fixed useEffect dependency bug in RunEvaluationModal.tsx
+- Purple buttons: Changed `--color-accent-secondary` from Lilac to blue in index.css
+- Jarvis FOB: Changed gradient from Iris→Lilac to Iris→Blue in bot-details.component.scss (PR #964)
+- Agent overview metadata: Removed Bot ID/Org ID sections from AgentDetail.tsx and AgentDetailV1.tsx
+- Linear: Comments posted for Issues 8, 9, implementation status. Issues COP-329-332 created for Dolly's features
+- COP-325 status: "In Progress" (move to "Ready for Testing" after prod deploy)
 
 **Next session should**:
-1. Implement Issues 1-10 following the beads epic (trivial UI → data bugs → backend → evaluator logic)
-2. Test all fixes on dev against Wedding Bot
-3. Post Linear responses for Issues 8 and 9
-4. Spec Dolly's Issues 11-14, then Dhruv's S1-S3
+1. Walk through prod EC2 setup — ensure Docker images pulled, env vars correct, containers running
+2. Verify federation works end-to-end in prod (remoteEntry.js loads, React components render in Angular shell)
+3. Get PR #964 merged on copilot-dashboard, create main→prod PR
+4. Run evaluation on prod to validate all fixes
+5. Move COP-325 to "Ready for Testing" or "Done"
 
 ## External Resources
 | Resource | Type | Link |
@@ -102,6 +108,11 @@ End-to-end development of the Indemn agent platform — spanning indemn-platform
 - 2026-02-24: `FederatedEvaluationRunDetail.tsx` reads V1 `question_set_id` (always null) instead of V2 `test_set_id`. All runs show "—" for test set.
 - 2026-02-24: `scoring.ts` fallback treats `rubric_rules_total: 0` same as `undefined`, misreading `component_scores` as rubric data. Fix: check `!== undefined` not `> 0`.
 - 2026-02-24: Issues 8 and 9 are not bugs — Linear responses explaining categories and criteria-only scoring.
+- 2026-02-25: Copilot dashboard palette uses blues (#3b5dc9 secondary accent), NOT Indemn marketing Lilac (#a67cb7). Fixed in index.css and bot-details.component.scss.
+- 2026-02-25: Issue 15 (criteria-only dropdown) was a React useEffect dependency bug — `selectedRubricId` in deps caused infinite loop when empty string selected. Fixed by removing from deps array.
+- 2026-02-25: Prod deployment order: platform-v2 FIRST (serves remoteEntry.js at platform.indemn.ai), then evaluations (independent), then copilot-dashboard (loads federation from platform-v2).
+- 2026-02-25: Both platform-v2 and evaluations deploy to prod by pushing to `prod` branch. copilot-dashboard requires PR to `prod` with reviewer approval.
+- 2026-02-25: Dolly's feature requests (Issues 11-14) tracked as COP-329 through COP-332 in Backlog.
 
 ## Open Questions
 - ~~What architecture choices need to be made? (bead `5q2`)~~ → Superseded by separation epic `p0l`
