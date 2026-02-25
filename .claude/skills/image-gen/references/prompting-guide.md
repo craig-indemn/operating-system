@@ -144,7 +144,7 @@ line in the middle. Professional, editorial style.
 | Unnatural lighting | Large edits create mismatches | Specify directional light explicitly, provide lighting reference |
 | Text rendering errors | Model limitation | Retry, tighter constraints, or add text in post-processing |
 | Generic stock look | Prompt too vague | More specific style terms, explicit "no stock photo aesthetic" |
-| Wrong aspect ratio | Not specified clearly | State ratio in prompt text: "wide 16:9 landscape format" |
+| Wrong aspect ratio | Prompt text ignored for aspect | Use `imageConfig.aspectRatio` in `generationConfig` — prompt text alone does NOT work |
 
 ## Brand-Aware Prompt Template
 

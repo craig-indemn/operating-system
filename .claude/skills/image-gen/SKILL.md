@@ -49,7 +49,10 @@ source .env && curl -s -X POST "https://generativelanguage.googleapis.com/v1beta
   -d '{
     "contents": [{"parts": [{"text": "YOUR PROMPT HERE"}]}],
     "generationConfig": {
-      "responseModalities": ["TEXT", "IMAGE"]
+      "responseModalities": ["TEXT", "IMAGE"],
+      "imageConfig": {
+        "aspectRatio": "16:9"
+      }
     }
   }' | python3 -c "
 import json, sys, base64
@@ -66,7 +69,7 @@ for part in data['candidates'][0]['content']['parts']:
 "
 ```
 
-Replace `YOUR PROMPT HERE` and `OUTPUT_PATH.png`.
+Replace `YOUR PROMPT HERE`, `OUTPUT_PATH.png`, and the `aspectRatio` value. Omit `imageConfig` entirely for default 1:1 square.
 
 ### Edit an Existing Image
 
@@ -82,7 +85,7 @@ source .env && curl -s -X POST "https://generativelanguage.googleapis.com/v1beta
       {\"inlineData\": {\"mimeType\": \"image/png\", \"data\": \"$IMG_B64\"}},
       {\"text\": \"EDIT INSTRUCTION HERE\"}
     ]}],
-    \"generationConfig\": {\"responseModalities\": [\"TEXT\", \"IMAGE\"]}
+    \"generationConfig\": {\"responseModalities\": [\"TEXT\", \"IMAGE\"], \"imageConfig\": {\"aspectRatio\": \"16:9\"}}
   }" | python3 -c "
 import json, sys, base64
 data = json.load(sys.stdin)
@@ -96,11 +99,27 @@ for part in data['candidates'][0]['content']['parts']:
 "
 ```
 
-### Supported Aspect Ratios
+### Aspect Ratio Control
 
-`1:1`, `2:3`, `3:2`, `3:4`, `4:3`, `4:5`, `5:4`, `9:16`, `16:9`, `21:9`
+Use `imageConfig.aspectRatio` in `generationConfig` to control output dimensions. **Do NOT rely on prompt text alone** — the model ignores natural language aspect instructions and generates 1024x1024 by default.
 
-Specify in the prompt text (e.g., "wide 16:9 landscape") — the model respects natural language aspect instructions.
+Supported values: `1:1`, `2:3`, `3:2`, `3:4`, `4:3`, `4:5`, `5:4`, `9:16`, `16:9`, `21:9`
+
+```json
+"generationConfig": {
+  "responseModalities": ["TEXT", "IMAGE"],
+  "imageConfig": {
+    "aspectRatio": "16:9"
+  }
+}
+```
+
+Common use cases:
+- Blog headers: `"16:9"` (produces ~1344x768)
+- Social cards: `"3:2"` or `"4:3"`
+- Portrait/mobile: `"9:16"` or `"3:4"`
+- Ultra-wide banners: `"21:9"`
+- Square (default): `"1:1"` or omit `imageConfig`
 
 ## Prompting
 
@@ -160,11 +179,12 @@ Color palette: [hex codes]. Style: [brand aesthetic]. [Format/size context].
 | Using Pro model in production | Use Flash — Pro is unreliable in preview |
 | Forgetting `responseModalities` | Must include `["TEXT", "IMAGE"]` or no image returned |
 | Not saving the image | Response is base64 — must decode and write to file |
+| Specifying aspect ratio in prompt text only | Model ignores it — use `imageConfig.aspectRatio` in `generationConfig` |
 
 ## Limitations
 
 - All generated images include SynthID watermark (invisible, for authenticity)
 - Free tier has zero image quota — billing required
-- Flash model generates ~1K resolution by default
+- Flash model generates ~1K resolution by default (1024x1024 square, 1344x768 at 16:9)
 - Text rendering can be inconsistent — may need retries
 - Content policy blocks certain categories (violence, etc.)
