@@ -169,6 +169,65 @@ Generate an image: [DESCRIPTION].
 Color palette: [hex codes]. Style: [brand aesthetic]. [Format/size context].
 ```
 
+## Post-Processing: Whitespace Cropping
+
+Gemini often generates images with significant white margins around the actual content, even with `imageConfig.aspectRatio` set. **Always crop after generation** — especially for blog/web use where whitespace creates awkward gaps.
+
+### Auto-Crop Script
+
+Requires Pillow (`pip install Pillow`). Python at `/Users/home/Repositories/.venv/bin/python3` has it.
+
+```bash
+/Users/home/Repositories/.venv/bin/python3 -c "
+from PIL import Image
+
+img = Image.open('INPUT.png').convert('RGB')
+pixels = img.load()
+w, h = img.size
+threshold = 245  # pixels above this in all channels = white
+
+def is_white_row(y):
+    for x in range(w):
+        r, g, b = pixels[x, y]
+        if r < threshold or g < threshold or b < threshold:
+            return False
+    return True
+
+def is_white_col(x):
+    for y in range(h):
+        r, g, b = pixels[x, y]
+        if r < threshold or g < threshold or b < threshold:
+            return False
+    return True
+
+top = next(y for y in range(h) if not is_white_row(y))
+bottom = next(y for y in range(h-1, -1, -1) if not is_white_row(y))
+left = next(x for x in range(w) if not is_white_col(x))
+right = next(x for x in range(w-1, -1, -1) if not is_white_col(x))
+
+pad = 15
+top, bottom = max(0, top-pad), min(h-1, bottom+pad)
+left, right = max(0, left-pad), min(w-1, right+pad)
+
+cropped = img.crop((left, top, right+1, bottom+1))
+cropped.save('OUTPUT.png')
+print(f'{w}x{h} -> {cropped.size[0]}x{cropped.size[1]}')
+"
+```
+
+Replace `INPUT.png` and `OUTPUT.png`. The threshold of 245 handles near-white artifacts that `ImageChops.difference` misses.
+
+### Why This Matters
+
+- Model generates content in a small region even when `aspectRatio` is set correctly
+- A 1344x768 image may have content in only a 1200x300 band — the rest is white
+- On a blog, the browser renders the full image dimensions, creating huge visual gaps
+- Cropping removes the dead space so content fits tightly in the page layout
+
+### When to Crop
+
+**Always crop** for web/blog use. The only exception is if you specifically want whitespace padding (e.g., an image meant to float with breathing room).
+
 ## Common Mistakes
 
 | Mistake | Fix |
@@ -180,6 +239,7 @@ Color palette: [hex codes]. Style: [brand aesthetic]. [Format/size context].
 | Forgetting `responseModalities` | Must include `["TEXT", "IMAGE"]` or no image returned |
 | Not saving the image | Response is base64 — must decode and write to file |
 | Specifying aspect ratio in prompt text only | Model ignores it — use `imageConfig.aspectRatio` in `generationConfig` |
+| Deploying images without cropping whitespace | Always auto-crop — Gemini leaves large white margins around content |
 
 ## Limitations
 
