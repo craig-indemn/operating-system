@@ -3,18 +3,15 @@
 AI-powered content creation pipeline for Indemn and personal brands. Transforms voice-based ideas into polished, publishable content through dynamic extraction, iterative drafting, and multi-platform distribution. Lives in a separate repo (`/Users/home/Repositories/content-system`) with skills symlinked to `~/.claude/skills/`.
 
 ## Status
-Session 2026-02-25-c complete. Blog images generated and deployed for evaluations post.
+Session 2026-02-25-d complete. Excalidraw diagramming skill created and tested with content system architecture diagram.
 
-**Evaluations blog post images** — Generated 4 images for "Building Evaluations for Conversational Agents" using `/image-gen` skill, all deployed and live at blog.indemn.ai:
-- Hero image (chaos-to-clarity abstract) — generated in session 2026-02-25-b
-- "From 30% to 91%" section — fragmented shards coalescing into a 91% gauge
-- "Testing real conversations" section — horizontal conversation flow with evaluation checkpoints
-- "Automating the setup" section — autonomous document→extraction→test→scoring loop
-
-**Image-gen skill improvements** (this session):
-- Discovered `imageConfig.aspectRatio` in `generationConfig` — prompt text aspect ratio hints are ignored by Gemini
-- Added whitespace auto-crop post-processing guide (Pillow, threshold=245)
-- Both learnings documented in SKILL.md and references/prompting-guide.md
+**Excalidraw skill** — Built full `/excalidraw` skill for programmatic diagram creation:
+- SKILL.md with status check, setup, rendering pipeline, quick reference, layout grid, color palette, common mistakes
+- `references/element-reference.md` — complete element type specification (shapes, text, arrows, binding protocol)
+- `references/diagram-patterns.md` — four copy-paste-ready JSON templates (flowchart, architecture, sequence, simple boxes)
+- `lib/excalidraw-renderer/` — Node.js renderer using `excalidraw-to-svg` + `@excalidraw/utils@0.1.2` + jsdom + canvas
+- Custom `render.js` with post-processing to inject bound text that jsdom misses
+- Tested with content system architecture diagram (see artifacts)
 
 **Blog posts:**
 - "Building Evaluations for Conversational Agents" — Published with images, live at blog.indemn.ai
@@ -24,7 +21,6 @@ Session 2026-02-25-c complete. Blog images generated and deployed for evaluation
 1. Author reviews "Agents That Build Agents" v13 — approve or further feedback
 2. Generate images for "Agents That Build Agents" when approved
 3. Integrate image-gen into content pipeline skills (content-draft, content-publish) so images are generated during drafting
-4. Explore Excalidraw MCP for diagram generation (lower priority)
 
 ## External Resources
 | Resource | Type | Link |
@@ -42,6 +38,7 @@ Session 2026-02-25-c complete. Blog images generated and deployed for evaluation
 | Date | Artifact | Ask |
 |------|----------|-----|
 | 2026-02-23 | [writing-psychology-reference](artifacts/2026-02-23-writing-psychology-reference.md) | Deep research on psychology and craft of writing that grips readers — permanent reference for content system |
+| 2026-02-25 | [content-system-architecture](artifacts/content-system-architecture.excalidraw) | Excalidraw diagram of the content pipeline — skills, flow, and integration points ([SVG](artifacts/content-system-architecture.svg)) |
 
 ## Decisions
 - 2026-02-25: Image generation skill is a general OS tool skill, not content-system-specific. Brand context injected by the caller (content pipeline skills), not the image-gen skill itself.
@@ -57,6 +54,8 @@ Session 2026-02-25-c complete. Blog images generated and deployed for evaluation
 - 2026-02-25: Vercel auto-deploy not connected to content-system repo — requires manual `vercel --prod` from `sites/indemn-blog/`.
 - 2026-02-25: Gemini ignores aspect ratio in prompt text — must use `generationConfig.imageConfig.aspectRatio` (e.g., `"16:9"`). Produces native 1344x768.
 - 2026-02-25: Always auto-crop generated images before deploying to web — Gemini leaves large white margins around content. Use Pillow with threshold=245.
+- 2026-02-25: Excalidraw diagrams use CLI-based rendering (`excalidraw-to-svg` via jsdom), not MCP. Fits OS CLI-first philosophy. Bound text renders via custom post-processing in render.js.
+- 2026-02-25: `@excalidraw/utils` must be pinned to `0.1.2` — newer versions changed file structure and break `excalidraw-to-svg`.
 
 ## Open Questions
 - The content-extract skill's "dynamic interview" should know to search internal sources — how to teach it that without bloating the skill?
