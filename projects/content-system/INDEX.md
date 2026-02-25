@@ -3,19 +3,28 @@
 AI-powered content creation pipeline for Indemn and personal brands. Transforms voice-based ideas into polished, publishable content through dynamic extraction, iterative drafting, and multi-platform distribution. Lives in a separate repo (`/Users/home/Repositories/content-system`) with skills symlinked to `~/.claude/skills/`.
 
 ## Status
-Session 2026-02-25-b complete. Image generation capability added to the OS.
+Session 2026-02-25-c complete. Blog images generated and deployed for evaluations post.
 
-**Image Generation Skill (`/image-gen`)** — New OS-level tool skill using Google Nano Banana (gemini-2.5-flash-image) API. Tested and working. Includes prompting best practices reference, 7-part prompt framework, brand-aware generation patterns. Billing enabled on Google AI Studio. General-purpose — not Indemn-specific. Registered in OS CLAUDE.md.
+**Evaluations blog post images** — Generated 4 images for "Building Evaluations for Conversational Agents" using `/image-gen` skill, all deployed and live at blog.indemn.ai:
+- Hero image (chaos-to-clarity abstract) — generated in session 2026-02-25-b
+- "From 30% to 91%" section — fragmented shards coalescing into a 91% gauge
+- "Testing real conversations" section — horizontal conversation flow with evaluation checkpoints
+- "Automating the setup" section — autonomous document→extraction→test→scoring loop
 
-**Blog posts (from session 2026-02-25-a):**
-- "Building Evaluations for Conversational Agents" — Published and live at blog.indemn.ai
+**Image-gen skill improvements** (this session):
+- Discovered `imageConfig.aspectRatio` in `generationConfig` — prompt text aspect ratio hints are ignored by Gemini
+- Added whitespace auto-crop post-processing guide (Pillow, threshold=245)
+- Both learnings documented in SKILL.md and references/prompting-guide.md
+
+**Blog posts:**
+- "Building Evaluations for Conversational Agents" — Published with images, live at blog.indemn.ai
 - "Agents That Build Agents" — Draft v13, awaiting review or approval
 
 **Next up:**
 1. Author reviews "Agents That Build Agents" v13 — approve or further feedback
-2. Integrate image-gen into content pipeline skills (content-draft, content-publish) so images are generated during drafting
-3. Explore Excalidraw MCP for diagram generation (lower priority)
-4. Preview/publish "Agents That Build Agents" when approved
+2. Generate images for "Agents That Build Agents" when approved
+3. Integrate image-gen into content pipeline skills (content-draft, content-publish) so images are generated during drafting
+4. Explore Excalidraw MCP for diagram generation (lower priority)
 
 ## External Resources
 | Resource | Type | Link |
@@ -46,6 +55,8 @@ Session 2026-02-25-b complete. Image generation capability added to the OS.
 - 2026-02-25: Evaluations blog post required fresh extraction — original predated The Point/Writing Energy system. Extraction from existing drafts + codebase exploration works well.
 - 2026-02-25: "Too dramatic" feedback on Agents post → same writing psychology techniques work at lower intensity. Grounded confidence > manifesto energy for practitioner pieces.
 - 2026-02-25: Vercel auto-deploy not connected to content-system repo — requires manual `vercel --prod` from `sites/indemn-blog/`.
+- 2026-02-25: Gemini ignores aspect ratio in prompt text — must use `generationConfig.imageConfig.aspectRatio` (e.g., `"16:9"`). Produces native 1344x768.
+- 2026-02-25: Always auto-crop generated images before deploying to web — Gemini leaves large white margins around content. Use Pillow with threshold=245.
 
 ## Open Questions
 - The content-extract skill's "dynamic interview" should know to search internal sources — how to teach it that without bloating the skill?
