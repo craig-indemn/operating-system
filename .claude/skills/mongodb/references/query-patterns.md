@@ -416,7 +416,7 @@ When counting conversations for usage reporting that should match Stripe billing
 | Indemn | `65e18047b26fd2526e096cd0` | Internal |
 | Demos | `66c0920c358d3f001351c22c` | Demo showcase (50+ bots) |
 | Voice Demos | `66d196e9cc5cd70013e46565` | Voice prototypes |
-| test-dolly-prod | `66fc8ab493b5a40013596cd7` | Test account |
+| test-dolly-prod | `65e18830a0616000137bb854` | Test account |
 | InsuranceTrak | `65e60f70683d12001386515a` | Legacy test |
 
 **EventGuard is NOT a test org** — it's a real customer (Jewelers Mutual product) despite high volume.
@@ -427,7 +427,7 @@ var excludeOrgs = [
   ObjectId("65e18047b26fd2526e096cd0"), // Indemn
   ObjectId("66c0920c358d3f001351c22c"), // Demos
   ObjectId("66d196e9cc5cd70013e46565"), // Voice Demos
-  ObjectId("66fc8ab493b5a40013596cd7"), // test-dolly-prod
+  ObjectId("65e18830a0616000137bb854"), // test-dolly-prod
   ObjectId("65e60f70683d12001386515a")  // InsuranceTrak
 ]
 
