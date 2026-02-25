@@ -3,18 +3,17 @@
 AI-powered content creation pipeline for Indemn and personal brands. Transforms voice-based ideas into polished, publishable content through dynamic extraction, iterative drafting, and multi-platform distribution. Lives in a separate repo (`/Users/home/Repositories/content-system`) with skills symlinked to `~/.claude/skills/`.
 
 ## Status
-Session 2026-02-25-d complete. Excalidraw diagramming skill created and tested with content system architecture diagram.
+Session 2026-02-25-e complete. Blog OG thumbnails fixed, homepage card layout added.
 
-**Excalidraw skill** — Built full `/excalidraw` skill for programmatic diagram creation:
-- SKILL.md with status check, setup, rendering pipeline, quick reference, layout grid, color palette, common mistakes
-- `references/element-reference.md` — complete element type specification (shapes, text, arrows, binding protocol)
-- `references/diagram-patterns.md` — four copy-paste-ready JSON templates (flowchart, architecture, sequence, simple boxes)
-- `lib/excalidraw-renderer/` — Node.js renderer using `excalidraw-to-svg` + `@excalidraw/utils@0.1.2` + jsdom + canvas
-- Custom `render.js` with post-processing to inject bound text that jsdom misses
-- Tested with content system architecture diagram (see artifacts)
+**Blog site improvements (this session):**
+- Fixed Open Graph meta tags — Slack/social unfurls now show Indemn branding instead of Astro stock placeholder
+- Generated branded default OG card (Indemn logo on navy background) via `/image-gen` with logo as reference
+- Added `heroImage` to blog post frontmatter + fixed `BlogPost.astro` to pass it to `BaseHead` for `og:image`
+- Homepage now shows post thumbnails in card layout (image on top, text below)
+- Fixed hero image overlap on blog post pages (removed `translateY(-1rem)`)
 
 **Blog posts:**
-- "Building Evaluations for Conversational Agents" — Published with images, live at blog.indemn.ai
+- "Building Evaluations for Conversational Agents" — Published with images and OG thumbnail, live at blog.indemn.ai
 - "Agents That Build Agents" — Draft v13, awaiting review or approval
 
 **Next up:**
@@ -56,6 +55,9 @@ Session 2026-02-25-d complete. Excalidraw diagramming skill created and tested w
 - 2026-02-25: Always auto-crop generated images before deploying to web — Gemini leaves large white margins around content. Use Pillow with threshold=245.
 - 2026-02-25: Excalidraw diagrams use CLI-based rendering (`excalidraw-to-svg` via jsdom), not MCP. Fits OS CLI-first philosophy. Bound text renders via custom post-processing in render.js.
 - 2026-02-25: `@excalidraw/utils` must be pinned to `0.1.2` — newer versions changed file structure and break `excalidraw-to-svg`.
+- 2026-02-25: Blog posts need `heroImage` in frontmatter pointing to `src/assets/images/` for OG thumbnails. Images in `public/images/` work for inline markdown but not for Astro's `image()` schema helper.
+- 2026-02-25: Default blog OG image generated with `/image-gen` using Indemn logo PNG as reference input to Gemini. Replaces Astro stock placeholder.
+- 2026-02-25: `BlogPost.astro` must pass `image={heroImage}` to `BaseHead` — was missing, causing all posts to fall back to default OG image.
 
 ## Open Questions
 - The content-extract skill's "dynamic interview" should know to search internal sources — how to teach it that without bloating the skill?
