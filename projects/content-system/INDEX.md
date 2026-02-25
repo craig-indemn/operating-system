@@ -3,14 +3,17 @@
 AI-powered content creation pipeline for Indemn and personal brands. Transforms voice-based ideas into polished, publishable content through dynamic extraction, iterative drafting, and multi-platform distribution. Lives in a separate repo (`/Users/home/Repositories/content-system`) with skills symlinked to `~/.claude/skills/`.
 
 ## Status
-Session 2026-02-25-e complete. Blog OG thumbnails fixed, homepage card layout added.
+Session 2026-02-25-e complete. Excalidraw skill built, blog OG thumbnails fixed, homepage card layout added.
 
-**Blog site improvements (this session):**
+**This session:**
+- Built `/excalidraw` skill — full element reference, diagram templates, Node.js renderer with bound text post-processing
+- Created content system architecture diagram (`.excalidraw` + `.svg`)
 - Fixed Open Graph meta tags — Slack/social unfurls now show Indemn branding instead of Astro stock placeholder
-- Generated branded default OG card (Indemn logo on navy background) via `/image-gen` with logo as reference
-- Added `heroImage` to blog post frontmatter + fixed `BlogPost.astro` to pass it to `BaseHead` for `og:image`
+- Generated branded default OG card via `/image-gen` with Indemn logo as reference
+- Added `heroImage` to blog post frontmatter + fixed `BlogPost.astro` to pass it to `BaseHead`
 - Homepage now shows post thumbnails in card layout (image on top, text below)
-- Fixed hero image overlap on blog post pages (removed `translateY(-1rem)`)
+- Fixed hero image overlap on blog post pages
+- Committed and pushed all OS changes (excalidraw skill, eval-analysis skill, project state)
 
 **Blog posts:**
 - "Building Evaluations for Conversational Agents" — Published with images and OG thumbnail, live at blog.indemn.ai
