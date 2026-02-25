@@ -131,9 +131,14 @@ gog drive search "quarterly report" --json
 
 # Download / export
 gog drive download <fileId> --format=pdf --out=./report.pdf
+
+# Upload a file (stays in original format)
+gog drive upload ./report.pdf --parent=<folderId> --name="Report Name"
 ```
 
-See `references/drive.md` for full reference (upload, mkdir, share, permissions, rename, copy).
+**Upload as Google Doc:** `gog drive upload` keeps the file in its native format. To convert a local file (markdown, text, html, docx) into an editable Google Doc, use the Drive API multipart upload with `mimeType: application/vnd.google-apps.document`. See `references/drive.md` for the full curl pattern.
+
+**Domain sharing:** `gog drive share` supports `--email` (individual) and `--anyone` (public), but not org-wide sharing. To share with an entire Google Workspace domain (e.g., everyone at indemn.ai), use the Drive API permissions endpoint with `"type":"domain"`. See `references/drive.md` for the curl pattern.
 
 ### Docs
 

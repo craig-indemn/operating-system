@@ -162,6 +162,35 @@ gog drive share 1aBcDeFgHiJkLmNoPqRsTuVwXyZ --email=person@company.com --role=wr
 gog drive share 1aBcDeFgHiJkLmNoPqRsTuVwXyZ --anyone
 ```
 
+### Share with an entire Google Workspace domain
+
+The `gog` CLI doesn't support domain-level sharing. Use the Drive API directly:
+
+```bash
+# Get access token (see "Upload as Google Doc" section for full token flow)
+ACCESS_TOKEN=$(...) # see token acquisition steps above
+
+# Share with everyone at indemn.ai (editor access)
+curl -s -X POST "https://www.googleapis.com/drive/v3/files/<fileId>/permissions" \
+  -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"type":"domain","domain":"indemn.ai","role":"writer"}'
+
+# Share with everyone at indemn.ai (read-only)
+curl -s -X POST "https://www.googleapis.com/drive/v3/files/<fileId>/permissions" \
+  -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"type":"domain","domain":"indemn.ai","role":"reader"}'
+```
+
+**Permission types reference:**
+
+| `type` | `domain`/`emailAddress` | Effect |
+|--------|------------------------|--------|
+| `user` | `emailAddress` | Share with one person |
+| `domain` | `domain` | Share with everyone in a Google Workspace org |
+| `anyone` | _(none)_ | Public link sharing |
+
 ## List Permissions
 
 ```bash
@@ -205,6 +234,66 @@ gog drive drives
 ```
 
 Lists all shared drives the authenticated account has access to.
+
+## Upload as Google Doc (Conversion)
+
+`gog drive upload` uploads files in their native format (e.g., `.md` stays as `text/markdown`). To upload a local file **and convert it to a Google Doc** so it's editable in Drive, use the Google Drive API directly via curl.
+
+This requires exchanging the gog refresh token for an access token first.
+
+### Step 1: Get an access token
+
+```bash
+# Read credentials
+CLIENT_ID=$(python3 -c "import json; print(json.load(open('$HOME/Library/Application Support/gogcli/credentials.json'))['client_id'])")
+CLIENT_SECRET=$(python3 -c "import json; print(json.load(open('$HOME/Library/Application Support/gogcli/credentials.json'))['client_secret'])")
+
+# Export refresh token to temp file, extract it
+gog auth tokens export craig@indemn.ai --out=/tmp/_gog_token.json --overwrite
+REFRESH_TOKEN=$(python3 -c "import json; print(json.load(open('/tmp/_gog_token.json'))['refresh_token'])")
+rm -f /tmp/_gog_token.json
+
+# Exchange for access token
+ACCESS_TOKEN=$(curl -s -X POST https://oauth2.googleapis.com/token \
+  -d "client_id=$CLIENT_ID" \
+  -d "client_secret=$CLIENT_SECRET" \
+  -d "refresh_token=$REFRESH_TOKEN" \
+  -d "grant_type=refresh_token" | python3 -c "import sys,json; print(json.load(sys.stdin)['access_token'])")
+```
+
+### Step 2: Upload with conversion
+
+```bash
+curl -s -X POST "https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id,name,mimeType,webViewLink" \
+  -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -F "metadata={\"name\":\"Document Title\",\"mimeType\":\"application/vnd.google-apps.document\"};type=application/json;charset=UTF-8" \
+  -F "file=@/path/to/local/file.md;type=text/markdown"
+```
+
+**Key:** Setting `mimeType` to `application/vnd.google-apps.document` in the metadata tells the Drive API to convert the uploaded file into a native Google Doc.
+
+### Optional: Upload to a specific folder
+
+Add `"parents":["FOLDER_ID"]` to the metadata JSON:
+
+```bash
+curl -s -X POST "https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart&fields=id,name,mimeType,webViewLink" \
+  -H "Authorization: Bearer $ACCESS_TOKEN" \
+  -F "metadata={\"name\":\"Document Title\",\"mimeType\":\"application/vnd.google-apps.document\",\"parents\":[\"FOLDER_ID\"]};type=application/json;charset=UTF-8" \
+  -F "file=@/path/to/local/file.md;type=text/markdown"
+```
+
+### Supported source formats for conversion
+
+| Local format | Content type | Converts to |
+|-------------|-------------|------------|
+| `.md`, `.txt`, `.html` | `text/markdown`, `text/plain`, `text/html` | Google Doc |
+| `.csv` | `text/csv` | Google Sheet |
+| `.pptx` | `application/vnd.openxmlformats-officedocument.presentationml.presentation` | Google Slides |
+| `.docx` | `application/vnd.openxmlformats-officedocument.wordprocessingml.document` | Google Doc |
+| `.xlsx` | `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet` | Google Sheet |
+
+---
 
 ## Common Patterns
 
