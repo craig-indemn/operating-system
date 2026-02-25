@@ -27,6 +27,7 @@ Connected intelligence layer for Indemn. Every tool the company uses, accessible
 | `/local-dev` | local-dev.sh | Start, stop, and manage Indemn platform services locally — groups, federation, logs |
 | `/agent-browser` | agent-browser | Interact with web pages in a real browser — navigate, click, fill forms, verify UI, take screenshots |
 | `/image-gen` | curl (Gemini API) | Generate images via Google Nano Banana — blog visuals, illustrations, diagrams, brand-aware assets |
+| `/excalidraw` | excalidraw-to-svg | Create Excalidraw diagrams programmatically — flowcharts, architecture diagrams, sequence diagrams as .excalidraw JSON rendered to SVG |
 
 ### System Skills
 | Skill | What It Does |
