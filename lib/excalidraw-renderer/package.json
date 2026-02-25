@@ -1,0 +1,12 @@
+{
+  "name": "excalidraw-renderer",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Excalidraw to SVG renderer for the OS",
+  "dependencies": {
+    "@excalidraw/utils": "0.1.2",
+    "canvas-5-polyfill": "^0.1.5",
+    "excalidraw-to-svg": "^3.1.0",
+    "jsdom": "^24.0.0"
+  }
+}
