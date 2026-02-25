@@ -3,16 +3,19 @@
 AI-powered content creation pipeline for Indemn and personal brands. Transforms voice-based ideas into polished, publishable content through dynamic extraction, iterative drafting, and multi-platform distribution. Lives in a separate repo (`/Users/home/Repositories/content-system`) with skills symlinked to `~/.claude/skills/`.
 
 ## Status
-Session 2026-02-25-a complete. Two blog posts advanced:
+Session 2026-02-25-b complete. Image generation capability added to the OS.
 
-**"Building Evaluations for Conversational Agents"** — Published to blog.indemn.ai. Full rewrite (v4-v5) from fresh extraction using updated framework state. Added multi-turn eval and autonomous setup sections. Writing psychology applied. Section titles and formatting added. Evaluation run screenshot included. Wider layout (720px → 960px). Live at `blog.indemn.ai/blog/building-evaluations-for-conversational-agents/`.
+**Image Generation Skill (`/image-gen`)** — New OS-level tool skill using Google Nano Banana (gemini-2.5-flash-image) API. Tested and working. Includes prompting best practices reference, 7-part prompt framework, brand-aware generation patterns. Billing enabled on Google AI Studio. General-purpose — not Indemn-specific. Registered in OS CLAUDE.md.
 
-**"Agents That Build Agents"** — Draft v13 complete. Toned down drama per author feedback ("too dramatic, kind of annoying"). Same writing methodology, less manifesto energy. Awaiting further review or approval.
+**Blog posts (from session 2026-02-25-a):**
+- "Building Evaluations for Conversational Agents" — Published and live at blog.indemn.ai
+- "Agents That Build Agents" — Draft v13, awaiting review or approval
 
 **Next up:**
 1. Author reviews "Agents That Build Agents" v13 — approve or further feedback
-2. Author COO reviews evaluations blog post (happening today)
-3. Preview/publish "Agents That Build Agents" when approved
+2. Integrate image-gen into content pipeline skills (content-draft, content-publish) so images are generated during drafting
+3. Explore Excalidraw MCP for diagram generation (lower priority)
+4. Preview/publish "Agents That Build Agents" when approved
 
 ## External Resources
 | Resource | Type | Link |
@@ -32,6 +35,9 @@ Session 2026-02-25-a complete. Two blog posts advanced:
 | 2026-02-23 | [writing-psychology-reference](artifacts/2026-02-23-writing-psychology-reference.md) | Deep research on psychology and craft of writing that grips readers — permanent reference for content system |
 
 ## Decisions
+- 2026-02-25: Image generation skill is a general OS tool skill, not content-system-specific. Brand context injected by the caller (content pipeline skills), not the image-gen skill itself.
+- 2026-02-25: Nano Banana (gemini-2.5-flash-image) is the default model — fast, reliable, GA. Nano Banana Pro (gemini-3-pro-image-preview) is unreliable in preview, skip for now.
+- 2026-02-25: Gemini API free tier has zero image quota — billing required on Google AI Studio.
 - 2026-02-23: Content system stays as a separate repo for now; OS project tracks the work and context
 - 2026-02-23: Extraction skill should pull from internal sources (Drive, Slack, meetings) before asking the author to repeat information
 - 2026-02-23: Context window management matters — drafting should start in a fresh session with brand docs pre-loaded

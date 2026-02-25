@@ -26,6 +26,7 @@ Connected intelligence layer for Indemn. Every tool the company uses, accessible
 | `/mongodb` | mongosh | Query MongoDB Atlas tiledesk database — bot configs, conversations, agents, orgs |
 | `/local-dev` | local-dev.sh | Start, stop, and manage Indemn platform services locally — groups, federation, logs |
 | `/agent-browser` | agent-browser | Interact with web pages in a real browser — navigate, click, fill forms, verify UI, take screenshots |
+| `/image-gen` | curl (Gemini API) | Generate images via Google Nano Banana — blog visuals, illustrations, diagrams, brand-aware assets |
 
 ### System Skills
 | Skill | What It Does |
@@ -39,6 +40,7 @@ Connected intelligence layer for Indemn. Every tool the company uses, accessible
 | `/call-prep` | End-to-end customer call briefing — meetings, signals, Slack, email, pipeline, contacts |
 | `/weekly-summary` | Weekly intelligence rollup — decisions, action items, signals, pipeline, quotes |
 | `/follow-up-check` | Surface overdue action items, unmet commitments, and dropped follow-ups |
+| `/eval-analysis` | Analyze evaluation results — classify failures as agent vs evaluation issues, recommend fixes |
 
 ### Reference Skills
 | Skill | What It Does |
