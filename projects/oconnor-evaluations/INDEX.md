@@ -3,29 +3,13 @@
 Running and refining AI agent evaluations for O'Connor Insurance Associates using the Jarvis skills-based framework (v2). Covers baseline generation, result analysis, bug fixes in the evaluation pipeline, and iterative improvement of rubrics and test sets across all 4 O'Connor agents.
 
 ## Status
-**Session 2026-02-25-b** (IN PROGRESS): Deep analysis of Internal Operations Associate eval results. Fixed connector validation, handoff echo bug in eval harness, test set criteria, and rubric evaluator prompt. Built `/eval-analysis` skill. Three eval runs completed with progressive improvements (8/13 → 9/13 → 10/13). Fourth run in progress with tool trace stripping for rubric evaluators.
+**Session 2026-02-25-c** (CLOSED): Analyzed External Engagement Associate eval results using `/eval-analysis` skill. Fixed rubric false failures (3 rules over-applying), implemented handoff detection in multi-turn engine (stops conversation cleanly on handoff), iterated test set criteria. Produced summary for Pete.
 
-**Results progression (Internal Operations Associate):**
-- Run 1 (`74ed9dd0`, test set v1): **8/13 passed** — 2 false failures (bad criteria), 2 handoff echo bugs, 1 KB retrieval
-- Run 2 (`92a9df66`, test set v2): **9/13 passed** — fixed criteria for items 5, 8, 11
-- Run 3 (`139afa11`, test set v3): **10/13 passed** — fixed evaluator prompt for handoff + tool traces
-- Run 4 (in progress, test set v3): testing tool trace stripping from rubric evaluators
+**Current scores:**
+- Internal Operations Associate: **Criteria 93% (37/40) | Rubric 96% (75/78)** — stable, no changes needed
+- External Engagement Associate: **Criteria 76% (39/51) | Rubric 94% (85/90)** — 6 real agent problems identified
 
-**Remaining 3 failures in run 3:**
-1. Off-Topic Request (Taxes) — criteria too strict ("clearly communicates its role"), agent declined correctly but didn't state job title
-2. Confused User — rubric evaluator still seeing public URLs from inline tool traces (fix: strip tool traces from rubric evaluator outputs)
-3. Live Handoff (HR) — handoff echo still showing in transcript, rubric flags incoherence (fix: strip tool traces + handoff artifacts)
-
-**Code changes this session (uncommitted in respective repos):**
-- `evaluations/src/indemn_evals/engine/multi_turn_simulated.py` — echo fix: check `has_tool_calls` before using `model_output.content`
-- `evaluations/src/indemn_evals/engine/single_turn.py` — same echo fix
-- `evaluations/src/indemn_evals/api/routes/evaluations.py` — evaluator prompt: handoff behavior in eval mode, tool trace = internal processing
-- `evaluations/src/indemn_evals/evaluators/builders.py` — `_strip_tool_traces()` + `_clean_outputs_for_rubric()`: strip tool execution traces from rubric evaluator outputs
-- `percy-service/indemn_platform/connectors/implementations/platform_api/evaluations.py` — pre-flight validation for RubricsConnector, QuestionSetsConnector, TestSetsConnector
-
-**OS changes this session:**
-- Created `/eval-analysis` skill at `.claude/skills/eval-analysis/SKILL.md` with `references/data-shapes.md`
-- Added `/eval-analysis` to CLAUDE.md Workflow Skills table
+**Session 2026-02-25-b** (CLOSED): Deep analysis of Internal Ops eval results. Fixed connector validation, handoff echo bug, test set criteria, rubric evaluator prompt. Built `/eval-analysis` skill. Attribution indicators replace raw tool traces for rubric evaluators. Fixed SKILLS_ROOT for local Jarvis. Ran External Engagement baseline via Jarvis.
 
 ## External Resources
 | Resource | Type | Link |
@@ -44,9 +28,9 @@ Running and refining AI agent evaluations for O'Connor Insurance Associates usin
 ## O'Connor Agents (Prod)
 | Bot ID | Name | Eval Status |
 |--------|------|-------------|
-| 696b1e35ec2b21075fce4cc2 | O'Connor External Engagement Associate | Rubric + 15-item test set ready (`e9934f60`, `2eaf824e`). Not yet run. |
+| 696b1e35ec2b21075fce4cc2 | O'Connor External Engagement Associate | **Criteria 76%, Rubric 94%** (rubric: `76644efb` v3, test set: `6c2799f7` v3). 6 real agent problems — hard boundary violations, quote intake field skips. |
 | 696fb30cec2b21075fd315b7 | Sandy, for O'Connor (Billing, Personal) | No rubric or test set — needs Jarvis generation |
-| 696fc955ec2b21075fd37426 | O'Connor Internal Operations Associate | **10/13 passed** (rubric: `ff45b89d`, test set: `c3da2631` v3, latest run: `139afa11`). Run 4 in progress. |
+| 696fc955ec2b21075fd37426 | O'Connor Internal Operations Associate | **Criteria 93%, Rubric 96%** (rubric: `ff45b89d`, test set: `c3da2631` v4). Stable across runs. |
 | 697bca8eec2b21075feff641 | Coral, for O'Connor (Billing, Commercial Lines) | No rubric or test set — needs Jarvis generation |
 
 ## Local Dev Startup (Prod)
@@ -78,6 +62,7 @@ cd indemn-platform-v2/ui && npm run build:federation && npx serve dist-federatio
 ## Artifacts
 | Date | Artifact | Ask |
 |------|----------|-----|
+| 2026-02-25 | [eval-summary-for-pete](artifacts/2026-02-25-eval-summary-for-pete.txt) | Summary of both agents' eval results for Pete with categorized issues and recommendations |
 
 ## Decisions
 - 2026-02-25: All evaluation data (rubrics, test sets, runs, results) lives in `tiledesk` database, not a separate `evaluations` database. The evaluations/.env has `MONGODB_DATABASE=tiledesk`.
@@ -91,14 +76,18 @@ cd indemn-platform-v2/ui && npm run build:federation && npx serve dist-federatio
 - 2026-02-25: Criteria evaluators SHOULD see tool traces — they need evidence of tool usage (e.g., "Agent retrieves from KB").
 - 2026-02-25: Handoff tool always fails in eval mode (no human agents available). Evaluator prompt updated to not penalize conversation artifacts after handoff trigger.
 - 2026-02-25: Test set criteria updated 3x: v1→v2 (items 5, 8, 11 corrected), v2→v3 (telecommuting HR redirect made conditional).
+- 2026-02-25: Rubric evaluators get attribution indicators instead of raw tool traces — e.g. `[Source: Knowledge Base searched — "query" — 10 documents retrieved]`. Implemented via `_replace_tool_traces_with_attribution()` in builders.py.
+- 2026-02-25: External Engagement rubric (`76644efb`) fixed 3x: v1→v2 (no_legal_tax_advice + stays_in_scope pass conditions for educational content), v2→v3 (no_pricing_or_quotes pass condition for general coverage education).
+- 2026-02-25: External Engagement test set (`6c2799f7`) fixed 3x: v1→v2 (handoff criteria account for tool failure), v2→v3 (removed closing message criterion since handoff replaces response).
+- 2026-02-25: Handoff detection in multi-turn engine — when bot invokes handoff tool, replace failure response with `[Live handoff triggered — conversation transferred to human agent]` and stop via openevals `stopping_condition`. No bot-service changes needed.
+- 2026-02-25: `SKILLS_ROOT` env var added to percy-service `.env` for local dev. Template specifies `/app/skills` (Docker path) which doesn't exist locally.
 
 ## What's Next
-1. Check results of run 4 — did tool trace stripping fix the remaining rubric false positives?
-2. Fix Off-Topic Request (Taxes) criterion — "clearly communicates its role" too strict
-3. Address the bot-service echo bug properly — streaming.py should use graph state `bot_message` not `messages[0].content`
-4. Run evaluation for External Engagement Associate (rubric + 15-item test set ready)
-5. Generate rubrics + test sets for Sandy and Coral via Jarvis
-6. Commit all code changes across evaluations and percy-service repos
+1. Address External Engagement agent problems — prompt engineering for hard boundary enforcement (pricing, tax, competitors, claims)
+2. Fix "How can we help?" field skip — may be Quote tool configuration issue
+3. Generate rubrics + test sets for Sandy and Coral via Jarvis
+4. Address the bot-service echo bug properly — streaming.py should use graph state `bot_message` not `messages[0].content`
+5. Consider running evals on prod to establish production baselines
 
 ## Open Questions
 - The O'Connor org exists twice in prod (696b1e23... and 6983ddb7...). Second one has 0 bots. Is this intentional?
