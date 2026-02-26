@@ -1,0 +1,66 @@
+O'Connor Insurance — Evaluation Results Summary
+
+WHAT WE EVALUATED
+
+We ran automated evaluations against two O'Connor agents. Each agent is tested against a rubric (universal behavioral rules derived from the system prompt) and test scenarios (specific situations the agent should handle correctly). Scenarios are scored on both criteria (scenario-specific checks) and rubric (cross-cutting behavioral rules).
+
+————————————————
+
+INTERNAL OPERATIONS ASSOCIATE
+
+Criteria: 93% (37/40)
+Rubric: 96% (75/78)
+
+Stable across multiple runs. A few edge-case criteria failures rotate between runs due to agent nondeterminism. No evaluation or prompt changes needed.
+
+————————————————
+
+EXTERNAL ENGAGEMENT ASSOCIATE
+
+Criteria: 76% (39/51)
+Rubric: 94% (85/90)
+
+The high rubric score (94%) vs lower criteria score (76%) tells you the agent generally follows behavioral rules but struggles with specific workflow execution.
+
+6 Real Agent Problems:
+
+1. Gives pricing estimates [High]
+   Agent states specific dollar amounts ($320/yr flood, $120/yr earthquake) despite hard boundary
+
+2. Gives tax guidance [High]
+   Agent explains rental property insurance is "commonly treated as a deductible operating expense" — tax advice with a disclaimer is still tax advice
+
+3. Compares competitors [Medium]
+   Detailed O'Connor vs State Farm comparison instead of staying in scope
+
+4. Assists with claims [Medium]
+   Provides step-by-step claims guidance instead of declining and offering handoff
+
+5. Skips "How can we help?" field [Medium]
+   Quote intake consistently skips required field #5, going straight from insurance type to "how did you hear"
+
+6. Doesn't infer provided fields [Low]
+   Re-asks "What type of insurance?" when user already said "business insurance" in opening message
+
+2 Additional Workflow Issues:
+
+- Live handoff field collection: Agent attempts handoff but doesn't always collect all required fields (name, email, phone, reason) first
+- Flow interruption recovery: When a user asks an off-topic question mid-quote, agent doesn't always resume intake at the right step
+
+————————————————
+
+RECOMMENDED IMPROVEMENTS (External Engagement agent)
+
+P1 — Hard Boundary Enforcement (4 failures)
+The system prompt already prohibits pricing, tax advice, competitor comparisons, and claims assistance. But GPT-5.2 is overriding these boundaries, especially when it retrieves relevant knowledge. Options:
+- Strengthen boundary language with explicit examples of what to say instead
+- Add few-shot examples showing correct refusal behavior
+- Check whether the KB content itself is triggering violations (agent retrieves pricing info from KB then shares it)
+
+P2 — Quote Intake Flow (2 failures)
+- "How can we help?" field is being skipped consistently — may be a tool configuration issue rather than a prompt issue
+- Field inference rule isn't working — agent should extract info already provided instead of re-asking
+
+P3 — Handoff & Interruption Handling (2 failures)
+- Agent should collect all required fields (name, email, phone, reason) before triggering handoff
+- Flow interruption recovery needs to resume at the exact step, not restart or skip ahead
