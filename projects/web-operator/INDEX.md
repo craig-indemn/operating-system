@@ -3,9 +3,22 @@
 Development workstream for the web-operator service. Uses operating system skills (Slack, meetings, pipeline, etc.) to pull context and data that informs implementation decisions in the web-operator repo. The code lives in its own repository; this project tracks context, decisions, and artifacts that bridge OS intelligence into that development work.
 
 ## Status
-Session 2026-02-19-b complete. Endorsement path shakeout (Steps 1-5) against Fergerson activity. Steps 1-4 work. Step 5 blocked — 2024-2025 BAUT policy not visible in Policies sidebar.
+Session 2026-02-26-a complete. Local model testing + hosted API research + Gemini 2.5 Flash integration.
 
-**What was accomplished this session (2026-02-19-b):**
+**What was accomplished this session (2026-02-26-a):**
+1. Analyzed Rudra's `feat-web-operator-improvement` branch (5 commits, ~11,600 lines — API layer, framework, scripts, Docker, testing)
+2. Tested local models for tool calling: Qwen3 14B works mechanically but FAILS on real Epic workflows (hallucinates, skips steps). 30B-A3B OOM on 24GB RAM. **Conclusion: local 14B models not powerful enough.**
+3. Researched hosted open-source APIs: Together AI, Fireworks, DeepInfra, DeepSeek, Google Gemini. Compared pricing against Claude Sonnet ($3/$15).
+4. Integrated **Gemini 2.5 Flash** ($0.15/$0.60 — 95% cheaper than Sonnet) into the framework. Tool calling works, correct tool calls made, ~2s/turn (vs 28-33s local).
+5. Hit login script bug — `epic_login` can't find credential form on IDP popup tab. Not a model issue.
+
+**Next up:**
+1. Debug the login script — `agent-browser tab switch` to IDP popup isn't reading the right tab content (P0)
+2. Complete a full Gemini run once login works (P0, blocked by #1)
+3. Compare Gemini vs Haiku quality on real workflow (P1, blocked by #2)
+4. Share recommendations with Rudra (P1, blocked by #3)
+
+**Previous session (2026-02-19-b):**
 1. Committed and pushed all session-a work (both repos)
 2. Walked through endorsement path Steps 1-5 with agent-browser against Fergerson activity
 3. Confirmed Steps 1-4 work (login, collect activities, open activity/notes, download/read PDF)
@@ -54,6 +67,8 @@ Session 2026-02-19-b complete. Endorsement path shakeout (Steps 1-5) against Fer
 | 2026-02-19 | [endorsement-path-creation](artifacts/2026-02-19-endorsement-path-creation.md) | Built endorsement path (8 steps, 3 procedures), design decisions, demo environment risk, testing approach |
 | 2026-02-19 | [activity-inventory](artifacts/2026-02-19-activity-inventory.md) | Logged into Epic, inventoried all 18 activities — 4 BAUT available, testing strategy defined |
 | 2026-02-19 | [endorsement-path-shakeout](artifacts/2026-02-19-endorsement-path-shakeout.md) | Steps 1-5 walkthrough — Steps 1-4 work, Step 5 blocked (missing policy period), password bug found |
+| 2026-02-26 | [rudra-feat-branch-analysis](artifacts/2026-02-26-rudra-feat-branch-analysis.md) | Comprehensive analysis of Rudra's feat-web-operator-improvement branch — API layer, middleware, scripts, Docker, testing |
+| 2026-02-26 | [local-model-tool-calling-test](artifacts/2026-02-26-local-model-tool-calling-test.md) | Local model research + testing — Qwen3 14B and 30B-A3B work with Ollama + LangChain tool calling, ready to wire into Rudra's framework |
 
 ## Decisions
 - 2026-02-10: No API access for Applied Epic — full web operator approach required (Kyle confirmed)
@@ -69,11 +84,17 @@ Session 2026-02-19-b complete. Endorsement path shakeout (Steps 1-5) against Fer
 - 2026-02-19: Sheryll Bausin (not "Cheryl") is the reassignment target for failed endorsements
 - 2026-02-19: agent-browser escapes `!` in fill/type — must use eval with native input setter for passwords with special characters
 - 2026-02-19: Heredoc syntax required for complex eval expressions through bash (`cat <<'JSEOF'`)
+- 2026-02-26: Local 8B models (Llama3.1, Qwen3) too small for tool calling. 14B works mechanically but fails on complex multi-step workflows. Not viable for production.
+- 2026-02-26: Gemini 2.5 Flash chosen for hosted testing — multimodal, $0.15/$0.60, excellent tool calling, `langchain-google-genai` already installed
+- 2026-02-26: `agent.py` patched to make `thinking` param Anthropic-only (was breaking non-Anthropic models)
 
 ## Open Questions
 - How to handle Epic password resets (every ~3 months, next expected end of April)?
 - What happened to Dry Ridge Farm and Bill Kistler activities? (Rudra may have consumed them)
-- What does the `indemn/feat-web-operator-improvement` branch contain?
+- ~~What does the `indemn/feat-web-operator-improvement` branch contain?~~ → Answered in artifact `rudra-feat-branch-analysis`
+- Why does `agent-browser tab switch 1` on the IDP popup tab return the main tab's page content? Is the IDP form in an iframe?
+- Is Gemini 2.5 Flash quality sufficient for the full Epic workflow? (Need to complete a run to find out)
+- Should we use Haiku ($1/$5, zero code changes) instead of Gemini ($0.15/$0.60, needs patches)?
 - Is the Feb 18 code on `indemn/main` (2 commits ahead of `origin/main`) ready to merge?
 - Are there POL3 activities in the sandbox? (Not visible in default activity view — may need filter change)
 - Why is the 2024-2025 BAUT policy period (CAP500961) missing from the Fergerson account's Policies sidebar? Only 2021-2022 and 2022-2023 periods visible under any filter. The endorsement activity and PDF reference this period. Is this a demo environment data gap, or is there a different navigation path?
