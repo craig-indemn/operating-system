@@ -3,30 +3,27 @@
 End-to-end development of the Indemn agent platform — spanning indemn-platform-v2 (V2 agent builder + Jarvis), the evaluation harness, copilot-dashboard (Angular config UI), and supporting services. Covers debugging, feature development, and refinement of the full stack from agent configuration through evaluation and deployment.
 
 ## Status
-**Session 2026-02-25-c** (COMPLETE): COP-325 Issues 1-10 ALL IMPLEMENTED and deployed to dev. Additional fixes: Issue 15 (criteria-only dropdown bug), purple button/accent fixes, agent overview metadata removal. Linear issues created for Dolly's feature requests (COP-329 through COP-332). Prod deployment prepared — platform-v2 and evaluations `prod` branches pushed, CI builds triggered. Copilot-dashboard PR #964 (Jarvis FOB) still needs reviewer approval before main→prod PR.
+**Session 2026-02-26-a** (COMPLETE): Full prod EC2 deployment — all 3 services live and verified. COP-325 moved to "Ready for Testing" in Linear with deployment summary comment.
 
-**PROD DEPLOYMENT IN PROGRESS:**
-- `indemn-platform-v2`: prod branch pushed, CI building Docker image (`ghcr.io/indemn-ai/copilot-dashboard-react:latest`)
-- `evaluations`: prod branch pushed, CI building Docker image (`ghcr.io/indemn-ai/evaluations:latest`)
-- `copilot-dashboard`: PR #964 needs merge → then main→prod PR needed (branch protection)
-- **Deploy order matters**: platform-v2 FIRST (serves remoteEntry.js), then evaluations (independent), then copilot-dashboard (loads federation from platform-v2)
-- User needs to SSH into prod EC2 to pull images and deploy (self-hosted runners may or may not be configured)
+**Prod deployment DONE:**
+- `copilot-dashboard-react` (React UI + nginx) → `https://platform.indemn.ai` — serving SPA + remoteEntry.js + proxying to percy-service
+- `percy-service` (Python backend) → reachable via `https://platform.indemn.ai/api/` — Jarvis functional after seed scripts
+- `evaluations` → `https://evaluations.indemn.ai` — healthy, target group already configured
+- SSL cert fixed on ALB (was using bare `indemn.ai` cert instead of `*.indemn.ai` wildcard)
+- Stale nginx config fixed (old container had localhost proxy, new image uses Docker DNS)
+- Jarvis initialized (seed scripts + restart required for template discovery)
 
-**What's done:**
-- COP-325 Issues 1-10: All implemented across indemn-platform-v2 (8 files) + evaluations (1 file)
-- Issue 15: Fixed useEffect dependency bug in RunEvaluationModal.tsx
-- Purple buttons: Changed `--color-accent-secondary` from Lilac to blue in index.css
-- Jarvis FOB: Changed gradient from Iris→Lilac to Iris→Blue in bot-details.component.scss (PR #964)
-- Agent overview metadata: Removed Bot ID/Org ID sections from AgentDetail.tsx and AgentDetailV1.tsx
-- Linear: Comments posted for Issues 8, 9, implementation status. Issues COP-329-332 created for Dolly's features
-- COP-325 status: "In Progress" (move to "Ready for Testing" after prod deploy)
+**COP-325 Linear status:** Ready for Testing. Deployment comment posted. Clarification added that copilot-dashboard (Angular) commits are in main, ready for merge to prod when team is ready.
 
-**Next session should**:
-1. Walk through prod EC2 setup — ensure Docker images pulled, env vars correct, containers running
-2. Verify federation works end-to-end in prod (remoteEntry.js loads, React components render in Angular shell)
-3. Get PR #964 merged on copilot-dashboard, create main→prod PR
-4. Run evaluation on prod to validate all fixes
-5. Move COP-325 to "Ready for Testing" or "Done"
+**Still pending:**
+- Copilot-dashboard PR #964 (Jarvis FOB purple button) — needs merge to main, then main→prod PR
+- Prod Docker images running `:main` tags — proper prod builds need self-hosted runners on prod EC2
+- percy-service `prod` branch created and pushed
+
+**Next session should:**
+1. Get PR #964 merged on copilot-dashboard, create main→prod PR, deploy Angular app
+2. Move COP-325 to "Done" after copilot-dashboard is on prod
+3. Set up self-hosted GitHub runners on prod EC2 for automated deployments
 
 ## External Resources
 | Resource | Type | Link |
@@ -38,6 +35,8 @@ End-to-end development of the Indemn agent platform — spanning indemn-platform
 | bot-service | GitHub repo + local | indemn-ai/bot-service, `/Users/home/Repositories/bot-service` |
 | copilot-server | GitHub repo + local | indemn-ai/copilot-server, `/Users/home/Repositories/copilot-server` |
 | Dev EC2 | AWS | devcopilot.indemn.ai, devplatform.indemn.ai, devevaluations.indemn.ai |
+| Prod EC2 (react/evals) | AWS | platform.indemn.ai, evaluations.indemn.ai — copilot-dashboard-react, percy-service, evaluations |
+| Prod EC2 (angular/services) | AWS | copilot.indemn.ai — copilot-dashboard, bot-service, middleware, voice, payment |
 | Design docs | Local | `/Users/home/Repositories/indemn-platform-v2/docs/plans/` (80+ docs) |
 | Eval V2 Spec | Local | `docs/plans/2026-02-06-evaluation-framework-v2-spec.md` |
 | Master Roadmap | Local | `docs/plans/MASTER-ROADMAP.md` |
@@ -113,6 +112,11 @@ End-to-end development of the Indemn agent platform — spanning indemn-platform
 - 2026-02-25: Prod deployment order: platform-v2 FIRST (serves remoteEntry.js at platform.indemn.ai), then evaluations (independent), then copilot-dashboard (loads federation from platform-v2).
 - 2026-02-25: Both platform-v2 and evaluations deploy to prod by pushing to `prod` branch. copilot-dashboard requires PR to `prod` with reviewer approval.
 - 2026-02-25: Dolly's feature requests (Issues 11-14) tracked as COP-329 through COP-332 in Backlog.
+- 2026-02-26: Prod EC2 has two separate ALBs on two separate EC2 instances. copilot-dashboard-react + percy-service + evaluations are on one EC2; the Angular copilot-dashboard + bot-service + middleware are on the other.
+- 2026-02-26: SSL terminates at AWS ALB — no nginx on port 80/443 on EC2. Containers use internal Docker ports.
+- 2026-02-26: All prod containers use `shared-datadog` external Docker network for inter-service communication via container names.
+- 2026-02-26: percy-service seed scripts (`seed_jarvis_templates.py`, `seed_components.py`) must run before Jarvis works — lifespan hook looks for `jarvis_evaluation_v2` template at startup.
+- 2026-02-26: Prod deployment files written to `/tmp/percy-service-prod/` and `/tmp/evaluations-prod/` for SCP to EC2. Docker compose and .env for each service.
 
 ## Open Questions
 - ~~What architecture choices need to be made? (bead `5q2`)~~ → Superseded by separation epic `p0l`
