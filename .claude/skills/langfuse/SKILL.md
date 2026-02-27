@@ -67,11 +67,15 @@ source .env && curl -s \
 
 ### Search traces by metadata (call_sid, id_bot)
 ```bash
-# Traces with metadata are enriched by voice-livekit's setup_langfuse() call
+# Traces with metadata are enriched by voice-livekit's setup_langfuse() call (main.py ~line 636)
 # Metadata keys: langfuse.session.id (room_name), call_sid (CallSid), id_bot
-source .env && curl -s \
+# NOTE: Langfuse metadata filtering uses a JSON filter parameter, not dot-notation
+source .env && curl -s -G \
   -u "$LANGFUSE_PUBLIC_KEY:$LANGFUSE_SECRET_KEY" \
-  "$LANGFUSE_HOST/api/public/traces?metadata.id_bot=<bot_id>&limit=10" | python3 -m json.tool
+  "$LANGFUSE_HOST/api/public/traces" \
+  --data-urlencode 'limit=10' \
+  --data-urlencode 'filter=[{"type":"stringObject","column":"metadata","key":"id_bot","operator":"=","value":"<bot_id>"}]' \
+  | python3 -m json.tool
 ```
 
 ## Join Key: Langfuse ↔ MongoDB

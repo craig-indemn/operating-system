@@ -183,7 +183,7 @@ JSON.stringify(db.getCollection("llm_configurations").aggregate([
 ```javascript
 JSON.stringify(db.getCollection("voice_configurations").find(
   {id_organization: ObjectId("<org_id>"), isTrashed: false},
-  {phoneNumber: 1, friendlyName: 1, voice: 1, greetingMessage: 1}
+  {phoneNumber: 1, friendlyName: 1, voice: 1, greetingMessage: 1, id_bot: 1}
 ).toArray(), null, 2)
 ```
 
@@ -515,14 +515,6 @@ JSON.stringify(db.getCollection("requests").aggregate([
 ]).toArray(), null, 2)
 ```
 
-### PATTERN: Voice configurations for an organization
-```javascript
-JSON.stringify(db.getCollection("voice_configurations").find(
-  {id_organization: ObjectId("<org_id>"), isTrashed: false},
-  {phoneNumber: 1, friendlyName: 1, voice: 1, greetingMessage: 1, id_bot: 1}
-).toArray(), null, 2)
-```
-
 ### PATTERN: Voice conversations with end reason breakdown
 ```javascript
 // end_reason values: user_hangup (~95%), user has ended the call (~5%), ai_agent_hangup, user_inactivity_timeout
@@ -537,10 +529,11 @@ JSON.stringify(db.getCollection("requests").aggregate([
 ### PATTERN: Voice bot external event logs
 ```javascript
 // bot_external_event_logs tracks events like call start/end for voice bots
+// Fields: external_conversation_id (string), event_type, request_payload, api_response, create_time
 JSON.stringify(db.getCollection("bot_external_event_logs").find(
-  {id_bot: "<bot_id>"},
-  {event_type: 1, event_data: 1, createdAt: 1}
-).sort({createdAt: -1}).limit(10).toArray(), null, 2)
+  {external_conversation_id: "<call_sid>"},
+  {event_type: 1, request_payload: 1, api_response: 1, create_time: 1}
+).sort({create_time: -1}).limit(10).toArray(), null, 2)
 ```
 
 ---
