@@ -100,10 +100,35 @@ cd "$PLATFORM_UI" && npm run build:federation && npx serve dist-federation -l 51
 | bot-service | 8001 | V1 agent runtime |
 | evaluations | 8002 | Evaluation service backend |
 
+## Marketing Website (indemn.ai)
+
+The public website at indemn.ai lives in a **separate repo**: `indemn_website_new_design`. It's a React + Vite SPA (MUI, React Router) deployed to AWS S3/CloudFront.
+
+**IMPORTANT:** The `main` branch is often broken (dev WIP). Always use the `prod` branch for local dev.
+
+**Port conflict:** The website runs on port **3000**, same as copilot-server. Don't run both at the same time.
+
+```bash
+cd ~/Repositories/indemn_website_new_design
+git checkout prod        # main is often broken — prod is the deployed code
+npm install              # first time only
+npm run dev              # starts on http://localhost:3000
+```
+
+| Detail | Value |
+|--------|-------|
+| Repo | `indemn-ai/indemn_website_new_design` |
+| Branch | `prod` (production), `main` (dev — may be broken) |
+| Port | 3000 |
+| Framework | React 18 + Vite + MUI + React Router |
+| Hosting | AWS S3 + CloudFront (NOT Vercel) |
+| Deploy flow | `main` → PR to `prod` → auto-deploy to S3/CloudFront |
+
 ## All Services
 
 | Service | Port | Dir | Start Command |
 |---------|------|-----|---------------|
+| **marketing-website** | **3000** | **indemn_website_new_design** (separate repo) | **`npm run dev`** (on `prod` branch) |
 | bot-service | 8001 | bot-service | `uv run python app.py` |
 | evaluations | 8002 | evaluations | `uv run uvicorn indemn_evals.api.main:app --port 8002 --reload` |
 | evaluations-ui | 5174 | evaluations/ui | `npm run dev -- --port 5174` |
