@@ -477,6 +477,74 @@ db.getCollection("requests").aggregate([
 
 ---
 
+## VOICE QUERIES
+
+### PATTERN: Find voice conversations
+```javascript
+// Voice conversations are identified by attributes.channel = "VOICE"
+// NOT by channel.name — that says "chat21" even for voice calls
+JSON.stringify(db.getCollection("requests").find(
+  {"attributes.channel": "VOICE"},
+  {request_id: 1, first_text: 1, "attributes.CallSid": 1, "attributes.TrunkNumber": 1, createdAt: 1, closed_at: 1}
+).sort({createdAt: -1}).limit(10).toArray(), null, 2)
+```
+
+### PATTERN: Get voice conversation messages (same structure as web)
+```javascript
+const requestId = "<request_id>"
+const msgs = db.getCollection("messages").find(
+  {recipient: requestId, senderType: {$in: ["user", "bot"]}},
+  {sender: 1, senderFullname: 1, senderType: 1, text: 1, type: 1, createdAt: 1}
+).sort({createdAt: 1}).toArray()
+JSON.stringify(msgs.map(m => ({
+  role: m.senderType === "bot" ? "assistant" : "user",
+  content: m.text?.substring(0, 500),
+  time: m.createdAt
+})), null, 2)
+```
+
+### PATTERN: Voice conversation volume by month
+```javascript
+JSON.stringify(db.getCollection("requests").aggregate([
+  {$match: {"attributes.channel": "VOICE"}},
+  {$group: {
+    _id: {$dateToString: {format: "%Y-%m", date: "$createdAt"}},
+    count: {$sum: 1}
+  }},
+  {$sort: {_id: -1}}
+]).toArray(), null, 2)
+```
+
+### PATTERN: Voice configurations for an organization
+```javascript
+JSON.stringify(db.getCollection("voice_configurations").find(
+  {id_organization: ObjectId("<org_id>"), isTrashed: false},
+  {phoneNumber: 1, friendlyName: 1, voice: 1, greetingMessage: 1, id_bot: 1}
+).toArray(), null, 2)
+```
+
+### PATTERN: Voice conversations with end reason breakdown
+```javascript
+// end_reason values: user_hangup (~95%), user has ended the call (~5%), ai_agent_hangup, user_inactivity_timeout
+// ~73% of voice conversations have an end_reason; rest are null
+JSON.stringify(db.getCollection("requests").aggregate([
+  {$match: {"attributes.channel": "VOICE"}},
+  {$group: {_id: "$attributes.end_reason", count: {$sum: 1}}},
+  {$sort: {count: -1}}
+]).toArray(), null, 2)
+```
+
+### PATTERN: Voice bot external event logs
+```javascript
+// bot_external_event_logs tracks events like call start/end for voice bots
+JSON.stringify(db.getCollection("bot_external_event_logs").find(
+  {id_bot: "<bot_id>"},
+  {event_type: 1, event_data: 1, createdAt: 1}
+).sort({createdAt: -1}).limit(10).toArray(), null, 2)
+```
+
+---
+
 ## IMPORTANT NOTES
 
 - **Read-only** — never insert, update, or delete without explicit authorization
@@ -485,3 +553,4 @@ db.getCollection("requests").aggregate([
 - **`subscriptions` vs `billing_subscriptions`** — these are completely different. `subscriptions` = webhook subscriptions, `billing_subscriptions` = Stripe billing
 - **Observatory data exists in two places** — `tiledesk.observatory_conversations` (7.5K) and `observatory.conversations` (28K). The observatory database has more data
 - **Soft deletes** — many collections use `isTrashed`, `isDeleted`, or `trashed` flags. Always filter these out unless specifically looking for deleted items
+- **Voice channel detection** — voice conversations have `attributes.channel: "VOICE"` but `channel.name` says "chat21" (misleading). Always use `attributes.channel` to identify voice
