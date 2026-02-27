@@ -1,0 +1,1 @@
+Indemn builds generative AI agents for insurance distribution. Our Associates handle quoting, service, and retention across chat, voice, and email for carriers, MGAs, and brokers — using NIM, NeMo Parakeet, and NVIDIA GPUs for fine-tuning and inference.
