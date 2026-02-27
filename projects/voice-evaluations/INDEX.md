@@ -7,7 +7,11 @@ Incorporating voice agents into the Indemn evaluation framework. Currently, only
 
 **Session 2026-02-27-b** (COMPLETE): Design review and iteration. Ran 5-agent parallel code review that verified every claim in the design. Found and fixed 17 issues. Design document fully grounded — zero assumptions.
 
-**Session 2026-02-27-c** (COMPLETE): Implementation plan created and executed across all 5 waves (14 tasks). All code written and committed across 5 repos: voice-livekit (trace metadata), evaluations (transcript engine + API), indemn-observability (channel fix + Langfuse connector + evaluate UI + voice metrics), indemn-platform-v2 (transcript type in UI), operating-system (Langfuse skill + MongoDB patterns). **Next session: robust testing, code review, and documentation.**
+**Session 2026-02-27-c** (COMPLETE): Implementation plan created and executed across all 5 waves (14 tasks). All code written and committed across 5 repos: voice-livekit (trace metadata), evaluations (transcript engine + API), indemn-observability (channel fix + Langfuse connector + evaluate UI + voice metrics), indemn-platform-v2 (transcript type in UI), operating-system (Langfuse skill + MongoDB patterns).
+
+**Session 2026-02-27-d** (COMPLETE): Testing, code review, and bug-fixing. Full line-by-line code review across all 5 repos found 3 bugs in agent-written observatory code + several documentation inaccuracies — all fixed. Static verification all pass (Python compile, TypeScript, 79 unit tests). Browser testing: Evaluate button/dialog PASS, voice channel badge and transcript badge CANNOT VERIFY (need data ingestion + running a transcript eval).
+
+**Session 2026-02-27-e** (COMPLETE): Committed all bug fixes across 3 repos. Ran transcript evaluation on web conversations — PASS (2 items, 76/102 criteria, 12/12 rubric). Federation build browser testing in copilot-dashboard — Transcript Criteria stat card PASS, evaluation scores display correctly. **Blocked on Langfuse credentials** for voice data ingestion into Observatory and remaining verification.
 
 ## External Resources
 | Resource | Type | Link |
