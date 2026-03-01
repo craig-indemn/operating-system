@@ -3,26 +3,19 @@
 Development of the operating system itself — the skills, systems, and infrastructure that make Indemn's connected intelligence layer work. Covers the dispatch system, systems framework, skill improvements, and meta-level architecture of the OS.
 
 ## Status
-**Session 2026-02-24-a**: Addressed all 6 onboarding issues from Kai's first use of the system. Committed and pushed to main.
+**Session 2026-03-01-a**: Designed the EA & Session Management architecture. Two artifacts produced: Claude Code internals research and the full EA/session management design doc.
 
-**Fixes applied:**
-1. **Slack token extraction** — `slack_client.py` now reads from macOS Keychain first (where `agent-slack` stores tokens), env vars as fallback for Linux. No Slack tokens needed in `.env` on macOS.
-2. **Linear env var mismatch** — skill now says `LINEAR_API_TOKEN` directly, removed confusing `LINEAR_API_KEY` bridge.
-3. **MongoDB IP whitelisting** — added as explicit Phase 4b blocker in onboarding skill. Added to onboarding instructions artifact prereqs.
-4. **Google Workspace credentials.json** — skill now references 1Password (Engineering vault → "Google Workspace OAuth — gog CLI"). Craig needs to upload `craig_secret.json` there.
-5. **Python PEP 668** — Slack SDK install uses 3-tier fallback: `pip3` → `--break-system-packages` → `uv pip install --system`.
-6. **`.env` special chars** — added quoting guidance to `.env.template`. Main offender (Slack cookie) no longer in `.env`.
+**EA & Session Management** — Full design approved. Four components: session state files (`sessions/{uuid}.json`), session CLI (`systems/session-manager/cli.py`), hooks (global, update state files), and EA skill (`.claude/skills/ea/`). All sessions run in OS worktrees with external repos via `--add-dir`. tmux send-keys for bidirectional communication. File-per-session eliminates write contention. Scalable to multiple EAs.
 
-**Platform awareness** — Slack skill now auto-detects which Python has `slack_sdk` (`SLACK_PY` pattern), documents macOS vs Linux token storage paths. `slack_client.py` uses `platform.system()` to gate keychain access.
+**Previous session (2026-02-24-a)**: Fixed 6 onboarding issues from Kai's first use. Slack keychain integration, Linear env var fix, MongoDB IP whitelisting, Google Workspace 1Password reference, Python PEP 668 fallback, `.env` quoting guidance.
 
-**Onboarding branch** — is 40+ commits behind main. Needs rebasing but DO NOT rebase while parallel sessions are active on main. Do it in a quiet moment.
+**Onboarding branch** — is 40+ commits behind main. Needs rebasing but DO NOT rebase while parallel sessions are active on main.
 
 **Next session should:**
-1. Build a `/1password` skill and evaluate 1Password CLI (`op`) for secrets management — Craig endorsed this direction
-2. Consider `op run` for injecting secrets at runtime instead of plaintext `.env` files
-3. Evaluate splitting `.env` into `.env.urls` (safe to commit) and secrets in 1Password
-4. Upload `craig_secret.json` to 1Password Engineering vault (manual action for Craig)
-5. Update onboarding branch when no parallel sessions are running
+1. Implement session management system — CLI, hooks, state files (design doc ready)
+2. Build EA skill for the OS (replacing content-system EA)
+3. Build `/1password` skill and evaluate `op` CLI for secrets management
+4. Consider task layer unification (beads + Claude Code tasks + Linear)
 
 ## External Resources
 | Resource | Type | Link |
@@ -44,6 +37,8 @@ Development of the operating system itself — the skills, systems, and infrastr
 | 2026-02-19 | [dispatch-system-implementation](artifacts/2026-02-19-dispatch-system-implementation.md) | Build the dispatch engine, skills, beads skill, and systems framework |
 | 2026-02-19 | [dispatch-engine-fixes](artifacts/2026-02-19-dispatch-engine-fixes.md) | Fix engine bugs (anyio, rate_limit_event, bd children), configure agent sessions, end-to-end test passing |
 | 2026-02-23 | [onboarding-instructions](artifacts/2026-02-23-onboarding-instructions.md) | Instructions for a new developer to get set up with the operating system and local dev environment |
+| 2026-03-01 | [claude-code-internals](artifacts/2026-03-01-claude-code-internals.md) | How Claude Code works on our system — sessions, hooks, state, Agent Teams, SDK. Foundation for EA integration. |
+| 2026-03-01 | [ea-session-management-design](artifacts/2026-03-01-ea-session-management-design.md) | Full architecture for EA & session management — tmux sessions, event-driven state, switchboard EA, voice/task future layers |
 
 ## Decisions
 - 2026-02-19: OS has three primitives: Skills (capabilities), Projects (memory), Systems (processes)
@@ -70,6 +65,14 @@ Development of the operating system itself — the skills, systems, and infrastr
 - 2026-02-24: Slack tokens read from macOS Keychain first, env vars as fallback — no plaintext tokens needed on macOS
 - 2026-02-24: Skills should be platform-aware — detect OS and adjust (e.g., keychain on macOS, env vars on Linux, Python path detection)
 - 2026-02-24: Adopt 1Password CLI (`op`) for secrets management — endorsed by Craig, next session priority
+- 2026-03-01: EA is a switchboard — manages session lifecycle, not a proxy for project work
+- 2026-03-01: All sessions start in OS repo worktrees; external repos added via `--add-dir`
+- 2026-03-01: File-per-session state model — eliminates contention, scales to multiple EAs
+- 2026-03-01: tmux send-keys is the universal write mechanism into sessions
+- 2026-03-01: EA is above Agent Teams — manages sessions that may themselves use Agent Teams
+- 2026-03-01: EA is not immortal — reads state from disk, any session with EA skill becomes the EA
+- 2026-03-01: Manual triggers only for now — automation is a future layer
+- 2026-03-01: Voice interface and unified task layer are future work (noted in design doc)
 
 ## Open Questions
 - Which OS skills should be symlinked to `~/.claude/skills/` for global access in dispatched sessions?
