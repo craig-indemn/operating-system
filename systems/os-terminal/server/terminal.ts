@@ -12,9 +12,23 @@ interface TerminalMessage {
 
 const TMUX_PREFIX = 'os-';
 
+// Resolve tmux binary path — node-pty's posix_spawnp may not find it on PATH
+function findTmux(): string {
+  const candidates = ['/opt/homebrew/bin/tmux', '/usr/local/bin/tmux', '/usr/bin/tmux'];
+  for (const candidate of candidates) {
+    try {
+      execFileSync(candidate, ['-V'], { timeout: 2000 });
+      return candidate;
+    } catch { /* try next */ }
+  }
+  return 'tmux'; // Fallback to PATH lookup
+}
+
+const TMUX_BIN = findTmux();
+
 function tmuxSessionExists(name: string): boolean {
   try {
-    execFileSync('tmux', ['has-session', '-t', name], { timeout: 5000 });
+    execFileSync(TMUX_BIN, ['has-session', '-t', name], { timeout: 5000 });
     return true;
   } catch {
     return false;
@@ -38,7 +52,7 @@ export function initTerminalHandler(wss: WebSocketServer): void {
 
     let ptyProcess: pty.IPty;
     try {
-      ptyProcess = pty.spawn('tmux', ['attach-session', '-t', tmuxSession], {
+      ptyProcess = pty.spawn(TMUX_BIN, ['attach-session', '-t', tmuxSession], {
         name: 'xterm-256color',
         cols: 80,
         rows: 30,
