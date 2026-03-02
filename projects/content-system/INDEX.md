@@ -3,26 +3,32 @@
 AI-powered content creation pipeline for Indemn and personal brands. Transforms voice-based ideas into polished, publishable content through dynamic extraction, iterative drafting, and multi-platform distribution. Lives in a separate repo (`/Users/home/Repositories/content-system`) with skills symlinked to `~/.claude/skills/`.
 
 ## Status
-Session 2026-02-25-e complete. Excalidraw skill built, blog OG thumbnails fixed, homepage card layout added.
+Session 2026-03-02: Context review and personal brand launch planning.
 
-**This session:**
-- Built `/excalidraw` skill — full element reference, diagram templates, Node.js renderer with bound text post-processing
-- Created content system architecture diagram (`.excalidraw` + `.svg`)
-- Fixed Open Graph meta tags — Slack/social unfurls now show Indemn branding instead of Astro stock placeholder
-- Generated branded default OG card via `/image-gen` with Indemn logo as reference
-- Added `heroImage` to blog post frontmatter + fixed `BlogPost.astro` to pass it to `BaseHead`
-- Homepage now shows post thumbnails in card layout (image on top, text below)
-- Fixed hero image overlap on blog post pages
-- Committed and pushed all OS changes (excalidraw skill, eval-analysis skill, project state)
+**Previous session (2026-02-25-e):** Excalidraw skill built, blog OG thumbnails fixed, homepage card layout added.
 
-**Blog posts:**
+**Indemn blog posts:**
 - "Building Evaluations for Conversational Agents" — Published with images and OG thumbnail, live at blog.indemn.ai
 - "Agents That Build Agents" — Draft v13, awaiting review or approval
 
+**Personal brand launch — IN PROGRESS:**
+Craig is setting up his personal publishing presence. The content system has `brands/personal/config.yaml` configured with Substack as primary (`craigcerto.substack.com`), Medium and LinkedIn as cross-post channels. But the actual accounts/platforms haven't been created yet and the brand identity needs to be thought through before launch.
+
+**Decisions needed before launch:**
+1. **Brand identity** — Does "Craig Certo" work as the brand, or use a nickname / pen name / brand name? This affects account names across all platforms.
+2. **Platform setup** — Which platforms to create accounts on now vs later? Current config assumes Substack (primary), Medium (cross-post), LinkedIn (cross-post). Also consider: Beehiiv (newsletter alternative to Substack), X/Twitter, personal blog site.
+3. **Newsletter strategy** — What's the newsletter about? Frequency? Free vs paid tiers? What's the value prop for subscribers?
+4. **Visual brand** — The config has colors (blue/purple/amber) and typography (Inter) but no logo, no header image, no visual identity beyond that.
+5. **Voice doc** — Indemn has a `voice.md` sourced from Google Docs. Personal brand needs one too. The config has tone guidelines ("personal, technical, direct — Engineer sharing what actually works") but no full voice doc.
+6. **First content** — What's the inaugural post? Sets the tone for everything that follows.
+
 **Next up:**
-1. Author reviews "Agents That Build Agents" v13 — approve or further feedback
-2. Generate images for "Agents That Build Agents" when approved
-3. Integrate image-gen into content pipeline skills (content-draft, content-publish) so images are generated during drafting
+1. Start a dedicated session to work through brand identity and platform decisions
+2. Create accounts on chosen platforms
+3. Build out `brands/personal/voice.md`
+4. Update `brands/personal/config.yaml` with final platform decisions
+5. Write and publish first personal brand piece
+6. Also still pending: review "Agents That Build Agents" v13 for Indemn blog
 
 ## External Resources
 | Resource | Type | Link |
@@ -63,6 +69,10 @@ Session 2026-02-25-e complete. Excalidraw skill built, blog OG thumbnails fixed,
 - 2026-02-25: `BlogPost.astro` must pass `image={heroImage}` to `BaseHead` — was missing, causing all posts to fall back to default OG image.
 
 ## Open Questions
+- **Personal brand name/handle** — "Craig Certo" or something else? Affects all platform account names.
+- **Substack vs Beehiiv** — Config currently says Substack. Beehiiv has better analytics and monetization. Worth evaluating before committing.
+- **Platform scope** — How many platforms to set up at launch vs grow into? Risk of spreading too thin vs building cross-platform presence early.
+- **Newsletter angle** — Pure technical writing? AI engineering focus? Broader "building and shipping" theme? Needs to be specific enough to attract subscribers but broad enough to sustain.
 - The content-extract skill's "dynamic interview" should know to search internal sources — how to teach it that without bloating the skill?
 - Should we set up Vercel git integration for the content-system repo to enable auto-deploy on push?
 - The Astro build shows "Duplicate id" warnings — investigate content collection config
