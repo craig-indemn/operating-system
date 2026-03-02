@@ -15,6 +15,7 @@ Commands:
 import argparse
 import json
 import os
+import shlex
 import subprocess
 import sys
 import time
@@ -83,7 +84,7 @@ def build_claude_command(
         parts.append(f"--permission-mode {permission_mode}")
 
     for d in add_dirs:
-        parts.append(f"--add-dir {d}")
+        parts.append(f"--add-dir {shlex.quote(d)}")
 
     return " ".join(parts)
 

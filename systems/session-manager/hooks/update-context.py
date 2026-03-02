@@ -52,15 +52,20 @@ def main():
                     state_path = found_path
 
             if state is not None:
-                state["context_remaining_pct"] = int(remaining_pct)
+                new_pct = int(remaining_pct)
+                old_pct = state.get("context_remaining_pct")
+                needs_low_event = (
+                    remaining_pct < CONTEXT_LOW_THRESHOLD
+                    and state.get("status") != "context_low"
+                )
 
-                # Emit context_low event at threshold (only once)
-                if remaining_pct < CONTEXT_LOW_THRESHOLD:
-                    if state.get("status") != "context_low":
+                # Only write if something actually changed
+                if new_pct != old_pct or needs_low_event:
+                    state["context_remaining_pct"] = new_pct
+                    if needs_low_event:
                         state["status"] = "context_low"
                         append_event(state, "context_low")
-
-                atomic_write_json(state_path, state)
+                    atomic_write_json(state_path, state)
 
     # Forward to GSD statusline
     gsd_script = os.environ.get(
