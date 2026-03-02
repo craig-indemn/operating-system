@@ -3,6 +3,7 @@ import { createServer } from 'http';
 import { WebSocketServer } from 'ws';
 import sessionsRouter from './routes/sessions.js';
 import { initTerminalHandler } from './terminal.js';
+import { initStateHandler } from './watcher.js';
 
 const app = express();
 const server = createServer(app);
@@ -27,6 +28,7 @@ const terminalWss = new WebSocketServer({ noServer: true });
 const stateWss = new WebSocketServer({ noServer: true });
 
 initTerminalHandler(terminalWss);
+initStateHandler(stateWss);
 
 server.on('upgrade', (request, socket, head) => {
   const url = new URL(request.url || '', `http://${request.headers.host}`);
