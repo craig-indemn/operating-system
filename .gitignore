@@ -7,3 +7,6 @@ credentials.json
 
 # Local Claude Code settings (personal permissions)
 .claude/settings.local.json
+
+# Session state files (runtime, updated by hooks on every event)
+sessions/

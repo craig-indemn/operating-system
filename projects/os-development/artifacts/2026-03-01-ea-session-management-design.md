@@ -213,6 +213,8 @@ The CLI manages worktrees and tmux directly — it does NOT use `claude --worktr
 5. Inside tmux, launch Claude Code: `tmux send-keys -t os-<name> 'claude --session-id <uuid> --dangerously-skip-permissions --add-dir <dirs> --model <model>' Enter`
 6. Session is live — hooks take over state updates
 
+**Implementation note — `--session-id` verification required:** The design assumes that passing `--session-id <uuid>` causes Claude Code to use that UUID everywhere (session transcripts, hook input `session_id` field). This must be verified during implementation. If Claude Code ignores or overrides the provided UUID, the hook-to-state-file mapping breaks and an alternative approach is needed (e.g., the hook looks up the state file by matching `cwd` to `worktree_path` instead of by `session_id`).
+
 **Why not `claude --worktree --tmux`?** That flag tells Claude Code to create its own worktree and tmux session. We need to create both ourselves because: (a) the state file must exist before hooks fire, (b) we need predictable tmux session names for `session attach` and `session send`, and (c) we pass `--session-id` so the hook script can find the state file by UUID.
 
 **`--add-dir` sourcing:** When a project's INDEX.md lists external repos under External Resources with type "GitHub repo", the EA or CLI can read those to determine which `--add-dir` flags to pass. This is convention-based, not enforced — the user can always override with explicit flags.
@@ -326,7 +328,7 @@ Installed globally in `~/.claude/settings.json`. A single hook script handles al
 The script (`update-state.py`) does:
 
 1. Read JSON from stdin — extract `session_id`, `hook_event_name`, `cwd`, `transcript_path`
-2. Scan `sessions/*.json` in the OS repo (path hardcoded: `/Users/home/Repositories/operating-system/sessions/`) for a file where `session_id` matches
+2. Determine OS repo root from `OS_ROOT` env var (set in `.env`, defaults to `/Users/home/Repositories/operating-system`). Scan `$OS_ROOT/sessions/*.json` for a file where `session_id` matches. Fallback: if no match by `session_id`, try matching by `cwd` against `worktree_path` (handles the case where `--session-id` is not honored).
 3. If not found, exit silently (session wasn't created by our CLI — don't interfere with ad-hoc Claude Code sessions)
 4. Update based on event:
    - `SessionStart` → set `status: "active"`, update `last_activity`
@@ -350,26 +352,26 @@ This is acceptable for V1. If beads task tracking becomes important, a `PostTool
 
 A dedicated context-tracking hook, separate from the existing GSD statusline script. We do NOT modify the GSD statusline — it belongs to a third-party plugin.
 
-**Mechanism:** The `Stop` hook (which fires every time Claude finishes responding) is already wired to `update-state.py`. When processing a `Stop` event, the script also reads context window data from the hook input JSON. The `Stop` event input includes session metadata that we can use to track context.
-
-**Fallback approach:** If context data is not available in the `Stop` hook input, we add a second statusline command that runs alongside the GSD one. The statusline hook receives `context_window.remaining_percentage` on every render. Our script reads this, updates the state file's `context_remaining_pct`, and if it drops below 10%, appends a `context_low` event.
+**Mechanism:** A custom statusline script (`update-context.py`) replaces the direct GSD statusline reference. It wraps the GSD script as a subprocess — calling `node /Users/home/.claude/hooks/gsd-statusline.js` internally — and adds context tracking on top. The statusline hook receives `context_window.remaining_percentage` on every render. Our script reads this, updates the state file's `context_remaining_pct`, and if it drops below 10%, appends a `context_low` event, then passes through the GSD statusline output.
 
 ```json
 {
-  "statusLine": [
-    {
-      "type": "command",
-      "command": "node /Users/home/.claude/hooks/gsd-statusline.js"
-    },
-    {
-      "type": "command",
-      "command": "python3 /Users/home/Repositories/operating-system/systems/session-manager/hooks/update-context.py"
-    }
-  ]
+  "statusLine": {
+    "type": "command",
+    "command": "python3 /Users/home/Repositories/operating-system/systems/session-manager/hooks/update-context.py"
+  }
 }
 ```
 
-**Note:** `statusLine` may or may not support multiple commands (needs verification during implementation). If it doesn't, the `update-context.py` script wraps the GSD statusline (calls it as a subprocess) and adds context tracking on top.
+The `update-context.py` script:
+1. Reads JSON from stdin
+2. Forwards stdin to GSD's `gsd-statusline.js` as a subprocess, captures its output
+3. Extracts `context_window.remaining_percentage` from the input JSON
+4. Updates the session's state file with `context_remaining_pct` (if a state file exists for this session)
+5. If context drops below 10%, appends a `context_low` event
+6. Outputs the GSD statusline result (or its own minimal status line if GSD is not installed)
+
+**If future Claude Code versions support an array format for `statusLine`**, this wrapper can be simplified to two independent commands. Until then, the wrapper approach ensures both GSD and context tracking work.
 
 ---
 
@@ -500,7 +502,7 @@ Future consideration: if we build inter-session messaging beyond tmux send-keys,
 
 ```
 operating-system/
-├── sessions/                          # Session state files (NEW)
+├── sessions/                          # Session state files (NEW, gitignored)
 │   ├── {uuid}.json                    # One per active/recent session
 │   └── archive/                       # Ended sessions (moved here by cleanup)
 │
@@ -540,6 +542,8 @@ Both the session CLI and hooks need common operations:
 - Timestamp formatting
 
 These live in `lib/os_state.py` to avoid duplication between `systems/session-manager/cli.py`, `hooks/update-state.py`, and `hooks/update-context.py`. The dispatch engine (`systems/dispatch/engine.py`) can also use these utilities if needed.
+
+**Constraint: Hook scripts must use Python stdlib only.** Hooks fire for every Claude Code session on the machine, using whatever `python3` is on PATH. They cannot depend on packages installed in a venv. The `lib/os_state.py` module must also be stdlib-only (json, os, tempfile, pathlib, etc.). The session CLI (`cli.py`) can use venv packages since it's invoked explicitly.
 
 ---
 
@@ -673,6 +677,11 @@ Future automation possibilities once manual workflows are proven:
 - 2026-03-01: Events capped at 50 per session — full history lives in Claude Code transcripts
 - 2026-03-01: Close flow is defensive — checks idle state, sends commands individually, verifies each step, marks `ended_dirty` on failure
 - 2026-03-01: Shared `lib/os_state.py` for atomic writes, state parsing — used by CLI, hooks, and potentially dispatch
+- 2026-03-01: Hook scripts must be stdlib-only — they run with system python3, not venv
+- 2026-03-01: `sessions/` directory is gitignored — runtime state, not project knowledge
+- 2026-03-01: Hook scripts use `OS_ROOT` env var for OS repo path — avoids hardcoding, set in `.env`
+- 2026-03-01: StatusLine wrapper approach (subprocess to GSD) is the primary mechanism, not an array format
+- 2026-03-01: `--session-id` flag behavior needs verification — fallback lookup by cwd-to-worktree_path matching
 
 ---
 
