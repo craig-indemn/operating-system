@@ -19,7 +19,17 @@ Incorporating voice agents into the Indemn evaluation framework. Currently, only
 - **indemn-platform-v2** (`main`): `ffcd1e9` transcript UI — 1 unpushed commit (+ 3 other COP-325 commits)
 - **indemn-observability** (`demo-gic`): `e3fa4a4` feat + `1a54bab` fix — on feature branch, not on main
 
-**Next step**: Move commits to feature branches in evaluations, voice-livekit, and platform-v2 before pushing. Still blocked on Langfuse credentials for voice data verification.
+**Session 2026-03-02-b** (CURRENT): Langfuse credentials confirmed working (1,142 live voice traces verified). Implemented the two remaining gaps blocking end-to-end testing:
+1. **Langfuse sync task** — `run_sync_langfuse_traces_task()` in Observatory: iterates all Langfuse traces, resolves join keys (call_sid → request_id, phone+time fallback for pre-Phase-1B), transforms observations to Langsmith-compatible run schema, batch-writes to MongoDB. New API endpoint `POST /api/admin/sync-langfuse-traces`. Committed as `c249af9` on `demo-gic`.
+2. **Transcript evaluation fix** — Rewrote `_fetch_langfuse_tool_calls()` in evaluations: replaced broken metadata query with two-hop join via CallSid, added phone+room_name fallback, fetches both GENERATION and TOOL observations. Committed as `9f8b7da` on `main`.
+
+**Commit state** (all local, unpushed):
+- **evaluations** (`main`): 3 unpushed commits (`c651b79`, `1eddab9`, `9f8b7da`)
+- **voice-livekit** (`main`): 1 unpushed commit (`9df3389`)
+- **indemn-platform-v2** (`main`): 1 unpushed commit (`ffcd1e9` + 3 COP-325)
+- **indemn-observability** (`demo-gic`): 3 unpushed commits (`e3fa4a4`, `1a54bab`, `c249af9`)
+
+**Next step**: Local end-to-end test — start analytics+minimal services, sync Langfuse traces, verify in Observatory UI, trigger transcript evaluation, verify in Copilot Dashboard. Still need to move evaluations/voice-livekit/platform-v2 commits to feature branches before pushing.
 
 ## External Resources
 | Resource | Type | Link |
@@ -54,8 +64,8 @@ Incorporating voice agents into the Indemn evaluation framework. Currently, only
 - ~~What tracing system is used for voice?~~ ANSWERED: **Langfuse** (HIPAA instance at `hipaa.cloud.langfuse.com`, project `cmht0a7ll001qad07jn0ko84c`). OpenTelemetry spans from LiveKit Agents SDK exported via OTLP.
 - Should we consolidate on one tracing platform (Langfuse or LangSmith) or build connectors for both? Dhruv was researching this as of Feb 5 meeting.
 - How should voice agents be invoked for evaluation? Transcript-based replay through existing harness seems most feasible — feed chat_history transcripts + tool logs through LLM judges.
-- What Langfuse API credentials do we have? Need `LANGFUSE_PUBLIC_KEY` and `LANGFUSE_SECRET_KEY` for the HIPAA project to build the skill.
+- ~~What Langfuse API credentials do we have?~~ ANSWERED: Credentials confirmed working. 1,142 live traces. Stored in `.env` as `LANGFUSE_PUBLIC_KEY`, `LANGFUSE_SECRET_KEY`, `LANGFUSE_HOST`.
 - LiveKit Cloud API doesn't expose programmatic download for observability data (Jonathan confirmed Feb 24). Is Langfuse the sole programmatic data source, or is there another path?
 - Are voice-specific evaluation criteria needed beyond text content? (e.g., response latency thresholds, interruption handling, call transfer success)
-- How do we join Langfuse traces with MongoDB conversation data? What's the common key? (room_id? external_conversation_id?)
-- For the Observatory Langfuse connector: should it mirror the LangSmith connector pattern, or is a different approach needed given OTLP vs LangChain callback differences?
+- ~~How do we join Langfuse traces with MongoDB conversation data?~~ ANSWERED: Two-hop join via CallSid. Phase 1B traces have `metadata.call_sid` → `requests.attributes.CallSid` → `request_id`. Fallback for pre-Phase-1B: extract phone from `lk.room_name` + time-window match on `requests.createdAt`.
+- ~~For the Observatory Langfuse connector: should it mirror the LangSmith connector pattern?~~ ANSWERED: Yes, transforms Langfuse observations to same run schema (run_type, inputs, outputs, tokens, etc.) with `extra.metadata.source = "langfuse"` to distinguish. Same `upsert_runs_batch()` writer path.
