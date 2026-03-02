@@ -208,6 +208,12 @@ def cmd_create(args):
     # Unset it inside the shell too (tmux -e sets it empty, not unset)
     tmux_send(tmux_name, "unset CLAUDECODE")
 
+    # Enable mouse support (scrolling, pane selection)
+    subprocess.run(
+        ["tmux", "set", "-t", tmux_name, "mouse", "on"],
+        check=True, timeout=5,
+    )
+
     # Launch Claude Code inside tmux
     claude_cmd = build_claude_command(session_id, model, permission_mode, add_dirs)
     tmux_send(tmux_name, claude_cmd)
