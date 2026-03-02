@@ -19,3 +19,76 @@ html, body, #root {
   display: flex;
   flex-direction: column;
 }
+
+/* Terminal pane chrome */
+.terminal-pane {
+  border: 1px solid #2a2a4a;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #1a1a2e;
+}
+
+.terminal-pane.focused {
+  border-color: #4a4a8a;
+}
+
+.terminal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 8px;
+  background: #16162a;
+  cursor: grab;
+  user-select: none;
+  height: 28px;
+  min-height: 28px;
+}
+
+.terminal-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.terminal-header-right {
+  display: flex;
+  gap: 4px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.session-name {
+  font-weight: 600;
+  color: #c0c0e0;
+}
+
+.context-pct {
+  color: #8888aa;
+  font-size: 11px;
+}
+
+.pane-btn {
+  background: none;
+  border: 1px solid #3a3a5e;
+  color: #8888aa;
+  cursor: pointer;
+  padding: 0 6px;
+  border-radius: 2px;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.pane-btn:hover {
+  background: #2a2a4e;
+  color: #e0e0e0;
+}
+
+.terminal-container {
+  background: #1a1a2e;
+}
