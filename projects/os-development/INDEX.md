@@ -3,17 +3,20 @@
 Development of the operating system itself — the skills, systems, and infrastructure that make Indemn's connected intelligence layer work. Covers the dispatch system, systems framework, skill improvements, and meta-level architecture of the OS.
 
 ## Status
-**Session 2026-03-01-a**: Designed the EA & Session Management architecture. Two artifacts produced: Claude Code internals research and the full EA/session management design doc.
+**Session 2026-03-02-a**: Implemented the EA & Session Management system. All four components built and tested (31/31 tests passing):
 
-**EA & Session Management** — Full design approved. Four components: session state files (`sessions/{uuid}.json`), session CLI (`systems/session-manager/cli.py`), hooks (global, update state files), and EA skill (`.claude/skills/ea/`). All sessions run in OS worktrees with external repos via `--add-dir`. tmux send-keys for bidirectional communication. File-per-session eliminates write contention. Scalable to multiple EAs.
+1. **`lib/os_state.py`** — Shared utilities: atomic JSON writes, state file lookup by session_id/name/cwd, event management with 50-event cap. Stdlib only.
+2. **Hook scripts** — `update-state.py` (5 events: SessionStart, Stop, UserPromptSubmit, TaskCompleted, SessionEnd) and `update-context.py` (statusline wrapper with GSD passthrough, context % tracking, context_low at <10%). Installed globally in `~/.claude/settings.json`.
+3. **Session CLI** (`systems/session-manager/cli.py`) — 7 commands: create, list, attach, send, status, close, destroy. Manages tmux + git worktrees + Claude Code processes. Aliased as `session` in `.env`.
+4. **EA skill** (`.claude/skills/ea/SKILL.md`) — Reads session state, presents briefings, orchestrates lifecycle via CLI.
 
-**Previous session (2026-02-24-a)**: Fixed 6 onboarding issues from Kai's first use. Slack keychain integration, Linear env var fix, MongoDB IP whitelisting, Google Workspace 1Password reference, Python PEP 668 fallback, `.env` quoting guidance.
+**Previous session (2026-03-01-a)**: Designed the EA & Session Management architecture.
 
 **Onboarding branch** — is 40+ commits behind main. Needs rebasing but DO NOT rebase while parallel sessions are active on main.
 
 **Next session should:**
-1. Implement session management system — CLI, hooks, state files (design doc ready)
-2. Build EA skill for the OS (replacing content-system EA)
+1. Integration test the full session lifecycle (create → hooks fire → send → close)
+2. Verify `--session-id` flag is honored by Claude Code (needed for hook-to-state mapping)
 3. Build `/1password` skill and evaluate `op` CLI for secrets management
 4. Consider task layer unification (beads + Claude Code tasks + Linear)
 

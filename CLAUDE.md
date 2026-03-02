@@ -34,6 +34,7 @@ Connected intelligence layer for Indemn. Every tool the company uses, accessible
 | Skill | What It Does |
 |-------|-------------|
 | `/dispatch` | Autonomous execution of implementation plans — runs Claude Code sessions via Agent SDK against beads epics |
+| `/ea` | Executive assistant — session switchboard, briefings, lifecycle management across projects |
 
 ### Workflow Skills
 | Skill | What It Does |
@@ -77,6 +78,7 @@ Operational infrastructure — persistent processes that don't "finish" like pro
 | System | What It Does |
 |--------|-------------|
 | `dispatch` | Ralph loop engine that executes beads epics via Agent SDK — fresh Claude Code session per task, separate verification, autonomous until backstop criteria met |
+| `session-manager` | Manages Claude Code sessions in tmux — worktree isolation, event-driven state tracking, context monitoring, lifecycle CLI (`session create/list/attach/send/close/destroy`) |
 
 - Systems use skills as their interface (e.g., `/dispatch` invokes the dispatch engine)
 - Systems are infrastructure — they serve any project
