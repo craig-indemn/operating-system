@@ -51,4 +51,4 @@ server.listen(PORT, () => {
   console.log(`OS Terminal server running on port ${PORT}`);
 });
 
-export { server, stateWss };
+export { server };
