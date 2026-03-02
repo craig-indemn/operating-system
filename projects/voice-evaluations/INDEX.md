@@ -29,13 +29,24 @@ Incorporating voice agents into the Indemn evaluation framework. Currently, only
 5. **API 500 on voice conversations** (BUG): `started_at` stored as float, API model expected string. Fixed by normalizing Unix timestamps to ISO strings in `build_observatory_document()`.
 6. **Observatory UI verified**: Voice conversations appear with "voice" channel badge in Conversations tab. Conversation detail panel opens correctly with Messages and Full Trace tabs.
 
+**Session 2026-03-02-d** (COMPLETE): End-to-end verification + scope fix.
+1. **Transcript evaluation on voice** — triggered via API, completed: 1 voice conversation, 19/45 criteria (used wrong test set — faq bot criteria against voice conv, expected meaningless results). Backend pipeline confirmed working.
+2. **Copilot Dashboard** — user verified transcript results visible with Transcript type badge in federation UI.
+3. **Observatory UI** — user verified voice conversations with voice badge, detail panel working.
+4. **Evaluate scope fix** — EvaluateDialog was disabled for voice because `botId` came from UI scope filter (always null). Root cause: `agent_id` not in API response (missing from MongoDB projection + response model) + proxy passed `bot_id` param but evaluations service expects `agent_id`. Fixed: added `agent_id` to projection/model/response, frontend reads from conversation data, proxy uses correct param name. Now filters test sets/rubrics to the selected conversation's agent.
+5. **Voice agent has 0 test sets** — correct behavior, none created yet.
+
 **Commit state** (all local, unpushed):
 - **evaluations** (`main`): 3 unpushed commits (`c651b79`, `1eddab9`, `9f8b7da`)
 - **voice-livekit** (`main`): 1 unpushed commit (`9df3389`)
 - **indemn-platform-v2** (`main`): 1 unpushed commit (`ffcd1e9` + 3 COP-325)
-- **indemn-observability** (`demo-gic`): 5 unpushed commits (`e3fa4a4`, `1a54bab`, `c249af9`, `e035deb`, `a95692e`)
+- **indemn-observability** (`demo-gic`): 6 unpushed commits (`e3fa4a4`, `1a54bab`, `c249af9`, `e035deb`, `a95692e`, `dfa6e8f`)
 
-**Next step**: Trigger transcript evaluation from Observatory for a voice conversation. Verify results in Copilot Dashboard. Then move evaluations/voice-livekit/platform-v2 commits to feature branches before pushing.
+**Next steps**:
+1. Test against PRODUCTION data locally (--env=prod) — shake out the full pipeline with real volume (3,270 voice convos, 1,142 Langfuse traces)
+2. Verify AWS EventBridge ingestion pipeline is configured for voice
+3. Create a test set for the voice agent so Evaluate dialog has criteria
+4. Move evaluations/voice-livekit/platform-v2 commits to feature branches before pushing (currently on main)
 
 ## External Resources
 | Resource | Type | Link |
