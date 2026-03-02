@@ -110,6 +110,23 @@ def list_sessions(sessions_dir: str, include_ended: bool = False) -> list[dict]:
     return sessions
 
 
+def tmux_send(tmux_name: str, text: str) -> None:
+    """Send text to a tmux pane and press Enter.
+
+    Uses -l (literal) for the text to avoid key name interpretation,
+    then sends Enter separately — Claude Code's TUI doesn't reliably
+    submit when text and Enter are sent in a single send-keys call.
+    """
+    subprocess.run(
+        ["tmux", "send-keys", "-t", tmux_name, "-l", text],
+        check=True, timeout=10,
+    )
+    subprocess.run(
+        ["tmux", "send-keys", "-t", tmux_name, "Enter"],
+        check=True, timeout=10,
+    )
+
+
 def tmux_session_exists(name: str) -> bool:
     """Check if a tmux session exists."""
     result = subprocess.run(
@@ -189,17 +206,11 @@ def cmd_create(args):
         check=True, timeout=10, env=create_env,
     )
     # Unset it inside the shell too (tmux -e sets it empty, not unset)
-    subprocess.run(
-        ["tmux", "send-keys", "-t", tmux_name, "unset CLAUDECODE", "Enter"],
-        check=True, timeout=10,
-    )
+    tmux_send(tmux_name, "unset CLAUDECODE")
 
     # Launch Claude Code inside tmux
     claude_cmd = build_claude_command(session_id, model, permission_mode, add_dirs)
-    subprocess.run(
-        ["tmux", "send-keys", "-t", tmux_name, claude_cmd, "Enter"],
-        check=True, timeout=10,
-    )
+    tmux_send(tmux_name, claude_cmd)
 
     print(f"Session '{name}' created")
     print(f"  tmux: {tmux_name}")
@@ -256,17 +267,19 @@ def cmd_attach(args):
 
 
 def cmd_send(args):
-    """Send a message to a session via tmux send-keys."""
+    """Send a message to a session via tmux send-keys.
+
+    Uses -l (literal) for the text to avoid key name interpretation,
+    then sends Enter separately — Claude Code's TUI doesn't reliably
+    submit when text and Enter are sent in a single send-keys call.
+    """
     name = args.name
     message = args.message
     tmux_name = f"{TMUX_PREFIX}{name}"
     if not tmux_session_exists(tmux_name):
         print(f"Error: no tmux session '{tmux_name}'")
         sys.exit(1)
-    subprocess.run(
-        ["tmux", "send-keys", "-t", tmux_name, message, "Enter"],
-        check=True, timeout=10,
-    )
+    tmux_send(tmux_name, message)
     print(f"Message sent to '{name}'")
 
 
@@ -323,10 +336,7 @@ def cmd_close(args):
     ]
     for cmd in cleanup_cmds:
         print(f"Sending: {cmd[:60]}...")
-        subprocess.run(
-            ["tmux", "send-keys", "-t", tmux_name, cmd, "Enter"],
-            check=True, timeout=10,
-        )
+        tmux_send(tmux_name, cmd)
         # Wait for idle
         for _ in range(60):
             time.sleep(1)
@@ -336,10 +346,7 @@ def cmd_close(args):
 
     # Send /exit
     print("Sending /exit...")
-    subprocess.run(
-        ["tmux", "send-keys", "-t", tmux_name, "/exit", "Enter"],
-        timeout=10,
-    )
+    tmux_send(tmux_name, "/exit")
 
     # Wait for tmux to end
     for _ in range(30):
