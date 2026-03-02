@@ -3,22 +3,17 @@
 Development of the operating system itself — the skills, systems, and infrastructure that make Indemn's connected intelligence layer work. Covers the dispatch system, systems framework, skill improvements, and meta-level architecture of the OS.
 
 ## Status
-**Session 2026-03-02-a**: Implemented the EA & Session Management system. All four components built and tested (31/31 tests passing):
+**Session 2026-03-02-b**: Designed the OS Terminal — Bloomberg-style visual interface for the operating system. React + xterm.js + react-grid-layout grid of live terminal sessions, accessible from any device (desktop, tablet, phone, iOS App Store via Capacitor). Voice layer architected as a sidecar service for future implementation. Design doc approved at `docs/plans/2026-03-02-os-terminal-design.md`.
 
-1. **`lib/os_state.py`** — Shared utilities: atomic JSON writes, state file lookup by session_id/name/cwd, event management with 50-event cap. Stdlib only.
-2. **Hook scripts** — `update-state.py` (5 events: SessionStart, Stop, UserPromptSubmit, TaskCompleted, SessionEnd) and `update-context.py` (statusline wrapper with GSD passthrough, context % tracking, context_low at <10%). Installed globally in `~/.claude/settings.json`.
-3. **Session CLI** (`systems/session-manager/cli.py`) — 7 commands: create, list, attach, send, status, close, destroy. Manages tmux + git worktrees + Claude Code processes. Aliased as `session` in `.env`.
-4. **EA skill** (`.claude/skills/ea/SKILL.md`) — Reads session state, presents briefings, orchestrates lifecycle via CLI.
-
-**Previous session (2026-03-01-a)**: Designed the EA & Session Management architecture.
+**Previous session (2026-03-02-a)**: Completed the EA & Session Management system — CLI, hooks, state files, stale session and nested session fixes. All pushed to main.
 
 **Onboarding branch** — is 40+ commits behind main. Needs rebasing but DO NOT rebase while parallel sessions are active on main.
 
 **Next session should:**
-1. Integration test the full session lifecycle (create → hooks fire → send → close)
-2. Verify `--session-id` flag is honored by Claude Code (needed for hook-to-state mapping)
-3. Build `/1password` skill and evaluate `op` CLI for secrets management
-4. Consider task layer unification (beads + Claude Code tasks + Linear)
+1. Implementation plan for OS Terminal V1 (terminal grid)
+2. Build the Node.js backend (REST API, WebSocket relay, file watcher)
+3. Build the React frontend (grid layout, terminal panes, session panel)
+4. Deferred: `/1password` skill, task layer unification, Linear integration
 
 ## External Resources
 | Resource | Type | Link |
@@ -42,6 +37,7 @@ Development of the operating system itself — the skills, systems, and infrastr
 | 2026-02-23 | [onboarding-instructions](artifacts/2026-02-23-onboarding-instructions.md) | Instructions for a new developer to get set up with the operating system and local dev environment |
 | 2026-03-01 | [claude-code-internals](artifacts/2026-03-01-claude-code-internals.md) | How Claude Code works on our system — sessions, hooks, state, Agent Teams, SDK. Foundation for EA integration. |
 | 2026-03-01 | [ea-session-management-design](artifacts/2026-03-01-ea-session-management-design.md) | Full architecture for EA & session management — tmux sessions, event-driven state, switchboard EA, voice/task future layers |
+| 2026-03-02 | [os-terminal-design](artifacts/2026-03-02-os-terminal-design.md) | Bloomberg-style terminal grid UI — React + xterm.js, WebSocket relay to tmux, voice sidecar architecture, Capacitor for iOS |
 
 ## Decisions
 - 2026-02-19: OS has three primitives: Skills (capabilities), Projects (memory), Systems (processes)
@@ -76,6 +72,14 @@ Development of the operating system itself — the skills, systems, and infrastr
 - 2026-03-01: EA is not immortal — reads state from disk, any session with EA skill becomes the EA
 - 2026-03-01: Manual triggers only for now — automation is a future layer
 - 2026-03-01: Voice interface and unified task layer are future work (noted in design doc)
+- 2026-03-02: OS Terminal is the visual interface — Bloomberg-style grid of live terminals
+- 2026-03-02: React + xterm.js + react-grid-layout for the frontend
+- 2026-03-02: Capacitor for iOS App Store distribution (same React codebase)
+- 2026-03-02: Single Node.js backend — REST API + WebSocket terminal relay + file watcher
+- 2026-03-02: UI never writes state files directly — all mutations go through session CLI
+- 2026-03-02: EA is a regular session in the grid — not special-cased by the UI
+- 2026-03-02: Voice is an independent sidecar service, layered on top of the terminal UI
+- 2026-03-02: V1 is local only; remote access, auth, and iOS in V2
 
 ## Open Questions
 - Which OS skills should be symlinked to `~/.claude/skills/` for global access in dispatched sessions?
