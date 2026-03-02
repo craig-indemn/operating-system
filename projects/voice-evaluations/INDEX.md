@@ -19,17 +19,23 @@ Incorporating voice agents into the Indemn evaluation framework. Currently, only
 - **indemn-platform-v2** (`main`): `ffcd1e9` transcript UI — 1 unpushed commit (+ 3 other COP-325 commits)
 - **indemn-observability** (`demo-gic`): `e3fa4a4` feat + `1a54bab` fix — on feature branch, not on main
 
-**Session 2026-03-02-b** (CURRENT): Langfuse credentials confirmed working (1,142 live voice traces verified). Implemented the two remaining gaps blocking end-to-end testing:
-1. **Langfuse sync task** — `run_sync_langfuse_traces_task()` in Observatory: iterates all Langfuse traces, resolves join keys (call_sid → request_id, phone+time fallback for pre-Phase-1B), transforms observations to Langsmith-compatible run schema, batch-writes to MongoDB. New API endpoint `POST /api/admin/sync-langfuse-traces`. Committed as `c249af9` on `demo-gic`.
-2. **Transcript evaluation fix** — Rewrote `_fetch_langfuse_tool_calls()` in evaluations: replaced broken metadata query with two-hop join via CallSid, added phone+room_name fallback, fetches both GENERATION and TOOL observations. Committed as `9f8b7da` on `main`.
+**Session 2026-03-02-b** (COMPLETE): Langfuse credentials confirmed working (1,142 live voice traces verified). Implemented Langfuse sync task + transcript evaluation fix. Initial sync: 16 traces → 620 runs, 11 matched / 5 unmatched. Hit bugs: Langfuse Z suffix requirement, limit=100 cap. Both fixed.
+
+**Session 2026-03-02-c** (COMPLETE): Investigated all three sync discrepancies, fixed bugs, completed end-to-end testing:
+1. **11→8 request_ids** (BUG): phone+time fallback returned latest request instead of closest match, causing N:1 collisions when same phone called repeatedly within 5-min window. Fixed with closest-by-time matching + exclude_request_ids dedup. After fix: 11 matched → 11 distinct request_ids (1:1).
+2. **5 unmatched traces** (EXPECTED): No matching requests exist in dev MongoDB for those calls/times.
+3. **0 TOOL observations** (EXPECTED): Dev Langfuse only has SPAN + GENERATION types. No TOOL-type observations in dev data.
+4. **Voice conversations invisible to ingestion** (BUG): Voice requests store `conversation_start_time` as Unix timestamp float, not ISO string. Ingestion query used string comparison — voice requests never matched. Fixed with `$or` filter adding `createdAt` (Date type) fallback.
+5. **API 500 on voice conversations** (BUG): `started_at` stored as float, API model expected string. Fixed by normalizing Unix timestamps to ISO strings in `build_observatory_document()`.
+6. **Observatory UI verified**: Voice conversations appear with "voice" channel badge in Conversations tab. Conversation detail panel opens correctly with Messages and Full Trace tabs.
 
 **Commit state** (all local, unpushed):
 - **evaluations** (`main`): 3 unpushed commits (`c651b79`, `1eddab9`, `9f8b7da`)
 - **voice-livekit** (`main`): 1 unpushed commit (`9df3389`)
 - **indemn-platform-v2** (`main`): 1 unpushed commit (`ffcd1e9` + 3 COP-325)
-- **indemn-observability** (`demo-gic`): 3 unpushed commits (`e3fa4a4`, `1a54bab`, `c249af9`)
+- **indemn-observability** (`demo-gic`): 5 unpushed commits (`e3fa4a4`, `1a54bab`, `c249af9`, `e035deb`, `a95692e`)
 
-**Next step**: Investigate sync discrepancies (11 matched → 8 request_ids, 5 unmatched traces, 0 TOOL observations). Then continue e2e test: ingestion, Observatory UI, transcript eval, Copilot Dashboard. All local services currently running on dev. Still need to move evaluations/voice-livekit/platform-v2 commits to feature branches before pushing.
+**Next step**: Trigger transcript evaluation from Observatory for a voice conversation. Verify results in Copilot Dashboard. Then move evaluations/voice-livekit/platform-v2 commits to feature branches before pushing.
 
 ## External Resources
 | Resource | Type | Link |
@@ -59,6 +65,9 @@ Incorporating voice agents into the Indemn evaluation framework. Currently, only
 - 2026-02-27: Tracing platform consolidation is out of scope. Work with what exists (Langfuse for voice, LangSmith for web).
 - 2026-02-27: Two evaluation modes for voice: (1) Voice Replay Evaluation — judge real conversations from Observatory/Langfuse, build first. (2) Voice Simulation — text-mode endpoint on voice-livekit for proactive testing, build second. Replay is the MVP; simulation goes on the roadmap.
 - 2026-02-27: Observatory → Evaluation bridge is a new flow: select conversations in Observatory, trigger evaluation, results appear in Copilot Dashboard. Benefits both web and voice.
+- 2026-03-02: Voice requests store `conversation_start_time` as Unix float, not ISO string. Ingestion must handle both via `$or` on `createdAt` (Date). All four date-filtered methods in MongoDBSourceConnector updated.
+- 2026-03-02: Pre-Phase-1B Langfuse traces have no `call_sid` or `id_bot` metadata. Phone+time fallback is the only working join. Must use closest-match + dedup to prevent N:1 collisions when same number calls repeatedly.
+- 2026-03-02: Dev Langfuse has no TOOL-type observations (only SPAN + GENERATION). Prod likely has them. Not a code issue.
 
 ## Open Questions
 - ~~Where do turn-by-turn voice transcripts live?~~ ANSWERED: LiveKit chat_history.json has full turn-by-turn with metrics. Also exported to Langfuse via OTLP. MongoDB `bot_external_event_logs` has summaries only.
