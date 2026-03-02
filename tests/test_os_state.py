@@ -13,6 +13,7 @@ from os_state import (
     read_state_file,
     find_state_by_session_id,
     find_state_by_name,
+    find_state_by_cwd,
     append_event,
     now_iso,
 )
@@ -105,6 +106,25 @@ class TestFindState(unittest.TestCase):
     def test_find_by_name_miss(self):
         path, data = find_state_by_name(self.tmpdir, "nonexistent")
         self.assertIsNone(data)
+
+    def test_find_by_cwd_skips_ended(self):
+        """CWD fallback should not match sessions in terminal states."""
+        ended_state = {
+            "version": 1, "session_id": "uuid-333", "name": "dead-session",
+            "status": "ended_dirty", "worktree_path": "/tmp/shared-cwd"
+        }
+        path = os.path.join(self.tmpdir, f"{ended_state['session_id']}.json")
+        with open(path, "w") as f:
+            json.dump(ended_state, f)
+        # Should NOT match the ended session
+        found_path, found_state = find_state_by_cwd(self.tmpdir, "/tmp/shared-cwd")
+        self.assertIsNone(found_state)
+
+    def test_find_by_cwd_matches_active(self):
+        """CWD fallback should match active sessions."""
+        found_path, found_state = find_state_by_cwd(self.tmpdir, "/tmp/wt1")
+        self.assertIsNotNone(found_state)
+        self.assertEqual(found_state["name"], "voice-evals")
 
 
 class TestAppendEvent(unittest.TestCase):

@@ -51,6 +51,13 @@ def main():
             return  # Not a managed session, exit silently
         state_path = state_path_found
 
+    # Don't update sessions that are already in a terminal state.
+    # This prevents race conditions where hooks fire after destroy/close
+    # has already written ended/ended_dirty, or where a different session
+    # matches by cwd fallback after the original session ended.
+    if state.get("status") in ("ended", "ended_dirty"):
+        return
+
     # Update based on event
     if event_name == "SessionStart":
         state["status"] = "active"

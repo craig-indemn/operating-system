@@ -120,3 +120,18 @@ class TestUpdateStateHook(unittest.TestCase):
         self.assertEqual(rc, 0)
         state = self._read_state()
         self.assertNotEqual(state["last_activity"], "2026-01-01T00:00:00+00:00")
+
+    def test_terminal_state_not_overwritten(self):
+        """Hooks must not update sessions that are already ended or ended_dirty."""
+        for terminal_status in ("ended", "ended_dirty"):
+            self.base_state["status"] = terminal_status
+            self.base_state["last_activity"] = "2026-01-01T00:00:00+00:00"
+            write_state(self.sessions_dir, self.session_id, self.base_state)
+            for event in ("SessionStart", "Stop", "UserPromptSubmit", "TaskCompleted"):
+                rc = run_hook(event, self.session_id, self.sessions_dir)
+                self.assertEqual(rc, 0)
+                state = self._read_state()
+                self.assertEqual(state["status"], terminal_status,
+                                 f"{event} should not overwrite {terminal_status}")
+                self.assertEqual(state["last_activity"], "2026-01-01T00:00:00+00:00",
+                                 f"{event} should not update last_activity on {terminal_status}")

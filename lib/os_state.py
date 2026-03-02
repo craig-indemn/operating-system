@@ -94,6 +94,8 @@ def find_state_by_cwd(sessions_dir: str, cwd: str) -> tuple[Optional[str], Optio
     """Find a state file by matching cwd to worktree_path. Returns (path, state) or (None, None).
 
     Fallback lookup for when --session-id is not honored by Claude Code.
+    Skips sessions in terminal states (ended, ended_dirty) to prevent
+    a new session from accidentally updating a dead session's state file.
     """
     try:
         for fname in os.listdir(sessions_dir):
@@ -102,6 +104,9 @@ def find_state_by_cwd(sessions_dir: str, cwd: str) -> tuple[Optional[str], Optio
             fpath = os.path.join(sessions_dir, fname)
             state = read_state_file(fpath)
             if state and state.get("worktree_path") == cwd:
+                # Skip sessions that have already ended
+                if state.get("status") in ("ended", "ended_dirty"):
+                    continue
                 return fpath, state
     except FileNotFoundError:
         pass

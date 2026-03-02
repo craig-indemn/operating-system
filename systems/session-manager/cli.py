@@ -200,8 +200,9 @@ def cmd_create(args):
 
 
 def cmd_list(args):
-    """List all active sessions."""
-    sessions = list_sessions(get_sessions_dir())
+    """List all active sessions, auto-detecting stale ones."""
+    sessions_dir = get_sessions_dir()
+    sessions = list_sessions(sessions_dir)
     if not sessions:
         print("No active sessions.")
         return
@@ -211,8 +212,24 @@ def cmd_list(args):
     print("-" * 78)
 
     for s in sessions:
+        status = s.get("status", "?")
+        tmux_name = s.get("tmux_session", "")
+
+        # Detect stale: state says active/idle but tmux session is gone
+        if status in ("active", "idle", "started") and tmux_name:
+            if not tmux_session_exists(tmux_name):
+                status = "stale"
+                # Auto-fix: mark as ended_dirty so it doesn't show up forever
+                sid = s.get("session_id", "")
+                state_path = os.path.join(sessions_dir, f"{sid}.json")
+                state = read_state_file(state_path)
+                if state:
+                    state["status"] = "ended_dirty"
+                    append_event(state, "ended_dirty", summary="stale_detected: tmux gone")
+                    atomic_write_json(state_path, state)
+
         ctx = f"{s.get('context_remaining_pct', '?')}%"
-        print(f"{s['name']:<25} {s['status']:<15} {ctx:<10} {s.get('model', '?'):<8} {s.get('project', '-'):<20}")
+        print(f"{s['name']:<25} {status:<15} {ctx:<10} {s.get('model', '?'):<8} {s.get('project', '-'):<20}")
 
 
 def cmd_attach(args):
