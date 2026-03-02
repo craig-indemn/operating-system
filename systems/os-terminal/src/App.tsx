@@ -2,6 +2,7 @@ import { useState, useMemo, useCallback } from 'react';
 import { useSessions } from './hooks/useSessions';
 import { TerminalGrid } from './components/TerminalGrid';
 import { SessionPanel } from './components/SessionPanel';
+import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts';
 
 export default function App() {
   const sessions = useSessions();
@@ -21,6 +22,23 @@ export default function App() {
   }, []);
   const handleRestore = useCallback(() => setMaximized(null), []);
   const handleFocus = useCallback((id: string) => setFocused(id), []);
+
+  useKeyboardShortcuts({
+    focusPane: (index: number) => {
+      const active = sessions.filter(s => !['ended', 'ended_dirty'].includes(s.status));
+      if (active[index]) {
+        setFocused(active[index]!.session_id);
+      }
+    },
+    createSession: () => {/* TODO: create session modal */},
+    closePane: () => {
+      if (focused) {
+        setMinimized(prev => new Set(prev).add(focused));
+      }
+    },
+    escapeMaximize: () => setMaximized(null),
+    togglePanel: () => setPanelOpen(prev => !prev),
+  });
 
   return (
     <div className="app">
