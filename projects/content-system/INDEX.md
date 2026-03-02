@@ -3,26 +3,30 @@
 AI-powered content creation pipeline for Indemn and personal brands. Transforms voice-based ideas into polished, publishable content through dynamic extraction, iterative drafting, and multi-platform distribution. Lives in a separate repo (`/Users/home/Repositories/content-system`) with skills symlinked to `~/.claude/skills/`.
 
 ## Status
-Session 2026-02-25-e complete. Excalidraw skill built, blog OG thumbnails fixed, homepage card layout added.
+Session 2026-03-02 complete. Personal brand identity established, Substack publication created.
 
-**This session:**
-- Built `/excalidraw` skill — full element reference, diagram templates, Node.js renderer with bound text post-processing
-- Created content system architecture diagram (`.excalidraw` + `.svg`)
-- Fixed Open Graph meta tags — Slack/social unfurls now show Indemn branding instead of Astro stock placeholder
-- Generated branded default OG card via `/image-gen` with Indemn logo as reference
-- Added `heroImage` to blog post frontmatter + fixed `BlogPost.astro` to pass it to `BaseHead`
-- Homepage now shows post thumbnails in card layout (image on top, text below)
-- Fixed hero image overlap on blog post pages
-- Committed and pushed all OS changes (excalidraw skill, eval-analysis skill, project state)
+**This session (2026-03-02):**
+- Established personal brand identity: "Notes from the Build" — builder-in-public newsletter
+- Created `brands/personal/voice.md` — excited, curious, technical-but-accessible, first person
+- Updated `brands/personal/config.yaml` — bee/hex/amber visual identity, Substack primary platform
+- Generated brand assets via `/image-gen`: logo (bee+hexagon+circuit), banner (honeycomb-to-circuit flow), header
+- Created Substack publication at notesfromthebuild.substack.com
+- Configured Substack: accent color (#d97706), about page written and saved, logo uploaded
+- Bio decided: "Engineer & builder. Building AI systems, software platforms, and whatever the problem needs."
+- Committed and pushed all content-system changes
 
 **Blog posts:**
 - "Building Evaluations for Conversational Agents" — Published with images and OG thumbnail, live at blog.indemn.ai
 - "Agents That Build Agents" — Draft v13, awaiting review or approval
 
 **Next up:**
-1. Author reviews "Agents That Build Agents" v13 — approve or further feedback
-2. Generate images for "Agents That Build Agents" when approved
-3. Integrate image-gen into content pipeline skills (content-draft, content-publish) so images are generated during drafting
+1. Update Substack profile bio
+2. Upload banner image to Substack website editor header section
+3. Set up Medium account for cross-posting
+4. Write and publish first personal post on Substack
+5. Wire content-publish skill to handle Substack/Medium publishing (currently only handles git-based Astro deploy)
+6. Author reviews "Agents That Build Agents" v13 — approve or further feedback
+7. Integrate image-gen into content pipeline skills
 
 ## External Resources
 | Resource | Type | Link |
@@ -35,6 +39,9 @@ Session 2026-02-25-e complete. Excalidraw skill built, blog OG thumbnails fixed,
 | Orchestration layer design | Doc | content-system/docs/plans/2026-02-08-orchestration-layer-design.md |
 | Master System Prompt (v2026.1) | Google Doc | gog docs cat 1lowazd0cvnX45M3nWP0bzKCZ2IA9G79_NNmmToxYIQM |
 | Marketing Material Persona Prompt | Google Doc | gog docs cat 1ibuNPLYOpID063UJpJhVbXwY91mniNvv0SeNnoYscYI |
+| Personal brand Substack | Website | notesfromthebuild.substack.com |
+| Personal brand voice doc | Doc | content-system/brands/personal/voice.md |
+| Personal brand config | Doc | content-system/brands/personal/config.yaml |
 
 ## Artifacts
 | Date | Artifact | Ask |
@@ -43,6 +50,13 @@ Session 2026-02-25-e complete. Excalidraw skill built, blog OG thumbnails fixed,
 | 2026-02-25 | [content-system-architecture](artifacts/content-system-architecture.excalidraw) | Excalidraw diagram of the content pipeline — skills, flow, and integration points ([SVG](artifacts/content-system-architecture.svg)) |
 
 ## Decisions
+- 2026-03-02: Personal brand is a named newsletter "Notes from the Build", not a personal blog "Craig Certo". People subscribe to ideas, not people.
+- 2026-03-02: Substack primary, Medium cross-post with Substack as canonical source. Medium for discovery, Substack owns the relationship.
+- 2026-03-02: Visual identity: bee/hexagon/honeycomb + circuit traces. Honey amber (#d97706) is the signature color. Dark charcoal (#1c1917) for brand assets, light backgrounds for reading.
+- 2026-03-02: Personal voice is NOT AI-specific — "builder who happens to be building with AI". Content covers software, systems, startups, learning — whatever Craig is building.
+- 2026-03-02: Voice tone: excited, curious, technical-but-accessible. "Talking WITH you, not AT you." Assumes intelligent, not knowledgeable.
+- 2026-03-02: Bio: "Engineer & builder. Building AI systems, software platforms, and whatever the problem needs."
+- 2026-03-02: No official Substack publishing API exists. Unofficial TypeScript/Python libraries use cookie auth (substack.sid). For now, copy-paste publishing; upgrade to API later if volume justifies.
 - 2026-02-25: Image generation skill is a general OS tool skill, not content-system-specific. Brand context injected by the caller (content pipeline skills), not the image-gen skill itself.
 - 2026-02-25: Nano Banana (gemini-2.5-flash-image) is the default model — fast, reliable, GA. Nano Banana Pro (gemini-3-pro-image-preview) is unreliable in preview, skip for now.
 - 2026-02-25: Gemini API free tier has zero image quota — billing required on Google AI Studio.
