@@ -22,12 +22,30 @@ export default function App() {
   }, []);
   const handleRestore = useCallback(() => setMaximized(null), []);
   const handleFocus = useCallback((id: string) => setFocused(id), []);
+  const handleSelectSession = useCallback((id: string) => {
+    // Restore if minimized, clear maximize, and focus
+    setMinimized(prev => {
+      if (!prev.has(id)) return prev;
+      const next = new Set(prev);
+      next.delete(id);
+      return next;
+    });
+    setMaximized(null);
+    setFocused(id);
+  }, []);
 
   useKeyboardShortcuts({
     focusPane: (index: number) => {
       const active = sessions.filter(s => !['ended', 'ended_dirty'].includes(s.status));
       if (active[index]) {
-        setFocused(active[index]!.session_id);
+        const id = active[index]!.session_id;
+        setMinimized(prev => {
+          if (!prev.has(id)) return prev;
+          const next = new Set(prev);
+          next.delete(id);
+          return next;
+        });
+        setFocused(id);
       }
     },
     createSession: () => {/* TODO: create session modal */},
@@ -53,6 +71,7 @@ export default function App() {
         <SessionPanel
           sessions={sessions}
           onCreateSession={() => {/* TODO: create session modal */}}
+          onSelectSession={handleSelectSession}
           isOpen={panelOpen}
         />
         <div className="grid-area">

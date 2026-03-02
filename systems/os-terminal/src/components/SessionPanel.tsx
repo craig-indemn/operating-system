@@ -3,6 +3,7 @@ import type { SessionInfo } from '../hooks/useSessions';
 interface SessionPanelProps {
   sessions: SessionInfo[];
   onCreateSession: () => void;
+  onSelectSession: (sessionId: string) => void;
   isOpen: boolean;
 }
 
@@ -26,7 +27,7 @@ function timeAgo(iso: string): string {
   return `${Math.floor(hours / 24)}d ago`;
 }
 
-export function SessionPanel({ sessions, onCreateSession, isOpen }: SessionPanelProps) {
+export function SessionPanel({ sessions, onCreateSession, onSelectSession, isOpen }: SessionPanelProps) {
   const activeSessions = sessions.filter(s => !['ended', 'ended_dirty'].includes(s.status));
   const endedSessions = sessions.filter(s => ['ended', 'ended_dirty'].includes(s.status));
 
@@ -40,7 +41,7 @@ export function SessionPanel({ sessions, onCreateSession, isOpen }: SessionPanel
       <div className="panel-section">
         <h3>Active ({activeSessions.length})</h3>
         {activeSessions.map(s => (
-          <div key={s.session_id} className="session-card">
+          <div key={s.session_id} className="session-card" onClick={() => onSelectSession(s.session_id)}>
             <div className="session-card-header">
               <span className="status-dot" style={{ backgroundColor: STATUS_COLORS[s.status] || '#9ca3af' }} />
               <span className="session-card-name">{s.name}</span>

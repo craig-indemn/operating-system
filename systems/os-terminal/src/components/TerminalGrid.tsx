@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback, useMemo, useEffect } from 'react';
+import { useState, useRef, useCallback, useMemo } from 'react';
 import { Responsive, WidthProvider, Layout, Layouts } from 'react-grid-layout';
 import { TerminalPane, TerminalPaneHandle } from './TerminalPane';
 import type { SessionInfo } from '../hooks/useSessions';
@@ -7,6 +7,9 @@ import 'react-resizable/css/styles.css';
 
 const ResponsiveGrid = WidthProvider(Responsive);
 const LAYOUT_STORAGE_KEY = 'os-terminal-layouts';
+const MIN_W = 3;
+const MIN_H = 3;
+const DEFAULT_H = 4;
 
 interface TerminalGridProps {
   sessions: SessionInfo[];
@@ -28,22 +31,9 @@ function loadSavedLayouts(): Layouts | null {
   }
 }
 
-function generateDefaultLayouts(sessions: SessionInfo[]): Layouts {
-  const cols = 12;
-  const sessionsPerRow = Math.min(sessions.length, 3) || 1;
-  const colWidth = Math.floor(cols / sessionsPerRow);
-
-  const lg: Layout[] = sessions.map((s, i) => ({
-    i: s.session_id,
-    x: (i % sessionsPerRow) * colWidth,
-    y: Math.floor(i / sessionsPerRow) * 4,
-    w: colWidth,
-    h: 4,
-    minW: 2,
-    minH: 2,
-  }));
-
-  return { lg, md: lg, sm: lg.map(l => ({ ...l, x: 0, w: 12 })) };
+function computeDefaultWidth(totalSessions: number): number {
+  const sessionsPerRow = Math.min(totalSessions, 3) || 1;
+  return Math.floor(12 / sessionsPerRow);
 }
 
 export function TerminalGrid({
@@ -58,43 +48,84 @@ export function TerminalGrid({
     [sessions],
   );
 
-  // Build layouts: use saved if available, else generate defaults
-  const [layouts, setLayouts] = useState<Layouts>(() => {
-    return loadSavedLayouts() || generateDefaultLayouts(activeSessions);
+  // Base layouts from localStorage (user's saved arrangement)
+  const [savedLayouts, setSavedLayouts] = useState<Layouts>(() => {
+    return loadSavedLayouts() || { lg: [], md: [], sm: [] };
   });
 
-  // When new sessions appear that aren't in the layout, add them.
-  // Uses functional updater to read current layout without depending on it,
-  // avoiding a render loop from layouts.lg in the dependency array.
-  useEffect(() => {
-    setLayouts(prev => {
-      const currentIds = new Set(prev.lg?.map(l => l.i) || []);
-      const newSessions = activeSessions.filter(s => !currentIds.has(s.session_id));
-      if (newSessions.length === 0) return prev; // no change, no re-render
+  const visibleSessions = useMemo(
+    () => activeSessions.filter(s => !minimized.has(s.session_id)),
+    [activeSessions, minimized],
+  );
 
-      const maxY = Math.max(0, ...(prev.lg || []).map(l => l.y + l.h));
-      const newItems: Layout[] = newSessions.map((s, i) => ({
-        i: s.session_id,
-        x: (i % 3) * 4,
-        y: maxY,
-        w: 4,
-        h: 4,
-        minW: 2,
-        minH: 2,
-      }));
-      const lg = [...(prev.lg || []), ...newItems];
-      return { lg, md: lg, sm: lg.map(l => ({ ...l, x: 0, w: 12 })) };
+  // Ensure all visible sessions have layout entries BEFORE render.
+  // This runs synchronously so react-grid-layout never sees children
+  // without matching layout items (which would create w:1 h:1 defaults).
+  const effectiveLayouts = useMemo(() => {
+    const lg = savedLayouts.lg || [];
+    const layoutMap = new Map(lg.map(l => [l.i, l]));
+
+    // Check which visible sessions need layout entries
+    const missing = visibleSessions.filter(s => {
+      const entry = layoutMap.get(s.session_id);
+      // Missing or has degenerate size (auto-generated default)
+      return !entry || entry.w < MIN_W || entry.h < MIN_H;
     });
-  }, [activeSessions]); // No layouts.lg dependency — functional updater reads it
+
+    if (missing.length === 0) {
+      // All visible sessions have good layout entries
+      return savedLayouts;
+    }
+
+    // Compute default width based on total visible count
+    const defaultW = computeDefaultWidth(visibleSessions.length);
+    const maxY = lg.length > 0 ? Math.max(...lg.map(l => l.y + l.h)) : 0;
+
+    const newLg = [...lg];
+    missing.forEach((s, i) => {
+      const entry: Layout = {
+        i: s.session_id,
+        x: (i % 3) * defaultW,
+        y: maxY + Math.floor(i / 3) * DEFAULT_H,
+        w: defaultW,
+        h: DEFAULT_H,
+        minW: MIN_W,
+        minH: MIN_H,
+      };
+      // Replace degenerate entry or add new one
+      const existingIdx = newLg.findIndex(l => l.i === s.session_id);
+      if (existingIdx >= 0) {
+        newLg[existingIdx] = entry;
+      } else {
+        newLg.push(entry);
+      }
+    });
+
+    return {
+      lg: newLg,
+      md: newLg,
+      sm: newLg.map(l => ({ ...l, x: 0, w: 12 })),
+    };
+  }, [savedLayouts, visibleSessions]);
 
   // Debounced localStorage persistence — avoid writing on every drag frame
   const saveTimerRef = useRef<ReturnType<typeof setTimeout>>();
   const handleLayoutChange = useCallback((_current: Layout[], allLayouts: Layouts) => {
-    setLayouts(allLayouts);
-    // Debounce localStorage writes — onLayoutChange fires on every drag frame
+    // Enforce minimum sizes — reject react-grid-layout auto-generated defaults
+    const sanitized: Layouts = {};
+    for (const [bp, items] of Object.entries(allLayouts)) {
+      sanitized[bp] = (items as Layout[]).map(l => ({
+        ...l,
+        w: Math.max(l.w, MIN_W),
+        h: Math.max(l.h, MIN_H),
+        minW: MIN_W,
+        minH: MIN_H,
+      }));
+    }
+    setSavedLayouts(sanitized);
     if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
     saveTimerRef.current = setTimeout(() => {
-      localStorage.setItem(LAYOUT_STORAGE_KEY, JSON.stringify(allLayouts));
+      localStorage.setItem(LAYOUT_STORAGE_KEY, JSON.stringify(sanitized));
     }, 300);
     // Refit all terminals after layout change
     setTimeout(() => {
@@ -135,12 +166,10 @@ export function TerminalGrid({
     );
   }
 
-  const visibleSessions = activeSessions.filter(s => !minimized.has(s.session_id));
-
   return (
     <ResponsiveGrid
       className="terminal-grid"
-      layouts={layouts}
+      layouts={effectiveLayouts}
       breakpoints={{ lg: 1200, md: 996, sm: 768 }}
       cols={{ lg: 12, md: 12, sm: 12 }}
       rowHeight={80}
