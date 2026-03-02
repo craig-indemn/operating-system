@@ -13,6 +13,14 @@ Incorporating voice agents into the Indemn evaluation framework. Currently, only
 
 **Session 2026-02-27-e** (COMPLETE): Committed all bug fixes across 3 repos. Ran transcript evaluation on web conversations — PASS (2 items, 76/102 criteria, 12/12 rubric). Federation build browser testing in copilot-dashboard — Transcript Criteria stat card PASS, evaluation scores display correctly. **Blocked on Langfuse credentials** for voice data ingestion into Observatory and remaining verification.
 
+**Session 2026-03-02-a** (COMPLETE): Resumed project, audited git state across all repos. All implementation commits are local only (not pushed). Commit locations verified:
+- **evaluations** (`main`): `c651b79` feat + `1eddab9` fix — 2 unpushed commits
+- **voice-livekit** (`main`): `9df3389` trace metadata — 1 unpushed commit
+- **indemn-platform-v2** (`main`): `ffcd1e9` transcript UI — 1 unpushed commit (+ 3 other COP-325 commits)
+- **indemn-observability** (`demo-gic`): `e3fa4a4` feat + `1a54bab` fix — on feature branch, not on main
+
+**Next step**: Move commits to feature branches in evaluations, voice-livekit, and platform-v2 before pushing. Still blocked on Langfuse credentials for voice data verification.
+
 ## External Resources
 | Resource | Type | Link |
 |----------|------|------|
