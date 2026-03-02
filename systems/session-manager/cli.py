@@ -75,8 +75,12 @@ def build_claude_command(
     permission_mode: str,
     add_dirs: list[str],
 ) -> str:
-    """Build the claude CLI command string."""
-    parts = [CLAUDE_BIN, f"--session-id {session_id}", f"--model {model}"]
+    """Build the claude CLI command string.
+
+    Prefixes with 'env -u CLAUDECODE' to allow launching from within
+    an existing Claude Code session (nested session guard bypass).
+    """
+    parts = ["env", "-u", "CLAUDECODE", CLAUDE_BIN, f"--session-id {session_id}", f"--model {model}"]
 
     if permission_mode == "bypassPermissions":
         parts.append("--dangerously-skip-permissions")

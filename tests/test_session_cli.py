@@ -35,6 +35,7 @@ class TestSessionCreate(unittest.TestCase):
             permission_mode="bypassPermissions",
             add_dirs=["/repos/bot-service"],
         )
+        self.assertTrue(cmd.startswith("env -u CLAUDECODE"))
         self.assertIn("--session-id", cmd)
         self.assertIn("test-uuid", cmd)
         self.assertIn("--model", cmd)
