@@ -46,6 +46,17 @@
 - Systems serve any project — they're cross-cutting infrastructure
 - The OS has three primitives: Skills (capabilities), Projects (memory), Systems (processes)
 
+## Sessions
+- Use `/sessions` skill (or `session` CLI directly) to create, list, attach, close, and monitor Claude Code sessions
+- Session names should match project names — alphanumeric + hyphens (e.g. `voice-evaluations`, `platform-dev`)
+- All sessions start in OS repo worktrees (`.claude/worktrees/<name>`); external repos added via `--add-dir`
+- Session state files live in `sessions/{uuid}.json` (gitignored, runtime state)
+- Hooks update state automatically — do not manually edit session state files
+- Close sessions defensively with `session close <name>` — it commits, pushes, and updates INDEX.md before exiting
+- Use `session destroy <name>` only for unresponsive sessions — it preserves the worktree for inspection
+- Default permission mode is `bypassPermissions`; use `--permissions acceptEdits` for production-touching sessions
+- The `/sessions` skill reads session state and project INDEX.md files to provide unified briefings
+
 ## When Compacting
 - Always preserve: the list of available skills, the user's role, which tools are authenticated
 - Always preserve: any active task context and decisions made in conversation

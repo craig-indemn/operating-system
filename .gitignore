@@ -10,3 +10,9 @@ credentials.json
 
 # Session state files (runtime, updated by hooks on every event)
 /sessions/
+
+# Python bytecode
+__pycache__/
+
+# Logs
+.logs/

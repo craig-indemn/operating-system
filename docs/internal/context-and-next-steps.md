@@ -108,6 +108,7 @@ Kyle built a system that processes 3,211 meetings into structured intelligence:
 - Internal docs: philosophy, best practices (now includes composed skill patterns), context
 - .gitignore for credentials
 - **Project tracking system**: `projects/` directory with per-workstream INDEX.md, artifacts, and beads integration. `/project` skill for resume, create, save, status, and close-session. Design doc at `docs/plans/2026-02-16-project-tracking-design.md`
+- **Session management system**: `systems/session-manager/` — manages Claude Code sessions in tmux with git worktree isolation, event-driven state tracking via hooks, context window monitoring, and lifecycle CLI (`session create/list/attach/send/status/close/destroy`). `/sessions` skill provides briefings and orchestration. Hooks installed globally in `~/.claude/settings.json` for SessionStart, Stop, UserPromptSubmit, TaskCompleted, SessionEnd. Shared library at `lib/os_state.py`. Design doc at `projects/os-development/artifacts/2026-03-01-ea-session-management-design.md`, implementation plan at `docs/plans/2026-03-01-ea-session-management-implementation.md`. Integration tested 2026-03-02.
 
 ## Known Issues
 
