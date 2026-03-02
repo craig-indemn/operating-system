@@ -92,3 +92,156 @@ html, body, #root {
 .terminal-container {
   background: #1a1a2e;
 }
+
+/* Top bar */
+.top-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 12px;
+  background: #12122a;
+  border-bottom: 1px solid #2a2a4a;
+  height: 32px;
+  min-height: 32px;
+}
+
+.toggle-panel {
+  background: none;
+  border: none;
+  color: #8888aa;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 2px 6px;
+}
+
+.toggle-panel:hover {
+  color: #e0e0e0;
+}
+
+.app-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #6a6aaa;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.session-count {
+  font-size: 12px;
+  color: #6b7280;
+  margin-left: auto;
+}
+
+/* Main content layout */
+.main-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.grid-area {
+  flex: 1;
+  overflow: auto;
+}
+
+/* Grid overrides */
+.terminal-grid {
+  height: 100%;
+}
+
+.react-grid-item {
+  transition: none !important;
+}
+
+.react-grid-item > .react-resizable-handle {
+  background: none;
+  border-right: 2px solid #3a3a5e;
+  border-bottom: 2px solid #3a3a5e;
+}
+
+/* Session panel */
+.session-panel {
+  width: 220px;
+  min-width: 220px;
+  background: #12122a;
+  border-right: 1px solid #2a2a4a;
+  overflow-y: auto;
+  padding: 8px;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 4px 8px;
+}
+
+.panel-header h2 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #c0c0e0;
+}
+
+.create-btn {
+  background: #2a2a4e;
+  border: 1px solid #3a3a5e;
+  color: #8888aa;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.create-btn:hover {
+  background: #3a3a5e;
+  color: #e0e0e0;
+}
+
+.panel-section h3 {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #6b7280;
+  padding: 8px 4px 4px;
+}
+
+.session-card {
+  padding: 6px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 2px;
+}
+
+.session-card:hover {
+  background: #1a1a3e;
+}
+
+.session-card.ended {
+  opacity: 0.5;
+}
+
+.session-card-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.session-card-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: #c0c0e0;
+}
+
+.session-card-meta {
+  display: flex;
+  gap: 8px;
+  font-size: 11px;
+  color: #6b7280;
+  padding-left: 14px;
+  margin-top: 2px;
+}
