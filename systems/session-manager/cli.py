@@ -202,7 +202,7 @@ def cmd_create(args):
     create_env.pop("CLAUDECODE", None)
     subprocess.run(
         ["tmux", "new-session", "-d", "-s", tmux_name, "-c", worktree_path,
-         "-e", "CLAUDECODE="],
+         "-e", "CLAUDECODE=", "-n", name],
         check=True, timeout=10, env=create_env,
     )
     # Unset it inside the shell too (tmux -e sets it empty, not unset)
