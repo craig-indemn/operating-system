@@ -50,12 +50,11 @@ export default function App() {
         <span className="session-count">{activeSessions.length} active</span>
       </div>
       <div className="main-content">
-        {panelOpen && (
-          <SessionPanel
-            sessions={sessions}
-            onCreateSession={() => {/* TODO: create session modal */}}
-          />
-        )}
+        <SessionPanel
+          sessions={sessions}
+          onCreateSession={() => {/* TODO: create session modal */}}
+          isOpen={panelOpen}
+        />
         <div className="grid-area">
           <TerminalGrid
             sessions={sessions}

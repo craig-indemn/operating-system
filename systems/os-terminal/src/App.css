@@ -245,3 +245,41 @@ html, body, #root {
   padding-left: 14px;
   margin-top: 2px;
 }
+
+.session-panel.closed {
+  display: none;
+}
+
+/* Responsive mobile layout */
+@media (max-width: 768px) {
+  .session-panel {
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 32px;
+    bottom: 0;
+    z-index: 100;
+    width: 260px;
+    transform: translateX(-100%);
+    transition: transform 0.2s ease;
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.5);
+  }
+
+  .session-panel.closed {
+    display: block;
+    transform: translateX(-100%);
+  }
+
+  .session-panel.open {
+    transform: translateX(0);
+  }
+
+  .grid-area {
+    position: relative;
+    width: 100%;
+  }
+
+  .top-bar {
+    padding: 4px 8px;
+  }
+}

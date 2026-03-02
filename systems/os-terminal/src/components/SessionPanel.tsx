@@ -3,6 +3,7 @@ import type { SessionInfo } from '../hooks/useSessions';
 interface SessionPanelProps {
   sessions: SessionInfo[];
   onCreateSession: () => void;
+  isOpen: boolean;
 }
 
 const STATUS_COLORS: Record<string, string> = {
@@ -25,12 +26,12 @@ function timeAgo(iso: string): string {
   return `${Math.floor(hours / 24)}d ago`;
 }
 
-export function SessionPanel({ sessions, onCreateSession }: SessionPanelProps) {
+export function SessionPanel({ sessions, onCreateSession, isOpen }: SessionPanelProps) {
   const activeSessions = sessions.filter(s => !['ended', 'ended_dirty'].includes(s.status));
   const endedSessions = sessions.filter(s => ['ended', 'ended_dirty'].includes(s.status));
 
   return (
-    <div className="session-panel">
+    <div className={`session-panel ${isOpen ? 'open' : 'closed'}`}>
       <div className="panel-header">
         <h2>Sessions</h2>
         <button className="create-btn" onClick={onCreateSession}>+</button>
