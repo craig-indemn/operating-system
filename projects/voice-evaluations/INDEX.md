@@ -71,6 +71,18 @@ Incorporating voice agents into the Indemn evaluation framework. Currently, only
 | 2026-02-27 | [design-document](artifacts/2026-02-27-design-document.md) | Comprehensive design: 5-phase roadmap, architecture, data flows, implementation details for voice evaluations + observatory |
 | 2026-03-02 | [langfuse-sync-implementation](artifacts/2026-03-02-langfuse-sync-implementation.md) | Langfuse sync implementation, initial test results, discrepancies to investigate, env config notes |
 
+## Known Limitations
+- **Pre-Phase-1B traces lack metadata**: ALL current dev traces (and likely most prod) have NO `call_sid` or `id_bot` in Langfuse metadata. Only phone+time fallback works. The voice-livekit commit (`9df3389`) adds this metadata going forward, but only helps for NEW calls after deployment.
+- **Phone+time fallback edge case**: 5-minute window can fail if same number calls multiple times rapidly AND there are more traces than requests in the window. Closest-match + dedup mitigates but doesn't eliminate.
+- **Prod vs Dev Langfuse**: Prod project `cmht0a7ll001qad07jn0ko84c` (1,142 traces). Dev project `cmht0gwcr001oad07czzyujje` (180 traces). **CRITICAL**: Prod Langfuse matches PROD MongoDB only. Dev matches DEV MongoDB only. Mismatched creds/DB = 0 joins.
+- **Federation build required for Copilot Dashboard**: The Angular copilot-dashboard loads React components via Module Federation from :5173. The Vite dev server does NOT work — must run `npm run build:federation` in platform-v2/ui then `npx serve dist-federation -l 5173 --cors -n`. Hard refresh (Cmd+Shift+R) after rebuilding.
+
+## Not Built (from 5-phase design doc)
+- **Phase 2C**: Voice-specific metrics in aggregation pipeline — call duration distribution, end reason breakdown, response latency (LLM TTFT + TTS TTFB), STT confidence scores, interruption rate
+- **Phase 5**: Voice simulation endpoint on voice-livekit (`POST /evaluate/invoke`) — requires adding FastAPI to a service that currently has no HTTP server. Non-trivial architectural change.
+- **Rubric evaluators on voice**: Only criteria evaluators tested. Rubric evaluators (per-rule LLM judges) were tested on web but not voice.
+- **Voice agent test set**: No test sets exist for any voice agent. Must create one before the Evaluate dialog is usable for voice.
+
 ## Decisions
 - 2026-02-27: Voice trace data access pattern: OTLP → Langfuse → Langfuse API. Mirrors the web pattern (LangChain callbacks → LangSmith → LangSmith API). Langfuse is the canonical data source for voice traces, not LiveKit Cloud or direct data hooks.
 - 2026-02-27: Tracing platform consolidation is out of scope. Work with what exists (Langfuse for voice, LangSmith for web).
