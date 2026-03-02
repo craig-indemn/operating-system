@@ -3,17 +3,23 @@
 Development of the operating system itself — the skills, systems, and infrastructure that make Indemn's connected intelligence layer work. Covers the dispatch system, systems framework, skill improvements, and meta-level architecture of the OS.
 
 ## Status
-**Session 2026-03-02-b**: Designed the OS Terminal — Bloomberg-style visual interface for the operating system. React + xterm.js + react-grid-layout grid of live terminal sessions, accessible from any device (desktop, tablet, phone, iOS App Store via Capacitor). Voice layer architected as a sidecar service for future implementation. Design doc approved at `docs/plans/2026-03-02-os-terminal-design.md`.
+**Session 2026-03-02-c**: Built OS Terminal V1 — all 12 tasks from the implementation plan executed, 13 commits on `os-os-development`. Backend (Express + ws + node-pty), frontend (React + xterm.js + react-grid-layout), keyboard shortcuts, responsive mobile layout, PWA manifest. Integration tested programmatically — REST API, WebSocket state, WebSocket terminal relay all confirmed working. Code reviewed with no critical issues. **V1 has NOT been browser-tested yet.**
 
-**Previous session (2026-03-02-a)**: Completed the EA & Session Management system — CLI, hooks, state files, stale session and nested session fixes. All pushed to main.
+**Previous session (2026-03-02-b)**: Designed the OS Terminal — design doc and implementation plan (2x reviewed). Approved at `docs/plans/2026-03-02-os-terminal-design.md`.
 
 **Onboarding branch** — is 40+ commits behind main. Needs rebasing but DO NOT rebase while parallel sessions are active on main.
 
-**Next session should:**
-1. Implementation plan for OS Terminal V1 (terminal grid)
-2. Build the Node.js backend (REST API, WebSocket relay, file watcher)
-3. Build the React frontend (grid layout, terminal panes, session panel)
-4. Deferred: `/1password` skill, task layer unification, Linear integration
+**Next session should: Shake out V1**
+1. Start the terminal: `cd systems/os-terminal && source ../../.env && npm run dev` → open `http://localhost:3100`
+2. Run the 14-point integration checklist from `docs/plans/2026-03-02-os-terminal-implementation.md` (Task 12) — in a real browser
+3. Fix any rendering, interaction, or connectivity issues discovered
+4. Test edge cases: multiple browser tabs, session create/destroy while UI is open, context % updates
+5. Once V1 is solid, plan V2 (Remote Access & iOS) per the design doc's roadmap:
+   - Capacitor wrapper for iOS
+   - Authentication layer (token-based)
+   - Tailscale/tunnel for remote access
+   - Connection resilience (reconnect on drop)
+6. Deferred: `/1password` skill, task layer unification, Linear integration
 
 ## External Resources
 | Resource | Type | Link |
@@ -38,6 +44,7 @@ Development of the operating system itself — the skills, systems, and infrastr
 | 2026-03-01 | [claude-code-internals](artifacts/2026-03-01-claude-code-internals.md) | How Claude Code works on our system — sessions, hooks, state, Agent Teams, SDK. Foundation for EA integration. |
 | 2026-03-01 | [ea-session-management-design](artifacts/2026-03-01-ea-session-management-design.md) | Full architecture for EA & session management — tmux sessions, event-driven state, switchboard EA, voice/task future layers |
 | 2026-03-02 | [os-terminal-design](artifacts/2026-03-02-os-terminal-design.md) | Bloomberg-style terminal grid UI — React + xterm.js, WebSocket relay to tmux, voice sidecar architecture, Capacitor for iOS |
+| 2026-03-02 | [os-terminal-v1-implementation](artifacts/2026-03-02-os-terminal-v1-implementation.md) | V1 build complete — all files, integration test results, issues fixed, 10-point browser test checklist for next session |
 
 ## Decisions
 - 2026-02-19: OS has three primitives: Skills (capabilities), Projects (memory), Systems (processes)
@@ -80,6 +87,10 @@ Development of the operating system itself — the skills, systems, and infrastr
 - 2026-03-02: EA is a regular session in the grid — not special-cased by the UI
 - 2026-03-02: Voice is an independent sidecar service, layered on top of the terminal UI
 - 2026-03-02: V1 is local only; remote access, auth, and iOS in V2
+- 2026-03-02: node-pty 1.2.0-beta.11 required for Node.js 25 — stable 1.1.0 has posix_spawnp failure
+- 2026-03-02: tmux binary path resolved explicitly (/opt/homebrew/bin/tmux) — node-pty spawn doesn't inherit full shell PATH
+- 2026-03-02: session_id (UUID) is the primary identifier everywhere — React keys, layout items, API params. Name is display-only.
+- 2026-03-02: Single server.on('upgrade') dispatcher routes WebSocket connections — prevents dual-handler race condition
 
 ## Open Questions
 - Which OS skills should be symlinked to `~/.claude/skills/` for global access in dispatched sessions?
