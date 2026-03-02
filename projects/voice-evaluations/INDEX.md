@@ -29,7 +29,7 @@ Incorporating voice agents into the Indemn evaluation framework. Currently, only
 - **indemn-platform-v2** (`main`): 1 unpushed commit (`ffcd1e9` + 3 COP-325)
 - **indemn-observability** (`demo-gic`): 3 unpushed commits (`e3fa4a4`, `1a54bab`, `c249af9`)
 
-**Next step**: Local end-to-end test — start analytics+minimal services, sync Langfuse traces, verify in Observatory UI, trigger transcript evaluation, verify in Copilot Dashboard. Still need to move evaluations/voice-livekit/platform-v2 commits to feature branches before pushing.
+**Next step**: Investigate sync discrepancies (11 matched → 8 request_ids, 5 unmatched traces, 0 TOOL observations). Then continue e2e test: ingestion, Observatory UI, transcript eval, Copilot Dashboard. All local services currently running on dev. Still need to move evaluations/voice-livekit/platform-v2 commits to feature branches before pushing.
 
 ## External Resources
 | Resource | Type | Link |
@@ -52,6 +52,7 @@ Incorporating voice agents into the Indemn evaluation framework. Currently, only
 | 2026-02-27 | [initial-context](artifacts/2026-02-27-initial-context.md) | Comprehensive research synthesis across all repos — current state of evaluations, voice stack, observatory, data gaps, and integration challenges |
 | 2026-02-27 | [voice-tracing-discovery](artifacts/2026-02-27-voice-tracing-discovery.md) | Langfuse + LiveKit Cloud tracing discovery — how voice traces work, data formats, access patterns, Slack/email evidence |
 | 2026-02-27 | [design-document](artifacts/2026-02-27-design-document.md) | Comprehensive design: 5-phase roadmap, architecture, data flows, implementation details for voice evaluations + observatory |
+| 2026-03-02 | [langfuse-sync-implementation](artifacts/2026-03-02-langfuse-sync-implementation.md) | Langfuse sync implementation, initial test results, discrepancies to investigate, env config notes |
 
 ## Decisions
 - 2026-02-27: Voice trace data access pattern: OTLP → Langfuse → Langfuse API. Mirrors the web pattern (LangChain callbacks → LangSmith → LangSmith API). Langfuse is the canonical data source for voice traces, not LiveKit Cloud or direct data hooks.
