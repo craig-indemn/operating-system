@@ -179,9 +179,18 @@ def cmd_create(args):
     state_path = os.path.join(sessions_dir, f"{session_id}.json")
     atomic_write_json(state_path, state)
 
-    # Create tmux session
+    # Create tmux session with CLAUDECODE unset so Claude Code can launch
+    # and so manual `claude --resume` works inside the pane.
+    create_env = os.environ.copy()
+    create_env.pop("CLAUDECODE", None)
     subprocess.run(
-        ["tmux", "new-session", "-d", "-s", tmux_name, "-c", worktree_path],
+        ["tmux", "new-session", "-d", "-s", tmux_name, "-c", worktree_path,
+         "-e", "CLAUDECODE="],
+        check=True, timeout=10, env=create_env,
+    )
+    # Unset it inside the shell too (tmux -e sets it empty, not unset)
+    subprocess.run(
+        ["tmux", "send-keys", "-t", tmux_name, "unset CLAUDECODE", "Enter"],
         check=True, timeout=10,
     )
 
