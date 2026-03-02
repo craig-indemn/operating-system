@@ -24,7 +24,7 @@ sources:
 # Design: EA & Session Management Architecture
 
 **Date:** 2026-03-01
-**Status:** Approved — ready for implementation planning
+**Status:** Approved (revised after design review) — ready for implementation planning
 
 ## Problem
 
@@ -79,9 +79,9 @@ Individual Claude Code Sessions (each in own tmux pane + OS worktree)
 
 **Session state files** — `sessions/{uuid}.json`, one per active session. Written by the CLI at creation, updated by hooks during the session's life. Read by the EA and CLI.
 
-**Session CLI** — A Python script at `systems/session-manager/cli.py`. Wraps tmux + Claude Code CLI. Creates, lists, attaches, closes sessions. Both the EA and you use this directly.
+**Session CLI** — A Python script at `systems/session-manager/cli.py`. Wraps tmux + Claude Code CLI. Creates, lists, attaches, closes sessions. Both the EA and you use this directly. Uses shared utilities from `lib/`.
 
-**Hooks** — Installed globally in `~/.claude/settings.json`. Every Claude Code session fires events that update its state file. Lightweight — just update status and append events.
+**Hooks** — Installed globally in `~/.claude/settings.json`. Every Claude Code session fires events that update its state file. Lightweight — just update status and append events. Target execution time: under 100ms per hook invocation.
 
 **EA skill** — The intelligence layer at `.claude/skills/ea/SKILL.md`. Reads session state, calls the CLI, understands projects and context.
 
@@ -89,7 +89,7 @@ Individual Claude Code Sessions (each in own tmux pane + OS worktree)
 
 1. **OS repo is home base.** Every session starts in an OS worktree. External repos (bot-service, platform-v2, etc.) are added via `--add-dir`. Sessions always inherit OS skills, CLAUDE.md, and conventions.
 
-2. **File-per-session eliminates contention.** Multiple sessions writing hooks, multiple EAs reading state — no conflicts because each session only writes its own file.
+2. **File-per-session eliminates contention.** Multiple sessions writing hooks, multiple EAs reading state — no conflicts because each session only writes its own file. Atomic writes (temp file + rename) prevent corruption within a single session's file.
 
 3. **tmux send-keys is the write mechanism.** Universal — works whether you're the EA, a script, or a human. No special IPC needed.
 
@@ -97,7 +97,7 @@ Individual Claude Code Sessions (each in own tmux pane + OS worktree)
 
 5. **Don't reinvent what Claude Code already has.** Session transcripts, context tracking, task lists, Agent Teams messaging — all exist. We hook into them, not rebuild them.
 
-6. **Scalable by design.** Multiple EAs can manage different project portfolios simultaneously. No shared mutable state between EAs — each reads the same state files and claims sessions via `managed_by`.
+6. **Scalable by design.** Multiple EAs can manage different project portfolios simultaneously. No shared mutable state between EAs — each reads the same state files independently.
 
 ---
 
@@ -107,27 +107,24 @@ Path: `sessions/{session-uuid}.json` in the OS repo root.
 
 ```json
 {
+  "version": 1,
   "session_id": "3168d79f-c3ca-4cfe-9a66-38086d9cd49a",
   "name": "voice-evaluations",
   "project": "voice-evaluations",
-  "worktree": ".claude/worktrees/voice-evaluations",
+  "worktree_path": "/Users/home/Repositories/operating-system/.claude/worktrees/voice-evaluations",
   "tmux_session": "os-voice-evaluations",
   "status": "idle",
-  "repo_cwd": "/Users/home/Repositories/operating-system",
   "additional_dirs": [
     "/Users/home/Repositories/bot-service"
   ],
   "permissions": {
-    "mode": "bypassPermissions",
-    "allowed_tools": [],
-    "custom_rules": []
+    "mode": "bypassPermissions"
   },
   "model": "opus",
   "created_at": "2026-03-01T10:00:00Z",
   "last_activity": "2026-03-01T10:45:00Z",
   "context_remaining_pct": 42,
   "git_branch": "os-voice-evaluations",
-  "managed_by": null,
   "events": [
     {"type": "started", "at": "2026-03-01T10:00:00Z"},
     {"type": "task_completed", "summary": "Transcript eval verified", "at": "2026-03-01T10:30:00Z"},
@@ -140,22 +137,21 @@ Path: `sessions/{session-uuid}.json` in the OS repo root.
 
 | Field | Description |
 |-------|-------------|
+| `version` | Schema version (currently `1`). Allows future migrations. |
 | `session_id` | Claude Code session UUID |
-| `name` | Human-readable name (used for tmux, display) |
-| `project` | OS project name (maps to `projects/<name>/`) |
-| `worktree` | Path to the OS worktree this session runs in |
+| `name` | Human-readable name (used for tmux, display, lookups) |
+| `project` | OS project name (maps to `projects/<name>/`). Null if no project. |
+| `worktree_path` | Absolute path to the OS worktree this session runs in |
 | `tmux_session` | tmux session name for attach/send-keys |
-| `status` | Derived from latest event: `active`, `idle`, `blocked`, `context_low`, `ended` |
-| `repo_cwd` | Always the OS repo (worktree path) |
+| `status` | Derived from latest event: `active`, `idle`, `blocked`, `context_low`, `ended`, `ended_dirty` |
 | `additional_dirs` | External repos accessible via `--add-dir` |
 | `permissions` | Session permission configuration |
 | `model` | Claude model in use |
 | `created_at` | When session was created |
 | `last_activity` | Timestamp of last activity |
-| `context_remaining_pct` | Context window remaining (updated by statusline hook) |
+| `context_remaining_pct` | Context window remaining (updated by context-tracking hook) |
 | `git_branch` | Current git branch in the worktree |
-| `managed_by` | EA identifier if claimed, null if unclaimed |
-| `events` | Append-only event log (capped, older events roll to history.jsonl if needed) |
+| `events` | Append-only event log, capped at last 50 entries |
 
 ### Event Types
 
@@ -164,10 +160,19 @@ Path: `sessions/{session-uuid}.json` in the OS repo root.
 | `started` | Session created and Claude Code launched |
 | `active` | User or EA sent a message |
 | `idle` | Claude finished responding, waiting for input |
-| `task_completed` | A task was marked complete |
+| `task_completed` | A Claude Code built-in task was marked complete (see Hooks section for limitations) |
 | `blocked` | Session needs decision or external input |
 | `context_low` | Context remaining dropped below 10% |
-| `ended` | Session terminated |
+| `ended` | Session terminated cleanly (cleanup completed) |
+| `ended_dirty` | Session terminated but cleanup failed or was skipped |
+
+### Events Cap
+
+The `events` array is capped at 50 entries. When a new event would exceed the cap, the oldest events are dropped. The full event history is not preserved — `status` and `last_activity` are the authoritative fields for current state. If full history is needed for analysis, Claude Code's own session transcript (JSONL) is the source of truth.
+
+### Name-to-UUID Lookup
+
+State files use UUID as filename (hooks receive UUID natively). The CLI finds sessions by name by scanning `sessions/*.json` — this is O(n) but n is always small (typically <20 active sessions). If this becomes a bottleneck, add an index file.
 
 ---
 
@@ -199,25 +204,58 @@ Alias: `session` (configured in `.env` or shell profile)
 
 ### Create Flow
 
-1. Create git worktree: `git worktree add .claude/worktrees/<project> -b os-<project>`
-2. Write initial state file: `sessions/{uuid}.json` with all metadata
-3. Create tmux session: `tmux new-session -d -s os-<project>`
-4. Inside tmux, launch: `claude --worktree --dangerously-skip-permissions --add-dir <dirs> --model <model>`
-5. Session is live — hooks take over state updates
+The CLI manages worktrees and tmux directly — it does NOT use `claude --worktree` or `claude --tmux`, because we need control over worktree placement, tmux session naming, and state file creation timing.
+
+1. Generate a UUID for the session
+2. Create git worktree: `git worktree add .claude/worktrees/<name> -b os-<name>` from OS repo root
+3. Write initial state file: `sessions/{uuid}.json` with all metadata, status `"started"`
+4. Create tmux session: `tmux new-session -d -s os-<name> -c <worktree-path>`
+5. Inside tmux, launch Claude Code: `tmux send-keys -t os-<name> 'claude --session-id <uuid> --dangerously-skip-permissions --add-dir <dirs> --model <model>' Enter`
+6. Session is live — hooks take over state updates
+
+**Why not `claude --worktree --tmux`?** That flag tells Claude Code to create its own worktree and tmux session. We need to create both ourselves because: (a) the state file must exist before hooks fire, (b) we need predictable tmux session names for `session attach` and `session send`, and (c) we pass `--session-id` so the hook script can find the state file by UUID.
+
+**`--add-dir` sourcing:** When a project's INDEX.md lists external repos under External Resources with type "GitHub repo", the EA or CLI can read those to determine which `--add-dir` flags to pass. This is convention-based, not enforced — the user can always override with explicit flags.
 
 ### Close Flow
 
-1. Send cleanup via `tmux send-keys`: commit changes, push, update INDEX.md
-2. Send `/exit` to Claude Code
-3. Wait for tmux session to end (or timeout and force-kill)
-4. Clean up worktree if session made no uncommitted changes
-5. Update state file: `status: "ended"`
+The close flow is defensive — it verifies each step before proceeding.
+
+1. **Check session state.** Read the state file. If `active`, wait up to 30s for it to become `idle`. If still active, ask the user whether to interrupt or wait.
+2. **Send cleanup commands individually via tmux send-keys:**
+   - `session send <name> "Commit all changes with a descriptive message"`
+   - Wait for idle (poll state file, timeout 60s)
+   - `session send <name> "Push the current branch"`
+   - Wait for idle
+   - `session send <name> "Update the project INDEX.md with current status"`
+   - Wait for idle
+3. **Verify cleanup.** Check git status in the worktree (no uncommitted changes, branch is pushed).
+4. **Exit Claude Code.** `tmux send-keys -t os-<name> '/exit' Enter`
+5. **Wait for tmux session to end** (timeout 30s, then force-kill).
+6. **Clean up worktree:**
+   - If worktree has no uncommitted changes and no unpushed commits: `git worktree remove <path>`
+   - If worktree has uncommitted or unpushed work: leave it, log a warning
+7. **Update state file:**
+   - If cleanup verified: `status: "ended"`
+   - If cleanup failed or worktree retained: `status: "ended_dirty"` with reason in the final event
+
+### Destroy Flow (Force Kill)
+
+For when a session is unresponsive or you just want it gone:
+
+1. `tmux kill-session -t os-<name>`
+2. Update state file: `status: "ended_dirty"`, event: `{"type": "ended_dirty", "reason": "force_destroyed"}`
+3. Do NOT auto-remove worktree — the user should inspect it first
 
 ---
 
 ## Hooks
 
 Installed globally in `~/.claude/settings.json`. A single hook script handles all events — `systems/session-manager/hooks/update-state.py`. It receives event JSON on stdin, finds the session's state file, and updates it.
+
+**Execution time target:** Under 100ms per invocation. Hooks run synchronously and block the session, so they must be fast. The script does a single file read, JSON update, and atomic write — nothing else.
+
+**Coexistence with existing hooks:** These hooks are added alongside existing hooks (`bd prime` for SessionStart/PreCompact, GSD update check for SessionStart). Array settings merge across scopes, so both fire. The session manager hook should be fast enough that the user never notices it.
 
 ### Hook Configuration
 
@@ -288,23 +326,50 @@ Installed globally in `~/.claude/settings.json`. A single hook script handles al
 The script (`update-state.py`) does:
 
 1. Read JSON from stdin — extract `session_id`, `hook_event_name`, `cwd`, `transcript_path`
-2. Look for `sessions/{session_id}.json` in the OS repo
-3. If not found, skip (session wasn't created by our CLI — don't interfere with ad-hoc Claude Code sessions)
+2. Scan `sessions/*.json` in the OS repo (path hardcoded: `/Users/home/Repositories/operating-system/sessions/`) for a file where `session_id` matches
+3. If not found, exit silently (session wasn't created by our CLI — don't interfere with ad-hoc Claude Code sessions)
 4. Update based on event:
    - `SessionStart` → set `status: "active"`, update `last_activity`
    - `Stop` → set `status: "idle"`, update `last_activity`
    - `UserPromptSubmit` → set `status: "active"`, update `last_activity`
-   - `TaskCompleted` → append `task_completed` event
-   - `SessionEnd` → set `status: "ended"`
-5. Write updated JSON back to the state file
+   - `TaskCompleted` → append `task_completed` event, update `last_activity`
+   - `SessionEnd` → set `status: "ended"` (unless already `ended_dirty`)
+5. Append the event to the `events` array. If array exceeds 50 entries, drop the oldest.
+6. **Atomic write:** Write to `sessions/{uuid}.json.tmp`, then `os.rename()` to `sessions/{uuid}.json`. This prevents corruption if two hooks fire in rapid succession — the last write wins, but the file is never half-written.
+
+### TaskCompleted Hook Limitation
+
+The `TaskCompleted` hook fires when Claude Code's **built-in task system** (`TaskUpdate` tool) marks a task as completed. It does NOT fire when external task tools are used (e.g., `bd close` for beads). This means:
+
+- Sessions using Claude Code's built-in tasks: task events are tracked automatically
+- Sessions using beads: task events are not tracked via this hook
+
+This is acceptable for V1. If beads task tracking becomes important, a `PostToolUse` hook matching `Bash` could parse commands for `bd close` patterns, but this adds complexity. For now, `idle` and `active` status tracking (which IS reliable) provides sufficient visibility.
 
 ### Context Tracking
 
-Piggybacks on the existing **StatusLine hook** which already receives context window data on every render. We add a few lines to the statusline script to:
-1. Write `context_remaining_pct` to the session's state file
-2. If context drops below 10%, append a `context_low` event
+A dedicated context-tracking hook, separate from the existing GSD statusline script. We do NOT modify the GSD statusline — it belongs to a third-party plugin.
 
-This avoids adding another hook — the statusline already runs continuously.
+**Mechanism:** The `Stop` hook (which fires every time Claude finishes responding) is already wired to `update-state.py`. When processing a `Stop` event, the script also reads context window data from the hook input JSON. The `Stop` event input includes session metadata that we can use to track context.
+
+**Fallback approach:** If context data is not available in the `Stop` hook input, we add a second statusline command that runs alongside the GSD one. The statusline hook receives `context_window.remaining_percentage` on every render. Our script reads this, updates the state file's `context_remaining_pct`, and if it drops below 10%, appends a `context_low` event.
+
+```json
+{
+  "statusLine": [
+    {
+      "type": "command",
+      "command": "node /Users/home/.claude/hooks/gsd-statusline.js"
+    },
+    {
+      "type": "command",
+      "command": "python3 /Users/home/Repositories/operating-system/systems/session-manager/hooks/update-context.py"
+    }
+  ]
+}
+```
+
+**Note:** `statusLine` may or may not support multiple commands (needs verification during implementation). If it doesn't, the `update-context.py` script wraps the GSD statusline (calls it as a subprocess) and adds context tracking on top.
 
 ---
 
@@ -353,6 +418,17 @@ What would you like to work on?
 | Add directory to session | Send appropriate commands via `session send` |
 | Read session transcript | Read the JSONL file directly from `~/.claude/projects/` |
 
+### Permission Management
+
+Default permission mode is `bypassPermissions` (dangerously skip permissions). This is appropriate for most sessions because Craig works in his own environment.
+
+For sessions that touch production data or shared infrastructure, use `acceptEdits` instead:
+```
+session create production-debug --permissions acceptEdits --add-dir /path/to/prod-service
+```
+
+The EA should recommend `acceptEdits` when it detects a session targets a production-connected repo. This is advisory — the user decides.
+
 ### What the EA Does NOT Do
 
 - Project work (that's the session's job)
@@ -369,6 +445,26 @@ The EA is a session like any other. When it hits context limits:
 4. The previous EA session can be closed normally
 
 The EA's intelligence comes from state on disk, not from accumulated context.
+
+---
+
+## Dispatch System Boundary
+
+The dispatch system (at `systems/dispatch/engine.py`) and the session manager serve different purposes:
+
+| | EA Sessions (interactive) | Dispatch Sessions (headless) |
+|---|---|---|
+| **Created by** | Session CLI (`session create`) | Dispatch engine (`engine.py`) |
+| **Runs in** | tmux pane, interactive | SDK `query()`, headless |
+| **Lifecycle** | Long-lived, human-driven | Short-lived, task-driven |
+| **State tracked in** | `sessions/{uuid}.json` | Dispatch engine's own state (beads epics) |
+| **Visible to EA** | Yes | No (dispatch results flow through project artifacts) |
+
+**Dispatch sessions do NOT get state files in `sessions/`.** They are invisible to the EA. The dispatch system is a separate tool that the EA can invoke (via the `/dispatch` skill), but once invoked, dispatch manages its own sessions internally.
+
+Results from dispatch flow back into the OS through normal channels: project artifacts, beads task updates, git commits. The EA sees the outcomes, not the process.
+
+If a future need arises to monitor dispatch sessions from the EA, a `"type": "dispatch"` field can be added to state files and the dispatch engine updated to write them. But for now, these are separate systems.
 
 ---
 
@@ -416,7 +512,11 @@ operating-system/
 │       ├── SYSTEM.md
 │       ├── cli.py                     # The `session` command
 │       └── hooks/
-│           └── update-state.py        # Hook script for state updates
+│           ├── update-state.py        # Hook script for state updates
+│           └── update-context.py      # StatusLine hook for context tracking
+│
+├── lib/                               # Shared utilities (NEW)
+│   └── os_state.py                    # Atomic JSON writes, state file reading/parsing
 │
 ├── .claude/skills/
 │   ├── ea/                            # EA skill (NEW, replaces content-system EA)
@@ -430,6 +530,16 @@ operating-system/
 │
 └── ... (existing files)
 ```
+
+### Shared Library: `lib/os_state.py`
+
+Both the session CLI and hooks need common operations:
+- Atomic JSON file writes (temp file + `os.rename()`)
+- Session state file reading/parsing
+- Finding a state file by session ID or name
+- Timestamp formatting
+
+These live in `lib/os_state.py` to avoid duplication between `systems/session-manager/cli.py`, `hooks/update-state.py`, and `hooks/update-context.py`. The dispatch engine (`systems/dispatch/engine.py`) can also use these utilities if needed.
 
 ---
 
@@ -466,9 +576,26 @@ EA: "Three sessions active:
 
 ```
 You: "Close up voice-evals"
-EA: "Sending cleanup commands..."
-    [sends via tmux: update INDEX.md, commit, push]
-EA: "Changes committed and pushed. Session closed. Worktree cleaned up."
+EA: "Checking session state... it's idle, proceeding with cleanup."
+    [sends commit command, waits for idle]
+    [sends push command, waits for idle]
+    [sends INDEX update command, waits for idle]
+    [verifies git status is clean]
+EA: "Changes committed and pushed. INDEX updated. Session closed. Worktree cleaned up."
+```
+
+### Close flow with issues
+
+```
+You: "Close up platform-dev"
+EA: "Session is currently active — Claude is mid-response. Want me to wait for it
+     to finish, or interrupt?"
+You: "Wait"
+EA: "Session went idle. Starting cleanup..."
+    [sends commit, push, INDEX update — each verified]
+EA: "Cleanup done but there are 2 unpushed commits on the worktree.
+     Session marked as ended_dirty. Worktree preserved at
+     .claude/worktrees/platform-dev — you may want to inspect it."
 ```
 
 ### EA sending a command to a session
@@ -531,15 +658,21 @@ Future automation possibilities once manual workflows are proven:
 - 2026-03-01: File-per-session state model — eliminates write contention, scales to multiple EAs
 - 2026-03-01: tmux send-keys is the universal write mechanism into sessions
 - 2026-03-01: EA is not an Agent Teams lead — it's a layer above that manages sessions which may themselves use Agent Teams
+- 2026-03-01: CLI creates worktrees and tmux sessions manually (not `claude --worktree --tmux`) for naming control and state file timing
 - 2026-03-01: Hooks update state files; CLI creates them — CLI writes metadata, hooks maintain runtime state
-- 2026-03-01: Context tracking piggybacks on existing StatusLine hook
+- 2026-03-01: Atomic writes (temp + rename) for all state file updates — prevents corruption from concurrent hooks
+- 2026-03-01: Dedicated context-tracking hook separate from GSD statusline — don't modify third-party plugins
 - 2026-03-01: EA is not immortal — it's a session like any other, reads state from disk on startup
 - 2026-03-01: Manual triggers only for now — no auto-create, auto-close, or auto-compact
 - 2026-03-01: Session CLI is usable directly by the human, not only through the EA
-- 2026-03-01: Default permission mode is `bypassPermissions` (dangerously skip permissions)
+- 2026-03-01: Default permission mode is `bypassPermissions`; use `acceptEdits` for production-touching sessions
 - 2026-03-01: Agent Teams messaging patterns should be adopted for inter-session communication (future)
-- 2026-03-01: `managed_by` field enables multiple EAs managing different project portfolios
 - 2026-03-01: Voice, task unification, and Linear integration are future layers — designed separately
+- 2026-03-01: Dispatch sessions are invisible to the EA — separate system, results flow through artifacts
+- 2026-03-01: TaskCompleted hook only fires for Claude Code built-in tasks, not beads — acceptable for V1
+- 2026-03-01: Events capped at 50 per session — full history lives in Claude Code transcripts
+- 2026-03-01: Close flow is defensive — checks idle state, sends commands individually, verifies each step, marks `ended_dirty` on failure
+- 2026-03-01: Shared `lib/os_state.py` for atomic writes, state parsing — used by CLI, hooks, and potentially dispatch
 
 ---
 
@@ -552,8 +685,7 @@ Future automation possibilities once manual workflows are proven:
 | Python 3.12 | Installed | At `/Users/home/Repositories/.venv/bin/python3` |
 | OS repo projects/ | Exists | Project structure already in use |
 | Claude Code hooks | Available | 17 events, command type works for our needs |
-| StatusLine hook | Active | Already receives context window data |
-| Git worktrees | Available | `--worktree` flag supported |
+| Git worktrees | Available | Native git feature, no extra tooling |
 
 ## References
 
