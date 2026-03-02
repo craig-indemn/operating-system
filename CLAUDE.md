@@ -34,7 +34,7 @@ Connected intelligence layer for Indemn. Every tool the company uses, accessible
 | Skill | What It Does |
 |-------|-------------|
 | `/dispatch` | Autonomous execution of implementation plans — runs Claude Code sessions via Agent SDK against beads epics |
-| `/ea` | Executive assistant — session switchboard, briefings, lifecycle management across projects |
+| `/sessions` | Session management switchboard — briefings, lifecycle management across projects |
 
 ### Workflow Skills
 | Skill | What It Does |

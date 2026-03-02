@@ -15,7 +15,7 @@ Manages Claude Code sessions running in tmux, each scoped to a project in the OS
 
 | Skill | Purpose |
 |-------|---------|
-| `/ea` | Intelligence layer — uses session CLI for orchestration |
+| `/sessions` | Intelligence layer — uses session CLI for orchestration |
 
 ## State
 

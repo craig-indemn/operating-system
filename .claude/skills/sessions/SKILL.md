@@ -1,6 +1,6 @@
 ---
-name: ea
-description: Executive assistant for the operating system — manages Claude Code sessions across projects, provides briefings, handles session lifecycle. Use when the user asks about session status, wants to start/stop/switch sessions, or needs an overview of active work.
+name: sessions
+description: Session management switchboard — manages Claude Code sessions across projects, provides briefings, handles session lifecycle. Use when the user asks about session status, wants to start/stop/switch sessions, or needs an overview of active work.
 ---
 
 # Executive Assistant
