@@ -3,22 +3,18 @@
 Development of the operating system itself — the skills, systems, and infrastructure that make Indemn's connected intelligence layer work. Covers the dispatch system, systems framework, skill improvements, and meta-level architecture of the OS.
 
 ## Status
-**Session 2026-03-02-c**: Built OS Terminal V1 — all 12 tasks from the implementation plan executed, 13 commits on `os-os-development`. Backend (Express + ws + node-pty), frontend (React + xterm.js + react-grid-layout), keyboard shortcuts, responsive mobile layout, PWA manifest. Integration tested programmatically — REST API, WebSocket state, WebSocket terminal relay all confirmed working. Code reviewed with no critical issues. **V1 has NOT been browser-tested yet.**
+**Session 2026-03-02-d**: Browser-tested OS Terminal V1. Found and fixed: layout race condition (react-grid-layout saving w:1 h:1 defaults), pane buttons not clickable (drag handler capturing mousedown), no way to restore minimized panes. Added create session (+) and close session (×) buttons. All 14 checklist items verified — **V1 is solid.**
 
-**Previous session (2026-03-02-b)**: Designed the OS Terminal — design doc and implementation plan (2x reviewed). Approved at `docs/plans/2026-03-02-os-terminal-design.md`.
+**Previous sessions**: 2026-03-02-c built V1 (12 tasks, 13 commits). 2026-03-02-b designed it (design doc + implementation plan, 2x reviewed).
 
 **Onboarding branch** — is 40+ commits behind main. Needs rebasing but DO NOT rebase while parallel sessions are active on main.
 
-**Next session should: Shake out V1**
-1. Start the terminal: `cd systems/os-terminal && source ../../.env && npm run dev` → open `http://localhost:3100`
-2. Run the 14-point integration checklist from `docs/plans/2026-03-02-os-terminal-implementation.md` (Task 12) — in a real browser
-3. Fix any rendering, interaction, or connectivity issues discovered
-4. Test edge cases: multiple browser tabs, session create/destroy while UI is open, context % updates
-5. Once V1 is solid, plan V2 (Remote Access & iOS) per the design doc's roadmap:
-   - Capacitor wrapper for iOS
-   - Authentication layer (token-based)
-   - Tailscale/tunnel for remote access
-   - Connection resilience (reconnect on drop)
+**Next session should: Plan V2 (Remote Access & iOS)**
+1. Review design doc roadmap: `docs/plans/2026-03-02-os-terminal-design.md`
+2. Authentication layer (token-based) — required before remote access
+3. Tailscale/tunnel for remote access from phone/laptop
+4. Connection resilience (WebSocket reconnect on drop)
+5. Capacitor wrapper for iOS App Store distribution
 6. Deferred: `/1password` skill, task layer unification, Linear integration
 
 ## External Resources
@@ -45,6 +41,7 @@ Development of the operating system itself — the skills, systems, and infrastr
 | 2026-03-01 | [ea-session-management-design](artifacts/2026-03-01-ea-session-management-design.md) | Full architecture for EA & session management — tmux sessions, event-driven state, switchboard EA, voice/task future layers |
 | 2026-03-02 | [os-terminal-design](artifacts/2026-03-02-os-terminal-design.md) | Bloomberg-style terminal grid UI — React + xterm.js, WebSocket relay to tmux, voice sidecar architecture, Capacitor for iOS |
 | 2026-03-02 | [os-terminal-v1-implementation](artifacts/2026-03-02-os-terminal-v1-implementation.md) | V1 build complete — all files, integration test results, issues fixed, 10-point browser test checklist for next session |
+| 2026-03-02 | [os-terminal-v1-browser-testing](artifacts/2026-03-02-os-terminal-v1-browser-testing.md) | V1 browser testing — 14-point checklist results, bugs found/fixed, remaining known issues |
 
 ## Decisions
 - 2026-02-19: OS has three primitives: Skills (capabilities), Projects (memory), Systems (processes)
@@ -91,6 +88,9 @@ Development of the operating system itself — the skills, systems, and infrastr
 - 2026-03-02: tmux binary path resolved explicitly (/opt/homebrew/bin/tmux) — node-pty spawn doesn't inherit full shell PATH
 - 2026-03-02: session_id (UUID) is the primary identifier everywhere — React keys, layout items, API params. Name is display-only.
 - 2026-03-02: Single server.on('upgrade') dispatcher routes WebSocket connections — prevents dual-handler race condition
+- 2026-03-02: Layout entries must exist synchronously (useMemo) before render — useEffect races with react-grid-layout's onLayoutChange
+- 2026-03-02: Buttons inside react-grid-layout drag handles need onMouseDown stopPropagation to receive clicks
+- 2026-03-02: Session close from UI uses destroy (force=true) for immediate teardown — graceful close hangs on interactive prompts
 
 ## Open Questions
 - Which OS skills should be symlinked to `~/.claude/skills/` for global access in dispatched sessions?
