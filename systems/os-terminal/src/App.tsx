@@ -1,6 +1,7 @@
 import { useState, useMemo, useCallback } from 'react';
 import { useSessions } from './hooks/useSessions';
 import { useAuth } from './hooks/useAuth';
+import { useResponsive } from './hooks/useResponsive';
 import { TerminalGrid } from './components/TerminalGrid';
 import { SessionPanel } from './components/SessionPanel';
 import { LoginScreen, ErrorScreen } from './components/LoginScreen';
@@ -18,6 +19,7 @@ export default function App() {
 
 function AuthenticatedApp({ onLogout, authRequired }: { onLogout: () => void; authRequired: boolean }) {
   const sessions = useSessions();
+  const { isMobile } = useResponsive();
   const [panelOpen, setPanelOpen] = useState(false);
   const [maximized, setMaximized] = useState<string | null>(null);
   const [focused, setFocused] = useState<string | null>(null);
@@ -75,7 +77,7 @@ function AuthenticatedApp({ onLogout, authRequired }: { onLogout: () => void; au
     },
     createSession: handleCreateSession,
     closePane: () => {
-      if (focused) {
+      if (focused && !isMobile) {
         setMinimized(prev => new Set(prev).add(focused));
       }
     },
@@ -105,9 +107,10 @@ function AuthenticatedApp({ onLogout, authRequired }: { onLogout: () => void; au
         <div className="grid-area">
           <TerminalGrid
             sessions={sessions}
-            maximized={maximized}
+            maximized={isMobile ? null : maximized}
             focused={focused}
             minimized={minimized}
+            isMobile={isMobile}
             onMaximize={handleMaximize}
             onMinimize={handleMinimize}
             onRestore={handleRestore}

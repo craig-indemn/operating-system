@@ -67,8 +67,8 @@ export const TerminalPane = forwardRef<TerminalPaneHandle, TerminalPaneProps>(
             <span className="context-pct">{contextPct}%</span>
           </div>
           <div className="terminal-header-right" onMouseDown={(e) => e.stopPropagation()}>
-            <button className="pane-btn" onClick={(e) => { e.stopPropagation(); onMinimize(); }} title="Minimize">_</button>
-            <button className="pane-btn" onClick={(e) => { e.stopPropagation(); isMaximized ? onRestore() : onMaximize(); }} title={isMaximized ? 'Restore' : 'Maximize'}>
+            <button className="pane-btn minimize-btn" onClick={(e) => { e.stopPropagation(); onMinimize(); }} title="Minimize">_</button>
+            <button className="pane-btn maximize-btn" onClick={(e) => { e.stopPropagation(); isMaximized ? onRestore() : onMaximize(); }} title={isMaximized ? 'Restore' : 'Maximize'}>
               {isMaximized ? '\u274F' : '\u25A1'}
             </button>
             <button className="pane-btn close-btn" onClick={(e) => { e.stopPropagation(); onClose(); }} title="Close session">

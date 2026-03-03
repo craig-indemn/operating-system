@@ -1,8 +1,9 @@
 import { useRef, useMemo, useCallback, useEffect, useState } from 'react';
 import { TerminalPane, TerminalPaneHandle } from './TerminalPane';
+import { TabBar } from './TabBar';
 import type { SessionInfo } from '../hooks/useSessions';
 
-const MIN_COL_WIDTH = 400; // px — minimum width per column
+const MIN_COL_WIDTH = 600; // px — minimum width per column
 const GAP = 4; // px between panes
 const STORAGE_KEY = 'os-terminal-order';
 
@@ -11,6 +12,7 @@ interface TerminalGridProps {
   maximized: string | null;
   focused: string | null;
   minimized: Set<string>;
+  isMobile: boolean;
   onMaximize: (id: string) => void;
   onMinimize: (id: string) => void;
   onRestore: () => void;
@@ -28,13 +30,14 @@ function loadOrder(): string[] {
 }
 
 export function TerminalGrid({
-  sessions, maximized, focused, minimized,
+  sessions, maximized, focused, minimized, isMobile,
   onMaximize, onMinimize, onRestore, onFocus, onCloseSession,
 }: TerminalGridProps) {
   const paneRefs = useRef<Record<string, TerminalPaneHandle | null>>({});
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [dragSource, setDragSource] = useState<string | null>(null);
   const [dragOver, setDragOver] = useState<string | null>(null);
+  const [numCols, setNumCols] = useState(3);
 
   // Persisted session order (array of session_ids)
   const [order, setOrder] = useState<string[]>(loadOrder);
@@ -136,6 +139,70 @@ export function TerminalGrid({
     }
   }, [activeSessions]);
 
+  // Track column count via ResizeObserver for row spanning
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+    const observer = new ResizeObserver(entries => {
+      for (const entry of entries) {
+        const width = entry.contentRect.width;
+        const cols = Math.max(1, Math.floor((width + GAP) / (MIN_COL_WIDTH + GAP)));
+        setNumCols(cols);
+      }
+    });
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, []);
+
+  // Auto-focus initialization for mobile: sync focused state when null
+  useEffect(() => {
+    if (isMobile && !focused && activeSessions.length > 0) {
+      onFocus(activeSessions[0]!.session_id);
+    }
+  }, [isMobile, focused, activeSessions, onFocus]);
+
+  // Mobile single-pane mode
+  if (isMobile) {
+    const activeSession = activeSessions.find(s => s.session_id === focused)
+      ?? activeSessions[0]
+      ?? null;
+
+    if (!activeSession) {
+      return (
+        <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#858585', fontSize: 14 }}>
+          No active sessions
+        </div>
+      );
+    }
+
+    return (
+      <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+        <div style={{ flex: 1, padding: GAP, minHeight: 0 }}>
+          <TerminalPane
+            key={activeSession.session_id}
+            ref={(el) => { paneRefs.current[activeSession.session_id] = el; }}
+            sessionName={activeSession.name}
+            sessionId={activeSession.session_id}
+            status={activeSession.status}
+            contextPct={activeSession.context_remaining_pct}
+            isMaximized={false}
+            isFocused={true}
+            onMaximize={() => {}}
+            onMinimize={() => {}}
+            onRestore={() => {}}
+            onFocus={() => onFocus(activeSession.session_id)}
+            onClose={() => onCloseSession(activeSession.session_id)}
+          />
+        </div>
+        <TabBar
+          sessions={activeSessions}
+          activeSessionId={activeSession.session_id}
+          onSelect={onFocus}
+        />
+      </div>
+    );
+  }
+
   // Maximized view
   if (maximized) {
     if (!maximizedSession) {
@@ -176,11 +243,22 @@ export function TerminalGrid({
         padding: `${GAP}px`,
       }}
     >
-      {orderedSessions.map(session => (
+      {orderedSessions.map((session, index) => {
+        // Calculate row spanning: items in columns without last-row entries fill remaining rows
+        const totalRows = Math.ceil(orderedSessions.length / numCols);
+        const lastRowCount = orderedSessions.length % numCols || numCols;
+        const col = index % numCols;
+        const row = Math.floor(index / numCols);
+        const itemsInCol = Math.floor(orderedSessions.length / numCols) + (col < lastRowCount ? 1 : 0);
+        const isLastInCol = row === itemsInCol - 1;
+        const span = isLastInCol && totalRows > 1 ? totalRows - row : 1;
+
+        return (
         <div
           key={session.session_id}
           style={{
             minHeight: 0,
+            gridRow: span > 1 ? `span ${span}` : undefined,
             opacity: dragSource === session.session_id ? 0.5 : 1,
             outline: dragOver === session.session_id && dragSource !== session.session_id
               ? '2px solid #007acc' : 'none',
@@ -207,7 +285,8 @@ export function TerminalGrid({
             onClose={() => onCloseSession(session.session_id)}
           />
         </div>
-      ))}
+        );
+      })}
     </div>
   );
 }
