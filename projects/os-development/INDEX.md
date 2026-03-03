@@ -3,18 +3,20 @@
 Development of the operating system itself — the skills, systems, and infrastructure that make Indemn's connected intelligence layer work. Covers the dispatch system, systems framework, skill improvements, and meta-level architecture of the OS.
 
 ## Status
-**Session 2026-03-03-a**: UI polish based on daily-driving feedback. VS Code dark theme (#1e1e1e charcoal), fixed Retina fuzziness (disabled CSS transforms on grid), removed xterm.js scrollbar (tmux handles scrollback), fixed resize text smear (debounced window resize refit), fixed stale sessions (tmux liveness cross-reference + deduplication). Replaced react-grid-layout with CSS auto-grid (400px min column width, auto-fit, full height, drag-to-swap). **Craig is now using the terminal as his primary VS Code replacement.**
+**Session 2026-03-03-b (continued)**: All 14 review round 2 issues fixed + 2 additional issues from round 3. Three rounds of code review passed. TypeScript compiles clean, Vite builds. **Needs: end-to-end testing, then commit.**
 
-**Previous sessions**: 2026-03-02-d browser-tested V1 (14-point checklist, 3 bugs fixed). 2026-03-02-c built V1 (12 tasks, 13 commits). 2026-03-02-b designed it.
+**Session 2026-03-03-b**: Implemented V2 Remote Access (all 4 phases code-complete). Auth layer (bearer token + WS first-message gate), connection resilience (reconnection with backoff, visibilitychange, press-any-key), server heartbeat, production static serving, PWA meta tags.
 
-**Onboarding branch** — is 40+ commits behind main. Needs rebasing but DO NOT rebase while parallel sessions are active on main.
+**Session 2026-03-03-a**: UI polish. CSS auto-grid, VS Code theme, scrollbar fix, resize smear fix. Craig daily-driving as VS Code replacement.
 
-**Next session should: Plan V2 (Remote Access)**
-1. Review design doc roadmap: `docs/plans/2026-03-02-os-terminal-design.md`
-2. Authentication layer (token-based) — required before remote access
-3. Tailscale/tunnel for remote access from phone/laptop
-4. Connection resilience (WebSocket reconnect on network drop)
-5. Deferred: Capacitor iOS wrapper, `/1password` skill, task layer unification, Linear integration
+**Previous**: 2026-03-02-d browser-tested V1. 2026-03-02-c built V1. 2026-03-02-b designed it.
+
+**Onboarding branch** — is 40+ commits behind main. DO NOT rebase while parallel sessions active.
+
+**Next session should:**
+1. Run full end-to-end verification (12-point checklist in plan)
+2. Set up Tailscale Serve (manual/interactive step)
+3. Commit and close session
 
 ## External Resources
 | Resource | Type | Link |

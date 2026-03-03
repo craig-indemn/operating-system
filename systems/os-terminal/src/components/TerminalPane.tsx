@@ -1,5 +1,6 @@
 import { useEffect, useImperativeHandle, forwardRef } from 'react';
 import { useTerminal } from '../hooks/useTerminal';
+import type { ConnectionState } from '../hooks/useTerminal';
 import '@xterm/xterm/css/xterm.css';
 
 export interface TerminalPaneHandle {
@@ -31,9 +32,15 @@ const STATUS_COLORS: Record<string, string> = {
   stale: '#6b7280',
 };
 
+const CONNECTION_COLORS: Record<ConnectionState, string> = {
+  connected: '', // use session status color
+  reconnecting: '#fbbf24',
+  disconnected: '#ef4444',
+};
+
 export const TerminalPane = forwardRef<TerminalPaneHandle, TerminalPaneProps>(
-  ({ sessionName, sessionId, status, contextPct, isMaximized, isFocused, onMaximize, onMinimize, onRestore, onFocus, onClose }, ref) => {
-    const { containerRef, fit, focus } = useTerminal({ sessionName });
+  ({ sessionName, sessionId: _sessionId, status, contextPct, isMaximized, isFocused, onMaximize, onMinimize, onRestore, onFocus, onClose }, ref) => {
+    const { containerRef, fit, focus, connectionState } = useTerminal({ sessionName });
 
     useImperativeHandle(ref, () => ({ fit, focus }), [fit, focus]);
 
@@ -43,7 +50,9 @@ export const TerminalPane = forwardRef<TerminalPaneHandle, TerminalPaneProps>(
       return () => clearTimeout(timer);
     }, [isMaximized, fit]);
 
-    const statusColor = STATUS_COLORS[status] || '#9ca3af';
+    // Status dot: override color when disconnected/reconnecting
+    const dotColor = CONNECTION_COLORS[connectionState] || STATUS_COLORS[status] || '#9ca3af';
+    const dotClass = `status-dot${connectionState === 'reconnecting' ? ' reconnecting' : ''}`;
 
     return (
       <div
@@ -53,7 +62,7 @@ export const TerminalPane = forwardRef<TerminalPaneHandle, TerminalPaneProps>(
       >
         <div className="terminal-header" onDoubleClick={isMaximized ? onRestore : onMaximize}>
           <div className="terminal-header-left">
-            <span className="status-dot" style={{ backgroundColor: statusColor }} />
+            <span className={dotClass} style={{ backgroundColor: dotColor }} />
             <span className="session-name">{sessionName}</span>
             <span className="context-pct">{contextPct}%</span>
           </div>
@@ -68,10 +77,19 @@ export const TerminalPane = forwardRef<TerminalPaneHandle, TerminalPaneProps>(
           </div>
         </div>
         <div
-          ref={containerRef}
+          ref={containerRef as React.RefObject<HTMLDivElement>}
           className="terminal-container"
           style={{ flex: 1, overflow: 'hidden' }}
-        />
+        >
+          {connectionState !== 'connected' && (
+            <div className="reconnect-overlay">
+              <span>{connectionState === 'reconnecting' ? 'Reconnecting...' : 'Disconnected'}</span>
+              {connectionState === 'reconnecting' && (
+                <span className="reconnect-hint">[Press any key to reconnect now]</span>
+              )}
+            </div>
+          )}
+        </div>
       </div>
     );
   }

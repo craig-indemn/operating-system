@@ -118,13 +118,30 @@ export function TerminalGrid({
     refitAll();
   }, [orderedSessions.length, refitAll]);
 
+  // If the maximized session disappears, restore (via useEffect to avoid state setter during render)
+  const maximizedSession = maximized ? activeSessions.find(s => s.session_id === maximized) : null;
+  useEffect(() => {
+    if (maximized && !maximizedSession) {
+      onRestore();
+    }
+  }, [maximized, maximizedSession, onRestore]);
+
+  // Prune stale paneRefs entries when sessions change
+  useEffect(() => {
+    const activeIds = new Set(activeSessions.map(s => s.session_id));
+    for (const id of Object.keys(paneRefs.current)) {
+      if (!activeIds.has(id)) {
+        delete paneRefs.current[id];
+      }
+    }
+  }, [activeSessions]);
+
   // Maximized view
   if (maximized) {
-    const session = activeSessions.find(s => s.session_id === maximized);
-    if (!session) {
-      onRestore();
-      return null;
+    if (!maximizedSession) {
+      return null; // useEffect above will call onRestore
     }
+    const session = maximizedSession;
     return (
       <div style={{ height: '100%', padding: GAP }}>
         <TerminalPane
@@ -146,8 +163,6 @@ export function TerminalGrid({
     );
   }
 
-  const count = orderedSessions.length;
-
   return (
     <div
       ref={containerRef}
@@ -155,7 +170,7 @@ export function TerminalGrid({
       style={{
         display: 'grid',
         gridTemplateColumns: `repeat(auto-fit, minmax(${MIN_COL_WIDTH}px, 1fr))`,
-        gridAutoRows: count <= getColCount() ? '1fr' : '1fr',
+        gridAutoRows: '1fr',
         gap: `${GAP}px`,
         height: '100%',
         padding: `${GAP}px`,
@@ -195,10 +210,4 @@ export function TerminalGrid({
       ))}
     </div>
   );
-}
-
-/** Helper to estimate column count (used for row height logic) */
-function getColCount(): number {
-  if (typeof window === 'undefined') return 3;
-  return Math.max(1, Math.floor(window.innerWidth / MIN_COL_WIDTH));
 }

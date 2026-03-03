@@ -1,30 +1,19 @@
 import { readdir, readFile } from 'fs/promises';
 import { join } from 'path';
-import { execFileSync } from 'child_process';
+import { execFile } from 'child_process';
+import { promisify } from 'util';
 import type { SessionState } from './types.js';
+import { TMUX_BIN } from './tmux.js';
 
-// Resolve tmux binary path
-function findTmux(): string {
-  const candidates = ['/opt/homebrew/bin/tmux', '/usr/local/bin/tmux', '/usr/bin/tmux'];
-  for (const candidate of candidates) {
-    try {
-      execFileSync(candidate, ['-V'], { timeout: 2000 });
-      return candidate;
-    } catch { /* try next */ }
-  }
-  return 'tmux';
-}
+const exec = promisify(execFile);
 
-const TMUX_BIN = findTmux();
-
-/** Get set of currently live tmux session names */
-function getLiveTmuxSessions(): Set<string> {
+/** Get set of currently live tmux session names (async — does not block event loop) */
+async function getLiveTmuxSessions(): Promise<Set<string>> {
   try {
-    const output = execFileSync(TMUX_BIN, ['list-sessions', '-F', '#{session_name}'], {
+    const { stdout } = await exec(TMUX_BIN, ['list-sessions', '-F', '#{session_name}'], {
       timeout: 5000,
-      encoding: 'utf-8',
     });
-    return new Set(output.trim().split('\n').filter(Boolean));
+    return new Set(stdout.trim().split('\n').filter(Boolean));
   } catch {
     return new Set();
   }
@@ -55,7 +44,7 @@ export async function readAllSessions(): Promise<SessionState[]> {
     return [];
   }
 
-  const liveTmux = getLiveTmuxSessions();
+  const liveTmux = await getLiveTmuxSessions();
 
   const allSessions: SessionState[] = [];
   for (const file of files) {

@@ -15,6 +15,8 @@ export function initStateHandler(wss: WebSocketServer): void {
       if (ws.readyState === ws.OPEN) {
         ws.send(JSON.stringify({ type: 'sessions', data: sessions }));
       }
+    }).catch(err => {
+      console.error('Failed to send initial sessions:', err);
     });
   });
 
@@ -32,7 +34,9 @@ async function broadcastSessions(clients: Set<WebSocket>): Promise<void> {
   }
 }
 
-async function startWatching(dir: string, clients: Set<WebSocket>): Promise<void> {
+const MAX_WATCHER_RETRIES = 10;
+
+async function startWatching(dir: string, clients: Set<WebSocket>, retryCount = 0): Promise<void> {
   // Ensure sessions directory exists (first run or clean environment)
   await mkdir(dir, { recursive: true });
 
@@ -47,12 +51,19 @@ async function startWatching(dir: string, clients: Set<WebSocket>): Promise<void
       // Reset debounce timer on each event
       if (debounceTimer) clearTimeout(debounceTimer);
       debounceTimer = setTimeout(() => {
-        broadcastSessions(clients);
+        broadcastSessions(clients).catch(err => {
+          console.error('Failed to broadcast sessions:', err);
+        });
       }, 150); // 150ms trailing edge — atomic writes generate 4-5 events in ~50ms
     }
   } catch (err) {
     console.error('State watcher error:', err);
-    // Retry after 5 seconds
-    setTimeout(() => startWatching(dir, clients), 5000);
+    if (retryCount >= MAX_WATCHER_RETRIES) {
+      console.error(`State watcher gave up after ${MAX_WATCHER_RETRIES} retries`);
+      return;
+    }
+    // Exponential backoff: 5s, 10s, 20s, 40s, ...
+    const delay = 5000 * Math.pow(2, retryCount);
+    setTimeout(() => startWatching(dir, clients, retryCount + 1), delay);
   }
 }

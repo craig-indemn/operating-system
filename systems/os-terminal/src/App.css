@@ -94,10 +94,6 @@ html, body, #root {
   color: #f87171;
 }
 
-.terminal-container {
-  background: #1e1e1e;
-}
-
 /* Hide xterm.js scrollbar — tmux handles scrollback */
 .xterm-viewport::-webkit-scrollbar {
   width: 0;
@@ -147,6 +143,19 @@ html, body, #root {
   margin-left: auto;
 }
 
+.logout-btn {
+  background: none;
+  border: none;
+  color: #858585;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 2px 8px;
+}
+
+.logout-btn:hover {
+  color: #d4d4d4;
+}
+
 /* Main content layout */
 .main-content {
   display: flex;
@@ -162,16 +171,6 @@ html, body, #root {
 /* Grid overrides */
 .terminal-grid {
   height: 100%;
-}
-
-.react-grid-item {
-  transition: none !important;
-}
-
-.react-grid-item > .react-resizable-handle {
-  background: none;
-  border-right: 2px solid #444444;
-  border-bottom: 2px solid #444444;
 }
 
 /* Session panel */
@@ -275,6 +274,116 @@ html, body, #root {
 
 .session-panel.closed {
   display: none;
+}
+
+/* Login screen */
+.login-screen {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1e1e1e;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 300px;
+  padding: 32px;
+}
+
+.login-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #007acc;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.login-input {
+  background: #2a2a2a;
+  border: 1px solid #444444;
+  border-radius: 4px;
+  color: #d4d4d4;
+  font-size: 14px;
+  padding: 10px 12px;
+  outline: none;
+  font-family: inherit;
+}
+
+.login-input:focus {
+  border-color: #007acc;
+}
+
+.login-input:disabled {
+  opacity: 0.5;
+}
+
+.login-btn {
+  background: #007acc;
+  border: none;
+  border-radius: 4px;
+  color: #ffffff;
+  font-size: 14px;
+  padding: 10px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.login-btn:hover {
+  background: #0098ff;
+}
+
+.login-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.login-error {
+  color: #f87171;
+  font-size: 13px;
+  text-align: center;
+}
+
+/* Terminal container — position: relative for reconnection overlay */
+.terminal-container {
+  background: #1e1e1e;
+  position: relative;
+}
+
+.reconnect-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(30, 30, 30, 0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  gap: 8px;
+}
+
+.reconnect-overlay span {
+  color: #fbbf24;
+  font-size: 13px;
+  font-family: Menlo, Monaco, 'Courier New', monospace;
+}
+
+.reconnect-overlay .reconnect-hint {
+  color: #858585;
+  font-size: 11px;
+}
+
+/* Status dot pulse animation for reconnecting */
+@keyframes status-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.status-dot.reconnecting {
+  animation: status-pulse 1.5s ease-in-out infinite;
 }
 
 /* Responsive mobile layout */
