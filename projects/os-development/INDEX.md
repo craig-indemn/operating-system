@@ -3,18 +3,20 @@
 Development of the operating system itself — the skills, systems, and infrastructure that make Indemn's connected intelligence layer work. Covers the dispatch system, systems framework, skill improvements, and meta-level architecture of the OS.
 
 ## Status
-**Session 2026-03-03-b (complete)**: V2 Remote Access fully shipped. All 4 phases implemented, 3 rounds of code review (16 issues fixed), 37 automated tests + 8 browser tests passing. Tailscale Serve configured — Craig accessing from iPad over tailnet. Two bugs found and fixed during browser testing (index.html cache headers, logout button visibility in no-auth mode).
+**Session 2026-03-03-c (in progress)**: Responsive mobile/tablet layout implemented. Single-pane mode with tab bar on ≤1024px viewports. Touch-friendly 44px targets. Grid row spanning fix (terminals fill full column height). Min column width bumped to 600px. Terminal container padding added. Craig verified on iPad via Tailscale — working well.
 
-**Session 2026-03-03-a**: UI polish. CSS auto-grid, VS Code theme, scrollbar fix, resize smear fix. Craig daily-driving as VS Code replacement.
+**Session 2026-03-03-b**: V2 Remote Access fully shipped. Auth, reconnection, heartbeat, production build, Tailscale Serve.
+
+**Session 2026-03-03-a**: UI polish. CSS auto-grid, VS Code theme, scrollbar fix, resize smear fix.
 
 **Previous**: 2026-03-02-d browser-tested V1. 2026-03-02-c built V1. 2026-03-02-b designed it.
 
 **Onboarding branch** — is 40+ commits behind main. DO NOT rebase while parallel sessions active.
 
 **Next session should:**
-1. Mobile/tablet responsive layout (iPad readability is poor — text too small, needs larger fonts and single-pane mobile view)
-2. Make OS Terminal server start automatically (launchd service or similar)
-3. Consider V3 voice layer or V4 augmentation (overlays, context panels)
+1. Make OS Terminal server start automatically (launchd service or similar)
+2. Consider V3 voice layer or V4 augmentation (overlays, context panels)
+3. Any remaining responsive polish from Craig's iPad testing
 
 ## External Resources
 | Resource | Type | Link |
@@ -95,6 +97,10 @@ Development of the operating system itself — the skills, systems, and infrastr
 - 2026-03-03: xterm.js scrollback=0 since tmux handles scrollback — eliminates scrollbar
 - 2026-03-03: Backend cross-references session state files with tmux liveness — stale ended sessions show as active if tmux is alive
 - 2026-03-03: Deduplicate sessions by tmux_session name, keeping most recent state file
+- 2026-03-03: Single-pane mode on ≤1024px — one terminal + bottom tab bar, same view for iPad and phone
+- 2026-03-03: Min column width 600px (was 400px) — fewer columns but more readable
+- 2026-03-03: Grid row spanning — terminals in columns without last-row items stretch to fill full height
+- 2026-03-03: Session panel overlay breakpoint widened from 768px to 1024px to match single-pane breakpoint
 
 ## Open Questions
 - Which OS skills should be symlinked to `~/.claude/skills/` for global access in dispatched sessions?
