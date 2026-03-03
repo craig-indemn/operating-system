@@ -8,12 +8,12 @@ import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts';
 import { authFetch } from './utils/auth';
 
 export default function App() {
-  const { status, login, logout, retry } = useAuth();
+  const { status, authRequired, login, logout, retry } = useAuth();
 
   if (status === 'loading') return null;
   if (status === 'error') return <ErrorScreen onRetry={retry} />;
   if (status === 'unauthenticated') return <LoginScreen onLogin={login} />;
-  return <AuthenticatedApp onLogout={logout} authRequired={status === 'authenticated'} />;
+  return <AuthenticatedApp onLogout={logout} authRequired={authRequired} />;
 }
 
 function AuthenticatedApp({ onLogout, authRequired }: { onLogout: () => void; authRequired: boolean }) {

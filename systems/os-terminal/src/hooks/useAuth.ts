@@ -6,6 +6,7 @@ export type LoginResult = 'success' | 'invalid' | 'rate_limited' | 'error';
 
 interface UseAuthReturn {
   status: AuthStatus;
+  authRequired: boolean;
   login: (token: string) => Promise<LoginResult>;
   logout: () => void;
   retry: () => void;
@@ -13,6 +14,7 @@ interface UseAuthReturn {
 
 export function useAuth(): UseAuthReturn {
   const [status, setStatus] = useState<AuthStatus>('loading');
+  const [authRequired, setAuthRequired] = useState(false);
 
   const checkAuth = useCallback(async () => {
     setStatus('loading');
@@ -22,6 +24,7 @@ export function useAuth(): UseAuthReturn {
       if (!res.ok) throw new Error('Server error');
       const { authRequired } = await res.json();
 
+      setAuthRequired(authRequired);
       if (!authRequired) {
         setStatus('authenticated');
         return;
@@ -87,5 +90,5 @@ export function useAuth(): UseAuthReturn {
     setStatus('unauthenticated');
   }, []);
 
-  return { status, login, logout, retry: checkAuth };
+  return { status, authRequired, login, logout, retry: checkAuth };
 }
