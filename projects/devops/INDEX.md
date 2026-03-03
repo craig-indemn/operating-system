@@ -13,6 +13,9 @@ First session complete (2026-03-03). Secrets management proof of concept for ind
 | Dev EC2 | Infrastructure | i-0fde0af9d216e9182 (dev-services, t3.xlarge, us-east-1a) |
 | Prod EC2 | Infrastructure | i-00ef8e2bfa651aaa8 (prod-services, t3.xlarge, us-east-1b) |
 | Platform env files | Config source | /Users/home/Repositories/.env.dev, .env.prod |
+| DEVOPS-42 | Linear issue | Migrate secrets from .env to AWS Secrets Manager [E-3] — In Progress, assigned Craig |
+| DEVOPS-43 | Linear issue | Define credential rotation policy [E-4] — Queued (next after 42) |
+| DEVOPS-94 | Linear issue | 1Password policy / credential boundary [O-5] — Queued, assigned Craig |
 
 ## Artifacts
 | Date | Artifact | Ask |
