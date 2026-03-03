@@ -9,6 +9,7 @@ export interface TerminalPaneHandle {
 
 interface TerminalPaneProps {
   sessionName: string;
+  sessionId: string;
   status: string;
   contextPct: number;
   isMaximized: boolean;
@@ -17,6 +18,7 @@ interface TerminalPaneProps {
   onMinimize: () => void;
   onRestore: () => void;
   onFocus: () => void;
+  onClose: () => void;
 }
 
 const STATUS_COLORS: Record<string, string> = {
@@ -30,7 +32,7 @@ const STATUS_COLORS: Record<string, string> = {
 };
 
 export const TerminalPane = forwardRef<TerminalPaneHandle, TerminalPaneProps>(
-  ({ sessionName, status, contextPct, isMaximized, isFocused, onMaximize, onMinimize, onRestore, onFocus }, ref) => {
+  ({ sessionName, sessionId, status, contextPct, isMaximized, isFocused, onMaximize, onMinimize, onRestore, onFocus, onClose }, ref) => {
     const { containerRef, fit, focus } = useTerminal({ sessionName });
 
     useImperativeHandle(ref, () => ({ fit, focus }), [fit, focus]);
@@ -55,10 +57,13 @@ export const TerminalPane = forwardRef<TerminalPaneHandle, TerminalPaneProps>(
             <span className="session-name">{sessionName}</span>
             <span className="context-pct">{contextPct}%</span>
           </div>
-          <div className="terminal-header-right">
+          <div className="terminal-header-right" onMouseDown={(e) => e.stopPropagation()}>
             <button className="pane-btn" onClick={(e) => { e.stopPropagation(); onMinimize(); }} title="Minimize">_</button>
             <button className="pane-btn" onClick={(e) => { e.stopPropagation(); isMaximized ? onRestore() : onMaximize(); }} title={isMaximized ? 'Restore' : 'Maximize'}>
               {isMaximized ? '\u274F' : '\u25A1'}
+            </button>
+            <button className="pane-btn close-btn" onClick={(e) => { e.stopPropagation(); onClose(); }} title="Close session">
+              {'\u00D7'}
             </button>
           </div>
         </div>

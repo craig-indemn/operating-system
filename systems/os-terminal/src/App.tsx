@@ -22,6 +22,21 @@ export default function App() {
   }, []);
   const handleRestore = useCallback(() => setMaximized(null), []);
   const handleFocus = useCallback((id: string) => setFocused(id), []);
+  const handleCloseSession = useCallback((id: string) => {
+    if (!confirm('Close this session?')) return;
+    fetch(`/api/sessions/${id}?force=true`, { method: 'DELETE' })
+      .then(r => { if (!r.ok) return r.json().then(e => console.error('Close failed:', e)); })
+      .catch(err => console.error('Close error:', err));
+  }, []);
+  const handleCreateSession = useCallback(() => {
+    const name = prompt('Session name:');
+    if (!name?.trim()) return;
+    fetch('/api/sessions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: name.trim() }),
+    }).catch(() => {/* watcher will pick up the new session */});
+  }, []);
   const handleSelectSession = useCallback((id: string) => {
     // Restore if minimized, clear maximize, and focus
     setMinimized(prev => {
@@ -48,7 +63,7 @@ export default function App() {
         setFocused(id);
       }
     },
-    createSession: () => {/* TODO: create session modal */},
+    createSession: handleCreateSession,
     closePane: () => {
       if (focused) {
         setMinimized(prev => new Set(prev).add(focused));
@@ -70,7 +85,7 @@ export default function App() {
       <div className="main-content">
         <SessionPanel
           sessions={sessions}
-          onCreateSession={() => {/* TODO: create session modal */}}
+          onCreateSession={handleCreateSession}
           onSelectSession={handleSelectSession}
           isOpen={panelOpen}
         />
@@ -84,6 +99,7 @@ export default function App() {
             onMinimize={handleMinimize}
             onRestore={handleRestore}
             onFocus={handleFocus}
+            onCloseSession={handleCloseSession}
           />
         </div>
       </div>

@@ -89,6 +89,11 @@ html, body, #root {
   color: #e0e0e0;
 }
 
+.pane-btn.close-btn:hover {
+  background: #4a2020;
+  color: #f87171;
+}
+
 .terminal-container {
   background: #1a1a2e;
 }

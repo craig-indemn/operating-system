@@ -20,6 +20,7 @@ interface TerminalGridProps {
   onMinimize: (id: string) => void;
   onRestore: () => void;
   onFocus: (id: string) => void;
+  onCloseSession: (id: string) => void;
 }
 
 function loadSavedLayouts(): Layouts | null {
@@ -38,7 +39,7 @@ function computeDefaultWidth(totalSessions: number): number {
 
 export function TerminalGrid({
   sessions, maximized, focused, minimized,
-  onMaximize, onMinimize, onRestore, onFocus,
+  onMaximize, onMinimize, onRestore, onFocus, onCloseSession,
 }: TerminalGridProps) {
   const paneRefs = useRef<Record<string, TerminalPaneHandle | null>>({});
 
@@ -153,6 +154,7 @@ export function TerminalGrid({
           key={session.session_id}
           ref={(el) => { paneRefs.current[session.session_id] = el; }}
           sessionName={session.name}
+          sessionId={session.session_id}
           status={session.status}
           contextPct={session.context_remaining_pct}
           isMaximized={true}
@@ -161,6 +163,7 @@ export function TerminalGrid({
           onMinimize={() => { onRestore(); onMinimize(session.session_id); }}
           onRestore={onRestore}
           onFocus={() => onFocus(session.session_id)}
+          onClose={() => { onRestore(); onCloseSession(session.session_id); }}
         />
       </div>
     );
@@ -185,6 +188,7 @@ export function TerminalGrid({
             key={session.session_id}
             ref={(el) => { paneRefs.current[session.session_id] = el; }}
             sessionName={session.name}
+            sessionId={session.session_id}
             status={session.status}
             contextPct={session.context_remaining_pct}
             isMaximized={false}
@@ -193,6 +197,7 @@ export function TerminalGrid({
             onMinimize={() => onMinimize(session.session_id)}
             onRestore={() => {}}
             onFocus={() => { onFocus(session.session_id); paneRefs.current[session.session_id]?.focus(); }}
+            onClose={() => onCloseSession(session.session_id)}
           />
         </div>
       ))}
