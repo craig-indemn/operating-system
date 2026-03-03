@@ -3,9 +3,7 @@
 Development of the operating system itself — the skills, systems, and infrastructure that make Indemn's connected intelligence layer work. Covers the dispatch system, systems framework, skill improvements, and meta-level architecture of the OS.
 
 ## Status
-**Session 2026-03-03-b (continued)**: All 14 review round 2 issues fixed + 2 additional issues from round 3. Three rounds of code review passed. TypeScript compiles clean, Vite builds. **Needs: end-to-end testing, then commit.**
-
-**Session 2026-03-03-b**: Implemented V2 Remote Access (all 4 phases code-complete). Auth layer (bearer token + WS first-message gate), connection resilience (reconnection with backoff, visibilitychange, press-any-key), server heartbeat, production static serving, PWA meta tags.
+**Session 2026-03-03-b (complete)**: V2 Remote Access fully shipped. All 4 phases implemented, 3 rounds of code review (16 issues fixed), 37 automated tests + 8 browser tests passing. Tailscale Serve configured — Craig accessing from iPad over tailnet. Two bugs found and fixed during browser testing (index.html cache headers, logout button visibility in no-auth mode).
 
 **Session 2026-03-03-a**: UI polish. CSS auto-grid, VS Code theme, scrollbar fix, resize smear fix. Craig daily-driving as VS Code replacement.
 
@@ -14,9 +12,9 @@ Development of the operating system itself — the skills, systems, and infrastr
 **Onboarding branch** — is 40+ commits behind main. DO NOT rebase while parallel sessions active.
 
 **Next session should:**
-1. Run full end-to-end verification (12-point checklist in plan)
-2. Set up Tailscale Serve (manual/interactive step)
-3. Commit and close session
+1. Mobile/tablet responsive layout (iPad readability is poor — text too small, needs larger fonts and single-pane mobile view)
+2. Make OS Terminal server start automatically (launchd service or similar)
+3. Consider V3 voice layer or V4 augmentation (overlays, context panels)
 
 ## External Resources
 | Resource | Type | Link |
