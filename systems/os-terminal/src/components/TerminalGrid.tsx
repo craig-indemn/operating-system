@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback, useMemo } from 'react';
+import { useState, useRef, useCallback, useMemo, useEffect } from 'react';
 import { Responsive, WidthProvider, Layout, Layouts } from 'react-grid-layout';
 import { TerminalPane, TerminalPaneHandle } from './TerminalPane';
 import type { SessionInfo } from '../hooks/useSessions';
@@ -128,18 +128,34 @@ export function TerminalGrid({
     saveTimerRef.current = setTimeout(() => {
       localStorage.setItem(LAYOUT_STORAGE_KEY, JSON.stringify(sanitized));
     }, 300);
-    // Refit all terminals after layout change
+    // NOTE: Do NOT refit terminals here — this fires on every drag/resize frame
+    // and causes text duplication. Refit only on drag/resize stop events.
+  }, []);
+
+  const refitAll = useCallback(() => {
     setTimeout(() => {
       Object.values(paneRefs.current).forEach(ref => ref?.fit());
     }, 50);
   }, []);
 
-  const handleResizeStop = useCallback(() => {
-    // Refit all terminals after any resize
-    setTimeout(() => {
-      Object.values(paneRefs.current).forEach(ref => ref?.fit());
-    }, 50);
-  }, []);
+  const handleDragStop = useCallback(() => refitAll(), [refitAll]);
+  const handleResizeStop = useCallback(() => refitAll(), [refitAll]);
+
+  // Refit all terminals when browser window resizes.
+  // WidthProvider updates the grid layout, but xterm.js canvases need
+  // an explicit refit to match the new container dimensions.
+  useEffect(() => {
+    let timer: ReturnType<typeof setTimeout>;
+    const onResize = () => {
+      clearTimeout(timer);
+      timer = setTimeout(refitAll, 150);
+    };
+    window.addEventListener('resize', onResize);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('resize', onResize);
+    };
+  }, [refitAll]);
 
   // Maximized view: single pane fills the viewport
   if (maximized) {
@@ -177,6 +193,8 @@ export function TerminalGrid({
       cols={{ lg: 12, md: 12, sm: 12 }}
       rowHeight={80}
       draggableHandle=".terminal-header"
+      useCSSTransforms={false}
+      onDragStop={handleDragStop}
       onResizeStop={handleResizeStop}
       onLayoutChange={handleLayoutChange}
       compactType="vertical"

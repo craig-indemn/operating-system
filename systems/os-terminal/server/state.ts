@@ -1,6 +1,34 @@
 import { readdir, readFile } from 'fs/promises';
 import { join } from 'path';
+import { execFileSync } from 'child_process';
 import type { SessionState } from './types.js';
+
+// Resolve tmux binary path
+function findTmux(): string {
+  const candidates = ['/opt/homebrew/bin/tmux', '/usr/local/bin/tmux', '/usr/bin/tmux'];
+  for (const candidate of candidates) {
+    try {
+      execFileSync(candidate, ['-V'], { timeout: 2000 });
+      return candidate;
+    } catch { /* try next */ }
+  }
+  return 'tmux';
+}
+
+const TMUX_BIN = findTmux();
+
+/** Get set of currently live tmux session names */
+function getLiveTmuxSessions(): Set<string> {
+  try {
+    const output = execFileSync(TMUX_BIN, ['list-sessions', '-F', '#{session_name}'], {
+      timeout: 5000,
+      encoding: 'utf-8',
+    });
+    return new Set(output.trim().split('\n').filter(Boolean));
+  } catch {
+    return new Set();
+  }
+}
 
 export function getOsRoot(): string {
   const root = process.env.OS_ROOT;
@@ -27,17 +55,40 @@ export async function readAllSessions(): Promise<SessionState[]> {
     return [];
   }
 
-  const sessions: SessionState[] = [];
+  const liveTmux = getLiveTmuxSessions();
+
+  const allSessions: SessionState[] = [];
   for (const file of files) {
     if (!file.endsWith('.json')) continue;
     try {
       const content = await readFile(join(dir, file), 'utf-8');
-      sessions.push(JSON.parse(content));
+      const session: SessionState = JSON.parse(content);
+
+      // Cross-reference with tmux: if state says ended but tmux is alive,
+      // the session is still running (state file went stale)
+      if (['ended', 'ended_dirty', 'stale'].includes(session.status)) {
+        if (liveTmux.has(session.tmux_session)) {
+          session.status = 'active';
+        }
+      }
+
+      allSessions.push(session);
     } catch {
       // Skip corrupt or partially-written files
     }
   }
-  return sessions;
+
+  // Deduplicate: keep only the most recent state file per tmux session.
+  // Multiple state files for the same tmux session happen when sessions
+  // are recreated without cleaning up old state files.
+  const byTmux = new Map<string, SessionState>();
+  for (const s of allSessions) {
+    const existing = byTmux.get(s.tmux_session);
+    if (!existing || new Date(s.last_activity) > new Date(existing.last_activity)) {
+      byTmux.set(s.tmux_session, s);
+    }
+  }
+  return Array.from(byTmux.values());
 }
 
 /**

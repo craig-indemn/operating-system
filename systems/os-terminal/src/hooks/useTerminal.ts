@@ -16,7 +16,7 @@ interface UseTerminalReturn {
   isConnected: boolean;
 }
 
-export function useTerminal({ sessionName, fontSize = 14 }: UseTerminalOptions): UseTerminalReturn {
+export function useTerminal({ sessionName, fontSize = 13 }: UseTerminalOptions): UseTerminalReturn {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const termRef = useRef<Terminal | null>(null);
   const fitAddonRef = useRef<FitAddon | null>(null);
@@ -39,11 +39,14 @@ export function useTerminal({ sessionName, fontSize = 14 }: UseTerminalOptions):
       cursorBlink: true,
       fontSize,
       fontFamily: 'Menlo, Monaco, "Courier New", monospace',
+      letterSpacing: 0,
+      scrollback: 0, // tmux handles scrollback — disables xterm scrollbar
       theme: {
-        background: '#1a1a2e',
-        foreground: '#e0e0e0',
-        cursor: '#e0e0e0',
-        selectionBackground: '#3a3a5e',
+        background: '#1e1e1e',
+        foreground: '#d4d4d4',
+        cursor: '#d4d4d4',
+        selectionBackground: '#264f78',
+        selectionForeground: '#ffffff',
       },
       allowProposedApi: true,
     });

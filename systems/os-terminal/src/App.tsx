@@ -6,7 +6,7 @@ import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts';
 
 export default function App() {
   const sessions = useSessions();
-  const [panelOpen, setPanelOpen] = useState(true);
+  const [panelOpen, setPanelOpen] = useState(false);
   const [maximized, setMaximized] = useState<string | null>(null);
   const [focused, setFocused] = useState<string | null>(null);
   const [minimized, setMinimized] = useState<Set<string>>(new Set());
