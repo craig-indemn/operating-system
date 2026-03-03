@@ -1,15 +1,10 @@
-import { useState, useRef, useCallback, useMemo, useEffect } from 'react';
-import { Responsive, WidthProvider, Layout, Layouts } from 'react-grid-layout';
+import { useRef, useMemo, useCallback, useEffect, useState } from 'react';
 import { TerminalPane, TerminalPaneHandle } from './TerminalPane';
 import type { SessionInfo } from '../hooks/useSessions';
-import 'react-grid-layout/css/styles.css';
-import 'react-resizable/css/styles.css';
 
-const ResponsiveGrid = WidthProvider(Responsive);
-const LAYOUT_STORAGE_KEY = 'os-terminal-layouts';
-const MIN_W = 3;
-const MIN_H = 3;
-const DEFAULT_H = 4;
+const MIN_COL_WIDTH = 400; // px — minimum width per column
+const GAP = 4; // px between panes
+const STORAGE_KEY = 'os-terminal-order';
 
 interface TerminalGridProps {
   sessions: SessionInfo[];
@@ -23,18 +18,13 @@ interface TerminalGridProps {
   onCloseSession: (id: string) => void;
 }
 
-function loadSavedLayouts(): Layouts | null {
+function loadOrder(): string[] {
   try {
-    const saved = localStorage.getItem(LAYOUT_STORAGE_KEY);
-    return saved ? JSON.parse(saved) : null;
+    const saved = localStorage.getItem(STORAGE_KEY);
+    return saved ? JSON.parse(saved) : [];
   } catch {
-    return null;
+    return [];
   }
-}
-
-function computeDefaultWidth(totalSessions: number): number {
-  const sessionsPerRow = Math.min(totalSessions, 3) || 1;
-  return Math.floor(12 / sessionsPerRow);
 }
 
 export function TerminalGrid({
@@ -42,95 +32,66 @@ export function TerminalGrid({
   onMaximize, onMinimize, onRestore, onFocus, onCloseSession,
 }: TerminalGridProps) {
   const paneRefs = useRef<Record<string, TerminalPaneHandle | null>>({});
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [dragSource, setDragSource] = useState<string | null>(null);
+  const [dragOver, setDragOver] = useState<string | null>(null);
 
-  // Filter to active sessions (not ended/ended_dirty)
+  // Persisted session order (array of session_ids)
+  const [order, setOrder] = useState<string[]>(loadOrder);
+
   const activeSessions = useMemo(
     () => sessions.filter(s => !['ended', 'ended_dirty'].includes(s.status)),
     [sessions],
   );
-
-  // Base layouts from localStorage (user's saved arrangement)
-  const [savedLayouts, setSavedLayouts] = useState<Layouts>(() => {
-    return loadSavedLayouts() || { lg: [], md: [], sm: [] };
-  });
 
   const visibleSessions = useMemo(
     () => activeSessions.filter(s => !minimized.has(s.session_id)),
     [activeSessions, minimized],
   );
 
-  // Ensure all visible sessions have layout entries BEFORE render.
-  // This runs synchronously so react-grid-layout never sees children
-  // without matching layout items (which would create w:1 h:1 defaults).
-  const effectiveLayouts = useMemo(() => {
-    const lg = savedLayouts.lg || [];
-    const layoutMap = new Map(lg.map(l => [l.i, l]));
-
-    // Check which visible sessions need layout entries
-    const missing = visibleSessions.filter(s => {
-      const entry = layoutMap.get(s.session_id);
-      // Missing or has degenerate size (auto-generated default)
-      return !entry || entry.w < MIN_W || entry.h < MIN_H;
-    });
-
-    if (missing.length === 0) {
-      // All visible sessions have good layout entries
-      return savedLayouts;
+  // Apply saved order, appending any new sessions at the end
+  const orderedSessions = useMemo(() => {
+    const ids = new Set(visibleSessions.map(s => s.session_id));
+    const ordered: SessionInfo[] = [];
+    for (const id of order) {
+      const session = visibleSessions.find(s => s.session_id === id);
+      if (session) ordered.push(session);
     }
-
-    // Compute default width based on total visible count
-    const defaultW = computeDefaultWidth(visibleSessions.length);
-    const maxY = lg.length > 0 ? Math.max(...lg.map(l => l.y + l.h)) : 0;
-
-    const newLg = [...lg];
-    missing.forEach((s, i) => {
-      const entry: Layout = {
-        i: s.session_id,
-        x: (i % 3) * defaultW,
-        y: maxY + Math.floor(i / 3) * DEFAULT_H,
-        w: defaultW,
-        h: DEFAULT_H,
-        minW: MIN_W,
-        minH: MIN_H,
-      };
-      // Replace degenerate entry or add new one
-      const existingIdx = newLg.findIndex(l => l.i === s.session_id);
-      if (existingIdx >= 0) {
-        newLg[existingIdx] = entry;
-      } else {
-        newLg.push(entry);
-      }
-    });
-
-    return {
-      lg: newLg,
-      md: newLg,
-      sm: newLg.map(l => ({ ...l, x: 0, w: 12 })),
-    };
-  }, [savedLayouts, visibleSessions]);
-
-  // Debounced localStorage persistence — avoid writing on every drag frame
-  const saveTimerRef = useRef<ReturnType<typeof setTimeout>>();
-  const handleLayoutChange = useCallback((_current: Layout[], allLayouts: Layouts) => {
-    // Enforce minimum sizes — reject react-grid-layout auto-generated defaults
-    const sanitized: Layouts = {};
-    for (const [bp, items] of Object.entries(allLayouts)) {
-      sanitized[bp] = (items as Layout[]).map(l => ({
-        ...l,
-        w: Math.max(l.w, MIN_W),
-        h: Math.max(l.h, MIN_H),
-        minW: MIN_W,
-        minH: MIN_H,
-      }));
+    for (const s of visibleSessions) {
+      if (!order.includes(s.session_id)) ordered.push(s);
     }
-    setSavedLayouts(sanitized);
-    if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
-    saveTimerRef.current = setTimeout(() => {
-      localStorage.setItem(LAYOUT_STORAGE_KEY, JSON.stringify(sanitized));
-    }, 300);
-    // NOTE: Do NOT refit terminals here — this fires on every drag/resize frame
-    // and causes text duplication. Refit only on drag/resize stop events.
+    return ordered.filter(s => ids.has(s.session_id));
+  }, [visibleSessions, order]);
+
+  // Save order to localStorage
+  const updateOrder = useCallback((newOrder: string[]) => {
+    setOrder(newOrder);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(newOrder));
   }, []);
+
+  // Drag-to-swap handlers
+  const handleDragStart = useCallback((id: string) => {
+    setDragSource(id);
+  }, []);
+
+  const handleDragEnter = useCallback((id: string) => {
+    setDragOver(id);
+  }, []);
+
+  const handleDragEnd = useCallback(() => {
+    if (dragSource && dragOver && dragSource !== dragOver) {
+      const ids = orderedSessions.map(s => s.session_id);
+      const srcIdx = ids.indexOf(dragSource);
+      const dstIdx = ids.indexOf(dragOver);
+      if (srcIdx >= 0 && dstIdx >= 0) {
+        const newIds = [...ids];
+        [newIds[srcIdx], newIds[dstIdx]] = [newIds[dstIdx]!, newIds[srcIdx]!];
+        updateOrder(newIds);
+      }
+    }
+    setDragSource(null);
+    setDragOver(null);
+  }, [dragSource, dragOver, orderedSessions, updateOrder]);
 
   const refitAll = useCallback(() => {
     setTimeout(() => {
@@ -138,12 +99,7 @@ export function TerminalGrid({
     }, 50);
   }, []);
 
-  const handleDragStop = useCallback(() => refitAll(), [refitAll]);
-  const handleResizeStop = useCallback(() => refitAll(), [refitAll]);
-
-  // Refit all terminals when browser window resizes.
-  // WidthProvider updates the grid layout, but xterm.js canvases need
-  // an explicit refit to match the new container dimensions.
+  // Refit on window resize
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>;
     const onResize = () => {
@@ -157,7 +113,12 @@ export function TerminalGrid({
     };
   }, [refitAll]);
 
-  // Maximized view: single pane fills the viewport
+  // Refit when session count changes
+  useEffect(() => {
+    refitAll();
+  }, [orderedSessions.length, refitAll]);
+
+  // Maximized view
   if (maximized) {
     const session = activeSessions.find(s => s.session_id === maximized);
     if (!session) {
@@ -165,7 +126,7 @@ export function TerminalGrid({
       return null;
     }
     return (
-      <div style={{ height: '100%', padding: 4 }}>
+      <div style={{ height: '100%', padding: GAP }}>
         <TerminalPane
           key={session.session_id}
           ref={(el) => { paneRefs.current[session.session_id] = el; }}
@@ -185,25 +146,38 @@ export function TerminalGrid({
     );
   }
 
+  const count = orderedSessions.length;
+
   return (
-    <ResponsiveGrid
-      className="terminal-grid"
-      layouts={effectiveLayouts}
-      breakpoints={{ lg: 1200, md: 996, sm: 768 }}
-      cols={{ lg: 12, md: 12, sm: 12 }}
-      rowHeight={80}
-      draggableHandle=".terminal-header"
-      useCSSTransforms={false}
-      onDragStop={handleDragStop}
-      onResizeStop={handleResizeStop}
-      onLayoutChange={handleLayoutChange}
-      compactType="vertical"
-      margin={[4, 4] as [number, number]}
+    <div
+      ref={containerRef}
+      className="terminal-auto-grid"
+      style={{
+        display: 'grid',
+        gridTemplateColumns: `repeat(auto-fill, minmax(${MIN_COL_WIDTH}px, 1fr))`,
+        gridAutoRows: count <= getColCount() ? '1fr' : '1fr',
+        gap: `${GAP}px`,
+        height: '100%',
+        padding: `${GAP}px`,
+      }}
     >
-      {visibleSessions.map(session => (
-        <div key={session.session_id}>
+      {orderedSessions.map(session => (
+        <div
+          key={session.session_id}
+          style={{
+            minHeight: 0,
+            opacity: dragSource === session.session_id ? 0.5 : 1,
+            outline: dragOver === session.session_id && dragSource !== session.session_id
+              ? '2px solid #007acc' : 'none',
+            borderRadius: 4,
+          }}
+          draggable
+          onDragStart={() => handleDragStart(session.session_id)}
+          onDragEnter={() => handleDragEnter(session.session_id)}
+          onDragOver={(e) => e.preventDefault()}
+          onDragEnd={handleDragEnd}
+        >
           <TerminalPane
-            key={session.session_id}
             ref={(el) => { paneRefs.current[session.session_id] = el; }}
             sessionName={session.name}
             sessionId={session.session_id}
@@ -219,6 +193,12 @@ export function TerminalGrid({
           />
         </div>
       ))}
-    </ResponsiveGrid>
+    </div>
   );
+}
+
+/** Helper to estimate column count (used for row height logic) */
+function getColCount(): number {
+  if (typeof window === 'undefined') return 3;
+  return Math.max(1, Math.floor(window.innerWidth / MIN_COL_WIDTH));
 }
