@@ -29,6 +29,7 @@ Connected intelligence layer for Indemn. Every tool the company uses, accessible
 | `/image-gen` | curl (Gemini API) | Generate images via Google Nano Banana — blog visuals, illustrations, diagrams, brand-aware assets |
 | `/excalidraw` | excalidraw-to-svg | Create Excalidraw diagrams programmatically — flowcharts, architecture diagrams, sequence diagrams as .excalidraw JSON rendered to SVG |
 | `/langfuse` | curl (REST API) | Query Langfuse OTLP traces for voice agent observability — trace lookup, session data, tool call spans |
+| `/aws` | aws CLI | AWS infrastructure — Secrets Manager, Parameter Store, EC2, IAM, ECS |
 
 ### System Skills
 | Skill | What It Does |
