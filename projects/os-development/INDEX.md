@@ -3,19 +3,18 @@
 Development of the operating system itself — the skills, systems, and infrastructure that make Indemn's connected intelligence layer work. Covers the dispatch system, systems framework, skill improvements, and meta-level architecture of the OS.
 
 ## Status
-**Session 2026-03-02-d**: Browser-tested OS Terminal V1. Found and fixed: layout race condition (react-grid-layout saving w:1 h:1 defaults), pane buttons not clickable (drag handler capturing mousedown), no way to restore minimized panes. Added create session (+) and close session (×) buttons. All 14 checklist items verified — **V1 is solid.**
+**Session 2026-03-03-a**: UI polish based on daily-driving feedback. VS Code dark theme (#1e1e1e charcoal), fixed Retina fuzziness (disabled CSS transforms on grid), removed xterm.js scrollbar (tmux handles scrollback), fixed resize text smear (debounced window resize refit), fixed stale sessions (tmux liveness cross-reference + deduplication). Replaced react-grid-layout with CSS auto-grid (400px min column width, auto-fit, full height, drag-to-swap). **Craig is now using the terminal as his primary VS Code replacement.**
 
-**Previous sessions**: 2026-03-02-c built V1 (12 tasks, 13 commits). 2026-03-02-b designed it (design doc + implementation plan, 2x reviewed).
+**Previous sessions**: 2026-03-02-d browser-tested V1 (14-point checklist, 3 bugs fixed). 2026-03-02-c built V1 (12 tasks, 13 commits). 2026-03-02-b designed it.
 
 **Onboarding branch** — is 40+ commits behind main. Needs rebasing but DO NOT rebase while parallel sessions are active on main.
 
-**Next session should: Plan V2 (Remote Access & iOS)**
+**Next session should: Plan V2 (Remote Access)**
 1. Review design doc roadmap: `docs/plans/2026-03-02-os-terminal-design.md`
 2. Authentication layer (token-based) — required before remote access
 3. Tailscale/tunnel for remote access from phone/laptop
-4. Connection resilience (WebSocket reconnect on drop)
-5. Capacitor wrapper for iOS App Store distribution
-6. Deferred: `/1password` skill, task layer unification, Linear integration
+4. Connection resilience (WebSocket reconnect on network drop)
+5. Deferred: Capacitor iOS wrapper, `/1password` skill, task layer unification, Linear integration
 
 ## External Resources
 | Resource | Type | Link |
@@ -77,7 +76,7 @@ Development of the operating system itself — the skills, systems, and infrastr
 - 2026-03-01: Manual triggers only for now — automation is a future layer
 - 2026-03-01: Voice interface and unified task layer are future work (noted in design doc)
 - 2026-03-02: OS Terminal is the visual interface — Bloomberg-style grid of live terminals
-- 2026-03-02: React + xterm.js + react-grid-layout for the frontend
+- 2026-03-02: React + xterm.js for the frontend (react-grid-layout replaced with CSS auto-grid in 2026-03-03)
 - 2026-03-02: Capacitor for iOS App Store distribution (same React codebase)
 - 2026-03-02: Single Node.js backend — REST API + WebSocket terminal relay + file watcher
 - 2026-03-02: UI never writes state files directly — all mutations go through session CLI
@@ -91,6 +90,11 @@ Development of the operating system itself — the skills, systems, and infrastr
 - 2026-03-02: Layout entries must exist synchronously (useMemo) before render — useEffect races with react-grid-layout's onLayoutChange
 - 2026-03-02: Buttons inside react-grid-layout drag handles need onMouseDown stopPropagation to receive clicks
 - 2026-03-02: Session close from UI uses destroy (force=true) for immediate teardown — graceful close hangs on interactive prompts
+- 2026-03-03: CSS auto-grid with 400px min column width replaces react-grid-layout — simpler, auto-sizes, drag-to-swap only
+- 2026-03-03: useCSSTransforms=false required for sharp xterm.js text on Retina — CSS transforms cause canvas blur
+- 2026-03-03: xterm.js scrollback=0 since tmux handles scrollback — eliminates scrollbar
+- 2026-03-03: Backend cross-references session state files with tmux liveness — stale ended sessions show as active if tmux is alive
+- 2026-03-03: Deduplicate sessions by tmux_session name, keeping most recent state file
 
 ## Open Questions
 - Which OS skills should be symlinked to `~/.claude/skills/` for global access in dispatched sessions?
