@@ -154,7 +154,7 @@ export function TerminalGrid({
       className="terminal-auto-grid"
       style={{
         display: 'grid',
-        gridTemplateColumns: `repeat(auto-fill, minmax(${MIN_COL_WIDTH}px, 1fr))`,
+        gridTemplateColumns: `repeat(auto-fit, minmax(${MIN_COL_WIDTH}px, 1fr))`,
         gridAutoRows: count <= getColCount() ? '1fr' : '1fr',
         gap: `${GAP}px`,
         height: '100%',
