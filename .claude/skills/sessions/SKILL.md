@@ -73,6 +73,38 @@ Run: `source .env && session status <name>`
 
 Or read the JSONL transcript directly: `~/.claude/projects/-Users-home-Repositories-operating-system/{session_id}.jsonl`
 
+## Recovering After a Restart
+
+When the machine restarts, all tmux sessions are lost. Claude Code sessions can be resumed by ID since transcripts persist on disk. Recovery flow:
+
+1. **Recreate tmux sessions** for each project:
+   ```
+   session create <name> [--add-dir <repos>] [--model opus]
+   ```
+
+2. **Exit the fresh Claude Code** that auto-launched in each pane:
+   Send `/exit` to each tmux pane, or attach and exit manually.
+
+3. **Find the old Claude Code session IDs** from worktree transcript directories:
+   ```bash
+   for project in <names>; do
+     dir="$HOME/.claude/projects/-Users-home-Repositories-operating-system--claude-worktrees-${project}"
+     ls -lt "$dir"/*.jsonl 2>/dev/null | head -3
+   done
+   ```
+   The most recent transcript BEFORE the fresh one (check timestamps) is the one to resume.
+
+4. **Resume in each tmux pane** (attach first, then run):
+   ```
+   env -u CLAUDECODE claude --resume <old-session-id> --dangerously-skip-permissions
+   ```
+   - `env -u CLAUDECODE` — needed because the tmux pane inherits the variable from the parent session
+   - `--dangerously-skip-permissions` — must be re-specified on resume (not preserved from original session)
+
+5. **Update state files**: The old state files will be `ended_dirty`. The new `session create` calls make fresh state files that track the resumed sessions going forward.
+
+**Key detail**: Our `--session-id` flag is NOT honored by Claude Code — it generates its own IDs. Transcripts live under the worktree's project path (`~/.claude/projects/-Users-home-Repositories-operating-system--claude-worktrees-<name>/`), not under the main OS project path.
+
 ## What the EA Does NOT Do
 
 - Project work (that's the session's job)
@@ -99,3 +131,4 @@ Default: `bypassPermissions`. For production-touching sessions, recommend `--per
 - "Tell X to do Y" → `session send X "Y"`
 - "Switch me to X" → `session attach X`
 - "Kill X" → `session destroy X`
+- "My computer restarted" → recovery flow: recreate tmux, find old transcript IDs, resume
