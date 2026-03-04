@@ -5,7 +5,7 @@ description: Manage personal secrets via 1Password CLI (op) — read tokens, sto
 
 # 1Password CLI
 
-Personal secrets management via `op` CLI. All OS personal tokens live in the `cli-secrets` vault.
+Personal secrets management via `op` CLI + service account. All OS personal tokens live in the `cli-secrets` vault. Authentication is via `OP_SERVICE_ACCOUNT_TOKEN` env var (loaded automatically by SessionStart hook).
 
 ## Status Check
 
@@ -18,31 +18,42 @@ Verify vault access:
 op vault get "cli-secrets" --format json | python3 -c "import sys,json; v=json.load(sys.stdin); print(f'Vault: {v[\"name\"]} ({v[\"id\"]})')"
 ```
 
-## Prerequisites
+## How It Works
 
-- **1Password desktop app** installed and signed in
-- **1Password CLI** (`op`) installed
-- CLI integration enabled in desktop app (Settings > Developer > CLI Integration)
+Each team member has their own **1Password service account** with read/write access to a vault named `cli-secrets`. The service account token (`OP_SERVICE_ACCOUNT_TOKEN`) is stored in `.env` and loaded into Claude Code sessions automatically via the `load-env.sh` SessionStart hook.
 
-## Setup
+This means:
+- No desktop app interaction needed — fully headless
+- Works in Claude Code's sandboxed shell (desktop app biometric prompts don't surface there)
+- Each person's tokens are isolated in their own vault
+- Wrapper scripts in `scripts/secrets-proxy/` call `op read` to pull secrets at runtime
 
-### Install CLI
+## Setup (New Team Member)
+
+### 1. Install CLI
 ```bash
 brew install 1password-cli
 ```
 
-### Enable CLI Integration
-1. Open 1Password desktop app
-2. Settings > Developer > "Integrate with 1Password CLI"
-3. This allows `op` to authenticate via the desktop app (biometric unlock)
+### 2. Create a Service Account
+1. Go to your **personal** 1Password account (not the team account)
+2. Navigate to: Developer > Service Accounts > New Service Account
+3. Name it something like `cli-secrets-sa`
+4. Grant it **Read & Write** access to a vault named `cli-secrets`
+5. Copy the service account token (starts with `ops_...`)
 
-### Create Vault
+### 3. Add Token to .env
+Add to your OS repo `.env` file:
 ```bash
-op vault create "cli-secrets"
+export OP_SERVICE_ACCOUNT_TOKEN="ops_your_token_here"
 ```
 
-### Store Personal Tokens
+### 4. Create Vault and Store Tokens
 ```bash
+# Create the vault (if it doesn't exist)
+op vault create "cli-secrets"
+
+# Store personal tokens — item titles must match exactly
 op item create --vault "cli-secrets" --category "API Credential" --title "Airtable PAT" credential=<value>
 op item create --vault "cli-secrets" --category "API Credential" --title "Linear API Token" credential=<value>
 op item create --vault "cli-secrets" --category "API Credential" --title "Neon Connection String" credential=<value>
@@ -52,6 +63,11 @@ op item create --vault "cli-secrets" --category "API Credential" --title "Slack 
   xoxc_token=<value> xoxd_cookie=<value>
 op item create --vault "cli-secrets" --category "API Credential" --title "Gemini API Key" credential=<value>
 op item create --vault "cli-secrets" --category "API Credential" --title "Together API Key" credential=<value>
+```
+
+### 5. Verify
+```bash
+op read "op://cli-secrets/Airtable PAT/credential"
 ```
 
 ## Usage
@@ -104,4 +120,5 @@ op item delete "<title>" --vault "cli-secrets"
 - All personal tokens go in the `cli-secrets` vault
 - Shared infrastructure secrets (MongoDB URIs, Redis, etc.) are in AWS Secrets Manager — use the `/aws` skill
 - Item titles must match exactly what wrapper scripts expect
-- `op` authenticates via the desktop app — no separate login needed if CLI integration is enabled
+- Authentication is via service account token, not desktop app
+- The vault name `cli-secrets` is generic by design — not tied to any specific org

@@ -3,9 +3,9 @@
 Infrastructure, secrets management, deployment automation, and container orchestration for Indemn's microservices platform.
 
 ## Status
-Second session (2026-03-04): Secrets proxy implementation ~90% complete. Wrapper scripts, guard hook, skill updates, and 1Password integration all built. 1Password service account created and tokens stored in `cli-secrets` vault. **Needs: end-to-end testing of each wrapper script in a fresh session where OP_SERVICE_ACCOUNT_TOKEN is loaded via .env, then update the 1Password skill docs for onboarding.**
+Third session (2026-03-04): Secrets proxy **complete and tested**. All wrapper scripts verified end-to-end. Guard hook fixed (was using wrong output protocol — now uses exit codes per Claude Code docs). SessionStart hook (`load-env.sh`) loads OP_SERVICE_ACCOUNT_TOKEN + PATH + AWS config automatically. 1Password skill rewritten for service account auth model. Fixed linearis-proxy.sh (uses LINEAR_API_KEY, not LINEAR_API_TOKEN). Fixed wrapper scripts missing from main repo (were only in worktree).
 
-Previous: First session (2026-03-03). Secrets management POC for indemn-observability built. AWS CLI configured, 18 secrets + 37 parameters in dev, IAM roles + GitHub OIDC deployed.
+Previous: Second session (2026-03-04). Built all wrapper scripts, guard hook, skill updates, 1Password service account, stored 7 tokens in cli-secrets vault. First session (2026-03-03). AWS secrets management POC — 18 secrets + 37 parameters in dev, IAM roles + GitHub OIDC deployed.
 
 ## External Resources
 | Resource | Type | Link |
@@ -30,6 +30,9 @@ Previous: First session (2026-03-03). Secrets management POC for indemn-observab
 - 2026-03-04: Service account on Craig's personal 1Password (Indemn team 1Password lacks admin for SA creation)
 - 2026-03-04: Each team member will have their own service account token — .env has one token that unlocks all their personal secrets
 - 2026-03-04: Vault name `cli-secrets` is generic (not Indemn-specific) — designed for reuse across contexts
+- 2026-03-04: Guard hook uses exit codes (exit 0 = allow, exit 2 = block) — the JSON output format caused "hook error" warnings
+- 2026-03-04: SessionStart hook `load-env.sh` sources .env into CLAUDE_ENV_FILE (replaces inline echo command)
+- 2026-03-04: linearis uses LINEAR_API_KEY env var, not LINEAR_API_TOKEN
 - 2026-03-04: Guard hook (PreToolUse) blocks .env reads, secret var echoing, bare printenv — lives at `.claude/hooks/secrets-guard.sh`
 - 2026-03-04: Wrapper scripts in `scripts/secrets-proxy/` on PATH via SessionStart hook
 - 2026-03-03: Dual approach — AWS Secrets Manager for credentials, Parameter Store for non-sensitive config
@@ -52,12 +55,10 @@ Previous: First session (2026-03-03). Secrets management POC for indemn-observab
 - **Parameter Store:** 37 parameters under `/dev/` (shared + observability-specific)
 
 ## Next Steps
-1. **End-to-end test wrapper scripts** in a fresh session (OP_SERVICE_ACCOUNT_TOKEN will load from .env via SessionStart hook). Test: psql-connect.sh, mongosh-connect.sh, linearis-proxy.sh, curl-airtable.sh, curl-langfuse.sh
-2. **Update 1Password skill** — rewrite for service account auth (not desktop app integration), document onboarding flow for new team members
-3. **Fix guard hook** — it currently blocks `source .env` which is needed for loading OP_SERVICE_ACCOUNT_TOKEN. Either: (a) the SessionStart hook handles it via CLAUDE_ENV_FILE, or (b) whitelist sourcing .env specifically for non-secret config
-4. Test deployment: push `aws-secrets-management` branch, verify container pulls secrets on dev EC2
-5. Migrate additional services using the AWS skill's Service Migration Playbook
-6. Set up prod secrets (separate session, with care)
+1. Test deployment: push `aws-secrets-management` branch, verify container pulls secrets on dev EC2
+2. Migrate additional services using the AWS skill's Service Migration Playbook
+3. Set up prod secrets (separate session, with care)
+4. Clean up old service account tokens in 1Password (`indemn-cli` and `local-cli` SA auth tokens can be removed)
 
 ## Open Questions
 - Service URLs in Parameter Store are currently `localhost` — need to update to actual EC2 service addresses for deployed environments
