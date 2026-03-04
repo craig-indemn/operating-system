@@ -21,7 +21,7 @@ which linearis && echo "INSTALLED" || echo "NOT INSTALLED"
 ```
 
 ```bash
-source .env && linearis issues list --limit 1 2>/dev/null && echo "AUTHENTICATED" || echo "NOT AUTHENTICATED"
+linearis-proxy.sh issues list --limit 1 2>/dev/null && echo "AUTHENTICATED" || echo "NOT AUTHENTICATED"
 ```
 
 ## Setup
@@ -34,9 +34,9 @@ npm install -g linearis
 ### Authenticate
 1. Go to Linear > Settings > Account > Security & Access
 2. Create Personal API Key (select Read + Write scopes)
-3. Set environment variable in your `.env` file:
+3. Store in 1Password:
 ```bash
-export LINEAR_API_TOKEN="lin_api_..."
+op item create --vault "indemn-os" --category "API Credential" --title "Linear API Token" credential="lin_api_..."
 ```
 
 Rate limit: 1,500 requests/hour. All commands output JSON — pipe to `jq` for filtering.

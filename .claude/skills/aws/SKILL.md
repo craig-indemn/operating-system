@@ -286,6 +286,17 @@ jobs:
           aws-region: us-east-1
 ```
 
+## Secrets Proxy (Local Development)
+
+Wrapper scripts in `scripts/secrets-proxy/` pull credentials from AWS at runtime so Claude Code sessions never see raw secrets:
+
+| Wrapper | Pulls From | Purpose |
+|---------|-----------|---------|
+| `mongosh-connect.sh` | `{env}/shared/mongodb-uri` | MongoDB Atlas connection |
+| `local-dev-aws.sh` | Multiple `{env}/shared/*` secrets | Start local services without .env |
+
+These wrappers are on PATH via SessionStart hook. See `conventions.md` for the full wrapper table.
+
 ## Service Migration Playbook
 
 To migrate a new service from `.env` files to AWS secrets:

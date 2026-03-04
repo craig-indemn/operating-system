@@ -11,9 +11,7 @@ Langfuse captures OTLP traces from voice-livekit agents. Each voice call produce
 ## Status Check
 
 ```bash
-source .env && curl -s -o /dev/null -w "%{http_code}" \
-  -u "$LANGFUSE_PUBLIC_KEY:$LANGFUSE_SECRET_KEY" \
-  "$LANGFUSE_HOST/api/public/traces?limit=1"
+curl-langfuse.sh "/api/public/traces?limit=1" -o /dev/null -w "%{http_code}"
 # Expect: 200
 ```
 
@@ -28,41 +26,34 @@ source .env && curl -s -o /dev/null -w "%{http_code}" \
 ## Setup
 
 1. Get credentials from Jonathan (HIPAA-compliant Langfuse instance at `hipaa.cloud.langfuse.com`)
-2. Add to `.env`:
+2. Store in 1Password:
 ```bash
-LANGFUSE_HOST=https://hipaa.cloud.langfuse.com
-LANGFUSE_PUBLIC_KEY=pk-lf-...
-LANGFUSE_SECRET_KEY=sk-lf-...
+op item create --vault "indemn-os" --category "API Credential" --title "Langfuse Keys" \
+  host="https://hipaa.cloud.langfuse.com" public_key="pk-lf-..." secret_key="sk-lf-..."
 ```
 
 ## Usage Patterns
 
+All commands use `curl-langfuse.sh` which injects auth from 1Password.
+
 ### Get recent traces
 ```bash
-source .env && curl -s \
-  -u "$LANGFUSE_PUBLIC_KEY:$LANGFUSE_SECRET_KEY" \
-  "$LANGFUSE_HOST/api/public/traces?limit=10" | python3 -m json.tool
+curl-langfuse.sh "/api/public/traces?limit=10" | python3 -m json.tool
 ```
 
 ### Get trace by ID
 ```bash
-source .env && curl -s \
-  -u "$LANGFUSE_PUBLIC_KEY:$LANGFUSE_SECRET_KEY" \
-  "$LANGFUSE_HOST/api/public/traces/<trace_id>" | python3 -m json.tool
+curl-langfuse.sh "/api/public/traces/<trace_id>" | python3 -m json.tool
 ```
 
 ### Get traces for a session (room_name)
 ```bash
-source .env && curl -s \
-  -u "$LANGFUSE_PUBLIC_KEY:$LANGFUSE_SECRET_KEY" \
-  "$LANGFUSE_HOST/api/public/traces?sessionId=<room_name>&limit=20" | python3 -m json.tool
+curl-langfuse.sh "/api/public/traces?sessionId=<room_name>&limit=20" | python3 -m json.tool
 ```
 
 ### Get observations (spans) for a trace
 ```bash
-source .env && curl -s \
-  -u "$LANGFUSE_PUBLIC_KEY:$LANGFUSE_SECRET_KEY" \
-  "$LANGFUSE_HOST/api/public/observations?traceId=<trace_id>" | python3 -m json.tool
+curl-langfuse.sh "/api/public/observations?traceId=<trace_id>" | python3 -m json.tool
 ```
 
 ### Search traces by metadata (call_sid, id_bot)
@@ -70,11 +61,7 @@ source .env && curl -s \
 # Traces with metadata are enriched by voice-livekit's setup_langfuse() call (main.py ~line 636)
 # Metadata keys: langfuse.session.id (room_name), call_sid (CallSid), id_bot
 # NOTE: Langfuse metadata filtering uses a JSON filter parameter, not dot-notation
-source .env && curl -s -G \
-  -u "$LANGFUSE_PUBLIC_KEY:$LANGFUSE_SECRET_KEY" \
-  "$LANGFUSE_HOST/api/public/traces" \
-  --data-urlencode 'limit=10' \
-  --data-urlencode 'filter=[{"type":"stringObject","column":"metadata","key":"id_bot","operator":"=","value":"<bot_id>"}]' \
+curl-langfuse.sh "/api/public/traces?limit=10&$(python3 -c "import urllib.parse; print(urllib.parse.urlencode({'filter':'[{\"type\":\"stringObject\",\"column\":\"metadata\",\"key\":\"id_bot\",\"operator\":\"=\",\"value\":\"<bot_id>\"}]'}))")" \
   | python3 -m json.tool
 ```
 

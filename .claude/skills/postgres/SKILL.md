@@ -11,7 +11,7 @@ Direct database access via `neonctl` (Neon management) and `psql` (SQL queries).
 
 - **psql**: No account needed — it's just the Postgres client binary
 - **neonctl**: Neon account with access to the Indemn project (for branch management, not required for basic queries)
-- **Connection string**: Provided below for the meetings intelligence database. No additional credentials needed — the connection string includes auth.
+- **1Password**: Connection string stored in 1Password vault `indemn-os`
 
 ## Status Check
 
@@ -22,7 +22,7 @@ which neonctl && echo "NEONCTL INSTALLED" || echo "NEONCTL NOT INSTALLED"
 
 Test connection:
 ```bash
-/opt/homebrew/opt/libpq/bin/psql "$NEON_CONNECTION_STRING" -c "SELECT 1" 2>/dev/null && echo "CONNECTED" || echo "CONNECTION FAILED"
+psql-connect.sh -c "SELECT 1" 2>/dev/null && echo "CONNECTED" || echo "CONNECTION FAILED"
 ```
 
 ## Setup
@@ -51,13 +51,8 @@ Opens browser for OAuth. Or use API key:
 1. Neon Console > Account Settings > API Keys > Create
 2. Set: `export NEON_API_KEY="..."`
 
-### Set connection string
-Add to your `.env` file:
-```bash
-export NEON_CONNECTION_STRING="<get from .env or ask admin — do not hardcode here>"
-```
-
-This is all you need for querying — no separate auth step required.
+### Connection string
+Stored in 1Password at `op://indemn-os/Neon Connection String/credential`. Access via `psql-connect.sh` wrapper — no local env vars needed.
 
 ## Usage
 
@@ -65,29 +60,29 @@ This is all you need for querying — no separate auth step required.
 
 ### Connect interactively
 ```bash
-psql "$NEON_CONNECTION_STRING"
+psql-connect.sh
 ```
 
 ### Run a query
 ```bash
-psql "$NEON_CONNECTION_STRING" -c 'SELECT count(*) FROM "Meeting"'
+psql-connect.sh -c 'SELECT count(*) FROM "Meeting"'
 ```
 
 ### Explore the schema
 ```bash
 # List all tables
-psql "$NEON_CONNECTION_STRING" -c "\dt"
+psql-connect.sh -c "\dt"
 
 # Describe a table
-psql "$NEON_CONNECTION_STRING" -c '\d "Meeting"'
+psql-connect.sh -c '\d "Meeting"'
 
 # List tables with row counts
-psql "$NEON_CONNECTION_STRING" -c "SELECT schemaname, tablename, n_live_tup FROM pg_stat_user_tables ORDER BY n_live_tup DESC"
+psql-connect.sh -c "SELECT schemaname, tablename, n_live_tup FROM pg_stat_user_tables ORDER BY n_live_tup DESC"
 ```
 
 ### Query with JSON output
 ```bash
-psql "$NEON_CONNECTION_STRING" -t -A -c 'SELECT json_agg(row_to_json(t)) FROM (SELECT * FROM "Meeting" LIMIT 5) t'
+psql-connect.sh -t -A -c 'SELECT json_agg(row_to_json(t)) FROM (SELECT * FROM "Meeting" LIMIT 5) t'
 ```
 
 ### Neonctl management
