@@ -12,16 +12,28 @@
 - Composed skills reference tool skills, they don't duplicate them
 
 ## Credentials
-- Store API keys and tokens as environment variables in the project `.env` file (repo root, gitignored)
-- Never hardcode credentials in skills or scripts
-- Connection strings go in env vars, not in CLAUDE.md
-- Each skill documents which env vars it needs
+- **Shared infrastructure secrets** (MongoDB URIs, Redis, RabbitMQ, API keys) live in **AWS Secrets Manager** under `dev/shared/*` and `prod/shared/*`
+- **Personal tokens** (Airtable PAT, Linear token, Slack tokens, Langfuse keys, Neon connection string) live in **1Password** vault `indemn-os`
+- Access secrets through **wrapper scripts only** — never source `.env` or reference secret env vars directly
+- A PreToolUse guard hook blocks `.env` reads, `printenv`, and secret variable echoing
+- The `.env` file contains only non-secret config (AWS account ID, region, aliases)
+- Never hardcode credentials in skills, scripts, or CLAUDE.md
 
-## Environment Loading
-- **Before running ANY Bash command that uses CLI tools or env vars**, source the project .env file first: `source .env && <command>`
-- This applies to: psql, mongosh, curl with auth headers, gog, npx agent-slack, linearis, stripe, vercel, neonctl — any command that depends on credentials
-- The `.env` file is always at the repository root
-- Never assume env vars are already in the shell — always source explicitly
+## Tool Access (Secrets Proxy)
+Wrapper scripts in `scripts/secrets-proxy/` pull credentials at runtime. They're on PATH via SessionStart hook.
+
+| Tool | Wrapper | Example |
+|------|---------|---------|
+| mongosh | `mongosh-connect.sh` | `mongosh-connect.sh dev tiledesk --eval 'db.stats()'` |
+| psql | `psql-connect.sh` | `psql-connect.sh -c 'SELECT 1'` |
+| curl (Airtable) | `curl-airtable.sh` | `curl-airtable.sh "https://api.airtable.com/v0/meta/bases"` |
+| curl (Langfuse) | `curl-langfuse.sh` | `curl-langfuse.sh /api/public/traces?limit=10` |
+| linearis | `linearis-proxy.sh` | `linearis-proxy.sh issues list --limit 5` |
+| curl (Apollo) | `curl-apollo.sh` | `curl-apollo.sh /api/v1/mixed_companies/search '{"q":"Acme"}'` |
+| slack | `slack-env.sh` | `slack-env.sh python3 -c "from slack_client import ..."` |
+| local-dev.sh | `local-dev-aws.sh` | `local-dev-aws.sh start platform --env=dev` |
+
+**Already secure** (no wrapper needed): `gh`, `gog`, `stripe`, `vercel`, `aws`, `op`
 
 ## Database
 - Read-only unless explicitly authorized

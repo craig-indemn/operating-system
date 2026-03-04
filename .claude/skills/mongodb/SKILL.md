@@ -10,7 +10,7 @@ Direct database access via `mongosh` to Indemn's MongoDB Atlas clusters (prod an
 ## Prerequisites
 
 - **mongosh**: MongoDB Shell binary (no account needed)
-- **Connection strings**: `MONGODB_PROD_URI` and `MONGODB_DEV_URI` in `.env`
+- **AWS CLI**: Authenticated — MongoDB URIs stored in AWS Secrets Manager
 
 ## Status Check
 
@@ -20,7 +20,7 @@ which mongosh && echo "MONGOSH INSTALLED" || echo "MONGOSH NOT INSTALLED"
 
 Test connection:
 ```bash
-mongosh "$MONGODB_PROD_URI/tiledesk" --quiet --eval "db.runCommand({ping:1}).ok"
+mongosh-connect.sh prod tiledesk --eval "db.runCommand({ping:1}).ok"
 # Should return: 1
 ```
 
@@ -31,23 +31,19 @@ mongosh "$MONGODB_PROD_URI/tiledesk" --quiet --eval "db.runCommand({ping:1}).ok"
 brew install mongosh
 ```
 
-### Set connection strings
-Add to your `.env` file:
-```bash
-export MONGODB_PROD_URI="mongodb+srv://devadmin:<password>@prod-indemn.3h3ab.mongodb.net"
-export MONGODB_DEV_URI="mongodb+srv://devadmin:<password>@dev-indemn.pj4xyep.mongodb.net"
-```
+### Connection strings
+MongoDB URIs are stored in AWS Secrets Manager at `dev/shared/mongodb-uri` and `prod/shared/mongodb-uri`. Access via `mongosh-connect.sh` wrapper — no local env vars needed.
 
 ## Usage
 
 ### One-liner queries
 ```bash
-mongosh "$MONGODB_PROD_URI/tiledesk" --quiet --eval '<js expression>'
+mongosh-connect.sh prod tiledesk --eval '<js expression>'
 ```
 
 ### List collections with document counts
 ```bash
-mongosh "$MONGODB_PROD_URI/tiledesk" --quiet --eval '
+mongosh-connect.sh prod tiledesk --eval '
   db.getCollectionNames().forEach(c => {
     const n = db.getCollection(c).estimatedDocumentCount();
     if (n > 0) print(c + ": " + n);
@@ -57,28 +53,28 @@ mongosh "$MONGODB_PROD_URI/tiledesk" --quiet --eval '
 
 ### Query with JSON output
 ```bash
-mongosh "$MONGODB_PROD_URI/tiledesk" --quiet --eval '
+mongosh-connect.sh prod tiledesk --eval '
   JSON.stringify(db.getCollection("organizations").findOne({name: "Indemn"}), null, 2)
 '
 ```
 
 ### Sample a document shape
 ```bash
-mongosh "$MONGODB_PROD_URI/tiledesk" --quiet --eval '
+mongosh-connect.sh prod tiledesk --eval '
   JSON.stringify(db.getCollection("bot_configurations").findOne(), null, 2)
 '
 ```
 
 ### Count with filter
 ```bash
-mongosh "$MONGODB_PROD_URI/tiledesk" --quiet --eval '
+mongosh-connect.sh prod tiledesk --eval '
   db.getCollection("requests").countDocuments({status: 1000})
 '
 ```
 
 ### Aggregation
 ```bash
-mongosh "$MONGODB_PROD_URI/tiledesk" --quiet --eval '
+mongosh-connect.sh prod tiledesk --eval '
   JSON.stringify(db.getCollection("bot_tools").aggregate([
     {$group: {_id: "$type", count: {$sum: 1}}},
     {$sort: {count: -1}}
@@ -89,12 +85,12 @@ mongosh "$MONGODB_PROD_URI/tiledesk" --quiet --eval '
 ### Switch databases
 ```bash
 # Other databases on the same cluster:
-mongosh "$MONGODB_PROD_URI/middleware" --quiet --eval '...'
-mongosh "$MONGODB_PROD_URI/observatory" --quiet --eval '...'
-mongosh "$MONGODB_PROD_URI/quotes" --quiet --eval '...'
+mongosh-connect.sh prod middleware --eval '...'
+mongosh-connect.sh prod observatory --eval '...'
+mongosh-connect.sh prod quotes --eval '...'
 
 # Dev cluster:
-mongosh "$MONGODB_DEV_URI/tiledesk" --quiet --eval '...'
+mongosh-connect.sh dev tiledesk --eval '...'
 ```
 
 ### Available databases

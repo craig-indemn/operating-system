@@ -91,7 +91,15 @@ PYEOF
 - `SLACK_PY` detects which Python has `slack_sdk` — `/usr/bin/python3` on macOS, `python3` on Linux
 - `PYTHONPATH=.../lib` makes the `slack_client` helper importable
 - Single-quoted heredoc (`'PYEOF'`) prevents shell interpretation
-- `get_client()` reads tokens from macOS Keychain automatically, falls back to env vars on Linux
+- `get_client()` reads tokens from macOS Keychain automatically, falls back to env vars
+- If Keychain is unavailable, use `slack-env.sh` wrapper which pulls tokens from 1Password:
+  ```bash
+  REPO_ROOT=$(git rev-parse --show-toplevel) && slack-env.sh /usr/bin/python3 -c "
+  import sys; sys.path.insert(0, '$REPO_ROOT/lib')
+  from slack_client import get_client
+  print(get_client().auth_test()['user'])
+  "
+  ```
 
 ## Quick Reference
 

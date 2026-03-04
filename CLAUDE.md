@@ -6,7 +6,7 @@ Connected intelligence layer for Indemn. Every tool the company uses, accessible
 - All tools accessed via CLI or curl — no MCPs
 - Skills in `.claude/skills/` handle status checks, setup, and usage for each tool
 - If a tool isn't set up yet, the skill will walk you through it
-- Credentials stored as environment variables, never hardcoded
+- Shared secrets in AWS Secrets Manager, personal tokens in 1Password — accessed via wrapper scripts in `scripts/secrets-proxy/`
 
 ## Available Skills
 
@@ -29,6 +29,8 @@ Connected intelligence layer for Indemn. Every tool the company uses, accessible
 | `/image-gen` | curl (Gemini API) | Generate images via Google Nano Banana — blog visuals, illustrations, diagrams, brand-aware assets |
 | `/excalidraw` | excalidraw-to-svg | Create Excalidraw diagrams programmatically — flowcharts, architecture diagrams, sequence diagrams as .excalidraw JSON rendered to SVG |
 | `/langfuse` | curl (REST API) | Query Langfuse OTLP traces for voice agent observability — trace lookup, session data, tool call spans |
+| `/aws` | aws CLI | AWS infrastructure — Secrets Manager, Parameter Store, EC2, IAM, ECS |
+| `/1password` | op CLI | Personal secrets — read tokens, store credentials, manage indemn-os vault |
 
 ### System Skills
 | Skill | What It Does |

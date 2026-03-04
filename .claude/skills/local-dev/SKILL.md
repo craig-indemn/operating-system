@@ -22,8 +22,16 @@ cd "$WORKSPACE" && bash ./local-dev.sh status
 
 - bash 4+ (`brew install bash`) — macOS ships with bash 3
 - `uv` for Python services, `node@22` for Node services
-- Environment file: `.env.dev` (or `.env.prod`) in the workspace directory
+- Environment file: `.env.dev` (or `.env.prod`) in the workspace directory, OR use `local-dev-aws.sh` to pull secrets from AWS
 - First-time: `bash ./local-dev.sh setup` to install Node deps
+
+## AWS-Backed Start (No .env Required)
+
+```bash
+local-dev-aws.sh start platform --env=dev
+```
+
+Pulls all platform secrets from AWS Secrets Manager at runtime. No `.env` file needed.
 
 ## Quick Reference
 
