@@ -3,9 +3,11 @@
 Infrastructure, secrets management, deployment automation, and container orchestration for Indemn's microservices platform.
 
 ## Status
-Third session (2026-03-04): Secrets proxy **complete and tested**. All wrapper scripts verified end-to-end. Guard hook fixed (was using wrong output protocol — now uses exit codes per Claude Code docs). SessionStart hook (`load-env.sh`) loads OP_SERVICE_ACCOUNT_TOKEN + PATH + AWS config automatically. 1Password skill rewritten for service account auth model. Fixed linearis-proxy.sh (uses LINEAR_API_KEY, not LINEAR_API_TOKEN). Fixed wrapper scripts missing from main repo (were only in worktree).
+Third session (2026-03-04): Secrets proxy **complete and tested**. All wrapper scripts verified end-to-end. Guard hook fixed (was using wrong output protocol — now uses exit codes per Claude Code docs). SessionStart hook (`load-env.sh`) loads OP_SERVICE_ACCOUNT_TOKEN + PATH + AWS config automatically. 1Password skill rewritten for service account auth model. `os-devops` branch merged to `main` and pushed. Linear issues updated: DEVOPS-42 commented with progress, DEVOPS-94 moved to In Progress with POC details.
 
-Previous: Second session (2026-03-04). Built all wrapper scripts, guard hook, skill updates, 1Password service account, stored 7 tokens in cli-secrets vault. First session (2026-03-03). AWS secrets management POC — 18 secrets + 37 parameters in dev, IAM roles + GitHub OIDC deployed.
+**Next session:** Deploy `aws-secrets-management` branch of `indemn-observability` to dev EC2. Verify container pulls secrets from AWS SM. Then merge PR.
+
+Previous sessions: Second (2026-03-04) built wrapper scripts, guard hook, 1Password service account. First (2026-03-03) AWS secrets management POC — 18 secrets + 37 params, IAM roles + OIDC.
 
 ## External Resources
 | Resource | Type | Link |
