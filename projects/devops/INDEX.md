@@ -3,16 +3,16 @@
 Infrastructure, secrets management, deployment automation, and container orchestration for Indemn's microservices platform.
 
 ## Status
-Third session (2026-03-04): Secrets proxy **complete and tested**. All wrapper scripts verified end-to-end. Guard hook fixed (was using wrong output protocol — now uses exit codes per Claude Code docs). SessionStart hook (`load-env.sh`) loads OP_SERVICE_ACCOUNT_TOKEN + PATH + AWS config automatically. 1Password skill rewritten for service account auth model. `os-devops` branch merged to `main` and pushed. Linear issues updated: DEVOPS-42 commented with progress, DEVOPS-94 moved to In Progress with POC details.
+Fourth session (2026-03-04): Observatory **deployed to dev EC2 with AWS Secrets Manager**. Host-side `aws-env-loader.sh` writes `.env.aws` during GitHub Actions deploy, docker-compose reads it via `env_file`. Container has no AWS dependency. PRs #20–#23 merged to `demo-gic`. AWS CLI v2 installed on dev EC2. `build.yml` updated with same deploy pattern. PR #24 (`demo-gic` → `main`) open to converge branches. DEVOPS-42 commented. Throwaway branches cleaned up.
 
-**Next session:** Deploy `aws-secrets-management` branch of `indemn-observability` to dev EC2. Verify container pulls secrets from AWS SM. Then merge PR.
+**Next:** Merge PR #24 to converge `demo-gic` → `main`, then retire `demo-gic`. Migrate additional services. Write DEVOPS-94 proposal for team 1Password approach.
 
-Previous sessions: Second (2026-03-04) built wrapper scripts, guard hook, 1Password service account. First (2026-03-03) AWS secrets management POC — 18 secrets + 37 params, IAM roles + OIDC.
+Previous sessions: Third (2026-03-04) secrets proxy complete — wrapper scripts, guard hook, 1Password SA, merged os-devops to main. Second (2026-03-04) built wrapper scripts, guard hook, 1Password service account. First (2026-03-03) AWS secrets management POC — 18 secrets + 37 params, IAM roles + OIDC.
 
 ## External Resources
 | Resource | Type | Link |
 |----------|------|------|
-| indemn-observability | GitHub repo | craig-indemn/indemn-observability (branch: aws-secrets-management) |
+| indemn-observability | GitHub repo | indemn-ai/Indemn-observatory (PRs #20–#23 merged to demo-gic, PR #24 demo-gic→main) |
 | AWS Console | Cloud provider | https://console.aws.amazon.com |
 | Dev EC2 | Infrastructure | i-0fde0af9d216e9182 (dev-services, t3.xlarge, us-east-1a) |
 | Prod EC2 | Infrastructure | i-00ef8e2bfa651aaa8 (prod-services, t3.xlarge, us-east-1b) |
@@ -28,6 +28,8 @@ Previous sessions: Second (2026-03-04) built wrapper scripts, guard hook, 1Passw
 | 2026-03-03 | [devops-architecture-context](artifacts/2026-03-03-devops-architecture-context.md) | Capture the planning discussion decisions for secrets, ECS, and deployment architecture |
 
 ## Decisions
+- 2026-03-04: Host-side env loading over container entrypoint — Docker bridge networking can't reach IMDS at hop limit 1, and keeping AWS CLI out of the image saves ~150MB
+- 2026-03-04: AWS CLI v2 installed on dev EC2 as infrastructure prerequisite for host-side loading
 - 2026-03-04: Personal tokens stored in 1Password via service account (OP_SERVICE_ACCOUNT_TOKEN in .env), vault name `cli-secrets`
 - 2026-03-04: Service account on Craig's personal 1Password (Indemn team 1Password lacks admin for SA creation)
 - 2026-03-04: Each team member will have their own service account token — .env has one token that unlocks all their personal secrets
@@ -49,18 +51,26 @@ Previous sessions: Second (2026-03-04) built wrapper scripts, guard hook, 1Passw
 - 2026-03-03: IAM roles use explicit Deny on prod resources for dev roles (belt + suspenders)
 - 2026-03-03: Do NOT touch prod without explicit user confirmation
 
-## What's Deployed in AWS
+## What's Deployed
+### AWS
 - **IAM Role:** `indemn-dev-services` — attached to dev EC2, reads `dev/*` only, explicit prod deny
 - **IAM Role:** `github-actions-deploy` — OIDC federation for indemn-ai GitHub org, dev only
 - **OIDC Provider:** `token.actions.githubusercontent.com` — scoped to indemn-ai repos
 - **Secrets Manager:** 18 secrets under `dev/` (16 shared, 2 observability-specific)
 - **Parameter Store:** 37 parameters under `/dev/` (shared + observability-specific)
 
+### Dev EC2 (i-0fde0af9d216e9182)
+- **AWS CLI v2** installed at `/usr/local/bin/aws`
+- **Observatory** running via docker-compose with `env_file: .env.aws` (secrets from SM/PS)
+- **GitHub Actions self-hosted runner** at `/home/ubuntu/actions-runner-observatory/`
+
 ## Next Steps
-1. Test deployment: push `aws-secrets-management` branch, verify container pulls secrets on dev EC2
-2. Migrate additional services using the AWS skill's Service Migration Playbook
-3. Set up prod secrets (separate session, with care)
-4. Clean up old service account tokens in 1Password (`indemn-cli` and `local-cli` SA auth tokens can be removed)
+1. ~~Test deployment: push `aws-secrets-management` branch, verify container pulls secrets on dev EC2~~ ✓ Done
+2. Merge `demo-gic` → `main` on indemn-observability to converge branches
+3. Migrate additional services using the AWS skill's Service Migration Playbook
+4. Write DEVOPS-94 proposal for team 1Password approach
+5. Set up prod secrets (separate session, with care)
+6. Clean up old service account tokens in 1Password (`indemn-cli` and `local-cli` SA auth tokens can be removed)
 
 ## Open Questions
 - Service URLs in Parameter Store are currently `localhost` — need to update to actual EC2 service addresses for deployed environments
