@@ -70,6 +70,14 @@ Incorporating voice agents into the Indemn evaluation framework. Currently, only
 6. **Linear updated** — Parent issue COP-359 with 7 sub-issues in "Automated Testing and Evaluation" project. 5 in Acceptance (dev complete), 2 in Backlog (prod deployment + test set creation).
 7. **Transcript evaluation verified** — Craig ran evaluation from Observatory on Ronnie2 voice conversation. 6/6 criteria, 2/2 rubric rules. `item_type: transcript`.
 
+**Session 2026-03-04-b** (IN PROGRESS): Phase 2 research — LiveKit API validation.
+1. **LiveKit API tested** — Room creation, agent dispatch with metadata, room participation with audio tracks. All core capabilities validated against dev LiveKit Cloud (`wss://test-ympl759t.livekit.cloud`).
+2. **LiveKit OS skill created** — `.claude/skills/livekit/SKILL.md` with status check, credential loading (AWS Secrets Manager), and usage patterns for room management, dispatch, and participation.
+3. **Architecture confirmed** — Evaluation harness creates room → dispatches voice agent with bot_id in metadata → joins as participant → audio conversation via TTS/STT → evaluates transcript. Tests exact production code path.
+4. **voice-livekit entrypoint analyzed** — `ctx.job.metadata` is available but not yet read. ~5 line change needed to check metadata for bot_id before phone lookup fallback.
+5. **Live agent dispatch tested** — Dispatched to `dev-indemn` on EC2, agent picked up in <3s, connected to room, blocked at `wait_for_participant()` (expected — eval mode code change needed).
+6. **Design document written** — Complete Phase 2 design covering voice-livekit eval mode, VoiceAgentClient, voice simulation engine, trigger routing, dashboard UI changes, and 5 implementation milestones.
+
 ## Phase 1 Status: Historical Transcript Evaluation (DEV COMPLETE)
 
 All code written, reviewed, tested in dev. 4 PRs open for prod review. Linear: COP-359.
@@ -89,9 +97,28 @@ All code written, reviewed, tested in dev. 4 PRs open for prod review. Linear: C
 4. Create voice agent evaluation criteria (test set for one agent)
 5. Verify end-to-end: Langfuse sync → ingestion → Observatory voice badge → Evaluate → results in Dashboard
 
-## Phase 2: Voice Simulation Evaluation (NOT STARTED)
+## Phase 2: Voice Simulation Evaluation (RESEARCH IN PROGRESS)
 
-Enable simulation-based evaluation for voice agents — the same test scenario approach used for web agents today, where the harness invokes the agent directly with test scenarios. The added complexity vs web is speech-to-text transcription between the evaluation harness and the voice agent. Design iteration needed.
+Enable simulation-based evaluation for voice agents — the same test scenario approach used for web agents today, where the harness invokes the agent directly with test scenarios. The evaluation harness creates a LiveKit room, dispatches the real voice agent with metadata (bot_id), joins as a programmatic participant, and conducts a full audio conversation using TTS/STT. This tests the exact production code path.
+
+### Validated (2026-03-04-b)
+- LiveKit API: room creation, deletion, listing — all work
+- LiveKit API: agent dispatch with JSON metadata — works, metadata preserved
+- LiveKit API: room participation with audio track publishing — works
+- Job protobuf has `metadata` field accessible as `ctx.job.metadata` in agent entrypoint
+- voice-livekit agent_name: `Indemn Voice Assistant` (from `config/settings.py`)
+- LiveKit OS skill created at `.claude/skills/livekit/SKILL.md`
+
+### Not Yet Tested (need live voice agent)
+- Agent receiving dispatch metadata and reading bot_id from it
+- Full audio round-trip: simulator TTS → agent STT → LLM → agent TTS → simulator STT
+- Transcript collection from a simulated conversation
+- Voice-specific metrics (interruptions, latency, turn timing)
+
+### Changes Required
+- **voice-livekit**: ~5 lines — read `ctx.job.metadata` for bot_id before phone lookup
+- **evaluations**: New VoiceAgentClient + voice simulation engine (new module)
+- **evaluations**: LiveKit + TTS + STT package dependencies
 
 ## External Resources
 | Resource | Type | Link |
@@ -119,6 +146,8 @@ Enable simulation-based evaluation for voice agents — the same test scenario a
 | 2026-03-02 | [langfuse-sync-implementation](artifacts/2026-03-02-langfuse-sync-implementation.md) | Langfuse sync implementation, initial test results, discrepancies to investigate, env config notes |
 | 2026-03-02 | [prod-test-results](artifacts/2026-03-02-prod-test-results.md) | Prod data test: Langfuse sync (266 traces, 97% match), ingestion (13 voice convos), Observatory verification |
 | 2026-03-04 | [phase1-complete-handoff](artifacts/2026-03-04-phase1-complete-handoff.md) | Phase 1 completion: what was built, PRs, Linear issues, prod checklist, Phase 2 objectives |
+| 2026-03-04 | [phase2-livekit-api-validation](artifacts/2026-03-04-phase2-livekit-api-validation.md) | Phase 2 research: LiveKit API validation — room creation, agent dispatch, room participation all tested |
+| 2026-03-04 | [phase2-voice-simulation-design](artifacts/2026-03-04-phase2-voice-simulation-design.md) | Phase 2 design: voice simulation evaluation — architecture, changes per repo, implementation milestones |
 
 ## Known Limitations
 - **Pre-Phase-1B traces lack metadata**: ALL current traces (dev AND prod confirmed) have NO `call_sid` or `id_bot` in Langfuse metadata. Only phone+time fallback works. The voice-livekit commit (`9df3389`) adds this metadata going forward, but only helps for NEW calls after deployment.
