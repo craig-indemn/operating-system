@@ -107,6 +107,10 @@ Incorporating voice agents into the Indemn evaluation framework. Currently, only
    - **Bugs found & fixed**: (a) `RuntimeError: Cannot run the event loop while another loop is running` — LangSmith's `client.evaluate()` runs inside FastAPI's event loop, so `asyncio.new_event_loop()` fails. Fixed with `ThreadPoolExecutor`. (b) Transcription truncation — agent's long responses arrived in multiple chunks; `TRANSCRIPTION_SETTLE_SEC` increased from 3.0 to 5.0. (c) Previous runs went to wrong MongoDB — evaluations service `.env` had different URI. Fixed by setting `MONGODB_URI` from AWS at startup.
    - **Evaluations branch**: 6 commits on `feat/voice-simulation`. LOCAL ONLY, not pushed yet.
    - **Remaining**: Layer 7 (dashboard visual verification with running platform stack).
+   - **Known issue**: Transcription settle time (5s) may still truncate very long agent responses. The 3rd criterion failed because agent response was cut off mid-sentence. Consider implementing a smarter "final transcription" detection (e.g., checking if transcription text stopped growing) instead of fixed timeout.
+   - **Test set in dev tiledesk**: `test_set_id: 75213fa3-6d63-4c82-b34f-51516ef65583` (Voice Sim Smoke Test, 1 item, 3 criteria). Bot: `69a52911e577e75c7e4ecdb6` (covertree-3486).
+   - **Run result in dev tiledesk**: `run_id: 6bed835e-3b8c-4632-b528-361184d00eb5`, `evaluation_results` collection has full document with transcript, criteria_scores, trajectory.
+   - **Starting evaluations service with voice creds**: Must set `MONGODB_URI`, `LIVEKIT_URL`, `LIVEKIT_API_KEY`, `LIVEKIT_API_SECRET`, `OPENAI_API_KEY` from AWS Secrets Manager before starting. All from `dev/shared/*` secrets. The repo `.env` may have a different MongoDB URI.
 
 ## Phase 1 Status: Historical Transcript Evaluation (DEV COMPLETE)
 
