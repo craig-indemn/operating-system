@@ -123,6 +123,24 @@ The EA is a session like any other. When context runs low:
 
 Default: `bypassPermissions`. For production-touching sessions, recommend `--permissions acceptEdits`.
 
+## OS Terminal UI
+
+The terminal grid UI provides a visual interface for all sessions. If the user wants to use it:
+
+```bash
+# Check if running
+curl -sf http://localhost:3101/api/sessions > /dev/null && echo "Running" || echo "Not running"
+
+# Start (production, serves built frontend)
+cd systems/os-terminal && source ../../.env && npm start
+
+# Access
+# Local: http://localhost:3101
+# Remote: https://craig.taila9a6ac.ts.net (via Tailscale Serve)
+```
+
+Auth token is `OS_TERMINAL_TOKEN` in `.env`. See `systems/os-terminal/SYSTEM.md` for full details.
+
 ## Common Patterns
 
 - "What's happening?" → `session list` + briefing

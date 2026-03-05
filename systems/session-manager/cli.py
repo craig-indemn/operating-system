@@ -329,10 +329,13 @@ def cmd_close(args):
                 break
         else:
             print("Session still active after 30s.")
-            response = input("Interrupt? [y/N] ").strip().lower()
-            if response != "y":
-                print("Aborted.")
-                return
+            if args.non_interactive:
+                print("Non-interactive mode — proceeding with cleanup.")
+            else:
+                response = input("Interrupt? [y/N] ").strip().lower()
+                if response != "y":
+                    print("Aborted.")
+                    return
 
     # Send cleanup commands
     cleanup_cmds = [
@@ -464,6 +467,8 @@ def main():
     # close
     p_close = subparsers.add_parser("close", help="Gracefully close a session")
     p_close.add_argument("name", help="Session name")
+    p_close.add_argument("--non-interactive", action="store_true",
+                         help="Skip interactive prompts (for API use)")
     p_close.set_defaults(func=cmd_close)
 
     # destroy
