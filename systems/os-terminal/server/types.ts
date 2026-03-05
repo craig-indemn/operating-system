@@ -8,6 +8,7 @@ export interface SessionState {
   version: number;
   session_id: string;
   name: string;
+  type?: 'shell' | 'claude';
   project: string | null;
   worktree_path: string;
   tmux_session: string;

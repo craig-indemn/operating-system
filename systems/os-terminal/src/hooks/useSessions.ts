@@ -4,6 +4,7 @@ import { getStoredToken, clearStoredToken } from '../utils/auth';
 export interface SessionInfo {
   session_id: string;
   name: string;
+  type?: 'shell' | 'claude';
   project: string | null;
   status: string;
   context_remaining_pct: number;

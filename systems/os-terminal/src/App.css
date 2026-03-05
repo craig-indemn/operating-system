@@ -228,6 +228,52 @@ html, body, #root {
   color: #d4d4d4;
 }
 
+.create-menu-wrapper {
+  position: relative;
+}
+
+.create-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 4px;
+  background: #2a2a2a;
+  border: 1px solid #444444;
+  border-radius: 4px;
+  z-index: 200;
+  min-width: 140px;
+  overflow: hidden;
+}
+
+.create-menu-item {
+  display: block;
+  width: 100%;
+  background: none;
+  border: none;
+  color: #cccccc;
+  font-size: 13px;
+  font-family: inherit;
+  padding: 8px 12px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.create-menu-item:hover {
+  background: #333333;
+  color: #ffffff;
+}
+
+.type-indicator {
+  font-size: 10px;
+  font-weight: 700;
+  font-family: Menlo, Monaco, 'Courier New', monospace;
+  flex-shrink: 0;
+}
+
+.type-indicator.shell {
+  color: #4ade80;
+}
+
 .panel-section h3 {
   font-size: 11px;
   text-transform: uppercase;

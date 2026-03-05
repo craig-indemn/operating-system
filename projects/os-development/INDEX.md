@@ -3,15 +3,11 @@
 Development of the operating system itself — the skills, systems, and infrastructure that make Indemn's connected intelligence layer work. Covers the dispatch system, systems framework, skill improvements, and meta-level architecture of the OS.
 
 ## Status
-**Session 2026-03-04-a (complete)**: Gas Town / Wasteland / Dolt research and integration design. Decided: Gas Town replaces custom dispatch, Mayor/Crew are OS session types, Dolt adoption after learning period, dedicated `/gastown` skill, two Max subscriptions for concurrency. Also documented OS Terminal server startup in SYSTEM.md, CLAUDE.md, and sessions skill.
+**Session 2026-03-05-a (complete)**: Added plain shell terminal sessions to OS Terminal. The `+` button now opens a dropdown with "Claude Session" and "Terminal" options. Shell sessions create tmux sessions directly (bypassing the session CLI), show a `>_` indicator instead of a status dot, and hide the context % display. Deletion kills tmux and removes state file directly. All 7 files modified, full build verified clean.
 
-**Session 2026-03-03-c**: Responsive mobile/tablet layout implemented. Single-pane mode with tab bar on ≤1024px. Craig verified on iPad.
+**Session 2026-03-04-a (complete)**: Gas Town / Wasteland / Dolt research and integration design.
 
-**Session 2026-03-03-b**: V2 Remote Access fully shipped. Auth, reconnection, heartbeat, production build, Tailscale Serve.
-
-**Session 2026-03-03-a**: UI polish. CSS auto-grid, VS Code theme, scrollbar fix, resize smear fix.
-
-**Previous**: 2026-03-02-d browser-tested V1. 2026-03-02-c built V1. 2026-03-02-b designed it.
+**Previous**: 2026-03-03-c responsive mobile. 2026-03-03-b remote access. 2026-03-03-a UI polish. 2026-03-02-d browser-tested V1. 2026-03-02-c built V1. 2026-03-02-b designed it.
 
 **Onboarding branch** — is 40+ commits behind main. DO NOT rebase while parallel sessions active.
 
@@ -117,6 +113,7 @@ Development of the operating system itself — the skills, systems, and infrastr
 - 2026-03-04: Dolt is the best candidate for OS state backend — queryable, versioned, concurrent-safe, federable
 - 2026-03-04: Gas Town rig = one piece of the OS. OS sessions can start/manage rigs.
 - 2026-03-04: Obsidian as potential visual layer over project artifacts (point vault at `projects/`)
+- 2026-03-05: OS Terminal supports shell sessions — plain tmux terminals alongside Claude sessions, created/deleted without session CLI
 
 ## Open Questions
 - Which OS skills should be symlinked to `~/.claude/skills/` for global access in dispatched sessions?
