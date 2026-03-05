@@ -3,7 +3,35 @@ import { Terminal } from '@xterm/xterm';
 import { FitAddon } from '@xterm/addon-fit';
 import { WebglAddon } from '@xterm/addon-webgl';
 import { WebLinksAddon } from '@xterm/addon-web-links';
+import { ClipboardAddon } from '@xterm/addon-clipboard';
+import type { IClipboardProvider, ClipboardSelectionType } from '@xterm/addon-clipboard';
 import { getStoredToken, clearStoredToken } from '../utils/auth';
+
+/**
+ * Custom clipboard provider that buffers OSC 52 content.
+ *
+ * Problem: tmux sends OSC 52 with no selection type (empty string), but the
+ * default BrowserClipboardProvider only writes for type 'c'. Also,
+ * navigator.clipboard.writeText requires a user gesture, but OSC 52 arrives
+ * via WebSocket — not a user gesture.
+ *
+ * Solution: buffer the latest clipboard content from OSC 52. When the user
+ * presses Cmd/Ctrl+C (a real user gesture), write the buffer to clipboard.
+ */
+class BufferedClipboardProvider implements IClipboardProvider {
+  public pendingText: string = '';
+
+  readText(_selection: ClipboardSelectionType): string {
+    return this.pendingText;
+  }
+
+  writeText(_selection: ClipboardSelectionType, text: string): void {
+    // Accept ANY selection type (including empty string from tmux).
+    // Don't write to navigator.clipboard here — no user gesture.
+    // Just buffer it for the next Cmd+C.
+    this.pendingText = text;
+  }
+}
 
 export type ConnectionState = 'connected' | 'reconnecting' | 'disconnected';
 
@@ -66,6 +94,8 @@ export function useTerminal({ sessionName, fontSize = 13 }: UseTerminalOptions):
     const fitAddon = new FitAddon();
     term.loadAddon(fitAddon);
     term.loadAddon(new WebLinksAddon());
+    const clipboardProvider = new BufferedClipboardProvider();
+    term.loadAddon(new ClipboardAddon(undefined, clipboardProvider));
 
     term.open(container);
 
@@ -78,6 +108,25 @@ export function useTerminal({ sessionName, fontSize = 13 }: UseTerminalOptions):
     fitAddon.fit();
     termRef.current = term;
     fitAddonRef.current = fitAddon;
+
+    // --- Clipboard: Cmd/Ctrl+C writes buffered tmux selection to clipboard ---
+    // Flow: user selects in tmux → tmux sends OSC 52 → ClipboardAddon stores
+    // in BufferedClipboardProvider → user presses Cmd+C (user gesture) → we
+    // write the buffer to the system clipboard.
+    container.addEventListener('keydown', (e: KeyboardEvent) => {
+      const meta = e.metaKey || e.ctrlKey;
+      if (meta && e.key === 'c' && clipboardProvider.pendingText) {
+        e.preventDefault();
+        e.stopPropagation();
+        navigator.clipboard.writeText(clipboardProvider.pendingText).catch((err) => {
+          console.error('Clipboard write failed:', err);
+        });
+      }
+    });
+
+    // Suppress browser context menu on the terminal — prevents the
+    // double-menu issue (browser + tmux) on right-click
+    container.addEventListener('contextmenu', (e) => e.preventDefault());
 
     // --- Idempotent connect function ---
     function connect() {

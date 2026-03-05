@@ -13,6 +13,7 @@ interface TerminalPaneProps {
   sessionId: string;
   status: string;
   contextPct: number;
+  type?: 'shell' | 'claude';
   isMaximized: boolean;
   isFocused: boolean;
   onMaximize: () => void;
@@ -39,7 +40,7 @@ const CONNECTION_COLORS: Record<ConnectionState, string> = {
 };
 
 export const TerminalPane = forwardRef<TerminalPaneHandle, TerminalPaneProps>(
-  ({ sessionName, sessionId: _sessionId, status, contextPct, isMaximized, isFocused, onMaximize, onMinimize, onRestore, onFocus, onClose }, ref) => {
+  ({ sessionName, sessionId: _sessionId, status, contextPct, type, isMaximized, isFocused, onMaximize, onMinimize, onRestore, onFocus, onClose }, ref) => {
     const { containerRef, fit, focus, connectionState } = useTerminal({ sessionName });
 
     useImperativeHandle(ref, () => ({ fit, focus }), [fit, focus]);
@@ -64,7 +65,7 @@ export const TerminalPane = forwardRef<TerminalPaneHandle, TerminalPaneProps>(
           <div className="terminal-header-left">
             <span className={dotClass} style={{ backgroundColor: dotColor }} />
             <span className="session-name">{sessionName}</span>
-            <span className="context-pct">{contextPct}%</span>
+            {type !== 'shell' && <span className="context-pct">{contextPct}%</span>}
           </div>
           <div className="terminal-header-right" onMouseDown={(e) => e.stopPropagation()}>
             <button className="pane-btn minimize-btn" onClick={(e) => { e.stopPropagation(); onMinimize(); }} title="Minimize">_</button>

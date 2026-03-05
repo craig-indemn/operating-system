@@ -42,13 +42,14 @@ function AuthenticatedApp({ onLogout, authRequired }: { onLogout: () => void; au
       .then(r => { if (!r.ok) return r.json().then(e => console.error('Close failed:', e)); })
       .catch(err => console.error('Close error:', err));
   }, []);
-  const handleCreateSession = useCallback(() => {
-    const name = prompt('Session name:');
+  const handleCreateSession = useCallback((type: 'claude' | 'shell' = 'claude') => {
+    const label = type === 'shell' ? 'Terminal name:' : 'Session name:';
+    const name = prompt(label);
     if (!name?.trim()) return;
     authFetch('/api/sessions', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: name.trim() }),
+      body: JSON.stringify({ name: name.trim(), type }),
     }).catch(() => {/* watcher will pick up the new session */});
   }, []);
   const handleSelectSession = useCallback((id: string) => {
@@ -75,7 +76,7 @@ function AuthenticatedApp({ onLogout, authRequired }: { onLogout: () => void; au
         setFocused(id);
       }
     },
-    createSession: handleCreateSession,
+    createSession: () => handleCreateSession('claude'),
     closePane: () => {
       if (focused && !isMobile) {
         setMinimized(prev => new Set(prev).add(focused));

@@ -53,7 +53,8 @@ All variables should be in the repo root `.env` file (sourced automatically).
 - Live terminal grid with CSS auto-grid layout (600px min column width)
 - Single-pane mode on mobile/tablet (≤1024px) with bottom tab bar
 - Drag-to-swap terminal positions (persisted in localStorage)
-- Session panel with create/close controls
+- Session panel with create dropdown (Claude Session or plain Terminal)
+- Plain shell terminals alongside Claude sessions (SSH, commands, etc.)
 - Token-based auth for remote access
 - WebSocket reconnection with heartbeat keepalive
 - Responsive touch-friendly targets (44px) on mobile

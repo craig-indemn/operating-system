@@ -185,6 +185,7 @@ export function TerminalGrid({
             sessionId={activeSession.session_id}
             status={activeSession.status}
             contextPct={activeSession.context_remaining_pct}
+            type={activeSession.type}
             isMaximized={false}
             isFocused={true}
             onMaximize={() => {}}
@@ -218,6 +219,7 @@ export function TerminalGrid({
           sessionId={session.session_id}
           status={session.status}
           contextPct={session.context_remaining_pct}
+          type={session.type}
           isMaximized={true}
           isFocused={true}
           onMaximize={() => {}}
@@ -276,6 +278,7 @@ export function TerminalGrid({
             sessionId={session.session_id}
             status={session.status}
             contextPct={session.context_remaining_pct}
+            type={session.type}
             isMaximized={false}
             isFocused={focused === session.session_id}
             onMaximize={() => onMaximize(session.session_id)}
