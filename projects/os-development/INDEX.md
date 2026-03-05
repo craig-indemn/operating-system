@@ -3,7 +3,9 @@
 Development of the operating system itself — the skills, systems, and infrastructure that make Indemn's connected intelligence layer work. Covers the dispatch system, systems framework, skill improvements, and meta-level architecture of the OS.
 
 ## Status
-**Session 2026-03-03-c (in progress)**: Responsive mobile/tablet layout implemented. Single-pane mode with tab bar on ≤1024px viewports. Touch-friendly 44px targets. Grid row spanning fix (terminals fill full column height). Min column width bumped to 600px. Terminal container padding added. Craig verified on iPad via Tailscale — working well.
+**Session 2026-03-04-a (in progress)**: Gas Town / Wasteland / Dolt research complete. Decision: use Gas Town alongside OS for multi-agent code work, keep OS for intelligence and tools. Dolt as potential state backend. Documented OS Terminal server startup in SYSTEM.md, CLAUDE.md, and sessions skill.
+
+**Session 2026-03-03-c**: Responsive mobile/tablet layout implemented. Single-pane mode with tab bar on ≤1024px. Craig verified on iPad.
 
 **Session 2026-03-03-b**: V2 Remote Access fully shipped. Auth, reconnection, heartbeat, production build, Tailscale Serve.
 
@@ -14,9 +16,10 @@ Development of the operating system itself — the skills, systems, and infrastr
 **Onboarding branch** — is 40+ commits behind main. DO NOT rebase while parallel sessions active.
 
 **Next session should:**
-1. Make OS Terminal server start automatically (launchd service or similar)
-2. Consider V3 voice layer or V4 augmentation (overlays, context panels)
-3. Any remaining responsive polish from Craig's iPad testing
+1. Install Gas Town and Dolt — set up first rig against an Indemn service repo
+2. Evaluate Dolt as OS state backend (replace `sessions/*.json`)
+3. Consider Obsidian for project artifacts visualization
+4. V3 voice layer or V4 augmentation (overlays, context panels)
 
 ## External Resources
 | Resource | Type | Link |
@@ -25,6 +28,13 @@ Development of the operating system itself — the skills, systems, and infrastr
 | Agent SDK Python ref | Web | https://platform.claude.com/docs/en/agent-sdk/python |
 | Agent SDK Skills | Web | https://platform.claude.com/docs/en/agent-sdk/skills |
 | Ralph (reference impl) | GitHub | https://github.com/snarktank/ralph |
+| Gas Town | GitHub | https://github.com/steveyegge/gastown |
+| Beads | GitHub | https://github.com/steveyegge/beads |
+| Dolt | GitHub | https://github.com/dolthub/dolt |
+| Gas Town blog | Medium | https://steve-yegge.medium.com/welcome-to-gas-town-4f25ee16dd04 |
+| Wasteland blog | Medium | https://steve-yegge.medium.com/welcome-to-the-wasteland-a-thousand-gas-towns-a5eb9bc8dc1f |
+| Gas Town Emergency Manual | Medium | https://steve-yegge.medium.com/gas-town-emergency-user-manual-cf0e4556d74b |
+| Gas Town Discord | Web | https://gastownhall.ai |
 | SDK Max billing issue | GitHub | https://github.com/anthropics/claude-agent-sdk-python/issues/559 |
 | SDK rate_limit_event bug | GitHub | https://github.com/anthropics/claude-agent-sdk-python/issues/583 |
 | Claude Code headless docs | Web | https://code.claude.com/docs/en/headless |
@@ -43,6 +53,8 @@ Development of the operating system itself — the skills, systems, and infrastr
 | 2026-03-02 | [os-terminal-design](artifacts/2026-03-02-os-terminal-design.md) | Bloomberg-style terminal grid UI — React + xterm.js, WebSocket relay to tmux, voice sidecar architecture, Capacitor for iOS |
 | 2026-03-02 | [os-terminal-v1-implementation](artifacts/2026-03-02-os-terminal-v1-implementation.md) | V1 build complete — all files, integration test results, issues fixed, 10-point browser test checklist for next session |
 | 2026-03-02 | [os-terminal-v1-browser-testing](artifacts/2026-03-02-os-terminal-v1-browser-testing.md) | V1 browser testing — 14-point checklist results, bugs found/fixed, remaining known issues |
+| 2026-03-04 | [gastown-research](artifacts/2026-03-04-gastown-research.md) | Gas Town, Wasteland, Dolt research — architecture comparison, integration vision, action items |
+| 2026-03-04 | [gastown-integration-design](artifacts/2026-03-04-gastown-integration-design.md) | Design: Gas Town as dispatch engine, session types, Dolt backend, Obsidian, phased implementation |
 
 ## Decisions
 - 2026-02-19: OS has three primitives: Skills (capabilities), Projects (memory), Systems (processes)
@@ -101,6 +113,10 @@ Development of the operating system itself — the skills, systems, and infrastr
 - 2026-03-03: Min column width 600px (was 400px) — fewer columns but more readable
 - 2026-03-03: Grid row spanning — terminals in columns without last-row items stretch to fill full height
 - 2026-03-03: Session panel overlay breakpoint widened from 768px to 1024px to match single-pane breakpoint
+- 2026-03-04: Use Gas Town alongside OS — GT for multi-agent code execution, OS for intelligence/tools/workflows
+- 2026-03-04: Dolt is the best candidate for OS state backend — queryable, versioned, concurrent-safe, federable
+- 2026-03-04: Gas Town rig = one piece of the OS. OS sessions can start/manage rigs.
+- 2026-03-04: Obsidian as potential visual layer over project artifacts (point vault at `projects/`)
 
 ## Open Questions
 - Which OS skills should be symlinked to `~/.claude/skills/` for global access in dispatched sessions?
