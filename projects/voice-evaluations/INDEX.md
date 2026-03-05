@@ -78,7 +78,7 @@ Incorporating voice agents into the Indemn evaluation framework. Currently, only
 5. **Live agent dispatch tested** — Dispatched to `dev-indemn` on EC2, agent picked up in <3s, connected to room, blocked at `wait_for_participant()` (expected — eval mode code change needed).
 6. **Design document written** — Complete Phase 2 design covering voice-livekit eval mode, VoiceAgentClient, voice simulation engine, trigger routing, dashboard UI changes, and 5 implementation milestones.
 
-**Session 2026-03-05-a** (IN PROGRESS): Phase 2 implementation + code review.
+**Session 2026-03-05-a** (COMPLETE): Phase 2 implementation, testing, and verification.
 1. **Implementation complete** — All 3 streams implemented in parallel:
    - **voice-livekit** `feat/eval-mode` (1 commit): Eval mode branch in `entrypoint()` — reads `ctx.job.metadata` for `bot_id`, skips SIP extraction, recording, transcription. Production path unchanged.
    - **evaluations** `feat/voice-simulation` (2 commits): VoiceAgentClient (LiveKit room lifecycle, TTS→audio→STT), voice simulation engine (conversation loop, Langfuse enrichment), VOICE_SIMULATION enums, config, dependencies, routing.
@@ -106,11 +106,14 @@ Incorporating voice agents into the Indemn evaluation framework. Currently, only
    - Results: 2/3 criteria passed, `item_type: "voice_simulation"`, full transcript in MongoDB
    - **Bugs found & fixed**: (a) `RuntimeError: Cannot run the event loop while another loop is running` — LangSmith's `client.evaluate()` runs inside FastAPI's event loop, so `asyncio.new_event_loop()` fails. Fixed with `ThreadPoolExecutor`. (b) Transcription truncation — agent's long responses arrived in multiple chunks; `TRANSCRIPTION_SETTLE_SEC` increased from 3.0 to 5.0. (c) Previous runs went to wrong MongoDB — evaluations service `.env` had different URI. Fixed by setting `MONGODB_URI` from AWS at startup.
    - **Evaluations branch**: 6 commits on `feat/voice-simulation`. LOCAL ONLY, not pushed yet.
-   - **Remaining**: Layer 7 (dashboard visual verification with running platform stack).
+   - **Layer 7 COMPLETE** — Dashboard visual verification PASSED. User confirmed all UI elements render correctly: purple "Voice Simulation" badge on result cards, filter chip, Voice Sim toggle in test item form, stat card in summary dashboard, conversation transcript with User:/Agent: turns.
+   - **Evaluations branch pushed**: `git push indemn feat/voice-simulation` — 6 commits now on remote.
+   - **All 7 layers PASS** — Phase 2 ready for PR.
    - **Known issue**: Transcription settle time (5s) may still truncate very long agent responses. The 3rd criterion failed because agent response was cut off mid-sentence. Consider implementing a smarter "final transcription" detection (e.g., checking if transcription text stopped growing) instead of fixed timeout.
-   - **Test set in dev tiledesk**: `test_set_id: 75213fa3-6d63-4c82-b34f-51516ef65583` (Voice Sim Smoke Test, 1 item, 3 criteria). Bot: `69a52911e577e75c7e4ecdb6` (covertree-3486).
+   - **Test set in dev tiledesk**: `test_set_id: 75213fa3-6d63-4c82-b34f-51516ef65583` (Voice Sim Smoke Test, 1 item, 3 criteria). Bot: `69a52911e577e75c7e4ecdb6` (covertree-3486, org: Dev-Dhruv, project: DEV KAI).
    - **Run result in dev tiledesk**: `run_id: 6bed835e-3b8c-4632-b528-361184d00eb5`, `evaluation_results` collection has full document with transcript, criteria_scores, trajectory.
-   - **Starting evaluations service with voice creds**: Must set `MONGODB_URI`, `LIVEKIT_URL`, `LIVEKIT_API_KEY`, `LIVEKIT_API_SECRET`, `OPENAI_API_KEY` from AWS Secrets Manager before starting. All from `dev/shared/*` secrets. The repo `.env` may have a different MongoDB URI.
+   - **Starting services with dev creds**: Use `local-dev-aws.sh` wrapper which pulls from AWS Secrets Manager (`dev/shared/*`). Updated wrapper to include Redis, LiveKit, and other structured secrets.
+   - **local-dev-aws.sh fixed**: Now writes `.env.dev` from exported env vars so `local-dev.sh` can source it. Also pulls `CACHE_REDIS_URL` from `dev/shared/redis-credentials` and LiveKit creds from `dev/shared/livekit-credentials`.
 
 ## Phase 1 Status: Historical Transcript Evaluation (DEV COMPLETE)
 
@@ -131,25 +134,25 @@ All code written, reviewed, tested in dev. 4 PRs open for prod review. Linear: C
 4. Create voice agent evaluation criteria (test set for one agent)
 5. Verify end-to-end: Langfuse sync → ingestion → Observatory voice badge → Evaluate → results in Dashboard
 
-## Phase 2: Voice Simulation Evaluation (IMPLEMENTATION COMPLETE — TESTING IN PROGRESS)
+## Phase 2: Voice Simulation Evaluation (ALL LAYERS PASS — READY FOR PR)
 
 Enable simulation-based evaluation for voice agents — the same test scenario approach used for web agents today, where the harness invokes the agent directly with test scenarios. The evaluation harness creates a LiveKit room, dispatches the real voice agent with metadata (bot_id), joins as a programmatic participant, and conducts a full audio conversation using TTS/STT. This tests the exact production code path.
 
-### Branches (not yet pushed/PR'd)
-| Repo | Branch | Base | Commits | What |
-|------|--------|------|---------|------|
-| voice-livekit | `feat/eval-mode` | `main` | 1 | Eval mode branch in entrypoint |
-| evaluations | `feat/voice-simulation` | `main` | 2 | VoiceAgentClient + engine + models + routing |
-| indemn-platform-v2 | `feat/voice-simulation-type` | `feat/transcript-type-ui` | 3 | UI: form toggle, badge, filter, stats |
+### Branches (pushed, ready for PR)
+| Repo | Branch | Base | Commits | Status |
+|------|--------|------|---------|--------|
+| voice-livekit | `feat/eval-mode` | `main` | 2 | PR #83 open, deployed to EC2 dev |
+| evaluations | `feat/voice-simulation` | `main` | 6 | Pushed to `indemn` |
+| indemn-platform-v2 | `feat/voice-simulation-type` | `feat/transcript-type-ui` | 3 | Pushed to `indemn` |
 
-### Testing Status
-- [x] Static verification (compile, import, type check, 79 tests)
-- [x] Unit tests (21 new tests, 100 total passing)
-- [ ] UI visual verification (deferred to Layer 7 — needs full platform stack)
-- [x] Deploy eval mode to EC2 dev container — `dev-indemn` registered
-- [ ] VoiceAgentClient smoke test (audio round-trip) ← NEXT
-- [ ] End-to-end evaluation (trigger → conversation → results)
-- [ ] Dashboard + visual verification (results with purple badges)
+### Testing Status — ALL PASS
+- [x] Layer 1: Static verification (compile, import, type check, 79 tests)
+- [x] Layer 2: Unit tests (21 new tests, 101 total passing)
+- [x] Layer 3: UI visual verification — deferred to Layer 7
+- [x] Layer 4: Deploy eval mode to EC2 dev container — `dev-indemn` registered
+- [x] Layer 5: VoiceAgentClient smoke test — multi-turn conversation, transcription stream
+- [x] Layer 6: End-to-end evaluation — 69s voice eval, 2/3 criteria pass, results in MongoDB
+- [x] Layer 7: Dashboard visual verification — purple badge, filter chip, stat card, form toggle, transcript
 
 See testing plan: [phase2-testing-plan](artifacts/2026-03-05-phase2-testing-plan.md)
 
