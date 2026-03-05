@@ -91,6 +91,7 @@ Incorporating voice agents into the Indemn evaluation framework. Currently, only
    - Missing TestSetsList type breakdown added
 3. **Static verification** — Python AST compile PASS, module imports PASS, 79 existing tests PASS, TypeScript compile PASS.
 4. **Testing plan created** — 7-layer plan from static verification through end-to-end. Critical path: deploy eval mode to EC2 → smoke test VoiceAgentClient → full evaluation → dashboard verification.
+5. **Layer 4 COMPLETE** — `feat/eval-mode` deployed to EC2 dev container (`voice-livekit-dev`, agent_name=`dev-indemn`). Agent registered successfully. Prod containers untouched ("Up 2 weeks"). Had to regenerate `uv.lock` (uuid-utils malformed source field). Rollback: `cd /opt/dev/voice-livekit && sudo git checkout main && sudo docker compose up -d --build voice-livekit-dev call-end-consumer-dev`.
 
 ## Phase 1 Status: Historical Transcript Evaluation (DEV COMPLETE)
 
@@ -124,12 +125,12 @@ Enable simulation-based evaluation for voice agents — the same test scenario a
 
 ### Testing Status
 - [x] Static verification (compile, import, type check, 79 tests)
-- [ ] Unit tests (models, mocked client, mocked engine)
-- [ ] UI visual verification (form, badges, filters)
-- [ ] Deploy eval mode to EC2 dev container (GATE)
-- [ ] VoiceAgentClient smoke test (audio round-trip)
+- [x] Unit tests (21 new tests, 100 total passing)
+- [ ] UI visual verification (deferred to Layer 7 — needs full platform stack)
+- [x] Deploy eval mode to EC2 dev container — `dev-indemn` registered
+- [ ] VoiceAgentClient smoke test (audio round-trip) ← NEXT
 - [ ] End-to-end evaluation (trigger → conversation → results)
-- [ ] Dashboard verification (results with purple badges)
+- [ ] Dashboard + visual verification (results with purple badges)
 
 See testing plan: [phase2-testing-plan](artifacts/2026-03-05-phase2-testing-plan.md)
 
