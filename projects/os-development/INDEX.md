@@ -3,7 +3,7 @@
 Development of the operating system itself — the skills, systems, and infrastructure that make Indemn's connected intelligence layer work. Covers the dispatch system, systems framework, skill improvements, and meta-level architecture of the OS.
 
 ## Status
-**Session 2026-03-04-a (in progress)**: Gas Town / Wasteland / Dolt research complete. Decision: use Gas Town alongside OS for multi-agent code work, keep OS for intelligence and tools. Dolt as potential state backend. Documented OS Terminal server startup in SYSTEM.md, CLAUDE.md, and sessions skill.
+**Session 2026-03-04-a (complete)**: Gas Town / Wasteland / Dolt research and integration design. Decided: Gas Town replaces custom dispatch, Mayor/Crew are OS session types, Dolt adoption after learning period, dedicated `/gastown` skill, two Max subscriptions for concurrency. Also documented OS Terminal server startup in SYSTEM.md, CLAUDE.md, and sessions skill.
 
 **Session 2026-03-03-c**: Responsive mobile/tablet layout implemented. Single-pane mode with tab bar on ≤1024px. Craig verified on iPad.
 
