@@ -1,13 +1,13 @@
 ---
 name: eval-analysis
-description: Analyze evaluation results to classify failures as agent issues vs evaluation issues. Use when the user asks to analyze eval results, understand why tests failed, triage failures, or improve evaluation scores.
+description: Analyze evaluation results to classify failures as agent issues vs evaluation issues. Also export conversation traces for sharing. Use when the user asks to analyze eval results, understand why tests failed, triage failures, improve evaluation scores, pull conversation traces, or share eval results.
 argument-hint: [run-id or agent-id]
 allowed-tools: Bash(curl *)
 ---
 
 # Eval Analysis
 
-Analyze evaluation run results, classify each failure, and recommend fixes.
+Analyze evaluation run results, classify each failure, and recommend fixes. Also supports exporting conversation traces for sharing.
 
 **Input:** `$ARGUMENTS` — a run_id (UUID) or agent_id (MongoDB ObjectId)
 
@@ -150,3 +150,56 @@ curl -s -X PUT "http://localhost:8002/api/v1/rubrics/{rubric_id}" \
 Both PUT endpoints create new versions — the previous version is preserved and accessible via the `/versions` endpoints.
 
 After applying fixes, suggest re-running the evaluation to verify improvements.
+
+## Export: Conversation Traces
+
+When the user wants to **share results** or **export conversation traces** (rather than triage failures), use this workflow instead of Steps 3-7.
+
+### Pull Traces
+
+Use a subagent (Agent tool) to avoid flooding the main context window. The subagent should:
+
+1. Fetch the run summary: `curl -s http://localhost:8002/api/v1/runs/{run_id}`
+2. Fetch per-item results: `curl -s http://localhost:8002/api/v1/runs/{run_id}/results`
+3. For each result, extract:
+   - Test case name, type (single_turn/scenario), pass/fail, duration
+   - Full conversation turns (role + message from the `output` field)
+   - Criteria results with pass/fail and reasoning
+   - Rubric rule results with severity, score, and reasoning
+4. Format as clean, readable markdown
+5. Write to the target file (e.g., a project artifact)
+
+### Markdown Structure
+
+```markdown
+# Evaluation Results — {agent_name}
+
+Run: {run_id} | Date: {date} | Agent: {agent_id}
+Model: {provider}/{model} | Results: {passed}/{total} passed
+
+---
+
+## Test Case: {name}
+**Type:** {type} | **Result:** {PASS/FAIL} | **Duration:** {duration}
+
+### Conversation
+
+> **User:** {message}
+
+> **Agent:** {message}
+
+### Scoring
+| Criterion | Result | Reasoning |
+|-----------|--------|-----------|
+| ... | PASS/FAIL | ... |
+```
+
+### Convert to PDF
+
+If the user wants a PDF, use the `markdown-pdf` skill:
+
+```bash
+npx md-to-pdf <output.md>
+```
+
+This produces a clean PDF next to the markdown file — no custom rendering needed.
