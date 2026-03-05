@@ -5,7 +5,7 @@ Infrastructure, secrets management, deployment automation, and container orchest
 ## Status
 Fourth session (2026-03-04): Observatory **deployed to dev EC2 with AWS Secrets Manager**. Host-side `aws-env-loader.sh` writes `.env.aws` during GitHub Actions deploy, docker-compose reads it via `env_file`. Container has no AWS dependency. PRs #20–#23 merged to `demo-gic`. AWS CLI v2 installed on dev EC2. `build.yml` updated with same deploy pattern. PR #24 (`demo-gic` → `main`) open to converge branches. DEVOPS-42 commented. Throwaway branches cleaned up.
 
-**Next:** Merge PR #24 to converge `demo-gic` → `main`, then retire `demo-gic`. Migrate additional services. Write DEVOPS-94 proposal for team 1Password approach.
+**Next session:** Create Linear sub-issues under DEVOPS-42 for each service that needs SM migration. Then migrate services one by one using the AWS skill's Service Migration Playbook. PR #24 (`demo-gic` → `main`) still open to merge.
 
 Previous sessions: Third (2026-03-04) secrets proxy complete — wrapper scripts, guard hook, 1Password SA, merged os-devops to main. Second (2026-03-04) built wrapper scripts, guard hook, 1Password service account. First (2026-03-03) AWS secrets management POC — 18 secrets + 37 params, IAM roles + OIDC.
 
