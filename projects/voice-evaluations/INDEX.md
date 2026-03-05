@@ -70,13 +70,27 @@ Incorporating voice agents into the Indemn evaluation framework. Currently, only
 6. **Linear updated** — Parent issue COP-359 with 7 sub-issues in "Automated Testing and Evaluation" project. 5 in Acceptance (dev complete), 2 in Backlog (prod deployment + test set creation).
 7. **Transcript evaluation verified** — Craig ran evaluation from Observatory on Ronnie2 voice conversation. 6/6 criteria, 2/2 rubric rules. `item_type: transcript`.
 
-**Session 2026-03-04-b** (IN PROGRESS): Phase 2 research — LiveKit API validation.
+**Session 2026-03-04-b** (COMPLETE): Phase 2 research — LiveKit API validation.
 1. **LiveKit API tested** — Room creation, agent dispatch with metadata, room participation with audio tracks. All core capabilities validated against dev LiveKit Cloud (`wss://test-ympl759t.livekit.cloud`).
 2. **LiveKit OS skill created** — `.claude/skills/livekit/SKILL.md` with status check, credential loading (AWS Secrets Manager), and usage patterns for room management, dispatch, and participation.
 3. **Architecture confirmed** — Evaluation harness creates room → dispatches voice agent with bot_id in metadata → joins as participant → audio conversation via TTS/STT → evaluates transcript. Tests exact production code path.
 4. **voice-livekit entrypoint analyzed** — `ctx.job.metadata` is available but not yet read. ~5 line change needed to check metadata for bot_id before phone lookup fallback.
 5. **Live agent dispatch tested** — Dispatched to `dev-indemn` on EC2, agent picked up in <3s, connected to room, blocked at `wait_for_participant()` (expected — eval mode code change needed).
 6. **Design document written** — Complete Phase 2 design covering voice-livekit eval mode, VoiceAgentClient, voice simulation engine, trigger routing, dashboard UI changes, and 5 implementation milestones.
+
+**Session 2026-03-05-a** (IN PROGRESS): Phase 2 implementation + code review.
+1. **Implementation complete** — All 3 streams implemented in parallel:
+   - **voice-livekit** `feat/eval-mode` (1 commit): Eval mode branch in `entrypoint()` — reads `ctx.job.metadata` for `bot_id`, skips SIP extraction, recording, transcription. Production path unchanged.
+   - **evaluations** `feat/voice-simulation` (2 commits): VoiceAgentClient (LiveKit room lifecycle, TTS→audio→STT), voice simulation engine (conversation loop, Langfuse enrichment), VOICE_SIMULATION enums, config, dependencies, routing.
+   - **indemn-platform-v2** `feat/voice-simulation-type` (3 commits): Voice Sim toggle in form, purple badge, filter chip, stat card, TestSetsList breakdown.
+2. **Code review** — 3 parallel review agents (one per stream) + full implementation review against design doc. Found and fixed:
+   - DeepgramClient constructor (positional → keyword `api_key=`)
+   - deepgram-sdk version pin (`>=3.7.0,<4.0.0` — v6 has breaking API)
+   - Dead `fixed_responses` argument removed
+   - Filter chip toggle inconsistency fixed
+   - Missing TestSetsList type breakdown added
+3. **Static verification** — Python AST compile PASS, module imports PASS, 79 existing tests PASS, TypeScript compile PASS.
+4. **Testing plan created** — 7-layer plan from static verification through end-to-end. Critical path: deploy eval mode to EC2 → smoke test VoiceAgentClient → full evaluation → dashboard verification.
 
 ## Phase 1 Status: Historical Transcript Evaluation (DEV COMPLETE)
 
@@ -97,28 +111,27 @@ All code written, reviewed, tested in dev. 4 PRs open for prod review. Linear: C
 4. Create voice agent evaluation criteria (test set for one agent)
 5. Verify end-to-end: Langfuse sync → ingestion → Observatory voice badge → Evaluate → results in Dashboard
 
-## Phase 2: Voice Simulation Evaluation (RESEARCH IN PROGRESS)
+## Phase 2: Voice Simulation Evaluation (IMPLEMENTATION COMPLETE — TESTING IN PROGRESS)
 
 Enable simulation-based evaluation for voice agents — the same test scenario approach used for web agents today, where the harness invokes the agent directly with test scenarios. The evaluation harness creates a LiveKit room, dispatches the real voice agent with metadata (bot_id), joins as a programmatic participant, and conducts a full audio conversation using TTS/STT. This tests the exact production code path.
 
-### Validated (2026-03-04-b)
-- LiveKit API: room creation, deletion, listing — all work
-- LiveKit API: agent dispatch with JSON metadata — works, metadata preserved
-- LiveKit API: room participation with audio track publishing — works
-- Job protobuf has `metadata` field accessible as `ctx.job.metadata` in agent entrypoint
-- voice-livekit agent_name: `Indemn Voice Assistant` (from `config/settings.py`)
-- LiveKit OS skill created at `.claude/skills/livekit/SKILL.md`
+### Branches (not yet pushed/PR'd)
+| Repo | Branch | Base | Commits | What |
+|------|--------|------|---------|------|
+| voice-livekit | `feat/eval-mode` | `main` | 1 | Eval mode branch in entrypoint |
+| evaluations | `feat/voice-simulation` | `main` | 2 | VoiceAgentClient + engine + models + routing |
+| indemn-platform-v2 | `feat/voice-simulation-type` | `feat/transcript-type-ui` | 3 | UI: form toggle, badge, filter, stats |
 
-### Not Yet Tested (need live voice agent)
-- Agent receiving dispatch metadata and reading bot_id from it
-- Full audio round-trip: simulator TTS → agent STT → LLM → agent TTS → simulator STT
-- Transcript collection from a simulated conversation
-- Voice-specific metrics (interruptions, latency, turn timing)
+### Testing Status
+- [x] Static verification (compile, import, type check, 79 tests)
+- [ ] Unit tests (models, mocked client, mocked engine)
+- [ ] UI visual verification (form, badges, filters)
+- [ ] Deploy eval mode to EC2 dev container (GATE)
+- [ ] VoiceAgentClient smoke test (audio round-trip)
+- [ ] End-to-end evaluation (trigger → conversation → results)
+- [ ] Dashboard verification (results with purple badges)
 
-### Changes Required
-- **voice-livekit**: ~5 lines — read `ctx.job.metadata` for bot_id before phone lookup
-- **evaluations**: New VoiceAgentClient + voice simulation engine (new module)
-- **evaluations**: LiveKit + TTS + STT package dependencies
+See testing plan: [phase2-testing-plan](artifacts/2026-03-05-phase2-testing-plan.md)
 
 ## External Resources
 | Resource | Type | Link |
@@ -148,6 +161,7 @@ Enable simulation-based evaluation for voice agents — the same test scenario a
 | 2026-03-04 | [phase1-complete-handoff](artifacts/2026-03-04-phase1-complete-handoff.md) | Phase 1 completion: what was built, PRs, Linear issues, prod checklist, Phase 2 objectives |
 | 2026-03-04 | [phase2-livekit-api-validation](artifacts/2026-03-04-phase2-livekit-api-validation.md) | Phase 2 research: LiveKit API validation — room creation, agent dispatch, room participation all tested |
 | 2026-03-04 | [phase2-voice-simulation-design](artifacts/2026-03-04-phase2-voice-simulation-design.md) | Phase 2 design: voice simulation evaluation — architecture, changes per repo, implementation milestones |
+| 2026-03-05 | [phase2-testing-plan](artifacts/2026-03-05-phase2-testing-plan.md) | Phase 2 testing plan: 7-layer verification from static checks through end-to-end dashboard verification |
 
 ## Known Limitations
 - **Pre-Phase-1B traces lack metadata**: ALL current traces (dev AND prod confirmed) have NO `call_sid` or `id_bot` in Langfuse metadata. Only phone+time fallback works. The voice-livekit commit (`9df3389`) adds this metadata going forward, but only helps for NEW calls after deployment.
@@ -160,10 +174,11 @@ Enable simulation-based evaluation for voice agents — the same test scenario a
 - **Dev voice requests stopped after Feb 27**: conversation-service's RabbitMQ consumer thread likely died on dev. Prod is unaffected (voice requests being written daily). Dev infrastructure issue, not a code bug.
 
 ## Not Built
-- **Phase 2: Voice simulation evaluation** — Invoke voice agents with test scenarios (same as web simulation). Requires design iteration to handle speech-to-text complexity. See design document Phase 5.
 - **Voice-specific metrics** — Call duration distribution, end reason breakdown, response latency (LLM TTFT + TTS TTFB), STT confidence scores, interruption rate. See design document Phase 2C.
 - **Rubric evaluators on voice**: Only criteria evaluators tested on voice. Rubric evaluators (per-rule LLM judges) were tested on web but not voice.
 - **Voice agent test set**: No test sets exist for any voice agent yet. COP-365 tracks this.
+- **Per-turn tool call matching**: Voice simulation appends all Langfuse tool calls at end of transcript rather than inline per turn (Langfuse traces lack turn indices). v1 tradeoff.
+- **Concurrent voice simulations**: Sync HTTP calls (Deepgram STT, Langfuse fetch) block the event loop. Safe at concurrency=1, needs async conversion for higher concurrency.
 
 ## Decisions
 - 2026-02-27: Voice trace data access pattern: OTLP → Langfuse → Langfuse API. Mirrors the web pattern (LangChain callbacks → LangSmith → LangSmith API). Langfuse is the canonical data source for voice traces, not LiveKit Cloud or direct data hooks.
@@ -186,6 +201,11 @@ Enable simulation-based evaluation for voice agents — the same test scenario a
 - 2026-03-04: Dev voice requests stopped after Feb 27 — conversation-service RabbitMQ consumer thread likely dead. Prod unaffected. Dev infrastructure issue, not blocking prod deployment.
 - 2026-03-04: Transcript evaluation is distinct from replay. Replay re-invokes the current agent with historical user messages. Transcript evaluation scores the actual historical conversation as-is without invoking the agent.
 - 2026-03-04: Phase 2 objective: simulation-based evaluation for voice agents — same test scenario approach as web, with added speech-to-text complexity. Design iteration needed before implementation.
+- 2026-03-05: Phase 2 implementation uses 3 parallel streams (voice-livekit, evaluations, platform-v2). All independent — no cross-repo dependencies during development.
+- 2026-03-05: VoiceAgentClient uses RMS energy-based silence detection (threshold 200, 1.5s gap). Simpler than Silero VAD, sufficient for controlled eval environment.
+- 2026-03-05: deepgram-sdk pinned to `>=3.7.0,<4.0.0` — v4+ has breaking API changes (`listen.rest.v("1")` removed).
+- 2026-03-05: Voice simulation tool calls fetched from Langfuse post-conversation and appended at end of transcript (not inline per turn). Acceptable v1 tradeoff — Langfuse traces lack turn indices.
+- 2026-03-05: `create_llm_simulated_user` called without `fixed_responses` — initial message handled manually before the conversation loop to match voice flow (agent greets first, then user responds).
 
 ## Open Questions
 - ~~Where do turn-by-turn voice transcripts live?~~ ANSWERED: LiveKit chat_history.json has full turn-by-turn with metrics. Also exported to Langfuse via OTLP. MongoDB `bot_external_event_logs` has summaries only.
