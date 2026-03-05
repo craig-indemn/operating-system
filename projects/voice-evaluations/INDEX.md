@@ -92,6 +92,14 @@ Incorporating voice agents into the Indemn evaluation framework. Currently, only
 3. **Static verification** — Python AST compile PASS, module imports PASS, 79 existing tests PASS, TypeScript compile PASS.
 4. **Testing plan created** — 7-layer plan from static verification through end-to-end. Critical path: deploy eval mode to EC2 → smoke test VoiceAgentClient → full evaluation → dashboard verification.
 5. **Layer 4 COMPLETE** — `feat/eval-mode` deployed to EC2 dev container (`voice-livekit-dev`, agent_name=`dev-indemn`). Agent registered successfully. Prod containers untouched ("Up 2 weeks"). Had to regenerate `uv.lock` (uuid-utils malformed source field). Rollback: `cd /opt/dev/voice-livekit && sudo git checkout main && sudo docker compose up -d --build voice-livekit-dev call-end-consumer-dev`.
+6. **Layer 5 COMPLETE** — VoiceAgentClient smoke test PASSED. Full multi-turn voice conversation verified:
+   - Room creation + agent dispatch with eval metadata: PASS
+   - Agent greeting received: "Hello! How can I assist you today?"
+   - TTS message sent → agent responded with full paragraph: PASS
+   - Follow-up turn: PASS
+   - **Major refactor**: Replaced Deepgram audio→STT with LiveKit's `lk.transcription` text stream. The agent already publishes transcriptions via `TextOutputOptions(sync_transcription=True)`. This is more reliable (no silence detection issues), simpler (~170 vs ~240 lines), and removes Deepgram as a dependency.
+   - **Bot compatibility note**: Bot `69a9965f39619c27c64fddd6` (V1 service intake agent) has invalid tool names → OpenAI rejects with 400. Used `69a52911e577e75c7e4ecdb6` (covertree-3486) instead — works perfectly. This is a pre-existing bot config issue, not eval mode.
+   - **Evaluations branch**: 4 commits on `feat/voice-simulation` (feat + fix + tests + transcription refactor). LOCAL ONLY, not pushed yet.
 
 ## Phase 1 Status: Historical Transcript Evaluation (DEV COMPLETE)
 
