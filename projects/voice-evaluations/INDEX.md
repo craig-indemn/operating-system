@@ -100,6 +100,13 @@ Incorporating voice agents into the Indemn evaluation framework. Currently, only
    - **Major refactor**: Replaced Deepgram audio→STT with LiveKit's `lk.transcription` text stream. The agent already publishes transcriptions via `TextOutputOptions(sync_transcription=True)`. This is more reliable (no silence detection issues), simpler (~170 vs ~240 lines), and removes Deepgram as a dependency.
    - **Bot compatibility note**: Bot `69a9965f39619c27c64fddd6` (V1 service intake agent) has invalid tool names → OpenAI rejects with 400. Used `69a52911e577e75c7e4ecdb6` (covertree-3486) instead — works perfectly. This is a pre-existing bot config issue, not eval mode.
    - **Evaluations branch**: 4 commits on `feat/voice-simulation` (feat + fix + tests + transcription refactor). LOCAL ONLY, not pushed yet.
+7. **Layer 6 COMPLETE** — End-to-end evaluation through evaluations service API PASSED.
+   - Created voice_simulation test set via API (3 criteria)
+   - Triggered evaluation → voice conversation ran in 69 seconds
+   - Results: 2/3 criteria passed, `item_type: "voice_simulation"`, full transcript in MongoDB
+   - **Bugs found & fixed**: (a) `RuntimeError: Cannot run the event loop while another loop is running` — LangSmith's `client.evaluate()` runs inside FastAPI's event loop, so `asyncio.new_event_loop()` fails. Fixed with `ThreadPoolExecutor`. (b) Transcription truncation — agent's long responses arrived in multiple chunks; `TRANSCRIPTION_SETTLE_SEC` increased from 3.0 to 5.0. (c) Previous runs went to wrong MongoDB — evaluations service `.env` had different URI. Fixed by setting `MONGODB_URI` from AWS at startup.
+   - **Evaluations branch**: 6 commits on `feat/voice-simulation`. LOCAL ONLY, not pushed yet.
+   - **Remaining**: Layer 7 (dashboard visual verification with running platform stack).
 
 ## Phase 1 Status: Historical Transcript Evaluation (DEV COMPLETE)
 
