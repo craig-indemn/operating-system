@@ -3,11 +3,11 @@
 Infrastructure, secrets management, deployment automation, and container orchestration for Indemn's microservices platform.
 
 ## Status
-Fourth session (2026-03-04): Observatory **deployed to dev EC2 with AWS Secrets Manager**. Host-side `aws-env-loader.sh` writes `.env.aws` during GitHub Actions deploy, docker-compose reads it via `env_file`. Container has no AWS dependency. PRs #20–#23 merged to `demo-gic`. AWS CLI v2 installed on dev EC2. `build.yml` updated with same deploy pattern. PR #24 (`demo-gic` → `main`) open to converge branches. DEVOPS-42 commented. Throwaway branches cleaned up.
+Fifth session (2026-03-06): **All 12 services migrated to AWS Secrets Manager** — PRs created for every service. 7 PRs pushed and open on GitHub. 5 repos blocked by missing write access (`craig-indemn` needs push permission on: payment-service, copilot-sync-service, operations_api, voice-service, email-channel-service). All have commits ready locally on `feat/aws-secrets-manager` branches. Created 17 new SM secrets (with PLACEHOLDER values — need EC2 sourcing) and ~50 new PS parameters. Template loader script at `scripts/aws-env-loader-template.sh`. Phase 0 investigation confirmed email-channel-service uses env vars (not file-based credentials).
 
-**Next session:** Create Linear sub-issues under DEVOPS-42 for each service that needs SM migration. Then migrate services one by one using the AWS skill's Service Migration Playbook. PR #24 (`demo-gic` → `main`) still open to merge.
+**Next session:** 1) Get push access for 5 blocked repos and push remaining PRs. 2) Source real secret values from EC2 `.env` files and update SM PLACEHOLDERs. 3) Merge PRs one by one, verify each deploy. 4) Update service URLs in PS from `localhost` to actual EC2 addresses.
 
-Previous sessions: Third (2026-03-04) secrets proxy complete — wrapper scripts, guard hook, 1Password SA, merged os-devops to main. Second (2026-03-04) built wrapper scripts, guard hook, 1Password service account. First (2026-03-03) AWS secrets management POC — 18 secrets + 37 params, IAM roles + OIDC.
+Previous sessions: Fourth (2026-03-04) observatory deployed to dev EC2 with SM. Third (2026-03-04) secrets proxy complete. Second (2026-03-04) wrapper scripts, guard hook, 1Password SA. First (2026-03-03) AWS SM POC — 18 secrets + 37 params, IAM roles + OIDC.
 
 ## External Resources
 | Resource | Type | Link |
@@ -56,23 +56,50 @@ Previous sessions: Third (2026-03-04) secrets proxy complete — wrapper scripts
 - **IAM Role:** `indemn-dev-services` — attached to dev EC2, reads `dev/*` only, explicit prod deny
 - **IAM Role:** `github-actions-deploy` — OIDC federation for indemn-ai GitHub org, dev only
 - **OIDC Provider:** `token.actions.githubusercontent.com` — scoped to indemn-ai repos
-- **Secrets Manager:** 18 secrets under `dev/` (16 shared, 2 observability-specific)
-- **Parameter Store:** 37 parameters under `/dev/` (shared + observability-specific)
+- **Secrets Manager:** 35 secrets under `dev/` (24 shared, 11 service-specific). 17 new secrets have PLACEHOLDER values pending EC2 sourcing.
+- **Parameter Store:** ~90 parameters under `/dev/` (shared + per-service config)
 
 ### Dev EC2 (i-0fde0af9d216e9182)
 - **AWS CLI v2** installed at `/usr/local/bin/aws`
 - **Observatory** running via docker-compose with `env_file: .env.aws` (secrets from SM/PS)
 - **GitHub Actions self-hosted runner** at `/home/ubuntu/actions-runner-observatory/`
 
+## PRs — SM Migration (DEVOPS-42)
+| # | Service | PR | Status |
+|---|---------|-----|--------|
+| 1 | evaluations | [#8](https://github.com/indemn-ai/evaluations/pull/8) | Open |
+| 2 | bot-service | [#247](https://github.com/indemn-ai/bot-service/pull/247) | Open |
+| 3 | kb-service | [#138](https://github.com/indemn-ai/kb-service/pull/138) | Open |
+| 4 | conversation-service | [#131](https://github.com/indemn-ai/conversation-service/pull/131) | Open |
+| 5 | middleware-socket-service | [#338](https://github.com/indemn-ai/middleware-socket-service/pull/338) | Open |
+| 6 | copilot-server | [#796](https://github.com/indemn-ai/copilot-server/pull/796) | Open |
+| 7 | copilot-dashboard | [#987](https://github.com/indemn-ai/copilot-dashboard/pull/987) | Open |
+| 8 | payment-service | local commit | Blocked — no push access |
+| 9 | copilot-sync-service | local commit | Blocked — no push access |
+| 10 | operations_api | local commit | Blocked — no push access |
+| 11 | voice-service | local commit | Blocked — no push access |
+| 12 | email-channel-service | local commit | Blocked — no push access |
+
 ## Next Steps
 1. ~~Test deployment: push `aws-secrets-management` branch, verify container pulls secrets on dev EC2~~ ✓ Done
-2. Merge `demo-gic` → `main` on indemn-observability to converge branches
-3. Migrate additional services using the AWS skill's Service Migration Playbook
-4. Write DEVOPS-94 proposal for team 1Password approach
-5. Set up prod secrets (separate session, with care)
-6. Clean up old service account tokens in 1Password (`indemn-cli` and `local-cli` SA auth tokens can be removed)
+2. ~~Migrate all services to SM~~ ✓ PRs created (7 pushed, 5 blocked on access)
+3. Get push access for 5 blocked repos (payment-service, copilot-sync-service, operations_api, voice-service, email-channel-service)
+4. Source real secret values from EC2 and update SM PLACEHOLDERs
+5. Update service URLs in PS from `localhost` to actual EC2 addresses
+6. Merge PRs one by one, verify each deploy (see plan Phase 5 merge order)
+7. Merge `demo-gic` → `main` on indemn-observability
+8. Write DEVOPS-94 proposal for team 1Password approach
+9. Set up prod secrets (separate session, with care)
+
+## Decisions
+- 2026-03-06: email-channel-service uses env vars at runtime (not file-based credentials). `GOOGLE_AUTH_CREDEINTIALS` (typo preserved) is a JSON blob env var, not a file.
+- 2026-03-06: All 12 services get identical shared secrets block, with per-service PARAM_MAP customization
+- 2026-03-06: Coupled pairs (tiledesk, middleware-service) have identical loader scripts in both repos — idempotent
+- 2026-03-06: SM secrets for new service-specific credentials created with PLACEHOLDER values — must be populated from EC2 before merging PRs
 
 ## Open Questions
 - Service URLs in Parameter Store are currently `localhost` — need to update to actual EC2 service addresses for deployed environments
 - Should Docker Hub credentials move to AWS (ECR) or stay in GitHub secrets for now?
 - When to tackle prod secrets setup?
+- 5 repos need push access for `craig-indemn` — who is the org admin to grant this?
+- GROQ_API_KEY: is it actually used in production bot-service? (.env.example has it commented out)
