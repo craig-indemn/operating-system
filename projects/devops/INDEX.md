@@ -3,9 +3,9 @@
 Infrastructure, secrets management, deployment automation, and container orchestration for Indemn's microservices platform.
 
 ## Status
-Third session (2026-03-04): Secrets proxy **complete and tested**. All wrapper scripts verified end-to-end. Guard hook fixed (was using wrong output protocol — now uses exit codes per Claude Code docs). SessionStart hook (`load-env.sh`) loads OP_SERVICE_ACCOUNT_TOKEN + PATH + AWS config automatically. 1Password skill rewritten for service account auth model. Fixed linearis-proxy.sh (uses LINEAR_API_KEY, not LINEAR_API_TOKEN). Fixed wrapper scripts missing from main repo (were only in worktree).
+**2026-03-06**: COP-357 Dependabot vulnerability remediation **complete** — all PRs created/approved, awaiting merge. 5 repos addressed: a2p-compliance-showcase-demo (3 PRs approved), engineering-blog (4 PRs approved), percy-service (4 PRs approved incl. langgraph-checkpoint 3→4), bot-service (PR #248 created, needs review), fragments (PR #5 created, 30 alerts fixed via overrides, needs review). COP-357 moved to In Review.
 
-Previous: Second session (2026-03-04). Built all wrapper scripts, guard hook, skill updates, 1Password service account, stored 7 tokens in cli-secrets vault. First session (2026-03-03). AWS secrets management POC — 18 secrets + 37 parameters in dev, IAM roles + GitHub OIDC deployed.
+Previous: Third session (2026-03-04). Secrets proxy complete and tested. Second session (2026-03-04). Built wrapper scripts, guard hook, 1Password service account. First session (2026-03-03). AWS secrets management POC.
 
 ## External Resources
 | Resource | Type | Link |
@@ -18,6 +18,9 @@ Previous: Second session (2026-03-04). Built all wrapper scripts, guard hook, sk
 | DEVOPS-42 | Linear issue | Migrate secrets from .env to AWS Secrets Manager [E-3] — In Progress, assigned Craig |
 | DEVOPS-43 | Linear issue | Define credential rotation policy [E-4] — Queued (next after 42) |
 | DEVOPS-94 | Linear issue | 1Password policy / credential boundary [O-5] — Queued, assigned Craig |
+| COP-357 | Linear issue | Dependabot vulnerability alerts — fragments, engineering-blog, percy-service, bot-service, a2p-compliance-showcase-demo — In Review |
+| bot-service PR #248 | GitHub PR | indemn-ai/bot-service/pull/248 — langgraph upgrade, needs review |
+| fragments PR #5 | GitHub PR | indemn-ai/fragments/pull/5 — 30 alerts fixed via overrides, needs review |
 
 ## Artifacts
 | Date | Artifact | Ask |
@@ -46,6 +49,12 @@ Previous: Second session (2026-03-04). Built all wrapper scripts, guard hook, sk
 - 2026-03-03: Dev/prod share nearly all credentials except MongoDB URI and Pinecone API key
 - 2026-03-03: IAM roles use explicit Deny on prod resources for dev roles (belt + suspenders)
 - 2026-03-03: Do NOT touch prod without explicit user confirmation
+- 2026-03-06: Dependabot remediation (COP-357): Craig assigned fragments, engineering-blog, percy-service, bot-service, a2p-compliance-showcase-demo
+- 2026-03-06: langgraph-checkpoint 3→4 major bump verified safe — MemorySaver() zero-arg usage unchanged, 762 tests pass on percy-service
+- 2026-03-06: bot-service langgraph upgrade requires atomic bump of all 4 packages (langgraph, checkpoint, prebuilt, sdk) — sdk 0.2→0.3 required by langgraph 1.0.10
+- 2026-03-06: fragments has dual lockfile ecosystems (pnpm-lock.yaml + 004-lovable-angular-components/package-lock.json) — each needs separate overrides mechanism
+- 2026-03-06: Craig can self-approve Dependabot-authored PRs (org ruleset requires 1 review, but author is dependabot[bot])
+- 2026-03-06: Craig-authored PRs (bot-service, fragments) need teammate review due to org ruleset
 
 ## What's Deployed in AWS
 - **IAM Role:** `indemn-dev-services` — attached to dev EC2, reads `dev/*` only, explicit prod deny
@@ -55,12 +64,16 @@ Previous: Second session (2026-03-04). Built all wrapper scripts, guard hook, sk
 - **Parameter Store:** 37 parameters under `/dev/` (shared + observability-specific)
 
 ## Next Steps
-1. Test deployment: push `aws-secrets-management` branch, verify container pulls secrets on dev EC2
-2. Migrate additional services using the AWS skill's Service Migration Playbook
-3. Set up prod secrets (separate session, with care)
-4. Clean up old service account tokens in 1Password (`indemn-cli` and `local-cli` SA auth tokens can be removed)
+1. **COP-357**: Get Dhruv to merge the 11 approved Dependabot PRs + review/merge bot-service #248 and fragments #5. Then verify alerts close and move COP-357 to Done.
+2. **Alert auto-close**: langgraph CVE-2026-28277 has `first_patched_version: null` — may need manual API dismissal after merge (`gh api -X PATCH repos/indemn-ai/{repo}/dependabot/alerts/{n} -f state=dismissed -f dismissed_reason=fix_started`)
+3. Test deployment: push `aws-secrets-management` branch, verify container pulls secrets on dev EC2
+4. Migrate additional services using the AWS skill's Service Migration Playbook
+5. Set up prod secrets (separate session, with care)
+6. Clean up old service account tokens in 1Password (`indemn-cli` and `local-cli` SA auth tokens can be removed)
 
 ## Open Questions
 - Service URLs in Parameter Store are currently `localhost` — need to update to actual EC2 service addresses for deployed environments
 - Should Docker Hub credentials move to AWS (ECR) or stay in GitHub secrets for now?
 - When to tackle prod secrets setup?
+- fragments has pre-existing build failures in 3 workspaces (000-promptkit-webchat, 002-copilot-tabs, index) — TypeScript errors, not dep-related. Should these be flagged?
+- percy-service has 1 pre-existing test failure (test_list_agents_returns_summaries) — should be investigated

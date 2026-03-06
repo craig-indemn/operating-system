@@ -3,14 +3,14 @@
 Indemn Observability platform — analytics and monitoring for voice and chat agents. Fixing authorization issues and improving the platform.
 
 ## Status
-All work merged into `main`. Waiting on 3 PRs to merge, then prod re-deploys and this project closes.
+**2026-03-06**: All work merged into `main`. Waiting on 3 PRs to merge, then prod re-deploys and this project closes. Dependabot alerts (COP-357) are NOT on this repo — Observatory is not in Craig's COP-357 assignment.
 
 **PRs to merge (in order):**
-1. PR #27 — Agent dropdown org scoping fix → `main`
+1. PR #27 — Agent dropdown org scoping fix → `main` (approved, needs merger)
 2. Voice eval feature PR → `main`
 3. PR #28 — `main` → `prod` (ships everything, merge last)
 
-**After prod deploys:** Verify observatory is back up, auth is working, then mark COP-364 and this project Done.
+**After prod deploys:** Verify observatory is back up, auth is working, then mark COP-364 Done and close this project.
 
 ## External Resources
 | Resource | Type | Link |
@@ -35,4 +35,4 @@ All work merged into `main`. Waiting on 3 PRs to merge, then prod re-deploys and
 - 2026-03-06: main → prod merge is clean (no file-level conflicts, prod only has merge commit SHAs ahead)
 
 ## Open Questions
-- Dependabot flagged 8 vulnerabilities on default branch — tracked in COP-357 (Triage)
+- (none remaining — Dependabot alerts tracked separately under COP-357, not on Observatory repo)
