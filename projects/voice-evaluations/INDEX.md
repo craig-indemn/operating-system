@@ -115,44 +115,52 @@ Incorporating voice agents into the Indemn evaluation framework. Currently, only
    - **Starting services with dev creds**: Use `local-dev-aws.sh` wrapper which pulls from AWS Secrets Manager (`dev/shared/*`). Updated wrapper to include Redis, LiveKit, and other structured secrets.
    - **local-dev-aws.sh fixed**: Now writes `.env.dev` from exported env vars so `local-dev.sh` can source it. Also pulls `CACHE_REDIS_URL` from `dev/shared/redis-credentials` and LiveKit creds from `dev/shared/livekit-credentials`.
 
-## Phase 1 Status: Historical Transcript Evaluation (DEV COMPLETE)
+**Session 2026-03-06-a** (COMPLETE): Voice metrics + transcription reliability + project cleanup.
+1. **Transcription reliability** — `TRANSCRIPTION_SETTLE_SEC` reduced from 5.0s to 2.0s. Added room disconnect handler (`_room_disconnected` event) that breaks out of waits immediately on disconnect. Verified: `settle_wait_ms` consistently ~2001ms in live evaluations.
+2. **Voice metrics** — Per-turn metrics (tts_generation_ms, audio_publish_ms, agent_response_ms, first_transcription_ms, transcription_stream_count, settle_wait_ms, total_turn_ms) + session aggregates (greeting_latency_ms, total_duration_ms, turn_count, averages). `get_metrics()` method on VoiceAgentClient. Persisted as top-level `voice_metrics` field in evaluation_results for MongoDB queryability.
+3. **Dev testing** — 3 evaluations against covertree-3486 bot. 108 unit tests passing. Voice metrics populated correctly in all results.
+4. **Git cleanup** — Pushed `ddaf12d` to `indemn/feat/voice-simulation` (7 commits total). Created evaluations PR #9 and copilot-dashboard-react PR #3. All 7 PRs now open.
+5. **Linear consolidation** — COP-359 renamed to "Voice Evaluation" (was Phase 1 only), moved to Acceptance. Old 7 granular sub-issues canceled, replaced with 3 consolidated: COP-366 (transcript eval, Acceptance), COP-367 (voice simulation + metrics, Acceptance), COP-364 (deploy to prod, Backlog). AI-284 canceled as covered by COP-359.
 
-All code written, reviewed, tested in dev. 4 PRs open for prod review. Linear: COP-359.
+## All Dev Work Complete — PRs Open for Review
 
-### PRs (ready for review)
+Linear: **COP-359** (Acceptance) with 3 sub-issues:
+- **COP-366** (Acceptance): Voice transcript evaluation
+- **COP-367** (Acceptance): Voice simulation + voice metrics
+- **COP-364** (Backlog): Deploy to prod
+
+### PRs (7 total, all ready for review)
+
+**Transcript evaluation:**
 | PR | Repo | What |
 |----|------|------|
-| [#19](https://github.com/indemn-ai/Indemn-observatory/pull/19) | indemn-ai/Indemn-observatory | Langfuse sync, voice channel detection, evaluate UI, AWS pipeline Lambda |
-| [#7](https://github.com/indemn-ai/evaluations/pull/7) | indemn-ai/evaluations | Transcript evaluation engine + API |
-| [#2](https://github.com/indemn-ai/copilot-dashboard-react/pull/2) | indemn-ai/copilot-dashboard-react | Transcript type badge + filter |
-| [#79](https://github.com/indemn-ai/voice-livekit/pull/79) | indemn-ai/voice-livekit | Trace metadata (call_sid, id_bot, room_name) |
+| [#19](https://github.com/indemn-ai/Indemn-observatory/pull/19) | Indemn-observatory | Langfuse sync, voice channel detection, evaluate UI, AWS pipeline Lambda |
+| [#7](https://github.com/indemn-ai/evaluations/pull/7) | evaluations | Transcript evaluation engine + API |
+| [#2](https://github.com/indemn-ai/copilot-dashboard-react/pull/2) | copilot-dashboard-react | Transcript type badge + filter |
+| [#79](https://github.com/indemn-ai/voice-livekit/pull/79) | voice-livekit | Trace metadata (call_sid, id_bot, room_name) |
 
-### Remaining for prod (COP-364, COP-365)
-1. Merge 4 PRs and deploy services
+**Voice simulation:**
+| PR | Repo | What |
+|----|------|------|
+| [#9](https://github.com/indemn-ai/evaluations/pull/9) | evaluations | Voice simulation engine + voice metrics (7 commits) |
+| [#83](https://github.com/indemn-ai/voice-livekit/pull/83) | voice-livekit | Eval mode for voice agent dispatch |
+| [#3](https://github.com/indemn-ai/copilot-dashboard-react/pull/3) | copilot-dashboard-react | Voice simulation UI (badges, filters, stat card) |
+
+### Remaining for prod (COP-364)
+1. Review and merge all 7 PRs
 2. Add Langfuse env vars to prod Observatory (`LANGFUSE_HOST`, `LANGFUSE_PUBLIC_KEY`, `LANGFUSE_SECRET_KEY`)
 3. Update AWS Lambda (`step_handler.py`) and Step Function (`state_machine.json`)
-4. Create voice agent evaluation criteria (test set for one agent)
-5. Verify end-to-end: Langfuse sync → ingestion → Observatory voice badge → Evaluate → results in Dashboard
-
-## Phase 2: Voice Simulation Evaluation (ALL LAYERS PASS — READY FOR PR)
-
-Enable simulation-based evaluation for voice agents — the same test scenario approach used for web agents today, where the harness invokes the agent directly with test scenarios. The evaluation harness creates a LiveKit room, dispatches the real voice agent with metadata (bot_id), joins as a programmatic participant, and conducts a full audio conversation using TTS/STT. This tests the exact production code path.
-
-### Branches (pushed, ready for PR)
-| Repo | Branch | Base | Commits | Status |
-|------|--------|------|---------|--------|
-| voice-livekit | `feat/eval-mode` | `main` | 2 | PR #83 open, deployed to EC2 dev |
-| evaluations | `feat/voice-simulation` | `main` | 6 | Pushed to `indemn` |
-| indemn-platform-v2 | `feat/voice-simulation-type` | `feat/transcript-type-ui` | 3 | Pushed to `indemn` |
+4. Deploy voice-livekit eval mode to prod EC2 containers
+5. Create voice agent test sets and verify end-to-end
 
 ### Testing Status — ALL PASS
-- [x] Layer 1: Static verification (compile, import, type check, 79 tests)
-- [x] Layer 2: Unit tests (21 new tests, 101 total passing)
-- [x] Layer 3: UI visual verification — deferred to Layer 7
-- [x] Layer 4: Deploy eval mode to EC2 dev container — `dev-indemn` registered
-- [x] Layer 5: VoiceAgentClient smoke test — multi-turn conversation, transcription stream
-- [x] Layer 6: End-to-end evaluation — 69s voice eval, 2/3 criteria pass, results in MongoDB
-- [x] Layer 7: Dashboard visual verification — purple badge, filter chip, stat card, form toggle, transcript
+- [x] Static verification (compile, import, type check)
+- [x] 108 unit tests passing
+- [x] EC2 dev deployment — `dev-indemn` eval mode registered
+- [x] VoiceAgentClient smoke test — multi-turn conversation, transcription stream
+- [x] End-to-end voice evaluation via API — voice_metrics in results, settle ~2s
+- [x] Dashboard visual verification — purple badge, filter chip, stat card, form toggle
+- [x] Voice metrics verified — per-turn timing (TTS, publish, response, transcription), session aggregates
 
 See testing plan: [phase2-testing-plan](artifacts/2026-03-05-phase2-testing-plan.md)
 
@@ -170,8 +178,8 @@ See testing plan: [phase2-testing-plan](artifacts/2026-03-05-phase2-testing-plan
 | Platform Development project | OS project | `projects/platform-development/INDEX.md` |
 | LiveKit Cloud | SIP host | `tk2bj7pt8eg.us.sip.livekit.cloud` |
 | S3 recordings | AWS | `indemn-call-transcripts` bucket |
-| Linear parent issue | Linear | COP-359 — Voice Evaluation: Phase 1 |
-| Linear sub-issues | Linear | COP-360, COP-361, COP-362, AI-322, COP-363 (done), COP-364, COP-365 (remaining) |
+| Linear parent issue | Linear | COP-359 — Voice Evaluation (Acceptance) |
+| Linear sub-issues | Linear | COP-366 (transcript eval, Acceptance), COP-367 (voice sim + metrics, Acceptance), COP-364 (deploy to prod, Backlog) |
 
 ## Artifacts
 | Date | Artifact | Ask |
@@ -197,11 +205,11 @@ See testing plan: [phase2-testing-plan](artifacts/2026-03-05-phase2-testing-plan
 - **Dev voice requests stopped after Feb 27**: conversation-service's RabbitMQ consumer thread likely died on dev. Prod is unaffected (voice requests being written daily). Dev infrastructure issue, not a code bug.
 
 ## Not Built
-- **Voice-specific metrics** — Call duration distribution, end reason breakdown, response latency (LLM TTFT + TTS TTFB), STT confidence scores, interruption rate. See design document Phase 2C.
+- **Advanced voice metrics** — End reason breakdown, STT confidence scores, interruption rate. Basic per-turn timing (TTS, response latency, transcription latency) IS built. See design document Phase 2C.
 - **Rubric evaluators on voice**: Only criteria evaluators tested on voice. Rubric evaluators (per-rule LLM judges) were tested on web but not voice.
-- **Voice agent test set**: No test sets exist for any voice agent yet. COP-365 tracks this.
+- **Voice agent test set**: No test sets exist for any prod voice agent yet. COP-364 (deploy to prod) includes creating these.
 - **Per-turn tool call matching**: Voice simulation appends all Langfuse tool calls at end of transcript rather than inline per turn (Langfuse traces lack turn indices). v1 tradeoff.
-- **Concurrent voice simulations**: Sync HTTP calls (Deepgram STT, Langfuse fetch) block the event loop. Safe at concurrency=1, needs async conversion for higher concurrency.
+- **Concurrent voice simulations**: Safe at concurrency=1, needs async conversion for higher concurrency.
 
 ## Decisions
 - 2026-02-27: Voice trace data access pattern: OTLP → Langfuse → Langfuse API. Mirrors the web pattern (LangChain callbacks → LangSmith → LangSmith API). Langfuse is the canonical data source for voice traces, not LiveKit Cloud or direct data hooks.
