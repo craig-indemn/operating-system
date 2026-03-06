@@ -31,6 +31,7 @@ Connected intelligence layer for Indemn. Every tool the company uses, accessible
 | `/langfuse` | curl (REST API) | Query Langfuse OTLP traces for voice agent observability — trace lookup, session data, tool call spans |
 | `/aws` | aws CLI | AWS infrastructure — Secrets Manager, Parameter Store, EC2, IAM, ECS |
 | `/1password` | op CLI | Personal secrets — read tokens, store credentials, manage indemn-os vault |
+| `/markdown-pdf` | md-to-pdf | Convert markdown to Indemn-branded PDF — Barlow font, iris headings, styled tables |
 
 ### System Skills
 | Skill | What It Does |

@@ -3,9 +3,15 @@
 Transcribe Alliance Insurance phone call recordings into text, then extract structured data to define ~20 engagement types for building AI agents (web chat + voice). Audio from Brian Leftwich (Alliance COO), forwarded by Peter Duffy.
 
 ## Status
-Session 2026-02-18-b. **Pipeline complete.** All 5 steps done — capability document delivered.
+Session 2026-03-05-a. **Pipeline complete.** Capability document exported as branded PDF.
 
 **What happened this session:**
+- Converted capability document to Indemn-branded PDF using md-to-pdf with custom theme
+- Created reusable Indemn CSS theme for markdown-pdf skill (Barlow font, iris headings, styled tables)
+- Updated markdown-pdf skill to use branded theme by default
+- Added markdown-pdf to CLAUDE.md tool skills table
+
+**Previous session (2026-02-18-b):**
 - Combined classify + aggregate steps to skip Ollama second pass (~20 hours saved)
 - Built enriched working dataset (2MB, all fields from 1,543 substantive extractions)
 - Classified all 1,542 calls into 20 engagement types using 5 parallel Claude subagents
