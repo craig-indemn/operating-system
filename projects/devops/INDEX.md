@@ -3,9 +3,9 @@
 Infrastructure, secrets management, deployment automation, and container orchestration for Indemn's microservices platform.
 
 ## Status
-Fifth session (2026-03-06): **All 12 services migrated to AWS Secrets Manager** — PRs created for every service. 7 PRs pushed and open on GitHub. 5 repos blocked by missing write access (`craig-indemn` needs push permission on: payment-service, copilot-sync-service, operations_api, voice-service, email-channel-service). All have commits ready locally on `feat/aws-secrets-manager` branches. Created 17 new SM secrets (with PLACEHOLDER values — need EC2 sourcing) and ~50 new PS parameters. Template loader script at `scripts/aws-env-loader-template.sh`. Phase 0 investigation confirmed email-channel-service uses env vars (not file-based credentials).
+Sixth session (2026-03-06): **All 12 PRs open on GitHub, all in review.** Dhruv granted push access to 5 blocked repos — all pushed and PRs created. Populated 15/17 SM secrets from EC2 `.env` files (google-oauth and groq-api-key don't exist in dev). PS service URLs confirmed correct (all localhost, same EC2). Dhruv added as reviewer on all 12 PRs. All Linear sub-issues (DEVOPS-95–106) updated to "In Review" with PR links. 3 repos have pre-existing docker-scan (Trivy) failures: copilot-sync-service (node-tar 7.5.2), middleware-socket-service (base image CVE), operations_api (tar-fs/tar-stream).
 
-**Next session:** 1) Get push access for 5 blocked repos and push remaining PRs. 2) Source real secret values from EC2 `.env` files and update SM PLACEHOLDERs. 3) Merge PRs one by one, verify each deploy. 4) Update service URLs in PS from `localhost` to actual EC2 addresses.
+**Next session:** 1) Get Dhruv's review approval on PRs. 2) Fix docker-scan failures on 3 repos if they're required checks. 3) Merge PRs one by one per merge order, verify each deploy. 4) Mark Linear issues Done as each service verified.
 
 Previous sessions: Fourth (2026-03-04) observatory deployed to dev EC2 with SM. Third (2026-03-04) secrets proxy complete. Second (2026-03-04) wrapper scripts, guard hook, 1Password SA. First (2026-03-03) AWS SM POC — 18 secrets + 37 params, IAM roles + OIDC.
 
@@ -57,14 +57,20 @@ Previous sessions: Fourth (2026-03-04) observatory deployed to dev EC2 with SM. 
 - 2026-03-06: Deploy jobs use EC2 instance profile for AWS auth — do NOT add OIDC permissions blocks or configure-aws-credentials to deploy jobs
 - 2026-03-06: Preserve existing docker-compose vs docker compose syntax per-service (don't standardize)
 - 2026-03-06: Preserve existing sudo patterns per-service (some use sudo on pull but not up)
+- 2026-03-06: PS service URLs are correct as `localhost` — all services on same EC2, docker port mappings expose to host
+- 2026-03-06: SM secret values populated directly on EC2 using `populate-sm-secrets.sh` — secrets never leave the box
+- 2026-03-06: Temporary `secrets-write-temp` IAM policy added then removed for EC2 to write to SM (role normally read-only)
+- 2026-03-06: Voice service uses `GOOGLE_PROJECT_ID`/`GOOGLE_CLIENT_EMAIL`/`GOOGLE_PRIVATE_KEY` (no `_CLOUD_` prefix)
+- 2026-03-06: Middleware uses `AWS_ACCESS_KEY_ID`/`AWS_SECRET_ACCESS_KEY`/`S3_BUCKET_NAME`/`PRIVATE_S3_BUCKET_NAME` for S3
+- 2026-03-06: Firebase uses `FIREBASE_SERVICE_ACCOUNT_JSON` (not `FIREBASE_SERVICE_ACCOUNT`)
 
 ## What's Deployed
 ### AWS
 - **IAM Role:** `indemn-dev-services` — attached to dev EC2, reads `dev/*` only, explicit prod deny
 - **IAM Role:** `github-actions-deploy` — OIDC federation for indemn-ai GitHub org, dev only
 - **OIDC Provider:** `token.actions.githubusercontent.com` — scoped to indemn-ai repos
-- **Secrets Manager:** 35 secrets under `dev/` (24 shared, 11 service-specific). 17 new secrets have PLACEHOLDER values pending EC2 sourcing.
-- **Parameter Store:** ~90 parameters under `/dev/` (shared + per-service config)
+- **Secrets Manager:** 35 secrets under `dev/` (24 shared, 11 service-specific). 15/17 populated from EC2; 2 remain PLACEHOLDER (google-oauth, groq-api-key — not configured in dev)
+- **Parameter Store:** ~90 parameters under `/dev/` (shared + per-service config). Service URLs confirmed correct (all localhost, same EC2).
 
 ### Dev EC2 (i-0fde0af9d216e9182)
 - **AWS CLI v2** installed at `/usr/local/bin/aws`
@@ -81,45 +87,42 @@ Previous sessions: Fourth (2026-03-04) observatory deployed to dev EC2 with SM. 
 | 5 | middleware-socket-service | [#338](https://github.com/indemn-ai/middleware-socket-service/pull/338) | Open |
 | 6 | copilot-server | [#796](https://github.com/indemn-ai/copilot-server/pull/796) | Open |
 | 7 | copilot-dashboard | [#987](https://github.com/indemn-ai/copilot-dashboard/pull/987) | Open |
-| 8 | payment-service | local commit | Blocked — no push access |
-| 9 | copilot-sync-service | local commit | Blocked — no push access |
-| 10 | operations_api | local commit | Blocked — no push access |
-| 11 | voice-service | local commit | Blocked — no push access |
-| 12 | email-channel-service | local commit | Blocked — no push access |
+| 8 | payment-service | [#56](https://github.com/indemn-ai/payment-service/pull/56) | Open |
+| 9 | copilot-sync-service | [#116](https://github.com/indemn-ai/copilot-sync-service/pull/116) | Open — docker-scan FAILED (node-tar CVE) |
+| 10 | operations_api | [#92](https://github.com/indemn-ai/operations_api/pull/92) | Open — docker-scan FAILED (tar-fs CVE) |
+| 11 | voice-service | [#38](https://github.com/indemn-ai/voice-service/pull/38) | Open |
+| 12 | email-channel-service | [#35](https://github.com/indemn-ai/email-channel-service/pull/35) | Open |
 
 ## Next Steps
 1. ~~Test deployment: push `aws-secrets-management` branch, verify container pulls secrets on dev EC2~~ ✓ Done
-2. ~~Migrate all services to SM~~ ✓ PRs created (7 pushed, 5 blocked on access)
-3. Get push access for 5 blocked repos (payment-service, copilot-sync-service, operations_api, voice-service, email-channel-service)
-4. Source real secret values from EC2 and update SM PLACEHOLDERs
-5. Update service URLs in PS from `localhost` to actual EC2 addresses
-6. Merge PRs one by one, verify each deploy (see plan Phase 5 merge order)
-7. Merge `demo-gic` → `main` on indemn-observability
-8. Write DEVOPS-94 proposal for team 1Password approach
-9. Set up prod secrets (separate session, with care)
+2. ~~Migrate all services to SM~~ ✓ All 12 PRs open on GitHub
+3. ~~Get push access for 5 blocked repos~~ ✓ Dhruv granted access, all pushed
+4. ~~Source real secret values from EC2 and update SM PLACEHOLDERs~~ ✓ 15/17 populated (google-oauth + groq-api-key don't exist in dev)
+5. ~~Update service URLs in PS from `localhost` to actual EC2 addresses~~ ✓ Already correct (all services on same EC2, localhost is right)
+6. Get Dhruv's review approval on all 12 PRs (all set to "In Review" in Linear)
+7. Fix docker-scan failures on 3 repos if required check: copilot-sync-service (tar 7.5.2→7.5.10), middleware-socket-service (base image), operations_api (tar-fs/tar-stream)
+8. Merge PRs one by one, verify each deploy (see merge order below)
+9. Merge `demo-gic` → `main` on indemn-observability
+10. Write DEVOPS-94 proposal for team 1Password approach
+11. Set up prod secrets (separate session, with care)
 
-## SM Secrets with PLACEHOLDER Values (Must Source from EC2)
-These secrets were created in `indemn/dev/` but have PLACEHOLDER values. Must read actual values from `/opt/{service}/.env` on dev EC2 and update via `aws secretsmanager put-secret-value`.
+## SM Secrets Status
+15/17 secrets populated from EC2 `.env` files using `scripts/populate-sm-secrets.sh`.
 
-| Secret Path | Format | Used By |
-|-------------|--------|---------|
-| `shared/stripe-keys` | JSON: secret_key, publishable_key, webhook_secret, connect_webhook_secret | payment-service, copilot-server |
-| `shared/firebase-credentials` | JSON: project_id, client_email, private_key, api_key, auth_domain, database_url, storage_bucket, messaging_sender_id, app_id, service_account_json | copilot-server, copilot-dashboard |
-| `shared/sendgrid-api-key` | plain string | copilot-server |
-| `shared/twilio-credentials` | JSON: account_sid, auth_token | voice-service, middleware |
-| `shared/google-oauth` | JSON: client_id, client_secret, callback_url | copilot-server |
-| `shared/groq-api-key` | plain string | bot-service |
-| `shared/bland-api-key` | plain string | middleware |
-| `shared/airtable-api-key` | plain string | conversation-service, operations_api, copilot-server |
-| `shared/google-cloud-sa` | JSON: project_id, client_email, private_key | voice-service |
-| `shared/service-tokens` | JSON: system_user_token, apps_access_token, conversation_service_token | multiple |
-| `shared/copilot-api-credentials` | JSON: username, password, api_key | kb-service, operations_api, middleware |
-| `services/middleware/aws-s3-credentials` | JSON: access_key_id, secret_access_key, bucket_name | middleware |
-| `services/operations-api/carrier-credentials` | JSON: markel/cmf/gic/bonzah/insurica fields | operations_api |
-| `services/copilot-server/chat21-credentials` | JSON: admin_token, jwt_secret | copilot-server |
-| `services/copilot-server/admin-credentials` | JSON: super_password, admin_password, apps_access_token_secret | copilot-server |
-| `services/operations-api/mixpanel-token` | plain string | operations_api |
-| `services/email-channel/google-auth-credentials` | JSON blob (Google OAuth client config) | email-channel-service |
+**Populated (15):** stripe-keys (2 keys), firebase-credentials (7 keys), sendgrid-api-key, twilio-credentials, bland-api-key, airtable-api-key, google-cloud-sa (3 keys), service-tokens (2 keys), copilot-api-credentials (2 keys), middleware/aws-s3-credentials (4 keys), operations-api/carrier-credentials (13 keys), copilot-server/chat21-credentials, copilot-server/admin-credentials (2 keys), operations-api/mixpanel-token, email-channel/google-auth-credentials (1 key)
+
+**Still PLACEHOLDER (2):**
+| Secret Path | Reason |
+|-------------|--------|
+| `shared/google-oauth` | No Google OAuth configured in dev (vars don't exist in tiledesk .env) |
+| `shared/groq-api-key` | Not used in dev bot-service |
+
+**Partial keys (expected):** stripe-keys has 2/4 (no webhook secrets in dev), firebase-credentials has 7/10 (no database_url, messaging_sender_id, app_id in .env), service-tokens has 2/3 (no apps_access_token — only APPS_ACCESS_TOKEN_SECRET which is in admin-credentials)
+
+**Env var name discoveries from EC2:**
+- Voice service uses `GOOGLE_PROJECT_ID`, `GOOGLE_CLIENT_EMAIL`, `GOOGLE_PRIVATE_KEY` (no `_CLOUD_` prefix)
+- Middleware uses `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `S3_BUCKET_NAME`, `PRIVATE_S3_BUCKET_NAME`
+- Firebase uses `FIREBASE_SERVICE_ACCOUNT_JSON` (not `FIREBASE_SERVICE_ACCOUNT`)
 
 ## Coupled Pairs (Must Merge Together)
 1. **copilot-dashboard + copilot-server** → deploy to `/opt/tiledesk/` — share docker-compose.yml and .env
@@ -137,46 +140,42 @@ These secrets were created in `indemn/dev/` but have PLACEHOLDER values. Must re
 9. voice-service (standalone)
 10. email-channel-service (standalone)
 
-## Local Branches Ready to Push (5 blocked repos)
-All on branch `feat/aws-secrets-manager` with one commit each:
-- `/Users/home/Repositories/payment-service` — commit 3b71353
-- `/Users/home/Repositories/copilot-sync-service` — commit 33ea3b1
-- `/Users/home/Repositories/operations_api` — commit on feat/aws-secrets-manager
-- `/Users/home/Repositories/voice-service` — commit on feat/aws-secrets-manager
-- `/Users/home/Repositories/email-channel-service` — commit on feat/aws-secrets-manager
+## Linear Sub-Issues (DEVOPS-95 through DEVOPS-107)
+All set to "In Review" with PR links in comments. Dhruv added as reviewer.
 
-Push commands once access granted:
-```bash
-for repo in payment-service copilot-sync-service operations_api voice-service email-channel-service; do
-  cd /Users/home/Repositories/$repo
-  git push origin feat/aws-secrets-manager
-  gh pr create --repo indemn-ai/$repo --head feat/aws-secrets-manager --base main \
-    --title "feat: migrate secrets to AWS Secrets Manager" \
-    --body "Part of DEVOPS-42. See PR description in other service PRs for details."
-  cd -
-done
-```
+| Linear | Service | PR | Status |
+|--------|---------|-----|--------|
+| DEVOPS-95 | bot-service | #247 | In Review |
+| DEVOPS-96 | conversation-service | #131 | In Review |
+| DEVOPS-97 | copilot-dashboard | #987 | In Review |
+| DEVOPS-98 | copilot-server | #796 | In Review |
+| DEVOPS-99 | copilot-sync-service | #116 | In Review — docker-scan FAILED |
+| DEVOPS-100 | evaluations | #8 | In Review |
+| DEVOPS-101 | kb-service | #138 | In Review |
+| DEVOPS-102 | middleware-socket-service | #338 | In Review — docker-scan FAILED |
+| DEVOPS-103 | payment-service | #56 | In Review |
+| DEVOPS-104 | voice-service | #38 | In Review |
+| DEVOPS-105 | operations_api | #92 | In Review — docker-scan FAILED |
+| DEVOPS-106 | email-channel-service | #35 | In Review |
+| DEVOPS-107 | Path rename | — | Done |
 
-## Linear Sub-Issues (DEVOPS-95 through DEVOPS-106)
-| Linear | Service | Status |
-|--------|---------|--------|
-| DEVOPS-95 | bot-service | PR open |
-| DEVOPS-96 | conversation-service | PR open |
-| DEVOPS-97 | copilot-dashboard | PR open |
-| DEVOPS-98 | copilot-server | PR open |
-| DEVOPS-99 | copilot-sync-service | Blocked (access) |
-| DEVOPS-100 | evaluations | PR open |
-| DEVOPS-101 | kb-service | PR open |
-| DEVOPS-102 | middleware-socket-service | PR open |
-| DEVOPS-103 | payment-service | Blocked (access) |
-| DEVOPS-104 | voice-service | Blocked (access) |
-| DEVOPS-105 | operations_api | Blocked (access) |
-| DEVOPS-106 | email-channel-service | Blocked (access) |
-| DEVOPS-107 | Path rename | Done |
+## Docker-Scan Failures (Pre-existing, Not From Our Changes)
+3 repos fail Trivy security scan on PR due to `node-tar` CVEs in dependencies:
+- **copilot-sync-service**: `tar` 7.5.2 needs bump to ≥7.5.10 (CVE-2026-23950, -24842, -26960, -29786)
+- **middleware-socket-service**: `tar` already at 7.5.10 but CVEs in base Docker image
+- **operations_api**: Uses `tar-fs`/`tar-stream` (different packages), same CVE family
+
+Scan workflow: `.github/workflows/docker-image-scanner.yml` — runs on `pull_request` to `main`, uses `aquasecurity/trivy-action@0.24.0`, fails on HIGH/CRITICAL with `exit-code: "1"`.
+
+Whether these block merge depends on branch protection rules (couldn't read — 404 on protection API, likely need admin). All repos also require review approval regardless.
+
+## Scripts (in OS repo)
+- `scripts/aws-env-loader-template.sh` — template for service loader scripts
+- `scripts/populate-sm-secrets.sh` — run on EC2 to populate SM from `.env` files (dry-run by default)
+- `scripts/find-env-var-names.sh` — diagnostic: prints env var names (not values) from EC2 `.env` files
 
 ## Open Questions
-- Service URLs in Parameter Store are currently `localhost` — need to update to actual EC2 service addresses for deployed environments
 - Should Docker Hub credentials move to AWS (ECR) or stay in GitHub secrets for now?
 - When to tackle prod secrets setup?
-- 5 repos need push access for `craig-indemn` — who is the org admin to grant this?
 - GROQ_API_KEY: is it actually used in production bot-service? (.env.example has it commented out)
+- Are docker-scan failures required checks that block merge? Need admin to confirm.
