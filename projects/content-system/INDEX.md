@@ -3,32 +3,31 @@
 AI-powered content creation pipeline for Indemn and personal brands. Transforms voice-based ideas into polished, publishable content through dynamic extraction, iterative drafting, and multi-platform distribution. Lives in a separate repo (`/Users/home/Repositories/content-system`) with skills symlinked to `~/.claude/skills/`.
 
 ## Status
-Session 2026-03-02: Context review and personal brand launch planning.
+Session 2026-03-03. Personal brand publishing presence fully established — Substack + Medium ready.
 
-**Previous session (2026-02-25-e):** Excalidraw skill built, blog OG thumbnails fixed, homepage card layout added.
+**Session 2026-03-03:**
+- Set up Medium account: medium.com/@notesfromthebuild
+- Updated `brands/personal/config.yaml` with Medium URL and username
+- Cross-posting workflow confirmed: Substack primary → Medium import via URL (no API — Medium stopped issuing new integration tokens)
 
-**Indemn blog posts:**
+**Session 2026-03-02:**
+- Established personal brand identity: "Notes from the Build" — builder-in-public newsletter
+- Created `brands/personal/voice.md` — excited, curious, technical-but-accessible, first person
+- Updated `brands/personal/config.yaml` — bee/hex/amber visual identity, Substack primary platform
+- Generated brand assets via `/image-gen`: logo (bee+hexagon+circuit), banner (honeycomb-to-circuit flow), header
+- Created Substack publication at notesfromthebuild.substack.com
+- Configured Substack: accent color (#d97706), about page written and saved, logo uploaded
+- Bio: "Engineer & builder. Building AI systems, software platforms, and whatever the problem needs."
+
+**Blog posts:**
 - "Building Evaluations for Conversational Agents" — Published with images and OG thumbnail, live at blog.indemn.ai
 - "Agents That Build Agents" — Draft v13, awaiting review or approval
 
-**Personal brand launch — IN PROGRESS:**
-Craig is setting up his personal publishing presence. The content system has `brands/personal/config.yaml` configured with Substack as primary (`craigcerto.substack.com`), Medium and LinkedIn as cross-post channels. But the actual accounts/platforms haven't been created yet and the brand identity needs to be thought through before launch.
-
-**Decisions needed before launch:**
-1. **Brand identity** — Does "Craig Certo" work as the brand, or use a nickname / pen name / brand name? This affects account names across all platforms.
-2. **Platform setup** — Which platforms to create accounts on now vs later? Current config assumes Substack (primary), Medium (cross-post), LinkedIn (cross-post). Also consider: Beehiiv (newsletter alternative to Substack), X/Twitter, personal blog site.
-3. **Newsletter strategy** — What's the newsletter about? Frequency? Free vs paid tiers? What's the value prop for subscribers?
-4. **Visual brand** — The config has colors (blue/purple/amber) and typography (Inter) but no logo, no header image, no visual identity beyond that.
-5. **Voice doc** — Indemn has a `voice.md` sourced from Google Docs. Personal brand needs one too. The config has tone guidelines ("personal, technical, direct — Engineer sharing what actually works") but no full voice doc.
-6. **First content** — What's the inaugural post? Sets the tone for everything that follows.
-
 **Next up:**
-1. Start a dedicated session to work through brand identity and platform decisions
-2. Create accounts on chosen platforms
-3. Build out `brands/personal/voice.md`
-4. Update `brands/personal/config.yaml` with final platform decisions
-5. Write and publish first personal brand piece
-6. Also still pending: review "Agents That Build Agents" v13 for Indemn blog
+1. Write and publish first personal post on Substack
+2. Wire content-publish skill to handle Substack/Medium publishing (currently only handles git-based Astro deploy)
+3. Author reviews "Agents That Build Agents" v13 — approve or further feedback
+4. Integrate image-gen into content pipeline skills
 
 ## External Resources
 | Resource | Type | Link |
@@ -41,6 +40,10 @@ Craig is setting up his personal publishing presence. The content system has `br
 | Orchestration layer design | Doc | content-system/docs/plans/2026-02-08-orchestration-layer-design.md |
 | Master System Prompt (v2026.1) | Google Doc | gog docs cat 1lowazd0cvnX45M3nWP0bzKCZ2IA9G79_NNmmToxYIQM |
 | Marketing Material Persona Prompt | Google Doc | gog docs cat 1ibuNPLYOpID063UJpJhVbXwY91mniNvv0SeNnoYscYI |
+| Personal brand Substack | Website | notesfromthebuild.substack.com |
+| Personal brand voice doc | Doc | content-system/brands/personal/voice.md |
+| Personal brand config | Doc | content-system/brands/personal/config.yaml |
+| Personal brand Medium | Website | medium.com/@notesfromthebuild |
 
 ## Artifacts
 | Date | Artifact | Ask |
@@ -49,6 +52,14 @@ Craig is setting up his personal publishing presence. The content system has `br
 | 2026-02-25 | [content-system-architecture](artifacts/content-system-architecture.excalidraw) | Excalidraw diagram of the content pipeline — skills, flow, and integration points ([SVG](artifacts/content-system-architecture.svg)) |
 
 ## Decisions
+- 2026-03-03: Medium stopped issuing new integration tokens — no API access for new accounts. Cross-posting via Medium's "Import a story" feature using Substack URL (preserves canonical link).
+- 2026-03-02: Personal brand is a named newsletter "Notes from the Build", not a personal blog "Craig Certo". People subscribe to ideas, not people.
+- 2026-03-02: Substack primary, Medium cross-post with Substack as canonical source. Medium for discovery, Substack owns the relationship.
+- 2026-03-02: Visual identity: bee/hexagon/honeycomb + circuit traces. Honey amber (#d97706) is the signature color. Dark charcoal (#1c1917) for brand assets, light backgrounds for reading.
+- 2026-03-02: Personal voice is NOT AI-specific — "builder who happens to be building with AI". Content covers software, systems, startups, learning — whatever Craig is building.
+- 2026-03-02: Voice tone: excited, curious, technical-but-accessible. "Talking WITH you, not AT you." Assumes intelligent, not knowledgeable.
+- 2026-03-02: Bio: "Engineer & builder. Building AI systems, software platforms, and whatever the problem needs."
+- 2026-03-02: No official Substack publishing API exists. Unofficial TypeScript/Python libraries use cookie auth (substack.sid). For now, copy-paste publishing; upgrade to API later if volume justifies.
 - 2026-02-25: Image generation skill is a general OS tool skill, not content-system-specific. Brand context injected by the caller (content pipeline skills), not the image-gen skill itself.
 - 2026-02-25: Nano Banana (gemini-2.5-flash-image) is the default model — fast, reliable, GA. Nano Banana Pro (gemini-3-pro-image-preview) is unreliable in preview, skip for now.
 - 2026-02-25: Gemini API free tier has zero image quota — billing required on Google AI Studio.
@@ -69,10 +80,6 @@ Craig is setting up his personal publishing presence. The content system has `br
 - 2026-02-25: `BlogPost.astro` must pass `image={heroImage}` to `BaseHead` — was missing, causing all posts to fall back to default OG image.
 
 ## Open Questions
-- **Personal brand name/handle** — "Craig Certo" or something else? Affects all platform account names.
-- **Substack vs Beehiiv** — Config currently says Substack. Beehiiv has better analytics and monetization. Worth evaluating before committing.
-- **Platform scope** — How many platforms to set up at launch vs grow into? Risk of spreading too thin vs building cross-platform presence early.
-- **Newsletter angle** — Pure technical writing? AI engineering focus? Broader "building and shipping" theme? Needs to be specific enough to attract subscribers but broad enough to sustain.
 - The content-extract skill's "dynamic interview" should know to search internal sources — how to teach it that without bloating the skill?
 - Should we set up Vercel git integration for the content-system repo to enable auto-deploy on push?
 - The Astro build shows "Duplicate id" warnings — investigate content collection config
