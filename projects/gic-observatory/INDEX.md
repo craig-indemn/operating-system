@@ -3,9 +3,9 @@
 Analytics and reporting for GIC Underwriters using the Indemn Observatory platform. GIC is the first production customer using the Observatory for web chat data analytics, with downloadable PDF reports.
 
 ## Status
-**2026-02-26 (session b)**: CSR Time-of-Day activity page fully implemented, audited, and merged to main (PR #2). Backend collects CSR message timestamps from transcript parsing (reuses existing loop), buckets into 20-min intervals with UTC offset support. Frontend renders heatmap-style table in PDF. Also added "Msgs Sent" column to CSR Breakdown page. Full data audit confirmed 100% accuracy: 3,993 messages across 5 CSRs match raw MongoDB transcripts exactly.
+**2026-03-06**: All GIC features (CSR Time-of-Day, Msgs Sent column) are on `main` and will deploy to prod with Observatory PR #28. Time-of-day page confirmed working in code — it conditionally renders when `csr_activity_by_time` has data (requires transcript data with CSR messages, which GIC prod has but dev doesn't).
 
-**Next**: Deploy to prod (Vercel) and generate a final report for GIC to review. Consider whether the `utc_offset` should be stored per-org rather than derived from browser timezone.
+**Blocked on:** Observatory prod re-deploy (PR #28). Once prod is up, generate a final report for GIC to review.
 
 ## Critical Constraints
 - **READ-ONLY MongoDB**: Production database (`MONGODB_PROD_URI`) is read-only. You do NOT have write permission. All data aggregation must happen in application code, not via MongoDB writes.
@@ -36,7 +36,7 @@ Analytics and reporting for GIC Underwriters using the Indemn Observatory platfo
 - 2026-02-26: Time-of-day distribution will use 20-minute intervals (72 buckets per 24 hours) as requested by GIC team
 - 2026-02-26: Must use read-only MongoDB access — no writes to production database permitted
 - 2026-02-26: Date range matches existing report scope (no separate date picker)
-- 2026-02-26: Visualization is a table with inline mini-bars — CSR rows × time-bucket columns
+- 2026-02-26: Visualization is a table with inline mini-bars — CSR rows x time-bucket columns
 - 2026-02-26: Metric counts individual CSR messages per 20-min window (not conversations)
 - 2026-02-26: Added as a new page in the existing Customer Analytics PDF (after CSR Breakdown page)
 - 2026-02-26: Transcript timestamps are UTC; added `utc_offset` query param to shift hours (browser passes local offset)
