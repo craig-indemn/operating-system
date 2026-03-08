@@ -124,9 +124,99 @@ export function useTerminal({ sessionName, fontSize = 13 }: UseTerminalOptions):
       }
     });
 
-    // Suppress browser context menu on the terminal — prevents the
-    // double-menu issue (browser + tmux) on right-click
-    container.addEventListener('contextmenu', (e) => e.preventDefault());
+    // --- Touch detection ---
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+    // Context menu: suppress on desktop (prevents double-menu on right-click).
+    // On touch devices, allow long-press so iOS/Android paste menu appears.
+    if (!isTouchDevice) {
+      container.addEventListener('contextmenu', (e) => e.preventDefault());
+    }
+
+    // --- Touch scroll → tmux mouse wheel events ---
+    // tmux with 'set -g mouse on' processes mouse wheel events for scrollback.
+    // Desktop: mouse wheel → xterm.js mouse reporting → escape sequences → tmux.
+    // Mobile: touch swipes don't generate wheel events. We intercept touch gestures
+    // and synthesize SGR-encoded mouse wheel escape sequences (button 64=up, 65=down).
+    if (isTouchDevice) {
+      let lastTouchY: number | null = null;
+      let touchOriginY: number | null = null;
+      let scrollAccumulator = 0;
+      let isScrollGesture = false;
+      const SCROLL_DEAD_ZONE = 10;   // px before treating as scroll (not tap/long-press)
+      const PX_PER_LINE = 20;        // px of touch movement per scroll line
+
+      container.addEventListener('touchstart', (e: TouchEvent) => {
+        if (e.touches.length === 1) {
+          touchOriginY = e.touches[0]!.clientY;
+          lastTouchY = touchOriginY;
+          isScrollGesture = false;
+          scrollAccumulator = 0;
+        }
+      }, { passive: true });
+
+      container.addEventListener('touchmove', (e: TouchEvent) => {
+        if (lastTouchY === null || touchOriginY === null || e.touches.length !== 1) return;
+
+        const currentY = e.touches[0]!.clientY;
+
+        // Enter scroll mode once finger moves past dead zone
+        if (!isScrollGesture) {
+          if (Math.abs(currentY - touchOriginY) > SCROLL_DEAD_ZONE) {
+            isScrollGesture = true;
+          } else {
+            return; // Still in dead zone — could be tap or long-press
+          }
+        }
+
+        e.preventDefault(); // Stop iOS page bounce/rubber-banding
+
+        const deltaY = lastTouchY - currentY; // positive = finger up = scroll up (older content)
+        lastTouchY = currentY;
+        scrollAccumulator += deltaY;
+
+        // Emit one mouse wheel event per PX_PER_LINE pixels of movement
+        const ws = wsRef.current;
+        if (ws?.readyState === WebSocket.OPEN) {
+          while (Math.abs(scrollAccumulator) >= PX_PER_LINE) {
+            // SGR mouse encoding: \x1b[<button;col;rowM
+            const button = scrollAccumulator > 0 ? 64 : 65;
+            ws.send(JSON.stringify({ type: 'input', data: `\x1b[<${button};1;1M` }));
+            scrollAccumulator -= scrollAccumulator > 0 ? PX_PER_LINE : -PX_PER_LINE;
+          }
+        }
+      }, { passive: false });
+
+      container.addEventListener('touchend', () => {
+        lastTouchY = null;
+        touchOriginY = null;
+        isScrollGesture = false;
+        scrollAccumulator = 0;
+      }, { passive: true });
+    }
+
+    // --- Mobile paste support ---
+    // Intercept paste events when our terminal has focus. This catches:
+    // - iOS long-press → Paste menu
+    // - iOS 3-finger paste gesture
+    // - Voice-to-text apps (Wispr Flow) that paste via clipboard
+    // We send clipboard text directly to the WebSocket to bypass xterm.js
+    // composition issues on iOS (which can drop all but the first character).
+    let mobilePasteHandler: ((e: ClipboardEvent) => void) | null = null;
+    if (isTouchDevice) {
+      mobilePasteHandler = (e: ClipboardEvent) => {
+        // Only handle if our terminal container (or a child like xterm's textarea) is focused
+        if (!container.contains(document.activeElement)) return;
+        const text = e.clipboardData?.getData('text/plain');
+        if (!text) return;
+        e.preventDefault(); // Prevent xterm.js from also handling (avoids double-paste)
+        const ws = wsRef.current;
+        if (ws?.readyState === WebSocket.OPEN) {
+          ws.send(JSON.stringify({ type: 'input', data: text }));
+        }
+      };
+      document.addEventListener('paste', mobilePasteHandler);
+    }
 
     // --- Idempotent connect function ---
     function connect() {
@@ -298,6 +388,9 @@ export function useTerminal({ sessionName, fontSize = 13 }: UseTerminalOptions):
       intentionalCloseRef.current = true;
       document.removeEventListener('visibilitychange', handleVisibilityChange);
       window.removeEventListener('online', handleOnline);
+      if (mobilePasteHandler) {
+        document.removeEventListener('paste', mobilePasteHandler);
+      }
       if (backoffTimerRef.current) clearTimeout(backoffTimerRef.current);
       if (pingTimerRef.current) clearTimeout(pingTimerRef.current);
       inputDisposable.dispose();
