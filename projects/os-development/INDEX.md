@@ -3,7 +3,9 @@
 Development of the operating system itself — the skills, systems, and infrastructure that make Indemn's connected intelligence layer work. Covers the dispatch system, systems framework, skill improvements, and meta-level architecture of the OS.
 
 ## Status
-**Session 2026-03-05-a (complete)**: Added plain shell terminal sessions to OS Terminal. The `+` button now opens a dropdown with "Claude Session" and "Terminal" options. Shell sessions create tmux sessions directly (bypassing the session CLI), show a `>_` indicator instead of a status dot, and hide the context % display. Deletion kills tmux and removes state file directly. All 7 files modified, full build verified clean.
+**Session 2026-03-08-a (complete)**: Designed The Hive — the awareness and connective tissue layer for the operating system. Extended brainstorming session covering vision, data model, ontology, storage architecture, context assembly, and system integration model. Full design document produced. This is a major architectural addition to the OS.
+
+**Session 2026-03-05-a (complete)**: Added plain shell terminal sessions to OS Terminal.
 
 **Session 2026-03-04-a (complete)**: Gas Town / Wasteland / Dolt research and integration design.
 
@@ -12,10 +14,9 @@ Development of the operating system itself — the skills, systems, and infrastr
 **Onboarding branch** — is 40+ commits behind main. DO NOT rebase while parallel sessions active.
 
 **Next session should:**
-1. Install Gas Town and Dolt — set up first rig against an Indemn service repo
-2. Evaluate Dolt as OS state backend (replace `sessions/*.json`)
-3. Consider Obsidian for project artifacts visualization
-4. V3 voice layer or V4 augmentation (overlays, context panels)
+1. Begin Hive Phase 1: Foundation — create vault, ontology.yaml, local MongoDB, hive CLI core
+2. Gas Town / Dolt setup (deferred from previous session)
+3. V3 voice layer or V4 augmentation (overlays, context panels)
 
 ## External Resources
 | Resource | Type | Link |
@@ -51,6 +52,7 @@ Development of the operating system itself — the skills, systems, and infrastr
 | 2026-03-02 | [os-terminal-v1-browser-testing](artifacts/2026-03-02-os-terminal-v1-browser-testing.md) | V1 browser testing — 14-point checklist results, bugs found/fixed, remaining known issues |
 | 2026-03-04 | [gastown-research](artifacts/2026-03-04-gastown-research.md) | Gas Town, Wasteland, Dolt research — architecture comparison, integration vision, action items |
 | 2026-03-04 | [gastown-integration-design](artifacts/2026-03-04-gastown-integration-design.md) | Design: Gas Town as dispatch engine, session types, Dolt backend, Obsidian, phased implementation |
+| 2026-03-08 | [hive-design](artifacts/2026-03-08-hive-design.md) | The Hive — unified awareness/knowledge/work system. Data model, ontology, context assembly, system integration, 6-phase implementation plan |
 
 ## Decisions
 - 2026-02-19: OS has three primitives: Skills (capabilities), Projects (memory), Systems (processes)
@@ -114,9 +116,32 @@ Development of the operating system itself — the skills, systems, and infrastr
 - 2026-03-04: Gas Town rig = one piece of the OS. OS sessions can start/manage rigs.
 - 2026-03-04: Obsidian as potential visual layer over project artifacts (point vault at `projects/`)
 - 2026-03-05: OS Terminal supports shell sessions — plain tmux terminals alongside Claude sessions, created/deleted without session CLI
+- 2026-03-08: The Hive is the awareness and connective tissue layer — it doesn't replace systems, it connects them
+- 2026-03-08: Everything is a note — one universal format, tags and metadata differentiate behavior. No type hierarchy.
+- 2026-03-08: Two kinds of notes: native knowledge (lives in Hive) and awareness records (points to system artifacts via `ref:` field)
+- 2026-03-08: Flat vault structure — organization comes from the graph, not the filesystem
+- 2026-03-08: Local MongoDB, not Atlas — personal/cross-domain data stays private and local
+- 2026-03-08: Local embedding model (Ollama), swappable via abstraction layer
+- 2026-03-08: Controlled vocabulary via `ontology.yaml` — prevents tag fragmentation, evolves deliberately
+- 2026-03-08: Context assembly produces session initialization instructions — knowledge + skills + reads + reminders, tailored by objective
+- 2026-03-08: System CLIs handle their own Hive updates — each system manages its domain logic, Hive CLI is the low-level building block
+- 2026-03-08: Skills must document Hive integration convention — new skills follow it, existing skills evolve incrementally
+- 2026-03-08: Markdown files are source of truth, MongoDB is derived index — Git-trackable, Obsidian-compatible
+- 2026-03-08: Graph expansion favors breadth — can't explore what you don't know about
+- 2026-03-08: Migration is gradual — projects/ coexists with hive/, nothing breaks
+- 2026-03-08: Hive UI lives in OS Terminal (Bloomberg-style) — kanban, graph, timeline views alongside sessions
+- 2026-03-08: Hive notes for skills/systems enable self-aware context assembly — the system recommends relevant tools per session
 
 ## Open Questions
 - Which OS skills should be symlinked to `~/.claude/skills/` for global access in dispatched sessions?
 - When SDK Issue #583 is fixed, remove the monkey-patch from engine.py
 - 1Password: `op run` vs `op read` for secret injection? Split `.env` into urls + secrets?
 - Should onboarding branch be maintained separately, or just point new engineers at main?
+- Hive: Note creation mechanics — explicit CLI calls vs hooks vs hybrid?
+- Hive: Sync trigger — on CLI operations, Git hooks, file watcher, or manual?
+- Hive: Linear bidirectional sync — conflict resolution, trigger mechanism?
+- Hive: Session lifecycle — how does context assembly get injected (hook, skill, flag)?
+- Hive: Which Ollama embedding model? nomic-embed-text vs mxbai-embed-large?
+- Hive: Context assembly LLM — session assembles from raw notes, or separate LLM call in CLI?
+- Hive: Beads coexistence — mirror as awareness records? Replace with Linear?
+- Hive: Graph quality — archival conventions, stale note detection, noise prevention?
