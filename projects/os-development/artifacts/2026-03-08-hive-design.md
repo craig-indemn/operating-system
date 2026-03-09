@@ -501,6 +501,7 @@ hive context "voice scoring"                    # Full session initialization in
 hive context "voice scoring" --domain indemn    # Scoped to a domain
 hive context "voice scoring" --deep             # Full note content, not summaries
 hive context "voice scoring" --objective "build the scoring UI"  # Tailored for purpose
+hive context "voice scoring" --objective "build the scoring UI" --system code-development  # System-aware retrieval
 
 # Search
 hive search "deployment patterns"               # Semantic search
