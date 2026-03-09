@@ -563,14 +563,30 @@ Designed in session 2026-03-09-a. The Hive is the home screen of the operating s
 
 **Responsive.** On an ultra-wide monitor, the Wall and Focus Area coexist comfortably. On smaller screens, the Wall collapses to a slide-out or tab bar.
 
+### Interaction Model
+
+**Voice-first.** Craig interacts primarily through voice via Wispr Flow (speech-to-text that pastes into the active input). The Hive must work well with voice — quick capture, responding to sessions, taking notes. All through talking into the computer.
+
+**Parallel work is the norm.** Multiple sessions running simultaneously. While one session works on code, Craig switches to another for content, or reviews something in a browser panel. The Wall provides awareness of everything in motion while Focus panels show active work.
+
+**Almost everything involves a Claude Code session.** Whether it's writing code, creating content, drafting an email, brainstorming, or preparing for a meeting — the primary interaction is through Claude Code sessions. The Hive surfaces what to work on; sessions do the work.
+
+**The Hive is the surface for everything:** email (read/reply via browser panel + Claude assistance), social media (post to X, LinkedIn, Substack via browser panels or system APIs), news (read articles, repost/restack), meetings (notes captured through the Hive, prep run via call-prep sessions), calendar (see what's upcoming), code development, content creation, brainstorming, note-taking. The goal is to never leave the Hive.
+
 ### Tiles: Everything Is a Tile
 
 Every tile on the Wall is a Hive note. Everything is a note. Everything is a tile. **Tiles are the only UI elements.** No buttons, no menus, no chrome, no toolbars. The tiles are the interface. The data is the UI.
 
-- **Domain filtering:** Click a domain tile to filter the Wall.
+**All types mixed on one surface.** Tiles are NOT grouped by type or system. A task tile sits next to a session tile sits next to a content draft sits next to a calendar event. Organization is by relevance and status, not by category. This matches how the brain works — you don't think in categories, you think in priorities and connections.
+
+**Completed work stays visible.** Done items don't disappear — they fade (lower brightness) but remain on the Wall. Completed work is context for what's next AND source material for future work (the flywheel). A completed feature is a potential blog post. A published blog is a potential tweet thread. Everything builds on everything.
+
+- **Domain filtering:** Click a domain tile to filter the Wall. This IS the fractal zoom — not a spatial zoom, just filtering. Show only Indemn, or only Career Catalyst, or everything.
 - **Search:** A search tile opens a search input.
 - **Quick capture:** A capture tile opens an input for fast note creation.
 - **Navigation:** Tiles themselves handle all interaction.
+
+**LLM-driven arrangement, not algorithmic.** The Wall's organization is not a weighted scoring formula. This is an LLM-based system — the intelligence should come from LLMs. The Wall shows what matters based on LLM reasoning about current state, not from `score = (priority × 0.5) + (recency × 0.3)`. The LLM understands "meeting in 2 hours and prep hasn't been done" without hand-coded rules.
 
 ### Tile Visual Design
 
@@ -615,10 +631,12 @@ content (first ~50 chars) → Context line (when space permits)
 The center of the screen. Where active work happens.
 
 **Panel types:**
-- **Terminal panels** — xterm.js, same as current OS Terminal. Claude Code sessions.
-- **Browser panels** — iframe/webview for web content (articles, Gmail, dashboards, social media, custom system UIs).
+- **Terminal panels** — xterm.js, same as current OS Terminal. Claude Code sessions. The majority of interactions.
+- **Browser panels** — iframe/webview for web content. Covers: reading articles, Gmail interface, social media (X, LinkedIn, Substack), custom system dashboards, any website interaction. If a system needs a custom UI beyond terminal or standard web (e.g., a content pipeline dashboard, analytics view), it hosts itself as a small web app and the Hive loads it in a browser panel — same pattern as the OS Terminal being a React app at localhost:3101.
 
 **Equal-sized auto-grid.** Same behavior as the current OS Terminal — panels fill available space equally. No custom sizing for now.
+
+**These two panel types cover ~90% of daily workflow.** Terminal for anything involving Claude Code (most work). Browser for anything involving web interfaces. The remaining 10% (complex app-specific interactions) happens in a regular browser outside the Hive.
 
 **Opening and closing.** Click a tile on the Wall → opens in Focus Area via appropriate interface. Close a panel → it returns to being a tile on the Wall. The Focus Area auto-arranges as panels are added/removed.
 
@@ -835,7 +853,7 @@ Decisions that need to be made during implementation, not during design.
 
 ### 7. Beads Coexistence
 **Question:** Do beads stay? How do they relate to Hive task notes and Linear?
-**Leaning:** Beads stay for dispatch integration (dispatch engine reads beads). Beads tasks get mirrored as Hive awareness records. Linear is the team-facing work tracker. Three systems, each serving a different purpose, connected through the Hive.
+**Clarified (2026-03-09):** Beads stays in its lane — it's for implementation plans within individual Claude Code sessions (breaking down code tasks and executing them via dispatch). Beads is NOT a system-wide work tracker. The Hive handles system-wide work awareness. Linear is the team-facing issue tracker. Beads tasks may get mirrored as awareness records, but beads is not a source of truth for "what needs doing" — Linear and the Hive are.
 **Decide during:** Phase 3.
 
 ### 8. Graph Quality
