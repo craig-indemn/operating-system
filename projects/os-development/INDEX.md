@@ -3,6 +3,8 @@
 Development of the operating system itself — the skills, systems, and infrastructure that make Indemn's connected intelligence layer work. Covers the dispatch system, systems framework, skill improvements, and meta-level architecture of the OS.
 
 ## Status
+**Session 2026-03-09-a (complete)**: Continued Hive design — full UI design (Wall + Focus Area layout, tile system, visual encoding, fluid sizing, session initialization flow), flywheel mechanics (emergent from linked notes, not coded pipelines), content system integration framework, generic system integration contract. Design doc updated with 5 new major sections and 17 new decisions.
+
 **Session 2026-03-08-a (complete)**: Designed The Hive — the awareness and connective tissue layer for the operating system. Extended brainstorming session covering vision, data model, ontology, storage architecture, context assembly, and system integration model. Full design document produced. This is a major architectural addition to the OS.
 
 **Session 2026-03-05-a (complete)**: Added plain shell terminal sessions to OS Terminal.
@@ -14,9 +16,9 @@ Development of the operating system itself — the skills, systems, and infrastr
 **Onboarding branch** — is 40+ commits behind main. DO NOT rebase while parallel sessions active.
 
 **Next session should:**
-1. Begin Hive Phase 1: Foundation — create vault, ontology.yaml, local MongoDB, hive CLI core
-2. Gas Town / Dolt setup (deferred from previous session)
-3. V3 voice layer or V4 augmentation (overlays, context panels)
+1. Continue Hive design refinement — remaining undesigned areas: self-improvement mechanisms, mobile experience, real scenario walkthroughs for note creation
+2. Begin Hive Phase 1: Foundation — create vault, ontology.yaml, local MongoDB, hive CLI core
+3. Gas Town / Dolt setup (deferred from previous session)
 
 ## External Resources
 | Resource | Type | Link |
@@ -131,6 +133,21 @@ Development of the operating system itself — the skills, systems, and infrastr
 - 2026-03-08: Migration is gradual — projects/ coexists with hive/, nothing breaks
 - 2026-03-08: Hive UI lives in OS Terminal (Bloomberg-style) — kanban, graph, timeline views alongside sessions
 - 2026-03-08: Hive notes for skills/systems enable self-aware context assembly — the system recommends relevant tools per session
+- 2026-03-09: The Hive is the home screen — replaces OS Terminal as the front door, terminals are one view within it
+- 2026-03-09: Wall + Focus Area layout — Wall surrounds Focus, breathes with activity level, toggle to full Overview
+- 2026-03-09: Tiles are the only UI elements — no chrome, no buttons, no menus. The data is the UI.
+- 2026-03-09: Fluid tile sizing — continuous scaling based on available space, not fixed breakpoints
+- 2026-03-09: Rectangular tiles for MVP — honeycomb deferred (CSS grid is rectangle-native, hex is significantly harder)
+- 2026-03-09: Visual encoding — color=system, accent/border=domain, brightness=status for glanceable scanning
+- 2026-03-09: Two data sources — active sessions from sessions/*.json (real-time), everything else from Hive API
+- 2026-03-09: UI reads from Hive only — all system data syncs into Hive backend, UI doesn't call external APIs
+- 2026-03-09: Session initialization — ask objective FIRST, then retrieve context parameterized by topic+objective+system
+- 2026-03-09: Flywheel is emergent from linked notes — no hard-coded pipelines between systems
+- 2026-03-09: "Create linked note" is a first-class UI interaction — primary mechanism for thought accumulation
+- 2026-03-09: Generic system integration framework — every system follows same contract for Hive awareness records
+- 2026-03-09: Content system creates awareness records at each pipeline stage (idea→extraction→draft→publish)
+- 2026-03-09: Don't hard-code system-specific logic in Hive UI — tiles are generic, any system plugs in automatically
+- 2026-03-09: Completed sessions get Hive awareness records at session close — active state stays in sessions/*.json
 
 ## Open Questions
 - Which OS skills should be symlinked to `~/.claude/skills/` for global access in dispatched sessions?
@@ -140,8 +157,12 @@ Development of the operating system itself — the skills, systems, and infrastr
 - Hive: Note creation mechanics — explicit CLI calls vs hooks vs hybrid?
 - Hive: Sync trigger — on CLI operations, Git hooks, file watcher, or manual?
 - Hive: Linear bidirectional sync — conflict resolution, trigger mechanism?
-- Hive: Session lifecycle — how does context assembly get injected (hook, skill, flag)?
+- Hive: Session lifecycle — RESOLVED: first message via tmux send-keys, session asks objective, then retrieves context
 - Hive: Which Ollama embedding model? nomic-embed-text vs mxbai-embed-large?
 - Hive: Context assembly LLM — session assembles from raw notes, or separate LLM call in CLI?
 - Hive: Beads coexistence — mirror as awareness records? Replace with Linear?
 - Hive: Graph quality — archival conventions, stale note detection, noise prevention?
+- Hive UI: Mobile experience — important but not yet designed
+- Hive UI: Self-improvement mechanisms — how does the system learn what context was useful?
+- Hive UI: Detailed note creation walkthroughs — real scenario end-to-end flows needed
+- Hive: Code development system integration — what awareness records, at which transitions?

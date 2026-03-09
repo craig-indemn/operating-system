@@ -549,6 +549,255 @@ hive/                         # CLI package
 
 ---
 
+## The Hive UI
+
+Designed in session 2026-03-09-a. The Hive is the home screen of the operating system — the front door, not a panel within the OS Terminal. You open the Hive, see your world, and work from there.
+
+### Layout: Wall + Focus Area
+
+**The Wall** surrounds the **Focus Area**. The Focus Area is always centered. The Wall is the peripheral awareness layer — tiles representing everything in your world. The Focus Area is where active work happens — terminal panels and browser panels.
+
+**The Wall breathes.** When less is in the Focus Area, the Wall expands and tiles grow, showing more information. When the Focus Area has multiple active panels, the Wall compresses and tiles shrink. Information density scales fluidly with available space. The more you have going on, the more you need to focus; the less you have going on, the more you're open to seeing what's happening.
+
+**Toggle to full Overview.** Even when sessions are running, you can toggle the Wall to full-screen to see the big picture. The Focus Area minimizes. Toggle back and your sessions are still running.
+
+**Responsive.** On an ultra-wide monitor, the Wall and Focus Area coexist comfortably. On smaller screens, the Wall collapses to a slide-out or tab bar.
+
+### Tiles: Everything Is a Tile
+
+Every tile on the Wall is a Hive note. Everything is a note. Everything is a tile. **Tiles are the only UI elements.** No buttons, no menus, no chrome, no toolbars. The tiles are the interface. The data is the UI.
+
+- **Domain filtering:** Click a domain tile to filter the Wall.
+- **Search:** A search tile opens a search input.
+- **Quick capture:** A capture tile opens an input for fast note creation.
+- **Navigation:** Tiles themselves handle all interaction.
+
+### Tile Visual Design
+
+**Fluid sizing.** Tiles are not three fixed sizes. They show as much information as fits their current rendered space. Title is always visible. Status and color are always present. As a tile gets more space: context line appears, then tags, then timestamps, then summaries. The transition is continuous, not stepped.
+
+**Fewer tiles at useful size, not more tiles at useless size.** When the Wall is compressed, it shows a smart highlight reel — active items, things needing attention, upcoming events. The full inventory is available in Overview mode. This keeps the compressed state scannable.
+
+**Visual encoding — three axes:**
+
+| Axis | Maps to | Purpose |
+|------|---------|---------|
+| **Color** | System (content, code, sessions, calendar, email, linear, etc.) | "What kind of thing is this?" |
+| **Accent/border** | Domain (Indemn, Career Catalyst, Personal) | "Which world does it belong to?" |
+| **Brightness/opacity** | Status (vivid=active, normal=to-do, muted=backlog, faded=done) | "What's its energy level?" |
+
+If a note has no `system` field (native knowledge), color comes from the primary tag category (Knowledge, Work, Record, Output) as defined in the ontology.
+
+**Rectangular tiles for MVP.** Honeycomb/hexagonal tiles are visually aligned with the hive metaphor but significantly harder to implement (CSS grid/flexbox are rectangle-native). Start with rounded rectangular tiles, dense packing, minimal gaps, organic feel. Honeycomb is a future CSS-level evolution if warranted.
+
+### Tile Data Mapping
+
+Every visual element on a tile maps to a Hive note field:
+
+```
+Note field              →  Tile visual
+──────────────────────────────────────────────
+title                   →  Tile label
+tags[]                  →  Type indicator
+domains[]               →  Accent/border color
+status                  →  Brightness/opacity
+system                  →  Primary color
+priority                →  Visual weight / badge
+ref                     →  Awareness record indicator
+external_refs           →  Reference badges (AI-123, PR #456)
+updated_at              →  Timestamp ("2h ago")
+links[]                 →  Connection count (in larger tiles)
+content (first ~50 chars) → Context line (when space permits)
+```
+
+### Focus Area
+
+The center of the screen. Where active work happens.
+
+**Panel types:**
+- **Terminal panels** — xterm.js, same as current OS Terminal. Claude Code sessions.
+- **Browser panels** — iframe/webview for web content (articles, Gmail, dashboards, social media, custom system UIs).
+
+**Equal-sized auto-grid.** Same behavior as the current OS Terminal — panels fill available space equally. No custom sizing for now.
+
+**Opening and closing.** Click a tile on the Wall → opens in Focus Area via appropriate interface. Close a panel → it returns to being a tile on the Wall. The Focus Area auto-arranges as panels are added/removed.
+
+### Quick Capture
+
+Always-visible capture tile on the Wall. Click it, talk via Wispr Flow, done. The Hive processes it asynchronously:
+- LLM determines appropriate tags and domain from the content
+- May ask a follow-up question if ambiguous (appears as a notification on the capture tile)
+- New note appears as a tile on the Wall, already organized
+
+Similar to the content extraction pipeline's interview approach, but lightweight — quick categorization, not deep extraction.
+
+### Create Linked Note
+
+**First-class interaction.** When you're looking at a tile and want to capture a thought about it — one click, a new note opens already linked to the parent. Talk your thoughts via Wispr Flow. Done.
+
+The new note:
+- Inherits domain from parent
+- Gets auto-tagged based on content
+- Is linked bidirectionally to the parent note
+- Appears as its own tile on the Wall
+
+This is the primary mechanism for the flywheel (see below). Thoughts accumulate on top of existing work and become source material for future work in any system.
+
+### Two Data Sources
+
+| Tile type | Source | Update frequency |
+|-----------|--------|-----------------|
+| Active sessions | `sessions/*.json` (existing session manager infrastructure) | Real-time (hooks) |
+| Everything else | Hive API (MongoDB) | ~30s polling + on-action refresh |
+
+The UI merges both into one unified Wall. Active sessions get tile data from session state files. Hive notes get tile data from the Hive API. Both render with the same visual language. The user doesn't know or care which backend a tile comes from.
+
+**Completed sessions** get a Hive awareness record at session close (created by the `session close` command). This puts the session's knowledge into the graph for future context assembly. Active session state stays in `sessions/*.json` where it belongs — real-time operational data doesn't belong in a knowledge graph.
+
+### Technical Architecture
+
+**Evolve the existing OS Terminal React app.** The Hive UI is not a new application — it's the OS Terminal grown up.
+
+What exists (keep):
+- React + Vite frontend
+- xterm.js terminal rendering
+- WebSocket relay to tmux (node-pty)
+- Session state file watching
+- Express backend
+
+What changes:
+- Layout evolves from "grid of terminals" to "Wall + Focus Area"
+- New tile component alongside terminal panels
+- Browser panel component (iframe)
+- Quick capture component
+
+What's new:
+- **Hive API routes** — Express routes wrapping Hive CLI (`hive notes`, `hive search`, etc.) with JSON output
+- **WebSocket Hive updates** — push note changes to the frontend (~30s polling or on-action)
+- **UI reads from ONE source: the Hive.** All system data (content, code, calendar, email, Linear) syncs into the Hive backend. The UI doesn't call Linear API or Google Calendar. It reads Hive notes. That's the whole point of the Hive being connective tissue.
+
+---
+
+## Session Initialization ("The Doctor Appointment")
+
+How a session gets started from the Hive with the right context.
+
+### The Flow
+
+1. **Click a tile.** Session spawns immediately — terminal appears in Focus Area. No loading screen.
+2. **First message sent via `tmux send-keys`.** Contains tile metadata only — note ID, title, tags, domain, system. Enough to orient the session, not full context. Includes instruction to ask for the objective before retrieving context.
+3. **Session asks the objective.** "You're working on Voice Scoring. What are you trying to accomplish?"
+4. **User responds** (via Wispr Flow): "Implement the scoring component."
+5. **Context retrieves with full parameters.** The session runs `hive context` with topic + objective + system + domain. The objective shapes what's relevant — implementation context is different from brainstorming context is different from content extraction context.
+6. **Session is hydrated.** Targeted context, relevant skills identified, recommended files to read. Work begins.
+
+### Why Objective Comes First
+
+Context retrieval needs context to be relevant. Without knowing the objective, you get everything about a topic — noisy and potentially fills the context window with irrelevant material. The objective determines what's relevant:
+
+- "Brainstorm the architecture" → design docs, decisions, related patterns, constraints. Skills: brainstorming.
+- "Implement the component" → specs, code patterns, repo structure, PRs. Skills: development workflow.
+- "Write a blog about it" → linked notes with commentary, user-facing impact, decisions. Skills: content system.
+
+Same topic, different objectives, completely different context.
+
+### System Awareness
+
+Each session operates within a system. The tile's metadata (tags, system field) tells the session what system it's in. The context assembly is parameterized by system — different systems prioritize different kinds of context.
+
+The first message includes the system context:
+```
+User clicked Hive tile: "Voice Scoring UI"
+(note_id: 2026-03-08-voice-scoring-spec, domain: indemn,
+system: code-development, tags: [spec, voice, scoring],
+status: active, linear: AI-123)
+
+Ask the user what they're trying to accomplish, then use
+hive context with their objective to retrieve relevant context.
+```
+
+System/workflow notes in the Hive describe what each system does and what skills it uses. Context assembly reads these to tailor retrieval per system.
+
+---
+
+## The Flywheel
+
+How work in one system becomes source material for other systems. The flywheel is not a hard-coded pipeline between specific systems — it's emergent from notes and links.
+
+### Core Mechanism: Linked Notes
+
+The primary interaction that drives the flywheel is **creating linked notes off existing work.** As you work, thoughts occur. You capture them as linked notes — commentary, insights, trade-offs, ideas for other things. These accumulate organically.
+
+When any system needs context later — content system needs source material for a blog, a session needs background on a feature, meeting prep needs context on a topic — the Hive has it because you've been capturing thoughts all along.
+
+### Example: Development → Content
+
+1. You build a voice scoring feature over several sessions.
+2. As you work, you create linked notes: "The weighted rubric approach was the right call because...", "O'Connor specifically asked for this visibility...", "This pattern could apply to Career Catalyst scoring too..."
+3. Weeks later, you want to write a newsletter about it.
+4. You open the content system. Context assembly finds the feature's awareness records AND all your linked notes with commentary.
+5. The content extraction interview is already half-done — the material is in the Hive.
+6. The published blog post becomes its own note, linked back to the feature and the design decisions.
+7. That blog post might spawn more: a LinkedIn cross-post, a tweet thread, a newsletter mention.
+
+**The flywheel: work → capture thoughts → thoughts accumulate → thoughts become source material → new work → more thoughts.** The Hive is the accumulator. Systems are the consumers. No system-specific logic in the Hive.
+
+### No Hard-Coded Pipelines
+
+The Hive doesn't know "when development finishes, suggest content creation." There are no arrows between systems in the Hive. Instead:
+
+- Each system creates awareness records at meaningful transitions
+- You create linked notes as thoughts occur (the key human input)
+- Context assembly surfaces relevant material when any system asks for it
+- The connections emerge from the graph, not from coded pipelines
+
+This means any new system automatically participates in the flywheel by creating awareness records and being queryable via context assembly.
+
+---
+
+## System Integration Framework
+
+Every system integrates with the Hive the same way. The Hive UI is completely generic — it doesn't know about specific systems. Any system plugs in by following this framework.
+
+### The Contract
+
+1. **Create awareness records at meaningful state transitions.** Not every minor state change — the significant lifecycle events.
+2. **Set `system:` field** on all awareness records so the Hive knows which system owns them.
+3. **Set `ref:` field** pointing to where the actual artifact lives (in the system's own storage).
+4. **Register system-specific tags** in `ontology.yaml`.
+5. **System CLIs own their Hive updates.** The Hive CLI is the low-level building block. System CLIs call it internally when transitions happen.
+6. **Document the Hive integration** in the system's SKILL.md.
+
+### Content System Integration
+
+The content system (`cs.py` state store, brand configs, extract→draft→refine→publish pipeline) creates awareness records at each meaningful stage:
+
+| Event | Tags | Status | Ref |
+|-------|------|--------|-----|
+| Idea created | idea, content | ideating | — (native note, idea lives in Hive) |
+| Extraction complete | extraction, content | active | `drafts/YYYY-MM-DD-slug/extraction.md` |
+| Draft v1 created | draft, blog/newsletter | in-review | `drafts/YYYY-MM-DD-slug/draft-v1.md` |
+| Latest draft updated | draft, blog/newsletter | in-review | `drafts/YYYY-MM-DD-slug/draft-v{N}.md` |
+| Approved | draft, blog/newsletter | done | latest draft path |
+| Published | published, blog/newsletter | done | published URL |
+| Repurposed | published, linkedin/medium/etc | active→done | platform-specific path |
+
+All records have `system: content` and links back to source material (the linked notes, the original feature, etc.).
+
+### Session Manager Integration
+
+| Event | Tags | Status | Ref |
+|-------|------|--------|-----|
+| Session closed | session-summary | done | `sessions/{uuid}.json` |
+
+The awareness record captures: what was accomplished, what decisions were made, what artifacts were produced. Created by the `session close` command. Active session state stays in `sessions/*.json` (real-time, not Hive-appropriate).
+
+### Future Systems
+
+Any new system follows the same pattern. The Hive UI doesn't change. New tiles appear automatically because they're just notes with tags and metadata. The visual encoding (color from system, accent from domain, brightness from status) works for any system that registers its tags in the ontology.
+
+---
+
 ## Open Decisions
 
 Decisions that need to be made during implementation, not during design.
@@ -577,8 +826,7 @@ Decisions that need to be made during implementation, not during design.
 
 ### 5. Hive UI in OS Terminal
 **Question:** What views? How does it integrate with the existing terminal grid?
-**Direction:** A Hive panel in the OS Terminal showing kanban (notes with status), graph (connections), timeline, domain filters. Design during Phase 5.
-**Decide during:** Phase 5 implementation.
+**Resolved:** See "The Hive UI" section below. Designed in session 2026-03-09-a.
 
 ### 6. Multi-User Access
 **Question:** How do teammates and the CEO see the Hive?
@@ -677,18 +925,28 @@ Decisions that need to be made during implementation, not during design.
 
 **Exit criteria:** Working on a feature surfaces connected content drafts, meetings, Linear issues, and PRs from across systems.
 
-### Phase 5: Visualization
-**Goal:** The Hive is visible in the OS Terminal. Kanban, graph, filtering.
+### Phase 5: The Hive UI
+**Goal:** The Hive is the home screen. Wall + Focus Area. Tiles. Session spawning with context.
 
-- [ ] Design Hive panel for OS Terminal (kanban view of notes with status)
-- [ ] Build graph view (note connections, zoomable)
-- [ ] Build domain filter (show only Indemn, or only Career Catalyst)
-- [ ] Build timeline view (notes ordered by time)
-- [ ] Launch sessions from the Hive (click a feature → open session with context)
-- [ ] Integrate with existing OS Terminal session grid
+- [ ] Evolve OS Terminal React app — replace session grid with Wall + Focus Area layout
+- [ ] Build tile component — fluid sizing, progressive information disclosure, color/accent/brightness encoding
+- [ ] Build Wall layout — tiles surrounding Focus Area, breathing with activity level, smart highlight reel in compressed mode
+- [ ] Build Focus Area — equal-sized auto-grid of terminal panels (xterm.js, existing) + browser panels (iframe, new)
+- [ ] Build Overview toggle — expand Wall to full screen, collapse back to Focus
+- [ ] Add Hive API routes to Express backend — wrap Hive CLI with JSON output
+- [ ] Add WebSocket Hive updates — push note changes to frontend (~30s polling + on-action)
+- [ ] Build domain filtering — click domain tile to filter Wall
+- [ ] Build search tile — search input that queries `hive search`
+- [ ] Build quick capture tile — input that creates notes, LLM auto-tags async
+- [ ] Build "create linked note" interaction — one-click note creation linked to parent tile
+- [ ] Build session spawning from tiles — click tile → `session create` → first message with tile metadata via `tmux send-keys`
+- [ ] Build session initialization flow — objective question → targeted context retrieval → work begins
+- [ ] Merge session state tiles (from `sessions/*.json`) with Hive note tiles into unified Wall
+- [ ] Color/visual mapping from `ontology.yaml` — system colors, domain accents, status brightness
+- [ ] Responsive layout — ultra-wide (Wall + Focus coexist), smaller screens (Wall collapses)
 - [ ] Configure Obsidian vault pointing at `hive/` for alternative visualization
 
-**Exit criteria:** You can see active work across all domains in the OS Terminal, filter by domain, and launch context-hydrated sessions directly from the Hive view.
+**Exit criteria:** The Hive is the home screen. You see your world as tiles, click to start context-hydrated sessions, work in Focus panels, observe everything from the Wall. The OS Terminal's session grid is fully replaced.
 
 ### Phase 6: Expansion
 **Goal:** The Hive handles external sources, multiple users, and self-improvement.
@@ -784,6 +1042,22 @@ The transition is gradual. Nothing breaks.
 | 2026-03-08 | Migration is gradual — projects/ coexists with hive/ | Nothing breaks. New knowledge goes to Hive. Old artifacts migrate incrementally. |
 | 2026-03-08 | Hive UI lives in OS Terminal, Bloomberg-style | Never leave the system. Kanban, graph, timeline views alongside session grid. |
 | 2026-03-08 | Hive notes for skills and systems enable self-aware context assembly | The Hive knows what tools exist and can recommend relevant ones per session. |
+| 2026-03-09 | The Hive is the home screen — replaces OS Terminal as front door | The Hive is the awareness layer; terminals are one view within it. You start at the Hive, not the terminal grid. |
+| 2026-03-09 | Wall + Focus Area layout — Wall surrounds Focus, breathes with activity | The Wall is peripheral awareness (tiles). The Focus Area is active work (terminals/browsers). Wall expands when less is active, compresses when focused. |
+| 2026-03-09 | Tiles are the only UI elements — no chrome, no buttons, no menus | The data is the UI. Every interactive element is a tile showing real information. Domain filtering, search, and capture are all tiles. |
+| 2026-03-09 | Fluid tile sizing, not fixed breakpoints | Tiles show as much info as fits. Continuous scaling, not three discrete sizes. Fewer tiles at useful size beats more tiles at useless size. |
+| 2026-03-09 | Rectangular tiles for MVP, honeycomb deferred | Hexagonal layouts are significantly harder (CSS grid is rectangle-native). Start with rounded rectangles, organic feel. Honeycomb is a future CSS-level change. |
+| 2026-03-09 | Color=system, accent=domain, brightness=status for tile encoding | Three visual axes for glanceable scanning. System is primary color, domain is accent/border, status is brightness/opacity. |
+| 2026-03-09 | Two data sources: sessions/*.json (real-time) + Hive API (knowledge) | Active sessions stay in session state files (high-frequency operational data). Everything else from Hive. Completed sessions get awareness records. |
+| 2026-03-09 | UI reads from Hive only — doesn't call external system APIs directly | All system data syncs into the Hive backend. The UI reads one source. That's the point of connective tissue. |
+| 2026-03-09 | Session initialization: ask objective BEFORE retrieving context | Context retrieval needs context. The objective shapes what's relevant. Same topic, different objectives → different context. |
+| 2026-03-09 | Context assembly parameterized by topic + objective + system | Different systems prioritize different context for the same topic. Brainstorming for code ≠ brainstorming for content. |
+| 2026-03-09 | First message to new sessions via `tmux send-keys` with tile metadata | Lightweight injection — tile note ID, tags, domain, system. Session handles its own context retrieval using Hive CLI. |
+| 2026-03-09 | The flywheel is emergent from linked notes, not coded pipelines | No hard-coded arrows between systems. Work → capture thoughts → thoughts accumulate → any system consumes them. The Hive is the accumulator. |
+| 2026-03-09 | "Create linked note" is a first-class UI interaction | One-click note creation linked to a parent tile. Primary mechanism for flywheel — thoughts accumulate on existing work. |
+| 2026-03-09 | Don't hard-code system-specific logic in the Hive UI | The UI is completely generic. Any system plugs in by creating awareness records. New systems get tiles automatically. |
+| 2026-03-09 | Every system follows the same Hive integration framework | Create awareness records at meaningful transitions, set system/ref fields, register tags, document integration. |
+| 2026-03-09 | Content system creates awareness records at each pipeline stage | idea → extraction → draft → approved → published → repurposed. Each stage gets a Hive record. System owns its updates. |
 
 ---
 
@@ -804,5 +1078,5 @@ The transition is gradual. Nothing breaks.
 - **System architectures** → Content system, dispatch, code repos all keep their internal structures
 - **Claude Code's native abilities** → Grep, file reads, codebase exploration all preserved. The Hive is the compass; Claude Code is the explorer.
 - **Skills framework** → Skills remain the interface for everything. The Hive adds a new skill, doesn't change the framework.
-- **OS Terminal** → The Hive panel is additive to the existing session grid.
+- **OS Terminal** → The Hive UI evolves the OS Terminal React app. Terminal rendering (xterm.js), WebSocket relay, session state watching all preserved. The layout changes from session grid to Wall + Focus Area.
 - **Git workflow** → The vault is version-controlled. Git history preserved.
