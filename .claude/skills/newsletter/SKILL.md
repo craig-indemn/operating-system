@@ -126,6 +126,23 @@ Create drafts folder and files:
 
 Present draft. Iterate: feedback → revise (draft-v2, v3...). Never overwrite — preserve all versions.
 
+### Step 5.5: Tone Review (CRITICAL — do not skip)
+
+Before rendering, review every section for these anti-patterns:
+
+**Self-aggrandizing** — Cut any mic-drops ("Built it."), self-mythologizing ("I'm setting the standard"), or transformation narratives ("I used to be X, now I'm Y"). Let the work speak for itself.
+
+**Condescending to Kyle** — Cut any teacher-voice ("worth understanding"), reading instructions ("sit with this one"), or assumptions Kyle would underestimate ("further along than you'd think"). Kyle is smart. He'll get it.
+
+**Status-report voice** — Cut bland product copy ("real time saver"), unnecessary recaps of work Kyle is driving, and dismissive phrasing about Kyle's concerns.
+
+**The test for every sentence:** "Would Craig actually say this to Kyle over coffee?" If it sounds like a keynote, a LinkedIn post, or a status report, rewrite it.
+
+Also check:
+- Say "this week" for upcoming work (newsletter delivers Monday), not "next week"
+- Don't announce things Kyle already knows — reference naturally
+- "Every agent gets coverage" not "every customer gets access" — be precise
+
 ### Step 6: Render
 
 ```bash
@@ -135,7 +152,17 @@ npx tsx generate.tsx \
   --output /Users/home/Repositories/content-system/drafts/the-buzz-YYYY-MM-DD/the-buzz-YYYY-MM-DD.pdf
 ```
 
-Show Craig the PDF path. He delivers manually via Slack DM.
+Show Craig the PDF for review before delivery.
+
+### Step 7: Deliver
+
+Send via Slack DM to Kyle (UFK4DNNHG):
+1. Open DM with Kyle
+2. Send introductory message
+3. Upload PDF in thread (title: "The Buzz #N — DATE")
+4. Upload markdown source in thread (title: "The Buzz #N — Markdown Source")
+
+Use the `/slack` skill's execution model for file uploads.
 
 ## Resuming Mid-Pipeline
 
@@ -186,13 +213,23 @@ Graceful degradation: if cs.py fails, continue without state store. Log a warnin
 | `/Users/home/Repositories/content-system/drafts/the-buzz-YYYY-MM-DD/` | Working directory for current issue |
 | `/Users/home/Repositories/content-system/tools/the-buzz/generate.tsx` | PDF renderer |
 
+## Rendering Notes
+
+- **Ligature fix:** Barlow font GSUB tables are stripped via fonttools. If fonts are replaced, re-strip: `python3 -c "from fontTools.ttLib import TTFont; f=TTFont('file.ttf'); del f['GSUB']; f.save('file.ttf')"`
+- **Logo:** Indemn_PrimaryLogo_Iris.png at `tools/the-buzz/assets/indemn-logo.png`. Aspect ratio 4.33:1 — set width proportional to height.
+- **Banner:** Generate via `/image-gen` skill with Indemn brand colors (iris/eggplant), 21:9 aspect ratio. Save to drafts folder as `banner.png`.
+- **Page 3 layout:** Commentary in left column (flex: 3), backlinks in right sidebar (flex: 2). Don't put commentary on same page as features — causes orphaned headings.
+- **Colors:** Indemn brand palette defined in `generate.tsx` as `const c = { iris, lilac, eggplant, lime, ... }`. Must match `brands/the-buzz/config.yaml`.
+
 ## Red Flags
 
 - Never draft without reading voice.md first
 - Never skip extraction questions — Craig's perspective IS the product
+- **Never skip the tone review (Step 5.5)** — AI drafts consistently produce self-aggrandizing and condescending language that Craig will reject
 - Always present candidates and let Craig choose sections
 - Always get approval before rendering final PDF
 - Never use relative paths to content-system — always absolute
+- Don't say "next week" — the newsletter delivers Monday, so upcoming work is "this week"
 
 ## Archive
 
