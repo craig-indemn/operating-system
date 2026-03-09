@@ -50,8 +50,10 @@ Session 2026-03-03. Personal brand publishing presence fully established — Sub
 |------|----------|-----|
 | 2026-02-23 | [writing-psychology-reference](artifacts/2026-02-23-writing-psychology-reference.md) | Deep research on psychology and craft of writing that grips readers — permanent reference for content system |
 | 2026-02-25 | [content-system-architecture](artifacts/content-system-architecture.excalidraw) | Excalidraw diagram of the content pipeline — skills, flow, and integration points ([SVG](artifacts/content-system-architecture.svg)) |
+| 2026-03-09 | [the-buzz-newsletter-design](artifacts/2026-03-09-the-buzz-newsletter-design.md) | Design an internal CTO engineering newsletter (The Buzz) for CEO communication — newspaper-style PDF + structured markdown |
 
 ## Decisions
+- 2026-03-09: "The Buzz" — weekly CTO engineering newsletter for Kyle. Newspaper-style PDF + structured markdown. Created through guided extraction pulling from Linear, Slack, OS projects, git. Dual output for human reading and Claude Code consumption. Own `/newsletter` skill. React-PDF rendering with dedicated component library. Design doc: `artifacts/2026-03-09-the-buzz-newsletter-design.md`
 - 2026-03-03: Medium stopped issuing new integration tokens — no API access for new accounts. Cross-posting via Medium's "Import a story" feature using Substack URL (preserves canonical link).
 - 2026-03-02: Personal brand is a named newsletter "Notes from the Build", not a personal blog "Craig Certo". People subscribe to ideas, not people.
 - 2026-03-02: Substack primary, Medium cross-post with Substack as canonical source. Medium for discovery, Substack owns the relationship.
