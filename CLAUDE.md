@@ -47,6 +47,7 @@ Connected intelligence layer for Indemn. Every tool the company uses, accessible
 | `/weekly-summary` | Weekly intelligence rollup — decisions, action items, signals, pipeline, quotes |
 | `/follow-up-check` | Surface overdue action items, unmet commitments, and dropped follow-ups |
 | `/eval-analysis` | Analyze evaluation results — classify failures as agent vs evaluation issues, recommend fixes |
+| `/newsletter` | CTO engineering newsletter (The Buzz) — gather from Linear, Slack, Git, OS projects, extract perspective, draft, render PDF |
 
 ### Reference Skills
 | Skill | What It Does |
