@@ -3,13 +3,15 @@
 AI-powered content creation pipeline for Indemn and personal brands. Transforms voice-based ideas into polished, publishable content through dynamic extraction, iterative drafting, and multi-platform distribution. Lives in a separate repo (`/Users/home/Repositories/content-system`) with skills symlinked to `~/.claude/skills/`.
 
 ## Status
-Session 2026-03-10. Evaluations blog post rewritten and republished.
+Session 2026-03-10. Evaluations blog post rewritten, republished, all images finalized.
 
 **Session 2026-03-10:**
 - Rewrote "Building Evaluations for Conversational Agents" → "How We Evaluate Conversational AI Agents"
 - Replaced dramatic customer-crisis narrative with practical engineer tone
 - Added new content: rubric restructuring (18→3-6 rules), four evaluation modes (single-turn, simulated, replay, voice), autonomous improvement loop, real anonymized outcomes
 - Generated 3 new Indemn-branded infographic images via `/image-gen` (evaluation dashboard, four modes, improvement loop), kept original hero
+- Iterated on evaluation-dashboard image: dark UI mockup → flat vector infographic (Test Scenarios → Scoring Engine → Component Breakdown). User feedback: mockup gave wrong impression of actual product UI
+- Ran 8 image-gen prompting experiments, documented ICS framework and best practices in image-gen skill
 - Applied tone learnings from The Buzz newsletter tone review — no self-aggrandizing, no mic-drops, let the work speak
 - Deployed to blog.indemn.ai via `vercel --prod`
 - Used `op read` for Gemini API key (not `op item get --fields` which returns references, not values)
@@ -57,6 +59,7 @@ Session 2026-03-10. Evaluations blog post rewritten and republished.
 
 ## Decisions
 - 2026-03-10: Evaluations blog rewrite — practical builder tone, not dramatic storytelling. Core insight: "the hardest part of building a good AI agent isn't the AI — it's defining what success looks like." Tone calibrated from The Buzz tone review learnings. Images should be infographic/diagram style (Gemini image-gen), not abstract AI art.
+- 2026-03-10: Blog images should be conceptual infographics, not UI mockups — mockups give the wrong impression that the image is the actual product dashboard. Flat vector, white background, consistent style across all images in a post.
 - 2026-03-10: 1Password `op read "op://vault/item/field"` returns actual secret values. `op item get --fields label=field` returns reference strings. Use `op read` for Gemini API key in image-gen workflows.
 - 2026-03-09: "The Buzz" — weekly CTO engineering newsletter for Kyle. Newspaper-style PDF + structured markdown. Created through guided extraction pulling from Linear, Slack, OS projects, git. Dual output for human reading and Claude Code consumption. Own `/newsletter` skill. React-PDF rendering with dedicated component library. Design doc: `artifacts/2026-03-09-the-buzz-newsletter-design.md`
 - 2026-03-03: Medium stopped issuing new integration tokens — no API access for new accounts. Cross-posting via Medium's "Import a story" feature using Substack URL (preserves canonical link).
