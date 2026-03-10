@@ -10,8 +10,9 @@ Generate images using Google Nano Banana (Gemini 2.5 Flash Image) via the Gemini
 ## Status Check
 
 ```bash
-source .env && curl -s -X POST "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent" \
-  -H "x-goog-api-key: $GEMINI_API_KEY" \
+GEMINI_API_KEY=$(op read "op://cli-secrets/Gemini API Key/credential") && \
+curl -s -X POST "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent" \
+  -H "x-goog-api-key: ${GEMINI_API_KEY}" \
   -H "Content-Type: application/json" \
   -d '{"contents":[{"parts":[{"text":"Generate an image: a small blue circle on white background"}]}],"generationConfig":{"responseModalities":["TEXT","IMAGE"]}}' | python3 -c "import json,sys; d=json.load(sys.stdin); print('OK' if 'candidates' in d else f'ERROR: {d.get(\"error\",{}).get(\"message\",\"unknown\")}')"
 ```
@@ -21,12 +22,24 @@ source .env && curl -s -X POST "https://generativelanguage.googleapis.com/v1beta
 ### Prerequisites
 - Google account (any — craig@indemn.ai works)
 - Billing enabled on Google AI Studio (free tier has zero image quota)
+- Gemini API Key stored in 1Password vault `cli-secrets`
 
 ### Steps
 1. Go to [aistudio.google.com/apikey](https://aistudio.google.com/apikey)
 2. Create an API key
 3. Enable billing in AI Studio settings (required for image generation)
-4. Add to `.env`: `GEMINI_API_KEY=<your-key>`
+4. Store in 1Password: `op item create --vault cli-secrets --category "API Credential" --title "Gemini API Key" credential=<your-key>`
+
+### Retrieving the API Key
+
+**Always use `op read`** — NOT `op item get --fields`:
+```bash
+# CORRECT — returns the actual secret value
+GEMINI_API_KEY=$(op read "op://cli-secrets/Gemini API Key/credential")
+
+# WRONG — returns a reference string, not the value
+GEMINI_API_KEY=$(op item get "Gemini API Key" --vault cli-secrets --fields label=credential)
+```
 
 ## Available Models
 
@@ -38,13 +51,23 @@ source .env && curl -s -X POST "https://generativelanguage.googleapis.com/v1beta
 
 **Default to `gemini-2.5-flash-image`** — fast, reliable, good quality. Pro is frequently overloaded.
 
+## Pricing
+
+| Model | Cost | Notes |
+|-------|------|-------|
+| Gemini 2.5 Flash Image | ~$0.04/image | Per-token billing, 1,290 tokens per image at $30/1M output tokens |
+| Imagen 4 | $0.02-0.06/image | Per-image, three quality tiers (fast/standard/ultra) |
+
+No free tier for image generation. Batch mode halves Flash cost to ~$0.02/image.
+
 ## Usage
 
 ### Generate an Image
 
 ```bash
-source .env && curl -s -X POST "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent" \
-  -H "x-goog-api-key: $GEMINI_API_KEY" \
+GEMINI_API_KEY=$(op read "op://cli-secrets/Gemini API Key/credential") && \
+curl -s -X POST "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent" \
+  -H "x-goog-api-key: ${GEMINI_API_KEY}" \
   -H "Content-Type: application/json" \
   -d '{
     "contents": [{"parts": [{"text": "YOUR PROMPT HERE"}]}],
@@ -74,11 +97,11 @@ Replace `YOUR PROMPT HERE`, `OUTPUT_PATH.png`, and the `aspectRatio` value. Omit
 ### Edit an Existing Image
 
 ```bash
-# Convert image to base64 first
 IMG_B64=$(base64 -i input.png)
 
-source .env && curl -s -X POST "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent" \
-  -H "x-goog-api-key: $GEMINI_API_KEY" \
+GEMINI_API_KEY=$(op read "op://cli-secrets/Gemini API Key/credential") && \
+curl -s -X POST "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent" \
+  -H "x-goog-api-key: ${GEMINI_API_KEY}" \
   -H "Content-Type: application/json" \
   -d "{
     \"contents\": [{\"parts\": [
@@ -123,40 +146,86 @@ Common use cases:
 
 ## Prompting
 
-**Core principle:** Describe scenes in narrative sentences, not keyword lists.
+**Core principle:** Structure prompts as design briefs, not keyword lists. Lead with style, then content, then constraints.
 
-### Prompt Structure (7-part framework)
+### The ICS Framework (Image type → Content → Style)
 
-1. **Action**: "Generate an image:" or "Create a:"
-2. **Subject**: What's in the image
-3. **Attributes**: Visual details — colors, textures, materials
-4. **Environment & Lighting**: Setting, time of day, light direction
-5. **Style**: Photorealistic, illustration, vector, watercolor, etc.
-6. **Brand constraints**: Color palette, mood, positioning
-7. **Format**: Blog header, social card, icon, etc.
+Every prompt should have three clearly separated sections:
 
-### Good vs Bad Prompts
+1. **Image type** — What kind of image: "Technical process diagram", "UI dashboard mockup", "Comparison infographic", "Hero illustration"
+2. **Content** — Every element explicitly described: icons, labels, layout positions, data, relationships
+3. **Style** — Visual treatment: "Flat vector, Figma export quality", line weights, fills, canvas color
+
+### Diagram Prompt Template
 
 ```
-BAD:  "AI evaluation neural network purple"
-GOOD: "Generate an image: A clean, modern abstract illustration representing
-       AI evaluation — showing a neural network pattern being measured by
-       geometric scoring indicators. Cool blue and purple tones on white.
-       Professional, minimal, suitable for a tech blog header."
+Image type: [diagram type] for a [context].
+
+Content: [describe every element, its position, icon, and label]
+- Element 1 (position): description, icon, label
+- Element 2 (position): description, icon, label
+- Relationships: arrows, connections, flow direction
+- Center/footer: any summary element
+
+Style: Flat vector illustration as if exported from Figma. Solid color fills,
+no gradients, no shadows, no 3D, no decorative elements. Consistent 2px line
+weight throughout. White background. Clean sans-serif typography.
+
+Layout: [spatial arrangement — columns, compass positions, rows, containers]
+
+Colors (use ONLY these):
+- #XXXXXX (name): usage description
+- #XXXXXX (name): usage description
 ```
 
-### Photography Terms That Work
+### What Works (Tested)
 
-Shot types, lens specs, and lighting setups improve photorealistic output: "85mm portrait lens", "golden hour light", "Rembrandt lighting", "softbox studio lighting", "f/2.8 shallow depth of field".
+| Technique | Impact | Example |
+|-----------|--------|---------|
+| **Style-first declaration** | High | "Flat vector, Figma export, solid fills, 2px lines" before any content |
+| **ICS structure** | High | Separate Image type / Content / Style sections |
+| **"UI mockup" framing** | Very High | For dashboards — "Dashboard screenshot mockup" produces SaaS-quality output |
+| **Explicit spatial layout** | High | "Four columns separated by hairlines", "compass positions N/E/S/W" |
+| **Container shapes** | High | "Each stage in a rounded rectangle, corner radius 12px, lavender fill, indigo border" |
+| **Hex codes + usage** | Medium | "#475293 for arrows and borders" — not just a palette list |
+| **Subtitles per element** | Medium | Adds a one-line description under each icon for clarity |
+| **Icon descriptions** | Medium | "clipboard with checkmarks" not just "evaluation icon" |
+
+### What Doesn't Work
+
+| Technique | Impact | Why |
+|-----------|--------|-----|
+| **Negative constraints** | Low | "DO NOT include gradients" is weaker than "solid fills only" |
+| **Brand references** | Low | "Like Stripe docs" or "Notion style" — model doesn't reliably know these |
+| **Imagen 4 for diagrams** | Poor | Renders hex codes as literal text labels instead of using them as colors |
+| **Keyword-stuffed prompts** | Poor | "diagram technical professional 4k clean" produces worse results than narrative |
+
+### Framing by Diagram Type
+
+| Type | Framing | Key Instructions |
+|------|---------|-----------------|
+| **Process/flow** | "Technical process diagram" | Compass positions, curved arrows, center element |
+| **Dashboard** | "Dashboard screenshot mockup" | Card layout, donut charts, tables, failure bars — describe as real UI |
+| **Comparison** | "Comparison infographic" | Equal-width columns, hairline separators, shared footer element |
+| **Architecture** | "System architecture diagram" | Boxes for services, arrows for data flow, layers for tiers |
+| **Hero/banner** | "Cinematic hero illustration" | Abstract, moody, no text — dark backgrounds work well |
+
+### Photography/Illustration Prompts
+
+For non-diagram images, these terms improve output:
+- Shot types: "85mm portrait lens", "wide establishing shot"
+- Lighting: "golden hour", "Rembrandt lighting", "softbox studio"
+- Depth: "f/2.8 shallow depth of field", "tilt-shift miniature"
+- Style: "editorial photograph", "watercolor illustration", "isometric 3D"
 
 ### Iterative Editing
 
 Break complex edits into steps rather than one massive prompt:
 1. Generate base image
-2. "Keep everything but change the background to..."
-3. "Now adjust the color grading to..."
+2. Upload result + "Keep everything but change the background to..."
+3. Upload result + "Now adjust the color grading to..."
 
-For detailed prompting techniques, see `references/prompting-guide.md`.
+The model maintains context when you send the previous image back as input.
 
 ## Brand-Aware Generation
 
@@ -232,14 +301,19 @@ Replace `INPUT.png` and `OUTPUT.png`. The threshold of 245 handles near-white ar
 
 | Mistake | Fix |
 |---------|-----|
-| Keyword-stuffed prompts | Write descriptive sentences instead |
-| No brand colors specified | Always include hex codes for brand work |
-| One massive edit prompt | Break into iterative steps |
+| Keyword-stuffed prompts | Write narrative sentences with ICS structure instead |
+| No brand colors specified | Always include hex codes with usage descriptions |
+| One massive edit prompt | Break into iterative steps — generate base, then refine |
 | Using Pro model in production | Use Flash — Pro is unreliable in preview |
 | Forgetting `responseModalities` | Must include `["TEXT", "IMAGE"]` or no image returned |
 | Not saving the image | Response is base64 — must decode and write to file |
 | Specifying aspect ratio in prompt text only | Model ignores it — use `imageConfig.aspectRatio` in `generationConfig` |
 | Deploying images without cropping whitespace | Always auto-crop — Gemini leaves large white margins around content |
+| Using Imagen 4 for diagrams | Imagen 4 renders hex codes as literal text — use Gemini Flash for diagrams |
+| Using `source .env` for API key | Blocked by secrets guard — use `op read "op://cli-secrets/Gemini API Key/credential"` |
+| Using `op item get --fields` | Returns reference strings — use `op read` to get actual secret values |
+| Vague style like "clean and professional" | Be specific: "Flat vector, Figma export, solid fills, 2px lines, no gradients" |
+| Using "like Stripe docs" style references | Model doesn't know brand aesthetics — describe the style explicitly instead |
 
 ## Limitations
 
