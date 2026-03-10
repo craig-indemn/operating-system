@@ -190,6 +190,7 @@ Colors (use ONLY these):
 | **Hex codes + usage** | Medium | "#475293 for arrows and borders" — not just a palette list |
 | **Subtitles per element** | Medium | Adds a one-line description under each icon for clarity |
 | **Icon descriptions** | Medium | "clipboard with checkmarks" not just "evaluation icon" |
+| **Explicit text listing** | High | List every text element verbatim + "Do not invent additional text" — prevents hallucinated gibberish |
 
 ### What Doesn't Work
 
