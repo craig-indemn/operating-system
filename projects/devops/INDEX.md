@@ -3,9 +3,11 @@
 Infrastructure, secrets management, deployment automation, and container orchestration for Indemn's microservices platform.
 
 ## Status
-Sixth session (2026-03-06): **All 12 PRs open on GitHub, all in review.** Dhruv granted push access to 5 blocked repos — all pushed and PRs created. Populated 15/17 SM secrets from EC2 `.env` files (google-oauth and groq-api-key don't exist in dev). PS service URLs confirmed correct (all localhost, same EC2). Dhruv added as reviewer on all 12 PRs. All Linear sub-issues (DEVOPS-95–106) updated to "In Review" with PR links. 3 repos have pre-existing docker-scan (Trivy) failures: copilot-sync-service (node-tar 7.5.2), middleware-socket-service (base image CVE), operations_api (tar-fs/tar-stream).
+Ninth session (2026-03-11): **PS parameter service URLs VERIFIED and FIXED. Loader .env gap FIXED.** Checked docker-compose files — all use Docker bridge + `shared-datadog` external network. Compared PS params against actual prod `.env` values. Fixed 9 wrong URLs (public domains for copilot/proxy/sync/evaluations, private IPs for host-mapped services). Fixed QUOTE_PRICE_DETAILS_API alias bug. Found critical loader gap: switching `env_file: .env` → `.env.aws` would lose ~70 static config vars per service. Fixed ALL 13 loader scripts to copy `.env` as base then append SM/PS overrides (last-value-wins). Fixed Firebase naming bugs in copilot-server + copilot-dashboard loaders. All pushed.
 
-**Next session:** 1) Get Dhruv's review approval on PRs. 2) Fix docker-scan failures on 3 repos if they're required checks. 3) Merge PRs one by one per merge order, verify each deploy. 4) Mark Linear issues Done as each service verified.
+**Next session:** 1) Wait for Dhruv's reviews on 19 PRs. 2) Resolve copilot-dashboard deploy PR #989 merge conflict. 3) Create deploy PRs for evaluations + copilot-dashboard-react after their feature PRs merge. 4) Test a service deployment end-to-end on dev EC2 to verify .env.aws generation.
+
+Previous: Eighth (2026-03-10b) all AWS infra deployed, PRs organized, release doc created. Seventh (2026-03-10) release doc, prod EC2s mapped. Sixth (2026-03-06) all 12 SM PRs open. Fifth–First: see below.
 
 Previous sessions: Fourth (2026-03-04) observatory deployed to dev EC2 with SM. Third (2026-03-04) secrets proxy complete. Second (2026-03-04) wrapper scripts, guard hook, 1Password SA. First (2026-03-03) AWS SM POC — 18 secrets + 37 params, IAM roles + OIDC.
 
@@ -24,6 +26,9 @@ Previous sessions: Fourth (2026-03-04) observatory deployed to dev EC2 with SM. 
 ## Artifacts
 | Date | Artifact | Ask |
 |------|----------|-----|
+| 2026-03-10 | [production-release](artifacts/2026-03-10-production-release.md) | Full production release doc — all repos, PRs, env vars, infrastructure, deployment order |
+| 2026-03-10 | [session-handoff](artifacts/2026-03-10-session-handoff.md) | Session handoff with exact next steps and remaining open items |
+| 2026-03-11 | [release-notion](artifacts/2026-03-11-release-notion.md) | Notion-format release doc with all PRs, deploy paths, and status per repo |
 | 2026-03-03 | [observability-env-inventory](artifacts/2026-03-03-observability-env-inventory.md) | What env vars does indemn-observability use, and which are secrets vs config? |
 | 2026-03-03 | [devops-architecture-context](artifacts/2026-03-03-devops-architecture-context.md) | Capture the planning discussion decisions for secrets, ECS, and deployment architecture |
 
@@ -57,7 +62,17 @@ Previous sessions: Fourth (2026-03-04) observatory deployed to dev EC2 with SM. 
 - 2026-03-06: Deploy jobs use EC2 instance profile for AWS auth — do NOT add OIDC permissions blocks or configure-aws-credentials to deploy jobs
 - 2026-03-06: Preserve existing docker-compose vs docker compose syntax per-service (don't standardize)
 - 2026-03-06: Preserve existing sudo patterns per-service (some use sudo on pull but not up)
-- 2026-03-06: PS service URLs are correct as `localhost` — all services on same EC2, docker port mappings expose to host
+- 2026-03-06: ~~PS service URLs are correct as `localhost`~~ SUPERSEDED by 2026-03-11 findings
+- 2026-03-11: Prod PS service URLs use a MIX of public domains and private IPs (verified from actual prod .env files):
+  - Public domains for copilot-server (`https://copilot.indemn.ai`), middleware (`https://proxy.indemn.ai`), sync (`https://copilotsync.indemn.ai`), evaluations (`https://evaluations.indemn.ai/api/v1`)
+  - Private IPs for host-mapped services on prod-services EC2 (bot-service, conversation, kb, voice, payment, operations_api at `172.31.22.7:<port>`)
+  - `SERVER_BASE_URL` is a relative path (`/api/`), not an absolute URL
+- 2026-03-11: copilot-server port 3000 is `expose:` only in docker-compose (not `ports:`), so NOT reachable via host IP — must use `https://copilot.indemn.ai` or container name `copilot-server:3000` on shared-datadog network
+- 2026-03-11: All Docker services use bridge networking with `shared-datadog` external network — no `network_mode: host` anywhere
+- 2026-03-11: QUOTE_PRICE_DETAILS_API alias in copilot-server loader was broken — derived from API_URL port replacement (`:3000`→`:9090`) which fails with domain URLs. Fixed to use CONVERSATION_URL directly (pushed to PR #796)
+- 2026-03-11: Loader scripts must copy `.env` as base before appending SM/PS overrides — switching `env_file: .env` → `.env.aws` without this loses ~70 static config vars per service (feature flags, static paths, Docker container names, etc.). Last-value-wins ensures SM/PS values override .env values for managed vars.
+- 2026-03-11: Firebase env var names in copilot-server/dashboard loaders were wrong — `FIREBASE_APIKEY` instead of `FIREBASE_API_KEY`, `FIREBASE_AUTHDOMAIN` instead of `FIREBASE_AUTH_DOMAIN`, etc. Fixed in both loaders to match what the application code expects.
+- 2026-03-11: Prod service URL pattern — services with public domains (copilot.indemn.ai, proxy.indemn.ai, copilotsync.indemn.ai, evaluations.indemn.ai, bot.indemn.ai) use domain names. Services without public domains use private IPs with host-mapped ports. copilot-server port 3000 is `expose:` only (no host port mapping) — MUST use domain.
 - 2026-03-06: SM secret values populated directly on EC2 using `populate-sm-secrets.sh` — secrets never leave the box
 - 2026-03-06: Temporary `secrets-write-temp` IAM policy added then removed for EC2 to write to SM (role normally read-only)
 - 2026-03-06: Voice service uses `GOOGLE_PROJECT_ID`/`GOOGLE_CLIENT_EMAIL`/`GOOGLE_PRIVATE_KEY` (no `_CLOUD_` prefix)
@@ -65,17 +80,28 @@ Previous sessions: Fourth (2026-03-04) observatory deployed to dev EC2 with SM. 
 - 2026-03-06: Firebase uses `FIREBASE_SERVICE_ACCOUNT_JSON` (not `FIREBASE_SERVICE_ACCOUNT`)
 
 ## What's Deployed
-### AWS
+### AWS — Dev
 - **IAM Role:** `indemn-dev-services` — attached to dev EC2, reads `dev/*` only, explicit prod deny
 - **IAM Role:** `github-actions-deploy` — OIDC federation for indemn-ai GitHub org, dev only
 - **OIDC Provider:** `token.actions.githubusercontent.com` — scoped to indemn-ai repos
 - **Secrets Manager:** 35 secrets under `dev/` (24 shared, 11 service-specific). 15/17 populated from EC2; 2 remain PLACEHOLDER (google-oauth, groq-api-key — not configured in dev)
-- **Parameter Store:** ~90 parameters under `/dev/` (shared + per-service config). Service URLs confirmed correct (all localhost, same EC2).
+- **Parameter Store:** ~90 parameters under `/dev/` (shared + per-service config). Service URLs all `localhost` (single EC2).
+
+### AWS — Prod
+- **IAM Role:** `indemn-prod-services` — attached to both prod EC2s, reads `indemn/prod/*` only, explicit dev deny
+- **Secrets Manager:** 34 secrets under `indemn/prod/` (24 shared + 8 service-specific + langfuse + livekit). All populated from EC2s via scripts.
+- **Parameter Store:** 114 parameters under `/indemn/prod/`. Service URLs verified against prod .env files (2026-03-11): public domains for copilot/proxy/sync/evaluations, private IPs for host-mapped services on prod-services.
+- **AWS CLI v2:** Installed on both prod EC2s
 
 ### Dev EC2 (i-0fde0af9d216e9182)
 - **AWS CLI v2** installed at `/usr/local/bin/aws`
 - **Observatory** running via docker-compose with `env_file: .env.aws` (secrets from SM/PS)
 - **GitHub Actions self-hosted runner** at `/home/ubuntu/actions-runner-observatory/`
+
+### Prod EC2s
+- **prod-services** (`i-00ef8e2bfa651aaa8`, 98.88.11.14 / 172.31.22.7): bot-service, middleware, conversation, kb, payment, operations_api, email-channel, voice-service, copilot-sync, evaluations, percy, copilot-dashboard-react
+- **copilot-prod** (`i-0df529ca541a38f3d`, 54.226.32.134 / 172.31.37.32): copilot-server, copilot-dashboard, observatory
+- **voice-livekit** (`i-01e65d5494fd64b05`, 3.236.53.208): voice-livekit (NOT part of SM migration)
 
 ## PRs — SM Migration (DEVOPS-42)
 | # | Service | PR | Status |
@@ -98,13 +124,17 @@ Previous sessions: Fourth (2026-03-04) observatory deployed to dev EC2 with SM. 
 2. ~~Migrate all services to SM~~ ✓ All 12 PRs open on GitHub
 3. ~~Get push access for 5 blocked repos~~ ✓ Dhruv granted access, all pushed
 4. ~~Source real secret values from EC2 and update SM PLACEHOLDERs~~ ✓ 15/17 populated (google-oauth + groq-api-key don't exist in dev)
-5. ~~Update service URLs in PS from `localhost` to actual EC2 addresses~~ ✓ Already correct (all services on same EC2, localhost is right)
-6. Get Dhruv's review approval on all 12 PRs (all set to "In Review" in Linear)
-7. Fix docker-scan failures on 3 repos if required check: copilot-sync-service (tar 7.5.2→7.5.10), middleware-socket-service (base image), operations_api (tar-fs/tar-stream)
-8. Merge PRs one by one, verify each deploy (see merge order below)
-9. Merge `demo-gic` → `main` on indemn-observability
-10. Write DEVOPS-94 proposal for team 1Password approach
-11. Set up prod secrets (separate session, with care)
+5. ~~Update service URLs in PS from `localhost` to actual EC2 addresses~~ ✓ Verified and fixed (2026-03-11) — 9 params corrected, 8 confirmed
+6. ~~Set up prod secrets~~ ✓ 34 SM secrets + 114 PS params created (2026-03-10)
+7. ~~Verify PS parameter service URLs against actual prod .env~~ ✓ Done (2026-03-11)
+8. ~~Fix loader .env gap~~ ✓ All 13 loaders now copy .env as base (2026-03-11)
+9. ~~Fix Firebase naming + QUOTE_PRICE_DETAILS_API bugs~~ ✓ Done (2026-03-11)
+10. Get Dhruv's review approval on all 12 PRs (all set to "In Review" in Linear)
+11. Resolve copilot-dashboard deploy PR #989 merge conflict (prod has `intake-manager-changes` hotfix)
+12. Create deploy PRs for evaluations + copilot-dashboard-react after their feature PRs merge
+13. Fix docker-scan failures on 3 repos if required check: copilot-sync-service, middleware-socket-service, operations_api
+14. Merge PRs one by one, verify each deploy (see merge order and deployment order in release doc)
+15. Write DEVOPS-94 proposal for team 1Password approach
 
 ## SM Secrets Status
 15/17 secrets populated from EC2 `.env` files using `scripts/populate-sm-secrets.sh`.
