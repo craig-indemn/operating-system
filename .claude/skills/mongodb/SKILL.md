@@ -32,7 +32,7 @@ brew install mongosh
 ```
 
 ### Connection strings
-MongoDB URIs are stored in AWS Secrets Manager at `dev/shared/mongodb-uri` and `prod/shared/mongodb-uri`. Access via `mongosh-connect.sh` wrapper — no local env vars needed.
+MongoDB URIs are stored in AWS Secrets Manager at `indemn/dev/shared/mongodb-uri` and `indemn/prod/shared/mongodb-uri`. Access via `mongosh-connect.sh` wrapper — no local env vars needed.
 
 ## Usage
 

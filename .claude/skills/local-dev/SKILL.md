@@ -31,7 +31,22 @@ cd "$WORKSPACE" && bash ./local-dev.sh status
 local-dev-aws.sh start platform --env=dev
 ```
 
-Pulls all platform secrets from AWS Secrets Manager at runtime. No `.env` file needed.
+Pulls all platform secrets from AWS Secrets Manager (`indemn/{env}/shared/*`) at runtime. No `.env` file needed. Creates a temporary `.env.{env}` file that is cleaned up on exit.
+
+**Secrets pulled by local-dev-aws.sh:**
+- `mongodb-uri` — MongoDB Atlas connection string (auto-appends `/tiledesk` if no DB path)
+- `rabbitmq-url` — exported as `RABBITMQ_CONNECT_URL` and `CLOUDAMQP_URL`
+- `redis-credentials` — JSON with host/port/password/url, exported as individual vars
+- `openai-api-key`, `anthropic-api-key`, `pinecone-api-key`, `langsmith-api-key`
+- `livekit-credentials` — JSON with url/api_key/api_secret
+- `firebase-credentials` — JSON with project_id/api_key/client_email/private_key/etc.
+- `auth-secrets` — JSON with global_secret/jwt_secret/session_secret
+- `vapid-keys` — JSON with public_key/private_key (needed by copilot-server)
+
+**Prod gotchas:**
+- MongoDB URI from AWS has no database name — the script appends `/tiledesk` automatically
+- Firebase config may differ between dev and prod projects — if Firebase auth fails on the frontend, clear `firebaseConfig` in `copilot-dashboard/src/dashboard-config.json` to force legacy email/password auth
+- Dev credentials (`support@indemn.ai` / `nzrjW3tZ9K3YiwtMWzBm`) only work with the dev database
 
 ## Quick Reference
 

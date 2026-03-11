@@ -16,32 +16,39 @@ for arg in "$@"; do
   esac
 done
 
-echo "Pulling secrets from AWS (${ENV}/shared/*)..." >&2
+echo "Pulling secrets from AWS (indemn/${ENV}/shared/*)..." >&2
 
 # Shared infrastructure secrets from AWS Secrets Manager
+# Path format: indemn/{env}/shared/{secret-name}
+SM_PREFIX="indemn/${ENV}/shared"
+
 export MONGODB_URI=$(aws secretsmanager get-secret-value \
-  --secret-id "${ENV}/shared/mongodb-uri" \
+  --secret-id "${SM_PREFIX}/mongodb-uri" \
   --query 'SecretString' --output text 2>/dev/null) || true
 
-export REDIS_URL=$(aws secretsmanager get-secret-value \
-  --secret-id "${ENV}/shared/redis-url" \
+export RABBITMQ_CONNECT_URL=$(aws secretsmanager get-secret-value \
+  --secret-id "${SM_PREFIX}/rabbitmq-url" \
   --query 'SecretString' --output text 2>/dev/null) || true
-
-export RABBITMQ_URL=$(aws secretsmanager get-secret-value \
-  --secret-id "${ENV}/shared/rabbitmq-url" \
-  --query 'SecretString' --output text 2>/dev/null) || true
+export CLOUDAMQP_URL="${RABBITMQ_CONNECT_URL:-}"
 
 export OPENAI_API_KEY=$(aws secretsmanager get-secret-value \
-  --secret-id "${ENV}/shared/openai-api-key" \
+  --secret-id "${SM_PREFIX}/openai-api-key" \
   --query 'SecretString' --output text 2>/dev/null) || true
 
 export ANTHROPIC_API_KEY=$(aws secretsmanager get-secret-value \
-  --secret-id "${ENV}/shared/anthropic-api-key" \
+  --secret-id "${SM_PREFIX}/anthropic-api-key" \
   --query 'SecretString' --output text 2>/dev/null) || true
 
 export PINECONE_API_KEY=$(aws secretsmanager get-secret-value \
-  --secret-id "${ENV}/shared/pinecone-api-key" \
+  --secret-id "${SM_PREFIX}/pinecone-api-key" \
   --query 'SecretString' --output text 2>/dev/null) || true
+
+export LANGSMITH_API_KEY=$(aws secretsmanager get-secret-value \
+  --secret-id "${SM_PREFIX}/langsmith-api-key" \
+  --query 'SecretString' --output text 2>/dev/null) || true
+
+# Temp file for parsing JSON secrets safely
+TMPFILE=$(mktemp)
 
 # Non-secret config
 export AWS_ACCOUNT_ID="780354157690"
@@ -55,9 +62,113 @@ if [ -z "$WORKSPACE" ] || [ ! -f "$WORKSPACE/local-dev.sh" ]; then
   exit 1
 fi
 
-# Create empty env file so local-dev.sh doesn't complain
-TMPENV=$(mktemp)
-trap "rm -f $TMPENV" EXIT
+# Also pull structured secrets
+aws secretsmanager get-secret-value \
+  --secret-id "${SM_PREFIX}/redis-credentials" \
+  --query 'SecretString' --output text > "$TMPFILE" 2>/dev/null || true
+
+if [ -s "$TMPFILE" ]; then
+  export REDIS_HOST=$(python3 -c "import json; d=json.load(open('$TMPFILE')); print(d['host'])")
+  export REDIS_PORT=$(python3 -c "import json; d=json.load(open('$TMPFILE')); print(d['port'])")
+  export REDIS_PASSWORD=$(python3 -c "import json; d=json.load(open('$TMPFILE')); print(d['password'])")
+  export CACHE_REDIS_URL=$(python3 -c "import json; d=json.load(open('$TMPFILE')); print(d['url'])")
+  export REDIS_URL="$CACHE_REDIS_URL"
+fi
+
+LIVEKIT_CREDS=$(aws secretsmanager get-secret-value \
+  --secret-id "${SM_PREFIX}/livekit-credentials" \
+  --query 'SecretString' --output text 2>/dev/null) || true
+
+if [ -n "$LIVEKIT_CREDS" ]; then
+  export LIVEKIT_URL=$(echo "$LIVEKIT_CREDS" | python3 -c "import sys,json; print(json.loads(sys.stdin.read())['url'])")
+  export LIVEKIT_API_KEY=$(echo "$LIVEKIT_CREDS" | python3 -c "import sys,json; print(json.loads(sys.stdin.read())['api_key'])")
+  export LIVEKIT_API_SECRET=$(echo "$LIVEKIT_CREDS" | python3 -c "import sys,json; print(json.loads(sys.stdin.read())['api_secret'])")
+fi
+
+# Firebase credentials + auth secrets (needed by copilot-server)
+aws secretsmanager get-secret-value \
+  --secret-id "${SM_PREFIX}/firebase-credentials" \
+  --query 'SecretString' --output text > "$TMPFILE" 2>/dev/null || true
+
+if [ -s "$TMPFILE" ]; then
+  eval "$(python3 -c "
+import json, sys
+d = json.load(open('$TMPFILE'))
+mapping = {
+  'FIREBASE_PROJECT_ID': 'project_id',
+  'FIREBASE_APIKEY': 'api_key',
+  'FIREBASE_API_KEY': 'api_key',
+  'FIREBASE_AUTHDOMAIN': 'auth_domain',
+  'FIREBASE_STORAGEBUCKET': 'storage_bucket',
+  'FIREBASE_MESSAGINGSENDERID': 'messaging_sender_id',
+  'FIREBASE_APP_ID': 'app_id',
+  'FIREBASE_CLIENT_EMAIL': 'client_email',
+}
+for env_var, key in mapping.items():
+    val = d.get(key, '')
+    if val:
+        print(f'export {env_var}=\"{val}\"')
+# Private key needs special handling for newlines
+pk = d.get('private_key', '')
+if pk:
+    escaped = pk.replace('\\\\', '\\\\\\\\').replace('\"', '\\\\\"')
+    print(f'export FIREBASE_PRIVATE_KEY=\"{escaped}\"')
+" 2>/dev/null)" || true
+fi
+
+aws secretsmanager get-secret-value \
+  --secret-id "${SM_PREFIX}/auth-secrets" \
+  --query 'SecretString' --output text > "$TMPFILE" 2>/dev/null || true
+
+if [ -s "$TMPFILE" ]; then
+  eval "$(python3 -c "
+import json
+d = json.load(open('$TMPFILE'))
+for env_var, key in [('GLOBAL_SECRET','global_secret'),('JWT_SECRET','jwt_secret'),('SESSION_SECRET','session_secret')]:
+    val = d.get(key, '')
+    if val:
+        print(f'export {env_var}=\"{val}\"')
+" 2>/dev/null)" || true
+fi
+
+# VAPID keys (needed by copilot-server for web push notifications)
+aws secretsmanager get-secret-value \
+  --secret-id "${SM_PREFIX}/vapid-keys" \
+  --query 'SecretString' --output text > "$TMPFILE" 2>/dev/null || true
+
+if [ -s "$TMPFILE" ]; then
+  export VAPID_PUBLIC_KEY=$(python3 -c "import json; d=json.load(open('$TMPFILE')); print(d['public_key'])")
+  export VAPID_PRIVATE_KEY=$(python3 -c "import json; d=json.load(open('$TMPFILE')); print(d['private_key'])")
+fi
+
+# Ensure MongoDB URI includes database name (default: tiledesk)
+if [ -n "${MONGODB_URI:-}" ]; then
+  # Append /tiledesk if URI has no database path
+  if ! echo "$MONGODB_URI" | grep -qE '\.net/.+'; then
+    export MONGODB_URI="${MONGODB_URI}/tiledesk"
+  fi
+fi
+
+# Set aliases used by different services
+export DATABASE_URI="${MONGODB_URI:-}"
+export MONGO_URL="${MONGODB_URI:-}"
+export MONGO_URI="${MONGODB_URI:-}"
+export VOICE_SERVICE_URL="${VOICE_SERVICE_URL:-http://localhost:9192}"
 
 cd "$WORKSPACE"
+
+# Write env vars to a temp .env file so local-dev.sh can source it
+ENVFILE="$WORKSPACE/.env.${ENV}"
+CREATED_ENVFILE=false
+if [ ! -f "$ENVFILE" ]; then
+  CREATED_ENVFILE=true
+  # Write non-multiline vars via env grep
+  env | grep -E '^(MONGODB_URI|DATABASE_URI|MONGO_URL|MONGO_URI|CACHE_REDIS_URL|REDIS_URL|REDIS_HOST|REDIS_PORT|REDIS_PASSWORD|RABBITMQ_CONNECT_URL|CLOUDAMQP_URL|OPENAI_API_KEY|ANTHROPIC_API_KEY|PINECONE_API_KEY|LANGSMITH_API_KEY|LIVEKIT_|VOICE_SERVICE_URL|AWS_|FIREBASE_PROJECT_ID|FIREBASE_APIKEY|FIREBASE_API_KEY|FIREBASE_AUTHDOMAIN|FIREBASE_STORAGEBUCKET|FIREBASE_MESSAGINGSENDERID|FIREBASE_APP_ID|FIREBASE_CLIENT_EMAIL|GLOBAL_SECRET|JWT_SECRET|SESSION_SECRET|VAPID_)=' > "$ENVFILE"
+  # Write private key separately (may contain newlines)
+  if [ -n "${FIREBASE_PRIVATE_KEY:-}" ]; then
+    printf 'FIREBASE_PRIVATE_KEY=%s\n' "$FIREBASE_PRIVATE_KEY" >> "$ENVFILE"
+  fi
+  trap "rm -f '$TMPFILE'; if $CREATED_ENVFILE; then rm -f '$ENVFILE'; fi" EXIT
+fi
+
 exec /opt/homebrew/bin/bash ./local-dev.sh "$@"
