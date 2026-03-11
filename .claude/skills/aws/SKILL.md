@@ -49,17 +49,17 @@ AWS_PROD_INSTANCE_ID=i-00ef8e2bfa651aaa8
 ### IAM Roles
 | Role | Purpose | Attached To |
 |------|---------|-------------|
-| `indemn-dev-services` | EC2 instance role — read `dev/*` secrets and `/dev/*` params, explicit deny on `prod/*` | dev-services EC2 (i-0fde0af9d216e9182) |
-| `github-actions-deploy` | GitHub Actions OIDC — deploy to dev, read dev secrets, ECR push/pull, explicit deny on `prod/*` | GitHub OIDC federation (indemn-ai org) |
+| `indemn-dev-services` | EC2 instance role — read `indemn/dev/*` secrets and `/dev/*` params, explicit deny on `indemn/prod/*` | dev-services EC2 (i-0fde0af9d216e9182) |
+| `github-actions-deploy` | GitHub Actions OIDC — deploy to dev, read dev secrets, ECR push/pull, explicit deny on `indemn/prod/*` | GitHub OIDC federation (indemn-ai org) |
 
 ### OIDC Provider
 - `arn:aws:iam::780354157690:oidc-provider/token.actions.githubusercontent.com`
 - Scoped to `repo:indemn-ai/*:*`
 
 ### Secrets Manager (dev)
-18 secrets under `dev/` — 16 shared (`dev/shared/*`), 2 observability-specific (`dev/observability/*`).
+Secrets under `indemn/dev/` — shared (`indemn/dev/shared/*`) and service-specific (`indemn/dev/{service}/*`).
 ```bash
-aws secretsmanager list-secrets --filters Key=name,Values="dev/" --query 'SecretList[].Name' --output table
+aws secretsmanager list-secrets --filters Key=name,Values="indemn/dev/" --query 'SecretList[].Name' --output table
 ```
 
 ### Parameter Store (dev)
@@ -74,41 +74,41 @@ Stores credentials: API keys, database passwords, tokens. Supports automatic rot
 
 ### Path Convention
 ```
-{env}/shared/{secret-name}        # Cross-service credentials (no leading slash)
-{env}/{service}/{secret-name}     # Service-specific credentials
+indemn/{env}/shared/{secret-name}        # Cross-service credentials (no leading slash)
+indemn/{env}/{service}/{secret-name}     # Service-specific credentials
 ```
 
-Examples: `dev/shared/mongodb-uri`, `dev/shared/anthropic-api-key`, `dev/observability/demo-credentials`
+Examples: `indemn/dev/shared/mongodb-uri`, `indemn/dev/shared/anthropic-api-key`, `indemn/dev/observability/demo-credentials`
 
 ### Common Operations
 
 ```bash
 # Create a plain string secret
 aws secretsmanager create-secret \
-  --name "dev/shared/mongodb-uri" \
+  --name "indemn/dev/shared/mongodb-uri" \
   --description "MongoDB Atlas dev cluster connection string" \
   --secret-string "mongodb+srv://..."
 
 # Create a JSON secret (group related values)
 aws secretsmanager create-secret \
-  --name "dev/shared/langfuse-keys" \
+  --name "indemn/dev/shared/langfuse-keys" \
   --description "Langfuse public and secret keys" \
   --secret-string '{"public_key":"pk-lf-...","secret_key":"sk-lf-..."}'
 
 # Read a secret
-aws secretsmanager get-secret-value --secret-id "dev/shared/mongodb-uri" --query 'SecretString' --output text
+aws secretsmanager get-secret-value --secret-id "indemn/dev/shared/mongodb-uri" --query 'SecretString' --output text
 
 # Read a JSON secret field
-aws secretsmanager get-secret-value --secret-id "dev/shared/langfuse-keys" --query 'SecretString' --output text | jq -r '.secret_key'
+aws secretsmanager get-secret-value --secret-id "indemn/dev/shared/langfuse-keys" --query 'SecretString' --output text | jq -r '.secret_key'
 
 # List secrets by prefix
-aws secretsmanager list-secrets --filters Key=name,Values="dev/shared/" --query 'SecretList[].Name' --output table
+aws secretsmanager list-secrets --filters Key=name,Values="indemn/dev/shared/" --query 'SecretList[].Name' --output table
 
 # Update a secret
-aws secretsmanager put-secret-value --secret-id "dev/shared/mongodb-uri" --secret-string "new-value"
+aws secretsmanager put-secret-value --secret-id "indemn/dev/shared/mongodb-uri" --secret-string "new-value"
 
 # Delete a secret (7-day recovery window)
-aws secretsmanager delete-secret --secret-id "dev/shared/mongodb-uri" --recovery-window-in-days 7
+aws secretsmanager delete-secret --secret-id "indemn/dev/shared/mongodb-uri" --recovery-window-in-days 7
 ```
 
 ## Parameter Store
@@ -207,7 +207,7 @@ aws ec2 associate-iam-instance-profile \
 ### Least-Privilege Policy Pattern
 
 Every env-scoped role should:
-1. Allow read on `{env}/*` secrets and `/{env}/*` parameters
+1. Allow read on `indemn/{env}/*` secrets and `/{env}/*` parameters
 2. Explicitly deny the other environment's resources
 3. Use inline policies (`put-role-policy`) for env-specific rules
 
@@ -219,7 +219,7 @@ Every env-scoped role should:
       "Sid": "ReadDevSecrets",
       "Effect": "Allow",
       "Action": ["secretsmanager:GetSecretValue", "secretsmanager:DescribeSecret"],
-      "Resource": "arn:aws:secretsmanager:us-east-1:780354157690:secret:dev/*"
+      "Resource": "arn:aws:secretsmanager:us-east-1:780354157690:secret:indemn/dev/*"
     },
     {
       "Sid": "ReadDevParameters",
@@ -232,7 +232,7 @@ Every env-scoped role should:
       "Effect": "Deny",
       "Action": ["secretsmanager:GetSecretValue", "ssm:GetParameter", "ssm:GetParameters", "ssm:GetParametersByPath"],
       "Resource": [
-        "arn:aws:secretsmanager:us-east-1:780354157690:secret:prod/*",
+        "arn:aws:secretsmanager:us-east-1:780354157690:secret:indemn/prod/*",
         "arn:aws:ssm:us-east-1:780354157690:parameter/prod/*"
       ]
     }
@@ -292,8 +292,8 @@ Wrapper scripts in `scripts/secrets-proxy/` pull credentials from AWS at runtime
 
 | Wrapper | Pulls From | Purpose |
 |---------|-----------|---------|
-| `mongosh-connect.sh` | `{env}/shared/mongodb-uri` | MongoDB Atlas connection |
-| `local-dev-aws.sh` | Multiple `{env}/shared/*` secrets | Start local services without .env |
+| `mongosh-connect.sh` | `indemn/{env}/shared/mongodb-uri` | MongoDB Atlas connection |
+| `local-dev-aws.sh` | Multiple `indemn/{env}/shared/*` secrets | Start local services without .env |
 
 These wrappers are on PATH via SessionStart hook. See `conventions.md` for the full wrapper table.
 
@@ -308,7 +308,7 @@ Read the service's `.env`, `.env.dev`, `.env.prod` files. Classify each variable
 - **Shared vs service-specific**: Does this value differ between services?
 
 ### 2. Create secrets and parameters
-Shared values go under `{env}/shared/`, service-specific under `{env}/{service}/`.
+Shared values go under `indemn/{env}/shared/`, service-specific under `indemn/{env}/{service}/`.
 Group related values as JSON secrets (e.g., `redis-credentials` with host, port, password, url).
 
 ### 3. Add aws-env-loader.sh
@@ -337,7 +337,7 @@ Set `AWS_SKIP_SECRETS=true` to fall back to `.env` files. This lets you deploy i
 
 ## Conventions
 
-- Secrets Manager paths: **no** leading slash (`dev/shared/name`)
+- Secrets Manager paths: **no** leading slash, **with** `indemn/` prefix (`indemn/dev/shared/name`)
 - Parameter Store paths: **with** leading slash (`/dev/shared/name`)
 - Use `--query` and `--output` for clean output — prefer over piping through jq
 - Tag resources with `Environment` (dev/prod) and `Service` tags

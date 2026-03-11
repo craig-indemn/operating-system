@@ -8,7 +8,7 @@ ENV="${1:-dev}"; shift 2>/dev/null || true
 DB="${1:-tiledesk}"; shift 2>/dev/null || true
 
 URI=$(aws secretsmanager get-secret-value \
-  --secret-id "${ENV}/shared/mongodb-uri" \
+  --secret-id "indemn/${ENV}/shared/mongodb-uri" \
   --query 'SecretString' --output text 2>/dev/null) || {
   echo "ERROR: Failed to read ${ENV}/shared/mongodb-uri from AWS Secrets Manager" >&2
   echo "Check: aws sts get-caller-identity" >&2
