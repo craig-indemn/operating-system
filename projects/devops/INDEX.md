@@ -3,13 +3,13 @@
 Infrastructure, secrets management, deployment automation, and container orchestration for Indemn's microservices platform.
 
 ## Status
-Ninth session (2026-03-11): **PS parameter service URLs VERIFIED and FIXED. Loader .env gap FIXED.** Checked docker-compose files — all use Docker bridge + `shared-datadog` external network. Compared PS params against actual prod `.env` values. Fixed 9 wrong URLs (public domains for copilot/proxy/sync/evaluations, private IPs for host-mapped services). Fixed QUOTE_PRICE_DETAILS_API alias bug. Found critical loader gap: switching `env_file: .env` → `.env.aws` would lose ~70 static config vars per service. Fixed ALL 13 loader scripts to copy `.env` as base then append SM/PS overrides (last-value-wins). Fixed Firebase naming bugs in copilot-server + copilot-dashboard loaders. All pushed.
+Tenth session (2026-03-11b): **Release day support.** Dhruv says SM changes NOT going in this release — wants to test on dev first. Resolved evaluations PR #9 merge conflict (voice-simulation + transcript-evaluation both added new eval types to same enums/routing — kept both, 108 tests pass). Fixed copilot-dashboard-react federation issue: prod was loading `devplatform.indemn.ai` because prod EC2 was running `:main` (dev) Docker image instead of `:latest` (prod). Root cause: docker-compose defaulted to `:main` tag. Fixed by pulling `:latest` image and updating docker-compose default to `:latest`. Also triggered fresh prod build workflow (had cache contamination from shared GHA cache scope between dev/prod — `no-cache: true` and separate `scope=prod` fix prepared in build-prod.yml but NOT pushed yet).
 
-**Next session:** 1) Wait for Dhruv's reviews on 19 PRs. 2) Resolve copilot-dashboard deploy PR #989 merge conflict. 3) Create deploy PRs for evaluations + copilot-dashboard-react after their feature PRs merge. 4) Test a service deployment end-to-end on dev EC2 to verify .env.aws generation.
+**Next session:** 1) SM changes deferred — Dhruv wants dev testing first. Test a service on dev EC2 to verify .env.aws generation. 2) Resolve copilot-dashboard deploy PR #989 merge conflict (was closed by Dhruv). 3) 12 SM migration PRs still awaiting Dhruv's review (0/12 reviewed). 4) Push GHA cache scope fix to build workflows (edited locally, not committed). 5) Create deploy PRs for evaluations + copilot-dashboard-react after feature PRs merge.
 
-Previous: Eighth (2026-03-10b) all AWS infra deployed, PRs organized, release doc created. Seventh (2026-03-10) release doc, prod EC2s mapped. Sixth (2026-03-06) all 12 SM PRs open. Fifth–First: see below.
+Previous: Ninth (2026-03-11) PS URLs verified/fixed, loader .env gap fixed, Firebase naming fixed, QUOTE_PRICE_DETAILS_API fixed. Eighth (2026-03-10b) all AWS infra deployed, PRs organized, release doc created. Seventh–First: see below.
 
-Previous sessions: Fourth (2026-03-04) observatory deployed to dev EC2 with SM. Third (2026-03-04) secrets proxy complete. Second (2026-03-04) wrapper scripts, guard hook, 1Password SA. First (2026-03-03) AWS SM POC — 18 secrets + 37 params, IAM roles + OIDC.
+Previous sessions: Seventh (2026-03-10) release doc, prod EC2s mapped. Sixth (2026-03-06) all 12 SM PRs open. Fifth–First: infrastructure and secrets proxy work. Fourth (2026-03-04) observatory deployed to dev EC2 with SM. Third (2026-03-04) secrets proxy complete. Second (2026-03-04) wrapper scripts, guard hook, 1Password SA. First (2026-03-03) AWS SM POC — 18 secrets + 37 params, IAM roles + OIDC.
 
 ## External Resources
 | Resource | Type | Link |
@@ -73,6 +73,11 @@ Previous sessions: Fourth (2026-03-04) observatory deployed to dev EC2 with SM. 
 - 2026-03-11: Loader scripts must copy `.env` as base before appending SM/PS overrides — switching `env_file: .env` → `.env.aws` without this loses ~70 static config vars per service (feature flags, static paths, Docker container names, etc.). Last-value-wins ensures SM/PS values override .env values for managed vars.
 - 2026-03-11: Firebase env var names in copilot-server/dashboard loaders were wrong — `FIREBASE_APIKEY` instead of `FIREBASE_API_KEY`, `FIREBASE_AUTHDOMAIN` instead of `FIREBASE_AUTH_DOMAIN`, etc. Fixed in both loaders to match what the application code expects.
 - 2026-03-11: Prod service URL pattern — services with public domains (copilot.indemn.ai, proxy.indemn.ai, copilotsync.indemn.ai, evaluations.indemn.ai, bot.indemn.ai) use domain names. Services without public domains use private IPs with host-mapped ports. copilot-server port 3000 is `expose:` only (no host port mapping) — MUST use domain.
+- 2026-03-11: SM changes NOT going in this prod release — Dhruv wants to test on dev first
+- 2026-03-11: copilot-dashboard-react prod EC2 must use `:latest` Docker image tag (prod build), NOT `:main` (dev build). The Vite federation build bakes the base URL into remoteEntry.js chunk URLs at build time.
+- 2026-03-11: copilot-dashboard-react docker-compose on prod-services default changed from `:main` to `:latest`
+- 2026-03-11: GHA Docker build cache scope should be separated between dev (`scope=dev`) and prod (`scope=prod`) to prevent cross-contamination — fix prepared but NOT pushed yet
+- 2026-03-11: evaluations PR #9 (voice-simulation) conflict resolved — both VOICE_SIMULATION and TRANSCRIPT eval types kept, 108 tests pass
 - 2026-03-06: SM secret values populated directly on EC2 using `populate-sm-secrets.sh` — secrets never leave the box
 - 2026-03-06: Temporary `secrets-write-temp` IAM policy added then removed for EC2 to write to SM (role normally read-only)
 - 2026-03-06: Voice service uses `GOOGLE_PROJECT_ID`/`GOOGLE_CLIENT_EMAIL`/`GOOGLE_PRIVATE_KEY` (no `_CLOUD_` prefix)
