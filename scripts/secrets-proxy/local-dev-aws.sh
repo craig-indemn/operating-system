@@ -86,33 +86,55 @@ if [ -n "$LIVEKIT_CREDS" ]; then
 fi
 
 # Firebase credentials + auth secrets (needed by copilot-server)
+# Note: The firebase-credentials secret may have malformed JSON in the
+# service_account_json field. We parse tolerantly — extract known fields
+# with regex, then try json.load on the embedded service account for
+# client_email and private_key.
 aws secretsmanager get-secret-value \
   --secret-id "${SM_PREFIX}/firebase-credentials" \
   --query 'SecretString' --output text > "$TMPFILE" 2>/dev/null || true
 
 if [ -s "$TMPFILE" ]; then
   eval "$(python3 -c "
-import json, sys
-d = json.load(open('$TMPFILE'))
-mapping = {
-  'FIREBASE_PROJECT_ID': 'project_id',
-  'FIREBASE_APIKEY': 'api_key',
-  'FIREBASE_API_KEY': 'api_key',
-  'FIREBASE_AUTHDOMAIN': 'auth_domain',
-  'FIREBASE_STORAGEBUCKET': 'storage_bucket',
-  'FIREBASE_MESSAGINGSENDERID': 'messaging_sender_id',
-  'FIREBASE_APP_ID': 'app_id',
-  'FIREBASE_CLIENT_EMAIL': 'client_email',
+import re, json
+
+raw = open('$TMPFILE').read()
+
+# Extract simple string fields via regex (tolerant of malformed JSON)
+fields = {
+    'FIREBASE_PROJECT_ID': 'project_id',
+    'FIREBASE_APIKEY': 'api_key',
+    'FIREBASE_API_KEY': 'api_key',
+    'FIREBASE_AUTHDOMAIN': 'auth_domain',
+    'FIREBASE_STORAGEBUCKET': 'storage_bucket',
+    'FIREBASE_MESSAGINGSENDERID': 'messaging_sender_id',
+    'FIREBASE_APP_ID': 'app_id',
 }
-for env_var, key in mapping.items():
-    val = d.get(key, '')
-    if val:
-        print(f'export {env_var}=\"{val}\"')
-# Private key needs special handling for newlines
-pk = d.get('private_key', '')
-if pk:
-    escaped = pk.replace('\\\\', '\\\\\\\\').replace('\"', '\\\\\"')
-    print(f'export FIREBASE_PRIVATE_KEY=\"{escaped}\"')
+for env_var, key in fields.items():
+    m = re.search(r'\"' + key + r'\"\s*:\s*\"([^\"]*?)\"', raw)
+    if m and m.group(1):
+        print(f'export {env_var}=\"{m.group(1)}\"')
+
+# Try to extract client_email and private_key from service_account_json
+sa_match = re.search(r'\"service_account_json\"\s*:\s*[\"\\']+(\\{.+?\\})[\"\\']', raw, re.DOTALL)
+if sa_match:
+    try:
+        sa = json.loads(sa_match.group(1))
+        ce = sa.get('client_email', '')
+        if ce:
+            print(f'export FIREBASE_CLIENT_EMAIL=\"{ce}\"')
+        pk = sa.get('private_key', '')
+        if pk:
+            escaped = pk.replace('\\\\', '\\\\\\\\').replace('\"', '\\\\\"')
+            print(f'export FIREBASE_PRIVATE_KEY=\"{escaped}\"')
+    except Exception:
+        pass
+else:
+    # Fallback: top-level client_email/private_key
+    for env_var, key in [('FIREBASE_CLIENT_EMAIL', 'client_email')]:
+        m = re.search(r'\"' + key + r'\"\s*:\s*\"([^\"]*?)\"', raw)
+        if m and m.group(1):
+            print(f'export {env_var}=\"{m.group(1)}\"')
 " 2>/dev/null)" || true
 fi
 
@@ -157,6 +179,36 @@ export VOICE_SERVICE_URL="${VOICE_SERVICE_URL:-http://localhost:9192}"
 
 cd "$WORKSPACE"
 
+# Inject Firebase config into copilot-dashboard's dashboard-config.json
+# This matches what EC2 does via envsubst on the template at container startup.
+DASHBOARD_CONFIG="$WORKSPACE/copilot-dashboard/src/dashboard-config.json"
+PATCHED_DASHBOARD=false
+if [ -f "$DASHBOARD_CONFIG" ] && [ -n "${FIREBASE_API_KEY:-}" ]; then
+  cp "$DASHBOARD_CONFIG" "$DASHBOARD_CONFIG.bak"
+  PATCHED_DASHBOARD=true
+  python3 -c "
+import json
+with open('$DASHBOARD_CONFIG') as f:
+    config = json.load(f)
+import os
+config['firebaseConfig'] = {
+    'apiKey': os.environ.get('FIREBASE_API_KEY', ''),
+    'authDomain': os.environ.get('FIREBASE_AUTHDOMAIN', ''),
+    'projectId': os.environ.get('FIREBASE_PROJECT_ID', ''),
+    'storageBucket': os.environ.get('FIREBASE_STORAGEBUCKET', ''),
+    'messagingSenderId': os.environ.get('FIREBASE_MESSAGINGSENDERID', ''),
+    'appId': os.environ.get('FIREBASE_APP_ID', ''),
+}
+vpk = os.environ.get('VAPID_PUBLIC_KEY', '')
+if vpk:
+    config['vapidPublicKey'] = vpk
+with open('$DASHBOARD_CONFIG', 'w') as f:
+    json.dump(config, f, indent=2)
+    f.write('\n')
+" 2>/dev/null || true
+  echo "Injected Firebase config into dashboard-config.json" >&2
+fi
+
 # Write env vars to a temp .env file so local-dev.sh can source it
 ENVFILE="$WORKSPACE/.env.${ENV}"
 CREATED_ENVFILE=false
@@ -168,7 +220,17 @@ if [ ! -f "$ENVFILE" ]; then
   if [ -n "${FIREBASE_PRIVATE_KEY:-}" ]; then
     printf 'FIREBASE_PRIVATE_KEY=%s\n' "$FIREBASE_PRIVATE_KEY" >> "$ENVFILE"
   fi
-  trap "rm -f '$TMPFILE'; if $CREATED_ENVFILE; then rm -f '$ENVFILE'; fi" EXIT
 fi
+
+# Cleanup on exit: restore dashboard-config.json and remove temp files
+cleanup() {
+  if $PATCHED_DASHBOARD && [ -f "$DASHBOARD_CONFIG.bak" ]; then
+    mv "$DASHBOARD_CONFIG.bak" "$DASHBOARD_CONFIG"
+    echo "Restored original dashboard-config.json" >&2
+  fi
+  rm -f "$TMPFILE"
+  if $CREATED_ENVFILE; then rm -f "$ENVFILE"; fi
+}
+trap cleanup EXIT
 
 exec /opt/homebrew/bin/bash ./local-dev.sh "$@"
