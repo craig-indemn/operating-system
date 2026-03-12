@@ -3,11 +3,18 @@
 Indemn Observability platform — analytics, monitoring, and reporting for voice and chat agents.
 
 ## Status
-**2026-03-12**: Report Hub Phase 1 complete. PR #37 open with 3 commits (implementation, scope filtering + agent_ids, Dockerfile fix). Awaiting CI scan pass after Dockerfile chown path fix.
+**2026-03-12**: Report Hub Phase 2 code complete. PR #37 open with 6 commits on `feature/report-hub` branch. CI scan still failing (npm tar CVEs in npm bundled deps — tried Node.js 22.x + npm update, may need `.trivyignore`).
 
-Phase 1 delivered: backend extractors (voice_data, distinguished_internal), 7-endpoint API router, frontend Reports tab with generate/download/scope filtering, agent_ids filtering on report types, Dockerfile with Node.js 20.x, migration script. S3 bucket created, migration run on dev. E2E tested.
+Phase 1 delivered: backend extractors (voice_data, distinguished_internal), 7-endpoint API router, frontend Reports tab with generate/download/scope filtering, agent_ids filtering, Dockerfile with Node.js 22.x, migration script.
 
-**Next**: Merge PR #37, deploy to dev. Then Phase 2 — migrate client-side React PDF reports (Monthly Insights, Customer Analytics, Onboarding Guide) into the hub.
+Phase 2 delivered: 3 new report types — Monthly Customer Insights, Customer Analytics, Onboarding Guide. Each has a Python extractor + standalone JSX renderer. All renderers tested locally with sample data (181-190KB PDFs generated).
+
+**Next**:
+1. Fix CI scan (tar CVEs — consider `.trivyignore` for npm bundled deps we don't control)
+2. Register Phase 2 report types in dev MongoDB via migration script (need dev env, .env currently points to prod)
+3. E2E test Phase 2 reports with real data via `local-dev-aws.sh start analytics --env=dev`
+4. Remove old client-side ReportButton.tsx PDF generation from OverviewView (keep CSV/JSON export)
+5. Merge PR #37, deploy to dev
 
 **Previous sessions (2026-03-12)**: Designed Report Hub (3 rounds of review, 20 issues resolved). Fixed flow query performance, funnel cohort auth, CI consolidation.
 
@@ -46,5 +53,12 @@ Phase 1 delivered: backend extractors (voice_data, distinguished_internal), 7-en
 - 2026-03-12: Dev report types use dev org IDs (Dev-Dhruv for voice-daily, EventGuard for distinguished-internal) — prod uses different IDs
 - 2026-03-12: Dockerfile chown fix — after `cd scripts`, path must be `node_modules` not `scripts/node_modules`
 
+- 2026-03-12: Phase 2 extractors query `observatory_conversations` collection in `tiledesk` database (same DB as voice extractor)
+- 2026-03-12: Phase 2 report types use scope `customer` (not `agent`) with `org_ids: null` (available to all orgs)
+- 2026-03-12: Node.js upgraded to 22.x LTS in Dockerfile; npm updated to latest for security
+- 2026-03-12: Frontend package.json/package-lock.json excluded from Docker image via .dockerignore
+- 2026-03-12: Redundant font/brand COPY commands removed from Dockerfile (already included via `COPY . .`)
+
 ## Open Questions
-- Phase 2: which client-side reports to migrate first? Monthly Insights is used most broadly (all orgs)
+- CI scan: tar CVEs are in npm's own bundled deps (`usr/lib/node_modules/npm/node_modules/tar/`), not our code. May need `.trivyignore` if npm@latest still bundles vulnerable tar.
+- Should old ReportButton.tsx keep CSV/JSON export but drop PDF options, or move export to Reports tab too?
