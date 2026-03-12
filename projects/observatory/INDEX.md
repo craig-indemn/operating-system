@@ -3,11 +3,13 @@
 Indemn Observability platform — analytics, monitoring, and reporting for voice and chat agents.
 
 ## Status
-**2026-03-12**: Report Hub feature designed and reviewed (3 rounds, 20 issues found and fixed). Design doc approved at `docs/plans/2026-03-12-observatory-report-hub-design.md`. Ready for implementation.
+**2026-03-12**: Report Hub Phase 1 complete. PR #37 open with 3 commits (implementation, scope filtering + agent_ids, Dockerfile fix). Awaiting CI scan pass after Dockerfile chown path fix.
 
-**Previous session (2026-03-12)**: Fixed flow query performance (522MB → 15.7MB via MongoDB projections), fixed funnel cohort auth (FunnelCohortPanel.tsx using raw fetch without JWT), consolidated CI (eliminated demo-gic branch, main→dev deploy restored), deployed fixes to dev and prod, synced fork and org repos.
+Phase 1 delivered: backend extractors (voice_data, distinguished_internal), 7-endpoint API router, frontend Reports tab with generate/download/scope filtering, agent_ids filtering on report types, Dockerfile with Node.js 20.x, migration script. S3 bucket created, migration run on dev. E2E tested.
 
-**Next**: Implement Report Hub — Phase 1 (CLI reports: voice daily/retrospective for Rankin, distinguished programs). See design doc for full plan.
+**Next**: Merge PR #37, deploy to dev. Then Phase 2 — migrate client-side React PDF reports (Monthly Insights, Customer Analytics, Onboarding Guide) into the hub.
+
+**Previous sessions (2026-03-12)**: Designed Report Hub (3 rounds of review, 20 issues resolved). Fixed flow query performance, funnel cohort auth, CI consolidation.
 
 ## External Resources
 | Resource | Type | Link |
@@ -17,6 +19,7 @@ Indemn Observability platform — analytics, monitoring, and reporting for voice
 | Dev deployment | URL | https://devobservatory.indemn.ai |
 | Prod deployment | URL | https://prodobservatory.indemn.ai |
 | Report Hub design | Design doc | docs/plans/2026-03-12-observatory-report-hub-design.md |
+| Report Hub PR | GitHub PR | https://github.com/indemn-ai/Indemn-observatory/pull/37 |
 
 ## Artifacts
 | Date | Artifact | Ask |
@@ -37,6 +40,11 @@ Indemn Observability platform — analytics, monitoring, and reporting for voice
 - 2026-03-12: Extractors live at src/observatory/extractors/ (proper Python package, not scripts/)
 - 2026-03-12: Report dedup via upsert on compound key (type + org + agent + dates), replaces on regeneration
 - 2026-03-12: Node.js installed in backend Docker image for JSX renderer subprocess
+- 2026-03-12: Scope filtering fix — ReportsView uses useScope() to filter report type cards by org_ids and pass org_id/agent_id to useReports() hook
+- 2026-03-12: Push feature branches directly to org repo (indemn remote) — fork name mismatch prevents cross-repo PRs via gh
+- 2026-03-12: Added agent_ids field to report types — restricts agent dropdown to applicable agents only (same pattern as org_ids for orgs)
+- 2026-03-12: Dev report types use dev org IDs (Dev-Dhruv for voice-daily, EventGuard for distinguished-internal) — prod uses different IDs
+- 2026-03-12: Dockerfile chown fix — after `cd scripts`, path must be `node_modules` not `scripts/node_modules`
 
 ## Open Questions
-- (none)
+- Phase 2: which client-side reports to migrate first? Monthly Insights is used most broadly (all orgs)
