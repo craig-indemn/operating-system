@@ -2,6 +2,17 @@
 
 Connected intelligence layer for Indemn. Every tool the company uses, accessible from Claude Code via CLI skills.
 
+## Production Safety — MANDATORY
+
+**NEVER write to production systems or modify EC2 instances without explicit user permission.** This is non-negotiable.
+
+- **EC2 instances**: Read-only commands (status checks, log reads, `docker ps`) are OK. Any command that modifies state (restart services, deploy, write files, kill processes, `docker stop/restart/rm`, package installs) requires explicit user approval first.
+- **Production databases**: Read-only queries only. No INSERT, UPDATE, DELETE, DROP, or schema changes without explicit permission.
+- **Production secrets**: Never create, update, or delete secrets under `indemn/prod/*` without explicit permission.
+- **Deployments**: Never push to production, trigger production CI/CD, or modify production infrastructure without explicit permission.
+
+When in doubt, ask. The cost of pausing is zero. The cost of a production incident is not.
+
 ## Your Environment
 - All tools accessed via CLI or curl — no MCPs
 - Skills in `.claude/skills/` handle status checks, setup, and usage for each tool
@@ -29,7 +40,7 @@ Connected intelligence layer for Indemn. Every tool the company uses, accessible
 | `/image-gen` | curl (Gemini API) | Generate images via Google Nano Banana — blog visuals, illustrations, diagrams, brand-aware assets |
 | `/excalidraw` | excalidraw-to-svg | Create Excalidraw diagrams programmatically — flowcharts, architecture diagrams, sequence diagrams as .excalidraw JSON rendered to SVG |
 | `/langfuse` | curl (REST API) | Query Langfuse OTLP traces for voice agent observability — trace lookup, session data, tool call spans |
-| `/aws` | aws CLI | AWS infrastructure — Secrets Manager, Parameter Store, EC2, IAM, ECS |
+| `/aws` | aws CLI | AWS infrastructure — Secrets Manager, Parameter Store, EC2, IAM, ECS, SSM Session Manager (SSH is disabled — all EC2 access via SSM) |
 | `/1password` | op CLI | Personal secrets — read tokens, store credentials, manage indemn-os vault |
 | `/markdown-pdf` | md-to-pdf | Convert markdown to Indemn-branded PDF — Barlow font, iris headings, styled tables |
 

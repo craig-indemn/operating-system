@@ -1,6 +1,6 @@
 ---
 name: aws
-description: Manage AWS infrastructure — Secrets Manager, Parameter Store, EC2, IAM, and ECS. Use when the user asks about AWS services, secrets, infrastructure, or deployments.
+description: Manage AWS infrastructure — Secrets Manager, Parameter Store, EC2, IAM, and ECS. Use when the user asks about AWS services, secrets, infrastructure, deployments, or SSH/SSM access to EC2 instances. SSH is disabled — all EC2 access goes through SSM Session Manager.
 ---
 
 # AWS CLI
@@ -161,6 +161,119 @@ aws ec2 describe-instances \
 # Check instance IAM role
 aws ec2 describe-instances --instance-ids i-0fde0af9d216e9182 \
   --query 'Reservations[0].Instances[0].IamInstanceProfile.Arn' --output text
+```
+
+## EC2 Access — Session Manager (SSM)
+
+**SSH is disabled.** Port 22 has been removed from all security groups (SOC 2 alignment, DEVOPS-117). All EC2 access goes through AWS Systems Manager Session Manager.
+
+### Prerequisites
+- AWS CLI authenticated (`aws sts get-caller-identity`)
+- Session Manager plugin installed (`session-manager-plugin --version`)
+  - Install: `brew install --cask session-manager-plugin` (requires sudo), then symlink:
+    `ln -sf /usr/local/sessionmanagerplugin/bin/session-manager-plugin ~/.local/bin/session-manager-plugin`
+
+### Key Instances
+
+| Name | Instance ID | Type | Purpose |
+|------|-------------|------|---------|
+| **prod-services** | `i-00ef8e2bfa651aaa8` | t3.xlarge | Production services |
+| **dev-services** | `i-0fde0af9d216e9182` | t3.xlarge | Development services |
+| **copilot-prod** | `i-0df529ca541a38f3d` | t3.xlarge | Copilot production |
+| **dev-n8n-service-automation** | `i-0156c01fb0f551c00` | t3.xlarge | Dev n8n automation |
+| **voice-livekit** | `i-01e65d5494fd64b05` | g4dn.xlarge | Voice/LiveKit (GPU) |
+| **web operators** | `i-0cd42d886ca0db5a2` | t3.large | Web operators |
+| **indemn-windows-server** | `i-0dc2563c9bc92aa0e` | t3.xlarge | Windows server |
+
+Env vars `$AWS_DEV_INSTANCE_ID` and `$AWS_PROD_INSTANCE_ID` are set in `.env` for quick access.
+
+### Interactive Shell Session
+
+```bash
+# By instance ID
+aws ssm start-session --target i-00ef8e2bfa651aaa8
+
+# Using env var shortcuts
+aws ssm start-session --target $AWS_PROD_INSTANCE_ID
+aws ssm start-session --target $AWS_DEV_INSTANCE_ID
+```
+
+This opens an interactive shell on the instance. Type `exit` to end.
+
+**Note:** Interactive sessions require a real terminal — they do NOT work from Claude Code's Bash tool. Use `send-command` (below) for non-interactive access from Claude Code.
+
+### Run Commands (Non-Interactive — Use This from Claude Code)
+
+```bash
+# Run a single command
+aws ssm send-command \
+  --instance-ids i-00ef8e2bfa651aaa8 \
+  --document-name "AWS-RunShellScript" \
+  --parameters 'commands=["hostname"]' \
+  --query 'Command.CommandId' --output text
+
+# Get the output (wait a few seconds for execution)
+aws ssm get-command-invocation \
+  --command-id "<command-id>" \
+  --instance-id i-00ef8e2bfa651aaa8 \
+  --query '[Status, StandardOutputContent, StandardErrorContent]' --output text
+```
+
+#### Common Patterns
+
+```bash
+# Check running services
+aws ssm send-command \
+  --instance-ids $AWS_PROD_INSTANCE_ID \
+  --document-name "AWS-RunShellScript" \
+  --parameters 'commands=["docker ps --format \"table {{.Names}}\t{{.Status}}\t{{.Ports}}\""]' \
+  --query 'Command.CommandId' --output text
+
+# Check disk space
+aws ssm send-command \
+  --instance-ids $AWS_PROD_INSTANCE_ID \
+  --document-name "AWS-RunShellScript" \
+  --parameters 'commands=["df -h"]' \
+  --query 'Command.CommandId' --output text
+
+# View logs
+aws ssm send-command \
+  --instance-ids $AWS_PROD_INSTANCE_ID \
+  --document-name "AWS-RunShellScript" \
+  --parameters 'commands=["tail -50 /var/log/syslog"]' \
+  --query 'Command.CommandId' --output text
+
+# Run on Windows (use AWS-RunPowerShellScript)
+aws ssm send-command \
+  --instance-ids i-0dc2563c9bc92aa0e \
+  --document-name "AWS-RunPowerShellScript" \
+  --parameters 'commands=["Get-Process | Select-Object -First 10"]' \
+  --query 'Command.CommandId' --output text
+```
+
+#### Helper: Send + Wait + Get Output
+
+```bash
+# One-liner: send command, wait, get result
+CMD_ID=$(aws ssm send-command \
+  --instance-ids i-00ef8e2bfa651aaa8 \
+  --document-name "AWS-RunShellScript" \
+  --parameters 'commands=["hostname && uptime"]' \
+  --query 'Command.CommandId' --output text) \
+&& sleep 3 \
+&& aws ssm get-command-invocation \
+  --command-id "$CMD_ID" \
+  --instance-id i-00ef8e2bfa651aaa8 \
+  --query '{Status:Status,Output:StandardOutputContent,Error:StandardErrorContent}' --output yaml
+```
+
+### List SSM-Managed Instances
+
+```bash
+# All instances with SSM agent online
+aws ssm describe-instance-information \
+  --query 'InstanceInformationList[*].[InstanceId,PlatformType,PlatformName,IPAddress,PingStatus]' \
+  --output table
 ```
 
 ## IAM — Instance Profiles for EC2
