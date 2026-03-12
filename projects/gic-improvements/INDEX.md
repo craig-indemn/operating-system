@@ -8,7 +8,7 @@ Systematic improvement of the GIC Underwriters AI associate ("Fred") — identif
 **Evaluation IDs:**
 - Test bot (dev): `6787a63d2ea6350012955ed9`
 - Rubric: `3bd8cc49-7eef-4110-95ac-01fdc4419cc5` (5 rules, v2 — calibrated Rule 03)
-- Test set: `0977c5bc-2987-40fa-95bb-31f14781a7c1` (8 scenarios + 7 single-turn, v2 with real policy numbers)
+- Test set: `0977c5bc-2987-40fa-95bb-31f14781a7c1` (9 scenarios + 8 single-turn = 17 items, **v3** — criteria aligned to opportunities)
 - **Baseline run: `081e50a2-425f-40c8-a01f-5e43985a7f34`** — 13/15 passed, all 5 rubric rules 100%, 2 failures are handoff workflow gaps
 - Eval model: `openai:gpt-4.1` | Eval DB: dev/tiledesk (not evaluations)
 
@@ -58,6 +58,7 @@ Systematic improvement of the GIC Underwriters AI associate ("Fred") — identif
 - 2026-03-12: Rule 03 (persona maintenance) rewritten from subjective "contextually appropriate" to explicit trigger conditions — v1 had 93% false-failure rate
 - 2026-03-12: Eval service uses dev/tiledesk DB (not dev/evaluations) — caused by `.env` in evaluations/ repo overriding `MONGODB_DATABASE`
 - 2026-03-12: Eval model switched from Anthropic (rate limited) to `openai:gpt-4.1`
+- 2026-03-12: Test set v3 — tightened criteria to FAIL on pre-improvement behavior, added after-hours and opener test items
 
 ## Open Questions
 - Evaluation criteria: what specific metrics and thresholds per opportunity for before/after comparison?
