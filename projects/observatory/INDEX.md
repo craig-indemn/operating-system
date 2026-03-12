@@ -3,20 +3,19 @@
 Indemn Observability platform — analytics, monitoring, and reporting for voice and chat agents.
 
 ## Status
-**2026-03-12**: Report Hub Phase 2 code complete. PR #37 open with 6 commits on `feature/report-hub` branch. CI scan still failing (npm tar CVEs in npm bundled deps — tried Node.js 22.x + npm update, may need `.trivyignore`).
+**2026-03-12**: Report Hub Phase 1 merged (PR #37). Phase 2 in PR #38 — CI passing, E2E tested, ready to merge.
 
-Phase 1 delivered: backend extractors (voice_data, distinguished_internal), 7-endpoint API router, frontend Reports tab with generate/download/scope filtering, agent_ids filtering, Dockerfile with Node.js 22.x, migration script.
+Phase 1 (merged): backend extractors (voice_data, distinguished_internal), 7-endpoint API router, frontend Reports tab with generate/download/scope filtering, agent_ids filtering, Dockerfile with Node.js 22.x, migration script.
 
-Phase 2 delivered: 3 new report types — Monthly Customer Insights, Customer Analytics, Onboarding Guide. Each has a Python extractor + standalone JSX renderer. All renderers tested locally with sample data (181-190KB PDFs generated).
+Phase 2 (PR #38, CI green): 3 new report types — Monthly Customer Insights, Customer Analytics, Onboarding Guide. Each has a Python extractor + standalone JSX renderer. All 3 E2E tested via API with EventGuard data (163-190KB PDFs). Old client-side PDF code removed (4,340 lines deleted, @react-pdf/renderer removed from frontend). CI fixed — npm removed from runtime image, .trivyignore added as fallback.
 
 **Next**:
-1. Fix CI scan (tar CVEs — consider `.trivyignore` for npm bundled deps we don't control)
-2. Register Phase 2 report types in dev MongoDB via migration script (need dev env, .env currently points to prod)
-3. E2E test Phase 2 reports with real data via `local-dev-aws.sh start analytics --env=dev`
-4. Remove old client-side ReportButton.tsx PDF generation from OverviewView (keep CSV/JSON export)
-5. Merge PR #37, deploy to dev
+1. Merge PR #38 (CI passing, E2E tested)
+2. Deploy to dev — verify via https://devobservatory.indemn.ai/reports
+3. Register report types in prod MongoDB when ready for production
+4. Run migration on prod to register Phase 2 report types
 
-**Previous sessions (2026-03-12)**: Designed Report Hub (3 rounds of review, 20 issues resolved). Fixed flow query performance, funnel cohort auth, CI consolidation.
+**Previous sessions (2026-03-12)**: Designed Report Hub (3 rounds of review, 20 issues resolved). Fixed flow query performance, funnel cohort auth, CI consolidation. Built Phase 1 + Phase 2 report types.
 
 ## External Resources
 | Resource | Type | Link |
@@ -26,7 +25,8 @@ Phase 2 delivered: 3 new report types — Monthly Customer Insights, Customer An
 | Dev deployment | URL | https://devobservatory.indemn.ai |
 | Prod deployment | URL | https://prodobservatory.indemn.ai |
 | Report Hub design | Design doc | docs/plans/2026-03-12-observatory-report-hub-design.md |
-| Report Hub PR | GitHub PR | https://github.com/indemn-ai/Indemn-observatory/pull/37 |
+| Report Hub Phase 1 PR | GitHub PR (merged) | https://github.com/indemn-ai/Indemn-observatory/pull/37 |
+| Report Hub Phase 2 PR | GitHub PR | https://github.com/indemn-ai/Indemn-observatory/pull/38 |
 
 ## Artifacts
 | Date | Artifact | Ask |
@@ -59,6 +59,10 @@ Phase 2 delivered: 3 new report types — Monthly Customer Insights, Customer An
 - 2026-03-12: Frontend package.json/package-lock.json excluded from Docker image via .dockerignore
 - 2026-03-12: Redundant font/brand COPY commands removed from Dockerfile (already included via `COPY . .`)
 
+- 2026-03-12: CI fix — remove npm from runtime Docker image after `npm ci`, eliminating all 10 CVEs in npm's bundled tar/glob/minimatch. `.trivyignore` added as fallback.
+- 2026-03-12: Old client-side PDF generation removed — ReportButton.tsx retains CSV/JSON export only, 24 React PDF components + generateReport.tsx + useReportData/useCustomerReportData hooks deleted, @react-pdf/renderer removed from frontend deps
+- 2026-03-12: Phase 2 report types registered in dev MongoDB via migration script with dev env credentials
+
 ## Open Questions
-- CI scan: tar CVEs are in npm's own bundled deps (`usr/lib/node_modules/npm/node_modules/tar/`), not our code. May need `.trivyignore` if npm@latest still bundles vulnerable tar.
-- Should old ReportButton.tsx keep CSV/JSON export but drop PDF options, or move export to Reports tab too?
+- Prod migration: Phase 2 report types need to be registered in prod MongoDB separately (different org IDs)
+- The `observatory_conversations` collection data availability varies by org — some orgs may not have enough data for meaningful reports
