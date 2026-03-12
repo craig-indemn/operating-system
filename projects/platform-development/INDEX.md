@@ -3,23 +3,20 @@
 End-to-end development of the Indemn agent platform — spanning indemn-platform-v2 (V2 agent builder + Jarvis), the evaluation harness, copilot-dashboard (Angular config UI), and supporting services. Covers debugging, feature development, and refinement of the full stack from agent configuration through evaluation and deployment.
 
 ## Status
-**Session 2026-03-12-a** (IN PROGRESS): Voice evaluation deployment — Jarvis awareness shipped, eval service infra fixed, but voice conversations not working.
+**Session 2026-03-12-b** (COMPLETE): Root cause found and fixed for voice eval failure.
 
-**Completed this session:**
+**Completed across sessions 2026-03-12-a and 2026-03-12-b:**
 - percy-service PR #7 merged (main + prod) — Jarvis now generates `voice_simulation` test items and supports `transcript` evaluation mode
-- evaluations PRs #13-20 merged (main + prod) — lockfile with livekit, ffmpeg in Dockerfile, configurable agent name, Langfuse + LiveKit env vars on prod
+- evaluations PRs #13-21 merged (main + prod) — lockfile, ffmpeg, agent name, env vars, event loop cleanup
+- **evaluations PR #22 merged (main + prod)** — ROOT CAUSE FIX: eval service used Text Stream API (`register_text_stream_handler`) but voice agent uses Transcription API (`publish_transcription`). Switched to `room.on("transcription_received")`. Verified against production — transcriptions received within 2 seconds.
 - Jarvis correctly generates voice_simulation items for voice agents, scenario items for chat agents
 
-**BLOCKED: Voice simulation evals fail at runtime.**
-The eval service connects to LiveKit and dispatches rooms, but the voice agent never responds. Symptoms: "Timed out waiting for agent response", "Room disconnected unexpectedly", "Event loop is closed". Root cause unknown — needs deep investigation of the full voice eval pipeline including the voice-livekit service side. See artifact `2026-03-12-voice-eval-deployment.md` for full diagnosis.
-
-**Pending PR:** evaluations PR #21 (event loop cleanup) — may not be root cause, hold until investigation complete.
-
 **Next session should:**
-1. Deep investigate voice eval failure end-to-end: check voice-livekit service logs, verify dispatch reception, confirm agent joins room, verify transcription stream setup
-2. Do NOT apply more patches — understand the full system first
-3. After voice evals work: update Jarvis skills with concurrency constraint (voice must use concurrency 1) and document lack of cancel endpoint
-4. Clean up zombie runs in MongoDB
+1. **Verify end-to-end**: Pull new image on prod eval EC2, trigger a voice eval via Jarvis, confirm full transcript + evaluation scores
+2. **Update Jarvis skills**: Add concurrency constraint (voice must use concurrency=1) to eval-orchestration skill
+3. **Clean up zombie runs**: Multiple runs stuck in "running" status in MongoDB — needs manual update
+4. **Cancel endpoint**: No way to cancel stuck runs — consider implementing
+5. **PR #21 (event loop cleanup)**: Already merged but was NOT the root cause — monitor for cleanup noise reduction
 
 ## External Resources
 | Resource | Type | Link |
@@ -62,6 +59,7 @@ The eval service connects to LiveKit and dispatches rooms, but the voice agent n
 | 2026-02-24 | [evaluations-feedback/issue-09](artifacts/2026-02-24-evaluations-feedback/issue-09-criteria-only-option.md) | Issue 9: "None (criteria only)" is by design — Linear response only |
 | 2026-02-24 | [evaluations-feedback/issue-10](artifacts/2026-02-24-evaluations-feedback/issue-10-two-scores.md) | Issue 10: 93% rubric score is wrong — scoring fallback misinterprets component_scores |
 | 2026-03-12 | [voice-eval-deployment](artifacts/2026-03-12-voice-eval-deployment.md) | Voice eval deployment — what shipped (percy PR #7, eval PRs #13-20), what's broken (voice conversations fail), full architecture trace, investigation gaps |
+| 2026-03-12 | [voice-eval-root-cause](artifacts/2026-03-12-voice-eval-root-cause.md) | Root cause: LiveKit API mismatch — agent uses Transcription API, eval used Text Stream API. Fix in PR #22, deployed via PR #23. |
 
 ## Decisions
 - 2026-02-19: Project scope is full platform — evals, federation, V2 builder, Jarvis, deployment — all active areas equally.
