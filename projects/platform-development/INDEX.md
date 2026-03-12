@@ -3,27 +3,23 @@
 End-to-end development of the Indemn agent platform — spanning indemn-platform-v2 (V2 agent builder + Jarvis), the evaluation harness, copilot-dashboard (Angular config UI), and supporting services. Covers debugging, feature development, and refinement of the full stack from agent configuration through evaluation and deployment.
 
 ## Status
-**Session 2026-02-26-a** (COMPLETE): Full prod EC2 deployment — all 3 services live and verified. COP-325 moved to "Ready for Testing" in Linear with deployment summary comment.
+**Session 2026-03-12-a** (IN PROGRESS): Voice evaluation deployment — Jarvis awareness shipped, eval service infra fixed, but voice conversations not working.
 
-**Prod deployment DONE:**
-- `copilot-dashboard-react` (React UI + nginx) → `https://platform.indemn.ai` — serving SPA + remoteEntry.js + proxying to percy-service
-- `percy-service` (Python backend) → reachable via `https://platform.indemn.ai/api/` — Jarvis functional after seed scripts
-- `evaluations` → `https://evaluations.indemn.ai` — healthy, target group already configured
-- SSL cert fixed on ALB (was using bare `indemn.ai` cert instead of `*.indemn.ai` wildcard)
-- Stale nginx config fixed (old container had localhost proxy, new image uses Docker DNS)
-- Jarvis initialized (seed scripts + restart required for template discovery)
+**Completed this session:**
+- percy-service PR #7 merged (main + prod) — Jarvis now generates `voice_simulation` test items and supports `transcript` evaluation mode
+- evaluations PRs #13-20 merged (main + prod) — lockfile with livekit, ffmpeg in Dockerfile, configurable agent name, Langfuse + LiveKit env vars on prod
+- Jarvis correctly generates voice_simulation items for voice agents, scenario items for chat agents
 
-**COP-325 Linear status:** Ready for Testing. Deployment comment posted. Clarification added that copilot-dashboard (Angular) commits are in main, ready for merge to prod when team is ready.
+**BLOCKED: Voice simulation evals fail at runtime.**
+The eval service connects to LiveKit and dispatches rooms, but the voice agent never responds. Symptoms: "Timed out waiting for agent response", "Room disconnected unexpectedly", "Event loop is closed". Root cause unknown — needs deep investigation of the full voice eval pipeline including the voice-livekit service side. See artifact `2026-03-12-voice-eval-deployment.md` for full diagnosis.
 
-**Still pending:**
-- Copilot-dashboard PR #964 (Jarvis FOB purple button) — needs merge to main, then main→prod PR
-- Prod Docker images running `:main` tags — proper prod builds need self-hosted runners on prod EC2
-- percy-service `prod` branch created and pushed
+**Pending PR:** evaluations PR #21 (event loop cleanup) — may not be root cause, hold until investigation complete.
 
 **Next session should:**
-1. Get PR #964 merged on copilot-dashboard, create main→prod PR, deploy Angular app
-2. Move COP-325 to "Done" after copilot-dashboard is on prod
-3. Set up self-hosted GitHub runners on prod EC2 for automated deployments
+1. Deep investigate voice eval failure end-to-end: check voice-livekit service logs, verify dispatch reception, confirm agent joins room, verify transcription stream setup
+2. Do NOT apply more patches — understand the full system first
+3. After voice evals work: update Jarvis skills with concurrency constraint (voice must use concurrency 1) and document lack of cancel endpoint
+4. Clean up zombie runs in MongoDB
 
 ## External Resources
 | Resource | Type | Link |
@@ -65,6 +61,7 @@ End-to-end development of the Indemn agent platform — spanning indemn-platform
 | 2026-02-24 | [evaluations-feedback/issue-08](artifacts/2026-02-24-evaluations-feedback/issue-08-instruction-compliance.md) | Issue 8: instruction_compliance is a category label — Linear response only |
 | 2026-02-24 | [evaluations-feedback/issue-09](artifacts/2026-02-24-evaluations-feedback/issue-09-criteria-only-option.md) | Issue 9: "None (criteria only)" is by design — Linear response only |
 | 2026-02-24 | [evaluations-feedback/issue-10](artifacts/2026-02-24-evaluations-feedback/issue-10-two-scores.md) | Issue 10: 93% rubric score is wrong — scoring fallback misinterprets component_scores |
+| 2026-03-12 | [voice-eval-deployment](artifacts/2026-03-12-voice-eval-deployment.md) | Voice eval deployment — what shipped (percy PR #7, eval PRs #13-20), what's broken (voice conversations fail), full architecture trace, investigation gaps |
 
 ## Decisions
 - 2026-02-19: Project scope is full platform — evals, federation, V2 builder, Jarvis, deployment — all active areas equally.
