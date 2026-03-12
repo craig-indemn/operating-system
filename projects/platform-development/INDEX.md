@@ -3,29 +3,34 @@
 End-to-end development of the Indemn agent platform — spanning indemn-platform-v2 (V2 agent builder + Jarvis), the evaluation harness, copilot-dashboard (Angular config UI), and supporting services. Covers debugging, feature development, and refinement of the full stack from agent configuration through evaluation and deployment.
 
 ## Status
-**Session 2026-03-12-c** (COMPLETE): Voice eval deploy, analysis, concurrency fix, UI fix.
+**Session 2026-03-12-d** (COMPLETE): Linear alignment, eval results export, skill update, team notification.
 
-**Completed this session (2026-03-12-c):**
-- Deployed latest evaluations image to prod EC2 (`i-00ef8e2bfa651aaa8`) — service healthy
-- Ran eval analysis on run `a6ea52a8` for agent `69989523c603efb2b0c4df50` (Distinguished Cyber): 3/5 passed. 1 infra failure (room conflict from concurrency=3), 1 real agent issue (agent goes silent on escalation requests)
-- **Found eval service writes to `tiledesk` DB** (not `evaluations` DB) — `MONGODB_DATABASE=tiledesk` in prod .env
-- **Found voice UI never deployed** — `voice_simulation` type support merged to `indemn-ai/copilot-dashboard-react` main (PRs #2, #3) but `prod` branch is way behind main
-- percy-service PR #9 (pending) — voice concurrency constraint in eval-orchestration SKILL.md + seed_jarvis_templates.py
-- copilot-dashboard-react PR #11 (pending) — UI concurrency fix: auto-detect voice items → concurrency=1, fallback default 1→3
-- craig-indemn/indemn-platform-v2 PR #3 (redundant) — same changes on personal fork, can be closed
+**Completed this session:**
+- Updated Linear: COP-359/364 → In Progress, created COP-403 (Done), COP-404 (In Progress), COP-405 (Queued)
+- Analyzed clean voice eval run `85270b59` (concurrency=1): 2/5 passed, 87% criteria, 80% rubric
+- Exported full conversation traces + scoring to PDF artifact (`2026-03-12-voice-eval-results.pdf`)
+- Updated eval-analysis skill with improved Export section (percentages, rubric rules, test item details, voice metrics, validation gate)
+- Posted PR review request to #dev-squad for PRs #9 and #11
 
-**Completed across sessions 2026-03-12-a and 2026-03-12-b:**
-- percy-service PR #7 merged (main + prod) — Jarvis now generates `voice_simulation` test items and supports `transcript` evaluation mode
-- evaluations PRs #13-22 merged (main + prod) — all fixes including ROOT CAUSE: LiveKit Transcription API mismatch
-- Jarvis correctly generates voice_simulation items for voice agents, scenario items for chat agents
+**Linear tracking (COP-359 Voice Evaluation):**
+- COP-364 Deploy voice eval to prod → **In Progress** (partially deployed)
+  - COP-403 LiveKit Transcription API fix → **Done** (root cause, deployed 2026-03-12)
+  - COP-404 Voice concurrency fix → **In Progress** (PRs #9, #11 pending review, posted to #dev-squad)
+  - COP-405 Deploy copilot-dashboard-react main→prod → **Queued** (blocked on PR #11)
+- COP-367 Voice sim eval + metrics → **Acceptance** (merged, awaiting prod UI deploy)
+- COP-366 Voice transcript eval → **Acceptance** (engine shipped, Observatory UI descoped)
+
+**Voice eval results (run 85270b59, concurrency=1):**
+- 2/5 passed (40%) | Criteria: 87% | Rubric: 80% | Prompt: 84% | General: 60%
+- Real agent issues: truncated responses ("Glad"), silent turns on escalation, contradictory coverage limits
+- Full traces in `artifacts/2026-03-12-voice-eval-results.pdf`
 
 **Next session should:**
-1. **Merge & deploy copilot-dashboard-react**: Merge PR #11, push `main` to `prod`. This deploys voice/transcript UI + concurrency fix together
-2. **Merge & deploy percy-service PR #9**: Then re-seed Jarvis templates so v1 prompt has the constraint
-3. **Re-run voice eval at concurrency=1**: Verify 4/5+ pass rate (Happy Path should pass without room conflicts)
-4. **Investigate agent silence on escalation**: Distinguished Cyber agent goes silent when user asks for a phone number after getting email contact. System prompt gap.
-5. **Fix zombie run**: Run `98715aa5` stuck as "running" in tiledesk DB — container was killed mid-eval. Update status to "failed"
-6. **Consider cancel endpoint**: `POST /api/v1/runs/{id}/cancel` for stuck runs
+1. Merge PRs #9 and #11 (awaiting team review)
+2. Push copilot-dashboard-react main → prod (deploys voice UI + concurrency fix)
+3. Re-seed Jarvis templates after percy-service PR #9 deploys
+4. Re-run voice eval to compare results post-fix
+5. Fix zombie run `98715aa5` in tiledesk DB (status "running" → "failed")
 
 ## External Resources
 | Resource | Type | Link |
@@ -69,6 +74,7 @@ End-to-end development of the Indemn agent platform — spanning indemn-platform
 | 2026-02-24 | [evaluations-feedback/issue-10](artifacts/2026-02-24-evaluations-feedback/issue-10-two-scores.md) | Issue 10: 93% rubric score is wrong — scoring fallback misinterprets component_scores |
 | 2026-03-12 | [voice-eval-deployment](artifacts/2026-03-12-voice-eval-deployment.md) | Voice eval deployment — what shipped (percy PR #7, eval PRs #13-20), what's broken (voice conversations fail), full architecture trace, investigation gaps |
 | 2026-03-12 | [voice-eval-root-cause](artifacts/2026-03-12-voice-eval-root-cause.md) | Root cause: LiveKit API mismatch — agent uses Transcription API, eval used Text Stream API. Fix in PR #22, deployed via PR #23. |
+| 2026-03-12 | [voice-eval-results](artifacts/2026-03-12-voice-eval-results.md) | Full voice eval traces — run 85270b59 (concurrency=1), 2/5 passed, 87% criteria, 80% rubric. All conversations + scoring. PDF companion. |
 
 ## Decisions
 - 2026-02-19: Project scope is full platform — evals, federation, V2 builder, Jarvis, deployment — all active areas equally.

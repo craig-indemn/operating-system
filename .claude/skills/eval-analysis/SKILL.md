@@ -155,32 +155,67 @@ After applying fixes, suggest re-running the evaluation to verify improvements.
 
 When the user wants to **share results** or **export conversation traces** (rather than triage failures), use this workflow instead of Steps 3-7.
 
+### Validate Before Export
+
+Before exporting, check for infrastructure failures that would taint the report:
+- Items with 0 trajectory turns and null output → infrastructure failure (e.g., LiveKit room conflict)
+- Check the `concurrency` field on the run — voice evals at concurrency >1 may have room conflicts
+
+If infrastructure failures exist, tell the user and ask whether to proceed or re-run first.
+
 ### Pull Traces
 
 Use a subagent (Agent tool) to avoid flooding the main context window. The subagent should:
 
-1. Fetch the run summary: `curl -s http://localhost:8002/api/v1/runs/{run_id}`
-2. Fetch per-item results: `curl -s http://localhost:8002/api/v1/runs/{run_id}/results`
-3. For each result, extract:
-   - Test case name, type (single_turn/scenario), pass/fail, duration
-   - Full conversation turns (role + message from the `output` field)
-   - Criteria results with pass/fail and reasoning
-   - Rubric rule results with severity, score, and reasoning
-4. Format as clean, readable markdown
-5. Write to the target file (e.g., a project artifact)
+1. Fetch the run summary: `curl -s {base_url}/api/v1/runs/{run_id}`
+2. Fetch per-item results: `curl -s {base_url}/api/v1/runs/{run_id}/results`
+3. Fetch rubric: `curl -s {base_url}/api/v1/rubrics/{rubric_id}`
+4. Fetch test set: `curl -s {base_url}/api/v1/test-sets/{test_set_id}`
+5. For each result, extract:
+   - Test case name (match `test_case_id` to test set `items[].item_id`), type, pass/fail
+   - Test item details: persona, initial_message, success_criteria from the test set
+   - Full conversation turns from `output.trajectory` (role + content) — ALL turns, never truncate
+   - Voice metrics from `output.voice_metrics` if present
+   - Criteria results with pass/fail and full reasoning
+   - Rubric rule results with severity, pass/fail, and full reasoning
+6. Format as clean, readable markdown following the structure below
+7. Write to the target file (e.g., a project artifact)
+
+**API base URL:** Try `http://localhost:8002` first. If the run is not found locally (common for prod runs), use `https://evaluations.indemn.ai`. To find the full run_id from a prefix, query MongoDB: `mongosh-connect.sh prod tiledesk --quiet --eval 'printjson(db.getCollection("evaluation_runs").findOne({run_id: /^PREFIX/}, {run_id:1}))'`
 
 ### Markdown Structure
 
 ```markdown
 # Evaluation Results — {agent_name}
 
-Run: {run_id} | Date: {date} | Agent: {agent_id}
-Model: {provider}/{model} | Results: {passed}/{total} passed
+Run: `{run_id}` | Date: {date} | Agent: `{agent_id}`
+Model: {provider}/{model} | Results: {passed}/{total} passed ({pass_rate}%) | Concurrency: {concurrency}
+
+Criteria: {criteria_passed}/{criteria_total} ({criteria_pct}%) | Rubric: {rubric_passed}/{rubric_total} ({rubric_pct}%)
+
+Component Scores: Prompt {prompt_passed}/{prompt_total} ({prompt_pct}%) | General {gen_passed}/{gen_total} ({gen_pct}%)
+
+---
+
+## Rubric Rules
+
+**Rubric:** {rubric_name} (v{version})
+
+| # | Rule | Severity | Category | Description |
+|---|------|----------|----------|-------------|
+| 1 | {rule_name} | {severity} | {category} | {description} |
 
 ---
 
 ## Test Case: {name}
-**Type:** {type} | **Result:** {PASS/FAIL} | **Duration:** {duration}
+**Type:** {type} | **Result:** PASS/FAIL
+
+### Test Item Details
+- **Persona:** {persona from test set item}
+- **Initial Message:** {initial_message from test set item}
+- **Success Criteria:**
+  - {criterion 1}
+  - {criterion 2}
 
 ### Conversation
 
@@ -188,15 +223,31 @@ Model: {provider}/{model} | Results: {passed}/{total} passed
 
 > **Agent:** {message}
 
-### Scoring
+### Voice Metrics (if present)
+| Metric | Value |
+|--------|-------|
+| {metric_name} | {value} |
+
+### Criteria Scoring
 | Criterion | Result | Reasoning |
 |-----------|--------|-----------|
-| ... | PASS/FAIL | ... |
+| {criterion text} | PASS/FAIL | {full reasoning — never truncate} |
+
+### Rubric Scoring
+| Rule | Result | Reasoning |
+|------|--------|-----------|
+| {rule_name} | PASS/FAIL | {full reasoning — never truncate} |
+
+---
 ```
+
+**Sort order:** PASS items first, then FAIL items.
+
+**Important:** Include ALL reasoning text in full. This report is for deep review — truncation defeats the purpose.
 
 ### Convert to PDF
 
-If the user wants a PDF, use the `markdown-pdf` skill:
+If the user wants a PDF (or by default after export), use the `markdown-pdf` skill:
 
 ```bash
 npx md-to-pdf <output.md>
