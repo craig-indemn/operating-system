@@ -3,20 +3,29 @@
 End-to-end development of the Indemn agent platform — spanning indemn-platform-v2 (V2 agent builder + Jarvis), the evaluation harness, copilot-dashboard (Angular config UI), and supporting services. Covers debugging, feature development, and refinement of the full stack from agent configuration through evaluation and deployment.
 
 ## Status
-**Session 2026-03-12-b** (COMPLETE): Root cause found and fixed for voice eval failure.
+**Session 2026-03-12-c** (COMPLETE): Voice eval deploy, analysis, concurrency fix, UI fix.
+
+**Completed this session (2026-03-12-c):**
+- Deployed latest evaluations image to prod EC2 (`i-00ef8e2bfa651aaa8`) — service healthy
+- Ran eval analysis on run `a6ea52a8` for agent `69989523c603efb2b0c4df50` (Distinguished Cyber): 3/5 passed. 1 infra failure (room conflict from concurrency=3), 1 real agent issue (agent goes silent on escalation requests)
+- **Found eval service writes to `tiledesk` DB** (not `evaluations` DB) — `MONGODB_DATABASE=tiledesk` in prod .env
+- **Found voice UI never deployed** — `voice_simulation` type support merged to `indemn-ai/copilot-dashboard-react` main (PRs #2, #3) but `prod` branch is way behind main
+- percy-service PR #9 (pending) — voice concurrency constraint in eval-orchestration SKILL.md + seed_jarvis_templates.py
+- copilot-dashboard-react PR #11 (pending) — UI concurrency fix: auto-detect voice items → concurrency=1, fallback default 1→3
+- craig-indemn/indemn-platform-v2 PR #3 (redundant) — same changes on personal fork, can be closed
 
 **Completed across sessions 2026-03-12-a and 2026-03-12-b:**
 - percy-service PR #7 merged (main + prod) — Jarvis now generates `voice_simulation` test items and supports `transcript` evaluation mode
-- evaluations PRs #13-21 merged (main + prod) — lockfile, ffmpeg, agent name, env vars, event loop cleanup
-- **evaluations PR #22 merged (main + prod)** — ROOT CAUSE FIX: eval service used Text Stream API (`register_text_stream_handler`) but voice agent uses Transcription API (`publish_transcription`). Switched to `room.on("transcription_received")`. Verified against production — transcriptions received within 2 seconds.
+- evaluations PRs #13-22 merged (main + prod) — all fixes including ROOT CAUSE: LiveKit Transcription API mismatch
 - Jarvis correctly generates voice_simulation items for voice agents, scenario items for chat agents
 
 **Next session should:**
-1. **Verify end-to-end**: Pull new image on prod eval EC2, trigger a voice eval via Jarvis, confirm full transcript + evaluation scores
-2. **Update Jarvis skills**: Add concurrency constraint (voice must use concurrency=1) to eval-orchestration skill
-3. **Clean up zombie runs**: Multiple runs stuck in "running" status in MongoDB — needs manual update
-4. **Cancel endpoint**: No way to cancel stuck runs — consider implementing
-5. **PR #21 (event loop cleanup)**: Already merged but was NOT the root cause — monitor for cleanup noise reduction
+1. **Merge & deploy copilot-dashboard-react**: Merge PR #11, push `main` to `prod`. This deploys voice/transcript UI + concurrency fix together
+2. **Merge & deploy percy-service PR #9**: Then re-seed Jarvis templates so v1 prompt has the constraint
+3. **Re-run voice eval at concurrency=1**: Verify 4/5+ pass rate (Happy Path should pass without room conflicts)
+4. **Investigate agent silence on escalation**: Distinguished Cyber agent goes silent when user asks for a phone number after getting email contact. System prompt gap.
+5. **Fix zombie run**: Run `98715aa5` stuck as "running" in tiledesk DB — container was killed mid-eval. Update status to "failed"
+6. **Consider cancel endpoint**: `POST /api/v1/runs/{id}/cancel` for stuck runs
 
 ## External Resources
 | Resource | Type | Link |
