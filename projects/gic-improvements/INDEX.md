@@ -3,13 +3,14 @@
 Systematic improvement of the GIC Underwriters AI associate ("Fred") — identify opportunities, implement changes, evaluate impact, and monitor ongoing performance.
 
 ## Status
-**Phase 1 (Evaluation Setup) complete. Baseline: 13/15 (86.7%).** Next: Phase 2 Implementation (Groups A-D).
+**Phase 2 (Implementation) in progress. V3 Baseline: 7/17 (41.2%). Groups A, B, D applied to test bot. Groups C (#6, #11) blocked on retrieval investigation.**
 
 **Evaluation IDs:**
 - Test bot (dev): `6787a63d2ea6350012955ed9`
 - Rubric: `3bd8cc49-7eef-4110-95ac-01fdc4419cc5` (5 rules, v2 — calibrated Rule 03)
 - Test set: `0977c5bc-2987-40fa-95bb-31f14781a7c1` (9 scenarios + 8 single-turn = 17 items, **v3** — criteria aligned to opportunities)
-- **Baseline run: `081e50a2-425f-40c8-a01f-5e43985a7f34`** — 13/15 passed, all 5 rubric rules 100%, 2 failures are handoff workflow gaps
+- **Old baseline (v2 criteria): `081e50a2-425f-40c8-a01f-5e43985a7f34`** — 13/15 passed (criteria too lenient)
+- **V3 baseline: `4ee5b3af-f0b1-43f8-9883-303da9e3927a`** — 7/17 passed (41.2%), 10 opportunity-aligned items FAIL, 7 regression guards PASS, rubric 85/85 (100%)
 - Eval model: `openai:gpt-4.1` | Eval DB: dev/tiledesk (not evaluations)
 
 **Official baseline (observatory, 3,701 real conversations):**
@@ -46,6 +47,8 @@ Systematic improvement of the GIC Underwriters AI associate ("Fred") — identif
 | 2026-03-12 | [opportunity-prioritization](artifacts/2026-03-12-opportunity-prioritization.md) | Prioritization of opportunities using observatory data and actual conversation analysis — 7 active, 5 parked, 2 bundled |
 | 2026-03-12 | [evaluation-criteria](artifacts/2026-03-12-evaluation-criteria.md) | Evaluation rubric rules, test case designs, observatory baselines, and projected impact per opportunity |
 | 2026-03-12 | [baseline-evaluation-results](artifacts/2026-03-12-baseline-evaluation-results.md) | Baseline eval: 13/15 passed, all rubric rules 100%, 2 handoff workflow failures — full analysis with conversations |
+| 2026-03-12 | [v3-baseline-evaluation-results](artifacts/2026-03-12-v3-baseline-evaluation-results.md) | V3 baseline: 7/17 passed (41.2%), 10/10 opportunity items FAIL as expected, perfect calibration — full conversations and failure analysis |
+| 2026-03-12 | [policy-number-analysis](artifacts/2026-03-12-policy-number-analysis.md) | Analysis of 192 real policy lookups — 13 carrier formats, 2 normalization rules fix 100% of addressable failures (63% of total) |
 
 ## Decisions
 - 2026-03-12: Project created to track GIC agent improvement work per Kyle's directive
@@ -59,6 +62,11 @@ Systematic improvement of the GIC Underwriters AI associate ("Fred") — identif
 - 2026-03-12: Eval service uses dev/tiledesk DB (not dev/evaluations) — caused by `.env` in evaluations/ repo overriding `MONGODB_DATABASE`
 - 2026-03-12: Eval model switched from Anthropic (rate limited) to `openai:gpt-4.1`
 - 2026-03-12: Test set v3 — tightened criteria to FAIL on pre-improvement behavior, added after-hours and opener test items
+- 2026-03-12: V3 baseline run confirmed — 10/10 opportunity items FAIL, 7/7 regression guards PASS, 0 evaluation problems. Ready for Phase 2.
+- 2026-03-12: Phase 2 Groups A/B/D implemented on test bot. System prompt fully rewritten (not patched) — consolidated redundant sections, resolved conflicts with new directives.
+- 2026-03-12: Policy normalization based on 192 real lookups — 2 data-driven rules (Granada suffix strip, USLI/MV space insertion) fix 100% of addressable failures.
+- 2026-03-12: KB content investigation: class codes (140 entries), portal URLs (72 entries), email routing (20+ entries) ALL exist and are trained in Pinecone. #6 and #11 are retrieval quality problems, not content gaps.
+- 2026-03-12: Fabricated URLs/emails removed from prompt — never insert unverified business data into agent configs.
 
 ## Open Questions
 - Evaluation criteria: what specific metrics and thresholds per opportunity for before/after comparison?
