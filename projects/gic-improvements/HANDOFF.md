@@ -8,35 +8,39 @@ Read these files in order:
 
 ## Current State
 
-**Phase 4 (Production Deployment) IN PROGRESS. Linear tickets created (AI-333 parent + 6 sub-issues). Customer report PDF generated — needs minor fixes before delivery.**
+**Phase 4 (Production Deployment) IN PROGRESS. Linear tickets created (AI-333 parent + 6 sub-issues). Customer report PDF finalized and shared with Kyle + Ryan for review.**
 
-### What Was Done This Session (2026-03-12-h)
+### What Was Done This Session (2026-03-12-i)
 
-1. **Production bot investigation** — confirmed prod bot (`66026a302af0870013103b1e`) has NEVER had a faqs-retriever tool. Only tools: POLICY CHECK, human_handoff (x2), policy_unavailable. Has 3 KB mappings (270 QNA entries + 2 FILE KBs from Jul 2025) but no way to query them.
+1. **Report refinements based on user feedback:**
+   - Reframed entire report from "failure" language to improvement-focused framing
+   - Renamed "Total Failure Rate" → "Unresolved Rate", "Failure Breakdown" → "Improvement Opportunity Areas"
+   - Changed "Problem/Solution" labels to "Finding/Improvement" on improvement cards
+   - Softened bar chart labels (e.g., "Bad Product Inquiries" → "Product Inquiry Gaps")
+   - Changed "automated evaluation" → "systematic testing" for customer-facing language
 
-2. **Pinecone namespace confirmed empty** — prod org namespace `65eb3f19e5e6de0013fda310` has zero vectors across entire Pinecone index. ALL GIC bots in prod (including newer Voice Prototype #2, WC Intake, Doc Retriever) point to this empty namespace. GIC vectors only exist in dev namespace `6613cbc6658ad379b7d516c9` (30,971 vectors).
+2. **Redesigned page 2 with system-level metrics:**
+   - Queried observatory data to understand conversation flow: 5,330 total, 1,629 excluded (zero user messages), 3,701 real
+   - Discovered 46% system resolution rate (300 AI + 1,395 CSR = 1,695 resolved), not just 8% AI-only
+   - New metric cards: 46% Resolved, 38% By Representative, 8% By AI Alone, 15% Partially Addressed
+   - Bar chart switched from raw numbers to percentages of conversations
+   - Opportunities table now shows % impact instead of raw counts
 
-3. **GIC org inventory** — 8 bots in GIC prod org. 3 newer bots have faqs-retriever tools but broken retrieval (same empty namespace). New KBs added Jul 2025: "Broker Portal Troubleshooting FAQ" (FILE, 1 source), "Email, Document Routing FAQ" (FILE, 1 source). Also: "GIC-Crawl-Nov_2025" (URL, 16 sources).
+3. **Monitoring page reframed with positive metrics:**
+   - System Resolution Rate: 46% → 55-60%
+   - AI Resolution Rate: 8% → 15-20%
+   - Policy Lookup Success: 85% → 92-95%
+   - Product Inquiry Guidance: 49% → 70-75%
+   - User Satisfaction: 92% → 95-96%
+   - Handoff Completion: 75% → 85-88%
 
-4. **Linear tickets created** — parent AI-333 with 6 sub-issues:
-   - AI-334: Generate improvement report (customer deliverable) — **blocking, must complete first**
-   - AI-335: Deploy policy number normalization (code PR)
-   - AI-336: Add faqs-retriever + fix KB config on prod bot (manual config, includes MongoDB commands)
-   - AI-337: Apply system prompt + opener updates (manual config, full prompt in comment)
-   - AI-338: Update POLICY CHECK tool output instructions (manual config)
-   - AI-339: 4-week post-deployment monitoring
-   All under project "Automated Testing and Evaluation", team "Agentic AI", label "GIC", assigned Craig.
+4. **Visual polish:** Left border accents on improvement/proposed change cards, fixed arrow rendering, fixed label wrapping
 
-5. **Customer report PDF generated** — 7-page branded report at `~/Repositories/indemn-observability/reports/GIC_Agent_Improvement_Report_March_12__2026.pdf`
-   - Data: `indemn-observability/data/gic-improvement-report.json`
-   - Renderer: `indemn-observability/scripts/generate-gic-improvement-report.jsx`
-   - Pages: Cover, Current Performance, Opportunities, Improvements Validated (2 pages), Proposed Changes, Monitoring Plan
-   - **Known issues to fix**: (1) "Autonomous Resolution Rate" label wraps awkwardly on page 2, (2) → arrows render as apostrophes in before/after text on pages 4-5
-   - **User has additional feedback** to incorporate in next session
+5. **Shared report with Kyle and Ryan** via Slack group DM with full context on the work done
 
 ### What's Next — IMMEDIATE
 
-1. **Fix report rendering issues** and incorporate user feedback (they said they have feedback)
+1. **Wait for Kyle/Ryan feedback** on report
 2. **Deliver report** to GIC for approval (AI-334)
 3. **After approval**: Execute AI-335 through AI-338 (code PR + manual config changes)
 4. **Post-deployment**: AI-339 monitoring
