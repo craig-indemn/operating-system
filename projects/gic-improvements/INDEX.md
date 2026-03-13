@@ -3,14 +3,26 @@
 Systematic improvement of the GIC Underwriters AI associate ("Fred") — identify opportunities, implement changes, evaluate impact, and monitor ongoing performance.
 
 ## Status
-**DEPLOYING TO PRODUCTION. All dev work complete. Craig deploying changes via copilot-dashboard UI. Kyle approved shipping — waiting on Ryan's perspective on messaging and JC approval on first message specifically.**
+**PRODUCTION DEPLOYMENT COMPLETE (partial). Session 2026-03-13-b.**
 
-**What's deploying:**
-1. System prompt rewrite (all enhancements) — Craig doing via UI
-2. First message update — **BLOCKED: needs JC approval** per Kyle
-3. KB retrieval — add faqs-retriever tool + fix namespace/KB config on prod
-4. Policy tool output — expiration dates and structured display
-5. Policy number normalization — PR to operations_api (code change)
+**Deployed:**
+1. System prompt rewrite — direct communication, quote protocol, handoff diligence, CSR conversation summary — **DONE**
+2. Policy check output instructions — structured display with expiration dates — **DONE**
+3. Enhancement report — updated PDF (4 enhancements), sent to Kyle + Ryan — **DONE**
+
+**In progress:**
+4. Policy number normalization — PR #97 open (operations_api) — **Ready for Testing**
+
+**On hold / Out of scope:**
+5. First message update — **BLOCKED: needs JC approval** per Kyle
+6. After-hours awareness — **OUT OF SCOPE**: bot-service doesn't inject current time, needs code change
+7. KB retrieval fix (AI-336) — **CANCELED**: KB retrieval confirmed working in prod (separate Pinecone project with 628 vectors)
+
+**Key findings this session:**
+- Prod bot-service uses a DIFFERENT Pinecone API key than dev (stored in Docker env, not AWS Secrets Manager)
+- KB retrieval was never broken — yesterday's investigation queried the wrong Pinecone project
+- Bot-service caches tools in Redis for 1 hour (RedisToolCache, 3600s TTL)
+- After-hours awareness impossible without injecting current time into LLM context
 
 **Best eval result (v6 test set, run 5): 15/19 (78.9%)** — handoff diligence PASS, CSR summary PASS, explicit handoff PASS, failed handoff PASS. Up from 7/17 (41.2%) baseline.
 
@@ -32,13 +44,13 @@ Systematic improvement of the GIC Underwriters AI associate ("Fred") — identif
 
 **Linear tickets (AI-333 parent + 8 sub-issues):**
 - AI-334: Reframe report as enhancement summary — **DONE**
-- AI-335: Policy number normalization — code PR needed
-- AI-336: KB retrieval fix — config change on prod
-- AI-337: System prompt + opener — deploying now
-- AI-338: Policy tool output — config change on prod
-- AI-339: 4-week monitoring — starts after deploy
-- AI-340: Handoff diligence — included in prompt, deploying now
-- AI-341: CSR conversation summary — included in prompt, deploying now
+- AI-335: Policy number normalization — **Ready for Testing** (PR #97)
+- AI-336: KB retrieval fix — **CANCELED** (not broken)
+- AI-337: System prompt + opener — **DONE**
+- AI-338: Policy tool output — **DONE**
+- AI-339: 4-week monitoring — starts after full deploy
+- AI-340: Handoff diligence — **DONE**
+- AI-341: CSR conversation summary — **DONE**
 
 ## External Resources
 | Resource | Type | Link |
@@ -82,10 +94,15 @@ Systematic improvement of the GIC Underwriters AI associate ("Fred") — identif
 - 2026-03-13: Report reframed — stripped internal gaps (KB disconnected, quote collection, silent handoffs). Enhancement-focused. PDF generated.
 - 2026-03-13: Kyle: first message needs JC approval before changing. Hold on first_message update.
 - 2026-03-13: Kyle: wants Ryan's perspective on shipping and messaging around changes.
+- 2026-03-13: KB retrieval NOT broken — prod bot-service uses separate Pinecone API key (`29da46af...`), 628 vectors in prod namespace. AI-336 canceled.
+- 2026-03-13: After-hours awareness out of scope — bot-service doesn't inject current time into LLM context. Needs code change.
+- 2026-03-13: Report revised to 4 enhancements (removed after-hours + KB expansion). Updated PDF sent to Kyle + Ryan.
+- 2026-03-13: System prompt, policy tool output, handoff diligence, CSR summary deployed to prod via UI.
+- 2026-03-13: Bot-service caches tools in Redis (3600s TTL via RedisToolCache). Config changes don't take effect immediately.
 
 ## Open Questions
 - JC approval on first message — Kyle says JC is particular about the greeting
-- Ryan's perspective on shipping and messaging around changes
-- Policy number normalization — PR to operations_api still needs to be created and deployed
-- Production KB deployment — faqs-retriever tool + namespace fix + KB mapping + top_k need to be applied via UI or MongoDB
-- Pinecone deduplication: ~5x duplicate vectors — clean up, or leave and compensate with higher top_k?
+- Policy number normalization PR #97 — needs review, merge, and deploy
+- After-hours awareness — needs bot-service code change to inject current time into LLM context
+- Redis tool cache (1hr TTL) — changes to tool configs won't take effect immediately
+- Bot fabrication on failed policy lookups — bot claims to have data when API returns error (pre-existing issue, not caused by our changes)
