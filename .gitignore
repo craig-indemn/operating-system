@@ -16,3 +16,4 @@ __pycache__/
 
 # Logs
 .logs/
+projects/gic-email-intelligence/data/
