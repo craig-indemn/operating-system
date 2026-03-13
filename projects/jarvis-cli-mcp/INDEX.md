@@ -3,7 +3,7 @@
 Build a CLI tool and MCP server around Indemn's platform APIs so developers (internal first, then external customers) can programmatically manage AI agents — creating agents, prompts, functions, knowledge bases, running evaluations, and pulling analytics. Everything currently done via the Copilot Dashboard UI, made available through command-line and AI-assisted workflows (Claude Code skills, MCP servers).
 
 ## Status
-**Phase 2 complete — CLI exports published.**
+**Phase 2 complete — @indemn/cli@1.1.1 published. Announced to #dev-squad on 2026-03-13.**
 
 - **npm:** `@indemn/cli@1.1.1` published publicly. Install: `npm install -g @indemn/cli`
 - **GitHub:** https://github.com/craig-indemn/indemn-cli (private)
