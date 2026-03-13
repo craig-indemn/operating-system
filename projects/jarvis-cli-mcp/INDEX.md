@@ -3,10 +3,13 @@
 Build a CLI tool and MCP server around Indemn's platform APIs so developers (internal first, then external customers) can programmatically manage AI agents — creating agents, prompts, functions, knowledge bases, running evaluations, and pulling analytics. Everything currently done via the Copilot Dashboard UI, made available through command-line and AI-assisted workflows (Claude Code skills, MCP servers).
 
 ## Status
-**Phase 1 complete. API key auth merged and deploying to dev. Ready for team testing.**
+**Phase 1 complete. Published to npm. Phase 2 (exports) designed.**
 
-- **indemn-cli repo:** `/Users/home/Repositories/indemn-cli/` (main branch) — 23 TypeScript source files, 55 MCP tools, 4 skills, builds cleanly
-- **Copilot Server:** `feat/api-key-auth` merged to main via PR #806 (2026-03-13). CI deploys automatically to devcopilot.indemn.ai.
+- **npm:** `@indemn/cli@1.0.0` published publicly. Install: `npm install -g @indemn/cli`
+- **GitHub:** https://github.com/craig-indemn/indemn-cli (private)
+- **indemn-cli repo:** `/Users/home/Repositories/indemn-cli/` (main branch) — 23 TypeScript source files, 55 MCP tools, 5 skills, builds cleanly
+- **Copilot Server:** `feat/api-key-auth` merged to main via PR #806 (2026-03-13). Deployed to devcopilot.indemn.ai.
+- **Claude Code:** MCP server added to user config, plugin installed via local marketplace
 - **Design coverage:** 100% — URL scraping, file upload, function params, pagination, eval advanced flags, models all implemented
 - **Demo:** Recorded and shared with dev-squad on 2026-03-13. Full flywheel: create agent → configure → evaluate → improve → re-evaluate. Clean sweep.
 - **E2E:** 50/51 tests passing. Only failure: `testset list` without `--agent-id` (evals server 500, not our bug).
@@ -116,6 +119,7 @@ indemn agents list
 | 2026-03-12 | [system-landscape-research](artifacts/2026-03-12-system-landscape-research.md) | What are the existing APIs, auth models, and developer tooling across Percy Service, Copilot Server, and Copilot Dashboard? |
 | 2026-03-12 | [cli-mcp-design](artifacts/2026-03-12-cli-mcp-design.md) | Design a CLI and MCP server for programmatic management of Indemn AI agents |
 | 2026-03-12 | [cli-mcp-implementation-plan](artifacts/2026-03-12-cli-mcp-implementation-plan.md) | 11-step implementation plan for Phase 1 |
+| 2026-03-13 | [cli-exports-design](artifacts/2026-03-13-cli-exports-design.md) | Design for CLI exports — eval reports (PDF), agent cards (PDF), markdown dumps, eval-analysis skill |
 
 ## Decisions
 - 2026-03-12: API keys for auth — one-time Firebase login generates persistent key, stored in ~/.indemn/config.json. SHA-256 hashed in DB.
@@ -133,6 +137,10 @@ indemn agents list
 - 2026-03-13: Function params API uses arrays and `is_required` field, update is POST upsert (not PUT)
 - 2026-03-13: `--version` flag renamed to `--revision` on rubric/testset get (Commander.js conflict with program version)
 - 2026-03-13: copilot-server uses npm 10 / Node 22 in CI — lock file must be generated with matching version
+- 2026-03-13: Published `@indemn/cli@1.0.0` publicly on npm — no org plan needed, API key required to use
+- 2026-03-13: GitHub repo at `craig-indemn/indemn-cli` (private) — `indemn-ai` org requires admin to create repos
+- 2026-03-13: Port React-PDF templates from dashboard for eval reports and agent cards — same output, Node.js headless rendering
+- 2026-03-13: Eval analysis skill uses CLI commands (`indemn eval status/results --json`), not MCP or curl
 
 ## Implementation Notes for Future Sessions
 - **Design document:** `projects/jarvis-cli-mcp/artifacts/2026-03-12-cli-mcp-design.md` — 787 lines, source of truth
@@ -149,7 +157,19 @@ indemn agents list
 - **KB export default format:** `csv` (server doesn't support `json` export)
 - **copilot-server CI:** Node 22, npm 10, `npm ci` — lock file must match
 
+### Next: Phase 2 — Exports Implementation
+
+Design doc: `artifacts/2026-03-13-cli-exports-design.md`
+
+1. Add `@react-pdf/renderer` + `react` dependencies, bundle Barlow fonts and logo
+2. Port React-PDF templates from `indemn-platform-v2/ui/src/components/report/`
+3. Implement `indemn eval export <run-id>` — markdown dump
+4. Implement `indemn eval report <run-id>` — branded PDF
+5. Implement `indemn agents card <agent-id>` — branded agent card PDF
+6. Add 3 MCP tools: `export_eval_markdown`, `export_eval_report`, `export_agent_card`
+7. Adapt `eval-analysis` skill from OS (curl → CLI commands)
+8. Publish `@indemn/cli@1.1.0`
+
 ## Open Questions
-- Should we publish `@indemn/cli` to npm (private) or keep as git clone + npm link?
-- What improvements does the team want after trying it?
 - When do we deploy API key auth to prod copilot-server?
+- Transfer `indemn-cli` repo to `indemn-ai` org when Craig gets create permissions?
