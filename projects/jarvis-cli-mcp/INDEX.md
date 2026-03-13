@@ -3,51 +3,64 @@
 Build a CLI tool and MCP server around Indemn's platform APIs so developers (internal first, then external customers) can programmatically manage AI agents — creating agents, prompts, functions, knowledge bases, running evaluations, and pulling analytics. Everything currently done via the Copilot Dashboard UI, made available through command-line and AI-assisted workflows (Claude Code skills, MCP servers).
 
 ## Status
-**Phase 1 complete. All CLI commands, MCP tools, and SDK operations verified against dev. Full flywheel demo runs end-to-end.**
+**Phase 2 complete — CLI exports published.**
 
-- **indemn-cli repo:** `/Users/home/Repositories/indemn-cli/` — 23 TypeScript source files, 52 MCP tools, 4 skills, builds cleanly
-- **Copilot Server:** `feat/api-key-auth` branch — API key model, service, routes, apiKeyToJwt middleware, passport aud fix
-- **Design coverage:** 100% — all CLI commands, SDK methods, MCP tools, and skills from design doc implemented
-- **Code reviewed:** 3 parallel reviews completed, 3 bugs found and fixed
+- **npm:** `@indemn/cli@1.1.1` published publicly. Install: `npm install -g @indemn/cli`
+- **GitHub:** https://github.com/craig-indemn/indemn-cli (private)
+- **indemn-cli repo:** `/Users/home/Repositories/indemn-cli/` (main branch) — 35+ TypeScript source files, 58 MCP tools, 6 skills, builds cleanly
+- **Copilot Server:** `feat/api-key-auth` merged to main via PR #806 (2026-03-13). Deployed to devcopilot.indemn.ai.
+- **Claude Code:** MCP server added to user config, plugin installed via local marketplace
+- **Design coverage:** 100% — URL scraping, file upload, function params, pagination, eval advanced flags, models all implemented
+- **Demo:** Recorded and shared with dev-squad on 2026-03-13. Full flywheel: create agent → configure → evaluate → improve → re-evaluate. Clean sweep.
+- **E2E:** 50/51 tests passing. Only failure: `testset list` without `--agent-id` (evals server 500, not our bug).
+- **README:** Updated with team setup instructions and full command reference.
 
-### E2E Test Results (2026-03-13)
+### What Just Happened (2026-03-13, Phase 2 complete)
+**All 12 tasks complete. Published @indemn/cli@1.1.1 with CLI exports.**
 
-| Command | Status | Notes |
-|---------|--------|-------|
-| `indemn whoami` | PASS | |
-| `indemn agents list/create/get/update/clone/delete` | PASS | All CRUD works |
-| `indemn config get/set` | PASS | Prompt read/write works |
-| `indemn functions list/create` | PASS | |
-| `indemn kb list/create/delete` | PASS | Type auto-uppercased now |
-| `indemn kb link` | PASS | |
-| `indemn kb data add` | PASS | Sends `{ type: "text", payload: { question, answer } }` |
-| `indemn kb data list` | PASS | Unwraps `{ dataSources, total, page, pages }` correctly |
-| `indemn kb unlink` | PASS | Reads `connectedBots[].id_mapping` from nested response |
-| `indemn rubric list/create/delete` | PASS | Against remote evals service |
-| `indemn testset create` | PASS | With --file + --name + --agent-id |
-| `indemn eval run --wait` | PASS | Triggers, polls, returns results |
-| `indemn eval status/results` | PASS | Detailed criteria + rubric scores |
-| `indemn chat` | PASS | Socket.IO streaming, greeting, message exchange, clean disconnect |
-| MCP server (52 tools) | PASS | All tools register with schemas |
-| Login flow (Firebase+MFA) | UNTESTED E2E | MFA emails don't send locally — JWT bypass works |
-| Skills (eval-orchestration, agent-setup, etc.) | UNTESTED | Need Claude Code plugin install |
+Implemented CLI exports (Phase 2) following the plan at `/Users/home/Repositories/indemn-cli/docs/plans/2026-03-13-cli-exports.md`:
 
-### Demo Flywheel (Verified 2026-03-13)
-Full flywheel completed successfully:
-1. Create agent → set prompt → create KB → add QA data → link KB → create function
-2. Chat with agent — agent responds using custom prompt, asks for required info
-3. Run evaluation (4 test items, 4 rubric rules) — 2/4 passed, 8/10 criteria
-4. Modify prompt based on eval feedback (add self-identification instruction)
-5. Re-evaluate — 3/4 passed, **10/10 criteria** (improvement from prompt change)
+1. **Task 1** — Added `@react-pdf/renderer`, `react`, `@types/react` deps; JSX config in tsconfig; postbuild asset copy script
+2. **Task 2** — Bundled 4 Barlow TTF fonts + Indemn logo PNG in `src/report/assets/`
+3. **Task 3** — Created `src/report/styles.ts` (brand styles, font registration with local paths) and `src/report/scoring.ts` (all scoring utilities ported from dashboard)
+4. **Task 4** — Created `src/report/agent-card/` — types.ts, cover.tsx, document.tsx (7-page agent card: cover, system prompt, tools, KBs, LLM config, eval history, metadata)
+5. **Task 5** — Created `src/report/eval-report/` — types.ts, cover.tsx, v2-cover.tsx, item-page.tsx, matrix-page.tsx, example-page.tsx, document.tsx (V1 matrix + V2 per-item reports)
+6. **Task 6** — Created `src/report/generate.tsx` (renderToBuffer driver for both PDF types)
+7. **Task 7** — Added `indemn eval export <run-id>` to `src/cli/eval.ts` (markdown dump)
+8. **Task 8** — Added `indemn eval report <run-id>` to `src/cli/eval.ts` (branded PDF)
+9. **Task 9** — Added `indemn agents card <agent-id>` to `src/cli/agents.ts` (agent card PDF)
+10. **Task 10** — Added 3 MCP tools (`export_eval_markdown`, `export_eval_report`, `export_agent_card`) to `src/mcp/tools.ts`
+11. **Task 11** — Created `skills/eval-analysis/SKILL.md` + `references/data-shapes.md` (adapted from OS skill, uses `indemn` CLI instead of curl)
 
-### Remaining for Demo Polish
-1. **Skills** — install plugin in Claude Code, test `/agent-setup`, `/eval-orchestration`
-2. **Full login flow** — either fix MFA locally or test against remote dev
-3. **Website KB scraping** — design doc mentions URL-type KBs; needs `kb data add --source-url`
+Shared export logic lives in `src/report/export.ts` — used by both CLI commands and MCP tools.
+
+**All code builds cleanly with `npm run build`. No type errors.**
+
+### Task 12 — E2E Test + Publish (DONE)
+
+All 3 commands tested against real dev data, PDFs visually verified, published as `@indemn/cli@1.1.1`.
+- `eval export` — 78KB markdown, 19 items with conversations + dual scores
+- `eval report` — 295KB branded PDF, cover + per-item pages
+- `agents card` — 169KB branded PDF, 5 pages (cover, prompt, tools, KBs, LLM config)
+- 58 MCP tools registered (55 + 3 export)
+- Note: agent card only works with agents in the configured org (cross-org returns 404)
+
+### Production Readiness Checklist
+- [x] Prod Firebase config in auth.ts (`prod-gemini-470505`)
+- [x] Prod host URLs in client.ts (`copilot.indemn.ai/api`, `evaluations.indemn.ai`, `proxy.indemn.ai`)
+- [x] API key prefix: server uses `ind_dev_` (dev) / `ind_live_` (prod) based on NODE_ENV
+- [x] `zod` as explicit dependency
+- [x] MCP chat greeting race condition fixed
+- [x] All 58 MCP tools with schemas (55 core + 3 export)
+- [x] README with team setup instructions
+- [ ] Login flow tested E2E against remote dev
+- [ ] Login flow tested E2E against prod
+- [ ] Deploy API key auth to prod copilot-server
+- [ ] Generate prod API keys for team
 
 ## Key Technical Details
 
-### Copilot Server Changes (feat/api-key-auth branch)
+### Copilot Server Changes (now merged to main)
 **New files (our code):**
 - `models/apiKey.js` — Mongoose schema for API keys (key_hash, user_id, org_id, status)
 - `services/apiKeyService.js` — createKey, validateKey, listKeys, revokeKey
@@ -60,7 +73,7 @@ Full flywheel completed successfully:
 
 **Zero existing route files modified.**
 
-### Starting Copilot Server Locally
+### Starting Copilot Server Locally (if needed)
 1. Copy `.env.aws` to `.env` in `/Users/home/Repositories/copilot-server/`
 2. **Append `/tiledesk` to DATABASE_URI** — without this, mongoose connects to `test` db instead of `tiledesk`
 3. `cd /Users/home/Repositories/copilot-server && npm start` — port 3000
@@ -76,26 +89,31 @@ node -e "const jwt = require('jsonwebtoken'); console.log(jwt.sign({_id:'65f839a
 ### Creating API Keys and Testing CLI
 ```bash
 TOKEN="<jwt from above>"
-curl -X POST http://localhost:3000/auth/api-keys -H "Authorization: jwt $TOKEN" -H "Content-Type: application/json" -d '{"name":"test"}'
+# Against remote dev (after deployment):
+curl -X POST https://devcopilot.indemn.ai/api/auth/api-keys -H "Authorization: jwt $TOKEN" -H "Content-Type: application/json" -d '{"name":"test"}'
 # Write config: ~/.indemn/config.json with api_key, org_id (69a40cd971552df0c6b6807f), user_id (65f839af9ca3710013305a3e), environment: dev
-INDEMN_COPILOT_URL=http://localhost:3000 indemn agents list
+indemn agents list
 ```
 
-### KB Data Source API Format (for reference)
-- **Create:** `POST /knowledge-bases/:id/data-source` with `{ type: "text", payload: { question, answer, isManual: true } }`
-- **List:** `GET /knowledge-bases/:id/data-source` returns `{ dataSources: [], total, page, pages }`
-- **Update:** `PUT /knowledge-bases/:id/data-source/:sourceId` with `{ payload: { question, answer, isManual: true } }`
-- **KB types are uppercase:** QNA, URL, FILE. Data source types are lowercase: text, url, file.
+### Current Config State
+`~/.indemn/config.json` has been reset to use default remote dev hosts. The API key `ind_dev_a948...` was generated against localhost — it may or may not work against remote dev (depends on whether both point to the same MongoDB). If it doesn't, generate a fresh one after deployment.
 
-### Mappings API Format (for reference)
-- **GET** `/ai-studio/bots/:id/mappings` returns `[{ id: "kb_id", connectedBots: [{ id: "bot_id", id_mapping: "mapping_id" }] }]`
-- **DELETE** `/ai-studio/bots/:id/mappings/:id_mapping`
+### API Reference
+- **KB create:** `POST /knowledge-bases` with `{ type: "text", payload: { question, answer, isManual: true } }`
+- **KB URL scraping:** `POST /knowledge-bases/:id/import` with `{ type: "url", sources: [{ url, crawl_mode: "full" }] }`
+- **KB file upload:** `POST /knowledge-bases/:id/upload-urls` (multipart FormData)
+- **KB list data:** `GET /knowledge-bases/:id/data-source` returns `{ dataSources: [], total, page, pages }`
+- **KB types are uppercase:** QNA, URL, FILE. Data source types are lowercase: text, url, file.
+- **Mappings GET:** `[{ id: "kb_id", connectedBots: [{ id: "bot_id", id_mapping: "mapping_id" }] }]`
+- **Function params add:** `POST .../functions/:id/parameters` expects array of params with `is_required` field
+- **Function params update:** `POST .../functions/:id/parameters` (upsert with `id` in body)
 
 ## External Resources
 | Resource | Type | Link |
 |----------|------|------|
 | Copilot Server OpenAPI Spec | OpenAPI 3.0.3 | copilot-server/docs/openapi.yaml (64KB) |
-| Copilot Server | GitHub Repo | indemn-ai/copilot-server (branch: feat/api-key-auth) |
+| Copilot Server | GitHub Repo | indemn-ai/copilot-server (main — API key auth merged) |
+| Copilot Server PR #806 | GitHub PR | indemn-ai/copilot-server/pull/806 |
 | Copilot Dashboard | GitHub Repo | indemn-ai/copilot-dashboard |
 | Evaluations Service | GitHub Repo | indemn-ai/evaluations |
 | Middleware Socket Service | GitHub Repo | indemn-ai/middleware-socket-service |
@@ -109,6 +127,7 @@ INDEMN_COPILOT_URL=http://localhost:3000 indemn agents list
 | 2026-03-12 | [system-landscape-research](artifacts/2026-03-12-system-landscape-research.md) | What are the existing APIs, auth models, and developer tooling across Percy Service, Copilot Server, and Copilot Dashboard? |
 | 2026-03-12 | [cli-mcp-design](artifacts/2026-03-12-cli-mcp-design.md) | Design a CLI and MCP server for programmatic management of Indemn AI agents |
 | 2026-03-12 | [cli-mcp-implementation-plan](artifacts/2026-03-12-cli-mcp-implementation-plan.md) | 11-step implementation plan for Phase 1 |
+| 2026-03-13 | [cli-exports-design](artifacts/2026-03-13-cli-exports-design.md) | Design for CLI exports — eval reports (PDF), agent cards (PDF), markdown dumps, eval-analysis skill |
 
 ## Decisions
 - 2026-03-12: API keys for auth — one-time Firebase login generates persistent key, stored in ~/.indemn/config.json. SHA-256 hashed in DB.
@@ -122,6 +141,14 @@ INDEMN_COPILOT_URL=http://localhost:3000 indemn agents list
 - 2026-03-12: Firebase configs per environment — dev uses `gmail-agent-449107`, production uses `prod-gemini-470505`
 - 2026-03-12: URL prefix `/api` baked into DEFAULT_HOSTS, with env var overrides for local testing
 - 2026-03-13: API key-to-JWT middleware instead of modifying existing routes — minimal copilot-server changes
+- 2026-03-13: URL scraping goes through `/import` endpoint (not `/data-source`) — triggers async kb-service crawling
+- 2026-03-13: Function params API uses arrays and `is_required` field, update is POST upsert (not PUT)
+- 2026-03-13: `--version` flag renamed to `--revision` on rubric/testset get (Commander.js conflict with program version)
+- 2026-03-13: copilot-server uses npm 10 / Node 22 in CI — lock file must be generated with matching version
+- 2026-03-13: Published `@indemn/cli@1.0.0` publicly on npm — no org plan needed, API key required to use
+- 2026-03-13: GitHub repo at `craig-indemn/indemn-cli` (private) — `indemn-ai` org requires admin to create repos
+- 2026-03-13: Port React-PDF templates from dashboard for eval reports and agent cards — same output, Node.js headless rendering
+- 2026-03-13: Eval analysis skill uses CLI commands (`indemn eval status/results --json`), not MCP or curl
 
 ## Implementation Notes for Future Sessions
 - **Design document:** `projects/jarvis-cli-mcp/artifacts/2026-03-12-cli-mcp-design.md` — 787 lines, source of truth
@@ -130,7 +157,27 @@ INDEMN_COPILOT_URL=http://localhost:3000 indemn agents list
 - **stream_bot_uttered fires BEFORE session_confirm** — greeting streams first
 - **bot_type accepts ObjectId or name** — prefer ObjectId (names are non-unique)
 - **Test user:** `support@indemn.ai` / `nzrjW3tZ9K3YiwtMWzBm` (Firebase password for dev project)
-- **Dev evals test-sets endpoint:** Returns 500 (server-side issue)
+- **Dev evals test-sets endpoint:** Returns 500 without agent_id filter (server-side issue)
 - **Org ID for dev:** `69a40cd971552df0c6b6807f`
 - **User ID for test user:** `65f839af9ca3710013305a3e`
 - **JWT secret:** `nodeauthsecret` (GLOBAL_SECRET in .env.aws)
+- **KB get returns array** — SDK extracts first element
+- **KB export default format:** `csv` (server doesn't support `json` export)
+- **copilot-server CI:** Node 22, npm 10, `npm ci` — lock file must match
+
+### Next: Phase 2 — Exports Implementation
+
+Design doc: `artifacts/2026-03-13-cli-exports-design.md`
+
+1. Add `@react-pdf/renderer` + `react` dependencies, bundle Barlow fonts and logo
+2. Port React-PDF templates from `indemn-platform-v2/ui/src/components/report/`
+3. Implement `indemn eval export <run-id>` — markdown dump
+4. Implement `indemn eval report <run-id>` — branded PDF
+5. Implement `indemn agents card <agent-id>` — branded agent card PDF
+6. Add 3 MCP tools: `export_eval_markdown`, `export_eval_report`, `export_agent_card`
+7. Adapt `eval-analysis` skill from OS (curl → CLI commands)
+8. Publish `@indemn/cli@1.1.0`
+
+## Open Questions
+- When do we deploy API key auth to prod copilot-server?
+- Transfer `indemn-cli` repo to `indemn-ai` org when Craig gets create permissions?
