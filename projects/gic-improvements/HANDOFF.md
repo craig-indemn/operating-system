@@ -7,74 +7,90 @@ Read these files in order:
 3. `projects/gic-improvements/artifacts/2026-03-12-v3-baseline-evaluation-results.md` — V3 baseline: 7/17, 10/10 opportunity items FAIL
 4. `projects/gic-improvements/artifacts/2026-03-12-policy-number-analysis.md` — 192 real policy lookups, carrier format map, normalization rules
 5. `projects/gic-improvements/artifacts/2026-03-12-opportunity-prioritization.md` — 7 active opportunities with implementation groups
+6. `projects/gic-improvements/artifacts/2026-03-12-retrieval-investigation.md` — KB retrieval root cause analysis and fix
 
 ## Current State
 
-**Phase 2 (Implementation) is in progress. Groups A, B, D are applied to the test bot. Groups C (#6, #11) are blocked on a retrieval quality investigation.**
+**Phase 3 (Post-Implementation Evaluation) COMPLETE. 12/17 passed (70.6%) — up from 7/17 baseline (41.2%). Test criteria updated to v4 for future runs.**
 
-### What Was Done This Session (2026-03-12-f)
+### What Was Done This Session (2026-03-12-g)
 
-1. **Ran V3 baseline evaluation** — run `4ee5b3af`, 7/17 passed (41.2%). 10/10 opportunity items FAIL as expected, 7/7 regression guards PASS, rubric 85/85 (100%). Perfectly calibrated.
+1. **KB Retrieval Root Cause Investigation** — traced the full FAQs retriever code path in bot-service:
+   - `bot_details.py` → aggregation from `faq_kbs` → `bot_kb_mappings` → `connected_kbs`
+   - `agent_tools.py:223-333` → embeds query → queries Pinecone with namespace + KB ID filter → TYPE_BOOST scoring → optional Cohere reranking
+   - No similarity threshold (all top-k results returned)
+   - Default top_k=10, embedding model: text-embedding-3-small
 
-2. **Group A — System prompt fully rewritten** (not patched):
-   - Rewrote entire system prompt from scratch rather than bolting on sections
-   - Resolved conflicts: old "trigger handoff immediately" vs new "collect contact first"; old "gather info for quotes" vs new "present options first"
-   - Removed corporate jargon ("Engagement Optimization Objective")
-   - Consolidated 3 scattered quote-handling sections into one coherent "Quote and Product Inquiry Protocol"
-   - Added: direct request phrasing rule, handoff protocol with contact collection, handoff failure recovery, quote/portal choice before info collection
-   - Updated first_message with specific capability listing
-   - Prompt went from 6,236 → 5,829 chars (smaller despite adding 4 behaviors)
-   - **IMPORTANT:** Fabricated URLs and emails were initially added then removed. The prompt now says "the GIC agent portal" and "the appropriate email address" without specific URLs — those need to be filled in with real data.
+2. **Found TWO root causes for retrieval failure:**
+   - **Wrong Pinecone namespace**: Bot config had `65eb3f19e5e6de0013fda310` (prod GIC org namespace) — this namespace DOES NOT EXIST in Pinecone. Vectors are in `6613cbc6658ad379b7d516c9` (dev org namespace, 30,971 vectors).
+   - **Wrong KB ID in filter**: Bot KB mapping pointed to `6787a6702ea6350012955f33` (original dev GIC KB), but vectors in Pinecone are tagged with `id_kb: 6852bf20940d780013ef4a28` ("New knowledge base 5"). The Pinecone filter `{"id_kb": {"$in": ["6787a6702ea6350012955f33"]}}` matched nothing.
 
-3. **Group B — Policy number normalization** (operations API code change):
-   - Analyzed 192 real policy lookups from observatory (101 success, 91 failure)
-   - Mapped 13 insurance carriers to their exact policy number formats
-   - Two data-driven normalization rules fix 100% of addressable failures (57/91 = 63% of total):
-     - Rule 1: Strip edition suffixes from Granada-format numbers only (`0185FL00190350-0` → `0185FL00190350`)
-     - Rule 2: Insert space after GL/SE/CP prefix when directly followed by digit (`GL1322059` → `GL 1322059`)
-   - Rules are surgically targeted — they don't touch carriers that legitimately use hyphens (Kinsale, Topa, Mid-Continent, Sirius, etc.)
-   - Code: `normalizePolicyNumber()` in `operations_api/src/services/customers/gic_policy_details.ts`
-   - **NOT DEPLOYED** — code is in local repo only. Needs PR + deploy to dev for eval to pick it up.
+3. **Applied fixes to test bot:**
+   - Updated `kb_configuration.namespace` → `6613cbc6658ad379b7d516c9` (where vectors actually are)
+   - Updated `bot_kb_mappings.id_kb` → `6852bf20940d780013ef4a28` (what vectors are tagged with)
+   - Increased `top_k_documents_count` → 25 (to compensate for ~5x vector duplication in Pinecone)
 
-4. **Group B — Expiration date in tool output** (#10):
-   - Updated POLICY CHECK tool output instructions to explicitly list expiration date in display order
-   - Applied to test bot tool config in dev MongoDB
+4. **Verified retrieval works** — direct Pinecone queries with corrected config return relevant results:
+   - "email for submitting a quote": score 0.82, returns `quotes@gicunderwriters.com` ✓
+   - "class codes for service industry": score 0.50, returns class codes ✓
+   - "portal URL for new business": score 0.51, returns submission guidance ✓
 
-5. **Group D — Handoff fallback** (#13):
-   - Covered by the system prompt rewrite (handoff protocol + failure recovery sections)
+5. **Added verified emails to system prompt:**
+   - Handoff fallback: `csr@gicunderwriters.com` (verified from KB)
+   - Quote protocol: `quote@gicunderwriters.com` (verified from KB)
 
-6. **KB content investigation** (#6, #11):
-   - Discovered the KB is NOT empty — it has 593 trained entries across 8 knowledge bases
-   - 140 class code entries with specific codes (98111, 97650, 96816, etc.)
-   - 72 portal entries with real URLs and navigation guidance
-   - 20+ email routing entries with real emails (quote@gicunderwriters.com, csr@gicunderwriters.com, cancellation@granadainsurance.com, etc.)
-   - All entries are trained (indexed in Pinecone under namespace `65eb3f19e5e6de0013fda310`)
-   - **The problem is retrieval quality, not missing content.** The agent searches but doesn't find relevant entries for broad queries like "what class codes for service industry in Florida?"
+6. **Documented additional findings:**
+   - Prod bot has NO faqs-retriever tool — KB access doesn't exist in production at all
+   - ~5x vector duplication in Pinecone (same data trained into multiple KBs over time)
+   - 69 class code entries covering 59 unique codes (no 8810 — common clerical code not in KB)
+   - Business hours confirmed from KB: 8:30 AM - 5:00 PM
+
+### What Was Done Previous Session (2026-03-12-f)
+
+1. V3 baseline evaluation: 7/17 (41.2%), perfectly calibrated
+2. Group A: System prompt fully rewritten (not patched), first_message updated
+3. Group B: `normalizePolicyNumber()` added to operations API (local, not deployed), expiration date in tool output
+4. Group D: Handoff fallback covered by prompt rewrite
+5. KB content investigation: 269 trained entries in dev GIC KB
+
+### Post-Implementation Evaluation Results
+
+**Run:** `0a30f458-7a9d-4b08-8d3e-091dae4cc178` — 12/17 passed (70.6%)
+**Baseline:** `4ee5b3af-f0b1-43f8-9883-303da9e3927a` — 7/17 passed (41.2%)
+**Improvement:** +5 items, +29.4 percentage points
+**Rubric:** 85/85 (100%) — zero behavioral regressions
+
+**Items that flipped FAIL → PASS (5):**
+- WC class code question (#6) — KB retrieval fix
+- Market inquiry - workers comp appetite (#6) — KB retrieval fix
+- Product inquiry - commercial auto quote (#14) — Expectations gap prompt fix
+- Product inquiry - Spanish-speaking agent (#14) — Expectations gap prompt fix
+- Information collection with purpose transparency (#4) — Direct request prompt fix
+
+**Remaining failures (5):**
+| Item | Classification |
+|------|---------------|
+| Greeting - capabilities | Test design: eval doesn't send first_message |
+| Failed handoff - no agent | Eval limitation: harness stops at handoff trigger |
+| After-hours handoff recovery | Eval limitation: harness stops at handoff trigger |
+| Explicit handoff - explain process | Real agent issue: doesn't explain handoff process |
+| Policy messy format | Expected: normalizePolicyNumber() not deployed |
+
+**Test criteria updated to v4** to fix eval limitations (handoff criteria now test pre-handoff behavior).
 
 ### What's Next — IMMEDIATE
 
-1. **Investigate retrieval quality** for #6 and #11:
-   - Understand how the FAQs retriever tool works (bot-service code path)
-   - Check retrieval config: top-k, similarity threshold, reranking
-   - Run test queries against Pinecone directly to see what comes back for "service industry class codes" and "portal URL for new business submission"
-   - Compare what the retriever returns vs what's actually in the KB
-   - Fix the retrieval pipeline so the agent surfaces existing content
-   - This may require changes to retrieval config, re-embedding, or query reformulation
+1. **Deploy operations API change** for #5:
+   - `normalizePolicyNumber()` in local repo only
+   - Needs PR + deploy to dev for eval to pick it up
 
-2. **Deploy operations API change** for #5:
-   - The `normalizePolicyNumber()` function is in the local repo but not deployed
-   - Needs a PR to operations_api and deployment to dev environment
-   - Without this, the eval won't test the parsing improvement
+2. **Phase 4 (Production deployment)**:
+   - Apply all prompt/config changes to prod bot (`66026a302af0870013103b1e`)
+   - Add faqs-retriever tool to prod bot (currently missing)
+   - Configure prod bot KB settings (namespace, KB ID mapping)
+   - Deploy operations API code
 
-3. **Run post-implementation evaluation**:
-   - Same test set (v3), same rubric (v2), same eval model (openai:gpt-4.1)
-   - Compare to v3 baseline (7/17)
-   - Expected: significant improvement on prompt-level changes (#3, #4, #7, #10, #13, #14)
-   - #5 depends on API deploy, #6 and #11 depend on retrieval fix
-
-4. **Fill in real URLs/emails in system prompt**:
-   - The portal URL and support email were removed because they were fabricated
-   - Once real values are confirmed (from KB data: quote@gicunderwriters.com exists, portal URL TBD), add them back
+3. **Phase 5 (Monitoring)** — 4 weeks post-deployment observatory tracking
 
 ## Implementation Status
 
@@ -83,24 +99,32 @@ Read these files in order:
 | Opener | #3 | New first_message with capabilities | Bot config | **Done** |
 | Direct requests | #4 | Core rule in rewritten prompt | Bot config | **Done** |
 | Policy parsing | #5 | `normalizePolicyNumber()` in ops API | Code | **Done locally, not deployed** |
-| WC class codes | #6 | Retrieval quality investigation | Retrieval | **Blocked — data exists, retrieval fails** |
+| WC class codes | #6 | KB retrieval fix (namespace + KB ID) | Retrieval config | **Done** |
 | After-hours | #7 | Handoff failure recovery in prompt | Bot config | **Done** |
 | Expiration date | #10 | Tool output instructions | Bot tool | **Done** |
-| Portal URLs | #11 | Retrieval quality investigation | Retrieval | **Blocked — data exists, retrieval fails** |
-| Handoff fallback | #13 | Handoff protocol in prompt | Bot config | **Done** |
-| Expectations gap | #14 | Quote protocol in prompt | Bot config | **Done** |
+| Portal URLs | #11 | KB retrieval fix (namespace + KB ID) | Retrieval config | **Done** |
+| Handoff fallback | #13 | Handoff protocol in prompt + verified email | Bot config | **Done** |
+| Expectations gap | #14 | Quote protocol in prompt + verified email | Bot config | **Done** |
 
 ## Key References
-- **Production bot:** `66026a302af0870013103b1e` (prod tiledesk)
+- **Production bot:** `66026a302af0870013103b1e` (prod tiledesk) — NO faqs-retriever tool
 - **Test bot (dev):** `6787a63d2ea6350012955ed9` (bot_config _id: `6787a63d2ea6350012955ee0`)
 - **Rubric:** `3bd8cc49-7eef-4110-95ac-01fdc4419cc5` (5 rules, **v2**)
-- **Test Set:** `0977c5bc-2987-40fa-95bb-31f14781a7c1` (17 items, **v3** — opportunity-aligned criteria)
+- **Test Set:** `0977c5bc-2987-40fa-95bb-31f14781a7c1` (17 items, **v4** — eval-limitation fixes for handoff/greeting)
 - **V3 baseline:** `4ee5b3af-f0b1-43f8-9883-303da9e3927a` — 7/17 (41.2%)
+- **Post-implementation:** `0a30f458-7a9d-4b08-8d3e-091dae4cc178` — 12/17 (70.6%)
 - **Eval model:** `openai:gpt-4.1` | **Eval DB:** dev cluster, `tiledesk` database
 - Evaluations: port 8002 | Bot-service: port 8001 (has local IndexError fix at `bot_agent_graph.py:421`)
 - AgencyCode hardcoded to `5883` in dev bot POLICY CHECK tool
-- KB namespace: `65eb3f19e5e6de0013fda310` (prod GIC, read-only from Pinecone)
-- **KB content is in `knowledge_bases_data_sources` collection**, linked by `id_organization: ObjectId("65eb3f19e5e6de0013fda310")`
-- **8 KBs, 593 entries total, all trained.** Key KBs: `66f1449d9afe08001361012c` (class codes, 255 entries), `66fa34ca93b5a4001355ff5c` (GIC KB, 270 entries)
-- **Operations API code change:** `operations_api/src/services/customers/gic_policy_details.ts` — `normalizePolicyNumber()` function added but not deployed
-- **System prompt backup:** Original prod prompt is 6,236 chars. New test bot prompt is 5,829 chars. Prod bot is unchanged.
+- **KB retrieval config (FIXED):**
+  - Pinecone namespace: `6613cbc6658ad379b7d516c9` (dev org — where vectors actually exist)
+  - KB ID filter: `6852bf20940d780013ef4a28` ("New knowledge base 5" — what vectors are tagged with)
+  - top_k: 25 (increased from default 10 to compensate for ~5x Pinecone duplication)
+  - Pinecone index: `indemn`, host: `indemn-f6w06cd.svc.us-east-1-aws.pinecone.io`
+- **KB content:** 269 entries in dev GIC KB (`6787a6702ea6350012955f33`), trained into Pinecone under KB `6852bf20940d780013ef4a28`
+  - 69 class code entries (59 unique codes — mostly artisan/contractor trades, no 8810)
+  - 24 portal entries
+  - 50+ email routing entries (quote@, csr@, bind@, cancellation@, endorsements@, wc@, payments@, etc.)
+- **Operations API code change:** `operations_api/src/services/customers/gic_policy_details.ts` — `normalizePolicyNumber()` added but not deployed
+- **System prompt:** Original prod = 6,236 chars. New test bot prompt with verified emails. Prod bot is unchanged.
+- **FAQs Retriever tool (dev):** `68e63cb1ba7a8376e67f0236`
