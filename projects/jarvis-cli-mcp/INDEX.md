@@ -3,11 +3,11 @@
 Build a CLI tool and MCP server around Indemn's platform APIs so developers (internal first, then external customers) can programmatically manage AI agents — creating agents, prompts, functions, knowledge bases, running evaluations, and pulling analytics. Everything currently done via the Copilot Dashboard UI, made available through command-line and AI-assisted workflows (Claude Code skills, MCP servers).
 
 ## Status
-**Phase 1 complete. Published to npm. Phase 2 (exports) designed.**
+**Phase 2 complete — CLI exports published.**
 
-- **npm:** `@indemn/cli@1.0.0` published publicly. Install: `npm install -g @indemn/cli`
+- **npm:** `@indemn/cli@1.1.1` published publicly. Install: `npm install -g @indemn/cli`
 - **GitHub:** https://github.com/craig-indemn/indemn-cli (private)
-- **indemn-cli repo:** `/Users/home/Repositories/indemn-cli/` (main branch) — 23 TypeScript source files, 55 MCP tools, 5 skills, builds cleanly
+- **indemn-cli repo:** `/Users/home/Repositories/indemn-cli/` (main branch) — 35+ TypeScript source files, 58 MCP tools, 6 skills, builds cleanly
 - **Copilot Server:** `feat/api-key-auth` merged to main via PR #806 (2026-03-13). Deployed to devcopilot.indemn.ai.
 - **Claude Code:** MCP server added to user config, plugin installed via local marketplace
 - **Design coverage:** 100% — URL scraping, file upload, function params, pagination, eval advanced flags, models all implemented
@@ -15,27 +15,35 @@ Build a CLI tool and MCP server around Indemn's platform APIs so developers (int
 - **E2E:** 50/51 tests passing. Only failure: `testset list` without `--agent-id` (evals server 500, not our bug).
 - **README:** Updated with team setup instructions and full command reference.
 
-### What Just Happened (2026-03-13, this session)
-1. Full design audit — compared 787-line design doc against all source files
-2. Fixed prod readiness issues: added `zod` to explicit deps, fixed MCP chat race condition, renamed `--version` to `--revision` (Commander.js conflict)
-3. Added missing features: `indemn eval list`, `rubric get --revision N`, `testset get --revision N`
-4. Improved `testset list` error message (suggests `--agent-id` when server 500s)
-5. Pushed `feat/api-key-auth` branch, PR #806 created, CI checks passed, PR merged to main
-6. Fixed package-lock.json npm version mismatch (npm 11 vs CI npm 10)
-7. Reset `~/.indemn/config.json` to use remote dev defaults (removed localhost override)
-8. Deleted copilot-server local `.env`, stopped local server
-9. Updated README with team setup section and new commands
+### What Just Happened (2026-03-13, Phase 2 complete)
+**All 12 tasks complete. Published @indemn/cli@1.1.1 with CLI exports.**
 
-### Next: Install & Test Against Remote Dev
+Implemented CLI exports (Phase 2) following the plan at `/Users/home/Repositories/indemn-cli/docs/plans/2026-03-13-cli-exports.md`:
 
-1. **Verify deployment landed** — `curl https://devcopilot.indemn.ai/auth/api-keys` should respond (not 404)
-2. **Test `indemn login --env dev`** — Firebase MFA against remote dev (first real E2E login test)
-3. **Generate a fresh API key** — current key was generated against localhost, need one for remote dev
-4. **Re-run E2E tests against remote dev** — verify everything works without local server
-5. **Install CLI the way others would** — git clone, npm install, npm link, follow README
-6. **Install as Claude Code plugin** — `claude plugins install /path/to/indemn-cli`, verify MCP + skills
-7. **Share with team** — Slack instructions, help others set up
-8. **Improvements** — user has ideas to implement after testing
+1. **Task 1** — Added `@react-pdf/renderer`, `react`, `@types/react` deps; JSX config in tsconfig; postbuild asset copy script
+2. **Task 2** — Bundled 4 Barlow TTF fonts + Indemn logo PNG in `src/report/assets/`
+3. **Task 3** — Created `src/report/styles.ts` (brand styles, font registration with local paths) and `src/report/scoring.ts` (all scoring utilities ported from dashboard)
+4. **Task 4** — Created `src/report/agent-card/` — types.ts, cover.tsx, document.tsx (7-page agent card: cover, system prompt, tools, KBs, LLM config, eval history, metadata)
+5. **Task 5** — Created `src/report/eval-report/` — types.ts, cover.tsx, v2-cover.tsx, item-page.tsx, matrix-page.tsx, example-page.tsx, document.tsx (V1 matrix + V2 per-item reports)
+6. **Task 6** — Created `src/report/generate.tsx` (renderToBuffer driver for both PDF types)
+7. **Task 7** — Added `indemn eval export <run-id>` to `src/cli/eval.ts` (markdown dump)
+8. **Task 8** — Added `indemn eval report <run-id>` to `src/cli/eval.ts` (branded PDF)
+9. **Task 9** — Added `indemn agents card <agent-id>` to `src/cli/agents.ts` (agent card PDF)
+10. **Task 10** — Added 3 MCP tools (`export_eval_markdown`, `export_eval_report`, `export_agent_card`) to `src/mcp/tools.ts`
+11. **Task 11** — Created `skills/eval-analysis/SKILL.md` + `references/data-shapes.md` (adapted from OS skill, uses `indemn` CLI instead of curl)
+
+Shared export logic lives in `src/report/export.ts` — used by both CLI commands and MCP tools.
+
+**All code builds cleanly with `npm run build`. No type errors.**
+
+### Task 12 — E2E Test + Publish (DONE)
+
+All 3 commands tested against real dev data, PDFs visually verified, published as `@indemn/cli@1.1.1`.
+- `eval export` — 78KB markdown, 19 items with conversations + dual scores
+- `eval report` — 295KB branded PDF, cover + per-item pages
+- `agents card` — 169KB branded PDF, 5 pages (cover, prompt, tools, KBs, LLM config)
+- 58 MCP tools registered (55 + 3 export)
+- Note: agent card only works with agents in the configured org (cross-org returns 404)
 
 ### Production Readiness Checklist
 - [x] Prod Firebase config in auth.ts (`prod-gemini-470505`)
@@ -43,7 +51,7 @@ Build a CLI tool and MCP server around Indemn's platform APIs so developers (int
 - [x] API key prefix: server uses `ind_dev_` (dev) / `ind_live_` (prod) based on NODE_ENV
 - [x] `zod` as explicit dependency
 - [x] MCP chat greeting race condition fixed
-- [x] All 55 MCP tools with schemas
+- [x] All 58 MCP tools with schemas (55 core + 3 export)
 - [x] README with team setup instructions
 - [ ] Login flow tested E2E against remote dev
 - [ ] Login flow tested E2E against prod
