@@ -3,47 +3,48 @@
 Build a CLI tool and MCP server around Indemn's platform APIs so developers (internal first, then external customers) can programmatically manage AI agents — creating agents, prompts, functions, knowledge bases, running evaluations, and pulling analytics. Everything currently done via the Copilot Dashboard UI, made available through command-line and AI-assisted workflows (Claude Code skills, MCP servers).
 
 ## Status
-**Phase 1 complete. All CLI commands, MCP tools, and SDK operations verified against dev. Full flywheel demo runs end-to-end.**
+**Phase 1 complete and demo'd. All design doc gaps closed, 44/46 E2E tests passing (2 server-side failures).**
 
-- **indemn-cli repo:** `/Users/home/Repositories/indemn-cli/` — 23 TypeScript source files, 52 MCP tools, 4 skills, builds cleanly
-- **Copilot Server:** `feat/api-key-auth` branch — API key model, service, routes, apiKeyToJwt middleware, passport aud fix
-- **Design coverage:** 100% — all CLI commands, SDK methods, MCP tools, and skills from design doc implemented
-- **Code reviewed:** 3 parallel reviews completed, 3 bugs found and fixed
+- **indemn-cli repo:** `/Users/home/Repositories/indemn-cli/` (main branch) — 23 TypeScript source files, 55 MCP tools, 4 skills, builds cleanly
+- **Copilot Server:** `feat/api-key-auth` branch — API key model, service, routes, apiKeyToJwt middleware, passport aud fix. **NOT deployed to remote dev yet.**
+- **Design coverage:** 100% — URL scraping, file upload, function params, pagination, eval advanced flags, models all implemented
+- **Demo:** Recorded and shared with dev-squad on 2026-03-13. Full flywheel: create agent → configure → evaluate → improve → re-evaluate. Clean sweep.
 
-### E2E Test Results (2026-03-13)
+### E2E Test Results (2026-03-13, post-gap-closure)
 
 | Command | Status | Notes |
 |---------|--------|-------|
 | `indemn whoami` | PASS | |
-| `indemn agents list/create/get/update/clone/delete` | PASS | All CRUD works |
+| `indemn --env dev whoami` | PASS | Global `--env` flag works |
+| `indemn agents list/create/get/update/clone/delete` | PASS | All CRUD + `--limit`/`--page` pagination |
 | `indemn config get/set` | PASS | Prompt read/write works |
-| `indemn functions list/create` | PASS | |
-| `indemn kb list/create/delete` | PASS | Type auto-uppercased now |
-| `indemn kb link` | PASS | |
-| `indemn kb data add` | PASS | Sends `{ type: "text", payload: { question, answer } }` |
-| `indemn kb data list` | PASS | Unwraps `{ dataSources, total, page, pages }` correctly |
-| `indemn kb unlink` | PASS | Reads `connectedBots[].id_mapping` from nested response |
-| `indemn rubric list/create/delete` | PASS | Against remote evals service |
-| `indemn testset create` | PASS | With --file + --name + --agent-id |
-| `indemn eval run --wait` | PASS | Triggers, polls, returns results |
-| `indemn eval status/results` | PASS | Detailed criteria + rubric scores |
-| `indemn chat` | PASS | Socket.IO streaming, greeting, message exchange, clean disconnect |
-| MCP server (52 tools) | PASS | All tools register with schemas |
+| `indemn functions list/create/update/delete/test/export/import` | PASS | |
+| `indemn functions params list/add/update/delete` | PASS | Full parameter CRUD |
+| `indemn functions master-list` | PASS | Lists 5 master function templates |
+| `indemn models` | PASS | Lists 8 providers with models |
+| `indemn kb list/create/get/update/delete` | PASS | Type auto-uppercased, `--limit`/`--page` |
+| `indemn kb data add --question/--answer` | PASS | QnA data sources |
+| `indemn kb data add --source-url` | PASS (CLI) | CLI routes correctly; kb-service not running locally |
+| `indemn kb data list` | PASS | Paginated response unwrapping |
+| `indemn kb link/unlink` | PASS | |
+| `indemn kb export` | PASS | Default format: csv |
+| `indemn rubric list/create/get/delete` | PASS | `--limit`/`--page` pagination |
+| `indemn testset create/get/delete` | PASS | |
+| `indemn testset list` | FAIL | Remote evals service returns 500 (server bug) |
+| `indemn eval run --wait` | PASS | With advanced flags: `--eval-model`, `--keep`, `--limit`, etc. |
+| `indemn eval status/results/bot-context` | PASS | |
+| `indemn chat --message` | PASS | Non-interactive mode |
+| `indemn chat` (interactive) | PASS | Streaming, greeting, message exchange |
+| MCP server (55 tools) | PASS | All tools register with schemas |
 | Login flow (Firebase+MFA) | UNTESTED E2E | MFA emails don't send locally — JWT bypass works |
-| Skills (eval-orchestration, agent-setup, etc.) | UNTESTED | Need Claude Code plugin install |
 
-### Demo Flywheel (Verified 2026-03-13)
-Full flywheel completed successfully:
-1. Create agent → set prompt → create KB → add QA data → link KB → create function
-2. Chat with agent — agent responds using custom prompt, asks for required info
-3. Run evaluation (4 test items, 4 rubric rules) — 2/4 passed, 8/10 criteria
-4. Modify prompt based on eval feedback (add self-identification instruction)
-5. Re-evaluate — 3/4 passed, **10/10 criteria** (improvement from prompt change)
+### Next: Deploy & Production Readiness
 
-### Remaining for Demo Polish
-1. **Skills** — install plugin in Claude Code, test `/agent-setup`, `/eval-orchestration`
-2. **Full login flow** — either fix MFA locally or test against remote dev
-3. **Website KB scraping** — design doc mentions URL-type KBs; needs `kb data add --source-url`
+1. **Deploy `feat/api-key-auth` to dev** — merge in copilot-server, deploy to devcopilot.indemn.ai so the team can test without local server
+2. **Test login flow E2E** — Firebase MFA should work against remote dev
+3. **Production readiness** — verify prod Firebase config, prod API key prefix (`ind_prod_`), prod host URLs all work
+4. **Team rollout** — setup instructions, onboarding for internal users
+5. **Improvements** — tracked in this project as they come up
 
 ## Key Technical Details
 
@@ -81,15 +82,15 @@ curl -X POST http://localhost:3000/auth/api-keys -H "Authorization: jwt $TOKEN" 
 INDEMN_COPILOT_URL=http://localhost:3000 indemn agents list
 ```
 
-### KB Data Source API Format (for reference)
-- **Create:** `POST /knowledge-bases/:id/data-source` with `{ type: "text", payload: { question, answer, isManual: true } }`
-- **List:** `GET /knowledge-bases/:id/data-source` returns `{ dataSources: [], total, page, pages }`
-- **Update:** `PUT /knowledge-bases/:id/data-source/:sourceId` with `{ payload: { question, answer, isManual: true } }`
+### API Reference
+- **KB create:** `POST /knowledge-bases` with `{ type: "text", payload: { question, answer, isManual: true } }`
+- **KB URL scraping:** `POST /knowledge-bases/:id/import` with `{ type: "url", sources: [{ url, crawl_mode: "full" }] }`
+- **KB file upload:** `POST /knowledge-bases/:id/upload-urls` (multipart FormData)
+- **KB list data:** `GET /knowledge-bases/:id/data-source` returns `{ dataSources: [], total, page, pages }`
 - **KB types are uppercase:** QNA, URL, FILE. Data source types are lowercase: text, url, file.
-
-### Mappings API Format (for reference)
-- **GET** `/ai-studio/bots/:id/mappings` returns `[{ id: "kb_id", connectedBots: [{ id: "bot_id", id_mapping: "mapping_id" }] }]`
-- **DELETE** `/ai-studio/bots/:id/mappings/:id_mapping`
+- **Mappings GET:** `[{ id: "kb_id", connectedBots: [{ id: "bot_id", id_mapping: "mapping_id" }] }]`
+- **Function params add:** `POST .../functions/:id/parameters` expects array of params with `is_required` field
+- **Function params update:** `POST .../functions/:id/parameters` (upsert with `id` in body)
 
 ## External Resources
 | Resource | Type | Link |
@@ -122,6 +123,8 @@ INDEMN_COPILOT_URL=http://localhost:3000 indemn agents list
 - 2026-03-12: Firebase configs per environment — dev uses `gmail-agent-449107`, production uses `prod-gemini-470505`
 - 2026-03-12: URL prefix `/api` baked into DEFAULT_HOSTS, with env var overrides for local testing
 - 2026-03-13: API key-to-JWT middleware instead of modifying existing routes — minimal copilot-server changes
+- 2026-03-13: URL scraping goes through `/import` endpoint (not `/data-source`) — triggers async kb-service crawling
+- 2026-03-13: Function params API uses arrays and `is_required` field, update is POST upsert (not PUT)
 
 ## Implementation Notes for Future Sessions
 - **Design document:** `projects/jarvis-cli-mcp/artifacts/2026-03-12-cli-mcp-design.md` — 787 lines, source of truth
@@ -134,3 +137,10 @@ INDEMN_COPILOT_URL=http://localhost:3000 indemn agents list
 - **Org ID for dev:** `69a40cd971552df0c6b6807f`
 - **User ID for test user:** `65f839af9ca3710013305a3e`
 - **JWT secret:** `nodeauthsecret` (GLOBAL_SECRET in .env.aws)
+- **KB get returns array** — SDK extracts first element
+- **KB export default format:** `csv` (server doesn't support `json` export)
+
+## Open Questions
+- Should we publish `@indemn/cli` to npm (private) or keep as git clone + npm link?
+- What improvements does the team want after trying it?
+- When do we deploy feat/api-key-auth to prod copilot-server?
