@@ -261,32 +261,92 @@ The `references/data-shapes.md` file ships as-is — the API response shapes are
 
 ### TypeScript + JSX for React-PDF
 
-The report files use `.tsx` extension for JSX syntax. The `tsconfig.json` already targets ESNext with NodeNext modules. Need to add:
+The report files use `.tsx` extension for JSX syntax. The `tsconfig.json` already targets ESNext with NodeNext modules. Add to `compilerOptions`:
 ```json
 {
   "compilerOptions": {
-    "jsx": "react-jsx",
-    "jsxImportSource": "@react-pdf/renderer"
+    "jsx": "react-jsx"
   }
 }
 ```
 
-Actually, `@react-pdf/renderer` uses standard React JSX. We need `react` as a dependency (peer dep of react-pdf) but only for the PDF rendering — it never runs in a browser.
+`@react-pdf/renderer` uses standard React JSX — no custom `jsxImportSource` needed. The default import source is `react`.
+
+### New dependencies
+
+```
+dependencies:    @react-pdf/renderer, react
+devDependencies: @types/react
+```
+
+`react-dom` is NOT needed — `@react-pdf/renderer` renders to PDF buffers directly in Node.js without a DOM.
 
 ### Asset bundling
 
-Font files and logo need to be included in the npm package. Add to `package.json`:
-```json
-{
-  "files": ["dist/", "skills/", ".claude-plugin/", "src/report/assets/"]
-}
+Copy assets to `dist/report/assets/` during build (add a `postbuild` script). This keeps path resolution simple — assets are always relative to the executing code.
+
+For path resolution in ESM (no `__dirname` available):
+```typescript
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const fontsDir = join(__dirname, 'assets', 'fonts');
 ```
 
-Or copy assets to `dist/report/assets/` during build.
+### Scoring utilities — full port list
+
+Port these from `indemn-platform-v2/ui/src/lib/scoring.ts` to `src/report/scoring.ts`:
+- `getScoreHexColor()` — color based on score threshold (red/yellow/green)
+- `getScoreColor()` — three-way threshold helper that `getScoreHexColor` depends on
+- `calculateWeightedScores()` — from `components/evaluation/utils.ts`, for V1 matrix reports
+- `getResultsScoreMetrics()` — computes aggregate metrics for V2 cover page highlights
+
+### V1 vs V2 report detection
+
+Detect from the run's result data:
+- **V2 runs** (test-set based): results have `criteria_scores[]` and `rubric_scores[]` arrays populated
+- **V1 runs** (question-set based): results have `scores` dict populated, `criteria_scores`/`rubric_scores` are null
+
+V1 reports require transforming raw API results into `MatrixData` format (evaluators as columns, test items as rows). The transformation logic lives in the dashboard's evaluation hooks — port it to `src/report/eval-report/transform.ts`. If this proves too complex, V1 matrix support can be deferred to a follow-up since V2 is the current system.
+
+### Agent card data mapping
+
+The `AgentCardData` interface requires mapping from Copilot Server V1 responses:
+
+| AgentCardData field | Source | Notes |
+|---|---|---|
+| `tools: AgentCardTool[]` | `GET .../functions` | Map `name` → `tool_name`, function `name` → display `name` |
+| `knowledge_bases[].document_count` | Included in v2 bots response | Already populated by API |
+| `evaluationSummary` | Computed from `GET /runs?agent_id=...` | Sum criteria/rubric passed/total across recent completed runs |
+| `componentScores` | From latest completed run's `component_scores` field | Direct mapping |
+| `evaluationRuns[]` | `GET /runs?agent_id=...&status=completed&limit=10` | Map `criteria_passed/total` to percentage scores |
+| `lifecycle`, `owner` | V1 bot response if available | May be null — template handles missing gracefully |
+
+### MCP tool return schema
+
+All three export tools return:
+```typescript
+return success({
+  file_path: '/absolute/path/to/output.pdf',
+  file_name: 'Indemn_Agent_Card_FAQ_Bot_Mar_13_2026.pdf',
+  file_type: 'pdf' // or 'markdown'
+});
+```
+
+### Eval-analysis skill frontmatter
+
+```yaml
+---
+name: eval-analysis
+description: Analyze evaluation results to classify failures as agent issues vs evaluation issues. Use when the user asks to analyze eval results, triage failures, or improve evaluation scores.
+argument-hint: [run-id or agent-id]
+allowed-tools: Bash(indemn *)
+---
+```
 
 ### Package size
 
-Current: ~85KB. Adding `@react-pdf/renderer` + `react` + font files will increase to ~10-15MB. Acceptable for a CLI tool installed globally.
+Current: ~85KB published. Adding `@react-pdf/renderer` + `react` + font files will increase significantly (`node_modules` grows 30-50MB due to react-pdf's transitive deps: layout, primitives, stylesheet, textkit, pdfkit). Published tarball will be smaller but still ~10-15MB. Acceptable for a globally installed CLI tool.
 
 ---
 
