@@ -3,65 +3,110 @@
 Build a CLI tool and MCP server around Indemn's platform APIs so developers (internal first, then external customers) can programmatically manage AI agents — creating agents, prompts, functions, knowledge bases, running evaluations, and pulling analytics. Everything currently done via the Copilot Dashboard UI, made available through command-line and AI-assisted workflows (Claude Code skills, MCP servers).
 
 ## Status
-**Phase 1 implementation complete. Local E2E testing in progress — blocked on JWT auth.**
+**Phase 1 E2E testing substantially complete. Core CLI, MCP server, and evals working. KB data source commands need fixes.**
 
 - **indemn-cli repo:** `/Users/home/Repositories/indemn-cli/` — 23 TypeScript source files, builds cleanly with zero type errors
-- **Copilot Server:** `feat/api-key-auth` branch with API key model, service, routes, Bearer passport strategy
+- **Copilot Server:** `feat/api-key-auth` branch — API key model, service, routes, apiKeyToJwt middleware, passport aud fix
 - **Code reviewed:** 3 parallel reviews completed, 3 bugs found and fixed (Firebase auth unwrapping, duplicate app init, MCP chat race condition)
 
-### What's Been Tested (Working)
-1. CLI builds and `indemn --help` shows all commands
-2. `npm link` — `indemn` command available globally at `/opt/homebrew/bin/indemn`
-3. Evals service CRUD — `indemn rubric list/create/get/delete` all work against `devevaluations.indemn.ai`
-4. Test sets endpoint returns 500 on dev evals service (server-side issue, not CLI bug)
-5. Firebase auth flow — `signInWithEmailAndPassword` works with dev Firebase project (`gmail-agent-449107`)
-6. Firebase signin → server returns `requiresMfa: true` — MFA flow triggers correctly, code prompt fires
-7. MFA verify endpoint validates correctly (rejects bad codes with proper error)
-8. MCP server — all 37 tools register successfully
+### E2E Test Results (2026-03-13)
 
-### What's Blocked: JWT Auth for API Key Testing
-The copilot-server's passport JWT strategy has a bug at `middleware/passport.js:102`:
-```javascript
-const audUrl = new URL(decoded.aud); // throws "Invalid URL" when aud="tiledesk"
-```
-The server's own `generateJWT()` in `firebaseAuth.js` sets `audience: process.env.SIGN_OPTIONS_ISSUER` which is `"tiledesk"` — not a valid URL. This causes:
-- **With `aud` field:** `new URL("tiledesk")` throws uncaught TypeError, request hangs forever
-- **Without `aud` field:** Falls through to `done(null, configSecret)` but still returns "Unauthorized"
+| Command | Status | Notes |
+|---------|--------|-------|
+| `indemn whoami` | PASS | Shows API key, org, env |
+| `indemn agents list` | PASS | Table + `--json` output |
+| `indemn agents create` | PASS | Creates agent, returns ID |
+| `indemn agents get <id>` | PASS | Fixed v2 array response unwrap |
+| `indemn agents update <id>` | PASS | Updates description |
+| `indemn agents clone <id>` | PASS | Fixed clone response format |
+| `indemn agents delete <id>` | PASS | Confirmation prompt works |
+| `indemn config get/set` | PASS | Prompt read/write works |
+| `indemn functions list/create` | PASS | CRUD works |
+| `indemn kb list/create/delete` | PASS | Type must be uppercase (QNA) |
+| `indemn kb link` | PASS | Links KB to agent |
+| `indemn kb data add` | FAIL | API expects `{ type, payload }` not `{ question, answer }` |
+| `indemn kb data list` | FAIL | Response is `{ dataSources, total, page }`, SDK expects array |
+| `indemn kb unlink` | FAIL | Mapping lookup needs investigation |
+| `indemn rubric list/create/delete` | PASS | Against remote evals service |
+| MCP server (37 tools) | PASS | All tools register with correct schemas |
 
-This means NO authenticated endpoints work locally with manually-created JWTs. The Firebase flow works up to MFA, but MFA emails don't send locally (`EMAIL_ENABLED=false` in .env).
-
-### Path Forward (Next Session)
-**Option A — Fix the passport bug (recommended):**
-Add try/catch around `new URL(decoded.aud)` in `passport.js:102` on the `feat/api-key-auth` branch. When `aud` is not a valid URL (like `"tiledesk"`), fall through to `done(null, configSecret)`. This is a real bug that affects production too (it just happens to be caught by something else in the deployed stack). Then manually-created JWTs will work and we can test the full API key flow.
-
-**Option B — Test against remote dev:**
-Push `feat/api-key-auth` branch to remote, deploy to dev, test against `devcopilot.indemn.ai/api`. MFA emails would actually send. Requires deployment approval.
-
-**Option C — Disable MFA locally:**
-The Mongoose schema has `mfaEnabled: { default: true }`. Even with the DB field set to `false`, the server returns `requiresMfa: true`. Could modify the `firebaseAuth.js` route to skip MFA check locally.
+### What's Left
+1. **KB data source fixes** — update SDK to match copilot-server API format (`{ type: "text"|"url"|"file", payload: {...} }`) and handle paginated response
+2. **KB unlink** — debug mapping ID lookup
+3. **Chat testing** — `indemn chat <agent-id>` via Socket.IO (not yet tested this session)
+4. **Login flow E2E** — blocked on MFA emails not sending locally; works against remote dev
+5. **Skills testing** — `/agent-setup`, `/eval-orchestration`, etc. in Claude Code with plugin
+6. **Push `feat/api-key-auth` to remote** — needs deployment approval for full remote testing
 
 ## Key Discoveries During Testing
+
+### Passport JWT `new URL()` Bug (FIXED)
+- `middleware/passport.js:102` did `new URL(decoded.aud)` where aud="tiledesk" — not a valid URL
+- Caused uncaught TypeError, requests hung forever
+- **Fix applied:** try/catch around `new URL()`, falls through to `done(null, configSecret)` when aud is not a URL
+
+### API Key-to-JWT Middleware (NEW — avoids modifying existing routes)
+- Instead of adding `"bearer"` to all 160 `passport.authenticate()` calls across 37 route files, created `middleware/apiKeyToJwt.js`
+- Intercepts `Authorization: Bearer ind_*`, validates key, generates JWT, rewrites header to `Authorization: jwt <token>`
+- Existing passport JWT strategy handles it transparently — zero changes to existing route files
+- Mounted in `app.js` before `passport.initialize()`
+
+### DATABASE_URI Needs Database Name
+- `.env.aws` has `DATABASE_URI=mongodb+srv://...@dev-indemn.pj4xyep.mongodb.net` — no database name
+- Mongoose defaults to `test` database, not `tiledesk`
+- **For local testing:** append `/tiledesk` to the URI: `DATABASE_URI=mongodb+srv://...@dev-indemn.pj4xyep.mongodb.net/tiledesk`
+- This is only a local testing issue — deployed server likely has the full URI
+
+### v2 Bots Endpoint Returns Array
+- `GET /organization/:org_id/ai-studio/v2/bots/:id` returns an array even for a single bot
+- **Fix applied:** SDK `getAgent()` unwraps: `Array.isArray(result) ? result[0] : result`
+
+### Clone Response Format
+- `POST .../v2/bots/clone` returns `{ new_agent_id, new_agent_name }` not an Agent object
+- **Fix applied:** CLI handles both formats
 
 ### Firebase Project Mismatch (FIXED)
 - **Dev environment:** Firebase project `gmail-agent-449107` (from AWS Secrets Manager `indemn/dev/shared/firebase-credentials`)
 - **Production:** Firebase project `prod-gemini-470505` (from `copilot-dashboard/src/dashboard-config.json`)
-- The dashboard-config.json in the repo is the PRODUCTION config. On dev, `envsubst` injects dev Firebase credentials at container startup.
 - **Fix applied:** `auth.ts` now has per-environment Firebase configs (`FIREBASE_CONFIGS[env]`)
 
 ### URL Prefix (FIXED)
 - Deployed copilot-server is behind a reverse proxy that adds `/api` prefix
 - Locally, routes are at root (no `/api` prefix)
-- **Fix applied:** Moved `/api` into `DEFAULT_HOSTS` values (`https://devcopilot.indemn.ai/api`). Added env var overrides: `INDEMN_COPILOT_URL`, `INDEMN_EVALS_URL`, `INDEMN_MIDDLEWARE_URL`. For local: `INDEMN_COPILOT_URL=http://localhost:3000`
+- **Fix applied:** Moved `/api` into `DEFAULT_HOSTS` values. Added env var overrides: `INDEMN_COPILOT_URL`, `INDEMN_EVALS_URL`, `INDEMN_MIDDLEWARE_URL`. For local: `INDEMN_COPILOT_URL=http://localhost:3000`
 
 ### MFA in Auth Flow (FIXED)
 - The copilot-server has MFA on login. CLI now handles it: `login()` accepts `mfaCodePrompt` callback, detects `requiresMfa: true`, prompts for code, calls `/auth/firebase/mfa/verify`.
 
 ### Starting Copilot Server Locally
-- Copy `.env.aws` to `.env` in copilot-server directory (DO NOT commit)
-- `cd /Users/home/Repositories/copilot-server && npm start`
-- Port 3000, connects to remote dev MongoDB/Redis/RabbitMQ
-- Non-fatal errors on startup: MongoParseError (secondary URI), migration aggregation error — server still works
-- Clean up: delete `.env` when done
+1. Copy `.env.aws` to `.env` in copilot-server directory (DO NOT commit)
+2. **Append `/tiledesk` to DATABASE_URI** in `.env`
+3. `cd /Users/home/Repositories/copilot-server && npm start`
+4. Port 3000, connects to remote dev MongoDB/Redis/RabbitMQ
+5. Non-fatal errors on startup: MongoParseError (secondary URI), migration aggregation error — server still works
+6. Clean up: delete `.env` when done
+
+### Generating Test JWTs (Bypasses Firebase + MFA)
+```javascript
+// In copilot-server directory:
+node -e "const jwt = require('jsonwebtoken'); console.log(jwt.sign({_id:'65f839af9ca3710013305a3e', email:'support@indemn.ai'}, 'nodeauthsecret', {issuer:'tiledesk', subject:'user'}))"
+```
+Use the token: `curl -H "Authorization: jwt <token>" http://localhost:3000/testauth`
+
+### Creating API Keys and Testing CLI
+```bash
+# 1. Generate JWT and create API key
+TOKEN="<jwt from above>"
+curl -X POST http://localhost:3000/auth/api-keys -H "Authorization: jwt $TOKEN" -H "Content-Type: application/json" -d '{"name":"test"}'
+
+# 2. Write CLI config
+cat > ~/.indemn/config.json << EOF
+{"api_key":"<key>","org_id":"<org_id>","user_id":"65f839af9ca3710013305a3e","environment":"dev"}
+EOF
+
+# 3. Run CLI commands against local server
+INDEMN_COPILOT_URL=http://localhost:3000 indemn agents list
+```
 
 ## External Resources
 | Resource | Type | Link |
@@ -100,14 +145,15 @@ The Mongoose schema has `mfaEnabled: { default: true }`. Even with the DB field 
 - 2026-03-12: Plugin uses Claude Code format: .claude-plugin/plugin.json (metadata only) + .mcp.json (flat format) + skills/
 - 2026-03-12: Firebase configs per environment — dev uses `gmail-agent-449107`, production uses `prod-gemini-470505`
 - 2026-03-12: URL prefix `/api` baked into DEFAULT_HOSTS, with env var overrides for local testing
+- 2026-03-13: API key-to-JWT middleware instead of modifying existing routes — minimal copilot-server changes
 
 ## Open Questions
 - API key scoping: Should keys have granular scopes (read-only, agent-management, eval-only) or full access?
-- Passport JWT bug: Is the `new URL(decoded.aud)` crash happening in production too, or is it caught by something else in the deployed stack?
+- KB data source API format: CLI sends `{ question, answer }` but API expects `{ type: "text"|"url"|"file", payload: {...} }` — need to inspect payload structure for QNA type
 
 ## Implementation Notes for Future Sessions
 - **Design document:** `projects/jarvis-cli-mcp/artifacts/2026-03-12-cli-mcp-design.md` — 787 lines, triple-reviewed, is the source of truth
-- **Key repos to read:** copilot-server (routes/ai-studio.js, routes/auth.js, middleware/passport.js), evaluations (api/routes/), middleware-socket-service (utils/clientSocketListners.js)
+- **Key repos to read:** copilot-server (routes/ai-studio.js, routes/auth.js, middleware/passport.js, middleware/apiKeyToJwt.js), evaluations (api/routes/), middleware-socket-service (utils/clientSocketListners.js)
 - **All Copilot Server routes are org-scoped:** `/api/organization/:org_id/ai-studio/...`
 - **Chat silent failure:** middleware drops invalid bot_type silently — CLI needs timeout
 - **stream_bot_uttered fires BEFORE session_confirm** — greeting streams first
@@ -115,3 +161,5 @@ The Mongoose schema has `mfaEnabled: { default: true }`. Even with the DB field 
 - **bot_type accepts ObjectId or name** — prefer ObjectId (names are non-unique)
 - **Test user:** `support@indemn.ai` / `nzrjW3tZ9K3YiwtMWzBm` (Firebase password for dev project)
 - **Dev evals test-sets endpoint:** Returns 500 (server-side issue)
+- **Org ID for dev:** `69a40cd971552df0c6b6807f`
+- **User ID for test user:** `65f839af9ca3710013305a3e`
