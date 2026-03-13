@@ -3,52 +3,53 @@
 Build a CLI tool and MCP server around Indemn's platform APIs so developers (internal first, then external customers) can programmatically manage AI agents — creating agents, prompts, functions, knowledge bases, running evaluations, and pulling analytics. Everything currently done via the Copilot Dashboard UI, made available through command-line and AI-assisted workflows (Claude Code skills, MCP servers).
 
 ## Status
-**Phase 1 complete and demo'd. All design doc gaps closed, 44/46 E2E tests passing (2 server-side failures).**
+**Phase 1 complete. API key auth merged and deploying to dev. Ready for team testing.**
 
 - **indemn-cli repo:** `/Users/home/Repositories/indemn-cli/` (main branch) — 23 TypeScript source files, 55 MCP tools, 4 skills, builds cleanly
-- **Copilot Server:** `feat/api-key-auth` branch — API key model, service, routes, apiKeyToJwt middleware, passport aud fix. **NOT deployed to remote dev yet.**
+- **Copilot Server:** `feat/api-key-auth` merged to main via PR #806 (2026-03-13). CI deploys automatically to devcopilot.indemn.ai.
 - **Design coverage:** 100% — URL scraping, file upload, function params, pagination, eval advanced flags, models all implemented
 - **Demo:** Recorded and shared with dev-squad on 2026-03-13. Full flywheel: create agent → configure → evaluate → improve → re-evaluate. Clean sweep.
+- **E2E:** 50/51 tests passing. Only failure: `testset list` without `--agent-id` (evals server 500, not our bug).
+- **README:** Updated with team setup instructions and full command reference.
 
-### E2E Test Results (2026-03-13, post-gap-closure)
+### What Just Happened (2026-03-13, this session)
+1. Full design audit — compared 787-line design doc against all source files
+2. Fixed prod readiness issues: added `zod` to explicit deps, fixed MCP chat race condition, renamed `--version` to `--revision` (Commander.js conflict)
+3. Added missing features: `indemn eval list`, `rubric get --revision N`, `testset get --revision N`
+4. Improved `testset list` error message (suggests `--agent-id` when server 500s)
+5. Pushed `feat/api-key-auth` branch, PR #806 created, CI checks passed, PR merged to main
+6. Fixed package-lock.json npm version mismatch (npm 11 vs CI npm 10)
+7. Reset `~/.indemn/config.json` to use remote dev defaults (removed localhost override)
+8. Deleted copilot-server local `.env`, stopped local server
+9. Updated README with team setup section and new commands
 
-| Command | Status | Notes |
-|---------|--------|-------|
-| `indemn whoami` | PASS | |
-| `indemn --env dev whoami` | PASS | Global `--env` flag works |
-| `indemn agents list/create/get/update/clone/delete` | PASS | All CRUD + `--limit`/`--page` pagination |
-| `indemn config get/set` | PASS | Prompt read/write works |
-| `indemn functions list/create/update/delete/test/export/import` | PASS | |
-| `indemn functions params list/add/update/delete` | PASS | Full parameter CRUD |
-| `indemn functions master-list` | PASS | Lists 5 master function templates |
-| `indemn models` | PASS | Lists 8 providers with models |
-| `indemn kb list/create/get/update/delete` | PASS | Type auto-uppercased, `--limit`/`--page` |
-| `indemn kb data add --question/--answer` | PASS | QnA data sources |
-| `indemn kb data add --source-url` | PASS (CLI) | CLI routes correctly; kb-service not running locally |
-| `indemn kb data list` | PASS | Paginated response unwrapping |
-| `indemn kb link/unlink` | PASS | |
-| `indemn kb export` | PASS | Default format: csv |
-| `indemn rubric list/create/get/delete` | PASS | `--limit`/`--page` pagination |
-| `indemn testset create/get/delete` | PASS | |
-| `indemn testset list` | FAIL | Remote evals service returns 500 (server bug) |
-| `indemn eval run --wait` | PASS | With advanced flags: `--eval-model`, `--keep`, `--limit`, etc. |
-| `indemn eval status/results/bot-context` | PASS | |
-| `indemn chat --message` | PASS | Non-interactive mode |
-| `indemn chat` (interactive) | PASS | Streaming, greeting, message exchange |
-| MCP server (55 tools) | PASS | All tools register with schemas |
-| Login flow (Firebase+MFA) | UNTESTED E2E | MFA emails don't send locally — JWT bypass works |
+### Next: Install & Test Against Remote Dev
 
-### Next: Deploy & Production Readiness
+1. **Verify deployment landed** — `curl https://devcopilot.indemn.ai/auth/api-keys` should respond (not 404)
+2. **Test `indemn login --env dev`** — Firebase MFA against remote dev (first real E2E login test)
+3. **Generate a fresh API key** — current key was generated against localhost, need one for remote dev
+4. **Re-run E2E tests against remote dev** — verify everything works without local server
+5. **Install CLI the way others would** — git clone, npm install, npm link, follow README
+6. **Install as Claude Code plugin** — `claude plugins install /path/to/indemn-cli`, verify MCP + skills
+7. **Share with team** — Slack instructions, help others set up
+8. **Improvements** — user has ideas to implement after testing
 
-1. **Deploy `feat/api-key-auth` to dev** — merge in copilot-server, deploy to devcopilot.indemn.ai so the team can test without local server
-2. **Test login flow E2E** — Firebase MFA should work against remote dev
-3. **Production readiness** — verify prod Firebase config, prod API key prefix (`ind_prod_`), prod host URLs all work
-4. **Team rollout** — setup instructions, onboarding for internal users
-5. **Improvements** — tracked in this project as they come up
+### Production Readiness Checklist
+- [x] Prod Firebase config in auth.ts (`prod-gemini-470505`)
+- [x] Prod host URLs in client.ts (`copilot.indemn.ai/api`, `evaluations.indemn.ai`, `proxy.indemn.ai`)
+- [x] API key prefix: server uses `ind_dev_` (dev) / `ind_live_` (prod) based on NODE_ENV
+- [x] `zod` as explicit dependency
+- [x] MCP chat greeting race condition fixed
+- [x] All 55 MCP tools with schemas
+- [x] README with team setup instructions
+- [ ] Login flow tested E2E against remote dev
+- [ ] Login flow tested E2E against prod
+- [ ] Deploy API key auth to prod copilot-server
+- [ ] Generate prod API keys for team
 
 ## Key Technical Details
 
-### Copilot Server Changes (feat/api-key-auth branch)
+### Copilot Server Changes (now merged to main)
 **New files (our code):**
 - `models/apiKey.js` — Mongoose schema for API keys (key_hash, user_id, org_id, status)
 - `services/apiKeyService.js` — createKey, validateKey, listKeys, revokeKey
@@ -61,7 +62,7 @@ Build a CLI tool and MCP server around Indemn's platform APIs so developers (int
 
 **Zero existing route files modified.**
 
-### Starting Copilot Server Locally
+### Starting Copilot Server Locally (if needed)
 1. Copy `.env.aws` to `.env` in `/Users/home/Repositories/copilot-server/`
 2. **Append `/tiledesk` to DATABASE_URI** — without this, mongoose connects to `test` db instead of `tiledesk`
 3. `cd /Users/home/Repositories/copilot-server && npm start` — port 3000
@@ -77,10 +78,14 @@ node -e "const jwt = require('jsonwebtoken'); console.log(jwt.sign({_id:'65f839a
 ### Creating API Keys and Testing CLI
 ```bash
 TOKEN="<jwt from above>"
-curl -X POST http://localhost:3000/auth/api-keys -H "Authorization: jwt $TOKEN" -H "Content-Type: application/json" -d '{"name":"test"}'
+# Against remote dev (after deployment):
+curl -X POST https://devcopilot.indemn.ai/api/auth/api-keys -H "Authorization: jwt $TOKEN" -H "Content-Type: application/json" -d '{"name":"test"}'
 # Write config: ~/.indemn/config.json with api_key, org_id (69a40cd971552df0c6b6807f), user_id (65f839af9ca3710013305a3e), environment: dev
-INDEMN_COPILOT_URL=http://localhost:3000 indemn agents list
+indemn agents list
 ```
+
+### Current Config State
+`~/.indemn/config.json` has been reset to use default remote dev hosts. The API key `ind_dev_a948...` was generated against localhost — it may or may not work against remote dev (depends on whether both point to the same MongoDB). If it doesn't, generate a fresh one after deployment.
 
 ### API Reference
 - **KB create:** `POST /knowledge-bases` with `{ type: "text", payload: { question, answer, isManual: true } }`
@@ -96,7 +101,8 @@ INDEMN_COPILOT_URL=http://localhost:3000 indemn agents list
 | Resource | Type | Link |
 |----------|------|------|
 | Copilot Server OpenAPI Spec | OpenAPI 3.0.3 | copilot-server/docs/openapi.yaml (64KB) |
-| Copilot Server | GitHub Repo | indemn-ai/copilot-server (branch: feat/api-key-auth) |
+| Copilot Server | GitHub Repo | indemn-ai/copilot-server (main — API key auth merged) |
+| Copilot Server PR #806 | GitHub PR | indemn-ai/copilot-server/pull/806 |
 | Copilot Dashboard | GitHub Repo | indemn-ai/copilot-dashboard |
 | Evaluations Service | GitHub Repo | indemn-ai/evaluations |
 | Middleware Socket Service | GitHub Repo | indemn-ai/middleware-socket-service |
@@ -125,6 +131,8 @@ INDEMN_COPILOT_URL=http://localhost:3000 indemn agents list
 - 2026-03-13: API key-to-JWT middleware instead of modifying existing routes — minimal copilot-server changes
 - 2026-03-13: URL scraping goes through `/import` endpoint (not `/data-source`) — triggers async kb-service crawling
 - 2026-03-13: Function params API uses arrays and `is_required` field, update is POST upsert (not PUT)
+- 2026-03-13: `--version` flag renamed to `--revision` on rubric/testset get (Commander.js conflict with program version)
+- 2026-03-13: copilot-server uses npm 10 / Node 22 in CI — lock file must be generated with matching version
 
 ## Implementation Notes for Future Sessions
 - **Design document:** `projects/jarvis-cli-mcp/artifacts/2026-03-12-cli-mcp-design.md` — 787 lines, source of truth
@@ -133,14 +141,15 @@ INDEMN_COPILOT_URL=http://localhost:3000 indemn agents list
 - **stream_bot_uttered fires BEFORE session_confirm** — greeting streams first
 - **bot_type accepts ObjectId or name** — prefer ObjectId (names are non-unique)
 - **Test user:** `support@indemn.ai` / `nzrjW3tZ9K3YiwtMWzBm` (Firebase password for dev project)
-- **Dev evals test-sets endpoint:** Returns 500 (server-side issue)
+- **Dev evals test-sets endpoint:** Returns 500 without agent_id filter (server-side issue)
 - **Org ID for dev:** `69a40cd971552df0c6b6807f`
 - **User ID for test user:** `65f839af9ca3710013305a3e`
 - **JWT secret:** `nodeauthsecret` (GLOBAL_SECRET in .env.aws)
 - **KB get returns array** — SDK extracts first element
 - **KB export default format:** `csv` (server doesn't support `json` export)
+- **copilot-server CI:** Node 22, npm 10, `npm ci` — lock file must match
 
 ## Open Questions
 - Should we publish `@indemn/cli` to npm (private) or keep as git clone + npm link?
 - What improvements does the team want after trying it?
-- When do we deploy feat/api-key-auth to prod copilot-server?
+- When do we deploy API key auth to prod copilot-server?
