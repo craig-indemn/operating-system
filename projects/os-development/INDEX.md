@@ -3,22 +3,21 @@
 Development of the operating system itself — the skills, systems, and infrastructure that make Indemn's connected intelligence layer work. Covers the dispatch system, systems framework, skill improvements, and meta-level architecture of the OS.
 
 ## Status
+**Session 2026-03-14-a (complete)**: Major Hive architecture evolution — replaced "everything is a note" with **typed record system** (YAML-defined types, entity schemas, typed relationships). Added self-improvement via `hive feedback` command, code dev system integration framework, bidirectional external system sync framework (moved from Phase 6 to Phase 3), user-driven Wall arrangement. Stress-tested: git scalability (synced records gitignored), Obsidian dropped (Hive UI replaces), concurrent access noted, quick capture flow (always note first, reclassify async). **Critical remaining work: context assembly needs deep redesign for typed records — entity matching, objective-aware filtering, context window budgeting.** Design doc updated to ~1400 lines with 12 new decisions.
+
 **Session 2026-03-09-a (complete)**: Continued Hive design — full UI design (Wall + Focus Area layout, tile system, visual encoding, fluid sizing, session initialization flow), flywheel mechanics (emergent from linked notes, not coded pipelines), content system integration framework, generic system integration contract. Design doc updated with 5 new major sections and 17 new decisions.
 
 **Session 2026-03-08-a (complete)**: Designed The Hive — the awareness and connective tissue layer for the operating system. Extended brainstorming session covering vision, data model, ontology, storage architecture, context assembly, and system integration model. Full design document produced. This is a major architectural addition to the OS.
 
-**Session 2026-03-05-a (complete)**: Added plain shell terminal sessions to OS Terminal.
-
-**Session 2026-03-04-a (complete)**: Gas Town / Wasteland / Dolt research and integration design.
-
-**Previous**: 2026-03-03-c responsive mobile. 2026-03-03-b remote access. 2026-03-03-a UI polish. 2026-03-02-d browser-tested V1. 2026-03-02-c built V1. 2026-03-02-b designed it.
+**Previous**: 2026-03-05-a shell sessions. 2026-03-04-a Gas Town/Dolt. 2026-03-03-c responsive mobile. 2026-03-03-b remote access. 2026-03-03-a UI polish. 2026-03-02-d browser-tested V1. 2026-03-02-c built V1. 2026-03-02-b designed it.
 
 **Onboarding branch** — is 40+ commits behind main. DO NOT rebase while parallel sessions active.
 
 **Next session should:**
-1. Continue Hive design refinement — remaining undesigned areas: self-improvement mechanisms, mobile experience, real scenario walkthroughs for note creation
-2. Begin Hive Phase 1: Foundation — create vault, ontology.yaml, local MongoDB, hive CLI core
-3. Gas Town / Dolt setup (deferred from previous session)
+1. **Deep dive on context assembly** — this is THE critical system. Redesign retrieval algorithm for typed records: entity anchor identification, relationship traversal, objective-aware filtering, context window budgeting, entity aliasing/fuzzy matching. Must be engineered to best-practices standard.
+2. Review the full design doc holistically — ensure all sections are coherent after the type system change
+3. Mobile experience — still undesigned
+4. Real scenario walkthroughs — end-to-end flows through the typed system
 
 ## External Resources
 | Resource | Type | Link |
@@ -119,16 +118,16 @@ Development of the operating system itself — the skills, systems, and infrastr
 - 2026-03-04: Obsidian as potential visual layer over project artifacts (point vault at `projects/`)
 - 2026-03-05: OS Terminal supports shell sessions — plain tmux terminals alongside Claude sessions, created/deleted without session CLI
 - 2026-03-08: The Hive is the awareness and connective tissue layer — it doesn't replace systems, it connects them
-- 2026-03-08: Everything is a note — one universal format, tags and metadata differentiate behavior. No type hierarchy.
-- 2026-03-08: Two kinds of notes: native knowledge (lives in Hive) and awareness records (points to system artifacts via `ref:` field)
-- 2026-03-08: Flat vault structure — organization comes from the graph, not the filesystem
+- 2026-03-08: ~~Everything is a note~~ SUPERSEDED by typed record system (2026-03-14)
+- 2026-03-08: ~~Flat vault structure~~ SUPERSEDED by typed directories (2026-03-14)
+- 2026-03-08: Awareness records: any typed record with system: and ref: fields points to external artifacts
 - 2026-03-08: Local MongoDB, not Atlas — personal/cross-domain data stays private and local
 - 2026-03-08: Local embedding model (Ollama), swappable via abstraction layer
 - 2026-03-08: Controlled vocabulary via `ontology.yaml` — prevents tag fragmentation, evolves deliberately
 - 2026-03-08: Context assembly produces session initialization instructions — knowledge + skills + reads + reminders, tailored by objective
 - 2026-03-08: System CLIs handle their own Hive updates — each system manages its domain logic, Hive CLI is the low-level building block
 - 2026-03-08: Skills must document Hive integration convention — new skills follow it, existing skills evolve incrementally
-- 2026-03-08: Markdown files are source of truth, MongoDB is derived index — Git-trackable, Obsidian-compatible
+- 2026-03-08: Files are source of truth (native records), MongoDB is derived index — Git-trackable. Synced records use external system as source of truth.
 - 2026-03-08: Graph expansion favors breadth — can't explore what you don't know about
 - 2026-03-08: Migration is gradual — projects/ coexists with hive/, nothing breaks
 - 2026-03-08: Hive UI lives in OS Terminal (Bloomberg-style) — kanban, graph, timeline views alongside sessions
@@ -138,7 +137,7 @@ Development of the operating system itself — the skills, systems, and infrastr
 - 2026-03-09: Tiles are the only UI elements — no chrome, no buttons, no menus. The data is the UI.
 - 2026-03-09: Fluid tile sizing — continuous scaling based on available space, not fixed breakpoints
 - 2026-03-09: Rectangular tiles for MVP — honeycomb deferred (CSS grid is rectangle-native, hex is significantly harder)
-- 2026-03-09: Visual encoding — color=system, accent/border=domain, brightness=status for glanceable scanning
+- 2026-03-09: Visual encoding — color=type, accent/border=domain, brightness=status for glanceable scanning
 - 2026-03-09: Two data sources — active sessions from sessions/*.json (real-time), everything else from Hive API
 - 2026-03-09: UI reads from Hive only — all system data syncs into Hive backend, UI doesn't call external APIs
 - 2026-03-09: Session initialization — ask objective FIRST, then retrieve context parameterized by topic+objective+system
@@ -148,6 +147,18 @@ Development of the operating system itself — the skills, systems, and infrastr
 - 2026-03-09: Content system creates awareness records at each pipeline stage (idea→extraction→draft→publish)
 - 2026-03-09: Don't hard-code system-specific logic in Hive UI — tiles are generic, any system plugs in automatically
 - 2026-03-09: Completed sessions get Hive awareness records at session close — active state stays in sessions/*.json
+- 2026-03-14: Everything is a typed record — YAML-defined types with schemas, replaces "everything is a note"
+- 2026-03-14: Type system is configuration-driven — add YAML to .registry/types/, CLI auto-discovers, no code changes
+- 2026-03-14: Entities are YAML, knowledge is Markdown — structured data vs rich text, clear separation
+- 2026-03-14: Typed references replace generic wiki-links for entity relationships
+- 2026-03-14: Typed directories replace flat vault — each type has a directory
+- 2026-03-14: Wall arrangement is user-driven — priority → status → recency → drag-to-reorder. Not LLM at render time.
+- 2026-03-14: `hive feedback` for self-improvement — feedback as notes, retrieval snapshots in Phase 2+
+- 2026-03-14: Bidirectional sync framework for external systems — inbound pull/push/scheduled, outbound direct tile actions + session-based
+- 2026-03-14: Synced records git-ignored in .synced/ directories — external system is source of truth
+- 2026-03-14: Obsidian compatibility dropped — Hive UI replaces the need
+- 2026-03-14: Quick capture always creates note first, reclassifies async — capture speed > classification accuracy
+- 2026-03-14: Code development system is separate design effort — Hive defines generic contract only
 
 ## Open Questions
 - Which OS skills should be symlinked to `~/.claude/skills/` for global access in dispatched sessions?
@@ -163,6 +174,9 @@ Development of the operating system itself — the skills, systems, and infrastr
 - Hive: Beads coexistence — mirror as awareness records? Replace with Linear?
 - Hive: Graph quality — archival conventions, stale note detection, noise prevention?
 - Hive UI: Mobile experience — important but not yet designed
-- Hive UI: Self-improvement mechanisms — how does the system learn what context was useful?
-- Hive UI: Detailed note creation walkthroughs — real scenario end-to-end flows needed
-- Hive: Code development system integration — what awareness records, at which transitions?
+- Hive UI: Self-improvement mechanisms — RESOLVED: `hive feedback` command, feedback as notes
+- Hive UI: Detailed note creation walkthroughs — real scenario end-to-end flows needed (through typed system)
+- Hive: Code development system integration — RESOLVED: separate system design, Hive provides generic contract
+- **CRITICAL: Hive context assembly redesign for typed records** — entity anchor identification, relationship traversal, objective-aware filtering, context window budgeting, entity aliasing/fuzzy matching
+- Hive: Concurrent access — multiple sessions creating records simultaneously, need atomic writes
+- Hive: MongoDB auto-start — should `hive` commands auto-start MongoDB if not running?

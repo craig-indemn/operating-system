@@ -24,12 +24,13 @@ The Hive is the awareness and connective tissue layer for the operating system. 
 
 ## Principles
 
-1. **Everything is a note.** One universal format. Tags and metadata differentiate behavior. No type hierarchy.
+1. **Everything is a typed record.** Every piece of information has a type with a defined schema. Types range from highly structured (person, company) to flexible (note, idea). New types are added via YAML configuration, not code changes.
 2. **The Hive is connective tissue, not a replacement.** Systems keep their own architectures. The Hive connects and indexes them.
 3. **Context is assembled, not curated.** An LLM produces tailored session initialization instructions from the graph. No manual INDEX.md maintenance.
-4. **The ontology is the contract.** A controlled vocabulary (tag registry) ensures consistency across all sessions and systems. It evolves deliberately.
-5. **Simple foundations, infinite growth.** The data model is minimal. Complexity lives in the connections, not the schema. New systems plug in without changing the core.
+4. **The registry is the contract.** A controlled vocabulary (types, tags, domains) ensures consistency across all sessions and systems. It evolves deliberately.
+5. **Structure enables intelligence.** Typed records with explicit relationships let the system pre-filter, traverse connections, and answer structured queries — not just grep through flat files. The more the system knows about its data, the better it serves.
 6. **The system runs itself.** Everything is done through Claude Code sessions. The Hive is designed for LLM consumption first, human visualization second.
+7. **Scalable in every direction.** Add new entity types, new systems, new domains, new products, new companies — the core architecture doesn't change. Configuration-driven extensibility.
 
 ---
 
@@ -50,136 +51,231 @@ Hive Data Layer (markdown vault + local MongoDB)
 ```
 
 **Three layers:**
-- **Hive Data Layer** — flat markdown vault + local MongoDB index. Source of truth is markdown. MongoDB is derived.
-- **Hive CLI** — Python tool for note CRUD, search, context assembly, sync, ontology management.
-- **System Integration** — each system reports to the Hive through its own CLI. The `/hive` skill handles native knowledge operations.
+- **Hive Data Layer** — typed records in a structured vault (YAML for entities, markdown for knowledge) + local MongoDB index. Files are source of truth. MongoDB is derived.
+- **Hive CLI** — Python tool for typed record CRUD, search, context assembly, sync, type/ontology management. Type-aware commands: `hive create <type>`, `hive <type> list`.
+- **System Integration** — each system reports to the Hive through its own CLI. Sync adapters pull/push external system data. The `/hive` skill handles native operations.
 
 ---
 
-## The Note
+## Data Model: Typed Records
 
-Every object in the Hive is a note — a markdown file with YAML frontmatter.
+Every object in the Hive is a **typed record** with a schema defined in the type registry. Types range from highly structured (person, company, meeting) to flexible (note, idea). The type determines what fields exist, what relationships are available, and where the record lives on disk.
 
-### Minimum Schema
+### The Type System
+
+Types are defined as YAML files in `.registry/types/`. Adding a new type is adding a YAML file — no code changes.
 
 ```yaml
----
-tags: [idea, voice, scoring]
-domains: [indemn]
----
-
-# Voice Scoring Architecture
-
-Content here. Links to other notes via [[note-id]].
+# hive/.registry/types/person.yaml
+type: person
+fields:
+  name: { type: string, required: true }
+  email: { type: string }
+  role: { type: string }
+  company: { type: ref, target: company }
+  domains: { type: list, required: true }
+  tags: { type: list }
+  status: { type: enum, values: [active, inactive, archived] }
+display: name
+directory: people
+format: yaml    # structured data, no prose needed
 ```
 
-Three required fields: `tags`, `domains`, and a `# Title` heading. Everything else is optional metadata that determines behavior.
+```yaml
+# hive/.registry/types/design_document.yaml
+type: design_document
+fields:
+  title: { type: string, required: true }
+  project: { type: ref, target: project }
+  status: { type: enum, values: [draft, in_review, approved] }
+  domains: { type: list, required: true }
+  tags: { type: list }
+  content: { type: markdown }
+display: title
+directory: design_documents
+format: markdown    # rich text, has prose body
+```
 
-### Behavioral Metadata
+```yaml
+# hive/.registry/types/note.yaml
+type: note
+fields:
+  title: { type: string, required: true }
+  tags: { type: list, required: true }
+  domains: { type: list, required: true }
+  refs: { type: refmap }    # typed references to entities
+  content: { type: markdown }
+display: title
+directory: notes
+format: markdown
+```
 
-Notes gain capabilities through optional fields:
+**Key properties of the type system:**
+- `format: yaml` — structured entities, no prose body. Stored as `.yaml` files.
+- `format: markdown` — knowledge records with rich text. Stored as `.md` files with YAML frontmatter.
+- `ref` fields — typed relationships to other records (person → company, task → project)
+- `refmap` — flexible typed references: `refs: { project: hive, people: [craig, cam] }`
+- `required: true` — enforced by CLI on create/update
+- `directory` — where files of this type live in the vault
 
-| Field | What it enables |
-|-------|----------------|
-| `status:` | Makes the note trackable — appears on kanban (backlog, ideating, active, in-review, done, archived) |
-| `assignee:` | Makes the note owned — filterable by person |
-| `priority:` | Makes the note prioritizable (low, medium, high, critical) |
-| `linear:` | Syncs with a Linear issue (e.g., `AI-123`) |
-| `date:` | Temporal anchor (for meetings, events, decisions) |
-| `attendees:` | Meeting participants |
-| `rationale:` | Why a decision was made |
-| `brand:` | Content brand association |
-| `platform:` | Publishing platform (substack, medium, youtube) |
-| `published_at:` | When content was published |
-| `url:` | External resource link |
-| `email:`, `role:` | Person metadata |
-| `repo:` | Codebase repository path or URL |
-| `system:` | Which system created/manages this note |
-| `ref:` | Pointer to where the actual artifact lives (for awareness records) |
+### Initial Entity Types (Structured)
 
-### Two Kinds of Notes
+| Type | Directory | Key Fields | Format |
+|------|-----------|-----------|--------|
+| `person` | `people/` | name, email, role, company→Company | yaml |
+| `company` | `companies/` | name, industry, relationship | yaml |
+| `product` | `products/` | name, company→Company, status | yaml |
+| `project` | `projects/` | name, status, domain, team→Person[] | yaml |
+| `meeting` | `meetings/` | date, summary, attendees→Person[], company→Company | yaml |
+| `brand` | `brands/` | name, voice, platforms | yaml |
+| `platform` | `platforms/` | name, type, url | yaml |
+| `channel` | `channels/` | name, platform→Platform, brand→Brand | yaml |
 
-| | Native Knowledge | Awareness Records |
-|--|--|--|
-| **What** | Ideas, specs, designs, decisions, research, brainstorming | Index entries for system-managed artifacts |
-| **Content** | Full — the note IS the artifact | Lightweight — what happened, where it lives, what it's connected to |
-| **Where the real thing lives** | In the Hive vault | In the system (content repo, code repo, service) |
-| **Has `ref:` field** | No | Yes — points to the actual artifact's location |
-| **Has `system:` field** | Sometimes | Always |
-| **Examples** | Design spec, architecture decision, research findings, brainstorming output | "Draft created", "Feature deployed", "PR merged", "Blog published" |
+### System-Added Entity Types (via sync adapters)
 
-### Note Identity
+| Type | Directory | Added By | Key Fields |
+|------|-----------|---------|-----------|
+| `linear_issue` | `linear/` | Linear sync | key, title, status, assignee→Person, team |
+| `calendar_event` | `calendar/` | Calendar sync | start, end, location, attendees→Person[] |
+| `email_thread` | `email/` | Email sync | subject, from→Person, status |
+| `slack_message` | `slack/` | Slack sync | channel, from→Person, thread_id |
+| `github_pr` | `github/` | GitHub sync | repo, number, status, author→Person |
 
-- **Hive-native notes:** `YYYY-MM-DD-descriptive-slug` (e.g., `2026-03-08-voice-scoring-spec`)
-- **External-source notes:** `source-external-id` (e.g., `linear-DEVOPS-42`, `meeting-2026-03-01-oconnor`)
-- ID is the filename without `.md`
-- Date prefix is creation date, provides temporal ordering
+### Knowledge Types (Flexible)
+
+| Type | Directory | Key Fields | When Used |
+|------|-----------|-----------|----------|
+| `note` | `notes/` | title, tags, domains, refs | Quick thoughts, observations, fragments — the catch-all |
+| `decision` | `decisions/` | title, rationale, alternatives, project→Project | A choice was made with reasoning |
+| `design_document` | `design_documents/` | title, project→Project, status | Specs, designs, architecture docs |
+| `implementation_plan` | `implementation_plans/` | title, project→Project, status, tasks | Breakdown of work to execute |
+| `research` | `research/` | title, sources, urls | External information brought in |
+| `session_summary` | `session_summaries/` | session_id, project→Project, accomplished, decisions | Created at session close |
+
+### Awareness Records
+
+Some records point to artifacts that live in external systems (code repos, content system, deployed services). These have two additional fields:
+
+| Field | Purpose |
+|-------|---------|
+| `system:` | Which system owns the external artifact (content, dispatch, github, linear) |
+| `ref:` | Pointer to where the actual artifact lives (file path, URL, commit hash) |
+
+Any type can be an awareness record by having `system:` and `ref:` fields. A `linear_issue` always has these (it's synced from Linear). A `design_document` usually doesn't (it lives natively in the Hive). A `session_summary` has `ref:` pointing to the session transcript.
+
+### Record Identity
+
+- **ID** is the filename without extension (`.yaml` or `.md`)
+- **Entity records:** descriptive slug (e.g., `craig`, `indemn`, `voice-agent`)
+- **Knowledge records:** `YYYY-MM-DD-descriptive-slug` (e.g., `2026-03-08-hive-vision`)
+- **Synced records:** `source-external-id` (e.g., `AI-123`, `PR-456`)
 - Collisions on the same day: append `-2`, `-3`
 - Claude Code generates slugs from content
 
-### Links
+### Typed References
 
-Two mechanisms, both auto-indexed into MongoDB:
+Records reference other records via typed `ref` fields. These are first-class relationships, not generic links:
 
-**Inline wiki-links** (Zettelkasten-style, in content):
+```yaml
+# In a meeting record
+attendees:
+  - craig          # → people/craig.yaml
+  - cam            # → people/cam.yaml
+company: indemn    # → companies/indemn.yaml
+```
+
+```yaml
+# In a design document (frontmatter)
+project: hive           # → projects/hive.yaml
+refs:
+  people: [craig]       # → people/craig.yaml
+  product: operating-system  # → products/operating-system.yaml
+```
+
+**Relationships are navigable in both directions.** If a meeting references Craig as an attendee, querying Craig's profile can show all his meetings. The MongoDB index handles reverse lookups.
+
+### Links (Knowledge Layer)
+
+In addition to typed references, knowledge records support Zettelkasten-style links for connecting ideas:
+
+**Inline wiki-links** (in markdown content):
 ```markdown
 This builds on [[2026-02-19-dispatch-system-design]] and addresses
 the scoring gap from [[meeting-2026-03-01-oconnor-voice]].
 ```
 
-**Frontmatter links** (structured, for explicit connections):
-```yaml
-links:
-  - 2026-03-07-voice-evaluations
-  - linear-AI-123
-```
-
 **Three kinds of connections (all automatic):**
-1. **Workflow links** — system creates them based on lineage (plan created from spec → linked)
-2. **Contextual links** — shared session, domain, tags → automatically connected
+1. **Typed references** — explicit relationships defined by the type schema (person → company)
+2. **Wiki-links** — inline connections between knowledge records
 3. **Semantic links** — content similarity discovered via embeddings
 
-Manual linking is rarely needed. The graph grows as a byproduct of working.
+The graph grows as a byproduct of working. Manual linking is rarely needed.
 
 ---
 
-## The Ontology
+## The Registry
 
-A controlled vocabulary defined in `hive/.registry/ontology.yaml`. Every Claude Code session reads this before creating notes.
+The registry is the Hive's self-knowledge — it defines what types exist, what tags mean, and what domains are valid. Every Claude Code session reads the registry before creating or querying records.
 
-### Tag Categories
+### Registry Structure
 
-| Category | Tags | Purpose |
-|----------|------|---------|
-| Knowledge | `idea`, `spec`, `plan`, `design`, `research`, `reference` | Core knowledge graph nodes |
-| Work | `task`, `epic`, `feature`, `initiative` | Trackable items — kanban-visible when they have `status:` |
-| Record | `meeting`, `decision`, `session-summary`, `event` | Point-in-time captures |
-| Output | `blog`, `newsletter`, `report`, `video`, `presentation` | Produced deliverables |
-| Structural | `domain`, `project`, `person`, `system`, `codebase`, `brand` | Long-lived reference nodes |
-| Source | `external` | Content from external sources (articles, websites, papers) |
+```
+hive/.registry/
+  ontology.yaml          # Tags, domains, statuses, priorities
+  types/                 # Type definitions (one YAML per type)
+    person.yaml
+    company.yaml
+    product.yaml
+    project.yaml
+    meeting.yaml
+    brand.yaml
+    platform.yaml
+    channel.yaml
+    note.yaml
+    decision.yaml
+    design_document.yaml
+    implementation_plan.yaml
+    research.yaml
+    session_summary.yaml
+    linear_issue.yaml    # Added by Linear sync adapter
+    calendar_event.yaml  # Added by Calendar sync adapter
+    email_thread.yaml    # Added by Email sync adapter
+    slack_message.yaml   # Added by Slack sync adapter
+    github_pr.yaml       # Added by GitHub sync adapter
+```
 
-### Registry Format
+### Type Definitions
+
+Each type file defines the schema, relationships, and storage format. See "The Type System" section above for examples. Key fields in a type definition:
+
+| Field | Purpose |
+|-------|---------|
+| `type` | The type name (used in CLI: `hive create <type>`) |
+| `fields` | Schema — field names, types, required/optional, ref targets |
+| `display` | Which field is shown as the label (name, title, subject) |
+| `directory` | Where files of this type live in the vault |
+| `format` | `yaml` (structured entities) or `markdown` (knowledge with prose) |
+
+### Ontology (Tags, Domains, Statuses)
+
+Tags provide subcategorization within types. A `note` can be tagged `brainstorming`, `architecture`, `ui`. Tags are lighter than types — they don't define schemas, just categories.
 
 ```yaml
 # hive/.registry/ontology.yaml
 
 tags:
-  idea:
-    description: "A seed thought, not yet developed"
-    category: knowledge
-  spec:
-    description: "A design specification for something to be built"
-    category: knowledge
-    expected_fields: [status]
-  task:
-    description: "A specific piece of actionable work"
-    category: work
-    expected_fields: [status, assignee, priority]
-  meeting:
-    description: "A meeting that occurred"
-    category: record
-    expected_fields: [date, attendees]
-  # ... (full registry in implementation)
+  # Subcategories for knowledge types
+  brainstorming: { description: "Brainstorming output", category: creative }
+  architecture: { description: "System architecture discussion", category: technical }
+  ui: { description: "User interface design", category: technical }
+  voice: { description: "Voice/audio related", category: domain }
+  scoring: { description: "Scoring/evaluation related", category: domain }
+  # Subcategories for content
+  blog: { description: "Blog post content", category: format }
+  newsletter: { description: "Newsletter content", category: format }
+  video: { description: "Video content", category: format }
+  linkedin: { description: "LinkedIn content", category: platform }
+  # ... (grows with use)
 
 domains:
   indemn:
@@ -204,11 +300,12 @@ priorities:
   - critical
 ```
 
-### Ontology Evolution
+### Registry Evolution
 
-- New tags are added deliberately, never silently invented
-- When a session needs a tag that doesn't exist: check if an existing tag covers the concept. If not, create the note with a proposed new tag, add it to `ontology.yaml` with description and category, and mention it in the session summary.
-- Systems register their own domain-specific tags when they integrate with the Hive
+- **New types:** Added as YAML files in `.registry/types/`. The CLI auto-discovers them. System sync adapters add their own types when they integrate.
+- **New tags:** Added deliberately to `ontology.yaml`. When a session needs a tag that doesn't exist, check if an existing tag covers the concept. If not, add it and mention it in the session summary.
+- **New domains:** Added to `ontology.yaml` when Craig starts working in a new domain.
+- **Principle:** Types define structure. Tags provide flexible subcategorization. Don't create a type when a tag would suffice. Create a type when the thing has a stable identity, structured fields, or typed relationships to other records.
 
 ---
 
@@ -218,26 +315,78 @@ priorities:
 
 ```
 hive/
-  2026-03-08-voice-scoring-spec.md
-  2026-02-19-dispatch-system-design.md
-  linear-DEVOPS-42.md
-  meeting-2026-03-01-oconnor-voice.md
-  entity-indemn.md
-  entity-craig.md
   .registry/
-    ontology.yaml
-  .attachments/
-    (binary files — images, PDFs, etc.)
-  .templates/
-    (example notes for common patterns)
+    ontology.yaml                    # Tags, domains, statuses
+    types/                           # Type definitions
+      person.yaml
+      company.yaml
+      note.yaml
+      decision.yaml
+      ...
+  .templates/                        # Example records for each type
+  .attachments/                      # Binary files (images, PDFs)
+
+  # Entity directories (structured, YAML)
+  people/
+    craig.yaml
+    cam.yaml
+    oconnor.yaml
+  companies/
+    indemn.yaml
+    career-catalyst.yaml
+  products/
+    voice-agent.yaml
+    operating-system.yaml
+  projects/
+    hive.yaml
+    platform-dev.yaml
+  meetings/
+    2026-03-14-oconnor-voice.yaml
+  brands/
+    indemn-brand.yaml
+    personal-brand.yaml
+  platforms/
+    substack.yaml
+    linkedin.yaml
+  channels/
+    indemn-engineering-blog.yaml
+
+  # Knowledge directories (flexible, Markdown)
+  notes/
+    2026-03-08-hive-vision.md
+    2026-03-09-tile-breathing-idea.md
+  decisions/
+    2026-03-09-wall-user-driven.md
+    2026-03-09-type-system-over-flat-notes.md
+  design_documents/
+    2026-03-08-hive-design.md
+  implementation_plans/
+    ...
+  research/
+    2026-03-04-gastown-findings.md
+  session_summaries/
+    2026-03-08-os-hive-session-1.md
+
+  # System-synced directories (added by sync adapters)
+  linear/
+    AI-123.yaml
+    DEVOPS-42.yaml
+  calendar/
+    2026-03-14-team-standup.yaml
+  email/
+    ...
+  slack/
+    ...
+  github/
+    indemn-platform-v2-PR-456.yaml
 ```
 
-- All notes flat in `hive/`
-- `hive/` is an Obsidian vault — point Obsidian here for graph visualization
+- **Typed directories** — each type's `directory` field determines where its records live
+- **YAML for entities** — structured data, no prose. Clean, machine-readable, human-scannable.
+- **Markdown for knowledge** — rich text with YAML frontmatter. Ideas, reasoning, specs.
 - `hive/` lives in the operating-system repo, version-controlled by Git
-- `.registry/` contains the ontology and any future configuration
-- `.attachments/` for binary files referenced by notes
-- `.templates/` for example notes (guidance for Claude Code, not enforced)
+- `hive/` is the Hive vault — visualized through the Hive UI, not Obsidian (entities are YAML, not Markdown)
+- New type → new directory appears automatically
 
 ### MongoDB (Derived Index)
 
@@ -245,36 +394,39 @@ hive/
 
 **Database:** `hive`
 
-**Collection:** `notes`
+**Collection:** `records` (single collection with type discriminator — simpler than per-type collections, MongoDB handles polymorphic queries well)
 
 ```json
 {
   "_id": ObjectId,
-  "note_id": "2026-03-08-scoring-ui-spec",
-  "title": "Voice Scoring UI Specification",
-  "tags": ["spec", "voice", "scoring"],
-  "domains": ["indemn"],
-  "status": "active",
-  "system": "content",
-  "ref": null,
+  "record_id": "craig",
+  "type": "person",
+  "title": "Craig",
 
+  // Type-specific fields (vary by type)
+  "name": "Craig",
+  "email": "craig@indemn.ai",
+  "role": "Technical Partner",
+  "company": "indemn",            // typed ref → companies/indemn.yaml
+
+  // Common fields
+  "tags": ["engineering", "leadership"],
+  "domains": ["indemn", "career-catalyst"],
+  "status": "active",
+  "system": null,                  // null = native, "linear" = synced
+  "ref": null,                     // null = lives in Hive, path/url = external
+
+  // Knowledge records also have:
   "content": "Full markdown content without frontmatter",
   "content_embedding": [/* vector from local embedding model */],
 
-  "links": ["2026-03-07-voice-evaluations", "2026-03-01-rubric-component"],
-
-  "source": {
-    "origin": "session",
-    "ref": "os-hive-2026-03-08"
+  // Relationships (extracted from typed refs for fast lookup)
+  "refs_out": {
+    "company": ["indemn"],
+    "project": ["hive", "platform-dev"]
   },
 
-  "external_refs": {
-    "linear": "AI-123",
-    "github_pr": "indemn-ai/indemn-platform-v2#456"
-  },
-
-  "file_path": "hive/2026-03-08-scoring-ui-spec.md",
-
+  "file_path": "hive/people/craig.yaml",
   "created_at": ISODate,
   "updated_at": ISODate,
   "created_by": "session:os-hive-2026-03-08"
@@ -282,39 +434,37 @@ hive/
 ```
 
 **Indexes:**
-- `note_id`: unique
+- `record_id`: unique
+- `type`: regular (enables type-scoped queries)
 - `tags`: multikey
 - `domains`: multikey
 - `status`: regular
 - `system`: regular
-- `links`: multikey (for graph traversal — forward and reverse lookups)
-- `external_refs.linear`: sparse
-- `content_embedding`: regular array (cosine similarity computed in application code)
+- `refs_out.company`: multikey (reverse lookup — "all records referencing Indemn")
+- `refs_out.project`: multikey
+- `refs_out.people`: multikey (reverse lookup — "all records referencing Craig")
+- `content_embedding`: regular array (cosine similarity in Python)
 - Full-text index on `title` + `content`
+- Compound: `{type: 1, status: 1}`, `{type: 1, domains: 1}`
 
 **Supported queries:**
-- Semantic: vector similarity on `content_embedding` (computed in Python)
-- Graph traversal: `{links: "target-id"}` for forward, `{note_id: {$in: source.links}}` for reverse
-- Filtered: `{tags: "task", status: "active", domains: "indemn"}`
-- Keyword: full-text search on `title` + `content`
-- Timeline: `{created_at: {$gte: last_week}}`
-- System-scoped: `{system: "content", tags: "draft", status: "in-review"}`
-- Neighborhood: `$graphLookup` for multi-hop traversal
+- **Type-scoped:** `{type: "person", domains: "indemn"}` — all Indemn people
+- **Relationship traversal:** `{"refs_out.company": "indemn"}` — everything connected to Indemn
+- **Reverse lookup:** `{"refs_out.people": "craig"}` — all Craig's meetings, tasks, projects
+- **Semantic:** vector similarity on `content_embedding` (knowledge records only)
+- **Filtered:** `{type: "decision", status: "active", domains: "indemn"}`
+- **Keyword:** full-text search on `title` + `content`
+- **Timeline:** `{type: "meeting", created_at: {$gte: last_week}}`
+- **Cross-type:** `$graphLookup` for multi-hop traversal across types
 
-**Note:** Atlas Vector Search is cloud-only. For local MongoDB, embeddings are stored as arrays and cosine similarity is computed in Python. At the scale of hundreds to low thousands of notes, this is fast enough. If it becomes a bottleneck, add a dedicated vector store (ChromaDB, LanceDB) later.
+**Note:** Atlas Vector Search is cloud-only. For local MongoDB, embeddings are stored as arrays and cosine similarity is computed in Python. At the scale of hundreds to low thousands of records, this is fast enough. If it becomes a bottleneck, add a dedicated vector store (ChromaDB, LanceDB) later.
 
 ### Embedding Model
 
 - **Initial:** Local model via Ollama (e.g., `nomic-embed-text` or `mxbai-embed-large`)
 - **Abstracted:** Behind a simple interface so the model is swappable
-
-```python
-def embed(text: str) -> list[float]:
-    # Ollama today, OpenAI tomorrow, whatever
-    pass
-```
-
-- Each note is embedded when created or updated during sync
+- Only knowledge records (markdown format) get embeddings — entity records are queried via structured fields
+- Each record is embedded when created or updated during sync
 - Re-embedding is possible when switching models (`hive sync --re-embed`)
 
 ---
@@ -391,25 +541,39 @@ The LLM call happens once at session startup. Latency is acceptable because it o
 
 ### Context During Work
 
-Beyond startup, Claude Code can query the Hive on-demand:
-- `hive search "rubric component"` — find related notes mid-session
-- `hive note get 2026-03-01-rubric-component` — read a specific note in full
-- `hive context "deployment patterns" --domain career-catalyst` — cross-domain discovery
+Beyond startup, Claude Code can query the Hive on-demand with type-aware commands:
+
+```bash
+# Type-scoped queries (pre-filtered, fast)
+hive people get craig                              # Craig's full profile
+hive people get craig --meetings --since 2026-03   # Craig's recent meetings (relationship traversal)
+hive companies get indemn --people --products      # Indemn with contacts and products
+hive meetings --attendee oconnor --last 5          # O'Connor's recent meetings
+hive decisions --project hive --since 2026-03-08   # Recent Hive decisions
+hive tasks --status active --domain indemn         # Active Indemn tasks
+
+# Semantic search (across all knowledge records)
+hive search "rubric component"                     # Find related knowledge
+hive search "deployment patterns" --domain career-catalyst  # Cross-domain discovery
+
+# Direct record access
+hive get 2026-03-01-rubric-component               # Read any record by ID (type auto-detected)
+
+# Context assembly
+hive context "voice scoring" --objective "build the scoring UI" --system code-development
+
+# Create records (type-aware)
+hive create person "O'Connor" --email oconnor@acme.com --company acme
+hive create decision "Use typed records" --project hive --rationale "..."
+hive create note "interesting tile pattern" --tags ui --domains indemn
+
+# Feedback
+hive feedback "context missed deployment patterns"
+```
 
 ### Skill and System Awareness
 
-Skills and systems are themselves represented as notes in the Hive:
-
-```yaml
-tags: [skill, tool]
-domains: [indemn, career-catalyst, personal]
----
-# /linear
-Issue tracking via linearis CLI. Relevant when: working on tasks
-that have Linear issue IDs or need work tracking.
-```
-
-The context assembly graph can then connect: "voice scoring task → has `linear: AI-123` → the `/linear` skill is relevant" and surface it in the session instruction.
+Skills and systems are themselves represented as typed records in the Hive (entity type or knowledge type — to be determined during implementation). Context assembly can then connect: "voice scoring task → references Linear issue AI-123 → the `/linear` skill is relevant" via typed relationships and surface it in the session instruction.
 
 ---
 
@@ -468,69 +632,82 @@ When dispatch completes a task:
 Every skill that produces knowledge, decisions, or outputs should integrate with the Hive:
 
 **For new skills:**
-- Read `hive/.registry/ontology.yaml` for available tags, domains, expected fields
-- Create notes via `hive note create` for knowledge artifacts
-- Create awareness records when your skill produces deliverables
+- Read `hive/.registry/` for available types, tags, domains
+- Create typed records via `hive create <type>` for knowledge and entities
 - Use `hive context <topic>` for background knowledge
-- If you need a new tag, register it in `ontology.yaml` with description and category
+- If you need a new type, add a YAML definition to `.registry/types/`
+- If you need a new tag, register it in `ontology.yaml`
 - Document your Hive integration in the skill's SKILL.md
 
 **For existing skills becoming Hive-aware:**
 - Add `hive context` at the start if the skill needs background knowledge
-- Add `hive note create` at key output points (after brainstorming, spec creation, completion)
+- Add `hive create` at key output points (decisions, specs, session summaries)
 - The Hive is additive — don't replace the skill's core logic
 
 **The Hive skill (`/hive`) handles:**
-- Native knowledge CRUD, search, context assembly, sync, ontology management
+- Typed record CRUD, search, context assembly, sync, registry management
 - Other skills call the `hive` CLI, not MongoDB or vault files directly
 
 ---
 
 ## The Hive CLI
 
-Python CLI (Click or Typer). Same pattern as `bd` for beads.
+Python CLI (Click or Typer). Same pattern as `bd` for beads. **Type-aware** — the CLI reads type definitions from `.registry/types/` and auto-generates commands for each type.
 
 ### Commands
 
 ```bash
 # Setup
-hive init                    # Create vault, .registry, start MongoDB, seed ontology
+hive init                    # Create vault, .registry, start MongoDB, seed types and ontology
+
+# Create records (type-aware — validates schema)
+hive create person "Craig" --email craig@indemn.ai --company indemn --domains indemn
+hive create company "Indemn" --industry insurance --domains indemn
+hive create decision "Use typed records" --project hive --rationale "Enables structured queries"
+hive create note "tile breathing idea" --tags ui,design --domains indemn
+hive create design_document "Hive Design" --project hive --status draft
+
+# Read records
+hive get craig                                   # Auto-detects type from ID
+hive get 2026-03-09-wall-user-driven             # Works for any type
+
+# Type-scoped listing and querying
+hive people list                                  # All people
+hive people get craig --meetings --since 2026-03  # With relationship traversal
+hive companies get indemn --people --products     # With related entities
+hive decisions --project hive --since 2026-03-08  # Filtered by project and date
+hive meetings --attendee oconnor --last 5         # Filtered by relationship
+hive notes --tags brainstorming --domains indemn  # Flexible knowledge
+hive linear_issues --status active --domain indemn # Synced external data
 
 # Context assembly (the main command)
-hive context "voice scoring"                    # Full session initialization instruction
-hive context "voice scoring" --domain indemn    # Scoped to a domain
-hive context "voice scoring" --deep             # Full note content, not summaries
-hive context "voice scoring" --objective "build the scoring UI"  # Tailored for purpose
-hive context "voice scoring" --objective "build the scoring UI" --system code-development  # System-aware retrieval
+hive context "voice scoring"                                                    # Full session initialization
+hive context "voice scoring" --domain indemn                                    # Scoped to a domain
+hive context "voice scoring" --objective "build the scoring UI"                 # Tailored for purpose
+hive context "voice scoring" --objective "build the scoring UI" --system code-development  # System-aware
 
-# Search
-hive search "deployment patterns"               # Semantic search
-hive search "rubric" --tags spec --domain indemn  # Filtered search
-
-# Note operations
-hive note create --tags spec,voice --domains indemn --title "Voice Scoring Spec"
-hive note create --file /path/to/content.md     # Create from existing file
-hive note get 2026-03-08-scoring-spec           # Read a note
-hive note update 2026-03-08-scoring-spec        # Update (re-index)
-
-# Listing and filtering
-hive notes --tags task --status active                    # Active tasks
-hive notes --tags decision --since 2026-03-01             # Recent decisions
-hive notes --system content --status drafting             # Content drafts
-hive notes --domains career-catalyst                      # Everything in a domain
+# Search (semantic, across all knowledge records)
+hive search "deployment patterns"                 # Semantic search
+hive search "rubric" --tags spec --domain indemn  # Filtered semantic search
 
 # Sync
 hive sync                    # Index all vault files into MongoDB
+hive sync <system>           # Sync external system (linear, calendar, email, slack, github)
 hive sync --re-embed         # Re-generate all embeddings (when switching models)
 
-# Ontology
-hive tags list               # Show all registered tags with descriptions
-hive tags add <tag> --category work --description "..."   # Register new tag
+# Registry management
+hive types list              # Show all registered types
+hive types show person       # Show person type schema
+hive tags list               # Show all registered tags
+hive tags add <tag> --category work --description "..."
 hive domains list            # Show all domains
-hive domains add <domain> --description "..."             # Register new domain
+hive domains add <domain> --description "..."
+
+# Feedback (self-improvement)
+hive feedback "retrieval missed X"       # Auto-tagged, auto-linked to current session context
 
 # Status
-hive status                  # Overview: note counts by domain, recent activity, active work
+hive status                  # Overview: record counts by type and domain, recent activity
 ```
 
 ### Architecture
@@ -538,11 +715,12 @@ hive status                  # Overview: note counts by domain, recent activity,
 ```
 hive/                         # CLI package
   cli.py                      # Click/Typer CLI entry point
-  note.py                     # Note CRUD operations
+  records.py                  # Typed record CRUD operations
+  types.py                    # Type registry — loads/validates type definitions
   context.py                  # Context assembly engine
-  search.py                   # Search (semantic + filtered)
-  sync.py                     # Vault → MongoDB sync
-  ontology.py                 # Ontology management
+  search.py                   # Search (semantic + structured)
+  sync.py                     # Vault → MongoDB sync + external system sync adapters
+  registry.py                 # Registry management (types, tags, domains)
   embed.py                    # Embedding abstraction
   db.py                       # MongoDB connection
   config.py                   # Configuration (vault path, MongoDB URI, model)
@@ -587,7 +765,15 @@ Every tile on the Wall is a Hive note. Everything is a note. Everything is a til
 - **Quick capture:** A capture tile opens an input for fast note creation.
 - **Navigation:** Tiles themselves handle all interaction.
 
-**LLM-driven arrangement, not algorithmic.** The Wall's organization is not a weighted scoring formula. This is an LLM-based system — the intelligence should come from LLMs. The Wall shows what matters based on LLM reasoning about current state, not from `score = (priority × 0.5) + (recency × 0.3)`. The LLM understands "meeting in 2 hours and prep hasn't been done" without hand-coded rules.
+**User-driven arrangement with smart defaults.** The Wall is your priority surface — you control what's important. No weighted scoring formula, no LLM call at render time. The intelligence is in the metadata on each note (set by LLMs when notes are created) and your explicit choices.
+
+**Wall ordering:**
+1. **User-set priority** as the primary axis — critical, high, medium, low. You set these.
+2. **Status** as secondary — active items above backlog, done items faded to the edges.
+3. **Recency** as tiebreaker within the same priority and status.
+4. **Drag-to-reorder** for fine-tuning — manual ordering is preserved within priority buckets.
+
+**Future: morning consultation.** A session type (not a special feature) where you start a "daily planning" session. It pulls your calendar, active tasks, priorities, what's in flight, and you have a conversation about the day. The output is updated priorities on existing notes. Fits the existing session model — just a well-designed session with the right context retrieval.
 
 ### Tile Visual Design
 
@@ -599,23 +785,23 @@ Every tile on the Wall is a Hive note. Everything is a note. Everything is a til
 
 | Axis | Maps to | Purpose |
 |------|---------|---------|
-| **Color** | System (content, code, sessions, calendar, email, linear, etc.) | "What kind of thing is this?" |
+| **Color** | Type (person, meeting, decision, linear_issue, calendar_event, etc.) | "What kind of thing is this?" |
 | **Accent/border** | Domain (Indemn, Career Catalyst, Personal) | "Which world does it belong to?" |
 | **Brightness/opacity** | Status (vivid=active, normal=to-do, muted=backlog, faded=done) | "What's its energy level?" |
 
-If a note has no `system` field (native knowledge), color comes from the primary tag category (Knowledge, Work, Record, Output) as defined in the ontology.
+Color comes from the record's type. Each type gets a color defined in the registry or via a consistent hash. This replaces the previous "system" color mapping — types are more specific and meaningful than system names.
 
 **Rectangular tiles for MVP.** Honeycomb/hexagonal tiles are visually aligned with the hive metaphor but significantly harder to implement (CSS grid/flexbox are rectangle-native). Start with rounded rectangular tiles, dense packing, minimal gaps, organic feel. Honeycomb is a future CSS-level evolution if warranted.
 
 ### Tile Data Mapping
 
-Every visual element on a tile maps to a Hive note field:
+Every visual element on a tile maps to a record field:
 
 ```
-Note field              →  Tile visual
+Record field            →  Tile visual
 ──────────────────────────────────────────────
-title                   →  Tile label
-tags[]                  →  Type indicator
+title/name/display      →  Tile label (uses type's `display` field)
+type                    →  Primary color + type icon
 domains[]               →  Accent/border color
 status                  →  Brightness/opacity
 system                  →  Primary color
@@ -811,6 +997,58 @@ All records have `system: content` and links back to source material (the linked
 
 The awareness record captures: what was accomplished, what decisions were made, what artifacts were produced. Created by the `session close` command. Active session state stays in `sessions/*.json` (real-time, not Hive-appropriate).
 
+### Code Development System Integration
+
+The code development system will be designed and built separately as its own system (like the content system). When that design happens, it will define its specific Hive transitions following the generic contract above.
+
+**Key insight from design discussion:** The design/brainstorming phase of code development generates **many native knowledge notes**, not just a single "design doc created" awareness record. The reasoning trail — questions explored, research findings, trade-off analyses, rejected approaches, thought experiments — is captured as individual linked notes throughout the design process. The skill/workflow driving the design phase creates these notes as a byproduct of doing its work, not as a separate manual step.
+
+This principle applies to any system with creative or exploratory phases: **capture the reasoning trail, not just the outputs.** The retrieval system handles relevance — more captured knowledge is better, not noisier, because semantic search and graph traversal surface what matters for each specific context request.
+
+The code development lifecycle spans: design/brainstorming → spec/design doc → implementation plan → parallel execution (beads) → validation/testing → deployment. Each phase will have defined Hive transitions. The design phase is notable for producing high volumes of native knowledge notes rather than just awareness records of completed artifacts.
+
+### External System Sync Framework
+
+Systems that Craig operates through Claude Code sessions (content, code development) create Hive notes as a byproduct of working — the session's skill handles it. But external systems (Linear, Calendar, Email, Slack, GitHub) have data changing independently. These need a **bidirectional sync framework**.
+
+#### Inbound: External System → Hive
+
+| Mechanism | How it works | Best for |
+|-----------|-------------|----------|
+| **Pull** | `hive sync <system>` — calls external API, creates/updates notes | Calendar, Email (poll periodically) |
+| **Push (webhooks)** | Hive receives HTTP events, creates/updates notes in real-time | Linear, GitHub, Slack (when webhooks available) |
+| **Scheduled** | Cron or background process running pull sync on interval | Keeping data fresh without manual trigger |
+
+Each sync adapter knows: how to authenticate, what data to pull, and how to map external data to Hive note fields (tags, status, domain, ref, system). The framework handles dedup, incremental sync, and conflict resolution.
+
+#### Outbound: Hive → External System
+
+Two patterns for pushing actions back to external systems:
+
+1. **Direct tile actions** — simple state changes from the Wall, no session needed. Mark a tile as done → Hive updates the note → sync adapter pushes to the external system (e.g., close Linear issue, archive email).
+2. **Session-based actions** — complex interactions that spawn a Claude Code session. Reply to an email, implement a feature, review a PR. The session uses existing skills (/linear, /google-workspace, /slack, /github) to interact with the external system.
+
+#### Status Lifecycle Per System
+
+Each sync adapter defines its own status mapping because different systems have different lifecycles:
+
+- **Linear:** Open → `active`, In Progress → `active`, Done → `done`, Canceled → `archived`
+- **Calendar:** Upcoming (next 24-48h) → `active`, Past → `archived`
+- **Email:** Unread/flagged → `active`, Read → `done`, Archived → `archived`
+- **Slack:** Unread mentions → `active`, Read → `done`
+- **GitHub:** Open PR → `active`, Merged → `done`, Closed → `archived`
+
+These mappings determine what's prominent on the Wall (active items surface, done items fade, archived items hidden by default). Each system defines what "active" means in its context.
+
+#### What Gets Shown on the Wall
+
+Not every note in the Hive is a Wall tile. The Wall shows notes based on their status:
+- **Active/backlog** — visible, prominence based on priority
+- **Done** — faded but visible (completed work is flywheel source material)
+- **Archived** — hidden from Wall by default, accessible via search/filtering
+
+The sync adapter sets status appropriately when ingesting data. No separate "show on wall" flag — the status IS the visibility control.
+
 ### Future Systems
 
 Any new system follows the same pattern. The Hive UI doesn't change. New tiles appear automatically because they're just notes with tags and metadata. The visual encoding (color from system, accent from domain, brightness from status) works for any system that registers its tags in the ontology.
@@ -832,10 +1070,11 @@ Decisions that need to be made during implementation, not during design.
 **Leaning:** (d) — sync happens as part of CLI operations. `hive sync` for bulk re-indexing.
 **Decide during:** Phase 1 implementation.
 
-### 3. Linear Integration Details
-**Question:** What triggers Linear sync? How are conflicts resolved? One-way or bidirectional?
-**Leaning:** Bidirectional. `hive linear sync` command. Linear is authority for work state (status, assignee). Hive is authority for knowledge connections. Sync on demand, not continuous.
-**Decide during:** Phase 3 implementation.
+### 3. External System Sync Details
+**Question:** Per-system sync adapter implementations — authentication, mapping, frequency, conflict resolution.
+**Framework decided:** Bidirectional sync with inbound (pull/push/scheduled) and outbound (direct tile actions + session-based actions). Each adapter defines its own status lifecycle mapping. See "External System Sync Framework" section.
+**Remaining:** Specific adapter implementations for each system (Linear, Calendar, Email, Slack, GitHub). Each designed when that system integration is built.
+**Decide during:** Phase 3 (Linear), Phase 4+ (others).
 
 ### 4. Session Lifecycle Integration
 **Question:** How does context assembly get injected into sessions? Hook? First skill invocation? Automatic?
@@ -879,70 +1118,84 @@ Decisions that need to be made during implementation, not during design.
 ## Implementation Phases
 
 ### Phase 1: Foundation
-**Goal:** The vault exists, notes can be created and queried, the ontology is seeded.
+**Goal:** The vault exists with the type system, typed records can be created and queried, the registry is seeded.
 
-- [ ] Create `hive/` directory in the OS repo
+- [ ] Create `hive/` directory structure in the OS repo — `.registry/`, `.registry/types/`, `.templates/`, typed subdirectories
+- [ ] Create initial type definitions in `.registry/types/` — person, company, product, project, meeting, brand, platform, channel, note, decision, design_document, implementation_plan, research, session_summary
 - [ ] Create `hive/.registry/ontology.yaml` with initial tags, domains, statuses
-- [ ] Create `hive/.templates/` with example notes for common patterns
 - [ ] Install local MongoDB Community Edition (`brew install mongodb-community`)
-- [ ] Build `hive` CLI core (Python, Click/Typer):
-  - `hive init` — set up vault structure, create MongoDB database and collection, seed indexes
-  - `hive note create` — create a markdown note with frontmatter, write to vault, index into MongoDB
-  - `hive note get` — read a note by ID
-  - `hive sync` — parse all vault markdown files, extract frontmatter + content, upsert into MongoDB
+- [ ] Build `hive` CLI core (Python, Click/Typer) with type-aware commands:
+  - `hive init` — set up vault structure, create MongoDB database, seed indexes, load types
+  - `hive create <type> <name/title>` — create a typed record (YAML or Markdown), validate against schema, write to vault, index into MongoDB
+  - `hive get <id>` — read any record by ID (auto-detect type)
+  - `hive <type> list` — type-scoped listing with filtering
+  - `hive sync` — parse all vault files, extract fields, upsert into MongoDB
+  - `hive types list` — display registered types
+  - `hive types show <type>` — show type schema
   - `hive tags list` — display registered tags from ontology.yaml
-  - `hive status` — count notes by domain, show recent activity
+  - `hive status` — count records by type and domain, show recent activity
+- [ ] Build type registry loader (`types.py`) — reads YAML type definitions, validates schemas, auto-generates CLI commands
 - [ ] Create the `/hive` skill (`.claude/skills/hive/SKILL.md`)
-- [ ] Migrate 5-10 existing artifacts as proof of concept (add Hive frontmatter, index)
-- [ ] Create initial entity notes: domains (Indemn, Career Catalyst, Personal), key people, key projects
-- [ ] Verify: can create notes, can query MongoDB, can list/filter notes
+- [ ] Create initial entity records: people (Craig, Cam), companies (Indemn), products, projects, brands
+- [ ] Migrate 5-10 existing artifacts as proof of concept (as typed knowledge records)
+- [ ] Verify: can create typed records, type validation works, type-scoped queries work
 
-**Exit criteria:** `hive note create` and `hive sync` work. A handful of real notes exist and are queryable.
+**Exit criteria:** `hive create person`, `hive create decision`, `hive people list`, and `hive sync` work. Entity records and knowledge records coexist. Type validation enforces schemas.
 
 ### Phase 2: Context Engine
-**Goal:** Sessions can hydrate context from the Hive. Semantic search works.
+**Goal:** Sessions can hydrate context from the Hive. Semantic search works. Relationship traversal works.
 
 - [ ] Install Ollama + embedding model locally
 - [ ] Build embedding abstraction layer (`embed.py`)
-- [ ] Add embedding generation to `hive sync` (embed content, store vectors in MongoDB)
-- [ ] Build `hive search` — semantic search via cosine similarity + keyword/tag filters
-- [ ] Build `hive context` — retrieval algorithm (semantic + graph + recency scoring) that returns ranked notes
-- [ ] Create context instruction template (knowledge, skills, reads, reminders sections)
+- [ ] Add embedding generation to `hive sync` (embed content of markdown records, store vectors in MongoDB)
+- [ ] Build `hive search` — semantic search via cosine similarity + type/tag/domain filters
+- [ ] Build `hive context` — retrieval algorithm (semantic + typed relationships + recency) that returns ranked records
+- [ ] Build relationship traversal — `hive people get craig --meetings` follows typed refs across types
+- [ ] Create context instruction template (knowledge, entities, skills, reads, reminders sections)
 - [ ] Integrate with session startup — update `/sessions` skill to recommend `hive context` at start
-- [ ] Build `hive note create --from-file` — convert existing markdown files to Hive notes
-- [ ] Migrate all 73 existing artifacts to Hive notes (add frontmatter, index, embed)
-- [ ] Extract decisions from INDEX.md files into standalone decision record notes
-- [ ] Test: start a session, run `hive context`, verify the briefing is useful and accurate
+- [ ] Build `hive create <type> --from-file` — convert existing files to typed Hive records
+- [ ] Migrate all 73 existing artifacts to Hive records (as appropriate types — design_documents, decisions, research, notes)
+- [ ] Extract decisions from INDEX.md files into standalone decision records
+- [ ] Test: start a session, run `hive context`, verify the briefing includes relevant entities and knowledge
 
-**Exit criteria:** `hive context "voice evaluations"` returns a useful, relevant briefing with knowledge, skills, and reminders. Semantic search finds conceptually related notes.
+**Exit criteria:** `hive context "voice evaluations"` returns a useful briefing with entity profiles, knowledge, skills, and reminders. `hive people get craig --meetings` traverses relationships. Semantic search finds related knowledge.
 
-### Phase 3: Integration
-**Goal:** The Hive is woven into the daily workflow. Linear syncs. Sessions create notes.
+### Phase 3: External System Sync
+**Goal:** The Hive connects to external systems. Bidirectional sync brings the outside world in and pushes actions back out.
 
-- [ ] Build `hive linear sync` — pull Linear issues as awareness records, push Hive task notes to Linear
-- [ ] Update `/sessions` skill — session close creates a session-summary record note
-- [ ] Update brainstorming skill — key ideas and decisions become Hive notes
+**Note:** Sync adapters build on existing Claude Code skills — `/linear` (linearis), `/google-workspace` (gog), `/slack` (agent-slack), `/github` (gh). The adapters call these CLIs and map output to typed Hive records. Each adapter adds its own type definition to `.registry/types/`. Not building new integrations from scratch.
+
+- [ ] Build sync adapter framework — common interface for inbound/outbound sync, dedup, incremental updates
+- [ ] Build Linear sync adapter — pull issues as awareness records, push status changes back, bidirectional
+- [ ] Build Google Calendar sync adapter — pull upcoming events as notes, status based on timing
+- [ ] Build Gmail sync adapter — pull unread/flagged as notes, mark read/archive pushes back
+- [ ] Build Slack sync adapter — pull unread mentions/DMs as notes, mark read pushes back
+- [ ] Build GitHub sync adapter — pull open PRs/issues as awareness records, status from PR state
+- [ ] Build `hive sync <system>` CLI commands for each adapter
+- [ ] Implement scheduled sync (cron or background process) for continuous freshness
+- [ ] Investigate webhook receivers for real-time sync where supported (Linear, GitHub, Slack)
+- [ ] Create entity notes for Linear teams, key repos, key contacts
+- [ ] Test: Linear issues, calendar events, unread emails, Slack mentions all appear as Wall-ready tiles
+
+**Exit criteria:** External system data flows into the Hive as notes with correct status mapping. Changes pushed back to source systems. The Hive reflects the state of all connected systems.
+
+### Phase 4: Workflow Integration
+**Goal:** The Hive is woven into the daily workflow. Sessions create notes. OS systems report to the Hive.
+
+- [ ] Update `/sessions` skill — session close creates a session-summary awareness record
+- [ ] Update brainstorming skill — key ideas, decisions, and reasoning trail become Hive notes as a byproduct of the process
 - [ ] Update project skill — `/project` queries Hive alongside/instead of INDEX.md
-- [ ] Create awareness records for all active Linear issues (bulk import)
-- [ ] Create entity notes for all Linear teams, key repos
-- [ ] Build `hive notes` listing/filtering commands
-- [ ] Determine beads ↔ Hive relationship — mirror beads tasks as awareness records
-- [ ] Test: full workflow — brainstorm → spec → tasks → dispatch → completion, all tracked in Hive
-
-**Exit criteria:** A complete feature lifecycle is traceable through the Hive. Linear issues appear as notes. Session summaries auto-create.
-
-### Phase 4: System Integration
-**Goal:** Multiple systems report to the Hive. Cross-system context assembly works.
-
-- [ ] Content system integration — content CLI creates awareness records for ideas, drafts, published posts
+- [ ] Content system integration — content CLI creates awareness records at each pipeline stage (idea → extraction → draft → approved → published → repurposed)
 - [ ] Dispatch integration — dispatch creates awareness records for task completion/failure
-- [ ] GitHub integration — PRs and merges create awareness records (via hooks or skill updates)
-- [ ] Meeting ingestion — meeting summaries from Postgres become Hive record notes
+- [ ] Build `hive notes` listing/filtering commands
+- [ ] Build `hive feedback` command — auto-tagged, auto-linked feedback notes for self-improvement
+- [ ] Determine beads ↔ Hive relationship — mirror beads tasks as awareness records
 - [ ] Update context assembly to surface cross-system connections
 - [ ] Document the system integration convention (for future systems)
-- [ ] Test: context for a feature shows related Linear issues, PRs, content, meetings
+- [ ] Test: full workflow — brainstorm → spec → tasks → dispatch → completion, all tracked in Hive
+- [ ] Test: context for a feature shows related Linear issues, PRs, content drafts, meetings
 
-**Exit criteria:** Working on a feature surfaces connected content drafts, meetings, Linear issues, and PRs from across systems.
+**Exit criteria:** A complete feature lifecycle is traceable through the Hive. Session summaries auto-create. Content and dispatch report to the Hive. Cross-system context assembly works.
 
 ### Phase 5: The Hive UI
 **Goal:** The Hive is the home screen. Wall + Focus Area. Tiles. Session spawning with context.
@@ -954,31 +1207,33 @@ Decisions that need to be made during implementation, not during design.
 - [ ] Build Overview toggle — expand Wall to full screen, collapse back to Focus
 - [ ] Add Hive API routes to Express backend — wrap Hive CLI with JSON output
 - [ ] Add WebSocket Hive updates — push note changes to frontend (~30s polling + on-action)
+- [ ] Build Wall ordering — priority → status → recency, drag-to-reorder within priority buckets
 - [ ] Build domain filtering — click domain tile to filter Wall
 - [ ] Build search tile — search input that queries `hive search`
 - [ ] Build quick capture tile — input that creates notes, LLM auto-tags async
 - [ ] Build "create linked note" interaction — one-click note creation linked to parent tile
 - [ ] Build session spawning from tiles — click tile → `session create` → first message with tile metadata via `tmux send-keys`
 - [ ] Build session initialization flow — objective question → targeted context retrieval → work begins
+- [ ] Build direct tile actions — mark done, change priority, archive → outbound sync to external systems
 - [ ] Merge session state tiles (from `sessions/*.json`) with Hive note tiles into unified Wall
 - [ ] Color/visual mapping from `ontology.yaml` — system colors, domain accents, status brightness
 - [ ] Responsive layout — ultra-wide (Wall + Focus coexist), smaller screens (Wall collapses)
-- [ ] Configure Obsidian vault pointing at `hive/` for alternative visualization
+- [ ] ~~Configure Obsidian vault~~ DROPPED — Hive UI is the visualization layer
 
-**Exit criteria:** The Hive is the home screen. You see your world as tiles, click to start context-hydrated sessions, work in Focus panels, observe everything from the Wall. The OS Terminal's session grid is fully replaced.
+**Exit criteria:** The Hive is the home screen. You see your world as tiles, click to start context-hydrated sessions, work in Focus panels, observe everything from the Wall. Direct tile actions sync back to external systems. The OS Terminal's session grid is fully replaced.
 
 ### Phase 6: Expansion
-**Goal:** The Hive handles external sources, multiple users, and self-improvement.
+**Goal:** Platform integrations, multi-user, graph maturity.
 
-- [ ] External source ingestion — Slack messages, emails, calendar events → record notes
+- [ ] Substack, LinkedIn, X integration — content publishing and engagement tracking via sync adapters
 - [ ] Multi-user — shared MongoDB or generated output views for CEO/teammates
 - [ ] Graph quality management — archival conventions, stale note detection, pruning
 - [ ] Automated ontology management — detect tag drift, suggest merges
-- [ ] Self-improvement — track which context was useful (feedback loop from sessions)
 - [ ] New system templates — streamline creating Hive-integrated systems
 - [ ] Cross-domain discovery automation — proactively surface connections
+- [ ] Morning consultation session type — daily planning with calendar, priorities, active work
 
-**Exit criteria:** External sources flow into the Hive. The CEO gets weekly views. Graph quality stays high as the system scales.
+**Exit criteria:** Content platforms connected. The CEO gets weekly views. Graph quality stays high as the system scales.
 
 ---
 
@@ -1033,8 +1288,34 @@ The transition is gradual. Nothing breaks.
 - Build awareness record creation into the system CLI
 - Test cross-system context assembly
 
-### Continual Improvement Mechanisms
-- **Context feedback:** When a session starts with Hive context and the briefing is missing something critical, note what was missing. Use this to tune retrieval weights.
+### Self-Improvement: The Feedback System
+
+The Hive improves through its own mechanism — feedback is captured as notes, which become context for future Hive development sessions. No special infrastructure, no automated ML loops. The system eats its own cooking.
+
+**The `hive feedback` command:**
+
+```bash
+hive feedback "context assembly for voice scoring missed the deployment pattern notes"
+```
+
+Creates a native knowledge note with:
+- Your feedback message as the content
+- Auto-tagged: `feedback, hive-improvement`
+- Auto-linked to the current session (what you were working on when the friction occurred)
+- Auto-captures session context: objective, system, domain
+- In Phase 2+: captures a snapshot of what `hive context` returned, so you can see what retrieval produced vs what was actually needed
+
+**Types of feedback that naturally emerge:**
+- **Retrieval gaps** — "missed X", "Y was irrelevant", "needed more depth on Z"
+- **Ontology friction** — "needed a tag that doesn't exist", "these two tags overlap"
+- **Workflow friction** — "this took too many steps", "wanted to do X but couldn't"
+- **Pattern recognition** — "I keep doing X manually, should be automated"
+
+**How it drives improvement:** When you start a session to work on the Hive itself, `hive context "improve the hive"` surfaces all accumulated feedback notes. The development session has full awareness of what's been working and what hasn't — with precise diagnostic data (retrieval snapshots), not just vibes.
+
+**Evolution:** Phase 1 — `hive feedback` auto-tags and auto-links (simple). Phase 2 — adds retrieval snapshot capture once the context engine exists. Grows with the system.
+
+### Other Continual Improvement Mechanisms
 - **Ontology evolution:** New tags emerge from real work. The registry grows to match how the system is actually used.
 - **Embedding model upgrades:** As better local models emerge, swap via `hive sync --re-embed`. The abstraction layer makes this painless.
 - **Skill integration depth:** Start with basic Hive integration in skills. Deepen over time as patterns emerge.
@@ -1046,17 +1327,17 @@ The transition is gradual. Nothing breaks.
 
 | Date | Decision | Rationale |
 |------|----------|-----------|
-| 2026-03-08 | Everything is a note — one universal format, tags differentiate behavior | Simpler than a type hierarchy. Behavior comes from metadata fields, not types. |
+| 2026-03-08 | ~~Everything is a note~~ **SUPERSEDED** by typed record system (2026-03-09) | Originally: one format, tags differentiate. Replaced because structured entities need schemas and typed relationships for effective search and relationship traversal. |
 | 2026-03-08 | The Hive is connective tissue, not a data layer | Systems keep their own architectures. The Hive indexes, links, and surfaces — it doesn't replace. |
-| 2026-03-08 | Two kinds of notes: native knowledge and awareness records | Native knowledge lives in the Hive. System artifacts stay in their systems with lightweight Hive index entries. |
-| 2026-03-08 | Flat vault structure | Organization comes from the graph (tags, links, domains), not the filesystem. The UI handles presentation. |
+| 2026-03-08 | ~~Two kinds of notes~~ **EVOLVED** — now typed records with awareness via system/ref fields | Any type can be an awareness record by having system: and ref: fields. The distinction is per-record, not per-kind. |
+| 2026-03-08 | ~~Flat vault structure~~ **SUPERSEDED** by typed directories (2026-03-09) | Now organized by type: people/, companies/, decisions/, notes/. Type determines directory. |
 | 2026-03-08 | Local MongoDB, not Atlas | Personal/cross-domain data shouldn't live on Indemn's cluster. Local is private, free, fast. |
 | 2026-03-08 | Local embedding model (Ollama), swappable | Start local for experimentation. Abstraction layer enables switching to API models later. |
 | 2026-03-08 | Controlled vocabulary via `ontology.yaml` | Prevents tag fragmentation across sessions. Evolves deliberately, not accidentally. |
 | 2026-03-08 | Context assembly produces session initialization instructions | Not just knowledge — includes relevant skills, proactive reads, and reminders. Tailored by objective. |
 | 2026-03-08 | System CLIs handle Hive updates, not raw `hive note create` | Each system manages its own domain logic. The Hive CLI is the low-level building block. |
 | 2026-03-08 | Skills must document their Hive integration convention | New skills follow the convention. Existing skills evolve incrementally to become Hive-aware. |
-| 2026-03-08 | Markdown files are source of truth, MongoDB is derived | Git-trackable, human-readable, Obsidian-compatible. MongoDB rebuilt from files via `hive sync`. |
+| 2026-03-08 | Files are source of truth (for native records), MongoDB is derived | Git-trackable, human-readable. MongoDB rebuilt from files via `hive sync`. Synced records use external system as source of truth. |
 | 2026-03-08 | Graph expansion favors breadth over depth | Can't explore what you don't know about. Surface broadly, then go deep on-demand. |
 | 2026-03-08 | Migration is gradual — projects/ coexists with hive/ | Nothing breaks. New knowledge goes to Hive. Old artifacts migrate incrementally. |
 | 2026-03-08 | Hive UI lives in OS Terminal, Bloomberg-style | Never leave the system. Kanban, graph, timeline views alongside session grid. |
@@ -1077,6 +1358,24 @@ The transition is gradual. Nothing breaks.
 | 2026-03-09 | Don't hard-code system-specific logic in the Hive UI | The UI is completely generic. Any system plugs in by creating awareness records. New systems get tiles automatically. |
 | 2026-03-09 | Every system follows the same Hive integration framework | Create awareness records at meaningful transitions, set system/ref fields, register tags, document integration. |
 | 2026-03-09 | Content system creates awareness records at each pipeline stage | idea → extraction → draft → approved → published → repurposed. Each stage gets a Hive record. System owns its updates. |
+| 2026-03-09 | Design/brainstorming phases capture reasoning trails as many native notes, not just final artifacts | Questions, research, trade-offs, rejected approaches — all captured as linked notes by the skill driving the process. More knowledge is better; retrieval handles relevance. |
+| 2026-03-09 | Code development system is a separate design effort — Hive defines the generic contract, the system defines its specific transitions | Same pattern as content system: designed separately, integrates via the standard framework. |
+| 2026-03-09 | Wall arrangement is user-driven, not LLM-driven at render time | Priority (user-set) → status → recency → manual drag-to-reorder. Intelligence is in note metadata (set by LLMs at write time), not in a layout algorithm. |
+| 2026-03-09 | `hive feedback` command for self-improvement — feedback is just notes | Auto-tagged, auto-linked to session context. Retrieval snapshots added in Phase 2. Feedback surfaces when working on the Hive itself. |
+| 2026-03-09 | Morning consultation is a session type, not a feature | Daily planning via a session that pulls calendar, tasks, priorities. Output is updated priorities on existing notes. Future work. |
+| 2026-03-09 | Everything is a typed record — types defined in YAML, not code | Replaces "everything is a note." Types range from structured (person, company) to flexible (note, idea). New types added via YAML configuration. |
+| 2026-03-09 | Type system is configuration-driven and extensible | Add a YAML file to `.registry/types/` → new type exists. CLI auto-discovers. No code changes needed. Scales to any domain. |
+| 2026-03-09 | Entities are YAML, knowledge is Markdown | Structured entities (person, company) stored as `.yaml` — no prose needed. Knowledge (decisions, notes, designs) stored as `.md` — rich text with frontmatter. |
+| 2026-03-09 | Typed references replace generic wiki-links for entity relationships | person → company, meeting → attendees are typed refs, not `[[wiki-links]]`. Wiki-links remain for knowledge-to-knowledge connections. |
+| 2026-03-09 | Typed directories replace flat vault | Each type has a `directory` field. `people/`, `companies/`, `decisions/`, `notes/`. Clear, unambiguous, scalable. |
+| 2026-03-09 | CLI is type-aware — `hive create <type>`, `hive <type> list` | Type-scoped commands enable structured queries and pre-filtering. Better than `hive search` for known types. |
+| 2026-03-09 | Create a type when: stable identity AND (referenced from other types OR structured fields enable useful queries) | Principle for type vs tag distinction. Tags subcategorize within types. Types define schemas and relationships. |
+| 2026-03-09 | Color=type (not system) in tile visual encoding | More specific and meaningful. Each type gets its own color in the registry. |
+| 2026-03-09 | Synced records are git-ignored, live in `.synced/` directories | External sync data (Linear, calendar, email, Slack, GitHub) creates files in `hive/.synced/<system>/` which is gitignored. Native records (entities, knowledge) are git-tracked. Source of truth for synced data is the external system, rebuilt via `hive sync <system>`. |
+| 2026-03-09 | Obsidian compatibility dropped — Hive UI replaces the need | Entity records are YAML (Obsidian can't render). The Hive UI is the visualization layer. No need to maintain Obsidian compatibility. |
+| 2026-03-09 | Quick capture always creates a `note` first, reclassifies async | Zero friction capture. LLM determines if it should be promoted to a typed record (task, decision, etc.). If so, creates the typed record and archives the original note. Capture speed > classification accuracy. |
+| 2026-03-09 | Bidirectional sync framework for external systems | Inbound: pull/push/scheduled adapters. Outbound: direct tile actions (simple) + session-based actions (complex). Each adapter defines its own status lifecycle mapping. |
+| 2026-03-09 | Status is the Wall visibility control — no separate "show on wall" flag | Active items surface, done items fade, archived items hidden. Sync adapters set status based on external system state. |
 
 ---
 
