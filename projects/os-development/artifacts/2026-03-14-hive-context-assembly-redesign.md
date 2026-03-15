@@ -56,12 +56,12 @@ Same Hive, completely different retrieval strategies. A fixed algorithm can't do
 1. Craig provides intent: "I want to build the scoring UI for voice evaluations, O'Connor has been asking about it"
 2. A **dedicated, short-lived LLM call** (not the working session) reads this intent
 3. The LLM has access to the Hive CLI and decides what to query:
-   - `hive entity get voice-agent` — pull the product entity
-   - `hive entity search "scoring"` — find related entities
+   - `hive get voice-agent` — pull the product entity
+   - `hive search "scoring" --entities-only` — find related entities
    - `hive search "voice scoring" --tags decision,design` — find relevant knowledge
-   - `hive workflow get voice-scoring-ui` — check workflow state if one exists
+   - `hive get voice-scoring-ui` — check workflow state if one exists
    - `hive search "O'Connor" --recent 30d` — recent mentions of O'Connor
-   - `hive entity get oconnor --refs` — O'Connor's entity with all references
+   - `hive get oconnor` + `hive refs oconnor` — O'Connor's entity with all references
 4. The LLM assembles a curated context document from the results
 5. That context document is injected into the new working session
 
