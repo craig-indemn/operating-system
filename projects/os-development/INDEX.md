@@ -3,7 +3,9 @@
 Development of the operating system itself — the skills, systems, and infrastructure that make Indemn's connected intelligence layer work. Covers the dispatch system, systems framework, skill improvements, and meta-level architecture of the OS.
 
 ## Status
-**Session 2026-03-14-a (complete)**: Major Hive architecture evolution — replaced "everything is a note" with **typed record system** (YAML-defined types, entity schemas, typed relationships). Added self-improvement via `hive feedback` command, code dev system integration framework, bidirectional external system sync framework (moved from Phase 6 to Phase 3), user-driven Wall arrangement. Stress-tested: git scalability (synced records gitignored), Obsidian dropped (Hive UI replaces), concurrent access noted, quick capture flow (always note first, reclassify async). **Critical remaining work: context assembly needs deep redesign for typed records — entity matching, objective-aware filtering, context window budgeting.** Design doc updated to ~1400 lines with 12 new decisions.
+**Session 2026-03-14-b (complete)**: Deep dive on context assembly and data architecture. Major shifts: (1) Context assembly is an LLM agent using Hive CLI as toolkit, not a fixed algorithm. (2) Two-layer data model — entities in MongoDB only (no YAML files), knowledge as git-tracked markdown files differentiated by tags (not separate type schemas). (3) Workflow entities stored in Hive but lifecycle owned by systems (content, code dev, etc.). (4) 14-command unified CLI surface with transparent entity/knowledge routing. (5) Reconciled session initialization — dedicated context assembly session writes comprehensive context note, working session starts hydrated. (6) System-specific context playbooks — each system's skill defines what context to gather. Resolved all open gaps: context window budgeting (not a problem), entity aliasing (LLM handles it), cross-type queries (LLM + CLI), mobile (deferred). **Full artifact at `artifacts/2026-03-14-hive-context-assembly-redesign.md`. Next: rewrite outdated design doc sections, design content system and code development system context playbooks, then implementation plan.**
+
+**Session 2026-03-14-a (complete)**: Major Hive architecture evolution — replaced "everything is a note" with **typed record system** (YAML-defined types, entity schemas, typed relationships). Added self-improvement via `hive feedback` command, code dev system integration framework, bidirectional external system sync framework (moved from Phase 6 to Phase 3), user-driven Wall arrangement. Stress-tested: git scalability (synced records gitignored), Obsidian dropped (Hive UI replaces), concurrent access noted, quick capture flow (always note first, reclassify async).
 
 **Session 2026-03-09-a (complete)**: Continued Hive design — full UI design (Wall + Focus Area layout, tile system, visual encoding, fluid sizing, session initialization flow), flywheel mechanics (emergent from linked notes, not coded pipelines), content system integration framework, generic system integration contract. Design doc updated with 5 new major sections and 17 new decisions.
 
@@ -14,10 +16,10 @@ Development of the operating system itself — the skills, systems, and infrastr
 **Onboarding branch** — is 40+ commits behind main. DO NOT rebase while parallel sessions active.
 
 **Next session should:**
-1. **Deep dive on context assembly** — this is THE critical system. Redesign retrieval algorithm for typed records: entity anchor identification, relationship traversal, objective-aware filtering, context window budgeting, entity aliasing/fuzzy matching. Must be engineered to best-practices standard.
-2. Review the full design doc holistically — ensure all sections are coherent after the type system change
-3. Mobile experience — still undesigned
-4. Real scenario walkthroughs — end-to-end flows through the typed system
+1. **Rewrite the outdated design doc sections** — the artifact maps exactly which sections need rewriting (Data Model, Storage, MongoDB, Context Assembly, CLI, Session Initialization, Implementation Phases). The new artifact has the source material for all rewrites.
+2. **Design the content system's Hive integration and context playbook** — how the content system creates/updates workflow entities, what awareness records it produces, what context the assembly agent gathers for content sessions.
+3. **Design the code development system's Hive integration and context playbook** — same as above for code work. This is THE system Craig uses most.
+4. **Once design is finalized, create the implementation plan** — phases restructured for the new two-layer architecture.
 
 ## External Resources
 | Resource | Type | Link |
@@ -54,6 +56,7 @@ Development of the operating system itself — the skills, systems, and infrastr
 | 2026-03-04 | [gastown-research](artifacts/2026-03-04-gastown-research.md) | Gas Town, Wasteland, Dolt research — architecture comparison, integration vision, action items |
 | 2026-03-04 | [gastown-integration-design](artifacts/2026-03-04-gastown-integration-design.md) | Design: Gas Town as dispatch engine, session types, Dolt backend, Obsidian, phased implementation |
 | 2026-03-08 | [hive-design](artifacts/2026-03-08-hive-design.md) | The Hive — unified awareness/knowledge/work system. Data model, ontology, context assembly, system integration, 6-phase implementation plan |
+| 2026-03-14 | [hive-context-assembly-redesign](artifacts/2026-03-14-hive-context-assembly-redesign.md) | Context assembly deep dive — LLM agent model, two-layer data architecture (entities in MongoDB / knowledge as files), workflow entity pattern, vault restructuring |
 
 ## Decisions
 - 2026-02-19: OS has three primitives: Skills (capabilities), Projects (memory), Systems (processes)
