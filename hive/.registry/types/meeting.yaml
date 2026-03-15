@@ -1,0 +1,11 @@
+type: meeting
+fields:
+  name: { type: string, required: true }
+  date: { type: string, required: true }
+  summary: { type: string }
+  attendees: { type: ref_list, target: person }
+  company: { type: ref, target: company }
+  domains: { type: list, required: true }
+  tags: { type: list }
+  status: { type: enum, values: [upcoming, active, done, archived] }
+display: name

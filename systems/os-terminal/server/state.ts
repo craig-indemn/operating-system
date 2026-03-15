@@ -28,7 +28,15 @@ export function getOsRoot(): string {
 }
 
 export function getSessionsDir(): string {
-  return join(getOsRoot(), 'sessions');
+  const root = getOsRoot();
+  // Worktrees live at <main-repo>/.claude/worktrees/<name>.
+  // Sessions are shared infrastructure — always at the main repo's sessions/ dir.
+  const worktreeMarker = '/.claude/worktrees/';
+  const idx = root.indexOf(worktreeMarker);
+  if (idx !== -1) {
+    return join(root.slice(0, idx), 'sessions');
+  }
+  return join(root, 'sessions');
 }
 
 export function getSessionCli(): string {

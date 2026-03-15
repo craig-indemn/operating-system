@@ -3,6 +3,10 @@
 Development of the operating system itself — the skills, systems, and infrastructure that make Indemn's connected intelligence layer work. Covers the dispatch system, systems framework, skill improvements, and meta-level architecture of the OS.
 
 ## Status
+**Session 2026-03-15-c (complete)**: Fixed the Hive UI to match the visual design. 6 fixes applied, all verified via browser testing. (1) **Session visibility** — `getSessionsDir()` now resolves through worktree paths to main repo's `sessions/` dir. 7 active sessions appear as tiles. (2) **Multi-column masonry layout** — Wall.tsx switched from `flex-direction:column` to CSS grid with `repeat(auto-fill, minmax(160px, 1fr))`. 2 columns at 400px, 1 at 240px, 4 at full width. (3) **Variable tile heights** — `getTileHeight()` allocates height based on status, priority, AND content richness. Sessions at 120-140px (expanded with context bars), rich tiles at 85-120px (standard/expanded), title-only tiles at 70px (compact standard), done/backlog at 48-52px (compressed). ResizeObserver in HiveTile detects height and triggers progressive disclosure automatically. (4) **Overview reflow** — `overview` prop passed to Wall, 4-column grid with `minmax(250px, 1fr)`, featured tile heights for sessions. (5) **Session tile rendering** — green SESSION/SHELL badges, OPUS model badge, "Context: 68% · opus" text, colored context bars (green=active, amber=idle), session status accent colors from SESSION_STATUS_COLORS map. Sessions sort above all other tiles. (6) **Cleanup** — removed TerminalGrid.tsx and SessionPanel.tsx. **TypeScript clean, Vite build passes (634ms), all changes verified in live browser.**
+
+**Session 2026-03-15-b (complete)**: Implemented Phase 4 (Hive UI) and Phase 5 (Expansion), then ran full E2E testing. **Phase 4** — evolved OS Terminal into Hive UI: 13 new files, 6 modified. Backend: Express API routes (10 endpoints), WebSocket broadcaster with file watcher + 30s MongoDB poll. Frontend: HiveTile (progressive disclosure, accent bars, type badges), Wall (drag-to-reorder, domain filtering, search fading), FocusArea (terminal+browser panels), QuickCapture, SearchTile, ActionMenu, objective prompt modal. Zinc-based visual design (Inter+Geist Mono fonts). Responsive: desktop/tablet/mobile. **Phase 5** — 4 new CLI commands (health/archive/ontology/discover), Gmail sync adapter, morning consultation (playbook+skill), CEO weekly views playbook. **E2E testing** — API: 10/10 pass (status, records CRUD, search, refs, registry, WebSocket all verified against 172 live records). Browser: 11/11 pass (page load, tile rendering across 8+ types, domain filter with opacity fading, search with debounce, quick capture creating tiles, objective prompt modal, overview toggle, fonts verified, visual encoding correct). Known limitations from testing: session creation requires tmux/session-manager infrastructure, right-click context menu needs native contextmenu event (not simulated click). **All 5 Hive design phases complete. System is functional end-to-end.**
+
 **Session 2026-03-15-a (complete)**: Completed all three tasks from the 2026-03-14-b handoff. (1) **Rewrote the design doc** — 816 insertions, 492 deletions across 10 outdated sections: Principle 1, Architecture Overview, Data Model, Registry, Storage Architecture, Context Assembly, Hive CLI, Session Initialization, Open Decisions, Implementation Phases. All now reflect the two-layer architecture, unified CLI, and context assembly agent model. (2) **Designed content system Hive integration** — cs.py stays as source of truth, workflow entity maps to idea level, integration lives in cs.py, full transition map (idea created through published), context assembly playbook searches entire Hive for topic + codebase + pipeline state + brand voice, context note includes system instructions to route session into content pipeline. (3) **Designed code development system Hive integration** — composes existing OS tools with Hive workflow entity as glue (no separate state store), systematic checkpointing via skills at decision points + session close, full lifecycle (design → review → plan → execute → code-review → test → deploy), context assembly playbook preserves full reasoning trail across 20+ sessions to solve "losing the plot" problem. **Design is now complete. Next: create the implementation plan.**
 
 **Session 2026-03-14-b (complete)**: Deep dive on context assembly and data architecture. Major shifts: (1) Context assembly is an LLM agent using Hive CLI as toolkit, not a fixed algorithm. (2) Two-layer data model — entities in MongoDB only (no YAML files), knowledge as git-tracked markdown files differentiated by tags (not separate type schemas). (3) Workflow entities stored in Hive but lifecycle owned by systems (content, code dev, etc.). (4) 14-command unified CLI surface with transparent entity/knowledge routing. (5) Reconciled session initialization — dedicated context assembly session writes comprehensive context note, working session starts hydrated. (6) System-specific context playbooks — each system's skill defines what context to gather. Resolved all open gaps: context window budgeting (not a problem), entity aliasing (LLM handles it), cross-type queries (LLM + CLI), mobile (deferred). **Full artifact at `artifacts/2026-03-14-hive-context-assembly-redesign.md`.**
@@ -17,8 +21,11 @@ Development of the operating system itself — the skills, systems, and infrastr
 
 **Onboarding branch** — is 40+ commits behind main. DO NOT rebase while parallel sessions active.
 
-**Next session should:**
-1. **Create the implementation plan** — the design is complete. All sections of the design doc are current. Content system and code development system integrations are fully designed. Build the phased implementation plan with tasks, dependencies, and acceptance criteria.
+**All UI fixes complete. The Hive UI now matches the design.** Next priorities:
+1. **Wire content system integration** — `cs.py` Hive updates at pipeline transitions
+2. **Battle-test `/morning`** — daily planning with live Hive data
+3. **Gmail on cron** — periodic sync via `hive sync gmail`
+4. **Merge to main** — all Hive phases (1-5) complete, UI verified
 
 ## External Resources
 | Resource | Type | Link |
@@ -56,6 +63,9 @@ Development of the operating system itself — the skills, systems, and infrastr
 | 2026-03-04 | [gastown-integration-design](artifacts/2026-03-04-gastown-integration-design.md) | Design: Gas Town as dispatch engine, session types, Dolt backend, Obsidian, phased implementation |
 | 2026-03-08 | [hive-design](artifacts/2026-03-08-hive-design.md) | The Hive — unified awareness/knowledge/work system. Data model, ontology, context assembly, system integration, 6-phase implementation plan |
 | 2026-03-14 | [hive-context-assembly-redesign](artifacts/2026-03-14-hive-context-assembly-redesign.md) | Context assembly deep dive — LLM agent model, two-layer data architecture (entities in MongoDB / knowledge as files), workflow entity pattern, vault restructuring |
+| 2026-03-15 | [hive-ui-visual-design](artifacts/2026-03-15-hive-ui-visual-design.md) | Visual design system — zinc palette, typography, tile anatomy, layout, interactions, responsive behavior |
+| 2026-03-15 | [hive-phase4-5-implementation](artifacts/2026-03-15-hive-phase4-5-implementation.md) | Phase 4 (Hive UI) + Phase 5 (Expansion) implementation — all files, architecture decisions, verification results |
+| 2026-03-15 | [hive-ui-gap-analysis](artifacts/2026-03-15-hive-ui-gap-analysis.md) | Design vs implementation audit — 11 gaps identified, priority fix order, session visibility root cause, masonry/breathing/height issues |
 
 ## Decisions
 - 2026-02-19: OS has three primitives: Skills (capabilities), Projects (memory), Systems (processes)
@@ -170,24 +180,42 @@ Development of the operating system itself — the skills, systems, and infrastr
 - 2026-03-15: Code dev system: checkpoints at decision points during sessions + session summary at close (both levels)
 - 2026-03-15: Code dev system: skills that drive the work own the checkpointing — brainstorming skill creates decisions, debugging skill creates root cause analyses, etc.
 - 2026-03-15: Code dev system: context note includes full design decisions with rationale (not compressed summaries) — this is what prevents "losing the plot" across 20+ sessions
+- 2026-03-15: Hive UI: FocusArea replaces TerminalGrid — unified panel management for terminal + browser panels
+- 2026-03-15: Hive UI: Wall replaces SessionPanel — tiles surface all Hive data, not just sessions
+- 2026-03-15: Hive UI: Hive API routes wrap CLI via execFile — server calls `hive` CLI for all data, no direct MongoDB access from Node
+- 2026-03-15: Hive UI: WebSocket /ws/hive broadcasts on file changes (500ms debounce) + 30s MongoDB poll for entity changes
+- 2026-03-15: Hive UI: Wall width is 400px (0 panels), 300px (1 panel), 240px (2+ panels) — "breathing" behavior
+- 2026-03-15: Hive UI: Tablet (768-1024px) Wall is a slide-out overlay with backdrop; Mobile (<768px) is full-screen toggle
+- 2026-03-15: Hive UI: Session tiles are synthetic HiveRecord objects created from sessions/*.json, merged into Wall alongside Hive records
+- 2026-03-15: Phase 5: Graph health score formula — penalizes stale (up to -30), orphans (up to -20), missing domains (up to -15)
+- 2026-03-15: Phase 5: `hive ontology check` detects unused registered tags, unregistered used tags, rarely-used tags, and substring-based merge candidates
+- 2026-03-15: Phase 5: `hive discover` finds cross-domain connections via typed refs + semantic similarity (>0.7 threshold)
+- 2026-03-15: Phase 5: Gmail sync adapter follows same pattern as calendar — gog CLI, label-based status mapping, person resolution
+- 2026-03-15: Session path resolution — `getSessionsDir()` detects worktree paths via `/.claude/worktrees/` marker and resolves to main repo's sessions/ dir
+- 2026-03-15: Wall layout uses CSS grid with `auto-fill` columns — responsive column count based on Wall width (1 at 240px, 2 at 400px, 4 in overview)
+- 2026-03-15: Tile height allocated based on content richness + status + priority, not just status alone — prevents empty space on title-only tiles (synced linear issues, github PRs)
+- 2026-03-15: Sessions always sort above all other tiles — `getPriorityScore()` returns -1 for session type
+- 2026-03-15: Session accent bars use session status colors (green=active, amber=idle, red=context_low) instead of domain colors — differentiates session health at a glance
+- 2026-03-15: Session tiles show context% text + context bar + model badge (OPUS/N/A) — progressive disclosure at expanded tier
 
 ## Open Questions
 - Which OS skills should be symlinked to `~/.claude/skills/` for global access in dispatched sessions?
 - When SDK Issue #583 is fixed, remove the monkey-patch from engine.py
 - 1Password: `op run` vs `op read` for secret injection? Split `.env` into urls + secrets?
 - Should onboarding branch be maintained separately, or just point new engineers at main?
-- Hive: Note creation mechanics — explicit CLI calls vs hooks vs hybrid?
-- Hive: Sync trigger — on CLI operations, Git hooks, file watcher, or manual?
-- Hive: Linear bidirectional sync — conflict resolution, trigger mechanism?
-- Hive: Session lifecycle — RESOLVED: first message via tmux send-keys, session asks objective, then retrieves context
-- Hive: Which Ollama embedding model? nomic-embed-text vs mxbai-embed-large?
-- Hive: Context assembly LLM — session assembles from raw notes, or separate LLM call in CLI?
 - Hive: Beads coexistence — mirror as awareness records? Replace with Linear?
-- Hive: Graph quality — archival conventions, stale note detection, noise prevention?
-- Hive UI: Mobile experience — important but not yet designed
-- Hive UI: Self-improvement mechanisms — RESOLVED: `hive feedback` command, feedback as notes
-- Hive UI: Detailed note creation walkthroughs — real scenario end-to-end flows needed (through typed system)
-- Hive: Code development system integration — RESOLVED: separate system design, Hive provides generic contract
-- **CRITICAL: Hive context assembly redesign for typed records** — entity anchor identification, relationship traversal, objective-aware filtering, context window budgeting, entity aliasing/fuzzy matching
 - Hive: Concurrent access — multiple sessions creating records simultaneously, need atomic writes
 - Hive: MongoDB auto-start — should `hive` commands auto-start MongoDB if not running?
+
+### Resolved
+- ~~Hive: Note creation mechanics~~ — explicit CLI calls orchestrated by skills (implemented)
+- ~~Hive: Sync trigger~~ — sync on CLI operations + periodic cron for external systems (implemented)
+- ~~Hive: Linear bidirectional sync~~ — implemented as cron-based pull adapter
+- ~~Hive: Session lifecycle~~ — dedicated context assembly session, objective prompt in UI
+- ~~Hive: Embedding model~~ — nomic-embed-text via Ollama (implemented)
+- ~~Hive: Context assembly LLM~~ — context assembly is a dedicated Claude Code session using Hive CLI as toolkit
+- ~~Hive: Graph quality~~ — `hive health` (score), `hive archive` (bulk), `hive ontology check` (drift detection)
+- ~~Hive UI: Mobile~~ — full-screen toggle between Wall and Focus views, 44px touch targets
+- ~~Hive UI: Self-improvement~~ — `hive feedback` command with auto-tagging
+- ~~Hive: Code dev integration~~ — code-dev skill with checkpointing, playbook at playbooks/code-dev.md
+- ~~Context assembly redesign~~ — two-layer architecture, entity anchors, system-specific playbooks, comprehensive context notes

@@ -1,0 +1,11 @@
+type: github_pr
+fields:
+  name: { type: string, required: true }
+  repo: { type: string, required: true }
+  number: { type: string, required: true }
+  author: { type: ref, target: person }
+  labels: { type: list }
+  domains: { type: list, required: true }
+  tags: { type: list }
+  status: { type: enum, values: [active, done, archived] }
+display: name

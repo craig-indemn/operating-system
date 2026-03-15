@@ -6,6 +6,7 @@ interface ShortcutActions {
   closePane: () => void;
   escapeMaximize: () => void;
   togglePanel: () => void;
+  toggleOverview?: () => void;
 }
 
 export function useKeyboardShortcuts(actions: ShortcutActions): void {
@@ -52,6 +53,13 @@ export function useKeyboardShortcuts(actions: ShortcutActions): void {
       if (meta && e.key === 'b') {
         e.preventDefault();
         actionsRef.current.togglePanel();
+        return;
+      }
+
+      // Ctrl+Shift+O: toggle overview
+      if (e.ctrlKey && e.shiftKey && e.key === 'O') {
+        e.preventDefault();
+        actionsRef.current.toggleOverview?.();
         return;
       }
     }

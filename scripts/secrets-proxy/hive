@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# hive — wrapper for the Hive CLI
+# No secrets needed, just routes to the Python CLI
+# Resolve the script's real location to find cli.py (works in worktrees)
+SCRIPT_DIR="$(cd "$(dirname "$(readlink -f "$0" 2>/dev/null || echo "$0")")" && pwd)"
+OS_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
+exec /Users/home/Repositories/.venv/bin/python3 "$OS_ROOT/systems/hive/cli.py" "$@"

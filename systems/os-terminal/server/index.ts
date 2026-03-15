@@ -5,8 +5,10 @@ import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { WebSocketServer } from 'ws';
 import sessionsRouter from './routes/sessions.js';
+import hiveRouter from './routes/hive.js';
 import { initTerminalHandler } from './terminal.js';
 import { initStateHandler } from './watcher.js';
+import { initHiveHandler } from './hive-watcher.js';
 import { authMiddleware, authenticateWs, tokensMatch } from './auth.js';
 import { startHeartbeat } from './heartbeat.js';
 
@@ -64,6 +66,7 @@ app.get('/api/health', (_req, res) => {
 
 // Auth middleware for protected API routes
 app.use('/api/sessions', authMiddleware, sessionsRouter);
+app.use('/api/hive', authMiddleware, hiveRouter);
 
 // Error-handling middleware — catch unhandled async errors from routes
 app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
@@ -98,11 +101,14 @@ if (existsSync(indexPath)) {
 // A single upgrade handler dispatches based on URL path.
 const terminalWss = new WebSocketServer({ noServer: true, maxPayload: 64 * 1024 });
 const stateWss = new WebSocketServer({ noServer: true, maxPayload: 64 * 1024 });
+const hiveWss = new WebSocketServer({ noServer: true, maxPayload: 256 * 1024 });
 
 initTerminalHandler(terminalWss);
 initStateHandler(stateWss);
+initHiveHandler(hiveWss);
 startHeartbeat(terminalWss);
 startHeartbeat(stateWss);
+startHeartbeat(hiveWss);
 
 server.on('upgrade', (request, socket, head) => {
   const url = new URL(request.url || '', `http://${request.headers.host}`);
@@ -119,6 +125,12 @@ server.on('upgrade', (request, socket, head) => {
       if (!authed) return;
       stateWss.emit('connection', ws, request);
     });
+  } else if (url.pathname === '/ws/hive') {
+    hiveWss.handleUpgrade(request, socket, head, async (ws) => {
+      const authed = await authenticateWs(ws);
+      if (!authed) return;
+      hiveWss.emit('connection', ws, request);
+    });
   } else {
     socket.destroy();
   }
@@ -126,7 +138,7 @@ server.on('upgrade', (request, socket, head) => {
 
 const PORT = parseInt(process.env.PORT || '3101', 10);
 server.listen(PORT, () => {
-  console.log(`OS Terminal server running on port ${PORT}`);
+  console.log(`Hive server running on port ${PORT}`);
 });
 
 // Graceful shutdown — terminate all clients, force exit after 5s
@@ -134,8 +146,10 @@ function shutdown() {
   console.log('Shutting down...');
   for (const ws of terminalWss.clients) ws.terminate();
   for (const ws of stateWss.clients) ws.terminate();
+  for (const ws of hiveWss.clients) ws.terminate();
   terminalWss.close();
   stateWss.close();
+  hiveWss.close();
   server.close(() => {
     console.log('Server closed');
     process.exit(0);
