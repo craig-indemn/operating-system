@@ -1,0 +1,9 @@
+type: platform
+fields:
+  name: { type: string, required: true }
+  platform_type: { type: enum, values: [code, project, communication, publishing, analytics, infrastructure, payment, other] }
+  url: { type: string }
+  domains: { type: list, required: true }
+  tags: { type: list }
+  status: { type: enum, values: [active, inactive, archived] }
+display: name

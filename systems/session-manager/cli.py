@@ -218,12 +218,48 @@ def cmd_create(args):
     claude_cmd = build_claude_command(session_id, model, permission_mode, add_dirs)
     tmux_send(tmux_name, claude_cmd)
 
-    print(f"Session '{name}' created")
+    # Assembly session: store metadata and send first message with playbook + objective
+    is_assembly = getattr(args, "assembly", False)
+    if is_assembly:
+        state["assembly"] = True
+        state["assembly_playbook"] = getattr(args, "playbook", None)
+        state["assembly_objective"] = getattr(args, "objective", None)
+        state["assembly_tile_metadata"] = getattr(args, "tile_metadata", None)
+        atomic_write_json(state_path, state)
+
+        # Build and send the first message with playbook instructions
+        first_msg_parts = []
+        playbook_path = getattr(args, "playbook", None)
+        objective = getattr(args, "objective", None)
+        tile_metadata = getattr(args, "tile_metadata", None)
+
+        if playbook_path and os.path.exists(playbook_path):
+            with open(playbook_path) as f:
+                playbook_content = f.read()
+            first_msg_parts.append(f"Follow this playbook:\n\n{playbook_content}")
+
+        if objective:
+            first_msg_parts.append(f"\nObjective: {objective}")
+        if tile_metadata:
+            first_msg_parts.append(f"\nTile metadata: {tile_metadata}")
+
+        first_msg_parts.append("\nAssemble context and write a context note, then exit.")
+
+        if first_msg_parts:
+            # Wait for Claude to be ready, then send
+            time.sleep(5)
+            combined_msg = "\n".join(first_msg_parts)
+            tmux_send(tmux_name, combined_msg)
+
+    print(f"Session '{name}' created" + (" (assembly)" if is_assembly else ""))
     print(f"  tmux: {tmux_name}")
     print(f"  worktree: {worktree_path}")
     print(f"  session_id: {session_id}")
     print(f"  model: {model}")
     print(f"  permissions: {permission_mode}")
+    if is_assembly:
+        print(f"  playbook: {getattr(args, 'playbook', 'none')}")
+        print(f"  objective: {getattr(args, 'objective', 'none')}")
     if add_dirs:
         print(f"  add_dirs: {', '.join(add_dirs)}")
     print(f"\nAttach: session attach {name}")
@@ -300,6 +336,47 @@ def cmd_status(args):
     print(json.dumps(state, indent=2))
 
 
+def _create_hive_session_summary(name: str, state: dict):
+    """Create a Hive session-summary knowledge record.
+
+    Graceful degradation: if the hive CLI is unavailable, log a warning
+    and continue. This must never block session close.
+    """
+    try:
+        project = state.get("project", name)
+        domains = "indemn"  # Default domain
+
+        # Build summary body from session events
+        events = state.get("events", [])
+        started = state.get("created_at", "unknown")
+        event_lines = [f"- Started: {started}"]
+        for evt in events[-5:]:  # Last 5 events
+            event_lines.append(f"- {evt.get('type', '?')}: {evt.get('at', '?')}")
+
+        body = f"Session '{name}' closed.\n\n" + "\n".join(event_lines)
+
+        result = subprocess.run(
+            [
+                "/Users/home/Repositories/.venv/bin/python3",
+                os.path.join(OS_ROOT, "systems", "hive", "cli.py"),
+                "create", "note", f"{name} session summary",
+                "--tags", "session_summary",
+                "--domains", domains,
+                "--refs", f"project:{project}",
+                "--body", body,
+            ],
+            capture_output=True, text=True, timeout=30,
+        )
+        if result.returncode == 0:
+            print(f"Hive session summary created for '{name}'")
+        else:
+            print(f"Warning: Hive summary failed: {result.stderr[:100]}", file=sys.stderr)
+    except FileNotFoundError:
+        print("Warning: hive CLI not available, skipping session summary", file=sys.stderr)
+    except Exception as e:
+        print(f"Warning: Hive summary failed: {e}", file=sys.stderr)
+
+
 def cmd_close(args):
     """Gracefully close a session with cleanup."""
     name = args.name
@@ -352,6 +429,9 @@ def cmd_close(args):
             state = read_state_file(state_path)
             if state and state.get("status") == "idle":
                 break
+
+    # Create Hive session summary (graceful degradation)
+    _create_hive_session_summary(name, state)
 
     # Send /exit
     print("Sending /exit...")
@@ -442,6 +522,11 @@ def main():
                           help="Permission mode (default: bypassPermissions)")
     p_create.add_argument("--no-worktree", action="store_true",
                           help="Run in OS repo directly without worktree")
+    p_create.add_argument("--assembly", action="store_true",
+                          help="Create a short-lived context assembly session")
+    p_create.add_argument("--playbook", help="Path to context assembly playbook")
+    p_create.add_argument("--objective", help="Objective for context assembly")
+    p_create.add_argument("--tile-metadata", help="Tile metadata JSON for context assembly")
     p_create.set_defaults(func=cmd_create)
 
     # list

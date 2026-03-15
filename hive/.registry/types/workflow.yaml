@@ -1,0 +1,12 @@
+type: workflow
+fields:
+  name: { type: string, required: true }
+  objective: { type: string, required: true }
+  status: { type: enum, values: [active, paused, completed] }
+  current_context: { type: string }
+  sessions: { type: list }
+  project: { type: ref, target: project }
+  artifacts: { type: list }
+  domains: { type: list, required: true }
+  tags: { type: list }
+display: name

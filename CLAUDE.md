@@ -43,6 +43,7 @@ When in doubt, ask. The cost of pausing is zero. The cost of a production incide
 | `/aws` | aws CLI | AWS infrastructure — Secrets Manager, Parameter Store, EC2, IAM, ECS, SSM Session Manager (SSH is disabled — all EC2 access via SSM) |
 | `/1password` | op CLI | Personal secrets — read tokens, store credentials, manage indemn-os vault |
 | `/markdown-pdf` | md-to-pdf | Convert markdown to Indemn-branded PDF — Barlow font, iris headings, styled tables |
+| `/hive` | hive CLI | Unified record management — entities, knowledge, search, refs, sync. The Hive is the awareness layer. |
 
 ### System Skills
 | Skill | What It Does |
@@ -59,6 +60,7 @@ When in doubt, ask. The cost of pausing is zero. The cost of a production incide
 | `/follow-up-check` | Surface overdue action items, unmet commitments, and dropped follow-ups |
 | `/eval-analysis` | Analyze evaluation results — classify failures as agent vs evaluation issues, recommend fixes |
 | `/newsletter` | CTO engineering newsletter (The Buzz) — gather from Linear, Slack, Git, OS projects, extract perspective, draft, render PDF |
+| `/morning` | Daily planning session — calendar, active work, priorities, attention items. Start the day here. |
 
 ### Reference Skills
 | Skill | What It Does |
@@ -95,6 +97,7 @@ Operational infrastructure — persistent processes that don't "finish" like pro
 | `dispatch` | Ralph loop engine that executes beads epics via Agent SDK — fresh Claude Code session per task, separate verification, autonomous until backstop criteria met |
 | `session-manager` | Manages Claude Code sessions in tmux — worktree isolation, event-driven state tracking, context monitoring, lifecycle CLI (`session create/list/attach/send/close/destroy`) |
 | `os-terminal` | Bloomberg-style terminal grid UI — React + xterm.js, WebSocket relay to tmux. Start: `cd systems/os-terminal && source ../../.env && npm start` (port 3101). See `systems/os-terminal/SYSTEM.md` |
+| `hive` | Awareness and connective tissue — two-layer data (entities in MongoDB + knowledge as markdown), 14-command CLI, semantic search, sync adapters. Design doc: @projects/os-development/artifacts/2026-03-08-hive-design.md |
 
 - Systems use skills as their interface (e.g., `/dispatch` invokes the dispatch engine)
 - Systems are infrastructure — they serve any project

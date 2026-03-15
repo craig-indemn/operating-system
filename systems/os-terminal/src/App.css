@@ -1,3 +1,6 @@
+/* Hive UI — Zinc-based design system */
+/* Source: 2026-03-15-hive-ui-visual-design.md */
+
 * {
   margin: 0;
   padding: 0;
@@ -8,28 +11,21 @@ html, body, #root {
   height: 100%;
   width: 100%;
   overflow: hidden;
-  background: #1e1e1e;
-  color: #d4d4d4;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace;
+  background: #09090b; /* bg-base / zinc-950 */
+  color: #f4f4f5; /* text-primary / zinc-100 */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-.app {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Terminal pane chrome */
+/* Terminal pane chrome — updated to zinc palette */
 .terminal-pane {
-  border: 1px solid #333333;
+  border: 1px solid transparent;
   border-radius: 4px;
   overflow: hidden;
-  background: #1e1e1e;
+  background: #09090b;
 }
 
 .terminal-pane.focused {
-  border-color: #007acc;
+  border-color: #3f3f46; /* zinc-700 — subtle highlight */
 }
 
 .terminal-header {
@@ -37,7 +33,7 @@ html, body, #root {
   justify-content: space-between;
   align-items: center;
   padding: 4px 8px;
-  background: #1e1e1e;
+  background: #18181b; /* bg-surface / zinc-900 */
   cursor: grab;
   user-select: none;
   height: 28px;
@@ -65,18 +61,20 @@ html, body, #root {
 
 .session-name {
   font-weight: 600;
-  color: #cccccc;
+  color: #f4f4f5;
+  font-size: 13px;
 }
 
 .context-pct {
-  color: #858585;
+  color: #71717a; /* text-muted */
   font-size: 11px;
+  font-family: 'Geist Mono', monospace;
 }
 
 .pane-btn {
   background: none;
-  border: 1px solid #444444;
-  color: #858585;
+  border: 1px solid #27272a; /* border / zinc-800 */
+  color: #71717a;
   cursor: pointer;
   padding: 0 6px;
   border-radius: 2px;
@@ -85,8 +83,8 @@ html, body, #root {
 }
 
 .pane-btn:hover {
-  background: #333333;
-  color: #d4d4d4;
+  background: #27272a;
+  color: #f4f4f5;
 }
 
 .pane-btn.close-btn:hover {
@@ -104,231 +102,53 @@ html, body, #root {
   overflow: hidden !important;
 }
 
-/* Top bar */
-.top-bar {
+/* Terminal container */
+.terminal-container {
+  background: #09090b;
+  position: relative;
+  padding: 4px 8px;
+}
+
+.reconnect-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(9, 9, 11, 0.7);
   display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 4px 12px;
-  background: #1e1e1e;
-  border-bottom: 1px solid #333333;
-  height: 32px;
-  min-height: 32px;
-}
-
-.toggle-panel {
-  background: none;
-  border: none;
-  color: #858585;
-  cursor: pointer;
-  font-size: 14px;
-  padding: 2px 6px;
-}
-
-.toggle-panel:hover {
-  color: #d4d4d4;
-}
-
-.app-title {
-  font-size: 13px;
-  font-weight: 700;
-  color: #007acc;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.session-count {
-  font-size: 12px;
-  color: #858585;
-  margin-left: auto;
-}
-
-.logout-btn {
-  background: none;
-  border: none;
-  color: #858585;
-  cursor: pointer;
-  font-size: 12px;
-  padding: 2px 8px;
-}
-
-.logout-btn:hover {
-  color: #d4d4d4;
-}
-
-/* Main content layout */
-.main-content {
-  display: flex;
-  flex: 1;
-  overflow: hidden;
-}
-
-.grid-area {
-  flex: 1;
-  overflow: hidden;
-}
-
-/* Grid overrides */
-.terminal-grid {
-  height: 100%;
-}
-
-/* Session panel */
-.session-panel {
-  width: 220px;
-  min-width: 220px;
-  background: #1e1e1e;
-  border-right: 1px solid #333333;
-  overflow-y: auto;
-  padding: 8px;
-}
-
-/* Hide scrollbar on session panel */
-.session-panel::-webkit-scrollbar {
-  width: 4px;
-}
-.session-panel::-webkit-scrollbar-track {
-  background: transparent;
-}
-.session-panel::-webkit-scrollbar-thumb {
-  background: #333333;
-  border-radius: 2px;
-}
-
-.panel-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 4px 4px 8px;
-}
-
-.panel-header h2 {
-  font-size: 14px;
-  font-weight: 600;
-  color: #cccccc;
-}
-
-.create-btn {
-  background: #333333;
-  border: 1px solid #444444;
-  color: #858585;
-  cursor: pointer;
-  width: 24px;
-  height: 24px;
-  border-radius: 4px;
-  font-size: 16px;
-  line-height: 1;
-  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-.create-btn:hover {
-  background: #444444;
-  color: #d4d4d4;
-}
-
-.create-menu-wrapper {
-  position: relative;
-}
-
-.create-menu {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  margin-top: 4px;
-  background: #2a2a2a;
-  border: 1px solid #444444;
-  border-radius: 4px;
-  z-index: 200;
-  min-width: 140px;
-  overflow: hidden;
-}
-
-.create-menu-item {
-  display: block;
-  width: 100%;
-  background: none;
-  border: none;
-  color: #cccccc;
-  font-size: 13px;
-  font-family: inherit;
-  padding: 8px 12px;
-  text-align: left;
-  cursor: pointer;
-}
-
-.create-menu-item:hover {
-  background: #333333;
-  color: #ffffff;
-}
-
-.type-indicator {
-  font-size: 10px;
-  font-weight: 700;
-  font-family: Menlo, Monaco, 'Courier New', monospace;
-  flex-shrink: 0;
-}
-
-.type-indicator.shell {
-  color: #4ade80;
-}
-
-.panel-section h3 {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #858585;
-  padding: 8px 4px 4px;
-}
-
-.session-card {
-  padding: 6px 8px;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-bottom: 2px;
-}
-
-.session-card:hover {
-  background: #2a2a2a;
-}
-
-.session-card.ended {
-  opacity: 0.5;
-}
-
-.session-card-header {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.session-card-name {
-  font-size: 13px;
-  font-weight: 500;
-  color: #cccccc;
-}
-
-.session-card-meta {
-  display: flex;
+  z-index: 10;
   gap: 8px;
+}
+
+.reconnect-overlay span {
+  color: #fbbf24;
+  font-size: 13px;
+  font-family: 'Geist Mono', monospace;
+}
+
+.reconnect-overlay .reconnect-hint {
+  color: #71717a;
   font-size: 11px;
-  color: #858585;
-  padding-left: 14px;
-  margin-top: 2px;
 }
 
-.session-panel.closed {
-  display: none;
+/* Status dot pulse animation */
+@keyframes status-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
 }
 
-/* Login screen */
+.status-dot.reconnecting {
+  animation: status-pulse 1.5s ease-in-out infinite;
+}
+
+/* Login screen — updated for zinc */
 .login-screen {
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #1e1e1e;
+  background: #09090b;
 }
 
 .login-form {
@@ -342,25 +162,26 @@ html, body, #root {
 .login-title {
   font-size: 18px;
   font-weight: 700;
-  color: #007acc;
+  color: #71717a;
   text-transform: uppercase;
   letter-spacing: 2px;
   text-align: center;
+  font-family: 'Inter', sans-serif;
 }
 
 .login-input {
-  background: #2a2a2a;
-  border: 1px solid #444444;
+  background: #18181b;
+  border: 1px solid #27272a;
   border-radius: 4px;
-  color: #d4d4d4;
+  color: #f4f4f5;
   font-size: 14px;
   padding: 10px 12px;
   outline: none;
-  font-family: inherit;
+  font-family: 'Inter', sans-serif;
 }
 
 .login-input:focus {
-  border-color: #007acc;
+  border-color: #a78bfa; /* lilac accent */
 }
 
 .login-input:disabled {
@@ -368,18 +189,18 @@ html, body, #root {
 }
 
 .login-btn {
-  background: #007acc;
+  background: #a78bfa;
   border: none;
   border-radius: 4px;
   color: #ffffff;
   font-size: 14px;
   padding: 10px;
   cursor: pointer;
-  font-family: inherit;
+  font-family: 'Inter', sans-serif;
 }
 
 .login-btn:hover {
-  background: #0098ff;
+  background: #8b5cf6;
 }
 
 .login-btn:disabled {
@@ -440,8 +261,8 @@ html, body, #root {
   align-items: stretch;
   height: 48px;
   min-height: 48px;
-  background: #1e1e1e;
-  border-top: 1px solid #333333;
+  background: #09090b;
+  border-top: 1px solid #27272a;
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
@@ -462,9 +283,9 @@ html, body, #root {
   max-width: 160px;
   border: none;
   background: none;
-  color: #858585;
+  color: #71717a;
   font-size: 13px;
-  font-family: inherit;
+  font-family: 'Inter', sans-serif;
   cursor: pointer;
   white-space: nowrap;
   border-bottom: 2px solid transparent;
@@ -472,8 +293,8 @@ html, body, #root {
 }
 
 .tab-item.active {
-  color: #d4d4d4;
-  border-bottom-color: #007acc;
+  color: #f4f4f5;
+  border-bottom-color: #a78bfa;
 }
 
 .tab-item-name {
@@ -481,67 +302,22 @@ html, body, #root {
   text-overflow: ellipsis;
 }
 
-/* ===== Responsive: tablet/mobile (≤1024px) ===== */
+/* Custom scrollbar for Wall */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 2px;
+}
+
+/* ===== Responsive ===== */
+
+/* Tablet (768-1024px): Wall becomes slide-out overlay */
 @media (max-width: 1024px) {
-  /* Session panel becomes slide-out overlay */
-  .session-panel {
-    display: block;
-    position: fixed;
-    left: 0;
-    top: 44px;
-    bottom: 0;
-    z-index: 100;
-    width: 260px;
-    transform: translateX(-100%);
-    transition: transform 0.2s ease;
-    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.5);
-  }
-
-  .session-panel.closed {
-    display: block;
-    transform: translateX(-100%);
-  }
-
-  .session-panel.open {
-    transform: translateX(0);
-  }
-
-  .grid-area {
-    position: relative;
-    width: 100%;
-  }
-
-  /* Taller top bar for touch */
-  .top-bar {
-    height: 44px;
-    min-height: 44px;
-    padding: 4px 8px;
-  }
-
-  .toggle-panel {
-    min-width: 44px;
-    min-height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-  }
-
-  .app-title {
-    font-size: 15px;
-  }
-
-  .session-count {
-    font-size: 13px;
-  }
-
-  .logout-btn {
-    min-height: 44px;
-    font-size: 14px;
-    padding: 2px 12px;
-  }
-
-  /* Touch-friendly pane header */
   .terminal-header {
     height: 44px;
     min-height: 44px;
@@ -562,21 +338,8 @@ html, body, #root {
     padding: 0;
   }
 
-  /* Hide minimize/maximize in single-pane mode */
   .pane-btn.minimize-btn,
   .pane-btn.maximize-btn {
     display: none;
-  }
-
-  /* Touch-friendly session cards */
-  .session-card {
-    padding: 10px 12px;
-    min-height: 44px;
-  }
-
-  .create-btn {
-    width: 44px;
-    height: 44px;
-    font-size: 22px;
   }
 }

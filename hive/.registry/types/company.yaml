@@ -1,0 +1,10 @@
+type: company
+fields:
+  name: { type: string, required: true }
+  industry: { type: string }
+  relationship: { type: enum, values: [own, client, partner, prospect, vendor, other] }
+  url: { type: string }
+  domains: { type: list, required: true }
+  tags: { type: list }
+  status: { type: enum, values: [active, inactive, archived] }
+display: name

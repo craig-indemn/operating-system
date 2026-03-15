@@ -16,3 +16,6 @@ __pycache__/
 
 # Logs
 .logs/
+
+# Hive synced cache (rebuilt via hive sync)
+hive/.synced/

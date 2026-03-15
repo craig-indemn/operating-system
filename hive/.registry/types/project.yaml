@@ -1,0 +1,9 @@
+type: project
+fields:
+  name: { type: string, required: true }
+  description: { type: string }
+  team: { type: ref_list, target: person }
+  domains: { type: list, required: true }
+  tags: { type: list }
+  status: { type: enum, values: [active, paused, completed, archived] }
+display: name

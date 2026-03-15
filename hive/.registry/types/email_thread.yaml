@@ -1,0 +1,11 @@
+type: email_thread
+fields:
+  name: { type: string, required: true }
+  from_email: { type: string }
+  date: { type: string }
+  snippet: { type: string }
+  labels: { type: list }
+  domains: { type: list, required: true }
+  tags: { type: list }
+  status: { type: enum, values: [active, done, archived] }
+display: name

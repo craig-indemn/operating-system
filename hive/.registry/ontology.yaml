@@ -1,0 +1,50 @@
+tags:
+  # Knowledge-kind tags (primary differentiators — disjoint from entity types)
+  note: { description: "Quick thought, observation, idea — the default", category: kind }
+  decision: { description: "A choice made with reasoning", category: kind }
+  design: { description: "Spec, architecture document", category: kind }
+  research: { description: "External information brought in", category: kind }
+  session_summary: { description: "Created at session close", category: kind }
+  feedback: { description: "Self-improvement signal", category: kind }
+  context_assembly: { description: "Context note written by assembly session", category: kind }
+
+  # Subcategory tags (additional classification)
+  brainstorming: { description: "Brainstorming output", category: creative }
+  architecture: { description: "System architecture discussion", category: technical }
+  ui: { description: "User interface design", category: technical }
+  voice: { description: "Voice/audio related", category: domain }
+  scoring: { description: "Scoring/evaluation related", category: domain }
+
+  # Content system tags
+  content: { description: "Content system record", category: system }
+  extraction: { description: "Content extraction output", category: system }
+  draft: { description: "Content draft version", category: system }
+  blog: { description: "Blog post content", category: format }
+  newsletter: { description: "Newsletter content", category: format }
+  video: { description: "Video content", category: format }
+  linkedin: { description: "LinkedIn content", category: platform_tag }
+
+  # Hive-specific tags
+  hive-improvement: { description: "Hive self-improvement feedback", category: system }
+
+domains:
+  indemn:
+    description: "Indemn — AI agent platform for insurance"
+  career-catalyst:
+    description: "Career Catalyst — side business and personal brand"
+  personal:
+    description: "Personal projects and life management"
+
+statuses:
+  - backlog
+  - ideating
+  - active
+  - in-review
+  - done
+  - archived
+
+priorities:
+  - low
+  - medium
+  - high
+  - critical

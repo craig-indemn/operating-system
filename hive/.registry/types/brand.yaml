@@ -1,0 +1,9 @@
+type: brand
+fields:
+  name: { type: string, required: true }
+  voice: { type: string }
+  platforms: { type: list }
+  domains: { type: list, required: true }
+  tags: { type: list }
+  status: { type: enum, values: [active, inactive, archived] }
+display: name

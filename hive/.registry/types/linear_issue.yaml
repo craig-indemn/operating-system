@@ -1,0 +1,13 @@
+type: linear_issue
+fields:
+  name: { type: string, required: true }
+  key: { type: string, required: true }
+  description: { type: string }
+  assignee: { type: ref, target: person }
+  team: { type: string }
+  priority: { type: string }
+  labels: { type: list }
+  domains: { type: list, required: true }
+  tags: { type: list }
+  status: { type: enum, values: [active, done, archived] }
+display: name

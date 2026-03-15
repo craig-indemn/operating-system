@@ -1,0 +1,11 @@
+type: slack_message
+fields:
+  name: { type: string, required: true }
+  channel: { type: string, required: true }
+  from_user: { type: ref, target: person }
+  thread_id: { type: string }
+  text: { type: string }
+  domains: { type: list, required: true }
+  tags: { type: list }
+  status: { type: enum, values: [active, done, archived] }
+display: name
