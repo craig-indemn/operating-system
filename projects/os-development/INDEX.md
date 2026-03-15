@@ -3,7 +3,9 @@
 Development of the operating system itself — the skills, systems, and infrastructure that make Indemn's connected intelligence layer work. Covers the dispatch system, systems framework, skill improvements, and meta-level architecture of the OS.
 
 ## Status
-**Session 2026-03-14-b (complete)**: Deep dive on context assembly and data architecture. Major shifts: (1) Context assembly is an LLM agent using Hive CLI as toolkit, not a fixed algorithm. (2) Two-layer data model — entities in MongoDB only (no YAML files), knowledge as git-tracked markdown files differentiated by tags (not separate type schemas). (3) Workflow entities stored in Hive but lifecycle owned by systems (content, code dev, etc.). (4) 14-command unified CLI surface with transparent entity/knowledge routing. (5) Reconciled session initialization — dedicated context assembly session writes comprehensive context note, working session starts hydrated. (6) System-specific context playbooks — each system's skill defines what context to gather. Resolved all open gaps: context window budgeting (not a problem), entity aliasing (LLM handles it), cross-type queries (LLM + CLI), mobile (deferred). **Full artifact at `artifacts/2026-03-14-hive-context-assembly-redesign.md`. Next: rewrite outdated design doc sections, design content system and code development system context playbooks, then implementation plan.**
+**Session 2026-03-15-a (complete)**: Completed all three tasks from the 2026-03-14-b handoff. (1) **Rewrote the design doc** — 816 insertions, 492 deletions across 10 outdated sections: Principle 1, Architecture Overview, Data Model, Registry, Storage Architecture, Context Assembly, Hive CLI, Session Initialization, Open Decisions, Implementation Phases. All now reflect the two-layer architecture, unified CLI, and context assembly agent model. (2) **Designed content system Hive integration** — cs.py stays as source of truth, workflow entity maps to idea level, integration lives in cs.py, full transition map (idea created through published), context assembly playbook searches entire Hive for topic + codebase + pipeline state + brand voice, context note includes system instructions to route session into content pipeline. (3) **Designed code development system Hive integration** — composes existing OS tools with Hive workflow entity as glue (no separate state store), systematic checkpointing via skills at decision points + session close, full lifecycle (design → review → plan → execute → code-review → test → deploy), context assembly playbook preserves full reasoning trail across 20+ sessions to solve "losing the plot" problem. **Design is now complete. Next: create the implementation plan.**
+
+**Session 2026-03-14-b (complete)**: Deep dive on context assembly and data architecture. Major shifts: (1) Context assembly is an LLM agent using Hive CLI as toolkit, not a fixed algorithm. (2) Two-layer data model — entities in MongoDB only (no YAML files), knowledge as git-tracked markdown files differentiated by tags (not separate type schemas). (3) Workflow entities stored in Hive but lifecycle owned by systems (content, code dev, etc.). (4) 14-command unified CLI surface with transparent entity/knowledge routing. (5) Reconciled session initialization — dedicated context assembly session writes comprehensive context note, working session starts hydrated. (6) System-specific context playbooks — each system's skill defines what context to gather. Resolved all open gaps: context window budgeting (not a problem), entity aliasing (LLM handles it), cross-type queries (LLM + CLI), mobile (deferred). **Full artifact at `artifacts/2026-03-14-hive-context-assembly-redesign.md`.**
 
 **Session 2026-03-14-a (complete)**: Major Hive architecture evolution — replaced "everything is a note" with **typed record system** (YAML-defined types, entity schemas, typed relationships). Added self-improvement via `hive feedback` command, code dev system integration framework, bidirectional external system sync framework (moved from Phase 6 to Phase 3), user-driven Wall arrangement. Stress-tested: git scalability (synced records gitignored), Obsidian dropped (Hive UI replaces), concurrent access noted, quick capture flow (always note first, reclassify async).
 
@@ -16,10 +18,7 @@ Development of the operating system itself — the skills, systems, and infrastr
 **Onboarding branch** — is 40+ commits behind main. DO NOT rebase while parallel sessions active.
 
 **Next session should:**
-1. **Rewrite the outdated design doc sections** — the artifact maps exactly which sections need rewriting (Data Model, Storage, MongoDB, Context Assembly, CLI, Session Initialization, Implementation Phases). The new artifact has the source material for all rewrites.
-2. **Design the content system's Hive integration and context playbook** — how the content system creates/updates workflow entities, what awareness records it produces, what context the assembly agent gathers for content sessions.
-3. **Design the code development system's Hive integration and context playbook** — same as above for code work. This is THE system Craig uses most.
-4. **Once design is finalized, create the implementation plan** — phases restructured for the new two-layer architecture.
+1. **Create the implementation plan** — the design is complete. All sections of the design doc are current. Content system and code development system integrations are fully designed. Build the phased implementation plan with tasks, dependencies, and acceptance criteria.
 
 ## External Resources
 | Resource | Type | Link |
@@ -162,6 +161,15 @@ Development of the operating system itself — the skills, systems, and infrastr
 - 2026-03-14: Obsidian compatibility dropped — Hive UI replaces the need
 - 2026-03-14: Quick capture always creates note first, reclassifies async — capture speed > classification accuracy
 - 2026-03-14: Code development system is separate design effort — Hive defines generic contract only
+- 2026-03-15: Content system: cs.py stays as source of truth for content lifecycle, Hive adds cross-system context
+- 2026-03-15: Content system: Hive workflow entity maps to idea level (not piece level) — one workflow per idea, pieces are awareness records
+- 2026-03-15: Content system: Hive integration lives in cs.py itself — system CLI owns its Hive updates, graceful degradation if Hive unavailable
+- 2026-03-15: Content system: every pipeline transition creates a Hive knowledge record (including each draft version and feedback round — not too noisy, context assembly handles relevance)
+- 2026-03-15: Content system: context assembly playbook searches entire Hive for topic (the source material), not just content pipeline state
+- 2026-03-15: Code dev system: composes existing OS tools, Hive workflow entity is the glue — no separate state store
+- 2026-03-15: Code dev system: checkpoints at decision points during sessions + session summary at close (both levels)
+- 2026-03-15: Code dev system: skills that drive the work own the checkpointing — brainstorming skill creates decisions, debugging skill creates root cause analyses, etc.
+- 2026-03-15: Code dev system: context note includes full design decisions with rationale (not compressed summaries) — this is what prevents "losing the plot" across 20+ sessions
 
 ## Open Questions
 - Which OS skills should be symlinked to `~/.claude/skills/` for global access in dispatched sessions?

@@ -24,7 +24,7 @@ The Hive is the awareness and connective tissue layer for the operating system. 
 
 ## Principles
 
-1. **Everything is a typed record.** Every piece of information has a type with a defined schema. Types range from highly structured (person, company) to flexible (note, idea). New types are added via YAML configuration, not code changes.
+1. **Two layers: entities and knowledge.** Structured entities (person, company, project, workflow) live in MongoDB with schemas defined in the type registry. Knowledge records (decisions, designs, research, session summaries, notes) are git-tracked markdown files with YAML frontmatter, differentiated by tags — not separate type schemas. Entities are the deterministic anchors for context assembly; knowledge is discovered through traversal and search from those anchors.
 2. **The Hive is connective tissue, not a replacement.** Systems keep their own architectures. The Hive connects and indexes them.
 3. **Context is assembled, not curated.** An LLM produces tailored session initialization instructions from the graph. No manual INDEX.md maintenance.
 4. **The registry is the contract.** A controlled vocabulary (types, tags, domains) ensures consistency across all sessions and systems. It evolves deliberately.
@@ -39,31 +39,46 @@ The Hive is the awareness and connective tissue layer for the operating system. 
 ```
 You (director)
     ↓
-Claude Code Session
+Hive UI (Wall + Focus Area)
+    ↓ spawns
+Context Assembly Session (short-lived — gathers context, writes note, terminates)
+    ↓ then
+Working Session (Claude Code — starts hydrated with context note)
+    ↓ uses
+System Skills (/content, /dispatch, /code-dev, etc.)
     ↓
-System Skills (/content, /dispatch, /market, /devops, etc.)
+System CLIs (content, dispatch, etc.)
     ↓
-System CLIs (content, dispatch, market-cli, etc.)
+Hive CLI (hive) — unified record CRUD, search, context queries
     ↓
-Hive CLI (hive) — low-level note CRUD, search, context assembly
-    ↓
-Hive Data Layer (markdown vault + local MongoDB)
+Hive Data Layer (two layers: entities in MongoDB + knowledge as git-tracked markdown)
 ```
 
-**Three layers:**
-- **Hive Data Layer** — typed records in a structured vault (YAML for entities, markdown for knowledge) + local MongoDB index. Files are source of truth. MongoDB is derived.
-- **Hive CLI** — Python tool for typed record CRUD, search, context assembly, sync, type/ontology management. Type-aware commands: `hive create <type>`, `hive <type> list`.
-- **System Integration** — each system reports to the Hive through its own CLI. Sync adapters pull/push external system data. The `/hive` skill handles native operations.
+**Four layers:**
+- **Hive Data Layer** — two-layer architecture. Entities (person, company, project, workflow) are source of truth in local MongoDB — structured, schema-validated, never files. Knowledge records (decisions, designs, research, session summaries, notes) are git-tracked markdown files with YAML frontmatter — MongoDB indexes them (derived) for search. Embeddings stored in MongoDB for semantic search.
+- **Hive CLI** — Python tool with 14 unified commands. Entity/knowledge distinction is transparent — the CLI routes based on whether the argument is a registered entity type or a knowledge tag. JSON when piped, text when interactive.
+- **Context Assembly** — a dedicated, short-lived Claude Code session that uses the Hive CLI as its toolkit. Reads user intent, queries both layers, explores codebase if relevant, writes a comprehensive context note. Each system defines its own context playbook in its skill.
+- **System Integration** — each system reports to the Hive through its own CLI. Systems own workflow lifecycle (creation, updates, completion). Sync adapters pull/push external system data. The Hive stores and indexes; systems manage domain logic.
 
 ---
 
-## Data Model: Typed Records
+## Data Model: Two-Layer Architecture
 
-Every object in the Hive is a **typed record** with a schema defined in the type registry. Types range from highly structured (person, company, meeting) to flexible (note, idea). The type determines what fields exist, what relationships are available, and where the record lives on disk.
+The Hive uses a two-layer data architecture. **Entities** are structured records in MongoDB — the deterministic entry points for context assembly. **Knowledge** is prose in git-tracked markdown files — discovered through traversal and search from entity anchors.
 
-### The Type System
+### Why Two Layers
 
-Types are defined as YAML files in `.registry/types/`. Adding a new type is adding a YAML file — no code changes.
+The previous design (session 2026-03-14-a) defined 14+ types with YAML schema definitions, all stored as files with MongoDB as a derived index. This created problems:
+
+1. **File↔database sync complexity** — every entity existed in two places (YAML file + MongoDB). Keeping them in sync is an entire class of bugs.
+2. **Entity files nobody would open** — `people/craig.yaml` is structured data. You'd never open it in a text editor. You'd use the CLI or UI. So why is it a file?
+3. **Knowledge type proliferation** — does a `decision` really need a different type schema from a `note` tagged `decision`? The context assembly agent finds decisions through semantic search and tag filtering, not through type-specific queries.
+
+**The principle:** If the context assembly agent needs to find it by structured query as a starting point → entity type with schema in MongoDB. If it's discovered through traversal or search from those starting points → knowledge record (markdown note with tags and refs).
+
+### Layer 1: Entities (MongoDB Only)
+
+Entities are structured records that live exclusively in MongoDB. They have schemas defined in `.registry/types/`. They are the deterministic entry points for context assembly — things the agent can query by name, structured fields, and typed relationships.
 
 ```yaml
 # hive/.registry/types/person.yaml
@@ -77,80 +92,105 @@ fields:
   tags: { type: list }
   status: { type: enum, values: [active, inactive, archived] }
 display: name
-directory: people
-format: yaml    # structured data, no prose needed
 ```
 
 ```yaml
-# hive/.registry/types/design_document.yaml
-type: design_document
+# hive/.registry/types/workflow.yaml
+type: workflow
 fields:
-  title: { type: string, required: true }
+  name: { type: string, required: true }
+  objective: { type: string, required: true }
+  status: { type: enum, values: [active, paused, completed] }
+  current_context: { type: string }
+  sessions: { type: list }
   project: { type: ref, target: project }
-  status: { type: enum, values: [draft, in_review, approved] }
+  artifacts: { type: list }
   domains: { type: list, required: true }
   tags: { type: list }
-  content: { type: markdown }
-display: title
-directory: design_documents
-format: markdown    # rich text, has prose body
+display: name
 ```
 
-```yaml
-# hive/.registry/types/note.yaml
-type: note
-fields:
-  title: { type: string, required: true }
-  tags: { type: list, required: true }
-  domains: { type: list, required: true }
-  refs: { type: refmap }    # typed references to entities
-  content: { type: markdown }
-display: title
-directory: notes
-format: markdown
+**Entity properties:**
+- Created and queried via the Hive CLI (`hive create person`, `hive get craig`)
+- Stored only in MongoDB (not as files)
+- Not git-tracked (backed up via MongoDB dumps)
+- Connected to each other via typed references (person → company, workflow → project)
+- Schema-validated on create/update
+
+#### Core Entity Types
+
+| Type | Key Fields | Purpose |
+|------|-----------|---------|
+| `person` | name, email, role, company→Company | People in Craig's world |
+| `company` | name, industry, relationship | Organizations |
+| `product` | name, company→Company, status | Things being built |
+| `project` | name, status, domain, team→Person[] | Work areas |
+| `workflow` | objective, status, current_context, sessions, project→Project | Long-running work state (replaces INDEX.md) |
+| `meeting` | date, summary, attendees→Person[], company→Company | Meetings |
+| `brand` | name, voice, platforms | Content brands |
+| `platform` | name, type, url | Publishing/service platforms |
+| `channel` | name, platform→Platform, brand→Brand | Content channels |
+
+#### Sync-Added Entity Types
+
+| Type | Added By | Key Fields |
+|------|---------|-----------|
+| `linear_issue` | Linear sync | key, title, status, assignee→Person, team |
+| `calendar_event` | Calendar sync | start, end, location, attendees→Person[] |
+| `email_thread` | Email sync | subject, from→Person, status |
+| `slack_message` | Slack sync | channel, from→Person, thread_id |
+| `github_pr` | GitHub sync | repo, number, status, author→Person |
+
+### Layer 2: Knowledge (Markdown Files, Git-Tracked)
+
+Knowledge records are prose with YAML frontmatter. They live as markdown files in the `hive/` directory, version-controlled by Git. MongoDB indexes them (derived) for semantic search and structured queries.
+
+Knowledge records are differentiated by **tags, not separate type schemas:**
+
+| Tag | Convention Fields | When Used |
+|-----|------------------|----------|
+| `note` | title, tags, domains, refs | Quick thoughts, observations, ideas — the catch-all |
+| `decision` | rationale, alternatives | A choice was made with reasoning |
+| `design` | status | Specs, architecture docs |
+| `research` | sources, urls | External information brought in |
+| `session_summary` | accomplished, next_steps | Created at session close |
+| `feedback` | (auto-linked to session context) | Self-improvement signals |
+| `context_assembly` | (auto-linked to workflow) | Context notes written by assembly sessions |
+
+#### Knowledge Record Format
+
+All knowledge records use the same structure regardless of tag:
+
+```markdown
+---
+title: "Use two-layer architecture instead of 14+ types"
+tags: [decision, architecture]
+domains: [indemn]
+refs:
+  project: hive
+  people: [craig]
+status: active
+created: 2026-03-14
+rationale: "Structured entities with typed references enable deterministic traversal..."
+alternatives:
+  - "Keep flat notes with wiki-links only"
+  - "Full type system for all records"
+---
+
+# Use two-layer architecture instead of 14+ types
+
+The Hive needs structured entry points for context assembly to work reliably...
+
+This builds on [[2026-03-08-hive-vision]] and addresses the retrieval
+challenges identified in [[2026-03-09-context-assembly-gaps]].
 ```
 
-**Key properties of the type system:**
-- `format: yaml` — structured entities, no prose body. Stored as `.yaml` files.
-- `format: markdown` — knowledge records with rich text. Stored as `.md` files with YAML frontmatter.
-- `ref` fields — typed relationships to other records (person → company, task → project)
-- `refmap` — flexible typed references: `refs: { project: hive, people: [craig, cam] }`
-- `required: true` — enforced by CLI on create/update
-- `directory` — where files of this type live in the vault
-
-### Initial Entity Types (Structured)
-
-| Type | Directory | Key Fields | Format |
-|------|-----------|-----------|--------|
-| `person` | `people/` | name, email, role, company→Company | yaml |
-| `company` | `companies/` | name, industry, relationship | yaml |
-| `product` | `products/` | name, company→Company, status | yaml |
-| `project` | `projects/` | name, status, domain, team→Person[] | yaml |
-| `meeting` | `meetings/` | date, summary, attendees→Person[], company→Company | yaml |
-| `brand` | `brands/` | name, voice, platforms | yaml |
-| `platform` | `platforms/` | name, type, url | yaml |
-| `channel` | `channels/` | name, platform→Platform, brand→Brand | yaml |
-
-### System-Added Entity Types (via sync adapters)
-
-| Type | Directory | Added By | Key Fields |
-|------|-----------|---------|-----------|
-| `linear_issue` | `linear/` | Linear sync | key, title, status, assignee→Person, team |
-| `calendar_event` | `calendar/` | Calendar sync | start, end, location, attendees→Person[] |
-| `email_thread` | `email/` | Email sync | subject, from→Person, status |
-| `slack_message` | `slack/` | Slack sync | channel, from→Person, thread_id |
-| `github_pr` | `github/` | GitHub sync | repo, number, status, author→Person |
-
-### Knowledge Types (Flexible)
-
-| Type | Directory | Key Fields | When Used |
-|------|-----------|-----------|----------|
-| `note` | `notes/` | title, tags, domains, refs | Quick thoughts, observations, fragments — the catch-all |
-| `decision` | `decisions/` | title, rationale, alternatives, project→Project | A choice was made with reasoning |
-| `design_document` | `design_documents/` | title, project→Project, status | Specs, designs, architecture docs |
-| `implementation_plan` | `implementation_plans/` | title, project→Project, status, tasks | Breakdown of work to execute |
-| `research` | `research/` | title, sources, urls | External information brought in |
-| `session_summary` | `session_summaries/` | session_id, project→Project, accomplished, decisions | Created at session close |
+**Notes on knowledge records:**
+- `tags` determine the "kind" — no schema validation, just convention
+- `refs` connect to entities in MongoDB (resolved by the CLI/agent)
+- `[[wiki-links]]` connect to other knowledge records
+- Additional frontmatter fields are convention-based per tag (decisions have `rationale`, session summaries have `accomplished`)
+- No schema enforcement on knowledge — the frontmatter is flexible
 
 ### Awareness Records
 
@@ -161,100 +201,121 @@ Some records point to artifacts that live in external systems (code repos, conte
 | `system:` | Which system owns the external artifact (content, dispatch, github, linear) |
 | `ref:` | Pointer to where the actual artifact lives (file path, URL, commit hash) |
 
-Any type can be an awareness record by having `system:` and `ref:` fields. A `linear_issue` always has these (it's synced from Linear). A `design_document` usually doesn't (it lives natively in the Hive). A `session_summary` has `ref:` pointing to the session transcript.
+Any record can be an awareness record by having `system:` and `ref:` fields. Synced entities always have these. Knowledge records can optionally have them to point to external artifacts.
 
 ### Record Identity
 
-- **ID** is the filename without extension (`.yaml` or `.md`)
-- **Entity records:** descriptive slug (e.g., `craig`, `indemn`, `voice-agent`)
+- **Entity records:** descriptive slug (e.g., `craig`, `indemn`, `voice-agent`, `voice-scoring-ui`)
 - **Knowledge records:** `YYYY-MM-DD-descriptive-slug` (e.g., `2026-03-08-hive-vision`)
 - **Synced records:** `source-external-id` (e.g., `AI-123`, `PR-456`)
 - Collisions on the same day: append `-2`, `-3`
 - Claude Code generates slugs from content
 
-### Typed References
+### Typed References (Entity Layer)
 
-Records reference other records via typed `ref` fields. These are first-class relationships, not generic links:
+Entities reference other entities via typed `ref` fields. These are first-class relationships, not generic links:
 
-```yaml
-# In a meeting record
-attendees:
-  - craig          # → people/craig.yaml
-  - cam            # → people/cam.yaml
-company: indemn    # → companies/indemn.yaml
+```json
+// In a meeting entity (MongoDB)
+{
+  "type": "meeting",
+  "attendees": ["craig", "cam"],    // → person entities
+  "company": "indemn"               // → company entity
+}
 ```
 
-```yaml
-# In a design document (frontmatter)
-project: hive           # → projects/hive.yaml
-refs:
-  people: [craig]       # → people/craig.yaml
-  product: operating-system  # → products/operating-system.yaml
+```json
+// In a workflow entity (MongoDB)
+{
+  "type": "workflow",
+  "project": "platform-dev",        // → project entity
+  "refs_out": {
+    "people": ["craig"],
+    "product": ["voice-agent"]
+  }
+}
 ```
 
-**Relationships are navigable in both directions.** If a meeting references Craig as an attendee, querying Craig's profile can show all his meetings. The MongoDB index handles reverse lookups.
+**Relationships are navigable in both directions.** If a meeting references Craig as an attendee, querying Craig's profile shows all his meetings. MongoDB indexes handle reverse lookups.
 
 ### Links (Knowledge Layer)
 
-In addition to typed references, knowledge records support Zettelkasten-style links for connecting ideas:
+Knowledge records reference entities via `refs:` in frontmatter and connect to other knowledge via wiki-links:
 
-**Inline wiki-links** (in markdown content):
 ```markdown
+---
+refs:
+  project: hive
+  people: [craig]
+---
 This builds on [[2026-02-19-dispatch-system-design]] and addresses
 the scoring gap from [[meeting-2026-03-01-oconnor-voice]].
 ```
 
 **Three kinds of connections (all automatic):**
-1. **Typed references** — explicit relationships defined by the type schema (person → company)
-2. **Wiki-links** — inline connections between knowledge records
+1. **Typed references** — knowledge refs entities (frontmatter `refs:` field)
+2. **Wiki-links** — knowledge links to knowledge (inline `[[...]]`)
 3. **Semantic links** — content similarity discovered via embeddings
 
 The graph grows as a byproduct of working. Manual linking is rarely needed.
+
+### The Workflow Entity
+
+Long-running work (building a feature, writing a series of blog posts, onboarding a customer) spans multiple Claude Code sessions. Each session needs to know where the work stands. Previously, INDEX.md served this role — manually maintained, frequently stale.
+
+A `workflow` is a typed entity in MongoDB:
+
+- `objective` — what the workflow is trying to accomplish
+- `status` — active, paused, completed
+- `current_context` — a summary of where things stand, updated at the end of each session
+- `sessions` — ordered list of session IDs that have worked on this workflow
+- `project` — typed ref to the parent project entity
+- `artifacts` — list of knowledge record IDs created during the workflow
+
+**This is INDEX.md as a typed entity that updates itself.** At session end, `current_context` gets updated with what was accomplished and what's next. The next session reads one record to know the full state.
+
+**Systems own workflow lifecycle, not the Hive.** The content system creates a workflow when a content piece begins and updates it as the pipeline progresses. The code dev system creates one when a feature begins and updates as sessions complete. The Hive stores the record; the context assembly agent reads it; but the system's CLI creates and updates it.
 
 ---
 
 ## The Registry
 
-The registry is the Hive's self-knowledge — it defines what types exist, what tags mean, and what domains are valid. Every Claude Code session reads the registry before creating or querying records.
+The registry is the Hive's self-knowledge — it defines what entity types exist, what tags mean, and what domains are valid. Every Claude Code session reads the registry before creating or querying records.
 
 ### Registry Structure
 
 ```
 hive/.registry/
   ontology.yaml          # Tags, domains, statuses, priorities
-  types/                 # Type definitions (one YAML per type)
+  types/                 # Entity type schemas ONLY (one YAML per type)
     person.yaml
     company.yaml
     product.yaml
     project.yaml
+    workflow.yaml
     meeting.yaml
     brand.yaml
     platform.yaml
     channel.yaml
-    note.yaml
-    decision.yaml
-    design_document.yaml
-    implementation_plan.yaml
-    research.yaml
-    session_summary.yaml
-    linear_issue.yaml    # Added by Linear sync adapter
-    calendar_event.yaml  # Added by Calendar sync adapter
-    email_thread.yaml    # Added by Email sync adapter
-    slack_message.yaml   # Added by Slack sync adapter
-    github_pr.yaml       # Added by GitHub sync adapter
+    # Sync adapters add their own:
+    linear_issue.yaml
+    calendar_event.yaml
+    email_thread.yaml
+    slack_message.yaml
+    github_pr.yaml
 ```
+
+**Note:** Knowledge records (decisions, designs, research, session summaries, notes) do NOT have type definitions. They are markdown files differentiated by tags defined in `ontology.yaml`.
 
 ### Type Definitions
 
-Each type file defines the schema, relationships, and storage format. See "The Type System" section above for examples. Key fields in a type definition:
+Each entity type file defines the schema and relationships. See "Layer 1: Entities" section above for examples. Key fields:
 
 | Field | Purpose |
 |-------|---------|
 | `type` | The type name (used in CLI: `hive create <type>`) |
 | `fields` | Schema — field names, types, required/optional, ref targets |
 | `display` | Which field is shown as the label (name, title, subject) |
-| `directory` | Where files of this type live in the vault |
-| `format` | `yaml` (structured entities) or `markdown` (knowledge with prose) |
 
 ### Ontology (Tags, Domains, Statuses)
 
@@ -302,93 +363,74 @@ priorities:
 
 ### Registry Evolution
 
-- **New types:** Added as YAML files in `.registry/types/`. The CLI auto-discovers them. System sync adapters add their own types when they integrate.
-- **New tags:** Added deliberately to `ontology.yaml`. When a session needs a tag that doesn't exist, check if an existing tag covers the concept. If not, add it and mention it in the session summary.
+- **New entity types:** Added as YAML files in `.registry/types/`. The CLI auto-discovers them. Sync adapters add their own types when they integrate. Only create an entity type when the context assembly agent needs structured queries as a starting point.
+- **New tags:** Added deliberately to `ontology.yaml`. When a session needs a tag that doesn't exist, check if an existing tag covers the concept. If not, add it and mention it in the session summary. **Entity types and knowledge tags must be disjoint sets** — if `meeting` is an entity type, it cannot also be a knowledge tag. This eliminates routing ambiguity in the unified CLI.
 - **New domains:** Added to `ontology.yaml` when Craig starts working in a new domain.
-- **Principle:** Types define structure. Tags provide flexible subcategorization. Don't create a type when a tag would suffice. Create a type when the thing has a stable identity, structured fields, or typed relationships to other records.
+- **Principle:** Entity types are for structured records that need to be found by name, structured query, or relationship traversal as a starting point for context assembly. Tags subcategorize knowledge records. Don't create an entity type when a tagged knowledge record would suffice.
 
 ---
 
 ## Storage Architecture
 
-### Vault (Source of Truth)
+### Vault (Knowledge Files)
+
+The vault contains **knowledge records only** (markdown files). Entities live in MongoDB, not the filesystem.
 
 ```
 hive/
   .registry/
-    ontology.yaml                    # Tags, domains, statuses
-    types/                           # Type definitions
+    ontology.yaml                    # Tags, domains, statuses, priorities
+    types/                           # Entity type schemas ONLY
       person.yaml
       company.yaml
-      note.yaml
-      decision.yaml
-      ...
-  .templates/                        # Example records for each type
+      product.yaml
+      project.yaml
+      workflow.yaml
+      meeting.yaml
+      brand.yaml
+      platform.yaml
+      channel.yaml
+      # Sync adapters add their own:
+      linear_issue.yaml
+      calendar_event.yaml
+      email_thread.yaml
+      slack_message.yaml
+      github_pr.yaml
+  .templates/                        # Example notes for common patterns
   .attachments/                      # Binary files (images, PDFs)
 
-  # Entity directories (structured, YAML)
-  people/
-    craig.yaml
-    cam.yaml
-    oconnor.yaml
-  companies/
-    indemn.yaml
-    career-catalyst.yaml
-  products/
-    voice-agent.yaml
-    operating-system.yaml
-  projects/
-    hive.yaml
-    platform-dev.yaml
-  meetings/
-    2026-03-14-oconnor-voice.yaml
-  brands/
-    indemn-brand.yaml
-    personal-brand.yaml
-  platforms/
-    substack.yaml
-    linkedin.yaml
-  channels/
-    indemn-engineering-blog.yaml
-
-  # Knowledge directories (flexible, Markdown)
-  notes/
+  # Knowledge directories (markdown files, git-tracked)
+  notes/                             # Quick thoughts, observations, ideas
     2026-03-08-hive-vision.md
     2026-03-09-tile-breathing-idea.md
-  decisions/
+  decisions/                         # Notes tagged "decision" — has rationale
     2026-03-09-wall-user-driven.md
-    2026-03-09-type-system-over-flat-notes.md
-  design_documents/
+    2026-03-14-entities-mongodb-only.md
+  designs/                           # Notes tagged "design" — specs, architecture
     2026-03-08-hive-design.md
-  implementation_plans/
-    ...
-  research/
+  research/                          # Notes tagged "research" — external findings
     2026-03-04-gastown-findings.md
-  session_summaries/
+  sessions/                          # Notes tagged "session_summary"
     2026-03-08-os-hive-session-1.md
 
-  # System-synced directories (added by sync adapters)
-  linear/
-    AI-123.yaml
-    DEVOPS-42.yaml
-  calendar/
-    2026-03-14-team-standup.yaml
-  email/
-    ...
-  slack/
-    ...
-  github/
-    indemn-platform-v2-PR-456.yaml
+  # Synced record cache (gitignored, rebuilt via hive sync)
+  .synced/
+    linear/
+    calendar/
+    email/
+    slack/
+    github/
 ```
 
-- **Typed directories** — each type's `directory` field determines where its records live
-- **YAML for entities** — structured data, no prose. Clean, machine-readable, human-scannable.
-- **Markdown for knowledge** — rich text with YAML frontmatter. Ideas, reasoning, specs.
+**Key properties:**
+- **No entity directories** (people/, companies/, etc.) — entities are MongoDB-only
+- **Knowledge directories organized by convention** (tag-based), not enforced type schemas
+- `.registry/types/` only contains entity type definitions
+- All knowledge records follow the same format: markdown with YAML frontmatter
 - `hive/` lives in the operating-system repo, version-controlled by Git
-- `hive/` is the Hive vault — visualized through the Hive UI, not Obsidian (entities are YAML, not Markdown)
-- New type → new directory appears automatically
+- `.synced/` is gitignored — external system is source of truth, rebuilt via `hive sync`
 
-### MongoDB (Derived Index)
+### MongoDB
 
 **Instance:** Local MongoDB Community Edition (via Homebrew). Private, zero cost, fast.
 
@@ -396,40 +438,77 @@ hive/
 
 **Collection:** `records` (single collection with type discriminator — simpler than per-type collections, MongoDB handles polymorphic queries well)
 
+#### Entity Documents (Source of Truth)
+
+Entities live ONLY in MongoDB. No file representation.
+
 ```json
 {
   "_id": ObjectId,
   "record_id": "craig",
   "type": "person",
-  "title": "Craig",
-
-  // Type-specific fields (vary by type)
   "name": "Craig",
   "email": "craig@indemn.ai",
   "role": "Technical Partner",
-  "company": "indemn",            // typed ref → companies/indemn.yaml
-
-  // Common fields
-  "tags": ["engineering", "leadership"],
+  "company": "indemn",
   "domains": ["indemn", "career-catalyst"],
+  "tags": ["engineering", "leadership"],
   "status": "active",
-  "system": null,                  // null = native, "linear" = synced
-  "ref": null,                     // null = lives in Hive, path/url = external
-
-  // Knowledge records also have:
-  "content": "Full markdown content without frontmatter",
-  "content_embedding": [/* vector from local embedding model */],
-
-  // Relationships (extracted from typed refs for fast lookup)
   "refs_out": {
     "company": ["indemn"],
     "project": ["hive", "platform-dev"]
   },
-
-  "file_path": "hive/people/craig.yaml",
   "created_at": ISODate,
-  "updated_at": ISODate,
-  "created_by": "session:os-hive-2026-03-08"
+  "updated_at": ISODate
+}
+```
+
+#### Knowledge Documents (Derived from Files)
+
+Knowledge records are indexed from markdown files into MongoDB for search.
+
+```json
+{
+  "_id": ObjectId,
+  "record_id": "2026-03-14-entities-mongodb-only",
+  "type": "knowledge",
+  "title": "Use two-layer architecture instead of 14+ types",
+  "tags": ["decision", "architecture"],
+  "domains": ["indemn"],
+  "status": "active",
+  "refs_out": {
+    "project": ["hive"],
+    "people": ["craig"]
+  },
+  "wiki_links": ["2026-03-08-hive-vision", "2026-03-09-context-assembly-gaps"],
+  "content": "Full markdown content without frontmatter...",
+  "content_embedding": [/* vector from local embedding model */],
+  "file_path": "hive/decisions/2026-03-14-entities-mongodb-only.md",
+  "created_at": ISODate,
+  "updated_at": ISODate
+}
+```
+
+#### Workflow Documents (Entity — Source of Truth in MongoDB)
+
+```json
+{
+  "_id": ObjectId,
+  "record_id": "voice-scoring-ui",
+  "type": "workflow",
+  "name": "Voice Scoring UI",
+  "objective": "Build the scoring UI component for voice evaluations",
+  "status": "active",
+  "current_context": "Session 3 completed React component. Remaining: API wiring, tests. O'Connor demo Friday.",
+  "sessions": ["session-uuid-1", "session-uuid-2", "session-uuid-3"],
+  "refs_out": {
+    "project": ["platform-dev"],
+    "people": ["craig"],
+    "product": ["voice-agent"]
+  },
+  "artifacts": ["2026-03-10-scoring-spec", "2026-03-12-scoring-decisions"],
+  "created_at": ISODate,
+  "updated_at": ISODate
 }
 ```
 
@@ -439,7 +518,6 @@ hive/
 - `tags`: multikey
 - `domains`: multikey
 - `status`: regular
-- `system`: regular
 - `refs_out.company`: multikey (reverse lookup — "all records referencing Indemn")
 - `refs_out.project`: multikey
 - `refs_out.people`: multikey (reverse lookup — "all records referencing Craig")
@@ -450,12 +528,12 @@ hive/
 **Supported queries:**
 - **Type-scoped:** `{type: "person", domains: "indemn"}` — all Indemn people
 - **Relationship traversal:** `{"refs_out.company": "indemn"}` — everything connected to Indemn
-- **Reverse lookup:** `{"refs_out.people": "craig"}` — all Craig's meetings, tasks, projects
+- **Reverse lookup:** `{"refs_out.people": "craig"}` — all Craig's meetings, workflows, projects
 - **Semantic:** vector similarity on `content_embedding` (knowledge records only)
-- **Filtered:** `{type: "decision", status: "active", domains: "indemn"}`
+- **Tag-filtered:** `{type: "knowledge", tags: "decision", domains: "indemn"}` — active Indemn decisions
 - **Keyword:** full-text search on `title` + `content`
 - **Timeline:** `{type: "meeting", created_at: {$gte: last_week}}`
-- **Cross-type:** `$graphLookup` for multi-hop traversal across types
+- **Cross-type:** `$graphLookup` for multi-hop traversal across entity types
 
 **Note:** Atlas Vector Search is cloud-only. For local MongoDB, embeddings are stored as arrays and cosine similarity is computed in Python. At the scale of hundreds to low thousands of records, this is fast enough. If it becomes a bottleneck, add a dedicated vector store (ChromaDB, LanceDB) later.
 
@@ -463,8 +541,8 @@ hive/
 
 - **Initial:** Local model via Ollama (e.g., `nomic-embed-text` or `mxbai-embed-large`)
 - **Abstracted:** Behind a simple interface so the model is swappable
-- Only knowledge records (markdown format) get embeddings — entity records are queried via structured fields
-- Each record is embedded when created or updated during sync
+- Only knowledge records get embeddings — entity records are queried via structured fields
+- Each knowledge record is embedded when created or updated during sync
 - Re-embedding is possible when switching models (`hive sync --re-embed`)
 
 ---
@@ -473,107 +551,128 @@ hive/
 
 The core value proposition. How a Claude Code session goes from "I want to work on X" to having full context without manual curation.
 
-### What It Produces
+### The Core Reframe: Context Assembly Is a Task, Not an Algorithm
 
-Not just a briefing — a **session initialization instruction**:
+Context assembly is an **LLM agent that uses the Hive CLI as its toolkit.** It's not a fixed pipeline — it's a task that an LLM performs, choosing different retrieval strategies based on the user's stated intent.
 
-```markdown
-# Session Initialization: Voice Scoring UI
+**Why this is better than a fixed algorithm:**
+- "I want to build the scoring UI" → the agent decides to pull product entities, check Linear issues, find recent sessions on this topic, look at code decisions
+- "I want to write a blog about voice agents" → the agent decides to pull meeting notes with customer quotes, find existing content drafts, check the brand entity for voice guidelines
+- "What's the status of everything?" → the agent pulls all active workflows, recent session summaries, pending Linear issues
 
-## Knowledge Context
-- [[2026-03-05-voice-scoring-spec]] — weighted rubric architecture [NATIVE]
-- [[2026-03-03-scoring-decision]] — decided React + Tailwind [NATIVE]
-- Voice Scoring UI tracked as AI-123 in Linear [AWARENESS → linear]
+Same Hive, completely different retrieval strategies. A fixed embed-score-rank algorithm can't do this. An LLM reading intent and choosing tools can.
 
-## Skills You'll Need
-- /linear — issue AI-123 is active. Update status as you progress.
-- /github — target repo is indemn-platform-v2.
-- /dispatch — implementation plan can be executed autonomously.
-- /hive — log decisions and create awareness records as you work.
+**This aligns with the OS philosophy:** Claude Code is expert at using CLIs. The Hive CLI provides rich, type-aware query capabilities. The context assembly agent is just another Claude Code session using a CLI — the pattern the entire OS is built on.
 
-## Read First
-- indemn-platform-v2/CLAUDE.md — codebase conventions
-- indemn-platform-v2/src/components/evaluations/ — existing eval components
+### Dedicated Context Assembly Session
 
-## Reminders
-- Decision: weighted rubrics, not pass/fail (2026-03-03)
-- O'Connor is waiting on scoring visibility
-- Career Catalyst needs similar scoring — note reusable patterns
-- Draft blog post exists about this feature — update if architecture changes
+Context assembly runs as a **separate, short-lived Claude Code session** — not the working session itself.
+
+**Why a separate step:**
+- Runs in its own context window, then discards it
+- Can be aggressive with queries (pull a lot, filter down, synthesize)
+- Produces a comprehensive context note efficient for the working session
+- The working session starts with context already assembled — zero retrieval overhead
+
+**Implementation mechanism:** The context assembly session is created via the existing session CLI (`session create`). Not Agent SDK, not direct API. It uses the same infrastructure that manages all OS sessions — tmux, worktrees, hooks. The Hive UI spawns it, it writes a context note, then the working session gets created with that context.
+
+### Two Sources, Not Five
+
+The Hive's sync framework pulls data from Linear, Slack, Calendar, GitHub, Email into the Hive as synced records. This means the context assembly agent does NOT need to query five different external tools. If Linear data is stale, that's a sync frequency problem, not a context assembly problem.
+
+**The agent has exactly two sources:**
+
+1. **The Hive** — entities, knowledge, relationships, workflow state, AND all synced external data (Linear issues, Slack messages, calendar events, GitHub PRs). One system that has everything about Craig's world.
+
+2. **The codebase** — when the task involves code. Code is too large, too dynamic, and too detailed to sync into the Hive. The agent needs to actually read files and grep. The Hive might know "session 3 implemented the React component" but it doesn't know the current state of `src/components/scoring/`.
+
+**Not the agent's job:** Web search, documentation lookup, API references. Those are the working session's concern during actual work. Context assembly gives you YOUR context — your knowledge, your entities, your codebase state.
+
+### How the Agent Knows Which Codebase
+
+No explicit `repo` field on project entities. Instead:
+
+- **Existing workflows carry it naturally.** Session summaries and decisions mention repos and file paths as a byproduct of working. The agent reads recent session summaries for the workflow and extracts repo information.
+- **For brand new workflows** (no history yet), the agent reads the OS `CLAUDE.md` which has the full service inventory with repo paths.
+- **The OS already manages repo access** — sessions are created with `--add-dir` for external repos. The context assembly agent's output can specify which repos the working session needs.
+
+### System-Specific Context Playbooks
+
+The context note format is NOT a generic Hive-level template. Each system defines what context matters for its workflow via a dedicated section in the system's skill.
+
+**The pattern:**
+- The Hive provides the infrastructure (CLI commands, entity/knowledge layers, search)
+- Each system's skill describes what context to gather and how to structure it
+- The context assembly session is generic — it reads the system's instructions and follows them
+- New systems define their own context needs; the context assembly session adapts automatically
+
+### Comprehensive, Not Compressed
+
+The context note should be thorough. More context is better. A 20k-token comprehensive briefing is a fraction of the context window and leaves plenty of room for actual work. The context assembly session naturally produces coherent, non-redundant output. No explicit budgeting mechanism needed.
+
+The context note should:
+- Include full decision text with rationale (not one-line summaries)
+- Include full entity profiles for relevant people and companies
+- Reference Hive record IDs throughout so the session can `hive get` for deeper exploration
+- Explicitly prompt the working session to do its own due diligence — verify codebase state, read files, explore before acting
+
+### Context Assembly Agent Workflow (Concrete Scenario)
+
+Scenario: "I want to build the scoring UI for voice evaluations"
+
+```bash
+# Step 1: Find the workflow (deterministic lookup)
+hive get voice-scoring-ui --format json
+# → workflow entity with current_context, objective, sessions, artifacts
+
+# Step 2: Find all records connected to this workflow
+hive refs voice-scoring-ui --format json
+# → project:platform-dev, product:voice-agent, people:craig
+# → also: knowledge records that ref this workflow
+
+# Step 3: Expand from the product entity
+hive refs voice-agent --format json --tags decision,design,session_summary
+# → all decisions, designs, session summaries about the voice product
+
+# Step 4: Semantic search for anything the graph missed
+hive search "scoring UI voice evaluations" --recent 30d --format json
+# → semantically similar knowledge from last 30 days
+
+# Step 5: Recent activity for temporal awareness
+hive recent 7d --format json
+# → anything created/modified in last 7 days
+
+# Step 6: Specific person context (O'Connor mentioned in intent)
+hive get oconnor --format json
+hive refs oconnor --recent 30d --format json
+# → O'Connor entity + recent knowledge mentioning them
 ```
 
-### Retrieval Algorithm
+Six commands covering structured traversal + semantic discovery + temporal awareness. Steps 2-4 can be parallelized. The agent writes the assembled context as a knowledge note:
 
+```bash
+hive create note "Context: Voice Scoring UI — Session 5" \
+  --tags context_assembly \
+  --refs workflow:voice-scoring-ui,project:platform-dev \
+  --domains indemn
 ```
-Input: query (string), objective (string), domain filter (optional)
-
-1. Embed the query using local embedding model
-2. Vector search: top 20 notes by cosine similarity
-3. Apply domain filter if specified
-4. Graph expansion: for each seed result, follow outgoing links 1-2 hops
-5. Score all candidates:
-   score = (semantic_similarity × 0.5) + (recency × 0.3) + (graph_proximity × 0.2)
-6. Deduplicate and rank
-7. Select top N (default: 10-15)
-8. Pass results + objective + skill registry to LLM for briefing assembly
-9. LLM produces tailored session initialization instruction
-10. Return instruction as markdown
-```
-
-**Scoring weights are tunable** — initial values are guesses. Tuned through experience.
-
-**Graph expansion depth** starts at 1-2 hops. Breadth is preferred over depth — something can't be explored unless it's known about.
-
-### Briefing Assembly
-
-The LLM that assembles the briefing has access to:
-- The retrieved notes (native knowledge + awareness records)
-- The stated objective (what the session is trying to accomplish)
-- The ontology (`ontology.yaml` — what tags/systems/domains exist)
-- The skill registry (what skills are available and what they do)
-
-It produces a tailored instruction based on the objective:
-- **Development session** → emphasizes specs, code refs, decisions, relevant PRs
-- **Content session** → emphasizes narrative, source material, brand voice, draft status
-- **Planning session** → emphasizes current state, open questions, related initiatives, people involved
-
-The LLM call happens once at session startup. Latency is acceptable because it only runs once.
 
 ### Context During Work
 
-Beyond startup, Claude Code can query the Hive on-demand with type-aware commands:
+Beyond startup, working sessions can query the Hive on-demand:
 
 ```bash
-# Type-scoped queries (pre-filtered, fast)
-hive people get craig                              # Craig's full profile
-hive people get craig --meetings --since 2026-03   # Craig's recent meetings (relationship traversal)
-hive companies get indemn --people --products      # Indemn with contacts and products
-hive meetings --attendee oconnor --last 5          # O'Connor's recent meetings
-hive decisions --project hive --since 2026-03-08   # Recent Hive decisions
-hive tasks --status active --domain indemn         # Active Indemn tasks
-
-# Semantic search (across all knowledge records)
-hive search "rubric component"                     # Find related knowledge
-hive search "deployment patterns" --domain career-catalyst  # Cross-domain discovery
-
-# Direct record access
-hive get 2026-03-01-rubric-component               # Read any record by ID (type auto-detected)
-
-# Context assembly
-hive context "voice scoring" --objective "build the scoring UI" --system code-development
-
-# Create records (type-aware)
-hive create person "O'Connor" --email oconnor@acme.com --company acme
-hive create decision "Use typed records" --project hive --rationale "..."
+hive get craig                                      # Any record by ID
+hive refs craig --tags meeting --recent 30d         # Craig's recent meetings
+hive search "deployment patterns" --domains indemn  # Semantic search
+hive list person --domains indemn                   # All Indemn people
+hive recent 7d                                      # Recent activity feed
 hive create note "interesting tile pattern" --tags ui --domains indemn
-
-# Feedback
-hive feedback "context missed deployment patterns"
 ```
 
 ### Skill and System Awareness
 
-Skills and systems are themselves represented as typed records in the Hive (entity type or knowledge type — to be determined during implementation). Context assembly can then connect: "voice scoring task → references Linear issue AI-123 → the `/linear` skill is relevant" via typed relationships and surface it in the session instruction.
+Skills and systems are themselves represented as records in the Hive (entity type or knowledge type — to be determined during implementation). Context assembly can then connect: "voice scoring task → references Linear issue AI-123 → the `/linear` skill is relevant" via typed relationships and surface it in the context note.
 
 ---
 
@@ -587,7 +686,7 @@ Systems keep their own internal architectures. The Hive is additive — awarenes
 1. Keep your domain-specific files, configs, and folder structure
 2. Create awareness records in the Hive when significant events occur (created, started, completed, published, failed)
 3. Register your domain-specific tags in `ontology.yaml`
-4. Build Hive operations into your system CLI — don't make Claude Code use raw `hive note create`
+4. Build Hive operations into your system CLI — don't make Claude Code use raw `hive create note`
 5. Document the Hive integration in your system's skill
 
 **The clear line:** If it's knowledge, a decision, or a connection → native Hive note. If it's a domain-specific artifact managed by a system → it lives in the system, with a Hive awareness record pointing to it.
@@ -652,74 +751,127 @@ Every skill that produces knowledge, decisions, or outputs should integrate with
 
 ## The Hive CLI
 
-Python CLI (Click or Typer). Same pattern as `bd` for beads. **Type-aware** — the CLI reads type definitions from `.registry/types/` and auto-generates commands for each type.
+Python CLI (Click or Typer). Same pattern as `bd` for beads. **Unified commands** — the entity/knowledge distinction is hidden from the user. The CLI routes transparently based on whether the argument is a registered entity type or a knowledge tag.
 
-### Commands
+### Design Principles
 
-```bash
-# Setup
-hive init                    # Create vault, .registry, start MongoDB, seed types and ontology
+- **Verb-first grammar.** `hive get`, `hive create`, `hive search` — reads naturally for both LLMs and voice. Not `hive person get`.
+- **Transparent routing.** If the argument is a registered entity type → entity layer (MongoDB). If it's a known tag → knowledge layer (markdown files). Layer indicators in output: `[entity:person]` or `[knowledge:decision]`.
+- **Auto-detect output format.** JSON when piped (no tty), text when interactive (tty detected). Follows the `gh` CLI pattern. The context assembly agent pipes output → gets JSON automatically.
+- **Disjoint entity types and knowledge tags.** If `meeting` is an entity type, it cannot also be a tag. The ontology enforces this, eliminating routing ambiguity.
 
-# Create records (type-aware — validates schema)
-hive create person "Craig" --email craig@indemn.ai --company indemn --domains indemn
-hive create company "Indemn" --industry insurance --domains indemn
-hive create decision "Use typed records" --project hive --rationale "Enables structured queries"
-hive create note "tile breathing idea" --tags ui,design --domains indemn
-hive create design_document "Hive Design" --project hive --status draft
+### Commands (14 Total)
 
-# Read records
-hive get craig                                   # Auto-detects type from ID
-hive get 2026-03-09-wall-user-driven             # Works for any type
+```
+hive context <query>                     # THE main command — context assembly
+    --objective "..."                    # What the session is trying to accomplish
+    --domain <domain>                    # Scope to domain
+    --depth <1-3>                        # Graph traversal depth (default: 2)
+    --budget <tokens>                    # Max context budget (default: 8000)
+    --format json|md                     # Output format (default: md)
 
-# Type-scoped listing and querying
-hive people list                                  # All people
-hive people get craig --meetings --since 2026-03  # With relationship traversal
-hive companies get indemn --people --products     # With related entities
-hive decisions --project hive --since 2026-03-08  # Filtered by project and date
-hive meetings --attendee oconnor --last 5         # Filtered by relationship
-hive notes --tags brainstorming --domains indemn  # Flexible knowledge
-hive linear_issues --status active --domain indemn # Synced external data
+hive get <id>                            # Get any record by ID
+    --fields field1,field2               # Select specific fields
+    --format json|text|md                # Output format
+    Routing: queries both layers, entity first, returns first match
 
-# Context assembly (the main command)
-hive context "voice scoring"                                                    # Full session initialization
-hive context "voice scoring" --domain indemn                                    # Scoped to a domain
-hive context "voice scoring" --objective "build the scoring UI"                 # Tailored for purpose
-hive context "voice scoring" --objective "build the scoring UI" --system code-development  # System-aware
+hive create <type-or-tag> "title"        # Create a record
+    --refs key:value,...                  # Entity references
+    --tags tag1,tag2                     # Additional tags (knowledge only)
+    --domains dom1,dom2                  # Domain classification
+    --status <status>                    # Initial status
+    --<field> <value>                    # Type-specific fields or frontmatter
+    Routing: if type-or-tag is in .registry/types/ → entity (MongoDB)
+             if type-or-tag is a known tag → knowledge (markdown file + index)
+    Returns: record_id and file_path (if knowledge)
 
-# Search (semantic, across all knowledge records)
-hive search "deployment patterns"                 # Semantic search
-hive search "rubric" --tags spec --domain indemn  # Filtered semantic search
+hive update <id>                         # Update any record
+    --<field> <value>                    # Fields to update
+    --add-tags tag1,tag2                 # Add tags without replacing
+    --add-refs key:value                 # Add refs without replacing
+    Routing: resolves layer from ID, updates accordingly
+    For knowledge: updates frontmatter in file, re-indexes to MongoDB
 
-# Sync
-hive sync                    # Index all vault files into MongoDB
-hive sync <system>           # Sync external system (linear, calendar, email, slack, github)
-hive sync --re-embed         # Re-generate all embeddings (when switching models)
+hive search "query"                      # Semantic + keyword search
+    --tags tag1,tag2                     # Filter by tags
+    --domains dom1,dom2                  # Filter by domain
+    --types type1,type2                  # Filter by entity type
+    --recent <duration>                  # Time filter (7d, 30d, 3m)
+    --limit <n>                          # Max results (default: 20)
+    --knowledge-only                     # Skip entities
+    --entities-only                      # Skip knowledge
+    --format json|text|md                # Output format
+    Routing: searches both layers, merges by relevance
 
-# Registry management
-hive types list              # Show all registered types
-hive types show person       # Show person type schema
-hive tags list               # Show all registered tags
-hive tags add <tag> --category work --description "..."
-hive domains list            # Show all domains
-hive domains add <domain> --description "..."
+hive list <type-or-tag>                  # List records of a type or tag
+    --status <status>                    # Filter by status
+    --domain <domain>                    # Filter by domain
+    --recent <duration>                  # Time filter
+    --refs-to <id>                       # Filter by reference to entity
+    --limit <n>                          # Max results (default: 50)
+    --format json|text|md                # Output format
+    Routing: entity type → MongoDB query, known tag → knowledge query
 
-# Feedback (self-improvement)
-hive feedback "retrieval missed X"       # Auto-tagged, auto-linked to current session context
+hive refs <id>                           # Everything referencing this record
+    --types type1,type2                  # Filter by type
+    --tags tag1,tag2                     # Filter by tag
+    --direction in|out|both              # Ref direction (default: both)
+    --depth <1-3>                        # Traversal depth (default: 1)
+    --recent <duration>                  # Time filter
+    --format json|text|md                # Output format
 
-# Status
-hive status                  # Overview: record counts by type and domain, recent activity
+hive recent [duration]                   # Recent activity feed (default: 7d)
+    --types type1,type2                  # Filter by type
+    --domains dom1,dom2                  # Filter by domain
+    --limit <n>                          # Max results (default: 20)
+    --format json|text|md                # Output format
+    Returns: reverse-chronological mixed-type feed across both layers
+
+hive sync [system]                       # Sync operations
+    hive sync                            # Re-index all knowledge files to MongoDB
+    hive sync linear                     # Pull from Linear
+    hive sync calendar                   # Pull from Google Calendar
+    hive sync --re-embed                 # Re-generate all embeddings
+
+hive status                              # System overview
+    Record counts by type/domain/status, recent activity, MongoDB + embedding status
+
+hive init                                # Initialize vault, MongoDB, seed registry
+
+hive types list                          # List registered entity types
+hive types show <type>                   # Show type schema
+hive tags list                           # List registered tags
+hive domains list                        # List registered domains
 ```
 
-### Architecture
+### Routing Rules
+
+| Input | Resolution |
+|-------|-----------|
+| `hive create person "Craig"` | `person` is in `.registry/types/` → entity → MongoDB |
+| `hive create decision "Use X"` | `decision` is not a type, is a known tag → knowledge → markdown file + index |
+| `hive create note "Quick thought"` | `note` is always knowledge (the default tag). There is no `note` entity type. |
+| `hive list person` | `person` is a type → entity list from MongoDB |
+| `hive list decision` | `decision` is a tag → knowledge list filtered by tag |
+| `hive get craig` | Queries both layers by record_id, entity first. Returns first match with layer indicator. |
+| `hive get 2026-03-14-scoring-spec` | Date-prefixed → likely knowledge. Queries both, returns match. |
+
+### Commands Deliberately Excluded
+
+- **`hive workflow get/update/complete`** — Covered by generic `hive get`, `hive update`, `hive update --status completed`. Workflow patterns documented in the skill, not special-cased in the CLI.
+- **`hive feedback`** — It's `hive create note "..." --tags feedback`. No separate command.
+- **`hive tags add` / `hive domains add`** — Edit `ontology.yaml` directly. Infrequent operations that don't need CLI commands.
+
+### CLI Architecture
 
 ```
 hive/                         # CLI package
   cli.py                      # Click/Typer CLI entry point
-  records.py                  # Typed record CRUD operations
-  types.py                    # Type registry — loads/validates type definitions
-  context.py                  # Context assembly engine
-  search.py                   # Search (semantic + structured)
-  sync.py                     # Vault → MongoDB sync + external system sync adapters
+  records.py                  # Two-layer record CRUD (entity→MongoDB, knowledge→files+index)
+  types.py                    # Type registry — loads entity type definitions from .registry/types/
+  context.py                  # Context assembly coordination
+  search.py                   # Search (semantic + structured) across both layers
+  sync.py                     # Knowledge file → MongoDB sync + external system sync adapters
   registry.py                 # Registry management (types, tags, domains)
   embed.py                    # Embedding abstraction
   db.py                       # MongoDB connection
@@ -885,43 +1037,39 @@ What's new:
 
 ## Session Initialization ("The Doctor Appointment")
 
-How a session gets started from the Hive with the right context.
+How a session gets started from the Hive with the right context. The "doctor appointment" metaphor: the nurse (context assembly session) does intake before the doctor (working session) sees you. You don't walk in and explain everything from scratch.
 
-### The Flow
+### From a Tile (Existing Work)
 
-1. **Click a tile.** Session spawns immediately — terminal appears in Focus Area. No loading screen.
-2. **First message sent via `tmux send-keys`.** Contains tile metadata only — note ID, title, tags, domain, system. Enough to orient the session, not full context. Includes instruction to ask for the objective before retrieving context.
-3. **Session asks the objective.** "You're working on Voice Scoring. What are you trying to accomplish?"
-4. **User responds** (via Wispr Flow): "Implement the scoring component."
-5. **Context retrieves with full parameters.** The session runs `hive context` with topic + objective + system + domain. The objective shapes what's relevant — implementation context is different from brainstorming context is different from content extraction context.
-6. **Session is hydrated.** Targeted context, relevant skills identified, recommended files to read. Work begins.
+1. **Craig clicks a tile on the Wall.** The tile has metadata: record ID, tags, domain, system.
+2. **The Hive UI shows a lightweight prompt:** "What are you trying to accomplish?" Craig speaks via Wispr Flow.
+3. **The Hive UI spawns a context assembly session** via the session CLI (`session create`). First message includes: tile metadata + Craig's stated objective.
+4. **The context assembly session reads the relevant system's context playbook** (from the system's skill). It queries the Hive and codebase following those instructions.
+5. **The context assembly session writes a comprehensive context note** linked to the workflow, then terminates.
+6. **The Hive UI spawns the working session** via the session CLI. First message via `tmux send-keys` includes the context note content. The session knows the objective, the system, and has full context. No "what are you trying to accomplish?" — it already knows.
+7. **Work begins immediately.** The working session is prompted to do its own due diligence (verify codebase state, explore further as needed).
+
+### From Scratch (New Work)
+
+1. Craig uses quick capture or tells the Hive "I want to build a new pricing engine."
+2. The Hive UI prompts for objective (or the statement IS the objective).
+3. Context assembly session runs — finds no existing workflow, searches for related entities and knowledge, checks CLAUDE.md for repo context.
+4. The system that owns this type of work (code development, content, research) creates the workflow entity as part of its initialization.
+5. Context note written, working session spawned with context.
 
 ### Why Objective Comes First
 
-Context retrieval needs context to be relevant. Without knowing the objective, you get everything about a topic — noisy and potentially fills the context window with irrelevant material. The objective determines what's relevant:
+Context retrieval needs context to be relevant. Without knowing the objective, you get everything about a topic — noisy. The objective determines what's relevant:
 
-- "Brainstorm the architecture" → design docs, decisions, related patterns, constraints. Skills: brainstorming.
-- "Implement the component" → specs, code patterns, repo structure, PRs. Skills: development workflow.
-- "Write a blog about it" → linked notes with commentary, user-facing impact, decisions. Skills: content system.
+- "Brainstorm the architecture" → design docs, decisions, related patterns, constraints
+- "Implement the component" → specs, code patterns, repo structure, PRs
+- "Write a blog about it" → linked notes with commentary, user-facing impact, decisions
 
 Same topic, different objectives, completely different context.
 
-### System Awareness
+### The System Field Determines the Playbook
 
-Each session operates within a system. The tile's metadata (tags, system field) tells the session what system it's in. The context assembly is parameterized by system — different systems prioritize different kinds of context.
-
-The first message includes the system context:
-```
-User clicked Hive tile: "Voice Scoring UI"
-(note_id: 2026-03-08-voice-scoring-spec, domain: indemn,
-system: code-development, tags: [spec, voice, scoring],
-status: active, linear: AI-123)
-
-Ask the user what they're trying to accomplish, then use
-hive context with their objective to retrieve relevant context.
-```
-
-System/workflow notes in the Hive describe what each system does and what skills it uses. Context assembly reads these to tailor retrieval per system.
+The tile's `system:` field (or Craig's stated intent for new work) tells the context assembly session which system's workflow it's assembling context for. `system: content` means follow the content system's context instructions. `system: code-development` means follow the code dev system's instructions. Each system's skill defines what to gather and how to structure the context note.
 
 ---
 
@@ -975,19 +1123,118 @@ Every system integrates with the Hive the same way. The Hive UI is completely ge
 
 ### Content System Integration
 
-The content system (`cs.py` state store, brand configs, extract→draft→refine→publish pipeline) creates awareness records at each meaningful stage:
+The content system lives in a separate repo (`/Users/home/Repositories/content-system/`) with its own state store (`cs.py`, SQLite), brand configs, and a blog creation pipeline (idea → extraction → draft → refine → approve → publish). It has 24 skills including `/content`, `/ea`, `/content-extract`, `/content-draft`, `/content-refine`, `/content-publish`, and a full video pipeline.
 
-| Event | Tags | Status | Ref |
-|-------|------|--------|-----|
-| Idea created | idea, content | ideating | — (native note, idea lives in Hive) |
-| Extraction complete | extraction, content | active | `drafts/YYYY-MM-DD-slug/extraction.md` |
-| Draft v1 created | draft, blog/newsletter | in-review | `drafts/YYYY-MM-DD-slug/draft-v1.md` |
-| Latest draft updated | draft, blog/newsletter | in-review | `drafts/YYYY-MM-DD-slug/draft-v{N}.md` |
-| Approved | draft, blog/newsletter | done | latest draft path |
-| Published | published, blog/newsletter | done | published URL |
-| Repurposed | published, linkedin/medium/etc | active→done | platform-specific path |
+#### Source of Truth
 
-All records have `system: content` and links back to source material (the linked notes, the original feature, etc.).
+**`cs.py` remains the source of truth** for content lifecycle state. It has content-specific logic (format routing, platform mapping, piece dependencies, status transition validation) that belongs in the domain, not in the Hive's generic entity system. The Hive adds cross-system context and awareness — it doesn't replace `cs.py`.
+
+#### Hive Integration Point
+
+**Integration lives in `cs.py` itself** — not in the content skills. When `cs.py` executes a status transition, it also calls the Hive CLI to create/update records. This follows the principle "System CLIs own their Hive updates." Every tool that uses `cs.py` automatically creates Hive records. Graceful degradation: if the `hive` CLI is unavailable, `cs.py` logs a warning and continues — the same pattern it already uses for its own failures.
+
+#### Workflow Entity = Idea Level
+
+Each content idea gets a Hive workflow entity. One idea can spawn multiple content pieces (blog + LinkedIn post + tweet thread), but the workflow tracks the idea-level journey. Individual pieces become awareness records referencing the workflow.
+
+```bash
+# When cs.py creates an idea, it also calls:
+hive create workflow "DevOps transformation story" \
+  --objective "Blog post about our DevOps journey" \
+  --domains career-catalyst \
+  --refs brand:personal \
+  --status active
+```
+
+#### Transition Map
+
+At each meaningful transition, `cs.py` creates a Hive knowledge record (awareness record) and updates the workflow entity's `current_context`:
+
+| cs.py Event | Hive Knowledge Record | Tags | Ref |
+|------------|----------------------|------|-----|
+| Idea created | Workflow entity created | — | — |
+| Idea validated | Note: idea validated with angle | `content, validated` | — |
+| Piece created | Note: piece created for format/platform | `content, awareness` | — |
+| Extraction complete | Note: extraction summary + key material | `content, extraction` | `drafts/{slug}/extraction.md` |
+| Draft version created | Note: what changed in this version, approach | `content, draft` | `drafts/{slug}/draft-v{N}.md` |
+| Feedback received | Note: feedback substance and intent | `content, feedback` | — |
+| Approved | Note: final piece approved | `content, approved` | latest draft path |
+| Published | Note: published with URL | `content, published` | published URL |
+
+**Every transition updates the workflow entity:**
+```bash
+hive update devops-transformation-story \
+  --current-context "Blog extraction complete. Draft v1 in progress. LinkedIn post planned but not started."
+```
+
+**Draft and feedback records include substance** — not just "draft v3 created" but what changed and why. The reasoning trail between drafts is valuable source material for future content on related topics and for the flywheel.
+
+#### Context Assembly Playbook
+
+The content system's context playbook is defined in its skill and instructs the context assembly session on what to gather for content sessions. The playbook follows priority order:
+
+**1. Search the entire Hive for the topic.** This is the primary context. The Hive contains everything — decisions made during development, design docs, research notes, session summaries, Linear issues about the feature, Slack threads where customers discussed it, meeting notes, email threads, linked observations. All synced external data is already in the Hive. The context assembly agent uses `hive search`, `hive refs`, `hive recent` and follows the graph wherever it leads. This is the source material for the content.
+
+**2. Explore the codebase if the topic involves code.** For technical content, the context assembly agent reads the actual implementation — key files, architecture, recent commits, interesting patterns worth writing about. The Hive knows "we built voice scoring" but the code shows *how*.
+
+**3. Read content pipeline state from `cs.py`.** The agent calls `cs idea show {id} --json`, `cs piece list --idea {id} --json`, `cs event list --entity {id} --json` to understand where the content work stands — piece statuses, draft paths, feedback history, dependencies.
+
+**4. Read brand voice.** From `brands/{brand}/voice.md` — tone, personality, what to embrace, what to avoid. This shapes how the working session writes.
+
+**5. Cross-content awareness.** Other recent content workflows — what's been published, what's in flight. Avoids overlap, enables cross-referencing.
+
+#### Context Note Structure
+
+The context assembly session writes a comprehensive knowledge note with this structure:
+
+```markdown
+# Context: [Topic] — Content Session
+
+## System Instructions
+You are working in the content system. Use /content to manage
+the blog creation pipeline. The current state is:
+- Idea: [status] — [summary]
+- Blog piece: [status] — [what's next]
+- [Other pieces if any]
+
+Your next step: [specific instruction — e.g., "Run /content to
+continue extraction" or "Read draft-v3.md, then use
+/content-refine with Craig's feedback below"]
+
+Key skills: /content, /content-extract, /content-draft,
+/content-refine, /content-publish
+State store: cs.py (run `cs status --json` to check current state)
+Brand: [brand name] — voice.md loaded below
+
+## The Topic
+[Everything the Hive knows — decisions, designs, research,
+meetings, customer quotes, Linear issues, Slack threads, email,
+code architecture. Full substance with rationale, not summaries.
+This is the source material for the content.]
+
+## People & Companies
+[Full entity profiles for anyone relevant to the topic.]
+
+## Codebase State
+[If technical: key files, architecture, recent changes,
+interesting patterns worth writing about.]
+
+## Content Pipeline State
+[From cs.py: idea status, piece statuses, draft version,
+extraction progress, recent feedback, dependencies.]
+
+## Brand Voice
+[From voice.md: tone, personality, embrace/avoid lists.]
+
+## What Else Is In Flight
+[Other content workflows — avoid overlap, find cross-references.]
+
+## Do Your Own Due Diligence
+[Prompt: verify codebase state, re-read the latest draft,
+check if anything changed since this note was assembled.]
+```
+
+The **System Instructions** section is what makes this a content session — it routes the working session into the content pipeline immediately. The **Topic** section is the bulk (potentially 15k+ tokens) — the full cross-system context that makes the content rich and informed.
 
 ### Session Manager Integration
 
@@ -999,13 +1246,115 @@ The awareness record captures: what was accomplished, what decisions were made, 
 
 ### Code Development System Integration
 
-The code development system will be designed and built separately as its own system (like the content system). When that design happens, it will define its specific Hive transitions following the generic contract above.
+The code development system is Craig's most-used workflow. Unlike the content system (which has its own repo and `cs.py` state store), the code dev system **composes existing OS tools** — projects, beads, dispatch, git worktrees, session manager — with the **Hive workflow entity as the unifying state tracker**. There is no separate `code-dev.py` CLI. The Hive IS the state layer.
 
-**Key insight from design discussion:** The design/brainstorming phase of code development generates **many native knowledge notes**, not just a single "design doc created" awareness record. The reasoning trail — questions explored, research findings, trade-off analyses, rejected approaches, thought experiments — is captured as individual linked notes throughout the design process. The skill/workflow driving the design phase creates these notes as a byproduct of doing its work, not as a separate manual step.
+#### The Core Problem This Solves
 
-This principle applies to any system with creative or exploratory phases: **capture the reasoning trail, not just the outputs.** The retrieval system handles relevance — more captured knowledge is better, not noisier, because semantic search and graph traversal surface what matters for each specific context request.
+Code features span 20+ sessions across design, review, planning, execution, testing, and deployment. Each session gets a handoff prompt or compaction summary, but over time the context degrades — "losing the plot." Implementing sessions don't know *why* things were designed a certain way. Testing sessions don't have the design context. Debugging sessions lack architectural understanding.
 
-The code development lifecycle spans: design/brainstorming → spec/design doc → implementation plan → parallel execution (beads) → validation/testing → deployment. Each phase will have defined Hive transitions. The design phase is notable for producing high volumes of native knowledge notes rather than just awareness records of completed artifacts.
+The Hive solves this through **systematic checkpointing** — every design decision, trade-off, rejected alternative, and "why" is captured as a knowledge record linked to the workflow. Context assembly rehydrates any fresh session with the full reasoning trail, not a compressed summary.
+
+#### No Separate State Store
+
+Code development already has state in multiple places — Linear (issues), beads (tasks), git (branches/PRs), dispatch (execution). A dedicated `code-dev.py` would duplicate or need to sync with all of them. Instead:
+
+- **Hive workflow entity** tracks high-level state (phase, current_context, sessions, artifacts)
+- **Linear** tracks issues and team-facing work
+- **Beads** tracks implementation tasks within a session
+- **Git** tracks code (branches, PRs, commits)
+- **The Hive knowledge graph** captures the reasoning trail across all of it
+
+#### Checkpointing: Skills Own It
+
+The skills that drive each phase of work create Hive records as a byproduct — the same principle as "System CLIs own their Hive updates." The brainstorming skill, when it reaches a decision point and gets confirmation, calls `hive create decision "..."`. The plan-writing skill records planning decisions. The debugging skill records root cause analyses. Checkpointing is built into the workflow, not a separate manual step.
+
+**Two levels of checkpointing:**
+1. **Decision-level checkpoints** — created during a session at each major decision point. Full rationale, alternatives considered, why they were rejected. 10-20+ per design session.
+2. **Session summaries** — created at session close, linking to all the checkpoints made during that session and describing the arc. The narrative thread connecting the decision points.
+
+#### Workflow Lifecycle
+
+| Phase | What Happens | Knowledge Created |
+|-------|-------------|-------------------|
+| **design** | Iterative brainstorming across many sessions. The bulk of context is created here. | Decision checkpoints (each resolved question with full rationale + alternatives), design iterations, research findings, trade-off analyses, rejected approaches. High volume — 10-20+ records per session. |
+| **design-review** | 5+ independent sessions review the design. Each reviews from a fresh perspective. | Review findings, concerns raised, validations, requested changes. Each review session creates records. |
+| **planning** | Implementation plan built from the finalized design. | The plan itself, task breakdowns, dependency rationale, sequencing decisions. |
+| **plan-review** | Plan reviewed against the design. | Review findings, gaps identified, adjustments made. |
+| **execution** | Implementation via parallel subtasks. | Per-task completion records, implementation decisions made during coding, deviations from plan and why. Lower volume than design — more mechanical. |
+| **code-review** | Implementation reviewed against the original design. | Review findings, issues found, fixes applied, design conformance assessment. |
+| **testing** | Testing and debugging — often a long phase. | Bug reports, root cause analyses, what was tried, what worked. Substantial knowledge generated — the "why doesn't this work" reasoning trail. |
+| **deployment** | Ship it. | Deployment record, issues encountered, rollback decisions if any. |
+
+The workflow entity's `current_context` is updated at each phase transition and at session close within a phase:
+
+```bash
+hive update voice-scoring-ui \
+  --current-context "Design phase complete (sessions 1-8). 5 design reviews done, all passed. Implementation plan created and reviewed. Execution in progress — 3/7 tasks complete. Task 4 (API wiring) blocked on endpoint schema question."
+```
+
+#### Context Assembly Playbook
+
+This is the piece that solves "losing the plot." When Craig starts a fresh session on a code workflow — whether session 1 (design) or session 25 (debugging) — the context assembly agent gathers:
+
+**1. Search the entire Hive for the topic.** Everything — decisions from design sessions, meeting notes where the feature was discussed, Linear issues, Slack threads, customer requests, related features, prior art. All synced external data is already in the Hive.
+
+**2. The workflow entity.** `current_context` tells the session exactly where things stand — phase, recent progress, blockers, what's next.
+
+**3. All decision checkpoints linked to this workflow.** This is the critical difference from a handoff prompt. Not a compressed summary of 20 sessions — the actual decisions with full rationale, alternatives considered, and why they were rejected. The context assembly agent includes ALL of them with substance. This is how session 25 knows *why* entities are MongoDB-only, not just *that* they are.
+
+**4. The codebase.** Read key files, recent commits, test results, current state of the implementation. The Hive knows what was decided; the code shows what was actually built.
+
+**5. Related workflows.** Other features that touch the same code, depend on this one, or were designed with shared assumptions.
+
+#### Context Note Structure
+
+```markdown
+# Context: [Feature] — Code Development Session
+
+## System Instructions
+You are working on [feature]. Current phase: [phase].
+[Specific instruction for what to do next — e.g., "Continue
+design review" or "Debug the failing integration test"
+or "Implement task 4 from the plan".]
+[Key skills to use for this phase.]
+[Target repo and key file paths.]
+
+## Design Decisions (Full Reasoning)
+[Every decision checkpoint — not summaries, the actual
+rationale. "We chose X because Y. We considered A and B
+but rejected them because Z." This section can be 10k+
+tokens for a mature workflow. That's fine — this IS the
+context that prevents losing the plot.]
+
+## Current State
+[From workflow entity: what phase we're in, what's been
+built, what's in progress, what's blocked, what's next.]
+
+## The Broader Context
+[Everything else the Hive knows — meetings, Linear issues,
+Slack discussions, customer requests, email threads,
+related features and their state.]
+
+## Codebase State
+[Key files, recent commits, test results, architecture
+relevant to the current phase.]
+
+## Related Workflows
+[Other features touching the same code or with dependencies
+on this workflow.]
+
+## Do Your Own Due Diligence
+[Verify codebase state, run tests, read recent commits
+since this note was assembled.]
+```
+
+The **Design Decisions** section is the heart of it. A compressed handoff prompt says "entities are MongoDB-only." This section says "entities are MongoDB-only because YAML entity files created file↔database sync complexity, nobody would open people/craig.yaml in a text editor, and knowledge type proliferation was unnecessary. We considered keeping files for all types (too much sync overhead) and a full type system for everything (over-engineered). Decided 2026-03-14." That level of detail is what prevents losing the plot across 20+ sessions.
+
+#### Principle: Capture the Reasoning Trail, Not Just the Outputs
+
+This applies to any system with creative or exploratory phases. The design phase produces high volumes of native knowledge notes — not just a single "design doc created" awareness record. The reasoning trail — questions explored, research findings, trade-off analyses, rejected approaches — is captured as individual linked notes by the skill driving the process.
+
+More captured knowledge is better, not noisier. The context assembly agent handles relevance — semantic search and graph traversal surface what matters for each specific context request. Session 25 doesn't get all 200 decision checkpoints dumped into its context. It gets the ones relevant to what it's working on.
 
 ### External System Sync Framework
 
@@ -1077,10 +1426,7 @@ Decisions that need to be made during implementation, not during design.
 **Decide during:** Phase 3 (Linear), Phase 4+ (others).
 
 ### 4. Session Lifecycle Integration
-**Question:** How does context assembly get injected into sessions? Hook? First skill invocation? Automatic?
-**Options:** (a) SessionStart hook runs `hive context`, (b) `/hive` skill invoked as first action, (c) Session create command includes `--hive-context` flag.
-**Leaning:** (b) — explicit skill invocation gives the session control over what context to request.
-**Decide during:** Phase 2 implementation.
+**RESOLVED (2026-03-14):** Dedicated context assembly session. The Hive UI spawns a short-lived Claude Code session that gathers context using the Hive CLI, writes a comprehensive context note, then terminates. The working session is then spawned with the context note injected via `tmux send-keys`. No hooks, no skill invocation — the context is already assembled before the working session exists.
 
 ### 5. Hive UI in OS Terminal
 **Question:** What views? How does it integrate with the existing terminal grid?
@@ -1108,130 +1454,108 @@ Decisions that need to be made during implementation, not during design.
 **Decide during:** Phase 2.
 
 ### 10. Context Assembly LLM
-**Question:** Which model assembles the briefing? Local or API?
-**Options:** (a) Claude via the session itself (the session runs `hive context`, which returns raw notes, and the session assembles them), (b) A separate local LLM call in the CLI, (c) Claude API call from the CLI.
-**Leaning:** (a) — simplest. The `hive context` command returns ranked notes. The session (which is already Claude) assembles them into a briefing using the instruction template. No additional LLM call needed.
-**Decide during:** Phase 2.
+**RESOLVED (2026-03-14):** The context assembly agent IS a Claude Code session — it uses the Hive CLI as a toolkit, decides what queries to run based on user intent, and synthesizes the results into a comprehensive context note. No fixed algorithm, no separate local LLM, no CLI-level assembly. The session's Claude instance does the reasoning. Different intent → different retrieval strategy.
 
 ---
 
 ## Implementation Phases
 
-### Phase 1: Foundation
-**Goal:** The vault exists with the type system, typed records can be created and queried, the registry is seeded.
+### Phase 1: Foundation — Data Layers + CLI
+**Goal:** Both data layers exist. Entities in MongoDB, knowledge as markdown files. The 14-command unified CLI works. Registry is seeded.
 
-- [ ] Create `hive/` directory structure in the OS repo — `.registry/`, `.registry/types/`, `.templates/`, typed subdirectories
-- [ ] Create initial type definitions in `.registry/types/` — person, company, product, project, meeting, brand, platform, channel, note, decision, design_document, implementation_plan, research, session_summary
-- [ ] Create `hive/.registry/ontology.yaml` with initial tags, domains, statuses
 - [ ] Install local MongoDB Community Edition (`brew install mongodb-community`)
-- [ ] Build `hive` CLI core (Python, Click/Typer) with type-aware commands:
-  - `hive init` — set up vault structure, create MongoDB database, seed indexes, load types
-  - `hive create <type> <name/title>` — create a typed record (YAML or Markdown), validate against schema, write to vault, index into MongoDB
-  - `hive get <id>` — read any record by ID (auto-detect type)
-  - `hive <type> list` — type-scoped listing with filtering
-  - `hive sync` — parse all vault files, extract fields, upsert into MongoDB
-  - `hive types list` — display registered types
-  - `hive types show <type>` — show type schema
-  - `hive tags list` — display registered tags from ontology.yaml
-  - `hive status` — count records by type and domain, show recent activity
-- [ ] Build type registry loader (`types.py`) — reads YAML type definitions, validates schemas, auto-generates CLI commands
+- [ ] Create `hive/` directory structure — `.registry/`, `.registry/types/`, `.templates/`, knowledge subdirectories (notes/, decisions/, designs/, research/, sessions/)
+- [ ] Create entity type definitions in `.registry/types/` — person, company, product, project, workflow, meeting, brand, platform, channel
+- [ ] Create `hive/.registry/ontology.yaml` with initial tags (decision, design, research, session_summary, note, feedback, context_assembly), domains, statuses — ensuring disjoint sets with entity types
+- [ ] Build `hive` CLI core (Python, Click/Typer) with unified routing:
+  - `hive init` — set up vault, create MongoDB database, seed indexes, load types
+  - `hive create <type-or-tag> "title"` — route to entity (MongoDB) or knowledge (file + index)
+  - `hive get <id>` — query both layers, entity first, return with layer indicator
+  - `hive update <id>` — resolve layer, update accordingly
+  - `hive list <type-or-tag>` — route to entity or knowledge list
+  - `hive refs <id>` — bidirectional reference traversal
+  - `hive recent [duration]` — reverse-chronological mixed-type feed
+  - `hive sync` — index all knowledge files to MongoDB
+  - `hive status` — overview: counts by type/domain/status
+  - `hive init` — initialize vault, MongoDB, seed registry
+  - `hive types list/show`, `hive tags list`, `hive domains list` — registry inspection
+- [ ] Build type registry loader (`types.py`) — reads entity type definitions, validates schemas
+- [ ] Build two-layer record CRUD (`records.py`) — entities → MongoDB only, knowledge → files + MongoDB index
 - [ ] Create the `/hive` skill (`.claude/skills/hive/SKILL.md`)
-- [ ] Create initial entity records: people (Craig, Cam), companies (Indemn), products, projects, brands
-- [ ] Migrate 5-10 existing artifacts as proof of concept (as typed knowledge records)
-- [ ] Verify: can create typed records, type validation works, type-scoped queries work
+- [ ] Seed initial entities: people (Craig, Cam), companies (Indemn), products, projects, brands
+- [ ] Migrate 5-10 existing artifacts as knowledge records (decisions, designs)
+- [ ] Verify: entity create/get/list works, knowledge create/get/list works, refs traversal works, routing is correct
 
-**Exit criteria:** `hive create person`, `hive create decision`, `hive people list`, and `hive sync` work. Entity records and knowledge records coexist. Type validation enforces schemas.
+**Exit criteria:** `hive create person "Craig"` creates entity in MongoDB. `hive create decision "Use two layers"` creates markdown file + MongoDB index. `hive get craig` returns entity. `hive refs craig` shows connected records. `hive list person` and `hive list decision` route correctly. Output shows layer indicators.
 
-### Phase 2: Context Engine
-**Goal:** Sessions can hydrate context from the Hive. Semantic search works. Relationship traversal works.
+### Phase 2: Context Engine + Assembly
+**Goal:** Semantic search works. The context assembly agent can use the Hive CLI to curate context. Workflow entities track long-running work state.
 
-- [ ] Install Ollama + embedding model locally
+- [ ] Install Ollama + embedding model locally (start with `nomic-embed-text`)
 - [ ] Build embedding abstraction layer (`embed.py`)
-- [ ] Add embedding generation to `hive sync` (embed content of markdown records, store vectors in MongoDB)
-- [ ] Build `hive search` — semantic search via cosine similarity + type/tag/domain filters
-- [ ] Build `hive context` — retrieval algorithm (semantic + typed relationships + recency) that returns ranked records
-- [ ] Build relationship traversal — `hive people get craig --meetings` follows typed refs across types
-- [ ] Create context instruction template (knowledge, entities, skills, reads, reminders sections)
-- [ ] Integrate with session startup — update `/sessions` skill to recommend `hive context` at start
-- [ ] Build `hive create <type> --from-file` — convert existing files to typed Hive records
-- [ ] Migrate all 73 existing artifacts to Hive records (as appropriate types — design_documents, decisions, research, notes)
-- [ ] Extract decisions from INDEX.md files into standalone decision records
-- [ ] Test: start a session, run `hive context`, verify the briefing includes relevant entities and knowledge
+- [ ] Add embedding generation to `hive sync` — embed knowledge file content, store vectors in MongoDB
+- [ ] Build `hive search` — semantic search via cosine similarity + tag/domain/type/recency filters, searches both layers
+- [ ] Build `hive context` — the context assembly coordination command. Takes query + objective + system, returns structured context.
+- [ ] Build `hive refs` with depth — multi-hop relationship traversal across entity types
+- [ ] Build context assembly session support — the session CLI can create short-lived sessions that write context notes and terminate
+- [ ] Create system context playbooks — each system's skill defines what context to gather (content system and code dev system are first)
+- [ ] Build workflow entity patterns — systems can create/update workflow entities to track long-running work state
+- [ ] Migrate all existing artifacts to Hive knowledge records (decisions, designs, research, notes)
+- [ ] Extract decisions from INDEX.md files into standalone knowledge records
+- [ ] Test: context assembly session reads system playbook, queries Hive, writes comprehensive context note, working session starts hydrated
 
-**Exit criteria:** `hive context "voice evaluations"` returns a useful briefing with entity profiles, knowledge, skills, and reminders. `hive people get craig --meetings` traverses relationships. Semantic search finds related knowledge.
+**Exit criteria:** `hive search "voice scoring"` returns relevant knowledge via semantic + keyword search. A context assembly session can use Hive CLI to assemble context for a code development workflow. Workflow entities persist state across sessions. `hive recent 7d` shows mixed-type activity feed.
 
-### Phase 3: External System Sync
-**Goal:** The Hive connects to external systems. Bidirectional sync brings the outside world in and pushes actions back out.
+### Phase 3: System Integration + External Sync
+**Goal:** Content and code dev systems create awareness records and update workflows. External system data flows into the Hive.
 
-**Note:** Sync adapters build on existing Claude Code skills — `/linear` (linearis), `/google-workspace` (gog), `/slack` (agent-slack), `/github` (gh). The adapters call these CLIs and map output to typed Hive records. Each adapter adds its own type definition to `.registry/types/`. Not building new integrations from scratch.
+**Note:** Sync adapters build on existing Claude Code skills — `/linear` (linearis), `/google-workspace` (gog), `/slack` (agent-slack), `/github` (gh). Each adapter adds its own entity type definition to `.registry/types/`.
 
+- [ ] Content system integration — content CLI creates/updates workflow entities, creates awareness records at each pipeline stage (idea → extraction → draft → publish)
+- [ ] Code development system integration — code dev skill creates/updates workflow entities, creates awareness records at lifecycle transitions
+- [ ] Update `/sessions` skill — session close creates session-summary knowledge record linked to workflow
+- [ ] Update brainstorming skill — reasoning trail captured as linked knowledge records
 - [ ] Build sync adapter framework — common interface for inbound/outbound sync, dedup, incremental updates
-- [ ] Build Linear sync adapter — pull issues as awareness records, push status changes back, bidirectional
-- [ ] Build Google Calendar sync adapter — pull upcoming events as notes, status based on timing
-- [ ] Build Gmail sync adapter — pull unread/flagged as notes, mark read/archive pushes back
-- [ ] Build Slack sync adapter — pull unread mentions/DMs as notes, mark read pushes back
-- [ ] Build GitHub sync adapter — pull open PRs/issues as awareness records, status from PR state
-- [ ] Build `hive sync <system>` CLI commands for each adapter
-- [ ] Implement scheduled sync (cron or background process) for continuous freshness
-- [ ] Investigate webhook receivers for real-time sync where supported (Linear, GitHub, Slack)
-- [ ] Create entity notes for Linear teams, key repos, key contacts
-- [ ] Test: Linear issues, calendar events, unread emails, Slack mentions all appear as Wall-ready tiles
+- [ ] Build Linear sync adapter — pull issues as entity records, push status changes back
+- [ ] Build Google Calendar sync adapter — pull upcoming events, status based on timing
+- [ ] Build Slack sync adapter — pull unread mentions/DMs
+- [ ] Build GitHub sync adapter — pull open PRs/issues
+- [ ] Implement scheduled sync for continuous freshness
+- [ ] Test: full workflow — brainstorm → spec → implementation → completion, all tracked as workflow entity + knowledge records + awareness records
 
-**Exit criteria:** External system data flows into the Hive as notes with correct status mapping. Changes pushed back to source systems. The Hive reflects the state of all connected systems.
+**Exit criteria:** Content and code dev systems create workflows and awareness records as a byproduct of working. Linear issues, calendar events, Slack mentions flow into the Hive as synced entities. A complete feature lifecycle is traceable through the Hive.
 
-### Phase 4: Workflow Integration
-**Goal:** The Hive is woven into the daily workflow. Sessions create notes. OS systems report to the Hive.
-
-- [ ] Update `/sessions` skill — session close creates a session-summary awareness record
-- [ ] Update brainstorming skill — key ideas, decisions, and reasoning trail become Hive notes as a byproduct of the process
-- [ ] Update project skill — `/project` queries Hive alongside/instead of INDEX.md
-- [ ] Content system integration — content CLI creates awareness records at each pipeline stage (idea → extraction → draft → approved → published → repurposed)
-- [ ] Dispatch integration — dispatch creates awareness records for task completion/failure
-- [ ] Build `hive notes` listing/filtering commands
-- [ ] Build `hive feedback` command — auto-tagged, auto-linked feedback notes for self-improvement
-- [ ] Determine beads ↔ Hive relationship — mirror beads tasks as awareness records
-- [ ] Update context assembly to surface cross-system connections
-- [ ] Document the system integration convention (for future systems)
-- [ ] Test: full workflow — brainstorm → spec → tasks → dispatch → completion, all tracked in Hive
-- [ ] Test: context for a feature shows related Linear issues, PRs, content drafts, meetings
-
-**Exit criteria:** A complete feature lifecycle is traceable through the Hive. Session summaries auto-create. Content and dispatch report to the Hive. Cross-system context assembly works.
-
-### Phase 5: The Hive UI
-**Goal:** The Hive is the home screen. Wall + Focus Area. Tiles. Session spawning with context.
+### Phase 4: The Hive UI
+**Goal:** The Hive is the home screen. Wall + Focus Area. Tiles. Session spawning with dedicated context assembly.
 
 - [ ] Evolve OS Terminal React app — replace session grid with Wall + Focus Area layout
 - [ ] Build tile component — fluid sizing, progressive information disclosure, color/accent/brightness encoding
-- [ ] Build Wall layout — tiles surrounding Focus Area, breathing with activity level, smart highlight reel in compressed mode
+- [ ] Build Wall layout — tiles surrounding Focus Area, breathing with activity level
 - [ ] Build Focus Area — equal-sized auto-grid of terminal panels (xterm.js, existing) + browser panels (iframe, new)
 - [ ] Build Overview toggle — expand Wall to full screen, collapse back to Focus
 - [ ] Add Hive API routes to Express backend — wrap Hive CLI with JSON output
-- [ ] Add WebSocket Hive updates — push note changes to frontend (~30s polling + on-action)
+- [ ] Add WebSocket Hive updates — push changes to frontend
 - [ ] Build Wall ordering — priority → status → recency, drag-to-reorder within priority buckets
 - [ ] Build domain filtering — click domain tile to filter Wall
-- [ ] Build search tile — search input that queries `hive search`
-- [ ] Build quick capture tile — input that creates notes, LLM auto-tags async
-- [ ] Build "create linked note" interaction — one-click note creation linked to parent tile
-- [ ] Build session spawning from tiles — click tile → `session create` → first message with tile metadata via `tmux send-keys`
-- [ ] Build session initialization flow — objective question → targeted context retrieval → work begins
-- [ ] Build direct tile actions — mark done, change priority, archive → outbound sync to external systems
-- [ ] Merge session state tiles (from `sessions/*.json`) with Hive note tiles into unified Wall
-- [ ] Color/visual mapping from `ontology.yaml` — system colors, domain accents, status brightness
-- [ ] Responsive layout — ultra-wide (Wall + Focus coexist), smaller screens (Wall collapses)
-- [ ] ~~Configure Obsidian vault~~ DROPPED — Hive UI is the visualization layer
+- [ ] Build search tile, quick capture tile, "create linked note" interaction
+- [ ] Build session spawning from tiles — click tile → prompt for objective → spawn context assembly session → spawn working session with context
+- [ ] Build direct tile actions — mark done, change priority, archive → outbound sync
+- [ ] Merge session state tiles (from `sessions/*.json`) with Hive tiles into unified Wall
+- [ ] Color/visual mapping from `ontology.yaml` — type colors, domain accents, status brightness
+- [ ] Responsive layout
 
-**Exit criteria:** The Hive is the home screen. You see your world as tiles, click to start context-hydrated sessions, work in Focus panels, observe everything from the Wall. Direct tile actions sync back to external systems. The OS Terminal's session grid is fully replaced.
+**Exit criteria:** The Hive is the home screen. You see your world as tiles, click to start context-hydrated sessions (with dedicated context assembly), work in Focus panels, observe everything from the Wall.
 
-### Phase 6: Expansion
+### Phase 5: Expansion
 **Goal:** Platform integrations, multi-user, graph maturity.
 
 - [ ] Substack, LinkedIn, X integration — content publishing and engagement tracking via sync adapters
+- [ ] Gmail sync adapter — pull unread/flagged, mark read/archive
 - [ ] Multi-user — shared MongoDB or generated output views for CEO/teammates
 - [ ] Graph quality management — archival conventions, stale note detection, pruning
 - [ ] Automated ontology management — detect tag drift, suggest merges
-- [ ] New system templates — streamline creating Hive-integrated systems
-- [ ] Cross-domain discovery automation — proactively surface connections
 - [ ] Morning consultation session type — daily planning with calendar, priorities, active work
+- [ ] Cross-domain discovery automation — proactively surface connections
 
 **Exit criteria:** Content platforms connected. The CEO gets weekly views. Graph quality stays high as the system scales.
 
@@ -1250,12 +1574,12 @@ The transition is gradual. Nothing breaks.
 - New knowledge goes to `hive/`; old artifacts get migrated incrementally
 
 **Migration steps:**
-1. **Create entity notes** for all 16 existing projects (one note per project, tagged `project`)
-2. **Migrate artifacts** — add Hive frontmatter (tags, domains) to existing artifacts, copy or move to `hive/`, index into MongoDB. 73 artifacts total.
-3. **Extract decisions** — pull decisions from INDEX.md files into standalone `decision` record notes
-4. **Extract external resources** — create entity/reference notes for resources listed in INDEX.md
-5. **Create awareness records** — for things that exist in other systems (Linear issues, active PRs, deployed features)
-6. **Deprecate INDEX.md** — once context assembly reliably replaces INDEX.md, stop maintaining them. They remain as historical artifacts in Git.
+1. **Create entities** for all existing projects, people, companies — directly in MongoDB via `hive create`
+2. **Migrate artifacts** — add Hive frontmatter (tags, domains, refs) to existing artifacts, copy to `hive/` knowledge directories, index into MongoDB. 73 artifacts total.
+3. **Extract decisions** — pull decisions from INDEX.md files into standalone knowledge records tagged `decision`
+4. **Extract external resources** — create entity records for resources listed in INDEX.md
+5. **Create workflow entities** — for active work tracked in INDEX.md, capturing current_context from Status sections
+6. **Deprecate INDEX.md** — once workflow entities and context assembly reliably replace INDEX.md, stop maintaining them. They remain as historical artifacts in Git.
 
 **What doesn't migrate:**
 - The `projects/` directory structure stays (at least initially) — it's not harmful
@@ -1410,7 +1734,7 @@ Creates a native knowledge note with:
 - **Siloed project knowledge** → Unified, linked graph across all domains
 
 ### Augments
-- **The project system** → Projects become entity notes. Artifacts become native knowledge notes. The structure evolves but the knowledge is preserved.
+- **The project system** → Projects become entity records in MongoDB. Workflows track state that INDEX.md used to hold. Artifacts become knowledge records. The structure evolves but the knowledge is preserved.
 - **Skills** → Skills become Hive-aware, creating notes as byproducts. The skill framework itself doesn't change.
 - **Sessions** → Sessions start with Hive context. Session close creates summary notes. The session system itself doesn't change.
 - **Linear** → Linear issues appear as awareness records in the Hive. Linear continues to be the team's work tracking tool.
