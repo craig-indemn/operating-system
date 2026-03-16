@@ -3,38 +3,29 @@
 Build a comprehensive understanding of GIC Underwriters' quoting operation by analyzing their quote@gicunderwriters.com inbox, then design and demo an intelligent system that organizes their workflows, identifies automation opportunities, and eventually connects to all their communication channels (email, phone via RingCentral). The system should be state-based, data-driven, with a data layer that ingestion and processing mechanisms build on top of.
 
 ## Status
-Session 2026-03-16-b. **Full implementation complete. Code reviewed. Tested E2E + browser. Ready for full batch processing and deployment.**
+Session 2026-03-16-b. **Code-complete. Full design compliance. Ready for batch processing + deployment.**
 
-**Repo:** `/Users/home/Repositories/gic-email-intelligence/` (local, not yet on GitHub — need org permissions)
+**Repo:** `/Users/home/Repositories/gic-email-intelligence/` (7 commits on `main`, local only — need org permissions to push)
 
-### What's Built (2026-03-16-b — implementation session)
-- **All 10 implementation phases complete** — 98 files, 11,828 lines of code
-- **Backend**: Python 3.12, FastAPI + Typer CLI + LangChain agent, 7 CLI command groups (25+ commands), 8 API endpoints + WebSocket
-- **Frontend**: React 19 + TypeScript + Vite + shadcn/ui — Kanban board (5 columns), submission detail overlay (timeline, extracted data, completeness ring, draft cards)
-- **Agent**: LangChain/LangGraph harness with 5 skills (classifier, linker, stage-detector, pdf-extractor, draft-generator), 11 structured tools
-- **Docker**: Multi-stage build, supervisord (API + sync loop + agent loop)
-- **79 tests passing**, frontend builds with zero TypeScript errors
-- **Full code review**: 25 issues found (5 critical, 10 important, 10 minor) — all resolved
+### What's Built (2026-03-16-b)
+- **98 files, ~13,000 LOC, 108 tests passing**, frontend builds clean
+- **Backend**: Python 3.12, FastAPI (9 endpoints + WebSocket with 6 event types) + Typer CLI (7 groups, 25+ commands) + LangChain agent (5 skills, 11 tools)
+- **Frontend**: React 19 + TypeScript + Vite + shadcn/ui — Kanban board (5 columns), slide-in detail overlay (timeline, extracted data, LOB-specific completeness ring, draft cards), clickable notification filters, per-field source indicators
+- **Docker**: Multi-stage build, supervisord (API + sync + agent), rate limiting, health check
+- **Code review**: 25 issues found → all 25 resolved
+- **Design audit**: 16 gaps found → all 16 closed — every section of the 1,527-line design matches
 
 ### Database State
-- 3,214 emails in MongoDB (3,165 migrated from exploration + 49 synced live from Graph API)
-- 2,885 pre-classified (from exploration data), 280 extractions (PDF vision results)
-- 10 sample submissions created by agent (diverse types: quote, decline, pending, submission, reply, followup, application, renewal, info request)
-- S3 bucket `indemn-gic-attachments` created with 68 attachments
+- 3,214 emails in MongoDB (3,165 migrated + 49 synced live)
+- 2,885 pre-classified, 286 extractions, 8 drafts
+- 10 sample submissions created by agent (all email types verified)
+- S3 bucket `indemn-gic-attachments` with 68 attachments
 
-### What's Verified
-- All CLI commands work against real data
-- All API endpoints return correct shapes (18 endpoint tests)
-- Browser testing: board renders, time filters work, search with dropdown works, detail view loads with timeline + extracted data + completeness ring
-- Agent successfully processes emails: classify → link → stage detect → extract PDFs → generate drafts
-- Sync deduplication verified (re-run skips existing)
-- Docker builds and health check passes
-
-### What's Next
-1. **Full batch processing** — run agent on all 2,885 classified emails to create submissions, link, detect stages (~$15-20 LLM cost, ~1-2 hours). Requires explicit approval for LLM spend.
-2. **Push to GitHub** — need repo creation permissions on `indemn-ai` org, or create under personal account
-3. **Deploy to AWS** — Docker image → ECS/EC2, domain (gic.indemn.ai), SSL via ACM
-4. **Demo prep** — dry run with GIC data, spot-check 20 submissions, test live sync
+### What's NOT Done
+1. **Full batch processing** — 2,885 classified emails need agent linking + stage detection → ~$15-20 LLM cost, ~1-2 hours with 5 workers. 10-email sample proved pipeline works.
+2. **Push to GitHub** — need `indemn-ai` org permissions
+3. **Deploy to AWS** — Docker image tested locally, need ECS/EC2 + domain (`gic.indemn.ai`) + SSL
+4. **Demo dry run** — see demo script artifact for full plan
 
 **Previous session (2026-03-16-a — design):**
 
@@ -129,7 +120,8 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 | 2026-03-13 | [demo-ui-design](artifacts/2026-03-13-demo-ui-design.md) | Final demo UI design — board view + submission detail with autonomous actions |
 | 2026-03-16 | [technical-design](artifacts/2026-03-16-technical-design.md) | Comprehensive technical design — architecture, data model, CLI, agent harness, skills, deployment, implementation plan |
 | 2026-03-16 | Repo: `/Users/home/Repositories/gic-email-intelligence/` | Full implementation — all 10 phases, 98 files, 79 tests |
-| 2026-03-16 | [design-vs-implementation-audit](artifacts/2026-03-16-design-vs-implementation-audit.md) | Section-by-section design audit — 13 MATCH, 3 PARTIAL, 16 gaps identified |
+| 2026-03-16 | [design-vs-implementation-audit](artifacts/2026-03-16-design-vs-implementation-audit.md) | Section-by-section design audit — 13 MATCH, 3 PARTIAL, 16 gaps identified (all resolved) |
+| 2026-03-16 | [demo-script](artifacts/2026-03-16-demo-script.md) | Full demo script for GIC team — flow, live sync testing, Q&A prep, submission picks |
 
 ## Key Data Files
 | File | What it contains |
