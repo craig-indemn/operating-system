@@ -114,8 +114,15 @@ def find_state_by_cwd(sessions_dir: str, cwd: str) -> tuple[Optional[str], Optio
 
 
 def get_sessions_dir() -> str:
-    """Get the sessions directory path from OS_ROOT env var or default."""
+    """Get the sessions directory path. Sessions are shared infrastructure —
+    always at the main repo root, even when running from a worktree."""
     os_root = os.environ.get("OS_ROOT", "/Users/home/Repositories/operating-system")
+    # Worktrees live at <main-repo>/.claude/worktrees/<name>.
+    # Resolve to the main repo so all worktrees share one sessions/ dir.
+    marker = "/.claude/worktrees/"
+    idx = os_root.find(marker)
+    if idx != -1:
+        os_root = os_root[:idx]
     return os.path.join(os_root, "sessions")
 
 
