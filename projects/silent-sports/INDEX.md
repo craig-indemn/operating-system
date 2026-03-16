@@ -3,15 +3,17 @@
 Re-engagement of Silent Sports (McKay Insurance) with a Crawl/Walk/Run proposal framework. Certificate generation is the primary hook — net new capability for Indemn that becomes reusable across customers. Kyle's internal review doc (March 15, 2026) lays out the framework and assigns questions to Cam (pricing), Craig/Ryan (technical feasibility of doc gen), George (rate engine), and Rocky (relationship/re-engagement).
 
 ## Status
-Design spec v3 complete for **Mint** — reviewed by 3 parallel code reviewers, all critical issues resolved, ACORD 25 AcroForm compatibility confirmed via proof of concept. Architecture: two CLIs (mint + subs) + React UI + deep agent.
+**Mint implementation COMPLETE.** All 9 tasks across 4 waves executed successfully. Repo: [craig-indemn/silent-sports-doc-gen](https://github.com/craig-indemn/silent-sports-doc-gen)
 
-**Next:** Execute implementation plan — Wave 0 (repo scaffold), then parallel execution of Waves 1-2.
+End-to-end demo flow verified:
+- Press N → submission appears in inbox with SSE real-time updates
+- Agent extracts fields → populate in review screen
+- Edit field → premium recalculates
+- Approve → both PDFs generate (ACORD 25 ~325KB, Premium Disclosure ~15KB)
+- Auto-approve mode works — submissions flow through without human review
+- `./demo.sh` launches all 3 services
 
-Key context:
-- ACORD 25 pdf-lib compatibility **confirmed** — 96 AcroForm fields enumerated, fill+flatten proof of concept working
-- Two-layer CLI architecture: `mint` (reusable PDF gen) + `subs` (workflow orchestration)
-- Shared REST API + SSE for component communication (no WebSocket needed)
-- Certificate generation is the hook — Scott called it a "quick win," Meg asked about it unprompted
+**Next:** Demo to Kyle/team, then address open questions (Meg's rate spreadsheet, cert numbering scheme, pricing model).
 
 ### The Framework
 | Phase | Name | Price | Months | Key Deliverables |
@@ -29,6 +31,7 @@ Key context:
 ## External Resources
 | Resource | Type | Link |
 |----------|------|------|
+| Mint Repo | GitHub | [craig-indemn/silent-sports-doc-gen](https://github.com/craig-indemn/silent-sports-doc-gen) |
 | Internal Team Review Doc | Google Doc | [Silent Sports — Internal Team Review](https://docs.google.com/document/d/1LTZ1Lw3lO_8wPWWAEMR_fJ3HvKKql0OXv-NUJYTh6pg/edit) |
 | Jan 28 Call Notes | Google Doc | [Jan 28 Call Notes](https://docs.google.com/document/d/1hVD34xr-EZLwsdyxfXgI622RuEn_4TDkO10pkenPhQE/edit) |
 | Dec 2025 Proposal | Google Doc | [Original Proposal](https://docs.google.com/document/d/1mv4yk5SzS0LL80k2TjrFKmiMxUt1ziEIfCNd7UuiH7w/edit) |
@@ -47,6 +50,8 @@ Key context:
 | 2026-03-16 | [mint-implementation-plan](artifacts/2026-03-16-mint-implementation-plan.md) | Comprehensive implementation plan for parallel Claude Code execution |
 
 ## Decisions
+- 2026-03-16: Mint implementation complete — 4 waves, 9 tasks, 3 parallel agent dispatches per wave
+- 2026-03-16: Integration fix — auto-populate `date` field in ACORD 25 generation (subs/generate.ts)
 - 2026-03-16: Named the doc gen engine **Mint** ("mint a certificate")
 - 2026-03-16: MVP demo scope is Accord 25 + Premium Disclosure (not all 3 docs)
 - 2026-03-16: Hybrid PDF approach — pdf-lib for standard forms (Accord 25), React-PDF for custom docs (Premium Disclosure)
