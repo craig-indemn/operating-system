@@ -104,7 +104,7 @@ Branch naming: `feat/<task-slug>`. Commit messages: `<component>: <description>`
 ### Python
 
 - **Python 3.11+** required
-- **`deepagents`:** Install via `pip install deepagents`. This is a published PyPI package (the LangGraph-based agent framework). If the package is not available or has a different name, use `langgraph` directly with a custom `create_agent()` function that accepts tools and skills. The design spec shows the expected API.
+- **`deepagents`:** Install via `pip install deepagents`. This is a published PyPI package (the LangGraph-based agent framework used across Indemn's platform). Use `create_deep_agent()` with `FilesystemBackend` as shown in the design spec. Do NOT fall back to langgraph or any other framework — deepagents is required.
 - **Virtual environment:** `python -m venv agent/.venv && source agent/.venv/bin/activate && pip install -e agent/`
 
 ### S3
@@ -590,8 +590,7 @@ All agents building mock data or the rate calculation module must use these exac
    - `mint-tool/SKILL.md` — Mint CLI reference (validate and inspect only). Explicit note: "NEVER call `mint generate` — generation is triggered server-side on approval."
 
 2. **Agent** (`agent/src/agent.py`):
-   - Try `deepagents` library first: `create_deep_agent()` with `FilesystemBackend`
-   - If `deepagents` is unavailable: use `langgraph` directly — create a ReAct agent with a shell tool and skill-reading tool
+   - Use `deepagents` library: `create_deep_agent()` with `FilesystemBackend`
    - Model: `anthropic:claude-sonnet-4-20250514`
    - Single tool: shell execution (subprocess.run with capture_output=True)
    - System prompt: "You are an insurance document processing agent. You extract fields from submissions and validate them against document templates. You NEVER generate documents — generation happens server-side when a submission is approved. Use the subs CLI to read and update submissions. Use the mint CLI to validate fields."
@@ -610,7 +609,7 @@ All agents building mock data or the rate calculation module must use these exac
      7. If validation fails: `subs update <id> --status review --validation-errors '<errors>'`
 
 4. **Dependencies** (`agent/pyproject.toml`):
-   - `deepagents` (or `langgraph` + `langchain-anthropic` as fallback)
+   - `deepagents`, `langchain-anthropic`
    - Python 3.11+
 
 **Acceptance criteria:**
