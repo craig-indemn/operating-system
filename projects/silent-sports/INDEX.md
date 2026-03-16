@@ -5,7 +5,7 @@ Re-engagement of Silent Sports (McKay Insurance) with a Crawl/Walk/Run proposal 
 ## Status
 Design spec v3 complete for **Mint** — reviewed by 3 parallel code reviewers, all critical issues resolved, ACORD 25 AcroForm compatibility confirmed via proof of concept. Architecture: two CLIs (mint + subs) + React UI + deep agent.
 
-**Next:** Create implementation plan, set up repo (`craig-indemn/silent-sports-doc-gen`), build MVP.
+**Next:** Execute implementation plan — Wave 0 (repo scaffold), then parallel execution of Waves 1-2.
 
 Key context:
 - ACORD 25 pdf-lib compatibility **confirmed** — 96 AcroForm fields enumerated, fill+flatten proof of concept working
@@ -44,6 +44,7 @@ Key context:
 |------|----------|-----|
 | 2026-03-16 | [kyle-proposal-framework](artifacts/2026-03-16-kyle-proposal-framework.md) | What is Kyle's Silent Sports re-engagement proposal and what questions does Craig need to answer? |
 | 2026-03-16 | [mint-design-spec](artifacts/2026-03-16-mint-design-spec.md) | Design the document generation MVP — architecture, components, demo flow, UI |
+| 2026-03-16 | [mint-implementation-plan](artifacts/2026-03-16-mint-implementation-plan.md) | Comprehensive implementation plan for parallel Claude Code execution |
 
 ## Decisions
 - 2026-03-16: Named the doc gen engine **Mint** ("mint a certificate")
