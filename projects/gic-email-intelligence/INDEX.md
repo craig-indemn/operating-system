@@ -3,35 +3,40 @@
 Build a comprehensive understanding of GIC Underwriters' quoting operation by analyzing their quote@gicunderwriters.com inbox, then design and demo an intelligent system that organizes their workflows, identifies automation opportunities, and eventually connects to all their communication channels (email, phone via RingCentral). The system should be state-based, data-driven, with a data layer that ingestion and processing mechanisms build on top of.
 
 ## Status
-Session 2026-03-16-a. **Comprehensive technical design complete. Ready for implementation.**
+Session 2026-03-16-b. **Full implementation complete. Code reviewed. Tested E2E + browser. Ready for full batch processing and deployment.**
 
-**What happened this session (2026-03-16-a):**
+**Repo:** `/Users/home/Repositories/gic-email-intelligence/` (local, not yet on GitHub — need org permissions)
 
-### Data Validation Against Design
-- Validated lifecycle stages against all 3,165 classified emails and 115 multi-type insureds
-- Discovered conversation threading is useless (99.8% single-email threads) — linking must use reference numbers + named insured matching
-- Mapped all USLI reference prefixes to LOBs (25 deterministic prefix→LOB mappings)
-- Confirmed 96.2% of emails have reference numbers, 96.9% have named insureds
-- Analyzed folder→email type distribution: PRIVATE LABEL (2,961) = carrier responses, Inbox (99) = active human work
+### What's Built (2026-03-16-b — implementation session)
+- **All 10 implementation phases complete** — 98 files, 11,828 lines of code
+- **Backend**: Python 3.12, FastAPI + Typer CLI + LangChain agent, 7 CLI command groups (25+ commands), 8 API endpoints + WebSocket
+- **Frontend**: React 19 + TypeScript + Vite + shadcn/ui — Kanban board (5 columns), submission detail overlay (timeline, extracted data, completeness ring, draft cards)
+- **Agent**: LangChain/LangGraph harness with 5 skills (classifier, linker, stage-detector, pdf-extractor, draft-generator), 11 structured tools
+- **Docker**: Multi-stage build, supervisord (API + sync loop + agent loop)
+- **79 tests passing**, frontend builds with zero TypeScript errors
+- **Full code review**: 25 issues found (5 critical, 10 important, 10 minor) — all resolved
 
-### Architecture Decisions
-- **Agent harness with CLI + Skills pattern** — first instance of Indemn's generalizable agentic workflow system
-- CLI (`outlook-inbox`) is the CRUD interface to the system; DeepAgent is the intelligence layer that drives it
-- 5 skills: email-classifier, submission-linker, pdf-extractor, stage-detector, draft-generator
-- MongoDB on existing Atlas cluster (separate `gic_email_intelligence` database)
-- AWS deployment (ECS/EC2 + S3) alongside existing infrastructure
-- 5 action-oriented board columns: New, Awaiting Info, With Carrier, Quoted, Attention
+### Database State
+- 3,214 emails in MongoDB (3,165 migrated from exploration + 49 synced live from Graph API)
+- 2,885 pre-classified (from exploration data), 280 extractions (PDF vision results)
+- 10 sample submissions created by agent (diverse types: quote, decline, pending, submission, reply, followup, application, renewal, info request)
+- S3 bucket `indemn-gic-attachments` created with 68 attachments
 
-### Technical Design Document
-- Full design in `artifacts/2026-03-16-technical-design.md` (18 sections)
-- Covers: architecture, data model, CLI design, agent harness, skills, ingestion, API, frontend, LOB requirements, deployment, security, cost estimation, testing strategy, implementation sequence
+### What's Verified
+- All CLI commands work against real data
+- All API endpoints return correct shapes (18 endpoint tests)
+- Browser testing: board renders, time filters work, search with dropdown works, detail view loads with timeline + extracted data + completeness ring
+- Agent successfully processes emails: classify → link → stage detect → extract PDFs → generate drafts
+- Sync deduplication verified (re-run skips existing)
+- Docker builds and health check passes
 
-**Next session — implementation:**
-1. Phase 1: Foundation — project scaffolding, CLI, MongoDB setup, initial data load
-2. Phase 2: Agent processing — harness + skills, run initial classification
-3. Phase 3: Frontend — board view, detail view, WebSocket
-4. Phase 4: Intelligence — PDF extraction, draft generation, completeness
-5. Phase 5: Demo ready — deploy, test, dry run
+### What's Next
+1. **Full batch processing** — run agent on all 2,885 classified emails to create submissions, link, detect stages (~$15-20 LLM cost, ~1-2 hours). Requires explicit approval for LLM spend.
+2. **Push to GitHub** — need repo creation permissions on `indemn-ai` org, or create under personal account
+3. **Deploy to AWS** — Docker image → ECS/EC2, domain (gic.indemn.ai), SSL via ACM
+4. **Demo prep** — dry run with GIC data, spot-check 20 submissions, test live sync
+
+**Previous session (2026-03-16-a — design):**
 
 **Previous sessions (2026-03-13-a and 2026-03-13-b combined):**
 
@@ -123,6 +128,7 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 | 2026-03-13 | [hybrid-split-view-ui-concept](artifacts/2026-03-13-hybrid-split-view-ui-concept.md) | UI concept: hybrid split view with inbox panel + intelligence panel (brainstorm output) |
 | 2026-03-13 | [demo-ui-design](artifacts/2026-03-13-demo-ui-design.md) | Final demo UI design — board view + submission detail with autonomous actions |
 | 2026-03-16 | [technical-design](artifacts/2026-03-16-technical-design.md) | Comprehensive technical design — architecture, data model, CLI, agent harness, skills, deployment, implementation plan |
+| 2026-03-16 | Repo: `/Users/home/Repositories/gic-email-intelligence/` | Full implementation — all 10 phases, 98 files, 79 tests |
 
 ## Key Data Files
 | File | What it contains |
@@ -162,6 +168,11 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 - 2026-03-16: Live connection for demo, not a snapshot
 - 2026-03-16: Neutral/white-label UI — no specific branding, brand later
 - 2026-03-16: Clean and professional visual style — advanced but approachable
+- 2026-03-16: Implementation uses structured LangChain tools (call core library directly) instead of CLI subprocess for agent — faster, type-safe, no shell quoting issues
+- 2026-03-16: Auth via Authorization Bearer header for REST, query param for WebSocket (browser WS API doesn't support custom headers)
+- 2026-03-16: Token persisted in sessionStorage to survive React Router navigation
+- 2026-03-16: Atomic $min for first_email_at instead of read-then-write (race condition fix)
+- 2026-03-16: Single $facet aggregation for board view instead of N+1 per-stage queries
 
 ## Open Questions (deferred — not blocking demo)
 - How does RingCentral data merge into the same pipeline? (Same pattern: RingCentral CLI + skills)
