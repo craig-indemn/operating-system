@@ -3,7 +3,37 @@
 Build a comprehensive understanding of GIC Underwriters' quoting operation by analyzing their quote@gicunderwriters.com inbox, then design and demo an intelligent system that organizes their workflows, identifies automation opportunities, and eventually connects to all their communication channels (email, phone via RingCentral). The system should be state-based, data-driven, with a data layer that ingestion and processing mechanisms build on top of.
 
 ## Status
-Session 2026-03-13-b closed. **Data extraction complete. UI design agreed. Ready for detailed technical design.**
+Session 2026-03-16-a. **Comprehensive technical design complete. Ready for implementation.**
+
+**What happened this session (2026-03-16-a):**
+
+### Data Validation Against Design
+- Validated lifecycle stages against all 3,165 classified emails and 115 multi-type insureds
+- Discovered conversation threading is useless (99.8% single-email threads) — linking must use reference numbers + named insured matching
+- Mapped all USLI reference prefixes to LOBs (25 deterministic prefix→LOB mappings)
+- Confirmed 96.2% of emails have reference numbers, 96.9% have named insureds
+- Analyzed folder→email type distribution: PRIVATE LABEL (2,961) = carrier responses, Inbox (99) = active human work
+
+### Architecture Decisions
+- **Agent harness with CLI + Skills pattern** — first instance of Indemn's generalizable agentic workflow system
+- CLI (`outlook-inbox`) is the CRUD interface to the system; DeepAgent is the intelligence layer that drives it
+- 5 skills: email-classifier, submission-linker, pdf-extractor, stage-detector, draft-generator
+- MongoDB on existing Atlas cluster (separate `gic_email_intelligence` database)
+- AWS deployment (ECS/EC2 + S3) alongside existing infrastructure
+- 5 action-oriented board columns: New, Awaiting Info, With Carrier, Quoted, Attention
+
+### Technical Design Document
+- Full design in `artifacts/2026-03-16-technical-design.md` (18 sections)
+- Covers: architecture, data model, CLI design, agent harness, skills, ingestion, API, frontend, LOB requirements, deployment, security, cost estimation, testing strategy, implementation sequence
+
+**Next session — implementation:**
+1. Phase 1: Foundation — project scaffolding, CLI, MongoDB setup, initial data load
+2. Phase 2: Agent processing — harness + skills, run initial classification
+3. Phase 3: Frontend — board view, detail view, WebSocket
+4. Phase 4: Intelligence — PDF extraction, draft generation, completeness
+5. Phase 5: Demo ready — deploy, test, dry run
+
+**Previous sessions (2026-03-13-a and 2026-03-13-b combined):**
 
 **What happened this session (2026-03-13-a and 2026-03-13-b combined):**
 
@@ -47,7 +77,7 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 
 ### UI Design (agreed)
 - Two-view architecture: **Board** (submission pipeline) → **Submission Detail** (timeline + extracted data + suggested actions)
-- Board columns: New → Info Needed → With Carrier → Quoted → Action Required
+- Board columns: New → Awaiting Info → With Carrier → Quoted → Attention (updated 2026-03-16, see technical design)
 - Detail view: left panel = chronological timeline of all interactions; right panel = extracted data with completeness ring + autonomous draft responses
 - Tech: React + shadcn/ui frontend, Python backend
 - Full design in `artifacts/2026-03-13-demo-ui-design.md`
@@ -92,6 +122,7 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 | 2026-03-13 | [email-taxonomy-and-schema](artifacts/2026-03-13-email-taxonomy-and-schema.md) | Email types discovered from 25 samples + proposed extraction schema |
 | 2026-03-13 | [hybrid-split-view-ui-concept](artifacts/2026-03-13-hybrid-split-view-ui-concept.md) | UI concept: hybrid split view with inbox panel + intelligence panel (brainstorm output) |
 | 2026-03-13 | [demo-ui-design](artifacts/2026-03-13-demo-ui-design.md) | Final demo UI design — board view + submission detail with autonomous actions |
+| 2026-03-16 | [technical-design](artifacts/2026-03-16-technical-design.md) | Comprehensive technical design — architecture, data model, CLI, agent harness, skills, deployment, implementation plan |
 
 ## Key Data Files
 | File | What it contains |
@@ -119,18 +150,23 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 - 2026-03-13: Demo is a standalone React + Python web app, not an Outlook plugin
 - 2026-03-13: Two-view UI: Board (pipeline) → Submission Detail (timeline + data + suggested actions)
 - 2026-03-13: React + shadcn/ui for frontend, Python for backend
-- 2026-03-13: Board columns: New → Info Needed → With Carrier → Quoted → Action Required (to be validated against data)
 - 2026-03-13: Autonomous responses shown as drafts in demo (no write access), approve/send in production
 - 2026-03-13: Need comprehensive technical design before building — every detail thought through
+- 2026-03-16: 5 action-oriented columns: New, Awaiting Info, With Carrier, Quoted, Attention (validated against data)
+- 2026-03-16: Reference numbers are primary linking key (96.2% coverage). Conversation threading is useless.
+- 2026-03-16: Agent harness with CLI + Skills pattern — CLI is the CRUD interface, DeepAgent is the brain
+- 2026-03-16: This is the first instance of Indemn's generalizable agentic workflow pattern (DeepAgent + Skills + CLI)
+- 2026-03-16: MongoDB on existing Atlas cluster, separate `gic_email_intelligence` database
+- 2026-03-16: AWS deployment (ECS/EC2 + S3) alongside existing infrastructure
+- 2026-03-16: LOB requirements derived from quote output data (quote fields ≈ application input). Start with GL.
+- 2026-03-16: Live connection for demo, not a snapshot
+- 2026-03-16: Neutral/white-label UI — no specific branding, brand later
+- 2026-03-16: Clean and professional visual style — advanced but approachable
 
-## Open Questions (for next session)
-- Validate lifecycle stages against actual email data — are the 5 columns right?
-- How do we link emails to submissions? Reference numbers (143xxx)? Conversation threads? Subject line parsing? Named insured matching? Combination?
-- Backend architecture — real-time polling vs webhooks? Processing pipeline design?
-- How do we draft accurate autonomous responses? Study GIC's actual info request templates?
-- Data model — what's the submission schema? How do state transitions work?
-- How does the demo environment work — live data or snapshot?
-- How do we test and verify data extraction quality before demoing?
-- How does RingCentral data merge into the same pipeline?
-- How do we handle the bilingual aspect (Spanish emails)?
-- What are the business-line-specific information requirements? (roofing vs restaurants vs trucking)
+## Open Questions (deferred — not blocking demo)
+- How does RingCentral data merge into the same pipeline? (Same pattern: RingCentral CLI + skills)
+- How do we handle the bilingual aspect? (Classifier skill handles Spanish; draft generator needs Spanish templates)
+- Business-line-specific requirements beyond GL? (Each LOB gets a config file following GL pattern, expand post-demo)
+- Multi-tenancy for other brokers? (Add tenant_id to all collections if needed)
+- Unisoft integration? (Depends on Jeremiah intro — not yet made)
+- Email sending in production? (Requires Mail.Send permission, separate Entra consent from GIC)
