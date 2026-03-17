@@ -21,11 +21,27 @@ Session 2026-03-16-b. **Code-complete. Full design compliance. Ready for batch p
 - 10 sample submissions created by agent (all email types verified)
 - S3 bucket `indemn-gic-attachments` with 68 attachments
 
+### UX Testing Findings (2026-03-16-b, late session)
+Craig did hands-on browser testing and found the UI was showing system internals instead of actionable info. Key feedback:
+- **Cards were confusing**: red age badges (94d), agent reasoning text leaking into attention_reason field, too much crammed in
+- **Detail view was useless**: wall of empty `--` dashes, "No extracted data yet" jargon, developer field names, suggested action buried at bottom
+- **Email bodies were empty**: migrated emails had no body text (HTML-only emails, text came back empty from Graph API). Fixed by re-fetching from Graph API.
+- **Drafts kept getting wiped**: E2E test had `delete_many({})` on drafts collection — fixed to scope cleanup
+
+**Fixes applied:**
+- Cards: removed age badges, removed agent reasoning text, show only name/LOB/agent/last-activity/email-count/attention-tag
+- Detail: AI suggested action moved to TOP of right column, empty fields hidden, "What We Know" replaces "Extracted Data", human-readable field labels, "Still needed" with Title Case
+- Agent: attention_reason validated as enum value, prevents freeform reasoning
+- Data: re-fetched email bodies from Graph API for sample submissions
+
+**CRITICAL NEXT SESSION**: The UI needs a full UX review with Craig before demo. Every view and flow must be crafted for maximum impact with Kyle and the GIC customer (JC, Maribel). Current state is functional but not yet demo-polished.
+
 ### What's NOT Done
-1. **Full batch processing** — 2,885 classified emails need agent linking + stage detection → ~$15-20 LLM cost, ~1-2 hours with 5 workers. 10-email sample proved pipeline works.
-2. **Push to GitHub** — need `indemn-ai` org permissions
-3. **Deploy to AWS** — Docker image tested locally, need ECS/EC2 + domain (`gic.indemn.ai`) + SSL
-4. **Demo dry run** — see demo script artifact for full plan
+1. **UX polish for demo** — every view and interaction needs to be reviewed for clarity, impact, and user-friendliness. Board cards, detail layout, search behavior, notification flow, email readability.
+2. **Full batch processing** — 2,885 classified emails need agent linking + stage detection → ~$15-20 LLM cost, ~1-2 hours with 5 workers. 10-email sample proved pipeline works. Note: will need to re-fetch email bodies from Graph API for all 3,165 emails first.
+3. **Push to GitHub** — need `indemn-ai` org permissions
+4. **Deploy to AWS** — Docker image tested locally, need ECS/EC2 + domain (`gic.indemn.ai`) + SSL
+5. **Demo dry run** — see demo script artifact for full plan
 
 **Previous session (2026-03-16-a — design):**
 
@@ -122,6 +138,7 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 | 2026-03-16 | Repo: `/Users/home/Repositories/gic-email-intelligence/` | Full implementation — all 10 phases, 98 files, 79 tests |
 | 2026-03-16 | [design-vs-implementation-audit](artifacts/2026-03-16-design-vs-implementation-audit.md) | Section-by-section design audit — 13 MATCH, 3 PARTIAL, 16 gaps identified (all resolved) |
 | 2026-03-16 | [demo-script](artifacts/2026-03-16-demo-script.md) | Full demo script for GIC team — flow, live sync testing, Q&A prep, submission picks |
+| 2026-03-16 | [ux-testing-findings](artifacts/2026-03-16-ux-testing-findings.md) | Hands-on browser testing findings — card confusion, detail view problems, fixes applied |
 
 ## Key Data Files
 | File | What it contains |
@@ -166,6 +183,9 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 - 2026-03-16: Token persisted in sessionStorage to survive React Router navigation
 - 2026-03-16: Atomic $min for first_email_at instead of read-then-write (race condition fix)
 - 2026-03-16: Single $facet aggregation for board view instead of N+1 per-stage queries
+- 2026-03-16: Cards show only what matters: name, LOB, agent, last activity, email count. No age badges.
+- 2026-03-16: Detail view leads with action (AI draft), not data. Empty fields hidden. Human-readable labels.
+- 2026-03-16: UX must be reviewed and polished per-view before demo — functional != demo-ready
 
 ## Open Questions (deferred — not blocking demo)
 - How does RingCentral data merge into the same pipeline? (Same pattern: RingCentral CLI + skills)
