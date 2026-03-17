@@ -3,17 +3,22 @@
 Re-engagement of Silent Sports (McKay Insurance) with a Crawl/Walk/Run proposal framework. Certificate generation is the primary hook — net new capability for Indemn that becomes reusable across customers. Kyle's internal review doc (March 15, 2026) lays out the framework and assigns questions to Cam (pricing), Craig/Ryan (technical feasibility of doc gen), George (rate engine), and Rocky (relationship/re-engagement).
 
 ## Status
-**Mint implementation COMPLETE.** All 9 tasks across 4 waves executed successfully. Repo: [craig-indemn/silent-sports-doc-gen](https://github.com/craig-indemn/silent-sports-doc-gen)
+**Mint implementation COMPLETE and DEMO-READY.** All 9 tasks across 4 waves executed. 5-agent parallel review completed with all critical/medium issues resolved. Repo shared with team. Repo: [craig-indemn/silent-sports-doc-gen](https://github.com/craig-indemn/silent-sports-doc-gen)
 
-End-to-end demo flow verified:
+Demo tested end-to-end in browser:
 - Press N → submission appears in inbox with SSE real-time updates
-- Agent extracts fields → populate in review screen
-- Edit field → premium recalculates
-- Approve → both PDFs generate (ACORD 25 ~325KB, Premium Disclosure ~15KB)
+- Click Open Review → extracted fields with confidence indicators
+- Click Approve & Generate → both PDFs generate (ACORD 25 ~325KB, Premium Disclosure ~15KB)
 - Auto-approve mode works — submissions flow through without human review
-- `./demo.sh` launches all 3 services
+- `npm run dev:all` starts all 3 services
 
-**Next:** Demo to Kyle/team, then address open questions (Meg's rate spreadsheet, cert numbering scheme, pricing model).
+**Done this session (2026-03-17):**
+- Executed full implementation plan (Waves 0-3)
+- 5-agent code review against design spec — fixed ACORD 25 field mapping, React 18/19 conflict, SSE data completeness, state machine transitions
+- Posted update to Kyle in #customer-implementation thread with both generated PDFs attached
+- Shared repo link — Dhruv can review
+
+**Next:** Schedule demo with Kyle. Address open questions (Meg's rate spreadsheet, cert numbering, pricing model). Product showcase.
 
 ### The Framework
 | Phase | Name | Price | Months | Key Deliverables |
@@ -50,6 +55,9 @@ End-to-end demo flow verified:
 | 2026-03-16 | [mint-implementation-plan](artifacts/2026-03-16-mint-implementation-plan.md) | Comprehensive implementation plan for parallel Claude Code execution |
 
 ## Decisions
+- 2026-03-17: Demo tested in browser, all integration issues resolved (React version conflict, SSE partial data, state machine transitions, PDF HTTP serving)
+- 2026-03-17: Posted update to Kyle in #customer-implementation with generated PDF attachments
+- 2026-03-17: 5-agent parallel review — fixed ACORD 25 field-map (fill_48/49/50 were in wrong rows), generation status on total failure, agent extracting step
 - 2026-03-16: Mint implementation complete — 4 waves, 9 tasks, 3 parallel agent dispatches per wave
 - 2026-03-16: Integration fix — auto-populate `date` field in ACORD 25 generation (subs/generate.ts)
 - 2026-03-16: Named the doc gen engine **Mint** ("mint a certificate")
