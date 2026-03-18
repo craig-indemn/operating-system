@@ -3,9 +3,59 @@
 Build a comprehensive understanding of GIC Underwriters' quoting operation by analyzing their quote@gicunderwriters.com inbox, then design and demo an intelligent system that organizes their workflows, identifies automation opportunities, and eventually connects to all their communication channels (email, phone via RingCentral). The system should be state-based, data-driven, with a data layer that ingestion and processing mechanisms build on top of.
 
 ## Status
-Session 2026-03-16-b. **Code-complete. Full design compliance. Ready for batch processing + deployment.**
+Session 2026-03-18-a. **Major UX redesign complete. Reasoning chain, triaged inbox, analytics, conversation threading all built.**
 
-**Repo:** `/Users/home/Repositories/gic-email-intelligence/` (7 commits on `main`, local only — need org permissions to push)
+**Repo:** `/Users/home/Repositories/gic-email-intelligence/` (25+ commits on `main`, local only — need org permissions to push)
+
+### Session 2026-03-18-a — UX Redesign
+This session transformed the system from a basic board+detail view into a comprehensive inbox intelligence tool:
+
+**Thread Parser & Conversation View**
+- Built email thread parser that splits embedded reply chains into individual messages
+- Handles Outlook-style, Gmail-style, and Spanish-language separators
+- Conversations auto-expand — no click to open. Chat-style bubbles (GIC = blue/right, external = white/left)
+
+**Reasoning Chain (Detail View Right Column)**
+- AI Summary: contextual 1-2 sentence analysis of what's happening
+- What We Know: extracted data with Email/PDF source indicators
+- LOB Requirements: collapsible source of truth from research (GL config)
+- Gap Analysis: two-tier — Active Requests (amber, from conversation) + General Requirements (collapsed, gray)
+- Amber highlighting connects conversation → gap analysis → draft body
+
+**Draft Workflow**
+- Drafts appear as "Suggested Reply" in the conversation thread
+- Pin/unpin toggle: inline in conversation or pinned compose bar at bottom
+- Edit/Approve/Dismiss with editable text area
+- After approve: Copy Draft (clipboard) + Open in Outlook (mailto)
+- Missing/internal recipients flagged with editable To field, send blocked until resolved
+- Approved status persists on refresh, visible on board cards (green check)
+
+**Board Redesign: Triaged Inbox**
+- Replaced 5 lifecycle columns (New, Awaiting Info, With Carrier, Quoted, Attention) with 3 action queues:
+  - Ready to Send (8): AI drafted a reply, review and approve
+  - Needs Review (0): requires human attention
+  - Monitoring (2): waiting on others, no action needed
+- Dashboard bar with queue counts and sync status
+- Cards show AI action summary ("AI drafted a reply — tap to review")
+
+**Analytics View**
+- New "Analytics" tab alongside "Inbox"
+- Email volume bar chart (recharts), email type breakdown, LOB distribution, top agents table
+- Summary cards: Total Emails (3,214), Email Types (13), Lines of Business (14), Active Agents (3)
+- All data from real classified email dataset, queryable by time period
+
+**Data Quality**
+- Normalized 105 LOB variants → 35 clean categories across all 3,214 emails
+- Fixed email counts (was 2, actually 1 for all submissions)
+- Fixed PDF extraction gate (now extracts from all email types, not just carrier)
+- Uploaded migrated attachments to S3, fixed download auth + redirect
+- Ran PDF extractor on Ojeda (loss runs + cancellation notice now extracted)
+
+**108 tests passing, frontend builds clean**
+
+### Previous: UX Polish (2026-03-17-a)
+- Data quality: Fixed submission names, normalized LOBs to Title Case
+- Draft visibility, markdown rendering, notification badges, board defaults
 
 ### What's Built (2026-03-16-b)
 - **98 files, ~13,000 LOC, 108 tests passing**, frontend builds clean
@@ -139,6 +189,12 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 | 2026-03-16 | [design-vs-implementation-audit](artifacts/2026-03-16-design-vs-implementation-audit.md) | Section-by-section design audit — 13 MATCH, 3 PARTIAL, 16 gaps identified (all resolved) |
 | 2026-03-16 | [demo-script](artifacts/2026-03-16-demo-script.md) | Full demo script for GIC team — flow, live sync testing, Q&A prep, submission picks |
 | 2026-03-16 | [ux-testing-findings](artifacts/2026-03-16-ux-testing-findings.md) | Hands-on browser testing findings — card confusion, detail view problems, fixes applied |
+| 2026-03-17 | [ux-deep-audit](artifacts/2026-03-17-ux-deep-audit.md) | Deep UX audit from customer perspective — every submission reviewed, 7 of 10 broken, root causes identified |
+| 2026-03-18 | [detail-view-reasoning-chain](artifacts/2026-03-18-detail-view-reasoning-chain.md) | Brainstorm: redesign detail view as transparent reasoning chain — conversation → extraction → LOB requirements → gap analysis → editable draft |
+| 2026-03-18 | [workflow-integration-design](artifacts/2026-03-18-workflow-integration-design.md) | Approve → Open in Outlook workflow, board draft status visibility, mailto vs Outlook deeplink vs Graph API |
+| 2026-03-18 | [gap-analysis-redesign](artifacts/2026-03-18-gap-analysis-redesign.md) | Two-tier gap analysis: active requests (from conversation) vs general LOB requirements, amber color-coding across conversation + gaps + draft |
+| 2026-03-18 | [board-redesign-triaged-inbox](artifacts/2026-03-18-board-redesign-triaged-inbox.md) | Brainstorm: replace lifecycle columns with action queues (Ready to Send, Needs Review, Monitoring) + dashboard analytics bar |
+| 2026-03-18 | [analytics-view-design](artifacts/2026-03-18-analytics-view-design.md) | Analytics view design — volume, types, LOBs, agents, operational health metrics |
 
 ## Key Data Files
 | File | What it contains |
@@ -186,6 +242,17 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 - 2026-03-16: Cards show only what matters: name, LOB, agent, last activity, email count. No age badges.
 - 2026-03-16: Detail view leads with action (AI draft), not data. Empty fields hidden. Human-readable labels.
 - 2026-03-16: UX must be reviewed and polished per-view before demo — functional != demo-ready
+- 2026-03-18: Emails in quote@ contain full conversation threads embedded in the body — parse them, don't treat as single messages
+- 2026-03-18: Detail view right column is a transparent reasoning chain: Summary → Extraction → Requirements → Gap Analysis
+- 2026-03-18: Gap analysis has two tiers: Active Requests (from conversation, amber) + General LOB Requirements (collapsed, gray)
+- 2026-03-18: Amber color-coding connects gap items across conversation, gap analysis, and draft body
+- 2026-03-18: Draft lives in the conversation as "Suggested Reply", pinnable to bottom as compose bar
+- 2026-03-18: Don't fall back to internal GIC addresses for drafts — flag missing recipients, let user fill in
+- 2026-03-18: Extract PDFs from ALL email types, not just carrier notifications (agent replies have loss runs too)
+- 2026-03-18: Board redesigned from lifecycle stages to action queues: Ready to Send, Needs Review, Monitoring
+- 2026-03-18: The product is an inbox augmentation tool — eventually an Outlook plugin, first objective is automating info requests
+- 2026-03-18: Analytics view shows email volume, types, LOBs, agents — real-time understanding of the inbox
+- 2026-03-18: LOB normalization: 105 variants consolidated to 35 clean categories
 
 ## Open Questions (deferred — not blocking demo)
 - How does RingCentral data merge into the same pipeline? (Same pattern: RingCentral CLI + skills)
