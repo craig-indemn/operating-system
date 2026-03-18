@@ -97,11 +97,11 @@ Operational infrastructure — persistent processes that don't "finish" like pro
 | `dispatch` | Ralph loop engine that executes beads epics via Agent SDK — fresh Claude Code session per task, separate verification, autonomous until backstop criteria met |
 | `session-manager` | Manages Claude Code sessions in tmux — worktree isolation, event-driven state tracking, context monitoring, lifecycle CLI (`session create/list/attach/send/close/destroy`) |
 | `os-terminal` | Bloomberg-style terminal grid UI — React + xterm.js, WebSocket relay to tmux. Start: `cd systems/os-terminal && source ../../.env && npm start` (port 3101). See `systems/os-terminal/SYSTEM.md` |
-| `hive` | Awareness and connective tissue — two-layer data (entities in MongoDB + knowledge as markdown), 14-command CLI, semantic search, sync adapters. Design doc: @projects/os-development/artifacts/2026-03-08-hive-design.md |
+| `hive` | Awareness and connective tissue — two-layer data (entities in MongoDB + knowledge as markdown), 14-command CLI, semantic search, sync adapters. Design doc: `projects/os-development/artifacts/2026-03-08-hive-design.md` |
 
 - Systems use skills as their interface (e.g., `/dispatch` invokes the dispatch engine)
 - Systems are infrastructure — they serve any project
-- Design doc: @projects/os-development/artifacts/2026-02-19-dispatch-system-design.md
+- Design doc: `projects/os-development/artifacts/2026-02-19-dispatch-system-design.md`
 
 ## Conventions
 @.claude/rules/conventions.md
