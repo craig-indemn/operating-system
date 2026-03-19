@@ -3,7 +3,30 @@
 AI-powered content creation pipeline for Indemn and personal brands. Transforms voice-based ideas into polished, publishable content through dynamic extraction, iterative drafting, and multi-platform distribution. Lives in a separate repo (`/Users/home/Repositories/content-system`) with skills symlinked to `~/.claude/skills/`.
 
 ## Status
-Session 2026-03-10. Evaluations blog post rewritten, republished, all images finalized.
+Session 2026-03-19. Product showcase system live at blog.indemn.ai/products/. CLI & MCP Server page deployed with 3 demo videos.
+
+**Session 2026-03-18/19:**
+- Built product showcase system on blog.indemn.ai/products/
+- 7 reusable Astro components (Hero, FeatureGrid, TabbedDemo, StatsBanner, SetupWalkthrough, FAQ, CTA)
+- Products content collection with comprehensive Zod schema
+- First showcase page: Indemn CLI & MCP Server — investor-first messaging, 4-tab demo viewer, per-platform walkthrough, 6 SEO-optimized FAQs
+- Brand guide adherence: Iris/Lilac/Eggplant palette, Barlow font, gradient backgrounds, flourish decorations
+- Design review + 5 visual fixes (heading colors, spacing, prose styling, brand accents, section transitions)
+- Accessibility: ARIA keyboard nav on tabs, prefers-reduced-motion, clipboard fallback
+- JSON-LD FAQ structured data for Google + AI search discoverability
+- Recorded and added 3 demo videos: Claude Code, Claude AI (desktop MCP), Gemini CLI
+- Videos autoplay muted on loop — no click required
+- Set up MCP server in Claude Desktop (`~/Library/Application Support/Claude/claude_desktop_config.json`)
+- Set up MCP server in Gemini CLI (`~/.gemini/settings.json`)
+- ChatGPT MCP requires Plus/Pro subscription — tab shows "Demo video coming soon"
+- Deployed to blog.indemn.ai via `vercel --prod` on 2026-03-19
+
+**Next:**
+1. Build `/content-showcase` skill for creating future showcase pages
+2. Second showcase page: Evaluation Engine ("Trust, Not Hope")
+3. Remote MCP server (HTTP transport) so users don't need npm install — added to Jarvis CLI project backlog
+4. ChatGPT demo when Plus/Pro subscription available
+5. Further design refinements based on investor/customer feedback
 
 **Session 2026-03-10:**
 - Rewrote "Building Evaluations for Conversational Agents" → "How We Evaluate Conversational AI Agents"
@@ -56,8 +79,14 @@ Session 2026-03-10. Evaluations blog post rewritten, republished, all images fin
 | 2026-02-23 | [writing-psychology-reference](artifacts/2026-02-23-writing-psychology-reference.md) | Deep research on psychology and craft of writing that grips readers — permanent reference for content system |
 | 2026-02-25 | [content-system-architecture](artifacts/content-system-architecture.excalidraw) | Excalidraw diagram of the content pipeline — skills, flow, and integration points ([SVG](artifacts/content-system-architecture.svg)) |
 | 2026-03-09 | [the-buzz-newsletter-design](artifacts/2026-03-09-the-buzz-newsletter-design.md) | Design an internal CTO engineering newsletter (The Buzz) for CEO communication — newspaper-style PDF + structured markdown |
+| 2026-03-18 | [product-showcase-system-plan](../../docs/plans/2026-03-18-product-showcase-system.md) | Implementation plan for product showcase system — 12 tasks, component architecture, CLI page content |
 
 ## Decisions
+- 2026-03-19: Product showcase system deployed to blog.indemn.ai/products/. 7 reusable Astro components, products content collection, first page: CLI & MCP Server with 3 demo videos (Claude Code, Claude AI, Gemini CLI). Uses official Indemn brand guide (Iris/Lilac/Eggplant, Barlow, flourishes). 10 brainstorming decisions checkpointed in Hive.
+- 2026-03-19: Showcase pages use official brand guide (brand_design.pdf), not the old website's blue palette. Confirmed by Craig.
+- 2026-03-19: Demo videos autoplay muted on loop — no click-to-play interaction. Better for investor/demo context.
+- 2026-03-19: ChatGPT MCP requires Plus/Pro subscription. Gemini web UI has no custom MCP support. Gemini CLI and Claude Desktop are the free options for local MCP.
+- 2026-03-19: Remote MCP server (HTTP transport) is next engineering task for the CLI — added to Jarvis CLI project backlog. Required for true "paste a URL" onboarding.
 - 2026-03-10: Evaluations blog rewrite — practical builder tone, not dramatic storytelling. Core insight: "the hardest part of building a good AI agent isn't the AI — it's defining what success looks like." Tone calibrated from The Buzz tone review learnings. Images should be infographic/diagram style (Gemini image-gen), not abstract AI art.
 - 2026-03-10: Blog images should be conceptual infographics, not UI mockups — mockups give the wrong impression that the image is the actual product dashboard. Flat vector, white background, consistent style across all images in a post.
 - 2026-03-10: 1Password `op read "op://vault/item/field"` returns actual secret values. `op item get --fields label=field` returns reference strings. Use `op read` for Gemini API key in image-gen workflows.

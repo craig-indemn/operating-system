@@ -3,7 +3,10 @@
 Build a CLI tool and MCP server around Indemn's platform APIs so developers (internal first, then external customers) can programmatically manage AI agents — creating agents, prompts, functions, knowledge bases, running evaluations, and pulling analytics. Everything currently done via the Copilot Dashboard UI, made available through command-line and AI-assisted workflows (Claude Code skills, MCP servers).
 
 ## Status
-**Phase 2 complete — @indemn/cli@1.1.1 published. Announced to #dev-squad on 2026-03-13.**
+**Phase 2 complete. Product showcase page built (2026-03-18) — awaiting deploy.**
+
+- **Showcase page:** blog.indemn.ai/products/indemn-cli/ (committed, not yet deployed)
+- **Plan:** `docs/plans/2026-03-18-product-showcase-system.md` (OS repo)
 
 - **npm:** `@indemn/cli@1.1.1` published publicly. Install: `npm install -g @indemn/cli`
 - **GitHub:** https://github.com/craig-indemn/indemn-cli (private)
@@ -165,19 +168,27 @@ indemn agents list
 - **KB export default format:** `csv` (server doesn't support `json` export)
 - **copilot-server CI:** Node 22, npm 10, `npm ci` — lock file must match
 
-### Next: Phase 2 — Exports Implementation
+### Next: Phase 3 — Remote MCP Server
 
-Design doc: `artifacts/2026-03-13-cli-exports-design.md`
+Add HTTP transport (SSE or Streamable HTTP) so users can connect from Claude AI, ChatGPT, and Gemini by pasting a URL — no npm install required.
 
-1. Add `@react-pdf/renderer` + `react` dependencies, bundle Barlow fonts and logo
-2. Port React-PDF templates from `indemn-platform-v2/ui/src/components/report/`
-3. Implement `indemn eval export <run-id>` — markdown dump
-4. Implement `indemn eval report <run-id>` — branded PDF
-5. Implement `indemn agents card <agent-id>` — branded agent card PDF
-6. Add 3 MCP tools: `export_eval_markdown`, `export_eval_report`, `export_agent_card`
-7. Adapt `eval-analysis` skill from OS (curl → CLI commands)
-8. Publish `@indemn/cli@1.1.0`
+Options explored during brainstorming (2026-03-18):
+- **Option A:** Hosted MCP service (new deployment at mcp.indemn.ai)
+- **Option B:** MCP endpoints on copilot-server (reuse existing auth)
+- **Option C:** Serverless MCP (Vercel functions)
+- **Option D:** Dual transport in CLI (local stdio + remote HTTP)
+
+Key considerations: API key auth already exists, chat tool uses Socket.IO (stateful), 58 tools are stateless CRUD wrappers.
+
+### Product Showcase
+
+Live at: https://blog.indemn.ai/products/indemn-cli/
+- 3 demo videos recorded (Claude Code, Claude AI desktop, Gemini CLI)
+- ChatGPT demo pending (requires Plus/Pro for MCP)
+- MCP configured locally for Claude Desktop and Gemini CLI
 
 ## Open Questions
 - When do we deploy API key auth to prod copilot-server?
 - Transfer `indemn-cli` repo to `indemn-ai` org when Craig gets create permissions?
+- Which remote MCP transport to use — SSE or Streamable HTTP?
+- Where to host the remote MCP server — Vercel, copilot-server, or standalone?
