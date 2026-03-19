@@ -3,59 +3,71 @@
 Build a comprehensive understanding of GIC Underwriters' quoting operation by analyzing their quote@gicunderwriters.com inbox, then design and demo an intelligent system that organizes their workflows, identifies automation opportunities, and eventually connects to all their communication channels (email, phone via RingCentral). The system should be state-based, data-driven, with a data layer that ingestion and processing mechanisms build on top of.
 
 ## Status
-Session 2026-03-18-a. **Major UX redesign complete. Reasoning chain, triaged inbox, analytics, conversation threading all built.**
+Session 2026-03-18/19. **Comprehensive inbox intelligence tool. 35 submissions processed, stage-aware analysis, full workflow with Done state.**
 
-**Repo:** `/Users/home/Repositories/gic-email-intelligence/` (25+ commits on `main`, local only — need org permissions to push)
+**Repo:** `/Users/home/Repositories/gic-email-intelligence/` (35+ commits on `main`, local only — need org permissions to push)
 
-### Session 2026-03-18-a — UX Redesign
-This session transformed the system from a basic board+detail view into a comprehensive inbox intelligence tool:
+### Current State
+- **3 tabs**: Inbox (triaged action queues), Analytics (volume/types/LOBs/agents/history), How It Works (methodology)
+- **35 submissions** processed (100 emails through pipeline with Haiku), 26 with AI drafts
+- **3,214 emails** classified, 5,888 attachments in S3, 298 PDF extractions
+- **108 tests passing**, frontend builds clean
+- **Services**: API on port 8080, frontend on port 5173
+- **To run**: `uv run uvicorn gic_email_intel.api.main:app --port 8080` + `cd ui && npm run dev`
+- **URL**: `http://localhost:5173/?token=0So5zcDzGPnMdADZqh62r8Hpi559W9RbXqJlc3D_RBQ`
+
+### Session 2026-03-18/19 — What Was Built
 
 **Thread Parser & Conversation View**
-- Built email thread parser that splits embedded reply chains into individual messages
-- Handles Outlook-style, Gmail-style, and Spanish-language separators
-- Conversations auto-expand — no click to open. Chat-style bubbles (GIC = blue/right, external = white/left)
+- Email thread parser splits embedded reply chains into individual messages (Outlook, Gmail, Spanish separators)
+- Conversations auto-expand as chat-style bubbles (GIC = blue/right, external = white/left)
 
 **Reasoning Chain (Detail View Right Column)**
-- AI Summary: contextual 1-2 sentence analysis of what's happening
-- What We Know: extracted data with Email/PDF source indicators
-- LOB Requirements: collapsible source of truth from research (GL config)
-- Gap Analysis: two-tier — Active Requests (amber, from conversation) + General Requirements (collapsed, gray)
+- AI Summary → What We Know (with sources) → LOB Requirements → Gap Analysis → Suggested Draft
+- Stage-aware gap analysis: new submissions check full LOB requirements, quoted submissions only check quote details, declines show no requirements
+- Two-tier gap analysis: Active Requests (amber, from conversation) + General Requirements (collapsed)
 - Amber highlighting connects conversation → gap analysis → draft body
 
 **Draft Workflow**
-- Drafts appear as "Suggested Reply" in the conversation thread
-- Pin/unpin toggle: inline in conversation or pinned compose bar at bottom
+- Drafts as "Suggested Reply" in conversation, pinnable to bottom as compose bar
 - Edit/Approve/Dismiss with editable text area
 - After approve: Copy Draft (clipboard) + Open in Outlook (mailto)
+- Auto-prompt "Mark as done?" after sending → resolves submission
 - Missing/internal recipients flagged with editable To field, send blocked until resolved
-- Approved status persists on refresh, visible on board cards (green check)
+- Manual "Mark as Done" button in detail header
 
-**Board Redesign: Triaged Inbox**
-- Replaced 5 lifecycle columns (New, Awaiting Info, With Carrier, Quoted, Attention) with 3 action queues:
-  - Ready to Send (8): AI drafted a reply, review and approve
-  - Needs Review (0): requires human attention
-  - Monitoring (2): waiting on others, no action needed
+**Board: Triaged Inbox**
+- 3 action queues: Ready to Send, Needs Review, Monitoring
+- Cards show lifecycle badges (📋 New, ✅ Quoted, ⚠️ Declined) + AI action summaries
+- Meaningful empty states ("All caught up", "Nothing needs your attention")
 - Dashboard bar with queue counts and sync status
-- Cards show AI action summary ("AI drafted a reply — tap to review")
 
-**Analytics View**
-- New "Analytics" tab alongside "Inbox"
-- Email volume bar chart (recharts), email type breakdown, LOB distribution, top agents table
-- Summary cards: Total Emails (3,214), Email Types (13), Lines of Business (14), Active Agents (3)
-- All data from real classified email dataset, queryable by time period
+**Done State & History**
+- POST /api/submissions/{id}/resolve with resolution type (quote_forwarded, info_request_sent, decline_notified, manually_closed)
+- Resolved submissions excluded from board and dashboard counts
+- History section in Analytics with color-coded resolution badges
+- GET /api/submissions/history endpoint
 
-**Data Quality**
-- Normalized 105 LOB variants → 35 clean categories across all 3,214 emails
-- Fixed email counts (was 2, actually 1 for all submissions)
-- Fixed PDF extraction gate (now extracts from all email types, not just carrier)
-- Uploaded migrated attachments to S3, fixed download auth + redirect
-- Ran PDF extractor on Ojeda (loss runs + cancellation notice now extracted)
+**Analytics & How It Works**
+- Analytics tab: volume chart, email type breakdown, LOB distribution, top agents, resolution history
+- How It Works tab: 7 sections explaining methodology with real numbers (3,214 emails, 13 types, 280 PDFs, etc.)
+- Stage-aware requirement profiles explained with color-coded cards
 
-**108 tests passing, frontend builds clean**
+**Data Quality & Infrastructure**
+- 105 LOB variants → 35 clean categories
+- All 5,888 attachments uploaded to S3
+- PDF extraction from all email types (not just carrier)
+- Batch processing with --model and --limit flags (Haiku for cost efficiency)
 
-### Previous: UX Polish (2026-03-17-a)
-- Data quality: Fixed submission names, normalized LOBs to Title Case
-- Draft visibility, markdown rendering, notification badges, board defaults
+### What's NOT Done
+1. **Full batch processing** — Only 100 of 3,155 emails processed through linker/stage/draft pipeline. 9 submissions still have no drafts (Haiku failed silently). Many email loops not yet closed because related emails haven't been linked.
+2. **OCR for scanned PDFs** — Some USLI quote PDFs are scanned images. AI vision can identify them but can't extract premium/limits/effective date. Need OCR preprocessing (Tesseract/Textract).
+3. **HTML attachment extraction** — Mercado Insurance has an HTML application file that the extractor doesn't handle.
+4. **Push to GitHub** — Need indemn-ai org permissions
+5. **Deploy to AWS** — Docker image → ECS/EC2, domain (gic.indemn.ai), SSL
+6. **Demo video recording** — Craig wants to record a walkthrough before showing to GIC
+7. **Outlook plugin** — Future: integrate as Outlook Web Add-in or Teams tab
+8. **Email sending** — Need Mail.ReadWrite/Mail.Send permission for actual draft creation in Outlook
 
 ### What's Built (2026-03-16-b)
 - **98 files, ~13,000 LOC, 108 tests passing**, frontend builds clean
@@ -195,6 +207,7 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 | 2026-03-18 | [gap-analysis-redesign](artifacts/2026-03-18-gap-analysis-redesign.md) | Two-tier gap analysis: active requests (from conversation) vs general LOB requirements, amber color-coding across conversation + gaps + draft |
 | 2026-03-18 | [board-redesign-triaged-inbox](artifacts/2026-03-18-board-redesign-triaged-inbox.md) | Brainstorm: replace lifecycle columns with action queues (Ready to Send, Needs Review, Monitoring) + dashboard analytics bar |
 | 2026-03-18 | [analytics-view-design](artifacts/2026-03-18-analytics-view-design.md) | Analytics view design — volume, types, LOBs, agents, operational health metrics |
+| 2026-03-18 | [lifecycle-done-state-history](artifacts/2026-03-18-lifecycle-done-state-history.md) | Done state design: what "done" means, resolution types, history view, first-time onboarding |
 
 ## Key Data Files
 | File | What it contains |
@@ -253,6 +266,12 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 - 2026-03-18: The product is an inbox augmentation tool — eventually an Outlook plugin, first objective is automating info requests
 - 2026-03-18: Analytics view shows email volume, types, LOBs, agents — real-time understanding of the inbox
 - 2026-03-18: LOB normalization: 105 variants consolidated to 35 clean categories
+- 2026-03-18: Gap analysis is stage-aware: new submissions check full LOB requirements, quoted checks only quote details, declined has no requirements
+- 2026-03-18: "Done" means: draft sent (auto-prompted), manually closed, or superseded. Resolution types: quote_forwarded, decline_notified, info_request_sent, followup_sent, manually_closed
+- 2026-03-18: Resolved submissions excluded from board, visible in Analytics History section
+- 2026-03-18: How It Works page explains methodology — data sources, classification, linking, extraction, stage-aware requirements, draft generation, pipeline
+- 2026-03-18: Use Haiku for batch processing (10x cheaper), Sonnet for PDF extraction quality
+- 2026-03-18: Some USLI PDFs are scanned images — need OCR preprocessing for premium/limits extraction
 
 ## Open Questions (deferred — not blocking demo)
 - How does RingCentral data merge into the same pipeline? (Same pattern: RingCentral CLI + skills)
