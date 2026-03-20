@@ -3,7 +3,14 @@
 AI-powered content creation pipeline for Indemn and personal brands. Transforms voice-based ideas into polished, publishable content through dynamic extraction, iterative drafting, and multi-platform distribution. Lives in a separate repo (`/Users/home/Repositories/content-system`) with skills symlinked to `~/.claude/skills/`.
 
 ## Status
-Session 2026-03-10. Evaluations blog post rewritten, republished, all images finalized.
+Session 2026-03-20. Designed and built `/content-showcase` skill. Ready to use on next showcase page.
+
+**Session 2026-03-20:**
+- Designed `/content-showcase` skill — adaptive brainstorm → demo production → page assembly → deploy
+- Skill covers full loop: messaging strategy, demo scripting/building (recordings, diagrams, interactives, video), MDX assembly, review, deployment
+- Design doc: `operating-system/docs/plans/2026-03-20-content-showcase-skill-design.md`
+- Skill lives in content-system repo at `skills/content-showcase/SKILL.md`, symlinked to `~/.claude/skills/`
+- Key design decisions: adaptive conversation (not rigid template), demos can be any type (recording, diagram, interactive, video), single-session workflow, skill does the work directly in-session
 
 **Session 2026-03-10:**
 - Rewrote "Building Evaluations for Conversational Agents" → "How We Evaluate Conversational AI Agents"
@@ -28,11 +35,15 @@ Session 2026-03-10. Evaluations blog post rewritten, republished, all images fin
 - "How We Evaluate Conversational AI Agents" — Rewritten and republished Mar 10, live at blog.indemn.ai
 - "Agents That Build Agents" — Draft v13, awaiting review or approval
 
+**Product showcase pages:**
+- Indemn CLI & MCP Server — live at blog.indemn.ai/products/indemn-cli/ (deployed 2026-03-19)
+
 **Next up:**
-1. Write and publish first personal post on Substack
-2. Wire content-publish skill to handle Substack/Medium publishing (currently only handles git-based Astro deploy)
-3. Author reviews "Agents That Build Agents" v13 — approve or further feedback
-4. Integrate image-gen into content pipeline skills
+1. Second showcase page: Evaluation Engine ("Trust, Not Hope") — use `/content-showcase`
+2. Write and publish first personal post on Substack
+3. Wire content-publish skill to handle Substack/Medium publishing (currently only handles git-based Astro deploy)
+4. Author reviews "Agents That Build Agents" v13 — approve or further feedback
+5. Integrate image-gen into content pipeline skills
 
 ## External Resources
 | Resource | Type | Link |
@@ -56,8 +67,10 @@ Session 2026-03-10. Evaluations blog post rewritten, republished, all images fin
 | 2026-02-23 | [writing-psychology-reference](artifacts/2026-02-23-writing-psychology-reference.md) | Deep research on psychology and craft of writing that grips readers — permanent reference for content system |
 | 2026-02-25 | [content-system-architecture](artifacts/content-system-architecture.excalidraw) | Excalidraw diagram of the content pipeline — skills, flow, and integration points ([SVG](artifacts/content-system-architecture.svg)) |
 | 2026-03-09 | [the-buzz-newsletter-design](artifacts/2026-03-09-the-buzz-newsletter-design.md) | Design an internal CTO engineering newsletter (The Buzz) for CEO communication — newspaper-style PDF + structured markdown |
+| 2026-03-20 | [content-showcase-skill-design](../../docs/plans/2026-03-20-content-showcase-skill-design.md) | Design a skill for creating product showcase pages — adaptive brainstorm, demo production, page assembly, deployment |
 
 ## Decisions
+- 2026-03-20: `/content-showcase` skill — adaptive conversation, not rigid template. Every product page is different. Three must-resolve items before moving past brainstorm: audience, core message, demo approach. Everything else (features, stats, FAQ, walkthrough, CTA) included only if it fits. Demo types: screen recording, diagram/visual, interactive embed, video from visuals. Single-session workflow, skill does all work in-session (only hard handoff is screen recording).
 - 2026-03-10: Evaluations blog rewrite — practical builder tone, not dramatic storytelling. Core insight: "the hardest part of building a good AI agent isn't the AI — it's defining what success looks like." Tone calibrated from The Buzz tone review learnings. Images should be infographic/diagram style (Gemini image-gen), not abstract AI art.
 - 2026-03-10: Blog images should be conceptual infographics, not UI mockups — mockups give the wrong impression that the image is the actual product dashboard. Flat vector, white background, consistent style across all images in a post.
 - 2026-03-10: 1Password `op read "op://vault/item/field"` returns actual secret values. `op item get --fields label=field` returns reference strings. Use `op read` for Gemini API key in image-gen workflows.
