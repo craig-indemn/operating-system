@@ -3,7 +3,9 @@
 Build a comprehensive understanding of GIC Underwriters' quoting operation by analyzing their quote@gicunderwriters.com inbox, then design and demo an intelligent system that organizes their workflows, identifies automation opportunities, and eventually connects to all their communication channels (email, phone via RingCentral). The system should be state-based, data-driven, with a data layer that ingestion and processing mechanisms build on top of.
 
 ## Status
-Session 2026-03-18/19. **Comprehensive inbox intelligence tool. 35 submissions processed, stage-aware analysis, full workflow with Done state.**
+Session 2026-03-20. **Outlook Add-in working end-to-end.** Sidebar shows AI analysis, gap analysis, and draft replies inside Outlook. Deployed to Vercel, sideloaded on personal Outlook.com, 5 demo emails seeded and matching.
+
+Previous: Session 2026-03-18/19. Comprehensive inbox intelligence tool. 35 submissions processed, stage-aware analysis, full workflow with Done state.
 
 **Repo:** `/Users/home/Repositories/gic-email-intelligence/` (35+ commits on `main`, local only — need org permissions to push)
 
@@ -15,6 +17,41 @@ Session 2026-03-18/19. **Comprehensive inbox intelligence tool. 35 submissions p
 - **Services**: API on port 8080, frontend on port 5173
 - **To run**: `uv run uvicorn gic_email_intel.api.main:app --port 8080` + `cd ui && npm run dev`
 - **URL**: `http://localhost:5173/?token=0So5zcDzGPnMdADZqh62r8Hpi559W9RbXqJlc3D_RBQ`
+
+### Session 2026-03-20 — What Was Built
+
+**Outlook Add-in (end-to-end working)**
+- React task pane (350px sidebar) with 6 components: TaskPane, SubmissionHeader, AddinSummary, AddinGapAnalysis, AddinDraft
+- Office.js integration: reads current email subject/body, extracts ref numbers, calls backend lookup
+- ItemChanged handler for re-fetching when switching emails (pinning works on M365 work accounts)
+- `displayReplyAllFormAsync()` for "Reply with this" — opens native Outlook reply with draft pre-filled
+- Markdown-to-HTML conversion in draft preview and reply (bold, italic, bullets)
+- Deployed to Vercel at `gic-addin.vercel.app`
+- Indemn BubbleMark (iris) branding at 16/32/80px
+
+**Backend: Lookup Endpoint**
+- `POST /api/lookup-email` with 5-step matching waterfall: internet_message_id → submission ref numbers → email classification ref numbers → subject match → fuzzy name match
+- Extracted `get_submission_detail()` helper from inline route handler for reuse
+- Server-side reference number extraction from subject (catches non-USLI formats)
+- CORS updated for Vercel + cloudflare tunnel origins
+
+**Email Seeding Script**
+- `scripts/seed_outlook.py` — OAuth flow + Graph API sendMail to personal Outlook.com
+- 5 demo emails covering: carrier pending, declined, quoted, new, awaiting info
+- Entra app registered: `0ec79e75-d1c6-4f65-8418-22a4ed7a6506` (personal account, Mail.ReadWrite + Mail.Send + User.Read)
+
+**Infrastructure**
+- Hello-world sideload validation at `addin-test.vercel.app` (confirmed Office.js loads on personal Outlook.com)
+- Cloudflared tunnel for exposing localhost:8080 to Vercel-hosted add-in
+- 4-round design review cycle before implementation (all issues resolved)
+
+**To run the demo:**
+1. `cd /Users/home/Repositories/gic-email-intelligence && uv run uvicorn gic_email_intel.api.main:app --port 8080`
+2. `cloudflared tunnel --url http://localhost:8080` — note the tunnel URL
+3. Rebuild add-in with tunnel URL: `cd addin && VITE_API_BASE=https://<tunnel>.trycloudflare.com/api VITE_API_TOKEN=0So5zcDzGPnMdADZqh62r8Hpi559W9RbXqJlc3D_RBQ npm run build`
+4. Deploy: `cp manifest.xml dist/ && cd dist && npx vercel --prod --yes`
+5. Sideload `addin/manifest.xml` on Outlook.com
+6. Open a seeded email → click "Analyze Email"
 
 ### Session 2026-03-18/19 — What Was Built
 
@@ -64,10 +101,12 @@ Session 2026-03-18/19. **Comprehensive inbox intelligence tool. 35 submissions p
 2. **OCR for scanned PDFs** — Some USLI quote PDFs are scanned images. AI vision can identify them but can't extract premium/limits/effective date. Need OCR preprocessing (Tesseract/Textract).
 3. **HTML attachment extraction** — Mercado Insurance has an HTML application file that the extractor doesn't handle.
 4. **Push to GitHub** — Need indemn-ai org permissions
-5. **Deploy to AWS** — Docker image → ECS/EC2, domain (gic.indemn.ai), SSL
+5. **Deploy to AWS** — Docker image → ECS/EC2, domain (gic.indemn.ai), SSL. Would eliminate need for cloudflared tunnel.
 6. **Demo video recording** — Craig wants to record a walkthrough before showing to GIC
-7. **Outlook plugin** — Future: integrate as Outlook Web Add-in or Teams tab
-8. **Email sending** — Need Mail.ReadWrite/Mail.Send permission for actual draft creation in Outlook
+7. **Pinning on personal Outlook.com** — SupportsPinning in manifest but pin icon doesn't appear on consumer accounts. Works on M365 work accounts (GIC deployment).
+8. **Remove debug output** — TaskPane shows debug JSON on no-match state. Remove before demo.
+9. **Production auth** — Add-in uses embedded API token. Production needs Office.js SSO (`getAccessTokenAsync`).
+10. **internetMessageId storage** — Not in sync pipeline yet. Production needs it for exact email matching.
 
 ### What's Built (2026-03-16-b)
 - **98 files, ~13,000 LOC, 108 tests passing**, frontend builds clean
@@ -208,6 +247,9 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 | 2026-03-18 | [board-redesign-triaged-inbox](artifacts/2026-03-18-board-redesign-triaged-inbox.md) | Brainstorm: replace lifecycle columns with action queues (Ready to Send, Needs Review, Monitoring) + dashboard analytics bar |
 | 2026-03-18 | [analytics-view-design](artifacts/2026-03-18-analytics-view-design.md) | Analytics view design — volume, types, LOBs, agents, operational health metrics |
 | 2026-03-18 | [lifecycle-done-state-history](artifacts/2026-03-18-lifecycle-done-state-history.md) | Done state design: what "done" means, resolution types, history view, first-time onboarding |
+| 2026-03-19 | [outlook-addin-research](artifacts/2026-03-19-outlook-addin-research.md) | Outlook Add-in development research — architecture, APIs, deployment, testing, constraints for GIC plugin |
+| 2026-03-19 | [outlook-addin-design](artifacts/2026-03-19-outlook-addin-design.md) | Outlook Add-in design — task pane UI, lookup endpoint, email seeding, demo strategy, deployment plan |
+| 2026-03-20 | Implementation plan at `docs/plans/2026-03-20-outlook-addin-implementation.md` (in repo) | 14-task implementation plan with parallel tracks for backend, frontend, seeding, and integration |
 
 ## Key Data Files
 | File | What it contains |
@@ -272,6 +314,16 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 - 2026-03-18: How It Works page explains methodology — data sources, classification, linking, extraction, stage-aware requirements, draft generation, pipeline
 - 2026-03-18: Use Haiku for batch processing (10x cheaper), Sonnet for PDF extraction quality
 - 2026-03-18: Some USLI PDFs are scanned images — need OCR preprocessing for premium/limits extraction
+- 2026-03-19: Build Outlook Web Add-in (Office.js) as task pane sidebar — React app deployed to Vercel, reads current email via Office.js, matches to backend via reference numbers
+- 2026-03-19: Reply mechanism: displayReplyAllFormAsync() — opens native Outlook reply with draft pre-filled, no Mail.Send permission needed
+- 2026-03-19: Demo strategy: seed emails from GIC's quote@ into Craig's personal Outlook.com inbox via Graph API delegated permissions, sideload add-in there
+- 2026-03-19: Matching waterfall: internet_message_id (real deployment) → reference_numbers (demo) → fuzzy insured name (fallback)
+- 2026-03-19: Standalone web app stays as analytics/management view, add-in is the day-to-day workflow tool
+- 2026-03-20: Outlook Add-in renamed to "Indemn Email Intelligence" with Indemn BubbleMark branding
+- 2026-03-20: Lookup endpoint enhanced: email classification ref matching + subject matching + server-side extraction (handles non-USLI ref formats)
+- 2026-03-20: Demo emails seeded via sendMail to personal Outlook.com (craigindemn@outlook.com) — direct inbox creation doesn't activate add-ins
+- 2026-03-20: Pinning (SupportsPinning) requires VersionOverridesV1_1, not V1_0 — works on M365 work accounts, not personal Outlook.com
+- 2026-03-20: Cloudflared tunnel needed for demo (add-in on Vercel can't reach localhost backend)
 
 ## Open Questions (deferred — not blocking demo)
 - How does RingCentral data merge into the same pipeline? (Same pattern: RingCentral CLI + skills)
