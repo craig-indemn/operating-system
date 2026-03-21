@@ -3,7 +3,16 @@
 AI-powered content creation pipeline for Indemn and personal brands. Transforms voice-based ideas into polished, publishable content through dynamic extraction, iterative drafting, and multi-platform distribution. Lives in a separate repo (`/Users/home/Repositories/content-system`) with skills symlinked to `~/.claude/skills/`.
 
 ## Status
-Session 2026-03-20. Designed and built `/content-showcase` skill. Ready to use on next showcase page.
+Session 2026-03-21. Built Document Retrieval showcase page — interactive demo, workflow diagram, omni-channel section. Merged to main. Ready for deploy.
+
+**Session 2026-03-21:**
+- Built Document Retrieval showcase page at `/products/document-retrieval/`
+- Brainstormed with Craig using Ian's sales call transcript — scoped workflow: email/phone/chat intake → extraction → validation (completeness + identity) → AMS lookup → carrier retrieval (direct or web operator) → draft reply → optional human approval → delivered
+- Created interactive demo component (1,839 lines): 3 scenarios (COI, ID Card, Policy Dec Page), mock chat panel, workflow step visualizer, mock Outlook inbox approval, polished mock documents (styled HTML)
+- Created OmniChannel component — email/phone/chat visual section with dark gradient
+- Craig built workflow diagram SVG in Claude.ai — integrated into page
+- Parallel execution: orchestrated 2 Claude Code sessions (Session A: demo component, Session B: content page + OmniChannel)
+- All merged to main in content-system repo
 
 **Session 2026-03-20:**
 - Designed `/content-showcase` skill — adaptive brainstorm → demo production → page assembly → deploy
@@ -37,13 +46,15 @@ Session 2026-03-20. Designed and built `/content-showcase` skill. Ready to use o
 
 **Product showcase pages:**
 - Indemn CLI & MCP Server — live at blog.indemn.ai/products/indemn-cli/ (deployed 2026-03-19)
+- Document Retrieval — built 2026-03-21, merged to main, pending deploy
 
 **Next up:**
-1. Second showcase page: Evaluation Engine ("Trust, Not Hope") — use `/content-showcase`
-2. Write and publish first personal post on Substack
-3. Wire content-publish skill to handle Substack/Medium publishing (currently only handles git-based Astro deploy)
-4. Author reviews "Agents That Build Agents" v13 — approve or further feedback
-5. Integrate image-gen into content pipeline skills
+1. Deploy Document Retrieval showcase page via `vercel --prod`
+2. Third showcase page: Evaluation Engine ("Trust, Not Hope") — use `/content-showcase`
+3. Write and publish first personal post on Substack
+4. Wire content-publish skill to handle Substack/Medium publishing (currently only handles git-based Astro deploy)
+5. Author reviews "Agents That Build Agents" v13 — approve or further feedback
+6. Integrate image-gen into content pipeline skills
 
 ## External Resources
 | Resource | Type | Link |
@@ -70,6 +81,7 @@ Session 2026-03-20. Designed and built `/content-showcase` skill. Ready to use o
 | 2026-03-20 | [content-showcase-skill-design](../../docs/plans/2026-03-20-content-showcase-skill-design.md) | Design a skill for creating product showcase pages — adaptive brainstorm, demo production, page assembly, deployment |
 
 ## Decisions
+- 2026-03-21: Document Retrieval showcase — scoped from Ian's sales call. Interactive demo with 3 scenarios, mock chat + workflow steps + Outlook inbox approval + styled HTML documents. Workflow diagram built in Claude.ai as SVG. Custom components imported directly in MDX body (no changes to existing infrastructure). Full-bleed CSS breakout pattern for components inside showcase-prose container. Parallel session execution (2 Claude Code agents on worktrees). Messaging: "We understand insurance. We understand your problems. We have the tech to solve them. Let's build this together." Partnership angle, not product pitch.
 - 2026-03-20: `/content-showcase` skill — adaptive conversation, not rigid template. Every product page is different. Three must-resolve items before moving past brainstorm: audience, core message, demo approach. Everything else (features, stats, FAQ, walkthrough, CTA) included only if it fits. Demo types: screen recording, diagram/visual, interactive embed, video from visuals. Single-session workflow, skill does all work in-session (only hard handoff is screen recording).
 - 2026-03-10: Evaluations blog rewrite — practical builder tone, not dramatic storytelling. Core insight: "the hardest part of building a good AI agent isn't the AI — it's defining what success looks like." Tone calibrated from The Buzz tone review learnings. Images should be infographic/diagram style (Gemini image-gen), not abstract AI art.
 - 2026-03-10: Blog images should be conceptual infographics, not UI mockups — mockups give the wrong impression that the image is the actual product dashboard. Flat vector, white background, consistent style across all images in a post.
