@@ -3,7 +3,23 @@
 AI-powered content creation pipeline for Indemn and personal brands. Transforms voice-based ideas into polished, publishable content through dynamic extraction, iterative drafting, and multi-platform distribution. Lives in a separate repo (`/Users/home/Repositories/content-system`) with skills symlinked to `~/.claude/skills/`.
 
 ## Status
-Session 2026-03-19. Product showcase system live at blog.indemn.ai/products/. CLI & MCP Server page deployed with 3 demo videos.
+Session 2026-03-21. Built Document Retrieval showcase page — interactive demo, workflow diagram, omni-channel section. Merged to main. Ready for deploy.
+
+**Session 2026-03-21:**
+- Built Document Retrieval showcase page at `/products/document-retrieval/`
+- Brainstormed with Craig using Ian's sales call transcript — scoped workflow: email/phone/chat intake → extraction → validation (completeness + identity) → AMS lookup → carrier retrieval (direct or web operator) → draft reply → optional human approval → delivered
+- Created interactive demo component (1,839 lines): 3 scenarios (COI, ID Card, Policy Dec Page), mock chat panel, workflow step visualizer, mock Outlook inbox approval, polished mock documents (styled HTML)
+- Created OmniChannel component — email/phone/chat visual section with dark gradient
+- Craig built workflow diagram SVG in Claude.ai — integrated into page
+- Parallel execution: orchestrated 2 Claude Code sessions (Session A: demo component, Session B: content page + OmniChannel)
+- All merged to main in content-system repo
+
+**Session 2026-03-20:**
+- Designed `/content-showcase` skill — adaptive brainstorm → demo production → page assembly → deploy
+- Skill covers full loop: messaging strategy, demo scripting/building (recordings, diagrams, interactives, video), MDX assembly, review, deployment
+- Design doc: `operating-system/docs/plans/2026-03-20-content-showcase-skill-design.md`
+- Skill lives in content-system repo at `skills/content-showcase/SKILL.md`, symlinked to `~/.claude/skills/`
+- Key design decisions: adaptive conversation (not rigid template), demos can be any type (recording, diagram, interactive, video), single-session workflow, skill does the work directly in-session
 
 **Session 2026-03-18/19:**
 - Built product showcase system on blog.indemn.ai/products/
@@ -20,13 +36,6 @@ Session 2026-03-19. Product showcase system live at blog.indemn.ai/products/. CL
 - Set up MCP server in Gemini CLI (`~/.gemini/settings.json`)
 - ChatGPT MCP requires Plus/Pro subscription — tab shows "Demo video coming soon"
 - Deployed to blog.indemn.ai via `vercel --prod` on 2026-03-19
-
-**Next:**
-1. Build `/content-showcase` skill for creating future showcase pages
-2. Second showcase page: Evaluation Engine ("Trust, Not Hope")
-3. Remote MCP server (HTTP transport) so users don't need npm install — added to Jarvis CLI project backlog
-4. ChatGPT demo when Plus/Pro subscription available
-5. Further design refinements based on investor/customer feedback
 
 **Session 2026-03-10:**
 - Rewrote "Building Evaluations for Conversational Agents" → "How We Evaluate Conversational AI Agents"
@@ -51,11 +60,17 @@ Session 2026-03-19. Product showcase system live at blog.indemn.ai/products/. CL
 - "How We Evaluate Conversational AI Agents" — Rewritten and republished Mar 10, live at blog.indemn.ai
 - "Agents That Build Agents" — Draft v13, awaiting review or approval
 
+**Product showcase pages:**
+- Indemn CLI & MCP Server — live at blog.indemn.ai/products/indemn-cli/ (deployed 2026-03-19)
+- Document Retrieval — built 2026-03-21, merged to main, pending deploy
+
 **Next up:**
-1. Write and publish first personal post on Substack
-2. Wire content-publish skill to handle Substack/Medium publishing (currently only handles git-based Astro deploy)
-3. Author reviews "Agents That Build Agents" v13 — approve or further feedback
-4. Integrate image-gen into content pipeline skills
+1. Deploy Document Retrieval showcase page via `vercel --prod`
+2. Third showcase page: Evaluation Engine ("Trust, Not Hope") — use `/content-showcase`
+3. Write and publish first personal post on Substack
+4. Wire content-publish skill to handle Substack/Medium publishing (currently only handles git-based Astro deploy)
+5. Author reviews "Agents That Build Agents" v13 — approve or further feedback
+6. Integrate image-gen into content pipeline skills
 
 ## External Resources
 | Resource | Type | Link |
@@ -80,8 +95,11 @@ Session 2026-03-19. Product showcase system live at blog.indemn.ai/products/. CL
 | 2026-02-25 | [content-system-architecture](artifacts/content-system-architecture.excalidraw) | Excalidraw diagram of the content pipeline — skills, flow, and integration points ([SVG](artifacts/content-system-architecture.svg)) |
 | 2026-03-09 | [the-buzz-newsletter-design](artifacts/2026-03-09-the-buzz-newsletter-design.md) | Design an internal CTO engineering newsletter (The Buzz) for CEO communication — newspaper-style PDF + structured markdown |
 | 2026-03-18 | [product-showcase-system-plan](../../docs/plans/2026-03-18-product-showcase-system.md) | Implementation plan for product showcase system — 12 tasks, component architecture, CLI page content |
+| 2026-03-20 | [content-showcase-skill-design](../../docs/plans/2026-03-20-content-showcase-skill-design.md) | Design a skill for creating product showcase pages — adaptive brainstorm, demo production, page assembly, deployment |
 
 ## Decisions
+- 2026-03-21: Document Retrieval showcase — scoped from Ian's sales call. Interactive demo with 3 scenarios, mock chat + workflow steps + Outlook inbox approval + styled HTML documents. Workflow diagram built in Claude.ai as SVG. Custom components imported directly in MDX body (no changes to existing infrastructure). Full-bleed CSS breakout pattern for components inside showcase-prose container. Parallel session execution (2 Claude Code agents on worktrees). Messaging: "We understand insurance. We understand your problems. We have the tech to solve them. Let's build this together." Partnership angle, not product pitch.
+- 2026-03-20: `/content-showcase` skill — adaptive conversation, not rigid template. Every product page is different. Three must-resolve items before moving past brainstorm: audience, core message, demo approach. Everything else (features, stats, FAQ, walkthrough, CTA) included only if it fits. Demo types: screen recording, diagram/visual, interactive embed, video from visuals. Single-session workflow, skill does all work in-session (only hard handoff is screen recording).
 - 2026-03-19: Product showcase system deployed to blog.indemn.ai/products/. 7 reusable Astro components, products content collection, first page: CLI & MCP Server with 3 demo videos (Claude Code, Claude AI, Gemini CLI). Uses official Indemn brand guide (Iris/Lilac/Eggplant, Barlow, flourishes). 10 brainstorming decisions checkpointed in Hive.
 - 2026-03-19: Showcase pages use official brand guide (brand_design.pdf), not the old website's blue palette. Confirmed by Craig.
 - 2026-03-19: Demo videos autoplay muted on loop — no click-to-play interaction. Better for investor/demo context.
