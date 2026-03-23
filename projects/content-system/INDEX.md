@@ -3,7 +3,30 @@
 AI-powered content creation pipeline for Indemn and personal brands. Transforms voice-based ideas into polished, publishable content through dynamic extraction, iterative drafting, and multi-platform distribution. Lives in a separate repo (`/Users/home/Repositories/content-system`) with skills symlinked to `~/.claude/skills/`.
 
 ## Status
-Session 2026-03-21. Built Document Retrieval showcase page — interactive demo, workflow diagram, omni-channel section. Merged to main. Ready for deploy.
+Session 2026-03-23. Built and deployed 7 product showcase pages total. Enhanced `/content-showcase` skill with patterns from all builds.
+
+**Session 2026-03-23:**
+- Built and deployed 4 more showcase pages (Conversational Intake, Email Intelligence, Intake Manager, Cross-Sell)
+- Conversational Intake: dual-perspective demo with panel transformation (info collection → CSR dashboard), 2 scenarios (after-hours + live handoff), knowledge retrieval indicators, system messages. New components: FormComparison, KnowledgeSection, NotificationChannels
+- Email Intelligence: first non-chat demo — board/kanban UI with 3 action queues, email timeline, analysis sub-tabs (Extracted Data, Gap Analysis, Draft). New components: PipelineSteps, DraftIntelligence
+- Intake Manager: submission lifecycle demo with pipeline status bar, completeness tracking, event timeline, 4-tab detail view (Business/Coverage/Validation/Quote), multi-carrier quote comparison. New components: MultiEventTimeline, ValidationRules
+- Cross-Sell: coverage profile panel with 4-phase transitions (profile → gap detection → recommendation → outcome), new "opportunity" callout type. New component: CoverageGaps (6 common gap types)
+- Enhanced `/content-showcase` skill to capture the refined 5-phase workflow and all technical patterns
+- Established code-reviewer agent pattern for plan validation before building
+- All pages deployed to blog.indemn.ai via `vercel --prod`
+- Saved future cross-sell product ideas to memory (book analysis, life event detection)
+
+**Session 2026-03-22:**
+- Built Quote & Bind showcase page at `/products/quote-and-bind/` — deployed to blog.indemn.ai
+- Audience: MGA principals, program administrators, wholesale brokers with binding authority
+- Interactive demo (1,536 lines): 3 scenarios (Event Insurance, Specialty Commercial/Jewelry, Renters), parameter collection panel, stacking callouts, quote cards, policy confirmation
+- New components: InfinitePages (branded distribution channels), IntegrationModes (standalone/AMS/carrier portal)
+- Reused OmniChannel component from Document Retrieval page
+- Craig built workflow diagram SVG in Claude.ai — 4 channels, eligibility branching, human review, system integrations callout
+- Fixed dark mode SVG rendering — stripped `prefers-color-scheme:dark` from both diagram SVGs (blog is always light mode)
+- Fixed text contrast on dark-background sections — global `showcase-prose :global()` styles were overriding scoped component white text
+- Parallel execution: 2 Claude Code sessions (Session A: demo component, Session B: content + supporting components)
+- Also deployed Document Retrieval page (was pending deploy from 2026-03-21)
 
 **Session 2026-03-21:**
 - Built Document Retrieval showcase page at `/products/document-retrieval/`
@@ -46,15 +69,20 @@ Session 2026-03-21. Built Document Retrieval showcase page — interactive demo,
 
 **Product showcase pages:**
 - Indemn CLI & MCP Server — live at blog.indemn.ai/products/indemn-cli/ (deployed 2026-03-19)
-- Document Retrieval — built 2026-03-21, merged to main, pending deploy
+- Document Retrieval — live at blog.indemn.ai/products/document-retrieval/ (deployed 2026-03-22)
+- Quote & Bind — live at blog.indemn.ai/products/quote-and-bind/ (deployed 2026-03-22)
+- Conversational Intake — live at blog.indemn.ai/products/conversational-intake/ (deployed 2026-03-23)
+- Email Intelligence — live at blog.indemn.ai/products/email-intelligence/ (deployed 2026-03-23)
+- Intake Manager — live at blog.indemn.ai/products/intake-manager/ (deployed 2026-03-23)
+- Cross-Sell — live at blog.indemn.ai/products/cross-sell/ (deployed 2026-03-23)
 
 **Next up:**
-1. Deploy Document Retrieval showcase page via `vercel --prod`
-2. Third showcase page: Evaluation Engine ("Trust, Not Hope") — use `/content-showcase`
-3. Write and publish first personal post on Substack
-4. Wire content-publish skill to handle Substack/Medium publishing (currently only handles git-based Astro deploy)
-5. Author reviews "Agents That Build Agents" v13 — approve or further feedback
-6. Integrate image-gen into content pipeline skills
+1. Renewals showcase page
+2. Evaluation Engine showcase ("Trust, Not Hope")
+3. Book analysis / proactive outreach showcase (future cross-sell capability)
+4. Life event detection showcase (future cross-sell capability)
+5. Write and publish first personal post on Substack
+6. Wire content-publish skill to handle Substack/Medium publishing
 
 ## External Resources
 | Resource | Type | Link |
@@ -79,8 +107,18 @@ Session 2026-03-21. Built Document Retrieval showcase page — interactive demo,
 | 2026-02-25 | [content-system-architecture](artifacts/content-system-architecture.excalidraw) | Excalidraw diagram of the content pipeline — skills, flow, and integration points ([SVG](artifacts/content-system-architecture.svg)) |
 | 2026-03-09 | [the-buzz-newsletter-design](artifacts/2026-03-09-the-buzz-newsletter-design.md) | Design an internal CTO engineering newsletter (The Buzz) for CEO communication — newspaper-style PDF + structured markdown |
 | 2026-03-20 | [content-showcase-skill-design](../../docs/plans/2026-03-20-content-showcase-skill-design.md) | Design a skill for creating product showcase pages — adaptive brainstorm, demo production, page assembly, deployment |
+| 2026-03-20 | [document-retrieval-diagram-prompt](artifacts/2026-03-20-document-retrieval-diagram-prompt.md) | Prompt for Claude.ai workflow diagram — Document Retrieval |
+| 2026-03-21 | [quote-bind-diagram-prompt](artifacts/2026-03-21-quote-bind-diagram-prompt.md) | Prompt for Claude.ai workflow diagram — Quote & Bind |
+| 2026-03-22 | [conversational-intake-diagram-prompt](artifacts/2026-03-22-conversational-intake-diagram-prompt.md) | Prompt for Claude.ai workflow diagram — Conversational Intake |
+| 2026-03-23 | [email-intelligence-diagram-prompt](artifacts/2026-03-23-email-intelligence-diagram-prompt.md) | Prompt for Claude.ai workflow diagram — Email Intelligence |
+| 2026-03-23 | [intake-manager-diagram-prompt](artifacts/2026-03-23-intake-manager-diagram-prompt.md) | Prompt for Claude.ai workflow diagram — Intake Manager |
+| 2026-03-23 | [cross-sell-diagram-prompt](artifacts/2026-03-23-cross-sell-diagram-prompt.md) | Prompt for Claude.ai workflow diagram — Cross-Sell |
 
 ## Decisions
+- 2026-03-23: Enhanced `/content-showcase` skill to 5-phase workflow: Brainstorm → Diagram Prompt → Plan (with code review) → Parallel Build → Deploy. Documented all technical constraints, reusable components, and patterns from 7 deployed pages.
+- 2026-03-23: Cross-sell has 4 distinct product approaches: opportunistic (built), renewal (next), book analysis, life event detection. Each is its own showcase page. Saved to memory for future sessions.
+- 2026-03-23: Code-reviewer agent before plan approval catches real issues — missing scenario data, ARIA collision risks, missing pubDate, board HTML scoping. Always run before building.
+- 2026-03-23: Email Intelligence and Intake Manager are separate products. Email Intelligence is the smart inbox layer (classify, link, stage, extract, draft). Intake Manager is the full pipeline (document processing, extraction, validation, multi-provider quoting). Email Intelligence is step 1; Intake Manager is the complete workflow.
 - 2026-03-21: Document Retrieval showcase — scoped from Ian's sales call. Interactive demo with 3 scenarios, mock chat + workflow steps + Outlook inbox approval + styled HTML documents. Workflow diagram built in Claude.ai as SVG. Custom components imported directly in MDX body (no changes to existing infrastructure). Full-bleed CSS breakout pattern for components inside showcase-prose container. Parallel session execution (2 Claude Code agents on worktrees). Messaging: "We understand insurance. We understand your problems. We have the tech to solve them. Let's build this together." Partnership angle, not product pitch.
 - 2026-03-20: `/content-showcase` skill — adaptive conversation, not rigid template. Every product page is different. Three must-resolve items before moving past brainstorm: audience, core message, demo approach. Everything else (features, stats, FAQ, walkthrough, CTA) included only if it fits. Demo types: screen recording, diagram/visual, interactive embed, video from visuals. Single-session workflow, skill does all work in-session (only hard handoff is screen recording).
 - 2026-03-10: Evaluations blog rewrite — practical builder tone, not dramatic storytelling. Core insight: "the hardest part of building a good AI agent isn't the AI — it's defining what success looks like." Tone calibrated from The Buzz tone review learnings. Images should be infographic/diagram style (Gemini image-gen), not abstract AI art.
