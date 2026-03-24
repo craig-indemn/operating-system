@@ -383,6 +383,7 @@ class SituationAssessment(BaseModel):
     draft_appropriate: bool          # Should we generate a draft?
     draft_type: Optional[str] = None # If yes, what kind
     confidence: float                # 0.0-1.0; low = flag for human review
+    needs_review: bool = False       # True if confidence < 0.7
 ```
 
 ### situation_type Values (11 total)
@@ -493,6 +494,8 @@ Source: Review finding -- confidence was undefined, creating implementation risk
 | Agent follow-up on stale submission | Status update | **Yes** | status_update | email-workflow-patterns.md -- followup pattern |
 | Renewal request | Route to UW or extract attachments | **No** | -- | email-workflow-patterns.md -- Pattern F |
 | CSR relay (internal routing) | Route internally | **No** | -- | agent-network.md -- CSR relay |
+| Misdirected email (bind request in wrong inbox, routing question) | Redirect or ignore | **No** | -- | email-workflow-patterns.md |
+| Noise (test submission, spam, non-submission email) | Ignore | **No** | -- | email-workflow-patterns.md |
 
 ---
 
@@ -916,6 +919,14 @@ class Submission(BaseModel):
     # === Lifecycle ===
     stage: Stage = Stage.RECEIVED
     ball_holder: str = "queue"                 # BallHolder enum values
+                                               # DERIVED from stage (1:1 mapping):
+                                               # received→queue, triaging→gic,
+                                               # awaiting_agent_info→agent,
+                                               # awaiting_carrier_action→carrier,
+                                               # processing→gic, quoted→agent,
+                                               # declined→gic, closed→done.
+                                               # Set automatically by update_submission_stage,
+                                               # never set independently.
     stage_changed_at: datetime
     stage_history: list[StageHistoryEntry] = []
 
@@ -984,6 +995,12 @@ class Submission(BaseModel):
 
 **Added:** `submission_group_id`, `latest_assessment_id`, `carrier_id`, `retail_agent_id`, `premium_quoted`, `premium_bound`, `cross_channel_flags`.
 
+**Preserved:** `resolution_note: Optional[str] = None` — existing field on submissions (set by the /resolve endpoint). Retained for freeform operator notes on closure.
+
+**Field population notes:**
+- `carrier_reference` — set by the situation assessor during assessment, extracted from USLI quote subjects or Hiscox email content. Also settable via `update_submission` tool.
+- `retail_agency_code` — set by the linker when detectable from email patterns, or manually via `update_submission`. Future: populated from management system API.
+
 **Unchanged:** Extraction, Classification, SyncState models. These capture data correctly; the problem was in interpretation and action, not data capture.
 
 **Email model change (Phase 2):** `Email.submission_id: Optional[str]` changes to `Email.submission_ids: list[str] = []`. For the 95%+ of single-LOB emails, this list has one entry. For multi-LOB emails in a submission group, this list has entries for each submission. Migration: rename field, wrap existing string value in a list. All queries using `Email.submission_id` must update to `Email.submission_ids`. See AMBIGUITY-4 in Migration Strategy.
@@ -991,6 +1008,8 @@ class Submission(BaseModel):
 ---
 
 ## Enhanced LOB Configuration
+
+**Storage:** LOB configs remain as JSON files on disk (`src/gic_email_intel/agent/lob_configs/*.json`), loaded at startup by `lob_config.py`. They are NOT stored in MongoDB. This is intentional — configs are developer-managed, version-controlled, and change infrequently. The `get_lob_config` tool reads from the in-memory config registry. If LOB configs need to become operator-editable in the future, they can be migrated to a MongoDB collection at that point.
 
 ```python
 class LobConfig(BaseModel):
@@ -1117,7 +1136,7 @@ class Draft(BaseModel):
 class StageHistoryEntry(BaseModel):
     """Captures ball-holder and transition context."""
     stage: Stage
-    ball_holder: BallHolder
+    ball_holder: Optional[BallHolder] = None  # Optional for backward compat with old entries
     reason: Optional[str] = None
     triggered_by: Optional[str] = None       # "email:<id>" | "user:<name>" |
                                              # "system:auto_advance" |
