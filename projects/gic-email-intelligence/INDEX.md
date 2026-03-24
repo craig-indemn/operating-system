@@ -5,9 +5,14 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 ## Status
 Session 2026-03-23/24. **Full inbox processed, UI functional, critical draft accuracy issue identified.** 3,214 emails classified (39 LOBs), 2,754 submissions linked, 122 AI-generated drafts. UI reshaped to match Ryan's GIC wholesaler wireframes. **Critical finding:** the draft generation system acts without understanding context — portal submissions get unnecessary info requests, quote comparison emails get misidentified as new submissions. The system needs to understand → interpret → present → then act. Golf cart drafts specifically need to be re-evaluated based on actual email context. See `artifacts/2026-03-24-session-handoff.md` for full handoff.
 
+Session 2026-03-24 (continued). **Business model research complete.** 7 research documents in `research/` covering company profile, LOB catalog, carrier relationships, agent network, email workflow patterns, submission lifecycle, and unified business model synthesis. Key findings: GIC operates in two modes (wholesale broker for USLI/Hiscox vs MGA/carrier for Granada Insurance programs like golf carts). 93% of inbox email is automated carrier notifications; only 5% of submissions involve actual human work. Granada Insurance financials under pressure ($78.8M premiums, 87% loss ratio, -$15.1M net income, AM Best downgrade to B). Current 5-stage model structurally broken — proposed 8-stage model separating who holds the ball. See `research/business-model-synthesis.md` for the full briefing.
+
 Previous: Session 2026-03-20. Outlook Add-in working end-to-end. Session 2026-03-18/19. Comprehensive inbox intelligence tool.
 
 **Repo:** `/Users/home/Repositories/gic-email-intelligence/` (35+ commits on `main`, local only — need org permissions to push)
+
+### Research
+Living research corpus in `research/` — 7 documents, 171KB, updated 2026-03-24. Start with `research/business-model-synthesis.md` for the unified picture. See `research/README.md` for full index.
 
 ### Current State
 - **3 tabs**: Inbox (triaged action queues), Analytics (volume/types/LOBs/agents/history), How It Works (methodology)
