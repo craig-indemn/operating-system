@@ -3,18 +3,15 @@
 Build a CLI tool and MCP server around Indemn's platform APIs so developers (internal first, then external customers) can programmatically manage AI agents — creating agents, prompts, functions, knowledge bases, running evaluations, and pulling analytics. Everything currently done via the Copilot Dashboard UI, made available through command-line and AI-assisted workflows (Claude Code skills, MCP servers).
 
 ## Status
-**Phase 2 complete. Product showcase page built (2026-03-18) — awaiting deploy.**
+**Production hardening complete (2026-03-24). Awaiting copilot-server PR merge + prod deploy.**
 
+- **npm:** `@indemn/cli@1.2.0` published publicly. Install: `npm install -g @indemn/cli`
 - **Showcase page:** blog.indemn.ai/products/indemn-cli/ (committed, not yet deployed)
-- **Plan:** `docs/plans/2026-03-18-product-showcase-system.md` (OS repo)
-
-- **npm:** `@indemn/cli@1.1.1` published publicly. Install: `npm install -g @indemn/cli`
 - **GitHub:** https://github.com/craig-indemn/indemn-cli (private)
 - **indemn-cli repo:** `/Users/home/Repositories/indemn-cli/` (main branch) — 35+ TypeScript source files, 58 MCP tools, 6 skills, builds cleanly
-- **Copilot Server:** `feat/api-key-auth` merged to main via PR #806 (2026-03-13). Deployed to devcopilot.indemn.ai.
+- **Copilot Server:** API key auth merged (PR #806). Security hardening PR #835 awaiting reviewer approval.
 - **Claude Code:** MCP server added to user config, plugin installed via local marketplace
 - **Design coverage:** 100% — URL scraping, file upload, function params, pagination, eval advanced flags, models all implemented
-- **Demo:** Recorded and shared with dev-squad on 2026-03-13. Full flywheel: create agent → configure → evaluate → improve → re-evaluate. Clean sweep.
 - **E2E:** 50/51 tests passing. Only failure: `testset list` without `--agent-id` (evals server 500, not our bug).
 - **README:** Updated with team setup instructions and full command reference.
 
@@ -56,10 +53,17 @@ All 3 commands tested against real dev data, PDFs visually verified, published a
 - [x] MCP chat greeting race condition fixed
 - [x] All 58 MCP tools with schemas (55 core + 3 export)
 - [x] README with team setup instructions
-- [ ] Login flow tested E2E against remote dev
-- [ ] Login flow tested E2E against prod
-- [ ] Deploy API key auth to prod copilot-server
-- [ ] Generate prod API keys for team
+- [x] Security audit completed (2026-03-24)
+- [x] JWT expiration (24h) on API-key-generated tokens
+- [x] Strict token format validation (regex)
+- [x] API key name field validation (trim, length, safe chars)
+- [x] Config file permissions locked to 600
+- [x] socket.io-parser DoS vulnerability patched
+- [x] `@indemn/cli@1.2.0` published to npm
+- [x] GLOBAL_SECRET verified set in prod
+- [ ] Merge copilot-server PR #835 (awaiting reviewer)
+- [ ] Deploy copilot-server to prod
+- [ ] Test login flow E2E against prod
 
 ## Key Technical Details
 
@@ -131,8 +135,11 @@ indemn agents list
 | 2026-03-12 | [cli-mcp-design](artifacts/2026-03-12-cli-mcp-design.md) | Design a CLI and MCP server for programmatic management of Indemn AI agents |
 | 2026-03-12 | [cli-mcp-implementation-plan](artifacts/2026-03-12-cli-mcp-implementation-plan.md) | 11-step implementation plan for Phase 1 |
 | 2026-03-13 | [cli-exports-design](artifacts/2026-03-13-cli-exports-design.md) | Design for CLI exports — eval reports (PDF), agent cards (PDF), markdown dumps, eval-analysis skill |
+| 2026-03-24 | [production-hardening-plan](../../docs/plans/2026-03-24-cli-production-hardening.md) | Security audit + hardening plan for production deployment |
 
 ## Decisions
+- 2026-03-24: Security hardening before prod — JWT 24h expiry, strict token regex, name validation, config chmod 600, socket.io-parser patched
+- 2026-03-24: Published @indemn/cli@1.2.0 with security fixes — team onboarding is just `npm install -g @indemn/cli && indemn login --env production`
 - 2026-03-12: API keys for auth — one-time Firebase login generates persistent key, stored in ~/.indemn/config.json. SHA-256 hashed in DB.
 - 2026-03-12: New repo (`indemn-cli`) — CLI is a distribution surface, not core business logic
 - 2026-03-12: TypeScript — matches Copilot Server stack, npm distribution, mature MCP SDK
@@ -188,7 +195,6 @@ Live at: https://blog.indemn.ai/products/indemn-cli/
 - MCP configured locally for Claude Desktop and Gemini CLI
 
 ## Open Questions
-- When do we deploy API key auth to prod copilot-server?
 - Transfer `indemn-cli` repo to `indemn-ai` org when Craig gets create permissions?
 - Which remote MCP transport to use — SSE or Streamable HTTP?
 - Where to host the remote MCP server — Vercel, copilot-server, or standalone?
