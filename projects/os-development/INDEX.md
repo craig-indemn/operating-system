@@ -66,6 +66,7 @@ Development of the operating system itself — the skills, systems, and infrastr
 | 2026-03-15 | [hive-ui-visual-design](artifacts/2026-03-15-hive-ui-visual-design.md) | Visual design system — zinc palette, typography, tile anatomy, layout, interactions, responsive behavior |
 | 2026-03-15 | [hive-phase4-5-implementation](artifacts/2026-03-15-hive-phase4-5-implementation.md) | Phase 4 (Hive UI) + Phase 5 (Expansion) implementation — all files, architecture decisions, verification results |
 | 2026-03-15 | [hive-ui-gap-analysis](artifacts/2026-03-15-hive-ui-gap-analysis.md) | Design vs implementation audit — 11 gaps identified, priority fix order, session visibility root cause, masonry/breathing/height issues |
+| 2026-03-24 | [hive-phase6-brainstorm](artifacts/2026-03-24-hive-phase6-brainstorm.md) | Next phase vision — sessions as primitive, blueprints (repeatable/one-time execution plans), threads (workflow state machines), self-compressing context system, input/processing/output model |
 
 ## Decisions
 - 2026-02-19: OS has three primitives: Skills (capabilities), Projects (memory), Systems (processes)
