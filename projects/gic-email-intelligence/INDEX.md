@@ -259,6 +259,7 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 | 2026-03-23 | [gic-demo-strategy](artifacts/2026-03-23-gic-demo-strategy.md) | Demo strategy for JC/Maribel: 3-act narrative, targeted reclassification, UI reshape to Ryan's wireframes, golf cart LOB focus, 2-day execution plan |
 | 2026-03-24 | [session-handoff](artifacts/2026-03-24-session-handoff.md) | Comprehensive handoff: system state, data pipeline, UI status, critical draft accuracy issue, golf cart analysis, what needs fixing |
 | 2026-03-24 | [data-model-redesign](artifacts/2026-03-24-data-model-redesign.md) | Comprehensive data model & lifecycle redesign — 8-stage model, situation assessment layer, context-aware draft generation, sourced from 7 research documents |
+| 2026-03-24 | [implementation-plan](artifacts/2026-03-24-implementation-plan.md) | 4-wave implementation plan with 15 parallel tasks — backend, frontend, migration, browser testing |
 
 ## Key Data Files
 | File | What it contains |
