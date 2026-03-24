@@ -3,9 +3,9 @@
 Build a comprehensive understanding of GIC Underwriters' quoting operation by analyzing their quote@gicunderwriters.com inbox, then design and demo an intelligent system that organizes their workflows, identifies automation opportunities, and eventually connects to all their communication channels (email, phone via RingCentral). The system should be state-based, data-driven, with a data layer that ingestion and processing mechanisms build on top of.
 
 ## Status
-Session 2026-03-20. **Outlook Add-in working end-to-end.** Sidebar shows AI analysis, gap analysis, and draft replies inside Outlook. Deployed to Vercel, sideloaded on personal Outlook.com, 5 demo emails seeded and matching.
+Session 2026-03-23/24. **Full inbox processed, UI functional, critical draft accuracy issue identified.** 3,214 emails classified (39 LOBs), 2,754 submissions linked, 122 AI-generated drafts. UI reshaped to match Ryan's GIC wholesaler wireframes. **Critical finding:** the draft generation system acts without understanding context — portal submissions get unnecessary info requests, quote comparison emails get misidentified as new submissions. The system needs to understand → interpret → present → then act. Golf cart drafts specifically need to be re-evaluated based on actual email context. See `artifacts/2026-03-24-session-handoff.md` for full handoff.
 
-Previous: Session 2026-03-18/19. Comprehensive inbox intelligence tool. 35 submissions processed, stage-aware analysis, full workflow with Done state.
+Previous: Session 2026-03-20. Outlook Add-in working end-to-end. Session 2026-03-18/19. Comprehensive inbox intelligence tool.
 
 **Repo:** `/Users/home/Repositories/gic-email-intelligence/` (35+ commits on `main`, local only — need org permissions to push)
 
@@ -250,6 +250,9 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 | 2026-03-19 | [outlook-addin-research](artifacts/2026-03-19-outlook-addin-research.md) | Outlook Add-in development research — architecture, APIs, deployment, testing, constraints for GIC plugin |
 | 2026-03-19 | [outlook-addin-design](artifacts/2026-03-19-outlook-addin-design.md) | Outlook Add-in design — task pane UI, lookup endpoint, email seeding, demo strategy, deployment plan |
 | 2026-03-20 | Implementation plan at `docs/plans/2026-03-20-outlook-addin-implementation.md` (in repo) | 14-task implementation plan with parallel tracks for backend, frontend, seeding, and integration |
+| 2026-03-23 | [intake-manager-integration-analysis](artifacts/2026-03-23-intake-manager-integration-analysis.md) | Full exploration of intake-manager codebase + side-by-side comparison + integration vision for merging GIC intelligence into intake-manager |
+| 2026-03-23 | [gic-demo-strategy](artifacts/2026-03-23-gic-demo-strategy.md) | Demo strategy for JC/Maribel: 3-act narrative, targeted reclassification, UI reshape to Ryan's wireframes, golf cart LOB focus, 2-day execution plan |
+| 2026-03-24 | [session-handoff](artifacts/2026-03-24-session-handoff.md) | Comprehensive handoff: system state, data pipeline, UI status, critical draft accuracy issue, golf cart analysis, what needs fixing |
 
 ## Key Data Files
 | File | What it contains |
