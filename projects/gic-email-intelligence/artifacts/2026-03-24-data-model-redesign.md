@@ -12,6 +12,8 @@ sources:
     description: "Current data model at gic-email-intelligence/src/gic_email_intel/core/models.py"
   - type: review
     description: "5 parallel code reviews — migration feasibility, schema validation, lifecycle completeness, entity modeling, cross-channel awareness"
+  - type: review
+    description: "Final code review — 3 critical, 4 moderate, 3 minor, 5 ambiguity issues resolved in round 3"
 ---
 
 # Data Model & Submission Lifecycle Redesign
@@ -125,6 +127,7 @@ Skip triaging entirely. USLI prefix gives LOB deterministically (lob-catalog.md 
 | agent_replied | awaiting_agent_info -> processing | agent_reply email linked | Yes | -- | submission-lifecycle.md -- Failure #4 |
 | reassess | awaiting_agent_info -> triaging | Agent reply changes nature of submission (different LOB, different carrier needed) | No | -- | submission-lifecycle.md |
 | more_info_needed | processing -> awaiting_agent_info | GIC discovers additional info needed during processing | No | -- | email-workflow-patterns.md -- Deep Breath Holdings hull value case |
+| relay_info | processing -> awaiting_carrier_action | GIC relays agent info to carrier | No | operating_mode == "brokered" | carrier-relationships.md -- Blaze Pilates relay pattern |
 | carrier_quoted | awaiting_carrier_action -> quoted | usli_quote/hiscox_quote email linked | Yes | -- | carrier-relationships.md |
 | carrier_declined | awaiting_carrier_action -> declined | usli_decline email linked | Yes | -- | email-workflow-patterns.md |
 | carrier_needs_info | awaiting_carrier_action -> awaiting_agent_info | USLI pending file -- GIC needs to relay info request to agent | No | ball_holder changes to agent | carrier-relationships.md -- 212 pending emails; email-workflow-patterns.md -- Blaze Pilates pattern |
@@ -178,6 +181,37 @@ submission_group_id: Optional[str] = None  # Links related submissions for same 
 - Submission B: Acme Corp / Property / USLI -- `submission_group_id: "grp_abc123"`, stage: declined
 
 Source: Ryan's wireframes -- indemn_placement_flows.html: "System splits into parallel streams per line, each tracked independently." Status tracking per submission per carrier: sent -> pending -> clarifying -> quoted -> declined -> bound.
+
+### Multi-LOB Email Splitting Mechanism (AMBIGUITY-3)
+
+The email classifier already outputs `line_of_business: str`. For multi-LOB emails, the classifier outputs a new field: `lines_of_business: list[str]`.
+
+**Classification model change:**
+```python
+class Classification(BaseModel):
+    email_type: EmailType
+    line_of_business: str = ""               # Primary LOB (backward compat)
+    lines_of_business: list[str] = []        # NEW: all LOBs detected (multi-LOB emails)
+    named_insured: str = ""
+    reference_numbers: list[str] = []
+    intent_summary: str = ""
+    classified_at: datetime
+```
+
+**Linker behavior:**
+- When the linker sees `len(lines_of_business) > 1`, it creates one submission per LOB, all sharing the same `submission_group_id` (generated as a new ObjectId)
+- Each submission links to the same email via `Email.submission_ids` (see Phase 2 migration)
+- If the classifier only detects one LOB (the common case), `lines_of_business` has one entry and behavior is unchanged
+
+### Email.submission_id Singular to Many (AMBIGUITY-4)
+
+**Phase 2 change:** `Email.submission_id: Optional[str]` becomes `Email.submission_ids: list[str] = []`.
+
+- For the 95%+ of single-LOB emails, this list has one entry
+- For multi-LOB emails in a submission group, this list has entries for each submission
+- Migration: rename field, wrap existing string value in a list
+- This IS a breaking change -- all queries using `Email.submission_id` must update to `Email.submission_ids`
+- Given MongoDB's document model, a list field is more natural than a junction collection
 
 ---
 
@@ -254,6 +288,12 @@ retail_agent_id: Optional[str] = None      # FK to agents collection
 ```
 
 Existing denormalized fields (`retail_agent_name`, `retail_agent_email`, `retail_agency_name`, `retail_agency_code`) are retained for display to avoid JOIN overhead on every list view.
+
+### Ongoing Agent/Carrier Creation (AMBIGUITY-2)
+
+**Agents:** When the linker creates a new submission with a `retail_agent_name`/`email` not found in the agents collection, it creates a new Agent record automatically. Deduplication: match on normalized email address first, then fuzzy name match (same logic as submission linking). If ambiguous, create a new record and flag `potential_duplicate_of` for manual review.
+
+**Carriers:** Carriers are NOT auto-created. They are a configured entity (like LOB configs). If a carrier is detected that's not in the collection, the submission gets `carrier_name` set but `carrier_id` left null. An operator adds the carrier entity later. This prevents polluting the carriers collection with misclassified carrier names.
 
 ---
 
@@ -394,19 +434,21 @@ Source: submission-lifecycle.md -- Jessica case.
 
 Confidence is computed from these factors:
 
-| Factor | Description | Range |
-|--------|-------------|-------|
-| `classification_confidence` | How confident the email classifier was (high for USLI prefix match, lower for ambiguous types) | 0.0-1.0 |
-| `data_completeness` | `fields_present / total_required` | 0.0-1.0 |
-| `conflict_count` | Number of fields in `fields_conflicting` (0 = good, each conflict reduces confidence) | Penalty: 0.2 per conflict |
-| `pattern_match` | Whether situation_type matches a high-frequency pattern (auto-quote = high, quote_comparison = lower) | 0.0-1.0 |
-| `extraction_status` | Whether all attachments were successfully extracted (partial extraction reduces confidence) | 0.0-1.0 |
+| Factor | Description | Range | Computable Now? |
+|--------|-------------|-------|----------------|
+| `classification_confidence` | How confident the email classifier was | 0.0-1.0 | **Not yet.** Phase 1 defaults: 1.0 for USLI-prefix-identified emails (deterministic), 0.8 for emails with clear type patterns, 0.5 for ambiguous. Future: add confidence output to the classifier. |
+| `data_completeness` | `len(fields_present) / len(lob_config.required_fields)` | 0.0-1.0 | **Yes.** Directly computable from extraction data and LOB config. |
+| `conflict_count` | Number of fields in `fields_conflicting` (0 = good, each conflict reduces confidence) | Penalty: 0.2 per conflict | **Yes.** Count of entries in `fields_conflicting`. |
+| `pattern_match` | Whether situation_type matches a high-frequency pattern | 0.0-1.0 | **Set by assessor.** auto_quote = 1.0, standard info request = 0.9, unusual pattern = 0.5. |
+| `extraction_status` | Whether all attachments were successfully extracted (partial extraction reduces confidence) | 0.0-1.0 | **Yes.** 1.0 if all PDFs extracted, 0.5 if some failed, 0.0 if none attempted. |
 
 ```
 confidence = min(classification_confidence, data_completeness, 1.0 - (conflict_count * 0.2), pattern_match, extraction_status)
 ```
 
 **Threshold:** `confidence < 0.7` -> `needs_review = true` (flag for human review instead of auto-suggesting draft).
+
+**Note:** This confidence formula is a starting point. It should be tuned based on operator feedback -- specifically, which assessments led to incorrect actions (wrong stage, inappropriate draft, missed draft opportunity). The factors and weights may evolve.
 
 Source: Review finding -- confidence was undefined, creating implementation risk.
 
@@ -454,6 +496,311 @@ Source: Review finding -- confidence was undefined, creating implementation risk
 
 ---
 
+## Assessment Pipeline
+
+### Pipeline Redesign
+
+The processing pipeline changes from a linear 5-step sequence to a 6-step sequence with assessment as the decision-making hub.
+
+**Current pipeline:**
+```
+classify → link → stage_detect → extract → draft
+```
+
+**New pipeline:**
+```
+classify → link → extract → assess → [maybe draft]
+```
+
+Key change: extraction moves BEFORE assessment. The assessor needs extraction data to avoid the golf cart portal problem -- if you assess before extracting PDFs, you don't know that the portal application already contains the data you'd otherwise ask for.
+
+**ProcessingStatus flow:**
+```
+pending → processing → classified → linked → extracted → assessed → complete (or failed)
+```
+
+The `assessed` status means the SituationAssessment has been created and the submission stage has been updated.
+
+### Updated harness.py Pipeline
+
+```python
+def process_email(email_id: str, ...):
+    # 1. Classify (unchanged)
+    run_skill("email-classifier", {"email_id": email_id})
+
+    # 2. Link to submission (unchanged)
+    run_skill("submission-linker", {"email_id": email_id})
+
+    # 3. PDF extraction — MOVED BEFORE assessment (was step 4)
+    if has_extractable_pdf(email):
+        run_skill("pdf-extractor", {"email_id": email_id})
+
+    # 4. Situation assessment — NEW (replaces stage-detector)
+    submission_id = get_submission_id_for_email(email_id)
+    if submission_id:
+        run_skill("situation-assessor", {"submission_id": submission_id})
+
+    # 5. Draft generation — GATED by assessment
+    #    Only runs if assessment.draft_appropriate == true
+    #    The assessor sets a flag; harness checks it
+    if submission_id and should_generate_draft(submission_id):
+        run_skill("draft-generator", {"submission_id": submission_id})
+```
+
+The `should_generate_draft()` function changes from checking stage membership to checking the assessment:
+
+```python
+def should_generate_draft(submission_id: str) -> bool:
+    """Check if a draft should be generated based on the latest assessment."""
+    db = get_sync_db()
+    sub = db[SUBMISSIONS].find_one({"_id": ObjectId(submission_id)})
+    if not sub or not sub.get("latest_assessment_id"):
+        return False
+    assessment = db[ASSESSMENTS].find_one(
+        {"_id": ObjectId(sub["latest_assessment_id"])}
+    )
+    return assessment is not None and assessment.get("draft_appropriate") is True
+```
+
+### The `situation-assessor` Skill (Replaces `stage-detector`)
+
+The `stage-detector` skill is **REMOVED**. Its logic is absorbed into the `situation-assessor`, which is a single unified skill that reads submission context and produces a SituationAssessment. This replaces the current 2-step approach of stage_detect (determine stage) + should_generate_draft() (gate drafts).
+
+**Skill specification:**
+
+| Property | Value |
+|----------|-------|
+| Input | `submission_id` |
+| Tools | `get_email`, `list_emails`, `get_submission`, `list_extractions`, `get_lob_config`, `save_assessment`, `update_submission_stage` |
+| Reads | All linked emails (with bodies), all extractions, the LOB config for this LOB, the carrier entity |
+| Produces | A SituationAssessment document saved to the `assessments` collection |
+| Updates | `submission.stage` (if recommended_stage differs and confidence >= 0.7), `submission.ball_holder`, `submission.latest_assessment_id` |
+| Triggers draft | Only if `assessment.draft_appropriate == true` |
+
+**Tool map entry:**
+
+```python
+SKILL_TOOL_MAP = {
+    # ... existing skills ...
+    "situation-assessor": [
+        get_email, list_emails, get_submission, list_extractions,
+        get_lob_config, save_assessment, update_submission_stage,
+    ],
+    # stage-detector: REMOVED — absorbed into situation-assessor
+}
+```
+
+**New tools required:**
+- `get_submission(submission_id)` — returns full submission document
+- `list_extractions(submission_id)` — returns all extractions for a submission
+- `get_lob_config(lob)` — returns LOB config JSON for the given LOB
+- `save_assessment(submission_id, assessment_json)` — saves a SituationAssessment to the assessments collection, updates submission.latest_assessment_id
+
+**Assessment → submission update flow (AMBIGUITY-1 resolution):**
+1. Assessor creates SituationAssessment document, saves to assessments collection via `save_assessment`
+2. `save_assessment` tool atomically: inserts the assessment document AND updates `submission.latest_assessment_id`
+3. Assessor then calls `update_submission_stage` if `recommended_stage` differs from current stage AND `confidence >= 0.7`, which updates `stage` and `ball_holder`
+4. If `confidence < 0.7`, the assessment is saved but the stage is NOT changed — it's flagged for human review via `needs_review: true` on the assessment
+5. This is atomic within a single skill execution: assessment save + submission update happen in the same agent invocation
+
+### The `draft-generator` Skill (Updated, Not Removed)
+
+The `draft-generator` skill is **KEPT** but its role changes. It no longer decides WHETHER to draft — the assessor decides that. The draft generator only runs when called, and receives the assessment context.
+
+**Changes to draft_generator.md:**
+- Receives assessment context: `situation_type`, `next_action`, `missing_items`, `next_action_reasoning`
+- Only called when `assessment.draft_appropriate == true`
+- Uses new DraftType values (adds `status_update`, `remarket_suggestion`)
+- Subject line patterns use new stage awareness (e.g., stage `awaiting_carrier_action` vs `awaiting_agent_info` changes the subject)
+
+**Updated tool map:**
+
+```python
+"draft-generator": [
+    get_email, list_emails, get_submission, get_assessment, save_draft,
+],
+```
+
+New tool `get_assessment(assessment_id)` returns the latest SituationAssessment so the draft generator has the assessor's reasoning.
+
+### LLM Prompt Changes (CRITICAL-2)
+
+**1. `stage_detector.md` → REMOVED**
+
+Replaced entirely by `situation_assessor.md`. The stage detection logic (transition rules, conflict resolution) is now part of the assessor's responsibilities.
+
+**2. `draft_generator.md` → UPDATED**
+
+```markdown
+# Draft Generator Skill
+
+You are generating professional email drafts for GIC Underwriters.
+You are called ONLY when a situation assessment has determined a draft is appropriate.
+
+## Context Available
+
+Read the latest assessment for context:
+- assessment.situation_type — what kind of situation this is
+- assessment.next_action — what the draft should accomplish
+- assessment.next_action_reasoning — WHY this is the right action
+- assessment.fields_missing — genuinely missing items (verified against extractions)
+- assessment.fields_conflicting — fields where sources disagree
+
+## Draft Types (6 total)
+
+| Type | When | Template |
+|------|------|---------|
+| info_request | Assessment says fields genuinely missing | Request specific items from agent |
+| quote_forward | Quote received, ready to send to agent | Forward quote with key terms |
+| followup | Stale submission, no agent response | Professional follow-up |
+| decline_notification | Carrier declined | Notify agent with next steps |
+| status_update | Agent follow-up on submission status | Update agent on current state |
+| remarket_suggestion | Decline received, remarket possible | Suggest alternative carriers/options |
+
+## Subject Line Patterns (Stage-Aware)
+
+- awaiting_agent_info: "Info Request for [INSURED]- [GIC_NUMBER]"
+- awaiting_carrier_action: "Status Update: [INSURED]- [GIC_NUMBER]"
+- declined: "Decline Notice: [INSURED]- [GIC_NUMBER]"
+- quoted: "Quote for [INSURED]- [GIC_NUMBER]"
+
+## Instructions
+
+1. Read the assessment: `get_assessment(assessment_id)`
+2. Read the submission: `get_submission(submission_id)`
+3. Read linked emails for tone/context: `list_emails(submission_id=<id>)`
+4. Generate draft using assessment.next_action as the guide
+5. Save: `save_draft(submission_id, draft_type, to_email, subject, body, ...)`
+
+CRITICAL: Do NOT independently decide what's missing. Use assessment.fields_missing.
+The assessment has already checked extractions — do not re-derive the gap analysis.
+```
+
+**3. `situation_assessor.md` → NEW**
+
+```markdown
+# Situation Assessor Skill
+
+You are evaluating a submission's situation to determine the correct stage,
+ball holder, and next action. You replace the old stage-detector with a
+comprehensive understanding of the submission context.
+
+## System Context
+
+GIC Underwriters operates in two modes:
+- **Brokered** (USLI, Hiscox): GIC brokers between retail agents and carriers
+- **Direct underwritten** (Golf Cart / Granada): GIC underwrites on its own paper
+
+## The 8 Stages
+
+| Stage | Ball Holder | Meaning |
+|-------|------------|---------|
+| received | queue | Arrived, unreviewed |
+| triaging | gic | Assessing completeness and carrier fit |
+| awaiting_agent_info | agent | Info request sent, waiting for reply |
+| awaiting_carrier_action | carrier | Submitted to carrier, waiting |
+| processing | gic | All info in hand, actively working |
+| quoted | agent | Quote delivered, pending bind decision |
+| declined | gic | Carrier/GIC declined, may remarket |
+| closed | done | Final disposition reached |
+
+## Input
+
+Read ALL of the following before producing your assessment:
+1. The submission: `get_submission(submission_id)`
+2. All linked emails (with bodies): `list_emails(submission_id=<id>)` then
+   `get_email(email_id)` for each
+3. All extractions: `list_extractions(submission_id=<id>)`
+4. The LOB config: `get_lob_config(lob_name)`
+
+## Output
+
+Produce a SituationAssessment JSON with ALL required fields.
+
+## Key Rules
+
+1. **Check extraction data BEFORE declaring fields missing.** If a PDF
+   extraction shows named_insured, business_address, etc., those fields
+   are PRESENT even if they weren't in the email body. This is the #1
+   cause of incorrect info requests.
+
+2. **Recognize portal submissions.** Emails from noreply@gicunderwriters.com
+   with PDF attachments are portal submissions. The PDF typically contains
+   most required fields. Set intake_channel: "gic_portal".
+
+3. **Identify auto-quoted USLI notifications.** If the email is usli_quote
+   and came through USLI Retail Web (agent submitted directly to USLI),
+   set automation_level: "auto_notified". The agent already has the quote.
+   next_action: "close" or "monitor". draft_appropriate: false.
+
+4. **Detect field conflicts across sources.** When the same field has
+   different values from different emails/extractions, put it in
+   fields_conflicting with both FieldSource entries. Do NOT pick one
+   silently.
+
+5. **Stage determination follows transition rules.** Don't just map
+   the latest email type to a stage. Consider the full email history
+   and current stage. An agent_reply after an info_request means
+   processing, not received.
+
+## Save Results
+
+1. Save the assessment: `save_assessment(submission_id, assessment_json)`
+2. If recommended_stage differs from current AND confidence >= 0.7:
+   `update_submission_stage(submission_id, stage, ball_holder, ...)`
+3. If confidence < 0.7: save assessment but do NOT change stage.
+   The assessment.needs_review will be set to true automatically.
+```
+
+### Submission Linker Tool Access (MODERATE-4)
+
+The `submission-linker` skill needs expanded tool access to set fields it determines during linking. The linker identifies `operating_mode`, `intake_channel`, `automation_level`, `carrier_id`, and `carrier_name` from email patterns.
+
+**Expanded `create_submission` tool:** Add parameters for the new fields:
+
+```python
+@tool
+def create_submission(
+    named_insured: str,
+    line_of_business: str = "",
+    source_email_id: str = None,
+    gic_number: str = None,
+    retail_agent_name: str = None,
+    retail_agent_email: str = None,
+    retail_agency_name: str = None,
+    # NEW fields:
+    operating_mode: str = "brokered",
+    intake_channel: str = "agent_email",
+    automation_level: str = "unknown",
+    carrier_id: str = None,
+    carrier_name: str = None,
+) -> str:
+```
+
+**Add `update_submission` to the linker's tool set** for cases where the linker links to an existing submission and needs to update these fields:
+
+```python
+SKILL_TOOL_MAP = {
+    "submission-linker": [
+        get_email, search_submissions, create_submission,
+        link_email_to_submission, update_submission_stage,
+        update_submission,  # NEW — for setting operating_mode, intake_channel, etc.
+    ],
+}
+```
+
+**Detection logic in the linker:**
+- `operating_mode`: Derived from LOB config's `workflow_type` field
+- `intake_channel`: Determined from email `from_address` pattern:
+  - `noreply@gicunderwriters.com` → `gic_portal`
+  - `quotes@granadainsurance.com` → `granada_portal`
+  - USLI auto-format subjects/references → `usli_retail_web`
+  - CSR-forwarded emails (from `csr@` or internal GIC addresses) → `csr_relay`
+  - All others → `agent_email`
+- `automation_level`: Set to `auto_notified` for USLI auto-quotes, `unknown` otherwise (assessor may upgrade to `actively_processed`)
+
+---
+
 ## Updated Enums
 
 ```python
@@ -495,7 +842,12 @@ class Resolution(str, Enum):
     BOUND = "bound"
     EXPIRED = "expired"
     WITHDRAWN = "withdrawn"
-    REMARKETED = "remarketed"
+    REMARKETED = "remarketed"         # Set when GIC tried another carrier after initial
+                                      # decline. The remarket transition (declined → triaging)
+                                      # creates a new cycle, but if GIC decides to close the
+                                      # original submission and track the remarket as a new
+                                      # linked submission via submission_group_id, the original
+                                      # resolves as REMARKETED.
     DECLINED_NO_ALTERNATIVE = "declined_no_alternative"
     MANUALLY_CLOSED = "manually_closed"
 
@@ -581,7 +933,13 @@ class Submission(BaseModel):
     # === Carrier (Entity Reference) ===
     carrier_id: Optional[str] = None           # FK to carriers collection
     carrier_name: Optional[str] = None         # Denormalized for display
-    carrier_reference: Optional[str] = None    # USLI ref number
+    carrier_reference: Optional[str] = None    # The PRIMARY carrier reference number for this
+                                               # submission. For USLI: prefix+number (e.g.,
+                                               # MGL026F9DR4). For Hiscox: the quote reference.
+                                               # This is the "official" ref that GIC and the
+                                               # carrier use to identify the submission. When
+                                               # there are multiple USLI refs (quote revisions),
+                                               # carrier_reference is the LATEST one.
 
     # === Agent (Entity Reference) ===
     retail_agent_id: Optional[str] = None      # FK to agents collection
@@ -596,7 +954,10 @@ class Submission(BaseModel):
     premium_bound: Optional[float] = None      # Numeric; set at bind time
     coverage_limits: Optional[str] = None      # String OK -- "$1M/$2M" format
     effective_date: Optional[str] = None
-    reference_numbers: list[str] = []
+    reference_numbers: list[str] = []           # ALL reference numbers found across all emails
+                                               # (USLI refs, GIC numbers, long tracking numbers).
+                                               # Used for linking. Distinct from carrier_reference
+                                               # which is the single primary carrier ref.
 
     # === Cross-Channel ===
     cross_channel_flags: list[CrossChannelFlag] = []
@@ -617,11 +978,15 @@ class Submission(BaseModel):
     updated_at: datetime
 ```
 
-**Removed:** `attention_reason` -- eliminated as described above. `carrier` (plain string) -- replaced by `carrier_id` + `carrier_name`. `premium` (string) -- replaced by `premium_quoted` (float) + `premium_bound` (float).
+**Removed:** `attention_reason` -- eliminated as described above. `carrier` (plain string) -- replaced by `carrier_id` + `carrier_name`.
+
+**Premium field migration (phased):** In Phase 1, ADD `premium_quoted: Optional[float]` and `premium_bound: Optional[float]` alongside the existing `premium: Optional[str]`. In Phase 2, migrate string premium values to float (parse "$1,329" -> 1329.0), then remove the old `premium` field. Both old and new fields coexist during Phase 1.
 
 **Added:** `submission_group_id`, `latest_assessment_id`, `carrier_id`, `retail_agent_id`, `premium_quoted`, `premium_bound`, `cross_channel_flags`.
 
-**Unchanged:** Email, Extraction, Classification, SyncState models. These capture data correctly; the problem was in interpretation and action, not data capture.
+**Unchanged:** Extraction, Classification, SyncState models. These capture data correctly; the problem was in interpretation and action, not data capture.
+
+**Email model change (Phase 2):** `Email.submission_id: Optional[str]` changes to `Email.submission_ids: list[str] = []`. For the 95%+ of single-LOB emails, this list has one entry. For multi-LOB emails in a submission group, this list has entries for each submission. Migration: rename field, wrap existing string value in a list. All queries using `Email.submission_id` must update to `Email.submission_ids`. See AMBIGUITY-4 in Migration Strategy.
 
 ---
 
@@ -761,7 +1126,9 @@ class StageHistoryEntry(BaseModel):
     changed_at: datetime
 ```
 
-**Migration note:** Old `stage_history` entries lack `ball_holder`. The migration must handle dual-shape entries -- old entries without `ball_holder` are valid historical records and should not be discarded. See Migration Strategy section.
+**Migration notes:**
+- Old `stage_history` entries lack `ball_holder`. The migration must handle dual-shape entries -- old entries without `ball_holder` are valid historical records and should not be discarded. See Migration Strategy section.
+- Old field `triggered_by_email: Optional[str]` (contains email ObjectId or null) is renamed to `triggered_by: Optional[str]` (contains "email:\<id\>", "user:\<name\>", "system:auto_advance"). Migration: for existing entries where `triggered_by_email` is not null, transform to `"email:{value}"`. Reading code must check for both field names during the transition period.
 
 ---
 
@@ -801,10 +1168,18 @@ class StageHistoryEntry(BaseModel):
 | Agent entity | Fields on submission | Separate collection + FK reference + denormalized display | Agent-level patterns enable better personalization |
 | Line-level modeling | Not supported | submission_group_id links multi-LOB submissions | Partial quote/decline handling |
 | Cross-channel awareness | Not tracked | CrossChannelFlag list on submission | Surface overlap between chat/voice/email |
-| Financial tracking | premium (string) | premium_quoted + premium_bound (float) | Numeric aggregation for revenue tracking |
+| Financial tracking | premium (string) | premium_quoted + premium_bound (float) | Numeric aggregation for revenue tracking. Phase 1: coexist. Phase 2: migrate + remove old. |
 | ProcessingStatus | 7 values | 8 (added ASSESSED) | Assessment is a distinct pipeline step |
 | data_sources | dict[str, str] | dict[str, list[FieldSource]] + fields_conflicting | Multi-source fields and conflict resolution |
 | Confidence scoring | Undefined | 5-factor formula with 0.7 threshold | Implementation clarity; human review gating |
+| Processing pipeline | classify → link → stage_detect → extract → draft | classify → link → extract → assess → [maybe draft] | Extraction before assessment; assessment gates drafts |
+| stage-detector skill | Standalone skill | **REMOVED** — absorbed into situation-assessor | Single unified "understand" step |
+| draft-generator skill | Decides whether + what to draft | Only called when assessment says draft_appropriate | Decouples "should we draft?" from "what to draft?" |
+| Email.submission_id | Optional[str] (singular) | submission_ids: list[str] (Phase 2) | Multi-LOB emails link to multiple submissions |
+| Classification | line_of_business: str | Adds lines_of_business: list[str] | Multi-LOB email detection |
+| triggered_by_email | Optional[str] (email ID) | triggered_by: Optional[str] (typed prefix) | Supports email, user, and system triggers |
+| Agent creation | Manual only | Auto-created by linker, dedup by email | Agents are first-class entities from submission #1 |
+| Carrier creation | Manual only | Manual only (configured entity) | Prevents pollution from misclassified names |
 
 ---
 
@@ -817,11 +1192,13 @@ All changes are backward-compatible. Deploy without coordinating frontend/backen
 | Action | Details |
 |--------|---------|
 | Add new fields with defaults | `submission_group_id`, `carrier_id`, `carrier_name`, `retail_agent_id`, `latest_assessment_id`, `premium_quoted`, `premium_bound`, `cross_channel_flags`, `is_stale`, `stale_since`, `resolution`, `resolved_at` -- all Optional/defaulted |
+| Keep existing `premium` field | `premium: Optional[str]` stays alongside new `premium_quoted`/`premium_bound` during Phase 1. Both old and new coexist. |
 | Create `assessments` collection | New collection, no existing data affected |
 | Create `carriers` collection | Seed with 3 known carriers (USLI, Hiscox, Granada/GIC) |
 | Create `agents` collection | Populate from distinct agent names/emails across submissions |
 | Add indexes | `submission_group_id`, `carrier_id`, `retail_agent_id`, `latest_assessment_id` |
 | Add `ASSESSED` to ProcessingStatus | Existing values unchanged |
+| Add `lines_of_business` to Classification | New list field alongside existing `line_of_business` |
 
 ### Phase 2: Coordinated Cutover
 
@@ -837,17 +1214,132 @@ Requires simultaneous deploy of migration script + updated backend + updated fro
 | `quoted` | `quoted` | Unchanged |
 | `attention` + `declined` reason | `declined` | Decompose attention_reason |
 | `attention` + `carrier_pending` reason | `awaiting_carrier_action` | Decompose attention_reason |
-| `attention` + `stale`/`agent_urgent` reason | Recover from stage_history + set `is_stale: true` | Recover the actual stage the submission was in before it was moved to "attention" |
+| `attention` + `stale`/`agent_urgent` reason | Recover from stage_history + set `is_stale: true` | See recovery algorithm below |
 
-**Migration script runs in 2 passes:**
+#### Attention Stage Recovery Algorithm (CRITICAL-3)
+
+For submissions in `stage='attention'` with `reason='stale'` or `reason='agent_urgent'`, the actual stage they were in before being moved to attention must be recovered:
+
+```python
+def recover_attention_stage(submission):
+    """For submissions in stage='attention' with reason='stale' or 'agent_urgent',
+    recover the actual stage they were in before being moved to attention."""
+
+    # Walk stage_history backwards to find the last non-attention stage
+    for entry in reversed(submission['stage_history']):
+        if entry['stage'] != 'attention':
+            return map_old_stage_to_new(entry['stage'])
+
+    # If no prior stage found (submission was created directly in attention),
+    # default to 'received'
+    return 'received'
+
+def map_old_stage_to_new(old_stage):
+    mapping = {
+        'new': 'received',
+        'awaiting_info': 'awaiting_agent_info',
+        'with_carrier': 'awaiting_carrier_action',
+        'quoted': 'quoted',
+    }
+    return mapping.get(old_stage, 'received')
+```
+
+**Edge case:** Submissions that entered attention multiple times -- always use the LAST non-attention stage in history (the `reversed()` iteration handles this correctly by finding the most recent one first).
+
+#### triggered_by_email Field Rename (MODERATE-3)
+
+- Old field: `triggered_by_email: Optional[str]` (contains email ObjectId or null)
+- New field: `triggered_by: Optional[str]` (contains "email:\<id\>", "user:\<name\>", "system:auto_advance")
+- Migration: for existing `stage_history` entries where `triggered_by_email` is not null, transform to `"email:{value}"`
+- Reading code must check for both field names during the transition period (check `triggered_by` first, fall back to `triggered_by_email`)
+
+#### Email.submission_id to submission_ids (AMBIGUITY-4)
+
+- Change `Email.submission_id: Optional[str]` to `Email.submission_ids: list[str] = []`
+- Migration: rename field, wrap existing string value in a list: `{"$rename": {"submission_id": "_old_submission_id"}}` then set `submission_ids: [_old_submission_id]` for non-null values
+- All queries using `Email.submission_id` must update to `Email.submission_ids` (use `$elemMatch` or `$in` for lookups)
+- This IS a breaking change requiring coordinated frontend/backend deploy
+
+#### Premium String to Float Migration
+
+- Parse string premium values to float: "$1,329" -> 1329.0, "$2,500.00" -> 2500.0
+- Set `premium_quoted` from parsed value for submissions in `quoted` stage
+- Remove old `premium: Optional[str]` field after migration verified
+- Handle unparseable values by logging and leaving `premium_quoted` as null
+
+**Migration script runs in 3 passes:**
 1. Stage rename (new -> received, awaiting_info -> awaiting_agent_info, etc.)
-2. attention_reason decomposition (split attention into declined, awaiting_carrier_action, or recovered stage)
+2. attention_reason decomposition (split attention into declined, awaiting_carrier_action, or recovered stage using the recovery algorithm above)
+3. Field renames and type migrations (triggered_by_email -> triggered_by, submission_id -> submission_ids, premium -> premium_quoted)
 
-**stage_history dual-shape handling:** Old entries lack `ball_holder`. Do not discard them. Backend must handle both shapes when reading history. New entries always include `ball_holder`.
+**stage_history dual-shape handling:** Old entries lack `ball_holder` and use `triggered_by_email`. Do not discard them. Backend must handle both shapes when reading history. New entries always include `ball_holder` and use `triggered_by`.
 
-**Frontend impact:** 25+ locations across 8 files reference old stage names. All must be updated in the same deploy.
+### Code Locations Requiring Updates (MODERATE-2)
 
-**LLM prompt impact:** `stage_detector.md` and `draft_generator.md` reference old stage names and must be updated.
+All code locations that reference old stage names, attention_reason, or the old field names. Every location listed here must be updated as part of the Phase 2 coordinated deploy.
+
+#### Backend (Python)
+
+| File | Lines | What References Old Stages | Change Required |
+|------|-------|---------------------------|----------------|
+| `core/lob_config.py` | 84-113 | `compute_completeness()` stage switches: checks `stage == "attention"`, `reason == "declined"`, `reason == "carrier_pending"`, `stage == "quoted"` | Replace with new stage checks. See completeness changes below. |
+| `agent/harness.py` | 106 | `should_generate_draft()` checks `sub["stage"] in ("new", "quoted", "attention")` | Replace with assessment-based check (see Assessment Pipeline section) |
+| `agent/tools.py` | 256-260 | `update_submission_stage()` validates `valid_reasons = {"declined", "carrier_pending", "agent_urgent", "stale"}` | Remove attention_reason validation. Stage values become the new 8-stage enum. |
+| `api/routes/submissions.py` | 39 | Board view `stages = ["new", "awaiting_info", "with_carrier", "quoted", "attention"]` | Replace with new 8 stages (excluding `closed` which goes to history view) |
+| `api/routes/submissions.py` | 461 | `valid_stages = {"new", "awaiting_info", "with_carrier", "quoted", "attention"}` | Replace with new 8-stage set |
+| `api/routes/submissions.py` | 209-243 | `generate_summary()` has stage+reason conditionals for attention/declined, attention/carrier_pending, attention/agent_urgent, attention/stale, quoted, awaiting_info | Rewrite with new stage names. `declined` is its own stage, `carrier_pending` is `awaiting_carrier_action`, etc. |
+| `api/routes/submissions.py` | 321-356 | `get_submission_detail()` LOB requirements stage switch: `stage == "attention" and reason == "declined"`, `stage == "quoted"`, `stage == "attention" and reason == "carrier_pending"` | Replace with direct stage checks against new stages |
+| `api/routes/stats.py` | 20-29 | `get_stats()` counts: `stage: "new"`, `stage: "awaiting_info"`, `stage: "attention"` | Replace with new stage names |
+| `api/routes/stats.py` | 68-73 | `get_dashboard()` queue logic: `stage in ("awaiting_info", "with_carrier")` | Replace with `stage in ("awaiting_agent_info", "awaiting_carrier_action")` |
+| `agent/skills/stage_detector.md` | entire file | Old 5-stage model, attention reasons, transition rules | **REMOVE** -- replaced by `situation_assessor.md` |
+| `agent/skills/draft_generator.md` | entire file | References old stage-based draft decisions | **REWRITE** -- assessment-gated, new draft types |
+
+#### Frontend (TypeScript/React)
+
+| File | What References Old Stages |
+|------|---------------------------|
+| `ui/src/api/types.ts` | Stage type union, AttentionReason type, board response types |
+| `ui/src/pages/SubmissionQueue.tsx` | Stage column definitions, stage colors, stage labels, board layout |
+| `ui/src/pages/RiskRecord.tsx` | Stage display, attention_reason rendering, stage-based UI logic |
+| `ui/src/pages/SystemIntelligence.tsx` | Stage breakdown display, stage counts |
+| `ui/src/components/SubmissionCard.tsx` | Stage badge colors, attention_reason display, action queue logic |
+
+All 5 frontend files must be updated in the same deploy as the backend migration.
+
+#### compute_completeness() Changes with New Stages (MODERATE-2 detail)
+
+```python
+def compute_completeness(submission, extractions):
+    stage = submission.get("stage", "received")
+
+    # Declined: no requirements (no action needed)
+    if stage == "declined":
+        return {"total_fields": 0, "filled_fields": 0, "missing": [], "percentage": 100}
+
+    # Closed: no requirements
+    if stage == "closed":
+        return {"total_fields": 0, "filled_fields": 0, "missing": [], "percentage": 100}
+
+    # Quoted: check quote delivery requirements
+    if stage == "quoted":
+        required_fields = ["premium", "coverage_limits", "effective_date",
+                          "carrier", "retail_agent_name"]
+        required_documents = []
+
+    # Awaiting carrier action: check carrier submission requirements
+    elif stage == "awaiting_carrier_action":
+        required_fields = ["carrier", "retail_agent_name", "retail_agency_name"]
+        required_documents = []
+
+    # Received, triaging, awaiting_agent_info, processing: full LOB requirements
+    else:
+        lob = submission.get("line_of_business", "")
+        config = get_lob_config(lob)
+        required_fields = config.get("required_fields", GENERIC_CONFIG["required_fields"])
+        required_documents = config.get("required_documents", [])
+
+    # ... rest of computation unchanged ...
+```
 
 ---
 
@@ -855,7 +1347,7 @@ Requires simultaneous deploy of migration script + updated backend + updated fro
 
 | Limitation | Details | Source |
 |------------|---------|--------|
-| Multi-LOB email splitting | Grouped submissions handle partial outcomes, but requires the email classifier to correctly identify multi-LOB emails and create separate submissions | Ryan's wireframes |
+| Multi-LOB email splitting | Mechanism specified: classifier outputs `lines_of_business` list, linker creates grouped submissions. Requires the classifier to correctly detect multi-LOB emails (accuracy not yet validated). Phase 2: `Email.submission_ids` replaces singular `submission_id`. | Ryan's wireframes |
 | Outbound tracking | Only inbound to quote@ is monitored. Outbound inferred from reply chains and draft status (drafts approved/sent represent GIC outbound). Full outbound tracking requires sent-folder access from GIC. | business-model-synthesis.md -- System Failure #7 |
 | Post-quote lifecycle | Limited data on bind rates and expiration timing. bind@ inbox is outside our data. | submission-lifecycle.md |
 | USLI duplicate emails | USLI sends same quote 2-4 times. Deduplication strategy not yet defined. | email-workflow-patterns.md |
