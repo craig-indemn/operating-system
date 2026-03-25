@@ -123,6 +123,7 @@ Indemn becomes an insurance lab — the system that lets AI run insurance compan
 | 2026-03-25 | [context/architecture](artifacts/context/architecture.md) | Architecture context — domain taxonomy, engineering model, what's built, domain model research |
 | 2026-03-25 | [context/strategy](artifacts/context/strategy.md) | Strategy context — priorities, political dynamics, stakeholder considerations |
 | 2026-03-25 | [context/craigs-vision](artifacts/context/craigs-vision.md) | Craig's vision — the underlying system, AI-first design, agents building agents |
+| 2026-03-25 | [session-notes](artifacts/2026-03-25-session-notes.md) | Unreduced session context — vibes, energy, corrections, things between the lines |
 
 ## Decisions
 - 2026-03-24: Project created to house the unified CTO-level platform vision and Series A roadmap
