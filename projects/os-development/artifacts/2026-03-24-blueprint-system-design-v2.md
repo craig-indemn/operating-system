@@ -103,6 +103,213 @@ Hive Data Layer
 
 10. **Context assembly is a dedicated step, not the runner doing it programmatically.** For multi-session blueprints, context assembly is an explicit session step that follows a playbook (the LLM decides what Hive CLI queries to run based on the playbook). For single-session blueprints, context assembly instructions are baked into the session prompt. The runner never calls `hive search`/`hive refs`/`hive recent` itself — this preserves the Hive design's principle that "context assembly is an LLM agent that uses the Hive CLI as its toolkit."
 
+### Data Classes
+
+The runner uses the following data classes. All fields used throughout the pseudocode are defined here.
+
+```python
+from dataclasses import dataclass, field
+from typing import Any, Optional
+
+@dataclass
+class ForEachDef:
+    variable: str                          # Variable name available as ${item.<variable>}
+    source: Any                            # Interpolated list, YAML list, or JSON string
+    max_concurrency: int = 1               # Max parallel iterations
+
+@dataclass
+class RetryPolicy:
+    max_retries: int = 2
+    backoff_seconds: int = 30
+
+@dataclass
+class NotificationConfig:
+    on_complete: bool = False
+    on_failure: bool = True
+    on_human_needed: bool = True
+
+@dataclass
+class BlueprintConfig:
+    max_duration_minutes: int = 480
+    max_cost_usd: float = 50.0
+    max_concurrent_sessions: int = 2
+    retry_policy: RetryPolicy = field(default_factory=RetryPolicy)
+    notification: NotificationConfig = field(default_factory=NotificationConfig)
+
+@dataclass
+class StepDef:
+    id: str                                # Unique within blueprint (kebab-case)
+    name: str                              # Human-readable label
+    type: str                              # cli | session | script | blueprint
+    description: str = ""
+
+    # Common fields
+    condition: Optional[str] = None        # Python expression for conditional execution
+    depends_on: list[str] = field(default_factory=list)
+    retry: Optional[RetryPolicy] = None    # Step-level retry override
+    outputs: dict[str, str] = field(default_factory=dict)
+    on_failure: str = "stop"               # stop | continue | skip_dependents
+
+    # CLI step fields
+    command: Optional[str] = None
+    timeout_seconds: int = 300
+    working_dir: Optional[str] = None
+    env: dict[str, str] = field(default_factory=dict)
+
+    # Session step fields
+    objective: Optional[str] = None
+    model: str = "opus"
+    permissions: str = "bypassPermissions"
+    add_dirs: list[str] = field(default_factory=list)
+    worktree: bool = True
+    prompt: Optional[str] = None
+    playbook_path: Optional[str] = None
+    context_from: list[str] = field(default_factory=list)
+    system_append: Optional[str] = None
+    autonomous: bool = True
+    interactive: bool = False
+    timeout_minutes: int = 60
+    close_on_complete: bool = True
+
+    # Script step fields
+    path: Optional[str] = None
+    args: list[str] = field(default_factory=list)
+    interpreter: Optional[str] = None      # python3 | node (inferred from extension)
+
+    # Blueprint step fields
+    blueprint: Optional[str] = None        # Sub-blueprint name
+    inputs: dict[str, Any] = field(default_factory=dict)
+
+    # for_each loop
+    for_each: Optional[ForEachDef] = None
+
+    # Internal (set during execution, not from YAML)
+    _item: dict = field(default_factory=dict)  # Current item in for_each
+
+@dataclass
+class BlueprintDef:
+    name: str                              # Unique identifier (kebab-case)
+    description: str
+    version: int = 1
+    mode: str = "multi-session"            # single-session | multi-session
+    domains: list[str] = field(default_factory=list)
+    tags: list[str] = field(default_factory=list)
+    system: str = ""
+    schedule: Optional[dict] = None
+    triggers: list[dict] = field(default_factory=list)
+    inputs: dict[str, dict] = field(default_factory=dict)
+    outputs: dict[str, dict] = field(default_factory=dict)
+    config: BlueprintConfig = field(default_factory=BlueprintConfig)
+    steps: list[StepDef] = field(default_factory=list)
+
+    # Single-session-specific top-level fields
+    model: str = "opus"
+    permissions: str = "bypassPermissions"
+    add_dirs: list[str] = field(default_factory=list)
+    worktree: bool = True
+    playbook_path: Optional[str] = None
+    timeout_minutes: int = 60
+
+    def to_dict(self) -> dict:
+        """Serialize to dict for definition_snapshot."""
+        ...  # dataclasses.asdict() with custom handling
+
+    @classmethod
+    def from_dict(cls, data: dict) -> "BlueprintDef":
+        """Deserialize from definition_snapshot."""
+        ...
+
+@dataclass
+class StepResult:
+    """Returned by step executors to the runner."""
+    status: str                            # completed | failed | skipped | timed_out | crashed | cancelled
+    exit_code: Optional[int] = None        # CLI/script steps
+    stdout: Optional[str] = None           # CLI/script steps
+    stderr: Optional[str] = None           # CLI/script steps
+    error: Optional[str] = None            # Error message on failure
+    session_id: Optional[str] = None       # Session steps
+    session_name: Optional[str] = None     # Session steps
+    duration_s: float = 0.0
+    hive_records_created: list[str] = field(default_factory=list)
+    outputs: dict[str, Any] = field(default_factory=dict)
+    sub_execution_id: Optional[str] = None # Blueprint steps
+    sub_status: Optional[str] = None       # Blueprint steps
+
+@dataclass
+class StepRecord:
+    """Persisted per-step state in the execution record (MongoDB)."""
+    id: str
+    name: str
+    type: str                              # cli | session | script | blueprint
+    status: str = "pending"                # pending | running | waiting_for_human | completed |
+                                           # failed | skipped | timed_out | crashed | cancelled
+    condition: Optional[str] = None
+    started_at: Optional[str] = None       # ISO 8601
+    ended_at: Optional[str] = None         # ISO 8601
+    duration_s: Optional[float] = None
+    exit_code: Optional[int] = None
+    session_id: Optional[str] = None
+    session_name: Optional[str] = None
+    sub_execution_id: Optional[str] = None
+    interactive: bool = False
+    retry_count: int = 0
+    cost_estimate_usd: Optional[float] = None
+    outputs: dict[str, Any] = field(default_factory=dict)
+    error: Optional[str] = None
+    hive_records_created: list[str] = field(default_factory=list)
+
+@dataclass
+class ExecutionRecord:
+    """Top-level execution state persisted in MongoDB."""
+    execution_id: str
+    blueprint: str                         # Blueprint name
+    blueprint_version: int = 1
+    mode: str = "multi-session"
+    status: str = "pending"                # pending | running | completed | failed |
+                                           # cancelled | timed_out
+    parent_execution_id: Optional[str] = None
+    trigger: str = "manual"
+    trigger_chain: list[tuple] = field(default_factory=list)
+    inputs: dict[str, Any] = field(default_factory=dict)
+    definition_snapshot: dict = field(default_factory=dict)
+    domains: list[str] = field(default_factory=list)
+
+    started_at: Optional[str] = None       # ISO 8601
+    ended_at: Optional[str] = None         # ISO 8601
+    duration_s: Optional[float] = None
+    cost_estimate_usd: Optional[float] = None
+
+    steps: list[StepRecord] = field(default_factory=list)
+    hive_records_created: list[str] = field(default_factory=list)
+    summary_record_id: Optional[str] = None
+
+    created_at: Optional[str] = None       # ISO 8601
+    updated_at: Optional[str] = None       # ISO 8601
+
+@dataclass
+class NotificationRecord:
+    """Notification state persisted in MongoDB."""
+    notification_id: str                   # Auto-generated: notify-{YYYY-MM-DD-HH-MM-SS}-{counter}
+    message: str
+    priority: str = "normal"               # low | normal | high | critical
+    status: str = "unread"                 # unread | read | dismissed
+
+    source: str = "manual"                 # blueprint | system | manual
+    execution_id: Optional[str] = None
+    step_id: Optional[str] = None
+    blueprint: Optional[str] = None
+
+    domains: list[str] = field(default_factory=list)
+    tags: list[str] = field(default_factory=list)
+
+    created_at: Optional[str] = None       # ISO 8601
+    read_at: Optional[str] = None
+    dismissed_at: Optional[str] = None
+    expires_at: Optional[str] = None
+
+    action: Optional[dict] = None          # {"label": str, "command": str}
+```
+
 ---
 
 ## 2. Blueprint Definition Format
@@ -190,7 +397,7 @@ When `mode: single-session`, the blueprint runs entirely in one Claude Code sess
 - The `steps` list is converted to a numbered instruction set in the prompt. Each step's `name` and `prompt` (or `command` for CLI steps) becomes an instruction.
 - The session receives one combined prompt: context assembly instructions (if `playbook_path` is set) + the numbered step instructions.
 - The runner tracks execution at the **session level only**. The execution record has one synthetic step entry representing the entire session.
-- `depends_on`, `condition`, `for_each`, and `on_failure` are **ignored** in single-session mode. Step ordering is sequential as written.
+- `depends_on`, `condition`, `for_each`, `context_from`, and `on_failure` are **ignored** in single-session mode. Step ordering is sequential as written.
 - Output capture: the session writes output to Hive records (the self-compressing pattern). The runner queries for records created during the execution window. `last_message` is not available in single-session mode.
 - CLI steps (`type: cli`) in a single-session blueprint become instructions for the session to run those commands itself (e.g., "Run `hive sync` first, then..."). They are NOT run by the runner as subprocesses.
 - Interactive steps are not supported in single-session mode. Use multi-session for interactive workflows.
@@ -230,8 +437,13 @@ Every step has these common fields:
                                 # e.g., "steps.validate.exit_code == 0"
                                 # e.g., "inputs.skip_tests != true"
 
-  # Dependencies (optional — for parallel groups, default is sequential)
-  depends_on: [string]          # Step IDs that must complete before this step runs
+  # Dependencies (required in multi-session mode; ignored in single-session mode)
+  depends_on: [string]          # Step IDs that must complete before this step runs.
+                                # Multi-session: REQUIRED on every step. Use `depends_on: []`
+                                # for steps with no dependencies (they run immediately).
+                                # `hive blueprint validate` rejects multi-session blueprints
+                                # with missing depends_on to prevent accidental parallelism.
+                                # Single-session: ignored (steps are always sequential as written).
 
   # Retry override (optional — overrides blueprint-level retry_policy)
   retry:
@@ -399,10 +611,11 @@ Invokes another blueprint as a sub-execution. This is the fractal mechanism. The
 - The parent step's status reflects the sub-blueprint's final status
 - Sub-blueprints can nest to any depth (with a practical limit of 5 to prevent runaways)
 - On crash recovery, child executions are recovered first, then parents resume
+- **Output access:** The parent step captures only `sub_execution_id` and `sub_status` as outputs. If the sub-blueprint created Hive knowledge records during execution, subsequent parent steps access them via `hive search` or `hive refs` in their prompts — not via direct output piping. This keeps the interface clean: the sub-blueprint's execution record (queryable by `sub_execution_id`) contains the full step-by-step history including `hive_records_created`.
 
 ### Parallel Step Groups
 
-Steps with explicit `depends_on` fields execute in dependency order. Steps that share the same set of dependencies (or have no dependencies beyond the same predecessor) can execute in parallel.
+Every step in a multi-session blueprint must have an explicit `depends_on` field. Steps with `depends_on: []` have no dependencies and are eligible to run immediately. Steps that share the same set of dependencies can execute in parallel (up to `max_concurrent_sessions`). `hive blueprint validate` rejects multi-session blueprints where any step is missing `depends_on`.
 
 The simplest pattern: use `depends_on` to create a fan-out/fan-in structure.
 
@@ -410,6 +623,7 @@ The simplest pattern: use `depends_on` to create a fan-out/fan-in structure.
 steps:
   - id: prepare
     type: cli
+    depends_on: []
     command: "hive sync"
 
   # These three run in parallel after 'prepare' completes
@@ -480,6 +694,8 @@ Loops are expressed using the `for_each` field on a step. The step executes once
 
 Each iteration creates its own step record in the execution (suffixed: `review-prs.0`, `review-prs.1`, etc.). The `collected` output type gathers all iteration outputs into a list.
 
+**`for_each` + `depends_on` interaction:** A step that depends on a `for_each` step waits for ALL iterations of that step to complete before becoming eligible. The `for_each` step is considered `completed` only when every iteration sub-step has reached a terminal status (`completed`, `failed`, `skipped`, `timed_out`, `crashed`, `cancelled`). If any iteration fails and `on_failure: stop` is set, the `for_each` step's overall status is `failed`, which propagates to dependents normally.
+
 **`for_each.source` type rules:**
 
 The `source` field accepts three forms:
@@ -499,7 +715,7 @@ Resolution order: interpolation first, then if the result is a string, JSON pars
 
 Conditions are Python expressions evaluated in a restricted namespace containing:
 
-- `steps.<step_id>.status` — completed, failed, skipped, timed_out, waiting_for_human, crashed
+- `steps.<step_id>.status` — completed, failed, skipped, timed_out, waiting_for_human, crashed, cancelled
 - `steps.<step_id>.exit_code` — for cli/script steps
 - `steps.<step_id>.outputs.<name>` — captured outputs
 - `inputs.<param_name>` — blueprint inputs
@@ -841,12 +1057,45 @@ async def execute_session_step(step_def, execution):
         # 6. PHASE 3: Monitor for completion
         if step_def.interactive:
             return await _handle_interactive_step(
-                session_id, session_name, step_def, execution
+                session_id, session_name, step_def, execution, blueprint
             )
         else:
             return await _handle_autonomous_step(
                 session_id, session_name, step_def, execution, send_time
             )
+
+
+async def _run_hive_notify(message: str, priority: str = "normal",
+                           execution_id: str = None, step_id: str = None):
+    """Send a notification via the `hive notify` CLI command (subprocess).
+    The runner never calls hive_notify as a Python function — all
+    notification creation goes through the CLI."""
+    cmd = ["hive", "notify", message, "--priority", priority,
+           "--source", "blueprint"]
+    if execution_id:
+        cmd.extend(["--execution-id", execution_id])
+    if step_id:
+        cmd.extend(["--step-id", step_id])
+    proc = await asyncio.create_subprocess_exec(
+        *cmd,
+        stdout=asyncio.subprocess.PIPE,
+        stderr=asyncio.subprocess.PIPE,
+    )
+    await proc.communicate()
+
+
+def _parse_iso_to_timestamp(iso_string: str) -> float:
+    """Convert ISO 8601 string (from session state's `last_activity`) to a
+    Unix timestamp (float) so it can be compared against `time.time()`.
+    Returns 0.0 if the string is empty or unparseable."""
+    if not iso_string:
+        return 0.0
+    try:
+        from datetime import datetime, timezone
+        dt = datetime.fromisoformat(iso_string)
+        return dt.timestamp()
+    except (ValueError, TypeError):
+        return 0.0
 
 
 async def _handle_autonomous_step(session_id, session_name, step_def,
@@ -864,10 +1113,12 @@ async def _handle_autonomous_step(session_id, session_name, step_def,
         state = _read_session_state(session_id)
         if state:
             status = state.get("status")
-            last_activity = state.get("last_activity", 0)
+            last_activity_ts = _parse_iso_to_timestamp(
+                state.get("last_activity", "")
+            )
 
             # Session finished if idle/context_low AFTER we sent the prompt
-            if status in ("idle", "context_low") and last_activity > send_time:
+            if status in ("idle", "context_low") and last_activity_ts > send_time:
                 # Close the session (fast — skip git cleanup)
                 close_proc = await asyncio.create_subprocess_exec(
                     *[SESSION_CLI, "close", session_name, "--skip-cleanup"],
@@ -902,14 +1153,14 @@ async def _handle_autonomous_step(session_id, session_name, step_def,
 
 
 async def _handle_interactive_step(session_id, session_name, step_def,
-                                    execution):
+                                    execution, blueprint):
     """Wait for human to work in and close the interactive session."""
     # Mark step as waiting_for_human
     update_step_status(execution, step_def.id, "waiting_for_human")
 
     # Notify if configured
-    if execution.notification_config.on_human_needed:
-        await hive_notify(
+    if blueprint.config.notification.on_human_needed:
+        await _run_hive_notify(
             f"Blueprint *{execution.blueprint}* needs you at step *{step_def.name}*. "
             f"Attach: `session attach {session_name}`",
             priority="high",
@@ -926,7 +1177,7 @@ async def _handle_interactive_step(session_id, session_name, step_def,
 
     if state is None:
         # First timeout: notify again, keep waiting up to 24 hours
-        await hive_notify(
+        await _run_hive_notify(
             f"Blueprint *{execution.blueprint}* still waiting at step *{step_def.name}* "
             f"(timed out after {step_def.timeout_minutes}m). "
             f"Attach: `session attach {session_name}`",
@@ -1463,6 +1714,7 @@ The complete set of step statuses:
 | `skipped` | Condition evaluated to false |
 | `timed_out` | Exceeded timeout |
 | `crashed` | Runner process died during this step (set during crash recovery) |
+| `cancelled` | Execution was cancelled via `hive blueprint cancel` |
 
 ### Token Usage and Cost Tracking
 
@@ -1509,9 +1761,26 @@ hive blueprint status morning-consultation-2026-03-24-07-00
 
 # Cancel a running execution
 hive blueprint cancel <execution-id>
+#   1. Marks the execution as `cancelled` in MongoDB
+#   2. For each step with status `running`:
+#      a. If it's a session step: run `session destroy <session_name>` to kill the tmux session
+#      b. If it's a cli/script step: send SIGTERM to the subprocess, SIGKILL after 5s
+#      c. Mark the step as `cancelled`
+#   3. For each step with status `waiting_for_human`: mark as `cancelled`
+#   4. For child sub-blueprint executions (parent_execution_id = this execution):
+#      recursively cancel them (depth-first)
+#   5. Mark remaining `pending` steps as `cancelled`
+#   6. Send notification if on_failure is configured
 
 # Resume a failed/crashed execution from last completed step
 hive blueprint resume <execution-id>
+#   1. Load the `definition_snapshot` from the execution record (NOT current YAML)
+#   2. Find the first step with status `failed`, `crashed`, or `timed_out`
+#   3. Reset that step to `pending` (clear error, reset retry_count to 0)
+#   4. Leave all `completed` steps untouched (never re-run)
+#   5. Leave all subsequent `pending` steps as-is
+#   6. Mark execution status back to `running`
+#   7. Re-enter the main runner loop from the current DAG state
 
 # Show execution history for a blueprint
 hive blueprint history <name> [--limit N]
@@ -1678,11 +1947,21 @@ hive search "morning consultation" --tags execution_summary --recent 7d
 
 The session manager CLI needs three additions for blueprint integration:
 
-1. **`--json` flag on `session create`** — Output machine-readable JSON instead of human-readable text. The runner parses `session_id` from this output.
+1. **`--json` flag on `session create`** — Output machine-readable JSON instead of human-readable text. The runner parses `session_id` from this output. **JSON format:**
+   ```json
+   {
+     "session_id": "uuid-string",
+     "name": "session-name",
+     "tmux_session": "os-session-name",
+     "worktree_path": "/Users/home/Repositories/operating-system/.claude/worktrees/session-name",
+     "model": "opus",
+     "permissions": "bypassPermissions"
+   }
+   ```
 
-2. **`--skip-cleanup` flag on `session close`** — Skip the natural-language cleanup commands (commit, push, INDEX.md update) and go directly to `/exit` + state update. Blueprint autonomous sessions typically don't need git cleanup — the runner controls when and how cleanup happens.
+2. **`--skip-cleanup` flag on `session close`** — Skip the natural-language cleanup commands (commit, push, INDEX.md update) and go directly to sending `/exit` to the session and waiting for it to end. The session's worktree state is preserved but not committed. Specifically: (a) skip the three cleanup `tmux send-keys` messages ("Commit all changes...", "Push the current branch...", "Update the project INDEX.md..."), (b) skip the Hive session summary creation, (c) send `/exit` immediately, (d) wait for tmux session to end, (e) update state file to `ended`. Blueprint autonomous sessions typically don't need git cleanup — the runner controls when and how cleanup happens.
 
-3. **`--prompt-file` flag on `session send`** — Read the prompt from a file instead of a command-line argument. Blueprint prompts can be thousands of characters, which exceeds reliable `tmux send-keys` delivery for very long strings.
+3. **`--prompt-file` flag on `session send`** — Read the prompt from a file instead of a command-line argument. Blueprint prompts can be thousands of characters, which exceeds reliable `tmux send-keys` delivery for very long strings. **Implementation:** `session send <name> --prompt-file /path/to/file.md` uses `tmux load-buffer /path/to/file.md` followed by `tmux paste-buffer -t <tmux_name>` and then `tmux send-keys -t <tmux_name> Enter`. This bypasses the character limit of `send-keys -l` by loading the file into tmux's paste buffer and pasting it directly into the pane. The caller (blueprint runner) writes the prompt to a temp file (e.g., `/tmp/bp-{exec_id}-{step_id}.md`) before calling `session send`.
 
 ### New Tags for Ontology
 
@@ -1797,7 +2076,7 @@ Full schema:
       "name": "string",
       "type": "string",               // cli, session, script, blueprint
       "status": "string",             // pending, running, waiting_for_human, completed,
-                                      // failed, skipped, timed_out, crashed
+                                      // failed, skipped, timed_out, crashed, cancelled
       "condition": "string?",
       "started_at": "datetime?",
       "ended_at": "datetime?",
@@ -1893,6 +2172,7 @@ steps:
   - id: sync
     name: "Sync external systems"
     type: cli
+    depends_on: []
     command: "hive sync"
     timeout_seconds: 120
     on_failure: continue
@@ -2078,6 +2358,7 @@ steps:
   - id: assemble-context
     name: "Assemble development context"
     type: session
+    depends_on: []
     autonomous: true
     playbook_path: "systems/hive/playbooks/code-dev.md"
     prompt: |
@@ -2245,6 +2526,7 @@ steps:
   - id: sync-knowledge
     name: "Sync knowledge files to MongoDB"
     type: cli
+    depends_on: []
     command: "hive sync --no-embed"
     timeout_seconds: 60
     on_failure: continue
@@ -2307,6 +2589,7 @@ steps:
   - id: sync
     name: "Sync external systems"
     type: cli
+    depends_on: []
     command: "hive sync"
     timeout_seconds: 120
     on_failure: continue
@@ -2370,24 +2653,24 @@ steps:
 
 **Build order:**
 
-1. **Blueprint definition schema** — Define the YAML schema including `mode` field, create a Python dataclass/Pydantic model to parse it. Write a validator (syntax, schema, DAG cycles, reference validity).
+1. **Blueprint definition schema** — Define the YAML schema including `mode` field, create a Python dataclass/Pydantic model to parse it. Write a validator (syntax, schema, DAG cycles, reference validity, `depends_on` required on all multi-session steps).
    - File: `systems/hive/blueprint_schema.py`
 
 2. **MongoDB collections** — Create `blueprint_defs`, `blueprint_executions`, `notifications` collections with indexes.
    - File: `systems/hive/blueprint_db.py`
 
-3. **Notification system** — `hive notify` CLI command, notification record CRUD, list/read/dismiss.
+3. **Session manager enhancements** — Add `--json` to create, `--skip-cleanup` to close, `--prompt-file` to send. These must be done before the session executor since it depends on them.
+   - Modify: `systems/session-manager/cli.py`
+
+4. **Notification system** — `hive notify` CLI command, notification record CRUD, list/read/dismiss.
    - File: `systems/hive/notifier.py`
    - Add to: `systems/hive/cli.py`
 
-4. **CLI executor** — `subprocess`-based CLI step execution with timeout, output capture.
+5. **CLI executor** — `subprocess`-based CLI step execution with timeout, output capture.
    - File: `systems/hive/executors/cli_executor.py`
 
-5. **Session executor** — Session manager integration: create session (`--json`), send prompt (`--prompt-file`), three-phase poll (launch → send → completion), close session (`--skip-cleanup`), stuck-session detection.
+6. **Session executor** — Session manager integration: create session (`--json`), send prompt (`--prompt-file`), three-phase poll (launch → send → completion), close session (`--skip-cleanup`), stuck-session detection.
    - File: `systems/hive/executors/session_executor.py`
-
-6. **Session manager enhancements** — Add `--json` to create, `--skip-cleanup` to close, `--prompt-file` to send.
-   - Modify: `systems/session-manager/cli.py`
 
 7. **Script executor** — subprocess-based script execution.
    - File: `systems/hive/executors/script_executor.py`
