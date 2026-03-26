@@ -33,11 +33,66 @@ function getConnectionParams() {
 
 export default function App() {
   const { url, token } = getConnectionParams();
+  const [started, setStarted] = useState(false);
 
   if (!url || !token) {
     return (
       <div className="app loading">
         <p>Waiting for connection parameters...</p>
+      </div>
+    );
+  }
+
+  // Show the full branded layout with a start button overlay
+  // This lets you set up screen recording first, then click to begin
+  if (!started) {
+    return (
+      <div className="app">
+        <div className="brand-bar">
+          <img src="/brand/logo-iris.svg" alt="indemn" className="brand-logo" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
+        </div>
+
+        <div className="main-layout">
+          <div className="phone-panel">
+            <div className="phone-frame">
+              <div className="carrier-name">Acme Insurance</div>
+              <div className="carrier-subtitle">Claims Line</div>
+              <div className="agent-avatar">
+                <img src="/maya-avatar.png" alt="Maya" className="avatar-image" />
+              </div>
+              <div className="agent-name">Maya</div>
+              <div className="agent-role">Claims Associate</div>
+              <div className="call-status">
+                <span className="status-ready">Ready</span>
+              </div>
+              <div className="call-timer">00:00</div>
+              <div className="waveform">
+                <canvas width={280} height={60} />
+              </div>
+            </div>
+          </div>
+
+          <div className="transcript-panel">
+            <div className="transcript-header">
+              <span className="transcript-title">Live Transcript</span>
+            </div>
+            <div className="transcript-body">
+              <div className="start-overlay">
+                <button className="start-button" onClick={() => setStarted(true)}>
+                  Start Call
+                </button>
+                <p className="start-hint">Set up screen recording first, then click to begin</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="caption-bar">
+          <div className="caption-label">CC</div>
+          <div className="caption-content idle">
+            <span className="caption-text-idle">Live captions</span>
+          </div>
+        </div>
       </div>
     );
   }
@@ -167,7 +222,6 @@ function RecordingTemplate() {
 
   return (
     <div className="app">
-      {/* Subtle branding */}
       <div className="brand-bar">
         <img src="/brand/logo-iris.svg" alt="indemn" className="brand-logo" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
       </div>
@@ -206,7 +260,7 @@ function RecordingTemplate() {
 
             <div className="call-timer">{elapsed}</div>
 
-            <AudioVisualizer room={room} isActive={isActive} />
+            <AudioVisualizer isActive={isActive} />
           </div>
         </div>
 
@@ -258,10 +312,8 @@ function RecordingTemplate() {
 }
 
 function AudioVisualizer({
-  room,
   isActive,
 }: {
-  room: ReturnType<typeof useRoomContext>;
   isActive: boolean;
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -278,7 +330,6 @@ function AudioVisualizer({
     function draw() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Simulate audio visualization with smooth random bars
       for (let i = 0; i < barCount; i++) {
         const target = Math.random() * 0.6 + 0.1;
         bars[i] += (target - bars[i]) * 0.15;

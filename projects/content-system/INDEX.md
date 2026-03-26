@@ -3,7 +3,7 @@
 AI-powered content creation pipeline for Indemn and personal brands. Transforms voice-based ideas into polished, publishable content through dynamic extraction, iterative drafting, and multi-platform distribution. Lives in a separate repo (`/Users/home/Repositories/content-system`) with skills symlinked to `~/.claude/skills/`.
 
 ## Status
-Session 2026-03-26c. Built FNOL voice agent and branded LiveKit recording template. Agent tested successfully — Maya sounds natural. Template matches Indemn brand (Barlow font, iris/eggplant colors, light theme). Ready for final recording + remaining production steps.
+Session 2026-03-26c. All FNOL video assets produced — voice agent, branded template, call recording (video + audio), dashboard reveal, CTA card, Kling parking lot clip. Ready for final assembly in Descript.
 
 **Session 2026-03-26c:**
 - Built standalone FNOL voice agent (`demos/fnol-voice-agent/fnol_agent.py`) — Python, livekit-agents 1.3.10, Cartesia TTS, Deepgram STT, OpenAI GPT-4.1
@@ -12,21 +12,25 @@ Session 2026-03-26c. Built FNOL voice agent and branded LiveKit recording templa
 - Installed LiveKit CLI (`lk`) locally — can create rooms, generate tokens, manage egress
 - Created FNOL agent in Indemn platform via MCP (agent ID: `69c5477bf37e4898416bb9b4`) — not used for voice, but prompt is stored
 - Built LiveKit Room Composite Egress template (`demos/fnol-voice-agent/template/`) — React + Vite
-- Template features: phone call UI (Maya avatar, call timer, waveform), live transcript panel, CC caption bar, mic input + audio output
-- Branded to Indemn: Barlow font, iris/lilac/eggplant colors, light theme matching showcase pages, logo
+- Template features: phone call UI (Maya avatar, call timer, waveform), live transcript panel, CC caption bar, mic input + audio output, "Start Call" button for recording workflow
+- Template also serves Act 3 (dashboard reveal) and Act 4 (CTA) via `?page=dashboard` and `?page=cta` routes
+- Branded to Indemn: Barlow font, iris/lilac/eggplant colors, light theme matching showcase pages, Indemn logos, SVG icons (no emojis), "Making insurance a conversation" tagline
 - Generated Maya avatar headshot via Gemini image-gen
 - Craig tested the agent — conversation flow works well, natural tone
-- Signed up for Descript (video assembly tool)
-- Signed up for Kling (cinematic video generation)
+- Recorded final FNOL call: screen recording (visuals) + LiveKit audio egress to S3 (audio). Split approach because BlackHole needs a reboot to capture system audio.
+- Built Act 3 dashboard reveal: animated claim card (with Maya avatar), adjuster card, 8-item activity timeline with SVG checkmark dots, stats bar
+- Built Act 4 CTA: iris→eggplant gradient, white Indemn logo, 5 SVG channel icons, "Making insurance a conversation.", indemn.ai
+- Recorded Act 3 + Act 4 as videos via Playwright headless browser (1920x1080 .webm)
+- Craig generated Act 1 parking lot clip in Kling 3.0 (last 2s usable, needs clipping)
+- Signed up for Descript (video assembly tool) and Kling (cinematic generation)
+- Full production process documented in artifact for replication
 
 **Next up:**
-1. Record the FNOL call using LiveKit egress (composite recording through the template)
-2. Generate Act 1 parking lot clip in Kling
-3. Build Act 3 dashboard reveal (HTML/CSS)
-4. Build Act 4 CTA end card (HTML/CSS)
-5. Assemble FNOL video in Descript (stitch acts, music, transitions)
-6. Produce Smart Inbox demo video
-7. Show both to Cam/Kyle for feedback
+1. Assemble FNOL video in Descript — clip Kling to last 2s, sync audio to video for Act 2, add transitions + music, export
+2. Add Act 1 text overlay: "2:47 PM. Kroger parking lot. Someone just backed into your car."
+3. Produce Smart Inbox demo video (same patterns — build UI, record, assemble)
+4. Show both to Cam/Kyle for feedback
+5. Option 3 upgrade (AI avatar FNOL) if they want it
 8. Option 3 upgrade (AI avatar FNOL) if they want it
 9. Merge PR #14 on indemn-ai/engineering-blog
 10. Align showcase page names with Cam's outcome matrix (separate effort)
@@ -146,6 +150,7 @@ Session 2026-03-26c. Built FNOL voice agent and branded LiveKit recording templa
 | 2026-03-23 | [cross-sell-diagram-prompt](artifacts/2026-03-23-cross-sell-diagram-prompt.md) | Prompt for Claude.ai workflow diagram — Cross-Sell |
 | 2026-03-26 | [conference-demo-video-brainstorm](artifacts/2026-03-26-conference-demo-video-brainstorm.md) | InsurtechNY Spring conference demo videos — FNOL voice + Smart Inbox workflow scripts and storyboards |
 | 2026-03-26 | [conference-video-production-plan](artifacts/2026-03-26-conference-video-production-plan.md) | Step-by-step production plan for both conference demo videos — tools, assets, assembly, execution order |
+| 2026-03-26 | [fnol-video-production-process](artifacts/2026-03-26-fnol-video-production-process.md) | Complete playbook for FNOL video production — replicable patterns for voice agent demos, recording templates, animated reveals |
 
 ## Decisions
 - 2026-03-26: FNOL voice agent runs as standalone Python script via livekit-agents SDK, NOT through the Indemn platform bot config system. Simpler for demo recording — no MongoDB routing, no SIP trunk, just a direct LiveKit Cloud connection.
