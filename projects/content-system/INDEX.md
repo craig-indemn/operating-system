@@ -3,7 +3,28 @@
 AI-powered content creation pipeline for Indemn and personal brands. Transforms voice-based ideas into polished, publishable content through dynamic extraction, iterative drafting, and multi-platform distribution. Lives in a separate repo (`/Users/home/Repositories/content-system`) with skills symlinked to `~/.claude/skills/`.
 
 ## Status
-Session 2026-03-23. Built and deployed 7 product showcase pages total. Enhanced `/content-showcase` skill with patterns from all builds.
+Session 2026-03-26. Synced blog site to team-shared `indemn-ai/engineering-blog` repo for Jonathan and team access. PR #14 open.
+
+**Session 2026-03-26:**
+- Synced full blog site (8 product showcase pages, 26 components, workflow SVGs, brand assets) to `indemn-ai/engineering-blog` — PR #14 pending merge
+- Copied 7 content skills (content-showcase, content, content-draft, content-extract, content-preview, content-publish, content-teammate) to `.claude/skills/` in team repo
+- Included Indemn and The Buzz brand configs; excluded personal and career-catalyst brands
+- Stripped personal brand references from skills (Substack/Medium cross-posting, personal voice)
+- Simplified content-publish skill to Astro/Vercel only (removed copy-paste and cross-platform workflows)
+- Wrote team-oriented CLAUDE.md with deployment instructions (`vercel --prod`, manual)
+- Also deployed Member Support page (from Jonathan's IVR Replacement spec) in a prior session
+- DM'd Jonathan in Slack with repo access instructions and next steps
+- Branch protection on engineering-blog requires PR merge — Craig needs to approve PR #14
+
+**Next up:**
+1. Merge PR #14 on indemn-ai/engineering-blog
+2. Add Jonathan (and team) to Vercel engineering-blog project
+3. Renewals showcase page
+4. Evaluation Engine showcase ("Trust, Not Hope")
+5. Book analysis / proactive outreach showcase (future cross-sell capability)
+6. Life event detection showcase (future cross-sell capability)
+7. Write and publish first personal post on Substack
+8. Wire content-publish skill to handle Substack/Medium publishing
 
 **Session 2026-03-23:**
 - Built and deployed 4 more showcase pages (Conversational Intake, Email Intelligence, Intake Manager, Cross-Sell)
@@ -75,19 +96,13 @@ Session 2026-03-23. Built and deployed 7 product showcase pages total. Enhanced 
 - Email Intelligence — live at blog.indemn.ai/products/email-intelligence/ (deployed 2026-03-23)
 - Intake Manager — live at blog.indemn.ai/products/intake-manager/ (deployed 2026-03-23)
 - Cross-Sell — live at blog.indemn.ai/products/cross-sell/ (deployed 2026-03-23)
-
-**Next up:**
-1. Renewals showcase page
-2. Evaluation Engine showcase ("Trust, Not Hope")
-3. Book analysis / proactive outreach showcase (future cross-sell capability)
-4. Life event detection showcase (future cross-sell capability)
-5. Write and publish first personal post on Substack
-6. Wire content-publish skill to handle Substack/Medium publishing
+- Member Support — live at blog.indemn.ai/products/member-support/ (deployed 2026-03-24)
 
 ## External Resources
 | Resource | Type | Link |
 |----------|------|------|
 | Content system repo | GitHub repo | /Users/home/Repositories/content-system |
+| Team blog repo | GitHub repo | indemn-ai/engineering-blog (PR #14 pending) |
 | Indemn blog | Website | blog.indemn.ai |
 | Design spec | Doc | content-system/docs/plans/2026-01-30-blog-content-system-design.md |
 | System knowledge | Doc | content-system/docs/system-knowledge.md |
@@ -115,6 +130,9 @@ Session 2026-03-23. Built and deployed 7 product showcase pages total. Enhanced 
 | 2026-03-23 | [cross-sell-diagram-prompt](artifacts/2026-03-23-cross-sell-diagram-prompt.md) | Prompt for Claude.ai workflow diagram — Cross-Sell |
 
 ## Decisions
+- 2026-03-26: Team blog access via separate repo (`indemn-ai/engineering-blog`) — Craig's content-system stays private (personal brand, video pipeline, full orchestration). Team repo gets only the blog site, selected content skills, and Indemn/Buzz brand configs.
+- 2026-03-26: Deployment stays manual (`vercel --prod`) for now — no Vercel git integration. Craig controls when changes go live.
+- 2026-03-26: Jonathan's structured JSON format (indemn-product-spec/v1) works well as input to the brainstorm phase of `/content-showcase`. No need for a separate JSON-to-MDX converter.
 - 2026-03-23: Enhanced `/content-showcase` skill to 5-phase workflow: Brainstorm → Diagram Prompt → Plan (with code review) → Parallel Build → Deploy. Documented all technical constraints, reusable components, and patterns from 7 deployed pages.
 - 2026-03-23: Cross-sell has 4 distinct product approaches: opportunistic (built), renewal (next), book analysis, life event detection. Each is its own showcase page. Saved to memory for future sessions.
 - 2026-03-23: Code-reviewer agent before plan approval catches real issues — missing scenario data, ARIA collision risks, missing pubDate, board HTML scoping. Always run before building.
