@@ -3,7 +3,30 @@
 AI-powered content creation pipeline for Indemn and personal brands. Transforms voice-based ideas into polished, publishable content through dynamic extraction, iterative drafting, and multi-platform distribution. Lives in a separate repo (`/Users/home/Repositories/content-system`) with skills symlinked to `~/.claude/skills/`.
 
 ## Status
-Session 2026-03-26. Synced blog site to team-shared `indemn-ai/engineering-blog` repo for Jonathan and team access. PR #14 open.
+Session 2026-03-26b. Brainstormed InsurtechNY Spring conference demo videos with Craig. Two demos designed: FNOL voice call + Smart Inbox workflow. Full scripts and storyboards in artifact.
+
+**Session 2026-03-26b:**
+- Brainstormed conference demo video strategy for InsurtechNY Spring booth at Chelsea Piers
+- Read Cam's Slack messages and "Webmap - Four Outcomes Navigation" matrix (PDF)
+- Mapped all 8 existing showcase pages to Cam's matrix associates
+- Evaluated full matrix for voice and web chat demo candidates
+- Selected two demos: FNOL (Intake Associate for Claims, voice) + Smart Inbox (Inbox Associate, web workflow)
+- Wrote full storyboard and script for both videos (4-act structure each)
+- FNOL: personal lines auto claim, phone call with captions, behind-the-scenes reveal
+- Smart Inbox: fly-on-the-wall pipeline view, zoom-in/zoom-out on email processing, AMS integration ("no API required"), auto-send toggle
+- Identified Option 3 upgrade path: AI video associate avatar for FNOL (booth-stopper version, held for Cam/Kyle feedback)
+- Identified future alignment work: rename showcase pages to match matrix language (separate effort)
+
+**Next up:**
+1. Produce FNOL demo video (decide production method, build assets, assemble)
+2. Produce Smart Inbox demo video
+3. Show both to Cam/Kyle for feedback
+4. Option 3 upgrade (AI avatar FNOL) if they want it
+5. Merge PR #14 on indemn-ai/engineering-blog
+6. Add Jonathan (and team) to Vercel engineering-blog project
+7. Align showcase page names with Cam's outcome matrix (separate effort)
+8. Renewals showcase page
+9. Evaluation Engine showcase ("Trust, Not Hope")
 
 **Session 2026-03-26:**
 - Synced full blog site (8 product showcase pages, 26 components, workflow SVGs, brand assets) to `indemn-ai/engineering-blog` — PR #14 pending merge
@@ -15,16 +38,6 @@ Session 2026-03-26. Synced blog site to team-shared `indemn-ai/engineering-blog`
 - Also deployed Member Support page (from Jonathan's IVR Replacement spec) in a prior session
 - DM'd Jonathan in Slack with repo access instructions and next steps
 - Branch protection on engineering-blog requires PR merge — Craig needs to approve PR #14
-
-**Next up:**
-1. Merge PR #14 on indemn-ai/engineering-blog
-2. Add Jonathan (and team) to Vercel engineering-blog project
-3. Renewals showcase page
-4. Evaluation Engine showcase ("Trust, Not Hope")
-5. Book analysis / proactive outreach showcase (future cross-sell capability)
-6. Life event detection showcase (future cross-sell capability)
-7. Write and publish first personal post on Substack
-8. Wire content-publish skill to handle Substack/Medium publishing
 
 **Session 2026-03-23:**
 - Built and deployed 4 more showcase pages (Conversational Intake, Email Intelligence, Intake Manager, Cross-Sell)
@@ -128,8 +141,12 @@ Session 2026-03-26. Synced blog site to team-shared `indemn-ai/engineering-blog`
 | 2026-03-23 | [email-intelligence-diagram-prompt](artifacts/2026-03-23-email-intelligence-diagram-prompt.md) | Prompt for Claude.ai workflow diagram — Email Intelligence |
 | 2026-03-23 | [intake-manager-diagram-prompt](artifacts/2026-03-23-intake-manager-diagram-prompt.md) | Prompt for Claude.ai workflow diagram — Intake Manager |
 | 2026-03-23 | [cross-sell-diagram-prompt](artifacts/2026-03-23-cross-sell-diagram-prompt.md) | Prompt for Claude.ai workflow diagram — Cross-Sell |
+| 2026-03-26 | [conference-demo-video-brainstorm](artifacts/2026-03-26-conference-demo-video-brainstorm.md) | InsurtechNY Spring conference demo videos — FNOL voice + Smart Inbox workflow scripts and storyboards |
 
 ## Decisions
+- 2026-03-26: Conference demo videos: FNOL (Intake Associate for Claims, voice) + Smart Inbox (Inbox Associate, web workflow). Selected for audience fit (carrier/distributor/investor room at InsurtechNY), contrast (B2C voice vs B2B workflow), and credibility (Craig actively building Smart Inbox for a customer). AI video associate avatar held as upgrade path.
+- 2026-03-26: Conference videos are produced representations, not recordings of live agents. No real FNOL or Smart Inbox agent exists yet — these would be built for customers. Production approach TBD.
+- 2026-03-26: Existing showcase pages should be aligned with Cam's "Four Outcomes Navigation" matrix naming — separate effort from video production.
 - 2026-03-26: Team blog access via separate repo (`indemn-ai/engineering-blog`) — Craig's content-system stays private (personal brand, video pipeline, full orchestration). Team repo gets only the blog site, selected content skills, and Indemn/Buzz brand configs.
 - 2026-03-26: Deployment stays manual (`vercel --prod`) for now — no Vercel git integration. Craig controls when changes go live.
 - 2026-03-26: Jonathan's structured JSON format (indemn-product-spec/v1) works well as input to the brainstorm phase of `/content-showcase`. No need for a separate JSON-to-MDX converter.
