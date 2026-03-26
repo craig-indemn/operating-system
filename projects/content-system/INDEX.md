@@ -3,30 +3,33 @@
 AI-powered content creation pipeline for Indemn and personal brands. Transforms voice-based ideas into polished, publishable content through dynamic extraction, iterative drafting, and multi-platform distribution. Lives in a separate repo (`/Users/home/Repositories/content-system`) with skills symlinked to `~/.claude/skills/`.
 
 ## Status
-Session 2026-03-26b. Brainstormed InsurtechNY Spring conference demo videos with Craig. Two demos designed: FNOL voice call + Smart Inbox workflow. Full scripts and storyboards in artifact.
+Session 2026-03-26c. Built FNOL voice agent and branded LiveKit recording template. Agent tested successfully — Maya sounds natural. Template matches Indemn brand (Barlow font, iris/eggplant colors, light theme). Ready for final recording + remaining production steps.
 
-**Session 2026-03-26b:**
-- Brainstormed conference demo video strategy for InsurtechNY Spring booth at Chelsea Piers
-- Read Cam's Slack messages and "Webmap - Four Outcomes Navigation" matrix (PDF)
-- Mapped all 8 existing showcase pages to Cam's matrix associates
-- Evaluated full matrix for voice and web chat demo candidates
-- Selected two demos: FNOL (Intake Associate for Claims, voice) + Smart Inbox (Inbox Associate, web workflow)
-- Wrote full storyboard and script for both videos (4-act structure each)
-- FNOL: personal lines auto claim, phone call with captions, behind-the-scenes reveal
-- Smart Inbox: fly-on-the-wall pipeline view, zoom-in/zoom-out on email processing, AMS integration ("no API required"), auto-send toggle
-- Identified Option 3 upgrade path: AI video associate avatar for FNOL (booth-stopper version, held for Cam/Kyle feedback)
-- Identified future alignment work: rename showcase pages to match matrix language (separate effort)
+**Session 2026-03-26c:**
+- Built standalone FNOL voice agent (`demos/fnol-voice-agent/fnol_agent.py`) — Python, livekit-agents 1.3.10, Cartesia TTS, Deepgram STT, OpenAI GPT-4.1
+- Agent registers as `fnol-maya` on LiveKit Cloud (`wss://test-ympl759t.livekit.cloud`)
+- Solved double-agent problem: EC2 voice-livekit-dev was competing for jobs. Fixed with `--agents-file` room config restricting dispatch to `fnol-maya` only
+- Installed LiveKit CLI (`lk`) locally — can create rooms, generate tokens, manage egress
+- Created FNOL agent in Indemn platform via MCP (agent ID: `69c5477bf37e4898416bb9b4`) — not used for voice, but prompt is stored
+- Built LiveKit Room Composite Egress template (`demos/fnol-voice-agent/template/`) — React + Vite
+- Template features: phone call UI (Maya avatar, call timer, waveform), live transcript panel, CC caption bar, mic input + audio output
+- Branded to Indemn: Barlow font, iris/lilac/eggplant colors, light theme matching showcase pages, logo
+- Generated Maya avatar headshot via Gemini image-gen
+- Craig tested the agent — conversation flow works well, natural tone
+- Signed up for Descript (video assembly tool)
+- Signed up for Kling (cinematic video generation)
 
 **Next up:**
-1. Produce FNOL demo video (decide production method, build assets, assemble)
-2. Produce Smart Inbox demo video
-3. Show both to Cam/Kyle for feedback
-4. Option 3 upgrade (AI avatar FNOL) if they want it
-5. Merge PR #14 on indemn-ai/engineering-blog
-6. Add Jonathan (and team) to Vercel engineering-blog project
-7. Align showcase page names with Cam's outcome matrix (separate effort)
-8. Renewals showcase page
-9. Evaluation Engine showcase ("Trust, Not Hope")
+1. Record the FNOL call using LiveKit egress (composite recording through the template)
+2. Generate Act 1 parking lot clip in Kling
+3. Build Act 3 dashboard reveal (HTML/CSS)
+4. Build Act 4 CTA end card (HTML/CSS)
+5. Assemble FNOL video in Descript (stitch acts, music, transitions)
+6. Produce Smart Inbox demo video
+7. Show both to Cam/Kyle for feedback
+8. Option 3 upgrade (AI avatar FNOL) if they want it
+9. Merge PR #14 on indemn-ai/engineering-blog
+10. Align showcase page names with Cam's outcome matrix (separate effort)
 
 **Session 2026-03-26:**
 - Synced full blog site (8 product showcase pages, 26 components, workflow SVGs, brand assets) to `indemn-ai/engineering-blog` — PR #14 pending merge
@@ -145,6 +148,9 @@ Session 2026-03-26b. Brainstormed InsurtechNY Spring conference demo videos with
 | 2026-03-26 | [conference-video-production-plan](artifacts/2026-03-26-conference-video-production-plan.md) | Step-by-step production plan for both conference demo videos — tools, assets, assembly, execution order |
 
 ## Decisions
+- 2026-03-26: FNOL voice agent runs as standalone Python script via livekit-agents SDK, NOT through the Indemn platform bot config system. Simpler for demo recording — no MongoDB routing, no SIP trunk, just a direct LiveKit Cloud connection.
+- 2026-03-26: Room-level agent dispatch filtering (`--agents-file` with `dispatches: [{agent_name: "fnol-maya"}]`) prevents EC2 voice-livekit-dev from competing for jobs. This is the pattern for any future demo agent on the shared LiveKit Cloud instance.
+- 2026-03-26: LiveKit composite recording template uses light theme matching showcase pages (Barlow, iris/eggplant, white surface cards). Phone card is the only dark element (iris→eggplant gradient). Caption bar is dark eggplant with CC badge. Template doubles as both recording source and live preview (mic + speaker enabled).
 - 2026-03-26: Conference demo videos: FNOL (Intake Associate for Claims, voice) + Smart Inbox (Inbox Associate, web workflow). Selected for audience fit (carrier/distributor/investor room at InsurtechNY), contrast (B2C voice vs B2B workflow), and credibility (Craig actively building Smart Inbox for a customer). AI video associate avatar held as upgrade path.
 - 2026-03-26: Conference videos are produced representations, not recordings of live agents. No real FNOL or Smart Inbox agent exists yet — these would be built for customers. Production approach TBD.
 - 2026-03-26: Existing showcase pages should be aligned with Cam's "Four Outcomes Navigation" matrix naming — separate effort from video production.
