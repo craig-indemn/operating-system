@@ -3,25 +3,28 @@
 AI-powered content creation pipeline for Indemn and personal brands. Transforms voice-based ideas into polished, publishable content through dynamic extraction, iterative drafting, and multi-platform distribution. Lives in a separate repo (`/Users/home/Repositories/content-system`) with skills symlinked to `~/.claude/skills/`.
 
 ## Status
-Session 2026-03-26d. Smart Inbox video assets fully produced — 6 animated React pages built, recorded via Playwright, Kling establishing shot generated. All 7 assets in `~/Desktop/smart-inbox-assets/`. Ready for Descript assembly. FNOL assets also ready in `~/Desktop/fnol-descript-assets/`.
+Session 2026-03-26d. Smart Inbox video fully produced and ready for Descript assembly. Craig assembling in Descript with voiceover. FNOL also ready.
 
 **Session 2026-03-26d:**
 - Built `demos/smart-inbox/` — Vite + React + TypeScript project (same pattern as FNOL template)
 - 6 pages via `?page=` routing: inbox, triage, deepdive, zoomout, stats, cta
 - Act 1 (Inbox Counter): email client UI with sidebar, 23 realistic insurance emails appearing in 3 batches, unread badge ticking, text overlay
-- Act 2 Phase 1 (Email Triage): 5-column Kanban board, 23 cards sorting with accelerating cadence (700ms→300ms), shuffled arrival order
+- Act 2 Phase 1 (Email Triage): 5-column Kanban board, 23 cards sorting with accelerating cadence (500ms→200ms), shuffled arrival order
 - Act 2 Phase 2 (Email Deep Dive): 2-column layout, 24 animation steps — email opens → ACORD extraction → gap analysis → draft reply → auto-send. Riverside Landscaping LLC submission from Jessica Parker at Worthington Insurance
 - Act 2 Phase 3 (Board Zoom Out): 4-column results board showing what happened while we watched one email. 8 fully processed, 4 quotes extracted, 6 drafts ready, 3 renewals flagged
 - Act 3 (Stats Reveal): 3 stat cards with animated counters, detail items, tagline "Your inbox used to be a bottleneck. Now it's a pipeline."
 - Act 4 (CTA): Same as FNOL — iris→eggplant gradient, channel icons, "Making insurance a conversation."
 - Tried Kling for UI shots — text comes out as Chinese gibberish, unusable for readable UI. Used Kling only for atmospheric office establishing shot (coffee mug, morning light, no screen content)
-- All pages recorded via Playwright at 1920x1080, converted to MP4 with ffmpeg
+- V2: Tightened all animation timing (deep dive 30s→18s, triage 17s→10s, zoomout 17s→7s). Added narration caption bar to deep dive, triage, and zoom out pages. Trimmed start/end with ffmpeg. Kling trimmed to 2.5s.
+- All pages recorded via Playwright at 1920x1080, converted/trimmed to MP4 with ffmpeg
 - Documented full production process in artifact
 - Design pattern: useState step counter + setTimeout array + CSS transitions. Zero animation libraries needed.
+- Wrote VO script for Craig to record over the assembled video
+- All 7 assets in `~/Desktop/smart-inbox-assets/` (total ~55s raw footage)
 
 **Next up:**
-1. Assemble Smart Inbox video in Descript (7 assets, music, transitions)
-2. Assemble FNOL video in Descript (5 assets, sync audio/video, music, transitions)
+1. Craig assembling Smart Inbox in Descript with voiceover + music
+2. Assemble FNOL video in Descript (5 assets in `~/Desktop/fnol-descript-assets/`)
 3. Show both to Cam/Kyle for feedback
 4. Option 3 upgrade (AI avatar FNOL) if they want it
 5. Merge PR #14 on indemn-ai/engineering-blog

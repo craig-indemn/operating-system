@@ -7,6 +7,7 @@
  */
 import { useEffect, useState } from "react";
 import "./inbox.css";
+import "./narration.css";
 
 const avatarColors = [
   "#4752a3", "#a67cb7", "#3b82f6", "#22c55e", "#f59e0b",
@@ -50,23 +51,23 @@ export default function InboxCounter() {
   useEffect(() => {
     const timers: ReturnType<typeof setTimeout>[] = [];
 
-    // Batch 1: emails 1-8 (staggered over 0.3s-1.3s)
+    // Batch 1: emails 1-8 (fast)
     for (let i = 0; i < 8; i++) {
-      timers.push(setTimeout(() => setVisibleCount(i + 1), 300 + i * 120));
+      timers.push(setTimeout(() => setVisibleCount(i + 1), 200 + i * 90));
     }
 
-    // Batch 2: emails 9-14 (staggered over 1.5s-2.5s)
+    // Batch 2: emails 9-14 (faster)
     for (let i = 8; i < 14; i++) {
-      timers.push(setTimeout(() => setVisibleCount(i + 1), 1500 + (i - 8) * 100));
+      timers.push(setTimeout(() => setVisibleCount(i + 1), 1100 + (i - 8) * 80));
     }
 
-    // Batch 3: emails 15-23 (staggered over 2.8s-3.8s — faster, overwhelming)
+    // Batch 3: emails 15-23 (fastest — overwhelming)
     for (let i = 14; i < 23; i++) {
-      timers.push(setTimeout(() => setVisibleCount(i + 1), 2800 + (i - 14) * 80));
+      timers.push(setTimeout(() => setVisibleCount(i + 1), 1700 + (i - 14) * 60));
     }
 
     // Overlay text
-    timers.push(setTimeout(() => setShowOverlay(true), 3800));
+    timers.push(setTimeout(() => setShowOverlay(true), 2600));
 
     return () => timers.forEach(clearTimeout);
   }, []);

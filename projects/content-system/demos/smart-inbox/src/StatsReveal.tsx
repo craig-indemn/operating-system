@@ -19,13 +19,13 @@ export default function StatsReveal() {
 
   useEffect(() => {
     const timers = [
-      setTimeout(() => setStep(1), 800),    // first stat card
-      setTimeout(() => setStep(2), 1600),   // second stat card
-      setTimeout(() => setStep(3), 2400),   // third stat card
-      setTimeout(() => setStep(4), 3800),   // detail items
-      setTimeout(() => setStep(5), 4400),   // detail item 2
-      setTimeout(() => setStep(6), 5000),   // detail item 3
-      setTimeout(() => setStep(7), 6500),   // tagline
+      setTimeout(() => setStep(1), 400),    // first stat card
+      setTimeout(() => setStep(2), 1000),   // second stat card
+      setTimeout(() => setStep(3), 1600),   // third stat card
+      setTimeout(() => setStep(4), 2600),   // detail items
+      setTimeout(() => setStep(5), 3100),   // detail item 2
+      setTimeout(() => setStep(6), 3600),   // detail item 3
+      setTimeout(() => setStep(7), 4800),   // tagline
     ];
     return () => timers.forEach(clearTimeout);
   }, []);

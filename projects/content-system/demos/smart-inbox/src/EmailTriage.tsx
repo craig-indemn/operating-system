@@ -7,6 +7,7 @@
  */
 import { useEffect, useState } from "react";
 import "./triage.css";
+import "./narration.css";
 
 const avatarColors = [
   "#4752a3", "#a67cb7", "#3b82f6", "#22c55e", "#f59e0b",
@@ -80,11 +81,11 @@ export default function EmailTriage() {
   useEffect(() => {
     const timers: ReturnType<typeof setTimeout>[] = [];
 
-    // Cards arrive with accelerating cadence
-    // First 5: 700ms apart, next 8: 450ms, last 10: 300ms
-    let t = 500;
+    // Cards arrive with accelerating cadence — tighter timing
+    // First 5: 500ms apart, next 8: 300ms, last 10: 200ms
+    let t = 300;
     arrivalOrder.forEach((cardIdx, i) => {
-      const delay = i < 5 ? 700 : i < 13 ? 450 : 300;
+      const delay = i < 5 ? 500 : i < 13 ? 300 : 200;
       t += delay;
       timers.push(
         setTimeout(() => {
@@ -180,6 +181,14 @@ export default function EmailTriage() {
           Zero human input.
         </span>
       </div>
+
+      {!showCounter && sortedCount > 0 && (
+        <div className="narration-bar">
+          <span className="narration-text visible">
+            Classifying and routing each submission automatically
+          </span>
+        </div>
+      )}
     </div>
   );
 }

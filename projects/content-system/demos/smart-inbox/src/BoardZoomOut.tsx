@@ -7,6 +7,7 @@
  */
 import { useEffect, useState } from "react";
 import "./zoomout.css";
+import "./narration.css";
 
 type Column = "green" | "blue" | "orange" | "purple" | "done";
 
@@ -65,19 +66,19 @@ export default function BoardZoomOut() {
     // step 5+N: each card
     // final: summary bar
     const timers: ReturnType<typeof setTimeout>[] = [];
-    timers.push(setTimeout(() => setStep(1), 500));
-    timers.push(setTimeout(() => setStep(2), 900));
-    timers.push(setTimeout(() => setStep(3), 1300));
-    timers.push(setTimeout(() => setStep(4), 1700));
+    timers.push(setTimeout(() => setStep(1), 300));
+    timers.push(setTimeout(() => setStep(2), 600));
+    timers.push(setTimeout(() => setStep(3), 900));
+    timers.push(setTimeout(() => setStep(4), 1200));
 
-    // Cards appear starting at 2.2s, staggered 150ms
+    // Cards appear starting at 1.5s, staggered 100ms
     const allCards = cards.length;
     for (let i = 0; i < allCards; i++) {
-      timers.push(setTimeout(() => setStep(5 + i), 2200 + i * 150));
+      timers.push(setTimeout(() => setStep(5 + i), 1500 + i * 100));
     }
 
     // Summary bar
-    timers.push(setTimeout(() => setStep(5 + allCards), 2200 + allCards * 150 + 800));
+    timers.push(setTimeout(() => setStep(5 + allCards), 1500 + allCards * 100 + 600));
 
     return () => timers.forEach(clearTimeout);
   }, []);
@@ -143,6 +144,14 @@ export default function BoardZoomOut() {
           <span className="zoomout-summary-highlight">15</span> drafts ready.
         </span>
       </div>
+
+      {step < 5 + cards.length && step >= 1 && (
+        <div className="narration-bar">
+          <span className="narration-text visible">
+            Meanwhile, every other submission was processed the same way
+          </span>
+        </div>
+      )}
     </div>
   );
 }
