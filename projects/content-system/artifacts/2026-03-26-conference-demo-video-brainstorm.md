@@ -229,20 +229,48 @@ CTA: "indemn.ai"
 
 Renaming/realigning showcase pages to match the matrix is a separate effort.
 
-## Production Tools Available
+## Production Tool Stack (Final)
 
-- **LiveKit** — voice platform, can do simulations
-- **Creatify** — AI video editor/generator
-- **Nano Banana 2** — image generation (Google Gemini)
-- **Video pipeline skills** — video-assembly, video-captions, video-broll, video-avatar, video-music, video-voice, video-eval
-- **Excalidraw** — diagram generation
-- **Image-gen skill** — Gemini-based branded image generation
+| Tool | Role | Cost |
+|---|---|---|
+| **Kling 3.0** | Cinematic clips — parking lot scene, email flow macro views, transitions | ~$8/month Pro |
+| **Runway Gen-4** | Backup if Kling quality isn't sufficient for specific shots | ~$35/month Pro |
+| **LiveKit Composite Egress** | Real voice call recording with custom branded web template | Existing infrastructure |
+| **HTML/CSS (blog site)** | Dashboard screens, email detail UI, branded cards, CTA end cards | Built in-house |
+| **Descript** | Final assembly, captions, music ducking, transitions, stitching all acts | ~$33/month Business |
+| **HeyGen Avatar IV** | Option 3 upgrade — AI avatar "Maya" for FNOL (later, if wanted) | ~$29/month Creator |
+
+**Rejected tools:**
+- Higgsfield — tuned for social/selfie content, not cinematic
+- Canva — not needed, HTML/CSS covers branded graphics
+- Creatify — e-commerce ads, not SaaS product demos
+- Pika — too stylized and imprecise
+- InVideo — stock footage assembler, can't composite custom sources
+- Local video pipeline skills — not maintained for this use case
+
+**Production approach per video:**
+
+**FNOL Video:**
+1. Generate Act 1 parking lot clip in Kling
+2. Build LiveKit composite web template (phone UI + transcript panel)
+3. Configure FNOL dev agent with prompt
+4. Craig calls in as Mike, LiveKit records composite
+5. Build Act 3 dashboard as HTML/CSS, screen capture
+6. Build Act 4 CTA card as HTML/CSS, screen capture
+7. Assemble all acts in Descript with music + transitions
+
+**Smart Inbox Video:**
+1. Generate Act 1 inbox counter + Act 2 Phase 1 email flow in Kling (macro views)
+2. Build Act 2 Phase 2 email detail UI as HTML/CSS (zoom-in: ACORD extraction, gap analysis, draft, AMS integration)
+3. Generate or composite Act 2 Phase 3 zoom-out in Kling
+4. Build Act 3 stats and Act 4 CTA as HTML/CSS
+5. Assemble all in Descript with music + transitions
 
 ## Open Questions
 
-- Production method: What combination of tools produces the most realistic result in the time available?
 - Carrier branding: Use "Acme Insurance" or something more realistic? Need a name for the Smart Inbox MGA too.
-- Audio: Real voice actors, AI voice cloning, or LiveKit simulation for the FNOL call?
-- Back-office UI design: What does the claims dashboard / email pipeline board look like? Match existing product showcase component style or design fresh for video?
-- Timeline: Conference is in days — what's the minimum viable video we can produce?
-- Option 3 upgrade: If Cam wants the AI video associate version, how quickly can we produce it?
+- LiveKit composite template: What layout? Phone left, transcript right? Or phone center with captions overlaid?
+- Dashboard UI design: Match existing product showcase component style or design fresh for video?
+- Kling prompt strategy: Need to iterate on prompts for the parking lot scene and email flow — budget 3-5 attempts per shot.
+- Descript plan tier: Business ($33/mo) needed for 4K export and brand kits, or Hobbyist ($24/mo) sufficient?
+- Option 3 upgrade: If Cam wants the AI video associate version, HeyGen Avatar IV is ready. Timeline TBD.
