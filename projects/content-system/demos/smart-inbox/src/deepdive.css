@@ -1,0 +1,400 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
+.deepdive {
+  width: 100vw;
+  height: 100vh;
+  background: #f4f3f8;
+  font-family: 'Barlow', system-ui, sans-serif;
+  color: #1e2553;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Brand bar */
+.dd-brand-bar {
+  padding: 16px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dd-brand-bar img {
+  height: 24px;
+}
+
+.dd-brand-badge {
+  font-size: 12px;
+  font-weight: 600;
+  color: #4752a3;
+  background: rgba(71, 82, 163, 0.1);
+  padding: 4px 12px;
+  border-radius: 6px;
+  letter-spacing: 0.03em;
+}
+
+/* Main layout */
+.dd-layout {
+  flex: 1;
+  display: flex;
+  gap: 20px;
+  padding: 0 36px 24px;
+  min-height: 0;
+}
+
+.dd-left {
+  flex: 0 0 52%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dd-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Cards */
+.dd-card {
+  background: #ffffff;
+  border: 1px solid #d4d7e3;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.dd-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dd-card-header {
+  padding: 14px 20px;
+  border-bottom: 1px solid #e8e7ed;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e2553;
+}
+
+.dd-card-header svg {
+  color: #4752a3;
+  flex-shrink: 0;
+}
+
+.dd-card-body {
+  padding: 16px 20px;
+}
+
+/* Email card */
+.dd-email-from {
+  font-size: 13px;
+  color: #6b7094;
+  margin-bottom: 4px;
+}
+
+.dd-email-from span {
+  color: #1e2553;
+  font-weight: 500;
+}
+
+.dd-email-subject {
+  font-size: 17px;
+  font-weight: 600;
+  color: #1e2553;
+  margin-bottom: 12px;
+}
+
+.dd-attachments {
+  display: flex;
+  gap: 10px;
+}
+
+.dd-attachment {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #4752a3;
+  background: rgba(71, 82, 163, 0.08);
+  padding: 6px 12px;
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.dd-attachment.visible {
+  opacity: 1;
+}
+
+.dd-attachment svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Data extraction */
+.dd-field-row {
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0eff5;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.dd-field-row.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.dd-field-row:last-child {
+  border-bottom: none;
+}
+
+.dd-field-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #6b7094;
+  width: 120px;
+  flex-shrink: 0;
+}
+
+.dd-field-value {
+  font-size: 15px;
+  font-weight: 500;
+  color: #1e2553;
+  flex: 1;
+}
+
+.dd-field-check {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #4752a3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  flex-shrink: 0;
+  margin-left: 8px;
+}
+
+.dd-field-check.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* AMS panel */
+.dd-ams-callout {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #22c55e;
+  background: rgba(34, 197, 94, 0.08);
+  padding: 8px 14px;
+  border-radius: 8px;
+  margin-top: 8px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.dd-ams-callout.visible {
+  opacity: 1;
+}
+
+/* Gap analysis */
+.dd-gap-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.dd-gap-item.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.dd-gap-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.dd-gap-icon.complete {
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+}
+
+.dd-gap-icon.missing {
+  background: rgba(245, 158, 11, 0.15);
+  color: #f59e0b;
+}
+
+.dd-gap-label {
+  flex: 1;
+  color: #1e2553;
+}
+
+.dd-gap-status {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.dd-gap-status.complete {
+  color: #22c55e;
+}
+
+.dd-gap-status.missing {
+  color: #f59e0b;
+}
+
+/* Completeness bar */
+.dd-completeness {
+  margin-top: 12px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.dd-completeness.visible {
+  opacity: 1;
+}
+
+.dd-completeness-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7094;
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dd-completeness-bar {
+  height: 8px;
+  background: #e8e7ed;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.dd-completeness-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4752a3, #a67cb7);
+  border-radius: 4px;
+  width: 0%;
+  transition: width 0.8s ease;
+}
+
+.dd-completeness-fill.filled {
+  width: 75%;
+}
+
+/* Draft reply */
+.dd-draft-line {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #1e2553;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.dd-draft-line.visible {
+  opacity: 1;
+}
+
+.dd-draft-line.greeting {
+  margin-bottom: 8px;
+}
+
+.dd-draft-line.numbered {
+  padding-left: 16px;
+  position: relative;
+}
+
+.dd-draft-line.closing {
+  margin-top: 8px;
+}
+
+/* Auto-send */
+.dd-autosend {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid #e8e7ed;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.dd-autosend.visible {
+  opacity: 1;
+}
+
+.dd-autosend-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dd-toggle-track {
+  width: 36px;
+  height: 20px;
+  background: #4752a3;
+  border-radius: 10px;
+  position: relative;
+}
+
+.dd-toggle-thumb {
+  width: 16px;
+  height: 16px;
+  background: #ffffff;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+}
+
+.dd-autosend-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #4752a3;
+}
+
+.dd-autosend-status {
+  font-size: 13px;
+  font-weight: 600;
+  color: #22c55e;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.dd-autosend-status.visible {
+  opacity: 1;
+}

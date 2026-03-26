@@ -3,7 +3,29 @@
 AI-powered content creation pipeline for Indemn and personal brands. Transforms voice-based ideas into polished, publishable content through dynamic extraction, iterative drafting, and multi-platform distribution. Lives in a separate repo (`/Users/home/Repositories/content-system`) with skills symlinked to `~/.claude/skills/`.
 
 ## Status
-Session 2026-03-26c. All FNOL video assets produced — voice agent, branded template, call recording (video + audio), dashboard reveal, CTA card, Kling parking lot clip. Ready for final assembly in Descript.
+Session 2026-03-26d. Smart Inbox video assets fully produced — 6 animated React pages built, recorded via Playwright, Kling establishing shot generated. All 7 assets in `~/Desktop/smart-inbox-assets/`. Ready for Descript assembly. FNOL assets also ready in `~/Desktop/fnol-descript-assets/`.
+
+**Session 2026-03-26d:**
+- Built `demos/smart-inbox/` — Vite + React + TypeScript project (same pattern as FNOL template)
+- 6 pages via `?page=` routing: inbox, triage, deepdive, zoomout, stats, cta
+- Act 1 (Inbox Counter): email client UI with sidebar, 23 realistic insurance emails appearing in 3 batches, unread badge ticking, text overlay
+- Act 2 Phase 1 (Email Triage): 5-column Kanban board, 23 cards sorting with accelerating cadence (700ms→300ms), shuffled arrival order
+- Act 2 Phase 2 (Email Deep Dive): 2-column layout, 24 animation steps — email opens → ACORD extraction → gap analysis → draft reply → auto-send. Riverside Landscaping LLC submission from Jessica Parker at Worthington Insurance
+- Act 2 Phase 3 (Board Zoom Out): 4-column results board showing what happened while we watched one email. 8 fully processed, 4 quotes extracted, 6 drafts ready, 3 renewals flagged
+- Act 3 (Stats Reveal): 3 stat cards with animated counters, detail items, tagline "Your inbox used to be a bottleneck. Now it's a pipeline."
+- Act 4 (CTA): Same as FNOL — iris→eggplant gradient, channel icons, "Making insurance a conversation."
+- Tried Kling for UI shots — text comes out as Chinese gibberish, unusable for readable UI. Used Kling only for atmospheric office establishing shot (coffee mug, morning light, no screen content)
+- All pages recorded via Playwright at 1920x1080, converted to MP4 with ffmpeg
+- Documented full production process in artifact
+- Design pattern: useState step counter + setTimeout array + CSS transitions. Zero animation libraries needed.
+
+**Next up:**
+1. Assemble Smart Inbox video in Descript (7 assets, music, transitions)
+2. Assemble FNOL video in Descript (5 assets, sync audio/video, music, transitions)
+3. Show both to Cam/Kyle for feedback
+4. Option 3 upgrade (AI avatar FNOL) if they want it
+5. Merge PR #14 on indemn-ai/engineering-blog
+6. Align showcase page names with Cam's outcome matrix (separate effort)
 
 **Session 2026-03-26c:**
 - Built standalone FNOL voice agent (`demos/fnol-voice-agent/fnol_agent.py`) — Python, livekit-agents 1.3.10, Cartesia TTS, Deepgram STT, OpenAI GPT-4.1
@@ -151,6 +173,7 @@ Session 2026-03-26c. All FNOL video assets produced — voice agent, branded tem
 | 2026-03-26 | [conference-demo-video-brainstorm](artifacts/2026-03-26-conference-demo-video-brainstorm.md) | InsurtechNY Spring conference demo videos — FNOL voice + Smart Inbox workflow scripts and storyboards |
 | 2026-03-26 | [conference-video-production-plan](artifacts/2026-03-26-conference-video-production-plan.md) | Step-by-step production plan for both conference demo videos — tools, assets, assembly, execution order |
 | 2026-03-26 | [fnol-video-production-process](artifacts/2026-03-26-fnol-video-production-process.md) | Complete playbook for FNOL video production — replicable patterns for voice agent demos, recording templates, animated reveals |
+| 2026-03-26 | [smart-inbox-page-production-process](artifacts/2026-03-26-smart-inbox-page-production-process.md) | Smart Inbox page production — design system, animation patterns, step-based sequential animations, replicable playbook |
 
 ## Decisions
 - 2026-03-26: FNOL voice agent runs as standalone Python script via livekit-agents SDK, NOT through the Indemn platform bot config system. Simpler for demo recording — no MongoDB routing, no SIP trunk, just a direct LiveKit Cloud connection.
@@ -158,6 +181,8 @@ Session 2026-03-26c. All FNOL video assets produced — voice agent, branded tem
 - 2026-03-26: LiveKit composite recording template uses light theme matching showcase pages (Barlow, iris/eggplant, white surface cards). Phone card is the only dark element (iris→eggplant gradient). Caption bar is dark eggplant with CC badge. Template doubles as both recording source and live preview (mic + speaker enabled).
 - 2026-03-26: Conference demo videos: FNOL (Intake Associate for Claims, voice) + Smart Inbox (Inbox Associate, web workflow). Selected for audience fit (carrier/distributor/investor room at InsurtechNY), contrast (B2C voice vs B2B workflow), and credibility (Craig actively building Smart Inbox for a customer). AI video associate avatar held as upgrade path.
 - 2026-03-26: Conference videos are produced representations, not recordings of live agents. No real FNOL or Smart Inbox agent exists yet — these would be built for customers. Production approach TBD.
+- 2026-03-26: Kling 3.0 cannot render readable English text on screens — generates Chinese gibberish. Use Kling only for atmospheric/cinematic establishing shots (no screen content). Build all UI animations in HTML/CSS with Playwright recording instead.
+- 2026-03-26: Smart Inbox animation pattern: useState step counter + setTimeout array + CSS transitions. Zero animation libraries needed. Accelerating cadence (decreasing intervals) creates energy. Shuffled arrival order prevents visual grouping. This pattern works for any "things appearing sequentially" animation.
 - 2026-03-26: Existing showcase pages should be aligned with Cam's "Four Outcomes Navigation" matrix naming — separate effort from video production.
 - 2026-03-26: Team blog access via separate repo (`indemn-ai/engineering-blog`) — Craig's content-system stays private (personal brand, video pipeline, full orchestration). Team repo gets only the blog site, selected content skills, and Indemn/Buzz brand configs.
 - 2026-03-26: Deployment stays manual (`vercel --prod`) for now — no Vercel git integration. Craig controls when changes go live.
