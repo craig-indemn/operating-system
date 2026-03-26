@@ -142,6 +142,7 @@ Session 2026-03-26b. Brainstormed InsurtechNY Spring conference demo videos with
 | 2026-03-23 | [intake-manager-diagram-prompt](artifacts/2026-03-23-intake-manager-diagram-prompt.md) | Prompt for Claude.ai workflow diagram — Intake Manager |
 | 2026-03-23 | [cross-sell-diagram-prompt](artifacts/2026-03-23-cross-sell-diagram-prompt.md) | Prompt for Claude.ai workflow diagram — Cross-Sell |
 | 2026-03-26 | [conference-demo-video-brainstorm](artifacts/2026-03-26-conference-demo-video-brainstorm.md) | InsurtechNY Spring conference demo videos — FNOL voice + Smart Inbox workflow scripts and storyboards |
+| 2026-03-26 | [conference-video-production-plan](artifacts/2026-03-26-conference-video-production-plan.md) | Step-by-step production plan for both conference demo videos — tools, assets, assembly, execution order |
 
 ## Decisions
 - 2026-03-26: Conference demo videos: FNOL (Intake Associate for Claims, voice) + Smart Inbox (Inbox Associate, web workflow). Selected for audience fit (carrier/distributor/investor room at InsurtechNY), contrast (B2C voice vs B2B workflow), and credibility (Craig actively building Smart Inbox for a customer). AI video associate avatar held as upgrade path.
