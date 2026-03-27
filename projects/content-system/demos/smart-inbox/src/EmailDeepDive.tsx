@@ -43,6 +43,7 @@ const draftLines = [
 
 export default function EmailDeepDive() {
   const [step, setStep] = useState(0);
+  const [narrationIdx, setNarrationIdx] = useState(-1);
 
   useEffect(() => {
     // Frame 1: Email card appears (0-5s)
@@ -67,17 +68,13 @@ export default function EmailDeepDive() {
     //
     // Frame 5: done (35-40s) — hold for recording
 
-    // Narration steps: 30 = "Reading submission...", 31 = "Extracting ACORD data...",
-    // 32 = "Checking completeness...", 33 = "Drafting reply...", 34 = "Sent."
     const timings: [number, number][] = [
       // Frame 1 — Email (0-2.5s)
       [1, 400],
-      [30, 400],    // narration: "New submission from Worthington Insurance"
       [2, 1000],
       [3, 1500],
       // Frame 2 — Extraction (2.5-7s)
       [4, 2500],
-      [31, 2500],   // narration: "Extracting data from ACORD 125 and 126"
       [5, 3100],
       [6, 3700],
       [7, 4300],
@@ -85,7 +82,6 @@ export default function EmailDeepDive() {
       [9, 5800],
       // Frame 3 — Gap analysis (7-10.5s)
       [10, 7000],
-      [32, 7000],   // narration: "Running completeness check"
       [11, 7500],
       [12, 7900],
       [13, 8300],
@@ -94,7 +90,6 @@ export default function EmailDeepDive() {
       [16, 9600],
       // Frame 4 — Draft reply (10.5-16s)
       [17, 10500],
-      [33, 10500],  // narration: "Generating follow-up reply"
       [18, 11200],
       [19, 11900],
       [20, 12600],
@@ -102,21 +97,30 @@ export default function EmailDeepDive() {
       [22, 14000],
       [23, 15000],
       [24, 16000],
-      [34, 16000],  // narration: "Reply sent automatically"
+    ];
+
+    const narrationTimings: [number, number][] = [
+      [0, 400],     // "New submission from Worthington Insurance"
+      [1, 2500],    // "Extracting data from ACORD 125 and 126"
+      [2, 7000],    // "Running completeness check"
+      [3, 10500],   // "Generating follow-up reply"
+      [4, 16000],   // "Reply sent automatically"
     ];
 
     const timers = timings.map(([s, ms]) => setTimeout(() => setStep(s), ms));
+    const nTimers = narrationTimings.map(([s, ms]) => setTimeout(() => setNarrationIdx(s), ms));
+    timers.push(...nTimers);
     return () => timers.forEach(clearTimeout);
   }, []);
 
-  const narrations: [number, string][] = [
-    [30, "New submission from Worthington Insurance"],
-    [31, "Extracting data from ACORD 125 and 126"],
-    [32, "Running completeness check"],
-    [33, "Generating follow-up reply"],
-    [34, "Reply sent automatically"],
+  const narrationTexts = [
+    "New submission from Worthington Insurance",
+    "Extracting data from ACORD 125 and 126",
+    "Running completeness check",
+    "Generating follow-up reply",
+    "Reply sent automatically",
   ];
-  const activeNarration = [...narrations].reverse().find(([s]) => step >= s);
+  const activeNarration = narrationIdx >= 0 ? narrationTexts[narrationIdx] : null;
 
   return (
     <div className="deepdive">
@@ -266,8 +270,8 @@ export default function EmailDeepDive() {
 
       <div className="narration-bar">
         {activeNarration && (
-          <span className="narration-text visible" key={activeNarration[0]}>
-            {activeNarration[1]}
+          <span className="narration-text visible" key={narrationIdx}>
+            {activeNarration}
           </span>
         )}
       </div>
