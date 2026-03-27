@@ -3,7 +3,18 @@
 AI-powered content creation pipeline for Indemn and personal brands. Transforms voice-based ideas into polished, publishable content through dynamic extraction, iterative drafting, and multi-platform distribution. Lives in a separate repo (`/Users/home/Repositories/content-system`) with skills symlinked to `~/.claude/skills/`.
 
 ## Status
-Session 2026-03-26d. Smart Inbox video fully produced and ready for Descript assembly. Craig assembling in Descript with voiceover. FNOL also ready.
+Session 2026-03-27. All 8 product showcase pages audited and aligned with Four Outcomes Matrix + Master Context 2026 brand guidelines. Deployed to blog.indemn.ai.
+
+**Session 2026-03-27:**
+- Audited all 8 showcase pages against Four Outcomes Product Matrix (Google Sheet), Master Context 2026, Master Context Prompt v2026.2, Marketing Persona Prompt, and Company Overview
+- Found and fixed: 7 wrong categories, ~40 "agent" → "Associate" replacements, 2 "chatbot" removals, 10+ "the system" → "the Associate", all descriptions rewritten outcome-first
+- Categories: all now use Four Outcomes framework (Revenue Growth, Operational Efficiency, Strategic Control)
+- Marketing names introduced: Front Desk, Quote & Bind, Inbox, Intake, Cross-Sell, Care, Strategy Studio
+- Added proof points: Eventuguard (Q&B), 25% conversion lift (Q&B), 46% automation (CI), 60% cross-sell conversion (CS), ~60 days to production (Q&B)
+- Added HITL prominence, revenue capacity framing, partner language, Resolution Rate (not Automation Rate)
+- Stat label fixes: "MCP Tools" → "MCP Capabilities", "Automation Rate" → "Resolution Rate"
+- Created brand alignment reference artifact for use by other sessions
+- Committed to content-system main, pushed to origin, deployed via `vercel --prod`
 
 **Session 2026-03-26d:**
 - Built `demos/smart-inbox/` — Vite + React + TypeScript project (same pattern as FNOL template)
@@ -194,6 +205,7 @@ Session 2026-03-26d. Smart Inbox video fully produced and ready for Descript ass
 | 2026-03-26 | [conference-video-production-plan](artifacts/2026-03-26-conference-video-production-plan.md) | Step-by-step production plan for both conference demo videos — tools, assets, assembly, execution order |
 | 2026-03-26 | [fnol-video-production-process](artifacts/2026-03-26-fnol-video-production-process.md) | Complete playbook for FNOL video production — replicable patterns for voice agent demos, recording templates, animated reveals |
 | 2026-03-26 | [smart-inbox-page-production-process](artifacts/2026-03-26-smart-inbox-page-production-process.md) | Smart Inbox page production — design system, animation patterns, step-based sequential animations, replicable playbook |
+| 2026-03-27 | [brand-alignment-reference](artifacts/2026-03-27-brand-alignment-reference.md) | Four Outcomes framework, lexicon rules, Associate mapping, proof points, pre-publish checklist — reusable reference for all showcase pages |
 
 ## Decisions
 - 2026-03-26: FNOL voice agent runs as standalone Python script via livekit-agents SDK, NOT through the Indemn platform bot config system. Simpler for demo recording — no MongoDB routing, no SIP trunk, just a direct LiveKit Cloud connection.
@@ -203,6 +215,9 @@ Session 2026-03-26d. Smart Inbox video fully produced and ready for Descript ass
 - 2026-03-26: Conference videos are produced representations, not recordings of live agents. No real FNOL or Smart Inbox agent exists yet — these would be built for customers. Production approach TBD.
 - 2026-03-26: Kling 3.0 cannot render readable English text on screens — generates Chinese gibberish. Use Kling only for atmospheric/cinematic establishing shots (no screen content). Build all UI animations in HTML/CSS with Playwright recording instead.
 - 2026-03-26: Smart Inbox animation pattern: useState step counter + setTimeout array + CSS transitions. Zero animation libraries needed. Accelerating cadence (decreasing intervals) creates energy. Shuffled arrival order prevents visual grouping. This pattern works for any "things appearing sequentially" animation.
+- 2026-03-27: All showcase pages must align with the Four Outcomes framework. Categories must be one of: Revenue Growth, Operational Efficiency, Client Retention, Strategic Control. Every page must reference its official Associate marketing name from the matrix. Full checklist in `artifacts/2026-03-27-brand-alignment-reference.md`.
+- 2026-03-27: Brand purity over SEO — even FAQ questions that target search terms like "How do I build an AI agent" were changed to "Associate" for brand consistency. These are product pages, not blog posts optimized for organic search.
+- 2026-03-27: Cross-Sell stays "Revenue Growth" even though the matrix maps agency cross-sell to "Client Retention" — revenue growth is the more compelling framing for the audience.
 - 2026-03-26: Existing showcase pages should be aligned with Cam's "Four Outcomes Navigation" matrix naming — separate effort from video production.
 - 2026-03-26: Team blog access via separate repo (`indemn-ai/engineering-blog`) — Craig's content-system stays private (personal brand, video pipeline, full orchestration). Team repo gets only the blog site, selected content skills, and Indemn/Buzz brand configs.
 - 2026-03-26: Deployment stays manual (`vercel --prod`) for now — no Vercel git integration. Craig controls when changes go live.
