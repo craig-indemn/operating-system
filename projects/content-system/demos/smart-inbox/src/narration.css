@@ -1,0 +1,33 @@
+/* Shared narration bar — bottom of every page */
+.narration-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(30, 37, 83, 0.92);
+  padding: 14px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.narration-text {
+  font-family: 'Barlow', system-ui, sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: #ffffff;
+  letter-spacing: 0.01em;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.narration-text.visible {
+  opacity: 1;
+}
+
+.narration-highlight {
+  color: #e0da67;
+  font-weight: 600;
+}

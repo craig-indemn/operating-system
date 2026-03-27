@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&display=swap');
+
+.cta-page {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #4752a3 0%, #1e2553 100%);
+  font-family: 'Barlow', system-ui, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+}
+
+.cta-logo {
+  opacity: 0;
+  transform: translateY(-12px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.cta-logo.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cta-logo img {
+  height: 40px;
+}
+
+.cta-channels {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.cta-channel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.cta-channel.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cta-channel-icon {
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.cta-channel-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.cta-tagline {
+  font-size: 36px;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.01em;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.cta-tagline.visible {
+  opacity: 1;
+}
+
+.cta-url {
+  font-size: 28px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.02em;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.cta-url.visible {
+  opacity: 1;
+}

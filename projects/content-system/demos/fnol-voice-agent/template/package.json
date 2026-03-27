@@ -1,0 +1,24 @@
+{
+  "name": "fnol-egress-template",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@livekit/components-react": "^2.9.14",
+    "@livekit/egress-sdk": "^0.2.1",
+    "livekit-client": "^2.15.6",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-react": "^4.4.1",
+    "typescript": "^5.7.0",
+    "vite": "^6.3.0"
+  }
+}

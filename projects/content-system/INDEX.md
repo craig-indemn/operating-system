@@ -3,7 +3,73 @@
 AI-powered content creation pipeline for Indemn and personal brands. Transforms voice-based ideas into polished, publishable content through dynamic extraction, iterative drafting, and multi-platform distribution. Lives in a separate repo (`/Users/home/Repositories/content-system`) with skills symlinked to `~/.claude/skills/`.
 
 ## Status
-Session 2026-03-23. Built and deployed 7 product showcase pages total. Enhanced `/content-showcase` skill with patterns from all builds.
+Session 2026-03-26d. Smart Inbox video fully produced and ready for Descript assembly. Craig assembling in Descript with voiceover. FNOL also ready.
+
+**Session 2026-03-26d:**
+- Built `demos/smart-inbox/` — Vite + React + TypeScript project (same pattern as FNOL template)
+- 6 pages via `?page=` routing: inbox, triage, deepdive, zoomout, stats, cta
+- Act 1 (Inbox Counter): email client UI with sidebar, 23 realistic insurance emails appearing in 3 batches, unread badge ticking, text overlay
+- Act 2 Phase 1 (Email Triage): 5-column Kanban board, 23 cards sorting with accelerating cadence (500ms→200ms), shuffled arrival order
+- Act 2 Phase 2 (Email Deep Dive): 2-column layout, 24 animation steps — email opens → ACORD extraction → gap analysis → draft reply → auto-send. Riverside Landscaping LLC submission from Jessica Parker at Worthington Insurance
+- Act 2 Phase 3 (Board Zoom Out): 4-column results board showing what happened while we watched one email. 8 fully processed, 4 quotes extracted, 6 drafts ready, 3 renewals flagged
+- Act 3 (Stats Reveal): 3 stat cards with animated counters, detail items, tagline "Your inbox used to be a bottleneck. Now it's a pipeline."
+- Act 4 (CTA): Same as FNOL — iris→eggplant gradient, channel icons, "Making insurance a conversation."
+- Tried Kling for UI shots — text comes out as Chinese gibberish, unusable for readable UI. Used Kling only for atmospheric office establishing shot (coffee mug, morning light, no screen content)
+- V2: Tightened all animation timing (deep dive 30s→18s, triage 17s→10s, zoomout 17s→7s). Added narration caption bar to deep dive, triage, and zoom out pages. Trimmed start/end with ffmpeg. Kling trimmed to 2.5s.
+- All pages recorded via Playwright at 1920x1080, converted/trimmed to MP4 with ffmpeg
+- Documented full production process in artifact
+- Design pattern: useState step counter + setTimeout array + CSS transitions. Zero animation libraries needed.
+- Wrote VO script for Craig to record over the assembled video
+- All 7 assets in `~/Desktop/smart-inbox-assets/` (total ~55s raw footage)
+
+**Next up:**
+1. Craig assembling Smart Inbox in Descript with voiceover + music
+2. Assemble FNOL video in Descript (5 assets in `~/Desktop/fnol-descript-assets/`)
+3. Show both to Cam/Kyle for feedback
+4. Option 3 upgrade (AI avatar FNOL) if they want it
+5. Merge PR #14 on indemn-ai/engineering-blog
+6. Align showcase page names with Cam's outcome matrix (separate effort)
+
+**Session 2026-03-26c:**
+- Built standalone FNOL voice agent (`demos/fnol-voice-agent/fnol_agent.py`) — Python, livekit-agents 1.3.10, Cartesia TTS, Deepgram STT, OpenAI GPT-4.1
+- Agent registers as `fnol-maya` on LiveKit Cloud (`wss://test-ympl759t.livekit.cloud`)
+- Solved double-agent problem: EC2 voice-livekit-dev was competing for jobs. Fixed with `--agents-file` room config restricting dispatch to `fnol-maya` only
+- Installed LiveKit CLI (`lk`) locally — can create rooms, generate tokens, manage egress
+- Created FNOL agent in Indemn platform via MCP (agent ID: `69c5477bf37e4898416bb9b4`) — not used for voice, but prompt is stored
+- Built LiveKit Room Composite Egress template (`demos/fnol-voice-agent/template/`) — React + Vite
+- Template features: phone call UI (Maya avatar, call timer, waveform), live transcript panel, CC caption bar, mic input + audio output, "Start Call" button for recording workflow
+- Template also serves Act 3 (dashboard reveal) and Act 4 (CTA) via `?page=dashboard` and `?page=cta` routes
+- Branded to Indemn: Barlow font, iris/lilac/eggplant colors, light theme matching showcase pages, Indemn logos, SVG icons (no emojis), "Making insurance a conversation" tagline
+- Generated Maya avatar headshot via Gemini image-gen
+- Craig tested the agent — conversation flow works well, natural tone
+- Recorded final FNOL call: screen recording (visuals) + LiveKit audio egress to S3 (audio). Split approach because BlackHole needs a reboot to capture system audio.
+- Built Act 3 dashboard reveal: animated claim card (with Maya avatar), adjuster card, 8-item activity timeline with SVG checkmark dots, stats bar
+- Built Act 4 CTA: iris→eggplant gradient, white Indemn logo, 5 SVG channel icons, "Making insurance a conversation.", indemn.ai
+- Recorded Act 3 + Act 4 as videos via Playwright headless browser (1920x1080 .webm)
+- Craig generated Act 1 parking lot clip in Kling 3.0 (last 2s usable, needs clipping)
+- Signed up for Descript (video assembly tool) and Kling (cinematic generation)
+- Full production process documented in artifact for replication
+
+**Next up:**
+1. Assemble FNOL video in Descript — clip Kling to last 2s, sync audio to video for Act 2, add transitions + music, export
+2. Add Act 1 text overlay: "2:47 PM. Kroger parking lot. Someone just backed into your car."
+3. Produce Smart Inbox demo video (same patterns — build UI, record, assemble)
+4. Show both to Cam/Kyle for feedback
+5. Option 3 upgrade (AI avatar FNOL) if they want it
+8. Option 3 upgrade (AI avatar FNOL) if they want it
+9. Merge PR #14 on indemn-ai/engineering-blog
+10. Align showcase page names with Cam's outcome matrix (separate effort)
+
+**Session 2026-03-26:**
+- Synced full blog site (8 product showcase pages, 26 components, workflow SVGs, brand assets) to `indemn-ai/engineering-blog` — PR #14 pending merge
+- Copied 7 content skills (content-showcase, content, content-draft, content-extract, content-preview, content-publish, content-teammate) to `.claude/skills/` in team repo
+- Included Indemn and The Buzz brand configs; excluded personal and career-catalyst brands
+- Stripped personal brand references from skills (Substack/Medium cross-posting, personal voice)
+- Simplified content-publish skill to Astro/Vercel only (removed copy-paste and cross-platform workflows)
+- Wrote team-oriented CLAUDE.md with deployment instructions (`vercel --prod`, manual)
+- Also deployed Member Support page (from Jonathan's IVR Replacement spec) in a prior session
+- DM'd Jonathan in Slack with repo access instructions and next steps
+- Branch protection on engineering-blog requires PR merge — Craig needs to approve PR #14
 
 **Session 2026-03-23:**
 - Built and deployed 4 more showcase pages (Conversational Intake, Email Intelligence, Intake Manager, Cross-Sell)
@@ -91,19 +157,13 @@ Session 2026-03-23. Built and deployed 7 product showcase pages total. Enhanced 
 - Email Intelligence — live at blog.indemn.ai/products/email-intelligence/ (deployed 2026-03-23)
 - Intake Manager — live at blog.indemn.ai/products/intake-manager/ (deployed 2026-03-23)
 - Cross-Sell — live at blog.indemn.ai/products/cross-sell/ (deployed 2026-03-23)
-
-**Next up:**
-1. Renewals showcase page
-2. Evaluation Engine showcase ("Trust, Not Hope")
-3. Book analysis / proactive outreach showcase (future cross-sell capability)
-4. Life event detection showcase (future cross-sell capability)
-5. Write and publish first personal post on Substack
-6. Wire content-publish skill to handle Substack/Medium publishing
+- Member Support — live at blog.indemn.ai/products/member-support/ (deployed 2026-03-24)
 
 ## External Resources
 | Resource | Type | Link |
 |----------|------|------|
 | Content system repo | GitHub repo | /Users/home/Repositories/content-system |
+| Team blog repo | GitHub repo | indemn-ai/engineering-blog (PR #14 pending) |
 | Indemn blog | Website | blog.indemn.ai |
 | Design spec | Doc | content-system/docs/plans/2026-01-30-blog-content-system-design.md |
 | System knowledge | Doc | content-system/docs/system-knowledge.md |
@@ -130,8 +190,23 @@ Session 2026-03-23. Built and deployed 7 product showcase pages total. Enhanced 
 | 2026-03-23 | [email-intelligence-diagram-prompt](artifacts/2026-03-23-email-intelligence-diagram-prompt.md) | Prompt for Claude.ai workflow diagram — Email Intelligence |
 | 2026-03-23 | [intake-manager-diagram-prompt](artifacts/2026-03-23-intake-manager-diagram-prompt.md) | Prompt for Claude.ai workflow diagram — Intake Manager |
 | 2026-03-23 | [cross-sell-diagram-prompt](artifacts/2026-03-23-cross-sell-diagram-prompt.md) | Prompt for Claude.ai workflow diagram — Cross-Sell |
+| 2026-03-26 | [conference-demo-video-brainstorm](artifacts/2026-03-26-conference-demo-video-brainstorm.md) | InsurtechNY Spring conference demo videos — FNOL voice + Smart Inbox workflow scripts and storyboards |
+| 2026-03-26 | [conference-video-production-plan](artifacts/2026-03-26-conference-video-production-plan.md) | Step-by-step production plan for both conference demo videos — tools, assets, assembly, execution order |
+| 2026-03-26 | [fnol-video-production-process](artifacts/2026-03-26-fnol-video-production-process.md) | Complete playbook for FNOL video production — replicable patterns for voice agent demos, recording templates, animated reveals |
+| 2026-03-26 | [smart-inbox-page-production-process](artifacts/2026-03-26-smart-inbox-page-production-process.md) | Smart Inbox page production — design system, animation patterns, step-based sequential animations, replicable playbook |
 
 ## Decisions
+- 2026-03-26: FNOL voice agent runs as standalone Python script via livekit-agents SDK, NOT through the Indemn platform bot config system. Simpler for demo recording — no MongoDB routing, no SIP trunk, just a direct LiveKit Cloud connection.
+- 2026-03-26: Room-level agent dispatch filtering (`--agents-file` with `dispatches: [{agent_name: "fnol-maya"}]`) prevents EC2 voice-livekit-dev from competing for jobs. This is the pattern for any future demo agent on the shared LiveKit Cloud instance.
+- 2026-03-26: LiveKit composite recording template uses light theme matching showcase pages (Barlow, iris/eggplant, white surface cards). Phone card is the only dark element (iris→eggplant gradient). Caption bar is dark eggplant with CC badge. Template doubles as both recording source and live preview (mic + speaker enabled).
+- 2026-03-26: Conference demo videos: FNOL (Intake Associate for Claims, voice) + Smart Inbox (Inbox Associate, web workflow). Selected for audience fit (carrier/distributor/investor room at InsurtechNY), contrast (B2C voice vs B2B workflow), and credibility (Craig actively building Smart Inbox for a customer). AI video associate avatar held as upgrade path.
+- 2026-03-26: Conference videos are produced representations, not recordings of live agents. No real FNOL or Smart Inbox agent exists yet — these would be built for customers. Production approach TBD.
+- 2026-03-26: Kling 3.0 cannot render readable English text on screens — generates Chinese gibberish. Use Kling only for atmospheric/cinematic establishing shots (no screen content). Build all UI animations in HTML/CSS with Playwright recording instead.
+- 2026-03-26: Smart Inbox animation pattern: useState step counter + setTimeout array + CSS transitions. Zero animation libraries needed. Accelerating cadence (decreasing intervals) creates energy. Shuffled arrival order prevents visual grouping. This pattern works for any "things appearing sequentially" animation.
+- 2026-03-26: Existing showcase pages should be aligned with Cam's "Four Outcomes Navigation" matrix naming — separate effort from video production.
+- 2026-03-26: Team blog access via separate repo (`indemn-ai/engineering-blog`) — Craig's content-system stays private (personal brand, video pipeline, full orchestration). Team repo gets only the blog site, selected content skills, and Indemn/Buzz brand configs.
+- 2026-03-26: Deployment stays manual (`vercel --prod`) for now — no Vercel git integration. Craig controls when changes go live.
+- 2026-03-26: Jonathan's structured JSON format (indemn-product-spec/v1) works well as input to the brainstorm phase of `/content-showcase`. No need for a separate JSON-to-MDX converter.
 - 2026-03-23: Enhanced `/content-showcase` skill to 5-phase workflow: Brainstorm → Diagram Prompt → Plan (with code review) → Parallel Build → Deploy. Documented all technical constraints, reusable components, and patterns from 7 deployed pages.
 - 2026-03-23: Cross-sell has 4 distinct product approaches: opportunistic (built), renewal (next), book analysis, life event detection. Each is its own showcase page. Saved to memory for future sessions.
 - 2026-03-23: Code-reviewer agent before plan approval catches real issues — missing scenario data, ARIA collision risks, missing pubDate, board HTML scoping. Always run before building.
