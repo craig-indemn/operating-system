@@ -3,7 +3,29 @@
 AI-powered content creation pipeline for Indemn and personal brands. Transforms voice-based ideas into polished, publishable content through dynamic extraction, iterative drafting, and multi-platform distribution. Lives in a separate repo (`/Users/home/Repositories/content-system`) with skills symlinked to `~/.claude/skills/`.
 
 ## Status
-Session 2026-03-26d. Smart Inbox video fully produced and ready for Descript assembly. Craig assembling in Descript with voiceover. FNOL also ready.
+Session 2026-03-30. Conference prep complete. 5 demo videos produced, 11 outcome pages live (brand-aligned), offline package in Google Drive for booth tablets. Video production playbook skill written. 4 parallel sessions spun up for additional videos — Submission Automation, Web Operators, and Quote & Bind completed; Open Enrollment pending Jonathan's input.
+
+**Session 2026-03-27/28/30 (conference prep):**
+- Assembled FNOL and Smart Inbox videos in Descript with voiceover + music
+- Applied Four Outcomes brand alignment across all pages (from brand-alignment session)
+- Renamed: Intake Manager → Submission Automation, Indemn CLI → Strategy Studio
+- Renamed: /products/ → /outcomes/ site-wide (routes, nav, collection, CTAs)
+- Created placeholder pages: Open Enrollment, Web Operators
+- Created Claims Intake page with FNOL video
+- Embedded videos on Email Intelligence, Claims Intake, Submission Automation, Web Operators, Quote & Bind pages
+- Spun up 4 parallel sessions for additional demo videos — 3 completed (Submission Automation, Web Operators, Quote & Bind)
+- Built conference offline package: 5 demo videos + offline blog site + offline dev.indemn.ai in Google Drive
+- Wrote iPad (WorldWideWeb app) and Android (Simple HTTP Server) instructions for running sites offline at booth
+- Sent team update to #network-prep with all videos, links, Drive folder, and offline instructions
+- Open Enrollment flagged to Cam for matrix alignment — no associate mapped yet
+- Video production playbook written as content-showcase skill reference (comprehensive: project setup, design system, animation patterns, recording, trimming, Descript assembly, common mistakes)
+- Video briefs created for all 4 parallel sessions
+
+**Next up:**
+1. Open Enrollment demo video (pending Jonathan's input or demo)
+2. Show videos to Cam/Kyle for final feedback
+3. Option 3 upgrade (AI avatar FNOL) if they want it
+4. Update offline Drive package if Dhruv pushes more site changes before conference
 
 **Session 2026-03-26d:**
 - Built `demos/smart-inbox/` — Vite + React + TypeScript project (same pattern as FNOL template)

@@ -1,19 +1,21 @@
 ---
 name: content-showcase
-description: Create product showcase pages on blog.indemn.ai — brainstorm messaging, design interactive demos, build with parallel sessions, deploy. Use when the user wants to showcase a product, feature, or capability.
+description: Create outcome showcase pages on blog.indemn.ai — brainstorm messaging, design interactive demos and/or video demos, build with parallel sessions, deploy. Use when the user wants to showcase a product, feature, or capability.
 ---
 
-# Product Showcase
+# Outcome Showcase
 
-Create a showcase page on blog.indemn.ai/products/ from concept through deployment. Five phases: Brainstorm → Diagram Prompt → Plan → Parallel Build → Deploy.
+Create an outcome page on blog.indemn.ai/outcomes/ from concept through deployment. Five phases: Brainstorm → Diagram Prompt → Plan → Parallel Build → Deploy.
 
-**Announce at start:** "Using content-showcase for [product name or topic]"
+**Announce at start:** "Using content-showcase for [outcome name or topic]"
 
-**Working directory:** The repo root (this is the Astro blog site).
+**Working directory:** The blog repo (engineering-blog at `/tmp/engineering-blog-sync/` or the local clone).
+
+**Brand alignment:** ALWAYS read `projects/content-system/artifacts/2026-03-27-brand-alignment-reference.md` before creating or updating any page. It has the Four Outcomes categories, lexicon rules (banned/required words), Associate marketing names, proof points, messaging principles, and a pre-publish checklist.
 
 ## Existing Infrastructure
 
-The showcase system has 7 base components + 17 custom components across 7 deployed pages. You're adding to a mature system.
+The showcase system has 7 base components across 11 deployed outcome pages. Content collection is `outcomes` (was `products`). Routes are `/outcomes/<slug>/`.
 
 ### Base Components (`src/components/showcase/`)
 Rendered from frontmatter via `[...slug].astro`:
@@ -40,21 +42,26 @@ Rendered from frontmatter via `[...slug].astro`:
 - **SVG diagrams** — no `@media(prefers-color-scheme:dark)` CSS. The blog is always light mode.
 - **pubDate required** — content schema requires `pubDate` in frontmatter.
 - **CSS prefix** — every component uses a unique 2-letter prefix (`dr-`, `qb-`, `ci-`, `ei-`, `im-`, `cs-`).
+- **Category must be one of:** Revenue Growth, Operational Efficiency, Client Retention, Strategic Control
+- **Lexicon:** "Associate" not "agent/bot/chatbot", "capability" not "tool/software", "partner" not "vendor". See brand alignment reference for full list.
 
-### Existing Pages (reference for patterns)
-| Page | Demo Type | Key Pattern |
-|------|-----------|-------------|
-| `indemn-cli` | Video tabs | TabbedDemo from frontmatter |
-| `document-retrieval` | Chat + workflow steps + inbox mock | Step-through with behind-the-scenes |
-| `quote-and-bind` | Chat + parameter panel + quote cards | Live form populated by conversation |
-| `conversational-intake` | Chat + info panel → dashboard transform | Panel transformation mid-demo |
-| `email-intelligence` | Board/kanban + timeline + analysis sub-tabs | Operations dashboard simulation |
-| `intake-manager` | Pipeline bar + timeline + tab-based detail | Submission lifecycle with completeness tracking |
-| `cross-sell` | Chat + coverage profile phases | Profile analysis with gap detection |
-| `member-support` | (page exists, no interactive demo yet) | — |
+### Existing Pages
+| Slug | Category | Demo Type | Has Video |
+|------|----------|-----------|-----------|
+| `submission-automation` | Operational Efficiency | Pipeline + interactive demo | Yes |
+| `web-operators` | Operational Efficiency | — | Yes |
+| `email-intelligence` | Operational Efficiency | Board/kanban + interactive demo | Yes |
+| `quote-and-bind` | Revenue Growth | Chat + parameter panel + quote cards | Yes |
+| `claims-intake` | Operational Efficiency | — | Yes |
+| `conversational-intake` | Operational Efficiency | Chat + info panel → dashboard | No |
+| `document-retrieval` | Operational Efficiency | Chat + workflow steps + inbox mock | No |
+| `cross-sell` | Revenue Growth | Chat + coverage profile phases | No |
+| `member-support` | Client Retention | Diagram + interactive demo | No |
+| `strategy-studio` | Strategic Control | TabbedDemo (video tabs) | No |
+| `open-enrollment` | TBD | Placeholder | No |
 
 ### Video Demo Reference
-For producing animated demo videos (React pages → Playwright recording → Descript assembly → embed), see **`references/video-production.md`**. Covers project setup, design system, animation patterns, recording, trimming, Kling integration, and common mistakes.
+For producing animated demo videos (React pages → Playwright recording → Descript assembly → embed), see **`references/video-production.md`**. Covers project setup, design system, animation patterns, recording, trimming, Kling integration, voiceover scripts, and common mistakes.
 
 ---
 
@@ -65,15 +72,12 @@ Start an adaptive conversation. Ask questions one at a time. Pull context from c
 **Three things must be resolved:**
 1. **Who is this for** — the audience
 2. **What's the core message** — the one takeaway
-3. **What do we demo** — the interactive experience visitors will see
+3. **What do we demo** — the experience visitors will see (interactive, video, or both)
 
-**Demo design is critical.** Each page has a unique interactive demo. Previous demos include:
-- Chat conversations with various left-panel types (workflow steps, parameters, coverage profiles, dashboards)
-- Board/kanban views with detail panels
-- Pipeline visualizations with completeness tracking
-- All use pre-rendered DOM with JS visibility toggling, vanilla JS state machines, and scenario tabs
-
-**Video demos** are a first-class demo type. A page can have an embedded video alongside (or instead of) interactive demos. When brainstorm concludes that a video is the right demo, shift into video production mode — see `references/video-production.md` for the complete playbook covering animated React pages, Playwright recording, ffmpeg trimming, Descript assembly, voiceover scripts, and embedding.
+**Demo types:**
+- **Interactive demos** — pre-rendered DOM with JS visibility toggling, vanilla JS state machines, scenario tabs. Best for showing workflows the visitor can explore.
+- **Video demos** — animated React pages recorded with Playwright, assembled in Descript with music/VO. Best for showing end-to-end flows, voice calls, pipeline animations. See `references/video-production.md`.
+- **Both** — a page can have an embedded video AND an interactive demo. The video gives the overview, the interactive lets visitors explore.
 
 The demo should emerge from the product — don't force a pattern from another page. Think about what visual best tells the story.
 
@@ -95,7 +99,7 @@ Write a detailed prompt for the user to paste into Claude.ai to generate a workf
 - Audience context (insurance professionals? general business?)
 - Reference to match existing diagram styles
 
-The user builds the diagram in Claude.ai while you plan the build. When they provide the HTML file, extract the SVG: `sed -n '<start>,<end>p' source.html > public/images/products/<slug>-workflow.svg`
+The user builds the diagram in Claude.ai while you plan the build. When they provide the HTML file, extract the SVG: `sed -n '<start>,<end>p' source.html > public/images/outcomes/<slug>-workflow.svg`
 
 ---
 
@@ -136,7 +140,7 @@ Launch two sessions on isolated worktrees:
 
 **Session B prompt must include:**
 - Reference to the plan file
-- MDX structure reference (`src/content/products/<existing>.mdx`)
+- MDX structure reference (`src/content/outcomes/<existing>.mdx`)
 - Component pattern references (OmniChannel for dark bg, IntegrationModes for cards)
 - `pubDate` reminder
 - JSX comments only (not HTML comments in MDX)
@@ -154,19 +158,29 @@ Launch two sessions on isolated worktrees:
 
 ## Phase 5: Deploy & Close
 
-1. `git add <files> && git commit -m "Add <product> showcase page"`
-2. `git push origin main`
-3. `vercel --prod` to deploy to blog.indemn.ai
-4. Verify live page at `https://blog.indemn.ai/products/<slug>/`
+1. `git add <files> && git commit -m "Add <outcome> showcase page"`
+2. `git push origin main` (or create PR if branch protection is enabled)
+3. `vercel --prod --yes` to deploy to blog.indemn.ai
+4. Verify live page at `https://blog.indemn.ai/outcomes/<slug>/`
+
+### Embedding Videos
+For pages with video demos:
+```html
+<video controls playsinline style="width: 100%; border-radius: 12px; margin: 2rem 0; box-shadow: 0 4px 24px rgba(0,0,0,0.12);">
+  <source src="/videos/outcomes/<slug>.mp4" type="video/mp4" />
+</video>
+```
+Place video files in `public/videos/outcomes/`. Use `controls` (not `autoplay muted`) so viewers can play/pause and hear audio.
 
 ---
 
 ## Key Principles
 
-- **Every product is different.** Don't copy another page's demo structure. Design the visual that best tells THIS product's story.
+- **Every outcome is different.** Don't copy another page's demo structure. Design the visual that best tells THIS outcome's story.
 - **The demo is the centerpiece.** Messaging supports the demo, not the other way around.
 - **Complete scenario data in the plan.** Reviewers consistently flag missing data as the #1 issue. Write every message, every field, every callout before building.
 - **Parallel sessions work.** The A/B split (demo vs supporting) has no integration issues when the interface contract is clear (component name, import path, no props).
 - **Plan review catches real issues.** Always run a code-reviewer agent before approving the plan.
 - **Reuse components.** OmniChannel, IntegrationModes, and InfinitePages are battle-tested. Import them in MDX rather than rebuilding.
-- **Brand consistency.** Iris/Lilac/Eggplant palette, Barlow font. No dark mode in SVGs. `!important` on dark-bg text.
+- **Brand alignment is mandatory.** Read the brand alignment reference before touching any page. Four Outcomes categories, lexicon rules, proof points, partner language.
+- **"Associate" never "agent."** The only exception is when referring to human insurance agents/brokers or CLI command syntax.
