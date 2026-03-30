@@ -98,7 +98,7 @@ Operational infrastructure — persistent processes that don't "finish" like pro
 
 - Systems use skills as their interface (e.g., `/dispatch` invokes the dispatch engine)
 - Systems are infrastructure — they serve any project
-- Design doc: @projects/os-development/artifacts/2026-02-19-dispatch-system-design.md
+- Design doc: `projects/os-development/artifacts/2026-02-19-dispatch-system-design.md`
 
 ## Conventions
 @.claude/rules/conventions.md
