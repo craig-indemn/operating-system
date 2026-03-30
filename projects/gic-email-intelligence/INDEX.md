@@ -4,6 +4,47 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 
 ## Status
 
+**Session 2026-03-30. Production deployment in progress.** System moved from localhost to Railway (backend) + AWS Amplify (frontend). New extraction pipeline actually reads PDFs via Claude structured output. Auth integrated with copilot-server. Week 1 of 4 backfill running on prod.
+
+**What was built this session (2026-03-30):**
+1. **Production deployment plan** — Full brainstorm: Railway backend, Amplify frontend, shared JWT auth, MongoDB proxy, weekly backfill strategy. See `artifacts/2026-03-30-production-deployment-plan.md`.
+2. **Fixed extraction pipeline** — Replaced broken ReAct pdf-extractor (couldn't see PDFs) with structured output module. Downloads from S3, sends as multimodal content blocks, gets validated Pydantic model. Unbiased schema (`dict[str, Any]`).
+3. **Pipeline reorder** — extract → classify → link (was classify → link → extract). Classifier now has extraction context.
+4. **Configurable stages** — `PIPELINE_STAGES=extract,classify,link` env var. Assess/draft disabled by default.
+5. **JWT auth** — Copilot-server integration. Login page, signin proxy, GIC org scoping. Token prefix "JWT " handling.
+6. **Railway deployment** — 3 services (API, sync cron, processing cron). MongoDB proxy through dev-services EC2. Primary detection script. Static IP `162.220.234.15`.
+7. **Amplify deployment** — `gic.indemn.ai` (prod), dev on Amplify default domain. Route 53 DNS.
+8. **Observatory link** — Mail icon in header links to `gic.indemn.ai/?token=${jwt}` (code written, not yet deployed).
+9. **Clean slate on prod** — All derived data deleted. 3,469 emails reset to pending.
+10. **Skills created** — Railway CLI, AWS Amplify, LangChain. All in OS `.claude/skills/` with references.
+
+**Production URLs:**
+- Frontend: `https://gic.indemn.ai` (prod) / `https://main.d244t76u9ej8m0.amplifyapp.com` (dev)
+- API: `https://api-production-e399.up.railway.app` (prod) / `https://api-production-79f0.up.railway.app` (dev)
+- Login: `support@indemn.ai` (or any copilot account with GIC org)
+- GitHub: `craig-indemn/gic-email-intelligence` (private)
+- Railway project: `4011d186-1821-49f5-a11b-961113e6f78d`
+- Amplify app: `d244t76u9ej8m0`
+
+**Backfill status:** Week 1 (Mar 1-8, 124 emails) processing with Haiku. Weeks 2-4 pending assessment.
+
+**What's NOT done:**
+1. Backfill weeks 2-4 (Mar 8-31)
+2. Sync cron bug (datetime timezone format)
+3. Observatory link deployment
+4. LOB configs beyond GL/Golf Cart
+5. No URL routing in frontend
+6. MongoDB proxy is temporary (remove when Atlas IP allowlist updated)
+7. Socat not persistent (nohup, not systemd — dies on EC2 reboot)
+
+**Key references:**
+- Pipeline review: `artifacts/2026-03-30-pipeline-architecture-review.md`
+- Deployment plan: `artifacts/2026-03-30-production-deployment-plan.md`
+- Implementation plan: `artifacts/2026-03-30-production-implementation-plan.md`
+- MongoDB proxy: `artifacts/2026-03-30-mongodb-proxy-setup.md`
+
+---
+
 **Session 2026-03-25. Demo delivered to JC and Maribel.** Full system live with 3,469 emails, 2,894 submissions, all assessed. Indemn branding applied. Outlook Add-in working. Demo walked through Overview → submission examples → Outlook sidebar → golf cart automation path.
 
 **What was built this session (2026-03-24/25):**
@@ -318,6 +359,9 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 | 2026-03-24 | [data-model-redesign](artifacts/2026-03-24-data-model-redesign.md) | Comprehensive data model & lifecycle redesign — 8-stage model, situation assessment layer, context-aware draft generation, sourced from 7 research documents |
 | 2026-03-24 | [implementation-plan](artifacts/2026-03-24-implementation-plan.md) | 4-wave implementation plan with 15 parallel tasks — backend, frontend, migration, browser testing |
 | 2026-03-25 | [demo-talking-points](artifacts/2026-03-25-demo-talking-points.md) | Demo walkthrough for JC — 4 acts, talking points, examples, Q&A prep |
+| 2026-03-30 | [pipeline-architecture-review](artifacts/2026-03-30-pipeline-architecture-review.md) | Complete end-to-end pipeline walkthrough — every step, every file, every limitation. Pre-production review. |
+| 2026-03-30 | [production-deployment-plan](artifacts/2026-03-30-production-deployment-plan.md) | Full production plan — Railway backend, Amplify frontend, pipeline fix, auth, Observatory integration, historical data processing, definition of done |
+| 2026-03-30 | [production-implementation-plan](artifacts/2026-03-30-production-implementation-plan.md) | Bite-sized implementation plan — 16 tasks across 4 parallel tracks (pipeline fix, infra, auth, production) |
 
 ## Key Data Files
 | File | What it contains |
