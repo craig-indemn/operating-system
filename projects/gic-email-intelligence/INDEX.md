@@ -3,27 +3,82 @@
 Build a comprehensive understanding of GIC Underwriters' quoting operation by analyzing their quote@gicunderwriters.com inbox, then design and demo an intelligent system that organizes their workflows, identifies automation opportunities, and eventually connects to all their communication channels (email, phone via RingCentral). The system should be state-based, data-driven, with a data layer that ingestion and processing mechanisms build on top of.
 
 ## Status
-Session 2026-03-23/24. **Full inbox processed, UI functional, critical draft accuracy issue identified.** 3,214 emails classified (39 LOBs), 2,754 submissions linked, 122 AI-generated drafts. UI reshaped to match Ryan's GIC wholesaler wireframes. **Critical finding:** the draft generation system acts without understanding context — portal submissions get unnecessary info requests, quote comparison emails get misidentified as new submissions. The system needs to understand → interpret → present → then act. Golf cart drafts specifically need to be re-evaluated based on actual email context. See `artifacts/2026-03-24-session-handoff.md` for full handoff.
 
-Session 2026-03-24 (continued). **8-stage lifecycle redesign implemented and verified.** Research → design → review (3 rounds) → implementation (4 waves, 16 tasks) → migration → browser testing. All 2,754 submissions migrated to new 8-stage model. Situation assessment layer added. Carrier and Agent entities seeded. Frontend fully updated. Zero TypeScript errors, all API endpoints returning 200, 8/8 browser tests pass.
+**Session 2026-03-25. Demo delivered to JC and Maribel.** Full system live with 3,469 emails, 2,894 submissions, all assessed. Indemn branding applied. Outlook Add-in working. Demo walked through Overview → submission examples → Outlook sidebar → golf cart automation path.
 
-Previous session 2026-03-24. **Business model research complete.** 7 research documents in `research/` covering company profile, LOB catalog, carrier relationships, agent network, email workflow patterns, submission lifecycle, and unified business model synthesis. Key findings: GIC operates in two modes (wholesale broker for USLI/Hiscox vs MGA/carrier for Granada Insurance programs like golf carts). 93% of inbox email is automated carrier notifications; only 5% of submissions involve actual human work. Granada Insurance financials under pressure ($78.8M premiums, 87% loss ratio, -$15.1M net income, AM Best downgrade to B). Current 5-stage model structurally broken — proposed 8-stage model separating who holds the ball. See `research/business-model-synthesis.md` for the full briefing.
+**What was built this session (2026-03-24/25):**
+1. **Business model research** — 7 research documents (171KB) analyzing GIC's actual operations from email data, web research, Gmail threads, Ryan's UX observations. Key finding: 93% of inbox is automated USLI notifications, only 5% of submissions need human work. See `research/business-model-synthesis.md`.
+2. **8-stage lifecycle redesign** — Replaced broken 5-stage model. Added situation assessment layer ("understand before acting"), carrier/agent entities, ball-holder tracking. Design reviewed 3 times. See `artifacts/2026-03-24-data-model-redesign.md`.
+3. **Full implementation** — 25 files changed (backend + frontend), 4-wave parallel execution. Models, tools, pipeline, API routes, all UI pages updated.
+4. **Assessment backfill** — All 2,894 submissions assessed via parallel subagents. 105 legitimate drafts generated (82 decline notifications, 15 info requests, 8 quote forwards).
+5. **Root cause fix: draft accuracy** — Disabled draft types the system can't produce accurately (status_update, followup, remarket_suggestion) until data sources exist. Documented WHY each is disabled and WHAT enables it.
+6. **Fresh data sync** — Synced 255 new emails (Mar 16-25), classified and linked via subagents. 13 recent submissions had PDFs extracted and assessed.
+7. **UI honest-ification** — UI only shows what's real. Gap analysis hidden for generic LOBs. Auto-notified USLI submissions dimmed. UW buttons are honest manual stage transitions. Pipeline bar simplified for auto-notified.
+8. **Indemn branding** — Barlow font, CSS variable design system, GIC logo + "Powered by Indemn", Indemn iris accent color. Clickable table rows.
+9. **Overview page** — 5-section demo narrative (what we did, what we found, how it works, what it means, automation path).
+10. **Outlook Add-in** — Deployed to Vercel, cloudflared tunnel to localhost, 4 demo emails seeded.
 
-Previous: Session 2026-03-20. Outlook Add-in working end-to-end. Session 2026-03-18/19. Comprehensive inbox intelligence tool.
+**Previous sessions:** 2026-03-20 (Outlook Add-in), 2026-03-18/19 (inbox intelligence tool), 2026-03-16 (full implementation), 2026-03-13 (initial data extraction + classification).
 
-**Repo:** `/Users/home/Repositories/gic-email-intelligence/` (35+ commits on `main`, local only — need org permissions to push)
+**Repo:** `/Users/home/Repositories/gic-email-intelligence/` (50+ commits on `main`, local only)
 
 ### Research
 Living research corpus in `research/` — 7 documents, 171KB, updated 2026-03-24. Start with `research/business-model-synthesis.md` for the unified picture. See `research/README.md` for full index.
 
-### Current State
-- **3 tabs**: Inbox (triaged action queues), Analytics (volume/types/LOBs/agents/history), How It Works (methodology)
-- **35 submissions** processed (100 emails through pipeline with Haiku), 26 with AI drafts
-- **3,214 emails** classified, 5,888 attachments in S3, 298 PDF extractions
-- **108 tests passing**, frontend builds clean
-- **Services**: API on port 8080, frontend on port 5173
-- **To run**: `uv run uvicorn gic_email_intel.api.main:app --port 8080` + `cd ui && npm run dev`
-- **URL**: `http://localhost:5173/?token=0So5zcDzGPnMdADZqh62r8Hpi559W9RbXqJlc3D_RBQ`
+### Current State (as of 2026-03-25)
+- **3 tabs**: Submissions (queue), Overview (demo narrative), Insights (merged analytics + system)
+- **3,469 emails** synced (last sync Mar 25), classified, linked to 2,894 submissions
+- **2,894 submissions** — all assessed. 8-stage lifecycle: received, triaging, awaiting_agent_info, awaiting_carrier_action, processing, quoted, declined, closed
+- **~330 PDF extractions** across ~30 submissions. 97% of PDFs still unextracted (extraction is the main data gap)
+- **105 suggested drafts** — 82 decline notifications, 15 info requests, 8 quote forwards. All backed by assessments, all enabled draft types only.
+- **3 new MongoDB collections**: assessments (2,894), carriers (3: USLI, Hiscox, Granada), agents (55)
+- **Indemn design system** — Barlow font, CSS variables, GIC logo, "Powered by Indemn"
+- **Outlook Add-in** — deployed at gic-addin.vercel.app. Needs cloudflared tunnel to connect to local backend.
+- **LOB configs**: GL (10 fields) and Golf Cart (17 fields) configured. 35 others use generic 8-field config.
+- **Draft types**: 3 enabled (info_request, quote_forward, decline_notification). 3 disabled (status_update, followup, remarket_suggestion) — documented in situation_assessor.md and harness.py.
+
+### To Run
+```bash
+# Backend
+cd /Users/home/Repositories/gic-email-intelligence
+uv run uvicorn gic_email_intel.api.main:app --port 8080
+
+# Frontend
+cd ui && npm run dev
+
+# Outlook Add-in (optional — needs tunnel)
+nohup cloudflared tunnel --url http://localhost:8080 > /tmp/cloudflared.log 2>&1 &
+# Get tunnel URL from /tmp/cloudflared.log, then:
+cd addin && VITE_API_BASE=https://<tunnel>.trycloudflare.com/api VITE_API_TOKEN=0So5zcDzGPnMdADZqh62r8Hpi559W9RbXqJlc3D_RBQ npm run build
+cp manifest.xml dist/ && cd dist && npx vercel --prod --yes && npx vercel alias gic-addin.vercel.app
+
+# Web app URL
+open "http://localhost:5173/?token=0So5zcDzGPnMdADZqh62r8Hpi559W9RbXqJlc3D_RBQ"
+```
+
+### Demo Examples (verified, extraction-backed)
+| Submission | LOB | Story | Draft |
+|-----------|-----|-------|-------|
+| Vivaria Florida LLC | GL | Complete ACORD submission, 100% extracted, system correctly didn't request info | None (correct) |
+| Klein International LLC | GL | USLI pending file, agent partial reply, draft requests remaining items | info_request to lbenitez@doraladvisors.com |
+| Magdalena Soto | Commercial Property | USLI decline with 2 specific reasons from PDFs | decline_notification to glendys@sebandainsurance.com |
+| William Wacaster | Golf Cart | Portal submission, 95% extracted, ready for UW — the automation story | None (correct) |
+
+### Key Architecture Decisions
+- **Situation assessment is the single source of truth** for completeness, gap analysis, and draft decisions. `compute_completeness()` is the fallback only when no assessment exists.
+- **Draft types are gated** — only info_request, quote_forward, decline_notification are enabled. Others disabled until data sources exist (management system API, outbound tracking, carrier appetite data). Guard in harness.py `ENABLED_DRAFT_TYPES`.
+- **Assessments drive everything downstream** — the pipeline is: classify → link → extract → assess → [maybe draft]. The assessor replaces the old stage_detector. See `situation_assessor.md`.
+- **Two operating modes**: brokered (USLI/Hiscox) vs direct_underwritten (golf carts on Granada paper). Encoded in `operating_mode` field and LOB config `workflow_type`.
+- **Auto-notified USLI submissions** (95% of volume) get template assessments and are dimmed in the UI. The 5% that need human work are the focus.
+
+### What's NOT Done
+1. **PDF extraction coverage** — only ~330 of 3,100+ PDFs extracted (10%). This is the biggest data gap. Submissions without extractions have inaccurate completeness and may have wrong drafts.
+2. **LOB configs** — only GL and Golf Cart configured. 35 LOBs use generic 8-field config. Gap analysis hidden for these.
+3. **Disabled draft types** — status_update, followup, remarket_suggestion need: management system API (Unisoft/Jeremiah), outbound email tracking, carrier appetite data.
+4. **No URL routing** — React useState navigation, no shareable URLs, browser back doesn't work.
+5. **Push to GitHub** — still local only, need indemn-ai org permissions.
+6. **Production deployment** — running on localhost. Needs AWS (ECS/EC2 + domain + SSL).
+7. **Email sending** — drafts are suggestions only. Actual sending requires Mail.Send permission from GIC.
 
 ### Session 2026-03-20 — What Was Built
 
@@ -262,6 +317,7 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 | 2026-03-24 | [session-handoff](artifacts/2026-03-24-session-handoff.md) | Comprehensive handoff: system state, data pipeline, UI status, critical draft accuracy issue, golf cart analysis, what needs fixing |
 | 2026-03-24 | [data-model-redesign](artifacts/2026-03-24-data-model-redesign.md) | Comprehensive data model & lifecycle redesign — 8-stage model, situation assessment layer, context-aware draft generation, sourced from 7 research documents |
 | 2026-03-24 | [implementation-plan](artifacts/2026-03-24-implementation-plan.md) | 4-wave implementation plan with 15 parallel tasks — backend, frontend, migration, browser testing |
+| 2026-03-25 | [demo-talking-points](artifacts/2026-03-25-demo-talking-points.md) | Demo walkthrough for JC — 4 acts, talking points, examples, Q&A prep |
 
 ## Key Data Files
 | File | What it contains |
