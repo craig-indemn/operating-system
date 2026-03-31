@@ -4,7 +4,64 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 
 ## Status
 
-**Session 2026-03-30. Production deployment in progress.** System moved from localhost to Railway (backend) + AWS Amplify (frontend). New extraction pipeline actually reads PDFs via Claude structured output. Auth integrated with copilot-server. Week 1 of 4 backfill running on prod.
+**Session 2026-03-31. Production live, critical bugs fixed, ready for full re-sync + backfill.**
+
+System is deployed on Railway + Amplify. Auth works (copilot-server JWT). Week 1 backfill completed (124 emails) but revealed two critical data issues that require a full re-sync before continuing:
+
+1. **Empty email bodies** — Graph API `Prefer: text` header caused HTML-only emails to sync with empty body. Fixed: removed text preference, sync now captures HTML and extracts text. All existing emails need re-sync.
+2. **Empty extracted_fields** — `dict[str, Any]` in Pydantic schema generated an empty JSON schema that LangChain/Anthropic enforced as "must be empty object." Fixed: replaced with `list[ExtractedField]` (explicit key/value pairs). Verified working — 10+ fields now extracted per PDF.
+
+**Next step:** Full re-sync (delete all emails, re-pull from Graph API with body fix), clean slate, then backfill 1 month in weekly batches with Haiku.
+
+**What was done this session (2026-03-30/31):**
+1. **Production deployment plan** — Full brainstorm: Railway backend, Amplify frontend, shared JWT auth, MongoDB proxy, weekly backfill strategy. See `artifacts/2026-03-30-production-deployment-plan.md`.
+2. **Fixed extraction pipeline** — Replaced broken ReAct pdf-extractor with structured output module. Downloads from S3, sends as multimodal content blocks, gets validated Pydantic model.
+3. **Pipeline reorder** — extract → classify → link (was classify → link → extract). Classifier now has extraction context.
+4. **Configurable stages** — `PIPELINE_STAGES=extract,classify,link` env var. Assess/draft disabled by default.
+5. **JWT auth** — Copilot-server integration. Login page, signin proxy, GIC org scoping. Fixed: token "JWT " prefix stripping, CORS origins, 401 race condition.
+6. **Railway deployment** — 3 services (API, sync cron, processing cron). MongoDB proxy through dev-services EC2. Primary detection script. Static IP `162.220.234.15`.
+7. **Amplify deployment** — `gic.indemn.ai` (prod), dev on Amplify default domain. Route 53 DNS.
+8. **Observatory link** — PR #57 at indemn-ai/indemn-observatory, GIC org scoped. Awaiting review.
+9. **Week 1 backfill** — 124 emails processed (123 succeeded, 1 failed). Revealed empty body + empty extracted_fields bugs.
+10. **Bug fixes:** Graph API datetime format (Z suffix), PDF attachment URLs (VITE_API_BASE), CORS origins, orphaned submissions cleanup.
+11. **Root cause: empty extracted_fields** — `dict[str, Any]` → `list[ExtractedField]`. LangChain/Anthropic set `additionalProperties=false` on dict schemas. See pydantic-ai #4117.
+12. **Root cause: empty email bodies** — Graph API `Prefer: text` returns empty for HTML-only emails. Removed preference, added `_extract_body()` helper.
+13. **Skills created** — Railway CLI, AWS Amplify, LangChain. All in OS `.claude/skills/` with references.
+
+**Production URLs:**
+- Frontend: `https://gic.indemn.ai` (prod) / `https://main.d244t76u9ej8m0.amplifyapp.com` (dev)
+- API: `https://api-production-e399.up.railway.app` (prod) / `https://api-production-79f0.up.railway.app` (dev)
+- Login: `support@indemn.ai` (or any copilot account with GIC org)
+- GitHub: `craig-indemn/gic-email-intelligence` (private)
+- Railway project: `4011d186-1821-49f5-a11b-961113e6f78d` (environments: development, production)
+- Amplify app: `d244t76u9ej8m0` (branches: main → dev, prod → gic.indemn.ai)
+
+**Infrastructure:**
+- MongoDB proxy: dev-services EC2 (44.196.55.84), ports 27017-27019 (dev), 27020-27022 (prod)
+- Static IP: `162.220.234.15` (Railway Pro, per-service — must enable on each service in dashboard)
+- Sync cron: **paused** (pending re-sync)
+- Processing cron: **paused** (pending re-sync + clean slate)
+
+**Backfill plan (not yet executed):**
+1. Delete all emails from MongoDB
+2. Re-sync all emails from Graph API (with body fix — captures HTML)
+3. Clean slate all derived data
+4. Process 1 month (March 2026) in weekly batches with Haiku (~$25-35 estimated)
+
+**Known issues to address:**
+- UI: extracted fields section vs gap analysis is confusing (layout/UX issue, noted in `artifacts/2026-03-31-ui-issues-noted.md`)
+- Socat proxy not persistent (nohup, not systemd — dies on EC2 reboot)
+- MongoDB proxy is temporary — remove when Atlas IP allowlist updated with Railway static IP
+- Observatory link PR awaiting team review
+
+**Key references:**
+- Pipeline review: `artifacts/2026-03-30-pipeline-architecture-review.md`
+- Deployment plan: `artifacts/2026-03-30-production-deployment-plan.md`
+- Implementation plan: `artifacts/2026-03-30-production-implementation-plan.md`
+- MongoDB proxy: `artifacts/2026-03-30-mongodb-proxy-setup.md`
+- UI issues: `artifacts/2026-03-31-ui-issues-noted.md`
+
+---
 
 **What was built this session (2026-03-30):**
 1. **Production deployment plan** — Full brainstorm: Railway backend, Amplify frontend, shared JWT auth, MongoDB proxy, weekly backfill strategy. See `artifacts/2026-03-30-production-deployment-plan.md`.
@@ -362,6 +419,8 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 | 2026-03-30 | [pipeline-architecture-review](artifacts/2026-03-30-pipeline-architecture-review.md) | Complete end-to-end pipeline walkthrough — every step, every file, every limitation. Pre-production review. |
 | 2026-03-30 | [production-deployment-plan](artifacts/2026-03-30-production-deployment-plan.md) | Full production plan — Railway backend, Amplify frontend, pipeline fix, auth, Observatory integration, historical data processing, definition of done |
 | 2026-03-30 | [production-implementation-plan](artifacts/2026-03-30-production-implementation-plan.md) | Bite-sized implementation plan — 16 tasks across 4 parallel tracks (pipeline fix, infra, auth, production) |
+| 2026-03-30 | [mongodb-proxy-setup](artifacts/2026-03-30-mongodb-proxy-setup.md) | EC2 socat proxy setup for Railway → Atlas connectivity. Temporary. Includes teardown instructions. |
+| 2026-03-31 | [ui-issues-noted](artifacts/2026-03-31-ui-issues-noted.md) | UI issues from prod review — extracted fields vs gap analysis confusion, PDF links (fixed), empty bodies (fixed) |
 
 ## Key Data Files
 | File | What it contains |
@@ -436,6 +495,20 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 - 2026-03-20: Demo emails seeded via sendMail to personal Outlook.com (craigindemn@outlook.com) — direct inbox creation doesn't activate add-ins
 - 2026-03-20: Pinning (SupportsPinning) requires VersionOverridesV1_1, not V1_0 — works on M365 work accounts, not personal Outlook.com
 - 2026-03-20: Cloudflared tunnel needed for demo (add-in on Vercel can't reach localhost backend)
+- 2026-03-30: Post-demo direction shift: focus on data quality and extraction pipeline, not auto-drafts/ball-holder. System becomes pipeline into AMS (Unisoft).
+- 2026-03-30: Railway for backend (3 services: API, sync cron, processing cron), AWS Amplify for frontend
+- 2026-03-30: Pipeline reorder: extract → classify → link. Extraction first so classifier has PDF content.
+- 2026-03-30: Assess and draft stages disabled by default via PIPELINE_STAGES config. Re-enable when data sources exist.
+- 2026-03-30: JWT auth via copilot-server (prod: copilot.indemn.ai). Shared JWT_SECRET, HS256, no exp verification.
+- 2026-03-30: GIC org scoped access: @indemn.ai = admin, GIC org members = access, others = 403.
+- 2026-03-30: MongoDB Atlas proxy via dev-services EC2 (socat). Temporary until Atlas IP allowlist updated.
+- 2026-03-30: Railway static IP per-service, not per-project. Must enable on each service individually.
+- 2026-03-30: railway.json should NOT set startCommand or healthcheckPath — these are per-service via GraphQL API.
+- 2026-03-30: Copilot-server returns token as "JWT <jwt>" — backend must strip prefix from token VALUE, not just header.
+- 2026-03-30: Haiku for batch processing (~4x cheaper than Sonnet, sufficient for extraction/classification).
+- 2026-03-31: dict[str, Any] DOES NOT WORK with LangChain structured output — LangChain/Anthropic set additionalProperties=false. Use list[ExtractedField] with explicit key/value pairs instead. (pydantic-ai #4117)
+- 2026-03-31: Graph API Prefer: text header causes HTML-only emails to return empty body. Remove the preference, capture native format.
+- 2026-03-31: VITE_API_BASE must be used everywhere the frontend calls the API — relative /api only works with local Vite proxy.
 
 ## Open Questions (deferred — not blocking demo)
 - How does RingCentral data merge into the same pipeline? (Same pattern: RingCentral CLI + skills)
