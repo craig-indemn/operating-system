@@ -41,9 +41,12 @@ When in doubt, ask. The cost of pausing is zero. The cost of a production incide
 | `/excalidraw` | excalidraw-to-svg | Create Excalidraw diagrams programmatically — flowcharts, architecture diagrams, sequence diagrams as .excalidraw JSON rendered to SVG |
 | `/langfuse` | curl (REST API) | Query Langfuse OTLP traces for voice agent observability — trace lookup, session data, tool call spans |
 | `/aws` | aws CLI | AWS infrastructure — Secrets Manager, Parameter Store, EC2, IAM, ECS, SSM Session Manager (SSH is disabled — all EC2 access via SSM) |
+| `/aws-amplify` | aws amplify CLI | Deploy and manage frontend apps on Amplify Hosting — React/Vite SPAs, custom domains, PR previews, branch environments |
+| `/railway` | railway CLI | Deploy and manage services on Railway — web services, cron jobs, environments, custom domains, config-as-code |
 | `/1password` | op CLI | Personal secrets — read tokens, store credentials, manage indemn-os vault |
 | `/markdown-pdf` | md-to-pdf | Convert markdown to Indemn-branded PDF — Barlow font, iris headings, styled tables |
 | `/hive` | hive CLI | Unified record management — entities, knowledge, search, refs, sync. The Hive is the awareness layer. |
+| `/langchain` | langchain | LangChain LLM integration — structured output, multimodal PDFs/images, ReAct agents (background knowledge, auto-loads) |
 
 ### System Skills
 | Skill | What It Does |

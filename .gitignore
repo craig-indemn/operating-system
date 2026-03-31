@@ -16,6 +16,7 @@ __pycache__/
 
 # Logs
 .logs/
+projects/gic-email-intelligence/data/
 
 # Hive synced cache (rebuilt via hive sync)
 hive/.synced/
