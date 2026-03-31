@@ -421,6 +421,7 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 | 2026-03-30 | [production-implementation-plan](artifacts/2026-03-30-production-implementation-plan.md) | Bite-sized implementation plan — 16 tasks across 4 parallel tracks (pipeline fix, infra, auth, production) |
 | 2026-03-30 | [mongodb-proxy-setup](artifacts/2026-03-30-mongodb-proxy-setup.md) | EC2 socat proxy setup for Railway → Atlas connectivity. Temporary. Includes teardown instructions. |
 | 2026-03-31 | [ui-issues-noted](artifacts/2026-03-31-ui-issues-noted.md) | UI issues from prod review — extracted fields vs gap analysis confusion, PDF links (fixed), empty bodies (fixed) |
+| 2026-03-31 | [ui-polish-design](artifacts/2026-03-31-ui-polish-design.md) | UI redesign for JC daily use — expandable email rows, Outlook folder column/filter, remove completeness bar, clarify detail view layout |
 
 ## Key Data Files
 | File | What it contains |

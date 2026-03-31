@@ -27,7 +27,7 @@ import requests
 # --- Configuration ---
 TENANT_ID = "7c0931fd-6924-44fe-8fac-29c328791072"
 CLIENT_ID = "4bf2eacd-4869-4ade-890c-ba5f76c7cada"
-CLIENT_SECRET = "REDACTED_CLIENT_SECRET"
+CLIENT_SECRET = "1qD8Q~nzvBeCEkPNBMw6arYukIgJB~KfGf~WQciv"
 USER_EMAIL = "quote@gicunderwriters.com"
 GRAPH_BASE = f"https://graph.microsoft.com/v1.0/users/{USER_EMAIL}"
 
