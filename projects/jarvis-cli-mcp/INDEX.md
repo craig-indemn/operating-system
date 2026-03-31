@@ -3,11 +3,11 @@
 Build a CLI tool and MCP server around Indemn's platform APIs so developers (internal first, then external customers) can programmatically manage AI agents — creating agents, prompts, functions, knowledge bases, running evaluations, and pulling analytics. Everything currently done via the Copilot Dashboard UI, made available through command-line and AI-assisted workflows (Claude Code skills, MCP servers).
 
 ## Status
-**Production hardening complete (2026-03-24). Awaiting copilot-server PR merge + prod deploy.**
+**Production beta (2026-03-31). CLI deployed, tested, announced to dev-squad.**
 
-- **npm:** `@indemn/cli@1.2.0` published publicly. Install: `npm install -g @indemn/cli`
+- **npm:** `@indemn/cli@1.3.1` published publicly. Install: `npm install -g @indemn/cli`
 - **Showcase page:** blog.indemn.ai/products/indemn-cli/ (committed, not yet deployed)
-- **GitHub:** https://github.com/craig-indemn/indemn-cli (private)
+- **GitHub:** https://github.com/craig-indemn/indemn-cli (private — pending migration to indemn-ai org)
 - **indemn-cli repo:** `/Users/home/Repositories/indemn-cli/` (main branch) — 35+ TypeScript source files, 58 MCP tools, 6 skills, builds cleanly
 - **Copilot Server:** API key auth merged (PR #806). Security hardening PR #835 awaiting reviewer approval.
 - **Claude Code:** MCP server added to user config, plugin installed via local marketplace
@@ -138,8 +138,14 @@ indemn agents list
 | 2026-03-24 | [production-hardening-plan](../../docs/plans/2026-03-24-cli-production-hardening.md) | Security audit + hardening plan for production deployment |
 
 ## Decisions
-- 2026-03-24: Security hardening before prod — JWT 24h expiry, strict token regex, name validation, config chmod 600, socket.io-parser patched
-- 2026-03-24: Published @indemn/cli@1.2.0 with security fixes — team onboarding is just `npm install -g @indemn/cli && indemn login --env production`
+- 2026-03-31: Production beta announced to dev-squad. Every CLI command tested E2E against prod. 6 bugs found and fixed during testing.
+- 2026-03-31: Added `org list` and `org switch` — API key authenticates user, server validates org membership per-request
+- 2026-03-31: Added `indemn init` — copies skills to .claude/skills/indemn/ for auto-discovery
+- 2026-03-31: Consolidated 5 skills into 2 (agent-builder, evaluations) with complete command reference
+- 2026-03-31: Fixed login — password prompt rewritten (muted readline), --env flag routing fixed (Commander global option conflict)
+- 2026-03-31: Fixed --model (wraps in llm_config with auto provider detection), functions update (includes type), kb import (bulk QNA), is_required display
+- 2026-03-24: Security hardening — JWT 24h expiry, strict token regex, name validation, config chmod 600, socket.io-parser patched
+- 2026-03-24: Published @indemn/cli@1.2.0 with security fixes
 - 2026-03-12: API keys for auth — one-time Firebase login generates persistent key, stored in ~/.indemn/config.json. SHA-256 hashed in DB.
 - 2026-03-12: New repo (`indemn-cli`) — CLI is a distribution surface, not core business logic
 - 2026-03-12: TypeScript — matches Copilot Server stack, npm distribution, mature MCP SDK
@@ -195,6 +201,8 @@ Live at: https://blog.indemn.ai/products/indemn-cli/
 - MCP configured locally for Claude Desktop and Gemini CLI
 
 ## Open Questions
-- Transfer `indemn-cli` repo to `indemn-ai` org when Craig gets create permissions?
-- Which remote MCP transport to use — SSE or Streamable HTTP?
-- Where to host the remote MCP server — Vercel, copilot-server, or standalone?
+- **Access control for production CLI usage** — Team members have full write access to all agents in their active org. Need per-user or per-agent scoping. Options: scoped API keys, role-based permissions, org-level agent ownership.
+- **Repo migration** — Dhruv creating repo under `indemn-ai` org. Then migrate from `craig-indemn/indemn-cli`, set up CI/CD for automated npm publishing, establish Linear project for CLI work.
+- **Server-side bugs** — `kb data update` returns "reject is not defined"; `functions import --url` fails parsing some OpenAPI specs. Both copilot-server issues.
+- Which remote MCP transport to use — SSE or Streamable HTTP? (Phase 3)
+- Where to host the remote MCP server — Vercel, copilot-server, or standalone? (Phase 3)
