@@ -327,6 +327,87 @@ class SoapBridge
 }
 
 // ---------------------------------------------------------------------------
+// Logger — structured JSON logging with daily rotation
+// ---------------------------------------------------------------------------
+class Logger
+{
+    static string logDir = "C:\\unisoft\\logs";
+    static object fileLock = new object();
+    static int retainDays = 30;
+
+    public static void Init()
+    {
+        try
+        {
+            Directory.CreateDirectory(logDir);
+            CleanOldLogs();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("WARNING: Could not initialize log directory: " + ex.Message);
+        }
+    }
+
+    public static void Log(string op, int statusCode, long durationMs, string detail)
+    {
+        string ts = DateTime.UtcNow.ToString("o");
+        StringBuilder sb = new StringBuilder();
+        sb.Append("{\"ts\":\"" + ts + "\"");
+        if (op != null)
+            sb.Append(",\"op\":\"" + JsonEscapeLog(op) + "\"");
+        sb.Append(",\"status\":" + statusCode);
+        sb.Append(",\"duration_ms\":" + durationMs);
+        if (detail != null)
+            sb.Append(",\"detail\":\"" + JsonEscapeLog(detail) + "\"");
+        sb.Append("}");
+        string line = sb.ToString();
+
+        Console.WriteLine(line);
+
+        lock (fileLock)
+        {
+            try
+            {
+                string file = Path.Combine(logDir,
+                    "proxy-" + DateTime.UtcNow.ToString("yyyy-MM-dd") + ".log");
+                File.AppendAllText(file, line + "\n");
+            }
+            catch { }
+        }
+    }
+
+    public static void Info(string message)
+    {
+        Log(null, 0, 0, message);
+    }
+
+    static void CleanOldLogs()
+    {
+        try
+        {
+            DateTime cutoff = DateTime.UtcNow.AddDays(-retainDays);
+            string[] files = Directory.GetFiles(logDir, "proxy-*.log");
+            foreach (string file in files)
+            {
+                FileInfo fi = new FileInfo(file);
+                if (fi.LastWriteTimeUtc < cutoff)
+                {
+                    try { fi.Delete(); } catch { }
+                }
+            }
+        }
+        catch { }
+    }
+
+    static string JsonEscapeLog(string s)
+    {
+        if (s == null) return "";
+        return s.Replace("\\", "\\\\").Replace("\"", "\\\"")
+                .Replace("\n", "\\n").Replace("\r", "\\r").Replace("\t", "\\t");
+    }
+}
+
+// ---------------------------------------------------------------------------
 // UniProxy — HTTP listener, routing, SOAP bridge integration
 // ---------------------------------------------------------------------------
 class UniProxy
@@ -356,19 +437,20 @@ class UniProxy
             Environment.GetEnvironmentVariable("UNISOFT_SKIP_CERT_VALIDATION"),
             "true", StringComparison.OrdinalIgnoreCase);
 
-        Console.WriteLine("UniProxy v0.3 starting...");
-        Console.WriteLine("SOAP endpoint: " + soapUrl);
-        Console.WriteLine("Client ID: " + clientId);
-        Console.WriteLine("Skip cert validation: " + skipCert);
+        Logger.Init();
+        Logger.Info("UniProxy v0.4 starting");
+        Logger.Info("SOAP endpoint: " + soapUrl);
+        Logger.Info("Client ID: " + clientId);
+        Logger.Info("Skip cert validation: " + skipCert);
 
         bridge = new SoapBridge(soapUrl, wsUser, wsPass, clientId, skipCert);
         bridge.Start();
-        Console.WriteLine("SOAP bridge started, token acquired.");
+        Logger.Info("SOAP bridge started, token acquired");
 
         HttpListener listener = new HttpListener();
         listener.Prefixes.Add(string.Format("http://+:{0}/", port));
         listener.Start();
-        Console.WriteLine("UniProxy listening on port " + port);
+        Logger.Info("UniProxy listening on port " + port);
 
         while (true)
         {
@@ -435,6 +517,7 @@ class UniProxy
                 Interlocked.Increment(ref requestCount);
                 lastRequestTime = DateTime.UtcNow;
 
+                Stopwatch sw = Stopwatch.StartNew();
                 try
                 {
                     string requestBody;
@@ -455,16 +538,23 @@ class UniProxy
                         httpStatus = 502;
                     else if (responseJson.Contains("\"error\":\"unisoft_validation\""))
                         httpStatus = 422;
+
+                    sw.Stop();
+                    Logger.Log(opName, httpStatus, sw.ElapsedMilliseconds, null);
                     WriteJson(ctx, httpStatus, responseJson);
                 }
                 catch (TimeoutException)
                 {
+                    sw.Stop();
+                    Logger.Log(opName, 503, sw.ElapsedMilliseconds, "Channel busy");
                     WriteJson(ctx, 503,
                         "{\"error\":\"busy\",\"message\":\"Channel busy, try again\"," +
                         "\"retryAfter\":5}");
                 }
                 catch (Exception ex)
                 {
+                    sw.Stop();
+                    Logger.Log(opName, 500, sw.ElapsedMilliseconds, ex.Message);
                     WriteJson(ctx, 500,
                         "{\"error\":\"proxy_error\",\"message\":\"" +
                         JsonEscape(ex.Message) + "\"}");
