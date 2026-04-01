@@ -4,55 +4,47 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 
 ## Status
 
-**Session 2026-03-31. Production live, critical bugs fixed, ready for full re-sync + backfill.**
+**Session 2026-04-01. Production live. 1-month backfill complete. UI polished. Ready for customer handoff.**
 
-System is deployed on Railway + Amplify. Auth works (copilot-server JWT). Week 1 backfill completed (124 emails) but revealed two critical data issues that require a full re-sync before continuing:
+System is fully operational at `gic.indemn.ai`. Sync and processing crons running every 5 minutes. 617 emails processed across 4 weeks with zero failures. UI redesigned for JC's daily workflow (searchable, filterable, expandable rows with Outlook folder awareness).
 
-1. **Empty email bodies** — Graph API `Prefer: text` header caused HTML-only emails to sync with empty body. Fixed: removed text preference, sync now captures HTML and extracts text. All existing emails need re-sync.
-2. **Empty extracted_fields** — `dict[str, Any]` in Pydantic schema generated an empty JSON schema that LangChain/Anthropic enforced as "must be empty object." Fixed: replaced with `list[ExtractedField]` (explicit key/value pairs). Verified working — 10+ fields now extracted per PDF.
+**Linear tracking:** AI-356 (parent) with 5 sub-issues (AI-357 through AI-361).
 
-**Next step:** Full re-sync (delete all emails, re-pull from Graph API with body fix), clean slate, then backfill 1 month in weekly batches with Haiku.
-
-**What was done this session (2026-03-30/31):**
-1. **Production deployment plan** — Full brainstorm: Railway backend, Amplify frontend, shared JWT auth, MongoDB proxy, weekly backfill strategy. See `artifacts/2026-03-30-production-deployment-plan.md`.
-2. **Fixed extraction pipeline** — Replaced broken ReAct pdf-extractor with structured output module. Downloads from S3, sends as multimodal content blocks, gets validated Pydantic model.
-3. **Pipeline reorder** — extract → classify → link (was classify → link → extract). Classifier now has extraction context.
-4. **Configurable stages** — `PIPELINE_STAGES=extract,classify,link` env var. Assess/draft disabled by default.
-5. **JWT auth** — Copilot-server integration. Login page, signin proxy, GIC org scoping. Fixed: token "JWT " prefix stripping, CORS origins, 401 race condition.
-6. **Railway deployment** — 3 services (API, sync cron, processing cron). MongoDB proxy through dev-services EC2. Primary detection script. Static IP `162.220.234.15`.
-7. **Amplify deployment** — `gic.indemn.ai` (prod), dev on Amplify default domain. Route 53 DNS.
-8. **Observatory link** — PR #57 at indemn-ai/indemn-observatory, GIC org scoped. Awaiting review.
-9. **Week 1 backfill** — 124 emails processed (123 succeeded, 1 failed). Revealed empty body + empty extracted_fields bugs.
-10. **Bug fixes:** Graph API datetime format (Z suffix), PDF attachment URLs (VITE_API_BASE), CORS origins, orphaned submissions cleanup.
-11. **Root cause: empty extracted_fields** — `dict[str, Any]` → `list[ExtractedField]`. LangChain/Anthropic set `additionalProperties=false` on dict schemas. See pydantic-ai #4117.
-12. **Root cause: empty email bodies** — Graph API `Prefer: text` returns empty for HTML-only emails. Removed preference, added `_extract_body()` helper.
-13. **Skills created** — Railway CLI, AWS Amplify, LangChain. All in OS `.claude/skills/` with references.
+**What was done this session (2026-04-01):**
+1. **UI redesign brainstorm** — Collaborative design for JC's workflow. App is a structured view of Outlook inbox, not a workflow tool. Design doc: `artifacts/2026-03-31-ui-polish-design.md`.
+2. **Expandable email rows** — Click submission row to expand and see emails inline with subject, from, folder, attachments. "Open" button navigates to detail view.
+3. **Folder awareness** — New Folder column shows Outlook folder status (Inbox, Deleted Items, USLI). New Folder Status filter. Backend aggregates folder data from emails collection.
+4. **Detail view cleanup** — Removed completeness bar. Gap analysis labeled "Still needed". Added folder to submission data card. GIC logo on detail page chrome bar.
+5. **HTML email toggle** — Each email in timeline has an HTML button to view original email in sandboxed iframe.
+6. **Overview tab hidden** — Hardcoded demo narrative, not data-driven. Hidden until we make it live.
+7. **Production audit** — Two subagents audited all components. Fixed: prop mutation, null guards, error states, expanded row cleanup, TypeScript types.
+8. **1-month backfill complete** — 617 emails (March 2026) in 4 weekly batches, zero failures:
+   - Week 1 (Mar 1-8): 98 emails
+   - Week 2 (Mar 8-15): 118 emails
+   - Week 3 (Mar 15-22): 129 emails
+   - Week 4 (Mar 22-Apr 1): 272 emails
+9. **Crons restored** — Sync every 5 min (incremental), processing every 5 min (pending emails). Both running.
+10. **Linear project created** — AI-356 parent with 5 sub-issues tracking deployment, backfill, UI, Observatory link, and customer handoff.
 
 **Production URLs:**
-- Frontend: `https://gic.indemn.ai` (prod) / `https://main.d244t76u9ej8m0.amplifyapp.com` (dev)
-- API: `https://api-production-e399.up.railway.app` (prod) / `https://api-production-79f0.up.railway.app` (dev)
+- Frontend: `https://gic.indemn.ai` (prod)
 - Login: `support@indemn.ai` (or any copilot account with GIC org)
 - GitHub: `craig-indemn/gic-email-intelligence` (private)
-- Railway project: `4011d186-1821-49f5-a11b-961113e6f78d` (environments: development, production)
-- Amplify app: `d244t76u9ej8m0` (branches: main → dev, prod → gic.indemn.ai)
 
 **Infrastructure:**
-- MongoDB proxy: dev-services EC2 (44.196.55.84), ports 27017-27019 (dev), 27020-27022 (prod)
-- Static IP: `162.220.234.15` (Railway Pro, per-service — must enable on each service in dashboard)
-- Sync cron: **paused** (pending re-sync)
-- Processing cron: **paused** (pending re-sync + clean slate)
+- 3 services: API (always-on), sync (5-min cron), processing (5-min cron)
+- MongoDB proxy: dev-services EC2, temporary until Atlas IP allowlist updated
+- Amplify auto-deploys from `prod` branch
 
-**Backfill plan (not yet executed):**
-1. Delete all emails from MongoDB
-2. Re-sync all emails from Graph API (with body fix — captures HTML)
-3. Clean slate all derived data
-4. Process 1 month (March 2026) in weekly batches with Haiku (~$25-35 estimated)
+**Remaining before customer handoff:**
+- Observatory navigation link — PR #57 awaiting team review (AI-360)
+- Verify JC can log in with his copilot account (AI-361)
 
-**Known issues to address:**
-- UI: extracted fields section vs gap analysis is confusing (layout/UX issue, noted in `artifacts/2026-03-31-ui-issues-noted.md`)
+**Known issues (non-blocking):**
 - Socat proxy not persistent (nohup, not systemd — dies on EC2 reboot)
-- MongoDB proxy is temporary — remove when Atlas IP allowlist updated with Railway static IP
-- Observatory link PR awaiting team review
+- MongoDB proxy is temporary — remove when Atlas IP allowlist updated
+- Overview page hidden (hardcoded numbers, needs to be data-driven)
+- No URL routing (browser back button doesn't work within the app)
 
 **Key references:**
 - Pipeline review: `artifacts/2026-03-30-pipeline-architecture-review.md`
@@ -510,6 +502,10 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 - 2026-03-31: dict[str, Any] DOES NOT WORK with LangChain structured output — LangChain/Anthropic set additionalProperties=false. Use list[ExtractedField] with explicit key/value pairs instead. (pydantic-ai #4117)
 - 2026-03-31: Graph API Prefer: text header causes HTML-only emails to return empty body. Remove the preference, capture native format.
 - 2026-03-31: VITE_API_BASE must be used everywhere the frontend calls the API — relative /api only works with local Vite proxy.
+- 2026-04-01: Row click expands emails inline, "Open" button navigates to detail view (was: row click navigated to detail).
+- 2026-04-01: Overview tab hidden until narrative numbers are data-driven.
+- 2026-04-01: Completeness bar removed entirely from detail view — left side is pure data, right side is gaps.
+- 2026-04-01: HTML email body available via toggle button in Timeline (sandboxed iframe).
 
 ## Open Questions (deferred — not blocking demo)
 - How does RingCentral data merge into the same pipeline? (Same pattern: RingCentral CLI + skills)
