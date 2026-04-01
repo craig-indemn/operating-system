@@ -7,6 +7,7 @@ using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
+using System.ServiceProcess;
 using System.Text;
 using System.Threading;
 using System.Web.Script.Serialization;
@@ -408,6 +409,31 @@ class Logger
 }
 
 // ---------------------------------------------------------------------------
+// UniProxyService — Windows Service wrapper
+// ---------------------------------------------------------------------------
+class UniProxyService : ServiceBase
+{
+    Thread listenerThread;
+
+    public UniProxyService()
+    {
+        ServiceName = "UniProxy";
+    }
+
+    protected override void OnStart(string[] args)
+    {
+        listenerThread = new Thread(new ThreadStart(UniProxy.Run));
+        listenerThread.IsBackground = true;
+        listenerThread.Start();
+    }
+
+    protected override void OnStop()
+    {
+        UniProxy.Shutdown();
+    }
+}
+
+// ---------------------------------------------------------------------------
 // UniProxy — HTTP listener, routing, SOAP bridge integration
 // ---------------------------------------------------------------------------
 class UniProxy
@@ -418,14 +444,40 @@ class UniProxy
     static DateTime lastRequestTime;
     static long maxRequestBytes;
     static SoapBridge bridge;
+    static HttpListener listener;
+    static volatile bool running;
 
     static void Main(string[] args)
+    {
+        // Detect run mode: --console flag, interactive session, or Windows Service
+        bool consoleMode = false;
+        if (args.Length > 0 && args[0] == "--console")
+        {
+            consoleMode = true;
+        }
+        else if (Environment.UserInteractive)
+        {
+            consoleMode = true;
+        }
+
+        if (consoleMode)
+        {
+            Run();
+        }
+        else
+        {
+            ServiceBase.Run(new UniProxyService());
+        }
+    }
+
+    public static void Run()
     {
         apiKey = Environment.GetEnvironmentVariable("PROXY_API_KEY") ?? "dev-key";
         int port = int.Parse(Environment.GetEnvironmentVariable("PROXY_PORT") ?? "5000");
         maxRequestBytes = long.Parse(
             Environment.GetEnvironmentVariable("PROXY_MAX_REQUEST_BYTES") ?? "5242880");
         startTime = DateTime.UtcNow;
+        running = true;
 
         // Initialize SOAP bridge
         string soapUrl = Environment.GetEnvironmentVariable("UNISOFT_SOAP_URL")
@@ -438,7 +490,7 @@ class UniProxy
             "true", StringComparison.OrdinalIgnoreCase);
 
         Logger.Init();
-        Logger.Info("UniProxy v0.4 starting");
+        Logger.Info("UniProxy v1.0 starting");
         Logger.Info("SOAP endpoint: " + soapUrl);
         Logger.Info("Client ID: " + clientId);
         Logger.Info("Skip cert validation: " + skipCert);
@@ -447,16 +499,41 @@ class UniProxy
         bridge.Start();
         Logger.Info("SOAP bridge started, token acquired");
 
-        HttpListener listener = new HttpListener();
+        listener = new HttpListener();
         listener.Prefixes.Add(string.Format("http://+:{0}/", port));
         listener.Start();
         Logger.Info("UniProxy listening on port " + port);
 
-        while (true)
+        while (running)
         {
-            HttpListenerContext ctx = listener.GetContext();
-            ThreadPool.QueueUserWorkItem(delegate { HandleRequest(ctx); });
+            try
+            {
+                HttpListenerContext ctx = listener.GetContext();
+                ThreadPool.QueueUserWorkItem(delegate { HandleRequest(ctx); });
+            }
+            catch (HttpListenerException)
+            {
+                // Listener was stopped (Shutdown called)
+                if (!running) break;
+                throw;
+            }
         }
+
+        Logger.Info("UniProxy stopped");
+    }
+
+    public static void Shutdown()
+    {
+        Logger.Info("UniProxy shutting down");
+        running = false;
+        try
+        {
+            if (listener != null && listener.IsListening)
+            {
+                listener.Stop();
+            }
+        }
+        catch { }
     }
 
     static void HandleRequest(HttpListenerContext ctx)
