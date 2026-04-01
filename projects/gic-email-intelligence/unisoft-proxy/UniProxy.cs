@@ -46,7 +46,6 @@ class SoapBridge
     SemaphoreSlim channelSem = new SemaphoreSlim(1, 1);
 
     Timer keepaliveTimer;
-    Timer tokenRefreshTimer;
 
     public bool IsHealthy { get; private set; }
     public DateTime LastCallTime { get; private set; }
@@ -83,15 +82,12 @@ class SoapBridge
             throw new InvalidOperationException("Failed to acquire initial access token");
         }
 
-        // Keepalive every 5 min — prevents ReliableSession inactivity timeout
+        // Keepalive every 5 min — prevents ReliableSession inactivity timeout.
+        // Uses a lightweight read operation (GetSections) instead of GetToken
+        // to avoid token invalidation. Token is only refreshed on auth failure.
         keepaliveTimer = new Timer(
             delegate { Keepalive(); }, null,
             TimeSpan.FromMinutes(5), TimeSpan.FromMinutes(5));
-
-        // Token refresh every 20 min — proactive refresh before expiry
-        tokenRefreshTimer = new Timer(
-            delegate { RefreshTokenFromTimer(); }, null,
-            TimeSpan.FromMinutes(20), TimeSpan.FromMinutes(20));
 
         IsHealthy = true;
     }
@@ -137,25 +133,6 @@ class SoapBridge
         }
     }
 
-    // Acquires channelSem, sends GetToken, updates the cached token.
-    // Returns true on success, false on failure.
-    // Called by the token refresh timer.
-    void RefreshTokenFromTimer()
-    {
-        if (!channelSem.Wait(TimeSpan.FromSeconds(10)))
-            return; // skip this refresh cycle if channel is busy
-
-        try
-        {
-            RefreshTokenInternalNoLock();
-        }
-        catch { }
-        finally
-        {
-            channelSem.Release();
-        }
-    }
-
     // Called during Start() — acquires channelSem itself.
     bool RefreshTokenInternal()
     {
@@ -198,6 +175,23 @@ class SoapBridge
         }
     }
 
+    // Build a lightweight read request for keepalive — uses GetSections which
+    // returns a small payload and does NOT invalidate the access token.
+    string BuildKeepaliveXml()
+    {
+        string currentToken;
+        lock (tokenLock) { currentToken = accessToken; }
+        return "<request xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">" +
+            "<AccessToken xmlns=\"\">" + currentToken + "</AccessToken>" +
+            "<ClientId xmlns=\"\">" + clientId + "</ClientId>" +
+            "<CompanyInitials xmlns=\"\">" + clientId + "</CompanyInitials>" +
+            "<IsDeveloper xmlns=\"\">false</IsDeveloper>" +
+            "<RequestId xmlns=\"\">" + Guid.NewGuid() + "</RequestId>" +
+            "<RequestedByUserName i:nil=\"true\" xmlns=\"\"/>" +
+            "<Version i:nil=\"true\" xmlns=\"\"/>" +
+            "</request>";
+    }
+
     void Keepalive()
     {
         if (!channelSem.Wait(TimeSpan.FromSeconds(10)))
@@ -205,24 +199,28 @@ class SoapBridge
 
         try
         {
-            bool ok = RefreshTokenInternalNoLock();
-            if (ok)
+            // Send a lightweight read to keep the WCF channel alive.
+            // Do NOT call GetToken here — Unisoft invalidates the old token
+            // when a new one is issued, causing a race condition.
+            string xml = SendMessage("GetSections", BuildKeepaliveXml());
+            string status = ExtractXmlValue(xml, "ReplyStatus");
+            if (status == "Success")
             {
                 IsHealthy = true;
             }
+            else if (status == "Failure")
+            {
+                // Token may have expired — refresh it reactively
+                string msg = ExtractXmlValue(xml, "Message") ?? "";
+                if (msg.ToLower().Contains("accesstoken") || msg.ToLower().Contains("expired"))
+                {
+                    RefreshTokenInternalNoLock();
+                }
+                IsHealthy = true; // channel itself is still alive
+            }
             else
             {
-                // Token refresh failed — channel may be stale, recreate
                 IsHealthy = false;
-                try
-                {
-                    RecreateChannel(true);
-                    IsHealthy = true;
-                }
-                catch
-                {
-                    IsHealthy = false;
-                }
             }
         }
         catch
@@ -267,6 +265,13 @@ class SoapBridge
         {
             channelSem.Release();
         }
+    }
+
+    // Force a token refresh — called when a SOAP response indicates token expiry.
+    // Acquires channelSem to make the GetToken call safely.
+    public void ForceTokenRefresh()
+    {
+        RefreshTokenInternal();
     }
 
     public string GetCurrentToken()
@@ -612,11 +617,7 @@ class UniProxy
                         requestBody = sr.ReadToEnd();
                     }
 
-                    string token = bridge.GetCurrentToken();
-                    string cid = bridge.ClientId;
-                    string requestXml = JsonToXml(opName, requestBody, token, cid);
-                    string responseXml = bridge.CallSoap(opName, requestXml);
-                    string responseJson = XmlToJson(responseXml);
+                    string responseJson = CallWithTokenRetry(opName, requestBody);
 
                     // Determine HTTP status from response content
                     int httpStatus = 200;
@@ -1080,6 +1081,33 @@ class UniProxy
         if (s == null) return "";
         return s.Replace("\\", "\\\\").Replace("\"", "\\\"")
                 .Replace("\n", "\\n").Replace("\r", "\\r").Replace("\t", "\\t");
+    }
+
+    // Call a SOAP operation with automatic token refresh on auth failure.
+    // If the response indicates an expired token, refreshes and retries once.
+    static string CallWithTokenRetry(string opName, string requestBody)
+    {
+        string token = bridge.GetCurrentToken();
+        string cid = bridge.ClientId;
+        string requestXml = JsonToXml(opName, requestBody, token, cid);
+        string responseXml = bridge.CallSoap(opName, requestXml);
+        string responseJson = XmlToJson(responseXml);
+
+        // Check for expired token in the response
+        if (responseJson.Contains("expired AccessToken") ||
+            responseJson.Contains("Invalid or expired") ||
+            responseJson.Contains("Call GetToken()"))
+        {
+            // Refresh token and retry once
+            Logger.Log(opName, 0, 0, "Token expired, refreshing and retrying");
+            bridge.ForceTokenRefresh();
+            token = bridge.GetCurrentToken();
+            requestXml = JsonToXml(opName, requestBody, token, cid);
+            responseXml = bridge.CallSoap(opName, requestXml);
+            responseJson = XmlToJson(responseXml);
+        }
+
+        return responseJson;
     }
 
     static void WriteJson(HttpListenerContext ctx, int status, string json)
