@@ -4,7 +4,7 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 
 ## Status
 
-**Session 2026-04-01b. Unisoft REST proxy live in production — full write path verified.**
+**Session 2026-04-01b. Unisoft REST proxy production-ready — all operations verified, service auto-starts, token management stable.**
 
 **To resume this project, read these files in order:**
 1. This INDEX.md Status section (current state, what was done, what's next)
@@ -42,14 +42,13 @@ Email Pipeline (Railway) → Python UnisoftClient → REST Proxy (EC2) → WCF C
 - EC2: `i-0dc2563c9bc92aa0e` (t3.small, Elastic IP 54.83.28.79, Windows Service `UniProxy`)
 - Cost: ~$35/month
 
-**Next steps:**
-- Integrate UnisoftClient into the email pipeline — when a submission is classified and extracted, auto-create the quote + submission in Unisoft
-- Get production API endpoints from Unisoft/JC (UAT only right now)
-- Test the full email→Unisoft automation loop with a real USLI quote email
-- Understand UAT vs production environment differences (ask JC/Robert)
-- Deep-dive into GIC team workflow — alignment questions still in Open Questions section
-- Follow up with Robert Gonzalez (Unisoft) on swagger docs — still no reply to JC's March 30 email
-- Full re-sync + backfill of email pipeline still pending
+**Next steps (next session):**
+1. **Understand the automation flows** — Map exactly how each email type (USLI quote, agent submission, pending file, decline) should flow from Outlook extraction → pipeline processing → Unisoft data entry. Use `research/unisoft-workflow-map.md` as the source of truth for the manual process, and `unisoft-proxy/README.md` for the API capabilities. The goal is a detailed spec for each flow before writing code.
+2. **Build the integration** — Wire `UnisoftClient` into the email pipeline so extracted submission data auto-creates quotes + submissions + activities in Unisoft. Start with USLI quotes (highest volume, most predictable format).
+3. **Test end-to-end** — Take a real USLI quote email from the inbox, trace it through extraction → classification → Unisoft creation. Verify the record appears correctly in Unisoft UAT.
+4. **Get production API endpoints** from Unisoft/JC (UAT only right now)
+5. **Follow up with Robert Gonzalez** (Unisoft) on swagger docs — still no reply to JC's March 30 email
+6. **Full re-sync + backfill** of email pipeline still pending
 
 **Previous session (2026-03-31b):** Phase 1 research — workflow map, software guide, API reference from transcript + web research + video analysis.
 
