@@ -32,6 +32,7 @@ Wrapper scripts in `scripts/secrets-proxy/` pull credentials at runtime. They're
 | curl (Apollo) | `curl-apollo.sh` | `curl-apollo.sh /api/v1/mixed_companies/search '{"q":"Acme"}'` |
 | slack | `slack-env.sh` | `slack-env.sh python3 -c "from slack_client import ..."` |
 | local-dev.sh | `local-dev-aws.sh` | `local-dev-aws.sh start platform --env=dev` |
+| curl (Unisoft) | `curl-unisoft.sh` | `curl-unisoft.sh POST GetInsuranceLOBs '{}'` |
 
 **Already secure** (no wrapper needed): `gh`, `gog`, `stripe`, `vercel`, `aws`, `op`
 

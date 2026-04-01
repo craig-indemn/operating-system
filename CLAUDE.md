@@ -47,6 +47,7 @@ When in doubt, ask. The cost of pausing is zero. The cost of a production incide
 | `/markdown-pdf` | md-to-pdf | Convert markdown to Indemn-branded PDF — Barlow font, iris headings, styled tables |
 | `/hive` | hive CLI | Unified record management — entities, knowledge, search, refs, sync. The Hive is the awareness layer. |
 | `/langchain` | langchain | LangChain LLM integration — structured output, multimodal PDFs/images, ReAct agents (background knowledge, auto-loads) |
+| `/unisoft` | curl-unisoft.sh | Create and manage quotes, submissions, activities in GIC's Unisoft AMS via REST proxy on EC2 |
 
 ### System Skills
 | Skill | What It Does |
