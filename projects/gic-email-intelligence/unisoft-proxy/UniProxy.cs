@@ -9,6 +9,7 @@ using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.Text;
 using System.Threading;
+using System.Web.Script.Serialization;
 using System.Xml;
 
 // ---------------------------------------------------------------------------
@@ -486,13 +487,48 @@ class UniProxy
     }
 
     // ---------------------------------------------------------------------------
-    // JSON → XML stub (replaced in Task A4)
-    // Builds standard request XML with flat fields from JSON keys
+    // DTO Namespace Registry — maps JSON keys to DataContract namespaces
+    // ---------------------------------------------------------------------------
+    static Dictionary<string, string> dtoNamespaces = new Dictionary<string, string>
+    {
+        { "Quote", "http://schemas.datacontract.org/2004/07/Unisoft.Insurance.Services.DTO.Quotes" },
+        { "QuoteActivity", "http://schemas.datacontract.org/2004/07/Unisoft.Insurance.Services.DTO.Quotes" },
+        { "QuoteStatus", "http://schemas.datacontract.org/2004/07/Unisoft.Insurance.Services.DTO.Quotes" },
+        { "Submission", "http://schemas.datacontract.org/2004/07/Unisoft.Insurance.Services.DTO.Quotes.Submissions" },
+        { "Activity", "http://schemas.datacontract.org/2004/07/Unisoft.Insurance.Services.DTO.Activities" },
+        { "CashDetail", "http://schemas.datacontract.org/2004/07/Unisoft.Insurance.Services.DTO.Cash" },
+        { "PolicyEntry", "http://schemas.datacontract.org/2004/07/Unisoft.Insurance.Services.DTO.PolicyInquiry" }
+    };
+
+    // RequestBase fields the proxy injects — caller must NOT send these
+    static HashSet<string> requestBaseFields = new HashSet<string>
+    {
+        "AccessToken", "ClientId", "CompanyInitials", "IsDeveloper",
+        "RequestId", "RequestedByUserName", "Version"
+    };
+
+    // ---------------------------------------------------------------------------
+    // JSON → XML translation
     // ---------------------------------------------------------------------------
     static string JsonToXml(string opName, string json, string token, string clientId)
     {
+        JavaScriptSerializer serializer = new JavaScriptSerializer();
+        serializer.MaxJsonLength = 5 * 1024 * 1024;
+
+        Dictionary<string, object> dict;
+        if (string.IsNullOrEmpty(json) || json.Trim() == "{}")
+        {
+            dict = new Dictionary<string, object>();
+        }
+        else
+        {
+            dict = serializer.Deserialize<Dictionary<string, object>>(json);
+        }
+
         StringBuilder sb = new StringBuilder();
         sb.Append("<request xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">");
+
+        // Inject RequestBase fields — proxy controls these
         sb.Append("<AccessToken xmlns=\"\">" + Escape(token) + "</AccessToken>");
         sb.Append("<ClientId xmlns=\"\">" + Escape(clientId) + "</ClientId>");
         sb.Append("<CompanyInitials xmlns=\"\">" + Escape(clientId) + "</CompanyInitials>");
@@ -500,8 +536,103 @@ class UniProxy
         sb.Append("<RequestId xmlns=\"\">" + Guid.NewGuid() + "</RequestId>");
         sb.Append("<RequestedByUserName i:nil=\"true\" xmlns=\"\"/>");
         sb.Append("<Version i:nil=\"true\" xmlns=\"\"/>");
+
+        // Caller fields
+        foreach (KeyValuePair<string, object> kvp in dict)
+        {
+            if (requestBaseFields.Contains(kvp.Key)) continue;
+            AppendField(sb, kvp.Key, kvp.Value);
+        }
+
         sb.Append("</request>");
         return sb.ToString();
+    }
+
+    static void AppendField(StringBuilder sb, string key, object value)
+    {
+        if (value == null)
+        {
+            string ns;
+            if (dtoNamespaces.TryGetValue(key, out ns))
+            {
+                sb.Append("<" + key + " i:nil=\"true\" xmlns=\"\" xmlns:b=\"" + ns + "\"/>");
+            }
+            else
+            {
+                sb.Append("<" + key + " i:nil=\"true\" xmlns=\"\"/>");
+            }
+            return;
+        }
+
+        string dtoNs;
+        if (dtoNamespaces.TryGetValue(key, out dtoNs) && value is Dictionary<string, object>)
+        {
+            // Nested DTO with namespace
+            Dictionary<string, object> dict = (Dictionary<string, object>)value;
+            sb.Append("<" + key + " xmlns=\"\" xmlns:b=\"" + dtoNs + "\">");
+            foreach (KeyValuePair<string, object> kvp in dict)
+            {
+                AppendDtoField(sb, kvp.Key, kvp.Value);
+            }
+            sb.Append("</" + key + ">");
+        }
+        else if (value is System.Collections.ArrayList)
+        {
+            // JSON array — emit repeated elements with same tag name
+            System.Collections.ArrayList arr = (System.Collections.ArrayList)value;
+            foreach (object item in arr)
+            {
+                if (item is Dictionary<string, object>)
+                {
+                    sb.Append("<" + key + " xmlns=\"\">");
+                    Dictionary<string, object> itemDict = (Dictionary<string, object>)item;
+                    foreach (KeyValuePair<string, object> kvp in itemDict)
+                    {
+                        AppendField(sb, kvp.Key, kvp.Value);
+                    }
+                    sb.Append("</" + key + ">");
+                }
+                else if (item != null)
+                {
+                    sb.Append("<" + key + " xmlns=\"\">" + Escape(item.ToString()) +
+                              "</" + key + ">");
+                }
+            }
+        }
+        else
+        {
+            // Flat field — scalar value
+            sb.Append("<" + key + " xmlns=\"\">" + Escape(value.ToString()) + "</" + key + ">");
+        }
+    }
+
+    static void AppendDtoField(StringBuilder sb, string key, object value)
+    {
+        if (value == null)
+        {
+            sb.Append("<b:" + key + " i:nil=\"true\"/>");
+            return;
+        }
+        if (value is Dictionary<string, object>)
+        {
+            // Sub-DTO — emit as nil per design (sub-DTOs are null in write requests)
+            sb.Append("<b:" + key + " i:nil=\"true\"/>");
+            return;
+        }
+        if (value is System.Collections.ArrayList)
+        {
+            // Array within DTO — emit repeated elements
+            System.Collections.ArrayList arr = (System.Collections.ArrayList)value;
+            foreach (object item in arr)
+            {
+                if (item != null)
+                {
+                    sb.Append("<b:" + key + ">" + Escape(item.ToString()) + "</b:" + key + ">");
+                }
+            }
+            return;
+        }
+        sb.Append("<b:" + key + ">" + Escape(value.ToString()) + "</b:" + key + ">");
     }
 
     // ---------------------------------------------------------------------------
