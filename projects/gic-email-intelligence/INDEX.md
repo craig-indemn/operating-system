@@ -6,6 +6,15 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 
 **Session 2026-04-01. Unisoft API recon complete — SOAP + REST APIs fully mapped. No UI automation needed.**
 
+**To resume this project, read these files in order:**
+1. This INDEX.md Status section (current state, what was done, what's next)
+2. `research/unisoft-workflow-map.md` — how GIC's team takes email data and enters it into their AMS (Unisoft)
+3. `research/unisoft-api-reference.md` — API architecture, auth flows, endpoints, data models
+4. `research/unisoft-api/operations-index.md` — index of all 111 captured API operation payloads
+5. `research/unisoft-api/wsdl-complete.md` — complete WSDL (910 operations, 1668 types) — large, read on demand
+6. `research/unisoft-software-guide.md` — Unisoft as software (company, products, UI documentation from video)
+7. Raw payloads in `research/unisoft-api/raw-payloads/{soap,rest,signalr}/` — read specific operations as needed
+
 Major breakthrough: installed Unisoft ClickOnce app on Windows EC2, intercepted all network traffic with Fiddler, and mapped the complete API surface. The app does NOT connect directly to a database — it talks to a multi-layer API architecture (REST gateway + WCF SOAP service + file service + SignalR hub). We can call these APIs directly from Python to automate quote/submission creation.
 
 **What was done this session (2026-04-01):**
