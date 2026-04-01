@@ -4,14 +4,47 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 
 ## Status
 
-**Session 2026-03-31. Production live, critical bugs fixed, ready for full re-sync + backfill.**
+**Session 2026-04-01. Unisoft API recon complete — SOAP + REST APIs fully mapped. No UI automation needed.**
 
-System is deployed on Railway + Amplify. Auth works (copilot-server JWT). Week 1 backfill completed (124 emails) but revealed two critical data issues that require a full re-sync before continuing:
+Major breakthrough: installed Unisoft ClickOnce app on Windows EC2, intercepted all network traffic with Fiddler, and mapped the complete API surface. The app does NOT connect directly to a database — it talks to a multi-layer API architecture (REST gateway + WCF SOAP service + file service + SignalR hub). We can call these APIs directly from Python to automate quote/submission creation.
 
-1. **Empty email bodies** — Graph API `Prefer: text` header caused HTML-only emails to sync with empty body. Fixed: removed text preference, sync now captures HTML and extracts text. All existing emails need re-sync.
-2. **Empty extracted_fields** — `dict[str, Any]` in Pydantic schema generated an empty JSON schema that LangChain/Anthropic enforced as "must be empty object." Fixed: replaced with `list[ExtractedField]` (explicit key/value pairs). Verified working — 10+ fields now extracted per PDF.
+**What was done this session (2026-04-01):**
+1. **Video frame analysis** — Extracted 357 frames from JC's March 27 walkthrough video. 3 parallel agents analyzed the cropped UI screenshots frame-by-frame. Documented: complete navigation, all 21 LOBs, GL sub-LOBs, agent dropdown (hundreds of entries), full applicant form fields, submissions tab, 30+ activity types, financing tab with auto-calculations. Updated `research/unisoft-software-guide.md`.
+2. **UAT access confirmed** — Found UAT credentials in Gmail (JC sent March 30). URL: `ins-gic-client-uat-app.azurewebsites.net/publish.htm`, creds: ccerto/GIC2026$$!. ClickOnce Windows app (.NET 4.8).
+3. **Windows EC2 setup** — Started `indemn-windows-server` (i-0dc2563c9bc92aa0e, t3.xlarge, Windows Server 2025). SSM port forwarding for RDP. Installed Fiddler, ClickOnce app.
+4. **API traffic interception** — Two Fiddler captures (648 + 1629 sessions). Discovered:
+   - REST API Gateway at `ins-gic-api-gateway-uat-app.azurewebsites.net` — JWT auth, 32 endpoints (tasks, users, brokers, documents)
+   - WCF SOAP Service at `services.uat.gicunderwriters.co/management/imsservice.svc` — WS-Security auth, 70 operations including SetQuote, SetSubmission, SetActivity
+   - File Service at `services.uat.gicunderwriters.co/attachments/insfileservice.svc` — attachment upload/download
+   - SignalR Hub at `ins-gic-nothub-prod-app.azurewebsites.net` — real-time notifications
+5. **Complete API documentation** — Extracted full request/response payloads for all write operations (SetQuote, SetSubmission, SetActivity, POST /api/tasks). Documented the SetQuote data model field-by-field. Mapped LOB codes (CG=General Liability), carrier numbers (2=USLI), broker IDs (1=GIC Underwriters). See `research/unisoft-api-reference.md`.
+6. **Three research artifacts updated** — All findings saved to workflow map, software guide, and API reference.
 
-**Next step:** Full re-sync (delete all emails, re-pull from Graph API with body fix), clean slate, then backfill 1 month in weekly batches with Haiku.
+**Key breakthrough:** UI automation is NOT needed. Every operation in Unisoft maps to an API call:
+- Create quote → `SetQuote` (SOAP)
+- Add submission → `SetSubmission` (SOAP)
+- Log activity → `SetActivity` (SOAP)
+- Create task → `POST /api/tasks` (REST)
+- Upload attachment → `AddQuoteAttachment` (SOAP)
+
+**Architecture confirmed:**
+```
+Email Pipeline (our system) → Python SOAP/REST client → Unisoft API → Unisoft Database
+```
+
+**WSDL fetched:** Complete API spec downloaded — 910 operations, 1,668 data types, 16 enums. Stored in `research/unisoft-api/wsdl-complete.md` (40K lines). Raw WSDL XML also saved. All 111 captured operation payloads extracted with full request/response bodies (no truncation) in `research/unisoft-api/raw-payloads/`.
+
+**Next steps:**
+- Test basic API calls from Python — authenticate (both REST JWT and SOAP WS-Security) and call a read operation (e.g., GetInsuranceLOBs)
+- Build prototype: SetQuote with test data against UAT
+- Understand UAT vs production environment differences (ask JC/Robert)
+- Deep-dive into GIC team workflow — alignment questions saved in Open Questions section
+- Follow up with Robert Gonzalez (Unisoft) on swagger docs — still no reply to JC's March 30 email
+- Full re-sync + backfill of email pipeline still pending
+
+**Windows EC2 status:** Stopped (i-0dc2563c9bc92aa0e). APIs are publicly accessible — no EC2 needed for API calls.
+
+**Previous session (2026-03-31b):** Phase 1 research — workflow map, software guide, API reference from transcript + web research + video analysis.
 
 **What was done this session (2026-03-30/31):**
 1. **Production deployment plan** — Full brainstorm: Railway backend, Amplify frontend, shared JWT auth, MongoDB proxy, weekly backfill strategy. See `artifacts/2026-03-30-production-deployment-plan.md`.
@@ -387,6 +420,11 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 | Feb 26 Meeting Notes | Gmail | Thread: Gemini notes "Indemn & GIC - Agentic Email Automation" Feb 26, 2026 |
 | Kyle's Follow-Up | Gmail | "GIC + Indemn - Feb 26 Follow-Up and Next Steps" |
 | Partnership Agreement | Gmail | "GIC + Indemn - Updated Partnership Agreement" — $5K impl + $3K/month |
+| Unisoft Integration Meeting | Google Drive | Doc: 15D0-idP_qtjPzWWljXAX09rqq7AwqwJ3QBe2uH3w158, Recording: 1xdfJi48zZx71tZGfNmCE7CQcd4ffngeI |
+| Unisoft Communications | Software Vendor | unisoftonline.com, HQ: Miami FL, President: Hugo Montiel |
+| GIC Unisoft Portal | AMS Portal | gicunderwriters.unisoftonline.com |
+| Unisoft UAT Environment | Testing | Windows-only, access arranged by Hugo (pending) |
+| Granada Insurance API | API (UAT) | services-uat.granadainsurance.com (OAuth, policy lookup confirmed) |
 
 ## Artifacts
 | Date | Artifact | Ask |
@@ -421,6 +459,9 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 | 2026-03-30 | [production-implementation-plan](artifacts/2026-03-30-production-implementation-plan.md) | Bite-sized implementation plan — 16 tasks across 4 parallel tracks (pipeline fix, infra, auth, production) |
 | 2026-03-30 | [mongodb-proxy-setup](artifacts/2026-03-30-mongodb-proxy-setup.md) | EC2 socat proxy setup for Railway → Atlas connectivity. Temporary. Includes teardown instructions. |
 | 2026-03-31 | [ui-issues-noted](artifacts/2026-03-31-ui-issues-noted.md) | UI issues from prod review — extracted fields vs gap analysis confusion, PDF links (fixed), empty bodies (fixed) |
+| 2026-03-31 | [unisoft-workflow-map](research/unisoft-workflow-map.md) | How GIC takes info from Outlook and enters it into Unisoft AMS — workflow by email type, data mapping, automation priorities |
+| 2026-03-31 | [unisoft-software-guide](research/unisoft-software-guide.md) | Unisoft Communications as software — company, products, tech stack, UI structure, customer base, UAT exploration plan |
+| 2026-03-31 | [unisoft-api-reference](research/unisoft-api-reference.md) | API capabilities — Unisoft (pending), Granada API (confirmed), industry standards, integration strategy, questions for Hugo |
 
 ## Key Data Files
 | File | What it contains |
@@ -509,11 +550,50 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 - 2026-03-31: dict[str, Any] DOES NOT WORK with LangChain structured output — LangChain/Anthropic set additionalProperties=false. Use list[ExtractedField] with explicit key/value pairs instead. (pydantic-ai #4117)
 - 2026-03-31: Graph API Prefer: text header causes HTML-only emails to return empty body. Remove the preference, capture native format.
 - 2026-03-31: VITE_API_BASE must be used everywhere the frontend calls the API — relative /api only works with local Vite proxy.
+- 2026-03-31: Unisoft AMS contact is Hugo Montiel (President), not Jeremiah. JC cc'd Craig on email to Hugo for UAT + quoting API access.
+- 2026-03-31: Unisoft API likely limited to initial data entry (LOB, basic info → quote ID). Activities (like "Submit Application to Carrier") may not be API-accessible — browser automation is the fallback.
+- 2026-03-31: Three-pillar research approach for Unisoft integration: (1) workflow map from transcript, (2) software understanding from web research + UAT, (3) API capabilities. Understand before solutioning.
+- 2026-03-31: Unisoft tech stack is ASP.NET MVC, C#, SQL Server, Entity Framework — modern enough for REST APIs, but no public API docs exist. Internal REST/SOAP infrastructure confirmed from job postings.
+- 2026-03-31: "Delete from Outlook = done" is GIC's current coordination mechanism for the shared inbox. Our system replaces this.
+- 2026-03-31: USLI quotes are JC's #1 automation priority — "very repetitive and boxed up." Personal liability has "never been efficiently put into the management system."
+- 2026-04-01: Unisoft ClickOnce app talks to APIs, NOT direct database. Multi-layer: REST gateway + WCF SOAP + file service + SignalR. UI automation NOT needed.
+- 2026-04-01: SetQuote (SOAP) is the core write operation. Fields include LOB (2-char code like CG), SubLOB (2-char like AC), AgentNumber (int), Name, Address, etc. Action=Insert for new.
+- 2026-04-01: Two auth flows: REST uses JWT (POST /api/authentication/login), SOAP uses WS-Security (UniClient/J5j!}7=r/z) + GetToken (GIC_UAT).
+- 2026-04-01: 70 SOAP operations + 32 REST endpoints confirmed from Fiddler capture. Full API surface in research/unisoft-api-reference.md.
+- 2026-04-01: USLI carrier number is 2, USLI contact email is joanneh@usli.com, GIC broker ID is 1. LOB code CG = General Liability.
+- 2026-04-01: Windows EC2 (i-0dc2563c9bc92aa0e) used for Fiddler recon. Stop when not in use (~$0.17/hr). RDP via SSM port forwarding.
+- 2026-04-01: Fiddler recon approach (install app, intercept traffic, map API) proved faster and more complete than waiting for official API docs from Unisoft.
 
 ## Open Questions (deferred — not blocking demo)
 - How does RingCentral data merge into the same pipeline? (Same pattern: RingCentral CLI + skills)
 - How do we handle the bilingual aspect? (Classifier skill handles Spanish; draft generator needs Spanish templates)
 - Business-line-specific requirements beyond GL? (Each LOB gets a config file following GL pattern, expand post-demo)
 - Multi-tenancy for other brokers? (Add tenant_id to all collections if needed)
-- Unisoft integration? (Depends on Jeremiah intro — not yet made)
 - Email sending in production? (Requires Mail.Send permission, separate Entra consent from GIC)
+
+## Open Questions (Unisoft Integration)
+- What does the quoting API actually support? (Waiting on Robert Gonzalez at Unisoft for swagger docs — JC emailed 2026-03-30, no reply yet)
+- Is the Granada API (`services-uat.granadainsurance.com`) built by Unisoft or custom by Mukul Gupta?
+- What are all the subline options per LOB in Unisoft? (GL confirmed: 4. Other 20 LOBs TBD — need from UAT exploration)
+- Do GIC portal submissions auto-create records in Unisoft?
+- Does Unisoft support ACORD data standards?
+- Is there a production API endpoint (not just UAT)?
+- Can documents be uploaded via API?
+- Can we get webhook/event notifications from Unisoft? (e.g., quote status changes)
+
+## Open Questions (Workflow Understanding — To Answer Through Alignment)
+- Which part of the workflow is fuzziest? Decision-making ("how do they know what to do?"), data entry ("what gets typed where?"), or end-to-end flow ("what triggers what?")?
+- From JC's walkthrough, what surprised Craig? Surprises point to wrong assumptions we might be carrying.
+- How do we frame the automation? "Pre-fill so they click save" vs "end-to-end with review" vs something else?
+- The "delete from Outlook = done" coordination — are we replacing it or augmenting it?
+- What does "done" mean for each email type? Is it always "entered into Unisoft" or are there different endpoints?
+- How does the team decide which carrier to submit to? Rule-based or judgment-based?
+- What's the decision tree for "needs more info" vs "ready to submit"?
+- Why has personal liability "never been efficiently put into the management system"? What's different about it?
+
+## UAT Access (confirmed 2026-03-30)
+- URL: `https://ins-gic-client-uat-app.azurewebsites.net/publish.htm`
+- Username: `ccerto` / Password: `GIC2026$$!`
+- Platform: ClickOnce Windows app (Azure-hosted) — requires Windows
+- API: Pending — JC emailed Robert Gonzalez (robert@unisoftonline.com) 2026-03-30 for swagger docs, no reply
+- Also requested: endorsements@gicunderwriters.com read-only access (JC → Mukul, 2026-03-31)

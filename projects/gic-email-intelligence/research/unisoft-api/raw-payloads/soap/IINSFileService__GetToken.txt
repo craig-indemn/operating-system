@@ -1,0 +1,58 @@
+# SOAP IINSFileService/GetToken via attachments/insfileservice.svc
+# Source: export1.saz, session 429
+# Type: soap
+# Service: IINSFileService
+# Operation: GetToken
+
+================================================================================
+REQUEST HEADERS
+================================================================================
+POST https://services.uat.gicunderwriters.co/attachments/insfileservice.svc HTTP/1.1
+MIME-Version: 1.0
+Content-Type: multipart/related; type="application/xop+xml";start="<http://tempuri.org/0>";boundary="uuid:ced9f1b3-4189-412b-9813-ad6a6740ccaf+id=1";start-info="text/xml"
+SOAPAction: "http://tempuri.org/IINSFileService/GetToken"
+Host: services.uat.gicunderwriters.co
+Transfer-Encoding: chunked
+Expect: 100-continue
+Accept-Encoding: gzip, deflate
+
+================================================================================
+REQUEST BODY
+================================================================================
+
+--uuid:ced9f1b3-4189-412b-9813-ad6a6740ccaf+id=1
+Content-ID: <http://tempuri.org/0>
+Content-Transfer-Encoding: 8bit
+Content-Type: application/xop+xml;charset=utf-8;type="text/xml"
+
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"><s:Body><GetToken xmlns="http://tempuri.org/"><request xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><AccessToken i:nil="true" xmlns=""/><ClientId i:nil="true" xmlns=""/><RequestId i:nil="true" xmlns=""/><Version i:nil="true" xmlns=""/></request></GetToken></s:Body></s:Envelope>
+--uuid:ced9f1b3-4189-412b-9813-ad6a6740ccaf+id=1--
+
+
+================================================================================
+RESPONSE HEADERS
+================================================================================
+HTTP/1.1 200 OK
+Content-Type: multipart/related; type="application/xop+xml";start="<http://tempuri.org/0>";boundary="uuid:cfa81336-3666-46ab-971b-4227b65bad71+id=23";start-info="text/xml"
+Date: Wed, 01 Apr 2026 14:15:18 GMT
+Server: Microsoft-IIS/10.0
+Cache-Control: private
+Set-Cookie: ARRAffinity=e6166b65c12757e75848ea8bb86d728a7326e6955b8050b4b5f4f80975dabae9;Path=/;HttpOnly;Secure;Domain=services.uat.gicunderwriters.co
+Set-Cookie: ARRAffinitySameSite=e6166b65c12757e75848ea8bb86d728a7326e6955b8050b4b5f4f80975dabae9;Path=/;HttpOnly;SameSite=None;Secure;Domain=services.uat.gicunderwriters.co
+Transfer-Encoding: chunked
+MIME-Version: 1.0
+X-AspNet-Version: 4.0.30319
+X-Powered-By: ASP.NET
+
+================================================================================
+RESPONSE BODY
+================================================================================
+
+--uuid:cfa81336-3666-46ab-971b-4227b65bad71+id=23
+Content-ID: <http://tempuri.org/0>
+Content-Transfer-Encoding: 8bit
+Content-Type: application/xop+xml;charset=utf-8;type="text/xml"
+
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"><s:Body><GetTokenResponse xmlns="http://tempuri.org/"><GetTokenResult xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><Build xmlns="">0</Build><CorrelationId i:nil="true" xmlns=""/><Message xmlns="">Unknown Client Id</Message><ReplyStatus xmlns="">Failure</ReplyStatus><RowsAffected xmlns="">0</RowsAffected><Version xmlns="">1.0</Version><AccessToken i:nil="true" xmlns=""/></GetTokenResult></GetTokenResponse></s:Body></s:Envelope>
+--uuid:cfa81336-3666-46ab-971b-4227b65bad71+id=23--
+

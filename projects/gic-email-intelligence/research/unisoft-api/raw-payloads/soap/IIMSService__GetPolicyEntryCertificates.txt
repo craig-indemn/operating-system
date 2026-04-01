@@ -1,0 +1,40 @@
+# SOAP IIMSService/GetPolicyEntryCertificates via management/imsservice.svc
+# Source: export2.saz, session 1483
+# Type: soap
+# Service: IIMSService
+# Operation: GetPolicyEntryCertificates
+
+================================================================================
+REQUEST HEADERS
+================================================================================
+POST https://services.uat.gicunderwriters.co/management/imsservice.svc HTTP/1.1
+Content-Type: application/soap+xml; charset=utf-8
+Host: services.uat.gicunderwriters.co
+Content-Length: 2818
+Expect: 100-continue
+Accept-Encoding: gzip, deflate
+
+================================================================================
+REQUEST BODY
+================================================================================
+<s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:r="http://schemas.xmlsoap.org/ws/2005/02/rm" xmlns:a="http://www.w3.org/2005/08/addressing" xmlns:u="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"><s:Header><r:SequenceAcknowledgement><r:Identifier>urn:uuid:6c861098-97a5-4c7d-b417-b3911e8f8763</r:Identifier><r:AcknowledgementRange Lower="1" Upper="141"/></r:SequenceAcknowledgement><r:Sequence s:mustUnderstand="1"><r:Identifier>urn:uuid:d2778d03-417a-4b61-994c-3885285a8ca6</r:Identifier><r:MessageNumber>340</r:MessageNumber></r:Sequence><a:Action s:mustUnderstand="1">http://tempuri.org/IIMSService/GetPolicyEntryCertificates</a:Action><a:MessageID>urn:uuid:f10bc71b-7f9f-4a94-af92-69fbdd017142</a:MessageID><a:ReplyTo><a:Address>http://www.w3.org/2005/08/addressing/anonymous</a:Address></a:ReplyTo><a:To s:mustUnderstand="1">https://services.uat.gicunderwriters.co/management/imsservice.svc</a:To><o:Security s:mustUnderstand="1" xmlns:o="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"><u:Timestamp u:Id="_0"><u:Created>2026-04-01T15:20:58.050Z</u:Created><u:Expires>2026-04-01T15:25:58.050Z</u:Expires></u:Timestamp><c:SecurityContextToken u:Id="uuid-afa6380a-dd45-4f6a-a7ff-3585d45eb548-19" xmlns:c="http://schemas.xmlsoap.org/ws/2005/02/sc"><c:Identifier>urn:uuid:0de74612-cf33-4b20-aa0f-923b3b56438d</c:Identifier></c:SecurityContextToken><Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#hmac-sha1"/><Reference URI="#_0"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><DigestValue>iN4wt8AC7YB+Tiv/ZUXiEhR820Q=</DigestValue></Reference></SignedInfo><SignatureValue>cafLP+aZK8dnVQFTR/CQb2OsIlQ=</SignatureValue><KeyInfo><o:SecurityTokenReference><o:Reference ValueType="http://schemas.xmlsoap.org/ws/2005/02/sc/sct" URI="#uuid-afa6380a-dd45-4f6a-a7ff-3585d45eb548-19"/></o:SecurityTokenReference></KeyInfo></Signature></o:Security></s:Header><s:Body><GetPolicyEntryCertificates xmlns="http://tempuri.org/"><request xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><AccessToken xmlns="">f08564a2-1ec3-4561-99d6-233faf9ced22</AccessToken><ClientId xmlns="">GIC_UAT</ClientId><CompanyInitials xmlns="">GIC_UAT</CompanyInitials><IsDeveloper xmlns="">false</IsDeveloper><RequestId xmlns="">e9e72d0d-240b-4a86-8e8b-6890efb47783</RequestId><RequestedByUserName i:nil="true" xmlns=""/><Version i:nil="true" xmlns=""/><Number xmlns="">0</Number><PolicyNumber xmlns="">04-CIM-000010821</PolicyNumber></request></GetPolicyEntryCertificates></s:Body></s:Envelope>
+
+================================================================================
+RESPONSE HEADERS
+================================================================================
+HTTP/1.1 200 OK
+Content-Length: 1927
+Content-Type: application/soap+xml; charset=utf-8
+Date: Wed, 01 Apr 2026 15:20:57 GMT
+Server: Microsoft-IIS/10.0
+Cache-Control: private
+Set-Cookie: ASP.NET_SessionId=kbbyduf45znaut2deh4tq10c; path=/; HttpOnly; SameSite=Lax
+Set-Cookie: ARRAffinity=e6166b65c12757e75848ea8bb86d728a7326e6955b8050b4b5f4f80975dabae9;Path=/;HttpOnly;Secure;Domain=services.uat.gicunderwriters.co
+Set-Cookie: ARRAffinitySameSite=e6166b65c12757e75848ea8bb86d728a7326e6955b8050b4b5f4f80975dabae9;Path=/;HttpOnly;SameSite=None;Secure;Domain=services.uat.gicunderwriters.co
+X-AspNet-Version: 4.0.30319
+X-Powered-By: ASP.NET
+
+================================================================================
+RESPONSE BODY
+================================================================================
+<s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:r="http://schemas.xmlsoap.org/ws/2005/02/rm" xmlns:a="http://www.w3.org/2005/08/addressing" xmlns:u="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"><s:Header><r:Sequence s:mustUnderstand="1"><r:Identifier>urn:uuid:6c861098-97a5-4c7d-b417-b3911e8f8763</r:Identifier><r:MessageNumber>144</r:MessageNumber></r:Sequence><r:SequenceAcknowledgement><r:Identifier>urn:uuid:d2778d03-417a-4b61-994c-3885285a8ca6</r:Identifier><r:AcknowledgementRange Lower="1" Upper="341"/><netrm:BufferRemaining xmlns:netrm="http://schemas.microsoft.com/ws/2006/05/rm">7</netrm:BufferRemaining></r:SequenceAcknowledgement><a:Action s:mustUnderstand="1">http://tempuri.org/IIMSService/GetPolicyEntryCertificatesResponse</a:Action><a:RelatesTo>urn:uuid:f10bc71b-7f9f-4a94-af92-69fbdd017142</a:RelatesTo><o:Security s:mustUnderstand="1" xmlns:o="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"><u:Timestamp u:Id="_0"><u:Created>2026-04-01T15:20:58.193Z</u:Created><u:Expires>2026-04-01T15:25:58.193Z</u:Expires></u:Timestamp></o:Security></s:Header><s:Body><GetPolicyEntryCertificatesResponse xmlns="http://tempuri.org/"><GetPolicyEntryCertificatesResult xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><Build xmlns="">0</Build><CorrelationId xmlns="">e9e72d0d-240b-4a86-8e8b-6890efb47783</CorrelationId><Message i:nil="true" xmlns=""/><ReplyStatus xmlns="">Success</ReplyStatus><RowsAffected xmlns="">0</RowsAffected><Version xmlns="">1.0</Version><PolicyEntryCertificate i:nil="true" xmlns="" xmlns:b="http://schemas.datacontract.org/2004/07/Unisoft.Insurance.Services.DTO.PolicyEntry"/><PolicyEntryCertificates xmlns="" xmlns:b="http://schemas.datacontract.org/2004/07/Unisoft.Insurance.Services.DTO.PolicyEntry"/></GetPolicyEntryCertificatesResult></GetPolicyEntryCertificatesResponse></s:Body></s:Envelope>

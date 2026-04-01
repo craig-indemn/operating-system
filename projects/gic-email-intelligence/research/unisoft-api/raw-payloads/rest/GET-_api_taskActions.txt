@@ -1,0 +1,41 @@
+# GET /api/taskActions (params: responseType, paging)
+# Source: export1.saz, session 531
+# Type: rest
+# Method: GET
+# Path: /api/taskActions
+# Query: responseType=ForLookup&paging=False
+
+================================================================================
+REQUEST HEADERS
+================================================================================
+GET https://ins-gic-api-gateway-uat-app.azurewebsites.net/api/taskActions?responseType=ForLookup&paging=False HTTP/1.1
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiY2NlcnRvIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVW5kZXJ3cml0ZXIiLCJleHAiOjE3NzUxMzkzNjUsImlzcyI6IlVuaXNvZnQuSW5zdXJhbmNlLlVzZXJNYW5hZ2VtZW50LldlYkFwaSIsImF1ZCI6Imh0dHBzOi8vaW5zLWdpYy11c2Vycy1hcGktdWF0LWFwcC5henVyZXdlYnNpdGVzLm5ldCJ9.S9RgfRsqFiy8QtWcVIoSqHTr5KPImk1U2b8HFx2uEQM
+Host: ins-gic-api-gateway-uat-app.azurewebsites.net
+Cookie: .AspNetCore.Identity.Application=CfDJ8LBKxXlSOMtLp3zqdPAufkTnpFkuIhpyNFWkf9Ou-QA8qDlLccBNlzW_CTRVqrQYUmrTLP_AbULbHn17afYOCpUG2PfXLISeRLNPmgvpKRuk9HMwTtYbo3IGQ-v974EXBTrEyc2RNkHigvP-8o2mC1IAc5bw2LuorLz8WZRm1NvtU_Nv9WAnF2sHrbJI__WreqK7G9ebdEg6TjmS-z_s8sLvYWFXvgWXExazToacFmmqVig-j8rRUdnwcx_6TGX1yAScxSVQvcVnkr437AIFvfy3u1CVRkSUFOYMYueLeDe8Zqf5tEF0zMTSojun59UVhyeEbE9l0I3XJ2x5qX4u1xX7aA6b0Wd1O1VmPxc5zQr4O0-2NcWYhslDVYDMk1tcS7gOoClAdlRyY7K9DM7FYr_KOYtZfxtHnvhDFVZr_nAUgRgDLVUT5rybBKgBpZzCwmtx2I7aB5q92Xo32lJM482_Nw_6Y7SeoS6sJeZtdCji9QdxbsOE0DM9jY7tMBCOcJmJIqMRlya7JgeZ1eBeRDEUVsmSosExLe9w4tSkYJMVpSfOcd3u9isJIisPdlb9ZHHdNBad0pnSpvvKOgtN9WF_bdgVUAAOP_8anM5FZHX79FrIMFAeDpu-f2VmBo-WCaNztssVlqtWBAZKIJQE-bdTQ0m8rLptfOA1RXF-hRm8KWgdKubpEwR7cMDQWecrxC904f2KvbpSWTYQ-w9cpFFEDjIAeha9m9a4AL1AbAQrST9w3j9RlsymPCvvFpmHojk7iyEQugol2rS1N5nABVPDjTnPm3BzRwjg43oBUAry896bLVTLLXI4n6k9_2giso6NR20d6N0azyj4b9ZTGpdw1Niqn8j6LknZZuOaOlKUl4AUjL8K0rxxFGq-mhsP0iM32Oebo2Z3hlltjVeefPUnsJB11nDfUZcBuBNaWL5TvvJSiieCfPlgtpflKrVmSqgFtFas0ZaqlovoPG25Fd1vLCxBVebLeuabcleQrfSpH8mTOJ1QPRQBCBsow2VK7dJAclwRt0FfU_fSq7V2RSg7g7-p27BPAdQajEF1hW1w; ARRAffinity=e6166b65c12757e75848ea8bb86d728a7326e6955b8050b4b5f4f80975dabae9; ARRAffinitySameSite=e6166b65c12757e75848ea8bb86d728a7326e6955b8050b4b5f4f80975dabae9
+
+================================================================================
+REQUEST BODY
+================================================================================
+(empty)
+
+================================================================================
+RESPONSE HEADERS
+================================================================================
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Date: Wed, 01 Apr 2026 14:16:45 GMT
+Server: Microsoft-IIS/10.0
+Transfer-Encoding: chunked
+Strict-Transport-Security: max-age=2592000
+api-supported-versions: 1.0
+X-Rate-Limit-Limit: 1m
+X-Rate-Limit-Remaining: 994
+X-Rate-Limit-Reset: 2026-04-01T14:17:08.3335130Z
+X-Powered-By: ASP.NET
+X-Powered-By: ASP.NET
+
+================================================================================
+RESPONSE BODY
+================================================================================
+[{"sectionId":5,"description":"2nd request","isActive":true,"actionId":18},{"sectionId":2,"description":"31-Day Follow-up","isActive":true,"actionId":37},{"sectionId":1,"description":"Appoinment","isActive":true,"actionId":2},{"sectionId":3,"description":"Complete sale on endorsement entry","isActive":true,"actionId":32},{"sectionId":3,"description":"Complete sale on policy entry","isActive":true,"actionId":7},{"sectionId":1,"description":"Fax","isActive":true,"actionId":3},{"sectionId":3,"description":"Follow Up Missing Binder Info/Docs","isActive":true,"actionId":35},{"sectionId":5,"description":"Follow up on additional info requested","isActive":true,"actionId":17},{"sectionId":3,"description":"Follow up on bind request to carrier","isActive":true,"actionId":14},{"sectionId":5,"description":"Follow up on E&O application sent - new","isActive":true,"actionId":16},{"sectionId":5,"description":"Follow up on E&O renewal application sent","isActive":true,"actionId":15},{"sectionId":5,"description":"Follow up on offer sent to agent ","isActive":true,"actionId":22},{"sectionId":5,"description":"Follow up on reassigned submission","isActive":true,"actionId":30},{"sectionId":5,"description":"follow up on renewal solicitation sent","isActive":true,"actionId":28},{"sectionId":5,"description":"follow up with Renee","isActive":true,"actionId":19},{"sectionId":1,"description":"Follow-up","isActive":true,"actionId":1},{"sectionId":3,"description":"Follow-up on Request for additional info","isActive":true,"actionId":33},{"sectionId":5,"description":"FU on info request","isActive":true,"actionId":20},{"sectionId":5,"description":"fu on order","isActive":true,"actionId":21},{"sectionId":6,"description":"GET NEW E & O DEC","isActive":true,"actionId":34},{"sectionId":1,"description":"Meetings","isActive":true,"actionId":4},{"sectionId":2,"description":"New Business","isActive":true,"actionId":5},{"sectionId":2,"description":"Open Items Follow Up","isActive":true,"actionId":36},{"sectionId":3,"description":"Quote follow up","isActive":true,"actionId":12},{"sectionId":5,"description":"Quote reassigned to new account manager, please reivew.","isActive":true,"actionId":24},{"sectionId":5,"description":"Quote reassigned to new account manager, please review.","isActive":true,"actionId":25},{"sectionId":3,"description":"Renewal Follow Up","isActive":true,"actionId":38},{"sectionId":5,"description":"Renewal Follow-up with carrier","isActive":true,"actionId":31},{"sectionId":5,"description":"Send application or required documents to agent for renwal","isActive":true,"actionId":23},{"sectionId":5,"description":"Send Hiscox auto renewal to agent","isActive":true,"actionId":10},{"sectionId":5,"description":"Send NALRRG auto renewal to agent","isActive":true,"actionId":26},{"sectionId":5,"description":"Send offer to agent","isActive":true,"actionId":29},{"sectionId":3,"description":"Send offer to agent","isActive":true,"actionId":8},{"sectionId":3,"description":"Send TI renewal indicaton to agent","isActive":true,"actionId":13},{"sectionId":3,"description":"Submission follow-up","isActive":true,"actionId":11},{"sectionId":5,"description":"Submit application to carier","isActive":true,"actionId":27},{"sectionId":5,"description":"Submit to carrier(s)","isActive":true,"actionId":6},{"sectionId":5,"description":"Submit to carrier(s) via portal","isActive":true,"actionId":9},{"sectionId":1,"description":"Test cloud","isActive":true,"actionId":39}]

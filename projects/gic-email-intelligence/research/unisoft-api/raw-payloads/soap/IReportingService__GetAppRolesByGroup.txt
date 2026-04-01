@@ -1,0 +1,37 @@
+# SOAP IReportingService/GetAppRolesByGroup via reports/reportingservice.svc
+# Source: export2.saz, session 0387
+# Type: soap
+# Service: IReportingService
+# Operation: GetAppRolesByGroup
+
+================================================================================
+REQUEST HEADERS
+================================================================================
+POST https://services.uat.gicunderwriters.co/reports/reportingservice.svc HTTP/1.1
+Content-Type: application/soap+xml; charset=utf-8
+Host: services.uat.gicunderwriters.co
+Content-Length: 2298
+Expect: 100-continue
+Accept-Encoding: gzip, deflate
+
+================================================================================
+REQUEST BODY
+================================================================================
+<s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:a="http://www.w3.org/2005/08/addressing" xmlns:u="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"><s:Header><a:Action s:mustUnderstand="1">http://tempuri.org/IReportingService/GetAppRolesByGroup</a:Action><a:MessageID>urn:uuid:feed8fe7-1f00-4ed6-9aea-7fcc0fde8e96</a:MessageID><a:ReplyTo><a:Address>http://www.w3.org/2005/08/addressing/anonymous</a:Address></a:ReplyTo><a:To s:mustUnderstand="1">https://services.uat.gicunderwriters.co/reports/reportingservice.svc</a:To><o:Security s:mustUnderstand="1" xmlns:o="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"><u:Timestamp u:Id="_0"><u:Created>2026-04-01T14:45:17.774Z</u:Created><u:Expires>2026-04-01T14:50:17.774Z</u:Expires></u:Timestamp><c:SecurityContextToken u:Id="uuid-48657c95-b912-4c2d-9a6a-36fbe51bee65-9" xmlns:c="http://schemas.xmlsoap.org/ws/2005/02/sc"><c:Identifier>urn:uuid:6f526fcb-c4d3-4b54-b171-ae495fd9615a</c:Identifier></c:SecurityContextToken><Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#hmac-sha1"/><Reference URI="#_0"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><DigestValue>GqB/TccNA4ata0NXz+xVRYrZUlQ=</DigestValue></Reference></SignedInfo><SignatureValue>T1ORtgKqlkmFnOp9IAg4P84VRsQ=</SignatureValue><KeyInfo><o:SecurityTokenReference><o:Reference ValueType="http://schemas.xmlsoap.org/ws/2005/02/sc/sct" URI="#uuid-48657c95-b912-4c2d-9a6a-36fbe51bee65-9"/></o:SecurityTokenReference></KeyInfo></Signature></o:Security></s:Header><s:Body><GetAppRolesByGroup xmlns="http://tempuri.org/"><request xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><AccessToken i:nil="true" xmlns=""/><ClientId xmlns="">GIC_UAT</ClientId><IsDeveloper xmlns="">false</IsDeveloper><RequestId xmlns="">9e255a4a-7748-43be-858d-035f1f5c3b3d</RequestId><Version i:nil="true" xmlns=""/><IncludeUnisoftRoles xmlns="">false</IncludeUnisoftRoles><RoleGroupId xmlns="">1</RoleGroupId></request></GetAppRolesByGroup></s:Body></s:Envelope>
+
+================================================================================
+RESPONSE HEADERS
+================================================================================
+HTTP/1.1 200 OK
+Content-Length: 1941
+Content-Type: application/soap+xml; charset=utf-8
+Date: Wed, 01 Apr 2026 14:45:19 GMT
+Server: Microsoft-IIS/10.0
+Set-Cookie: ARRAffinity=e6166b65c12757e75848ea8bb86d728a7326e6955b8050b4b5f4f80975dabae9;Path=/;HttpOnly;Secure;Domain=services.uat.gicunderwriters.co
+Set-Cookie: ARRAffinitySameSite=e6166b65c12757e75848ea8bb86d728a7326e6955b8050b4b5f4f80975dabae9;Path=/;HttpOnly;SameSite=None;Secure;Domain=services.uat.gicunderwriters.co
+X-Powered-By: ASP.NET
+
+================================================================================
+RESPONSE BODY
+================================================================================
+<s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:a="http://www.w3.org/2005/08/addressing" xmlns:u="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"><s:Header><a:Action s:mustUnderstand="1">http://tempuri.org/IReportingService/GetAppRolesByGroupResponse</a:Action><a:RelatesTo>urn:uuid:feed8fe7-1f00-4ed6-9aea-7fcc0fde8e96</a:RelatesTo><o:Security s:mustUnderstand="1" xmlns:o="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"><u:Timestamp u:Id="_0"><u:Created>2026-04-01T14:45:20.129Z</u:Created><u:Expires>2026-04-01T14:50:20.129Z</u:Expires></u:Timestamp></o:Security></s:Header><s:Body><GetAppRolesByGroupResponse xmlns="http://tempuri.org/"><GetAppRolesByGroupResult xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><Build xmlns="">0</Build><CorrelationId xmlns="">9e255a4a-7748-43be-858d-035f1f5c3b3d</CorrelationId><Message xmlns=""/><ReplyStatus xmlns="">Success</ReplyStatus><RowsAffected xmlns="">1</RowsAffected><Version xmlns="">1.0</Version><AppRole i:nil="true" xmlns="" xmlns:b="http://schemas.datacontract.org/2004/07/Unisoft.Insurance.Reporting.Services.DTO.Support"/><AppRoles xmlns="" xmlns:b="http://schemas.datacontract.org/2004/07/Unisoft.Insurance.Reporting.Services.DTO.Support"><b:AppRoleDTO><b:Description>Adjuster</b:Description><b:RoleId>2</b:RoleId></b:AppRoleDTO><b:AppRoleDTO><b:Description>Claims Manager</b:Description><b:RoleId>5</b:RoleId></b:AppRoleDTO><b:AppRoleDTO><b:Description>Claims Officer</b:Description><b:RoleId>6</b:RoleId></b:AppRoleDTO><b:AppRoleDTO><b:Description>Claims Supervisor</b:Description><b:RoleId>7</b:RoleId></b:AppRoleDTO><b:AppRoleDTO><b:Description>Examiner</b:Description><b:RoleId>10</b:RoleId></b:AppRoleDTO><b:AppRoleDTO><b:Description>FNOL</b:Description><b:RoleId>19</b:RoleId></b:AppRoleDTO></AppRoles></GetAppRolesByGroupResult></GetAppRolesByGroupResponse></s:Body></s:Envelope>

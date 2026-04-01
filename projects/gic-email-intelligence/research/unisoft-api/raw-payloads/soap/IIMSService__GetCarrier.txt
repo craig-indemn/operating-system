@@ -1,0 +1,40 @@
+# SOAP IIMSService/GetCarrier via management/imsservice.svc
+# Source: export2.saz, session 0131
+# Type: soap
+# Service: IIMSService
+# Operation: GetCarrier
+
+================================================================================
+REQUEST HEADERS
+================================================================================
+POST https://services.uat.gicunderwriters.co/management/imsservice.svc HTTP/1.1
+Content-Type: application/soap+xml; charset=utf-8
+Host: services.uat.gicunderwriters.co
+Content-Length: 2762
+Expect: 100-continue
+Accept-Encoding: gzip, deflate
+
+================================================================================
+REQUEST BODY
+================================================================================
+<s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:r="http://schemas.xmlsoap.org/ws/2005/02/rm" xmlns:a="http://www.w3.org/2005/08/addressing" xmlns:u="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"><s:Header><r:SequenceAcknowledgement><r:Identifier>urn:uuid:6c861098-97a5-4c7d-b417-b3911e8f8763</r:Identifier><r:AcknowledgementRange Lower="1" Upper="34"/></r:SequenceAcknowledgement><r:Sequence s:mustUnderstand="1"><r:Identifier>urn:uuid:d2778d03-417a-4b61-994c-3885285a8ca6</r:Identifier><r:MessageNumber>105</r:MessageNumber></r:Sequence><a:Action s:mustUnderstand="1">http://tempuri.org/IIMSService/GetCarrier</a:Action><a:MessageID>urn:uuid:bb4e4f4e-8b4f-4911-a24e-1738a8079bd9</a:MessageID><a:ReplyTo><a:Address>http://www.w3.org/2005/08/addressing/anonymous</a:Address></a:ReplyTo><a:To s:mustUnderstand="1">https://services.uat.gicunderwriters.co/management/imsservice.svc</a:To><o:Security s:mustUnderstand="1" xmlns:o="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"><u:Timestamp u:Id="_0"><u:Created>2026-04-01T14:38:39.473Z</u:Created><u:Expires>2026-04-01T14:43:39.473Z</u:Expires></u:Timestamp><c:SecurityContextToken u:Id="uuid-afa6380a-dd45-4f6a-a7ff-3585d45eb548-19" xmlns:c="http://schemas.xmlsoap.org/ws/2005/02/sc"><c:Identifier>urn:uuid:0de74612-cf33-4b20-aa0f-923b3b56438d</c:Identifier></c:SecurityContextToken><Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#hmac-sha1"/><Reference URI="#_0"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><DigestValue>65Is5WOuZ1VjPUhumV7oRdxBM9s=</DigestValue></Reference></SignedInfo><SignatureValue>sJRIGpBIuW+QvLGd4xge5BCB1K0=</SignatureValue><KeyInfo><o:SecurityTokenReference><o:Reference ValueType="http://schemas.xmlsoap.org/ws/2005/02/sc/sct" URI="#uuid-afa6380a-dd45-4f6a-a7ff-3585d45eb548-19"/></o:SecurityTokenReference></KeyInfo></Signature></o:Security></s:Header><s:Body><GetCarrier xmlns="http://tempuri.org/"><request xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><AccessToken xmlns="">f08564a2-1ec3-4561-99d6-233faf9ced22</AccessToken><ClientId xmlns="">GIC_UAT</ClientId><CompanyInitials xmlns="">GIC_UAT</CompanyInitials><IsDeveloper xmlns="">false</IsDeveloper><RequestId xmlns="">87a878b6-4a2b-4a40-b4cd-6c8302b4fd59</RequestId><RequestedByUserName i:nil="true" xmlns=""/><Version i:nil="true" xmlns=""/><CarrierNumber xmlns="">2</CarrierNumber><MGANumber xmlns="">0</MGANumber></request></GetCarrier></s:Body></s:Envelope>
+
+================================================================================
+RESPONSE HEADERS
+================================================================================
+HTTP/1.1 200 OK
+Content-Length: 3133
+Content-Type: application/soap+xml; charset=utf-8
+Date: Wed, 01 Apr 2026 14:38:39 GMT
+Server: Microsoft-IIS/10.0
+Cache-Control: private
+Set-Cookie: ASP.NET_SessionId=tdyboaeynluq1xn4135k0f10; path=/; HttpOnly; SameSite=Lax
+Set-Cookie: ARRAffinity=e6166b65c12757e75848ea8bb86d728a7326e6955b8050b4b5f4f80975dabae9;Path=/;HttpOnly;Secure;Domain=services.uat.gicunderwriters.co
+Set-Cookie: ARRAffinitySameSite=e6166b65c12757e75848ea8bb86d728a7326e6955b8050b4b5f4f80975dabae9;Path=/;HttpOnly;SameSite=None;Secure;Domain=services.uat.gicunderwriters.co
+X-AspNet-Version: 4.0.30319
+X-Powered-By: ASP.NET
+
+================================================================================
+RESPONSE BODY
+================================================================================
+<s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:r="http://schemas.xmlsoap.org/ws/2005/02/rm" xmlns:a="http://www.w3.org/2005/08/addressing" xmlns:u="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"><s:Header><r:Sequence s:mustUnderstand="1"><r:Identifier>urn:uuid:6c861098-97a5-4c7d-b417-b3911e8f8763</r:Identifier><r:MessageNumber>35</r:MessageNumber></r:Sequence><r:SequenceAcknowledgement><r:Identifier>urn:uuid:d2778d03-417a-4b61-994c-3885285a8ca6</r:Identifier><r:AcknowledgementRange Lower="1" Upper="105"/><netrm:BufferRemaining xmlns:netrm="http://schemas.microsoft.com/ws/2006/05/rm">8</netrm:BufferRemaining></r:SequenceAcknowledgement><a:Action s:mustUnderstand="1">http://tempuri.org/IIMSService/GetCarrierResponse</a:Action><a:RelatesTo>urn:uuid:bb4e4f4e-8b4f-4911-a24e-1738a8079bd9</a:RelatesTo><o:Security s:mustUnderstand="1" xmlns:o="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"><u:Timestamp u:Id="_0"><u:Created>2026-04-01T14:38:39.599Z</u:Created><u:Expires>2026-04-01T14:43:39.599Z</u:Expires></u:Timestamp></o:Security></s:Header><s:Body><GetCarrierResponse xmlns="http://tempuri.org/"><GetCarrierResult xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><Build xmlns="">0</Build><CorrelationId xmlns="">87a878b6-4a2b-4a40-b4cd-6c8302b4fd59</CorrelationId><Message i:nil="true" xmlns=""/><ReplyStatus xmlns="">Success</ReplyStatus><RowsAffected xmlns="">0</RowsAffected><Version xmlns="">1.0</Version><Carrier xmlns="" xmlns:b="http://schemas.datacontract.org/2004/07/Unisoft.Insurance.Services.DTO.Carriers"><b:Address1>1190 Devon Park Drive</b:Address1><b:Address2 i:nil="true"/><b:AddressFormatCode>D</b:AddressFormatCode><b:BatchCompanyId>GIC</b:BatchCompanyId><b:BrokerName i:nil="true"/><b:BrokerNumber>0</b:BrokerNumber><b:CancellationRoundToNoDigits>3</b:CancellationRoundToNoDigits><b:CarrierNumber>2</b:CarrierNumber><b:City>Wayne</b:City><b:CommissionType i:nil="true"/><b:CountryCode i:nil="true"/><b:Fax>0</b:Fax><b:GeneratePayable>true</b:GeneratePayable><b:InternationalFaxNo i:nil="true"/><b:InternationalPhoneNo i:nil="true"/><b:InternationalPostalCode i:nil="true"/><b:IsActive>true</b:IsActive><b:IsAgentCommissionStatementsEnabled>true</b:IsAgentCommissionStatementsEnabled><b:IsExternallyRated>false</b:IsExternallyRated><b:IsPaymentPlanEnabled>false</b:IsPaymentPlanEnabled><b:LastAssignedClaimNumber>0</b:LastAssignedClaimNumber><b:MGANumber>0</b:MGANumber><b:MailName>United States Liability Ins Co.</b:MailName><b:NAICNumber>25895</b:NAICNumber><b:Name1>United States Liability Ins Co</b:Name1><b:Name2 i:nil="true"/><b:Phone>0</b:Phone><b:PrintFormEnabled>false</b:PrintFormEnabled><b:StateCode>PA</b:StateCode><b:ZipCode>19087</b:ZipCode><b:ZipCode4>0</b:ZipCode4></Carrier><Carriers i:nil="true" xmlns="" xmlns:b="http://schemas.datacontract.org/2004/07/Unisoft.Insurance.Services.DTO.Carriers"/><CarriersForLookup i:nil="true" xmlns="" xmlns:b="http://schemas.datacontract.org/2004/07/Unisoft.Insurance.Services.DTO.Carriers"/></GetCarrierResult></GetCarrierResponse></s:Body></s:Envelope>

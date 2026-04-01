@@ -1,0 +1,41 @@
+# GET /api/taskGroups (params: userName)
+# Source: export1.saz, session 485
+# Type: rest
+# Method: GET
+# Path: /api/taskGroups
+# Query: userName=ccerto
+
+================================================================================
+REQUEST HEADERS
+================================================================================
+GET https://ins-gic-api-gateway-uat-app.azurewebsites.net/api/taskGroups?userName=ccerto HTTP/1.1
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiY2NlcnRvIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVW5kZXJ3cml0ZXIiLCJleHAiOjE3NzUxMzkzNjUsImlzcyI6IlVuaXNvZnQuSW5zdXJhbmNlLlVzZXJNYW5hZ2VtZW50LldlYkFwaSIsImF1ZCI6Imh0dHBzOi8vaW5zLWdpYy11c2Vycy1hcGktdWF0LWFwcC5henVyZXdlYnNpdGVzLm5ldCJ9.S9RgfRsqFiy8QtWcVIoSqHTr5KPImk1U2b8HFx2uEQM
+Host: ins-gic-api-gateway-uat-app.azurewebsites.net
+Cookie: .AspNetCore.Identity.Application=CfDJ8LBKxXlSOMtLp3zqdPAufkTnpFkuIhpyNFWkf9Ou-QA8qDlLccBNlzW_CTRVqrQYUmrTLP_AbULbHn17afYOCpUG2PfXLISeRLNPmgvpKRuk9HMwTtYbo3IGQ-v974EXBTrEyc2RNkHigvP-8o2mC1IAc5bw2LuorLz8WZRm1NvtU_Nv9WAnF2sHrbJI__WreqK7G9ebdEg6TjmS-z_s8sLvYWFXvgWXExazToacFmmqVig-j8rRUdnwcx_6TGX1yAScxSVQvcVnkr437AIFvfy3u1CVRkSUFOYMYueLeDe8Zqf5tEF0zMTSojun59UVhyeEbE9l0I3XJ2x5qX4u1xX7aA6b0Wd1O1VmPxc5zQr4O0-2NcWYhslDVYDMk1tcS7gOoClAdlRyY7K9DM7FYr_KOYtZfxtHnvhDFVZr_nAUgRgDLVUT5rybBKgBpZzCwmtx2I7aB5q92Xo32lJM482_Nw_6Y7SeoS6sJeZtdCji9QdxbsOE0DM9jY7tMBCOcJmJIqMRlya7JgeZ1eBeRDEUVsmSosExLe9w4tSkYJMVpSfOcd3u9isJIisPdlb9ZHHdNBad0pnSpvvKOgtN9WF_bdgVUAAOP_8anM5FZHX79FrIMFAeDpu-f2VmBo-WCaNztssVlqtWBAZKIJQE-bdTQ0m8rLptfOA1RXF-hRm8KWgdKubpEwR7cMDQWecrxC904f2KvbpSWTYQ-w9cpFFEDjIAeha9m9a4AL1AbAQrST9w3j9RlsymPCvvFpmHojk7iyEQugol2rS1N5nABVPDjTnPm3BzRwjg43oBUAry896bLVTLLXI4n6k9_2giso6NR20d6N0azyj4b9ZTGpdw1Niqn8j6LknZZuOaOlKUl4AUjL8K0rxxFGq-mhsP0iM32Oebo2Z3hlltjVeefPUnsJB11nDfUZcBuBNaWL5TvvJSiieCfPlgtpflKrVmSqgFtFas0ZaqlovoPG25Fd1vLCxBVebLeuabcleQrfSpH8mTOJ1QPRQBCBsow2VK7dJAclwRt0FfU_fSq7V2RSg7g7-p27BPAdQajEF1hW1w; ARRAffinity=e6166b65c12757e75848ea8bb86d728a7326e6955b8050b4b5f4f80975dabae9; ARRAffinitySameSite=e6166b65c12757e75848ea8bb86d728a7326e6955b8050b4b5f4f80975dabae9
+
+================================================================================
+REQUEST BODY
+================================================================================
+(empty)
+
+================================================================================
+RESPONSE HEADERS
+================================================================================
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Date: Wed, 01 Apr 2026 14:16:10 GMT
+Server: Microsoft-IIS/10.0
+Transfer-Encoding: chunked
+Strict-Transport-Security: max-age=2592000
+api-supported-versions: 1.0
+X-Rate-Limit-Limit: 1m
+X-Rate-Limit-Remaining: 997
+X-Rate-Limit-Reset: 2026-04-01T14:17:08.3335130Z
+X-Powered-By: ASP.NET
+X-Powered-By: ASP.NET
+
+================================================================================
+RESPONSE BODY
+================================================================================
+[]

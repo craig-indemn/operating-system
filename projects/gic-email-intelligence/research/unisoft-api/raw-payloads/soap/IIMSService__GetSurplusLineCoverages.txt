@@ -1,0 +1,39 @@
+# SOAP IIMSService/GetSurplusLineCoverages via management/imsservice.svc
+# Source: export2.saz, session 1395
+# Type: soap
+# Service: IIMSService
+# Operation: GetSurplusLineCoverages
+
+================================================================================
+REQUEST HEADERS
+================================================================================
+POST https://services.uat.gicunderwriters.co/management/imsservice.svc HTTP/1.1
+Content-Type: application/soap+xml; charset=utf-8
+Host: services.uat.gicunderwriters.co
+Content-Length: 2826
+Expect: 100-continue
+Accept-Encoding: gzip, deflate
+
+================================================================================
+REQUEST BODY
+================================================================================
+<s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:r="http://schemas.xmlsoap.org/ws/2005/02/rm" xmlns:a="http://www.w3.org/2005/08/addressing" xmlns:u="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"><s:Header><r:SequenceAcknowledgement><r:Identifier>urn:uuid:6c861098-97a5-4c7d-b417-b3911e8f8763</r:Identifier><r:AcknowledgementRange Lower="1" Upper="112"/></r:SequenceAcknowledgement><r:Sequence s:mustUnderstand="1"><r:Identifier>urn:uuid:d2778d03-417a-4b61-994c-3885285a8ca6</r:Identifier><r:MessageNumber>308</r:MessageNumber></r:Sequence><a:Action s:mustUnderstand="1">http://tempuri.org/IIMSService/GetSurplusLineCoverages</a:Action><a:MessageID>urn:uuid:16d298b3-ad14-412d-92e9-80eb43b50c7f</a:MessageID><a:ReplyTo><a:Address>http://www.w3.org/2005/08/addressing/anonymous</a:Address></a:ReplyTo><a:To s:mustUnderstand="1">https://services.uat.gicunderwriters.co/management/imsservice.svc</a:To><o:Security s:mustUnderstand="1" xmlns:o="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"><u:Timestamp u:Id="_0"><u:Created>2026-04-01T15:19:19.822Z</u:Created><u:Expires>2026-04-01T15:24:19.822Z</u:Expires></u:Timestamp><c:SecurityContextToken u:Id="uuid-afa6380a-dd45-4f6a-a7ff-3585d45eb548-19" xmlns:c="http://schemas.xmlsoap.org/ws/2005/02/sc"><c:Identifier>urn:uuid:0de74612-cf33-4b20-aa0f-923b3b56438d</c:Identifier></c:SecurityContextToken><Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#hmac-sha1"/><Reference URI="#_0"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><DigestValue>98pz4xwQbspsfxGql2YGRQETN9o=</DigestValue></Reference></SignedInfo><SignatureValue>MAN7dlfnLUhq/L/ppSAXDcI8S+0=</SignatureValue><KeyInfo><o:SecurityTokenReference><o:Reference ValueType="http://schemas.xmlsoap.org/ws/2005/02/sc/sct" URI="#uuid-afa6380a-dd45-4f6a-a7ff-3585d45eb548-19"/></o:SecurityTokenReference></KeyInfo></Signature></o:Security></s:Header><s:Body><GetSurplusLineCoverages xmlns="http://tempuri.org/"><request xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><AccessToken xmlns="">f08564a2-1ec3-4561-99d6-233faf9ced22</AccessToken><ClientId xmlns="">GIC_UAT</ClientId><CompanyInitials xmlns="">GIC_UAT</CompanyInitials><IsDeveloper xmlns="">false</IsDeveloper><RequestId xmlns="">86961a60-59eb-4031-81b3-e9e0d4014a24</RequestId><RequestedByUserName i:nil="true" xmlns=""/><Version i:nil="true" xmlns=""/><MGANumber xmlns="">0</MGANumber><RepNumber xmlns="">0</RepNumber><SubLine i:nil="true" xmlns=""/></request></GetSurplusLineCoverages></s:Body></s:Envelope>
+
+================================================================================
+RESPONSE HEADERS
+================================================================================
+HTTP/1.1 202 Accepted
+Content-Length: 0
+Date: Wed, 01 Apr 2026 15:19:19 GMT
+Server: Microsoft-IIS/10.0
+Cache-Control: private
+Set-Cookie: ASP.NET_SessionId=qyx1iawyxrzrvhwtqfnftqns; path=/; HttpOnly; SameSite=Lax
+Set-Cookie: ARRAffinity=e6166b65c12757e75848ea8bb86d728a7326e6955b8050b4b5f4f80975dabae9;Path=/;HttpOnly;Secure;Domain=services.uat.gicunderwriters.co
+Set-Cookie: ARRAffinitySameSite=e6166b65c12757e75848ea8bb86d728a7326e6955b8050b4b5f4f80975dabae9;Path=/;HttpOnly;SameSite=None;Secure;Domain=services.uat.gicunderwriters.co
+X-AspNet-Version: 4.0.30319
+X-Powered-By: ASP.NET
+
+================================================================================
+RESPONSE BODY
+================================================================================
+(empty)

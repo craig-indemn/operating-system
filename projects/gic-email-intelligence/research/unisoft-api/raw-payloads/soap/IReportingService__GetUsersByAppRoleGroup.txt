@@ -1,0 +1,37 @@
+# SOAP IReportingService/GetUsersByAppRoleGroup via reports/reportingservice.svc
+# Source: export2.saz, session 0398
+# Type: soap
+# Service: IReportingService
+# Operation: GetUsersByAppRoleGroup
+
+================================================================================
+REQUEST HEADERS
+================================================================================
+POST https://services.uat.gicunderwriters.co/reports/reportingservice.svc HTTP/1.1
+Content-Type: application/soap+xml; charset=utf-8
+Host: services.uat.gicunderwriters.co
+Content-Length: 2413
+Expect: 100-continue
+Accept-Encoding: gzip, deflate
+
+================================================================================
+REQUEST BODY
+================================================================================
+<s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:a="http://www.w3.org/2005/08/addressing" xmlns:u="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"><s:Header><a:Action s:mustUnderstand="1">http://tempuri.org/IReportingService/GetUsersByAppRoleGroup</a:Action><a:MessageID>urn:uuid:4ff8f748-4fc5-41e2-a2e7-3625cd2dc8eb</a:MessageID><a:ReplyTo><a:Address>http://www.w3.org/2005/08/addressing/anonymous</a:Address></a:ReplyTo><a:To s:mustUnderstand="1">https://services.uat.gicunderwriters.co/reports/reportingservice.svc</a:To><o:Security s:mustUnderstand="1" xmlns:o="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"><u:Timestamp u:Id="_0"><u:Created>2026-04-01T14:45:20.286Z</u:Created><u:Expires>2026-04-01T14:50:20.286Z</u:Expires></u:Timestamp><c:SecurityContextToken u:Id="uuid-48657c95-b912-4c2d-9a6a-36fbe51bee65-13" xmlns:c="http://schemas.xmlsoap.org/ws/2005/02/sc"><c:Identifier>urn:uuid:a1a600ec-e23b-4ee0-84ea-eb9c08b4c31a</c:Identifier></c:SecurityContextToken><Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#hmac-sha1"/><Reference URI="#_0"><Transforms><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><DigestValue>2ibB2ipWDqnjoahfd+csllosqWA=</DigestValue></Reference></SignedInfo><SignatureValue>uFQVk15PxYL3q+NY760kLSYyFDI=</SignatureValue><KeyInfo><o:SecurityTokenReference><o:Reference ValueType="http://schemas.xmlsoap.org/ws/2005/02/sc/sct" URI="#uuid-48657c95-b912-4c2d-9a6a-36fbe51bee65-13"/></o:SecurityTokenReference></KeyInfo></Signature></o:Security></s:Header><s:Body><GetUsersByAppRoleGroup xmlns="http://tempuri.org/"><request xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><AccessToken i:nil="true" xmlns=""/><ClientId xmlns="">GIC_UAT</ClientId><IsDeveloper xmlns="">false</IsDeveloper><RequestId xmlns="">527b35a4-7c2a-4c28-a787-6d0eb2d5daa3</RequestId><Version i:nil="true" xmlns=""/><IncludeUnisoftRoles xmlns="">false</IncludeUnisoftRoles><Role i:nil="true" xmlns=""/><RoleGroupId xmlns="">1</RoleGroupId><SortExpression i:nil="true" xmlns=""/><UserName i:nil="true" xmlns=""/></request></GetUsersByAppRoleGroup></s:Body></s:Envelope>
+
+================================================================================
+RESPONSE HEADERS
+================================================================================
+HTTP/1.1 200 OK
+Content-Length: 2124
+Content-Type: application/soap+xml; charset=utf-8
+Date: Wed, 01 Apr 2026 14:45:21 GMT
+Server: Microsoft-IIS/10.0
+Set-Cookie: ARRAffinity=e6166b65c12757e75848ea8bb86d728a7326e6955b8050b4b5f4f80975dabae9;Path=/;HttpOnly;Secure;Domain=services.uat.gicunderwriters.co
+Set-Cookie: ARRAffinitySameSite=e6166b65c12757e75848ea8bb86d728a7326e6955b8050b4b5f4f80975dabae9;Path=/;HttpOnly;SameSite=None;Secure;Domain=services.uat.gicunderwriters.co
+X-Powered-By: ASP.NET
+
+================================================================================
+RESPONSE BODY
+================================================================================
+<s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:a="http://www.w3.org/2005/08/addressing" xmlns:u="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"><s:Header><a:Action s:mustUnderstand="1">http://tempuri.org/IReportingService/GetUsersByAppRoleGroupResponse</a:Action><a:RelatesTo>urn:uuid:4ff8f748-4fc5-41e2-a2e7-3625cd2dc8eb</a:RelatesTo><o:Security s:mustUnderstand="1" xmlns:o="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"><u:Timestamp u:Id="_0"><u:Created>2026-04-01T14:45:22.583Z</u:Created><u:Expires>2026-04-01T14:50:22.583Z</u:Expires></u:Timestamp></o:Security></s:Header><s:Body><GetUsersByAppRoleGroupResponse xmlns="http://tempuri.org/"><GetUsersByAppRoleGroupResult xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><Build xmlns="">0</Build><CorrelationId xmlns="">527b35a4-7c2a-4c28-a787-6d0eb2d5daa3</CorrelationId><Message xmlns=""/><ReplyStatus xmlns="">Success</ReplyStatus><RowsAffected xmlns="">1</RowsAffected><Version xmlns="">1.0</Version><User i:nil="true" xmlns="" xmlns:b="http://schemas.datacontract.org/2004/07/Unisoft.Insurance.Reporting.Services.DTO.Support"/><Users xmlns="" xmlns:b="http://schemas.datacontract.org/2004/07/Unisoft.Insurance.Reporting.Services.DTO.Support"><b:UserDTO><b:Comment i:nil="true"/><b:CreationDate>2018-12-05T00:41:11</b:CreationDate><b:DisplayName i:nil="true"/><b:Email>jcdp@gicunderwriters.com</b:Email><b:FirstName>Juan Carlos</b:FirstName><b:IsApproved>true</b:IsApproved><b:IsLocked>false</b:IsLocked><b:LastName>Diaz-Padron</b:LastName><b:Name>jcdp</b:Name><b:Profile><b:DashBoard><b:ShowAnnouncements>false</b:ShowAnnouncements><b:ShowSales>false</b:ShowSales><b:ShowTasks>false</b:ShowTasks></b:DashBoard><b:Preferences><b:TimeZone i:nil="true"/></b:Preferences></b:Profile><b:Roles xmlns:c="http://schemas.microsoft.com/2003/10/Serialization/Arrays"><c:string>Administrator</c:string><c:string>Adjuster</c:string><c:string>Underwriter</c:string></b:Roles></b:UserDTO></Users></GetUsersByAppRoleGroupResult></GetUsersByAppRoleGroupResponse></s:Body></s:Envelope>

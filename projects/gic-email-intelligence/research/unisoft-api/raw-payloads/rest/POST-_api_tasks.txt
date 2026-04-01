@@ -1,0 +1,42 @@
+# POST /api/tasks
+# Source: export2.saz, session 0239
+# Type: rest
+# Method: POST
+# Path: /api/tasks
+
+================================================================================
+REQUEST HEADERS
+================================================================================
+POST https://ins-gic-api-gateway-uat-app.azurewebsites.net/api/tasks HTTP/1.1
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiY2NlcnRvIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVW5kZXJ3cml0ZXIiLCJleHAiOjE3NzUxNDA1ODcsImlzcyI6IlVuaXNvZnQuSW5zdXJhbmNlLlVzZXJNYW5hZ2VtZW50LldlYkFwaSIsImF1ZCI6Imh0dHBzOi8vaW5zLWdpYy11c2Vycy1hcGktdWF0LWFwcC5henVyZXdlYnNpdGVzLm5ldCJ9.asTNrqDnkzZUBhoJ4Rz1wtnEc1_b8nUY_3cRvmMTBK8
+Content-Type: application/json; charset=utf-8
+Host: ins-gic-api-gateway-uat-app.azurewebsites.net
+Cookie: .AspNetCore.Identity.Application=CfDJ8LBKxXlSOMtLp3zqdPAufkSoVMSyA7jTYw1a3vKDHNF3o174c207m_4_iRzuDUw28gTbyZfYcQRAK9gDDBDSYoKfr3EwsoO9EzUtsmeMa4WXMfajIszOWJRJftTb-ZA9bu9m8QC_G-eTQTeyTdhImj5p2g9Iv5E_1CY4n1tTgMHo39_PxEJWig95yUROaX11eiKusUHAJ-FmyRfe4aINDb1sadkmmTn4zeTS1GCF4CailIJ-SFLHr7yviRWGQtJdwwH_xD-FFypYhw_Qs9Vba8qfUn6VzIgDE9xXIWRcdZFjcrzbl3pyt5RZOY-zMdjBcOMTRgRBazOvzHWE7yp1uEwCu7as3_b4_zaQP7Vi1IBYqjcUJHdZjrlQpGWyV_rY6iIMuk2iMDV20WuYv0rmuAdmKrG6ZRUjy6BRrI2hMntx4bIeqA-sJHixg7-rO4J5f4JdS4q57aCAYZU_uQyqKvWTIVxzwrYWXhxfGb-qY441fPt_TWDOUy7t8_wtchbtRx0X9GJ14puZt5i9--n8KCsuzPOhXp3Ne3m7QhypEbz_1E36j5NDvnLMsQ7ud5PUMi6kMM7IJBNyVwW9a8ghNEhjBGhgpaJ6OodDj-K2UIbXejqFolO6v660aLNBdyhJWjGYsfAqnglYQrprq_D5eUZvruyNBFW2nwIBCXlKmy7Dmi23Cnkm5nVpD7lP-mq9osCn9H_Q9FgkiOdWUfldL6hhCb5M1Mw-RZqxaydvN-SM_w1l_Q1Du0nAMI3rA2KREjvHjCFUJ_09QLhVsvLHsPKfXENJ_kecYdwJC3BlsuKenBUHCduBmpb5y3fG2sDC9O6mBNAcA8DEyCQ1US7HXY0Q6dt-IiVCrpQDKLItsyk7-d7Ybhm8ajcDpsFHw4PP75Aa9DRyP4mY-c6b7Dp2eQmChHRm0e5rGxOJexWDHfNv8Y75BAfleQOSFcbNXnMlgvAu3tbC_4wqWehg2oGE_6SLi0dj8Q_IfqsNTPUGtozYnAEpfI7Utj-YHjmELIX9c-axWtz4LnoDzKKyJlSI4scsueAKE-TG3otmADtGt_k_; ARRAffinity=e6166b65c12757e75848ea8bb86d728a7326e6955b8050b4b5f4f80975dabae9; ARRAffinitySameSite=e6166b65c12757e75848ea8bb86d728a7326e6955b8050b4b5f4f80975dabae9
+Content-Length: 1835
+Expect: 100-continue
+
+================================================================================
+REQUEST BODY
+================================================================================
+{"taskId":0,"actionId":27,"actionDescription":null,"subject":null,"startDate":null,"dueDate":null,"enteredDate":"2026-04-01T14:41:43.2066577+00:00","enteredByUser":"ccerto","sectionId":5,"sectionDescription":null,"reminderId":0,"priorityId":1,"priorityDescription":null,"groupId":0,"groupName":null,"departmentId":0,"departmentName":null,"statusId":1,"recurrenceType":0,"statusDescription":null,"schedules":null,"completedByUser":null,"completedDate":null,"completionDate":null,"hideUntilDate":null,"backUpUser":null,"followUpUsers":"","assignedWorkDays":0,"assignedToUser":"ccerto","taskAssociation":{"taskId":0,"policyNo":null,"externalPolicyNo":null,"quoteId":17129,"agentNo":777,"carrierNo":0,"claimNo":0,"claimTransactionId":0,"inspectionId":0,"linkType":null,"linkData":null,"submissionNo":0,"activityId":0,"memo":null,"lob":null,"subLOB":null},"taskReminder":null,"taskReminder2":null,"isPrivate":false,"percentDone":0,"assignedToUserFullName":null,"enteredByUserFullName":null,"backUpUserFullName":null,"completedByUserFullName":null,"assignedToUserHistoryList":"\u003C?xml version=\u00221.0\u0022 encoding=\u0022utf-16\u0022?\u003E\u003CArrayOfTaskAssignmentHistoryModel xmlns:xsi=\u0022http://www.w3.org/2001/XMLSchema-instance\u0022 xmlns:xsd=\u0022http://www.w3.org/2001/XMLSchema\u0022\u003E\u003CTaskAssignmentHistoryModel\u003E\u003CAssignedByUser\u003Eccerto\u003C/AssignedByUser\u003E\u003CAssignedByUserFullName\u003ECraig Certo\u003C/AssignedByUserFullName\u003E\u003COldAssignedTo /\u003E\u003CNewAssignedTo\u003Eccerto\u003C/NewAssignedTo\u003E\u003CNewAssignedToDate\u003E2026-04-01T14:41:43.2101635\u002B00:00\u003C/NewAssignedToDate\u003E\u003CNewAssignedBackupDate\u003E0001-01-01T00:00:00\u003C/NewAssignedBackupDate\u003E\u003C/TaskAssignmentHistoryModel\u003E\u003C/ArrayOfTaskAssignmentHistoryModel\u003E"}
+
+================================================================================
+RESPONSE HEADERS
+================================================================================
+HTTP/1.1 201 Created
+Content-Type: application/json; charset=utf-8
+Date: Wed, 01 Apr 2026 14:41:43 GMT
+Server: Microsoft-IIS/10.0
+Transfer-Encoding: chunked
+Strict-Transport-Security: max-age=2592000
+X-Rate-Limit-Limit: 1m
+X-Rate-Limit-Remaining: 997
+X-Rate-Limit-Reset: 2026-04-01T14:42:27.2441387Z
+X-Powered-By: ASP.NET
+X-Powered-By: ASP.NET
+
+================================================================================
+RESPONSE BODY
+================================================================================
+{"taskId":16847,"actionId":27,"actionDescription":"","subject":null,"startDate":null,"dueDate":null,"enteredDate":"2026-04-01T10:41:43.2066577-04:00","enteredByUser":"ccerto","sectionId":5,"sectionDescription":null,"reminderId":0,"priorityId":1,"priorityDescription":null,"groupId":0,"groupName":"","departmentId":0,"departmentName":null,"statusId":1,"recurrenceType":0,"statusDescription":null,"schedules":null,"completedByUser":null,"completedDate":null,"completionDate":null,"hideUntilDate":null,"backUpUser":null,"followUpUsers":null,"assignedWorkDays":0,"assignedToUser":"ccerto","taskAssociation":{"taskId":16847,"policyNo":null,"externalPolicyNo":null,"quoteId":17129,"agentNo":777,"carrierNo":0,"claimNo":0,"claimTransactionId":0,"inspectionId":0,"linkType":null,"linkData":null,"submissionNo":0,"activityId":0,"memo":null,"lob":null,"subLOB":null},"taskReminder":null,"taskReminder2":null,"isPrivate":false,"percentDone":0,"assignedToUserFullName":null,"enteredByUserFullName":null,"backUpUserFullName":null,"completedByUserFullName":null,"assignedToUserHistoryList":"<?xml version=\"1.0\" encoding=\"utf-16\"?><ArrayOfTaskAssignmentHistoryModel xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"><TaskAssignmentHistoryModel><AssignedByUser>ccerto</AssignedByUser><AssignedByUserFullName>Craig Certo</AssignedByUserFullName><OldAssignedTo /><NewAssignedTo>ccerto</NewAssignedTo><NewAssignedToDate>2026-04-01T14:41:43.2101635+00:00</NewAssignedToDate><NewAssignedBackupDate>0001-01-01T00:00:00</NewAssignedBackupDate></TaskAssignmentHistoryModel></ArrayOfTaskAssignmentHistoryModel>"}

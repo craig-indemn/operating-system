@@ -1,0 +1,58 @@
+# SOAP IINSFileService/GetActionAttachments via attachments/insfileservice.svc
+# Source: export2.saz, session 0189
+# Type: soap
+# Service: IINSFileService
+# Operation: GetActionAttachments
+
+================================================================================
+REQUEST HEADERS
+================================================================================
+POST https://services.uat.gicunderwriters.co/attachments/insfileservice.svc HTTP/1.1
+MIME-Version: 1.0
+Content-Type: multipart/related; type="application/xop+xml";start="<http://tempuri.org/0>";boundary="uuid:ced9f1b3-4189-412b-9813-ad6a6740ccaf+id=6";start-info="text/xml"
+SOAPAction: "http://tempuri.org/IINSFileService/GetActionAttachments"
+Host: services.uat.gicunderwriters.co
+Transfer-Encoding: chunked
+Expect: 100-continue
+Accept-Encoding: gzip, deflate
+
+================================================================================
+REQUEST BODY
+================================================================================
+
+--uuid:ced9f1b3-4189-412b-9813-ad6a6740ccaf+id=6
+Content-ID: <http://tempuri.org/0>
+Content-Transfer-Encoding: 8bit
+Content-Type: application/xop+xml;charset=utf-8;type="text/xml"
+
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"><s:Body><GetActionAttachments xmlns="http://tempuri.org/"><request xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><AccessToken i:nil="true" xmlns=""/><ClientId i:nil="true" xmlns=""/><RequestId i:nil="true" xmlns=""/><Version i:nil="true" xmlns=""/><ActionID xmlns="">178</ActionID><MGANumber xmlns="">1</MGANumber><NotificationID i:nil="true" xmlns=""/><SortExpression xmlns=""/></request></GetActionAttachments></s:Body></s:Envelope>
+--uuid:ced9f1b3-4189-412b-9813-ad6a6740ccaf+id=6--
+
+
+================================================================================
+RESPONSE HEADERS
+================================================================================
+HTTP/1.1 200 OK
+Content-Type: multipart/related; type="application/xop+xml";start="<http://tempuri.org/0>";boundary="uuid:cfa81336-3666-46ab-971b-4227b65bad71+id=29";start-info="text/xml"
+Date: Wed, 01 Apr 2026 14:40:16 GMT
+Server: Microsoft-IIS/10.0
+Cache-Control: private
+Set-Cookie: ARRAffinity=e6166b65c12757e75848ea8bb86d728a7326e6955b8050b4b5f4f80975dabae9;Path=/;HttpOnly;Secure;Domain=services.uat.gicunderwriters.co
+Set-Cookie: ARRAffinitySameSite=e6166b65c12757e75848ea8bb86d728a7326e6955b8050b4b5f4f80975dabae9;Path=/;HttpOnly;SameSite=None;Secure;Domain=services.uat.gicunderwriters.co
+Transfer-Encoding: chunked
+MIME-Version: 1.0
+X-AspNet-Version: 4.0.30319
+X-Powered-By: ASP.NET
+
+================================================================================
+RESPONSE BODY
+================================================================================
+
+--uuid:cfa81336-3666-46ab-971b-4227b65bad71+id=29
+Content-ID: <http://tempuri.org/0>
+Content-Transfer-Encoding: 8bit
+Content-Type: application/xop+xml;charset=utf-8;type="text/xml"
+
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"><s:Body><GetActionAttachmentsResponse xmlns="http://tempuri.org/"><GetActionAttachmentsResult xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><Build xmlns="">0</Build><CorrelationId i:nil="true" xmlns=""/><Message i:nil="true" xmlns=""/><ReplyStatus xmlns="">Success</ReplyStatus><RowsAffected xmlns="">0</RowsAffected><Version xmlns="">1.0</Version><ActionAttachment i:nil="true" xmlns="" xmlns:a="http://schemas.datacontract.org/2004/07/Unisoft.Insurance.Attachments.Services.DTO"/><ActionAttachments xmlns="" xmlns:a="http://schemas.datacontract.org/2004/07/Unisoft.Insurance.Attachments.Services.DTO"/></GetActionAttachmentsResult></GetActionAttachmentsResponse></s:Body></s:Envelope>
+--uuid:cfa81336-3666-46ab-971b-4227b65bad71+id=29--
+

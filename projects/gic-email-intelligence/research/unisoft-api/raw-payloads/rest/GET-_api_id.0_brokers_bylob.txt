@@ -1,0 +1,41 @@
+# GET /api/1.0/brokers/bylob (params: carrierNumber, lob, subLob)
+# Source: export2.saz, session 0118
+# Type: rest
+# Method: GET
+# Path: /api/1.0/brokers/bylob
+# Query: carrierNumber=0&lob=CG&subLob=AC
+
+================================================================================
+REQUEST HEADERS
+================================================================================
+GET https://ins-gic-api-gateway-uat-app.azurewebsites.net/api/1.0/brokers/bylob?carrierNumber=0&lob=CG&subLob=AC HTTP/1.1
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiY2NlcnRvIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiVW5kZXJ3cml0ZXIiLCJleHAiOjE3NzUxNDA1ODcsImlzcyI6IlVuaXNvZnQuSW5zdXJhbmNlLlVzZXJNYW5hZ2VtZW50LldlYkFwaSIsImF1ZCI6Imh0dHBzOi8vaW5zLWdpYy11c2Vycy1hcGktdWF0LWFwcC5henVyZXdlYnNpdGVzLm5ldCJ9.asTNrqDnkzZUBhoJ4Rz1wtnEc1_b8nUY_3cRvmMTBK8
+Host: ins-gic-api-gateway-uat-app.azurewebsites.net
+Cookie: .AspNetCore.Identity.Application=CfDJ8LBKxXlSOMtLp3zqdPAufkSoVMSyA7jTYw1a3vKDHNF3o174c207m_4_iRzuDUw28gTbyZfYcQRAK9gDDBDSYoKfr3EwsoO9EzUtsmeMa4WXMfajIszOWJRJftTb-ZA9bu9m8QC_G-eTQTeyTdhImj5p2g9Iv5E_1CY4n1tTgMHo39_PxEJWig95yUROaX11eiKusUHAJ-FmyRfe4aINDb1sadkmmTn4zeTS1GCF4CailIJ-SFLHr7yviRWGQtJdwwH_xD-FFypYhw_Qs9Vba8qfUn6VzIgDE9xXIWRcdZFjcrzbl3pyt5RZOY-zMdjBcOMTRgRBazOvzHWE7yp1uEwCu7as3_b4_zaQP7Vi1IBYqjcUJHdZjrlQpGWyV_rY6iIMuk2iMDV20WuYv0rmuAdmKrG6ZRUjy6BRrI2hMntx4bIeqA-sJHixg7-rO4J5f4JdS4q57aCAYZU_uQyqKvWTIVxzwrYWXhxfGb-qY441fPt_TWDOUy7t8_wtchbtRx0X9GJ14puZt5i9--n8KCsuzPOhXp3Ne3m7QhypEbz_1E36j5NDvnLMsQ7ud5PUMi6kMM7IJBNyVwW9a8ghNEhjBGhgpaJ6OodDj-K2UIbXejqFolO6v660aLNBdyhJWjGYsfAqnglYQrprq_D5eUZvruyNBFW2nwIBCXlKmy7Dmi23Cnkm5nVpD7lP-mq9osCn9H_Q9FgkiOdWUfldL6hhCb5M1Mw-RZqxaydvN-SM_w1l_Q1Du0nAMI3rA2KREjvHjCFUJ_09QLhVsvLHsPKfXENJ_kecYdwJC3BlsuKenBUHCduBmpb5y3fG2sDC9O6mBNAcA8DEyCQ1US7HXY0Q6dt-IiVCrpQDKLItsyk7-d7Ybhm8ajcDpsFHw4PP75Aa9DRyP4mY-c6b7Dp2eQmChHRm0e5rGxOJexWDHfNv8Y75BAfleQOSFcbNXnMlgvAu3tbC_4wqWehg2oGE_6SLi0dj8Q_IfqsNTPUGtozYnAEpfI7Utj-YHjmELIX9c-axWtz4LnoDzKKyJlSI4scsueAKE-TG3otmADtGt_k_; ARRAffinity=e6166b65c12757e75848ea8bb86d728a7326e6955b8050b4b5f4f80975dabae9; ARRAffinitySameSite=e6166b65c12757e75848ea8bb86d728a7326e6955b8050b4b5f4f80975dabae9
+
+================================================================================
+REQUEST BODY
+================================================================================
+(empty)
+
+================================================================================
+RESPONSE HEADERS
+================================================================================
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Date: Wed, 01 Apr 2026 14:38:21 GMT
+Server: Microsoft-IIS/10.0
+Transfer-Encoding: chunked
+Strict-Transport-Security: max-age=2592000
+api-supported-versions: 1.0, 2.0
+X-Rate-Limit-Limit: 1m
+X-Rate-Limit-Remaining: 999
+X-Rate-Limit-Reset: 2026-04-01T14:39:21.4405483Z
+X-Powered-By: ASP.NET
+X-Powered-By: ASP.NET
+
+================================================================================
+RESPONSE BODY
+================================================================================
+[{"mgaNumber":0,"brokerId":13,"name":"Atlas General Insurance Services","alias":"","address1":"4365 Executive Dr Suite 400","address2":null,"city":"San Diego","stateCode":"CA","zipCode":"92121","phone":0,"fax":0,"email":"michael@atlas.us.com","isActive":true,"addressFormatCode":"D","internationalPostalCode":null,"internationalPhoneNo":null,"internationalFaxNo":null,"countryCode":null},{"mgaNumber":0,"brokerId":23,"name":"BTIS","alias":"","address1":"6610 Sierra College Blvd","address2":null,"city":"Rocklin","stateCode":"CA","zipCode":"95677","phone":0,"fax":0,"email":"sdean@btisinc.com","isActive":true,"addressFormatCode":"D","internationalPostalCode":null,"internationalPhoneNo":null,"internationalFaxNo":null,"countryCode":null},{"mgaNumber":0,"brokerId":14,"name":"Cornerstone Underwriting Partner","alias":"","address1":"27475 Ferry Rd","address2":null,"city":"Warrenville","stateCode":"IL","zipCode":"60555","phone":0,"fax":0,"email":"jackson.seals@cornerstonegrp.us","isActive":true,"addressFormatCode":"D","internationalPostalCode":null,"internationalPhoneNo":null,"internationalFaxNo":null,"countryCode":null},{"mgaNumber":0,"brokerId":1,"name":"GIC Underwriters, Inc.","alias":"","address1":"4075 SW 83rd Avenue","address2":null,"city":"Miami","stateCode":"FL","zipCode":"33155","phone":3055540353,"fax":0,"email":"test@gicunderwriters.com","isActive":true,"addressFormatCode":"D","internationalPostalCode":null,"internationalPhoneNo":null,"internationalFaxNo":null,"countryCode":null},{"mgaNumber":0,"brokerId":4,"name":"International Excess","alias":"","address1":"3700 Park East Drive Ste 250","address2":null,"city":"Beachwood","stateCode":"OH","zipCode":"44122","phone":8009373497,"fax":0,"email":"llicursi@intlxs.com","isActive":true,"addressFormatCode":"D","internationalPostalCode":null,"internationalPhoneNo":null,"internationalFaxNo":null,"countryCode":null}]

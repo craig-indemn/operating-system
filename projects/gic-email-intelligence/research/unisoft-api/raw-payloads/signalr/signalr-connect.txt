@@ -1,0 +1,37 @@
+# SignalR connect endpoint
+# Source: export1.saz, session 492
+# Type: signalr
+
+================================================================================
+REQUEST HEADERS
+================================================================================
+GET https://ins-gic-nothub-prod-app.azurewebsites.net/signalr/uims/notifications/connect?clientProtocol=2.1&transport=webSockets&connectionData=[%7B%22Name%22:%22UnisoftMessageHub%22%7D]&connectionToken=yB0vrCtqBnsy9e%2Fz5hUOyptuPjk8ssSyR7hAVOnr9B97i%2BT%2BvUoQT4uHVn9JI%2F1lsu6VanHkProp2Fsq0faXnW3MEERwnXyf3ilm6JK7a0L1PUJLEEdJufh%2FxXkXJt%2F9 HTTP/1.1
+Connection: Upgrade
+Upgrade: websocket
+Sec-WebSocket-Key: wcSOfpUQPls0yvTgV2clTQ==
+Sec-WebSocket-Version: 13
+Host: ins-gic-nothub-prod-app.azurewebsites.net
+
+================================================================================
+REQUEST BODY
+================================================================================
+(empty)
+
+================================================================================
+RESPONSE HEADERS
+================================================================================
+HTTP/1.1 101 Switching Protocols
+Connection: Upgrade
+Date: Wed, 01 Apr 2026 14:16:11 GMT
+Server: Microsoft-IIS/10.0
+Set-Cookie: ARRAffinity=75a1168f0f0c88aec28d35a4536d98db70ec3733530f44dd2e7cb114f92af95a;Path=/;HttpOnly;Secure;Domain=ins-gic-nothub-prod-app.azurewebsites.net
+Set-Cookie: ARRAffinitySameSite=75a1168f0f0c88aec28d35a4536d98db70ec3733530f44dd2e7cb114f92af95a;Path=/;HttpOnly;SameSite=None;Secure;Domain=ins-gic-nothub-prod-app.azurewebsites.net
+Upgrade: websocket
+X-Content-Type-Options: nosniff
+Sec-WebSocket-Accept: +UJbvftdiCETweadYyNczJPUih4=
+X-Powered-By: ASP.NET
+
+================================================================================
+RESPONSE BODY
+================================================================================
+(empty)
