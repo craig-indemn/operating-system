@@ -471,6 +471,7 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 | 2026-03-31 | [unisoft-workflow-map](research/unisoft-workflow-map.md) | How GIC takes info from Outlook and enters it into Unisoft AMS — workflow by email type, data mapping, automation priorities |
 | 2026-03-31 | [unisoft-software-guide](research/unisoft-software-guide.md) | Unisoft Communications as software — company, products, tech stack, UI structure, customer base, UAT exploration plan |
 | 2026-03-31 | [unisoft-api-reference](research/unisoft-api-reference.md) | API capabilities — Unisoft (pending), Granada API (confirmed), industry standards, integration strategy, questions for Hugo |
+| 2026-04-01 | [unisoft-rest-proxy-design](artifacts/2026-04-01-unisoft-rest-proxy-design.md) | REST proxy design — wraps all 910 Unisoft SOAP operations via HTTP/JSON, runs on t3.micro Windows EC2 (~$20/month) |
 
 ## Key Data Files
 | File | What it contains |
@@ -572,6 +573,11 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 - 2026-04-01: USLI carrier number is 2, USLI contact email is joanneh@usli.com, GIC broker ID is 1. LOB code CG = General Liability.
 - 2026-04-01: Windows EC2 (i-0dc2563c9bc92aa0e) used for Fiddler recon. Stop when not in use (~$0.17/hr). RDP via SSM port forwarding.
 - 2026-04-01: Fiddler recon approach (install app, intercept traffic, map API) proved faster and more complete than waiting for official API docs from Unisoft.
+- 2026-04-01: WCF WSHttpBinding + WS-SecureConversation CONFIRMED WORKING from .NET Framework 4.8 on EC2. GetToken → GetInsuranceLOBs full round-trip successful.
+- 2026-04-01: WSHttpBinding is NOT supported in modern .NET 6/7/8. .NET Framework 4.8 is required for the SOAP client.
+- 2026-04-01: REST proxy design: HttpListener console app on t3.micro Windows EC2 (~$20/month). Generic passthrough for all 910 operations via POST /api/soap/{OperationName}. JSON in, JSON out.
+- 2026-04-01: API returns 18 LOBs (not 21 from UI). "Boats & Yachts" = sub-LOB OM/BY, "Commercial Auto" = sub-LOB TR/CA. 46 carriers, 3,142 agents confirmed.
+- 2026-04-01: Every SOAP operation requires AccessToken from GetToken. Proxy manages this automatically — callers never see it.
 
 ## Open Questions (deferred — not blocking demo)
 - How does RingCentral data merge into the same pipeline? (Same pattern: RingCentral CLI + skills)

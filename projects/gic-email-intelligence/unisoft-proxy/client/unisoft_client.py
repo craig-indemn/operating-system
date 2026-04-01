@@ -1,6 +1,6 @@
 """Unisoft REST Proxy client."""
 import requests
-from typing import Any
+from typing import Any, Optional
 
 
 class UnisoftClient:
@@ -9,7 +9,7 @@ class UnisoftClient:
         self.api_key = api_key
         self.timeout = timeout
 
-    def call(self, operation: str, params: dict | None = None) -> dict:
+    def call(self, operation: str, params: Optional[dict] = None) -> dict:
         """Call any Unisoft SOAP operation via the proxy."""
         resp = requests.post(
             f"{self.base_url}/api/soap/{operation}",

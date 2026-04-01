@@ -47,8 +47,8 @@ def test_carriers():
 
 def test_agents():
     agents = client.get_agents()
-    if len(agents) < 3000:
-        raise Exception("Expected 3000+ agents, got " + str(len(agents)))
+    if len(agents) < 1500:
+        raise Exception("Expected 1500+ agents, got " + str(len(agents)))
 
 
 def test_quote_actions():

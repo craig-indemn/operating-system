@@ -248,7 +248,7 @@ class SoapBridge
     public string CallSoap(string opName, string requestXml)
     {
         if (!channelSem.Wait(TimeSpan.FromSeconds(30)))
-            throw new TimeoutException("Channel busy");
+            throw new System.TimeoutException("Channel busy");
 
         try
         {
@@ -470,23 +470,32 @@ class UniProxy
         }
     }
 
+    // Read env var from Machine scope first (for Windows Service), then Process scope (for console)
+    static string GetEnv(string name, string defaultValue)
+    {
+        string val = Environment.GetEnvironmentVariable(name, EnvironmentVariableTarget.Machine);
+        if (!string.IsNullOrEmpty(val)) return val;
+        val = Environment.GetEnvironmentVariable(name);
+        if (!string.IsNullOrEmpty(val)) return val;
+        return defaultValue;
+    }
+
     public static void Run()
     {
-        apiKey = Environment.GetEnvironmentVariable("PROXY_API_KEY") ?? "dev-key";
-        int port = int.Parse(Environment.GetEnvironmentVariable("PROXY_PORT") ?? "5000");
-        maxRequestBytes = long.Parse(
-            Environment.GetEnvironmentVariable("PROXY_MAX_REQUEST_BYTES") ?? "5242880");
+        apiKey = GetEnv("PROXY_API_KEY", "dev-key");
+        int port = int.Parse(GetEnv("PROXY_PORT", "5000"));
+        maxRequestBytes = long.Parse(GetEnv("PROXY_MAX_REQUEST_BYTES", "5242880"));
         startTime = DateTime.UtcNow;
         running = true;
 
         // Initialize SOAP bridge
-        string soapUrl = Environment.GetEnvironmentVariable("UNISOFT_SOAP_URL")
-            ?? "https://services.uat.gicunderwriters.co/management/imsservice.svc";
-        string wsUser = Environment.GetEnvironmentVariable("UNISOFT_WS_USER") ?? "";
-        string wsPass = Environment.GetEnvironmentVariable("UNISOFT_WS_PASS") ?? "";
-        string clientId = Environment.GetEnvironmentVariable("UNISOFT_CLIENT_ID") ?? "GIC_UAT";
+        string soapUrl = GetEnv("UNISOFT_SOAP_URL",
+            "https://services.uat.gicunderwriters.co/management/imsservice.svc");
+        string wsUser = GetEnv("UNISOFT_WS_USER", "");
+        string wsPass = GetEnv("UNISOFT_WS_PASS", "");
+        string clientId = GetEnv("UNISOFT_CLIENT_ID", "GIC_UAT");
         bool skipCert = string.Equals(
-            Environment.GetEnvironmentVariable("UNISOFT_SKIP_CERT_VALIDATION"),
+            GetEnv("UNISOFT_SKIP_CERT_VALIDATION", "false"),
             "true", StringComparison.OrdinalIgnoreCase);
 
         Logger.Init();
@@ -620,7 +629,7 @@ class UniProxy
                     Logger.Log(opName, httpStatus, sw.ElapsedMilliseconds, null);
                     WriteJson(ctx, httpStatus, responseJson);
                 }
-                catch (TimeoutException)
+                catch (System.TimeoutException)
                 {
                     sw.Stop();
                     Logger.Log(opName, 503, sw.ElapsedMilliseconds, "Channel busy");
@@ -735,11 +744,15 @@ class UniProxy
         if (dtoNamespaces.TryGetValue(key, out dtoNs) && value is Dictionary<string, object>)
         {
             // Nested DTO with namespace
+            // CRITICAL: WCF DataContractSerializer requires fields in alphabetical order.
+            // Out-of-order fields are silently ignored and treated as null.
             Dictionary<string, object> dict = (Dictionary<string, object>)value;
+            List<string> sortedKeys = new List<string>(dict.Keys);
+            sortedKeys.Sort(StringComparer.Ordinal);
             sb.Append("<" + key + " xmlns=\"\" xmlns:b=\"" + dtoNs + "\">");
-            foreach (KeyValuePair<string, object> kvp in dict)
+            foreach (string k in sortedKeys)
             {
-                AppendDtoField(sb, kvp.Key, kvp.Value);
+                AppendDtoField(sb, k, dict[k]);
             }
             sb.Append("</" + key + ">");
         }
@@ -761,7 +774,7 @@ class UniProxy
                 }
                 else if (item != null)
                 {
-                    sb.Append("<" + key + " xmlns=\"\">" + Escape(item.ToString()) +
+                    sb.Append("<" + key + " xmlns=\"\">" + ToXmlString(item) +
                               "</" + key + ">");
                 }
             }
@@ -769,8 +782,16 @@ class UniProxy
         else
         {
             // Flat field — scalar value
-            sb.Append("<" + key + " xmlns=\"\">" + Escape(value.ToString()) + "</" + key + ">");
+            sb.Append("<" + key + " xmlns=\"\">" + ToXmlString(value) + "</" + key + ">");
         }
+    }
+
+    // Convert a value to its XML string representation.
+    // Booleans must be lowercase (true/false), not C# style (True/False).
+    static string ToXmlString(object value)
+    {
+        if (value is bool) return ((bool)value) ? "true" : "false";
+        return Escape(value.ToString());
     }
 
     static void AppendDtoField(StringBuilder sb, string key, object value)
@@ -794,12 +815,12 @@ class UniProxy
             {
                 if (item != null)
                 {
-                    sb.Append("<b:" + key + ">" + Escape(item.ToString()) + "</b:" + key + ">");
+                    sb.Append("<b:" + key + ">" + ToXmlString(item) + "</b:" + key + ">");
                 }
             }
             return;
         }
-        sb.Append("<b:" + key + ">" + Escape(value.ToString()) + "</b:" + key + ">");
+        sb.Append("<b:" + key + ">" + ToXmlString(value) + "</b:" + key + ">");
     }
 
     // ---------------------------------------------------------------------------
