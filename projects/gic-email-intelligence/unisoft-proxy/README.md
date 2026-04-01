@@ -355,10 +355,9 @@ No code changes needed.
 - DTO fields must be in **alphabetical order** (proxy handles this automatically)
 - If adding new DTO types, ensure the namespace is in the `dtoNamespaces` dictionary
 
-**"Invalid or expired AccessToken" after proxy has been running a while:**
-- The keepalive timer refreshes the token every 5 minutes. Unisoft may invalidate the previous token when a new one is issued, causing a brief window where cached tokens are stale.
-- Workaround: restart the service (`Restart-Service UniProxy` via SSM)
-- Permanent fix needed: reduce keepalive frequency or only refresh tokens on demand (when a call fails with auth error)
+**"Invalid or expired AccessToken":**
+- The proxy auto-detects this and refreshes the token + retries the call automatically. If it persists, restart the service.
+- Root cause (fixed): the keepalive was calling GetToken which invalidated the old token. Now uses GetSections for keepalive and only refreshes tokens reactively on auth failure.
 
 **"Channel busy" (503):**
 - A SOAP call is taking >30 seconds. Retry after 5s.
