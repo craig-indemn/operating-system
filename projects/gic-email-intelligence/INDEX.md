@@ -8,8 +8,9 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 
 **To resume this project, read these files in order:**
 1. This INDEX.md Status section (current state, what was done, what's next)
-2. `artifacts/2026-04-01-unisoft-rest-proxy-design.md` — proxy architecture, JSON↔XML translation, token management, deployment
-3. `unisoft-proxy/client/unisoft_client.py` — Python client for calling the proxy
+2. `unisoft-proxy/README.md` — operational guide: API contract, deploy pipeline, troubleshooting, EC2 management
+3. `artifacts/2026-04-01-unisoft-rest-proxy-design.md` — proxy architecture, JSON↔XML translation, token management, deployment
+4. `unisoft-proxy/client/unisoft_client.py` — Python client for calling the proxy
 4. `research/unisoft-workflow-map.md` — how GIC's team takes email data and enters it into their AMS (Unisoft)
 5. `research/unisoft-api-reference.md` — API architecture, auth flows, endpoints, data models
 6. `research/unisoft-api/operations-index.md` — index of all 111 captured API operation payloads
