@@ -1,10 +1,333 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
+using System.ServiceModel;
+using System.ServiceModel.Channels;
 using System.Text;
 using System.Threading;
+using System.Xml;
 
+// ---------------------------------------------------------------------------
+// WCF service contract — matches Unisoft IIMSService
+// ---------------------------------------------------------------------------
+[ServiceContract(Namespace = "http://tempuri.org/")]
+interface IIMSService
+{
+    [OperationContract(Action = "http://tempuri.org/IIMSService/GetToken",
+                       ReplyAction = "http://tempuri.org/IIMSService/GetTokenResponse")]
+    Message GetToken(Message request);
+
+    [OperationContract(Action = "*", ReplyAction = "*")]
+    Message ProcessMessage(Message request);
+}
+
+// ---------------------------------------------------------------------------
+// SoapBridge — manages WCF channel, token lifecycle, keepalive
+// ---------------------------------------------------------------------------
+class SoapBridge
+{
+    string soapUrl;
+    string wsUser;
+    string wsPass;
+    string clientId;
+
+    ChannelFactory<IIMSService> factory;
+    IIMSService channel;
+    int channelGeneration = 0;
+
+    volatile string accessToken;
+    object tokenLock = new object();
+    SemaphoreSlim channelSem = new SemaphoreSlim(1, 1);
+
+    Timer keepaliveTimer;
+    Timer tokenRefreshTimer;
+
+    public bool IsHealthy { get; private set; }
+    public DateTime LastCallTime { get; private set; }
+    public DateTime TokenAcquiredTime { get; private set; }
+    public string ClientId { get { return clientId; } }
+
+    public SoapBridge(string soapUrl, string wsUser, string wsPass,
+                      string clientId, bool skipCertValidation)
+    {
+        this.soapUrl = soapUrl;
+        this.wsUser = wsUser;
+        this.wsPass = wsPass;
+        this.clientId = clientId;
+
+        ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+        if (skipCertValidation)
+        {
+            ServicePointManager.ServerCertificateValidationCallback =
+                delegate(object s, X509Certificate c, X509Chain ch, SslPolicyErrors e)
+                {
+                    return true;
+                };
+        }
+    }
+
+    public void Start()
+    {
+        CreateFactory();
+        OpenChannel();
+
+        // Initial token acquisition — must succeed or we cannot serve requests
+        if (!RefreshTokenInternal())
+        {
+            throw new InvalidOperationException("Failed to acquire initial access token");
+        }
+
+        // Keepalive every 5 min — prevents ReliableSession inactivity timeout
+        keepaliveTimer = new Timer(
+            delegate { Keepalive(); }, null,
+            TimeSpan.FromMinutes(5), TimeSpan.FromMinutes(5));
+
+        // Token refresh every 20 min — proactive refresh before expiry
+        tokenRefreshTimer = new Timer(
+            delegate { RefreshTokenFromTimer(); }, null,
+            TimeSpan.FromMinutes(20), TimeSpan.FromMinutes(20));
+
+        IsHealthy = true;
+    }
+
+    void CreateFactory()
+    {
+        WSHttpBinding binding = new WSHttpBinding();
+        binding.Security.Mode = SecurityMode.TransportWithMessageCredential;
+        binding.Security.Message.ClientCredentialType = MessageCredentialType.UserName;
+        binding.Security.Message.EstablishSecurityContext = true;
+        binding.ReliableSession.Enabled = true;
+        binding.ReliableSession.InactivityTimeout = TimeSpan.FromMinutes(10);
+        binding.MaxReceivedMessageSize = 50 * 1024 * 1024;
+        binding.ReaderQuotas.MaxStringContentLength = 50 * 1024 * 1024;
+        binding.ReaderQuotas.MaxArrayLength = 50 * 1024 * 1024;
+        binding.OpenTimeout = TimeSpan.FromSeconds(30);
+        binding.SendTimeout = TimeSpan.FromSeconds(60);
+        binding.ReceiveTimeout = TimeSpan.FromSeconds(60);
+
+        EndpointAddress endpoint = new EndpointAddress(soapUrl);
+        factory = new ChannelFactory<IIMSService>(binding, endpoint);
+        factory.Credentials.UserName.UserName = wsUser;
+        factory.Credentials.UserName.Password = wsPass;
+    }
+
+    void OpenChannel()
+    {
+        channel = factory.CreateChannel();
+        ((IClientChannel)channel).Open();
+        Interlocked.Increment(ref channelGeneration);
+    }
+
+    // RecreateChannel WITHOUT token refresh — used inside CallSoap where
+    // channelSem is already held. Token refresh would try to acquire
+    // channelSem again causing a deadlock.
+    void RecreateChannel(bool withTokenRefresh)
+    {
+        try { ((IClientChannel)channel).Abort(); } catch { }
+        OpenChannel();
+        if (withTokenRefresh)
+        {
+            RefreshTokenInternalNoLock();
+        }
+    }
+
+    // Acquires channelSem, sends GetToken, updates the cached token.
+    // Returns true on success, false on failure.
+    // Called by the token refresh timer.
+    void RefreshTokenFromTimer()
+    {
+        if (!channelSem.Wait(TimeSpan.FromSeconds(10)))
+            return; // skip this refresh cycle if channel is busy
+
+        try
+        {
+            RefreshTokenInternalNoLock();
+        }
+        catch { }
+        finally
+        {
+            channelSem.Release();
+        }
+    }
+
+    // Called during Start() — acquires channelSem itself.
+    bool RefreshTokenInternal()
+    {
+        if (!channelSem.Wait(TimeSpan.FromSeconds(30)))
+            return false;
+
+        try
+        {
+            return RefreshTokenInternalNoLock();
+        }
+        catch
+        {
+            return false;
+        }
+        finally
+        {
+            channelSem.Release();
+        }
+    }
+
+    // Core token refresh — caller MUST already hold channelSem.
+    // Returns true on success, false on failure.
+    bool RefreshTokenInternalNoLock()
+    {
+        try
+        {
+            string xml = SendMessage("GetToken", BuildGetTokenXml());
+            string token = ExtractXmlValue(xml, "AccessToken");
+            if (token != null)
+            {
+                lock (tokenLock) { accessToken = token; }
+                TokenAcquiredTime = DateTime.UtcNow;
+                return true;
+            }
+            return false;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    void Keepalive()
+    {
+        if (!channelSem.Wait(TimeSpan.FromSeconds(10)))
+            return; // skip if busy
+
+        try
+        {
+            bool ok = RefreshTokenInternalNoLock();
+            if (ok)
+            {
+                IsHealthy = true;
+            }
+            else
+            {
+                // Token refresh failed — channel may be stale, recreate
+                IsHealthy = false;
+                try
+                {
+                    RecreateChannel(true);
+                    IsHealthy = true;
+                }
+                catch
+                {
+                    IsHealthy = false;
+                }
+            }
+        }
+        catch
+        {
+            // Channel faulted — recreate
+            IsHealthy = false;
+            try
+            {
+                RecreateChannel(true);
+                IsHealthy = true;
+            }
+            catch
+            {
+                IsHealthy = false;
+            }
+        }
+        finally
+        {
+            channelSem.Release();
+        }
+    }
+
+    public string CallSoap(string opName, string requestXml)
+    {
+        if (!channelSem.Wait(TimeSpan.FromSeconds(30)))
+            throw new TimeoutException("Channel busy");
+
+        try
+        {
+            LastCallTime = DateTime.UtcNow;
+            return SendMessage(opName, requestXml);
+        }
+        catch (CommunicationException)
+        {
+            // Channel may be faulted — recreate WITHOUT token refresh
+            // (we already hold channelSem; RefreshToken would deadlock)
+            // then retry the call once
+            RecreateChannel(false);
+            return SendMessage(opName, requestXml);
+        }
+        finally
+        {
+            channelSem.Release();
+        }
+    }
+
+    public string GetCurrentToken()
+    {
+        lock (tokenLock) { return accessToken; }
+    }
+
+    // All SOAP calls go through this method. Caller must hold channelSem.
+    string SendMessage(string opName, string requestXml)
+    {
+        string bodyXml = "<" + opName + " xmlns=\"http://tempuri.org/\">" +
+                         requestXml + "</" + opName + ">";
+        XmlReader reader = XmlReader.Create(new StringReader(bodyXml));
+        Message msg = Message.CreateMessage(
+            MessageVersion.Soap12WSAddressing10,
+            "http://tempuri.org/IIMSService/" + opName,
+            reader);
+        Message result = channel.ProcessMessage(msg);
+
+        using (StringWriter sw = new StringWriter())
+        {
+            XmlWriterSettings settings = new XmlWriterSettings();
+            settings.Indent = false;
+            using (XmlWriter writer = XmlWriter.Create(sw, settings))
+            {
+                result.WriteBody(writer);
+                writer.Flush();
+                return sw.ToString();
+            }
+        }
+    }
+
+    string BuildGetTokenXml()
+    {
+        return "<request xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">" +
+            "<AccessToken i:nil=\"true\" xmlns=\"\"/>" +
+            "<ClientId xmlns=\"\">" + clientId + "</ClientId>" +
+            "<CompanyInitials xmlns=\"\">" + clientId + "</CompanyInitials>" +
+            "<IsDeveloper xmlns=\"\">false</IsDeveloper>" +
+            "<RequestId xmlns=\"\">" + Guid.NewGuid() + "</RequestId>" +
+            "<RequestedByUserName i:nil=\"true\" xmlns=\"\"/>" +
+            "<Version i:nil=\"true\" xmlns=\"\"/>" +
+            "</request>";
+    }
+
+    static string ExtractXmlValue(string xml, string tag)
+    {
+        int start = xml.IndexOf("<" + tag);
+        if (start < 0) return null;
+        int tagEnd = xml.IndexOf(">", start);
+        if (tagEnd < 0) return null;
+        string tagStr = xml.Substring(start, tagEnd - start + 1);
+        if (tagStr.Contains("nil=\"true\"")) return null;
+        start = tagEnd + 1;
+        int end = xml.IndexOf("</" + tag + ">", start);
+        if (end < 0) return null;
+        return xml.Substring(start, end - start);
+    }
+}
+
+// ---------------------------------------------------------------------------
+// UniProxy — HTTP listener, routing, SOAP bridge integration
+// ---------------------------------------------------------------------------
 class UniProxy
 {
     static string apiKey;
@@ -12,6 +335,7 @@ class UniProxy
     static int requestCount = 0;
     static DateTime lastRequestTime;
     static long maxRequestBytes;
+    static SoapBridge bridge;
 
     static void Main(string[] args)
     {
@@ -21,10 +345,29 @@ class UniProxy
             Environment.GetEnvironmentVariable("PROXY_MAX_REQUEST_BYTES") ?? "5242880");
         startTime = DateTime.UtcNow;
 
+        // Initialize SOAP bridge
+        string soapUrl = Environment.GetEnvironmentVariable("UNISOFT_SOAP_URL")
+            ?? "https://services.uat.gicunderwriters.co/management/imsservice.svc";
+        string wsUser = Environment.GetEnvironmentVariable("UNISOFT_WS_USER") ?? "";
+        string wsPass = Environment.GetEnvironmentVariable("UNISOFT_WS_PASS") ?? "";
+        string clientId = Environment.GetEnvironmentVariable("UNISOFT_CLIENT_ID") ?? "GIC_UAT";
+        bool skipCert = string.Equals(
+            Environment.GetEnvironmentVariable("UNISOFT_SKIP_CERT_VALIDATION"),
+            "true", StringComparison.OrdinalIgnoreCase);
+
+        Console.WriteLine("UniProxy v0.3 starting...");
+        Console.WriteLine("SOAP endpoint: " + soapUrl);
+        Console.WriteLine("Client ID: " + clientId);
+        Console.WriteLine("Skip cert validation: " + skipCert);
+
+        bridge = new SoapBridge(soapUrl, wsUser, wsPass, clientId, skipCert);
+        bridge.Start();
+        Console.WriteLine("SOAP bridge started, token acquired.");
+
         HttpListener listener = new HttpListener();
         listener.Prefixes.Add(string.Format("http://+:{0}/", port));
         listener.Start();
-        Console.WriteLine("UniProxy v0.2 listening on port " + port);
+        Console.WriteLine("UniProxy listening on port " + port);
 
         while (true)
         {
@@ -43,12 +386,17 @@ class UniProxy
             // Health check — no auth required
             if (path == "/api/health")
             {
+                int tokenAgeSec = bridge != null && bridge.TokenAcquiredTime > DateTime.MinValue
+                    ? (int)(DateTime.UtcNow - bridge.TokenAcquiredTime).TotalSeconds : -1;
+                string channelState = bridge != null
+                    ? (bridge.IsHealthy ? "healthy" : "faulted") : "not_started";
                 string lastReq = lastRequestTime > DateTime.MinValue
                     ? "\"" + lastRequestTime.ToString("o") + "\"" : "null";
                 string json = "{\"status\":\"ok\",\"uptime_seconds\":" +
                     (int)(DateTime.UtcNow - startTime).TotalSeconds +
                     ",\"requests\":" + requestCount +
-                    ",\"channel_state\":\"not_started\"" +
+                    ",\"token_age_seconds\":" + tokenAgeSec +
+                    ",\"channel_state\":\"" + channelState + "\"" +
                     ",\"last_request_time\":" + lastReq + "}";
                 WriteJson(ctx, 200, json);
                 return;
@@ -86,9 +434,40 @@ class UniProxy
                 Interlocked.Increment(ref requestCount);
                 lastRequestTime = DateTime.UtcNow;
 
-                // TODO: wire to SOAP bridge (Task A3)
-                WriteJson(ctx, 501,
-                    "{\"error\":\"not_implemented\",\"operation\":\"" + opName + "\"}");
+                try
+                {
+                    string requestBody;
+                    using (StreamReader sr = new StreamReader(ctx.Request.InputStream))
+                    {
+                        requestBody = sr.ReadToEnd();
+                    }
+
+                    string token = bridge.GetCurrentToken();
+                    string cid = bridge.ClientId;
+                    string requestXml = JsonToXml(opName, requestBody, token, cid);
+                    string responseXml = bridge.CallSoap(opName, requestXml);
+                    string responseJson = XmlToJson(responseXml);
+
+                    // Determine HTTP status from response content
+                    int httpStatus = 200;
+                    if (responseJson.Contains("\"error\":\"unisoft_fault\""))
+                        httpStatus = 502;
+                    else if (responseJson.Contains("\"error\":\"unisoft_validation\""))
+                        httpStatus = 422;
+                    WriteJson(ctx, httpStatus, responseJson);
+                }
+                catch (TimeoutException)
+                {
+                    WriteJson(ctx, 503,
+                        "{\"error\":\"busy\",\"message\":\"Channel busy, try again\"," +
+                        "\"retryAfter\":5}");
+                }
+                catch (Exception ex)
+                {
+                    WriteJson(ctx, 500,
+                        "{\"error\":\"proxy_error\",\"message\":\"" +
+                        JsonEscape(ex.Message) + "\"}");
+                }
                 return;
             }
 
@@ -100,10 +479,52 @@ class UniProxy
             {
                 WriteJson(ctx, 500,
                     "{\"error\":\"proxy_error\",\"message\":\"" +
-                    ex.Message.Replace("\\", "\\\\").Replace("\"", "\\\"") + "\"}");
+                    JsonEscape(ex.Message) + "\"}");
             }
             catch { }
         }
+    }
+
+    // ---------------------------------------------------------------------------
+    // JSON → XML stub (replaced in Task A4)
+    // Builds standard request XML with flat fields from JSON keys
+    // ---------------------------------------------------------------------------
+    static string JsonToXml(string opName, string json, string token, string clientId)
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.Append("<request xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\">");
+        sb.Append("<AccessToken xmlns=\"\">" + Escape(token) + "</AccessToken>");
+        sb.Append("<ClientId xmlns=\"\">" + Escape(clientId) + "</ClientId>");
+        sb.Append("<CompanyInitials xmlns=\"\">" + Escape(clientId) + "</CompanyInitials>");
+        sb.Append("<IsDeveloper xmlns=\"\">false</IsDeveloper>");
+        sb.Append("<RequestId xmlns=\"\">" + Guid.NewGuid() + "</RequestId>");
+        sb.Append("<RequestedByUserName i:nil=\"true\" xmlns=\"\"/>");
+        sb.Append("<Version i:nil=\"true\" xmlns=\"\"/>");
+        sb.Append("</request>");
+        return sb.ToString();
+    }
+
+    // ---------------------------------------------------------------------------
+    // XML → JSON stub (replaced in Task A5)
+    // Returns raw XML wrapped in a JSON string field
+    // ---------------------------------------------------------------------------
+    static string XmlToJson(string xml)
+    {
+        return "{\"_raw\":\"" + JsonEscape(xml) + "\"}";
+    }
+
+    static string Escape(string s)
+    {
+        if (s == null) return "";
+        return s.Replace("&", "&amp;").Replace("<", "&lt;")
+                .Replace(">", "&gt;").Replace("\"", "&quot;");
+    }
+
+    static string JsonEscape(string s)
+    {
+        if (s == null) return "";
+        return s.Replace("\\", "\\\\").Replace("\"", "\\\"")
+                .Replace("\n", "\\n").Replace("\r", "\\r").Replace("\t", "\\t");
     }
 
     static void WriteJson(HttpListenerContext ctx, int status, string json)
