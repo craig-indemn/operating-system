@@ -4,54 +4,51 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 
 ## Status
 
-**Session 2026-04-01. Unisoft API recon complete — SOAP + REST APIs fully mapped. No UI automation needed.**
+**Session 2026-04-01b. Unisoft REST proxy live in production — full write path verified.**
 
 **To resume this project, read these files in order:**
 1. This INDEX.md Status section (current state, what was done, what's next)
-2. `research/unisoft-workflow-map.md` — how GIC's team takes email data and enters it into their AMS (Unisoft)
-3. `research/unisoft-api-reference.md` — API architecture, auth flows, endpoints, data models
-4. `research/unisoft-api/operations-index.md` — index of all 111 captured API operation payloads
-5. `research/unisoft-api/wsdl-complete.md` — complete WSDL (910 operations, 1668 types) — large, read on demand
-6. `research/unisoft-software-guide.md` — Unisoft as software (company, products, UI documentation from video)
-7. Raw payloads in `research/unisoft-api/raw-payloads/{soap,rest,signalr}/` — read specific operations as needed
+2. `artifacts/2026-04-01-unisoft-rest-proxy-design.md` — proxy architecture, JSON↔XML translation, token management, deployment
+3. `unisoft-proxy/client/unisoft_client.py` — Python client for calling the proxy
+4. `research/unisoft-workflow-map.md` — how GIC's team takes email data and enters it into their AMS (Unisoft)
+5. `research/unisoft-api-reference.md` — API architecture, auth flows, endpoints, data models
+6. `research/unisoft-api/operations-index.md` — index of all 111 captured API operation payloads
+7. `research/unisoft-software-guide.md` — Unisoft as software (company, products, UI documentation from video)
 
-Major breakthrough: installed Unisoft ClickOnce app on Windows EC2, intercepted all network traffic with Fiddler, and mapped the complete API surface. The app does NOT connect directly to a database — it talks to a multi-layer API architecture (REST gateway + WCF SOAP service + file service + SignalR hub). We can call these APIs directly from Python to automate quote/submission creation.
+**What was done this session (2026-04-01b):**
+1. **Tested REST API from Python** — JWT auth + 4 endpoints (user profile, brokers, task dashboard) all working directly from Mac.
+2. **Tested SOAP API from .NET** — Proved WSHttpBinding + WS-SecureConversation works from C# on the Windows EC2. GetToken → GetInsuranceLOBs round-trip successful. Confirmed WSHttpBinding is NOT supported in modern .NET 6/7/8 — .NET Framework 4.8 required.
+3. **Comprehensive API exploration** — Ran 14 SOAP operations via C# test app. Mapped all 18 LOBs, all sub-LOBs per LOB, 46 carriers, 1,571 agents. Resolved LOB discrepancy: "Boats & Yachts" = sub-LOB OM/BY, "Commercial Auto" = sub-LOB TR/CA.
+4. **Designed the REST proxy** — Single C# file, HttpListener on port 5000, WCF channel with auto token management and keepalive. 3 code reviews, all critical issues resolved before implementation.
+5. **Built the proxy** — 1,073 lines of C#, 7 commits across 3 parallel sessions (Track A: code, Track B: infrastructure, Track C: Python client). Compiled with csc.exe on EC2, no external dependencies.
+6. **Deployed to production** — t3.small Windows EC2 with Elastic IP. Registered as Windows Service (auto-start, failure recovery). Survived reboot test.
+7. **Verified full write path** — SetQuote (created QuoteID 17130), SetSubmission (SubmissionId 15444, USLI carrier), SetActivity (ActivityId 46827) all succeeded against UAT.
+8. **Bugs found and fixed** — Boolean serialization (C# True → XML true), WCF DataContractSerializer requires alphabetical field order in DTOs, Machine-scope env var reading for Windows Service.
 
-**What was done this session (2026-04-01):**
-1. **Video frame analysis** — Extracted 357 frames from JC's March 27 walkthrough video. 3 parallel agents analyzed the cropped UI screenshots frame-by-frame. Documented: complete navigation, all 21 LOBs, GL sub-LOBs, agent dropdown (hundreds of entries), full applicant form fields, submissions tab, 30+ activity types, financing tab with auto-calculations. Updated `research/unisoft-software-guide.md`.
-2. **UAT access confirmed** — Found UAT credentials in Gmail (JC sent March 30). URL: `ins-gic-client-uat-app.azurewebsites.net/publish.htm`, creds: ccerto/GIC2026$$!. ClickOnce Windows app (.NET 4.8).
-3. **Windows EC2 setup** — Started `indemn-windows-server` (i-0dc2563c9bc92aa0e, t3.xlarge, Windows Server 2025). SSM port forwarding for RDP. Installed Fiddler, ClickOnce app.
-4. **API traffic interception** — Two Fiddler captures (648 + 1629 sessions). Discovered:
-   - REST API Gateway at `ins-gic-api-gateway-uat-app.azurewebsites.net` — JWT auth, 32 endpoints (tasks, users, brokers, documents)
-   - WCF SOAP Service at `services.uat.gicunderwriters.co/management/imsservice.svc` — WS-Security auth, 70 operations including SetQuote, SetSubmission, SetActivity
-   - File Service at `services.uat.gicunderwriters.co/attachments/insfileservice.svc` — attachment upload/download
-   - SignalR Hub at `ins-gic-nothub-prod-app.azurewebsites.net` — real-time notifications
-5. **Complete API documentation** — Extracted full request/response payloads for all write operations (SetQuote, SetSubmission, SetActivity, POST /api/tasks). Documented the SetQuote data model field-by-field. Mapped LOB codes (CG=General Liability), carrier numbers (2=USLI), broker IDs (1=GIC Underwriters). See `research/unisoft-api-reference.md`.
-6. **Three research artifacts updated** — All findings saved to workflow map, software guide, and API reference.
-
-**Key breakthrough:** UI automation is NOT needed. Every operation in Unisoft maps to an API call:
-- Create quote → `SetQuote` (SOAP)
-- Add submission → `SetSubmission` (SOAP)
-- Log activity → `SetActivity` (SOAP)
-- Create task → `POST /api/tasks` (REST)
-- Upload attachment → `AddQuoteAttachment` (SOAP)
-
-**Architecture confirmed:**
+**Architecture (production):**
 ```
-Email Pipeline (our system) → Python SOAP/REST client → Unisoft API → Unisoft Database
+Email Pipeline (Railway) → Python UnisoftClient → REST Proxy (EC2) → WCF Channel → Unisoft SOAP API → Unisoft DB
+                                                   54.83.28.79:5000
 ```
 
-**WSDL fetched:** Complete API spec downloaded — 910 operations, 1,668 data types, 16 enums. Stored in `research/unisoft-api/wsdl-complete.md` (40K lines). Raw WSDL XML also saved. All 111 captured operation payloads extracted with full request/response bodies (no truncation) in `research/unisoft-api/raw-payloads/`.
+**Proxy details:**
+- URL: `http://54.83.28.79:5000`
+- API key: stored in EC2 system env var `PROXY_API_KEY`
+- All 910 IIMSService operations via `POST /api/soap/{OperationName}`
+- Health: `GET /api/health`
+- Python client: `unisoft-proxy/client/unisoft_client.py`
+- Design: `artifacts/2026-04-01-unisoft-rest-proxy-design.md`
+- EC2: `i-0dc2563c9bc92aa0e` (t3.small, Elastic IP 54.83.28.79, Windows Service `UniProxy`)
+- Cost: ~$35/month
 
 **Next steps:**
-- Test basic API calls from Python — authenticate (both REST JWT and SOAP WS-Security) and call a read operation (e.g., GetInsuranceLOBs)
-- Build prototype: SetQuote with test data against UAT
+- Integrate UnisoftClient into the email pipeline — when a submission is classified and extracted, auto-create the quote + submission in Unisoft
+- Get production API endpoints from Unisoft/JC (UAT only right now)
+- Test the full email→Unisoft automation loop with a real USLI quote email
 - Understand UAT vs production environment differences (ask JC/Robert)
-- Deep-dive into GIC team workflow — alignment questions saved in Open Questions section
+- Deep-dive into GIC team workflow — alignment questions still in Open Questions section
 - Follow up with Robert Gonzalez (Unisoft) on swagger docs — still no reply to JC's March 30 email
 - Full re-sync + backfill of email pipeline still pending
-
-**Windows EC2 status:** Stopped (i-0dc2563c9bc92aa0e). APIs are publicly accessible — no EC2 needed for API calls.
 
 **Previous session (2026-03-31b):** Phase 1 research — workflow map, software guide, API reference from transcript + web research + video analysis.
 
@@ -587,14 +584,14 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 - Email sending in production? (Requires Mail.Send permission, separate Entra consent from GIC)
 
 ## Open Questions (Unisoft Integration)
-- What does the quoting API actually support? (Waiting on Robert Gonzalez at Unisoft for swagger docs — JC emailed 2026-03-30, no reply yet)
+- ~~What does the quoting API actually support?~~ **ANSWERED 2026-04-01:** 910 SOAP operations via WCF, 32 REST endpoints. Full CRUD for quotes, submissions, activities, policies, agents, carriers, claims. Mapped via Fiddler interception + WSDL fetch.
 - Is the Granada API (`services-uat.granadainsurance.com`) built by Unisoft or custom by Mukul Gupta?
-- What are all the subline options per LOB in Unisoft? (GL confirmed: 4. Other 20 LOBs TBD — need from UAT exploration)
+- ~~What are all the subline options per LOB in Unisoft?~~ **ANSWERED 2026-04-01:** All 18 LOBs and all sub-LOBs mapped from live API. See explore-results.txt. CG has 4, CP has 13, PL has 8, TR has 8, ML has 4, HO has 2, OM has 2. Others have none.
 - Do GIC portal submissions auto-create records in Unisoft?
 - Does Unisoft support ACORD data standards?
-- Is there a production API endpoint (not just UAT)?
-- Can documents be uploaded via API?
-- Can we get webhook/event notifications from Unisoft? (e.g., quote status changes)
+- Is there a production API endpoint (not just UAT)? **Still need from JC/Robert.**
+- ~~Can documents be uploaded via API?~~ **ANSWERED 2026-04-01:** Yes, AddQuoteAttachment via MTOM (IINSFileService). Not yet in proxy (uses different WCF channel + multipart encoding). Can be added later.
+- Can we get webhook/event notifications from Unisoft? (SignalR hub exists at `ins-gic-nothub-prod-app.azurewebsites.net` — could potentially subscribe to events, needs investigation)
 
 ## Open Questions (Workflow Understanding — To Answer Through Alignment)
 - Which part of the workflow is fuzziest? Decision-making ("how do they know what to do?"), data entry ("what gets typed where?"), or end-to-end flow ("what triggers what?")?
