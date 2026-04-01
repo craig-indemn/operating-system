@@ -636,12 +636,248 @@ class UniProxy
     }
 
     // ---------------------------------------------------------------------------
-    // XML → JSON stub (replaced in Task A5)
-    // Returns raw XML wrapped in a JSON string field
+    // XML → JSON translation
     // ---------------------------------------------------------------------------
+
+    // ResponseBase fields always extracted to _meta
+    static HashSet<string> metaFields = new HashSet<string>
+    {
+        "Build", "CorrelationId", "Message", "ReplyStatus", "RowsAffected", "Version"
+    };
+
     static string XmlToJson(string xml)
     {
-        return "{\"_raw\":\"" + JsonEscape(xml) + "\"}";
+        XmlDocument doc = new XmlDocument();
+        doc.LoadXml(xml);
+
+        // WriteBody output structure depends on the message.
+        // Typically: <XXXResponse><XXXResult>...data...</XXXResult></XXXResponse>
+        // Or for faults: <Fault>...</Fault>
+        // We search downward for the Result element.
+        XmlNode root = doc.DocumentElement;
+        XmlNode resultNode = null;
+
+        if (root.LocalName.EndsWith("Response"))
+        {
+            // Look for the Result child directly
+            foreach (XmlNode child in root.ChildNodes)
+            {
+                if (child.LocalName.EndsWith("Result"))
+                {
+                    resultNode = child;
+                    break;
+                }
+            }
+            if (resultNode == null) resultNode = root;
+        }
+        else if (root.LocalName == "Body")
+        {
+            // Root is the Body element — look for Response > Result or Fault
+            foreach (XmlNode child in root.ChildNodes)
+            {
+                if (child.LocalName == "Fault")
+                    return BuildFaultJson(child);
+                if (child.LocalName.EndsWith("Response"))
+                {
+                    foreach (XmlNode grandchild in child.ChildNodes)
+                    {
+                        if (grandchild.LocalName.EndsWith("Result"))
+                        {
+                            resultNode = grandchild;
+                            break;
+                        }
+                    }
+                    if (resultNode == null) resultNode = child;
+                    break;
+                }
+            }
+        }
+        else if (root.LocalName == "Fault")
+        {
+            return BuildFaultJson(root);
+        }
+
+        if (resultNode == null) resultNode = root;
+
+        // Separate meta fields from data fields
+        StringBuilder meta = new StringBuilder();
+        StringBuilder data = new StringBuilder();
+        meta.Append("\"_meta\":{");
+        bool firstMeta = true;
+        bool firstData = true;
+
+        foreach (XmlNode child in resultNode.ChildNodes)
+        {
+            if (child.NodeType != XmlNodeType.Element) continue;
+            string localName = StripPrefix(child.LocalName);
+            if (metaFields.Contains(localName))
+            {
+                if (!firstMeta) meta.Append(",");
+                meta.Append("\"" + localName + "\":" + NodeToJsonValue(child));
+                firstMeta = false;
+            }
+            else
+            {
+                if (!firstData) data.Append(",");
+                data.Append("\"" + localName + "\":" + NodeToJsonValue(child));
+                firstData = false;
+            }
+        }
+        meta.Append("}");
+
+        if (firstData)
+            return "{" + meta.ToString() + "}";
+        return "{" + meta.ToString() + "," + data.ToString() + "}";
+    }
+
+    static string NodeToJsonValue(XmlNode node)
+    {
+        // Check nil
+        if (node.Attributes != null)
+        {
+            foreach (XmlAttribute attr in node.Attributes)
+            {
+                if (attr.LocalName == "nil" && attr.Value == "true")
+                    return "null";
+            }
+        }
+
+        // Leaf node (text content only, or empty)
+        if (!node.HasChildNodes)
+            return "null";
+        if (node.ChildNodes.Count == 1 && node.FirstChild.NodeType == XmlNodeType.Text)
+        {
+            string text = node.InnerText;
+            // Try to parse as number
+            int intVal;
+            if (int.TryParse(text, out intVal))
+                return intVal.ToString();
+            decimal decVal;
+            if (text.Contains(".") && decimal.TryParse(text, out decVal))
+                return decVal.ToString();
+            if (text == "true" || text == "false")
+                return text;
+            return "\"" + JsonEscape(text) + "\"";
+        }
+
+        // Check if children form a DTO array (repeated elements with *DTO names)
+        Dictionary<string, int> childNames = new Dictionary<string, int>();
+        foreach (XmlNode child in node.ChildNodes)
+        {
+            if (child.NodeType != XmlNodeType.Element) continue;
+            string ln = StripPrefix(child.LocalName);
+            if (childNames.ContainsKey(ln))
+                childNames[ln] = childNames[ln] + 1;
+            else
+                childNames[ln] = 1;
+        }
+
+        // If single child type ending in DTO, or multiple children with same name -> array
+        if (childNames.Count == 1)
+        {
+            string childName = null;
+            int count = 0;
+            foreach (KeyValuePair<string, int> kvp in childNames)
+            {
+                childName = kvp.Key;
+                count = kvp.Value;
+            }
+            if (childName != null && (childName.EndsWith("DTO") || count > 1))
+            {
+                StringBuilder arr = new StringBuilder("[");
+                bool first = true;
+                foreach (XmlNode child in node.ChildNodes)
+                {
+                    if (child.NodeType != XmlNodeType.Element) continue;
+                    if (!first) arr.Append(",");
+                    arr.Append(ElementToJsonObject(child));
+                    first = false;
+                }
+                arr.Append("]");
+                return arr.ToString();
+            }
+        }
+
+        // Object
+        return ElementToJsonObject(node);
+    }
+
+    static string ElementToJsonObject(XmlNode node)
+    {
+        // Check nil
+        if (node.Attributes != null)
+        {
+            foreach (XmlAttribute attr in node.Attributes)
+            {
+                if (attr.LocalName == "nil" && attr.Value == "true")
+                    return "null";
+            }
+        }
+
+        StringBuilder sb = new StringBuilder("{");
+        bool first = true;
+        foreach (XmlNode child in node.ChildNodes)
+        {
+            if (child.NodeType != XmlNodeType.Element) continue;
+            if (!first) sb.Append(",");
+            sb.Append("\"" + StripPrefix(child.LocalName) + "\":" + NodeToJsonValue(child));
+            first = false;
+        }
+        sb.Append("}");
+        return sb.ToString();
+    }
+
+    static string StripPrefix(string name)
+    {
+        int colon = name.IndexOf(':');
+        if (colon >= 0)
+            return name.Substring(colon + 1);
+        return name;
+    }
+
+    static string BuildFaultJson(XmlNode faultNode)
+    {
+        string reason = "";
+        string code = "";
+        string detail = "";
+        foreach (XmlNode child in faultNode.ChildNodes)
+        {
+            if (child.LocalName == "Reason")
+                reason = child.InnerText;
+            else if (child.LocalName == "Code")
+                code = child.InnerText;
+            else if (child.LocalName == "Detail")
+                detail = child.InnerText;
+        }
+
+        // Distinguish auth faults from validation faults per code review.
+        // Heuristic: auth/security/token issues get unisoft_fault (502),
+        // everything else gets unisoft_validation (422).
+        string lowerReason = reason.ToLower();
+        string lowerDetail = detail.ToLower();
+        bool isAuthFault = lowerReason.Contains("nullreference")
+            || lowerReason.Contains("security")
+            || lowerReason.Contains("token")
+            || lowerReason.Contains("unauthorized")
+            || lowerDetail.Contains("nullreference")
+            || lowerDetail.Contains("security")
+            || lowerDetail.Contains("token");
+
+        if (isAuthFault)
+        {
+            return "{\"_meta\":{\"ReplyStatus\":\"Fault\"}," +
+                   "\"error\":\"unisoft_fault\"," +
+                   "\"message\":\"" + JsonEscape(reason) + "\"," +
+                   "\"faultCode\":\"" + JsonEscape(code) + "\"}";
+        }
+        else
+        {
+            return "{\"_meta\":{\"ReplyStatus\":\"Fault\"}," +
+                   "\"error\":\"unisoft_validation\"," +
+                   "\"message\":\"" + JsonEscape(reason) + "\"," +
+                   "\"detail\":\"" + JsonEscape(detail) + "\"," +
+                   "\"faultCode\":\"" + JsonEscape(code) + "\"}";
+        }
     }
 
     static string Escape(string s)
