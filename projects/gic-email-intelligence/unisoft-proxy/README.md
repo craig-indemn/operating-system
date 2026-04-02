@@ -181,6 +181,10 @@ result = client.call("GetCompanyRules")
 
 ## Critical Implementation Details
 
+### Parameter names are CASE-SENSITIVE
+
+WCF DataContract field names are case-sensitive. `QuoteID` works, `QuoteId` silently returns null/zero. The proxy passes JSON keys through to XML element names without modification. Always match the exact casing from the WSDL. Common gotcha: `QuoteID` (capital D), not `QuoteId`.
+
 ### DTO fields MUST be alphabetical
 
 WCF DataContractSerializer silently ignores out-of-order fields. If you send `{"Name": "...", "Address": "..."}`, the proxy sorts them to `Address, Name` before serializing. This sorting happens automatically in the proxy — callers don't need to worry about it.

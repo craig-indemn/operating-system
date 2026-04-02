@@ -42,17 +42,17 @@ class UnisoftClient:
     def create_quote(self, quote_data: dict, action: str = "Insert") -> dict:
         return self.call("SetQuote", {"Action": action, "IsNewSystem": True, "Quote": quote_data})
 
-    def create_submission(self, submission_data: dict) -> dict:
-        return self.call("SetSubmission", {"Submission": submission_data})
+    def create_submission(self, submission_data: dict, action: str = "Insert") -> dict:
+        return self.call("SetSubmission", {"PersistSubmission": action, "Submission": submission_data})
 
     def create_activity(self, activity_data: dict, action: str = "Insert") -> dict:
         return self.call("SetActivity", {"Action": action, "Activity": activity_data})
 
     def get_quote(self, quote_id: int) -> dict:
-        return self.call("GetQuote", {"QuoteId": quote_id})
+        return self.call("GetQuote", {"QuoteID": quote_id})
 
     def get_submissions(self, quote_id: int) -> dict:
-        return self.call("GetSubmissions", {"QuoteId": quote_id})
+        return self.call("GetSubmissions", {"QuoteID": quote_id})
 
 
 class UnisoftError(Exception):

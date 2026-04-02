@@ -15,6 +15,8 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 5. `research/unisoft-api-reference.md` — API architecture, auth flows, endpoints, data models
 6. `research/unisoft-api/operations-index.md` — index of all 111 captured API operation payloads
 7. `research/unisoft-software-guide.md` — Unisoft as software (company, products, UI documentation from video)
+8. `research/usli-gl-automation-analysis.md` — USLI GL (MGL) automation: field mapping, activity IDs, data gaps, example record. Source of truth for the first automation.
+9. `research/jc-walkthrough-workflow.md` — **THE source of truth**: JC's actual Unisoft workflow from screen-share video. Two entry paths (portal vs email), three required fields for Quote ID, phased automation strategy, effective date = current date.
 
 **What was done this session (2026-04-01b):**
 1. **Tested REST API from Python** — JWT auth + 4 endpoints (user profile, brokers, task dashboard) all working directly from Mac.
@@ -469,6 +471,8 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 | 2026-03-31 | [unisoft-software-guide](research/unisoft-software-guide.md) | Unisoft Communications as software — company, products, tech stack, UI structure, customer base, UAT exploration plan |
 | 2026-03-31 | [unisoft-api-reference](research/unisoft-api-reference.md) | API capabilities — Unisoft (pending), Granada API (confirmed), industry standards, integration strategy, questions for Hugo |
 | 2026-04-01 | [unisoft-rest-proxy-design](artifacts/2026-04-01-unisoft-rest-proxy-design.md) | REST proxy design — wraps all 910 Unisoft SOAP operations via HTTP/JSON, runs on t3.micro Windows EC2 (~$20/month) |
+| 2026-04-01 | [usli-gl-automation-analysis](research/usli-gl-automation-analysis.md) | USLI GL (MGL) automation analysis — complete field mapping, all 73 activity ActionIds, verified data gaps (EffectiveDate is NOT in email or PDF), example record walkthrough |
+| 2026-04-02 | [jc-walkthrough-workflow](research/jc-walkthrough-workflow.md) | JC's actual Unisoft workflow from video: two entry paths (portal vs email), 3 required fields for Quote ID (LOB, SubLOB, Agency), phased automation strategy, effective date = current date, full lifecycle through carrier response |
 
 ## Key Data Files
 | File | What it contains |
