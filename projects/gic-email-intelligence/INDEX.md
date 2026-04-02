@@ -4,53 +4,82 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 
 ## Status
 
-**Session 2026-04-01b. Unisoft REST proxy production-ready — all operations verified, service auto-starts, token management stable.**
+**Session 2026-04-02a. Automation agent running end-to-end — first Quote ID created in Unisoft UAT from email data.**
 
 **To resume this project, read these files in order:**
 1. This INDEX.md Status section (current state, what was done, what's next)
-2. `unisoft-proxy/README.md` — operational guide: API contract, deploy pipeline, troubleshooting, EC2 management
-3. `artifacts/2026-04-01-unisoft-rest-proxy-design.md` — proxy architecture, JSON↔XML translation, token management, deployment
-4. `unisoft-proxy/client/unisoft_client.py` — Python client for calling the proxy
-4. `research/unisoft-workflow-map.md` — how GIC's team takes email data and enters it into their AMS (Unisoft)
-5. `research/unisoft-api-reference.md` — API architecture, auth flows, endpoints, data models
-6. `research/unisoft-api/operations-index.md` — index of all 111 captured API operation payloads
-7. `research/unisoft-software-guide.md` — Unisoft as software (company, products, UI documentation from video)
-8. `research/usli-gl-automation-analysis.md` — USLI GL (MGL) automation: field mapping, activity IDs, data gaps, example record. Source of truth for the first automation.
-9. `research/jc-walkthrough-workflow.md` — **THE source of truth**: JC's actual Unisoft workflow from screen-share video. Two entry paths (portal vs email), three required fields for Quote ID, phased automation strategy, effective date = current date.
+2. `research/jc-walkthrough-workflow.md` — **THE source of truth**: JC's actual Unisoft workflow from screen-share video. Two entry paths (portal vs email), three required fields for Quote ID, phased automation strategy, effective date = current date.
+3. `research/usli-gl-automation-analysis.md` — Field mapping, all 73 activity ActionIds, PDF structure (16 pages verified), FormOfBusiness codes, data gaps resolved. Source of truth for field-level automation details.
+4. `unisoft-proxy/README.md` — Proxy operational guide: API contract, deploy pipeline, troubleshooting, case-sensitivity gotcha
+5. `unisoft-proxy/client/cli.py` — Unisoft CLI (Typer) wrapping the proxy
+6. The automation agent code in the GIC repo: `src/gic_email_intel/automation/agent.py` and `src/gic_email_intel/automation/skills/create-quote-id.md`
 
-**What was done this session (2026-04-01b):**
-1. **Tested REST API from Python** — JWT auth + 4 endpoints (user profile, brokers, task dashboard) all working directly from Mac.
-2. **Tested SOAP API from .NET** — Proved WSHttpBinding + WS-SecureConversation works from C# on the Windows EC2. GetToken → GetInsuranceLOBs round-trip successful. Confirmed WSHttpBinding is NOT supported in modern .NET 6/7/8 — .NET Framework 4.8 required.
-3. **Comprehensive API exploration** — Ran 14 SOAP operations via C# test app. Mapped all 18 LOBs, all sub-LOBs per LOB, 46 carriers, 1,571 agents. Resolved LOB discrepancy: "Boats & Yachts" = sub-LOB OM/BY, "Commercial Auto" = sub-LOB TR/CA.
-4. **Designed the REST proxy** — Single C# file, HttpListener on port 5000, WCF channel with auto token management and keepalive. 3 code reviews, all critical issues resolved before implementation.
-5. **Built the proxy** — 1,073 lines of C#, 7 commits across 3 parallel sessions (Track A: code, Track B: infrastructure, Track C: Python client). Compiled with csc.exe on EC2, no external dependencies.
-6. **Deployed to production** — t3.small Windows EC2 with Elastic IP. Registered as Windows Service (auto-start, failure recovery). Survived reboot test.
-7. **Verified full write path** — SetQuote (created QuoteID 17130), SetSubmission (SubmissionId 15444, USLI carrier), SetActivity (ActivityId 46827) all succeeded against UAT.
-8. **Bugs found and fixed** — Boolean serialization (C# True → XML true), WCF DataContractSerializer requires alphabetical field order in DTOs, Machine-scope env var reading for Windows Service.
+**What was done this session (2026-04-02a):**
+1. **JC walkthrough captured** — Reviewed JC's screen-share video, captured the complete workflow as `research/jc-walkthrough-workflow.md`. Key findings: two entry paths (portal creates Quote ID automatically, email needs manual creation), three required fields for Quote ID (LOB, SubLOB, Agency), effective date = current date, expiration = +1 year.
+2. **USLI GL automation analysis** — Complete field mapping from MongoDB production data. Downloaded and read all 16 pages of an actual USLI PDF (MGL026M2518). Confirmed: effective date is NOT in the PDF ("Please bind effective: ___" is blank). Confirmed: FormOfBusiness "L" works for LLC (tested). Confirmed: Unisoft requires EffectiveDate (BRConstraint). All 73 activity ActionIds mapped from API.
+3. **Unisoft CLI built** — `unisoft quote create/get`, `unisoft submission create/list`, `unisoft activity create/list/actions`, `unisoft agents search/list/get`, `unisoft lobs list/sublobs`, `unisoft carriers list`, `unisoft call <op> <params>`. Tested end-to-end: Quote 17139 → Submission 15445 → Activity 46828.
+4. **Email CLI extended** — Added `emails next` (atomic claim for automation), `emails complete` (record results), `emails reset` (reprocess). In the GIC repo.
+5. **Automation agent built** — LangChain `deepagents` SDK with `LocalShellBackend`. Agent executes `gic` and `unisoft` CLI commands via bash. Skills loaded from filesystem. First skill: `create-quote-id.md` for Phase 1 Quote ID creation.
+6. **Live test: 7 emails processed** — 1 success (Quote 17140: Florida International University, CG/SE, Agent 6544), 5 failures with clear explanations, 1 timeout. Agent correctly refuses when data is insufficient.
+7. **Bugs fixed** — Case-sensitive API params (`QuoteID` not `QuoteId`), `SetSubmission` needs `PersistSubmission` field, Anthropic API key loading from project settings.
 
-**Architecture (production):**
+**Architecture:**
 ```
-Email Pipeline (Railway) → Python UnisoftClient → REST Proxy (EC2) → WCF Channel → Unisoft SOAP API → Unisoft DB
-                                                   54.83.28.79:5000
+Email Pipeline (Railway)                    Automation Agent (new, same repo)
+  sync → extract → classify → link            invoked with: gic automate run
+                                               ↓
+                                             gic emails next --json (claim email)
+                                               ↓
+                                             reads skill based on email type
+                                               ↓
+                                             unisoft quote create / submission create / activity create
+                                               ↓
+                                             gic emails complete (record result)
+                                               ↓
+                                             Unisoft AMS (UAT)
 ```
 
-**Proxy details:**
+- Deep agent: `deepagents` SDK, `LocalShellBackend`, Claude Sonnet
+- Two CLIs on PATH: `gic` (email data) + `unisoft` (AMS operations)
+- Skills: markdown documents encoding workflows per email type
+- Agent bootstraps own context via CLI — no injected prompts
+- State tracking: `automation_status` field on email documents in MongoDB
+
+**Proxy details (unchanged):**
 - URL: `http://54.83.28.79:5000`
-- API key: stored in EC2 system env var `PROXY_API_KEY`
-- All 910 IIMSService operations via `POST /api/soap/{OperationName}`
-- Health: `GET /api/health`
-- Python client: `unisoft-proxy/client/unisoft_client.py`
-- Design: `artifacts/2026-04-01-unisoft-rest-proxy-design.md`
 - EC2: `i-0dc2563c9bc92aa0e` (t3.small, Elastic IP 54.83.28.79, Windows Service `UniProxy`)
-- Cost: ~$35/month
+- RDP: `aws ssm start-session --target i-0dc2563c9bc92aa0e --document-name AWS-StartPortForwardingSession --parameters '{"portNumber":["3389"],"localPortNumber":["3389"]}'` then localhost:3389, Administrator / Welcome1!, Unisoft: ccerto / GIC2026$$!
 
-**Next steps (next session):**
-1. **Understand the automation flows** — Map exactly how each email type (USLI quote, agent submission, pending file, decline) should flow from Outlook extraction → pipeline processing → Unisoft data entry. Use `research/unisoft-workflow-map.md` as the source of truth for the manual process, and `unisoft-proxy/README.md` for the API capabilities. The goal is a detailed spec for each flow before writing code.
-2. **Build the integration** — Wire `UnisoftClient` into the email pipeline so extracted submission data auto-creates quotes + submissions + activities in Unisoft. Start with USLI quotes (highest volume, most predictable format).
-3. **Test end-to-end** — Take a real USLI quote email from the inbox, trace it through extraction → classification → Unisoft creation. Verify the record appears correctly in Unisoft UAT.
-4. **Get production API endpoints** from Unisoft/JC (UAT only right now)
-5. **Follow up with Robert Gonzalez** (Unisoft) on swagger docs — still no reply to JC's March 30 email
-6. **Full re-sync + backfill** of email pipeline still pending
+**Live test results (7 agent_submission emails):**
+
+| Insured | Result | Reason |
+|---|---|---|
+| Florida International University | **Quote 17140** | CG/SE, Agent 6544 (Estrella #284) |
+| Blue Florida Services LLC | Failed | Estrella #326 not in Unisoft (66 Estrella entries, none with #326 — confirmed real gap) |
+| Unknown (Rental Dwelling) | Failed | No insured, no agent, no extraction — empty portal notification |
+| Imperial Services of Palm Beach | Failed | From quotes@granadainsurance.com — wrong classification (Granada portal, not agent submission) |
+| Test Mukul | Failed | Test record + Granada portal |
+| Crystal Cleaning Solutions | Failed | Agent found (5982) but address required by Unisoft, no extraction |
+| Enkelana Caffe | Failed | Pre-fix test, no result recorded |
+
+**Failure analysis:**
+- **3 classification errors** — Granada portal emails and empty notifications misclassified as `agent_submission`. Fix in pipeline.
+- **1 real agent gap** — Estrella #326 not registered in Unisoft. GIC business decision: add manually or automate agency creation.
+- **1 missing extraction** — PDF not extracted, so no address data. Fix in pipeline.
+- **1 pre-fix test** — Before API key loading was fixed.
+
+**Next steps:**
+1. **Merge with os-outlook worktree** — bring automation into the full project, combine with UI work
+2. **Fix pipeline classifications** — Granada portal emails, empty notifications, accuracy improvements
+3. **Fix extraction coverage** — ensure PDFs are extracted for all agent submissions
+4. **Update UI** — align with automation workflows, show what's been automated in the AMS
+5. **Deploy automation as Railway service** — separate from the processing pipeline
+6. **Business decisions for JC** — (a) should automation create new agency records? (b) what to do with Estrella #326-type gaps?
+7. **Phase 2** — end-to-end vertical for one USLI LOB (submission → carrier response → forward to agent)
+8. **Get production API endpoints** from Unisoft/JC
+9. **Full re-sync + backfill** of email pipeline
+
+**Previous session (2026-04-01b):** Unisoft REST proxy built and deployed. See below.
 
 **Previous session (2026-03-31b):** Phase 1 research — workflow map, software guide, API reference from transcript + web research + video analysis.
 
@@ -579,6 +608,19 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 - 2026-04-01: REST proxy design: HttpListener console app on t3.micro Windows EC2 (~$20/month). Generic passthrough for all 910 operations via POST /api/soap/{OperationName}. JSON in, JSON out.
 - 2026-04-01: API returns 18 LOBs (not 21 from UI). "Boats & Yachts" = sub-LOB OM/BY, "Commercial Auto" = sub-LOB TR/CA. 46 carriers, 3,142 agents confirmed.
 - 2026-04-01: Every SOAP operation requires AccessToken from GetToken. Proxy manages this automatically — callers never see it.
+- 2026-04-02: Automation architecture: LangChain deepagents SDK with LocalShellBackend. Agent executes CLI commands via bash, same pattern as Claude Code. Two CLIs: `gic` (email data) and `unisoft` (AMS). Skills are markdown documents per workflow.
+- 2026-04-02: Automation is a SEPARATE service from the email pipeline. Not a new pipeline stage. Agent picks up processed emails and acts on them independently.
+- 2026-04-02: EffectiveDate = current date, ExpirationDate = +1 year. Confirmed from JC walkthrough — the policy effective date doesn't exist at quote stage (USLI PDF "Please bind effective: ___" is blank).
+- 2026-04-02: FormOfBusiness accepts any single character. L=LLC, C=Corp, I=Individual, P=Partnership. Tested and confirmed.
+- 2026-04-02: Unisoft API parameter names are CASE-SENSITIVE. QuoteID works, QuoteId returns null. Documented in proxy README.
+- 2026-04-02: SetSubmission requires `PersistSubmission: "Insert"` as a top-level field (not inside the Submission object). Fixed in client.
+- 2026-04-02: Granada Insurance is NOT in Unisoft's agent list or broker list (confirmed in UAT UI). Granada portal emails misclassified as agent_submission — these are internal, not agent-originated.
+- 2026-04-02: Estrella Insurance has 66 franchise entries in Unisoft, each under a different DBA. Matching by franchise number (e.g., #326) is a real gap — some franchises aren't registered.
+- 2026-04-02: Classification accuracy directly bounds automation success rate. Pipeline classification must be correct before automation runs at scale.
+- 2026-04-02: The Unisoft CLI and automation code live in the GIC email intelligence repo (craig-indemn/gic-email-intelligence). The proxy code + research live in the OS repo (projects/gic-email-intelligence/).
+- 2026-04-02: CLI entry point: `gic` (maps to gic_email_intel.cli.main:app). Subcommands: emails, submissions, extractions, automate, sync, stats, drafts, migrate.
+- 2026-04-02: Agent uses Sonnet for automation (cost-effective, sufficient reasoning for the workflow).
+- 2026-04-02: Vision from product roadmap: Unisoft CLI is an adapter. Eventually wraps into Indemn's own AMS CLI (`indemn quote create ...`) with Unisoft as a sync backend. Build for today, design for transition.
 
 ## Open Questions (deferred — not blocking demo)
 - How does RingCentral data merge into the same pipeline? (Same pattern: RingCentral CLI + skills)
