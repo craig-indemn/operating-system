@@ -496,6 +496,7 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 | 2026-03-30 | [production-implementation-plan](artifacts/2026-03-30-production-implementation-plan.md) | Bite-sized implementation plan — 16 tasks across 4 parallel tracks (pipeline fix, infra, auth, production) |
 | 2026-03-30 | [mongodb-proxy-setup](artifacts/2026-03-30-mongodb-proxy-setup.md) | EC2 socat proxy setup for Railway → Atlas connectivity. Temporary. Includes teardown instructions. |
 | 2026-03-31 | [ui-issues-noted](artifacts/2026-03-31-ui-issues-noted.md) | UI issues from prod review — extracted fields vs gap analysis confusion, PDF links (fixed), empty bodies (fixed) |
+| 2026-03-31 | [ui-polish-design](artifacts/2026-03-31-ui-polish-design.md) | UI redesign for JC daily use — expandable email rows, Outlook folder column/filter, remove completeness bar, clarify detail view layout |
 | 2026-03-31 | [unisoft-workflow-map](research/unisoft-workflow-map.md) | How GIC takes info from Outlook and enters it into Unisoft AMS — workflow by email type, data mapping, automation priorities |
 | 2026-03-31 | [unisoft-software-guide](research/unisoft-software-guide.md) | Unisoft Communications as software — company, products, tech stack, UI structure, customer base, UAT exploration plan |
 | 2026-03-31 | [unisoft-api-reference](research/unisoft-api-reference.md) | API capabilities — Unisoft (pending), Granada API (confirmed), industry standards, integration strategy, questions for Hugo |
@@ -608,6 +609,7 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 - 2026-04-01: REST proxy design: HttpListener console app on t3.micro Windows EC2 (~$20/month). Generic passthrough for all 910 operations via POST /api/soap/{OperationName}. JSON in, JSON out.
 - 2026-04-01: API returns 18 LOBs (not 21 from UI). "Boats & Yachts" = sub-LOB OM/BY, "Commercial Auto" = sub-LOB TR/CA. 46 carriers, 3,142 agents confirmed.
 - 2026-04-01: Every SOAP operation requires AccessToken from GetToken. Proxy manages this automatically — callers never see it.
+- 2026-04-01: (os-outlook session) Row click expands emails inline, "Open" button navigates to detail view. Folder awareness added. Overview tab hidden. 1-month backfill complete (617 emails, zero failures). Crons restored.
 - 2026-04-02: Automation architecture: LangChain deepagents SDK with LocalShellBackend. Agent executes CLI commands via bash, same pattern as Claude Code. Two CLIs: `gic` (email data) and `unisoft` (AMS). Skills are markdown documents per workflow.
 - 2026-04-02: Automation is a SEPARATE service from the email pipeline. Not a new pipeline stage. Agent picks up processed emails and acts on them independently.
 - 2026-04-02: EffectiveDate = current date, ExpirationDate = +1 year. Confirmed from JC walkthrough — the policy effective date doesn't exist at quote stage (USLI PDF "Please bind effective: ___" is blank).
