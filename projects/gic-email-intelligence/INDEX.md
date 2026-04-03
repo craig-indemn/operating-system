@@ -86,14 +86,16 @@ Email Pipeline (Railway)                    Automation Agent (new, same repo)
 - **1 missing extraction** — PDF not extracted, so no address data. Fix in pipeline.
 - **1 pre-fix test** — Before API key loading was fixed.
 
-**Next steps:**
-1. **End-to-end test** — Run the deep agent on a real agent_submission email: create Quote ID + upload all attachments. Verify attachments land in the same location as portal uploads. Check whether an activity needs to be logged for the upload.
-2. **Deploy automation as Railway service** — separate from the processing pipeline
+**End-to-end test completed (2026-04-03):**
+Quote #17142 created for Andres Perez Rentals Inc (CP/LR, Agent 5628). 3 PDF attachments uploaded to Azure Blob Storage (same location as portal uploads). Applicant info confirmed in Unisoft: name, address, city, state, zip, form of business, business description. Activity logging (ActionId 6) added to skill but not yet tested in a live run.
+
+**Next steps (resume here):**
+1. **Deploy automation to Railway** — agent runs locally only (`gic automate run`). Needs to be a worker/cron service on Railway dev environment. The GIC repo has the agent code, the unisoft CLI, and the skill.
+2. **UI alignment** — show automation status in the GIC web app so the team can see what's been entered into Unisoft. This is what we share with the customer.
 3. **Resume pipeline processing** — 478 unclassified emails from March 30 onwards. Anthropic API key needs to be active. New extraction code (pdfplumber + Haiku) drastically reduces cost.
-4. **Update UI** — align with automation workflows, show what's been automated in the AMS
-5. **Business decisions for JC** — (a) should automation create new agency records? (b) what to do with Estrella #326-type gaps? (c) confirm gic_portal_submission and gic_application auto-create Quote IDs
-6. **Get production API endpoints** from Unisoft/JC
-7. **Phase 2** — end-to-end vertical: agent submission → Quote ID + attachments → submission to carrier → carrier response handling
+4. **Business decisions for JC** — (a) should automation create new agency records? (b) what to do with Estrella #326-type gaps? (c) confirm gic_portal_submission and gic_application auto-create Quote IDs
+5. **Get production API endpoints** from Unisoft/JC
+6. **Phase 2** — submission creation, carrier response handling (not yet started)
 9. **Full re-sync + backfill** of email pipeline
 
 **Previous session (2026-04-01b):** Unisoft REST proxy built and deployed. See below.
