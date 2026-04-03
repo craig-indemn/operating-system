@@ -54,6 +54,54 @@ class UnisoftClient:
     def get_submissions(self, quote_id: int) -> dict:
         return self.call("GetSubmissions", {"QuoteID": quote_id})
 
+    # File service methods
+    def get_quote_attachments(self, quote_number: int, mga_number: int = 1) -> list:
+        """Get attachments for a quote."""
+        resp = requests.get(
+            f"{self.base_url}/api/file/attachments",
+            params={"quoteNumber": quote_number, "mgaNumber": mga_number},
+            headers={"X-Api-Key": self.api_key},
+            timeout=self.timeout,
+        )
+        data = resp.json()
+        if resp.status_code >= 400:
+            raise UnisoftError(resp.status_code, data)
+        return data.get("QuoteAttachments", [])
+
+    def upload_quote_attachment(
+        self,
+        quote_number: int,
+        file_content: bytes,
+        file_name: str,
+        file_type: str | None = None,
+        description: str | None = None,
+        created_by: str = "automation",
+        mga_number: int = 1,
+    ) -> dict:
+        """Upload a file attachment to a quote."""
+        import base64
+        if file_type is None:
+            ext = file_name.rsplit(".", 1)[-1].upper() if "." in file_name else "PDF"
+            file_type = ext
+        resp = requests.post(
+            f"{self.base_url}/api/file/upload",
+            json={
+                "quoteNumber": quote_number,
+                "mgaNumber": mga_number,
+                "fileContent": base64.b64encode(file_content).decode("ascii"),
+                "fileName": file_name,
+                "fileType": file_type,
+                "createdBy": created_by,
+                "description": description or file_name,
+            },
+            headers={"X-Api-Key": self.api_key, "Content-Type": "application/json"},
+            timeout=120,
+        )
+        data = resp.json()
+        if resp.status_code >= 400:
+            raise UnisoftError(resp.status_code, data)
+        return data
+
 
 class UnisoftError(Exception):
     def __init__(self, status_code: int, data: dict):

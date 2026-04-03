@@ -25,12 +25,15 @@ agents_app = typer.Typer(help="Agent lookup", no_args_is_help=True)
 lobs_app = typer.Typer(help="Lines of business", no_args_is_help=True)
 carriers_app = typer.Typer(help="Carrier lookup", no_args_is_help=True)
 
+attachment_app = typer.Typer(help="Attachment operations", no_args_is_help=True)
+
 app.add_typer(quote_app, name="quote")
 app.add_typer(submission_app, name="submission")
 app.add_typer(activity_app, name="activity")
 app.add_typer(agents_app, name="agents")
 app.add_typer(lobs_app, name="lobs")
 app.add_typer(carriers_app, name="carriers")
+app.add_typer(attachment_app, name="attachment")
 
 
 def get_client() -> UnisoftClient:
@@ -397,6 +400,63 @@ def carriers_list(
             typer.echo(f"  {c.get('CarrierNumber', 0):4d}  {c.get('Name', '')}")
     else:
         out(carriers, compact)
+
+
+# --- Attachments ---
+
+@attachment_app.command("upload")
+def attachment_upload(
+    quote_id: int = typer.Option(..., "--quote-id", help="Quote number to attach to"),
+    file: str = typer.Option(..., "--file", "-f", help="Path to file to upload"),
+    description: Optional[str] = typer.Option(None, "--description", "-d", help="Attachment description"),
+    created_by: str = typer.Option("automation", "--created-by", help="Username for audit trail"),
+    compact: bool = typer.Option(False, "--compact", "-c"),
+):
+    """Upload a file attachment to a quote in Unisoft."""
+    import os.path
+    if not os.path.exists(file):
+        typer.echo(f"File not found: {file}", err=True)
+        raise typer.Exit(1)
+
+    file_name = os.path.basename(file)
+    with open(file, "rb") as f:
+        file_content = f.read()
+
+    client = get_client()
+    result = client.upload_quote_attachment(
+        quote_number=quote_id,
+        file_content=file_content,
+        file_name=file_name,
+        description=description or file_name,
+        created_by=created_by,
+    )
+    att = result.get("QuoteAttachment", {})
+    if not compact:
+        typer.echo(f"Uploaded: {att.get('FileName', '?')}")
+        typer.echo(f"  Quote: {att.get('QuoteNumber', '?')}")
+        typer.echo(f"  ID: {att.get('Id', '?')}")
+        typer.echo(f"  Type: {att.get('FileType', '?')}")
+        typer.echo(f"  URL: {att.get('Url', '?')}")
+    else:
+        out(result, compact)
+
+
+@attachment_app.command("list")
+def attachment_list(
+    quote_id: int = typer.Option(..., "--quote-id", help="Quote number"),
+    compact: bool = typer.Option(False, "--compact", "-c"),
+):
+    """List attachments for a quote."""
+    client = get_client()
+    attachments = client.get_quote_attachments(quote_number=quote_id)
+    if not compact:
+        if not attachments:
+            typer.echo("No attachments found")
+            return
+        for a in attachments:
+            typer.echo(f"  {a.get('Id', '?'):6d}  {a.get('FileType', '?'):5s}  {a.get('Description', '')[:40]:40s}  {a.get('CreatedByUser', '')}")
+    else:
+        out(attachments, compact)
 
 
 # --- Raw call ---
