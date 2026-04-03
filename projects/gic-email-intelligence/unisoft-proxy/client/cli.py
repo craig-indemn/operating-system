@@ -407,38 +407,39 @@ def carriers_list(
 @attachment_app.command("upload")
 def attachment_upload(
     quote_id: int = typer.Option(..., "--quote-id", help="Quote number to attach to"),
-    file: str = typer.Option(..., "--file", "-f", help="Path to file to upload"),
+    files: list[str] = typer.Option(..., "--file", "-f", help="File path(s) to upload (repeat for multiple)"),
     description: Optional[str] = typer.Option(None, "--description", "-d", help="Attachment description"),
     created_by: str = typer.Option("automation", "--created-by", help="Username for audit trail"),
     compact: bool = typer.Option(False, "--compact", "-c"),
 ):
-    """Upload a file attachment to a quote in Unisoft."""
+    """Upload file attachment(s) to a quote in Unisoft. Pass multiple --file flags for batch upload."""
     import os.path
-    if not os.path.exists(file):
-        typer.echo(f"File not found: {file}", err=True)
-        raise typer.Exit(1)
-
-    file_name = os.path.basename(file)
-    with open(file, "rb") as f:
-        file_content = f.read()
-
     client = get_client()
-    result = client.upload_quote_attachment(
-        quote_number=quote_id,
-        file_content=file_content,
-        file_name=file_name,
-        description=description or file_name,
-        created_by=created_by,
-    )
-    att = result.get("QuoteAttachment", {})
-    if not compact:
-        typer.echo(f"Uploaded: {att.get('FileName', '?')}")
-        typer.echo(f"  Quote: {att.get('QuoteNumber', '?')}")
-        typer.echo(f"  ID: {att.get('Id', '?')}")
-        typer.echo(f"  Type: {att.get('FileType', '?')}")
-        typer.echo(f"  URL: {att.get('Url', '?')}")
-    else:
-        out(result, compact)
+    results = []
+
+    for file_path in files:
+        if not os.path.exists(file_path):
+            typer.echo(f"File not found: {file_path}", err=True)
+            continue
+
+        file_name = os.path.basename(file_path)
+        with open(file_path, "rb") as f:
+            file_content = f.read()
+
+        result = client.upload_quote_attachment(
+            quote_number=quote_id,
+            file_content=file_content,
+            file_name=file_name,
+            description=description or file_name,
+            created_by=created_by,
+        )
+        results.append(result)
+        att = result.get("QuoteAttachment", {})
+        if not compact:
+            typer.echo(f"Uploaded: {att.get('FileName', '?')} ({att.get('FileType', '?')}) → ID {att.get('Id', '?')}")
+
+    if compact:
+        out(results, compact)
 
 
 @attachment_app.command("list")
