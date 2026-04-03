@@ -623,6 +623,11 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 - 2026-04-02: CLI entry point: `gic` (maps to gic_email_intel.cli.main:app). Subcommands: emails, submissions, extractions, automate, sync, stats, drafts, migrate.
 - 2026-04-02: Agent uses Sonnet for automation (cost-effective, sufficient reasoning for the workflow).
 - 2026-04-02: Vision from product roadmap: Unisoft CLI is an adapter. Eventually wraps into Indemn's own AMS CLI (`indemn quote create ...`) with Unisoft as a sync backend. Build for today, design for transition.
+- 2026-04-03: PDF extraction overhauled: pdfplumber (local, free) + Haiku replaces Claude Vision. ~10x cheaper. Form extractor OCR kept as fallback for scanned PDFs.
+- 2026-04-03: Only `agent_submission` emails need Quote ID automation. `gic_portal_submission` and `gic_application` already have Quote IDs from their respective portals (assumption — verify with JC).
+- 2026-04-03: GIC and Granada are sister companies under Granada Financial Group. GIC is MGA with binding authority for Granada. Granada portal submissions landing in GIC's inbox are real work that GIC underwrites.
+- 2026-04-03: Deep agent skill rewritten with business context (GIC/Granada relationship), three sub-patterns (direct agent, Granada portal, GIC forward), and data mapping guidance. Agent uses LLM intelligence to handle inconsistent field names across extraction types.
+- 2026-04-03: Attachment upload to Unisoft is the next build item after classification refinement. `AddQuoteAttachment` via MTOM exists in the API but is not yet in the proxy. This closes the loop — making email submissions equivalent to portal submissions.
 
 ## Open Questions (deferred — not blocking demo)
 - How does RingCentral data merge into the same pipeline? (Same pattern: RingCentral CLI + skills)
@@ -635,7 +640,7 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 - ~~What does the quoting API actually support?~~ **ANSWERED 2026-04-01:** 910 SOAP operations via WCF, 32 REST endpoints. Full CRUD for quotes, submissions, activities, policies, agents, carriers, claims. Mapped via Fiddler interception + WSDL fetch.
 - Is the Granada API (`services-uat.granadainsurance.com`) built by Unisoft or custom by Mukul Gupta?
 - ~~What are all the subline options per LOB in Unisoft?~~ **ANSWERED 2026-04-01:** All 18 LOBs and all sub-LOBs mapped from live API. See explore-results.txt. CG has 4, CP has 13, PL has 8, TR has 8, ML has 4, HO has 2, OM has 2. Others have none.
-- Do GIC portal submissions auto-create records in Unisoft?
+- Do GIC portal submissions auto-create records in Unisoft? **ASSUMPTION 2026-04-03:** Yes. `gic_portal_submission` emails include the Quote ID in the subject (e.g., "144301"). `gic_application` emails (HandyPerson/General Contractor portal confirmations from quote@gicunderwriters.com) are assumed to also auto-create Quote IDs, though the ID isn't in the email body. **Verify with JC.** If confirmed, only `agent_submission` emails need Quote ID automation.
 - Does Unisoft support ACORD data standards?
 - Is there a production API endpoint (not just UAT)? **Still need from JC/Robert.**
 - ~~Can documents be uploaded via API?~~ **ANSWERED 2026-04-01:** Yes, AddQuoteAttachment via MTOM (IINSFileService). Not yet in proxy (uses different WCF channel + multipart encoding). Can be added later.
