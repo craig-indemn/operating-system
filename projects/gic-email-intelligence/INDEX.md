@@ -4,7 +4,7 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 
 ## Status
 
-**Session 2026-04-02a. Automation agent running end-to-end — first Quote ID created in Unisoft UAT from email data.**
+**Session 2026-04-03a. Extraction overhaul, classification refinement, skill rewrite, attachment upload built and deployed.**
 
 **To resume this project, read these files in order:**
 1. This INDEX.md Status section (current state, what was done, what's next)
@@ -15,7 +15,21 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 6. `unisoft-proxy/client/cli.py` — Unisoft CLI (Typer) wrapping the proxy
 6. The automation agent code in the GIC repo: `src/gic_email_intel/automation/agent.py` and `src/gic_email_intel/automation/skills/create-quote-id.md`
 
-**What was done this session (2026-04-02a):**
+**What was done this session (2026-04-03a):**
+1. **PDF extraction overhaul** — Replaced Claude Vision with pdfplumber (local, free) + Haiku (text-only, ~10x cheaper). Tested on 2 emails (6 PDFs total), all fields extracted correctly. `pdfplumber>=0.11.9` added as dependency. Form extractor OCR kept as fallback for scanned PDFs (WAF blocking discovered on `devformextractor.indemn.ai`).
+2. **Infrastructure mapping** — Confirmed all GIC data lives on dev Atlas cluster. Railway prod connects to prod Atlas which is empty. Both APIs serve the same dev data. EC2 socat proxy routing documented. Saved as memory for future sessions.
+3. **Classification refinement** — Full inbox snapshot: 3,548 emails, 88% carrier responses (already have Quote IDs), 5% new business (need Quote IDs), 4% ongoing conversation, 2% noise. Only `agent_submission` (122) needs Quote ID automation. `gic_portal_submission` and `gic_application` already have Quote IDs from their portals (assumption — verify with JC). Granada/GIC relationship clarified: sister companies under Granada Financial Group, GIC is MGA with binding authority.
+4. **Classifier hardened** — Added "Hard Rules" section: any `*@usli.com` email is always a USLI type, any `*@hiscox.com` is always hiscox_quote. Forwarded emails check original sender first.
+5. **Deep agent skill rewrite** — `create-quote-id.md` now includes: business context (GIC/Granada relationship), three sub-patterns within agent_submission (direct agent 53%, Granada portal 29%, GIC forward 17%), data mapping guidance, attachment upload step.
+6. **Attachment upload — full chain built and deployed:**
+   - Proxy: `POST /api/file/upload` and `GET /api/file/attachments` — BasicHttpBinding + MTOM to IINSFileService. WCF message contract pattern (metadata in SOAP headers, file in body). MustUnderstand header handler.
+   - Python client: `upload_quote_attachment()`, `get_quote_attachments()`
+   - CLI: `unisoft attachment upload --quote-id N --file a.pdf --file b.pdf` (multi-file)
+   - Tested end-to-end: file uploaded to Quote 17140, confirmed in Azure Blob Storage at `gicins.blob.core.windows.net`
+7. **Bug fix** — `gic emails get --attachment` was matching on `name` field but MongoDB stores `filename`. Fixed.
+8. **WSDL doc surfaced** — `research/unisoft-api/wsdl-complete.md` added to hydration list. Contains all 910 IIMSService operations + 7 INSFileService operations with DTOs. Raw Fiddler captures in `research/unisoft-api/raw-payloads/soap/`.
+
+**What was done session 2026-04-02a:**
 1. **JC walkthrough captured** — Reviewed JC's screen-share video, captured the complete workflow as `research/jc-walkthrough-workflow.md`. Key findings: two entry paths (portal creates Quote ID automatically, email needs manual creation), three required fields for Quote ID (LOB, SubLOB, Agency), effective date = current date, expiration = +1 year.
 2. **USLI GL automation analysis** — Complete field mapping from MongoDB production data. Downloaded and read all 16 pages of an actual USLI PDF (MGL026M2518). Confirmed: effective date is NOT in the PDF ("Please bind effective: ___" is blank). Confirmed: FormOfBusiness "L" works for LLC (tested). Confirmed: Unisoft requires EffectiveDate (BRConstraint). All 73 activity ActionIds mapped from API.
 3. **Unisoft CLI built** — `unisoft quote create/get`, `unisoft submission create/list`, `unisoft activity create/list/actions`, `unisoft agents search/list/get`, `unisoft lobs list/sublobs`, `unisoft carriers list`, `unisoft call <op> <params>`. Tested end-to-end: Quote 17139 → Submission 15445 → Activity 46828.
@@ -28,16 +42,19 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 ```
 Email Pipeline (Railway)                    Automation Agent (new, same repo)
   sync → extract → classify → link            invoked with: gic automate run
-                                               ↓
+  (pdfplumber + Haiku for extraction)          ↓
                                              gic emails next --json (claim email)
                                                ↓
                                              reads skill based on email type
                                                ↓
-                                             unisoft quote create / submission create / activity create
+                                             unisoft quote create (Quote ID)
+                                               ↓
+                                             gic emails get --attachment (download PDFs from S3)
+                                             unisoft attachment upload --quote-id N --file *.pdf
                                                ↓
                                              gic emails complete (record result)
                                                ↓
-                                             Unisoft AMS (UAT)
+                                             Unisoft AMS (UAT) — quote + attachments
 ```
 
 - Deep agent: `deepagents` SDK, `LocalShellBackend`, Claude Sonnet
@@ -70,14 +87,13 @@ Email Pipeline (Railway)                    Automation Agent (new, same repo)
 - **1 pre-fix test** — Before API key loading was fixed.
 
 **Next steps:**
-1. **Merge with os-outlook worktree** — bring automation into the full project, combine with UI work
-2. **Fix pipeline classifications** — Granada portal emails, empty notifications, accuracy improvements
-3. **Fix extraction coverage** — ensure PDFs are extracted for all agent submissions
+1. **End-to-end test** — Run the deep agent on a real agent_submission email: create Quote ID + upload all attachments. Verify attachments land in the same location as portal uploads. Check whether an activity needs to be logged for the upload.
+2. **Deploy automation as Railway service** — separate from the processing pipeline
+3. **Resume pipeline processing** — 478 unclassified emails from March 30 onwards. Anthropic API key needs to be active. New extraction code (pdfplumber + Haiku) drastically reduces cost.
 4. **Update UI** — align with automation workflows, show what's been automated in the AMS
-5. **Deploy automation as Railway service** — separate from the processing pipeline
-6. **Business decisions for JC** — (a) should automation create new agency records? (b) what to do with Estrella #326-type gaps?
-7. **Phase 2** — end-to-end vertical for one USLI LOB (submission → carrier response → forward to agent)
-8. **Get production API endpoints** from Unisoft/JC
+5. **Business decisions for JC** — (a) should automation create new agency records? (b) what to do with Estrella #326-type gaps? (c) confirm gic_portal_submission and gic_application auto-create Quote IDs
+6. **Get production API endpoints** from Unisoft/JC
+7. **Phase 2** — end-to-end vertical: agent submission → Quote ID + attachments → submission to carrier → carrier response handling
 9. **Full re-sync + backfill** of email pipeline
 
 **Previous session (2026-04-01b):** Unisoft REST proxy built and deployed. See below.
