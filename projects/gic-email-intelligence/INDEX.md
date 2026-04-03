@@ -11,7 +11,8 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 2. `research/jc-walkthrough-workflow.md` — **THE source of truth**: JC's actual Unisoft workflow from screen-share video. Two entry paths (portal vs email), three required fields for Quote ID, phased automation strategy, effective date = current date.
 3. `research/usli-gl-automation-analysis.md` — Field mapping, all 73 activity ActionIds, PDF structure (16 pages verified), FormOfBusiness codes, data gaps resolved. Source of truth for field-level automation details.
 4. `unisoft-proxy/README.md` — Proxy operational guide: API contract, deploy pipeline, troubleshooting, case-sensitivity gotcha
-5. `unisoft-proxy/client/cli.py` — Unisoft CLI (Typer) wrapping the proxy
+5. `research/unisoft-api/wsdl-complete.md` — **Complete API specification**: 910 IIMSService operations, 1668 data types, 7 INSFileService operations (including AddQuoteAttachment), all DTOs with field types. This is the authoritative reference for any Unisoft API work.
+6. `unisoft-proxy/client/cli.py` — Unisoft CLI (Typer) wrapping the proxy
 6. The automation agent code in the GIC repo: `src/gic_email_intel/automation/agent.py` and `src/gic_email_intel/automation/skills/create-quote-id.md`
 
 **What was done this session (2026-04-02a):**
