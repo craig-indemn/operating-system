@@ -4,9 +4,25 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 
 ## Status
 
-**Session 2026-04-06a. Automation deployed to Railway. Critical bug fix: `_serialize_email()` mutation bug broke extraction data delivery to agent.**
+**Session 2026-04-06b. UI alignment — AMS integration, extraction fix, detail view redesign.**
 
-**What was done this session (2026-04-06a):**
+**What was done this session (2026-04-06b):**
+1. **UI alignment — full AMS integration built and deployed.** Design doc at `artifacts/2026-04-06-ui-alignment-design.md`. Backend: async Unisoft client (`core/unisoft.py`), Quote ID resolution service (`core/ams_link.py`), AMS endpoint (`GET /submissions/{id}/ams`), automation stats in analytics, batch backfill CLI. Frontend: AMS column in queue table with Auto/Portal badges, ApplicantPanel component (merges email + AMS data with source indicators), AutomationBanner component (4 states), automation section in Insights.
+2. **CRITICAL FIX: Extraction lookup was broken.** `get_submission_detail()` queried `extractions.find({submission_id})` but only 3 of 7,968 extractions had `submission_id` set. Fixed to query via email chain: `extractions.find({email_id: {$in: email_ids}})`. Now all 3,444 submissions with extractions show data.
+3. **Backfill completed.** 43 submissions linked to Unisoft Quote IDs (28 automation, 15 portal). CLI: `gic automate backfill-ams`.
+4. **Detail view redesign.** Removed redundant "Submission data" block from left column. Left = conversation only. Right = AutomationBanner + ApplicantPanel + AI Analysis + Stage + Documents. Banner moved to right column above applicant data.
+5. **Railway crash notifications fixed.** Root cause: sync/processing had no cron schedule (treated as regular services, exit = crash). Also production environment had stale cron schedules. Fixed: set cron `*/5 * * * *` on dev sync/processing, removed all prod cron schedules, `restartPolicyType` removed from `railway.json` (set per-service via API).
+6. **Automation cron running.** Every 15 min, up to 5 `agent_submission` emails. ~28 quotes created in Unisoft UAT so far.
+
+**UX polish needed (next session):**
+- ApplicantPanel currently uses rigid field name mapping — shows limited fields because extraction field names vary across document types (e.g., `applicant_mailing_address` vs `insured_address` vs `business_address`). Needs to show the ~10 most important fields cleanly regardless of exact field names, with AMS data as override when present.
+- The panel should be clean and focused for the customer demo — not a dump of all 49 fields, but a curated summary of who/what/through whom/when.
+- Source indicators (email vs AMS vs both) need to be subtle, not prominent.
+- The existing ExtractedData component still exists but may be redundant with the new ApplicantPanel.
+
+**Previous session (2026-04-06a):** Automation deployed to Railway. Critical bug fix: `_serialize_email()` mutation bug broke extraction data delivery to agent.
+
+**What was done session 2026-04-06a:**
 1. **Railway MongoDB migration** — All services updated from old `devadmin` credentials to new `dev-indemn` credentials on `mifra5` cluster. Both dev and prod environments were broken; dev fixed, prod services stopped (not needed).
 2. **Direct Atlas connection** — Railway's static IP (`162.220.234.15`) added to Atlas Network Access allowlist. Services now connect directly via SRV URI — no more EC2 socat proxy needed for Railway. Eliminates primary rotation failures.
 3. **Health check fix** — `/api/health` now has 3-second async timeouts on all DB calls. Deploys were failing because the health endpoint hung when DB was unreachable. `railway.json` healthcheck removed (was breaking cron services); set per-service via API.
@@ -22,12 +38,12 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 
 **To resume this project, read these files in order:**
 1. This INDEX.md Status section (current state, what was done, what's next)
-2. `research/jc-walkthrough-workflow.md` — **THE source of truth**: JC's actual Unisoft workflow from screen-share video. Two entry paths (portal vs email), three required fields for Quote ID, phased automation strategy, effective date = current date.
-3. `research/usli-gl-automation-analysis.md` — Field mapping, all 73 activity ActionIds, PDF structure (16 pages verified), FormOfBusiness codes, data gaps resolved. Source of truth for field-level automation details.
-4. `unisoft-proxy/README.md` — Proxy operational guide: API contract, deploy pipeline, troubleshooting, case-sensitivity gotcha
-5. `research/unisoft-api/wsdl-complete.md` — **Complete API specification**: 910 IIMSService operations, 1668 data types, 7 INSFileService operations (including AddQuoteAttachment), all DTOs with field types. This is the authoritative reference for any Unisoft API work.
-6. `unisoft-proxy/client/cli.py` — Unisoft CLI (Typer) wrapping the proxy
-6. The automation agent code in the GIC repo: `src/gic_email_intel/automation/agent.py` and `src/gic_email_intel/automation/skills/create-quote-id.md`
+2. `artifacts/2026-04-06-ui-alignment-design.md` — Design doc for the UI alignment work. Covers architecture, data flow, API contracts, TypeScript types, component specs, build order.
+3. The UI code in the GIC repo: `ui/src/components/ApplicantPanel.tsx`, `ui/src/components/AutomationBanner.tsx`, `ui/src/pages/RiskRecord.tsx`, `ui/src/pages/SubmissionQueue.tsx`, `ui/src/pages/Insights.tsx`
+4. The backend AMS integration: `src/gic_email_intel/core/unisoft.py` (async client), `src/gic_email_intel/core/ams_link.py` (Quote ID resolution), `src/gic_email_intel/api/routes/submissions.py` (AMS endpoint)
+5. `research/jc-walkthrough-workflow.md` — JC's actual Unisoft workflow. Two entry paths (portal vs email), three required fields for Quote ID.
+6. `research/unisoft-api/wsdl-complete.md` — Complete API spec: 910 IIMSService operations, 1668 data types.
+7. The automation agent: `src/gic_email_intel/automation/agent.py` and `src/gic_email_intel/automation/skills/create-quote-id.md`
 
 **What was done this session (2026-04-03a):**
 1. **PDF extraction overhaul** — Replaced Claude Vision with pdfplumber (local, free) + Haiku (text-only, ~10x cheaper). Tested on 2 emails (6 PDFs total), all fields extracted correctly. `pdfplumber>=0.11.9` added as dependency. Form extractor OCR kept as fallback for scanned PDFs (WAF blocking discovered on `devformextractor.indemn.ai`).
@@ -104,13 +120,12 @@ Email Pipeline (Railway)                    Automation Agent (new, same repo)
 Quote #17142 created for Andres Perez Rentals Inc (CP/LR, Agent 5628). 3 PDF attachments uploaded to Azure Blob Storage (same location as portal uploads). Applicant info confirmed in Unisoft: name, address, city, state, zip, form of business, business description. Activity logging (ActionId 6) added to skill but not yet tested in a live run.
 
 **Next steps (resume here):**
-1. **UI alignment** — show automation status in the GIC web app so the team can see what's been entered into Unisoft. This is what we share with the customer. The cron is running (5 emails/15 min) and building representative data.
-2. **S3 credentials for Railway** — attachment uploads skip in Railway because AWS S3 creds aren't configured on the automation service. Need to add `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`.
-3. **Business decisions for JC** — (a) should automation create new agency records? (b) what to do with Estrella #326-type gaps? (c) confirm gic_portal_submission and gic_application auto-create Quote IDs. (d) 4 agencies not in Unisoft: Kyra Insurance LLC, Lumina Insurance Inc, PPG Insurance Inc, Vida Insurance Multiservices Corp — verified not under any alternate name.
-4. **Resume pipeline processing** — sync cron is running, processing cron should be checked. New extraction code (pdfplumber + Haiku) drastically reduces cost.
+1. **UX polish** — The ApplicantPanel needs refinement. Currently uses rigid field name mapping that misses data when extraction field names vary (e.g., `insured_address` vs `applicant_mailing_address`). Should show ~10 most important fields cleanly with AMS override. Needs to look good for customer demo. The dev URL is `https://main.d244t76u9ej8m0.amplifyapp.com`.
+2. **S3 credentials for Railway** — attachment uploads skip in Railway because AWS S3 creds aren't configured on the automation service.
+3. **Unisoft name search** — Only 43 of 3,300+ submissions have Quote IDs. The remaining ~3,000 (mostly carrier responses) could be linked by searching Unisoft by insured name (`GetQuotesByName2`). This would dramatically increase AMS coverage in the UI.
+4. **Business decisions for JC** — (a) agency creation policy, (b) Estrella #326-type gaps, (c) confirm portal auto-creates Quote IDs, (d) 4 agencies not in Unisoft.
 5. **Get production API endpoints** from Unisoft/JC
-6. **Phase 2** — submission creation, carrier response handling (not yet started)
-7. **Full re-sync + backfill** of email pipeline
+6. **Phase 2** — submission creation, carrier response handling
 
 **Previous session (2026-04-01b):** Unisoft REST proxy built and deployed. See below.
 
