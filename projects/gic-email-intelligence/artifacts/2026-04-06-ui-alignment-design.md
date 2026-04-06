@@ -101,10 +101,12 @@ Email arrives → Pipeline extracts/classifies → Submission created in MongoDB
 For a given submission, find its Quote ID by checking (in order):
 
 1. **Automation result**: Any linked email with `automation_result.unisoft_quote_id` set
-2. **Portal reference**: Any linked email from `noreply@unisoftonline.com` with a numeric reference number in `classification.reference_numbers`
+2. **Portal reference**: Any linked email with `classification.email_type == "gic_portal_submission"` that has a numeric reference number (5+ digits) in `classification.reference_numbers`. Validated by calling `GetQuote` to confirm the record exists before storing.
 3. **Manual lookup**: (future) Search Unisoft by insured name
 
-Once a Quote ID is resolved, store it on the submission document (`unisoft_quote_id`) so it doesn't need to be re-resolved on every page load.
+Once a Quote ID is resolved and validated, store it on the submission document (`unisoft_quote_id`) so it doesn't need to be re-resolved on every page load.
+
+**Assumption:** For `gic_portal_submission` emails (from `noreply@unisoftonline.com` or `noreply@gicunderwriters.com`), the numeric reference number in the subject line (e.g., "New Quote Submission - 144301") is the Unisoft Quote ID. This is validated by calling `GetQuote` before storing — if the Quote ID doesn't exist in Unisoft, it's not linked.
 
 ### AMS Data Retrieval
 
@@ -121,6 +123,45 @@ This is called on-demand when the detail view opens, not pre-fetched for every s
 ## Changes
 
 ### Backend
+
+#### 0. Async Unisoft client for the web API
+
+New module: `src/gic_email_intel/core/unisoft.py`
+
+The existing `UnisoftClient` (in `unisoft-proxy/client/`) uses synchronous `requests`, which would block the async event loop. The web API needs an async wrapper using `httpx.AsyncClient`.
+
+```python
+import httpx
+from gic_email_intel.config import settings
+
+class AsyncUnisoftClient:
+    """Async Unisoft proxy client for use in FastAPI routes."""
+
+    def __init__(self):
+        self.base_url = settings.unisoft_proxy_url  # new config field
+        self.api_key = settings.unisoft_api_key      # new config field
+        self._client = httpx.AsyncClient(timeout=30.0)
+
+    async def call(self, operation: str, params: dict = None) -> dict:
+        resp = await self._client.post(
+            f"{self.base_url}/api/soap/{operation}",
+            json=params or {},
+            headers={"X-Api-Key": self.api_key, "Content-Type": "application/json"},
+        )
+        return resp.json()
+
+    async def get_quote(self, quote_id: int) -> dict | None:
+        data = await self.call("GetQuote", {"request": {"QuoteID": quote_id}})
+        return data.get("Quote")
+```
+
+Config additions to `config.py`:
+```python
+unisoft_proxy_url: str = ""   # e.g., "http://54.83.28.79:5000"
+unisoft_api_key: str = ""
+```
+
+Railway env vars needed on the `api` service: `UNISOFT_PROXY_URL`, `UNISOFT_API_KEY`.
 
 #### 1. Quote ID resolution service
 
@@ -145,18 +186,21 @@ async def resolve_quote_id(db, submission_id: ObjectId) -> int | None:
             )
             return qid
 
-    # Check portal reference numbers
+    # Check portal reference numbers (gic_portal_submission emails)
     async for email in db["emails"].find({"submission_id": submission_id}):
-        if email.get("from_address", "").lower() in ("noreply@unisoftonline.com",):
+        email_type = (email.get("classification") or {}).get("email_type")
+        if email_type == "gic_portal_submission":
             refs = (email.get("classification") or {}).get("reference_numbers", [])
             for ref in refs:
                 if ref.isdigit() and len(ref) >= 5:
                     qid = int(ref)
-                    await db["submissions"].update_one(
-                        {"_id": submission_id},
-                        {"$set": {"unisoft_quote_id": qid, "unisoft_source": "portal"}}
-                    )
-                    return qid
+                    # Validate: confirm this Quote ID exists in Unisoft
+                    if await _validate_quote_exists(qid):
+                        await db["submissions"].update_one(
+                            {"_id": submission_id},
+                            {"$set": {"unisoft_quote_id": qid, "unisoft_source": "portal"}}
+                        )
+                        return qid
 
     return None
 ```
@@ -176,7 +220,7 @@ Returns the Unisoft quote record if a Quote ID is linked. Calls `GetQuote` via t
     "address": "3861 Baymeadows Road",
     "city": "Jacksonville",
     "state": "FL",
-    "zip": 32217,
+    "zip": "32217",
     "lob": "CG",
     "lob_description": "General Liability",
     "sub_lob": "LL",
@@ -184,10 +228,11 @@ Returns the Unisoft quote record if a Quote ID is linked. Calls `GetQuote` via t
     "agent_number": 6598,
     "agent_name": "Good Deal Insurance - Duval",
     "form_of_business": "C",
-    "effective_date": "2026-04-06",
-    "expiration_date": "2027-04-06",
-    "status": "New",
-    "created_date": "2026-04-06",
+    "effective_date": "2026-04-06T00:00:00",
+    "expiration_date": "2027-04-06T00:00:00",
+    "status": 1,
+    "status_label": "New",
+    "created_date": "2026-04-06T00:00:00",
     "policy_state": "FL",
     "premium": 0.0
   },
@@ -199,7 +244,34 @@ Returns the Unisoft quote record if a Quote ID is linked. Calls `GetQuote` via t
 }
 ```
 
-Returns `{"quote_id": null, "source": null}` if no Quote ID is linked.
+**Field mapping from SOAP → JSON:**
+
+| SOAP Field | JSON Field | Type | Notes |
+|-----------|-----------|------|-------|
+| `Name` | `name` | string | |
+| `Address` | `address` | string | |
+| `City` | `city` | string | |
+| `State` | `state` | string | |
+| `Zip` | `zip` | string | String to preserve leading zeros |
+| `LOB` | `lob` | string | 2-char code |
+| `LOBDescription` | `lob_description` | string | |
+| `SubLOB` | `sub_lob` | string | |
+| `SubLOBDescription` | `sub_lob_description` | string | |
+| `AgentNumber` | `agent_number` | int | |
+| `AgentName` | `agent_name` | string | |
+| `FormOfBusiness` | `form_of_business` | string | I/C/L/P |
+| `EffectiveDate` | `effective_date` | string | ISO datetime |
+| `ExpirationDate` | `expiration_date` | string | ISO datetime |
+| `Status` | `status` | int | Numeric code |
+| _(derived)_ | `status_label` | string | 1=New, 2=Active, etc. (map in backend) |
+| `CreatedDate` | `created_date` | string | ISO datetime |
+| `PolicyState` | `policy_state` | string | |
+| `Premium` | `premium` | float | |
+
+**Error responses:**
+- Quote ID not linked: `{"quote_id": null, "source": null}` (200 OK)
+- Unisoft proxy unreachable: `{"quote_id": 17146, "source": "automation", "quote": null, "error": "AMS unavailable"}` (200 OK, degraded)
+- GetQuote returns error: `{"quote_id": 17146, "source": "automation", "quote": null, "error": "Quote not found in AMS"}` (200 OK)
 
 #### 3. Quote ID in board response
 
@@ -211,7 +283,34 @@ One-time script or pipeline step that resolves Quote IDs for all existing submis
 
 #### 5. Automation stats in analytics endpoint
 
-Add to the existing `/api/stats/analytics` response:
+Add to the existing `/api/stats/analytics` response. Computed via MongoDB aggregation on the `emails` collection:
+
+```python
+# Automation stats aggregation
+pipeline = [
+    {"$match": {"classification.email_type": "agent_submission"}},
+    {"$group": {
+        "_id": "$automation_status",
+        "count": {"$sum": 1},
+    }},
+]
+# Results: {_id: "completed", count: 8}, {_id: "failed", count: 12}, {_id: null, count: 110}
+# null = no automation_status = pending
+
+# Failure reasons: group by error message prefix (first 60 chars)
+failure_pipeline = [
+    {"$match": {"automation_status": "failed"}},
+    {"$project": {"reason": {"$substrCP": ["$automation_result.error", 0, 60]}}},
+    {"$group": {"_id": "$reason", "count": {"$sum": 1}}},
+    {"$sort": {"count": -1}},
+    {"$limit": 10},
+]
+
+# Quotes in AMS: count submissions with unisoft_quote_id set
+quotes_in_ams = await db["submissions"].count_documents({"unisoft_quote_id": {"$exists": True, "$ne": None}})
+```
+
+Response shape:
 
 ```json
 {
@@ -222,7 +321,7 @@ Add to the existing `/api/stats/analytics` response:
     "pending": 110,
     "success_rate": 0.40,
     "failure_reasons": [
-      {"reason": "Agency not in Unisoft", "count": 5},
+      {"reason": "Agency not found in Unisoft", "count": 5},
       {"reason": "Missing address", "count": 3},
       {"reason": "Infrastructure error", "count": 4}
     ],
@@ -230,6 +329,91 @@ Add to the existing `/api/stats/analytics` response:
     "quotes_from_automation": 8,
     "quotes_from_portal": 19
   }
+}
+```
+
+### TypeScript Types
+
+New interfaces for `api/types.ts`:
+
+```typescript
+// AMS data from Unisoft
+export interface AMSQuote {
+  name: string
+  address: string
+  city: string
+  state: string
+  zip: string
+  lob: string
+  lob_description: string
+  sub_lob: string | null
+  sub_lob_description: string | null
+  agent_number: number
+  agent_name: string
+  form_of_business: string
+  effective_date: string
+  expiration_date: string
+  status: number
+  status_label: string
+  created_date: string
+  policy_state: string
+  premium: number
+}
+
+export interface AMSData {
+  quote_id: number | null
+  source: 'automation' | 'portal' | null
+  quote: AMSQuote | null
+  automation?: {
+    status: string
+    completed_at: string
+    notes: string | null
+    error: string | null
+  }
+  error?: string
+}
+
+// Automation stats (added to Analytics)
+export interface AutomationStats {
+  total_processed: number
+  succeeded: number
+  failed: number
+  pending: number
+  success_rate: number
+  failure_reasons: Array<{ reason: string; count: number }>
+  quotes_in_ams: number
+  quotes_from_automation: number
+  quotes_from_portal: number
+}
+```
+
+Updates to existing interfaces:
+
+```typescript
+// Add to Submission interface
+export interface Submission {
+  // ... existing fields ...
+  unisoft_quote_id?: number | null
+  unisoft_source?: 'automation' | 'portal' | null
+}
+
+// Add to Analytics interface
+export interface Analytics {
+  // ... existing fields ...
+  automation: AutomationStats
+}
+```
+
+New React Query hook in `api/hooks.ts`:
+
+```typescript
+export function useAMSData(submissionId: string) {
+  return useQuery({
+    queryKey: ['ams', submissionId],
+    queryFn: () => api.get(`/submissions/${submissionId}/ams`).then(r => r.data),
+    staleTime: 5 * 60 * 1000, // 5 min client-side cache
+    retry: 1, // Don't hammer Unisoft if it's down
+  })
 }
 ```
 
@@ -278,10 +462,10 @@ Replace the current left sidebar metadata section with a **unified applicant car
 | Contact | Maria Poventud | Email |
 | Email | maria.poventud@estrellainsurance.com | Email |
 
-Source indicators:
-- 📧 = from email extraction only
-- 🏢 = from AMS only
-- ✓ = in both systems (verified)
+Source indicators (using Lucide icons for cross-browser consistency):
+- `<Mail size={12} />` = from email extraction only (muted color)
+- `<Database size={12} />` = from AMS only (accent color)
+- `<CheckCircle size={12} />` = in both systems, values match (green)
 
 When no AMS data is available, the panel shows extraction data only with a note: "Not yet in AMS" or "AMS lookup pending."
 
@@ -306,27 +490,33 @@ Add a new section to the existing Insights page (not a separate tab):
 
 ### Terminology
 
-Rename throughout the UI:
-- "Submission" → "Applicant" (in user-facing labels, not in code/API)
-- "Submission queue" → "Applicants" (page title)
+**Deferred until customer validation.** The rename from "Submission" to "Applicant" is a user-facing label change. Unisoft uses "Submission" with a specific meaning (distinct from "Quote"), and GIC staff may have their own preferences. Propose the rename during the demo and get explicit buy-in before implementing.
+
+Candidate renames (pending approval):
+- "Submission queue" → "Applicants"
 - "Risk / Insured" column → "Applicant"
-- Keep "submission" in code and API paths for backward compatibility
+- Keep "submission" in code and API paths regardless
 
 ## Build Order
 
 | Step | What | Files | Dependency |
 |------|------|-------|------------|
-| 1 | Quote ID resolution service | `core/ams_link.py` | None |
-| 2 | Batch backfill existing submissions | Script or management command | Step 1 |
-| 3 | AMS data endpoint | `api/routes/submissions.py` | Step 1, Unisoft proxy |
+| 0 | Async Unisoft client for web API | `core/unisoft.py`, `config.py` | None |
+| 1 | Quote ID resolution service | `core/ams_link.py` | Step 0 |
+| 2 | Batch backfill existing submissions | `cli/commands/automate.py` (new `backfill-ams` command) | Step 1 |
+| 3 | AMS data endpoint | `api/routes/submissions.py` | Steps 0, 1 |
 | 4 | Add `unisoft_quote_id` to board response | `api/routes/submissions.py` | Step 1 |
-| 5 | Automation stats in analytics | `api/routes/stats.py` | None |
-| 6 | Queue table AMS column | `pages/SubmissionQueue.tsx`, `api/types.ts` | Step 4 |
-| 7 | Consolidated applicant panel | `pages/RiskRecord.tsx`, new component | Step 3 |
-| 8 | Automation status banner | `pages/RiskRecord.tsx` | Step 3 |
-| 9 | Insights automation section | `pages/Insights.tsx` | Step 5 |
-| 10 | Terminology rename | Multiple UI files | None (can be done anytime) |
+| 5 | Automation stats in analytics | `api/routes/stats.py` | None (parallel with 0-4) |
+| 6 | TypeScript types + React Query hook | `api/types.ts`, `api/hooks.ts` | Steps 3, 4, 5 (API contract) |
+| 7 | Queue table AMS column | `pages/SubmissionQueue.tsx` | Step 6 |
+| 8 | Consolidated applicant panel | `pages/RiskRecord.tsx`, new component | Step 6 |
+| 9 | Automation status banner | `pages/RiskRecord.tsx` | Step 6 |
+| 10 | Insights automation section | `pages/Insights.tsx` | Step 6 |
 | 11 | Deploy and test | Railway + Amplify | All above |
+
+**Parallelism:** Steps 0-4 (backend AMS) and Step 5 (automation stats) can be built in parallel. Frontend steps 7-10 can begin once Step 6 (types) is done.
+
+**Deployment:** The Railway `api` service needs two new env vars: `UNISOFT_PROXY_URL` and `UNISOFT_API_KEY`. The Amplify frontend redeploys automatically on push.
 
 ## Out of Scope
 
