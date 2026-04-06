@@ -4,7 +4,21 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 
 ## Status
 
-**Session 2026-04-03a. Extraction overhaul, classification refinement, skill rewrite, attachment upload built and deployed.**
+**Session 2026-04-06a. Automation deployed to Railway. Critical bug fix: `_serialize_email()` mutation bug broke extraction data delivery to agent.**
+
+**What was done this session (2026-04-06a):**
+1. **Railway MongoDB migration** — All services updated from old `devadmin` credentials to new `dev-indemn` credentials on `mifra5` cluster. Both dev and prod environments were broken; dev fixed, prod services stopped (not needed).
+2. **Direct Atlas connection** — Railway's static IP (`162.220.234.15`) added to Atlas Network Access allowlist. Services now connect directly via SRV URI — no more EC2 socat proxy needed for Railway. Eliminates primary rotation failures.
+3. **Health check fix** — `/api/health` now has 3-second async timeouts on all DB calls. Deploys were failing because the health endpoint hung when DB was unreachable. `railway.json` healthcheck removed (was breaking cron services); set per-service via API.
+4. **Automation service deployed** — New Railway cron service (`automation`), runs every 15 minutes, processes up to 5 `agent_submission` emails per tick. Static outbound IP enabled. Start command configured via Railway GraphQL API (cron schedule, healthcheck disabled, start command).
+5. **deepagents stdin fix** — `LocalShellBackend.execute()` hangs in headless Docker because `subprocess.run(shell=True, capture_output=True)` has no stdin. Monkey-patched to pass `stdin=subprocess.DEVNULL`.
+6. **ANTHROPIC_API_KEY fix** — The `LLM_API_KEY` → `ANTHROPIC_API_KEY` bridging in `create_automation_agent()` wasn't reliable. Set `ANTHROPIC_API_KEY` directly as Railway env var.
+7. **CRITICAL BUG FIX: `_serialize_email()` mutation** — `gic emails next --json` was only returning the email object, NOT submission or extractions. Root cause: `_serialize_email()` converts ObjectIds to strings IN PLACE, then the subsequent MongoDB lookups for submission/extraction used string IDs (which never match ObjectId fields). Fix: save ObjectId refs before serialization. This was the root cause of ALL agent failures — the agent never had extraction data.
+8. **Unisoft proxy API key** — The proxy's `PROXY_API_KEY` env var is `84208b3173143d239773fd79c570c8bf4a4bc86b2f40605f53b05639d13524de` (not `gic-proxy-2026`). Updated on automation service.
+9. **Verbose logging** — Added `--verbose` flag to `gic automate run` that streams every LLM call and tool execution. Uses LangGraph `stream_mode="values"` with message dedup. This is how we diagnosed the serialization bug.
+10. **Validation results (post-fix)** — 8 quotes created (Q:17143-17152), 4 legitimate failures (agencies not in Unisoft, email with no attachments). 67% success rate on first real batch.
+
+**Previous session (2026-04-03a):** Extraction overhaul, classification refinement, skill rewrite, attachment upload built and deployed.
 
 **To resume this project, read these files in order:**
 1. This INDEX.md Status section (current state, what was done, what's next)
@@ -90,13 +104,13 @@ Email Pipeline (Railway)                    Automation Agent (new, same repo)
 Quote #17142 created for Andres Perez Rentals Inc (CP/LR, Agent 5628). 3 PDF attachments uploaded to Azure Blob Storage (same location as portal uploads). Applicant info confirmed in Unisoft: name, address, city, state, zip, form of business, business description. Activity logging (ActionId 6) added to skill but not yet tested in a live run.
 
 **Next steps (resume here):**
-1. **Deploy automation to Railway** — agent runs locally only (`gic automate run`). Needs to be a worker/cron service on Railway dev environment. The GIC repo has the agent code, the unisoft CLI, and the skill.
-2. **UI alignment** — show automation status in the GIC web app so the team can see what's been entered into Unisoft. This is what we share with the customer.
-3. **Resume pipeline processing** — 478 unclassified emails from March 30 onwards. Anthropic API key needs to be active. New extraction code (pdfplumber + Haiku) drastically reduces cost.
-4. **Business decisions for JC** — (a) should automation create new agency records? (b) what to do with Estrella #326-type gaps? (c) confirm gic_portal_submission and gic_application auto-create Quote IDs
+1. **UI alignment** — show automation status in the GIC web app so the team can see what's been entered into Unisoft. This is what we share with the customer. The cron is running (5 emails/15 min) and building representative data.
+2. **S3 credentials for Railway** — attachment uploads skip in Railway because AWS S3 creds aren't configured on the automation service. Need to add `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`.
+3. **Business decisions for JC** — (a) should automation create new agency records? (b) what to do with Estrella #326-type gaps? (c) confirm gic_portal_submission and gic_application auto-create Quote IDs. (d) 4 agencies not in Unisoft: Kyra Insurance LLC, Lumina Insurance Inc, PPG Insurance Inc, Vida Insurance Multiservices Corp — verified not under any alternate name.
+4. **Resume pipeline processing** — sync cron is running, processing cron should be checked. New extraction code (pdfplumber + Haiku) drastically reduces cost.
 5. **Get production API endpoints** from Unisoft/JC
 6. **Phase 2** — submission creation, carrier response handling (not yet started)
-9. **Full re-sync + backfill** of email pipeline
+7. **Full re-sync + backfill** of email pipeline
 
 **Previous session (2026-04-01b):** Unisoft REST proxy built and deployed. See below.
 
