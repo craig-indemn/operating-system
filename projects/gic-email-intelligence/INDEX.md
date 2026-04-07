@@ -4,9 +4,27 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 
 ## Status
 
-**Session 2026-04-06b. UI alignment — AMS integration, extraction fix, detail view redesign.**
+**Session 2026-04-07a. UX polish, pipeline fixes, demo readiness planning.**
 
-**What was done this session (2026-04-06b):**
+**What was done this session (2026-04-07a):**
+1. **UX polish — detail view tightened.** Removed header duplication, compressed ApplicantPanel (470px→312px), simplified 8-stage pipeline stepper, unified right column visual hierarchy with consistent padding/borders, flattened UW decision prompt.
+2. **Renamed "Submissions" to "Applicants"** across all UI — nav tab, queue, breadcrumbs, Insights.
+3. **Added AMS status filter** to queue — All / Linked / Auto-created / Portal / Not linked. Fixed board limit (50→500) so AMS-linked applicants appear.
+4. **Filter state preserved** when navigating to detail view and back (overlay pattern instead of unmount/remount).
+5. **Form extractor fixed as primary extraction method.** WAF allowlist rule added for Railway IP on `indemn-waf`. Form extractor MongoDB URI updated from dead `pj4xyep` cluster to `mifra5`. Code changed to use form extractor as primary for ALL PDFs (not pdfplumber with fallback). Confirmed: SPARKS HOMES LLC went from 0→8 extractions (45-76 fields each).
+6. **Retry logic added** across pipeline — LLM calls retry 4x with exponential backoff on 429, form extractor HTTP retries 3x on 429/502/503.
+7. **Demo readiness plan created** — `artifacts/2026-04-07-demo-readiness-plan.md`. Four workstreams: validate automation reliability, maximize AMS linkage, UI clarity, demo preparation.
+
+**Next steps (from demo readiness plan):**
+1. Verify 71 failed agencies via Unisoft API — confirm they're truly missing, not search bugs
+2. Pipeline optimization — skip LLM extraction for carrier response emails where data is already in AMS
+3. Link remaining portal submissions (18 more with reference numbers)
+4. UI: processing status visibility, failure reasons in queue, email type filters
+5. Demo preparation — narrative, questions for JC, production roadmap
+
+**Previous session (2026-04-06b):**
+
+**What was done session 2026-04-06b:**
 1. **UI alignment — full AMS integration built and deployed.** Design doc at `artifacts/2026-04-06-ui-alignment-design.md`. Backend: async Unisoft client (`core/unisoft.py`), Quote ID resolution service (`core/ams_link.py`), AMS endpoint (`GET /submissions/{id}/ams`), automation stats in analytics, batch backfill CLI. Frontend: AMS column in queue table with Auto/Portal badges, ApplicantPanel component (merges email + AMS data with source indicators), AutomationBanner component (4 states), automation section in Insights.
 2. **CRITICAL FIX: Extraction lookup was broken.** `get_submission_detail()` queried `extractions.find({submission_id})` but only 3 of 7,968 extractions had `submission_id` set. Fixed to query via email chain: `extractions.find({email_id: {$in: email_ids}})`. Now all 3,444 submissions with extractions show data.
 3. **Backfill completed.** 43 submissions linked to Unisoft Quote IDs (28 automation, 15 portal). CLI: `gic automate backfill-ams`.
@@ -551,6 +569,8 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 | 2026-04-01 | [unisoft-rest-proxy-design](artifacts/2026-04-01-unisoft-rest-proxy-design.md) | REST proxy design — wraps all 910 Unisoft SOAP operations via HTTP/JSON, runs on t3.micro Windows EC2 (~$20/month) |
 | 2026-04-01 | [usli-gl-automation-analysis](research/usli-gl-automation-analysis.md) | USLI GL (MGL) automation analysis — complete field mapping, all 73 activity ActionIds, verified data gaps (EffectiveDate is NOT in email or PDF), example record walkthrough |
 | 2026-04-02 | [jc-walkthrough-workflow](research/jc-walkthrough-workflow.md) | JC's actual Unisoft workflow from video: two entry paths (portal vs email), 3 required fields for Quote ID (LOB, SubLOB, Agency), phased automation strategy, effective date = current date, full lifecycle through carrier response |
+| 2026-04-06 | [ui-alignment-design](artifacts/2026-04-06-ui-alignment-design.md) | Design for inbox + AMS unified view — architecture, data flow, API contracts, TypeScript types, component specs, build order |
+| 2026-04-07 | [demo-readiness-plan](artifacts/2026-04-07-demo-readiness-plan.md) | Demo readiness plan — 4 workstreams: validate automation, maximize AMS linkage, UI clarity, demo prep. Success criteria, current state analysis, no-ad-hoc-processing principle |
 
 ## Key Data Files
 | File | What it contains |
