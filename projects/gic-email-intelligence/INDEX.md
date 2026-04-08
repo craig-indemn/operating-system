@@ -8,42 +8,56 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 
 **What was done this session (2026-04-07 through 2026-04-08):**
 
-**UX:**
+**UX (queue):**
 1. Detail view tightened — header dedup, compact ApplicantPanel/pipeline/UW prompt, unified right column.
 2. Renamed "Submissions" to "Applicants" everywhere.
 3. AMS filter (Linked/Auto/Portal/Failed/Not linked), Type filter (App/USLI/Portal/Reply/Internal).
 4. Filter state preserved across detail view navigation (overlay pattern).
 5. Compact table — 37px rows (was 93px), 2.5x data density. Added Type column, Received date. Dropped Folder/Open columns.
 6. Compact filter bar — all controls at 10px matching table density.
-7. Gap analysis + LOB requirements temporarily commented out (not serving AMS linkage objective).
-8. "Needs attention" in queue for failed automation, full reason in detail view AutomationBanner.
+7. "Needs attention" in queue for failed automation, with full reason in detail view AutomationBanner.
+
+**UX (detail view):**
+8. Gap analysis + LOB requirements temporarily commented out (not serving AMS linkage objective).
 9. Fixed Dec 31 date bug (was using null `first_email_at`, now uses `created_at`).
+10. Processing timeline — shows Received → Extracted → Classified → AMS with timestamps and field counts.
+11. AutomationBanner shows actual failure reason ("Not yet in AMS — {reason}") instead of generic "No Unisoft record linked".
+12. ApplicantPanel merge fix — null AMS fields no longer override extraction/email data. Fixes blank LOB, agent, address for portal-created quotes.
+
+**UX (Insights):**
+13. "Inbox → AMS Journey" section — replaces old "Automation" section. Summary cards (In AMS / Needs Attention / Pending / Rate), category progress bars, full failure reasons.
+14. Journey section rendered first on page (CSS order).
+15. Failure reasons expanded from 60→200 chars, word-wrap instead of truncate.
 
 **Pipeline:**
-10. Form extractor as primary extraction (was pdfplumber fallback). WAF allowlist + MongoDB URI fix on EC2.
-11. Retry logic on all LLM calls (extraction, classification, linking, deepagent) — 4x with exponential backoff.
-12. Skip LLM extraction for carrier response emails (USLI/Hiscox) — data already in AMS.
-13. SubLOB made optional in CLI (was required, broke WC quotes).
-14. Deterministic classifier hard rules post-LLM (policy numbers, internal senders, form requests).
-15. Automation query matches both `$exists:false` and `null` for reset emails.
-16. Automation status + error denormalized onto submission documents for board visibility.
+16. Form extractor as primary extraction (was pdfplumber fallback). WAF allowlist rule added for Railway IP on `indemn-waf`. Form extractor MongoDB URI updated from dead `pj4xyep` cluster to `mifra5` on EC2 `dev-services`.
+17. Retry logic on all LLM calls (extraction, classification, linking, deepagent) — 4x with exponential backoff on 429.
+18. Skip LLM extraction for carrier response emails (USLI/Hiscox) — data already in AMS.
+19. SubLOB made optional in CLI (was required, broke WC quotes).
+20. Deterministic classifier hard rules post-LLM (policy numbers in subject, internal GIC senders, form requests).
+21. Automation query matches both `$exists:false` and `null` for reset emails.
+22. Automation status + error denormalized onto submission documents for board visibility.
+23. Submission enrichment from extraction data — fills named_insured, line_of_business, retail_agent_name, retail_agency_name from PDF extractions when missing. Runs in pipeline after every email. Backfilled 401 existing submissions.
+24. Producer code lookup priority in automation skill — try by code first before name search.
 
 **Research:**
-17. Agency verification — 73 failures investigated. 37 agencies confirmed missing from Unisoft, 1 search bug fixed (#2120 producer code lookup), 5 misclassifications fixed, 4 questions for JC.
-18. USLI direct portal finding — ~2,800 USLI carrier quotes have no application in inbox (agents submitted to USLI directly). Question for JC.
-19. Proxy Criteria DTO fix — `GetQuotesByName2` now serializes search criteria correctly.
-20. AMS backfill — 131 linked (was 43). 104 automation + 27 portal.
+25. Agency verification — 73 failures investigated against Unisoft's 1,571 agents. 37 agencies confirmed missing, 1 search bug (#2120), 5 misclassifications, 4 questions for JC documented.
+26. USLI direct portal finding — ~2,800 USLI carrier quotes have no application in inbox (agents submitted to USLI directly, bypassing GIC email). 68% of email volume. Question for JC.
+27. Proxy Criteria DTO fix — added `Criteria` to `dtoNamespaces` registry, recompiled proxy on EC2.
+28. Portal quotes are blank shells in UAT — portal creates Quote ID but doesn't populate data in test environment. Expected to be populated in production.
+29. AMS backfill — 132 linked (was 43). 104 automation + 28 portal.
+30. Data snapshot artifact — complete pipeline status as of 2026-04-08.
 
 **Results:**
-- 3,948 emails, 98.7% extracted, 131 AMS-linked
-- Automation: 119 completed, 68 failed (63.6% success rate — all failures are legitimate business gaps)
+- 4,035 emails, 98.7% extracted, 132 AMS-linked
+- Automation: 127 completed, 86 needs attention, 60% automation rate (all "needs attention" are legitimate business gaps — agency not in Unisoft, missing data)
 - Pipeline running live: sync every 5min, processing every 5min, automation every 15min
+- Railway API must be manually redeployed via `railway up -s api --environment development -d` (doesn't auto-deploy on git push like Amplify)
 
 **Next steps:**
 1. Demo preparation — narrative, questions for JC, production roadmap (Workstream 4)
 2. Verify 9 reprocessed emails worked (memory: `project_gic_reprocess_check.md`)
-3. Detail view processing story — show timestamps for each pipeline step
-4. Insights automation journey — by email type, what % automated, what's blocking
+3. Review full Insights page — some sections (Email Analytics, Agents, Configuration) may need updating for current objective
 
 **Previous session (2026-04-06b):**
 
@@ -79,12 +93,13 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 
 **To resume this project, read these files in order:**
 1. This INDEX.md Status section (current state, what was done, what's next)
-2. `artifacts/2026-04-06-ui-alignment-design.md` — Design doc for the UI alignment work. Covers architecture, data flow, API contracts, TypeScript types, component specs, build order.
-3. The UI code in the GIC repo: `ui/src/components/ApplicantPanel.tsx`, `ui/src/components/AutomationBanner.tsx`, `ui/src/pages/RiskRecord.tsx`, `ui/src/pages/SubmissionQueue.tsx`, `ui/src/pages/Insights.tsx`
-4. The backend AMS integration: `src/gic_email_intel/core/unisoft.py` (async client), `src/gic_email_intel/core/ams_link.py` (Quote ID resolution), `src/gic_email_intel/api/routes/submissions.py` (AMS endpoint)
-5. `research/jc-walkthrough-workflow.md` — JC's actual Unisoft workflow. Two entry paths (portal vs email), three required fields for Quote ID.
-6. `research/unisoft-api/wsdl-complete.md` — Complete API spec: 910 IIMSService operations, 1668 data types.
-7. The automation agent: `src/gic_email_intel/automation/agent.py` and `src/gic_email_intel/automation/skills/create-quote-id.md`
+2. `artifacts/2026-04-08-data-snapshot.md` — Complete data picture: email counts, extraction coverage, AMS linkage, automation by date
+3. `artifacts/2026-04-07-demo-readiness-plan.md` — 4 workstreams, success criteria, no-ad-hoc principle
+4. `artifacts/2026-04-07-agency-verification.md` — 73 failures investigated, 37 agencies missing, 4 questions for JC
+5. The UI code in the GIC repo: `ui/src/pages/SubmissionQueue.tsx` (compact table), `ui/src/pages/RiskRecord.tsx` (detail view + processing timeline), `ui/src/pages/Insights.tsx` (journey view), `ui/src/components/ApplicantPanel.tsx`, `ui/src/components/AutomationBanner.tsx`, `ui/src/components/ProcessingTimeline.tsx`
+6. The pipeline: `src/gic_email_intel/agent/harness.py` (pipeline + enrichment + classifier rules), `src/gic_email_intel/automation/agent.py` (deepagent), `src/gic_email_intel/automation/skills/create-quote-id.md`
+7. The backend AMS: `src/gic_email_intel/core/unisoft.py` (async client), `src/gic_email_intel/core/ams_link.py` (Quote ID resolution), `src/gic_email_intel/api/routes/submissions.py` (AMS endpoint + board), `src/gic_email_intel/api/routes/stats.py` (analytics + journey)
+8. Unisoft API: `research/unisoft-api/wsdl-complete.md` — 910 operations, 1668 types. Proxy on EC2 `i-0dc2563c9bc92aa0e`.
 
 **What was done this session (2026-04-03a):**
 1. **PDF extraction overhaul** — Replaced Claude Vision with pdfplumber (local, free) + Haiku (text-only, ~10x cheaper). Tested on 2 emails (6 PDFs total), all fields extracted correctly. `pdfplumber>=0.11.9` added as dependency. Form extractor OCR kept as fallback for scanned PDFs (WAF blocking discovered on `devformextractor.indemn.ai`).
@@ -721,6 +736,17 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 - 2026-04-03: GIC and Granada are sister companies under Granada Financial Group. GIC is MGA with binding authority for Granada. Granada portal submissions landing in GIC's inbox are real work that GIC underwrites.
 - 2026-04-03: Deep agent skill rewritten with business context (GIC/Granada relationship), three sub-patterns (direct agent, Granada portal, GIC forward), and data mapping guidance. Agent uses LLM intelligence to handle inconsistent field names across extraction types.
 - 2026-04-03: Attachment upload to Unisoft is the next build item after classification refinement. `AddQuoteAttachment` via MTOM exists in the API but is not yet in the proxy. This closes the loop — making email submissions equivalent to portal submissions.
+
+- 2026-04-07: Form extractor is the source of truth for ALL document extraction, not pdfplumber. pdfplumber is last-resort fallback only.
+- 2026-04-07: No ad-hoc processing. All data processing runs through the same pipeline crons. Historical reprocessing = reset status to pending, let the cron pick it up.
+- 2026-04-07: Submission enrichment from extraction data (name, LOB, agent, agency) runs in pipeline, not as backfill. Priority: AMS > Extraction > Classification > Email. No new LLM calls.
+- 2026-04-07: "Submissions" renamed to "Applicants" in all user-facing UI. API/code paths remain "submissions".
+- 2026-04-07: ApplicantPanel merge: AMS wins only when the specific AMS field has a value. Null AMS fields fall through to extraction/email data.
+- 2026-04-07: Gap analysis temporarily removed from detail view — doesn't serve current AMS linkage objective. Re-enable for UW workflow.
+- 2026-04-07: Automation failures reframed as "Needs attention" — not failed, just needs additional information or agency setup.
+- 2026-04-08: Railway API service does NOT auto-deploy on git push. Must manually run `railway up -s api --environment development -d`.
+- 2026-04-08: Portal-created quotes in Unisoft UAT are blank shells — Quote ID exists but no data populated. Expected to have full data in production.
+- 2026-04-08: ~2,800 USLI carrier quotes have no original application in GIC's inbox — agents submitted directly to USLI's retail web portal. Whether to create Unisoft records for these is a question for JC.
 
 ## Open Questions (deferred — not blocking demo)
 - How does RingCentral data merge into the same pipeline? (Same pattern: RingCentral CLI + skills)
