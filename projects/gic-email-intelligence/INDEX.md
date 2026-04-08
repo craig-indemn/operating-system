@@ -571,6 +571,8 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 | 2026-04-02 | [jc-walkthrough-workflow](research/jc-walkthrough-workflow.md) | JC's actual Unisoft workflow from video: two entry paths (portal vs email), 3 required fields for Quote ID (LOB, SubLOB, Agency), phased automation strategy, effective date = current date, full lifecycle through carrier response |
 | 2026-04-06 | [ui-alignment-design](artifacts/2026-04-06-ui-alignment-design.md) | Design for inbox + AMS unified view — architecture, data flow, API contracts, TypeScript types, component specs, build order |
 | 2026-04-07 | [demo-readiness-plan](artifacts/2026-04-07-demo-readiness-plan.md) | Demo readiness plan — 4 workstreams: validate automation, maximize AMS linkage, UI clarity, demo prep. Success criteria, current state analysis, no-ad-hoc-processing principle |
+| 2026-04-07 | [agency-verification](artifacts/2026-04-07-agency-verification.md) | 73 automation failures investigated — 37 agencies confirmed missing from Unisoft, 1 search bug, 4 misclassified, 4 questions for JC |
+| 2026-04-08 | [data-snapshot](artifacts/2026-04-08-data-snapshot.md) | Complete data picture — 3,948 emails, 98.7% extracted, 131 AMS-linked, automation by date, UI visibility gaps |
 
 ## Key Data Files
 | File | What it contains |
