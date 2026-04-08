@@ -117,3 +117,9 @@ These emails were classified as `agent_submission` but are actually requests on 
    - Codes that should exist but were never set up?
 
 3. **Estrella/Sebanda/Univista franchises:** There are 66+ Estrella, 10+ Sebanda, and 15+ Univista entries in Unisoft — all franchises. When an email comes from "Estrella Insurance #362" but that specific franchise number isn't in Unisoft, what's the correct handling?
+
+4. **USLI direct portal submissions (~2,800 emails):** A large portion of USLI carrier quotes in the inbox have NO corresponding application email — the agent submitted directly through USLI's retail web portal, bypassing GIC's email entirely. GIC only received the carrier response. These insureds don't have Quote IDs in Unisoft because the application never came through GIC's workflow. Questions:
+   - Does GIC want these auto-entered into Unisoft from the USLI carrier response data? (We can extract insured name, LOB, agent, premium from the USLI email.)
+   - Or does GIC already enter these manually when they see the USLI email?
+   - Is this a workflow GIC wants to change — e.g., require agents to submit through GIC's portal instead of going directly to USLI?
+   - This is ~68% of all email volume. Automating this path would dramatically increase AMS coverage.
