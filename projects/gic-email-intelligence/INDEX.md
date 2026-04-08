@@ -4,23 +4,46 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 
 ## Status
 
-**Session 2026-04-07a. UX polish, pipeline fixes, demo readiness planning.**
+**Session 2026-04-07a → 2026-04-08. UX polish, pipeline fixes, demo readiness execution.**
 
-**What was done this session (2026-04-07a):**
-1. **UX polish — detail view tightened.** Removed header duplication, compressed ApplicantPanel (470px→312px), simplified 8-stage pipeline stepper, unified right column visual hierarchy with consistent padding/borders, flattened UW decision prompt.
-2. **Renamed "Submissions" to "Applicants"** across all UI — nav tab, queue, breadcrumbs, Insights.
-3. **Added AMS status filter** to queue — All / Linked / Auto-created / Portal / Not linked. Fixed board limit (50→500) so AMS-linked applicants appear.
-4. **Filter state preserved** when navigating to detail view and back (overlay pattern instead of unmount/remount).
-5. **Form extractor fixed as primary extraction method.** WAF allowlist rule added for Railway IP on `indemn-waf`. Form extractor MongoDB URI updated from dead `pj4xyep` cluster to `mifra5`. Code changed to use form extractor as primary for ALL PDFs (not pdfplumber with fallback). Confirmed: SPARKS HOMES LLC went from 0→8 extractions (45-76 fields each).
-6. **Retry logic added** across pipeline — LLM calls retry 4x with exponential backoff on 429, form extractor HTTP retries 3x on 429/502/503.
-7. **Demo readiness plan created** — `artifacts/2026-04-07-demo-readiness-plan.md`. Four workstreams: validate automation reliability, maximize AMS linkage, UI clarity, demo preparation.
+**What was done this session (2026-04-07 through 2026-04-08):**
 
-**Next steps (from demo readiness plan):**
-1. Verify 71 failed agencies via Unisoft API — confirm they're truly missing, not search bugs
-2. Pipeline optimization — skip LLM extraction for carrier response emails where data is already in AMS
-3. Link remaining portal submissions (18 more with reference numbers)
-4. UI: processing status visibility, failure reasons in queue, email type filters
-5. Demo preparation — narrative, questions for JC, production roadmap
+**UX:**
+1. Detail view tightened — header dedup, compact ApplicantPanel/pipeline/UW prompt, unified right column.
+2. Renamed "Submissions" to "Applicants" everywhere.
+3. AMS filter (Linked/Auto/Portal/Failed/Not linked), Type filter (App/USLI/Portal/Reply/Internal).
+4. Filter state preserved across detail view navigation (overlay pattern).
+5. Compact table — 37px rows (was 93px), 2.5x data density. Added Type column, Received date. Dropped Folder/Open columns.
+6. Compact filter bar — all controls at 10px matching table density.
+7. Gap analysis + LOB requirements temporarily commented out (not serving AMS linkage objective).
+8. "Needs attention" in queue for failed automation, full reason in detail view AutomationBanner.
+9. Fixed Dec 31 date bug (was using null `first_email_at`, now uses `created_at`).
+
+**Pipeline:**
+10. Form extractor as primary extraction (was pdfplumber fallback). WAF allowlist + MongoDB URI fix on EC2.
+11. Retry logic on all LLM calls (extraction, classification, linking, deepagent) — 4x with exponential backoff.
+12. Skip LLM extraction for carrier response emails (USLI/Hiscox) — data already in AMS.
+13. SubLOB made optional in CLI (was required, broke WC quotes).
+14. Deterministic classifier hard rules post-LLM (policy numbers, internal senders, form requests).
+15. Automation query matches both `$exists:false` and `null` for reset emails.
+16. Automation status + error denormalized onto submission documents for board visibility.
+
+**Research:**
+17. Agency verification — 73 failures investigated. 37 agencies confirmed missing from Unisoft, 1 search bug fixed (#2120 producer code lookup), 5 misclassifications fixed, 4 questions for JC.
+18. USLI direct portal finding — ~2,800 USLI carrier quotes have no application in inbox (agents submitted to USLI directly). Question for JC.
+19. Proxy Criteria DTO fix — `GetQuotesByName2` now serializes search criteria correctly.
+20. AMS backfill — 131 linked (was 43). 104 automation + 27 portal.
+
+**Results:**
+- 3,948 emails, 98.7% extracted, 131 AMS-linked
+- Automation: 119 completed, 68 failed (63.6% success rate — all failures are legitimate business gaps)
+- Pipeline running live: sync every 5min, processing every 5min, automation every 15min
+
+**Next steps:**
+1. Demo preparation — narrative, questions for JC, production roadmap (Workstream 4)
+2. Verify 9 reprocessed emails worked (memory: `project_gic_reprocess_check.md`)
+3. Detail view processing story — show timestamps for each pipeline step
+4. Insights automation journey — by email type, what % automated, what's blocking
 
 **Previous session (2026-04-06b):**
 
