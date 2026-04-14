@@ -4,24 +4,44 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 
 ## Status
 
-**Session 2026-04-08a. Verification, Insights polish, demo preparation.**
+**Session 2026-04-13/14. Demo with JC + Mike, proxy fix, production planning.**
 
-**What was done this session (2026-04-08):**
+**What was done (2026-04-13):**
+
+1. Demo with JC and Mike Burke (operations). Meeting summary at `2026-04-14-meeting-summary.md`.
+2. Recovered pipeline — Anthropic API credits exhausted Apr 10, 310 emails stuck. New key set, reprocessing.
+3. Fixed `emails complete` to propagate `unisoft_quote_id` directly to submission (no more backfill needed).
+4. Set up `gic.indemn.ai` pointing at main branch. Updated `TILEDESK_DB_URI` to prod for JC login.
+5. Unisoft proxy fix — Unisoft changed UAT endpoint URLs (`services.uat.gicunderwriters.co` → `ins-gic-service-uat-app.azurewebsites.net`). Proxy updated and verified.
+6. Confirmed activity creation works (submission-id 0 is fine) — agent inconsistently skips the step.
+
+**Key decisions from demo:**
+- Human-in-the-loop: Quote ID → task assigned to "New Biz" group in Unisoft. Team picks up from there.
+- Move processed emails to subfolder ("Indemn Processed"). Requires write access to inbox.
+- Agency search: use phone + address as fallback (producer codes unreliable on organic submissions).
+- Duplicate detection before creating Quote IDs.
+- Endorsements are next priority after quotes inbox is solid. Pause USLI development (portal changing).
+- JC creating "instant quote" user and "New Biz" group in production.
+
+**Production rollout steps (in order):**
+1. Agency search improvement — phone + address fallback (code change)
+2. Duplicate detection — check similar name/address before creating Quote ID (code change)
+3. JC sends production Unisoft credentials (waiting on him)
+4. JC creates "instant quote" user (waiting on him)
+5. JC creates "New Biz" group, sends name (waiting on him)
+6. Task creation step — assign task to New Biz group after Quote ID (depends on 5)
+7. Write access to quotes inbox — work with Makul (parallel)
+8. Move processed emails to subfolder — test once write access is available (depends on 7)
+9. Point proxy at production Unisoft (depends on 3)
+10. End-to-end test in production (depends on all above)
+
+**Previous session (2026-04-08a):**
 
 1. Verified 9 reprocessed emails: Vivian Menendez (Q:17262), Crystal Cleaning (Q:17261, Q:17263) — automation completed. Producer code #2120 fix working.
-2. Fixed 6 orphaned quote IDs — automation_result had quote_id on email docs but not propagated to submissions. Directly linked all 6. Total AMS-linked: 138 (110 auto, 28 portal).
-3. Insights page polish — fixed pipeline label ("extract → classify → link"), fixed stale data limitations text, collapsed Configuration section by default.
+2. Fixed 6 orphaned quote IDs — automation_result had quote_id on email docs but not propagated to submissions. Directly linked all 6. Total AMS-linked: 163 (135 auto, 28 portal).
+3. Insights page polish — fixed pipeline label, collapsed Configuration section, fixed stale Data Limitations text.
 4. Demo preparation artifact — full walkthrough narrative, 9 questions for JC, 5-phase production roadmap.
-
-**Updated results:**
-- 4,055 emails, 3,668 submissions, 8,505 extractions, 138 AMS-linked
-- Automation: 131 completed, 87 failed, 60% rate. All failures are legitimate business gaps.
-- Pipeline running live: sync 5min, processing 5min, automation 15min
-
-**Next steps:**
-1. Schedule demo with JC — artifact `2026-04-08-demo-preparation.md` has the full narrative + questions
-2. Known issue: `emails complete` command doesn't propagate `unisoft_quote_id` to submission doc — need periodic `backfill-ams` or fix the complete command
-3. 7 GIC internal forwards still classified as agent_submission (5/7 automated successfully, not harmful)
+5. Demo briefing PDF for JC at `2026-04-13-gic-demo-briefing.pdf`.
 
 **Previous session (2026-04-07a → 2026-04-08):**
 
@@ -620,6 +640,12 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 | 2026-04-07 | [agency-verification](artifacts/2026-04-07-agency-verification.md) | 73 automation failures investigated — 37 agencies confirmed missing from Unisoft, 1 search bug, 4 misclassified, 4 questions for JC |
 | 2026-04-08 | [data-snapshot](artifacts/2026-04-08-data-snapshot.md) | Complete data picture — 3,948 emails, 98.7% extracted, 131 AMS-linked, automation by date, UI visibility gaps |
 | 2026-04-08 | [session-handoff](artifacts/2026-04-08-session-handoff.md) | Comprehensive session handoff prompt — all files to read, pipeline/proxy/automation/UI/infrastructure context |
+| 2026-04-08 | [demo-preparation](artifacts/2026-04-08-demo-preparation.md) | Demo narrative, 5-screen walkthrough, 9 questions for JC, 5-phase production roadmap |
+| 2026-04-08 | [jc-meeting-email](artifacts/2026-04-08-jc-meeting-email.md) | Email draft to JC setting up the demo meeting |
+| 2026-04-13 | [gic-demo-briefing](artifacts/2026-04-13-gic-demo-briefing.md) | PDF briefing for JC — what we built, Unisoft automation details, results, next steps |
+| 2026-04-13 | [session-checkpoint](artifacts/2026-04-13-session-checkpoint.md) | Full state capture — proxy fix, pipeline recovery, config state, open items |
+| 2026-04-14 | [meeting-summary](artifacts/2026-04-14-meeting-summary.md) | Meeting with JC + Mike Burke — decisions, action items, production rollout plan |
+| 2026-04-14 | [followup-email](artifacts/2026-04-14-followup-email.md) | Follow-up email to JC and Mike — recap, next steps, what's needed from each person |
 | 2026-04-08 | [demo-preparation](artifacts/2026-04-08-demo-preparation.md) | Demo narrative, 5-screen walkthrough, 9 questions for JC, 5-phase production roadmap |
 
 ## Key Data Files
