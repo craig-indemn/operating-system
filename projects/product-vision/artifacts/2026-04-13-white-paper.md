@@ -8,11 +8,9 @@
 
 ### Origin
 
-Every customer we build for, the same patterns emerge. Entities with lifecycles. Actors with roles. Messages flowing between them. External systems connected through adapters. The same architecture, rebuilt from scratch each time.
+Every customer we build for, the same patterns emerge. The same architecture, rebuilt from scratch each time. EventGuard proved that AI can run an entire insurance program end-to-end — no humans in the loop. But every piece of it was custom. Standing up the next one means starting over.
 
-EventGuard proved that AI can run an entire insurance program — quoting, binding, payment, policy issuance, certificate delivery, no humans in the loop. But every piece of it was custom. Standing up the next one means starting over.
-
-I stopped building custom solutions. I started building the operating system underneath all of them.
+The question became: what's the system underneath all of them?
 
 ### Every Business Is a System
 
