@@ -1,0 +1,53 @@
+company_name,stage,health_status,has_voice_agent,has_chat_agent,has_email_agent,implementation_lead,team_members,notes
+Family First,TESTING,AT_RISK,false,true,false,Ganesh,Kyle,"Primary contact: Ravi | Web agent implementation
+- Met Sara, Ravi, Kerri on Jan 22 - walked through rubric
+- Bug fixes completed Jan 5
+- Working toward go-live readiness"
+Rankin Insurance,TESTING,ON_TRACK,true,false,false,Kyle,"Ian, Pete","Primary contact: Darrin Rankin | Voice implementation - IIANC cohort
+- Feb 2 go-live is highest priority for automated testing
+- Quote intake flow mimics website
+- Testing Discovery pages | Risks: [{'severity': 'medium', 'mitigated': False, 'description': 'Tight timeline for Feb 2 launch'}] | AMS: Easy Links | Last update: Voice demo completed Jan 16. On track for Feb 2 launch."
+O'Connor Insurance (OIANC),TESTING,ON_TRACK,true,true,true,Kyle,"Ian, George Remmer, Pete","Primary contact: Michelle O'Connor | AI Assistant + Billing Agent - IIANC cohort
+- 101 Weston Demo completed Jan 20
+- AI Assistant Code being delivered
+- Phone Numbers for Billing Agent | Risks: [{'severity': 'low', 'mitigated': False, 'description': 'Michelle traveling Jan 21-25 - testing starts when she returns'}] | AMS: BT Core | Last update: Demo completed Jan 20. Two-week testing starts Jan 25, launching Feb 4."
+Distinguished Programs,ACTIVE,ON_TRACK,false,true,false,Ganesh,"Pete, Michael","Cyber agents operational
+- Both agents working well
+- Styles sorted with Michael
+- Sudhir had questions on KB management"
+Jewelers Mutual,ACTIVE,ON_TRACK,false,true,false,Ganesh,"Mady, Rem, Rudra, George","Wedding AI Agent + EventGuard
+- Wedding AI agent on staging/production pages
+- Joshu API automation in progress
+- EventGuard scale is priority"
+Middendorf Insurance,SCOPING,ON_TRACK,false,true,false,Kyle,,"Workflow-based AI agents
+- Awaiting next steps"
+Alliance Insurance,KICKOFF,ON_TRACK,false,true,false,Kyle,,"IIANC cohort
+- Documents to ingest as KBs
+- BT Core AMS connection next
+- Check with Kyle before outreach"
+EventGuard,ACTIVE,ON_TRACK,false,true,false,Ganesh,Mady,"Scale is a priority
+- Part of Jewelers Mutual relationship"
+Silent Sports,SCOPING,ON_TRACK,false,true,false,Kyle,,"Initial prototype review completed Jan 20, 2026
+- Early stage engagement
+- Web agent exploration"
+Bonzah,LIVE,ON_TRACK,true,true,false,Jonathan,Kyle,Web + Voice agents live. Voice testing complete.
+eSpecialty,LIVE,ON_TRACK,false,true,false,Kyle,,Full-screen webchat live through Bob signature. Developer documentation portal active.
+GIC,LIVE,ON_TRACK,true,true,true,Jonathan,"Ganesh, Dhruv, Rudra",WC VAI agent + Email agent live. Voice agent operational.
+Borrowed Tyme,SCOPING,ON_TRACK,false,true,false,Kyle,,Sales and service web agents. Great progress Jan 31 - want to partner with us. Expanding relationship.
+Loro,CONFIGURATION,ON_TRACK,false,true,false,Ganesh,,Partner getting kick-started. Very happy with relationship.
+Branch,SCOPING,ON_TRACK,true,true,false,Jonathan,"Kyle, Simon, Dhruv","Web + Voice agents
+- Last meeting with Simon went well
+- Want both web agent and voice agent
+- VP had feedback on voice
+- TTS speed issues being addressed"
+Johnson Insurance,KICKOFF,ON_TRACK,false,true,false,Kyle,,"Primary contact: Jessica Yarbrough | Web operator automation solution. Signed Feb 4, 2026. First $2,500 invoice, then quarterly. New product line - kudos to Cam and Marlon."
+Union General,LIVE,ON_TRACK,false,false,false,Rem,"Ben, Kyle","GL Comparative Rater live. ACIC integration complete. | Last update: Feb 3: Major pivot - Northland CA killed (6yr prior insurance). Shifting to GL Comparative Rater. ACIC working, Nationwide P+C by end of Feb. Ben bringing Vivian (UW) next week. Class Code Assistant in research phase."
+IIANC Agency (NCAIA),KICKOFF,ON_TRACK,false,true,false,George Remmer,"George Remmer, Peter Duffy","Primary contact: Drew Nicholson | BT Core customer portal AI assistant. Portal manages asset lists (vehicles, equipment, drones, boats) for State of NC. Auto renewal season active. Phase 1: chat widget in portal. Phase 2: case creation via BT Core API. Long-term: property database for all state assets, K-12, community colleges, Office of State Fire Marshal. | Integration: BT Core platform. Kevin + Amit = dev team. Luke = implementation lead. Ring Central phone system. Sonant for voicemail. Microsoft Teams for internal comms."
+Tillman Insurance,CONFIGURATION,ON_TRACK,true,true,false,Kyle,"Amit, Ian, Pete","Primary contact: Raquel | Bilingual voice + web implementation - IIANC cohort
+- Hawksoft AMS integration
+- Web embedding being configured
+- Quote intake flow | Risks: [{'severity': 'low', 'mitigated': False, 'description': 'Bilingual complexity may extend timeline'}] | AMS: Hawksoft | Last update: Bilingual voice and web embedding in progress."
+Insurica,ACTIVE,ON_TRACK,true,true,false,Jonathan,"Ganesh, Kyle, Drew","Primary contact: Kylie Hubbard | Receptionist agent live for Open Enrollment
+- Documentation renewal planned for Q1
+- Multi-channel renewal agents being scoped
+- Met Julia about future voice projects Jan 16"
