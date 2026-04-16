@@ -4,15 +4,17 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 
 ## Status
 
-**Session 2026-04-13/14. Demo with JC + Mike, proxy fix, production planning.**
+**Session 2026-04-13 → 2026-04-16. Demo completed, production rollout planned.**
 
-**What was done (2026-04-13):**
+**To resume this project, read `artifacts/2026-04-16-session-handoff.md` — it has everything you need.**
 
-1. Demo with JC and Mike Burke (operations). Meeting summary at `2026-04-14-meeting-summary.md`.
-2. Recovered pipeline — Anthropic API credits exhausted Apr 10, 310 emails stuck. New key set, reprocessing.
+**What was done (2026-04-13 → 2026-04-16):**
+
+1. Demo with JC and Mike Burke (2026-04-13). Meeting summary at `2026-04-14-meeting-summary.md`. Follow-up email sent to JC + Mike.
+2. Recovered pipeline — Anthropic API credits exhausted Apr 10, 310 emails stuck. New key set, reprocessed.
 3. Fixed `emails complete` to propagate `unisoft_quote_id` directly to submission (no more backfill needed).
-4. Set up `gic.indemn.ai` pointing at main branch. Updated `TILEDESK_DB_URI` to prod for JC login.
-5. Unisoft proxy fix — Unisoft changed UAT endpoint URLs (`services.uat.gicunderwriters.co` → `ins-gic-service-uat-app.azurewebsites.net`). Proxy updated and verified.
+4. Set up `gic.indemn.ai` pointing at main branch. Updated `TILEDESK_DB_URI` to prod for JC login access.
+5. Unisoft proxy fix — Unisoft changed UAT endpoint URLs (`services.uat.gicunderwriters.co` → `ins-gic-service-uat-app.azurewebsites.net`). Proxy updated and verified working.
 6. Confirmed activity creation works (submission-id 0 is fine) — agent inconsistently skips the step.
 
 **Key decisions from demo:**
@@ -646,6 +648,7 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 | 2026-04-13 | [session-checkpoint](artifacts/2026-04-13-session-checkpoint.md) | Full state capture — proxy fix, pipeline recovery, config state, open items |
 | 2026-04-14 | [meeting-summary](artifacts/2026-04-14-meeting-summary.md) | Meeting with JC + Mike Burke — decisions, action items, production rollout plan |
 | 2026-04-14 | [followup-email](artifacts/2026-04-14-followup-email.md) | Follow-up email to JC and Mike — recap, next steps, what's needed from each person |
+| 2026-04-16 | [session-handoff](artifacts/2026-04-16-session-handoff.md) | Comprehensive handoff prompt for next session — current state, production rollout plan, file reference, environment setup |
 | 2026-04-08 | [demo-preparation](artifacts/2026-04-08-demo-preparation.md) | Demo narrative, 5-screen walkthrough, 9 questions for JC, 5-phase production roadmap |
 
 ## Key Data Files
