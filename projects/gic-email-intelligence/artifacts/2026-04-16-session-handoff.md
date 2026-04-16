@@ -45,41 +45,17 @@ This is the GIC Email Intelligence project — an end-to-end system that connect
 - `projects/gic-email-intelligence/artifacts/2026-04-07-agency-verification.md` — 73 automation failures investigated. 37 agencies confirmed missing in UAT. These are the agencies JC may or may not have in production — the answer is still TBD.
 - `projects/gic-email-intelligence/artifacts/2026-04-07-demo-readiness-plan.md` — the 4 workstreams, success criteria, "no ad-hoc processing" principle
 
-## Production Rollout Plan (10 steps, in order)
+## What's Next
 
-These are the steps from the JC meeting. Track progress against these:
+The demo with JC and Mike is done. We have meeting notes with their decisions and action items. **The production rollout plan still needs to be developed with the user** — read the meeting summary and follow-up email, then work through the plan together. The user's thinking may have evolved since the meeting.
 
-1. **Agency search improvement** — phone + address fallback (producer codes unreliable on organic submissions). Code change in the automation skill.
-2. **Duplicate detection** — check similar name/address before creating a Quote ID. Unisoft has built-in similar-name prompts we might be able to use.
-3. **JC sends production Unisoft credentials** — waiting on him. New credentials + possibly new endpoint URL.
-4. **JC creates "instant quote" user** — in production. For tracking what the automation created.
-5. **JC creates "New Biz" group** — sends Craig the name.
-6. **Task creation step** — after Quote ID creation, assign a task to the New Biz group (depends on #5). New step in the automation skill.
-7. **Write access to quotes inbox** — Craig working with Makul, copying JC + Mike.
-8. **Move processed emails to subfolder** — "Indemn Processed". Test once write access exists (depends on #7).
-9. **Point proxy at production Unisoft** — swap credentials and endpoint (depends on #3).
-10. **End-to-end test in production** — full flow validation (depends on everything above).
+**Key sources to read before planning:**
+- `artifacts/2026-04-14-meeting-summary.md` — decisions and action items from the JC meeting
+- `artifacts/2026-04-14-followup-email.md` — the recap sent to JC + Mike with what Craig said he'd do
 
-**Parallel work:** #1, #2, #7 can happen now. Everything else waits on JC or prior steps.
+**Do not assume the plan.** Read the sources, understand what was agreed, then discuss with the user what they want to tackle and in what order. Things like dependencies, sequencing, and parallel work are conversations to have — not conclusions to present.
 
-## Key Decisions (from JC meeting)
-
-- **Human-in-the-loop workflow** — automation creates Quote ID → assigns task to "New Biz" group in Unisoft. Team picks up from there. NOT full automation.
-- **Processed emails to subfolder** — once AI processes, move out of main inbox. Audit concern + keeps the team's inbox view clean.
-- **Endorsements > USLI** — after quotes inbox is solid, pivot to endorsements. Higher volume, more rule-based. USLI portal changing end of April.
-- **Duplicate detection required** — JC specifically flagged this.
-- **UAT is safe for testing** — "no harm no foul" creating Quote IDs there.
-- **Agency matching** — JC said 40% miss rate is likely agents using street names not legal names. Phone + address are better fallback than producer codes.
-
-## Next Priority: Endorsements Inbox
-
-After quotes production is done:
-- Connect to endorsements inbox (need access)
-- Mike Burke will explain the process + provide list of high-volume "no-brainer" endorsements (address updates, adding vehicles, etc.)
-- Simple endorsements use policy numbers (not Quote IDs) and involve copy-pasting request into a "Send endorsement to carrier" activity in Unisoft
-- Original email must be drag-and-dropped as attachment to maintain paper trail
-- Focus on rule-based changes first (update address, add vehicle for CIM)
-- Do NOT build USLI-specific endorsement flows — new USLI portal launching end of month will change forms
+After the quotes inbox work, endorsements are the next domain. Mike Burke will provide a list of rule-based "no-brainer" endorsements. USLI development is paused pending their portal change. Details in the meeting summary.
 
 ## The Processing Pipeline (understand how data flows)
 

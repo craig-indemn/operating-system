@@ -17,25 +17,7 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 5. Unisoft proxy fix — Unisoft changed UAT endpoint URLs (`services.uat.gicunderwriters.co` → `ins-gic-service-uat-app.azurewebsites.net`). Proxy updated and verified working.
 6. Confirmed activity creation works (submission-id 0 is fine) — agent inconsistently skips the step.
 
-**Key decisions from demo:**
-- Human-in-the-loop: Quote ID → task assigned to "New Biz" group in Unisoft. Team picks up from there.
-- Move processed emails to subfolder ("Indemn Processed"). Requires write access to inbox.
-- Agency search: use phone + address as fallback (producer codes unreliable on organic submissions).
-- Duplicate detection before creating Quote IDs.
-- Endorsements are next priority after quotes inbox is solid. Pause USLI development (portal changing).
-- JC creating "instant quote" user and "New Biz" group in production.
-
-**Production rollout steps (in order):**
-1. Agency search improvement — phone + address fallback (code change)
-2. Duplicate detection — check similar name/address before creating Quote ID (code change)
-3. JC sends production Unisoft credentials (waiting on him)
-4. JC creates "instant quote" user (waiting on him)
-5. JC creates "New Biz" group, sends name (waiting on him)
-6. Task creation step — assign task to New Biz group after Quote ID (depends on 5)
-7. Write access to quotes inbox — work with Makul (parallel)
-8. Move processed emails to subfolder — test once write access is available (depends on 7)
-9. Point proxy at production Unisoft (depends on 3)
-10. End-to-end test in production (depends on all above)
+**Next steps:** Production rollout plan to be developed with the user next session. Read `artifacts/2026-04-14-meeting-summary.md` for JC's decisions and action items before planning.
 
 **Previous session (2026-04-08a):**
 
