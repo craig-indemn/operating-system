@@ -90,7 +90,7 @@ from temporalio.contrib.opentelemetry import TracingInterceptor  # [G-19]
 from kernel.temporal.client import get_temporal_client
 from kernel.temporal.workflows import ProcessMessageWorkflow, HumanReviewWorkflow, BulkExecuteWorkflow
 from kernel.temporal.activities import (
-    claim_message, load_entity_context, process_with_associate,
+    claim_message, load_entity_context, load_actor,
     complete_message, fail_message, process_bulk_batch,
 )
 from kernel.db import init_database
@@ -116,7 +116,7 @@ async def main():
         activities=[
             claim_message,
             load_entity_context,
-            process_with_associate,
+            load_actor,
             complete_message,
             fail_message,
             process_bulk_batch,
@@ -136,7 +136,7 @@ if __name__ == "__main__":
 
 ## 2.2 The Generic ProcessMessageWorkflow [G-22, G-90]
 
-One workflow handles ALL associate message processing. The skill is the source of truth for orchestration. Temporal wraps the generic claim → process → complete cycle for durability.
+One workflow handles ALL associate message processing. The kernel claims the message, resolves the target Runtime, and dispatches to the harness via a per-Runtime Temporal task queue (`runtime-{runtime_id}`). The harness owns execution (including any LLM calls) and is responsible for completing or failing the message via `indemn queue complete` / `indemn queue fail`.
 
 ```python
 # kernel/temporal/workflows.py
@@ -146,15 +146,17 @@ from datetime import timedelta
 
 with workflow.unsafe.imports_passed_through():
     from kernel.temporal.activities import (
-        claim_message, load_entity_context, process_with_associate,
+        claim_message, load_entity_context, load_actor,
         complete_message, fail_message,
     )
 
 @workflow.defn
 class ProcessMessageWorkflow:
-    """Generic claim → process → complete.
+    """Generic claim → route-to-harness.
     Used by all associates regardless of role or skill.
-    The skill is the source of truth — this workflow is a durability wrapper."""
+    The kernel resolves the target Runtime and dispatches via
+    per-Runtime Temporal task queue. The harness owns execution
+    and message completion."""
 
     @workflow.run
     async def run(self, message_id: str, associate_id: str) -> dict:
@@ -185,29 +187,45 @@ class ProcessMessageWorkflow:
             ),
         )
 
-        # Activity 3: Process (the associate does its work)
-        # Longer timeout, more retries, heartbeat for long-running LLM calls
-        # Non-retryable errors: PermanentProcessingError (bad skill, bad data)
+        # Activity 3: Resolve target Runtime for routing
+        # The kernel looks up the associate's runtime_id to determine
+        # which harness task queue to dispatch to
+        actor_info = await workflow.execute_activity(
+            load_actor,
+            args=[associate_id],
+            start_to_close_timeout=timedelta(seconds=30),
+            retry_policy=RetryPolicy(maximum_attempts=3),
+        )
+        runtime_id = actor_info.get("runtime_id")
+        if not runtime_id:
+            await workflow.execute_activity(
+                fail_message,
+                args=[message_id, f"Associate {associate_id} has no runtime_id"],
+                start_to_close_timeout=timedelta(seconds=30),
+                retry_policy=RetryPolicy(maximum_attempts=3),
+            )
+            return {"status": "no_runtime"}
+
+        # Activity 4: Dispatch to harness via per-Runtime task queue
+        # The harness polls `runtime-{runtime_id}` and picks up the work.
+        # The harness is responsible for:
+        #   - Loading skills, building LLM context
+        #   - Executing the associate's work (LLM calls, CLI commands)
+        #   - Completing the message: `indemn queue complete <message_id>`
+        #   - Or failing it: `indemn queue fail <message_id> --reason "..."`
+        #
+        # The kernel does NOT call the LLM — the harness owns all LLM interaction.
+        # This keeps the kernel stateless and allows different harness
+        # implementations (async, chat, voice) per Runtime kind.
         try:
-            result = await workflow.execute_activity(
-                process_with_associate,
+            result = await workflow.execute_child_workflow(
+                "HarnessProcessMessage",
                 args=[message_id, associate_id, context],
-                start_to_close_timeout=timedelta(minutes=10),
-                heartbeat_timeout=timedelta(minutes=2),
-                retry_policy=RetryPolicy(  # [G-90]
-                    maximum_attempts=3,
-                    initial_interval=timedelta(seconds=5),
-                    backoff_coefficient=2.0,
-                    maximum_interval=timedelta(seconds=60),
-                    non_retryable_error_types=[
-                        "PermanentProcessingError",
-                        "SkillTamperError",
-                        "PermissionError",
-                    ],
-                ),
+                task_queue=f"runtime-{runtime_id}",
+                execution_timeout=timedelta(minutes=10),
             )
         except Exception as e:
-            # Activity 4a: Fail the message (return to queue or dead-letter)
+            # If the harness fails to pick up or crashes, the kernel fails the message
             await workflow.execute_activity(
                 fail_message,
                 args=[message_id, str(e)],
@@ -215,14 +233,6 @@ class ProcessMessageWorkflow:
                 retry_policy=RetryPolicy(maximum_attempts=3),
             )
             raise
-
-        # Activity 4b: Complete the message (move from queue to log)
-        await workflow.execute_activity(
-            complete_message,
-            args=[message_id, result],
-            start_to_close_timeout=timedelta(seconds=30),
-            retry_policy=RetryPolicy(maximum_attempts=3),
-        )
 
         return result
 ```
@@ -356,317 +366,93 @@ async def load_entity_context(message_id: str) -> dict:
         entity = await entity_cls.get(message.entity_id)
 
     return {
-        "message": message.dict(),
-        "entity": entity.dict() if entity else None,
+        "message": message.model_dump(),
+        "entity": entity.model_dump() if entity else None,
     }
 
 @activity.defn
-async def process_with_associate(message_id: str, associate_id: str, context: dict) -> dict:
-    """The associate processes the message.
-    This is where the skill is loaded, the execution mode determines
-    the interpreter, and CLI commands are executed via the API."""  # [G-21]
+async def load_actor(associate_id: str) -> dict:
+    """Load associate configuration for routing.
+    The kernel uses this to resolve the target Runtime and task queue.
+    The actual processing (LLM calls, skill execution) happens in the harness."""
 
-    with create_span("associate.process", associate_id=associate_id):
-        # Load associate configuration
-        associate = await Actor.get(ObjectId(associate_id))
-        if not associate or associate.status != "active":
-            raise PermanentProcessingError(f"Associate {associate_id} not found or inactive")
+    associate = await Actor.get(ObjectId(associate_id))
+    if not associate or associate.status != "active":
+        raise PermanentProcessingError(f"Associate {associate_id} not found or inactive")
 
-        # Set auth context for this activity [G-64]
-        current_org_id.set(associate.org_id)
-        current_actor_id.set(str(associate.id))
-        current_correlation_id.set(context["message"].get("correlation_id"))
-        current_depth.set(context["message"].get("depth", 0))
+    return {
+        "associate_id": str(associate.id),
+        "runtime_id": str(associate.runtime_id) if associate.runtime_id else None,
+        "org_id": str(associate.org_id),
+        "mode": associate.mode or "hybrid",
+        "skills": associate.skills or [],
+    }
 
-        # Load and verify skills
-        skills_content = await _load_skills(associate.skills or [])
+```
 
-        # Determine execution mode and run
-        mode = associate.mode or "hybrid"
+> **Architecture note — harness pattern**: `process_with_associate` does NOT live in the
+> kernel. The kernel's `ProcessMessageWorkflow` dispatches to the harness via a per-Runtime
+> Temporal task queue (`runtime-{runtime_id}`). The harness (`harnesses/async-deepagents/main.py`
+> or the equivalent for other Runtime kinds) owns:
+> - Loading skills and building LLM context
+> - All LLM calls (no `import anthropic` in the kernel)
+> - Execution mode selection (deterministic / reasoning / hybrid)
+> - CLI command execution via `indemn` subprocess
+> - Message completion: `indemn queue complete <message_id>` on success
+> - Message failure: `indemn queue fail <message_id> --reason "..."` on error
+>
+> See Phase 5 (§ 5.3) for the full harness implementation pattern.
 
+```python
+# harnesses/async-deepagents/main.py (simplified)
+"""
+Async harness: polls Temporal task queue `runtime-{runtime_id}`,
+loads associate config + skills via CLI, runs the LLM loop,
+and completes/fails the message via CLI.
+"""
+import subprocess, json, os
+
+def cli(command: str) -> dict:
+    """Execute an indemn CLI command. Authenticates via INDEMN_SERVICE_TOKEN."""
+    result = subprocess.run(
+        ["indemn"] + command.split(),
+        capture_output=True, text=True,
+        env={**os.environ},
+        timeout=60,
+    )
+    if result.returncode != 0:
+        raise RuntimeError(f"CLI error: {result.stderr}")
+    return json.loads(result.stdout) if result.stdout.strip() else {}
+
+async def process_message(message_id: str, associate_id: str, context: dict) -> dict:
+    """Harness entry point — called when the kernel dispatches work."""
+
+    # Load associate config and skills via CLI
+    associate = cli(f"actor get {associate_id}")
+    skill_names = associate.get("skills", [])
+    skills_content = []
+    for name in skill_names:
+        skill = cli(f"skill get {name}")
+        skills_content.append(skill.get("content", ""))
+    skills = "\n\n---\n\n".join(skills_content)
+
+    # Build LLM context and execute (mode determines approach)
+    mode = associate.get("mode", "hybrid")
+    try:
         if mode == "deterministic":
-            result = await _execute_deterministic(associate, skills_content, context)
-            # [G-56] Strict deterministic mode: raise if needs_reasoning
-            if result.get("needs_reasoning") and associate.strict_deterministic:
-                raise PermanentProcessingError(
-                    f"Associate {associate.name} is strict_deterministic but capability "
-                    f"returned needs_reasoning: {result.get('reason')}"
-                )
+            result = execute_deterministic(associate, skills, context)
         elif mode == "reasoning":
-            result = await _execute_reasoning(associate, skills_content, context)
-        else:  # hybrid
-            result = await _execute_hybrid(associate, skills_content, context)
+            result = await execute_reasoning(associate, skills, context)
+        else:
+            result = await execute_hybrid(associate, skills, context)
 
+        # Harness owns message completion
+        cli(f"queue complete {message_id}")
         return result
 
-async def _load_skills(skill_names: list[str]) -> str:
-    """Load and concatenate skill content with integrity verification."""
-    parts = []
-    for name in skill_names:
-        skill = await Skill.find_one({"name": name, "status": "active"})
-        if not skill:
-            continue
-        if not verify_content_hash(skill.content, skill.content_hash):
-            raise SkillTamperError(f"Skill '{name}' failed integrity check")
-        parts.append(skill.content)
-    return "\n\n---\n\n".join(parts)
-
-async def _execute_deterministic(associate: Actor, skills: str, context: dict) -> dict:
-    """Execute skill deterministically — no LLM.
-    Parses the skill for CLI commands and executes them via the API.
-
-    The deterministic interpreter [G-25]:
-    - Reads markdown skill content
-    - Identifies lines that are CLI commands (lines starting with `indemn` or backtick-wrapped)
-    - Identifies simple conditions (lines starting with "If" or "When")
-    - Executes commands sequentially via HTTP API calls
-    - Evaluates conditions against entity data
-    - Returns the result of the last command
-
-    This is a simple line-by-line interpreter, NOT a full DSL engine.
-    Complex orchestration that can't be expressed as sequential commands
-    with simple conditions should use reasoning mode instead.
-    """
-    import httpx
-    from kernel.config import settings
-
-    entity_data = context.get("entity", {})
-    results = []
-
-    # Parse skill into executable steps
-    steps = _parse_skill_steps(skills)
-
-    for step in steps:
-        if step["type"] == "command":
-            # Execute CLI command via API
-            result = await _execute_command_via_api(
-                step["command"], entity_data, associate
-            )
-            results.append(result)
-            # Update entity_data with result if applicable
-            if isinstance(result, dict):
-                entity_data.update(result)
-
-        elif step["type"] == "condition":
-            # Evaluate condition
-            from kernel.watch.evaluator import evaluate_condition
-            if not evaluate_condition(step["condition"], entity_data):
-                if step.get("on_false") == "skip":
-                    continue
-                elif step.get("on_false") == "stop":
-                    break
-
-        elif step["type"] == "auto_command":
-            # Command with --auto flag — may return needs_reasoning
-            result = await _execute_command_via_api(
-                step["command"], entity_data, associate
-            )
-            if isinstance(result, dict) and result.get("needs_reasoning"):
-                return result  # Bubble up to caller
-            results.append(result)
-
-    return {"status": "completed", "results": results}
-
-def _parse_skill_steps(skill_content: str) -> list[dict]:
-    """Parse markdown skill into executable steps.
-    Recognizes:
-    - Lines containing `indemn ...` as commands
-    - Lines starting with numbers (1., 2.) containing backtick commands
-    - Lines starting with 'If' or 'When' as conditions
-    """
-    steps = []
-    for line in skill_content.split("\n"):
-        line = line.strip()
-        if not line or line.startswith("#") or line.startswith("---"):
-            continue
-
-        # Extract command from backticks
-        import re
-        cmd_match = re.search(r'`(indemn [^`]+)`', line)
-        if cmd_match:
-            cmd = cmd_match.group(1)
-            if "--auto" in cmd:
-                steps.append({"type": "auto_command", "command": cmd})
-            else:
-                steps.append({"type": "command", "command": cmd})
-            continue
-
-        # Simple condition
-        if line.lower().startswith(("if ", "when ")):
-            # Parse simple conditions like "If needs_reasoning is true"
-            steps.append({
-                "type": "condition",
-                "condition": _parse_simple_condition(line),
-                "on_false": "skip",
-            })
-
-    return steps
-
-async def _execute_command_via_api(command: str, entity_data: dict, associate: Actor) -> dict:
-    """Execute an indemn CLI command by translating it to an API call. [G-21]
-    The command is parsed and mapped to the equivalent API endpoint."""
-    import httpx
-    from kernel.config import settings
-    from kernel.auth.jwt import create_access_token
-
-    # Parse command: "indemn email classify EMAIL-001 --auto"
-    parts = command.strip().split()
-    if parts[0] != "indemn":
-        raise PermanentProcessingError(f"Invalid command: {command}")
-
-    entity_type = parts[1]  # "email"
-    operation = parts[2]    # "classify"
-    args = parts[3:]        # ["EMAIL-001", "--auto"]
-
-    # Get a service token for the associate
-    token, _ = create_access_token(
-        str(associate.id), str(associate.org_id),
-        [r.name for r in await _get_roles(associate)],
-    )
-
-    async with httpx.AsyncClient(base_url=settings.api_url) as client:
-        # Map to API endpoint
-        # entity_type + "s" = collection slug
-        # operation = method name
-        entity_id = args[0] if args else None
-        auto = "--auto" in args
-
-        url = f"/api/{entity_type}s/{entity_id}/{operation}"
-        params = {"auto": "true"} if auto else {}
-        data = _extract_data_from_args(args)
-
-        response = await client.post(
-            url, json=data, params=params,
-            headers={"Authorization": f"Bearer {token}"},
-            timeout=60.0,
-        )
-
-        if response.status_code >= 400:
-            raise PermanentProcessingError(
-                f"API call failed: {response.status_code} {response.text}"
-            )
-
-        return response.json()
-
-async def _execute_reasoning(associate: Actor, skills: str, context: dict) -> dict:
-    """Execute skill using LLM reasoning. [G-21]
-    The LLM reads the skill, analyzes the context, and decides which
-    CLI commands to execute via the API."""
-    # For Phase 2 MVP: use Anthropic API directly
-    # Future: pluggable LLM provider per associate.llm_config
-    import anthropic
-
-    llm_config = associate.llm_config or {}
-    model = llm_config.get("model", "claude-sonnet-4-6")
-    temperature = llm_config.get("temperature", 0.2)
-
-    client = anthropic.AsyncAnthropic()
-
-    # Build the system prompt with skill content and entity context
-    system_prompt = (
-        f"You are an associate executing the following skill:\n\n{skills}\n\n"
-        f"You have access to the Indemn OS CLI via the execute_command tool. "
-        f"Every command goes through the API with your permissions. "
-        f"Execute the steps in your skill against the provided context."
-    )
-
-    entity_context = context.get("entity", {})
-    message_context = context.get("message", {})
-
-    messages = [
-        {"role": "user", "content": (
-            f"Process this work item:\n\n"
-            f"Entity: {message_context.get('entity_type')} {message_context.get('entity_id')}\n"
-            f"Event: {message_context.get('event_type')}\n"
-            f"Data: {_safe_serialize(entity_context)}"
-        )},
-    ]
-
-    # Iterative tool-use loop
-    max_iterations = 20
-    results = []
-
-    for i in range(max_iterations):
-        response = await client.messages.create(
-            model=model,
-            max_tokens=4096,
-            temperature=temperature,
-            system=system_prompt,
-            messages=messages,
-            tools=[{
-                "name": "execute_command",
-                "description": "Execute an indemn CLI command via the API",
-                "input_schema": {
-                    "type": "object",
-                    "properties": {
-                        "command": {
-                            "type": "string",
-                            "description": "The full indemn CLI command (e.g., 'indemn email classify EMAIL-001 --auto')",
-                        },
-                    },
-                    "required": ["command"],
-                },
-            }],
-        )
-
-        # Check if the LLM wants to execute a command
-        if response.stop_reason == "tool_use":
-            for content_block in response.content:
-                if content_block.type == "tool_use":
-                    command = content_block.input["command"]
-                    # Execute via API
-                    try:
-                        result = await _execute_command_via_api(command, entity_context, associate)
-                        results.append({"command": command, "result": result})
-                        # Feed result back to LLM
-                        messages.append({"role": "assistant", "content": response.content})
-                        messages.append({
-                            "role": "user",
-                            "content": [{
-                                "type": "tool_result",
-                                "tool_use_id": content_block.id,
-                                "content": _safe_serialize(result),
-                            }],
-                        })
-                    except Exception as e:
-                        messages.append({"role": "assistant", "content": response.content})
-                        messages.append({
-                            "role": "user",
-                            "content": [{
-                                "type": "tool_result",
-                                "tool_use_id": content_block.id,
-                                "content": f"Error: {str(e)}",
-                                "is_error": True,
-                            }],
-                        })
-
-        elif response.stop_reason == "end_turn":
-            # LLM is done — extract final text response
-            final_text = "".join(
-                b.text for b in response.content if hasattr(b, "text")
-            )
-            return {
-                "status": "completed",
-                "results": results,
-                "summary": final_text,
-            }
-
-        # Heartbeat for long-running processing
-        activity.heartbeat(f"iteration {i+1}")
-
-    return {"status": "completed", "results": results, "warning": "max_iterations_reached"}
-
-async def _execute_hybrid(associate: Actor, skills: str, context: dict) -> dict:
-    """Try deterministic first. If any step returns needs_reasoning,
-    fall back to LLM for the remainder."""
-    result = await _execute_deterministic(associate, skills, context)
-    if result.get("needs_reasoning"):
-        # Fall back to reasoning with the needs_reasoning context included
-        return await _execute_reasoning(associate, skills, {
-            **context,
-            "deterministic_result": result,
-        })
-    return result
+    except Exception as e:
+        cli(f"queue fail {message_id} --reason '{str(e)}'")
+        raise
 
 @activity.defn
 async def process_human_decision(message_id: str, decision: dict) -> dict:
@@ -952,13 +738,20 @@ async def check_scheduled_associates():
             if existing:
                 continue
 
+            # Resolve role name from role_id (target_role is a name, not ObjectId)
+            from kernel_entities.role import Role
+            role_name = ""
+            if associate.role_ids:
+                role = await Role.get(associate.role_ids[0])
+                role_name = role.name if role else ""
+
             # Create message in queue — same path as watch-triggered work
             message = Message(
                 org_id=associate.org_id,
                 entity_type="_scheduled",
                 entity_id=associate.id,
                 event_type="schedule_fired",
-                target_role=associate.role_ids[0] if associate.role_ids else "",
+                target_role=role_name,
                 correlation_id=str(uuid4()),
                 status="pending",
                 summary={"display": f"Scheduled: {associate.name}"},
@@ -1225,7 +1018,7 @@ async def preview_bulk_operation(spec_dict: dict) -> dict:
         sample = await entity_cls.find_scoped(spec.filter_query).limit(5).to_list()
         return {
             "count": count,
-            "sample": [e.dict() for e in sample],
+            "sample": [e.model_dump() for e in sample],
             "operation": spec.operation,
             "dry_run": True,
         }

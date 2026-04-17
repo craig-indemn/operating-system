@@ -232,7 +232,7 @@ async def get_entity_detail_metadata(entity_name: str, actor=Depends(get_current
     # Capabilities
     capabilities = []
     for cap in getattr(cls, '_activated_capabilities', []):
-        cap_dict = cap.dict() if hasattr(cap, 'dict') else cap
+        cap_dict = cap.model_dump() if hasattr(cap, 'dict') else cap
         capabilities.append({
             "name": cap_dict.get("capability"),
             "cli_command": f"indemn {entity_name.lower()} {cap_dict.get('capability', '').replace('_', '-')} <id> --auto",
@@ -584,7 +584,8 @@ import asyncio, orjson
 # Track active subscriptions per connection
 _connections: dict[str, dict] = {}  # connection_id → {ws, subscriptions, org_id}
 
-@app.websocket("/ws")
+# Register via: app.add_api_websocket_route("/ws", websocket_handler)
+# Called in kernel/api/app.py startup after Phase 4 activation.
 async def websocket_handler(websocket: WebSocket):
     token = websocket.query_params.get("token")
     if not token:
@@ -767,13 +768,25 @@ function AssistantPanel() {
 
 ### Assistant Hook [G-59]
 
+The assistant connects via WebSocket to a **chat-harness instance** (Runtime kind `chat-deepagents`), NOT a kernel API endpoint. The user's session JWT is injected at WebSocket connect time, so the assistant inherits the user's permissions. All messages use a typed JSON wire format.
+
 ```tsx
 // assistant/useAssistant.ts
+
+// Typed JSON wire format for assistant WebSocket messages
+interface WireMessage {
+  type: "user_message" | "assistant_chunk" | "assistant_done" | "error";
+  content?: string;
+  context?: AssistantContext;
+  error?: string;
+}
+
 function useAssistant() {
   const { actor } = useAuth();
   const [messages, setMessages] = useState<AssistantMessage[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const [isStreaming, setIsStreaming] = useState(false);
+  const wsRef = useRef<WebSocket | null>(null);
 
   // Build context from current UI state
   const buildContext = useCallback((): AssistantContext => {
@@ -785,95 +798,65 @@ function useAssistant() {
     };
   }, []);
 
-  const sendMessage = async (content: string) => {
+  // Connect to chat-harness via WebSocket
+  // The Runtime kind is `chat-deepagents`, deployed as `indemn/runtime-chat-deepagents`
+  // User's session JWT is passed at connect time — the harness inherits it
+  useEffect(() => {
+    const token = getToken();
+    const ws = new WebSocket(
+      `${getWsUrl()}/ws/assistant?token=${encodeURIComponent(token)}`
+    );
+    wsRef.current = ws;
+
+    let assistantContent = "";
+
+    ws.onmessage = (event) => {
+      const msg: WireMessage = JSON.parse(event.data);
+
+      if (msg.type === "assistant_chunk") {
+        assistantContent += msg.content || "";
+        setMessages(prev => {
+          const updated = [...prev];
+          const lastMsg = updated[updated.length - 1];
+          if (lastMsg?.role === "assistant") {
+            lastMsg.content = assistantContent;
+          } else {
+            updated.push({ id: uuid(), role: "assistant", content: assistantContent });
+          }
+          return updated;
+        });
+      } else if (msg.type === "assistant_done") {
+        assistantContent = "";
+        setIsStreaming(false);
+      } else if (msg.type === "error") {
+        setIsStreaming(false);
+        setMessages(prev => [...prev, { id: uuid(), role: "assistant", content: `Error: ${msg.error}` }]);
+      }
+    };
+
+    return () => ws.close();
+  }, []);
+
+  const sendMessage = (content: string) => {
     setMessages(prev => [...prev, { id: uuid(), role: "user", content }]);
     setIsStreaming(true);
 
     const context = buildContext();
+    const wire: WireMessage = { type: "user_message", content, context };
+    wsRef.current?.send(JSON.stringify(wire));
 
-    // Call the default assistant's API endpoint
-    // The default assistant inherits the user's session JWT [G-59]
-    // Audit attributed as "user X via default associate"
-    const response = await fetch("/api/assistant/message", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${getToken()}`, // User's own JWT
-      },
-      body: JSON.stringify({ content, context }),
-    });
-
-    // Stream the response
-    const reader = response.body?.getReader();
-    let assistantContent = "";
-    while (reader) {
-      const { done, value } = await reader.read();
-      if (done) break;
-      const chunk = new TextDecoder().decode(value);
-      assistantContent += chunk;
-      setMessages(prev => {
-        const updated = [...prev];
-        const lastMsg = updated[updated.length - 1];
-        if (lastMsg?.role === "assistant") {
-          lastMsg.content = assistantContent;
-        } else {
-          updated.push({ id: uuid(), role: "assistant", content: assistantContent });
-        }
-        return updated;
-      });
-    }
-    setIsStreaming(false);
+    if (!isOpen) setIsOpen(true);
   };
 
   return { messages, isOpen, togglePanel: () => setIsOpen(!isOpen), sendMessage, isStreaming };
 }
 ```
 
-### Assistant API Endpoint
-
-```python
-# kernel/api/assistant.py
-from fastapi import APIRouter, Depends
-from fastapi.responses import StreamingResponse
-from kernel.auth.middleware import get_current_actor
-
-assistant_router = APIRouter(prefix="/api/assistant", tags=["assistant"])
-
-@assistant_router.post("/message")
-async def assistant_message(data: dict, actor=Depends(get_current_actor)):
-    """Process an assistant message. The default associate runs with
-    the user's own session — same permissions, audit as 'user via assistant'. [G-59]"""
-    content = data.get("content", "")
-    context = data.get("context", {})
-
-    # The default assistant is a pre-provisioned associate with
-    # owner_actor_id = the user. It uses the user's JWT for auth.
-    # Every action is audited as: "actor {user.id} via default_associate"
-
-    async def generate():
-        # Use the LLM with the user's entity skills as context
-        # The assistant can execute any CLI command the user has permission for
-        # via the same API (using the user's JWT)
-        import anthropic
-        client = anthropic.AsyncAnthropic()
-
-        # Load entity skills for the user's roles
-        skills = await load_skills_for_roles(actor.role_ids)
-
-        async with client.messages.stream(
-            model="claude-sonnet-4-6",
-            max_tokens=4096,
-            system=f"You are the user's assistant in the Indemn OS. "
-                   f"You can execute operations using the Indemn API. "
-                   f"The user is viewing: {context}.\n\n"
-                   f"Available operations:\n{skills}",
-            messages=[{"role": "user", "content": content}],
-        ) as stream:
-            async for text in stream.text_stream:
-                yield text
-
-    return StreamingResponse(generate(), media_type="text/plain")
-```
+> **Architecture note**: The assistant is a chat-harness instance, not a kernel endpoint.
+> The kernel has no `import anthropic` — all LLM calls happen inside the harness.
+> The chat-harness authenticates the WebSocket connection using the user's JWT, so
+> every CLI command the harness executes on the user's behalf carries the user's
+> permissions. Audit is attributed as "actor {user.id} via default_associate".
 
 ## 4.8 UI Graceful Degradation [G-87]
 
@@ -1584,6 +1567,20 @@ indemn runtime transition RUNTIME-001 --to active
 For MVP: deployment is a manual process (operator deploys the container, then updates the Runtime entity status). Automated deployment via Railway API is a future enhancement.
 
 ## 5.3 Harness Pattern — Full Voice Example [G-65]
+
+> **Implementation status**: The harness pattern is proven in production. Three harness
+> implementations exist and are deployed:
+> - **async-deepagents** (`harnesses/async-deepagents/main.py`) — polls Temporal task queue
+>   `runtime-{runtime_id}`, processes queued messages, completes/fails via CLI. Used for
+>   all non-interactive associate work (email triage, document processing, scheduled jobs).
+> - **chat-deepagents** (`harnesses/chat-deepagents/main.py`) — WebSocket-based, serves
+>   the UI assistant (§ 4.7). Inherits user JWT at connect time.
+> - **voice-deepagents** (below) — LiveKit Agents integration for real-time voice.
+>
+> All three share the same CLI wrapper pattern and authentication model
+> (service token via `INDEMN_SERVICE_TOKEN`). The voice example below is the most
+> complex because it manages real-time audio, but the structural pattern is identical
+> across all harness kinds.
 
 ```python
 # harnesses/voice-deepagents/main.py
