@@ -4,11 +4,54 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 
 ## Status
 
-**Session 2026-04-13 → 2026-04-16. Demo completed, production rollout planned.**
+**Session 2026-04-17a. Phases 1+2 complete + Gemini migration + deployed to Railway. Investigating null Quote response.**
 
-**To resume this project, read `artifacts/2026-04-16-session-handoff.md` — it has everything you need.**
+**To resume this project, read `artifacts/2026-04-17-session-handoff.md` — it has everything for full context transfer.**
 
-**What was done (2026-04-13 → 2026-04-16):**
+**What was done (2026-04-16 session b):**
+
+1. Read JC's Apr 16 09:15 update email — production unblock: URL `ins-gic-client-prod-app.azurewebsites.net`, user `indemnai`, prod groups `New Biz` + `New Biz Workers Comp` created. Still awaiting Mike's endorsement rundown.
+2. Locked in production rollout plan with decisions: group-only task assignment, UAT-first with self-created test group, own MongoDB-side duplicate detection, 4-phase ordering (tasks → agency search → dup detection → prod cutover). Saved as `2026-04-16-production-rollout-plan.md`.
+3. **Phase 1 complete: Unisoft task creation end-to-end in UAT.**
+   - Patched proxy on EC2 `i-0dc2563c9bc92aa0e` twice: added Task/TaskAssociation/TaskGroup/TaskAction to `dtoNamespaces`, then fixed `AppendDtoField` to recurse into nested sub-DTOs (was hardcoded to nil, silently dropping TaskAssociation data). Recompiled, restarted once. Both patches backed up.
+   - Created custom Section 5 action via `SetTaskAction`: ActionId 40 "Review automated submission" (distinct signal for team).
+   - Created UAT test group via `SetTaskGroup`: GroupId 2 "Indemn Automation - New Biz".
+   - Verified end-to-end: TaskId 16853 (Talavera Trucking, QuoteId 17273, group-assigned, +1 day due).
+   - Discovered 50-char subject limit — handled via ellipsis truncation in CLI.
+4. Added `unisoft task` CLI subcommands: create, get, groups, actions, group-create, action-create. All verified in UAT including long-subject truncation (TaskId 16854 for IGLESIA TABERNACULO).
+5. Updated `create-quote-id.md` skill: new Step 6 (Create Task) with LOB→Group routing table; Step 7 renumbered (activity); Step 8 handles 3 outcomes (full success, partial success with Quote ID recorded on failed status, total failure). Added fail-fast discipline rules — no silent half-success states per user's requirement.
+6. `gic emails complete` accepts `--task-id`, denormalizes `unisoft_task_id` onto submission.
+7. Committed as `4b8a708 feat(tasks): add Unisoft task creation to new-biz automation`.
+
+**Session 2026-04-16c — LLM migration to Gemini via Vertex AI + proxy source in repo:**
+
+8. **Anthropic credits exhausted mid-session.** User approved migrating all LLM calls to Gemini. Confirmed Vertex AI works using the existing `indemn/dev/shared/google-cloud-sa` service account (project `prod-gemini-470505`, location `us-central1`). The SA JSON is stored as a minimal 3-field form with literal `\n` in the private key — bootstrap helper handles the reconstruction.
+9. **Migrated LLM stack:**
+   - Added `langchain-google-vertexai` dependency.
+   - New `core.gemini_auth.ensure_google_credentials()` helper.
+   - Config: `llm_provider` default → `google_vertexai`, added `llm_model_fast` for extraction, added `google_cloud_project`/`location`/`application_credentials`/`sa_json` fields.
+   - `agent/llm.py`: added Vertex AI branch with `fast=True` flag for cheap model.
+   - `agent/extractor.py`: switched to `ChatVertexAI` with `gemini-2.5-flash` default (extraction was the #1 cost driver).
+   - `automation/agent.py`: default model now `google_vertexai:gemini-2.5-pro`.
+10. **Critical fix: skill inlining.** The existing `skills=[SKILLS_DIR + "/"]` parameter never worked — `SkillsMiddleware` expects a directory-per-skill layout with `SKILL.md` inside, not a flat-file absolute path. Claude inferred the workflow from the system prompt; Gemini ad-hoc'd and skipped Step 6 entirely. Fix: drop `skills=` and load the skill content directly into the system prompt via `_build_system_prompt()`.
+11. **Verified end-to-end in UAT:** Dana DiSanto email (69e005bb357e1315daee5126) → Quote 17342 + Task 16855 (group 2, ActionId 40, truncated subject, QuoteId/AgentNo/LOB association). Agent correctly marked activity-logging failure in completion notes per skill's best-effort rules.
+12. **Bug fix:** `unisoft activity create` `--submission-id` was required; skill omits it. Made optional with default 0. Submission-id 0 is valid for quote-level activities (JC confirmed).
+13. **PATH fix:** `build_env()` now adds `.venv/bin` to PATH so the agent finds `gic` without globbing.
+14. **Proxy source in repo.** `C:\unisoft\UniProxy.cs` had been living only on EC2. Pulled via SSM→S3→local to `unisoft-proxy/server/UniProxy.cs`. Added README covering build, SSM deploy, env vars, `dtoNamespaces` extension pattern, and the account-lockout warning for rapid restarts.
+15. Committed as `0ae581d feat: migrate all LLM calls to Gemini via Vertex AI + fix skill inlining` and `541b908 chore(proxy): check in UniProxy.cs source + deploy README`.
+
+**Next steps:**
+
+- **Deploy to Railway** (will require setting `GOOGLE_SA_JSON` env on automation + processing + api services and keeping `LLM_PROVIDER=google_vertexai`).
+- **Decide cron strategy** — user flagged concern about burning credits processing all UAT emails continuously. Options: pause dev crons, rate-limit, or let them run on cheaper Gemini.
+- **Audit attachment upload** — Gemini smoke test jumped from Quote to Task without uploading attachments. Verify if it's a skill adherence issue, CLI gap, or S3 creds issue.
+- **Deploy** the updated CLI + skill to Railway automation service (`railway up -s automation`), let a cron tick create a task end-to-end through the deepagent, verify in UAT.
+- **Phase 2:** Agency search — phone + address fallback when producer code and name don't match.
+- **Phase 3:** MongoDB-side duplicate detection before creating Quote IDs.
+- **Phase 4:** Production cutover — point proxy at prod Unisoft URLs, discover real GroupIds via `unisoft task groups` as `indemnai`, update skill, run first prod email end-to-end.
+- **Parallel:** Connect endorsements inbox (read access already granted). Chase Makul on quote inbox write access for email-to-subfolder move.
+
+**Previous session (2026-04-13 → 2026-04-16):**
 
 1. Demo with JC and Mike Burke (2026-04-13). Meeting summary at `2026-04-14-meeting-summary.md`. Follow-up email sent to JC + Mike.
 2. Recovered pipeline — Anthropic API credits exhausted Apr 10, 310 emails stuck. New key set, reprocessed.
@@ -16,8 +59,6 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 4. Set up `gic.indemn.ai` pointing at main branch. Updated `TILEDESK_DB_URI` to prod for JC login access.
 5. Unisoft proxy fix — Unisoft changed UAT endpoint URLs (`services.uat.gicunderwriters.co` → `ins-gic-service-uat-app.azurewebsites.net`). Proxy updated and verified working.
 6. Confirmed activity creation works (submission-id 0 is fine) — agent inconsistently skips the step.
-
-**Next steps:** Production rollout plan to be developed with the user next session. Read `artifacts/2026-04-14-meeting-summary.md` for JC's decisions and action items before planning.
 
 **Previous session (2026-04-08a):**
 
@@ -632,6 +673,9 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 | 2026-04-14 | [followup-email](artifacts/2026-04-14-followup-email.md) | Follow-up email to JC and Mike — recap, next steps, what's needed from each person |
 | 2026-04-16 | [session-handoff](artifacts/2026-04-16-session-handoff.md) | Comprehensive handoff prompt for next session — current state, production rollout plan, file reference, environment setup |
 | 2026-04-08 | [demo-preparation](artifacts/2026-04-08-demo-preparation.md) | Demo narrative, 5-screen walkthrough, 9 questions for JC, 5-phase production roadmap |
+| 2026-04-16 | [production-rollout-plan](artifacts/2026-04-16-production-rollout-plan.md) | Production rollout plan with decisions — task creation approach, UAT-first, own dup detection, 4-phase ordering |
+| 2026-04-16 | [task-creation-uat-foundation](artifacts/2026-04-16-task-creation-uat-foundation.md) | Unisoft task creation end-to-end working in UAT — proxy nested-DTO fix, custom ActionId 40, test GroupId 2, reference payload, 50-char subject limit |
+| 2026-04-17 | [session-handoff](artifacts/2026-04-17-session-handoff.md) | Full session handoff — Phases 1+2, Gemini migration, Railway deploy, null Quote investigation |
 
 ## Key Data Files
 | File | What it contains |
@@ -768,6 +812,15 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 - 2026-04-08: Railway API service does NOT auto-deploy on git push. Must manually run `railway up -s api --environment development -d`.
 - 2026-04-08: Portal-created quotes in Unisoft UAT are blank shells — Quote ID exists but no data populated. Expected to have full data in production.
 - 2026-04-08: ~2,800 USLI carrier quotes have no original application in GIC's inbox — agents submitted directly to USLI's retail web portal. Whether to create Unisoft records for these is a question for JC.
+- 2026-04-16: Tasks assigned to GROUP not individual users — AssignedToUser empty, GroupId set. Matches JC's "team picks it up from there" intent.
+- 2026-04-16: Develop task creation in UAT with a self-created test group before touching prod. Prod has 2 groups (New Biz, New Biz Workers Comp).
+- 2026-04-16: Build our own MongoDB-side duplicate detection (normalize name + address, search existing submissions) rather than relying solely on Unisoft's similar-name prompts.
+- 2026-04-16: Rollout ordering — (1) Task creation in UAT → (2) Agency search phone+address fallback → (3) Own duplicate detection → (4) Prod cutover. Endorsements ingestion + activity reliability run in parallel.
+- 2026-04-16: LOB → group routing — WC goes to `New Biz Workers Comp`; all other LOBs go to `New Biz`.
+- 2026-04-17: Migrated ALL LLM calls from Claude Sonnet to Gemini 2.5 Pro/Flash via Vertex AI. Motivated by Anthropic credit exhaustion + existing Gemini credit. Uses SA `indemn/dev/shared/google-cloud-sa` (project `prod-gemini-470505`).
+- 2026-04-17: Skill must be INLINED in system prompt, not loaded via deepagents SkillsMiddleware. Middleware expects directory-per-skill layout with SKILL.md; our flat-file never loaded. Claude inferred; Gemini didn't. Inlining is the reliable path for non-Claude models.
+- 2026-04-17: Phase 2 (agency search) approach: sync full Unisoft agent data to MongoDB `unisoft_agents` collection, match locally with multi-field scoring (phone 40%, name 30%, address 15%, email 15%). Avoids broken `GetAgentsByAddress` proxy Criteria namespace collision.
+- 2026-04-17: Dev crons paused via `PAUSE_AUTOMATION=true` and `PAUSE_PROCESSING=true` env vars in Railway. Crons fire but exit immediately. Prevents Gemini credit burn while we're not actively testing.
 
 ## Open Questions (deferred — not blocking demo)
 - How does RingCentral data merge into the same pipeline? (Same pattern: RingCentral CLI + skills)
