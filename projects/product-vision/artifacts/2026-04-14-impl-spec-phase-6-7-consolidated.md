@@ -55,14 +55,16 @@ The white paper Section 3 defines an 8-step domain modeling process. Here it is 
 
 Already done. Indemn is a 15-person company selling AI associates for insurance. The CRM needs to: track customer relationships across meetings/emails/Slack, process meeting transcripts into actionable intelligence, monitor follow-ups and health signals, prepare for customer calls, produce weekly summaries.
 
-**Verify before proceeding:** Can you describe the business entirely in terms of entities and their states? Yes — Organization (prospect→active→churned), Contact (linked to org), Deal (stage pipeline), Meeting (scheduled→completed→processed), ActionItem (created→completed), HealthSignal (detected→acknowledged→resolved).
+**Verify before proceeding:** Can you describe the business entirely in terms of entities and their states? Yes — Company (prospect→active→churned), Contact (linked to company), Deal (stage pipeline), Meeting (scheduled→completed→processed), ActionItem (created→completed), HealthSignal (detected→acknowledged→resolved).
 
 ### Step 2: Define the Entities
 
 ```bash
 # Run these commands in order. Each creates an entity definition in MongoDB.
 
-indemn entity create Organization \
+# NOTE: "Organization" is a reserved kernel entity name (the multi-tenancy scope primitive).
+# CRM customer organizations use "Company" to avoid collision.
+indemn entity create Company \
   --fields '{
     "name": {"type": "str", "required": true},
     "domain": {"type": "str"},
@@ -81,14 +83,14 @@ indemn entity create Contact \
     "email": {"type": "str"},
     "phone": {"type": "str"},
     "title": {"type": "str"},
-    "organization_id": {"type": "objectid", "is_relationship": true, "relationship_target": "Organization"},
+    "organization_id": {"type": "objectid", "is_relationship": true, "relationship_target": "Company"},
     "last_interaction_at": {"type": "datetime"}
   }'
 
 indemn entity create Deal \
   --fields '{
     "name": {"type": "str", "required": true},
-    "organization_id": {"type": "objectid", "is_relationship": true, "relationship_target": "Organization"},
+    "organization_id": {"type": "objectid", "is_relationship": true, "relationship_target": "Company"},
     "stage": {"type": "str", "enum_values": ["prospecting", "qualification", "proposal", "negotiation", "closed_won", "closed_lost"], "is_state_field": true},
     "value": {"type": "decimal"},
     "currency": {"type": "str", "default": "USD"},
@@ -105,7 +107,7 @@ indemn entity create Meeting \
     "duration_minutes": {"type": "int"},
     "attendees_actor_ids": {"type": "list"},
     "attendees_contact_ids": {"type": "list"},
-    "organization_id": {"type": "objectid", "is_relationship": true, "relationship_target": "Organization"},
+    "organization_id": {"type": "objectid", "is_relationship": true, "relationship_target": "Company"},
     "source": {"type": "str", "enum_values": ["granola", "gemini", "zoom", "manual"]},
     "transcript_ref": {"type": "str"},
     "status": {"type": "str", "enum_values": ["scheduled", "completed", "processed"], "is_state_field": true}
@@ -127,7 +129,7 @@ indemn entity create ActionItem \
     "description": {"type": "str", "required": true},
     "due_date": {"type": "date"},
     "source_meeting_id": {"type": "objectid", "is_relationship": true, "relationship_target": "Meeting"},
-    "organization_id": {"type": "objectid", "is_relationship": true, "relationship_target": "Organization"},
+    "organization_id": {"type": "objectid", "is_relationship": true, "relationship_target": "Company"},
     "status": {"type": "str", "enum_values": ["open", "completed", "cancelled"], "is_state_field": true, "default": "open"},
     "is_overdue": {"type": "bool", "default": false},
     "completed_at": {"type": "datetime"}
@@ -138,7 +140,7 @@ indemn entity create Interaction \
   --fields '{
     "kind": {"type": "str", "enum_values": ["email", "slack", "call", "in_person"]},
     "contact_id": {"type": "objectid", "is_relationship": true, "relationship_target": "Contact"},
-    "organization_id": {"type": "objectid", "is_relationship": true, "relationship_target": "Organization"},
+    "organization_id": {"type": "objectid", "is_relationship": true, "relationship_target": "Company"},
     "direction": {"type": "str", "enum_values": ["inbound", "outbound"]},
     "participants_actor_ids": {"type": "list"},
     "occurred_at": {"type": "datetime"},
@@ -149,7 +151,7 @@ indemn entity create Interaction \
 
 indemn entity create HealthSignal \
   --fields '{
-    "organization_id": {"type": "objectid", "is_relationship": true, "relationship_target": "Organization"},
+    "organization_id": {"type": "objectid", "is_relationship": true, "relationship_target": "Company"},
     "kind": {"type": "str", "enum_values": ["churn_risk", "expansion", "engagement_drop", "champion_lost"]},
     "severity": {"type": "str", "enum_values": ["low", "medium", "high", "critical"]},
     "detected_at": {"type": "datetime"},
@@ -174,14 +176,14 @@ indemn entity create Note \
 ```bash
 # Team member — everyone gets this
 indemn role create team_member \
-  --permissions '{"read": ["Organization", "Contact", "Meeting", "Interaction", "ActionItem", "HealthSignal", "Note", "Deal"], "write": ["ActionItem", "Note"]}' \
+  --permissions '{"read": ["Company", "Contact", "Meeting", "Interaction", "ActionItem", "HealthSignal", "Note", "Deal"], "write": ["ActionItem", "Note"]}' \
   --watches '[
     {"entity_type": "ActionItem", "event": "fields_changed", "conditions": {"all": [{"field": "is_overdue", "op": "equals", "value": true}]}, "scope": {"type": "field_path", "path": "owner_actor_id"}}
   ]'
 
 # Account owner — owns customer relationships
 indemn role create account_owner \
-  --permissions '{"read": ["*"], "write": ["Organization", "Contact", "Deal", "HealthSignal"]}' \
+  --permissions '{"read": ["*"], "write": ["Company", "Contact", "Deal", "HealthSignal"]}' \
   --watches '[
     {"entity_type": "HealthSignal", "event": "created", "scope": {"type": "field_path", "path": "organization.primary_owner_id"}},
     {"entity_type": "ActionItem", "event": "fields_changed", "conditions": {"field": "is_overdue", "op": "equals", "value": true}, "scope": {"type": "field_path", "path": "organization.primary_owner_id"}},
@@ -195,7 +197,7 @@ indemn role create meeting_processor \
 
 # Health monitor — AI role
 indemn role create health_monitor \
-  --permissions '{"read": ["Organization", "Interaction"], "write": ["Organization", "HealthSignal"]}' \
+  --permissions '{"read": ["Company", "Interaction"], "write": ["Company", "HealthSignal"]}' \
   --watches '[]'
 
 # Overdue checker — AI role (schedule-triggered)
@@ -205,7 +207,7 @@ indemn role create follow_up_checker \
 
 # Ops — sees everything
 indemn role create ops \
-  --permissions '{"read": ["*"], "write": ["Organization", "ActionItem", "HealthSignal"]}' \
+  --permissions '{"read": ["*"], "write": ["Company", "ActionItem", "HealthSignal"]}' \
   --watches '[
     {"entity_type": "HealthSignal", "event": "created", "conditions": {"field": "severity", "op": "in", "value": ["high", "critical"]}},
     {"entity_type": "Deal", "event": "transitioned", "conditions": {"field": "stage", "op": "equals", "value": "closed_won"}}
@@ -218,12 +220,12 @@ indemn role create ops \
 
 ```bash
 # Health scoring rules
-indemn rule create --entity Organization --capability auto_classify \
+indemn rule create --entity Company --capability auto_classify \
   --name "enterprise-no-contact-30d" \
   --when '{"all": [{"field": "last_interaction_at", "op": "older_than", "value": "30d"}, {"field": "tier", "op": "in", "value": ["enterprise", "strategic"]}]}' \
   --action set_fields --sets '{"health_score": "at_risk"}'
 
-indemn rule create --entity Organization --capability auto_classify \
+indemn rule create --entity Company --capability auto_classify \
   --name "any-no-contact-90d" \
   --when '{"all": [{"field": "last_interaction_at", "op": "older_than", "value": "90d"}]}' \
   --action set_fields --sets '{"health_score": "churn_risk"}'
@@ -349,7 +351,7 @@ indemn actionitem create --data '{"description": "Follow up with Julia at INSURI
 
 # Test 4: The assistant
 # Log in → type "what's the story with INSURICA?"
-# → Assistant queries Organization, Meetings, Interactions, HealthSignals, ActionItems
+# → Assistant queries Company, Meetings, Interactions, HealthSignals, ActionItems
 # → Returns a comprehensive briefing
 ```
 
