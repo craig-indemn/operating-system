@@ -72,23 +72,43 @@ Error: `result.get("Quote") → None` causing `AttributeError` on `.get("QuoteID
 - "Instant Quote" underwriter user created
 - Still pending: Mike Burke's endorsement process rundown
 
+## Phase 3: Duplicate Detection (COMPLETE)
+
+3-layer duplicate detection added:
+- **Layer 1 (skill):** If `submission.unisoft_quote_id` already set in the claimed email, skip.
+- **Layer 2 (CLI + skill):** `gic submissions check-duplicate --name "..." --compact` searches other submissions for fuzzy name match with existing Quote ID. Added as Step 3.5 in skill.
+- **Layer 3 (skill):** Check Unisoft `HasDuplicates` flag in SetQuote response, note in completion.
+
+## Dual Proxy Architecture (COMPLETE)
+
+Both UAT and prod Unisoft now accessible simultaneously:
+
+| Port | Env | Service | Config File |
+|------|-----|---------|-------------|
+| 5000 | UAT | UniProxy | `C:\unisoft\UniProxy.env` |
+| 5001 | **PROD** | UniProxy-Prod | `C:\unisoft\UniProxy-Prod.env` |
+
+**Key learnings (document for next time):**
+1. **DNS Identity required for prod** — `EndpointIdentity.CreateDnsIdentity("gicunderwriters.co")` must be on the WCF endpoint address. Without it, `MessageSecurityException` at `SecuritySessionSecurityTokenProvider.GetTokenCore`. Not a cert issue, not a credential issue — a WCF message-layer requirement.
+2. **WS-Security creds are `UniClient`** with the SAME password for both UAT and prod. These are NOT the desktop app login (ccerto/indemnai). Discovered via Fiddler capture originally, confirmed via REST auth endpoint.
+3. **ServiceName must differ per exe** — proxy reads `C:\unisoft\{ServiceName}.env`. ServiceName = exe filename without extension. Both services use the same compiled code but different exe names (`UniProxy.exe` vs `UniProxy-Prod.exe`).
+4. **URL ACL required** — `netsh http add urlacl url=http://+:{PORT}/ user=Everyone` for each port, or `HttpListenerException` at startup.
+5. **AWS Security Group** — port 5001 must be open in `sg-04cc0ee7a09c15ffb`, not just port 5000.
+6. **Prod SOAP URL** — NOT guessable from UAT pattern. UAT is `ins-gic-service-uat-app.azurewebsites.net`, but prod is `services.gicunderwriters.co` (no `-prod-app`). Discovered by downloading the ClickOnce app config via PowerShell.
+
+**Prod task groups:**
+- GroupId 3 = NEW BIZ (all non-WC)
+- GroupId 4 = NEW BIZ Workers Comp
+
+Full reproduction guide in `unisoft-proxy/server/README.md`.
+
 ## What's Next
 
-### Immediate (can do now)
-1. **Investigate null Quote response** — debug the BETA AC NOR case
-2. **Run agents sync on prod** once prod proxy is configured (JC provided creds)
-
-### Phase 4: Production Cutover
-1. Update proxy env vars on EC2: UNISOFT_SOAP_URL → prod endpoint, credentials → `indemnai`
-2. Discover real group IDs via `unisoft task groups` as `indemnai`
-3. Update skill with prod group IDs
-4. Run first prod email end-to-end
-5. Monitor first batch
-
-### Phase 3: Duplicate Detection
-- MongoDB-side name+address check before creating Quote ID
-- Unisoft's `HasDuplicates` response flag can also be leveraged
-- Design not started yet
+### Immediate
+1. **Update automation skill** with prod group IDs (3 and 4) and prod proxy URL (port 5001)
+2. **Run `unisoft agents sync` against prod** (port 5001) to populate prod agent data in MongoDB
+3. **Run first prod email end-to-end** — requires switching Railway automation to prod proxy URL
+4. **Investigate null Quote response** — transient issue, root cause is WCF channel staleness. CLI now handles it gracefully.
 
 ### Parallel
 - Endorsements inbox ingestion (read access granted, waiting on Mike's rules)
@@ -104,6 +124,9 @@ Error: `result.get("Quote") → None` causing `AttributeError` on `.get("QuoteID
 | `6d86560` | Pause kill switches for dev crons |
 | `4c55a4f` | Phase 2: multi-field agency matching |
 | `832a66c` | Fix null Quote response CLI bug |
+| `34cc013` | Check ReplyStatus before accessing response data |
+| `740a8e5` | Phase 3: 3-layer duplicate detection |
+| `a9536b5` | Dual proxy with comprehensive documentation |
 
 ## Key Files
 

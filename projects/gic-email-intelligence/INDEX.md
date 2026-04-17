@@ -4,7 +4,7 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 
 ## Status
 
-**Session 2026-04-17a. Phases 1+2 complete + Gemini migration + deployed to Railway. Null Quote investigated (transient) + error handling fixed.**
+**Session 2026-04-17a. Phases 1-3 complete + Gemini migration + dual proxy (UAT 5000 + Prod 5001) live + deployed to Railway.**
 
 **To resume this project, read `artifacts/2026-04-17-session-handoff.md` — it has everything for full context transfer.**
 
@@ -675,7 +675,7 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 | 2026-04-08 | [demo-preparation](artifacts/2026-04-08-demo-preparation.md) | Demo narrative, 5-screen walkthrough, 9 questions for JC, 5-phase production roadmap |
 | 2026-04-16 | [production-rollout-plan](artifacts/2026-04-16-production-rollout-plan.md) | Production rollout plan with decisions — task creation approach, UAT-first, own dup detection, 4-phase ordering |
 | 2026-04-16 | [task-creation-uat-foundation](artifacts/2026-04-16-task-creation-uat-foundation.md) | Unisoft task creation end-to-end working in UAT — proxy nested-DTO fix, custom ActionId 40, test GroupId 2, reference payload, 50-char subject limit |
-| 2026-04-17 | [session-handoff](artifacts/2026-04-17-session-handoff.md) | Full session handoff — Phases 1+2, Gemini migration, Railway deploy, null Quote investigation |
+| 2026-04-17 | [session-handoff](artifacts/2026-04-17-session-handoff.md) | Full session handoff — Phases 1-3, Gemini migration, Railway deploy, dual proxy, prod discovery |
 
 ## Key Data Files
 | File | What it contains |
@@ -821,6 +821,10 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 - 2026-04-17: Skill must be INLINED in system prompt, not loaded via deepagents SkillsMiddleware. Middleware expects directory-per-skill layout with SKILL.md; our flat-file never loaded. Claude inferred; Gemini didn't. Inlining is the reliable path for non-Claude models.
 - 2026-04-17: Phase 2 (agency search) approach: sync full Unisoft agent data to MongoDB `unisoft_agents` collection, match locally with multi-field scoring (phone 40%, name 30%, address 15%, email 15%). Avoids broken `GetAgentsByAddress` proxy Criteria namespace collision.
 - 2026-04-17: Dev crons paused via `PAUSE_AUTOMATION=true` and `PAUSE_PROCESSING=true` env vars in Railway. Crons fire but exit immediately. Prevents Gemini credit burn while we're not actively testing.
+- 2026-04-17: Dual proxy architecture — UAT on port 5000, Prod on port 5001, same EC2 instance. Config-file-based (`{ServiceName}.env`), exe-filename-based service name detection. Fully reproducible from README.
+- 2026-04-17: Prod SOAP endpoint is `services.gicunderwriters.co/management/imsservice.svc` (discovered from ClickOnce app config download, NOT the URL JC sent which was the ClickOnce download link). ClientId = `GIC`. WS-Security user = `UniClient` (same password as UAT).
+- 2026-04-17: WCF DNS identity is REQUIRED for prod — `EndpointIdentity.CreateDnsIdentity("gicunderwriters.co")` must be set on the endpoint address. Without it, WCF message-level security context negotiation fails with `MessageSecurityException` even if credentials are correct and cert validation is skipped. This is NOT a cert issue — it's a WCF secure conversation requirement.
+- 2026-04-17: Prod task groups: NEW BIZ = GroupId 3, NEW BIZ Workers Comp = GroupId 4. Update the automation skill with these IDs when switching to prod.
 
 ## Open Questions (deferred — not blocking demo)
 - How does RingCentral data merge into the same pipeline? (Same pattern: RingCentral CLI + skills)
