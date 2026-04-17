@@ -4,7 +4,7 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 
 ## Status
 
-**Session 2026-04-17a. Phases 1+2 complete + Gemini migration + deployed to Railway. Investigating null Quote response.**
+**Session 2026-04-17a. Phases 1+2 complete + Gemini migration + deployed to Railway. Null Quote investigated (transient) + error handling fixed.**
 
 **To resume this project, read `artifacts/2026-04-17-session-handoff.md` — it has everything for full context transfer.**
 
