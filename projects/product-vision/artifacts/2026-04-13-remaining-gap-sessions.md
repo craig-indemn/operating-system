@@ -52,7 +52,8 @@ indemn-os/
     skills/                  # Seed markdown for standard skills
     roles/                   # Seed YAML for standard roles
   
-  harnesses/                 # Real-time harnesses (separate Docker images)
+  harnesses/                 # Harness images (separate Docker images, outside trust boundary)
+    async-deepagents/        # Temporal worker + deepagents harness (background processing)
     voice-deepagents/        # LiveKit + deepagents harness
     chat-deepagents/         # WebSocket + deepagents harness
   

@@ -130,6 +130,7 @@ The Queue Processor runs as a **persistent service with an internal polling loop
 | `indemn-ui` | Static site | **Yes** (`app.os.indemn.ai`) | 1 | 1 (CDN later) |
 | `indemn-runtime-voice` | Web service | **Yes** (LiveKit needs public) | 0-1 | 1 |
 | `indemn-runtime-chat` | Web service | **Yes** (WebSocket endpoint) | 0-1 | 1 |
+| `indemn-runtime-async` | Worker service | **No** | 1 | 2 |
 
 Internal services (Queue Processor, Temporal Worker) are never assigned public domains — Railway's private networking makes them accessible only via `service-name.railway.internal` within the same project.
 

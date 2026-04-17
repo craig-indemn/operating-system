@@ -232,6 +232,8 @@ boto3 = ">=1.34"
 orjson = ">=3.10"
 python-multipart = ">=0.0.9"
 pyyaml = ">=6.0"
+jsonschema = ">=4.21"
+croniter = ">=2.0"
 
 [project.scripts]
 indemn = "kernel.cli.app:main"
@@ -561,8 +563,10 @@ class EntityDefinition(Document):
     indexes: list[IndexDef] = Field(default_factory=list)
     activated_capabilities: list[CapabilityActivation] = Field(default_factory=list)
 
-    # All definitions are system-scoped (not per-org)
-    # Org-specific configuration is in rules, lookups, and capability configs
+    # Per-org: different organizations can define different entity types.
+    # Seed templates provide starting points; orgs clone and customize.
+    # `indemn org clone` copies entity definitions along with all other config.
+    org_id: ObjectId
     created_at: datetime = Field(default_factory=datetime.utcnow)
     updated_at: datetime = Field(default_factory=datetime.utcnow)
     created_by: Optional[str] = None
@@ -571,7 +575,7 @@ class EntityDefinition(Document):
     class Settings:
         name = "entity_definitions"
         indexes = [
-            [("name", 1)],
+            [("org_id", 1), ("name", 1)],  # Unique per org
         ]
 ```
 
@@ -613,7 +617,7 @@ class BaseEntity(Document):
 
     async def after_find(self):
         """Beanie hook: capture state on load for change tracking."""  # [G-17]
-        self._loaded_state = self.dict(by_alias=True)
+        self._loaded_state = self.model_dump(by_alias=True)
 
     def transition_to(self, target_state: str, reason: Optional[str] = None):
         """Validate and set state transition. Does NOT save."""
@@ -621,10 +625,11 @@ class BaseEntity(Document):
         validate_and_apply_transition(self, target_state, reason)
 
     async def save_tracked(self, actor_id: str = None, **kwargs):
-        """The ONLY save path. See section 1.9 for full implementation."""
+        """The ONLY save path. See section 1.9 for full implementation.
+        Returns list of created messages (for optimistic dispatch in Phase 2)."""
         from kernel.entity.save import save_tracked_impl
         _actor_id = actor_id or current_actor_id.get()
-        await save_tracked_impl(self, _actor_id, **kwargs)
+        return await save_tracked_impl(self, _actor_id, **kwargs)
 
     @classmethod
     async def find_scoped(cls, filter_doc: dict = None, **kwargs):
@@ -646,6 +651,20 @@ class BaseEntity(Document):
                 raise PermissionError("Cross-org access denied")
         return entity
 ```
+
+### Implementation Note: Dual Base Class Architecture (Post-Shakeout)
+
+The spec above describes a single `BaseEntity(Document)` class for all entities. During the shakeout session (commit 23fcf06), this was split into two base classes to resolve runtime failures:
+
+- **`KernelBaseEntity(_EntityMixin, Document)`** — Beanie ODM for the 7 hand-coded kernel entities (Organization, Actor, Role, Integration, Attention, Runtime, Session). These have fixed schemas, one collection each, and benefit from Beanie's query interface and lifecycle hooks.
+
+- **`DomainBaseEntity(_EntityMixin, BaseModel)`** — Pydantic + raw Motor for dynamically-generated domain entities. These are created from `EntityDefinition` records at startup via `create_model` in `kernel/entity/factory.py`. They use per-org collections and cannot fit Beanie's `is_root=True` single-collection inheritance model (shakeout Finding 4).
+
+- **`_DomainQuery`** — a wrapper class on `DomainBaseEntity` that provides a Beanie-compatible query interface (`find`, `find_one`, `get`, `aggregate`) over raw Motor operations, so application code can use the same patterns for both kernel and domain entities.
+
+Both base classes share `_EntityMixin`, which provides the common fields (`org_id`, `created_at`, `updated_at`, `version`), `save_tracked()`, `transition_to()`, `find_scoped()`, and `get_scoped()`. The split is an implementation detail — the entity framework's external behavior is the same for both.
+
+**Root cause**: Shakeout Finding 3 (Motor Database truth check under Beanie's `is_root=True` pattern) and Finding 4 (Beanie single-collection inheritance incompatible with dynamic per-org collections for domain entities). The single-`BaseEntity(Document)` spec was correct in intent but hit Beanie/Motor constraints at runtime. The dual base class resolves both without changing any external behavior.
 
 ### Beanie + OrgScopedCollection Integration [G-68]
 
@@ -744,7 +763,12 @@ def create_entity_class(definition: EntityDefinition) -> type[BaseEntity]:
     for field_name, field_def in definition.fields.items():
         python_type = TYPE_MAP.get(field_def.type, str)
         if field_def.enum_values:
-            python_type = Literal[tuple(field_def.enum_values)]
+            # For enum fields, use str type with Pydantic field-level validation.
+            # Literal[tuple(...)] works with create_model in Pydantic v2 but
+            # can be fragile across Python versions. The json_schema_extra
+            # carries enum values for the UI; validation uses a model_validator.
+            python_type = str
+            # Enum validation is added as a model_validator after class creation (below)
         if not field_def.required:
             python_type = Optional[python_type]
         default = field_def.default if field_def.default is not None else (
@@ -763,10 +787,37 @@ def create_entity_class(definition: EntityDefinition) -> type[BaseEntity]:
         **field_definitions,
     )
 
+    # Add enum validators for fields with enum_values
+    enum_fields = {
+        fname: fdef.enum_values
+        for fname, fdef in definition.fields.items()
+        if fdef.enum_values
+    }
+    if enum_fields:
+        original_init = DynamicEntity.__init__
+        def _validating_init(self, **data):
+            for fname, allowed in enum_fields.items():
+                val = data.get(fname)
+                if val is not None and val not in allowed:
+                    raise ValueError(f"Field '{fname}' must be one of {allowed}, got '{val}'")
+            original_init(self, **data)
+        DynamicEntity.__init__ = _validating_init
+
+    # Store enum metadata for UI and skill generation
+    DynamicEntity._enum_fields = enum_fields
+
+    # Identify the state field from is_state_field flag in definition
+    state_field_name = None
+    for fname, fdef in definition.fields.items():
+        if fdef.is_state_field:
+            state_field_name = fname
+            break
+    DynamicEntity._state_field_name = state_field_name
+
     # Attach configuration
     DynamicEntity._state_machine = definition.state_machine
     DynamicEntity._computed_fields = (
-        {k: v.dict() for k, v in definition.computed_fields.items()}
+        {k: v.model_dump() for k, v in definition.computed_fields.items()}
         if definition.computed_fields else None
     )
     DynamicEntity._activated_capabilities = definition.activated_capabilities or []
@@ -841,10 +892,37 @@ async def init_database():
         if hasattr(cls, '__name__'):
             ENTITY_REGISTRY[cls.__name__] = cls
 
-    # Load domain entity definitions (direct Motor before Beanie init)
+    # Load domain entity definitions from ALL orgs (direct Motor before Beanie init).
+    # Entity definitions are per-org. At startup, the kernel loads all definitions
+    # across all orgs, deduplicating by name (same-name definitions across orgs
+    # produce the same Python class — org scoping happens at query time via org_id).
+    # If two orgs define "Submission" with different fields, the UNION of fields
+    # is used for the Python class — MongoDB is schemaless, so documents in each
+    # org only have the fields that org's definition specifies.
     defs_coll = db["entity_definitions"]
+    seen_names: dict[str, EntityDefinition] = {}
     async for doc in defs_coll.find({}):
         defn = EntityDefinition(**doc)
+        if defn.name in seen_names:
+            # Merge: union of fields from all orgs' definitions of this name
+            existing = seen_names[defn.name]
+            for fname, fdef in defn.fields.items():
+                if fname not in existing.fields:
+                    existing.fields[fname] = fdef
+            continue
+        seen_names[defn.name] = defn
+
+    # Reserved names: kernel entity names cannot be used for domain entities
+    RESERVED_NAMES = {cls.__name__ for cls in kernel_models if hasattr(cls, '__name__')}
+
+    for defn in seen_names.values():
+        if defn.name in RESERVED_NAMES:
+            import logging
+            logging.error(
+                f"Domain entity '{defn.name}' collides with kernel entity name. "
+                f"Reserved names: {RESERVED_NAMES}. Skipping."
+            )
+            continue
         try:
             dynamic_cls = create_entity_class(defn)
             ENTITY_REGISTRY[defn.name] = dynamic_cls
@@ -1201,8 +1279,14 @@ def validate_and_apply_transition(entity: "BaseEntity", target_state: str, reaso
     setattr(entity, state_field, target_state)
 
 def _find_state_field(entity) -> str:
-    """Find the field controlled by the state machine."""
-    # Convention: 'status' or 'stage'. Can be overridden per entity.
+    """Find the field controlled by the state machine.
+    For domain entities: uses _state_field_name set by factory.py from is_state_field.
+    For kernel entities: falls back to convention ('status' or 'stage')."""
+    # Dynamic entities have _state_field_name set by create_entity_class
+    state_field = getattr(type(entity), '_state_field_name', None)
+    if state_field:
+        return state_field
+    # Fallback: convention for kernel entities
     for field_name in ("status", "stage"):
         if hasattr(entity, field_name):
             return field_name
@@ -1232,7 +1316,7 @@ def evaluate_computed_fields(entity: "BaseEntity") -> dict[str, any]:
         return {}
 
     result = {}
-    entity_data = entity.dict(by_alias=True)
+    entity_data = entity.model_dump(by_alias=True)
 
     for field_name, defn in computed_defs.items():
         source_field = defn["source_field"] if isinstance(defn, dict) else defn.source_field
@@ -1289,13 +1373,24 @@ async def _resolve_schema(entity, config: FlexibleDataSchema) -> dict:
             return None
         from kernel.db import ENTITY_REGISTRY
         # Determine the target entity type from the field definition
-        target_entity_cls = _resolve_target_entity(entity, config.schema_source)
+        target_entity_cls = await _resolve_target_entity(entity, config.schema_source)
         if not target_entity_cls:
             return None
         related = await target_entity_cls.get(related_id)
         if not related:
             return None
         return getattr(related, config.schema_field, None)
+
+async def _resolve_target_entity(entity, field_name: str):
+    """Resolve the entity class for a relationship field."""
+    from kernel.db import ENTITY_REGISTRY
+    from kernel.entity.definition import EntityDefinition
+    defn = await EntityDefinition.find_one({"name": type(entity).__name__})
+    if defn and field_name in defn.fields:
+        target = defn.fields[field_name].relationship_target
+        if target:
+            return ENTITY_REGISTRY.get(target)
+    return None
 ```
 
 ## 1.9 The Save Path — save_tracked()
@@ -1404,13 +1499,13 @@ async def save_tracked_impl(entity: "BaseEntity", actor_id: str, **kwargs):
                     if not entity.id:
                         entity.id = ObjectId()
                     await entity.get_motor_collection().insert_one(
-                        entity.dict(by_alias=True), session=session
+                        entity.model_dump(by_alias=True), session=session
                     )
                 else:
                     # Update with optimistic concurrency
                     result = await entity.get_motor_collection().update_one(
                         {"_id": entity.id, "version": expected_version},
-                        {"$set": entity.dict(by_alias=True)},
+                        {"$set": entity.model_dump(by_alias=True)},
                         session=session,
                     )
                     if result.modified_count == 0:
@@ -1431,8 +1526,9 @@ async def save_tracked_impl(entity: "BaseEntity", actor_id: str, **kwargs):
                 )
 
                 # Evaluate watches and emit messages
+                created_messages = []
                 if should_emit:
-                    await evaluate_watches_and_emit(
+                    created_messages = await evaluate_watches_and_emit(
                         entity=entity,
                         event_type=event_type,
                         event_metadata=event_meta,
@@ -1443,14 +1539,17 @@ async def save_tracked_impl(entity: "BaseEntity", actor_id: str, **kwargs):
                     )
 
         # Update loaded state for next change tracking
-        entity._loaded_state = entity.dict(by_alias=True)
+        entity._loaded_state = entity.model_dump(by_alias=True)
+
+        # Return created messages for optimistic dispatch (Phase 2)
+        return created_messages
 
 class VersionConflictError(Exception):
     pass
 
 def _compute_changes(entity) -> list[dict]:
     """Compare current state against loaded state to find field-level changes."""
-    current = entity.dict(by_alias=True)
+    current = entity.model_dump(by_alias=True)
     loaded = entity._loaded_state
     changes = []
     for key in set(list(current.keys()) + list(loaded.keys())):
@@ -1465,14 +1564,17 @@ def _compute_changes(entity) -> list[dict]:
 def _should_emit(entity, is_new: bool, method: str, changes: list) -> tuple[bool, str]:
     """Determine if this save should evaluate watches and create messages.
     Selective emission: only creation, deletion, state transitions,
-    and @exposed method invocations."""
+    and @exposed method invocations.
+    Priority: creation > transition > method > no emission.
+    Creation always emits as "created" even if method="create" is passed."""
     if is_new:
         return True, "created"
-    if method:
-        return True, "method_invoked"
-    # Check for state transition
+    # Check for state transition (takes precedence over method —
+    # a transition triggered by a method emits as "transitioned")
     if hasattr(entity, '_pending_transition') and entity._pending_transition:
         return True, "transitioned"
+    if method:
+        return True, "method_invoked"
     return False, None
 
 def _is_heartbeat_only(entity) -> bool:
@@ -1480,7 +1582,7 @@ def _is_heartbeat_only(entity) -> bool:
     if type(entity).__name__ != "Attention":
         return False
     loaded = entity._loaded_state
-    current = entity.dict(by_alias=True)
+    current = entity.model_dump(by_alias=True)
     changed_fields = {k for k in current if current.get(k) != loaded.get(k)}
     changed_fields -= {"version", "updated_at"}
     return changed_fields <= {"last_heartbeat", "expires_at"}
@@ -1596,7 +1698,7 @@ def compute_hash(record: "ChangeRecord") -> str:
         "change_type": record.change_type,
         "actor_id": record.actor_id,
         "timestamp": record.timestamp.isoformat(),
-        "changes": [c.dict() for c in record.changes],
+        "changes": [c.model_dump() for c in record.changes],
         "previous_hash": record.previous_hash,
     }, option=orjson.OPT_SORT_KEYS)
     return hashlib.sha256(content).hexdigest()
@@ -1646,20 +1748,46 @@ class MongoDBMessageBus:
     async def publish(self, message: Message, session=None) -> None:
         await message.insert(session=session)
 
+    async def claim_by_id(self, message_id: ObjectId, actor_id: ObjectId) -> Message:
+        """Claim a specific message by ID. Used by Temporal activities."""
+        result = await Message.get_motor_collection().find_one_and_update(
+            {
+                "_id": message_id,
+                "$or": [
+                    {"status": "pending"},
+                    {"status": "processing",
+                     "visibility_timeout": {"$lt": datetime.utcnow()}},
+                ],
+            },
+            {
+                "$set": {
+                    "status": "processing",
+                    "claimed_by": actor_id,
+                    "claimed_at": datetime.utcnow(),
+                    "visibility_timeout": datetime.utcnow() + timedelta(minutes=5),
+                },
+                "$inc": {"attempt_count": 1},
+            },
+            return_document=True,
+        )
+        return Message(**result) if result else None
+
     async def claim(self, role: str, org_id: ObjectId, actor_id: ObjectId) -> Message:
         """Atomic claim via findOneAndUpdate. [G-78]"""
         result = await Message.get_motor_collection().find_one_and_update(
             {
                 "org_id": org_id,
                 "target_role": role,
-                "$or": [
-                    {"status": "pending"},
-                    {"status": "processing",
-                     "visibility_timeout": {"$lt": datetime.utcnow()}},
-                ],
-                "$or": [  # Scoped targeting
-                    {"target_actor_id": None},
-                    {"target_actor_id": actor_id},
+                "$and": [
+                    {"$or": [
+                        {"status": "pending"},
+                        {"status": "processing",
+                         "visibility_timeout": {"$lt": datetime.utcnow()}},
+                    ]},
+                    {"$or": [  # Scoped targeting
+                        {"target_actor_id": None},
+                        {"target_actor_id": actor_id},
+                    ]},
                 ],
             },
             {
@@ -1687,7 +1815,7 @@ class MongoDBMessageBus:
             async with session.start_transaction():
                 # Insert into log
                 log_entry = MessageLog(
-                    **message.dict(exclude={"id"}),
+                    **message.model_dump(exclude={"id"}),
                     result=result,
                     completed_at=datetime.utcnow(),
                 )
@@ -1807,12 +1935,14 @@ from datetime import datetime
 
 async def evaluate_watches_and_emit(entity, event_type, event_metadata,
                                      correlation_id, depth, parent_entity_type,
-                                     session):
-    """Evaluate watches for this entity type and create messages for matches."""
+                                     session) -> list:
+    """Evaluate watches for this entity type and create messages for matches.
+    Returns list of created Message objects (for optimistic dispatch in Phase 2)."""
+    created_messages = []
     with create_span("watch.evaluate", entity_type=type(entity).__name__):
         org_id = str(entity.org_id)
         entity_type_name = type(entity).__name__
-        entity_data = entity.dict(by_alias=True)
+        entity_data = entity.model_dump(by_alias=True)
 
         watches = get_cached_watches(org_id, entity_type_name)
 
@@ -1858,6 +1988,9 @@ async def evaluate_watches_and_emit(entity, event_type, event_metadata,
             from kernel.message.mongodb_bus import MongoDBMessageBus
             bus = MongoDBMessageBus()
             await bus.publish(message, session=session)
+            created_messages.append(message)
+
+    return created_messages
 
 def _event_matches(watch_event: str, actual_event: str, metadata: dict) -> bool:
     """Check if the watch event matches the actual event."""
@@ -1881,7 +2014,7 @@ async def _build_context(entity, depth: int, session) -> dict:
 
     # Follow relationship fields
     from kernel.db import ENTITY_REGISTRY
-    entity_data = entity.dict(by_alias=True)
+    entity_data = entity.model_dump(by_alias=True)
     # Check EntityDefinition for relationship fields
     defn = await EntityDefinition.find_one({"name": type(entity).__name__})
     if defn:
@@ -1897,7 +2030,7 @@ async def _build_context(entity, depth: int, session) -> dict:
 
 def _serialize_for_context(entity) -> dict:
     """Serialize entity for message context (exclude large fields)."""
-    data = entity.dict(by_alias=True)
+    data = entity.model_dump(by_alias=True)
     # Exclude potentially large fields
     data.pop("data", None)  # Flexible data can be large
     data.pop("_loaded_state", None)
@@ -2066,6 +2199,17 @@ async def validate_watch(watch: "WatchDefinition", org_id: str) -> list[str]:
                 )
 
     return errors
+
+def _get_entity_fields(entity_type: str) -> set[str]:
+    """Get all field names for an entity type (kernel or domain)."""
+    from kernel.db import ENTITY_REGISTRY
+    cls = ENTITY_REGISTRY.get(entity_type)
+    if not cls:
+        return set()
+    fields = set(cls.model_fields.keys())
+    # For domain entities, also check the definition
+    # (model_fields covers it since dynamic classes are created from definitions)
+    return fields
 
 def _extract_field_references(condition: dict) -> set[str]:
     """Extract all field names referenced in a condition tree."""
@@ -2364,7 +2508,7 @@ async def auto_classify(entity, config: dict, org_id: str) -> dict:
             org_id=str(org_id),
             entity_type=type(entity).__name__,
             capability="auto_classify",
-            entity_data=entity.dict(by_alias=True),
+            entity_data=entity.model_dump(by_alias=True),
         )
 
         if result["matched"] and not result["vetoed"]:
@@ -2561,7 +2705,7 @@ def register_entity_routes(app, entity_name: str, entity_cls: type):
             filter_doc["status"] = status
         # Additional filters from query params [G-69]
         entities = await entity_cls.find_scoped(filter_doc).skip(offset).limit(limit).to_list()
-        return [e.dict() for e in entities]
+        return [e.model_dump() for e in entities]
 
     @router.get("/{entity_id}")
     async def get_entity(entity_id: str, actor=Depends(get_current_actor)):
@@ -2569,14 +2713,14 @@ def register_entity_routes(app, entity_name: str, entity_cls: type):
         entity = await entity_cls.get_scoped(entity_id)
         if not entity:
             raise HTTPException(404)
-        return entity.dict()
+        return entity.model_dump()
 
     @router.post("/")
     async def create_entity(data: dict, actor=Depends(get_current_actor)):
         check_permission(actor, entity_name, "write")
         entity = entity_cls(org_id=current_org_id.get(), **data)
         await entity.save_tracked(method="create")
-        return entity.dict()
+        return entity.model_dump()
 
     @router.put("/{entity_id}")
     async def update_entity(entity_id: str, data: dict, actor=Depends(get_current_actor)):
@@ -2588,7 +2732,7 @@ def register_entity_routes(app, entity_name: str, entity_cls: type):
             if key not in ("id", "_id", "org_id", "version"):
                 setattr(entity, key, value)
         await entity.save_tracked()
-        return entity.dict()
+        return entity.model_dump()
 
     @router.post("/{entity_id}/transition")
     async def transition_entity(
@@ -2601,7 +2745,7 @@ def register_entity_routes(app, entity_name: str, entity_cls: type):
             raise HTTPException(404)
         entity.transition_to(to, reason)
         await entity.save_tracked(method="transition")
-        return entity.dict()
+        return entity.model_dump()
 
     # Register @exposed methods as additional routes [G-11]
     for attr_name in dir(entity_cls):
@@ -2656,7 +2800,7 @@ def _register_capability_route(router, entity_cls, entity_name, cap_name, activa
             for field, value in data.items():
                 setattr(entity, field, value)
             await entity.save_tracked(method=cap_name)
-            return entity.dict()
+            return entity.model_dump()
 ```
 
 ### Entity Metadata Endpoint [G-33, G-69]
@@ -2693,6 +2837,57 @@ async def get_entity_metadata(actor=Depends(get_current_actor)):
         result.append(meta)
 
     return result
+
+def _has_any_permission(actor, entity_name: str) -> bool:
+    """Check if actor has read or write permission for this entity type."""
+    roles = getattr(actor, '_cached_roles', [])
+    for role in roles:
+        for action in ("read", "write"):
+            allowed = role.permissions.get(action, [])
+            if "*" in allowed or entity_name in allowed:
+                return True
+    return False
+
+def _get_field_metadata(cls, entity_name: str) -> list[dict]:
+    """Derive field metadata from a kernel entity's Pydantic model_fields."""
+    fields = []
+    for fname, finfo in cls.model_fields.items():
+        if fname.startswith("_"):
+            continue
+        fields.append({
+            "name": fname,
+            "type": _pydantic_type_to_string(finfo.annotation),
+            "required": finfo.is_required(),
+            "default": finfo.default if finfo.default is not None else None,
+        })
+    return fields
+
+def _pydantic_type_to_string(annotation) -> str:
+    """Convert a Pydantic type annotation to a simple string."""
+    origin = getattr(annotation, '__origin__', None)
+    if origin is list:
+        return "list"
+    type_name = getattr(annotation, '__name__', str(annotation))
+    type_map = {"str": "str", "int": "int", "float": "float", "bool": "bool",
+                "ObjectId": "objectid", "datetime": "datetime", "date": "date"}
+    return type_map.get(type_name, "str")
+
+def _check_permission(actor, entity_name: str, action: str) -> bool:
+    """Check a specific permission without raising."""
+    roles = getattr(actor, '_cached_roles', [])
+    for role in roles:
+        allowed = role.permissions.get(action, [])
+        if "*" in allowed or entity_name in allowed:
+            return True
+    return False
+
+def _extract_enum_values(annotation) -> list[str] | None:
+    """Extract Literal values from a type annotation."""
+    from typing import get_args, Literal
+    args = get_args(annotation)
+    if args and all(isinstance(a, str) for a in args):
+        return list(args)
+    return None
 ```
 
 ### Health Endpoint [G-16]
@@ -2811,6 +3006,11 @@ class AuthMiddleware:
         current_org_id.set(actor.org_id)
         current_actor_id.set(str(actor.id))
 
+        # Load roles once per request for permission checks
+        from kernel_entities.role import Role
+        roles = await Role.find({"_id": {"$in": actor.role_ids}}).to_list()
+        actor._cached_roles = roles
+
         request.state.actor = actor
         return await call_next(request)
 
@@ -2818,11 +3018,23 @@ async def get_current_actor(request: Request) -> Actor:
     return request.state.actor
 
 def check_permission(actor: Actor, entity_type: str, action: str):
-    """Check if actor's roles grant the required permission."""
-    # Load permissions from actor's roles
-    # For Phase 1: simplified — check role permissions dict
-    # Full implementation loads Role entities and checks
-    pass  # Placeholder — implemented during Phase 1 build
+    """Check if actor's roles grant the required permission.
+    Loads the actor's Role entities and checks if any grant the required action
+    on the given entity type. Wildcard "*" grants access to all entity types."""
+    # Roles are cached on request.state by the middleware (loaded once per request)
+    roles = getattr(actor, '_cached_roles', None)
+    if roles is None:
+        raise PermissionError("No roles loaded for actor")
+
+    for role in roles:
+        allowed_types = role.permissions.get(action, [])
+        if "*" in allowed_types or entity_type in allowed_types:
+            return  # Permission granted
+
+    raise PermissionError(
+        f"Actor {actor.name} does not have '{action}' permission on {entity_type}. "
+        f"Roles: {[r.name for r in roles]}"
+    )
 ```
 
 ```python
@@ -2855,7 +3067,7 @@ def verify_access_token(token: str) -> dict:
 
 ```python
 # kernel/auth/password.py
-from argon2 import PasswordHasher
+from argon2 import PasswordHasher, Type
 
 # Argon2id with secure defaults
 _hasher = PasswordHasher(
@@ -2863,7 +3075,7 @@ _hasher = PasswordHasher(
     memory_cost=65536,  # 64MB
     parallelism=4,
     hash_len=32,
-    type=argon2.Type.ID,  # Argon2id
+    type=Type.ID,  # Argon2id
 )
 
 def hash_password(password: str) -> str:
@@ -3021,6 +3233,12 @@ async def platform_init(admin_email: str, admin_password: str):
         raise HTTPException(400, "Platform already initialized")
 
     # Create platform org (self-referencing for org_id)
+    # NOTE: Intentional save_tracked() bypass. The bootstrap Organization is the
+    # only entity that cannot use save_tracked() because save_tracked() requires
+    # org_id context, and this IS the org being created (circular reference).
+    # The admin Actor and Role created below DO use save_tracked() after the org exists.
+    # This bypass means the bootstrap Organization lacks an initial changes collection
+    # audit record — an accepted tradeoff for the self-referencing bootstrap case.
     org_id = ObjectId()
     platform_org = Organization(
         id=org_id, org_id=org_id,
@@ -3149,6 +3367,474 @@ async def main():
         await run_sweep_cycle()
         await asyncio.sleep(5)
     logging.info("Queue processor stopped")
+```
+
+## 1.29 Schema Migration [M-1]
+
+```python
+# kernel/entity/migration.py
+from datetime import datetime
+from kernel.entity.definition import EntityDefinition
+from kernel.changes.collection import write_change_record
+from kernel.context import current_org_id
+import logging
+
+class MigrationPlan:
+    """A planned schema migration with preview and execution."""
+    def __init__(self, entity_name: str, org_id, operations: list[dict]):
+        self.entity_name = entity_name
+        self.org_id = org_id
+        self.operations = operations  # [{"type": "rename", "from": "old", "to": "new"}, ...]
+        self.affected_count = 0
+        self.preview_sample = []
+
+async def plan_migration(entity_name: str, operations: list[dict]) -> MigrationPlan:
+    """Build a migration plan with affected count and sample documents."""
+    from kernel.db import ENTITY_REGISTRY
+    org_id = current_org_id.get()
+    entity_cls = ENTITY_REGISTRY.get(entity_name)
+    if not entity_cls:
+        raise ValueError(f"Entity type {entity_name} not found")
+
+    plan = MigrationPlan(entity_name, org_id, operations)
+    plan.affected_count = await entity_cls.find_scoped({}).count()
+    plan.preview_sample = [
+        e.model_dump() for e in await entity_cls.find_scoped({}).limit(5).to_list()
+    ]
+    return plan
+
+async def execute_migration(plan: MigrationPlan, batch_size: int = 100,
+                             dry_run: bool = False) -> dict:
+    """Execute a schema migration in batches.
+    Supports: rename_field, add_field (with default), remove_field (deprecate).
+    Each batch is a MongoDB transaction. Progress is logged."""
+    from kernel.db import ENTITY_REGISTRY, get_database
+    db = get_database()
+    entity_cls = ENTITY_REGISTRY.get(plan.entity_name)
+    collection = entity_cls.get_motor_collection()
+
+    total = plan.affected_count
+    processed = 0
+    errors = []
+
+    for op in plan.operations:
+        if dry_run:
+            logging.info(f"DRY RUN: Would apply {op['type']} on {total} documents")
+            continue
+
+        if op["type"] == "rename_field":
+            # Batch rename with alias support during migration window
+            old_name, new_name = op["from"], op["to"]
+            while processed < total:
+                batch = await collection.find(
+                    {"org_id": plan.org_id, old_name: {"$exists": True}},
+                ).limit(batch_size).to_list(batch_size)
+                if not batch:
+                    break
+                client = collection.database.client
+                async with await client.start_session() as session:
+                    async with session.start_transaction():
+                        for doc in batch:
+                            await collection.update_one(
+                                {"_id": doc["_id"]},
+                                {"$rename": {old_name: new_name}},
+                                session=session,
+                            )
+                        processed += len(batch)
+                logging.info(f"Migration progress: {processed}/{total}")
+
+            # Update entity definition
+            defn = await EntityDefinition.find_one({
+                "name": plan.entity_name, "org_id": plan.org_id
+            })
+            if defn and old_name in defn.fields:
+                defn.fields[new_name] = defn.fields.pop(old_name)
+                defn.updated_at = datetime.utcnow()
+                await defn.save()
+
+        elif op["type"] == "add_field":
+            # Add with default — no document migration needed for MongoDB
+            # Just update the entity definition
+            defn = await EntityDefinition.find_one({
+                "name": plan.entity_name, "org_id": plan.org_id
+            })
+            if defn:
+                from kernel.entity.definition import FieldDefinition
+                defn.fields[op["name"]] = FieldDefinition(**op["field_def"])
+                defn.updated_at = datetime.utcnow()
+                await defn.save()
+
+        elif op["type"] == "remove_field":
+            # Mark as deprecated in definition, optionally clean from documents
+            defn = await EntityDefinition.find_one({
+                "name": plan.entity_name, "org_id": plan.org_id
+            })
+            if defn and op["name"] in defn.fields:
+                del defn.fields[op["name"]]
+                defn.updated_at = datetime.utcnow()
+                await defn.save()
+            if op.get("cleanup", False):
+                await collection.update_many(
+                    {"org_id": plan.org_id},
+                    {"$unset": {op["name"]: ""}},
+                )
+
+    return {
+        "status": "completed" if not dry_run else "dry_run",
+        "processed": processed,
+        "errors": errors,
+        "operations": len(plan.operations),
+    }
+```
+
+**CLI commands:**
+```bash
+# Rename a field (batched, with progress)
+indemn entity migrate Submission --rename old_field new_field --batch-size 100
+
+# Add a new field with default (no document migration needed)
+indemn entity migrate Submission --add-field '{"priority": {"type": "str", "default": "normal"}}'
+
+# Remove a field from definition (documents untouched)
+indemn entity migrate Submission --remove-field deprecated_field
+
+# Remove field AND clean from documents
+indemn entity migrate Submission --remove-field deprecated_field --cleanup
+
+# Dry-run any migration
+indemn entity migrate Submission --rename old new --dry-run
+```
+
+## 1.30 Auto-Generated CLI [M-2]
+
+```python
+# kernel/cli/app.py
+import typer
+from kernel.cli.client import CLIClient
+
+app = typer.Typer(name="indemn", help="Indemn OS CLI")
+
+def main():
+    """Entry point. Fetches entity metadata from API, registers commands dynamically."""
+    client = CLIClient()
+
+    # Register static commands (always available)
+    from kernel.cli.platform_commands import platform_app
+    from kernel.cli.entity_commands import entity_app
+    from kernel.cli.queue_commands import queue_app
+    app.add_typer(platform_app, name="platform")
+    app.add_typer(entity_app, name="entity")
+    app.add_typer(queue_app, name="queue")
+
+    # Fetch entity metadata and register dynamic commands
+    try:
+        meta = client.get("/api/_meta/entities")
+        for entity_meta in meta:
+            _register_entity_commands(app, entity_meta, client)
+    except Exception:
+        pass  # API unavailable — static commands still work
+
+    app()
+
+def _register_entity_commands(app: typer.Typer, meta: dict, client: CLIClient):
+    """Register CLI commands for one entity type. Mirrors API registration."""
+    name = meta["name"]
+    slug = name.lower()
+    entity_app = typer.Typer(name=slug, help=f"{name} operations")
+
+    @entity_app.command("list")
+    def list_cmd(limit: int = 20, offset: int = 0, status: str = None,
+                 format: str = "table"):
+        """List entities with filters."""
+        params = {"limit": limit, "offset": offset}
+        if status:
+            params["status"] = status
+        result = client.get(f"/api/{slug}s", params=params)
+        _render(result, format)
+
+    @entity_app.command("get")
+    def get_cmd(entity_id: str, format: str = "json"):
+        """Get entity by ID."""
+        result = client.get(f"/api/{slug}s/{entity_id}")
+        _render(result, format)
+
+    @entity_app.command("create")
+    def create_cmd(data: str):
+        """Create entity. Data as JSON string."""
+        import orjson
+        result = client.post(f"/api/{slug}s", json=orjson.loads(data))
+        _render(result, "json")
+
+    @entity_app.command("update")
+    def update_cmd(entity_id: str, data: str):
+        """Update entity fields."""
+        import orjson
+        result = client.put(f"/api/{slug}s/{entity_id}", json=orjson.loads(data))
+        _render(result, "json")
+
+    if meta.get("state_machine"):
+        @entity_app.command("transition")
+        def transition_cmd(entity_id: str, to: str, reason: str = None):
+            """Transition entity state."""
+            result = client.post(f"/api/{slug}s/{entity_id}/transition",
+                                json={"to": to, "reason": reason})
+            _render(result, "json")
+
+    # Register capability commands
+    for cap in meta.get("capabilities", []):
+        cap_name = cap["name"].replace("_", "-")
+        @entity_app.command(cap_name)
+        def cap_cmd(entity_id: str, auto: bool = False, data: str = None,
+                    _cap=cap["name"], _slug=slug):
+            import orjson
+            params = {"auto": "true"} if auto else {}
+            body = orjson.loads(data) if data else {}
+            result = client.post(f"/api/{_slug}s/{entity_id}/{_cap.replace('_', '-')}",
+                                json=body, params=params)
+            _render(result, "json")
+
+    # Register bulk commands
+    from kernel.cli.bulk_commands import register_bulk_commands
+    register_bulk_commands(name, entity_app)
+
+    app.add_typer(entity_app, name=slug)
+
+def _render(data, format: str):
+    """Render output in the requested format."""
+    import orjson
+    if format == "json":
+        typer.echo(orjson.dumps(data, option=orjson.OPT_INDENT_2).decode())
+    elif format == "table":
+        # Simple table rendering for lists
+        if isinstance(data, list) and data:
+            keys = list(data[0].keys())[:6]
+            typer.echo(" | ".join(k.ljust(20) for k in keys))
+            typer.echo("-" * (22 * len(keys)))
+            for row in data:
+                typer.echo(" | ".join(str(row.get(k, ""))[:20].ljust(20) for k in keys))
+        else:
+            typer.echo(orjson.dumps(data, option=orjson.OPT_INDENT_2).decode())
+```
+
+```python
+# kernel/cli/client.py
+import httpx
+import os
+
+class CLIClient:
+    """HTTP client for CLI API-mode. All CLI commands go through the API."""
+    def __init__(self):
+        self.base_url = os.environ.get("INDEMN_API_URL", "http://localhost:8000")
+        self.token = os.environ.get("INDEMN_SERVICE_TOKEN", "")
+
+    def _headers(self):
+        h = {"Content-Type": "application/json"}
+        if self.token:
+            h["Authorization"] = f"Bearer {self.token}"
+        return h
+
+    def get(self, path, params=None):
+        with httpx.Client(base_url=self.base_url) as client:
+            r = client.get(path, params=params, headers=self._headers(), timeout=30)
+            r.raise_for_status()
+            return r.json()
+
+    def post(self, path, json=None, params=None):
+        with httpx.Client(base_url=self.base_url) as client:
+            r = client.post(path, json=json, params=params, headers=self._headers(), timeout=60)
+            r.raise_for_status()
+            return r.json()
+
+    def put(self, path, json=None):
+        with httpx.Client(base_url=self.base_url) as client:
+            r = client.put(path, json=json, headers=self._headers(), timeout=60)
+            r.raise_for_status()
+            return r.json()
+```
+
+## 1.31 Org Clone / Diff / Deploy [M-6]
+
+```python
+# kernel/cli/org_commands.py
+import typer
+from kernel.cli.client import CLIClient
+
+org_app = typer.Typer(name="org", help="Organization management")
+
+@org_app.command("clone")
+def clone_org(source: str, as_name: str = typer.Option(..., "--as"),
+              include_data: bool = False):
+    """Clone an org's configuration into a new org.
+    Copies: entity definitions, skills, rules, lookups, roles, watches,
+    associate configs, capability activations, integration configs (no secrets).
+    Does NOT copy: entity instances, messages, changes, sessions, attentions."""
+    client = CLIClient()
+    result = client.post("/api/_platform/org/clone", json={
+        "source_org_slug": source,
+        "target_org_name": as_name,
+        "include_data": include_data,
+    })
+    typer.echo(f"Cloned {source} → {result['target_org_slug']} ({result['items_copied']} items)")
+
+@org_app.command("diff")
+def diff_orgs(org_a: str, org_b: str):
+    """Show configuration differences between two orgs."""
+    client = CLIClient()
+    result = client.get("/api/_platform/org/diff",
+                       params={"org_a": org_a, "org_b": org_b})
+    for diff in result.get("differences", []):
+        typer.echo(f"  {diff['type']:20s} {diff['name']:30s} {diff['change']}")
+    typer.echo(f"\n{len(result.get('differences', []))} differences found")
+
+@org_app.command("export")
+def export_org(org_slug: str, output: str = typer.Option(".", "--output")):
+    """Export org configuration to YAML files."""
+    client = CLIClient()
+    result = client.get(f"/api/_platform/org/export", params={"org": org_slug})
+    import yaml
+    from pathlib import Path
+    out = Path(output) / org_slug
+    out.mkdir(parents=True, exist_ok=True)
+    for category, items in result.items():
+        cat_dir = out / category
+        cat_dir.mkdir(exist_ok=True)
+        for name, data in items.items():
+            with open(cat_dir / f"{name}.yaml", "w") as f:
+                yaml.dump(data, f, default_flow_style=False)
+    typer.echo(f"Exported to {out}/")
+
+@org_app.command("import")
+def import_org(from_dir: str = typer.Option(..., "--from"),
+               as_name: str = typer.Option(..., "--as")):
+    """Import org configuration from exported YAML files."""
+    client = CLIClient()
+    import yaml
+    from pathlib import Path
+    config = {}
+    for cat_dir in Path(from_dir).iterdir():
+        if cat_dir.is_dir():
+            config[cat_dir.name] = {}
+            for f in cat_dir.glob("*.yaml"):
+                with open(f) as fh:
+                    config[cat_dir.name][f.stem] = yaml.safe_load(fh)
+    result = client.post("/api/_platform/org/import", json={
+        "target_org_name": as_name,
+        "config": config,
+    })
+    typer.echo(f"Imported into {result['org_slug']} ({result['items_imported']} items)")
+
+@org_app.command("deploy")
+def deploy_org(from_org: str = typer.Option(..., "--from-org"),
+               to_org: str = typer.Option(..., "--to-org"),
+               dry_run: bool = True):
+    """Promote configuration from one org to another.
+    Default is dry-run. Use --no-dry-run to apply."""
+    client = CLIClient()
+    result = client.post("/api/_platform/org/deploy", json={
+        "source_org_slug": from_org,
+        "target_org_slug": to_org,
+        "dry_run": dry_run,
+    })
+    if dry_run:
+        typer.echo("DRY RUN — would apply:")
+        for change in result.get("changes", []):
+            typer.echo(f"  {change['type']:20s} {change['name']}")
+    else:
+        typer.echo(f"Deployed {len(result.get('applied', []))} changes")
+```
+
+**API endpoints** backing these commands live in `kernel/api/bootstrap.py` (platform admin routes). They use `PlatformCollection` for cross-org access and audit every operation in both orgs' changes collections.
+
+## 1.32 Audit Verify Command [M-4]
+
+```python
+# kernel/cli/audit_commands.py
+
+@audit_app.command("verify")
+def verify_hash_chain(org: str = None, entity_type: str = None, limit: int = 1000):
+    """Verify the changes collection hash chain integrity.
+    Reports any breaks in the chain."""
+    client = CLIClient()
+    params = {"limit": limit}
+    if org: params["org"] = org
+    if entity_type: params["entity_type"] = entity_type
+    result = client.get("/api/_platform/audit/verify", params=params)
+    if result["chain_valid"]:
+        typer.echo(f"Hash chain verified: {result['records_checked']} records, no breaks")
+    else:
+        typer.echo(f"CHAIN BROKEN at record {result['break_at']}:")
+        typer.echo(f"  Expected: {result['expected_hash']}")
+        typer.echo(f"  Found:    {result['actual_hash']}")
+```
+
+## 1.33 Skill Approval Workflow [M-3]
+
+```python
+# kernel/api/skill_routes.py (addition to auto-generated routes)
+
+@skill_router.post("/{skill_id}/submit-for-review")
+async def submit_skill_for_review(skill_id: str, actor=Depends(get_current_actor)):
+    """Submit a skill update for review. Transitions status to pending_review."""
+    skill = await Skill.get_scoped(skill_id)
+    if not skill:
+        raise HTTPException(404)
+    skill.status = "pending_review"
+    await skill.save_tracked(actor_id=str(actor.id), method="submit_for_review")
+    return {"status": "pending_review"}
+
+@skill_router.post("/{skill_id}/approve")
+async def approve_skill(skill_id: str, actor=Depends(get_current_actor)):
+    """Approve a skill. Requires admin or skill-approver role."""
+    check_permission(actor, "Skill", "write")
+    skill = await Skill.get_scoped(skill_id)
+    if not skill or skill.status != "pending_review":
+        raise HTTPException(400, "Skill not pending review")
+    skill.status = "active"
+    await skill.save_tracked(actor_id=str(actor.id), method="approve")
+    return {"status": "active"}
+```
+
+## 1.34 Credential Rotation [M-8]
+
+```python
+# kernel/integration/rotation.py
+from datetime import datetime
+
+async def rotate_credentials(integration_id: str, actor_id: str):
+    """Rotate credentials for an integration.
+    1. Adapter generates new credentials (if supported)
+    2. New credentials stored in Secrets Manager
+    3. Old credentials invalidated
+    4. Cache invalidated across instances
+    5. Integration entity updated and audited."""
+    from kernel_entities.integration import Integration
+    from kernel.integration.credentials import store_credentials, invalidate_cached_credentials
+    from kernel.integration.dispatch import get_adapter
+
+    integration = await Integration.get(integration_id)
+    if not integration:
+        raise ValueError(f"Integration {integration_id} not found")
+
+    adapter = await get_adapter(integration.system_type)
+
+    # Provider-specific rotation (if supported)
+    if hasattr(adapter, 'rotate_credentials'):
+        new_creds = await adapter.rotate_credentials()
+        await store_credentials(integration.secret_ref, new_creds)
+    else:
+        raise ValueError(f"Adapter {integration.provider} does not support automatic rotation")
+
+    # Invalidate cache
+    invalidate_cached_credentials(integration.secret_ref)
+
+    # Audit
+    integration.last_checked_at = datetime.utcnow()
+    await integration.save_tracked(
+        actor_id=actor_id,
+        method="rotate_credentials",
+    )
+
+    return {"status": "rotated", "integration": integration.name}
 ```
 
 ---
