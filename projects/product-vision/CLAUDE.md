@@ -4,6 +4,33 @@ This project contains the complete design, specifications, audit trail, and impl
 
 **Read this file first in any session touching the OS.**
 
+## CRITICAL: Session Bootstrap Protocol
+
+Every session MUST read these files before doing any work:
+
+1. **This file** (`CLAUDE.md`) — orientation + artifact index
+2. **`INDEX.md`** § Status + § Decisions (2026-04-17 entries) — what happened, what's decided
+3. **`artifacts/2026-04-16-vision-map.md`** — the authoritative design synthesis (23 sections, 104 files distilled). **This replaces reading individual design artifacts.**
+4. **`artifacts/2026-04-17-session-summary.md`** — deployed infrastructure, credentials, bootstrap data
+
+**DO NOT** re-read source design artifacts unless the vision map is ambiguous on a specific point blocking work. The synthesis artifacts exist so you don't have to.
+
+## If Something Breaks
+
+1. `indemn trace entity <EntityType> <id>` — what happened to this entity
+2. `indemn trace cascade <correlation_id>` — full execution tree
+3. `railway logs --service <service>` — container logs
+4. Check Grafana Cloud traces — OTEL spans across all services
+5. Read the relevant code: `kernel/` for kernel issues, `harnesses/` for harness issues, `indemn_os/` for CLI issues
+6. **Fix and verify** — don't just deploy, confirm the fix works against the live system
+
+## Design Integrity Rules
+
+- **Vision IS the MVP.** Never simplify, collapse, or defer designed features without explicit approval from Craig.
+- **Implement EXACTLY what the design specifies.** Every flag, parameter, and behavior. If the design says `--depth 2 --include-related`, the code has `--depth 2 --include-related`.
+- **Verify against the live system.** Don't just commit — confirm it works E2E.
+- **When Craig asserts something was designed**, search until you find it in the artifacts. His cross-session memory is authoritative.
+
 ## What the OS Is
 
 An object-oriented insurance system where every insurance concept has schema + state machine + API + CLI. AI agents are a CHANNEL into the platform, not a separate system. Define an entity and it auto-generates its API, CLI, documentation (skills), permissions, and UI — the self-evidence property.
