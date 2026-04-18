@@ -2,11 +2,21 @@
 # =============================================================================
 # Step 1: Bootstrap the Organization
 # =============================================================================
-# Creates the Indemn organization and the first admin actor.
-# This is the very first thing that runs on a fresh OS instance.
+# The _platform org already exists with craig@indemn.ai as admin.
+# This step is documented for completeness — the bootstrap was performed
+# during initial OS setup and does not need to be re-run.
 #
-# The first-admin flag prints a one-time magic link token to stdout
-# (no email Integration exists yet). Craig uses it to complete setup.
+# Original bootstrap command (already executed):
+#   indemn platform init --first-admin craig@indemn.ai --org-name "Indemn"
+#
+# To verify the org exists:
+#   indemn org list
 # =============================================================================
 
-indemn platform init --first-admin craig@indemn.ai --org-name "Indemn"
+echo "Checking if org already exists..."
+if indemn org list 2>/dev/null | grep -q "Indemn"; then
+  echo "Org 'Indemn' already exists. Skipping bootstrap."
+else
+  echo "Org not found. Running bootstrap..."
+  indemn platform init --first-admin craig@indemn.ai --org-name "Indemn"
+fi

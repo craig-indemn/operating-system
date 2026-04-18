@@ -7,6 +7,10 @@
 # Order matters: references first (other entities point to them),
 # then conferences (companies reference them), then companies (contacts
 # and everything else references them), then contacts.
+#
+# Note: The OS auto-generates per-entity CLI subcommands from entity
+# definitions (e.g., `indemn stage create`, `indemn company list`).
+# Field values are passed as --field-name flags with kebab-case names.
 # =============================================================================
 
 IMPORT_DIR="$(dirname "$0")/../import"
@@ -76,7 +80,7 @@ echo "Importing Associate Types..."
 indemn associatetype bulk-create --source "$IMPORT_DIR/associate-types.csv"
 
 # ---------------------------------------------------------------------------
-# Bulk Import: Conferences (before companies — companies reference them)
+# Bulk Import: Conferences (before companies -- companies reference them)
 # ---------------------------------------------------------------------------
 
 echo "Importing Conferences..."

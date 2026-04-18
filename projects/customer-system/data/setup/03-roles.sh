@@ -5,24 +5,26 @@
 # One role for now: team_member. Everyone gets it. Full read/write on
 # everything. Watches and role differentiation (account_lead, executive)
 # come later when we design automations.
+#
+# Syntax:
+#   indemn role create --data '{"name": "...", "permissions": {...}}'
+#   indemn actor add-role --email addr@indemn.ai --role role_name
 # =============================================================================
 
-indemn role create team_member \
-  --permissions '{"read": ["*"], "write": ["*"]}' \
-  --description "Full access to all customer system entities"
+indemn role create --data '{"name": "team_member", "permissions": {"read": ["*"], "write": ["*"]}}'
 
 # Grant to everyone
-indemn actor grant "Craig Certo" --role team_member
-indemn actor grant "Kyle Geoghan" --role team_member
-indemn actor grant "Cam Torstenson" --role team_member
-indemn actor grant "Dhruv Vasishtha" --role team_member
-indemn actor grant "Jonathan Chen" --role team_member
-indemn actor grant "Rudra Thakar" --role team_member
-indemn actor grant "Peter Duffy" --role team_member
-indemn actor grant "Drew" --role team_member
-indemn actor grant "George Remmer" --role team_member
-indemn actor grant "Ganesh Iyer" --role team_member
-indemn actor grant "Ian Seidner" --role team_member
-indemn actor grant "Marlon" --role team_member
-indemn actor grant "Ryan Frere" --role team_member
-indemn actor grant "Dolly Talreja" --role team_member
+indemn actor add-role --email craig@indemn.ai --role team_member
+indemn actor add-role --email kyle@indemn.ai --role team_member
+indemn actor add-role --email cam@indemn.ai --role team_member
+indemn actor add-role --email dhruv@indemn.ai --role team_member
+indemn actor add-role --email jonathan@indemn.ai --role team_member
+indemn actor add-role --email rudra@indemn.ai --role team_member
+indemn actor add-role --email peter@indemn.ai --role team_member
+indemn actor add-role --email drew@indemn.ai --role team_member
+indemn actor add-role --email george@indemn.ai --role team_member
+indemn actor add-role --email ganesh@indemn.ai --role team_member
+indemn actor add-role --email ian@indemn.ai --role team_member
+indemn actor add-role --email marlon@indemn.ai --role team_member
+indemn actor add-role --email ryan@indemn.ai --role team_member
+indemn actor add-role --email dolly@indemn.ai --role team_member
