@@ -70,8 +70,9 @@ An object-oriented insurance system where every insurance concept has schema + s
 ### Session Artifacts (2026-04-17)
 | Artifact | What it is |
 |---|---|
+| `artifacts/2026-04-17-wiring-audit.md` | **IMPLEMENTATION SOURCE OF TRUTH** — 139 behaviors audited, prioritized fix list (P0-P3), file locations, effort estimates |
 | `artifacts/2026-04-17-operational-surface-audit.md` | Gap report: 15 subsystems verified, deployment fixes, remaining gaps |
-| `artifacts/2026-04-17-remaining-implementation-scope.md` | Every remaining gap scoped with design references |
+| `artifacts/2026-04-17-remaining-implementation-scope.md` | Every remaining gap scoped with design references (SUPERSEDED by wiring audit for implementation prioritization) |
 | `artifacts/2026-04-17-session-summary.md` | Complete session record — what was built, deployed, verified |
 
 ### Design Sessions (chronological, synthesized in vision map)
