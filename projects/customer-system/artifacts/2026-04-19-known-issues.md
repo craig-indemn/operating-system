@@ -13,11 +13,13 @@ sources:
 
 ## Kernel Bugs (Fixed, Deployed)
 
-1. **CLI trailing slash auth loss** — httpx dropped Authorization headers on 307 redirects because Railway's proxy changes scheme (https->http->https). Fixed by adding trailing slashes to 14 collection-level API paths. Commit: `437c367`.
+1. **CLI trailing slash auth loss** — httpx dropped Authorization headers on 307 redirects because Railway's proxy changes scheme (https->http->https). Fixed by adding trailing slashes to 14 collection-level API paths. Commit: `437c367`. Additional paths in `entity_commands.py` and `bulk_monitor.py` caught in code review and fixed. Commit: `dd476a9`.
 
 2. **Decimal serialization (insert path)** — `save_tracked()` insert used `model_dump()` which preserves Python `Decimal` objects that pymongo can't serialize to BSON. Added `_convert_decimals()` recursive converter in `_serialize_entity()`. Commit: `01b9872`.
 
 3. **Decimal serialization (update path)** — Update path used raw `model_dump()` instead of `_serialize_entity()`. Same BSON error on any transition or update of entities with decimal fields. Fixed to use `_serialize_entity()` consistently. Commit: `238f33a`.
+
+3b. **Decimal import in recursive function** — `_convert_decimals()` had `from decimal import Decimal` inside the function body, re-importing on every recursive call. Moved to module level. Commit: `dd476a9`.
 
 ## Kernel Bugs (Open)
 
@@ -29,7 +31,7 @@ sources:
 
 7. **Company collection name is `companys`** — Auto-pluralization just appends 's'. Should be `companies`. Cosmetic — doesn't affect functionality. Would need a schema migration to fix.
 
-8. **`actor list --type` filter maps to `status` param** — In `actor_commands.py` line 96, the `--type` CLI flag is passed as `status` parameter to the API. Should be `type`.
+8. **`actor list --type` filter maps to `status` param** — In `actor_commands.py` line 96, the `--type` CLI flag was passed as `status` parameter to the API. Fixed to pass as `type`. Commit: `dd476a9`.
 
 ## Data Quality Notes
 
