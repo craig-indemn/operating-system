@@ -4,7 +4,7 @@ The first real system built on the Indemn Operating System. A customer delivery/
 
 ## Status
 
-**Session 2026-04-19 — Customer system live. All 3 UI tiers resolved. 17 of 20 gaps fixed.**
+**Session 2026-04-19 — Customer system live. All UI tiers resolved. Demo-ready for CEO.**
 
 ### What's Done
 - All 14 entity definitions created and deployed (3 reference + 11 domain)
@@ -83,6 +83,7 @@ The first real system built on the Indemn Operating System. A customer delivery/
 | 2026-04-14 | [phase-1-domain-model](artifacts/2026-04-14-phase-1-domain-model.md) | 14 entities with fields, state machines, relationships |
 | 2026-04-19 | [known-issues](artifacts/2026-04-19-known-issues.md) | Kernel bugs (3 fixed, 5 open) + data quality notes |
 | 2026-04-19 | [ui-evaluation](artifacts/2026-04-19-ui-evaluation.md) | Comprehensive browser evaluation — 10 working, 20 gaps with priority tiers |
+| 2026-04-19 | [demo-readiness](artifacts/2026-04-19-demo-readiness.md) | CEO demo assessment — recommended flow, verified features, 14 known limitations for post-demo |
 
 ## Decisions
 
