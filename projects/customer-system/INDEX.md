@@ -4,7 +4,7 @@ The first real system built on the Indemn Operating System. A customer delivery/
 
 ## Status
 
-**Session 2026-04-19 — Customer system live on the OS. UI evaluation complete. 20 gaps identified.**
+**Session 2026-04-19 — Customer system live. Tier 1 UI gaps resolved. Assistant working.**
 
 ### What's Done
 - All 14 entity definitions created and deployed (3 reference + 11 domain)
@@ -13,13 +13,20 @@ The first real system built on the Indemn Operating System. A customer delivery/
 - Reference data seeded: 7 stages, 4 outcome types
 - Bulk data imported: 24 associate types, 2 conferences, 87 companies, 92 contacts
 - 3 kernel bugs found and fixed (CLI trailing slash, Decimal serialization insert + update paths)
+- Comprehensive browser evaluation: 10 working, 20 gaps documented with priority tiers
+- **Tier 1 gaps resolved (3/3):**
+  - G-1: Assistant wired and working — OS Assistant actor with 23 skills, dynamic discovery, full chat flow verified
+  - G-2: ObjectIds resolve to human names in list views and detail sidebar
+  - G-3: Navigation cleaned — domain entities, system entities grouped; infrastructure hidden
 - State transitions verified E2E (Company: customer → expanding → customer)
 - Comprehensive browser evaluation of UI: 10 things working, 20 gaps documented with priority tiers
 
 ### What's Next
-1. **Resolve 20 UI gaps** — Tier 1 (assistant, ObjectId display, nav filtering) then Tier 2 (search, enums, relationship pickers, transition confirmation, changes rendering, pagination)
-2. **Phase F: Watches + Automation** — design with Craig after UI gaps are resolved
-3. **Fix bulk-create pipeline** — org_id propagation + type coercion in Temporal
+1. **Resolve Tier 2 UI gaps (6 items)** — search/filtering, enum dropdowns, relationship pickers, transition confirmation, changes rendering, pagination
+2. **Tune assistant** — CLI command syntax in skills, context awareness from current view
+3. **Phase F: Watches + Automation** — design with Craig
+4. **Resolve Tier 3 UI gaps (11 items)** — date pickers, state colors, column selection, bulk actions, real-time, etc.
+5. **Fix bulk-create pipeline** — org_id propagation + type coercion in Temporal
 
 ### Key Numbers
 | Entity | Count |
