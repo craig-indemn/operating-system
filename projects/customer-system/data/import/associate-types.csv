@@ -1,0 +1,25 @@
+name,engine,maturity,deployment_modes,description,proof_points
+Quote Associate,Revenue,Proven,"Voice, Chat",24/7 Quoting and Binding,JM/EventGuard: 10X conversion
+Growth Associate,Revenue,Proven,"Voice, Chat",Direct Sales Engagement,JM: 330% premium growth
+Intake Associate,Revenue,Proven,"Chat, Copilot",Eligibility Triage,Union General: 96%+ time reduction
+Lead Associate,Revenue,Ready,"Voice, Chat",After-Hours Lead Capture,
+Placement Associate,Revenue,Ready,"Chat, Copilot",Agent Portal Appetite Guidance,
+Outbound Associate,Revenue,In_Dev,Voice,Win-Back Campaigns,
+Front Desk Associate,Efficiency,Proven,"Voice, Chat",The Digital Receptionist,INSURICA: 25% touch reduction
+Inbox Associate,Efficiency,Proven,Copilot,Smart Inbox,
+Knowledge Associate,Efficiency,Proven,"Chat, Copilot",Internal Knowledge Search,GIC: 53% resolution rate
+Authority Associate,Efficiency,Ready,Copilot,Underwriting Guardrails,
+Claims Associate,Efficiency,Ready,"Voice, Chat",Instant Claims Intake,
+Ticket Associate,Efficiency,Ready,"Chat, Copilot",Tier 1 Ticket Resolution,
+AMS Associate,Efficiency,Ready,Copilot,AMS Data Entry,
+Renewal Associate,Retention,Proven,"Voice, Chat",The Silent Churn Defender,INSURICA: 18-96x faster
+Cross-Sell Associate,Retention,Ready,Copilot,Cross-Sell Identification,
+Care Associate,Retention,Ready,"Voice, Chat",Lapse Prevention,
+Orphan Associate,Retention,Ready,"Voice, Chat",Orphan Book Management,
+Service Associate,Retention,Ready,"Voice, Chat, Copilot",Proactive Communication,
+Strategy Associate,Control,Proven,Copilot,No-Code Program Builder,JM: No-code config
+Brand Associate,Control,Proven,Copilot,Tone and Brand Customization,
+Analytics Associate,Control,Ready,Copilot,Distribution Analytics,
+Compliance Associate,Control,Ready,Copilot,Compliance Audit Trails,
+Integration Associate,Control,Proven,Copilot,Secure Data Integration,SOC 2 Type II
+Risk Associate,Control,In_Dev,Copilot,E&O Risk Mitigation,
