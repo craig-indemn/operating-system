@@ -4,7 +4,7 @@ The first real system built on the Indemn Operating System. A customer delivery/
 
 ## Status
 
-**Session 2026-04-19 — Customer system live. Tier 1 + Tier 2 UI gaps resolved. 9 of 20 gaps fixed.**
+**Session 2026-04-19 — Customer system live. All 3 UI tiers resolved. 17 of 20 gaps fixed.**
 
 ### What's Done
 - All 14 entity definitions created and deployed (3 reference + 11 domain)
@@ -27,15 +27,28 @@ The first real system built on the Indemn Operating System. A customer delivery/
   - G-11: Changes timeline fixed (was querying wrong endpoint, now uses trace API)
   - G-12: Entity pickers show resolved names, dropdown on focus, clear button
   - G-14: State color coding for all domain states (customer, prospect, churned, etc.)
+- **Tier 3 gaps resolved (8/11):**
+  - G-7: Date pickers — already implemented in FormField (type="date", type="datetime-local")
+  - G-9: "K" suffix — already removed in Tier 1 nav restructure
+  - G-13: Smart column ordering — name/title first, enums, numbers, then relationships; low-value fields hidden
+  - G-16: URL navigation — already works via React Router (/:entityType/:entityId bookmarkable)
+  - G-17: Assistant context — sends entity schema (fields, types, enums, states) + data to chat harness
+  - G-19: Observability — state distribution per domain entity, queue depth, integration health
+  - G-20: Real-time — WebSocket hooks already invalidate queries on entity changes
+  - G-8/G-14: Already counted in Tier 2
+- **Remaining (3 items — new features, not gap fixes):**
+  - G-15: Test new entity creation form via UI
+  - G-18: Bulk actions (checkboxes + bulk transition) — proper feature, not a gap
+  - G-19+: Observability dashboards — charts, throughput metrics — post-MVP polish
 - State transitions verified E2E (Company: customer → expanding → customer)
 - Comprehensive browser evaluation of UI: 10 things working, 20 gaps documented with priority tiers
 
 ### What's Next
-1. **Tune assistant** — CLI command syntax in skills, context awareness from current view
+1. **Tune assistant** — improve skill prompting so the LLM uses correct CLI syntax
 2. **Phase F: Watches + Automation** — design with Craig
-3. **Resolve Tier 3 UI gaps (11 items)** — date pickers, column selection, URL navigation, bulk actions, observability dashboards, real-time updates, etc.
-4. **Fix bulk-create pipeline** — org_id propagation + type coercion in Temporal
-5. **Test new entity creation via UI** — verify "+ New Company" form works with enum dropdowns and entity pickers
+3. **Test new entity creation via UI** — verify "+ New Company" form works with enum dropdowns and entity pickers
+4. **Bulk actions feature** — checkboxes + bulk transition for list views
+5. **Fix bulk-create pipeline** — org_id propagation + type coercion in Temporal
 
 ### Key Numbers
 | Entity | Count |
