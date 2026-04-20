@@ -269,6 +269,13 @@ Prior to session 5, resume instructions pointed to the session 4 checkpoint. Tha
 | 2026-04-17 | [session-handoff](artifacts/2026-04-17-session-handoff.md) | **MASTER SESSION HANDOFF.** Complete context for next session: reading protocol (what to read in order), deployed infrastructure (7 Railway services + external services), credentials (AWS Secrets Manager), bootstrap data (platform org, admin actors, runtimes, roles), what works E2E (verified), known unwired behaviors (4 critical), design integrity rules, wiring audit methodology, CLI quick reference, all commits. |
 | 2026-04-17 | [wiring-audit](artifacts/2026-04-17-wiring-audit.md) | **COMPREHENSIVE WIRING AUDIT — SOURCE OF TRUTH FOR IMPLEMENTATION.** 10 parallel agents audited 139 designed behaviors across all subsystems. 99 WIRED, 27 PARTIAL, 13 UNWIRED, 6 BUGS. Prioritized implementation matrix (P0-P3) with effort estimates, file locations, and fix descriptions. Covers: auth, org lifecycle, bulk ops, entity framework, harness, UI, integrations, observability, security, skills, CLI/API surface. |
 | 2026-04-18 | [session-handoff-2](artifacts/2026-04-18-session-handoff.md) | **SESSION HANDOFF — OS COMPLETE, CUSTOMER SYSTEM READY.** All wiring fixed and verified (29/29 E2E). Reading protocol for next session. Pre-flight checklist. Execution plan (Phases A-F: entity definitions → actors/roles → seed data → bulk import → validate → watches/automation). `indemn init` built. Setup scripts rewritten. Known risks documented. |
+| 2026-04-20 | (in customer-system) [ui-and-assistant-session](../customer-system/artifacts/2026-04-20-ui-and-assistant-session.md) | **UI polish (15 improvements) + assistant UX refactor.** Split pane layout, deepagents progressive disclosure skills, streaming via astream_events, entity detection (harness + client-side), CI fully green. |
+
+### Design Documents (2026-04-20)
+| Document | Location |
+|----------|----------|
+| [Assistant UX Design](../../docs/plans/2026-04-20-assistant-ux-design.md) | Approved design — resizable split pane, conversation persistence, entity rendering, verification plan |
+| [OS UI Polish Plan](../../docs/plans/2026-04-20-os-ui-polish-and-assistant.md) | 15-task implementation plan (all executed) |
 
 ## Decisions
 - 2026-03-24: Project created to house the unified CTO-level platform vision and Series A roadmap
@@ -479,6 +486,13 @@ Prior to session 5, resume instructions pointed to the session 4 checkpoint. Tha
 - 2026-04-18: **Developer workflow established.** Editable install from repo (`pip install -e .`), `indemn auth login`, `indemn init` for new projects. Package not published yet — future step for teammates who don't touch the repo.
 - 2026-04-18: **U-09 (LLM fallback for needs_reasoning) reclassified as wired-by-design.** The `--auto` pattern returns `needs_reasoning: true` to the CLI caller; the associate's skill IS the fallback. No kernel message dispatch needed. Confirmed by Craig.
 - 2026-04-18: **Next session: build the customer system (Phase 6).** 14 entities, 87 companies, 92 contacts, team actors. First real domain on the OS. Setup scripts ready to run.
+- 2026-04-20: **Assistant is a resizable split pane**, not an overlay. Peer to entity views. Approved design at `docs/plans/2026-04-20-assistant-ux-design.md`.
+- 2026-04-20: **Skills use deepagents progressive disclosure.** Written as SKILL.md files to `/workspace/skills/`, passed as parent directory to `create_deep_agent(skills=["skills"])`. Agent reads on demand via `read_file`. NOT concatenated into system prompt.
+- 2026-04-20: **Entity detection is dual-path.** Harness `on_tool_end` detects JSON with `_id` fields (handles LLM summaries). Client-side `tryDetectEntityData` detects JSON in streamed text (handles LLM echoes). Bracket-depth parsing handles CLI decorative borders.
+- 2026-04-20: **Streaming via `astream_events()`** replaces `ainvoke()`. Token-by-token display. Tool calls and results interleaved.
+- 2026-04-20: **UI auto-deploys require manual `railway up`** — Railway does not auto-deploy UI from git push. Chat harness also requires manual deploy.
+- 2026-04-20: **CI fully green.** All 4 jobs pass: lint (110 errors resolved), test-unit (93 tests), test-integration, Docker build. setup-uv v6, JWT_SIGNING_KEY in CI env.
+- 2026-04-20: **15 UI improvements shipped.** Horizontal scroll, changes timeline, toast system, form validation, breadcrumbs, keyboard shortcuts, collapsible sidebar, favicon, page titles, URL-synced filters, column persistence, pagination indicators, empty states, state field detection from meta.
 
 ## Open Questions
 - **Single kernel specification document** — 40+ artifacts need consolidation into one actionable spec

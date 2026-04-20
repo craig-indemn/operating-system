@@ -4,7 +4,7 @@ The first real system built on the Indemn Operating System. A customer delivery/
 
 ## Status
 
-**Session 2026-04-19 — Customer system live. All 10 vision limitations resolved. Full alignment.**
+**Session 2026-04-20 — UI polished (15 improvements), assistant refactored to split pane with streaming + entity rendering. CI fully green.**
 
 ### What's Done
 - All 14 entity definitions created and deployed (3 reference + 11 domain)
@@ -44,10 +44,10 @@ The first real system built on the Indemn Operating System. A customer delivery/
 - Comprehensive browser evaluation of UI: 10 things working, 20 gaps documented with priority tiers
 
 ### What's Next
-1. **Tune assistant** — improve skill prompting so the LLM uses correct CLI syntax
-2. **Phase F: Watches + Automation** — design with Craig
-3. **Test new entity creation via UI** — verify "+ New Company" form works with enum dropdowns and entity pickers
-4. **Bulk actions feature** — checkboxes + bulk transition for list views
+1. **Next phase of customer system development** — building watches, automations, and shaking out the reactive wiring of the OS
+2. **Verify assistant entity rendering consistency** — dual-path detection sometimes duplicates
+3. **Token refresh** — 401 errors in browser console suggest refresh may not be working
+4. **Bulk actions** — checkboxes render but bulk state changes not tested E2E
 5. **Fix bulk-create pipeline** — org_id propagation + type coercion in Temporal
 
 ### Key Numbers
@@ -85,6 +85,7 @@ The first real system built on the Indemn Operating System. A customer delivery/
 | 2026-04-19 | [ui-evaluation](artifacts/2026-04-19-ui-evaluation.md) | Comprehensive browser evaluation — 10 working, 20 gaps with priority tiers |
 | 2026-04-19 | [demo-readiness](artifacts/2026-04-19-demo-readiness.md) | CEO demo assessment — recommended flow, verified features, 14 known limitations for post-demo |
 | 2026-04-20 | [session-handoff](artifacts/2026-04-20-session-handoff.md) | Full handoff — reading protocol, pre-flight, architecture, what works, what needs work |
+| 2026-04-20 | [ui-and-assistant-session](artifacts/2026-04-20-ui-and-assistant-session.md) | UI polish (15 improvements) + assistant UX refactor (split pane, streaming, entity rendering) |
 
 ## Decisions
 
@@ -95,6 +96,11 @@ The first real system built on the Indemn Operating System. A customer delivery/
 - 2026-04-19: Bulk import done via individual creates (bypassed Temporal bulk-create due to org_id propagation bug)
 - 2026-04-19: how_met enum values mapped from 20+ conference-specific values to 7 canonical values during import
 - 2026-04-19: UI evaluation confirms self-evidence property works but usability needs 20 gaps resolved before team can use daily
+- 2026-04-20: Assistant is a resizable split pane, not an overlay — peer to entity views
+- 2026-04-20: Skills use deepagents progressive disclosure (files on filesystem, loaded on demand via read_file)
+- 2026-04-20: Entity detection is dual-path: harness-side on_tool_end + client-side JSON parsing
+- 2026-04-20: UI deploys require manual `railway up` — not auto-deploy from git push
+- 2026-04-20: gemini-3-flash-preview is the default model; gemini-2.5-flash is fallback if it hangs
 
 ## Open Questions
 
