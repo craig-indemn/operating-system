@@ -4,7 +4,7 @@ The first real system built on the Indemn Operating System. A customer delivery/
 
 ## Status
 
-**Session 2026-04-19 — Customer system live. All UI tiers + 9 of 10 vision limitations resolved. Bulk actions deferred (runtime crash).**
+**Session 2026-04-19 — Customer system live. All 10 vision limitations resolved. Full alignment.**
 
 ### What's Done
 - All 14 entity definitions created and deployed (3 reference + 11 domain)
