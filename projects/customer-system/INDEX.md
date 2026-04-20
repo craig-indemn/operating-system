@@ -84,6 +84,7 @@ The first real system built on the Indemn Operating System. A customer delivery/
 | 2026-04-19 | [known-issues](artifacts/2026-04-19-known-issues.md) | Kernel bugs (3 fixed, 5 open) + data quality notes |
 | 2026-04-19 | [ui-evaluation](artifacts/2026-04-19-ui-evaluation.md) | Comprehensive browser evaluation — 10 working, 20 gaps with priority tiers |
 | 2026-04-19 | [demo-readiness](artifacts/2026-04-19-demo-readiness.md) | CEO demo assessment — recommended flow, verified features, 14 known limitations for post-demo |
+| 2026-04-20 | [session-handoff](artifacts/2026-04-20-session-handoff.md) | Full handoff — reading protocol, pre-flight, architecture, what works, what needs work |
 
 ## Decisions
 
