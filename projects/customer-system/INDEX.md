@@ -6,9 +6,11 @@ Kyle is pressing for this. It doubles as the proving ground for the OS domain mo
 
 ## Status
 
-**Session 2026-04-14/15 (session 1) — Design and data prep complete. Ready to build when kernel is up.**
+**Session 2026-04-21 (session 2) — Kyle's deals live, UI overhauled, P0 complete, P1 detail view shipped.**
 
-Full context gathered from Kyle's 28-file context package, CRM InsurTechNY sheet, 10+ meeting transcripts (Kyle, Cam, George, Peter, Ganesh), Craig's notes, and CTO thinking worktree. Shared vision document and white paper with Kyle and Cam via Slack on April 14.
+Read Kyle's EXEC folder (PLAYBOOK-v2, data dictionaries, 6 leads, MAP) and Cam's Proposals folder (6 customer proposals). Deal entity extended with 5 new fields, SuccessPhase entity created, Kyle's 6 close-now deals populated with real data. P0 items resolved: trace API bug, deep links, Kyle login, global activity feed. P1 detail view: read mode with inline editing + side panel from list view.
+
+**Previous: Session 2026-04-14/15 (session 1)** — Design and data prep. Full context gathered, problem statement, domain model, data CSVs prepared.
 
 ### What's Done
 - All source materials gathered and inventoried (28 Kyle docs, CRM sheet, 10+ transcripts, Ganesh's repo)
