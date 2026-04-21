@@ -1,0 +1,227 @@
+Meeting Title: Craig & Kyle 
+Date: Apr 21
+Meeting participants: Kyle Geoghan
+
+Transcript:
+ 
+Them: Good afternoon. How we doing?  
+Me: I'm doing well. How you doing?  
+Them: Doing good.  
+Me: It was a good pitch.  
+Them: Yeah. Me too.  
+Me: Yeah, small check writer, though. This is a company called meta proper VC.  
+Them: Nice.  
+Me: They'd write a two and a half million dollar check max. So it's. If we work with them, it's, you know, less than we want to raise. But that's okay because you got to have downside risk protection.  
+Them: Good. Though.  
+Me: Yeah. How's your day?  
+Them: Good. I've been making good progress. On Google meetings ingestion.  
+Me: Okay.  
+Them: So good news. We have the ability to get all of the meetings.  
+Me: Okay.  
+Them: With the Google admin access. So I've set that up. And here, let me share my screen. Can you see my screen?  
+Me: Yep.  
+Them: So what I've done is I've created a meeting entity. And I have created a trigger that I created an adapter basically into Google meet and it pulls the meetings here into this meeting entity. And yeah, this is a great place to start for any automations we want to do on top of meetings. Not all of them have transcripts and that seems to be because not everyone's enabling. The AI transcription. And the note taking. So we should just make sure and we can see which ones are or not. Like I don't think you and cam in your daily sync are doing that. That may be intentional and that's fine if it is.  
+Me: It's actually.  
+Them: But. Yeah.  
+Me: What it is is before I turned on the automatic default on if the meetings were preset and they don't have it.  
+Them: Okay. Got it. So maybe, I mean, if you want them to be included here, I guess it depends right on what we're going to use this for initially. Eventually probably we'll use all meetings.  
+Me: Yeah.  
+Them: But. Okay, so other than the meeting stuff, what I also was able to do is I took what you gave me. And I've created this deal entity. Okay. And this is the six that you gave me.  
+Me: Good.  
+Them: They each have their estate, right? So a deal can go through a series of steps. Let's see, we got. It goes from discovery to demo. Demo to proposal. Proposal to sign. And I think. So you can update the data here either through this UI. I have it hosted now at os.indem.ai. And I have a login for you to use. You can also use this through the command line interface with cloud code. And I have some setup instructions for you if you want to start. Using that.  
+Me: Yeah. And co-work is the same. Right?  
+Them: Yes.  
+Me: Okay, excellent. Good, good progress here. There's a lot of thoughts going through my head.  
+Them: You're good. What I was thinking was. Well, first I let's, I think define like how you want to use this deal list.  
+Me: Yeah.  
+Them: And if there are things that we can add to it. From an automation point of view. That I just want to, you know, continue to make progress towards. What I'm thinking is we can kind of meet in the middle with what cam is looking for too, because cam's looking for proposal generation. Right. And I think. The proposal generation to me is kind of what happens when you hit the last stage. Or when you when this changes from, you know, demo to proposal. You know, then you have the opportunity of generating the proposal and you theoretically then have all the information already that's needed to generate that proposal. So I was thinking of working backwards from there. So defining like what first of all, like what steps do we need to take to get to a point where the customer that we're going to make them a proposal and what information do we need and where do we get it.  
+Me: Yes. Yes. That those are the right questions, although I think. Nailing it for a handful of these will enable us to take how we nailed it to build a process.  
+Them: Okay.  
+Me: And there's, we can make progress in several directions. It's small but important progress. So one is just a dashboard with enough data to make it useful to look at daily. Right. And so really a set of dashboards with the first one and these views however we want to. Shape it up. The first one is basically, well, what are the customers we either. Need to send a proposal to right away or have sent one to. And so that's what we're kind of looking at here. I guess fox quilt doesn't really fit that, but it's interesting if we start, like we could talk about why, and then maybe it stays and it goes out when we find a new. View because they're a little earlier. Right? Alliance is a good example. We sent them a proposal. In February. And then they went quiet. They really want to work with us, but they hired nine people. I guess the proposal didn't nail exactly what they wanted to do. You know, XYZ. And so alliance is also important because right now me and cam are the ones running that one. And we need to build a system. So cam and I don't have to run these and it gets done and we don't get caught in fundraising or this or that and we don't actually serve the customer the way they should. Right.  
+Them: Yeah.  
+Me: So. One easy way we can start to deliver value particularly to cam, but to a process is a dashboard that shows the leads that we need to look at every day because we want to send them a proposal. Right. So that's alliance, rank and tilleman o'connor here. Aminta and foxquilt are earlier. So neither of them are yet ready to get a proposal. But there's some interesting data and process that I've already worked through for both of those that I want inside. Our, you know, prospecting engine system. Right. So. Okay, so one is a dashboard that cam looks at and can go, okay, we need to do X, y or z, or I need to push somebody to do X, y or z. And so I want to talk a little bit more before we get off on that. Two. Getting the actual process of delivering different steps in the. The customer acquisition and the customer success path. Those two we can do with a handful of leads and we can use me as the guinea pig because all the data is in my email inbox or my Google drive or, you know, customer recordings or my cloud code. And so I want to give you access to everything that's mine so that you can figure out how to pull the data out in partnership with me. Which you then use as the format to onboard the rest of the team.  
+Them: Okay.  
+Me: That makes sense.  
+Them: That makes sense.  
+Me: Okay.  
+Them: Yeah. So, okay. That yeah, that makes sense.  
+Me: So, so for alliance, if I give you access to all my stuff, you can pull the proposal we sent, the date we sent it. You can pull the last call we had and the last call was with the CEO of the company. And me and cam, and we identified the new wedge that he will pay for. And he said, I'll be back on April 25th. So we need to be able to ship him something April 26. Right. That's the goal there. And so all that data can be in this dashboard. And look nice and pretty and be managed. Right.  
+Them: Yeah. Okay, so the goal is. I'm just reiterating, I guess, so we can. So. We're trying to generate proposals. And stay on top of these proposals. You're saying though that. It's more to me like it sounds like you're looking to be organized.  
+Me: Yeah, that's it. We just.  
+Them: And like know when the next thing is due. Really.  
+Me: Want to now. So both the. Customer, the prospect to a sale and then the customer and serving them and growing with them. It's a system that. Like, I put it on a spreadsheet in different ways, but not very well. I wanted to build it all on air table, but I couldn't get the team to really use air table. So what we're going to build is it's the system. And all the data that needs to be there and all the expectations on each step. And most of it can be pulled out of my inbox and then you can add to it from ganache. You can add to it yourself and we can add to it as we iterate. But most of it can be pulled.  
+Them: I'm trying to think about it from like a first principles. Point of view. Like so email is a source of information.  
+Me: Yeah.  
+Them: Meetings is a source of information and I have meetings here now. So what I'll do first is I think I'll go back in time. Try to get all the data I can for, I think the last 30 days is how long the retention period is. So I may lose everything after that. I mean before that. But that alliance meeting should be there right. And then. Pull information from emails. So I'll have an email entity here as well. And then. I'm trying to figure out, okay. So this deal. List, let's use alliance as the example.  
+Me: Yep.  
+Them: Are you looking to have like an auto generated, I guess deadline like which would be the 26th that's being tracked for each one of these. What else do you need to know? About it?  
+Me: Yeah. So alliance. We need to update their proposal based on the last call.  
+Them: Okay.  
+Me: Right. And then we want to delete our goals to deliver it by the 25th.  
+Them: Okay. So it's awesome. Yeah. Okay, so it's also about just updating the proposal also. And we can use, and so this is an interesting example because we already have a proposal for them. But it needs to be updated.  
+Me: Yep. And that's common. It's not, it's actually probably more common than it isn't. So. Yep.  
+Them: Okay. Got it. Okay. So.  
+Me: We're going to request everybody give access to their email inbox so you can start with me. And just maybe go back. And understand what it takes for you, which you're probably already halfway have from the customer implementations. To get access to my inbox.  
+Them: Yeah. I can take a look at that. I may already have access based on the permissions that I used to get these meetings, but I'm not sure. So I'll look at that. And then the proposals were being sent through email too. So I'm assuming I can get, I mean, maybe that's in Google Drive somewhere.  
+Me: Yeah. And you, do you have, you got full access to Google drive?  
+Them: Yeah.  
+Me: So this is another thing that we need to build into the system. And it'll be links to Google Drive docs, but maybe even links to folders. So fox quilt, for example. There was a great call that we had with them, I had with the manage guy on Friday. And actually, I've got another one tomorrow. It's an hour long with the CEO and the operations guy. Do you want to join that?  
+Them: Sure.  
+Me: Okay. So. I built a. It's not totally relevant here because it's an HTML, but I can send it to you. It's a return on investment calculation for the pain points that. Fox quilt shared with me on Friday. And so there is a, you know, what do you give to the customer after the discovery call? And so I have something that's the most recent thing, and it's worth looking at, but I don't want to engrave it into our process just yet. Right.  
+Them: Sure. Yeah. Well, yeah, I mean, you already had shared that document about branch. Where I know that return on investment calculation was part of that. So that's something that I have kind of in the background here as part of my like big customer success context. That's something that eventually I was thinking we would incorporate. If you think that's a part of this. Workflow potentially.  
+Me: Yes.  
+Them: I'm trying to think how to how to map it out.  
+Me: It's almost like optional. And so then there's a couple of pieces. Either it's automatically added to. The customer record when it's sent or there's an interface that our team can use to generate it. These are a bit downstream. But the nice thing is that what we'll do first is just record what we've already done with these customers.  
+Them: Yeah.  
+Me: As of here's the first process and we can decide whether we want to enable people to generate things as a secondary part of the process.  
+Them: That makes sense. Yeah, I think that's a good exercise actually for us to go through what we've done in the past. And use that as like a source of truth.  
+Me: I think it's everything. There is enough data there for us to, I mean, with.  
+Them: Yeah.  
+Me: One 10 minute conversation for each of the states you've got, and maybe we should call them status or something else. But like the demo, the proposal, the discovery, the qualification stage, we can add some pieces around each of those based on what we've done in the past to say here's the process we want to run. Right?  
+Them: Okay.  
+Me: Another thing here is that there's the independent agents in North Carolina lead that should also be on the dashboard for. Proposal imminent, or I'm not sure how we want to call it, but that's what we're looking at here. So we would move fox quilt and a mint to off and there in different stages that aren't close enough to a proposal and we'd move the independence agents of North Carolina opportunity in. There's a few more I'd want to move into. So I told you about fox quilt and then for a minta shared some data with us that we were supposed to use for a prototype. That's another common stage in customer acquisition process.  
+Them: Yeah. So. Where would you say that fits in? That's after discovery.  
+Me: Yep, so you usually it happens in the discovery of the qualification call. And one of the challenges is that. Sometimes this stuff can get lost. And we don't do anything with it, which is the worst. Right? And so it's a part of the process where we need to log that the customer shared something with us and then figure out who's the owner to deliver whatever it is we intend to deliver.  
+Them: Yeah. That makes sense.  
+Me: Yeah, so I think if you look at each state, we build like one of three. Things that can happen and I think it's a good start. For building up the whole process.  
+Them: Yeah. Okay, so let's start with alliance. Then. So let's just talk through it. So for alliance. Is a new deal, right? So we already, they're already a customer of ours.  
+Me: I mean, we can call them, they're not a customer of ours yet. They haven't signed anything.  
+Them: And. Oh, okay.  
+Me: And so.  
+Them: Oh, okay. Oh. I didn't realize that.  
+Me: So, but they're like the CEO really wants to work with us. And he'll sign. He'll assign something easy that has nothing there to pay, but he'll sign something between, you know, the max we can get him to pay in a low amount. And that's part of generating the proposal and figuring out what we want to ship to him. Right.  
+Them: So we've already. What have we already done for alliance at this point? Then?  
+Me: So they gave us tons of data, so that's interesting in its own right. We analyzed it.  
+Them: Right. I remember the transcripts. Yeah.  
+Me: We analyzed it, we told them what we thought about it, we built a proposal around it, and then they went dead. And then I met Christopher at that event. I went to in North Carolina and I had good conversations with him. And he says, oh, I want to work with you guys. I just hired these nine people and I didn't have the time to, you know, dig into this new project. And by the way, I got something I've been thinking hard about. It's about renewals. And can you guys help me with this? And so we had a conversation about renewals. That was the most recent. And we all agreed this is a great project. And so let's move forward on it.  
+Them: Okay. Got it. So now. It's time to send them a proposal when he gets back. And hopefully. He agrees that that's what. What he's looking for is what. What's in the proposal. And thinks it's a fair price. And then he'll sign it and then their customer.  
+Me: Exactly. And we do need to have all the data they shared with us. As accessible and we need to understand what we've learned from it in a way that's easily accessible as well. So this has, this is going to grow as our source of truth and we just need to. You know, build data columns to put information in at this stage, like either it's just links or it's synopses or you know what I mean.  
+Them: Yeah.  
+Me: And you might even not even have to go into my. Email to get what we need here. Because I think everything has been cc'd or BCC'd with supported in dem.ai. And I'm pretty sure all the data is in shared folders.  
+Them: Okay.  
+Me: But alliance also works well because we can look at what Ganesh and Peter and some of the other technical team members have done and you and define that and understand, you know, how long it takes you and understand what kind of value it is to the customer because there's actually a lot of value potential there, but we don't have. A like, we almost have to make it very clear to the customer in like a three to five message chain, what we've done for some things to get them to use it. And so that's also where. We could give alliance a proposal that we could give them one option or two or three options and the two or three options would include a lot of what we learned from the data they shared as additional things that we could do for them. And that's where you and I are going to be able to partner together to say, well what do we deliver this at with a net positive margin for the company? And what human labor do we need? And we either use the human labor we have or we have to go get it right where we build AI labor for it. That's where I think you define the data model very well where I think it can be very extensible for both sides of the system we need to build.  
+Them: Yeah, I agree. Okay. I think that's a good start. Now, can we go back on the alliance? From beginning to end? What we've done with them. And categorize it based on how you understand the life cycle for a customer. So first when we talk to alliance, like, when did you meet them, I guess, for the first time?  
+Me: Yeah sometime in January and I think that you I want you to pull that data. From the email, you can use my calendar. Like you we can put January 1st right now as a hold. But I do think as a general process that's a good example of a question where.  
+Them: Sure.  
+Me: We should be able to pull the data and it doesn't have to be perfect. We can let some human update it. We just have to use. The access we have to have a default, you know, okay, here's the first email I saw or the first meeting logged.  
+Them: Sure. Yeah. Like interaction kind of timeline.  
+Me: Yeah, and that's why I.  
+Them: We should be able to build that out.  
+Me: Want, yeah, that's why I want you to use me as the guinea pig first because it's. Like youe're going to be able to test how you can extract data from me and then I can tell you how well it looks and we can find the problems.  
+Them: Okay. I think that makes sense. All right, so from like a helping cam point of view and this dashboard stuff. How does that. To me, it seems like what you're, what you were initially looking for was just. Basically a flag. Like this needs to be done. On this date. Like, are you aware? But, like, what is it? What would a dashboard look like?  
+Me: So here's the thing right now what we're looking at is. Mostly data that I gave you at least this thing from our conversation yesterday. Right?  
+Them: Yeah.  
+Me: And we built a spreadsheet for the leads that came in from InsureTech New York. Right? And are those anywhere? So right now we've got this on the deal list. Is there a bigger list? Okay, cool.  
+Them: We have a company list.  
+Me: Yeah it's 88 right now. Okay great. Our list is more like a thousand and maybe it's five or ten thousand if it's at the most broad. Right. And the list that me, cam, Ian, marlin and rocky are talking to is probably like 300.  
+Them: Okay.  
+Me: And then the list that. Their leads that are relatively warm and we should reasonably bet that we can have a 50% or better chance of making them customers in the next 120 days has got to be about a hundred. Right?  
+Them: Sure.  
+Me: Now. The challenge is that there we don't have actually a shared pipeline that we're looking at right now. I was doing it in air table and the team wants to do it in spreadsheets and we never actually defined it. So what we're doing here is actually defining what is the source of truth for our whole pipeline? We're starting with what's most important. And you know you could pick one customer like alliance to really build the first version of it and we can expand it from there. Right? So the most important individual view right now of the. Hundred leads that were more than 50% sure we can close in 120 days. Are the ones where we can actually send them a proposal or we're super close to sending them a proposal.  
+Them: Okay. Okay. That makes sense.  
+Me: And so that's what you're looking at on the deal view. And I think we got like six of them. Let me see if you go back to that. So we've got to remove fox quilt and a mint to add the independent agents in North Carolina there's going to be more. It might even be as high as 15 to 20 and we need to get more from the team. But before we do that we'll get. What I have and what me and cam have top of mind nailed. And then we can go to the rest of the team. Right.  
+Them: Sure. Okay. Yeah, that makes sense.  
+Me: So rank and tillemn are good examples of we're going to quickly go to the rest of the team. Ian is running those and those are small agencies. My gut says that we need to give them both proposals at $500 a month.  
+Them: So.  
+Me: And they need to sign it for 12 months. But in the end I'm going to give you guts. You and I are going to generate a lot of things and we're going to let cam decide how to deliver it because that builds a better scalable system.  
+Them: Okay. So sounds like. To start with. Let's kick the tires with alliance. Rank and tilleman. On this proposal. Like building the proposal basically from the information that we have primarily from email data and google drive data. And if we need additional information, we'll figure out what the data sources are for those. Then put that into, like, a pipeline view. And connect that to eventually the. Proposal generation. So that we can generate and iterate on proposals. Does that sound good?  
+Me: That does sound good.  
+Them: Okay. I think I'll start with alliance and just trying to scrape as much information I can to build like an interaction timeline between us and them.  
+Me: Perfect.  
+Them: So we can have a clear picture of, like, what's the relationship looked like. Also, what have we done for them so far? And so. I think that's also important. What have we done? Like, what documents have we generated? But also. Any associates that we've built.  
+Me: And I would add Connor.  
+Them: You know, meetings we've had.  
+Me: So alliance rank until middle conners is a really good set here.  
+Them: Okay.  
+Me: Because O'Connor shared data with us too and it's similar data to alliance and they asked for some internal AI associates. But there's some custom pieces that alliance asked for so it'll be like the package will look very similar with just a couple of custom things for alliance. And then rank it until men should look very similar together so that there'll be two and two.  
+Them: Okay.  
+Me: And we're going to want to like I like that you've got company fit relationship eagerness xyz. Let's start extracting data to try to hit those. And it's almost like alliance and oconnor are mid-market agencies and tillemn and rank in our you know small mom and pops. And so we further categorize which will help us because we already see the trends and what they're asking for and the scope of it.  
+Them: Yeah, I get what you're saying. Okay. I don't have that here, I guess. Maybe it's in the company. So it's tied. The nice thing about this whole system is, right? Like everything's tied together. So these are the deals, but they correspond to the companies. And in the company view, we can see for rank in, like, more information about them. So we want to make sure, obviously, this information is accurate. But this should theoretically have them categorized as. What they are. But it's not. So. Okay. Sounds good.  
+Me: S a good start.  
+Them: All right, I think. Yeah, good start. And I'll continue to bring as, you know, more data here. And we can. Continue to build this out. I think I'm going to just think about what you said. And start putting my head together on. How to go from here. And what I can show you tomorrow. I think I can make some decent progress tomorrow.  
+Me: Okay cool. Yeah feel free to ask me questions. And then do you have the insuretech new York sheet is that easily accessible to you?  
+Them: Yeah, I got it right here.  
+Me: Let me look at it. Indemnity New York. Okay, so go to companies. Okay great. Can you scroll down. Okay cool so then nationwide homesteaders in true stage. Those are all from the Iowa event. So we locked that somehow.  
+Them: Oh, yeah. I'm not sure who added that. But. See. They didn't add it to the ledger. I guess came. Let's added those.  
+Me: Ideally it's all automatic, you know, and that's where we'll just have I do want to get in the process here. There's a lot of ways just like alliance where. If we just do it well once for. One prospect or customer we can expand it. And I just think we need a ledger every day of what changed and the ledger can be wrong. I'd rather it have 20 things with five of them wrong. Then you know 10 things that are perfect or zero. Right because as soon as we start defining so I do want what you're building to be exportable to a PDF excuse me to an excel sheet if you can build it in from the beginning great if you can't fine.  
+Them: Sure. Yeah, that's an easy thing to do. Yeah.  
+Me: And the point is to just make it easy for people to work with it right we want to get to the source of truth as soon as possible and we have enough information to get pretty close and then the humans can update it and you know there's like a simple thing we're going to add very quickly which is just let somebody speak to update an account. Right? Like that's an easy one. And so we can have.  
+Them: Yeah, that makes sense.  
+Me: Cool. We can have an account with you know all the data we've scraped and then me or rocky or whoever can go oh but this is wrong and this is wrong and update this and and then the account gets updated and there's a ledger that says hey Rocky said this and here's what we did to change the operating system.  
+Them: Go ahead. Cool. Yeah, I think that that tracks for sure. So just so you know, like, there is a ledger here. For the whole system. So I created an account for you and I logged in. For you here. So you can see that I did that. And then all these meetings that I just created earlier today. Were added here. And so anything, anytime anything gets updated, it gets added to the ledger. And you can also, I have this assistant on the right hand side, which has CLI access to all of these entities here. And so you could use this to make any updates or changes you wanted to do, but you can also in your cloud code use the CLI. To do the same. So if you, I'd love for you to use this or start using it so I can, I'll give you the login for the UI, but also for the CLI.  
+Me: I'll do it right now I can you know what I can do is I can hydrate the whole damn thing right. I don't know.  
+Them: Yeah. I mean, potentially. Well, I'd say, like, so the company is here are already hydrated from this sheet here. So I, I'll update it with these four. But it's going to be like a, you know. I'm, I'm going to be careful about what entities I'm creating right now. Just because I'm going to structure it in a way that, like, makes sense for the pipeline view that we want to look at. But if you need to update any of this data. Yeah, definitely. You should go for it.  
+Me: Well, I think it I mean I hear what you're saying I think it makes a lot of sense although I think what we should do is really nail some foundational. Data and then be able to iterate. So it might be that we. Here's the foundation for the company the people that you connect to a company and like the deals. Right but then for each state we have for customer pilot prospect we could just generate a bunch more information for each of them.  
+Them: Yeah.  
+Me: And then part down that might be an easier way to get to a robust system here quickly.  
+Them: I was thinking. So for, let's say for lines, for example. So, well, what I'm first going to do is I'm going to create an email entity. And I'm going to start hydrating emails in. Then I'm going to create a. I think probably like a, a company data. Or company files. Which is all of the Google Drive documents related to that company. And then I'm going to pull all that in from Google Drive.  
+Me: Excellent.  
+Them: And then. And I'm thinking. Like, well, we already have associate deployment entity, which isn't filled with anything yet. But then I'm going to add in all the associates that we have created. And these are going to be linked to the deals and the company. And then from. And then I guess meetings as well. I'm going to tie in here as well. With the transcriptions being processed. And then I think we'll have like a, you know, a company timeline maybe, which is, or interaction. I'm going to have an interaction entity, which is basically anytime we've talked to or met with a customer. And then I'll build a timeline from that. And so then at the end of the day, we're going to have like a really good picture at that point of like every time we've talked to the customer, everything we've generated document wise for the customer. Every meeting we've had with them. You know, any Associates we've built for them. And then I think from there we can start really putting it all together. Into some automated proposal. Generation.  
+Me: Yeah, that sounds awesome Craig.  
+Them: Okay. So let me, you know, run at that. And if you just. If you are ever using this excel sheet, I would just encourage you, instead of using the excel sheet, think about using this operating system instead. And if there's a reason why you can't, just let me know and I'll make sure that it's fixed.  
+Me: Okay, I'll do that I'll start right now.  
+Them: Sure. So, yeah, let me give you the login info. And I'm also going to start hydrating these meetings, I think the last 30 days, what I can do. Out of the box. And I'll, I'll see if I can get further back than that. But then if you ever need to use the meetings in your cloud code, just for whatever you want to do. You can just pull the meetings from the CLI. Easy meat, easy peasy.  
+Me: We'll pull the meetings from here using my CLI you're saying.  
+Them: Yeah, because this is, you know, this is going to be the source of truth. So then anything that you need to do in your cloud code session, even if it's not related to like an automation that we're building inside of the operating system, you know, you can use this as your source of truth for like our company data, basically.  
+Me: Cool and then. Can I push meetings into it?  
+Them: Yeah. Right now it's automatically hydrating from Google Drive.  
+Me: Okay.  
+Them: And if you want, I can add from Granola as well now.  
+Me: Well we've got google drive Granola and Apollo. And we don't need to boil the ocean we could just start with Google drive but my experience is that. You actually do need redundancy. So let's we can walk the road a little further but this is also where I want you to use me as the guinea pig. And I can push things by using it but you can also pull things by saying I'm a rep in the process. And. There's years worth of data that can help to build. What our first version of the process is so that's one thing you can do as an engineer and the other thing you can do is is use it as me as an individual contributor to actually hydrate too and then if you do that well you can do the same process with everybody else in the business.  
+Them: Yeah, that makes sense. I guess from a meetings point of view. Like. The goal is just to have it be like no duplicate, like really source of truth of all the meetings that have happened. So if, like, I guess what. Do you have. Here that I wouldn't be able to grab from Granola or Google Drive?  
+Me: I mean there there actually is a lot more than you think so when a customer hosts a meet and doesn't let our AI in or so when a customer hosts a meet but does let our AI in now that's an Apollo one. Right.  
+Them: Yeah.  
+Me: When a customer joins ours but says I don't want it recorded now we don't have a recorded unless I've done it on Granola which is like okay well that's a little we can get it but maybe we don't and this is where the bigger this is why we don't have to tackle it right away but it's good to know the challenge is.  
+Them: Yeah.  
+Me: And we're going to need to build an extraction system because we want to have the transcript there but we want to pull the important stuff from the transcript right. And so I think you get what you gave me five minutes ago was a really good plan to build the next version of this broadly.  
+Them: Yep.  
+Me: But the other thing we need to do is use alliance as our first and foremost get to proposal stage and the meeting we had on April 8th which you should have here with Christopher is the meeting that has the information that we need to extract to update the proposal we sent.  
+Them: Okay. Yeah, no, that plan was General, but Alliance would be the first Target for me to actually, like, do that. So I'll definitely focus on Alliance and. Yeah, April 8th, that meeting.  
+Me: Yeah.  
+Them: I'll make sure that that's there. And so from your, to your point about ingesting meetings, how about this? I think I want to pull from Apollo anyways. I already have the API connection working. So let me pull everything I can from both Google meet and Apollo. And then if there's supplemental stuff that you have that's not in the source of truth at that point, I'll have you. Start hydrating that as, like, miscellaneous stuff.  
+Me: Excellent.  
+Them: And I'll make sure the source there is. Like we should have a source that's people uploading their own meeting. Information.  
+Me: Yeah. And so from a you know CRM perspective. I'll also want to update a conversation I had with a prospect in at a conference right and it might not be the same entity as this meeting but it's just worth noting that too.  
+Them: Sure. Yeah, that's a good point. I'll make a note of that. So, yeah, like in person conversations.  
+Me: You have contacts already hydrated here for that company?  
+Them: Not in the operating system. No. Well, I have, like, basic information from the sheet. Let's see.  
+Me: Okay so that's another thing we need to extract there's the first meeting we had in February. Included included like six or seven alliance people.  
+Them: Yeah.  
+Me: And so there's Christopher who's the most important because he's going to sign the check but then there's like a brendan or brandon or somebody like that who's the. I think he was presented as a chief operating officer but I think his title is actually something different but he's the guy that would actually do it then there was another owner and two or three other people and you know if this system's working really well. It's extracting who those are at least in a you know v1 even if it's 80% accurate and attaching it to that. To that company.  
+Them: Got. It. Yeah. No, that makes sense. Right now I have it actually, it's pretty good now at extracting all the people who were in meetings, at least from Google meet. And it creates them as a contact if they weren't already there. And ties them to the. So the next thing I'm doing on the meeting front would be. This is just a pure extraction from Google meet. No processing has been done yet. But I'm planning. And Google, I mean, Gemini already has like a, a notes thing and like an action. It already does some of that stuff. But I, for things that don't have that information already, I would process that, pull out, you know, the important information. And then also categorize each of these meetings. Are they internal meetings? Is it the customer? Is it?  
+Me: Yeah.  
+Them: And then that way we can. I mean, that'll be necessary for us to. Build that timeline out.  
+Me: I'd rather this be messy and include all the data we have now then it'd be perfect because. Again redundancy is actually really useful Apollo is creating its own extraction system and it's useful for sales and Google's creating one that's more broadly useful we need one of our own particularly for probably it'll be a different extraction system for prospects and customers but it'll be closed and so I actually we should build that relatively quickly in this process it's a stage two or three but if you think about. That meeting we had with Christopher at alliance. The right extraction system pulls the most important pieces for that stage which is the you know closing stage.  
+Them: That's a good point. I mean, each, yeah, the extraction, you can't really have a general extraction. It's, why are we. Extracting information from this meeting? If there's a reason for it. So.  
+Me: And if.  
+Them: Yeah, I guess do you want to Define that now? Like. For, do you have an idea for the stages? What would we want to pull from that?  
+Me: I mean kind of.  
+Them: Or not yet?  
+Me: I don't know if you've got the right questions to ask me to answer it I don't have I can't just go okay at the demo stage. Here's what works I mean I kind of can but I also. I know. That all the data to hydrate this 80% or more is accessible definitely to me and maybe to you and definitely to you. If you just go in to all my systems because I'm going to give you access. Right and then what we instead of a blank sheet like trying to go okay at the demo stage I remember this this and this it's like well here's all the demo stage conversations and here's what AI decided was the process in the playbook. And we can literally get to a really good foundation right now for every stage in my opinion.  
+Them: Okay, you're just saying, like, it's going to become obvious by processing all the data historically speaking.  
+Me: Correct.  
+Them: About what's the playbook at each stage.  
+Me: And then and we'll want to change it but at least we'll have the starting thing like here's how the playbook has worked right.  
+Them: And then we can go from there. Okay.  
+Me: Because if there's one overarching like hey remember this for the project? It's that we actually just need to get to a source of truth for what we're doing now first and then we can make an awesome process for what we want to be doing because we are going to change it. Right and that's that's exactly where you and I can generate a system out of what we have pretty quickly and we can let cam help us define how to change it so that it scales with the sales team instead of you know me doing it all.  
+Them: Yeah, that sounds good. So I think that's a good place to start. Just use the historical data. That will inform what we've done in the past, and then we can iterate on it.  
+Me: Yep. Perfect.  
+Them: All right.  
+Me: I've got some more data.  
+Them: So do you want to log in.  
+Me: Yeah, I do want to log in so you want to send it to me?  
+Them: Oh, yeah. Yeah. In the chat, I have your username and password and then the link to the operating system UI. And I'll share also with you. Let me share with you some instructions for the CLI. You can just give it to cloud code.  
+Me: Okay. Yeah and then. It's got an organization slug.  
+Them: Oh, yeah, that's underscore platform.  
+Me: Okay. I'm in. Nice. Okay.  
+Them: So. Awesome. Let me share with you also. Instruction here. I'm going to send the instructions afterwards. I look at my cloud code to ship you. Some files.  
+Me: Ente.  
+Them: All right, man. Good talk. I will. Keep chugging away at this. I actually also just got right access to the gic email inboxes. So completely unblocked now for moving to production. So I'm just going to be talking with jc about, like, next steps there. Like make sure we have a date that we're going to actually launch. In production.  
+Me: Cool.  
+Them: And that we have, like, some steps there on how to actually make sure everything's working good. And, you know, no issues.  
+Me: Excellent. Well done hey good good work across the board man.  
+Them: Great. Anything else? Yeah. Thank you. I'm excited about this system, man. I think. It's going to develop into something awesome that we can use across the board.  
+Me: I'm sure of it.  
+Them: Right. I will talk to you later then.  
+Me: Have good afternoon.  
+Them: YouTube. Bye. 
