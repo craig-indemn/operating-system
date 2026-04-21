@@ -8,11 +8,9 @@
 
 ### Origin
 
-Every customer we build for, the same patterns emerge. Entities with lifecycles. Actors with roles. Messages flowing between them. External systems connected through adapters. The same architecture, rebuilt from scratch each time.
+Every customer we build for, the same patterns emerge. The same architecture, rebuilt from scratch each time. EventGuard proved that AI can run an entire insurance program end-to-end — no humans in the loop. But every piece of it was custom. Standing up the next one means starting over.
 
-EventGuard proved that AI can run an entire insurance program — quoting, binding, payment, policy issuance, certificate delivery, no humans in the loop. But every piece of it was custom. Standing up the next one means starting over.
-
-It's time to stop building custom solutions and instead build the operating system that powers all of them.
+The question became: what's the system underneath all of them?
 
 ### Every Business Is a System
 
@@ -609,7 +607,7 @@ Three kernel processes share one image with different entry points:
 Two additional service types:
 
 - **Base UI.** A static application served independently. Connects to the API server only — no direct database access.
-- **Harnesses.** One image per runtime kind and framework combination — an async harness for background associate processing, a chat harness for real-time text conversations, and a voice harness for real-time voice. Each connects to the API server through internal networking and uses the CLI for all OS operations.
+- **Harnesses.** One image per runtime kind and framework combination. For example, a voice harness or a chat harness. Each connects to the API server through internal networking and uses the CLI for all OS operations.
 
 ### The Trust Boundary
 
