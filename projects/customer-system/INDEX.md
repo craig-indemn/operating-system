@@ -6,9 +6,9 @@ Kyle is pressing for this. It doubles as the proving ground for the OS domain mo
 
 ## Status
 
-**Session 2026-04-21 (session 2) — Kyle's deals live, UI overhauled, P0 complete, P1 detail view shipped.**
+**Session 2026-04-21 (session 2) — P0 + P1 complete. System ready for team.**
 
-Read Kyle's EXEC folder (PLAYBOOK-v2, data dictionaries, 6 leads, MAP) and Cam's Proposals folder (6 customer proposals). Deal entity extended with 5 new fields, SuccessPhase entity created, Kyle's 6 close-now deals populated with real data. P0 items resolved: trace API bug, deep links, Kyle login, global activity feed. P1 detail view: read mode with inline editing + side panel from list view.
+Read Kyle's EXEC folder (PLAYBOOK-v2, data dictionaries, 6 leads, MAP) and Cam's Proposals folder (6 customer proposals). Deal entity extended, SuccessPhase entity created, 6 deals populated. P0: trace bug, deep links, Kyle login, activity feed. P1: detail view with inline editing + side panel, custom domains (os.indemn.ai + api.os.indemn.ai), CLI published (v0.1.0 on GitHub), repo setup with README + getting-started + white paper + domain-modeling skill + `indemn init` with Session Startup protocol.
 
 **Previous: Session 2026-04-14/15 (session 1)** — Design and data prep. Full context gathered, problem statement, domain model, data CSVs prepared.
 
