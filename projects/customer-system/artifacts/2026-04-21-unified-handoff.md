@@ -25,6 +25,7 @@ This handoff covers EVERYTHING — the context from multiple sessions, brainstor
 - `projects/customer-system/artifacts/2026-04-14-vision-and-trajectory.md` — phased roadmap shared with Kyle
 - `projects/customer-system/artifacts/context/2026-04-14-craigs-brain-dump.md` — Craig's raw notes from team conversations
 - `projects/customer-system/artifacts/context/2026-04-14-source-inventory.md` — all 28+ source documents inventoried
+- `projects/customer-system/artifacts/context/2026-04-21-kyle-craig-call-transcript.txt` — **LATEST**: full 40K transcript of Craig+Kyle call on Apr 21 covering prospect strategy, deal priorities, next phase requirements
 
 ### 3. Kyle's Vision (what Kyle wants)
 - `projects/customer-system/artifacts/context/kyle-exec/PLAYBOOK-v2.md` — Kyle's operating playbook
