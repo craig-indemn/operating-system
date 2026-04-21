@@ -86,6 +86,7 @@ The first real system built on the Indemn Operating System. A customer delivery/
 | 2026-04-19 | [demo-readiness](artifacts/2026-04-19-demo-readiness.md) | CEO demo assessment — recommended flow, verified features, 14 known limitations for post-demo |
 | 2026-04-20 | [session-handoff](artifacts/2026-04-20-session-handoff.md) | Full handoff — reading protocol, pre-flight, architecture, what works, what needs work |
 | 2026-04-20 | [ui-and-assistant-session](artifacts/2026-04-20-ui-and-assistant-session.md) | UI polish (15 improvements) + assistant UX refactor (split pane, streaming, entity rendering) |
+| 2026-04-20 | [meeting-ingestion-plan](artifacts/2026-04-20-meeting-ingestion-plan.md) | Meeting ingestion + prospect delivery plan — entity refinement, Google adapter research, extraction associate |
 
 ## Decisions
 
@@ -101,6 +102,10 @@ The first real system built on the Indemn Operating System. A customer delivery/
 - 2026-04-20: Entity detection is dual-path: harness-side on_tool_end + client-side JSON parsing
 - 2026-04-20: UI deploys require manual `railway up` — not auto-deploy from git push
 - 2026-04-20: gemini-3-flash-preview is the default model; gemini-2.5-flash is fallback if it hangs
+- 2026-04-21: Google Workspace adapter built — domain-wide delegation via service account, org-level Integration
+- 2026-04-21: fetch_new is a collection-level kernel capability — creates entities from external systems, generic pattern
+- 2026-04-21: Meeting entity is agnostic to Google — adapter maps Drive data to Meeting fields, Integration dispatches
+- 2026-04-21: One associate for full meeting pipeline — fetch + extract Tasks/Decisions/Signals/Commitments
 
 ## Open Questions
 

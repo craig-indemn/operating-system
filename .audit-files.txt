@@ -1,0 +1,68 @@
+# Pass 2 audit — Spec-vs-Implementation at Architectural-Layer Level
+# Category will be set in manifest.yml after init.sh runs
+
+# === DESIGN SOURCE ARTIFACTS ===
+# These are the source-of-truth design documents from sessions 1-6
+projects/product-vision/artifacts/2026-04-13-white-paper.md
+projects/product-vision/artifacts/2026-04-10-realtime-architecture-design.md
+projects/product-vision/artifacts/2026-04-10-integration-as-primitive.md
+projects/product-vision/artifacts/2026-03-30-design-layer-3-associate-system.md
+projects/product-vision/artifacts/2026-04-09-entity-capabilities-and-skill-model.md
+projects/product-vision/artifacts/2026-04-11-authentication-design.md
+projects/product-vision/artifacts/2026-04-10-bulk-operations-pattern.md
+projects/product-vision/artifacts/2026-04-11-base-ui-operational-surface.md
+projects/product-vision/artifacts/2026-04-09-data-architecture-everything-is-data.md
+projects/product-vision/artifacts/2026-04-13-simplification-pass.md
+projects/product-vision/artifacts/2026-04-10-base-ui-and-auth-design.md
+projects/product-vision/artifacts/2026-04-10-post-trace-synthesis.md
+
+# === CONSOLIDATED IMPLEMENTATION SPECS ===
+projects/product-vision/artifacts/2026-04-14-impl-spec-phase-0-1-consolidated.md
+projects/product-vision/artifacts/2026-04-14-impl-spec-phase-2-3-consolidated.md
+projects/product-vision/artifacts/2026-04-14-impl-spec-phase-4-5-consolidated.md
+projects/product-vision/artifacts/2026-04-14-impl-spec-phase-6-7-consolidated.md
+
+# === CODE: Harness / Agent Execution (Finding 0 subsystem) ===
+/Users/home/Repositories/indemn-os/kernel/temporal/activities.py
+/Users/home/Repositories/indemn-os/kernel/api/assistant.py
+/Users/home/Repositories/indemn-os/kernel/temporal/workflows.py
+/Users/home/Repositories/indemn-os/kernel/temporal/worker.py
+
+# === CODE: Integration Adapter Dispatch ===
+/Users/home/Repositories/indemn-os/kernel/integration/adapter.py
+/Users/home/Repositories/indemn-os/kernel/integration/registry.py
+/Users/home/Repositories/indemn-os/kernel/integration/dispatch.py
+/Users/home/Repositories/indemn-os/kernel/integration/resolver.py
+
+# === CODE: Channel Transport ===
+/Users/home/Repositories/indemn-os/kernel/api/websocket.py
+/Users/home/Repositories/indemn-os/kernel/api/events.py
+/Users/home/Repositories/indemn-os/kernel/api/interaction.py
+
+# === CODE: Skill Execution ===
+/Users/home/Repositories/indemn-os/kernel/skill/generator.py
+/Users/home/Repositories/indemn-os/kernel/skill/schema.py
+
+# === CODE: Authentication ===
+/Users/home/Repositories/indemn-os/kernel/auth/session_manager.py
+/Users/home/Repositories/indemn-os/kernel/auth/jwt.py
+/Users/home/Repositories/indemn-os/kernel/api/auth_routes.py
+/Users/home/Repositories/indemn-os/kernel/api/registration.py
+
+# === CODE: Bulk Operations ===
+/Users/home/Repositories/indemn-os/kernel/api/bulk.py
+
+# === CODE: Base UI ===
+/Users/home/Repositories/indemn-os/ui/src/assistant/AssistantProvider.tsx
+/Users/home/Repositories/indemn-os/ui/src/assistant/useAssistant.ts
+
+# === CODE: Org Lifecycle ===
+/Users/home/Repositories/indemn-os/kernel/api/org_lifecycle.py
+
+# === CODE: Watch Coalescing ===
+/Users/home/Repositories/indemn-os/kernel/watch/cache.py
+/Users/home/Repositories/indemn-os/kernel/watch/evaluator.py
+
+# === INFRASTRUCTURE (deployable topology) ===
+/Users/home/Repositories/indemn-os/Dockerfile
+/Users/home/Repositories/indemn-os/docker-compose.yml
