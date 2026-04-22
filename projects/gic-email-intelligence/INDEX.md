@@ -4,9 +4,32 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 
 ## Status
 
-**Session 2026-04-17a. Phases 1-3 complete + Gemini migration + dual proxy (UAT 5000 + Prod 5001) live + deployed to Railway.**
+**Session 2026-04-22. Going live to production tomorrow (2026-04-23). Pre-launch cleanup in progress.**
 
-**To resume this project, read `artifacts/2026-04-17-session-handoff.md` — it has everything for full context transfer.**
+**To resume this project, read `artifacts/2026-04-17-session-handoff.md` — it has full context, infrastructure map, technical lessons, and the 7-step prod cutover plan.**
+
+**What was done (2026-04-16 through 2026-04-22):**
+
+1. Phase 1: Task creation end-to-end in UAT — proxy nested-DTO fix, custom ActionId 40, GroupId 2, CLI commands, skill Steps 6-8 with fail-fast discipline.
+2. Phase 2: Multi-field agency matching — 1571 agents synced to MongoDB, phone+address+name+email scoring via rapidfuzz. Finds agencies that name search alone misses.
+3. Phase 3: 3-layer duplicate detection — submission check, cross-submission check, Unisoft HasDuplicates flag.
+4. Gemini migration — all LLM calls moved from Claude Sonnet (depleted) to Gemini 2.5 Pro/Flash via Vertex AI. Skills inlined in system prompt (deepagents SkillsMiddleware doesn't work with flat files).
+5. Dual proxy — UAT port 5000 + Prod port 5001 on same EC2. Config-file-based routing. DNS identity fix for prod WCF auth. Prod endpoint discovered from ClickOnce app config.
+6. Prod discovery — task groups: NEW BIZ (#3), NEW BIZ Workers Comp (#4). 21 LOBs. UniClient WS-Security creds work for both envs.
+7. Infrastructure — proxy source in repo, dev crons paused, Railway deployed with Gemini, comprehensive proxy README with troubleshooting.
+8. Write access to quotes inbox obtained (TJ at Grove Networks, confirmed 2026-04-22).
+9. JC call 2026-04-22: confirmed ready for prod. Will send underwriter assignment field info (AssignedTo vs Owner). Going live 2026-04-23.
+
+**Pre-launch items (do before going live):**
+- Add `--assigned-to` flag to quote create CLI (JC sending which field to use)
+- Update skill with prod GroupIds (3/4 instead of 2)
+- Sync prod agents to MongoDB
+- Implement email-to-subfolder move (write access now available)
+- Update Railway env to point at prod proxy (port 5001)
+- Deploy + smoke test one email against prod
+- Verify task appears in JC's NEW BIZ queue
+
+**Next session: clear context, resume from handoff, execute pre-launch + go live.**
 
 **What was done (2026-04-16 session b):**
 
@@ -825,6 +848,9 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 - 2026-04-17: Prod SOAP endpoint is `services.gicunderwriters.co/management/imsservice.svc` (discovered from ClickOnce app config download, NOT the URL JC sent which was the ClickOnce download link). ClientId = `GIC`. WS-Security user = `UniClient` (same password as UAT).
 - 2026-04-17: WCF DNS identity is REQUIRED for prod — `EndpointIdentity.CreateDnsIdentity("gicunderwriters.co")` must be set on the endpoint address. Without it, WCF message-level security context negotiation fails with `MessageSecurityException` even if credentials are correct and cert validation is skipped. This is NOT a cert issue — it's a WCF secure conversation requirement.
 - 2026-04-17: Prod task groups: NEW BIZ = GroupId 3, NEW BIZ Workers Comp = GroupId 4. Update the automation skill with these IDs when switching to prod.
+- 2026-04-22: Write access to quotes inbox obtained (TJ at Grove Networks). Unblocks email-to-subfolder move.
+- 2026-04-22: JC confirmed ready for production. Going live 2026-04-23. JC will send underwriter assignment field details.
+- 2026-04-22: Need to set underwriter/AssignedTo on quote creation — `indemnai` is the "Instant Quote" user JC created for this purpose. Waiting on JC for which field his team looks at.
 
 ## Open Questions (deferred — not blocking demo)
 - How does RingCentral data merge into the same pipeline? (Same pattern: RingCentral CLI + skills)
