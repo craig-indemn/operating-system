@@ -6,6 +6,23 @@ Kyle is pressing for this. It doubles as the proving ground for the OS domain mo
 
 ## Status
 
+**Session 2026-04-22/23 (roadmap session) — Entity model designed, implemented, pipeline proven E2E.**
+
+Deep brainstorming session with Craig redesigning the entity model, then executed Waves 1-3.
+
+**Design phase:** Produced two companion documents: field-level specs (entity-model-brainstorm.md) and design rationale (entity-model-design-rationale.md). 10 new/renamed entities, 4 updated, 1 removed. 3 associate skills designed. 4 watches defined. 8 design principles established.
+
+**Implementation phase (Waves 1-3 complete):**
+- Wave 1: All entity definitions created on live OS (26 entities total). Fixed missing status fields on 6 entities.
+- Wave 2: 3 skills created (email-classifier, touchpoint-synthesizer, intelligence-extractor v2 with execute tool instructions), 3 roles with watches (email_classifier, touchpoint_synthesizer, intelligence_extractor), 3 associate actors created and activated with async runtime.
+- Wave 3: Gmail adapter built and deployed. `indemn email fetch-new --data '{"user_emails": ["kyle@indemn.ai"], "since": "2026-04-21"}'` works. Emails ingested from Kyle's Gmail.
+
+**Pipeline proven E2E:** Email created → watch fires → Email Classifier uses `execute` tool with `indemn` CLI → classifies email, links Company → Touchpoint Synthesizer fires → creates Touchpoint entity → Intelligence Extractor fires. Full cascade working.
+
+**Infrastructure bugs fixed:** Queue processor WorkflowAlreadyStartedError (Python 3.12 + wrong temporalio exception class). Runtime service token regenerated. Entity `touchpoint` field renamed from `interaction` (naming conflict with kernel entity).
+
+**Remaining:** Vertex AI rate limiting (429). Entity definition reload needed on API for touchpoint field on Email/Meeting. Old emails need reprocessing. Wave 4 (human enrichment) and Wave 5 (proposal generation) not started.
+
 **Session 2026-04-21 (roadmap session) — Meeting ingestion pipeline built E2E. Employee entity seeded. Actors cleaned up.**
 
 Google Meet API adapter captures everything: conference records, structured transcripts (speaker+timestamp, 30-day expiry), Gemini smart notes, recordings, Calendar attendees. 20 meetings ingested for April 20-21. 15 employees seeded from Google Admin SDK + Slack + Actor linkage. 11 junk actors deleted, 3 fixed, 3 created. `indemn meeting fetch-new` works end-to-end. `fetch_new` kernel capability is a new generic pattern (collection-level, creates entities from external systems).
@@ -99,6 +116,10 @@ Read Kyle's EXEC folder (PLAYBOOK-v2, data dictionaries, 6 leads, MAP) and Cam's
 | 2026-04-21 | [meeting-ingestion-session](artifacts/2026-04-21-meeting-ingestion-session.md) | Full session record — adapter rewrites, entity work, data quality audit |
 | 2026-04-21 | [session-handoff (customer-system)](artifacts/2026-04-21-session-handoff.md) | Parallel session handoff — Deal entity, SuccessPhase, UI work, domains, CLI |
 | 2026-04-21 | [context/kyle-exec/](artifacts/context/kyle-exec/) | Kyle's EXEC documents — playbook, data dictionaries, prospect list, MAP |
+| 2026-04-21 | [unified-handoff](artifacts/2026-04-21-unified-handoff.md) | Universal session handoff — reading protocol, all context, all work, what's next |
+| 2026-04-21 | [context/kyle-craig-call-transcript](artifacts/context/2026-04-21-kyle-craig-call-transcript.txt) | Full 40K transcript of Craig+Kyle call — prospect strategy, deal priorities, next phase |
+| 2026-04-22 | [entity-model-brainstorm](artifacts/2026-04-22-entity-model-brainstorm.md) | Entity model evolution — field-level specs for all 22 entities, relationships, state machines |
+| 2026-04-22 | [entity-model-design-rationale](artifacts/2026-04-22-entity-model-design-rationale.md) | WHY the model is designed this way — thinking, tradeoffs, rejected alternatives, OS vision fit, Alliance test |
 
 ## Decisions
 
@@ -120,6 +141,20 @@ Read Kyle's EXEC folder (PLAYBOOK-v2, data dictionaries, 6 leads, MAP) and Cam's
 - 2026-04-21: Company matching and meeting classification are post-processing (associate job, not adapter)
 - 2026-04-21: Deal entity extended with deal_id, next_step, next_step_owner, use_case, proposal_candidate
 - 2026-04-21: SuccessPhase entity — per-deal phased progression with entry criteria and go/no-go signals
+- 2026-04-22: Entity model evolution — 7 new entities (Email, Document, Interaction, Operation, Opportunity, Proposal, Phase) designed in brainstorm
+- 2026-04-22: Proposal is source of truth for what we deliver — the document is a rendering, not the source
+- 2026-04-22: Phase replaces SuccessPhase — phases always live on Proposal, no phases without a proposal
+- 2026-04-22: AssociateDeployment renamed to Associate — Associate is the deployed instance, AssociateType is the catalog
+- 2026-04-22: No fluff fields — every field is structured data, entity relationship, or source-of-truth content. No keyword summaries.
+- 2026-04-22: Documents for narrative, entities for structured facts — both live in the system, linked together
+- 2026-04-22: Interaction covers both external (with customer) and internal (work done for customer) — captures full effort and timeline
+- 2026-04-22: Alliance Insurance is the first target customer for full data hydration
+- 2026-04-23: "Interaction" renamed to "Touchpoint" — naming conflict with kernel Interaction entity (chat/voice sessions)
+- 2026-04-23: Associate skills must include explicit `execute` tool instructions with `indemn` CLI examples — without this, the agent doesn't know how to interact with the OS
+- 2026-04-23: Gmail adapter built into Google Workspace integration — `fetch_emails()` method, `fetch_method` config parameter on `fetch_new` capability
+- 2026-04-23: Queue processor bug fixed — `WorkflowAlreadyStartedError` removed from temporalio SDK, replaced with `RPCError` + `RPCStatusCode.ALREADY_EXISTS`
+- 2026-04-23: Runtime service token regenerated — stored on Platform Admin actor + AWS Secrets Manager + Railway env var
+- 2026-04-23: Pipeline E2E proven — Email → watch → Email Classifier (execute + indemn CLI) → Touchpoint Synthesizer → Touchpoint created
 
 ## Open Questions
 
@@ -128,4 +163,11 @@ Read Kyle's EXEC folder (PLAYBOOK-v2, data dictionaries, 6 leads, MAP) and Cam's
 - How to handle meetings where nobody enabled recording/transcription (process issue)
 - SuccessPhase data — what phases look like for each deal type
 - Staleness detection thresholds — what's "stale" for each entity type
+- UI rendering of nested dict lists (participants field shows `[object Object]`)
+- Interaction entity: how Slack messages become Interactions without noise, is summary field sufficient, effort tracking
+- Operation entity: field categories are naive — need real customer data to inform structure
+- Company profile enrichment: what structured fields capture "understanding their business"
+- LineOfBusiness entity: timing TBD, will exist eventually
+- How intelligence entities (Task, Decision, Signal, Commitment) connect to new entities
+- OS wiring: how watches and associates automate the discovery-to-proposal flow
 - UI rendering of nested dict lists (participants field shows `[object Object]`)

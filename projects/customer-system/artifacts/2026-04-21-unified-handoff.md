@@ -35,14 +35,17 @@ This handoff covers EVERYTHING — the context from multiple sessions, brainstor
 - `projects/customer-system/artifacts/context/kyle-exec/PROSPECT-SIX-LEADS-v0.md` — the 6 active prospects
 - `projects/customer-system/artifacts/context/kyle-exec/MAP.md` — Kyle's relationship map
 
-### 4. What Was Built (recent sessions)
+### 4. Entity Model Evolution (latest design work)
+- `projects/customer-system/artifacts/2026-04-22-entity-model-brainstorm.md` — **LATEST**: entity model brainstorm checkpoint — 7 new entities, design principles, flow, open questions. IN PROGRESS — shape agreed, per-entity details need deeper work.
+
+### 5. What Was Built (recent sessions)
 - `projects/customer-system/artifacts/2026-04-21-session-handoff.md` — parallel session: Deal entity, SuccessPhase, UI, domains, CLI
 - `projects/customer-system/artifacts/2026-04-21-meeting-ingestion-session.md` — roadmap session: Google Meet adapter, Employee entity, actor cleanup
 - `projects/customer-system/artifacts/2026-04-21-deal-entity-evolution.md` — how Deal entity was designed
 - `projects/customer-system/artifacts/2026-04-21-action-items.md` — prioritized action items from session 2
 - `projects/customer-system/artifacts/2026-04-14-phase-1-domain-model.md` — the original 14-entity domain model
 
-### 5. OS Vision (when making architectural decisions)
+### 6. OS Vision (when making architectural decisions)
 - `projects/product-vision/artifacts/2026-04-16-vision-map.md` — authoritative 23-section OS design synthesis
 - `projects/product-vision/CLAUDE.md` — session bootstrap, design integrity rules
 
