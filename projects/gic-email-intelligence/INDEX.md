@@ -4,9 +4,24 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 
 ## Status
 
-**PRODUCTION IS LIVE as of 2026-04-22 10:30 PM ET.** Processing and automation unpaused on Railway prod environment. Only Apr 23+ emails will be processed. Dev is paused.
+**PRODUCTION IS LIVE AND STABLE.** Go-live day (2026-04-23): 152 emails processed, 44 agent submissions automated (43 completed, 1 legitimate agency-not-found failure), 0 duplicate quotes, notifications sending.
 
-**To resume this project, read `artifacts/2026-04-22-session-close-go-live.md` — it has the full go-live state, monitoring checklist, pause commands, and everything built this session.**
+**To resume this project, read `artifacts/2026-04-23-go-live-day-session-2.md` — it has the full day's fixes, features, lessons learned, and open items.**
+
+**What was done (2026-04-23 — go-live day, session 2):**
+
+1. **Agent Contact lookup** — `GetContacts` API integration, `unisoft contacts list` CLI, `--agent-contact-id` on quote create. All automated quotes now have the correct agent contact set.
+2. **Application Acknowledgement notifications** — deterministic activity + email notification on `gic emails complete --quote-id`. Passes populated `Notification` inside `SetActivity` (one call). Template auto-rendered with `[NoticeDate]`, `[ApplicantName]`, `[QuoteId]`. Verified working on Q:146337.
+3. **Email folder workflow** — Inbox → "Indemn - Processing" (on classification) → "indemn processed" (on success) / "Duplicates" (on duplicate) / Inbox (on failure). All deterministic, folder auto-created.
+4. **Multi-LOB rules** — GL+CP → CP/PK (Package), restaurant GL → CG/HM, contractor GL → CG/AC. One email = one quote, always.
+5. **Portal classification fix** — Rule 7 rewritten: only Boats/Yachts, WC, Welders, Caterers are `gic_application` (have Quote IDs). All others (HandyPerson, Rental Dwelling, etc.) → `agent_submission`. Rule now fires regardless of LLM classification.
+6. **ObjectId corruption recovery** — `_safe_object_id()` handles LLM hex character corruption by trying all 16 variants.
+7. **Sync fix** — safe `.get()` for recipients, cron schedule restored, `GRAPH_*` vars added to processing service.
+8. **Processing parallelization** — `--workers 3`, clears backlogs 3x faster.
+9. **Duplicate routing** — deterministic check before denormalization, duplicates → "Duplicates" folder, no activity/notification.
+10. **Applicant email guidance** — skill distinguishes applicant email (from ACORD 125) vs agent email.
+
+**Key lessons:** `railway up` required for deploys (not just git push). Prod proxy binary is `UniProxy-Prod.exe`. Graph API message ID changes on folder move. LLMs corrupt hex strings. Notifications go inside `SetActivity`, not separate call.
 
 **What was done (2026-04-16 through 2026-04-22):**
 
@@ -699,6 +714,9 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 | 2026-04-16 | [production-rollout-plan](artifacts/2026-04-16-production-rollout-plan.md) | Production rollout plan with decisions — task creation approach, UAT-first, own dup detection, 4-phase ordering |
 | 2026-04-16 | [task-creation-uat-foundation](artifacts/2026-04-16-task-creation-uat-foundation.md) | Unisoft task creation end-to-end working in UAT — proxy nested-DTO fix, custom ActionId 40, test GroupId 2, reference payload, 50-char subject limit |
 | 2026-04-17 | [session-handoff](artifacts/2026-04-17-session-handoff.md) | Full session handoff — Phases 1-3, Gemini migration, Railway deploy, dual proxy, prod discovery |
+| 2026-04-22 | [session-close-go-live](artifacts/2026-04-22-session-close-go-live.md) | Session close — prod live, full infrastructure state, monitoring checklist, 15 features built |
+| 2026-04-23 | [go-live-day-handoff](artifacts/2026-04-23-go-live-day-handoff.md) | Morning session — 7 issues found/fixed, 3 quotes created, infrastructure state |
+| 2026-04-23 | [go-live-day-session-2](artifacts/2026-04-23-go-live-day-session-2.md) | Full day monitoring — 11 fixes, 3 features, 152 emails, 44 submissions, notifications working |
 
 ## Key Data Files
 | File | What it contains |
