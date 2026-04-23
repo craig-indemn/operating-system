@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Playbook IS the Entity Model</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0a0a14;
+    color: #e0e0e8;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── Subtle grid background ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      linear-gradient(rgba(99, 102, 241, 0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(99, 102, 241, 0.015) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page { position: relative; z-index: 1; max-width: 1400px; margin: 0 auto; padding: 48px 40px 80px; }
+
+  /* ── Header ── */
+  .header { text-align: center; margin-bottom: 56px; }
+  .header h1 {
+    font-size: 42px; font-weight: 800; letter-spacing: -1.5px;
+    background: linear-gradient(135deg, #818cf8 0%, #6ee7b7 50%, #818cf8 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    animation: shimmer 6s ease-in-out infinite;
+  }
+  @keyframes shimmer { 0%,100%{background-position:0% center} 50%{background-position:200% center} }
+  .header .subtitle {
+    margin-top: 12px; font-size: 17px; font-weight: 400; color: #94a3b8;
+    max-width: 720px; margin-left: auto; margin-right: auto; line-height: 1.6;
+  }
+
+  /* ── Section labels ── */
+  .section-label {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
+    color: #818cf8; margin-bottom: 20px;
+  }
+  .section-label .dot { width: 6px; height: 6px; border-radius: 50%; background: #818cf8; }
+
+  /* ── Loop indicator arrow (top) ── */
+  .loop-back-top {
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 8px; position: relative; height: 56px;
+  }
+  .loop-back-top .arrow-track {
+    position: absolute; width: 80%; height: 100%;
+    border: 2px dashed rgba(110, 231, 183, 0.25);
+    border-bottom: none; border-radius: 28px 28px 0 0;
+  }
+  .loop-back-top .arrow-label {
+    position: absolute; top: 6px;
+    background: #0a0a14; padding: 2px 16px;
+    font-size: 11px; font-weight: 600; color: #6ee7b7; letter-spacing: 1px; text-transform: uppercase;
+  }
+  .loop-back-top .arrow-head-left,
+  .loop-back-top .arrow-head-right {
+    position: absolute; bottom: -1px; width: 0; height: 0;
+  }
+  .loop-back-top .arrow-head-left {
+    left: 10%;
+    border-left: 6px solid transparent; border-right: 6px solid transparent;
+    border-top: 8px solid rgba(110, 231, 183, 0.4);
+  }
+
+  /* ── INTERACTION LAYER ── */
+  .interaction-layer { margin-bottom: 40px; }
+
+  .sources-row {
+    display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 20px;
+  }
+  .source-card {
+    flex: 1; min-width: 200px;
+    background: linear-gradient(135deg, rgba(30, 27, 56, 0.8), rgba(20, 20, 38, 0.9));
+    border: 1px solid rgba(129, 140, 248, 0.12);
+    border-radius: 10px; padding: 16px 18px;
+    transition: border-color 0.3s;
+  }
+  .source-card:hover { border-color: rgba(129, 140, 248, 0.35); }
+  .source-card .source-type {
+    font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;
+    color: #818cf8; margin-bottom: 6px;
+  }
+  .source-card .source-detail {
+    font-size: 13px; color: #c4c9e0; line-height: 1.45;
+  }
+  .source-card .source-detail strong { color: #e2e4ef; font-weight: 600; }
+
+  /* Arrow connector */
+  .flow-arrow {
+    display: flex; align-items: center; justify-content: center;
+    margin: 16px 0; gap: 8px;
+  }
+  .flow-arrow .arrow-line {
+    width: 2px; height: 28px;
+    background: linear-gradient(to bottom, rgba(129, 140, 248, 0.5), rgba(129, 140, 248, 0.15));
+  }
+  .flow-arrow-label {
+    font-size: 10px; font-weight: 600; color: #64748b; text-transform: uppercase; letter-spacing: 1px;
+  }
+
+  /* Processors row */
+  .processors-row {
+    display: flex; gap: 14px; flex-wrap: wrap;
+  }
+  .processor {
+    flex: 1; min-width: 180px;
+    background: rgba(129, 140, 248, 0.06);
+    border: 1px solid rgba(129, 140, 248, 0.15);
+    border-radius: 8px; padding: 14px 16px;
+    text-align: center;
+  }
+  .processor .proc-name {
+    font-size: 13px; font-weight: 700; color: #a5b4fc; margin-bottom: 4px;
+  }
+  .processor .proc-desc {
+    font-size: 11px; color: #7a829e; line-height: 1.4;
+  }
+
+  /* ── Big down arrow into entity model ── */
+  .big-flow-down {
+    display: flex; flex-direction: column; align-items: center; margin: 28px 0 20px;
+  }
+  .big-flow-down .shaft {
+    width: 3px; height: 36px;
+    background: linear-gradient(to bottom, rgba(129, 140, 248, 0.5), rgba(110, 231, 183, 0.4));
+  }
+  .big-flow-down .head {
+    width: 0; height: 0;
+    border-left: 8px solid transparent; border-right: 8px solid transparent;
+    border-top: 10px solid rgba(110, 231, 183, 0.5);
+  }
+  .big-flow-down .label {
+    margin-top: 6px; font-size: 10px; font-weight: 600; color: #6ee7b7;
+    text-transform: uppercase; letter-spacing: 1.5px;
+  }
+
+  /* ── ENTITY MODEL (the heart) ── */
+  .entity-model-section {
+    background: linear-gradient(135deg, rgba(15, 15, 30, 0.95), rgba(10, 10, 20, 0.98));
+    border: 1px solid rgba(110, 231, 183, 0.12);
+    border-radius: 16px; padding: 36px 32px; margin-bottom: 24px;
+    position: relative; overflow: hidden;
+  }
+  .entity-model-section::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(110, 231, 183, 0.03) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .entity-model-section .section-label { color: #6ee7b7; }
+  .entity-model-section .section-label .dot { background: #6ee7b7; }
+
+  .entity-model-tagline {
+    font-size: 13px; color: #64748b; margin-bottom: 28px; font-style: italic;
+  }
+
+  /* Customer comparison grid */
+  .customer-compare { display: flex; gap: 24px; flex-wrap: wrap; }
+
+  .customer-panel {
+    flex: 1; min-width: 340px;
+    background: rgba(20, 20, 38, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px; padding: 24px; position: relative;
+  }
+  .customer-panel.mature { border-color: rgba(110, 231, 183, 0.2); }
+  .customer-panel.early { border-color: rgba(251, 191, 36, 0.2); }
+
+  .customer-panel .panel-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 18px; padding-bottom: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  .panel-header .company-name {
+    font-size: 18px; font-weight: 700; letter-spacing: -0.5px;
+  }
+  .customer-panel.mature .company-name { color: #6ee7b7; }
+  .customer-panel.early .company-name { color: #fbbf24; }
+
+  .panel-header .maturity-badge {
+    font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+    padding: 4px 10px; border-radius: 20px;
+  }
+  .customer-panel.mature .maturity-badge {
+    background: rgba(110, 231, 183, 0.1); color: #6ee7b7; border: 1px solid rgba(110, 231, 183, 0.2);
+  }
+  .customer-panel.early .maturity-badge {
+    background: rgba(251, 191, 36, 0.1); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.2);
+  }
+
+  /* Entity cards inside panel */
+  .entity-grid {
+    display: grid; gap: 8px;
+  }
+  .entity-row {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 10px 12px; border-radius: 8px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid transparent;
+    transition: background 0.2s;
+  }
+  .entity-row:hover { background: rgba(255, 255, 255, 0.04); }
+  .entity-row.populated { border-left: 3px solid rgba(110, 231, 183, 0.4); }
+  .entity-row.partial { border-left: 3px solid rgba(251, 191, 36, 0.5); }
+  .entity-row.gap { border-left: 3px solid rgba(248, 113, 113, 0.5); background: rgba(248, 113, 113, 0.03); }
+
+  .entity-row .status-icon {
+    flex-shrink: 0; width: 18px; height: 18px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; margin-top: 1px;
+  }
+  .entity-row.populated .status-icon { background: rgba(110, 231, 183, 0.15); color: #6ee7b7; }
+  .entity-row.partial .status-icon { background: rgba(251, 191, 36, 0.15); color: #fbbf24; }
+  .entity-row.gap .status-icon { background: rgba(248, 113, 113, 0.15); color: #f87171; }
+
+  .entity-row .entity-info { flex: 1; }
+  .entity-row .entity-name {
+    font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px;
+    color: #94a3b8; margin-bottom: 3px;
+  }
+  .entity-row .entity-value {
+    font-size: 12.5px; color: #c4c9e0; line-height: 1.4;
+  }
+  .entity-row.gap .entity-value { color: #f8a0a0; font-style: italic; }
+  .entity-row.partial .entity-value em { color: #fbbf24; font-style: italic; }
+
+  /* Result badge */
+  .panel-result {
+    margin-top: 16px; padding: 12px 14px; border-radius: 8px;
+    font-size: 13px; font-weight: 600; text-align: center;
+  }
+  .customer-panel.mature .panel-result {
+    background: rgba(110, 231, 183, 0.08); color: #6ee7b7;
+    border: 1px solid rgba(110, 231, 183, 0.15);
+  }
+  .customer-panel.early .panel-result {
+    background: rgba(251, 191, 36, 0.08); color: #fbbf24;
+    border: 1px solid rgba(251, 191, 36, 0.15);
+  }
+  .panel-result .arrow-icon { margin: 0 6px; opacity: 0.6; }
+
+  /* ── Down arrow from entity model ── */
+
+  /* ── OUTPUTS SECTION ── */
+  .outputs-section { margin-bottom: 24px; }
+
+  .outputs-grid { display: flex; gap: 20px; flex-wrap: wrap; }
+
+  .output-col { flex: 1; min-width: 280px; }
+
+  .output-block {
+    border-radius: 12px; padding: 22px; height: 100%;
+  }
+  .output-block.continuous {
+    background: rgba(129, 140, 248, 0.04);
+    border: 1px solid rgba(129, 140, 248, 0.12);
+  }
+  .output-block.milestone {
+    background: rgba(110, 231, 183, 0.04);
+    border: 1px solid rgba(110, 231, 183, 0.15);
+    position: relative;
+  }
+  .output-block.milestone::after {
+    content: ''; position: absolute; inset: -1px; border-radius: 12px;
+    background: linear-gradient(135deg, rgba(110, 231, 183, 0.08), transparent 60%);
+    pointer-events: none; z-index: 0;
+  }
+
+  .output-block h3 {
+    font-size: 14px; font-weight: 700; margin-bottom: 14px; position: relative; z-index: 1;
+  }
+  .output-block.continuous h3 { color: #a5b4fc; }
+  .output-block.milestone h3 { color: #6ee7b7; }
+
+  .output-item {
+    display: flex; align-items: flex-start; gap: 8px;
+    margin-bottom: 10px; font-size: 13px; color: #94a3b8; line-height: 1.45;
+    position: relative; z-index: 1;
+  }
+  .output-item .bullet {
+    flex-shrink: 0; margin-top: 5px;
+    width: 5px; height: 5px; border-radius: 50%;
+  }
+  .continuous .output-item .bullet { background: #818cf8; }
+  .milestone .output-item .bullet { background: #6ee7b7; }
+  .output-item strong { color: #c4c9e0; font-weight: 600; }
+
+  /* Proposal card */
+  .proposal-card {
+    margin-top: 16px; padding: 16px; border-radius: 10px;
+    background: rgba(110, 231, 183, 0.06);
+    border: 1px solid rgba(110, 231, 183, 0.12);
+    position: relative; z-index: 1;
+  }
+  .proposal-card .proposal-title {
+    font-size: 13px; font-weight: 700; color: #6ee7b7; margin-bottom: 6px;
+  }
+  .proposal-card .proposal-phases {
+    font-size: 12px; color: #94a3b8; line-height: 1.5;
+  }
+  .proposal-card .proposal-phases .phase {
+    display: inline-block; padding: 2px 8px; border-radius: 4px; margin: 2px 4px 2px 0;
+    font-size: 11px; font-weight: 600;
+  }
+  .phase.crawl { background: rgba(129, 140, 248, 0.12); color: #a5b4fc; }
+  .phase.walk { background: rgba(251, 191, 36, 0.12); color: #fbbf24; }
+  .phase.run { background: rgba(110, 231, 183, 0.12); color: #6ee7b7; }
+
+  .proposal-source {
+    margin-top: 8px; font-size: 11px; color: #525972; font-style: italic;
+  }
+
+  /* ── LOOP RETURN ── */
+  .loop-return {
+    display: flex; align-items: center; justify-content: center;
+    margin: 32px 0 16px; position: relative;
+  }
+  .loop-return-track {
+    position: relative; width: 88%; padding: 24px 0;
+  }
+  .loop-return-track .track-line {
+    position: absolute; left: 0; right: 0; top: 50%;
+    height: 2px; background: linear-gradient(to right,
+      rgba(110, 231, 183, 0.05),
+      rgba(110, 231, 183, 0.25) 20%,
+      rgba(129, 140, 248, 0.25) 80%,
+      rgba(129, 140, 248, 0.05)
+    );
+  }
+  .loop-return-track .loop-steps {
+    position: relative; display: flex; justify-content: space-between; align-items: center;
+  }
+  .loop-step {
+    background: #0e0e1c; border: 1px solid rgba(129, 140, 248, 0.2);
+    border-radius: 8px; padding: 10px 16px; font-size: 11px; color: #94a3b8;
+    text-align: center; max-width: 200px; line-height: 1.4;
+    position: relative;
+  }
+  .loop-step strong { color: #a5b4fc; font-weight: 600; display: block; margin-bottom: 2px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .loop-step.highlight {
+    border-color: rgba(110, 231, 183, 0.3);
+    background: rgba(110, 231, 183, 0.04);
+  }
+  .loop-step.highlight strong { color: #6ee7b7; }
+
+  .loop-arrow-between {
+    font-size: 16px; color: rgba(129, 140, 248, 0.4); flex-shrink: 0; margin: 0 4px;
+  }
+
+  /* ── SCALABILITY ── */
+  .scalability-section {
+    margin-top: 44px; text-align: center;
+    padding-top: 36px;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+  }
+  .scalability-section .tagline {
+    font-size: 14px; color: #64748b; margin-bottom: 24px; font-weight: 500;
+  }
+
+  .company-pills { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+  .company-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 18px; border-radius: 8px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    font-size: 13px; color: #94a3b8; font-weight: 500;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .company-pill:hover { border-color: rgba(129, 140, 248, 0.2); transform: translateY(-1px); }
+  .company-pill .pill-dot { width: 6px; height: 6px; border-radius: 50%; }
+  .company-pill .pill-dot.green { background: #6ee7b7; }
+  .company-pill .pill-dot.amber { background: #fbbf24; }
+  .company-pill .pill-dot.gray { background: #475569; }
+
+  .scalability-footer {
+    margin-top: 16px; font-size: 12px; color: #3f4560; letter-spacing: 0.5px;
+  }
+
+  /* ── Center flow arrows ── */
+  .center-arrow {
+    display: flex; flex-direction: column; align-items: center; margin: 20px 0;
+  }
+  .center-arrow .shaft {
+    width: 2px; height: 28px;
+    background: linear-gradient(to bottom, rgba(129, 140, 248, 0.35), rgba(129, 140, 248, 0.1));
+  }
+  .center-arrow .head {
+    width: 0; height: 0;
+    border-left: 6px solid transparent; border-right: 6px solid transparent;
+    border-top: 8px solid rgba(129, 140, 248, 0.35);
+  }
+
+  /* ── Divider between entity model sides ── */
+  .entity-layout-label {
+    font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px;
+    color: #3f4560; margin-bottom: 10px; padding-left: 4px;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 800px) {
+    .page { padding: 28px 16px 60px; }
+    .header h1 { font-size: 28px; }
+    .customer-compare { flex-direction: column; }
+    .outputs-grid { flex-direction: column; }
+    .loop-return-track .loop-steps { flex-direction: column; gap: 8px; }
+    .loop-arrow-between { transform: rotate(90deg); }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ── Header ── -->
+  <div class="header">
+    <h1>The Playbook IS the Entity Model</h1>
+    <p class="subtitle">
+      Every interaction teaches us something. Gaps drive next steps. When the picture is complete enough, the Proposal writes itself.
+    </p>
+  </div>
+
+  <!-- ── Loop indicator (visual cue that this cycles) ── -->
+  <div class="loop-back-top">
+    <div class="arrow-track"></div>
+    <div class="arrow-label">The Loop</div>
+    <div class="arrow-head-left"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- SECTION 1: INTERACTION LAYER                -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="interaction-layer">
+    <div class="section-label"><span class="dot"></span> Interaction Layer &mdash; Data Flows In</div>
+
+    <div class="sources-row">
+      <div class="source-card">
+        <div class="source-type">Meeting</div>
+        <div class="source-detail"><strong>Kyle + Christopher Cook</strong> &mdash; Alliance discovery call, Apr&nbsp;8. Renewal volume: 4K/year, 80% unanswered.</div>
+      </div>
+      <div class="source-card">
+        <div class="source-type">Meeting</div>
+        <div class="source-detail"><strong>FoxQuilt CEO session</strong> &mdash; Karim Jamal &amp; Nick. Broker portal bottleneck, 3 staff, PCI hard-no on Stripe.</div>
+      </div>
+      <div class="source-card">
+        <div class="source-type">Email</div>
+        <div class="source-detail"><strong>Alliance data files</strong> &mdash; Renewal lists, policy volumes, AMS export shared via email attachment.</div>
+      </div>
+      <div class="source-card">
+        <div class="source-type">Document</div>
+        <div class="source-detail"><strong>FoxQuilt portal walkthrough</strong> &mdash; Screenshots of broker submission flow, field mapping notes.</div>
+      </div>
+    </div>
+
+    <div class="flow-arrow">
+      <div class="arrow-line"></div>
+    </div>
+
+    <div class="processors-row">
+      <div class="processor">
+        <div class="proc-name">Email Classifier</div>
+        <div class="proc-desc">Classifies inbound, links to Company entity</div>
+      </div>
+      <div class="processor">
+        <div class="proc-name">Touchpoint Synthesizer</div>
+        <div class="proc-desc">Creates timeline entries from every interaction</div>
+      </div>
+      <div class="processor">
+        <div class="proc-name">Intelligence Extractor</div>
+        <div class="proc-desc">Pulls Tasks, Decisions, Commitments, Signals</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Arrow into entity model -->
+  <div class="big-flow-down">
+    <div class="shaft"></div>
+    <div class="head"></div>
+    <div class="label">Populates Entities</div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- SECTION 2: THE ENTITY MODEL                 -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="entity-model-section">
+    <div class="section-label"><span class="dot"></span> The Entity Model &mdash; This IS the Playbook</div>
+    <p class="entity-model-tagline">
+      Company is the hub. Understanding on the left, our response on the right. Gaps are visible. Gaps ARE the next steps.
+    </p>
+
+    <div class="customer-compare">
+
+      <!-- ── Alliance (mature) ── -->
+      <div class="customer-panel mature">
+        <div class="panel-header">
+          <span class="company-name">Alliance Insurance</span>
+          <span class="maturity-badge">Mostly Complete</span>
+        </div>
+
+        <div class="entity-layout-label">Understanding</div>
+        <div class="entity-grid" style="margin-bottom: 14px;">
+          <div class="entity-row populated">
+            <div class="status-icon">&#10003;</div>
+            <div class="entity-info">
+              <div class="entity-name">Company</div>
+              <div class="entity-value">Broker, 10K policies, Atlanta. Christopher Cook (CEO).</div>
+            </div>
+          </div>
+          <div class="entity-row populated">
+            <div class="status-icon">&#10003;</div>
+            <div class="entity-info">
+              <div class="entity-name">Operations</div>
+              <div class="entity-value">Renewal outreach &mdash; 4K calls/year, currently manual, 80% unanswered.</div>
+            </div>
+          </div>
+          <div class="entity-row populated">
+            <div class="status-icon">&#10003;</div>
+            <div class="entity-info">
+              <div class="entity-name">Contacts</div>
+              <div class="entity-value">Christopher Cook (CEO), Brian Leftwich (Ops lead).</div>
+            </div>
+          </div>
+          <div class="entity-row populated">
+            <div class="status-icon">&#10003;</div>
+            <div class="entity-info">
+              <div class="entity-name">Customer System</div>
+              <div class="entity-value">BT Core (AMS), Applied Epic, Dialpad (phone).</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="entity-layout-label">Our Response</div>
+        <div class="entity-grid">
+          <div class="entity-row populated">
+            <div class="status-icon">&#10003;</div>
+            <div class="entity-info">
+              <div class="entity-name">Opportunities</div>
+              <div class="entity-value">80% calls unanswered &rarr; Renewal Associate. Wedge into broader automation.</div>
+            </div>
+          </div>
+          <div class="entity-row partial">
+            <div class="status-icon">&#9888;</div>
+            <div class="entity-info">
+              <div class="entity-name">Phases</div>
+              <div class="entity-value">Crawl/Walk/Run defined, but <em>needs updated proposal reflecting renewal wedge pivot</em></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-result">
+          <span class="arrow-icon">&rarr;</span> Ready for Proposal v2 <span class="arrow-icon">&larr;</span>
+        </div>
+      </div>
+
+      <!-- ── FoxQuilt (early) ── -->
+      <div class="customer-panel early">
+        <div class="panel-header">
+          <span class="company-name">FoxQuilt</span>
+          <span class="maturity-badge">Gaps Visible</span>
+        </div>
+
+        <div class="entity-layout-label">Understanding</div>
+        <div class="entity-grid" style="margin-bottom: 14px;">
+          <div class="entity-row populated">
+            <div class="status-icon">&#10003;</div>
+            <div class="entity-info">
+              <div class="entity-name">Company</div>
+              <div class="entity-value">Digital MGA, Toronto. Karim Jamal (CEO).</div>
+            </div>
+          </div>
+          <div class="entity-row populated">
+            <div class="status-icon">&#10003;</div>
+            <div class="entity-info">
+              <div class="entity-name">Operations</div>
+              <div class="entity-value">Broker portal &mdash; 3 staff handling manual submissions, bottleneck.</div>
+            </div>
+          </div>
+          <div class="entity-row populated">
+            <div class="status-icon">&#10003;</div>
+            <div class="entity-info">
+              <div class="entity-name">Contacts</div>
+              <div class="entity-value">Karim Jamal (CEO), Nick (VP Ops &mdash; champion).</div>
+            </div>
+          </div>
+          <div class="entity-row populated">
+            <div class="status-icon">&#10003;</div>
+            <div class="entity-info">
+              <div class="entity-name">Customer System</div>
+              <div class="entity-value">Epic (AMS), Gmail, BigQuery, Stripe. PCI = hard no.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="entity-layout-label">Our Response</div>
+        <div class="entity-grid">
+          <div class="entity-row populated">
+            <div class="status-icon">&#10003;</div>
+            <div class="entity-info">
+              <div class="entity-name">Opportunities</div>
+              <div class="entity-value">Portal bottleneck &rarr; Front Desk Associate.</div>
+            </div>
+          </div>
+          <div class="entity-row gap">
+            <div class="status-icon">&#10007;</div>
+            <div class="entity-info">
+              <div class="entity-name">Phases</div>
+              <div class="entity-value">Not defined yet &mdash; need pilot scope document</div>
+            </div>
+          </div>
+          <div class="entity-row gap">
+            <div class="status-icon">?</div>
+            <div class="entity-info">
+              <div class="entity-name">FDE Assignment</div>
+              <div class="entity-value">Jonathan or Craig? Decision needed before pilot</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-result">
+          Need: FDE decision + pilot scope document
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Arrow down from entity model -->
+  <div class="center-arrow">
+    <div class="shaft"></div>
+    <div class="head"></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- SECTION 3: OUTPUTS                          -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="outputs-section">
+    <div class="section-label"><span class="dot"></span> What the System Produces</div>
+
+    <div class="outputs-grid">
+
+      <!-- Continuous outputs -->
+      <div class="output-col">
+        <div class="output-block continuous">
+          <h3>Continuous &mdash; After Every Interaction</h3>
+          <div class="output-item">
+            <div class="bullet"></div>
+            <span><strong>Next steps / Tasks</strong> &mdash; "Send demo materials to Karim by Friday"</span>
+          </div>
+          <div class="output-item">
+            <div class="bullet"></div>
+            <span><strong>Draft emails</strong> &mdash; generated from full entity context, ready to send</span>
+          </div>
+          <div class="output-item">
+            <div class="bullet"></div>
+            <span><strong>Updated timeline</strong> &mdash; touchpoint logged, relationship history grows</span>
+          </div>
+          <div class="output-item">
+            <div class="bullet"></div>
+            <span><strong>Gap alerts</strong> &mdash; "Missing: annual volume for Alliance renewal operation"</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Milestone output -->
+      <div class="output-col">
+        <div class="output-block milestone">
+          <h3>Milestone &mdash; When Entities Are Complete Enough</h3>
+          <div class="output-item">
+            <div class="bullet"></div>
+            <span><strong>The Proposal</strong> &mdash; rendered from entities, not hand-written</span>
+          </div>
+          <div class="output-item">
+            <div class="bullet"></div>
+            <span>Generated from Company + Operations + Opportunities + Phases</span>
+          </div>
+          <div class="output-item">
+            <div class="bullet"></div>
+            <span>The document is a <strong>rendering</strong> of the entities, not the source of truth</span>
+          </div>
+
+          <div class="proposal-card">
+            <div class="proposal-title">Alliance Proposal v2</div>
+            <div class="proposal-phases">
+              <span class="phase crawl">Crawl &mdash; $0</span>
+              <span class="phase walk">Walk &mdash; $2,500/mo</span>
+              <span class="phase run">Run &mdash; $5&ndash;10K/mo</span>
+            </div>
+            <div class="proposal-source">Source: Company + Operations + Opportunities + Phases entities</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- THE LOOP RETURN                             -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="loop-return">
+    <div class="loop-return-track">
+      <div class="track-line"></div>
+      <div class="loop-steps">
+        <div class="loop-step">
+          <strong>Output</strong>
+          Task: "Schedule technical deep-dive with Alliance"
+        </div>
+        <div class="loop-arrow-between">&rarr;</div>
+        <div class="loop-step">
+          <strong>Becomes</strong>
+          A meeting happens, an email is sent
+        </div>
+        <div class="loop-arrow-between">&rarr;</div>
+        <div class="loop-step">
+          <strong>Creates</strong>
+          New touchpoint, new intelligence extracted
+        </div>
+        <div class="loop-arrow-between">&rarr;</div>
+        <div class="loop-step highlight">
+          <strong>Populates</strong>
+          More entity fields filled, gaps close
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Curved arrow back to top (visual) ── -->
+  <div style="display: flex; justify-content: center; margin: 8px 0 0;">
+    <svg width="200" height="48" viewBox="0 0 200 48" fill="none">
+      <path d="M100 4 C 40 4, 10 24, 10 44" stroke="url(#loopGrad)" stroke-width="2" stroke-dasharray="6 4" fill="none"/>
+      <path d="M100 4 C 160 4, 190 24, 190 44" stroke="url(#loopGrad)" stroke-width="2" stroke-dasharray="6 4" fill="none"/>
+      <polygon points="96,8 100,0 104,8" fill="rgba(110,231,183,0.4)"/>
+      <text x="100" y="30" text-anchor="middle" fill="#6ee7b7" font-size="9" font-family="Inter" font-weight="600" letter-spacing="1">LOOPS BACK</text>
+      <defs>
+        <linearGradient id="loopGrad" x1="0" y1="0" x2="200" y2="0">
+          <stop offset="0%" stop-color="rgba(129,140,248,0.3)"/>
+          <stop offset="50%" stop-color="rgba(110,231,183,0.4)"/>
+          <stop offset="100%" stop-color="rgba(129,140,248,0.3)"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- SCALABILITY                                 -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="scalability-section">
+    <p class="tagline">Same process for every customer. Same entities. Same loop. Only the data differs.</p>
+    <div class="company-pills">
+      <div class="company-pill">
+        <span class="pill-dot green"></span> Alliance Insurance
+      </div>
+      <div class="company-pill">
+        <span class="pill-dot amber"></span> FoxQuilt
+      </div>
+      <div class="company-pill">
+        <span class="pill-dot gray"></span> G.R. Little
+      </div>
+      <div class="company-pill">
+        <span class="pill-dot gray"></span> Amynta
+      </div>
+      <div class="company-pill">
+        <span class="pill-dot gray"></span> Every future customer
+      </div>
+    </div>
+    <p class="scalability-footer">The system scales because the structure is constant. The intelligence is in the entities.</p>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -120,6 +120,8 @@ Read Kyle's EXEC folder (PLAYBOOK-v2, data dictionaries, 6 leads, MAP) and Cam's
 | 2026-04-21 | [context/kyle-craig-call-transcript](artifacts/context/2026-04-21-kyle-craig-call-transcript.txt) | Full 40K transcript of Craig+Kyle call — prospect strategy, deal priorities, next phase |
 | 2026-04-22 | [entity-model-brainstorm](artifacts/2026-04-22-entity-model-brainstorm.md) | Entity model evolution — field-level specs for all 22 entities, relationships, state machines |
 | 2026-04-22 | [entity-model-design-rationale](artifacts/2026-04-22-entity-model-design-rationale.md) | WHY the model is designed this way — thinking, tradeoffs, rejected alternatives, OS vision fit, Alliance test |
+| 2026-04-23 | [playbook-as-entity-model](artifacts/2026-04-23-playbook-as-entity-model.md) | Key insight: the playbook IS the entity model. Gaps drive next steps. Proposal emerges when entities are complete. |
+| 2026-04-23 | [system-flow-v4](artifacts/2026-04-23-system-flow-v4.html) | Visual diagram for Kyle — timeline as spine, Alliance journey, entity nesting, associate connectors |
 
 ## Decisions
 
@@ -170,4 +172,6 @@ Read Kyle's EXEC folder (PLAYBOOK-v2, data dictionaries, 6 leads, MAP) and Cam's
 - LineOfBusiness entity: timing TBD, will exist eventually
 - How intelligence entities (Task, Decision, Signal, Commitment) connect to new entities
 - OS wiring: how watches and associates automate the discovery-to-proposal flow
+- CLI: `email list` times out with large datasets because body field (full HTML) makes responses huge. Need `--fields` or `--exclude-fields` option on list commands to select/exclude fields. Email-specific but should be a general CLI capability.
+- Harness: verify entity actually transitioned before marking message complete (defense-in-depth for associate failures)
 - UI rendering of nested dict lists (participants field shows `[object Object]`)

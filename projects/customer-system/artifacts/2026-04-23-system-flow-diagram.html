@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indemn Customer System — How Intelligence Becomes Action</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #0f0f1a;
+    color: #e2e8f0;
+    min-height: 100vh;
+    overflow-x: auto;
+  }
+
+  /* --- Header --- */
+  .header {
+    text-align: center;
+    padding: 48px 40px 16px;
+    position: relative;
+  }
+  .header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #a78bfa, #6366f1, #14b8a6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+  }
+  .header p {
+    font-size: 15px;
+    color: #94a3b8;
+    font-weight: 300;
+  }
+
+  /* --- Stage labels row --- */
+  .stage-labels {
+    display: flex;
+    padding: 0 40px;
+    gap: 24px;
+    margin-top: 24px;
+  }
+  .stage-label {
+    flex: 1;
+    min-width: 220px;
+    text-align: center;
+    position: relative;
+  }
+  .stage-label .number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    font-size: 13px;
+    font-weight: 600;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  .stage-label .text {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    vertical-align: middle;
+  }
+  .stage-label.sources .number { background: rgba(99, 102, 241, 0.25); color: #a78bfa; }
+  .stage-label.sources .text { color: #a78bfa; }
+  .stage-label.raw .number { background: rgba(59, 130, 246, 0.25); color: #60a5fa; }
+  .stage-label.raw .text { color: #60a5fa; }
+  .stage-label.timeline .number { background: rgba(245, 158, 11, 0.25); color: #fbbf24; }
+  .stage-label.timeline .text { color: #fbbf24; }
+  .stage-label.understanding .number { background: rgba(255, 255, 255, 0.15); color: #f1f5f9; }
+  .stage-label.understanding .text { color: #f1f5f9; }
+  .stage-label.proposal .number { background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(20, 184, 166, 0.3)); color: #a78bfa; }
+  .stage-label.proposal .text { background: linear-gradient(135deg, #a78bfa, #14b8a6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+  /* --- Main flow area --- */
+  .flow-container {
+    display: flex;
+    padding: 20px 40px 40px;
+    gap: 0;
+    min-width: 1600px;
+    position: relative;
+  }
+
+  /* --- Columns --- */
+  .stage {
+    flex: 1;
+    min-width: 220px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 0 12px;
+    position: relative;
+  }
+
+  /* --- Processing lanes (between stages) --- */
+  .processor-lane {
+    width: 140px;
+    min-width: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    position: relative;
+    padding: 0 4px;
+  }
+
+  /* --- Cards --- */
+  .card {
+    border-radius: 10px;
+    padding: 14px 16px;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+  }
+  .card .entity-name {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .card .entity-desc {
+    font-size: 11px;
+    line-height: 1.5;
+    opacity: 0.8;
+  }
+  .card .example {
+    font-size: 10px;
+    font-style: italic;
+    opacity: 0.55;
+    margin-top: 6px;
+    line-height: 1.4;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 6px;
+  }
+
+  /* Source cards */
+  .card.source {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(139, 92, 246, 0.08));
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.06);
+  }
+  .card.source .entity-name { color: #a78bfa; }
+
+  /* Raw data cards */
+  .card.raw {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.12), rgba(96, 165, 250, 0.06));
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.06);
+  }
+  .card.raw .entity-name { color: #60a5fa; }
+
+  /* Timeline / intelligence cards */
+  .card.timeline {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.12), rgba(251, 191, 36, 0.06));
+    border: 1px solid rgba(245, 158, 11, 0.25);
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.06);
+  }
+  .card.timeline .entity-name { color: #fbbf24; }
+
+  /* Understanding cards */
+  .card.understanding {
+    background: linear-gradient(135deg, rgba(241, 245, 249, 0.08), rgba(226, 232, 240, 0.04));
+    border: 1px solid rgba(241, 245, 249, 0.18);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.03);
+  }
+  .card.understanding .entity-name { color: #f1f5f9; }
+
+  /* Proposal cards */
+  .card.proposal-card {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(20, 184, 166, 0.12));
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    box-shadow: 0 0 30px rgba(99, 102, 241, 0.1), 0 0 60px rgba(20, 184, 166, 0.05);
+  }
+  .card.proposal-card .entity-name {
+    background: linear-gradient(135deg, #a78bfa, #14b8a6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 16px;
+  }
+
+  /* Proposal hero card */
+  .card.proposal-hero {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(20, 184, 166, 0.15));
+    border: 1px solid rgba(99, 102, 241, 0.4);
+    box-shadow: 0 0 40px rgba(99, 102, 241, 0.12), 0 0 80px rgba(20, 184, 166, 0.06);
+    padding: 20px;
+  }
+  .card.proposal-hero .entity-name {
+    background: linear-gradient(135deg, #a78bfa, #14b8a6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  /* Processing node cards */
+  .processor-node {
+    background: linear-gradient(135deg, rgba(20, 184, 166, 0.15), rgba(45, 212, 191, 0.08));
+    border: 1px solid rgba(20, 184, 166, 0.35);
+    border-radius: 10px;
+    padding: 10px 12px;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 0 24px rgba(20, 184, 166, 0.08);
+  }
+  .processor-node .proc-icon {
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+  .processor-node .proc-name {
+    font-size: 11px;
+    font-weight: 600;
+    color: #2dd4bf;
+    line-height: 1.3;
+  }
+  .processor-node .proc-trigger {
+    font-size: 9px;
+    color: #5eead4;
+    opacity: 0.6;
+    margin-top: 3px;
+    font-style: italic;
+  }
+
+  /* Human enrichment node */
+  .human-node {
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.12), rgba(245, 158, 11, 0.08));
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    border-radius: 10px;
+    padding: 10px 12px;
+    text-align: center;
+    width: 100%;
+    box-shadow: 0 0 24px rgba(251, 191, 36, 0.06);
+  }
+  .human-node .proc-name {
+    font-size: 11px;
+    font-weight: 600;
+    color: #fbbf24;
+    line-height: 1.3;
+  }
+  .human-node .proc-trigger {
+    font-size: 9px;
+    color: #fcd34d;
+    opacity: 0.6;
+    margin-top: 3px;
+    font-style: italic;
+  }
+
+  /* --- Flow arrows (SVG overlay) --- */
+  .flow-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* --- Animated dash pattern --- */
+  @keyframes dashFlow {
+    to { stroke-dashoffset: -20; }
+  }
+  .flow-line {
+    stroke-dasharray: 6, 6;
+    animation: dashFlow 1.2s linear infinite;
+  }
+
+  /* --- Stats bar --- */
+  .stats-bar {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    padding: 12px 40px;
+    margin: 0 40px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .stat {
+    text-align: center;
+  }
+  .stat .stat-value {
+    font-size: 20px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #a78bfa, #14b8a6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .stat .stat-label {
+    font-size: 10px;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 2px;
+  }
+
+  /* --- Expandability footer --- */
+  .expandability {
+    margin: 32px 40px 48px;
+    padding: 24px 32px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(30, 30, 50, 0.8), rgba(20, 20, 40, 0.6));
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .expandability h3 {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #64748b;
+    margin-bottom: 16px;
+  }
+  .expand-items {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .expand-item {
+    flex: 1;
+    min-width: 240px;
+  }
+  .expand-item .expand-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: #94a3b8;
+    margin-bottom: 6px;
+  }
+  .expand-item .expand-list {
+    font-size: 11px;
+    color: #64748b;
+    line-height: 1.7;
+  }
+  .expand-item .expand-list span {
+    display: inline-block;
+    padding: 2px 8px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 4px;
+    margin: 2px 4px 2px 0;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  /* --- Flow connector arrows (CSS-based) --- */
+  .connector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 24px;
+    position: relative;
+  }
+  .connector::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(20, 184, 166, 0.4), transparent);
+  }
+
+  /* --- Scroll wrapper --- */
+  .scroll-wrapper {
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+  }
+  .scroll-inner {
+    min-width: 1600px;
+    position: relative;
+  }
+
+  /* --- Animated glow pulse --- */
+  @keyframes glowPulse {
+    0%, 100% { box-shadow: 0 0 30px rgba(99, 102, 241, 0.1), 0 0 60px rgba(20, 184, 166, 0.05); }
+    50% { box-shadow: 0 0 40px rgba(99, 102, 241, 0.18), 0 0 80px rgba(20, 184, 166, 0.1); }
+  }
+  .card.proposal-hero {
+    animation: glowPulse 3s ease-in-out infinite;
+  }
+
+  /* --- Phase badge --- */
+  .phase-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-right: 4px;
+    margin-bottom: 3px;
+  }
+  .phase-crawl { background: rgba(34, 197, 94, 0.15); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.3); }
+  .phase-walk { background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
+  .phase-run { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
+
+  /* --- Vertical flow arrows between processor nodes --- */
+  .proc-arrow {
+    width: 1px;
+    height: 12px;
+    background: rgba(20, 184, 166, 0.3);
+    position: relative;
+  }
+  .proc-arrow::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: -3px;
+    width: 0;
+    height: 0;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    border-top: 4px solid rgba(20, 184, 166, 0.4);
+  }
+
+  /* --- Horizontal flow arrows --- */
+  .h-arrow {
+    display: flex;
+    align-items: center;
+    padding: 0 4px;
+  }
+  .h-arrow-line {
+    flex: 1;
+    height: 1px;
+    position: relative;
+    overflow: visible;
+  }
+  .h-arrow-line::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--arrow-color, rgba(20, 184, 166, 0.35)), transparent);
+  }
+  .h-arrow-head {
+    width: 0;
+    height: 0;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 6px solid var(--arrow-color, rgba(20, 184, 166, 0.35));
+    flex-shrink: 0;
+  }
+
+  /* --- Animated dot particles --- */
+  @keyframes particleFlow {
+    0% { left: 0; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { left: calc(100% - 4px); opacity: 0; }
+  }
+  .particle-track {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    top: 50%;
+    left: 0;
+  }
+  .particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--particle-color, #2dd4bf);
+    box-shadow: 0 0 6px var(--particle-color, #2dd4bf);
+    animation: particleFlow var(--duration, 3s) linear infinite;
+    animation-delay: var(--delay, 0s);
+    top: -1px;
+  }
+
+  /* --- Legend --- */
+  .legend {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    padding: 8px 40px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    color: #64748b;
+  }
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+  }
+  .legend-dot.l-source { background: rgba(99, 102, 241, 0.5); border: 1px solid rgba(99, 102, 241, 0.6); }
+  .legend-dot.l-raw { background: rgba(59, 130, 246, 0.5); border: 1px solid rgba(59, 130, 246, 0.6); }
+  .legend-dot.l-ai { background: rgba(20, 184, 166, 0.5); border: 1px solid rgba(20, 184, 166, 0.6); }
+  .legend-dot.l-intel { background: rgba(245, 158, 11, 0.5); border: 1px solid rgba(245, 158, 11, 0.6); }
+  .legend-dot.l-understand { background: rgba(241, 245, 249, 0.3); border: 1px solid rgba(241, 245, 249, 0.3); }
+  .legend-dot.l-proposal { background: linear-gradient(135deg, rgba(99, 102, 241, 0.5), rgba(20, 184, 166, 0.5)); border: 1px solid rgba(99, 102, 241, 0.4); }
+
+  /* --- Section divider lines between stages --- */
+  .stage-divider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.04), transparent);
+  }
+
+  /* --- The big flow arrow between processor lanes --- */
+  .flow-arrow-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 4px 0;
+  }
+  .flow-arrow-track {
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(to right, transparent, rgba(20, 184, 166, 0.2), transparent);
+    position: relative;
+    overflow: visible;
+  }
+
+  /* metric callout */
+  .metric-callout {
+    font-size: 10px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    background: rgba(20, 184, 166, 0.08);
+    border: 1px solid rgba(20, 184, 166, 0.2);
+    color: #5eead4;
+    text-align: center;
+    width: 100%;
+    line-height: 1.4;
+  }
+  .metric-callout strong {
+    color: #2dd4bf;
+  }
+
+  /* --- Alliance detail card --- */
+  .alliance-detail {
+    font-size: 10px;
+    line-height: 1.5;
+    color: #94a3b8;
+    padding: 8px 10px;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.02);
+    border: 1px dashed rgba(255,255,255,0.08);
+    margin-top: 4px;
+  }
+  .alliance-detail .detail-label {
+    color: #64748b;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 9px;
+    letter-spacing: 0.5px;
+  }
+
+  /* --- Delivered doc card --- */
+  .delivered-doc {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.08), rgba(20, 184, 166, 0.05));
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    margin-top: 8px;
+  }
+  .doc-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+  .doc-text .doc-title {
+    font-size: 11px;
+    font-weight: 600;
+    color: #4ade80;
+  }
+  .doc-text .doc-sub {
+    font-size: 9px;
+    color: #86efac;
+    opacity: 0.7;
+  }
+
+  /* --- Stage column header accents --- */
+  .stage-accent {
+    width: 100%;
+    height: 2px;
+    border-radius: 1px;
+    margin-bottom: 8px;
+  }
+  .stage-accent.a-source { background: linear-gradient(to right, transparent, rgba(99, 102, 241, 0.4), transparent); }
+  .stage-accent.a-raw { background: linear-gradient(to right, transparent, rgba(59, 130, 246, 0.4), transparent); }
+  .stage-accent.a-timeline { background: linear-gradient(to right, transparent, rgba(245, 158, 11, 0.4), transparent); }
+  .stage-accent.a-understand { background: linear-gradient(to right, transparent, rgba(241, 245, 249, 0.2), transparent); }
+  .stage-accent.a-proposal { background: linear-gradient(to right, transparent, rgba(99, 102, 241, 0.4), rgba(20, 184, 166, 0.4), transparent); }
+
+  /* --- Responsive --- */
+  @media (max-width: 1200px) {
+    .flow-container { min-width: 1400px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <h1>Indemn Customer System</h1>
+  <p>How Intelligence Becomes Action</p>
+  <p style="font-size: 12px; color: #475569; margin-top: 4px;">From raw interactions to structured proposals, powered by AI associates</p>
+</div>
+
+<!-- Legend -->
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot l-source"></div>Data Sources</div>
+  <div class="legend-item"><div class="legend-dot l-raw"></div>Raw Data Entities</div>
+  <div class="legend-item"><div class="legend-dot l-ai"></div>AI Associates</div>
+  <div class="legend-item"><div class="legend-dot l-intel"></div>Intelligence</div>
+  <div class="legend-item"><div class="legend-dot l-understand"></div>Customer Understanding</div>
+  <div class="legend-item"><div class="legend-dot l-proposal"></div>Proposal</div>
+</div>
+
+<!-- Stats bar -->
+<div class="stats-bar">
+  <div class="stat"><div class="stat-value">923</div><div class="stat-label">Emails Ingested</div></div>
+  <div class="stat"><div class="stat-value">20</div><div class="stat-label">Meetings Captured</div></div>
+  <div class="stat"><div class="stat-value">88</div><div class="stat-label">Companies</div></div>
+  <div class="stat"><div class="stat-value">92</div><div class="stat-label">Contacts</div></div>
+  <div class="stat"><div class="stat-value">6</div><div class="stat-label">Active Deals</div></div>
+  <div class="stat"><div class="stat-value">24</div><div class="stat-label">Associate Types</div></div>
+</div>
+
+<!-- Stage labels -->
+<div class="scroll-wrapper">
+<div class="scroll-inner">
+
+<div class="stage-labels">
+  <div class="stage-label sources" style="flex: 0.9;">
+    <span class="number">1</span><span class="text">Sources</span>
+  </div>
+  <div style="width: 140px; min-width: 140px;"></div>
+  <div class="stage-label raw" style="flex: 1;">
+    <span class="number">2</span><span class="text">Raw Data</span>
+  </div>
+  <div style="width: 140px; min-width: 140px;"></div>
+  <div class="stage-label timeline" style="flex: 1.1;">
+    <span class="number">3</span><span class="text">Unified Timeline</span>
+  </div>
+  <div style="width: 140px; min-width: 140px;"></div>
+  <div class="stage-label understanding" style="flex: 1.1;">
+    <span class="number">4</span><span class="text">Customer Understanding</span>
+  </div>
+  <div style="width: 140px; min-width: 140px;"></div>
+  <div class="stage-label proposal" style="flex: 1.1;">
+    <span class="number">5</span><span class="text">Proposal</span>
+  </div>
+</div>
+
+<!-- Main flow -->
+<div class="flow-container" id="flowContainer">
+
+  <!-- ===== STAGE 1: SOURCES ===== -->
+  <div class="stage" style="flex: 0.9;">
+    <div class="stage-accent a-source"></div>
+
+    <div class="card source">
+      <div class="entity-name">Gmail</div>
+      <div class="entity-desc">Team email inboxes — kyle@, craig@, cam@, support@</div>
+      <div class="example">923 emails ingested via Gmail API adapter</div>
+    </div>
+
+    <div class="card source">
+      <div class="entity-name">Google Meet</div>
+      <div class="entity-desc">Meeting recordings, transcripts, Gemini smart notes</div>
+      <div class="example">Kyle's Apr 8 call with Christopher Cook (Alliance)</div>
+    </div>
+
+    <div class="card source">
+      <div class="entity-name">Google Drive</div>
+      <div class="entity-desc">Shared files, proposals, data exports, analysis docs</div>
+      <div class="example">43 customer subfolders, Cam's proposals folder</div>
+    </div>
+
+    <div class="card source">
+      <div class="entity-name">Slack</div>
+      <div class="entity-desc">Team communications, customer-specific channels</div>
+      <div class="example">#alliance-insurance, #gic-pipeline</div>
+    </div>
+
+    <div class="card source" style="opacity: 0.7;">
+      <div class="entity-name">Manual Notes</div>
+      <div class="entity-desc">Conference notes, call summaries, Craig via CLI</div>
+      <div class="example">FoxQuilt CEO meeting notes from InsurTechNY</div>
+    </div>
+  </div>
+
+  <!-- ===== PROCESSOR: Gmail Adapter ===== -->
+  <div class="processor-lane">
+    <div class="processor-node">
+      <div class="proc-name">Gmail Adapter</div>
+      <div class="proc-trigger">indemn email fetch-new</div>
+    </div>
+
+    <div class="flow-arrow-container">
+      <div class="flow-arrow-track">
+        <div class="particle" style="--particle-color: #818cf8; --duration: 2.5s; --delay: 0s;"></div>
+        <div class="particle" style="--particle-color: #818cf8; --duration: 2.5s; --delay: 1.2s;"></div>
+      </div>
+    </div>
+
+    <div class="processor-node">
+      <div class="proc-name">Meet Adapter</div>
+      <div class="proc-trigger">indemn meeting fetch-new</div>
+    </div>
+
+    <div class="flow-arrow-container">
+      <div class="flow-arrow-track">
+        <div class="particle" style="--particle-color: #818cf8; --duration: 3s; --delay: 0.5s;"></div>
+      </div>
+    </div>
+
+    <div class="processor-node">
+      <div class="proc-name">Drive Adapter</div>
+      <div class="proc-trigger">attachment processing</div>
+    </div>
+  </div>
+
+  <!-- ===== STAGE 2: RAW DATA ===== -->
+  <div class="stage" style="flex: 1;">
+    <div class="stage-accent a-raw"></div>
+
+    <div class="card raw">
+      <div class="entity-name">Email</div>
+      <div class="entity-desc">Full email content, thread grouping, sender/recipients, attachments</div>
+      <div class="example">State: received &rarr; classified &rarr; processed</div>
+    </div>
+
+    <div class="card raw">
+      <div class="entity-name">Meeting</div>
+      <div class="entity-desc">Transcripts, participants, Gemini notes, recordings, calendar attendees</div>
+      <div class="example">20 meetings ingested (April 20-21)</div>
+    </div>
+
+    <div class="card raw">
+      <div class="entity-name">Document</div>
+      <div class="entity-desc">Files exchanged or created — Drive files, email attachments, analysis docs</div>
+      <div class="example">Alliance 30-page renewal analysis, proposal PDFs</div>
+    </div>
+
+    <div class="metric-callout" style="margin-top: 4px;">
+      <strong>923</strong> emails ingested<br>
+      <strong>144</strong> filtered as irrelevant<br>
+      <strong>779</strong> classified to companies
+    </div>
+  </div>
+
+  <!-- ===== PROCESSOR: Email Classifier + Touchpoint Synthesizer ===== -->
+  <div class="processor-lane">
+    <div class="processor-node">
+      <div class="proc-name">Email Classifier</div>
+      <div class="proc-trigger">watch: Email created</div>
+    </div>
+    <div class="proc-arrow"></div>
+    <div style="font-size: 9px; color: rgba(20, 184, 166, 0.5); text-align: center; line-height: 1.3;">links Company<br>&amp; Contacts</div>
+    <div class="proc-arrow"></div>
+
+    <div class="processor-node">
+      <div class="proc-name">Touchpoint Synthesizer</div>
+      <div class="proc-trigger">watch: Email classified,<br>Meeting created</div>
+    </div>
+    <div class="proc-arrow"></div>
+    <div style="font-size: 9px; color: rgba(20, 184, 166, 0.5); text-align: center; line-height: 1.3;">creates unified<br>timeline entry</div>
+  </div>
+
+  <!-- ===== STAGE 3: UNIFIED TIMELINE ===== -->
+  <div class="stage" style="flex: 1.1;">
+    <div class="stage-accent a-timeline"></div>
+
+    <div class="card timeline" style="border-width: 2px;">
+      <div class="entity-name">Touchpoint</div>
+      <div class="entity-desc">Every interaction on one timeline per company — external (with customer) and internal (about/for customer)</div>
+      <div class="example">Type: email, meeting, call, slack, in_person, conference<br>Scope: external | internal</div>
+    </div>
+
+    <div style="width: 100%; height: 1px; background: linear-gradient(to right, transparent, rgba(245, 158, 11, 0.2), transparent); margin: 4px 0;"></div>
+    <div style="text-align: center; font-size: 9px; color: #64748b; letter-spacing: 1px; text-transform: uppercase;">Intelligence extracted from touchpoints</div>
+
+    <div class="card timeline">
+      <div class="entity-name">Task</div>
+      <div class="entity-desc">Action items with assignee, due date, priority</div>
+      <div class="example">"Update Alliance proposal by Apr 25"</div>
+    </div>
+
+    <div class="card timeline">
+      <div class="entity-name">Decision</div>
+      <div class="entity-desc">What was decided, by whom, rationale</div>
+      <div class="example">"Pivot to renewal wedge approach"</div>
+    </div>
+
+    <div class="card timeline">
+      <div class="entity-name">Commitment</div>
+      <div class="entity-desc">Promises made — by Indemn or by customer</div>
+      <div class="example">"Ship proposal when Christopher returns from Austin"</div>
+    </div>
+
+    <div class="card timeline">
+      <div class="entity-name">Signal</div>
+      <div class="entity-desc">Health, expansion, risk indicators</div>
+      <div class="example">"Christopher proactively reconnected at conference" &mdash; health_positive</div>
+    </div>
+  </div>
+
+  <!-- ===== PROCESSOR: Intelligence Extractor + Human ===== -->
+  <div class="processor-lane">
+    <div class="processor-node">
+      <div class="proc-name">Intelligence Extractor</div>
+      <div class="proc-trigger">watch: Touchpoint created</div>
+    </div>
+    <div class="proc-arrow"></div>
+    <div style="font-size: 9px; color: rgba(20, 184, 166, 0.5); text-align: center; line-height: 1.3;">extracts Tasks,<br>Decisions, Signals,<br>Commitments</div>
+
+    <div style="height: 16px;"></div>
+
+    <div class="human-node">
+      <div class="proc-name">Human Enrichment</div>
+      <div class="proc-trigger">Craig via CLI &mdash; judgment calls,<br>operations mapping, opportunity ID</div>
+    </div>
+    <div style="font-size: 9px; color: rgba(251, 191, 36, 0.4); text-align: center; line-height: 1.3; margin-top: 4px;">informed by all<br>data from stages 1-3</div>
+  </div>
+
+  <!-- ===== STAGE 4: CUSTOMER UNDERSTANDING ===== -->
+  <div class="stage" style="flex: 1.1;">
+    <div class="stage-accent a-understand"></div>
+
+    <div class="card understanding" style="border-width: 2px;">
+      <div class="entity-name" style="font-size: 15px;">Company</div>
+      <div class="entity-desc">The hub entity. Everything connects here. Lean profile — depth comes from relationships.</div>
+      <div class="example">Alliance Insurance — 88 companies total</div>
+    </div>
+
+    <div class="card understanding">
+      <div class="entity-name">Operations</div>
+      <div class="entity-desc">What the customer does — business processes, volumes, staffing, automation level</div>
+      <div class="example">Alliance: Renewal outreach — 10K policies, 80% outbound calls unanswered</div>
+    </div>
+
+    <div class="card understanding">
+      <div class="entity-name">Opportunities</div>
+      <div class="entity-desc">Gaps identified, mapped to our AssociateTypes and OutcomeTypes</div>
+      <div class="example">Unanswered renewal calls &rarr; Renewal Associate</div>
+    </div>
+
+    <div class="card understanding">
+      <div class="entity-name">Contacts</div>
+      <div class="entity-desc">People and relationships at the company</div>
+      <div class="example">Christopher Cook (VP), 92 contacts total</div>
+    </div>
+
+    <div class="card understanding">
+      <div class="entity-name">CustomerSystem</div>
+      <div class="entity-desc">Their tech stack — what we connect to</div>
+      <div class="example">Applied Epic, Dialpad, BT Core</div>
+    </div>
+
+    <div class="card understanding">
+      <div class="entity-name">BusinessRelationship</div>
+      <div class="entity-desc">Who they work with — carriers, agencies, vendors</div>
+      <div class="example">Everett Cash Mutual, carrier relationships</div>
+    </div>
+  </div>
+
+  <!-- ===== PROCESSOR: Proposal Writer ===== -->
+  <div class="processor-lane">
+    <div class="processor-node" style="border-color: rgba(99, 102, 241, 0.4); background: linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(20, 184, 166, 0.1));">
+      <div class="proc-name" style="background: linear-gradient(135deg, #a78bfa, #2dd4bf); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Proposal Writer</div>
+      <div class="proc-trigger">reads Company + Operations +<br>Opportunities + AssociateTypes</div>
+    </div>
+    <div class="proc-arrow"></div>
+    <div style="font-size: 9px; color: rgba(139, 92, 246, 0.5); text-align: center; line-height: 1.3;">generates proposal<br>from structured<br>entity data</div>
+
+    <div style="height: 16px;"></div>
+
+    <div class="human-node">
+      <div class="proc-name">Human Review</div>
+      <div class="proc-trigger">internal_review &rarr; sent</div>
+    </div>
+  </div>
+
+  <!-- ===== STAGE 5: PROPOSAL ===== -->
+  <div class="stage" style="flex: 1.1;">
+    <div class="stage-accent a-proposal"></div>
+
+    <div class="card proposal-hero">
+      <div class="entity-name">Proposal</div>
+      <div class="entity-desc" style="color: #cbd5e1;">Source of truth for what we deliver. The document is a rendering of this entity.</div>
+      <div class="example" style="border-top-color: rgba(99, 102, 241, 0.2); color: #94a3b8;">
+        Alliance Proposal v2 &mdash; Renewal wedge pivot<br>
+        Prepared for: Christopher Cook<br>
+        State: drafting &rarr; internal_review &rarr; sent
+      </div>
+    </div>
+
+    <div class="card proposal-card">
+      <div class="entity-name">Phase</div>
+      <div class="entity-desc">Phased delivery plan. Each proposal has 2-5 phases.</div>
+      <div style="margin-top: 8px;">
+        <div style="margin-bottom: 6px;">
+          <span class="phase-badge phase-crawl">Crawl</span>
+          <span style="font-size: 10px; color: #94a3b8;">Renewal Associate</span>
+          <span style="font-size: 9px; color: #64748b; display: block; margin-left: 2px; margin-top: 2px;">$0 pilot &bull; Weeks 1-4</span>
+        </div>
+        <div style="margin-bottom: 6px;">
+          <span class="phase-badge phase-walk">Walk</span>
+          <span style="font-size: 10px; color: #94a3b8;">Digital Receptionist + Churn Defender</span>
+          <span style="font-size: 9px; color: #64748b; display: block; margin-left: 2px; margin-top: 2px;">$2,500/mo &bull; Months 2-3</span>
+        </div>
+        <div>
+          <span class="phase-badge phase-run">Run</span>
+          <span style="font-size: 10px; color: #94a3b8;">Knowledge Search + Full Suite</span>
+          <span style="font-size: 9px; color: #64748b; display: block; margin-left: 2px; margin-top: 2px;">$5-10K/mo &bull; Months 4+</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card proposal-card">
+      <div class="entity-name">Associate</div>
+      <div class="entity-desc">When accepted, actual AI agents deploy. AssociateType is the catalog; Associate is the live instance.</div>
+      <div class="example">"Alliance Renewal Associate" &mdash; voice, chat<br>State: planned &rarr; building &rarr; testing &rarr; live</div>
+    </div>
+
+    <!-- Delivered document -->
+    <div class="delivered-doc">
+      <div class="doc-icon">&#128196;</div>
+      <div class="doc-text">
+        <div class="doc-title">Rendered Proposal Document</div>
+        <div class="doc-sub">Generated from entities &rarr; shared with customer as PDF</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Expandability -->
+<div class="expandability">
+  <h3>Scales to Every Customer</h3>
+  <div class="expand-items">
+    <div class="expand-item">
+      <div class="expand-title">Same Pipeline, Every Customer</div>
+      <div class="expand-list">
+        <span>Alliance Insurance</span>
+        <span>FoxQuilt</span>
+        <span>Amynta</span>
+        <span>G.R. Little</span>
+        <span>Rankin McKenzie</span>
+        <span>88 companies total</span>
+      </div>
+    </div>
+    <div class="expand-item">
+      <div class="expand-title">New Data Sources Plug In</div>
+      <div class="expand-list">
+        <span>Apollo</span>
+        <span>Linear</span>
+        <span>Observatory</span>
+        <span>CRM</span>
+        <span>Airtable</span>
+        <span>Voice transcripts</span>
+      </div>
+    </div>
+    <div class="expand-item">
+      <div class="expand-title">Associates Automate the Loop</div>
+      <div class="expand-list">
+        <span>Draft emails</span>
+        <span>Generate proposals</span>
+        <span>Detect churn signals</span>
+        <span>Enforce follow-up cadence</span>
+        <span>Score deal health</span>
+        <span>Surface stale touchpoints</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- scroll-inner -->
+</div><!-- scroll-wrapper -->
+
+<script>
+// Draw animated SVG flow lines connecting stages
+function drawFlowLines() {
+  const container = document.getElementById('flowContainer');
+  const existing = container.querySelector('.flow-svg');
+  if (existing) existing.remove();
+
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.classList.add('flow-svg');
+  svg.setAttribute('width', container.scrollWidth);
+  svg.setAttribute('height', container.scrollHeight);
+  svg.style.width = container.scrollWidth + 'px';
+  svg.style.height = container.scrollHeight + 'px';
+
+  // Define gradient
+  const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+
+  // Teal gradient
+  const g1 = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
+  g1.setAttribute('id', 'tealGrad');
+  g1.innerHTML = '<stop offset="0%" stop-color="#6366f1" stop-opacity="0.3"/><stop offset="50%" stop-color="#14b8a6" stop-opacity="0.4"/><stop offset="100%" stop-color="#14b8a6" stop-opacity="0.2"/>';
+  defs.appendChild(g1);
+
+  // Amber gradient
+  const g2 = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
+  g2.setAttribute('id', 'amberGrad');
+  g2.innerHTML = '<stop offset="0%" stop-color="#f59e0b" stop-opacity="0.2"/><stop offset="100%" stop-color="#f59e0b" stop-opacity="0.4"/>';
+  defs.appendChild(g2);
+
+  // Proposal gradient
+  const g3 = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
+  g3.setAttribute('id', 'proposalGrad');
+  g3.innerHTML = '<stop offset="0%" stop-color="#a78bfa" stop-opacity="0.3"/><stop offset="100%" stop-color="#14b8a6" stop-opacity="0.4"/>';
+  defs.appendChild(g3);
+
+  svg.appendChild(defs);
+
+  // Get all stages and processors
+  const stages = container.querySelectorAll('.stage');
+  const processors = container.querySelectorAll('.processor-lane');
+
+  // Draw subtle connecting lines between adjacent stages through processor lanes
+  // These are background decoration lines
+  for (let i = 0; i < stages.length - 1; i++) {
+    const stageCards = stages[i].querySelectorAll('.card');
+    const nextStageCards = stages[i + 1].querySelectorAll('.card');
+    const procLane = processors[i];
+
+    if (!stageCards.length || !nextStageCards.length || !procLane) continue;
+
+    // Draw a few horizontal connecting lines from stage cards through processor to next stage
+    const numLines = Math.min(3, stageCards.length, nextStageCards.length);
+    for (let j = 0; j < numLines; j++) {
+      const srcCard = stageCards[j];
+      const dstCard = nextStageCards[Math.min(j, nextStageCards.length - 1)];
+
+      const srcRect = srcCard.getBoundingClientRect();
+      const dstRect = dstCard.getBoundingClientRect();
+      const containerRect = container.getBoundingClientRect();
+
+      const y1 = srcRect.top + srcRect.height / 2 - containerRect.top;
+      const y2 = dstRect.top + dstRect.height / 2 - containerRect.top;
+      const x1 = srcRect.right - containerRect.left;
+      const x2 = dstRect.left - containerRect.left;
+
+      const line = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      const midX = (x1 + x2) / 2;
+      const d = `M ${x1} ${y1} C ${midX} ${y1}, ${midX} ${y2}, ${x2} ${y2}`;
+      line.setAttribute('d', d);
+      line.setAttribute('fill', 'none');
+
+      const gradients = ['url(#tealGrad)', 'url(#amberGrad)', 'url(#proposalGrad)'];
+      line.setAttribute('stroke', gradients[i % gradients.length]);
+      line.setAttribute('stroke-width', '1');
+      line.setAttribute('opacity', '0.3');
+      line.classList.add('flow-line');
+
+      svg.appendChild(line);
+    }
+  }
+
+  container.insertBefore(svg, container.firstChild);
+}
+
+// Run on load and resize
+window.addEventListener('load', () => {
+  setTimeout(drawFlowLines, 100);
+});
+window.addEventListener('resize', drawFlowLines);
+</script>
+
+</body>
+</html>

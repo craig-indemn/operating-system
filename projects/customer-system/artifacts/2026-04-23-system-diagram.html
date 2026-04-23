@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indemn Customer System</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0f1729;
+    --bg-card: #1a2340;
+    --bg-card-hover: #1e2a4a;
+    --iris: #6366f1;
+    --iris-glow: rgba(99, 102, 241, 0.3);
+    --iris-light: #818cf8;
+    --teal: #14b8a6;
+    --teal-glow: rgba(20, 184, 166, 0.3);
+    --teal-light: #2dd4bf;
+    --amber: #f59e0b;
+    --amber-glow: rgba(245, 158, 11, 0.25);
+    --text: #e2e8f0;
+    --text-dim: #94a3b8;
+    --text-bright: #f8fafc;
+    --border: rgba(148, 163, 184, 0.15);
+    --source-accent: #818cf8;
+    --entity-accent: #e2e8f0;
+    --hub-gradient: linear-gradient(135deg, #6366f1, #8b5cf6);
+    --intel-accent: #f59e0b;
+    --ref-accent: #64748b;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* === HEADER === */
+  .header {
+    text-align: center;
+    padding: 48px 24px 16px;
+    position: relative;
+  }
+  .header h1 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--iris-light), var(--teal-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+  }
+  .header p {
+    font-size: 1rem;
+    color: var(--text-dim);
+    max-width: 640px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* === MAIN LAYOUT === */
+  .diagram {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px 60px;
+    position: relative;
+  }
+
+  /* === LAYER LABELS === */
+  .layer {
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .layer-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+  .layer-label.sources {
+    background: rgba(99, 102, 241, 0.15);
+    color: var(--iris-light);
+    border: 1px solid rgba(99, 102, 241, 0.25);
+  }
+  .layer-label.processing {
+    background: rgba(20, 184, 166, 0.15);
+    color: var(--teal-light);
+    border: 1px solid rgba(20, 184, 166, 0.25);
+  }
+  .layer-label.entities {
+    background: rgba(226, 232, 240, 0.08);
+    color: var(--text);
+    border: 1px solid rgba(226, 232, 240, 0.15);
+  }
+  .layer-label .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+  }
+  .layer-label.sources .dot { background: var(--iris); }
+  .layer-label.processing .dot { background: var(--teal); }
+  .layer-label.entities .dot { background: var(--text-dim); }
+
+  /* === DATA SOURCE CARDS === */
+  .sources-grid {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 8px;
+  }
+  .source-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 12px;
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: default;
+    transition: all 0.25s ease;
+    min-width: 180px;
+    flex: 0 1 auto;
+  }
+  .source-card:hover {
+    border-color: var(--iris);
+    box-shadow: 0 0 20px var(--iris-glow);
+    transform: translateY(-2px);
+  }
+  .source-card .icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    background: rgba(99, 102, 241, 0.12);
+    color: var(--iris-light);
+  }
+  .source-card .label {
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--text-bright);
+  }
+  .source-card .sublabel {
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    margin-top: 2px;
+  }
+
+  /* === FLOW ARROWS BETWEEN LAYERS === */
+  .flow-connector {
+    display: flex;
+    justify-content: center;
+    padding: 14px 0;
+    position: relative;
+  }
+  .flow-connector .arrow-group {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+  }
+  .flow-arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+  .flow-arrow .shaft {
+    width: 2px;
+    height: 28px;
+    border-radius: 1px;
+  }
+  .flow-arrow .shaft.iris { background: linear-gradient(180deg, var(--iris), rgba(99,102,241,0.2)); }
+  .flow-arrow .shaft.teal { background: linear-gradient(180deg, var(--teal), rgba(20,184,166,0.2)); }
+  .flow-arrow .head {
+    width: 0; height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+  }
+  .flow-arrow .head.iris { border-top: 6px solid var(--iris); }
+  .flow-arrow .head.teal { border-top: 6px solid var(--teal); }
+
+  /* === PROCESSING LAYER === */
+  .processing-grid {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 8px;
+  }
+  .associate-card {
+    background: linear-gradient(135deg, rgba(20, 184, 166, 0.08), rgba(20, 184, 166, 0.03));
+    border: 1px solid rgba(20, 184, 166, 0.3);
+    border-radius: 14px;
+    padding: 22px 24px;
+    width: 320px;
+    flex: 0 0 auto;
+    cursor: default;
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .associate-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--teal), var(--teal-light));
+    border-radius: 14px 14px 0 0;
+  }
+  .associate-card:hover {
+    border-color: var(--teal);
+    box-shadow: 0 0 30px var(--teal-glow);
+    transform: translateY(-2px);
+  }
+  .associate-card .assoc-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .associate-card .assoc-icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    background: rgba(20, 184, 166, 0.15);
+    color: var(--teal-light);
+    flex-shrink: 0;
+  }
+  .associate-card .assoc-name {
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: var(--teal-light);
+  }
+  .associate-card .assoc-desc {
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    line-height: 1.5;
+    margin-bottom: 14px;
+  }
+  .watch-trigger {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    background: rgba(20, 184, 166, 0.06);
+    border: 1px solid rgba(20, 184, 166, 0.12);
+    border-radius: 8px;
+    margin-top: 6px;
+  }
+  .watch-trigger .watch-icon {
+    font-size: 0.7rem;
+    color: var(--teal);
+  }
+  .watch-trigger .watch-text {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  }
+  .watch-trigger .watch-text em {
+    color: var(--teal-light);
+    font-style: normal;
+  }
+
+  /* === ENTITY LAYER === */
+  .entities-section {
+    position: relative;
+  }
+
+  .entity-sublabel {
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-dim);
+    margin: 20px 0 10px;
+    padding-left: 4px;
+  }
+  .entity-sublabel.intel { color: var(--amber); }
+  .entity-sublabel.ref { color: var(--ref-accent); }
+
+  /* Hub entity */
+  .hub-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+  .hub-card {
+    background: var(--hub-gradient);
+    border: none;
+    border-radius: 16px;
+    padding: 24px 48px;
+    text-align: center;
+    box-shadow: 0 4px 40px var(--iris-glow);
+    cursor: default;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  .hub-card:hover {
+    box-shadow: 0 4px 60px rgba(99, 102, 241, 0.5);
+    transform: scale(1.03);
+  }
+  .hub-card .hub-name {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: white;
+    letter-spacing: -0.01em;
+  }
+  .hub-card .hub-sub {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.7);
+    margin-top: 4px;
+    font-weight: 500;
+  }
+
+  /* Spoke lines from hub */
+  .spoke-lines {
+    display: flex;
+    justify-content: center;
+    padding: 0 0 8px;
+  }
+  .spoke-lines .spokes {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 900px;
+  }
+  .spoke-line {
+    width: 2px;
+    height: 20px;
+    background: linear-gradient(180deg, var(--iris), rgba(99,102,241,0.15));
+    border-radius: 1px;
+  }
+
+  /* Entity grid */
+  .entity-grid {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 6px;
+  }
+
+  .entity-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    cursor: default;
+    transition: all 0.25s ease;
+    min-width: 140px;
+    text-align: center;
+    position: relative;
+  }
+  .entity-card:hover {
+    border-color: rgba(226, 232, 240, 0.4);
+    box-shadow: 0 0 20px rgba(226, 232, 240, 0.08);
+    transform: translateY(-2px);
+    background: var(--bg-card-hover);
+  }
+  .entity-card .entity-name {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--text-bright);
+    margin-bottom: 3px;
+  }
+  .entity-card .entity-rel {
+    font-size: 0.68rem;
+    color: var(--text-dim);
+    line-height: 1.4;
+  }
+
+  /* Intel entities */
+  .entity-card.intel {
+    border-color: rgba(245, 158, 11, 0.2);
+  }
+  .entity-card.intel:hover {
+    border-color: var(--amber);
+    box-shadow: 0 0 20px var(--amber-glow);
+  }
+  .entity-card.intel .entity-name {
+    color: var(--amber);
+  }
+
+  /* Reference entities */
+  .entity-card.ref {
+    border-color: rgba(100, 116, 139, 0.2);
+    background: rgba(15, 23, 41, 0.6);
+  }
+  .entity-card.ref:hover {
+    border-color: var(--ref-accent);
+    box-shadow: 0 0 15px rgba(100, 116, 139, 0.15);
+  }
+  .entity-card.ref .entity-name {
+    color: var(--ref-accent);
+  }
+
+  /* === LEGEND === */
+  .legend {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 28px 0 8px;
+    border-top: 1px solid var(--border);
+    margin-top: 30px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.72rem;
+    color: var(--text-dim);
+  }
+  .legend-swatch {
+    width: 12px; height: 12px;
+    border-radius: 3px;
+  }
+  .legend-swatch.source { background: var(--iris); }
+  .legend-swatch.process { background: var(--teal); }
+  .legend-swatch.entity { background: var(--text-dim); border: 1px solid var(--border); }
+  .legend-swatch.hub { background: var(--hub-gradient); }
+  .legend-swatch.intel { background: var(--amber); }
+  .legend-swatch.ref { background: var(--ref-accent); }
+  .legend-swatch.watch {
+    width: auto; height: auto;
+    background: none;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 0.72rem;
+    color: var(--teal);
+  }
+
+  /* === RELATIONSHIP LINES (SVG overlay) === */
+  .svg-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* === SECTION DIVIDERS === */
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 10px 0 20px;
+  }
+  .section-divider .line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+  }
+
+  /* === ENTITY RELATIONSHIPS DETAIL PANEL === */
+  .detail-panel {
+    position: fixed;
+    right: -380px;
+    top: 0;
+    width: 360px;
+    height: 100vh;
+    background: #111827;
+    border-left: 1px solid var(--border);
+    z-index: 100;
+    transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+    padding: 32px 24px;
+    box-shadow: -8px 0 40px rgba(0,0,0,0.5);
+  }
+  .detail-panel.open { right: 0; }
+  .detail-panel .close-btn {
+    position: absolute;
+    top: 16px; right: 16px;
+    background: none; border: none;
+    color: var(--text-dim);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: color 0.2s;
+  }
+  .detail-panel .close-btn:hover { color: var(--text-bright); }
+  .detail-panel h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .detail-panel .detail-type {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+  .detail-panel .detail-desc {
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  .detail-panel .detail-connections {
+    margin-top: 12px;
+  }
+  .detail-panel .conn-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-dim);
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .detail-panel .conn-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 6px;
+    font-size: 0.78rem;
+    color: var(--text);
+  }
+  .detail-panel .conn-item .conn-arrow {
+    color: var(--iris);
+    font-size: 0.9rem;
+  }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 960px) {
+    .header h1 { font-size: 1.8rem; }
+    .associate-card { width: 100%; max-width: 400px; }
+    .source-card { min-width: 150px; }
+    .entity-card { min-width: 120px; }
+  }
+  @media (max-width: 600px) {
+    .header h1 { font-size: 1.4rem; }
+    .header p { font-size: 0.85rem; }
+    .sources-grid, .processing-grid, .entity-grid { gap: 8px; }
+    .flow-connector .arrow-group { gap: 30px; }
+    .legend { gap: 14px; }
+  }
+
+  /* Pulse animation for associate icons */
+  @keyframes pulse-teal {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.4); }
+    50% { box-shadow: 0 0 12px 4px rgba(20, 184, 166, 0.15); }
+  }
+  .associate-card:hover .assoc-icon {
+    animation: pulse-teal 2s infinite;
+  }
+
+  /* Highlight animation on hover for entity connections */
+  .entity-card.highlighted {
+    border-color: var(--iris) !important;
+    box-shadow: 0 0 20px var(--iris-glow) !important;
+  }
+  .entity-card.intel.highlighted {
+    border-color: var(--amber) !important;
+    box-shadow: 0 0 20px var(--amber-glow) !important;
+  }
+
+  /* Canvas for animated lines */
+  #connectionCanvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 50;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  #connectionCanvas.visible {
+    opacity: 1;
+  }
+</style>
+</head>
+<body>
+
+<canvas id="connectionCanvas"></canvas>
+
+<!-- HEADER -->
+<div class="header">
+  <h1>Indemn Customer System</h1>
+  <p>How data flows from sources through AI processing into structured intelligence</p>
+</div>
+
+<div class="diagram">
+
+  <!-- ========== LAYER 1: DATA SOURCES ========== -->
+  <div class="layer">
+    <div class="layer-label sources"><span class="dot"></span> Data Sources</div>
+    <div class="sources-grid">
+      <div class="source-card" data-id="gmail">
+        <div class="icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
+        </div>
+        <div>
+          <div class="label">Gmail</div>
+          <div class="sublabel">Emails from the whole team</div>
+        </div>
+      </div>
+      <div class="source-card" data-id="meet">
+        <div class="icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+        </div>
+        <div>
+          <div class="label">Google Meet</div>
+          <div class="sublabel">Meetings with transcripts</div>
+        </div>
+      </div>
+      <div class="source-card" data-id="drive">
+        <div class="icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 19h20L12 2z"/><path d="M2 19l5-8.5"/><path d="M22 19l-5-8.5"/><path d="M7 10.5h10"/></svg>
+        </div>
+        <div>
+          <div class="label">Google Drive</div>
+          <div class="sublabel">Documents and proposals</div>
+        </div>
+      </div>
+      <div class="source-card" data-id="slack">
+        <div class="icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2c-1.1 0-2 .9-2 2v4h4c1.1 0 2-.9 2-2s-.9-2-2-2h-2z"/><path d="M2 9.5c0-1.1.9-2 2-2h4v4c0 1.1-.9 2-2 2s-2-.9-2-2v-2z"/><path d="M9.5 22c1.1 0 2-.9 2-2v-4h-4c-1.1 0-2 .9-2 2s.9 2 2 2h2z"/><path d="M22 14.5c0 1.1-.9 2-2 2h-4v-4c0-1.1.9-2 2-2s2 .9 2 2v2z"/></svg>
+        </div>
+        <div>
+          <div class="label">Slack</div>
+          <div class="sublabel">Team communications</div>
+        </div>
+      </div>
+      <div class="source-card" data-id="manual">
+        <div class="icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+        </div>
+        <div>
+          <div class="label">Manual Entry</div>
+          <div class="sublabel">CLI and UI input</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Flow arrows: Sources -> Processing -->
+  <div class="flow-connector">
+    <div class="arrow-group">
+      <div class="flow-arrow"><div class="shaft iris"></div><div class="head iris"></div></div>
+      <div class="flow-arrow"><div class="shaft iris"></div><div class="head iris"></div></div>
+      <div class="flow-arrow"><div class="shaft iris"></div><div class="head iris"></div></div>
+      <div class="flow-arrow"><div class="shaft iris"></div><div class="head iris"></div></div>
+      <div class="flow-arrow"><div class="shaft iris"></div><div class="head iris"></div></div>
+    </div>
+  </div>
+
+  <!-- ========== LAYER 2: PROCESSING PIPELINE ========== -->
+  <div class="layer">
+    <div class="layer-label processing"><span class="dot"></span> AI Processing Pipeline <span style="font-size:0.6rem;opacity:0.6;margin-left:4px;">3 Associates</span></div>
+    <div class="processing-grid">
+
+      <div class="associate-card" data-id="classifier">
+        <div class="assoc-header">
+          <div class="assoc-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <div class="assoc-name">Email Classifier</div>
+        </div>
+        <div class="assoc-desc">
+          Determines which Company an email relates to. Links sender and recipients to known Contacts. Filters irrelevant messages.
+        </div>
+        <div class="watch-trigger">
+          <span class="watch-icon">&#9672;</span>
+          <span class="watch-text"><em>Email created</em> &rarr; classify</span>
+        </div>
+      </div>
+
+      <div class="associate-card" data-id="synthesizer">
+        <div class="assoc-header">
+          <div class="assoc-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <div class="assoc-name">Touchpoint Synthesizer</div>
+        </div>
+        <div class="assoc-desc">
+          Creates unified Touchpoint entries from classified emails, meetings, and calls. Extracts document attachments.
+        </div>
+        <div class="watch-trigger">
+          <span class="watch-icon">&#9672;</span>
+          <span class="watch-text"><em>Email classified</em> &rarr; synthesize</span>
+        </div>
+        <div class="watch-trigger">
+          <span class="watch-icon">&#9672;</span>
+          <span class="watch-text"><em>Meeting created</em> &rarr; synthesize</span>
+        </div>
+      </div>
+
+      <div class="associate-card" data-id="extractor">
+        <div class="assoc-header">
+          <div class="assoc-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15 8.5 22 9.3 17 14 18 21 12 17.8 6 21 7 14 2 9.3 9 8.5"/></svg>
+          </div>
+          <div class="assoc-name">Intelligence Extractor</div>
+        </div>
+        <div class="assoc-desc">
+          Reads touchpoints and extracts structured intelligence: Tasks, Decisions, Commitments, and Signals.
+        </div>
+        <div class="watch-trigger">
+          <span class="watch-icon">&#9672;</span>
+          <span class="watch-text"><em>Touchpoint created</em> &rarr; extract</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Flow arrows: Processing -> Entities -->
+  <div class="flow-connector">
+    <div class="arrow-group">
+      <div class="flow-arrow"><div class="shaft teal"></div><div class="head teal"></div></div>
+      <div class="flow-arrow"><div class="shaft teal"></div><div class="head teal"></div></div>
+      <div class="flow-arrow"><div class="shaft teal"></div><div class="head teal"></div></div>
+    </div>
+  </div>
+
+  <!-- ========== LAYER 3: ENTITY MODEL ========== -->
+  <div class="layer entities-section">
+    <div class="layer-label entities"><span class="dot"></span> Entity Model</div>
+
+    <!-- Company Hub -->
+    <div class="hub-container">
+      <div class="hub-card" data-id="company" data-connections="contact,deal,touchpoint,email,document,operation,opportunity,proposal,associate,customersystem,businessrelationship,task,decision,commitment,signal">
+        <div class="hub-name">Company</div>
+        <div class="hub-sub">Central hub &mdash; everything connects here</div>
+      </div>
+    </div>
+
+    <!-- Spoke visual -->
+    <div class="spoke-lines">
+      <div class="spokes">
+        <div class="spoke-line"></div>
+        <div class="spoke-line"></div>
+        <div class="spoke-line"></div>
+        <div class="spoke-line"></div>
+        <div class="spoke-line"></div>
+        <div class="spoke-line"></div>
+        <div class="spoke-line"></div>
+        <div class="spoke-line"></div>
+        <div class="spoke-line"></div>
+        <div class="spoke-line"></div>
+        <div class="spoke-line"></div>
+      </div>
+    </div>
+
+    <!-- Core entities connected to Company -->
+    <div class="entity-sublabel">Core Entities</div>
+    <div class="entity-grid">
+      <div class="entity-card" data-id="contact" data-connections="company,email,touchpoint">
+        <div class="entity-name">Contact</div>
+        <div class="entity-rel">People at the company</div>
+      </div>
+      <div class="entity-card" data-id="deal" data-connections="company,proposal,associate,task,touchpoint">
+        <div class="entity-name">Deal</div>
+        <div class="entity-rel">Business opportunities</div>
+      </div>
+      <div class="entity-card" data-id="touchpoint" data-connections="company,deal,email,contact,task,decision,commitment,signal">
+        <div class="entity-name">Touchpoint</div>
+        <div class="entity-rel">Unified interaction timeline</div>
+      </div>
+      <div class="entity-card" data-id="email" data-connections="company,contact,touchpoint,document">
+        <div class="entity-name">Email</div>
+        <div class="entity-rel">Raw Gmail messages</div>
+      </div>
+      <div class="entity-card" data-id="document" data-connections="company,email,proposal">
+        <div class="entity-name">Document</div>
+        <div class="entity-rel">Files and artifacts exchanged</div>
+      </div>
+      <div class="entity-card" data-id="operation" data-connections="company,opportunity,customersystem">
+        <div class="entity-name">Operation</div>
+        <div class="entity-rel">Business processes they run</div>
+      </div>
+      <div class="entity-card" data-id="opportunity" data-connections="company,operation,associatetype,outcometype,phase">
+        <div class="entity-name">Opportunity</div>
+        <div class="entity-rel">Gaps mapped to our products</div>
+      </div>
+      <div class="entity-card" data-id="proposal" data-connections="company,deal,phase,document,contact,employee">
+        <div class="entity-name">Proposal</div>
+        <div class="entity-rel">What we plan to deliver</div>
+      </div>
+      <div class="entity-card" data-id="phase" data-connections="proposal,opportunity,associatetype,outcometype,task,commitment,associate">
+        <div class="entity-name">Phase</div>
+        <div class="entity-rel">Phased delivery plan</div>
+      </div>
+      <div class="entity-card" data-id="associate" data-connections="company,associatetype,phase,deal,employee">
+        <div class="entity-name">Associate</div>
+        <div class="entity-rel">Deployed AI agents</div>
+      </div>
+      <div class="entity-card" data-id="customersystem" data-connections="company,operation">
+        <div class="entity-name">CustomerSystem</div>
+        <div class="entity-rel">Tools they use</div>
+      </div>
+      <div class="entity-card" data-id="businessrelationship" data-connections="company">
+        <div class="entity-name">BusinessRelationship</div>
+        <div class="entity-rel">Carriers, vendors, partners</div>
+      </div>
+    </div>
+
+    <!-- Intelligence entities -->
+    <div class="entity-sublabel intel">Intelligence &mdash; extracted from Touchpoints</div>
+    <div class="entity-grid">
+      <div class="entity-card intel" data-id="task" data-connections="company,touchpoint,phase,deal,employee">
+        <div class="entity-name">Task</div>
+        <div class="entity-rel">Action items</div>
+      </div>
+      <div class="entity-card intel" data-id="decision" data-connections="company,touchpoint">
+        <div class="entity-name">Decision</div>
+        <div class="entity-rel">Choices made</div>
+      </div>
+      <div class="entity-card intel" data-id="commitment" data-connections="company,touchpoint,phase">
+        <div class="entity-name">Commitment</div>
+        <div class="entity-rel">Promises tracked</div>
+      </div>
+      <div class="entity-card intel" data-id="signal" data-connections="company,touchpoint">
+        <div class="entity-name">Signal</div>
+        <div class="entity-rel">Health and risk indicators</div>
+      </div>
+    </div>
+
+    <!-- Reference entities -->
+    <div class="entity-sublabel ref">Reference Data</div>
+    <div class="entity-grid">
+      <div class="entity-card ref" data-id="associatetype" data-connections="opportunity,phase,associate">
+        <div class="entity-name">AssociateType</div>
+        <div class="entity-rel">24 agent templates</div>
+      </div>
+      <div class="entity-card ref" data-id="outcometype" data-connections="phase,opportunity">
+        <div class="entity-name">OutcomeType</div>
+        <div class="entity-rel">Four Outcomes framework</div>
+      </div>
+      <div class="entity-card ref" data-id="employee" data-connections="task,associate,proposal,touchpoint">
+        <div class="entity-name">Employee</div>
+        <div class="entity-rel">Indemn team members</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== LEGEND ========== -->
+  <div class="legend">
+    <div class="legend-item">
+      <div class="legend-swatch source"></div>
+      Data Sources
+    </div>
+    <div class="legend-item">
+      <div class="legend-swatch process"></div>
+      AI Associates
+    </div>
+    <div class="legend-item">
+      <div class="legend-swatch hub"></div>
+      Company Hub
+    </div>
+    <div class="legend-item">
+      <div class="legend-swatch entity"></div>
+      Core Entities
+    </div>
+    <div class="legend-item">
+      <div class="legend-swatch intel"></div>
+      Intelligence
+    </div>
+    <div class="legend-item">
+      <div class="legend-swatch ref"></div>
+      Reference Data
+    </div>
+    <div class="legend-item">
+      <div class="legend-swatch watch">&#9672;</div>
+      Watch Trigger
+    </div>
+  </div>
+
+</div>
+
+<!-- Detail Panel (slide-in on click) -->
+<div class="detail-panel" id="detailPanel">
+  <button class="close-btn" id="closeDetail">&times;</button>
+  <h3 id="detailName"></h3>
+  <div class="detail-type" id="detailType"></div>
+  <div class="detail-desc" id="detailDesc"></div>
+  <div class="detail-connections">
+    <div class="conn-label">Connections</div>
+    <div id="detailConns"></div>
+  </div>
+</div>
+
+<script>
+(function() {
+  // Entity metadata for detail panel
+  const entityMeta = {
+    company: {
+      type: 'Hub Entity',
+      typeColor: '#6366f1',
+      desc: 'The central hub of the customer system. Every entity connects back to Company. The depth of understanding comes not from fields on Company itself, but from the constellation of related entities around it: operations, interactions, documents, deals, proposals, and deployed associates.'
+    },
+    contact: {
+      type: 'Core Entity',
+      typeColor: '#e2e8f0',
+      desc: 'People at a customer company. Linked to emails they send or receive, and touchpoints they participate in. Contacts are the human dimension of the customer relationship.'
+    },
+    deal: {
+      type: 'Core Entity',
+      typeColor: '#e2e8f0',
+      desc: 'Business opportunities tracked through the sales funnel. Deals connect to Proposals (what we offer), Associates (what we deploy), and Tasks (work to close or deliver).'
+    },
+    touchpoint: {
+      type: 'Core Entity',
+      typeColor: '#e2e8f0',
+      desc: 'Unified timeline of every interaction, both external (with the customer) and internal (work done for the customer). Touchpoints are synthesized from emails, meetings, calls, and Slack threads. Intelligence entities (Tasks, Decisions, Commitments, Signals) are extracted from touchpoints automatically.'
+    },
+    email: {
+      type: 'Core Entity',
+      typeColor: '#e2e8f0',
+      desc: 'Raw Gmail messages preserved as source-of-truth records. Emails are classified by the Email Classifier associate to link them to Companies and Contacts, then synthesized into Touchpoints. Attachments become Document entities.'
+    },
+    document: {
+      type: 'Core Entity',
+      typeColor: '#e2e8f0',
+      desc: 'Files and artifacts exchanged with or created for a customer. Sources include Google Drive files, email attachments, and manually uploaded content. Documents carry provenance but not business meaning; meaning comes from the entities that reference them (like Proposal).'
+    },
+    operation: {
+      type: 'Core Entity',
+      typeColor: '#e2e8f0',
+      desc: 'A business process a customer runs, like "renewal outreach" or "email inbox triage." Operations describe what they do, the volume, staffing, and current automation level. Opportunities are gaps identified within operations.'
+    },
+    opportunity: {
+      type: 'Core Entity',
+      typeColor: '#e2e8f0',
+      desc: 'An identified gap in a customer\'s operations, mapped to our products. The bridge between "what they do" and "what we can deliver." Each opportunity maps to an AssociateType (what we deploy) and an OutcomeType (which of the Four Outcomes it serves).'
+    },
+    proposal: {
+      type: 'Core Entity',
+      typeColor: '#e2e8f0',
+      desc: 'Source of truth for what we are delivering to a customer. The culmination of the discovery process. Contains versioned Phases that define the delivery plan. The proposal document shared with customers is a rendering of this entity and its connected data.'
+    },
+    phase: {
+      type: 'Core Entity',
+      typeColor: '#e2e8f0',
+      desc: 'A phased delivery plan within a Proposal (Crawl / Walk / Run). Each phase defines what associates we deploy, which outcomes we deliver, the investment amount, and timeline. Tasks and Commitments link to phases for delivery tracking.'
+    },
+    associate: {
+      type: 'Core Entity',
+      typeColor: '#e2e8f0',
+      desc: 'An actual deployed AI agent for a customer. AssociateType is the template; Associate is the running instance. Tracks which phase deployed it, who owns it, which channels it operates on, and its platform identifiers.'
+    },
+    customersystem: {
+      type: 'Core Entity',
+      typeColor: '#e2e8f0',
+      desc: 'A system or tool a customer uses, like Applied Epic, Dialpad, or Salesforce. Ties to our integration capabilities. Knowing what systems they use determines what we can connect to during delivery.'
+    },
+    businessrelationship: {
+      type: 'Core Entity',
+      typeColor: '#e2e8f0',
+      desc: 'Company-to-company relationships: carriers, agencies, MGAs, vendors, and partners. Understanding who a customer works with informs our integration strategy and opportunity mapping.'
+    },
+    task: {
+      type: 'Intelligence Entity',
+      typeColor: '#f59e0b',
+      desc: 'Action items extracted from touchpoints by the Intelligence Extractor. Tasks have assignees, due dates, priority levels, and can link to specific proposal phases for delivery tracking.'
+    },
+    decision: {
+      type: 'Intelligence Entity',
+      typeColor: '#f59e0b',
+      desc: 'Choices made that affect the customer relationship or our approach. Extracted from touchpoints with rationale captured. Decisions can supersede previous decisions, creating an auditable history of strategic direction changes.'
+    },
+    commitment: {
+      type: 'Intelligence Entity',
+      typeColor: '#f59e0b',
+      desc: 'Promises made by Indemn to a customer, or by a customer to Indemn. Tracked for accountability with state tracking: open, fulfilled, missed, or dismissed. Commitments can link to proposal phases for contract-level promise tracking.'
+    },
+    signal: {
+      type: 'Intelligence Entity',
+      typeColor: '#f59e0b',
+      desc: 'Health, expansion, and risk indicators observed in touchpoints. Point-in-time observations that accumulate for customer health scoring. Types include health signals, expansion indicators, churn risk, blockers, champion identification, and satisfaction markers.'
+    },
+    associatetype: {
+      type: 'Reference Entity',
+      typeColor: '#64748b',
+      desc: 'The 24-item catalog of AI agent templates that Indemn offers. Associates are instances of AssociateTypes. Opportunities map to AssociateTypes to show what we would deploy to solve a gap.'
+    },
+    outcometype: {
+      type: 'Reference Entity',
+      typeColor: '#64748b',
+      desc: 'The Four Outcomes framework that anchors every proposal and opportunity. Outcomes define what we deliver in terms of business value, not technical components. Phases and Opportunities connect to OutcomeTypes.'
+    },
+    employee: {
+      type: 'Reference Entity',
+      typeColor: '#64748b',
+      desc: 'Indemn team members linked to the OS actor system. Employees own tasks, prepare proposals, build associates, and participate in touchpoints. The human side of the delivery machine.'
+    }
+  };
+
+  // Human-readable entity names
+  const entityNames = {
+    company: 'Company', contact: 'Contact', deal: 'Deal', touchpoint: 'Touchpoint',
+    email: 'Email', document: 'Document', operation: 'Operation', opportunity: 'Opportunity',
+    proposal: 'Proposal', phase: 'Phase', associate: 'Associate', customersystem: 'CustomerSystem',
+    businessrelationship: 'BusinessRelationship', task: 'Task', decision: 'Decision',
+    commitment: 'Commitment', signal: 'Signal', associatetype: 'AssociateType',
+    outcometype: 'OutcomeType', employee: 'Employee'
+  };
+
+  // Canvas for connection lines
+  const canvas = document.getElementById('connectionCanvas');
+  const ctx = canvas.getContext('2d');
+  let activeConnections = [];
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = document.documentElement.scrollHeight;
+  }
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
+  // Get center of an element relative to page
+  function getCenter(el) {
+    const rect = el.getBoundingClientRect();
+    return {
+      x: rect.left + rect.width / 2 + window.scrollX,
+      y: rect.top + rect.height / 2 + window.scrollY
+    };
+  }
+
+  // Draw curved connection line
+  function drawConnection(from, to, color, alpha) {
+    ctx.beginPath();
+    ctx.strokeStyle = color;
+    ctx.globalAlpha = alpha;
+    ctx.lineWidth = 1.5;
+
+    const dx = to.x - from.x;
+    const dy = to.y - from.y;
+    const cx = from.x + dx * 0.5;
+    const cy = from.y + dy * 0.2;
+
+    ctx.moveTo(from.x, from.y);
+    ctx.quadraticCurveTo(cx, cy, to.x, to.y);
+    ctx.stroke();
+    ctx.globalAlpha = 1;
+  }
+
+  function clearCanvas() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+
+  // Show connections for an entity
+  function showConnections(entityId) {
+    resizeCanvas();
+    clearCanvas();
+    canvas.classList.add('visible');
+
+    const sourceEl = document.querySelector(`[data-id="${entityId}"]`);
+    if (!sourceEl) return;
+
+    const connections = (sourceEl.dataset.connections || '').split(',').filter(Boolean);
+    const sourceCenter = getCenter(sourceEl);
+
+    // Highlight connected cards
+    document.querySelectorAll('.entity-card, .hub-card').forEach(card => {
+      const cardId = card.dataset.id;
+      if (connections.includes(cardId) || cardId === entityId) {
+        card.classList.add('highlighted');
+      }
+    });
+
+    // Draw lines
+    connections.forEach(connId => {
+      const targetEl = document.querySelector(`[data-id="${connId}"]`);
+      if (!targetEl) return;
+      const targetCenter = getCenter(targetEl);
+
+      const meta = entityMeta[connId];
+      let color = '#6366f1';
+      if (meta) {
+        if (meta.typeColor === '#f59e0b') color = '#f59e0b';
+        else if (meta.typeColor === '#64748b') color = '#64748b';
+      }
+
+      drawConnection(sourceCenter, targetCenter, color, 0.4);
+    });
+  }
+
+  function hideConnections() {
+    canvas.classList.remove('visible');
+    clearCanvas();
+    document.querySelectorAll('.highlighted').forEach(el => el.classList.remove('highlighted'));
+  }
+
+  // Detail panel
+  const panel = document.getElementById('detailPanel');
+  const closeBtn = document.getElementById('closeDetail');
+
+  function openDetail(entityId) {
+    const meta = entityMeta[entityId];
+    if (!meta) return;
+
+    document.getElementById('detailName').textContent = entityNames[entityId] || entityId;
+    document.getElementById('detailName').style.color = meta.typeColor;
+    document.getElementById('detailType').textContent = meta.type;
+    document.getElementById('detailType').style.color = meta.typeColor;
+    document.getElementById('detailDesc').textContent = meta.desc;
+
+    const el = document.querySelector(`[data-id="${entityId}"]`);
+    const connections = (el && el.dataset.connections || '').split(',').filter(Boolean);
+    const connsDiv = document.getElementById('detailConns');
+    connsDiv.innerHTML = '';
+
+    connections.forEach(connId => {
+      const connMeta = entityMeta[connId];
+      const div = document.createElement('div');
+      div.className = 'conn-item';
+      div.innerHTML = `<span class="conn-arrow" style="color:${connMeta ? connMeta.typeColor : '#6366f1'}">&rarr;</span> ${entityNames[connId] || connId}`;
+      connsDiv.appendChild(div);
+    });
+
+    panel.classList.add('open');
+  }
+
+  closeBtn.addEventListener('click', () => {
+    panel.classList.remove('open');
+    hideConnections();
+  });
+
+  // Attach hover + click to all entity/hub cards
+  document.querySelectorAll('.entity-card, .hub-card').forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      showConnections(card.dataset.id);
+    });
+    card.addEventListener('mouseleave', () => {
+      if (!panel.classList.contains('open')) {
+        hideConnections();
+      }
+    });
+    card.addEventListener('click', () => {
+      hideConnections();
+      showConnections(card.dataset.id);
+      openDetail(card.dataset.id);
+    });
+  });
+
+  // Close panel when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.entity-card') && !e.target.closest('.hub-card') && !e.target.closest('.detail-panel')) {
+      panel.classList.remove('open');
+      hideConnections();
+    }
+  });
+
+  // Redraw connections on scroll if panel is open
+  window.addEventListener('scroll', () => {
+    if (canvas.classList.contains('visible')) {
+      const highlighted = document.querySelector('.entity-card.highlighted, .hub-card.highlighted');
+      if (highlighted) {
+        const entityId = highlighted.dataset.id;
+        resizeCanvas();
+        clearCanvas();
+        showConnections(entityId);
+      }
+    }
+  });
+
+})();
+</script>
+</body>
+</html>

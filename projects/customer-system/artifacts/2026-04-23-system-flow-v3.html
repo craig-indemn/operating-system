@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indemn Customer System</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #ffffff;
+    color: #1a202c;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 1700px;
+    margin: 0 auto;
+    padding: 40px 32px 60px;
+  }
+
+  /* ── Header ── */
+  .header { margin-bottom: 32px; }
+  .header h1 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #0f172a;
+    letter-spacing: -0.3px;
+  }
+  .header .subtitle {
+    font-size: 13px;
+    color: #64748b;
+    margin-top: 2px;
+  }
+
+  /* ── Main flow: 6 content columns + 5 arrow gutters ── */
+  .flow {
+    display: grid;
+    grid-template-columns: 110px 24px 200px 24px 230px 24px 220px 40px 230px 40px 260px;
+    align-items: start;
+    margin-bottom: 40px;
+  }
+
+  /* ── Column wrappers ── */
+  .col { padding: 0 6px; }
+  .col-header {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    color: #94a3b8;
+    padding-bottom: 10px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #e2e8f0;
+    white-space: nowrap;
+  }
+
+  /* ── Arrow gutters ── */
+  .arrow-gutter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 36px;
+    gap: 4px;
+  }
+  .arrow-gutter svg { display: block; }
+  .arrow-label {
+    font-size: 8px;
+    color: #94a3b8;
+    text-align: center;
+    line-height: 1.3;
+    max-width: 50px;
+  }
+  .arrow-who {
+    font-size: 8px;
+    font-weight: 600;
+    color: #14b8a6;
+    text-align: center;
+  }
+  .arrow-who.human {
+    color: #6366f1;
+  }
+
+  /* ── Entity cards ── */
+  .entity {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 9px 11px;
+    margin-bottom: 8px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  }
+  .entity-name {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #0f172a;
+  }
+  .entity-desc {
+    font-size: 10.5px;
+    color: #64748b;
+    margin-top: 2px;
+    line-height: 1.35;
+  }
+  .entity-state {
+    font-size: 9.5px;
+    color: #94a3b8;
+    margin-top: 3px;
+    font-family: 'SF Mono', Menlo, Monaco, monospace;
+    line-height: 1.5;
+  }
+
+  /* ── Source items ── */
+  .source-item {
+    font-size: 12px;
+    font-weight: 500;
+    color: #334155;
+    padding: 5px 0;
+  }
+  .source-item + .source-item { border-top: 1px solid #f1f5f9; }
+  .source-muted { color: #94a3b8; }
+
+  /* ── Adapter labels ── */
+  .adapter {
+    font-size: 9px;
+    color: #94a3b8;
+    font-style: italic;
+    margin-bottom: 3px;
+  }
+
+  /* ── Associate cards (teal) ── */
+  .associate {
+    background: #f0fdfa;
+    border: 1px solid #99f6e4;
+    border-radius: 6px;
+    padding: 9px 11px;
+    margin-bottom: 8px;
+  }
+  .assoc-tag {
+    font-size: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #14b8a6;
+    margin-bottom: 3px;
+  }
+  .assoc-name {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #0f766e;
+  }
+  .assoc-detail {
+    font-size: 10px;
+    color: #4a9e96;
+    margin-top: 3px;
+    line-height: 1.4;
+  }
+
+  /* ── Touchpoint (heavier border) ── */
+  .touchpoint-card {
+    border: 2px solid #475569;
+  }
+
+  /* ── Intelligence pills ── */
+  .intel-group {
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px dashed #e2e8f0;
+  }
+  .intel-label {
+    font-size: 9px;
+    color: #94a3b8;
+    margin-bottom: 5px;
+  }
+  .intel-pill {
+    display: inline-block;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    padding: 3px 7px;
+    margin: 2px 2px 2px 0;
+    font-size: 10.5px;
+    font-weight: 500;
+    color: #475569;
+  }
+
+  /* ── Company hub ── */
+  .company-hub {
+    background: #fff;
+    border: 2px solid #0f172a;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  .company-hub .entity-name { font-size: 14px; }
+
+  /* ── Proposal card ── */
+  .proposal-card {
+    border: 2px solid #6366f1;
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    background: #fff;
+  }
+  .proposal-card .entity-name { color: #4338ca; }
+
+  /* ── Annotation notes ── */
+  .note {
+    font-size: 9.5px;
+    color: #94a3b8;
+    font-style: italic;
+    margin-top: 8px;
+    line-height: 1.4;
+    padding: 5px 7px;
+    background: #f8fafc;
+    border-radius: 4px;
+    border: 1px solid #f1f5f9;
+  }
+
+  /* ── Timeline section ── */
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    color: #94a3b8;
+    margin-bottom: 10px;
+  }
+
+  .timeline-box {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 22px 28px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    margin-bottom: 28px;
+  }
+  .timeline-heading {
+    font-size: 13px;
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 2px;
+  }
+  .timeline-sub {
+    font-size: 10px;
+    color: #94a3b8;
+    margin-bottom: 20px;
+  }
+  .timeline-track {
+    position: relative;
+    height: 76px;
+    margin: 0 16px;
+  }
+  .timeline-line {
+    position: absolute;
+    top: 22px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #e2e8f0;
+  }
+  .timeline-events {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    height: 100%;
+  }
+  .tl-event {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 110px;
+  }
+  .tl-date {
+    font-size: 9px;
+    color: #94a3b8;
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+  .tl-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #475569;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 2px #cbd5e1;
+    margin-bottom: 7px;
+    flex-shrink: 0;
+  }
+  .tl-dot-future {
+    background: #cbd5e1;
+    box-shadow: 0 0 0 2px #e2e8f0;
+  }
+  .tl-label {
+    font-size: 10px;
+    color: #334155;
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  /* ── Reference entities ── */
+  .ref-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .ref-chip {
+    font-size: 10px;
+    color: #94a3b8;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    padding: 4px 9px;
+  }
+  .ref-chip strong {
+    color: #64748b;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <h1>Indemn Customer System</h1>
+    <div class="subtitle">How interactions become structured intelligence and proposals</div>
+  </div>
+
+  <!-- ════════ MAIN FLOW ════════ -->
+  <div class="flow">
+
+    <!-- COL 1: Sources -->
+    <div class="col">
+      <div class="col-header">1. Sources</div>
+      <div class="source-item">Gmail</div>
+      <div class="source-item">Google Meet</div>
+      <div class="source-item">Google Drive</div>
+      <div class="source-item">Slack</div>
+      <div class="source-item source-muted">Manual (CLI/UI)</div>
+    </div>
+
+    <!-- Arrow 1->2 -->
+    <div class="arrow-gutter">
+      <svg width="20" height="120" viewBox="0 0 20 120">
+        <defs><marker id="ah1" viewBox="0 0 10 8" refX="8" refY="4" markerWidth="6" markerHeight="5" orient="auto"><path d="M0,0 L8,4 L0,8z" fill="#cbd5e1"/></marker></defs>
+        <line x1="2" y1="2" x2="16" y2="2" stroke="#cbd5e1" stroke-width="1.5" marker-end="url(#ah1)"/>
+        <text x="10" y="22" text-anchor="middle" font-size="7" fill="#b0b8c4" font-style="italic" font-family="-apple-system, sans-serif">Gmail<tspan x="10" dy="8">Adapter</tspan></text>
+        <line x1="2" y1="50" x2="16" y2="50" stroke="#cbd5e1" stroke-width="1.5" marker-end="url(#ah1)"/>
+        <text x="10" y="66" text-anchor="middle" font-size="7" fill="#b0b8c4" font-style="italic" font-family="-apple-system, sans-serif">Meet<tspan x="10" dy="8">Adapter</tspan></text>
+      </svg>
+    </div>
+
+    <!-- COL 2: Raw Data -->
+    <div class="col">
+      <div class="col-header">2. Raw Data</div>
+      <div class="entity">
+        <div class="entity-name">Email</div>
+        <div class="entity-desc">sender, recipients, cc/bcc, subject, body, thread_id, date</div>
+        <div class="entity-state">received → classified → processed</div>
+      </div>
+      <div class="entity">
+        <div class="entity-name">Meeting</div>
+        <div class="entity-desc">title, transcript, participants, notes, summary, duration, organizer</div>
+      </div>
+      <div class="entity">
+        <div class="entity-name">Document</div>
+        <div class="entity-desc">name, content, mime_type, creator, source (Drive / email attachment / upload)</div>
+      </div>
+    </div>
+
+    <!-- Arrow 2->3 -->
+    <div class="arrow-gutter">
+      <svg width="20" height="40" viewBox="0 0 20 40">
+        <defs><marker id="ah2" viewBox="0 0 10 8" refX="8" refY="4" markerWidth="6" markerHeight="5" orient="auto"><path d="M0,0 L8,4 L0,8z" fill="#5eead4"/></marker></defs>
+        <line x1="2" y1="12" x2="16" y2="12" stroke="#5eead4" stroke-width="1.5" marker-end="url(#ah2)"/>
+      </svg>
+    </div>
+
+    <!-- COL 3: Processing -->
+    <div class="col">
+      <div class="col-header">3. Processing</div>
+      <div class="associate">
+        <div class="assoc-tag">AI Associate</div>
+        <div class="assoc-name">Email Classifier</div>
+        <div class="assoc-detail">
+          Watches: Email created<br>
+          Produces: Company link, Contact links
+        </div>
+      </div>
+      <div class="associate">
+        <div class="assoc-tag">AI Associate</div>
+        <div class="assoc-name">Touchpoint Synthesizer</div>
+        <div class="assoc-detail">
+          Watches: Email classified, Meeting created<br>
+          Produces: Touchpoints, Documents
+        </div>
+      </div>
+      <div class="associate">
+        <div class="assoc-tag">AI Associate</div>
+        <div class="assoc-name">Intelligence Extractor</div>
+        <div class="assoc-detail">
+          Watches: Touchpoint created<br>
+          Produces: Tasks, Decisions, Commitments, Signals
+        </div>
+      </div>
+    </div>
+
+    <!-- Arrow 3->4 -->
+    <div class="arrow-gutter">
+      <svg width="20" height="40" viewBox="0 0 20 40">
+        <defs><marker id="ah3" viewBox="0 0 10 8" refX="8" refY="4" markerWidth="6" markerHeight="5" orient="auto"><path d="M0,0 L8,4 L0,8z" fill="#5eead4"/></marker></defs>
+        <line x1="2" y1="12" x2="16" y2="12" stroke="#5eead4" stroke-width="1.5" marker-end="url(#ah3)"/>
+      </svg>
+    </div>
+
+    <!-- COL 4: Timeline -->
+    <div class="col">
+      <div class="col-header">4. Timeline</div>
+      <div class="entity touchpoint-card">
+        <div class="entity-name">Touchpoint ↓</div>
+        <div class="entity-desc">Every interaction on one timeline per company. Feeds the timeline below.</div>
+        <div class="entity-state" style="margin-top: 5px;">
+          type, scope, date, duration, summary<br>
+          participants (contacts + employees)<br>
+          ← linked from Email, Meeting
+        </div>
+      </div>
+      <div class="intel-group">
+        <div class="intel-label">Extracted from touchpoints by Intelligence Extractor:</div>
+        <div class="entity" style="margin-bottom: 4px;">
+          <div class="entity-name">Task</div>
+          <div class="entity-desc">title, assignee, due_date, priority, company, touchpoint</div>
+        </div>
+        <div class="entity" style="margin-bottom: 4px;">
+          <div class="entity-name">Decision</div>
+          <div class="entity-desc">description, decided_by, rationale, company, touchpoint</div>
+        </div>
+        <div class="entity" style="margin-bottom: 4px;">
+          <div class="entity-name">Commitment</div>
+          <div class="entity-desc">description, made_by, made_by_side, due_date, company, touchpoint</div>
+        </div>
+        <div class="entity" style="margin-bottom: 4px;">
+          <div class="entity-name">Signal</div>
+          <div class="entity-desc">type, description, severity, attributed_to, company, touchpoint</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Arrow 4->5 -->
+    <div class="arrow-gutter">
+      <svg width="20" height="20" viewBox="0 0 20 20">
+        <defs><marker id="ah4" viewBox="0 0 10 8" refX="8" refY="4" markerWidth="6" markerHeight="5" orient="auto"><path d="M0,0 L8,4 L0,8z" fill="#cbd5e1"/></marker></defs>
+        <line x1="2" y1="10" x2="16" y2="10" stroke="#cbd5e1" stroke-width="1.5" marker-end="url(#ah4)"/>
+      </svg>
+      <div class="arrow-who human">Human</div>
+      <div class="arrow-label">via CLI, informed by timeline</div>
+    </div>
+
+    <!-- COL 5: Customer Understanding -->
+    <div class="col">
+      <div class="col-header">5. Understanding</div>
+      <div class="company-hub">
+        <div class="entity-name">Company</div>
+        <div class="entity-desc">name, type, stage, cohort, icp_fit, owner<br>All entities connect here</div>
+      </div>
+      <div class="entity">
+        <div class="entity-name">Contact</div>
+        <div class="entity-desc">name, email, title, role, company<br><span style="color:#14b8a6; font-size:9px;">Created by: Email Classifier (from emails) + Human</span></div>
+      </div>
+      <div class="entity">
+        <div class="entity-name">Operation</div>
+        <div class="entity-desc">name, department, channel, annual_volume, staff_count, automation_level<br><span style="color:#6366f1; font-size:9px;">Created by: Human via CLI (from analysis + discovery)</span></div>
+      </div>
+      <div class="entity">
+        <div class="entity-name">Opportunity</div>
+        <div class="entity-desc">name, operation, mapped_associate → AssociateType, mapped_outcome → OutcomeType<br>State: identified → validated → proposed → resolved<br><span style="color:#6366f1; font-size:9px;">Created by: Human via CLI (maps problems to products)</span></div>
+      </div>
+      <div class="entity">
+        <div class="entity-name">CustomerSystem</div>
+        <div class="entity-desc">name, type (AMS/CRM/Phone), integration → Integration<br><span style="color:#6366f1; font-size:9px;">Created by: Human via CLI</span></div>
+      </div>
+      <div class="entity">
+        <div class="entity-name">BusinessRelationship</div>
+        <div class="entity-desc">related_company, related_name, type (carrier/agency/vendor)<br><span style="color:#6366f1; font-size:9px;">Created by: Human via CLI</span></div>
+      </div>
+    </div>
+
+    <!-- Arrow 5->6 -->
+    <div class="arrow-gutter">
+      <svg width="20" height="20" viewBox="0 0 20 20">
+        <defs><marker id="ah5" viewBox="0 0 10 8" refX="8" refY="4" markerWidth="6" markerHeight="5" orient="auto"><path d="M0,0 L8,4 L0,8z" fill="#cbd5e1"/></marker></defs>
+        <line x1="2" y1="10" x2="16" y2="10" stroke="#cbd5e1" stroke-width="1.5" marker-end="url(#ah5)"/>
+      </svg>
+      <div class="arrow-who human">Human</div>
+      <div class="arrow-label">builds proposal from entities</div>
+      <div style="margin-top: 6px;">
+        <div class="arrow-who">AI</div>
+        <div class="arrow-label">generates document</div>
+      </div>
+    </div>
+
+    <!-- COL 6: Proposal -->
+    <div class="col">
+      <div class="col-header">6. Proposal</div>
+      <div class="proposal-card">
+        <div class="entity-name">Proposal</div>
+        <div class="entity-desc">company, deal, version, prepared_for → Contact, prepared_by → Employee, date_sent</div>
+        <div class="entity-state">drafting → internal_review → sent → under_review → accepted</div>
+        <div style="font-size:9px; color:#6366f1; margin-top:4px;">Created by: Human via CLI</div>
+      </div>
+      <div class="entity">
+        <div class="entity-name">Phase</div>
+        <div class="entity-desc">
+          proposal → Proposal, phase_number, name, timeline<br>
+          associates → AssociateType (what we deploy)<br>
+          outcome → OutcomeType (business outcome)<br>
+          investment, investment_period, commitment_months, is_pilot
+        </div>
+        <div class="entity-state">not_started → in_progress → complete</div>
+        <div style="font-size:9px; margin-top:4px;">
+          <span style="color:#6366f1;">Created by: Human via CLI</span><br>
+          <span style="color:#94a3b8;">← Tasks (Indemn deliverables) link here</span><br>
+          <span style="color:#94a3b8;">← Commitments (customer commitments) link here</span><br>
+          <span style="color:#94a3b8;">← Opportunities (gaps addressed) link here</span>
+        </div>
+      </div>
+      <div class="entity">
+        <div class="entity-name">Associate</div>
+        <div class="entity-desc">associate_type → AssociateType, phase → Phase, org_id, bot_id, url<br>The actual deployed AI agent for the customer</div>
+        <div class="entity-state">planned → building → testing → live</div>
+      </div>
+      <div class="entity" style="border: 1px dashed #6366f1; background: #f5f3ff;">
+        <div class="entity-name">📄 Rendered Document</div>
+        <div class="entity-desc">Proposal Writer (AI) generates the proposal document FROM these entities. The document is a view, not the source of truth.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ════════ TIMELINE ════════ -->
+  <div style="text-align: center; color: #94a3b8; font-size: 11px; margin: 4px 0 8px;">↓ Touchpoints build the timeline below ↓</div>
+  <div class="section-label">Interaction Timeline View</div>
+  <div class="timeline-box">
+    <div class="timeline-heading">Alliance Insurance -- Interaction Timeline</div>
+    <div class="timeline-sub">How Touchpoints create a visible history for each customer</div>
+    <div class="timeline-track">
+      <div class="timeline-line"></div>
+      <div class="timeline-events">
+        <div class="tl-event">
+          <div class="tl-date">Jan 15</div>
+          <div class="tl-dot"></div>
+          <div class="tl-label">First contact</div>
+        </div>
+        <div class="tl-event">
+          <div class="tl-date">Feb 3</div>
+          <div class="tl-dot"></div>
+          <div class="tl-label">Discovery meetings</div>
+        </div>
+        <div class="tl-event">
+          <div class="tl-date">Feb 11</div>
+          <div class="tl-dot"></div>
+          <div class="tl-label">Proposal v1 sent</div>
+        </div>
+        <div class="tl-event">
+          <div class="tl-date">Mar 12</div>
+          <div class="tl-dot"></div>
+          <div class="tl-label">Reconnect at NC event</div>
+        </div>
+        <div class="tl-event">
+          <div class="tl-date">Apr 8</div>
+          <div class="tl-dot"></div>
+          <div class="tl-label">Renewal wedge call w/ Christopher</div>
+        </div>
+        <div class="tl-event">
+          <div class="tl-date">Apr 25</div>
+          <div class="tl-dot tl-dot-future"></div>
+          <div class="tl-label">Proposal v2 due</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ REFERENCE ENTITIES ════════ -->
+  <div class="section-label">Reference Entities</div>
+  <div class="ref-row">
+    <div class="ref-chip"><strong>AssociateType</strong> -- 24 templates</div>
+    <div class="ref-chip"><strong>OutcomeType</strong> -- Four Outcomes</div>
+    <div class="ref-chip"><strong>Employee</strong> -- 15 team members</div>
+    <div class="ref-chip"><strong>Stage</strong> -- 7 pipeline stages</div>
+    <div class="ref-chip"><strong>Conference</strong></div>
+  </div>
+
+</div>
+</body>
+</html>
