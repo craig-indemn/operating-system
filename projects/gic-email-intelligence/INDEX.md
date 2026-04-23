@@ -4,9 +4,26 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 
 ## Status
 
-**PRODUCTION IS LIVE AND STABLE.** Go-live day (2026-04-23): 152 emails processed, 44 agent submissions automated (43 completed, 1 legitimate agency-not-found failure), 0 duplicate quotes, notifications sending.
+**PRODUCTION IS LIVE AND STABLE.** Go-live day complete (2026-04-23): 161 emails processed, 46 agent submissions (45 completed, 1 agency-not-found), 0 duplicate quotes, 0 processing failures.
 
-**To resume this project, read `artifacts/2026-04-23-go-live-day-session-2.md` — it has the full day's fixes, features, lessons learned, and open items.**
+**To resume this project:**
+1. Read `artifacts/2026-04-23-go-live-day-session-2.md` — full day context, all fixes, lessons learned
+2. Read the key code files listed below to understand the current implementation
+3. Check production status: `mongosh "mongodb+srv://dev-indemn:wJnKmz4P0q39GpXZ@dev-indemn.mifra5.mongodb.net/gic_email_intelligence" --eval 'var t=db.emails.countDocuments({received_at:{$gte:ISODate("2026-04-24T00:00:00Z")}}); var c=db.emails.countDocuments({received_at:{$gte:ISODate("2026-04-24T00:00:00Z")},processing_status:"complete"}); print("Today: "+t+" Complete: "+c)'`
+4. Monitor: sync status, processing throughput, automation completions, notification delivery
+
+**Key code files to read for full understanding:**
+- `src/gic_email_intel/agent/harness.py` — pipeline orchestrator, classification rules (including Rule 7 portal logic), folder move on classification
+- `src/gic_email_intel/cli/commands/emails.py` — `gic emails complete` with deterministic activity+notification, duplicate detection, folder routing
+- `src/gic_email_intel/core/email_mover.py` — shared folder move helper (updates graph_message_id after move)
+- `src/gic_email_intel/agent/tools.py` — `_safe_object_id()` for LLM hex corruption recovery
+- `src/gic_email_intel/automation/agent.py` — deepagent system prompt with CLI docs
+- `src/gic_email_intel/automation/skills/create-quote-id.md` — automation skill (multi-LOB rules, contact lookup, applicant email)
+- `src/gic_email_intel/agent/skills/submission_linker.md` — linker (single submission for multi-LOB)
+- `unisoft-proxy/client/cli.py` — Unisoft CLI (contacts, quote create with agent-contact-id)
+- `unisoft-proxy/server/UniProxy.cs` — SOAP proxy on EC2 (ActivityNotification DTO namespace)
+
+**Immediate priority for next session:** Verify notification emails are sending consistently on new quotes. Code works locally but inconsistent in production — may be a deploy timing issue. Test on first new agent_submission email.
 
 **What was done (2026-04-23 — go-live day, session 2):**
 
@@ -746,6 +763,13 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 - 2026-03-13: React + shadcn/ui for frontend, Python for backend
 - 2026-03-13: Autonomous responses shown as drafts in demo (no write access), approve/send in production
 - 2026-03-13: Need comprehensive technical design before building — every detail thought through
+- 2026-04-23: Multi-LOB handling is LLM-driven (not deterministic code) because there are many nuances the LLM reads from extraction context
+- 2026-04-23: Portal classification: only Boats & Yachts, Workers Compensation, Welders, Caterers have Quote IDs (exempt from automation). All other portal product lines need automation. Confirmed by JC.
+- 2026-04-23: Notifications pass Notification inside SetActivity (one call), NOT via separate SetActivityNotification (deserialization issues in proxy)
+- 2026-04-23: Activity + notification is deterministic code in `emails complete`, not LLM-driven — LLM was unreliably skipping it
+- 2026-04-23: Duplicate emails go to "Duplicates" folder. Detection: check if submission already had the quote_id before denormalization.
+- 2026-04-23: Graph API message ID changes on folder move — must capture new ID from move response
+- 2026-04-23: EC2 proxy deploy: use `aws s3 cp` (not Read-S3Object), compile to UniProxy.exe, then Copy-Item to UniProxy-Prod.exe
 - 2026-03-16: 5 action-oriented columns: New, Awaiting Info, With Carrier, Quoted, Attention (validated against data)
 - 2026-03-16: Reference numbers are primary linking key (96.2% coverage). Conversation threading is useless.
 - 2026-03-16: Agent harness with CLI + Skills pattern — CLI is the CRUD interface, DeepAgent is the brain
@@ -881,7 +905,7 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 - ~~What does the quoting API actually support?~~ **ANSWERED 2026-04-01:** 910 SOAP operations via WCF, 32 REST endpoints. Full CRUD for quotes, submissions, activities, policies, agents, carriers, claims. Mapped via Fiddler interception + WSDL fetch.
 - Is the Granada API (`services-uat.granadainsurance.com`) built by Unisoft or custom by Mukul Gupta?
 - ~~What are all the subline options per LOB in Unisoft?~~ **ANSWERED 2026-04-01:** All 18 LOBs and all sub-LOBs mapped from live API. See explore-results.txt. CG has 4, CP has 13, PL has 8, TR has 8, ML has 4, HO has 2, OM has 2. Others have none.
-- Do GIC portal submissions auto-create records in Unisoft? **ASSUMPTION 2026-04-03:** Yes. `gic_portal_submission` emails include the Quote ID in the subject (e.g., "144301"). `gic_application` emails (HandyPerson/General Contractor portal confirmations from quote@gicunderwriters.com) are assumed to also auto-create Quote IDs, though the ID isn't in the email body. **Verify with JC.** If confirmed, only `agent_submission` emails need Quote ID automation.
+- ~~Do GIC portal submissions auto-create records in Unisoft?~~ **ANSWERED 2026-04-23:** Only 4 product lines auto-create Quote IDs: Boats & Yachts, Workers Compensation, Welders, Caterers. All others (HandyPerson, Rental Dwelling, Commercial Auto, General Contractor, etc.) need automation. Rule 7 in harness.py handles this.
 - Does Unisoft support ACORD data standards?
 - Is there a production API endpoint (not just UAT)? **Still need from JC/Robert.**
 - ~~Can documents be uploaded via API?~~ **ANSWERED 2026-04-01:** Yes, AddQuoteAttachment via MTOM (IINSFileService). Not yet in proxy (uses different WCF channel + multipart encoding). Can be added later.
