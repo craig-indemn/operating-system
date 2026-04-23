@@ -35,8 +35,12 @@ This handoff covers EVERYTHING — the context from multiple sessions, brainstor
 - `projects/customer-system/artifacts/context/kyle-exec/PROSPECT-SIX-LEADS-v0.md` — the 6 active prospects
 - `projects/customer-system/artifacts/context/kyle-exec/MAP.md` — Kyle's relationship map
 
-### 4. Entity Model Evolution (latest design work)
-- `projects/customer-system/artifacts/2026-04-22-entity-model-brainstorm.md` — **LATEST**: entity model brainstorm checkpoint — 7 new entities, design principles, flow, open questions. IN PROGRESS — shape agreed, per-entity details need deeper work.
+### 4. Entity Model + Implementation (latest work)
+- `projects/customer-system/artifacts/2026-04-22-entity-model-brainstorm.md` — Field-level specs for all 22 entities, implementation plan, associate wiring
+- `projects/customer-system/artifacts/2026-04-22-entity-model-design-rationale.md` — WHY the model is designed this way, tradeoffs, OS vision fit, associate skills
+- `projects/customer-system/artifacts/2026-04-23-playbook-as-entity-model.md` — KEY INSIGHT: the entity model IS the playbook, gaps drive next steps, proposal emerges when complete
+- `projects/customer-system/artifacts/2026-04-23-implementation-session.md` — **LATEST**: full session record — what was built, infrastructure fixes, learnings, what's next
+- `projects/customer-system/artifacts/2026-04-23-system-flow-v4.html` — Visual diagram for Kyle
 
 ### 5. What Was Built (recent sessions)
 - `projects/customer-system/artifacts/2026-04-21-session-handoff.md` — parallel session: Deal entity, SuccessPhase, UI, domains, CLI

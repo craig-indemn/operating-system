@@ -122,6 +122,7 @@ Read Kyle's EXEC folder (PLAYBOOK-v2, data dictionaries, 6 leads, MAP) and Cam's
 | 2026-04-22 | [entity-model-design-rationale](artifacts/2026-04-22-entity-model-design-rationale.md) | WHY the model is designed this way — thinking, tradeoffs, rejected alternatives, OS vision fit, Alliance test |
 | 2026-04-23 | [playbook-as-entity-model](artifacts/2026-04-23-playbook-as-entity-model.md) | Key insight: the playbook IS the entity model. Gaps drive next steps. Proposal emerges when entities are complete. |
 | 2026-04-23 | [system-flow-v4](artifacts/2026-04-23-system-flow-v4.html) | Visual diagram for Kyle — timeline as spine, Alliance journey, entity nesting, associate connectors |
+| 2026-04-23 | [implementation-session](artifacts/2026-04-23-implementation-session.md) | Full session record — what was built, fixes, learnings, next steps, commits |
 
 ## Decisions
 
