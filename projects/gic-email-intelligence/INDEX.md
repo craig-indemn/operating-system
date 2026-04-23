@@ -4,9 +4,9 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 
 ## Status
 
-**Session 2026-04-22. Going live to production tomorrow (2026-04-23). Pre-launch cleanup in progress.**
+**PRODUCTION IS LIVE as of 2026-04-22 10:30 PM ET.** Processing and automation unpaused on Railway prod environment. Only Apr 23+ emails will be processed. Dev is paused.
 
-**To resume this project, read `artifacts/2026-04-17-session-handoff.md` — it has full context, infrastructure map, technical lessons, and the 7-step prod cutover plan.**
+**To resume this project, read `artifacts/2026-04-22-session-close-go-live.md` — it has the full go-live state, monitoring checklist, pause commands, and everything built this session.**
 
 **What was done (2026-04-16 through 2026-04-22):**
 
