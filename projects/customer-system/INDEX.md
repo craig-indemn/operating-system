@@ -6,7 +6,7 @@ Kyle is pressing for this. It doubles as the proving ground for the OS domain mo
 
 ## Status
 
-**Session 2026-04-22/23 (roadmap session) — Entity model designed, implemented, pipeline proven E2E.**
+**Session 2026-04-22/23/24 (roadmap session) — Entity model designed, implemented, pipeline proven E2E. Team email backfill complete.**
 
 Deep brainstorming session with Craig redesigning the entity model, then executed Waves 1-3.
 
@@ -21,7 +21,14 @@ Deep brainstorming session with Craig redesigning the entity model, then execute
 
 **Infrastructure bugs fixed:** Queue processor WorkflowAlreadyStartedError (Python 3.12 + wrong temporalio exception class). Runtime service token regenerated. Entity `touchpoint` field renamed from `interaction` (naming conflict with kernel entity).
 
-**Remaining:** Vertex AI rate limiting (429). Entity definition reload needed on API for touchpoint field on Email/Meeting. Old emails need reprocessing. Wave 4 (human enrichment) and Wave 5 (proposal generation) not started.
+**Pipeline complete:** ~930 emails ingested (Kyle full week + team unique emails). 284 irrelevant, 180 processed E2E, 114 needs_review. 20+ Touchpoints, 20+ Tasks, 16+ Signals, 9+ Commitments, 4+ Decisions extracted. Queue drained to zero. 30 concurrent max reliable for one Railway container.
+
+**Remaining tasks:**
+- Set up recurring email fetch (scheduled associate)
+- Alliance email backfill (manual curation via gog for historical emails)
+- Meeting backfill (full 30-day history)
+- Wave 4: human enrichment (Operations, Opportunities, CustomerSystem via CLI)
+- Wave 5: proposal generation
 
 **Session 2026-04-21 (roadmap session) — Meeting ingestion pipeline built E2E. Employee entity seeded. Actors cleaned up.**
 
@@ -159,6 +166,13 @@ Read Kyle's EXEC folder (PLAYBOOK-v2, data dictionaries, 6 leads, MAP) and Cam's
 - 2026-04-23: Queue processor bug fixed — `WorkflowAlreadyStartedError` removed from temporalio SDK, replaced with `RPCError` + `RPCStatusCode.ALREADY_EXISTS`
 - 2026-04-23: Runtime service token regenerated — stored on Platform Admin actor + AWS Secrets Manager + Railway env var
 - 2026-04-23: Pipeline E2E proven — Email → watch → Email Classifier (execute + indemn CLI) → Touchpoint Synthesizer → Touchpoint created
+- 2026-04-23: Associate skills must be loaded via deepagents progressive disclosure — write to filesystem, pass paths. NEVER load into system prompt.
+- 2026-04-23: Entity skills accessed on demand via execute("indemn skill get <Entity>") — NOT pre-loaded on associates
+- 2026-04-23: 30 concurrent is the reliable ceiling for one Railway container — above that, asyncio.to_thread starves
+- 2026-04-23: CLIError and ValidationError added to Temporal non-retryable errors — prevents infinite retry on bad data
+- 2026-04-23: Duplicate key errors (E11000) in fetch_new treated as skips — handles cross-mailbox dedup edge cases
+- 2026-04-23: When deploying workflow timeout changes, must redeploy temporal worker AND terminate running workflows — Temporal bakes timeouts at dispatch time
+- 2026-04-24: Team email backfill complete — ~930 emails across 11 team members, pipeline drained to zero
 
 ## Open Questions
 
