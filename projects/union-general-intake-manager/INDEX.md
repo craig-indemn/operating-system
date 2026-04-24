@@ -3,7 +3,16 @@
 Bug triage, reproduction, and fixes for the Union General (UG) Portal / Intake Manager — the comparative rater product Ben Bailey and team use to submit surplus-lines business across multiple carriers. Distinct from Johnson Insurance (GIC) work.
 
 ## Status
-**Session 1 (2026-04-17):** Project opened, three UG repos mapped, code analysis complete, **data verified end-to-end** against production logs (via SSM read-only) and MongoDB quote documents. WHAT/WHY/HOW established for Bugs #1 and #3. Bug #2 still needs specific repro input from Rem.
+**Session 2 (2026-04-17-b, closed 2026-04-24):** Reframed Bug #3 from "code drift" to "product/UX question". Rem added me to `#indemn-uniongeneral`; pulled `UG Fee Logic_Broker_Inspection.xlsx` from Craig's downloads; git blame confirmed the "don't add fake fees" behavior is deliberate design by Dhruv (`61570dd3`, 2026-03-26). Re-verified Nationwide CL is 100% compliant when bindable (session 1's 2/26 was misleading — 14 were Pattern C crashes). Edited original `#dev-squad` message + posted reply re-framing Bug #3 as 3 UX questions for Rem + Rudra. **Awaiting their response** before any code change. Full reframe in [session-2-bug3-reframe](artifacts/2026-04-17-session-2-bug3-reframe.md).
+
+**Suggested next session:**
+1. Pattern A upstream trace (unblocked — see next-session section below)
+2. Merge PR #118 if not yet merged — Pattern C NoneType fix, Rudra-approved
+3. Check if Rem/Rudra responded to the UX questions
+
+---
+
+**Session 1 (2026-04-17-a):** Project opened, three UG repos mapped, code analysis complete, **data verified end-to-end** against production logs (via SSM read-only) and MongoDB quote documents. WHAT/WHY/HOW established for Bugs #1 and #3. Bug #2 still needs specific repro input from Rem.
 
 **Screenshot's source submission identified**: Xol Lounge (thread `AQQkADA...xV8=`), a Bakersfield CA bar with $240K GL exposure, class code 16940. Log shows `generated=3, errors=0`. MongoDB state for all three quotes (ACIC / Scottsdale / Northfield) matches the screenshot exactly.
 
@@ -66,6 +75,7 @@ Rem confirmed: Dhruv was primary dev, handed off context to Rudra. Ben tagged th
 ## Artifacts
 | Date | Artifact | Ask |
 |------|----------|-----|
+| 2026-04-17 | [session-2-bug3-reframe](artifacts/2026-04-17-session-2-bug3-reframe.md) | Session 2 — reframed Bug #3 as product/UX question after verifying the current per-carrier behavior is deliberate design intent (git blame on Dhruv's commit), corrected session 1's overclaim, posted revised message + UX questions to Rem + Rudra in #dev-squad |
 | 2026-04-17 | [ben-bailey-bug-report](artifacts/2026-04-17-ben-bailey-bug-report.md) | Capture Ben Bailey's 3-issue bug report forwarded by Rem, with screenshot evidence and structured framing |
 | 2026-04-17 | [repo-mapping](artifacts/2026-04-17-repo-mapping.md) | Map the three UG-adjacent repos (intake-manager, ug-apis, ug-service) and identify which owns the rater, fee calc, validation, carrier integrations |
 | 2026-04-17 | [bug3-fee-calc-analysis](artifacts/2026-04-17-bug3-fee-calc-analysis.md) | Root-cause analysis of Bug #3 (fee-calc inconsistency) — side-by-side code read across three carrier provider paths, architectural gap identified, fix options |
@@ -74,6 +84,9 @@ Rem confirmed: Dhruv was primary dev, handed off context to Rudra. Ben tagged th
 | 2026-04-17 | [dev-squad-message-sent](artifacts/2026-04-17-dev-squad-message-sent.md) | Final posted message to #dev-squad with pending-items tracker — what's awaiting response from whom |
 
 ## Decisions
+- 2026-04-17 (session 2): Bug #3 is NOT code drift. The "don't add fake fees — user adds via Edit button if needed" behavior is a deliberate architectural choice committed by Dhruv on 2026-03-26 (commit `61570dd3`). Session 1's "Option B centralized resolver" framing was wrong. Any change here is a product/UX decision, not a bug fix.
+- 2026-04-17 (session 2): Nationwide CL is 100% compliant with the UG Fee Logic spec when the quote is bindable. Session 1's "2 of 26" figure was misleading — 14 of 16 NW CL quotes in the last 21 days were Pattern C crashes (fixed by PR #118).
+- 2026-04-17 (session 2): `UG Fee Logic_Broker_Inspection.xlsx` content (Ben's authoritative fee spec) captured verbatim in session-2 artifact. File lives only in UG Slack workspace; cross-workspace file download isn't available with Indemn-only token. Future references can cite this artifact.
 - 2026-04-17: Project scoped to Union General / intake-manager, separate from GIC work. Name `union-general-intake-manager` keeps it specific (UG may have other products later).
 - 2026-04-17: Treat this as a systematic bug-fix project — reproduction capability is prerequisite to fixes, not an afterthought. No "guess and patch" on production.
 - 2026-04-17: Intake-manager prod deploys via hand-maintained `/opt/Intake-manager/.env` on copilot-prod — `aws-env-loader.sh` exists in repo but isn't wired into deploy. This is a latent source of config drift and was how the Nationwide URL regression got introduced. Migrate env management to SM as follow-up work (tracked in devops project).
@@ -82,8 +95,11 @@ Rem confirmed: Dhruv was primary dev, handed off context to Rudra. Ben tagged th
 - 2026-04-17: `intake-manager` does not have CloudWatch log groups — all logs live in Docker containers on copilot-prod EC2 and require SSM Session Manager (read-only) to inspect. No Lambda or ECS path exists for this service.
 
 ## Open Questions
+- ~~Is the fee-calc divergence a code problem?~~ **Answered session 2:** No, it's deliberate design intent. Session 1's "code drift" framing was wrong; corrected in session 2's reframe artifact. The real question is now a product/UX one — see next three.
+- **(awaiting Rem + Rudra response)** Should the 3 carriers render a uniform line-item breakdown in the comparison view?
+- **(awaiting Rem + Rudra response)** If uniform — do we display UG-default Broker/Inspection as separate line items for every carrier regardless of API response, split ACIC's aggregated "Fees $207.20" into components, or something else?
+- **(awaiting Rem + Rudra response)** For state SL taxes + stamping fees (only ACIC returns them today) — uniform across carriers, or accept under-representation at rate time and bind-time reconciles?
 - ~~Which of the three repos owns the fee-calculation logic?~~ **Answered:** `intake-manager/app/services/quote/` (see repo-mapping artifact).
-- ~~Is the fee-calc divergence a data problem or a code problem?~~ **Answered:** Code problem — each of three carrier providers owns its own tax/fee path with no unifying step; Northfield handles nothing at all (see bug3-fee-calc-analysis artifact).
 - Can intake-manager run locally, or is staging the only reproducible environment? Does `./start-dev.sh` cover it? (Needs testing — FastAPI:8000 + Next:3000 per the README.)
 - For Bug #1 (older subs failing) — do we have submission IDs/logs from Ben? Still open; ask Rem next session.
 - For Bug #2 (validation false-positives) — which form, which fields, which carrier, which state? Still open; ask Rem next session.
