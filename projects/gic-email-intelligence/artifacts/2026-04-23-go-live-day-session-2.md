@@ -181,14 +181,50 @@ When `emails complete --quote-id N` runs, checks if the submission already had t
 | `unisoft-proxy/client/unisoft_client.py` | get_contacts() method |
 | `unisoft-proxy/server/UniProxy.cs` | ActivityNotification DTO namespace |
 
-## Open Items for Next Session
+## Open Items (updated 2026-04-24)
 
-1. **VELMURUGAN RAJAPPAN** — needs to be reprocessed and automated (was reset, should flow through)
-2. **Rental Dwelling classification** — JC needs to confirm: should ALL portal "Application Request" emails be automated, or only non-exempt ones? Current rule: only Boats/Yachts, WC, Welders, Caterers are exempt.
-3. **MEY ENTERPRISE duplicate quote** — Q:146250 (GL/LL) + Q:146251 (CP) were created before multi-LOB fix. JC may need to merge manually.
-4. **BUILDERS SERVICES** — failed (agency "Cornerstone Group" not in Unisoft). Moved back to Inbox for manual handling.
-5. **Notification verification** — confirmed working on Q:146337. Monitor next few to ensure consistent.
-6. **SetActivityNotification proxy fix** — the separate `SetActivityNotification` SOAP operation fails with deserialization errors. We worked around it by passing Notification inside SetActivity. If ever needed as a standalone call, the proxy needs investigation.
+### RESOLVED
+1. ~~VELMURUGAN RAJAPPAN~~ — processed, Q:146307, automated successfully
+2. ~~Rental Dwelling classification~~ — confirmed by JC: only Boats/Yachts, WC, Welders, Caterers are exempt. Implemented.
+3. ~~MEY ENTERPRISE duplicate quote~~ — JC handled manually
+4. ~~BUILDERS SERVICES~~ — legitimate agency gap, moved to Inbox for manual handling
+5. ~~SetActivityNotification proxy~~ — not needed, inline Notification in SetActivity works
+
+### ACTIVE — Notification delivery inconsistency (PRIORITY)
+The Application Acknowledgement notification is **intermittently failing in production**. This is the #1 issue for the next session.
+
+**What works:**
+- `_create_activity_and_notify()` works perfectly when run locally (tested on Q:146341, Q:146348 — both sent successfully)
+- Q:146337 sent notification in production (anita@gcainsurance.com)
+- The activity IS created correctly in production every time (ActionId 197, AgentNo set)
+
+**What doesn't work:**
+- Q:146340, 146336, 146334, 146348, 146350 — activity created but Notification object is empty in Unisoft
+- The `Notes` field on the activity is also empty in production but should have text — suggesting the proxy is dropping some DTO fields during serialization
+
+**What we know:**
+- The code path IS being executed (activity gets created with correct ActionId/AgentNo)
+- The Notification object IS being built (tested locally)
+- The `SetActivity` payload includes both `Notes` and `Notification` when built locally
+- But Unisoft receives the activity WITHOUT Notes and WITHOUT Notification populated
+- This points to a **proxy serialization issue** — the C# proxy may be dropping fields from the Activity DTO under certain conditions
+- WCF DataContractSerializer requires strict alphabetical field ordering — a field out of order is silently ignored
+- The proxy's `AppendDtoField` sorts alphabetically, but there may be edge cases with nested DTOs
+
+**Debug approach for next session:**
+1. Use the `Debug_` prefix endpoint on the proxy to capture the exact XML being sent for a SetActivity call that includes Notification
+2. Compare with the working Q:146337 XML (if captured) and the raw SOAP capture in `research/unisoft-api/raw-payloads/soap/IIMSService__SetActivity.txt`
+3. Check if the issue is field ordering, namespace, or a specific field value (like HTML in EmailMessageBody) breaking serialization
+4. The proxy binary on EC2 is `UniProxy-Prod.exe` — must deploy using: `aws s3 cp` → compile → `Copy-Item UniProxy.exe UniProxy-Prod.exe`
+
+**Stderr traceback logging added** — next production failure should show the full traceback in Railway logs if there's a Python-side exception. If no traceback appears, the issue is proxy-side (XML serialization).
+
+### ACTIVE — LangSmith tracing broken
+- Zero traces in either `gic-email-automation` or `gic-email-processing` projects
+- The `LANGCHAIN_*` env vars are set on Railway services
+- The `_langsmith_config()` in `agent.py` builds a tracer callback
+- Likely broke during `railway up` deploys — may need `langsmith` package explicitly in dependencies or the tracer setup changed
+- Not blocking but useful for debugging
 
 ## To Resume Next Session
 

@@ -23,7 +23,7 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 - `unisoft-proxy/client/cli.py` — Unisoft CLI (contacts, quote create with agent-contact-id)
 - `unisoft-proxy/server/UniProxy.cs` — SOAP proxy on EC2 (ActivityNotification DTO namespace)
 
-**Immediate priority for next session:** Verify notification emails are sending consistently on new quotes. Code works locally but inconsistent in production — may be a deploy timing issue. Test on first new agent_submission email.
+**Immediate priority for next session:** Fix notification delivery inconsistency. Activities create correctly but Notification + Notes fields are empty in production (proxy drops them). Works locally. See `artifacts/2026-04-23-go-live-day-session-2.md` "ACTIVE — Notification delivery inconsistency" for full debug context. Also: LangSmith tracing is broken (zero traces).
 
 **What was done (2026-04-23 — go-live day, session 2):**
 
