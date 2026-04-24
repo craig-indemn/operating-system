@@ -15,8 +15,35 @@ This handoff covers EVERYTHING — the context from multiple sessions, brainstor
 
 ## Reading Protocol — MANDATORY
 
-### 1. The System (what's built)
-- `/Users/home/Repositories/indemn-os/CLAUDE.md` — the OS builder's manual
+### 1. The Operating System (READ THESE FIRST)
+- `/Users/home/Repositories/indemn-os/CLAUDE.md` — the OS builder's manual (entity definitions, watches, associates, rules, integrations, auth, debugging, CLI)
+- `/Users/home/Repositories/indemn-os/docs/white-paper.md` — the canonical vision document
+
+**Architecture docs (in `/Users/home/Repositories/indemn-os/docs/architecture/`):**
+- `overview.md` — system architecture, trust boundary, deployment topology
+- `entity-framework.md` — how entities work, save_tracked, state machines, computed fields
+- `associates.md` — how associates work, harness pattern, skills, progressive disclosure
+- `watches-and-wiring.md` — how watches fire, condition language, scope qualifiers
+- `integrations.md` — adapters, credentials, Integration entity, fetch patterns
+- `realtime.md` — Runtime, Attention, harness pattern, mid-conversation events
+- `authentication.md` — Session entity, JWT, service tokens, MFA, platform admin
+- `rules-and-auto.md` — rules engine, --auto pattern, lookups
+- `infrastructure.md` — Railway deployment, services, scaling, costs
+- `security.md` — trust boundary, OrgScopedCollection, skill hash verification
+- `observability.md` — OTEL traces, changes collection, correlation IDs
+
+**How-to guides (in `/Users/home/Repositories/indemn-os/docs/guides/`):**
+- `adding-entities.md` — step-by-step for creating entity definitions
+- `adding-associates.md` — creating associates with skills, roles, watches, runtime assignment
+- `adding-watches.md` — watch configuration, events, conditions
+- `adding-integrations.md` — building adapters, credentials, testing
+- `domain-modeling.md` — the 8-step process for building any domain
+- `development.md` — local dev, testing, CI, deployment
+- `getting-started.md` (in `/docs/`) — first-time setup
+
+**IMPORTANT: These docs are the source of truth for how the OS works.** Read the relevant guide BEFORE implementing. Many bugs in this session came from not understanding the harness architecture documented in `associates.md`.
+
+### 1b. Customer System Project Status
 - `projects/customer-system/INDEX.md` — full project status, decisions, what's next
 
 ### 2. The Context (why we're building this)
@@ -42,14 +69,17 @@ This handoff covers EVERYTHING — the context from multiple sessions, brainstor
 - `projects/customer-system/artifacts/2026-04-23-implementation-session.md` — **LATEST**: full session record — what was built, infrastructure fixes, learnings, what's next
 - `projects/customer-system/artifacts/2026-04-23-system-flow-v4.html` — Visual diagram for Kyle
 
-### 5. What Was Built (recent sessions)
+### 5. Pipeline Operations (how to run the system)
+- `projects/customer-system/artifacts/2026-04-23-pipeline-operations-guide.md` — auth, CLI commands, email/meeting fetch, queue monitoring, Temporal management, concurrency, Railway deployment, known issues, troubleshooting
+
+### 6. What Was Built (recent sessions)
 - `projects/customer-system/artifacts/2026-04-21-session-handoff.md` — parallel session: Deal entity, SuccessPhase, UI, domains, CLI
 - `projects/customer-system/artifacts/2026-04-21-meeting-ingestion-session.md` — roadmap session: Google Meet adapter, Employee entity, actor cleanup
 - `projects/customer-system/artifacts/2026-04-21-deal-entity-evolution.md` — how Deal entity was designed
 - `projects/customer-system/artifacts/2026-04-21-action-items.md` — prioritized action items from session 2
 - `projects/customer-system/artifacts/2026-04-14-phase-1-domain-model.md` — the original 14-entity domain model
 
-### 6. OS Vision (when making architectural decisions)
+### 7. OS Vision (when making architectural decisions)
 - `projects/product-vision/artifacts/2026-04-16-vision-map.md` — authoritative 23-section OS design synthesis
 - `projects/product-vision/CLAUDE.md` — session bootstrap, design integrity rules
 
