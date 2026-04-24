@@ -97,30 +97,41 @@ CLI: `indemn auth login --org _platform --email craig@indemn.ai --password indem
 
 ---
 
-## What's In The System
+## What's In The System (as of Apr 24, 2026)
 
-### Entities
-| Entity | Count | Key Fields |
-|--------|-------|------------|
-| Company | 88 | name, stage (prospect→customer→churned), ARR, industry |
-| Contact | 92 | name, email, company, role, how_met |
-| Deal | 6 | deal_id, company, stage, next_step, next_step_owner, use_case |
-| SuccessPhase | 0 | deal, phase_number, name, entry_criteria, go_no_go_signal |
-| Meeting | 19 | title, date, duration, participants, transcript, notes, summary, organizer |
-| Employee | 15 | name, email, title, google_user_id, slack_id, actor_id |
-| Task | 0 | title, description, company, assignee, due_date, priority, source_meeting |
-| Decision | 0 | description, company, source_meeting, decided_by, rationale |
-| Signal | 0 | description, company, source_meeting, type, severity |
-| Commitment | 0 | description, company, source_meeting, made_by, due_date |
+### Entities (26 total)
+| Entity | Count | Notes |
+|--------|-------|-------|
+| Company | 88 | Root entity |
+| Contact | 92+ | Growing via Email Classifier (auto-creates from emails) |
+| Deal | 6 | Kyle's 6 prospects |
+| Meeting | 20 | Apr 20-21 only (30-day backfill pending) |
+| Employee | 15 | Full team |
+| Email | ~930 | Full team week of Apr 21-24 |
+| Document | 0 | Pending Drive adapter + attachment extraction |
+| Touchpoint | 20+ | Auto-created from classified emails |
+| Operation | 0 | Wave 4 — human enrichment |
+| Opportunity | 0 | Wave 4 — human enrichment |
+| Proposal | 0 | Wave 5 — proposal generation |
+| Phase | 0 | Wave 5 — replaces SuccessPhase |
+| Associate | 0 | Wave 5 — deployed instances |
+| CustomerSystem | 0 | Wave 4 — human enrichment |
+| BusinessRelationship | 0 | Wave 4 — human enrichment |
+| Task | 20+ | Auto-extracted from touchpoints (real: "Ship Alliance proposal by Apr 26") |
+| Decision | 4+ | Auto-extracted |
+| Signal | 16+ | Auto-extracted |
+| Commitment | 9+ | Auto-extracted |
 
-### People
-- 15 Employees seeded (Craig, Kyle, Cam, Dhruv, Ganesh, George Remmer, Peter, Jonathan, Ian, Dolly, Rudra, Marlon, Kai, Rocky, George Redenbaugh)
-- 15 Actors cleaned up and active
-- Kyle has `executive` role (read most entities, write Company/Deal/Task/Employee)
-- Craig has `platform_admin` + `team_member` (full access)
+### Associates (3 active)
+| Associate | Role | Watches | Status |
+|-----------|------|---------|--------|
+| Email Classifier | email_classifier | Email created | Active, working |
+| Touchpoint Synthesizer | touchpoint_synthesizer | Email→classified, Meeting created | Active, working |
+| Intelligence Extractor | intelligence_extractor | Touchpoint created | Active, working |
 
 ### Integrations
-- Google Workspace Integration (active) — domain-wide delegation, Meet API + Calendar API + Admin SDK
+- Google Workspace (active) — domain-wide delegation, Meet API + Calendar API + Admin SDK + Gmail API
+- `indemn email fetch-new` pulls emails from any @indemn.ai user
 - `indemn meeting fetch-new` pulls meetings from all domain users
 
 ### Kyle's 6 Deals
@@ -147,6 +158,36 @@ CLI: `indemn auth login --org _platform --email craig@indemn.ai --password indem
 8. **Granola integration** — some meetings use Granola, not Google transcription
 
 ---
+
+## Kyle's Latest Context (Apr 23 Slack DMs)
+
+Kyle's message to Craig: "I think we should take the two meetings from yesterday and build a dataset around them that we can trust as updates every time a sales call happens."
+
+The two meetings: FoxQuilt (CEO Karim Jamal) and G.R. Little (Walker Ross agency). Kyle wants the system to automatically extract from every sales call: drafted emails, next steps, opportunity evaluation, resources to create.
+
+This maps directly to our pipeline: Meeting → Touchpoint → Intelligence Extractor → Tasks, Decisions, Commitments, Signals. The "dataset" Kyle describes IS the entity population from our model.
+
+Kyle also wants to connect on the OS before end of day — Craig has a sync at 3:30 PM with Kyle. See `artifacts/2026-04-23-system-flow-v4.html` for the diagram Craig can walk Kyle through.
+
+## Instructions for Next Session
+
+**CRITICAL: Read the OS docs BEFORE implementing anything.** The indemn-os repo has comprehensive architecture docs and how-to guides. Many bugs in the Apr 22-23 session came from not understanding how the harness loads skills, how Temporal dispatches workflows, and how deepagents progressive disclosure works. All of this is documented in the repo.
+
+**Before executing, brainstorm with Craig.** Get alignment on approach before writing code. Craig wants to think through how things should work within the OS architecture, not just get things built.
+
+**Next steps and how they connect to the vision:**
+
+1. **Recurring email fetch** — the system should automatically ingest new emails for the whole team. This is how the timeline stays current without manual intervention. Use the OS scheduling mechanism (actors with `--trigger-schedule` cron).
+
+2. **Alliance email backfill** — manually curate historical Alliance emails via `gog` CLI. This fills in the interaction timeline for Alliance going back to January so we can build the proposal from real data.
+
+3. **Meeting backfill** — pull 30 days of meeting history. Combined with emails, this gives a complete interaction timeline.
+
+4. **Wave 4: Human enrichment** — Craig populates Operations, Opportunities, CustomerSystem, BusinessRelationship for Alliance via CLI. This is the "understanding the business" layer that the playbook-as-entity-model insight describes.
+
+5. **Wave 5: Proposal generation** — create Proposal + Phases for Alliance. An associate generates the proposal document from the entities. This is the culmination — proving that the entity model IS the playbook and the proposal emerges from it.
+
+Each step builds on the previous. The vision: every interaction teaches us something, entities get populated, gaps drive next steps, and when the picture is complete enough, the proposal materializes.
 
 ## Design Integrity Rules
 
