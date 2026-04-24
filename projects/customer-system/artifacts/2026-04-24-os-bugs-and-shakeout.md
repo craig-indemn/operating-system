@@ -504,6 +504,153 @@ The CLI's `--to` flag works because it's mapped internally; the docs leading use
 
 ---
 
+## Bug #22 — Cannot tell which associate acted when multiple share the service token 🔴
+
+**Discovered:** 2026-04-24
+**Severity:** High (blocks all forensics on associate misbehavior)
+**Location:** Auth system — service token binding to `Platform Admin` actor
+
+### Symptom
+All 3 pipeline associates (Email Classifier, Touchpoint Synthesizer, Intelligence Extractor) plus the OS Assistant authenticate as `actor_id = 69e23d586a448759a34d3824` (Platform Admin) via the runtime service token. When ANY of them makes a CLI call that mutates an entity, the changes collection records `actor_id = Platform Admin` — indistinguishable from any other associate using the same token.
+
+Today this blocked us from identifying which associate created the 299 duplicate Company records on Apr 23.
+
+### Proposed fix
+- Per-associate service token (each Actor gets its own opaque token via `add-auth`)
+- OR: add a second field to change records — `effective_actor_id` = the actor whose work is being performed, separate from `session_actor_id` = the authenticated identity
+- OR: capture `runtime_id + session_id` in change records when the action originated from a harness
+
+Without this, the ledger cannot answer "which associate did this" — which is the question we need most often.
+
+---
+
+## Bug #23 — `bulk-delete` silently drops MongoDB operator filters 🔴
+
+**Discovered:** 2026-04-24
+**Severity:** **Critical** (makes bulk operations nearly unusable for anything non-trivial)
+**Location:** `kernel/temporal/` bulk workflow OR `kernel/api/bulk.py` filter parsing OR `kernel/scoping/org_scoped.py`
+
+### Symptom
+Only simple `{field: value}` equality filters work with `bulk-delete`. ANY filter using MongoDB operators (`$in`, `$gte`, `$lte`, `$ne`, `$gt`, `$lt`, `$oid`, `$date`, etc.) silently matches zero records. The workflow reports `started` then `COMPLETED` with no indication it did nothing.
+
+### Working (tested today)
+- `--filter '{"name": "Y-Risk"}'` — deleted all Y-Risk records
+- `--filter '{"source": "google_meet"}'` — deleted test meetings
+- `--filter '{"type": "meeting"}'` — deleted all meeting-type touchpoints
+
+### NOT working (all silently no-op'd)
+- `--filter '{"created_at": {"$gte": "2026-04-23T00:00:00Z"}}'`
+- `--filter '{"created_at": {"$gte": {"$date": "2026-04-23T00:00:00Z"}}}'`
+- `--filter '{"_id": {"$gte": {"$oid": "69e5000000000000000000"}}}'`
+- `--filter '{"_id": {"$in": [{"$oid": "..."}, {"$oid": "..."}, ...]}}'` (300+ IDs)
+- `--filter '{"_id": {"$gte": ..., "$ne": ...}}'` (compound)
+
+### Impact
+- Cannot delete a specific list of entities by ID
+- Cannot delete by date range
+- Cannot combine filters
+- Had to resort to one-at-a-time deletion by exact name match to clean up 446 Company dupes
+- Got 446 → 313 (gave up at 313; half-done)
+
+### Combines badly with Bug #3
+Since `bulk status` returns no record counts, you can't even tell your delete did nothing except by manually counting before/after.
+
+### Proposed fix (after diagnosis, hypotheses only)
+- Ensure the JSON filter passes through to Motor/PyMongo without Pydantic rejecting `$`-prefixed keys
+- If extended-JSON types (`$oid`, `$date`) are stripped, deserialize them explicitly
+- Add a validation step that REJECTS filters matching zero documents as a config error OR returns `records_affected: 0` in status so users know
+
+---
+
+## Bug #24 — `bulk status` reports `COMPLETED` even when nothing was deleted 🔴
+
+**Discovered:** 2026-04-24
+**Severity:** Medium (user has no way to know their operation did nothing)
+**Location:** `kernel/temporal/workflows.py::BulkExecuteWorkflow`
+
+### Symptom
+Workflow starts with no records matching filter. Workflow completes with `status: COMPLETED` immediately. No error, no indication that the filter matched nothing. Compounds Bug #23.
+
+### Proposed fix
+Return `{status: "completed_no_match"}` OR include `records_matched: 0` in the status response so the user can tell.
+
+---
+
+## Bug #25 — `company create --data` returns HTTP 500 Internal Server Error 🔴
+
+**Discovered:** 2026-04-24
+**Severity:** Medium (blocked re-creating Amynta company after accidental delete)
+**Location:** `kernel/api/registration.py` entity create handler OR entity validation
+
+### Symptom
+```bash
+$ indemn company create --data '{"name":"Amynta (Guardsman Home Warranty)","type":"Other"}'
+# → HTTP 500 Internal Server Error
+# No response body, no hint at cause
+```
+
+### Impact
+Blocks any programmatic/scripted creation of Company records. Error opaque — user has no information to correct.
+
+### Proposed fix
+- Return validated error with specific field failure
+- Log the actual exception to surface the root cause
+- Almost certainly a validation or type-coercion bug given other entities create fine
+
+---
+
+## Bug #26 — `deal update --data` returns HTTP 500 when updating company ref 🔴
+
+**Discovered:** 2026-04-24
+**Severity:** Medium (can't re-point a Deal to a different Company)
+**Location:** `kernel/api/registration.py` update handler
+
+### Symptom
+```bash
+$ indemn deal update <deal_id> --data '{"company":"<new_objectid>"}'
+# → HTTP 500 Internal Server Error
+```
+
+### Impact
+Can't repair broken entity relationships. If cleanup requires moving a Deal's company pointer to a clean record, this is blocked.
+
+### Proposed fix
+- Same as #25 — surface the actual error
+- Likely related: the company field expects ObjectId; if the string form isn't being coerced, it crashes instead of validating
+
+---
+
+## Bug #27 — `created_by` is null on every Company record 🔴
+
+**Discovered:** 2026-04-24
+**Severity:** Medium (audit trail gap on the Company entity itself)
+**Location:** `kernel/entity/save.py` — `created_by` should capture `current_actor_id` on insert
+
+### Symptom
+All 446 Company records in the DB have `created_by: null` (verified directly). The changes collection has the actor_id (Platform Admin for 444, Kyle for 2), but the entity document itself is missing the creator.
+
+### Impact
+When looking at a Company record directly, you cannot tell who created it without joining to the changes collection. Makes forensic queries harder than they should be.
+
+### Proposed fix
+In `save_tracked()` on insert, set `entity.created_by = {"actor_id": current_actor_id, "actor_type": current_actor_type}` automatically.
+
+---
+
+## Bug #28 — Auto-generated `actor list` command does not filter by `--type` 🔴
+
+**Discovered:** 2026-04-24
+**Severity:** Low (ignored flag is worse than no flag)
+**Location:** `kernel/cli/` actor list command
+
+### Symptom
+`indemn actor list --type associate` returns ALL 23 actors regardless of `--type` value. The flag exists in `--help` but is silently ignored.
+
+### Proposed fix
+Implement the filter OR remove the flag from help.
+
+---
+
 ## Future bugs (add as we encounter them)
 
 Append new entries above this line as you find them. Format:
@@ -552,3 +699,10 @@ Append new entries above this line as you find them. Format:
 | 19 | Change records sometimes have non-Date `timestamp` | Low | 🔴 Open |
 | 20 | Actor CLI missing `transition`, `delete`, `bulk-*` | Med | 🔴 Open |
 | 21 | Transition API: `to` vs docs' `target_state` | Low | 🔴 Open |
+| 22 | Service token untraceability: can't tell which associate acted | **High** | 🔴 Open |
+| 23 | `bulk-delete` silently drops MongoDB operator filters ($in, $gte, $oid) | **Critical** | 🔴 Open |
+| 24 | `bulk status` reports COMPLETED even when 0 records matched | Med | 🔴 Open |
+| 25 | `company create` returns HTTP 500 | Med | 🔴 Open |
+| 26 | `deal update` with company ref returns HTTP 500 | Med | 🔴 Open |
+| 27 | `created_by` null on every Company record | Med | 🔴 Open |
+| 28 | `actor list --type` flag is silently ignored | Low | 🔴 Open |
