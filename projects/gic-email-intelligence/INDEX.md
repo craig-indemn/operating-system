@@ -4,26 +4,48 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 
 ## Status
 
-**PRODUCTION IS LIVE AND STABLE.** Go-live day complete (2026-04-23): 161 emails processed, 46 agent submissions (45 completed, 1 agency-not-found), 0 duplicate quotes, 0 processing failures.
+**PRODUCTION IS LIVE AND STABLE.** Four fixes shipped 2026-04-24 after JC flagged Q:146348 missing attachments: (1) attachment uploads now bypass WCF with chunked transfer + MTOM/XOP — breaks the ~1.5MB Azure App Service content-length ceiling; (2) activity text field renamed `Notes` → `Description` to match ActivityDTO schema; (3) new `/api/file/delete` + `unisoft attachment delete` CLI; (4) ActivityNotificationDTO now sends all 13 schema fields.
 
 **To resume this project:**
-1. Read `artifacts/2026-04-23-go-live-day-session-2.md` — full day context, all fixes, lessons learned
-2. Read the key code files listed below to understand the current implementation
-3. Check production status: `mongosh "mongodb+srv://dev-indemn:wJnKmz4P0q39GpXZ@dev-indemn.mifra5.mongodb.net/gic_email_intelligence" --eval 'var t=db.emails.countDocuments({received_at:{$gte:ISODate("2026-04-24T00:00:00Z")}}); var c=db.emails.countDocuments({received_at:{$gte:ISODate("2026-04-24T00:00:00Z")},processing_status:"complete"}); print("Today: "+t+" Complete: "+c)'`
-4. Monitor: sync status, processing throughput, automation completions, notification delivery
+1. Read `artifacts/2026-04-24-upload-bypass-and-notification-fixes.md` — full day context, all 4 commits, Fiddler evidence
+2. Read `artifacts/2026-04-23-go-live-day-session-2.md` — go-live day context (still relevant)
+3. Read the key code files listed below
+4. Check production status: `mongosh "mongodb+srv://dev-indemn:wJnKmz4P0q39GpXZ@dev-indemn.mifra5.mongodb.net/gic_email_intelligence" --eval 'var t=db.emails.countDocuments({received_at:{$gte:ISODate("2026-04-25T00:00:00Z")}}); var c=db.emails.countDocuments({received_at:{$gte:ISODate("2026-04-25T00:00:00Z")},processing_status:"complete"}); print("Today: "+t+" Complete: "+c)'`
+5. Monitor: sync status, processing throughput, automation completions, **attachment uploads** (should no longer fail on >1.5MB files), **notification delivery**
 
 **Key code files to read for full understanding:**
 - `src/gic_email_intel/agent/harness.py` — pipeline orchestrator, classification rules (including Rule 7 portal logic), folder move on classification
-- `src/gic_email_intel/cli/commands/emails.py` — `gic emails complete` with deterministic activity+notification, duplicate detection, folder routing
+- `src/gic_email_intel/cli/commands/emails.py` — `gic emails complete` with deterministic activity+notification (now sends `Description` + full 13-field Notification), duplicate detection, folder routing
 - `src/gic_email_intel/core/email_mover.py` — shared folder move helper (updates graph_message_id after move)
 - `src/gic_email_intel/agent/tools.py` — `_safe_object_id()` for LLM hex corruption recovery
 - `src/gic_email_intel/automation/agent.py` — deepagent system prompt with CLI docs
 - `src/gic_email_intel/automation/skills/create-quote-id.md` — automation skill (multi-LOB rules, contact lookup, applicant email)
 - `src/gic_email_intel/agent/skills/submission_linker.md` — linker (single submission for multi-LOB)
-- `unisoft-proxy/client/cli.py` — Unisoft CLI (contacts, quote create with agent-contact-id)
-- `unisoft-proxy/server/UniProxy.cs` — SOAP proxy on EC2 (ActivityNotification DTO namespace)
+- `unisoft-proxy/client/cli.py` — Unisoft CLI (contacts, quote create, **attachment delete**)
+- `unisoft-proxy/server/UniProxy.cs` — SOAP proxy on EC2: **custom HttpWebRequest chunked MTOM upload path** in `FileBridge.UploadQuoteAttachment`, new `/api/file/delete` endpoint, `ExtractAttachmentDto` helper
 
-**Immediate priority for next session:** Fix notification delivery inconsistency. Activities create correctly but Notification + Notes fields are empty in production (proxy drops them). Works locally. See `artifacts/2026-04-23-go-live-day-session-2.md` "ACTIVE — Notification delivery inconsistency" for full debug context. Also: LangSmith tracing is broken (zero traces).
+**Immediate priority for next session:**
+1. **Verify notification emails actually deliver** — check with JC whether agents have received emails for Q:146366, Q:146370, Q:146372, Q:146374+. The SetActivity response comes back with EmailSentTo populated (meaning the server accepted + presumably sent), but GetActivitiesByQuoteId shows empty Notification on read-back. Unclear whether this is cosmetic (email sent, display not populated) or the email actually isn't going out.
+2. **LangSmith tracing still broken** — zero traces in either project. Carry-forward from prior session.
+3. **Monitor attachment upload success rate** — all failures since go-live should now disappear with chunked fix. Watch automation_result.notes for new "attachment upload failed" entries.
+
+**What was done (2026-04-24 — upload bypass + notification fixes):**
+
+JC flagged Q:146348 missing attachments. Investigation revealed two compounding production issues since go-live.
+
+1. **Attachment upload size ceiling fixed.** Unisoft's Azure App Service had tightened to ~1.5MB for buffered uploads (was 4MB+ yesterday). 3 of 63 automated quotes since go-live had missing attachments. Bypassed WCF entirely — custom `HttpWebRequest` with `SendChunked=true` + manually-built MTOM/XOP multipart (binary as separate MIME part, matching Unisoft UI's wire format exactly). Verified on 2MB, 5.59MB, 11.44MB files. Commit `fc0c24c`.
+2. **Activity `Description` field fix.** Code was sending `"Notes"` which doesn't exist in ActivityDTO. Unisoft silently dropped it. Renamed to `"Description"`. Now persisting correctly on activities. Commit `8d85239`.
+3. **ActivityNotificationDTO full-fields fix.** Code sent 8 fields; schema has 13. Missing fields caused the server to persist an all-empty defaulted Notification object. Added the remaining 5 (`EmailAttachmentId`, `EmailAttachmentURL`, `EmailBCC`, `EmailCC`, `NotificationLetterContent`) as nil defaults. Commit `8525923`. Immediate-send response confirms `EmailSentTo` now populates (meaning server accepts + sends), but read-back display on activity still shows empty — unclear if that's cosmetic or the email actually doesn't deliver. Needs verification with agents.
+4. **New attachment delete endpoint.** `POST /api/file/delete` + `unisoft attachment delete` CLI. Uses fetch-then-modify pattern — GetQuoteAttachments first to retrieve the full DTO, then ModifyQuoteAttachment with `Action=Delete`. Minimal DTOs fail with empty SOAP fault. Commit `ff4bd86`.
+5. **Q:146348 + Q:146334 cleaned up.** Full-size PDFs uploaded cleanly via new chunked path, 21 stray test chunks deleted. Both quotes now have correct attachments for JC's review.
+
+**Deploy record:** 3 rolling atomic proxy deploys (with rollback on compile fail, backups retained at `C:\unisoft\*.bak`), 2 Railway deploys to automation service.
+
+**Key evidence:** Fiddler capture `export3.saz` (pulled via SSM → S3 → local) confirmed UI uses `Transfer-Encoding: chunked` + MTOM/XOP format. Authoritative schema info from `research/unisoft-api/wsdl-complete.md`.
+
+**Key lesson:** Unisoft DTOs need all schema fields populated (nil values for unset ones). Partial DTOs cause silent data loss in the persisted record. Same pattern burned us with the Activity DTO itself and the nested Notification sub-DTO.
+
+---
 
 **What was done (2026-04-23 — go-live day, session 2):**
 
@@ -734,6 +756,7 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 | 2026-04-22 | [session-close-go-live](artifacts/2026-04-22-session-close-go-live.md) | Session close — prod live, full infrastructure state, monitoring checklist, 15 features built |
 | 2026-04-23 | [go-live-day-handoff](artifacts/2026-04-23-go-live-day-handoff.md) | Morning session — 7 issues found/fixed, 3 quotes created, infrastructure state |
 | 2026-04-23 | [go-live-day-session-2](artifacts/2026-04-23-go-live-day-session-2.md) | Full day monitoring — 11 fixes, 3 features, 152 emails, 44 submissions, notifications working |
+| 2026-04-24 | [upload-bypass-and-notification-fixes](artifacts/2026-04-24-upload-bypass-and-notification-fixes.md) | JC flagged Q:146348 missing attachments — investigation → chunked MTOM upload bypass, Notes→Description rename, delete endpoint, full ActivityNotificationDTO fields |
 
 ## Key Data Files
 | File | What it contains |
@@ -770,6 +793,10 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 - 2026-04-23: Duplicate emails go to "Duplicates" folder. Detection: check if submission already had the quote_id before denormalization.
 - 2026-04-23: Graph API message ID changes on folder move — must capture new ID from move response
 - 2026-04-23: EC2 proxy deploy: use `aws s3 cp` (not Read-S3Object), compile to UniProxy.exe, then Copy-Item to UniProxy-Prod.exe
+- 2026-04-24: Unisoft attachment uploads bypass WCF — custom `HttpWebRequest` with `SendChunked=true` + manual MTOM/XOP multipart (binary as separate MIME part). WCF's `TransferMode.StreamedRequest` doesn't actually produce chunked transfer when message body length is known at send time.
+- 2026-04-24: ActivityDTO text field is `Description`, not `Notes` — `Notes` was silently dropped by Unisoft since go-live, fixed in commit 8d85239.
+- 2026-04-24: Unisoft DTOs (both Activity and nested ActivityNotification) require all schema fields — partial payloads cause the server to persist an empty defaulted record. Pattern extends to any DTO; default to emitting the full schema.
+- 2026-04-24: Delete attachment uses fetch-then-modify pattern — GetQuoteAttachments → ModifyQuoteAttachment with full DTO + Action=Delete. Minimal DTOs fail with empty SOAP fault.
 - 2026-03-16: 5 action-oriented columns: New, Awaiting Info, With Carrier, Quoted, Attention (validated against data)
 - 2026-03-16: Reference numbers are primary linking key (96.2% coverage). Conversation threading is useless.
 - 2026-03-16: Agent harness with CLI + Skills pattern — CLI is the CRUD interface, DeepAgent is the brain
