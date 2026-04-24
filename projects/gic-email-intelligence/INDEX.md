@@ -4,7 +4,7 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 
 ## Status
 
-**PRODUCTION IS LIVE AND STABLE.** Four fixes shipped 2026-04-24 after JC flagged Q:146348 missing attachments: (1) attachment uploads now bypass WCF with chunked transfer + MTOM/XOP — breaks the ~1.5MB Azure App Service content-length ceiling; (2) activity text field renamed `Notes` → `Description` to match ActivityDTO schema; (3) new `/api/file/delete` + `unisoft attachment delete` CLI; (4) ActivityNotificationDTO now sends all 13 schema fields.
+**PRODUCTION IS LIVE AND STABLE. NOTIFICATION DELIVERY FIXED.** Five fixes shipped 2026-04-24: (1) attachment uploads bypass WCF with chunked MTOM/XOP — breaks the ~1.5MB Azure App Service content-length ceiling; (2) activity text field renamed `Notes` → `Description` to match ActivityDTO schema; (3) new `/api/file/delete` + `unisoft attachment delete` CLI; (4) ActivityNotificationDTO now sends all 13 schema fields (later superseded by #5); (5) **`SendActivityEmail` on `IEmailService` — the real notification email sender** (separate SOAP service, plain HTTPS transport security, AccessToken in body not header). SetActivity alone does NOT send email; the UI uses a 2-call workflow. Commit `a42bbe1`. Verified end-to-end in production: Q:146397/146398/146400 all delivered emails to agents.
 
 **To resume this project:**
 1. Read `artifacts/2026-04-24-upload-bypass-and-notification-fixes.md` — full day context, all 4 commits, Fiddler evidence
@@ -25,9 +25,10 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 - `unisoft-proxy/server/UniProxy.cs` — SOAP proxy on EC2: **custom HttpWebRequest chunked MTOM upload path** in `FileBridge.UploadQuoteAttachment`, new `/api/file/delete` endpoint, `ExtractAttachmentDto` helper
 
 **Immediate priority for next session:**
-1. **Verify notification emails actually deliver** — check with JC whether agents have received emails for Q:146366, Q:146370, Q:146372, Q:146374+. The SetActivity response comes back with EmailSentTo populated (meaning the server accepted + presumably sent), but GetActivitiesByQuoteId shows empty Notification on read-back. Unclear whether this is cosmetic (email sent, display not populated) or the email actually isn't going out.
-2. **LangSmith tracing still broken** — zero traces in either project. Carry-forward from prior session.
-3. **Monitor attachment upload success rate** — all failures since go-live should now disappear with chunked fix. Watch automation_result.notes for new "attachment upload failed" entries.
+1. ~~Verify notification emails actually deliver~~ — **FIXED** via commit `a42bbe1` (SendActivityEmail on IEmailService). 3 production automations post-deploy all sent emails correctly. Scheduled auto-monitor check for 20:34 UTC to confirm fix holds on next batch.
+2. **LangSmith tracing still broken** — zero traces in either project. Carry-forward.
+3. **Monitor attachment upload success rate** — no failures seen since chunked fix; watch `automation_result.notes` for any new "attachment upload failed" entries.
+4. **Older activities never got their emails** — Q:146340 through ~Q:146395 (created before 19:30 UTC deploy) all have empty Notification on their activities. Those agents never received Application Acknowledgement emails. Decide with JC whether to backfill (call SendActivityEmail for each one-time, flagging them retrospectively) or leave as-is.
 
 **What was done (2026-04-24 — upload bypass + notification fixes):**
 
@@ -797,6 +798,8 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 - 2026-04-24: ActivityDTO text field is `Description`, not `Notes` — `Notes` was silently dropped by Unisoft since go-live, fixed in commit 8d85239.
 - 2026-04-24: Unisoft DTOs (both Activity and nested ActivityNotification) require all schema fields — partial payloads cause the server to persist an empty defaulted record. Pattern extends to any DTO; default to emitting the full schema.
 - 2026-04-24: Delete attachment uses fetch-then-modify pattern — GetQuoteAttachments → ModifyQuoteAttachment with full DTO + Action=Delete. Minimal DTOs fail with empty SOAP fault.
+- 2026-04-24 (afternoon): **Unisoft notification emails send via a separate SOAP service: `IEmailService.SendActivityEmail` on `ins-gic-emails-service-{uat|prod}-app.azurewebsites.net/emailservice.svc`.** SetActivity on IIMSService does NOT send email; the Notification field on ActivityDTO is a read-back echo only. UI workflow is TWO calls: SetActivity (Notification i:nil) then SendActivityEmail (recipient + HTML body). Discovered via Fiddler capture of UI action.
+- 2026-04-24 (afternoon): EmailService uses `sp:TransportBinding` with `sp:HttpsToken` — plain HTTPS transport security, NO WS-Security UsernameToken, NO ReliableSession, NO SecureContext. Token goes in the SOAP body, not a Security header. Binding config is `WSHttpBinding(SecurityMode.Transport)` with `HttpClientCredentialType.None`.
 - 2026-03-16: 5 action-oriented columns: New, Awaiting Info, With Carrier, Quoted, Attention (validated against data)
 - 2026-03-16: Reference numbers are primary linking key (96.2% coverage). Conversation threading is useless.
 - 2026-03-16: Agent harness with CLI + Skills pattern — CLI is the CRUD interface, DeepAgent is the brain

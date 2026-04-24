@@ -90,9 +90,50 @@ New proxy endpoint: `POST /api/file/delete`
 
 ## Open items for next session
 
-1. **Verify notification emails actually deliver** — check with JC whether agents have received the "Application Acknowledgement" emails for Q:146366, Q:146370, Q:146372, Q:146374+. If yes, the server-side notification read-back display is cosmetic and we can close this. If no, something is still broken in the Notification payload.
+1. ~~Verify notification emails actually deliver~~ — **RESOLVED late afternoon**, see below.
 2. **LangSmith tracing still broken** — zero traces in `gic-email-automation` + `gic-email-processing` projects. Env vars are set; `_langsmith_config()` builds a callback; traces aren't appearing. Carry-forward from prior session.
 3. **Monitor upload success rate** — with the chunked fix, all attachment failures since go-live should disappear. Watch automation_result.notes for new "attachment upload failed" entries; if any appear, investigate the specific failure mode (could be different from content-length).
+
+---
+
+# Late-afternoon breakthrough — SendActivityEmail discovery (commit `a42bbe1`)
+
+After the earlier fixes, Description populated on activities but Notification was still empty on read-back. Craig captured a Fiddler session of himself creating an Application Acknowledgement via the Unisoft UI — this revealed that **the UI uses TWO calls** to send a notification:
+
+1. `IIMSService.SetActivity` — creates the activity record; `Notification` field on the ActivityDTO is sent as `i:nil` (the UI doesn't populate it — server ignores any inline notification payload)
+2. **`IEmailService.SendActivityEmail`** — on a completely separate service we didn't know existed: `https://ins-gic-emails-service-{uat|prod}-app.azurewebsites.net/emailservice.svc`. This is what actually sends the email and writes the Notification back onto the activity.
+
+Our code was doing only step 1, with a useless Notification payload that the server silently discarded. This explained why every activity since go-live (except the odd one like Q:146337) showed empty Notification on read-back — **no email was ever being sent by our automation.**
+
+## Fix (commit `a42bbe1`)
+
+- New `IEmailService` WCF contract + `EmailBridge` class in UniProxy.cs (parallel to SoapBridge but with very different binding: `WSHttpBinding(SecurityMode.Transport)`, `HttpClientCredentialType.None`, no ReliableSession, no SecureContext — the email service uses plain HTTPS per its `sp:TransportBinding` WSDL policy, with AccessToken in the body instead of a WS-Security header).
+- New `/api/email/send-activity-email` proxy endpoint. Builds the full SendActivityEmail SOAP body (Claim + Policy DTOs all nil/default, Email DTO populated with recipient + subject + HTML body, outer ActivityId + QuoteID + UserName).
+- `UNISOFT_EMAIL_URL` env var added to both prod + UAT proxy configs on EC2 (`C:\unisoft\UniProxy-Prod.env` + `UniProxy.env`).
+- Python: `_create_activity_and_notify` refactored to mirror UI exactly — SetActivity (no inline Notification) → SendActivityEmail with rendered template. `unisoft_client.send_activity_email()` client method added.
+
+## Verification
+
+- Manual test on Q:146348: Act 779587 created with populated Description; notification sent to Agency@greatoaksins.com; read-back shows full Notification (subject, 1005-char HTML body, NoticeDate, NoticedByUser all populated).
+- Production automations post-deploy (19:30 UTC): Q:146397 → luis@choiceone.us, Q:146398 → ubaid@fsinsurance.com, Q:146400 → marvinsoberanis@flpremierinsurance.com. All have populated Notification on read-back. **Real emails delivered to agents** for the first time since go-live.
+
+## Key lessons added
+
+6. **Unisoft has multiple SOAP services** — IIMSService (main), IINSFileService (attachments), and IEmailService (outbound email). Different hostnames, different binding configs, different security models. The WSDL is the source of truth for each.
+7. **SetActivity does NOT send email, ever.** The Notification field on ActivityDTO is purely a read-back echo. Email delivery requires a separate `SendActivityEmail` call on IEmailService.
+8. **When the UI workflow has N steps, mirror all N.** We spent two days stabbing at step 1 trying to make it do step 2's job. Fiddler capture + methodical comparison with UI wire format is the way.
+
+## Full deploy record for the day
+
+| SHA | Fix | Deploys |
+|-----|-----|---------|
+| `8d85239` | `Notes` → `Description` in ActivityDTO | Railway automation |
+| `fc0c24c` | Proxy bypass WCF for uploads — HttpWebRequest + chunked MTOM | EC2 proxy |
+| `ff4bd86` | `unisoft attachment delete` CLI + `/api/file/delete` proxy endpoint | EC2 proxy |
+| `8525923` | Populate all 13 ActivityNotificationDTO fields (later superseded) | Railway automation |
+| `a42bbe1` | **IEmailService + SendActivityEmail — real notification fix** | EC2 proxy + Railway automation |
+
+Total: 5 atomic deploys to EC2 (all with rollback-on-fail + backups), 3 Railway deploys, 5 commits pushed to origin.
 
 ## Activity IDs for reference
 
