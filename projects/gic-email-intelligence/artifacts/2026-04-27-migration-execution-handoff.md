@@ -18,6 +18,30 @@ sources:
 
 **Next session resumes at Phase E** (AWS Secrets Manager + Parameter Store + Atlas allowlist + Unisoft SG). Every step in Phase E is **[NEEDS USER APPROVAL]** per the production-safety rule.
 
+## Linear tracking (created end of session 2026-04-27)
+
+Migration is now tracked under **DEVOPS-151** (parent) with 7 sub-issues — one per phase. Use the `/linear` skill to update status as work progresses.
+
+| Linear ID | Phase | State | Notes |
+|---|---|---|---|
+| DEVOPS-151 | Parent | Backlog | Move to **In Progress** when Phase E begins |
+| DEVOPS-152 | Phase A–D (32 commits) | **Done** | Already complete; do not modify |
+| DEVOPS-153 | Phase E (AWS infra) | Backlog | Has E.5 OIDC blocker noted in description |
+| DEVOPS-154 | Phase F (push + Amplify rewire) | Backlog | |
+| DEVOPS-155 | Phase G (dev deploy + 24h soak) | Backlog | |
+| DEVOPS-156 | Phase H (ops readiness, parallel with G) | Backlog | |
+| DEVOPS-157 | Phase I (prod cutover, 90-min window) | Backlog | Priority 1 |
+| DEVOPS-158 | Phase J (7-day soak + tear-down) | Backlog | |
+
+**Status update protocol for the next session:**
+- When starting a phase: update its sub-issue Backlog → In Progress (`linearis --api-token "$LINEAR_API_KEY" issues update DEVOPS-XXX --status "In Progress"`)
+- When a phase completes: → Done. Add a comment with commit SHAs / outcome via `linearis comments create DEVOPS-XXX --body "..."`
+- Update parent DEVOPS-151 → In Progress when Phase E starts; → Done when Phase J completes
+- For Phase E specifically, comment on each E.1–E.6 sub-step as it's approved + executed
+- All `linearis` commands need `--api-token "$LINEAR_API_KEY"` flag (the env var is set in `~/.zshrc`-sourced `.env` but the CLI doesn't pick it up automatically; the proxy `linearis-proxy.sh` is broken because it tries 1Password and the credential isn't in the expected vault)
+
+**Linear skill is globally available.** The next session can invoke `/linear` (skill in user-invocable list) without setup.
+
 ## Read-first files for the next session
 
 1. **This file** — execution state, ground-truthed facts, tracked follow-ups
