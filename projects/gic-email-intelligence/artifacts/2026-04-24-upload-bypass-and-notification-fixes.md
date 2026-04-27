@@ -135,6 +135,53 @@ Our code was doing only step 1, with a useless Notification payload that the ser
 
 Total: 5 atomic deploys to EC2 (all with rollback-on-fail + backups), 3 Railway deploys, 5 commits pushed to origin.
 
+---
+
+# End-of-day monitoring + JC weekly recap (4/24 evening)
+
+## Post-deploy production monitoring
+
+Scheduled wake-ups at 20:34, 21:05, and 21:35 UTC verified the SendActivityEmail fix held cleanly across the rest of the business day:
+
+| Time | New automations | Notifications fired |
+|------|-----------------|---------------------|
+| 20:34 UTC | Q:146397, 146398, 146400 + Q:146400 dup-detected | 3/3 ✅ |
+| 21:05 UTC | Q:146401, 146402, 146403 | 3/3 ✅ |
+| 21:35 UTC | Q:146404, 146406, 146410 | 3/3 ✅ |
+| 23:00 UTC | none (end of business day) | n/a |
+
+**Final tally for first day post-fix: 9/9 automations delivered Application Acknowledgement emails** to distinct agent contacts. Zero attachment failures. Duplicate detection correctly identified 1 re-submission. Queue drained cleanly between cron ticks.
+
+## Weekly recap email sent to JC
+
+Drafted + sent a Friday-evening recap to **jcdp@gicunderwriters.com** (Juan Carlos Diaz-Padron) summarizing 4/23-4/24 production results. Content saved at `/tmp/jc-weekly-update.md` and `/tmp/jc-weekly-update-styled.html` (the latter has Gmail-safe inline-styled tables).
+
+The email contains:
+- Email volume table (276 received, 11 categories)
+- Automation outcomes (62 unique quotes + 15 dups + 1 agency-gap = 78 agent submissions, numbers tie)
+- 62-row per-quote pipeline table (Quote / Task / Attachments / Activity / Notification — gaps annotated)
+- Issues + resolutions (attachment ceiling, notification delivery, dup detection)
+- Closing offer: "If there's anything you'd like us to run retroactively — any step in the pipeline on past quotes — just let me know" + invitation for feedback
+
+**No backfill mention in the closing.** Earlier draft had explicit "53 quotes never got notifications, can retro-send" framing — Craig dialed it back per his preference, since they had already retroactively sent some emails manually. The retroactive-anything-on-request offer covers it cleanly.
+
+**Status**: sent at ~22:34 UTC on 4/24. Awaiting JC's reply. Sent message thread `19dc1a3729b1745e`.
+
+## Gmail HTML gotcha (lesson for future external comms)
+
+Two attempts before this email actually rendered tables on the receiving end:
+
+1. **Created draft via API → user sent via Gmail compose UI** → tables rendered as plain rows. **Why**: Gmail's compose editor aggressively strips inline `<style>`/`<table>` styling on send, even though the API-created draft had them intact.
+2. **Sent via API directly (`gog gmail send`)** → tables render correctly with borders/header shading. Gmail only sanitizes when you go through the UI compose path.
+
+**Rule for future**: If sending HTML-formatted content to external recipients (JC, agents, etc.) via gog, use `gog gmail send` directly. Do NOT round-trip through the Gmail UI compose. Inline styles must be on every `<table>`, `<th>`, `<td>` (no `<style>` block — Gmail strips that too).
+
+Also: add a wrapping `<div style="font-family: Arial, sans-serif; font-size: 14px;">` for consistent typography. Background colors, borders, padding — all Gmail-safe inline.
+
+## Carry-forward updates
+
+The "Open items" list above is now up to date. The most actionable next item is **JC's reply to the weekly recap** — he may have feedback, may take Craig up on the retroactive-send offer, or may have queue-management questions. Watch the inbox.
+
 ## Activity IDs for reference
 
 Recent automation-created quotes today:

@@ -24,11 +24,14 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 - `unisoft-proxy/client/cli.py` — Unisoft CLI (contacts, quote create, **attachment delete**)
 - `unisoft-proxy/server/UniProxy.cs` — SOAP proxy on EC2: **custom HttpWebRequest chunked MTOM upload path** in `FileBridge.UploadQuoteAttachment`, new `/api/file/delete` endpoint, `ExtractAttachmentDto` helper
 
-**Immediate priority for next session:**
-1. ~~Verify notification emails actually deliver~~ — **FIXED** via commit `a42bbe1` (SendActivityEmail on IEmailService). 3 production automations post-deploy all sent emails correctly. Scheduled auto-monitor check for 20:34 UTC to confirm fix holds on next batch.
-2. **LangSmith tracing still broken** — zero traces in either project. Carry-forward.
-3. **Monitor attachment upload success rate** — no failures seen since chunked fix; watch `automation_result.notes` for any new "attachment upload failed" entries.
-4. **Older activities never got their emails** — Q:146340 through ~Q:146395 (created before 19:30 UTC deploy) all have empty Notification on their activities. Those agents never received Application Acknowledgement emails. Decide with JC whether to backfill (call SendActivityEmail for each one-time, flagging them retrospectively) or leave as-is.
+**Immediate priority for next session (resuming 2026-04-27):**
+1. ~~Verify notification emails actually deliver~~ — **FIXED** via commit `a42bbe1` (SendActivityEmail on IEmailService). End-of-day 4/24 monitoring confirmed 9/9 automations delivered emails cleanly across 3 wake-up checks (20:34, 21:05, 21:35 UTC).
+2. **JC weekly recap email sent 4/24 ~22:34 UTC** to jcdp@gicunderwriters.com (thread `19dc1a3729b1745e`). Awaiting his reply. Closing offered "retroactively run any pipeline step on request" — he may take us up on the backfill or have queue-management questions.
+3. **LangSmith tracing still broken** — zero traces in either project. Carry-forward, low priority.
+4. **Monitor weekend production state** — verify automations ran correctly Saturday/Sunday, no attachment fails, no notification regressions. First check on resume.
+5. **Backfill (deferred)** — Q:146340 through ~Q:146395 created before notification fix never got Application Acknowledgement emails. Some were manually retro-sent. Wait for JC's preference before doing more.
+
+**Gotcha noted for future**: Sending HTML email to external recipients via Gmail must go through `gog gmail send` directly (API), NOT round-trip through the Gmail compose UI — the UI strips inline CSS on send. All `<table>`/`<th>`/`<td>` need inline styles (Gmail doesn't preserve `<style>` blocks).
 
 **What was done (2026-04-24 — upload bypass + notification fixes):**
 
