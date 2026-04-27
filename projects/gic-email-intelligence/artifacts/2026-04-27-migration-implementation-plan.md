@@ -112,7 +112,46 @@ No commit yet — this task is workspace setup.
 
 ---
 
-### Task A.2: Verify baseline test suite is green
+### Task A.2: Resolve the ingress pattern question
+
+The design left this as an open item: **how does inbound traffic actually reach a containerized service on `dev-services` and `prod-services` today?** The answer determines (a) whether `docker-compose.yml` should `expose` or `ports`, (b) whether we add a new ALB listener rule or a new Caddy/nginx server block, (c) what `VITE_API_BASE` should point at for the Amplify dev build (`api-dev.gic.indemn.ai` vs the EIP), and (d) what target the Route 53 DNS flip in I.8 should use.
+
+Resolve before any container is deployed.
+
+**Step 1:** SSH/SSM into dev-services and inspect what's listening on 80/443.
+
+```bash
+aws ssm start-session --target i-0fde0af9d216e9182
+# inside session:
+sudo ss -tlnp | grep -E ":80|:443|:8080" | head
+sudo docker ps --format 'table {{.Names}}\t{{.Ports}}' | head
+ls /etc/nginx/conf.d /etc/caddy 2>/dev/null
+```
+
+**Step 2:** Look at how `bot-service` and `indemn-observatory` are reached.
+
+```bash
+# From within the SSM session:
+docker inspect bot-service-bot-service-1 2>/dev/null | jq '.[0].NetworkSettings.Ports'
+# Identify the routing layer
+```
+
+**Step 3:** Determine the pattern (one of):
+- **(a) ALB with target groups:** Apply for our service via AWS console / CLI; new listener rule for `api-dev.gic.indemn.ai` → target group → port 8080.
+- **(b) Caddy / nginx reverse proxy on the host:** Add a server block routing `api-dev.gic.indemn.ai` → `localhost:8080`.
+- **(c) Each service owns its own port + EIP:** Less likely given hostname-based routing for `gic.indemn.ai`.
+
+**Step 4:** Document the decision in the plan-level Slack thread + update Phase D.1's `docker-compose.yml` accordingly:
+- Pattern (a): `expose: ["8080"]` (no host port mapping; ALB hits container directly via target group)
+- Pattern (b): `ports: ["8080:8080"]` (host port for Caddy/nginx to proxy to)
+
+**Step 5:** Update `VITE_API_BASE` value used in F.3 to the canonical hostname this pattern enables.
+
+No commit yet — this is configuration discovery; outputs feed Phase D.1 and F.3.
+
+---
+
+### Task A.3: Verify baseline test suite is green
 
 **Step 1:** Run the full test suite.
 
@@ -1797,6 +1836,37 @@ Email JC + Maribel: window, expected zero downtime, what to look for, Craig's ph
 
 ---
 
+### Task I.1b: Verify Outlook add-in `VITE_API_BASE` (T-24h)
+
+**[NEEDS USER APPROVAL]** if a rebuild is required (manifest re-issue + Maribel re-sideload).
+
+The add-in is on Vercel (`gic-addin.vercel.app`) and stays there through this migration (per Decision #8). But its API base URL is baked into the build at Vercel build time — if it currently targets a Railway-specific hostname like `https://api-production-e399.up.railway.app/api`, the add-in will 502 after Railway is destroyed.
+
+**Step 1:** Inspect the current `VITE_API_BASE` Vercel env var on the add-in's project.
+
+```bash
+cd /Users/home/Repositories/gic-email-intelligence/addin
+npx vercel env ls
+# Look for VITE_API_BASE on Production scope
+```
+
+**Step 2:** Decide path:
+- **If `VITE_API_BASE` already points at `https://api.gic.indemn.ai/api`** (the canonical hostname), no rebuild needed — only what the hostname *resolves to* changes during cutover, not the hostname itself. Mark this task complete and proceed.
+- **If it points at a Railway-specific URL** (`api-production-e399.up.railway.app`), rebuild and redeploy the add-in to Vercel against the canonical host *before* prod cutover. Coordinate with Maribel on whether a manifest re-issue is required (it may not be, since `SourceLocation` in the manifest references `gic-addin.vercel.app` not the API URL).
+
+```bash
+# If rebuild needed:
+npx vercel env add VITE_API_BASE https://api.gic.indemn.ai/api
+npm run build
+cp manifest.xml dist/
+cd dist && npx vercel --prod --yes
+# Confirm Maribel can still load the add-in panel
+```
+
+**Step 3:** Smoke-test by loading the add-in in Maribel's Outlook against a known email; confirm side panel renders. **Do this no less than 24h before the cutover window** so any sideload issue surfaces with time to fix.
+
+---
+
 ### Task I.2: Populate AWS Secrets Manager + Parameter Store (prod)
 
 Same as E.1 + E.2 but for `indemn/prod/gic-email-intelligence/*` and `/indemn/prod/...`. Pull values from `railway variables --environment production`.
@@ -1820,6 +1890,44 @@ gh run watch
 ```
 
 Containers come up with all `pause-*=true` initially.
+
+---
+
+### Task I.4b: Trigger Amplify prod build with `VITE_API_BASE` for prod
+
+**[NEEDS USER APPROVAL]** — touches `gic.indemn.ai` (live customer URL).
+
+The Amplify `prod` branch must rebuild against `indemn-ai/gic-email-intelligence` and pick up `VITE_API_BASE` for the prod EC2 API URL. Without this, `gic.indemn.ai` keeps serving the old build pointing at the Railway API (which is paused).
+
+**Step 1:** Confirm `prod` branch env var on Amplify.
+
+```bash
+aws amplify get-branch --app-id d244t76u9ej8m0 --branch-name prod \
+  --query 'branch.environmentVariables'
+```
+
+**Step 2:** Set / update `VITE_API_BASE` to the prod canonical URL.
+
+```bash
+aws amplify update-branch --app-id d244t76u9ej8m0 --branch-name prod \
+  --environment-variables VITE_API_BASE=https://api.gic.indemn.ai
+```
+
+**Step 3:** Trigger a rebuild.
+
+```bash
+aws amplify start-job --app-id d244t76u9ej8m0 --branch-name prod --job-type RELEASE
+```
+
+**Step 4:** Wait for the build to finish.
+
+```bash
+aws amplify list-jobs --app-id d244t76u9ej8m0 --branch-name prod \
+  --query 'jobSummaries[0].{Status:status, JobId:jobId}'
+# Wait until Status = SUCCEED
+```
+
+Note: `gic.indemn.ai` (Amplify) is independent from `api.gic.indemn.ai` (Route 53 → ALB / EIP). Step I.8 handles the API hostname separately.
 
 ---
 
@@ -2038,15 +2146,15 @@ These are the items from the design's "Out of Scope" section. Track each as a se
 
 | Phase | Task count | User approval needed | Estimated time |
 |-------|-----------|----------------------|----------------|
-| A | 2 | No | 30 min |
+| A | 3 | No | 1 hour (incl. ingress investigation) |
 | B | 12 | No | 1.5–2 days (TDD code work) |
 | C | 3 | No | 2 hours |
 | D | 7 | No | 4 hours |
 | E | 6 | Yes (dev AWS state) | 4 hours |
 | F | 3 | Yes (Amplify rewire, branch protection) | 2 hours |
 | G | 6 | No (dev) | 24–48h soak |
-| H | 4 | Mixed | 1 day, parallel with G |
-| I | 12 | Yes (every step is prod) | 1.5 hours window + 24h soak |
+| H | 4 | Mixed (H.1 routing decision) | 1 day, parallel with G |
+| I | 14 | Yes (every step is prod) | 1.5 hours window + 24h soak |
 | J | 3 | Yes (Railway tear-down) | 7-day delay then 30 min |
 | K | 12 | n/a (separate workstream) | post-cutover |
 
