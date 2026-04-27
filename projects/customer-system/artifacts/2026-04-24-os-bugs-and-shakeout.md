@@ -504,7 +504,7 @@ The CLI's `--to` flag works because it's mapped internally; the docs leading use
 
 ---
 
-## Bug #22 — Cannot tell which associate acted when multiple share the service token 🔴
+## Bug #22 — Cannot tell which associate acted when multiple share the service token 🟢
 
 **Discovered:** 2026-04-24
 **Severity:** High (blocks all forensics on associate misbehavior)
@@ -521,6 +521,27 @@ Today this blocked us from identifying which associate created the 299 duplicate
 - OR: capture `runtime_id + session_id` in change records when the action originated from a harness
 
 Without this, the ledger cannot answer "which associate did this" — which is the question we need most often.
+
+### Resolution (2026-04-27) — option B (effective_actor_id)
+Chose the `effective_actor_id` field approach. Per-associate tokens are architecturally cleaner long-term but a much bigger lift (provisioning + AWS Secrets per associate + rotation + migration); they solve a security-isolation problem we don't have yet.
+
+The mechanism mirrors the existing `causation_message_id` propagation chain:
+1. Harness sets `INDEMN_EFFECTIVE_ACTOR_ID = <associate_id>` env var on activity start (`harnesses/async-deepagents/main.py`).
+2. Harness CLI wrapper forwards the env var to subprocess (`harnesses/_base/harness_common/cli.py`).
+3. CLI client adds `X-Effective-Actor-Id` header from env (`indemn_os/src/indemn_os/client.py`).
+4. Auth middleware reads header, validates the asserted actor exists + is type=associate, sets contextvar (`kernel/auth/middleware.py`).
+5. `save_tracked` reads contextvar, passes to `write_change_record` (`kernel/entity/save.py`).
+6. `ChangeRecord` schema gains `effective_actor_id: Optional[str]` plus a compound index `(org_id, effective_actor_id, timestamp)` for cheap per-associate forensics queries.
+7. Trace endpoint surfaces both `actor_id` and `effective_actor_id` so "which associate did this" is queryable through the standard CLI/UI.
+
+**Verified live:** posted a Company create with `X-Effective-Actor-Id: <Email Classifier>` set; `/api/trace/entity/Company/<id>` returned both `actor_id=<Platform Admin>` and `effective_actor_id=<Email Classifier>`. The 446-Company explosion would now be answerable to "which associate" rather than "Platform Admin did everything." Going forward every harness-driven mutation carries the associate identity.
+
+10 unit tests in `tests/unit/test_effective_actor_id.py` pin the contextvar lifecycle, ChangeRecord schema, CLI client header passthrough, and harness CLI wrapper subprocess env propagation. Full 226-test suite green.
+
+### Linked OS work
+- Branch: `bugfix/effective-actor-id` (feature commit `dae5bf2`, merged `e9d45e8`)
+- Trace serializer: `056cba2`
+- Deployed: `railway up --service indemn-api` + `railway up --service indemn-runtime-async` 2026-04-27
 
 ---
 
@@ -898,7 +919,7 @@ Append new entries above this line as you find them. Format:
 | 19 | Change records sometimes have non-Date `timestamp` | Low | 🔴 Open |
 | 20 | Actor CLI missing `transition`, `delete`, `bulk-*` | Med | 🔴 Open |
 | 21 | Transition API: `to` vs docs' `target_state` | Low | 🔴 Open |
-| 22 | Service token untraceability: can't tell which associate acted | **High** | 🔴 Open |
+| 22 | Service token untraceability: can't tell which associate acted | **High** | 🟢 Fixed (Apr 27, deployed; effective_actor_id field) |
 | 23 | `bulk-delete` silently drops MongoDB operator filters ($in, $gte, $oid) | **Critical** | 🔴 Open |
 | 24 | `bulk status` reports COMPLETED even when 0 records matched | Med | 🔴 Open |
 | 25 | `company create` returns HTTP 500 | Med | 🟢 Fixed (subsumed by #30 — Apr 27) |
