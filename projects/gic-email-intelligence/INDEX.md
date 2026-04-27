@@ -762,6 +762,7 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 | 2026-04-23 | [go-live-day-session-2](artifacts/2026-04-23-go-live-day-session-2.md) | Full day monitoring — 11 fixes, 3 features, 152 emails, 44 submissions, notifications working |
 | 2026-04-24 | [upload-bypass-and-notification-fixes](artifacts/2026-04-24-upload-bypass-and-notification-fixes.md) | JC flagged Q:146348 missing attachments — investigation → chunked MTOM upload bypass, Notes→Description rename, delete endpoint, full ActivityNotificationDTO fields |
 | 2026-04-27 | [migration-to-indemn-infrastructure-design](artifacts/2026-04-27-migration-to-indemn-infrastructure-design.md) | Migrate from Railway + craig-indemn personal repo → indemn-ai org repo + dev-services/prod-services EC2 + AWS Secrets Manager + Amplify. 9 strategic decisions captured, cutover runbook, Phase 2 (Atlas relocation) sketched as separate follow-up |
+| 2026-04-27 | [migration-implementation-plan](artifacts/2026-04-27-migration-implementation-plan.md) | Bite-sized task plan executing the migration design. 11 phases (A–K), ~70 tasks, TDD on Phase 1.0 code work, verification steps on infra. Phase I is the prod cutover runbook step-by-step. ~10-day wall clock with 24h dev + 7d prod soak |
 
 ## Key Data Files
 | File | What it contains |
