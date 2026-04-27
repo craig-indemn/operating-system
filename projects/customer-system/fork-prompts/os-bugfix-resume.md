@@ -9,114 +9,153 @@
 
 **Why this works:** the shared context lives in project files, not in conversations. A fresh session reading `os-learnings.md` sees what the previous instance marked 🟡 In-progress and 🟢 Fixed. The resume prompt just adds framing ("you're a resumed session, here's what's urgent right now") — the actual context comes from the files.
 
-**Last updated:** 2026-04-27 — after Apr 27 Alliance trace surfaced new top-priority bugs (API 500-detail, Meeting create, entity-skill JSON examples).
+**Last updated:** 2026-04-27 — after the third bugfix-session burst that cleared the API-500-transparency / Meeting-create / Bug #29 / index-reconciliation / list-filter / entity-resolve / effective-actor-id stack. The Alliance trace is no longer blocked on a kernel bug; the next session is systematic bug clearing.
 
 ---
 
 ## The prompt (paste verbatim into the cleared/fresh bugfix session)
 
 ```
-You are resuming the parallel OS-bugfix session that was started earlier from the customer-system 
-project's vision-and-roadmap session (2026-04-27). The previous instance of this session was cleared 
-to free context. Pick up from the durable shared context — `os-learnings.md` is your work queue.
+You are resuming the parallel OS-bugfix session that has been running alongside the customer-system 
+main session. The previous instance was cleared to free context. Pick up from the durable shared 
+context — `os-learnings.md` is your work queue.
 
-The MAIN session is still running in parallel doing the Alliance v2 proposal trace (Phase A2). New 
-findings have been surfaced and logged to `os-learnings.md` since you were last running. Re-read it 
-fully on bootstrap.
+The MAIN session is using the OS in production now (not in a blocked trace). Your job is to keep 
+working systematically through the open bugs in `os-learnings.md`, in priority order, so the OS 
+keeps getting better underneath them. Each bug fix should be small, well-tested, deployed, and 
+documented before you move to the next.
 
 ==== Working directories (unchanged) ====
 - Project context: /Users/home/Repositories/operating-system/.claude/worktrees/<your-worktree>/projects/customer-system/
 - OS kernel code: /Users/home/Repositories/indemn-os/
 - OS docs: /Users/home/Repositories/indemn-os/docs/
 
-==== Start-of-session protocol (mandatory — same as before, plus updates) ====
+==== Start-of-session protocol (mandatory) ====
 
 1. Read these files in full:
    - projects/customer-system/CLAUDE.md
    - projects/customer-system/vision.md
    - projects/customer-system/roadmap.md
-   - projects/customer-system/os-learnings.md          ← YOUR WORK QUEUE. New entries since last run.
+   - projects/customer-system/os-learnings.md          ← YOUR WORK QUEUE. Confirm the current state.
    - projects/customer-system/INDEX.md                 ← Decisions log + open questions
-   - projects/customer-system/artifacts/2026-04-27-alliance-trace-plan.md     ← Plan for the live trace
-   - projects/customer-system/artifacts/2026-04-27-alliance-trace.md          ← The live trace narrative the main session is building (in flight)
-   - projects/customer-system/artifacts/2026-04-24-os-bugs-and-shakeout.md
-   - projects/customer-system/artifacts/2026-04-24-extractor-pipeline-gap.md
-   - projects/customer-system/artifacts/2026-04-24-extractor-procedure-and-requirements.md
+   - projects/customer-system/artifacts/2026-04-24-os-bugs-and-shakeout.md   ← Bug-level deep detail
    - /Users/home/Repositories/indemn-os/CLAUDE.md
    - /Users/home/Repositories/indemn-os/docs/architecture/entity-framework.md
    - /Users/home/Repositories/indemn-os/docs/architecture/watches-and-wiring.md
    - /Users/home/Repositories/indemn-os/docs/architecture/associates.md
 
 2. Check `os-learnings.md` for in-flight work:
-   - Rows marked 🟡 In-progress = work the PREVIOUS instance of this session started. Decide whether 
-     to continue it (look at any branch in indemn-os matching the bug's name; check git log for commits) 
-     or restart from scratch.
-   - Rows marked 🟢 Fixed since 2026-04-27 = the previous instance completed something. Don't redo.
+   - Rows marked 🟡 In-progress = work the PREVIOUS instance started. Decide whether to continue 
+     it (look at any branch in indemn-os matching the bug's name; check git log for commits) or 
+     restart from scratch.
+   - Rows marked 🟢 Fixed since 2026-04-27 = the previous instance(s) completed something. Don't 
+     redo. Read the linked commits to understand what's already there before designing.
    - Rows still 🔴 Open = available work.
 
 3. Before writing any code, confirm your understanding by writing back: 
-   a) the top-4 bugs you intend to tackle in priority order (RE-PRIORITIZED based on what you see in 
+   a) the top-3 bugs you intend to tackle in priority order (RE-PRIORITIZED based on what you see in 
       os-learnings.md NOW — see "UPDATED PRIORITY" below), 
-   b) why those four (what they unblock for the live trace + the Phase B foundation), 
+   b) why those three (what they unblock for the customer system + Phase B foundation), 
    c) any in-progress work from the previous instance you're picking up vs starting fresh, 
-   d) where the work happens (which file in indemn-os/), 
-   e) how you'll test the fix.
+   d) where the work happens (which files in indemn-os/), 
+   e) how you'll test each fix.
 
-==== UPDATED PRIORITY (post-Apr-27-Alliance-trace findings) ====
+==== UPDATED PRIORITY (post-Apr-27 third bugfix burst) ====
 
-The Alliance trace surfaced new high-priority bugs that are BLOCKING THE LIVE TRACE right now:
+The trace-blocking bugs are all fixed. The kernel now has: typed 500 errors, declarative index 
+reconciliation with sparse-via-partialFilterExpression, route eviction on entity-def replace, 
+entity_resolve capability with field_equality + fuzzy_string strategies, list-endpoint arbitrary 
+field filters, effective_actor_id forensics chain, and a clean modify_fields path on 
+entity-def modify. The next priorities are mostly mechanical bugs that improve daily ergonomics 
++ enable scale cleanup.
 
-1. **API returns generic "Internal Server Error" body on 500 — no validation detail.** 
-   The root issue making the entire create-500 family (Bug #25 Company, Bug #26 Deal, Meeting create 
-   failure) impossible to self-diagnose. Without this fix, every other create-related bug is hard to 
-   solve. Likely fix in `kernel/api/registration.py` or `kernel/api/errors.py` (global exception 
-   handler). The 500 response body should include the exception message AND, for validation errors, 
-   return 400 with field-level detail. Logged in os-learnings.md High section as of 2026-04-27.
+Suggested order (push back if dependencies surface):
 
-2. **Meeting create returns HTTP 500.** `POST /api/meetings/` with valid-shape JSON (title + date) 
-   returns 500. Blocking the Alliance trace from creating the Feb 1 + Apr 8 Meeting entities. May be 
-   the same root as Bug #25/#26 or Meeting-specific. Cannot self-diagnose until #1 above is fixed. 
-   Once #1 lands, retry Meeting create and the actual error will surface.
+1. **Bug #23 + Bug #24 — `bulk-delete` operator filters + `bulk status` counts.** 
+   Critical for cleanup at scale. Today only simple equality filters work in bulk-delete; `$in`, 
+   `$gte`, `$ne`, `$oid`, `$date` are silently dropped (Bug #23). And `bulk status` returns 
+   `COMPLETED` even when zero records matched (Bug #24), so you can't tell the operation did 
+   nothing. Combined, they make non-trivial cleanup almost impossible — the 446-Company half-finished 
+   cleanup in the GR Little trace stalled here. The fix probably touches `kernel/temporal/workflows.py::BulkExecuteWorkflow` 
+   or `kernel/api/bulk.py` filter parsing. Pair with the new list-filter parser pattern 
+   (`_parse_list_filter` in `kernel/api/registration.py`) — same shape, but for delete + with the 
+   operator safelist that list filtering doesn't have yet. The operator safelist is the real work; 
+   wire it into both list and bulk-delete uniformly.
 
-3. **Auto-generated entity skill needs JSON-shape example payloads.** Reinforces and extends the 
-   existing "Generated entity skill teaches actual filter syntax" item. Without example payloads in 
-   the skill output, an associate has no way to learn the right `--data` JSON shape from the skill. 
-   Fix: in `kernel/skill/generator.py`, emit a working example payload per command (CRUD + transition 
-   + capability). Particularly important for create/update commands.
+2. **Bug #10 — `indemn <entity> reprocess <id> --role <role>` (backfill historical entities).** 
+   When a watch is added to a role, only future events fire it. Existing entities are invisible. Cost 
+   us real work in the GR Little trace (manually creating Touchpoints because the Synth's 
+   "Meeting created" watch couldn't refire on already-ingested meetings). Without this, every new 
+   associate we add comes with a one-time manual reprocessing chore. Fix: a new CLI/API endpoint 
+   that synthesizes a `created`-equivalent event for a named role on an existing entity. 
+   Tracked in `artifacts/2026-04-24-extractor-procedure-and-requirements.md` § Capability #6.
 
-Then the original Top 4 from the previous fork prompt (still important, but ordered AFTER the above 
-because the trace is actively blocked):
+3. **Bug #9 — Associates pass dicts instead of ObjectIds → dead letters.** 
+   Mostly addressed by the JSON-shape examples we shipped (the auto-generated entity skill now 
+   emits real ObjectId hex placeholders). But there's a defense-in-depth piece left: the API's 
+   create/update handler could coerce dict-shaped relationship fields at the boundary (e.g. accept 
+   `{"company": {"name": "Acme"}}` by resolving via the new entity_resolve capability, OR reject 
+   with a 400 explaining the right shape). The skill examples + the existing 
+   `_coerce_objectid_fields` helper handle the happy path; this is just the failure-mode improvement.
 
-4. **Touchpoint forward source pointers (Option B)** — schema + Synth update. 
-   *Note: as of 2026-04-27, may already be 🟢 Fixed by previous fork instance — verify in os-learnings.md.*
-5. **Silent workflow stuck-state** — workflow detects empty agent output as failure. 
-   *Note: may already be 🟡 In-progress; check os-learnings.md before starting fresh work.*
-6. **Cross-invocation tool-cache leak** — scope per message_id. 
-   *Note: may already be 🟡 In-progress; check os-learnings.md before starting fresh work.*
+After the top 3, continue with:
 
-After top 3 (the new ones) + 4-6 (original Top 4), continue with:
-- Entity-resolution kernel capability (Bug #16 root)
-- Bug #29 (route eviction)
-- Bug #23 (bulk-delete operator filters)
-- Bug #22 (service-token forensics)
-- Bug #9 (associates pass dicts vs ObjectIds)
+- **Finishing Bug #16 + #17 (kernel ready, skill update pending)** — the Email Classifier and 
+  Touchpoint Synthesizer skills need to be updated to call `indemn <entity> entity-resolve` BEFORE 
+  creating, and only auto-link on a single 1.0 candidate (else surface for review). This is 
+  domain-skill work in `projects/customer-system/skills/` not kernel work — ask Craig if he wants 
+  it done in this fork session or in the main session.
+
+- **`--include-related` doesn't follow reverse relationships.** Kernel feature: kernel's 
+  `--include-related` follows forward references (`is_relationship: true`) but not reverse refs. 
+  For Touchpoint, this means Meeting.touchpoint→Touchpoint is invisible from Touchpoint's side. 
+  Subsumed for the Touchpoint case by Option B but underlying gap remains.
+
+- **Bug #20 + #21 — Actor CLI parity + transition API field naming.** Mechanical: Actor CLI 
+  missing `transition`, `delete`, `bulk-*`. Transition API expects `to` but docs say `target_state`.
+
+- **Bug #11 + #12 + #13 — observability/docs cleanup.** `/api/queue/stats` returns 404; 
+  `mongodb-uri` secret has wrong host; Railway doesn't auto-deploy on push to main.
+
+- **Bug #5 — `fetch-new --help` triple-dash flags + missing `--data` documentation.**
+
+- **Bug #15 — Naive entity collection pluralization (`Company` → `companys`).**
+
+- **Bug #2 — No singular `delete` CLI** (only `bulk-delete`, which is broken per #23).
+
+- **Bug #3 + #4 — `bulk status` lacks counts + `bulk-delete --filter '{}'` silent no-op** (subsumed 
+  by Bug #23 + #24 fix).
+
+- **Bug #7 + #8 — Adapter noise + per-user error swallowing** (Google Workspace adapter ergonomics).
+
+- **Bug #19 — Change records sometimes have non-Date timestamp fields** (low-severity observability bug).
+
+==== Operational notes for this session ====
+
+The async runtime had a deploy-failure storm at end-of-previous-session (a bare-import regression 
+from the silent-stuck-state PR; fixed in commit `65dddfa`). If you see runtime-async deploy emails 
+again, check that one first. The chat runtime is also failing startup with `Error 401: Invalid 
+service token` — that's pre-existing, NOT from any recent fork work; it needs Craig to rotate 
+the chat-runtime service token. Don't try to fix it yourself; flag it in the session and move on.
 
 ==== Rules of engagement (unchanged) ====
 
 - **Production safety.** Read .claude/rules/production-safety.md. NEVER write to production systems 
   or modify EC2 instances without explicit user permission. The OS API runs on Railway — read state 
-  freely; deployments and config changes need Craig's approval. Read-only on shared databases.
+  freely; deployments need explicit OK. Read-only on shared databases (you can write to dev MongoDB 
+  via the API; never via mongosh).
 
-- **Branch-per-bug.** Make a feature branch in indemn-os, push, surface a PR for Craig's approval. 
-  Don't merge to main without explicit approval. Don't deploy without explicit approval.
+- **Branch-per-bug.** Make a feature branch in indemn-os, push, merge once tests pass. Craig has 
+  authorized you to merge PRs that look good (per his note in the previous session). If unsure, 
+  flag and ask.
 
 - **Update os-learnings.md when a bug changes status.** Mark a row 🟡 In-progress when you start; 
-  🟢 Fixed when commit lands in main / is deployed (with commit ref and date). Don't delete fixed 
-  rows — they're the trail. THIS IS HOW the main session sees your progress.
+  🟢 Fixed when commit lands in main + is deployed (with commit ref and date). Don't delete fixed 
+  rows — they're the trail.
 
-- **Coordinate via os-learnings.md.** The main session is running in parallel and may surface new 
-  findings. Re-read os-learnings.md before starting each new bug. Mark rows 🟡 immediately when 
-  you start so the main session knows not to grab them.
+- **Coordinate via os-learnings.md.** The main session is running in parallel. Re-read 
+  os-learnings.md before starting each new bug. Mark rows 🟡 immediately when you start so the 
+  main session knows not to grab them.
 
 - **Log new bugs you discover.** Add a row to os-learnings.md with detail before continuing.
 
@@ -126,12 +165,13 @@ After top 3 (the new ones) + 4-6 (original Top 4), continue with:
 - **Update OS docs to reflect what changed.** /Users/home/Repositories/indemn-os/docs/architecture/*.md 
   and /Users/home/Repositories/indemn-os/docs/guides/*.md need to stay accurate.
 
-- **Push back on the priority order if you spot a dependency I missed.** If the code says #2 needs #1 
-  to land first or vice versa, flag it before starting.
+- **Push back on the priority order if you spot a dependency.** If the code says #2 needs #1 to 
+  land first or vice versa, flag it before starting.
+
+- **Use TaskCreate to track progress.** The previous sessions used the task system; continue.
 
 Begin by completing the start-of-session protocol, then write back with the 5-part response from 
-step 3. We iterate from there. The MAIN SESSION IS BLOCKED on bugs #1 + #2 above — those are the 
-unblock for the active trace work.
+step 3. We iterate from there.
 ```
 
 ---
@@ -140,21 +180,36 @@ unblock for the active trace work.
 
 This block is a courtesy summary of what the bugfix session has done recently, so Craig can see at a glance what state the parallel work is in without re-reading `os-learnings.md`. Update whenever a fork session marks rows 🟡 / 🟢.
 
-**As of 2026-04-27 (post-bugfix-resume #2 — six PRs reviewed and merged, one bug blocked on deploy):**
+**As of 2026-04-27 (post-bugfix-resume #3 — three burst sessions done; kernel substantially hardened):**
 
-Pre-existing in-progress PRs (reviewed and merged):
-- 🟢 **Touchpoint Option B** — `indemn entity modify Touchpoint --add-field` + `indemn-api` redeploy + Synth skill v3. Both new fields visible in auto-generated entity skill; new Touchpoints from the Synth will populate them.
-- 🟢 **Cross-invocation tool-cache leak** — merged to main as `ac6d475` (feature commit `4e7e83d`). 6 unit tests pass. **Deployed 2026-04-27** (`railway up --service indemn-runtime-async`).
-- 🟢 **Silent workflow stuck-state** — merged to main as `67f006c` (feature commit `852eeaa`). 20 unit tests pass. **Deployed 2026-04-27** (`railway up --service indemn-runtime-async`).
-- 🟢 **Generated entity skill teaches actual filter syntax + Bug #6** — merged to main as `f4fc121` (feature commit `6af2166`). 18 unit tests pass. **Deployed 2026-04-27** (`railway up --service indemn-api`).
+Pre-existing in-progress PRs from the first burst (reviewed and merged):
+- 🟢 **Touchpoint Option B** — `indemn entity modify Touchpoint --add-field` + `indemn-api` redeploy + Synth skill v3.
+- 🟢 **Cross-invocation tool-cache leak** — merged `ac6d475` (feature commit `4e7e83d`). 6 unit tests. Deployed.
+- 🟢 **Silent workflow stuck-state** — merged `67f006c` (feature commit `852eeaa`). 20 unit tests. Deployed.
+- 🟢 **Generated entity skill teaches actual filter syntax + Bug #6** — merged `f4fc121` (feature commit `6af2166`). 18 unit tests. Deployed.
 
-New work this session (Top-4 from the Apr 27 trace):
-- 🟢 **#1 — API 500 transparency** — merged as `cf5acd8` (feature commit `914fc61`). `kernel/api/errors.py` gains a Pydantic `ValidationError` → 400 handler with field-level errors array, plus a catch-all `Exception` → 500 handler returning `{error, type, message}` (logs full traceback; bounds message at 4096 chars). 10 unit tests pass. **Deployed 2026-04-27** (`railway up --service indemn-api`).
-- 🟢 **#2 — Meeting create HTTP 500** — **FIXED.** Diagnosis: Meeting entity has `external_ref: {unique: true}` on a nullable field; MongoDB unique indexes treat explicit null as a value, so two manual meetings collided. Fix: kernel now supports `sparse: true` on FieldDefinition which translates to `partialFilterExpression: {<field>: {$type: <bson_type>}}`. Plus a brand-new declarative index reconciler — kernel previously never DROPPED indexes the operator stopped requesting; that gap is closed too. Logged as **Bug #30** (the architectural one). Verified: two manual Meetings + two Companies coexist without collision after deploy. Bug #25 (Company create 500) was the same root cause and is now fixed. Bug #26 (Deal update with company ref) is a different shape — not yet retested.
-- 🟢 **#3 — Entity skill JSON-shape examples** — merged as `b83fa08` (feature commit `ab987c6`). `kernel/skill/generator.py` now renders working JSON payloads between `--data` quotes for `create` (every required field with type-appropriate placeholder; ObjectId → 24-hex string, datetime → ISO 8601, enum → first allowed value; state field excluded) and `update` (representative subset). 18 new unit tests (28 total in the file) pass. **Deployed 2026-04-27** (`railway up --service indemn-api`).
-- 🟢 **#4 — Bug #29 entity-def route eviction** — merged as `83d2494` (feature commit `0bd4e50`). New `_evict_routes_for_prefix(app, prefix)` helper called inside `register_entity_routes` before `app.include_router(router)`. Trailing-slash check guards against prefix-lookalikes. 7 unit tests including end-to-end TestClient roundtrip proving a re-registered handler wins over the stale one. **Deployed 2026-04-27** (`railway up --service indemn-api`).
+Top-4 from the second burst (post-Alliance-trace findings):
+- 🟢 **#1 — API 500 transparency** — merged `cf5acd8` (feature commit `914fc61`). Pydantic ValidationError → 400 with field-level errors; catch-all Exception → 500 with `{error, type, message}`. 10 unit tests. Deployed.
+- 🟢 **#2 — Meeting create HTTP 500** — fixed by Bug #30 (declarative index reconciliation + sparse → partialFilterExpression translation). Same root cause unblocked Bug #25 (Company create 500). Merged `869a153` + `f09a07b` + `83d2494`. Deployed. Verified end-to-end.
+- 🟢 **#3 — Entity skill JSON-shape examples** — merged `b83fa08` (feature commit `ab987c6`). Working `--data` payloads for create/update with type-appropriate placeholders (ObjectId hex, ISO datetime, first enum value, state field excluded). 18 new unit tests (28 total in file). Deployed.
+- 🟢 **#4 — Bug #29 entity-def route eviction** — merged `83d2494` (feature commit `0bd4e50`). `_evict_routes_for_prefix` helper called in `register_entity_routes` before `app.include_router`. 7 unit tests inc. end-to-end TestClient roundtrip. Deployed.
 
-**Production state 2026-04-27 end of session:** all six fixes are live. `indemn-api` health check passing. The async runtime is redeployed with the cache-leak + silent-stuck-state fixes. Existing entity skills in MongoDB still carry the old generator output — they pick up the new format only on next regeneration. #2 (Meeting create 500) is now self-diagnosable against the live API.
+Third burst (systematic continuation after the trace-blocking work cleared):
+- 🟢 **List endpoint arbitrary field filters** — merged `df92cca` (feature commit `6293260`). New `_parse_list_filter` validates field names, coerces ObjectId hex strings, rejects operator dicts (forward-compat). CLI gains `--data '{"field":"value"}'` plus `--search`/`--sort`. Skill generator's Reading section teaches the new pattern. 14 parser tests + 3 generator tests. Deployed. Verified live.
+- 🟢 **Bug #31 — entity_resolve kernel capability (subsumes Bug #16 + #17 root)** — merged `a5a1c97` (feature commit `579c713`). Domain-agnostic kernel capability: `field_equality` strategy (with normalizer registry: email/domain/lowercase_trim/none) + `fuzzy_string` strategy via rapidfuzz. Combined with max-score-per-id + matched_on union, sorted, capped. Added to COLLECTION_LEVEL_CAPABILITIES. Skill generator emits a Resolve section when activated. 29 unit tests. Activated on Company. **Verified live against real Alliance + FoxQuilt data:** the dupe pairs surface correctly (canonical + auto-create artifact), no false positives on nonexistent names. Bug #16 + #17 marked 🟡 (kernel ready, skill update pending — Email Classifier + Touchpoint Synthesizer skills still need to call resolve before creating).
+- 🟢 **Bug #22 — effective_actor_id forensics chain** — merged `e9d45e8` (feature commit `dae5bf2`) + trace serializer fix `056cba2`. New optional field on ChangeRecord, contextvar, header-based propagation, env-var passthrough. Compound index on `(org_id, effective_actor_id, timestamp)`. Trace endpoint surfaces both `actor_id` and `effective_actor_id`. 10 unit tests + full 226-test suite green. **Verified live** — POST a Company create with `X-Effective-Actor-Id: <Email Classifier>`; trace returns both fields. Going forward every harness-driven mutation carries the associate identity.
+- 🟢 **async-harness import regression** — merged `65dddfa`. The silent-stuck-state PR's bare `from completion_logic import ...` failed in production (worked under pytest only); aligned to `from harness.completion_logic` like the file's other imports. Caused a deploy-failure email storm before the fix; should be quiet now.
+
+**Production state 2026-04-27 end of third burst:**
+- `indemn-api`: healthy, all of the above deployed. Health check passing.
+- `indemn-runtime-async`: healthy, both harness fixes (cache-leak + silent-stuck-state + the import fix) deployed.
+- `indemn-runtime-chat`: ⚠️ FAILING STARTUP — `Error 401: Invalid service token`. Pre-existing, NOT from any recent fork work. Needs Craig to rotate the chat-runtime service token. Out of scope for the next bugfix session.
+- `indemn-temporal-worker` + `indemn-queue-processor`: healthy. WARN-level noise about workflow-already-started + bulk activation retries (transient, related to test cleanups).
+
+**Bugs cleared this round (no longer blocking customer-system work):**
+Bug #1, #2 (cache-leak path), #6, #14, #25, #29, #30, #31; Bug #16/#17 (kernel ready); #22; partial fix for #9 via skill examples.
+
+**Next-up (the prompt's UPDATED PRIORITY block ranks them):** #23 + #24 (bulk-delete operator filters + status counts), #10 (reprocess for backfill), #9 (defense-in-depth boundary coercion), #16/#17 finishing skill update, `--include-related` reverse relationships, then the smaller Bug #20/#21/#11/#12/#13/#5/#15/#19 cleanup.
 
 ---
 
