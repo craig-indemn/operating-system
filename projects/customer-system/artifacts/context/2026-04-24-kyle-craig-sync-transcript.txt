@@ -1,0 +1,1345 @@
+﻿📝 Notes
+Apr 24, 2026
+Kyle - Craig
+Invited Craig Certo Kyle Geoghan
+Attachments Kyle - Craig
+Meeting records Transcript Recording 
+
+
+
+
+Summary
+Meeting discussions focused on automating sales workflows and refining team management and project alignment strategies.
+
+Automated Sales Workflows
+The team aligned on automating follow-up emails via the operating system to increase efficiency. They prioritized creating sales dashboards for tracking customer value and next steps.
+
+Team and Roadmap Alignment
+Leadership emphasized formalizing roles and roadmaps to improve implementation. They mandated structured project frameworks for team members to ensure all contributions remain business-critical.
+
+Platform Development Status
+Development on platform components remains ongoing, with current focus on observatory integration and reporting. The primary goal is achieving high-leverage outcomes through improved data visibility.
+
+
+Rate this Summary: Helpful or Not Helpful
+
+
+
+
+Decisions
+We've updated the Decisions section using your feedback.
+Let us know what you think: Helpful or Not Helpful
+
+
+ALIGNED
+* OS-generated meeting output deployment The team will socialize the OS-generated meeting outputs as a V0 version, aiming to deploy this process for every customer interaction.
+* Automatic AI data feed cessation The automatic AI data feed from Kyle to Craig will be discontinued, with Craig requesting specific data only when needed to prevent information overload.
+* Minimalist best-practice dashboard development The team will begin building dashboards using a minimal set of best-practice data to visualize sales pipeline status and customer success paths.
+* Implementation and strategy role definitions Ganesha will lead implementation and playbook development, while Craig and Kyle focus on higher-level product strategy and process engineering.
+* AI associate development strategy established The team will prioritize having Peter and Kai develop AI associates using current testing and evaluation tools as a high-leverage strategy.
+* Ranking email integration rejected The team decided against integrating email inbox features for the 'Ranking' client because it is not cost-effective for the current revenue model.
+* Scheduled usage reporting implemented The team will implement scheduled daily or weekly observatory usage reports to ensure data visibility for sales and success tracking.
+* Standardized project proposal process adopted The team adopted a mandatory structured framework for all of Kai's project proposals, requiring submission through Kyle for review before execution.
+
+
+
+
+Next steps
+* [Craig Certo] Share Plugin: Send the external computer plugin details to Kyle Geoghan.
+* [Kyle Geoghan] Update Cloud Code: Look into updating the cloud code environment.
+* [Craig Certo] Share Email Sample: Send the generated email draft sample and the traced journey information to Kyle Geoghan for feedback.
+* [Craig Certo] Check API: Check Apollo API in the Command Line Interface to enable an anyone-can-view link for meeting recordings.
+* [Craig Certo] Build Dashboard V0: Develop a beta V0 dashboard or list view showing the sales pipeline and customer opportunities. Start hydrating the dashboard with real pipeline data.
+* [Kyle Geoghan] Forward Resources: Forward enterprise proposal resources sent to Naj Moon to Craig Certo.
+* [Kyle Geoghan] Discuss Team Planning: Talk to Cam regarding Kai's status and team building plans.
+* [Peter, Kai] Develop Associates: Start developing AI associates; use testing and evaluation process on current customer associates immediately.
+* [Craig Certo] Fix Observatory: Repair the broken reporting table identified by Jonathan in the observatory.
+* [Craig Certo] Schedule Reports: Hook up the system to automatically send daily or weekly usage reports to Kyle.
+* [Craig Certo] Communicate Proposal: Tell Kai all manager proposal communications must go through Kyle.
+* [The group] Document Learnings: Document all operational lessons learned during iteration of the operating system.
+
+
+
+
+Details
+* Initial Meeting Check-in and Cloud Code Discussion: Craig Certo and Kyle Geoghan began with a positive check-in following Kyle Geoghan's good pitch to Edwin at Core Innovation, a potential lead for seed and Series A checks. Kyle Geoghan then mentioned drafting a follow-up email before diving into their meeting topics. They discussed Cloud Code performance, leading to Craig Certo suggesting a plugin to track token usage and remaining context, as increased chatting can slow down performance (00:00:21).
+* Cloud Code Context Visualization: Craig Certo visually shared their minimalistic Cloud Code setup in their VS Code environment, which they use primarily for code-based development (00:03:33) (00:06:09). They explained that a plugin, used in other focused sessions, provides detailed metrics on token usage, remaining context, and message processing times (00:05:17). This helps manage context, particularly in focused sessions (00:06:09).
+* Drafting Post-Meeting Emails: The main topic of conversation focused on developing a system to automatically draft follow-up emails after customer meetings, summarizing the discussion, defining next steps, and incorporating context about the journey stage (00:06:09). Craig Certo explained that the generated artifact (like a draft email) should change based on the customer's stage in the sales funnel. Craig Certo developed an email sample based on a previous meeting to trace it through their newly designed operating system (00:07:15).
+* GIC Launch Metrics and Costs: Kyle Geoghan asked about the GIC (insurance company) launch, to which Craig Certo reported success, noting they had processed roughly 500 emails total and entered about 100 into the AMS over two days (00:08:25). Craig Certo provided an estimate of the operational costs for the Windows application and Gemini usage, noting it is minimal due to the use of Google Cloud free credits (00:09:33). They estimated the total monthly cost would be less than $100 at scale (00:10:26).
+* Review of Generated Follow-Up Email: Craig Certo presented the system-generated follow-up email, which Kyle Geoghan thought was good but slightly too long. Kyle Geoghan raised the request for including the meeting recording, which Craig Certo confirmed was feasible since the overview, transcript, and recording links are all stored in the same place in Drive. Kyle Geoghan suggested checking if Apollo’s API enables creating an "anyone can view" link for the recording to streamline sharing (00:11:23).
+* Internal Socialization of Automated Follow-Ups: Kyle Geoghan expressed that the automated email generation is valuable and should be done almost automatically, recommending socializing the output with the team, emphasizing that everything is a 'v0'. They agreed that trying to ship this feature to the whole team for every meeting would be beneficial as it provides immediate evidence of the operating system's capabilities and value (00:12:14).
+* Holistic Sales Pipeline and Data Model: Craig Certo presented their holistic view of the sales pipeline, structuring it with stages leading up to the final proposal and negotiation (00:13:14). They defined a proposal as an accumulation of identified opportunities, signals, and solutions, noting that at every stage, more information is gathered to fill out the proposal. Customer interactions are designated as 'touch points' from which signals, opportunities, commitments, decisions, and tasks can be extracted (00:13:57).
+* Data Extraction and Playbook Integration: Craig Certo demonstrated how the system extracts specific information, such as opportunities and commitments, from a meeting transcript. For instance, a commitment to send notes and a commitment to scrape a website were successfully extracted (00:15:20). Kyle Geoghan described how this extracted data would enable the professional persistent AI to notify team members like Peter and Ganesha about next steps, such as scraping the website and reviewing the discovery before sharing it with the customer (00:16:11).
+* Sales Pipeline Stages and Qualification: Craig Certo outlined the sales stages: Contact, Discovery, Demo, Proposal, and Negotiation, detailing the information gathered at each stage to inform the proposal (00:16:11). Kyle Geoghan suggested a need for a more detailed version of the stages (perhaps 12 instead of 6) to account for different prospect archetypes and necessary sub-discovery steps (00:18:21). Qualification is built into the Discovery and Demo stages, involving questions that determine the customer's valuation and interest in AI implementation (00:19:22).
+* Internal Communications and Feedback Loop: Kyle Geoghan acknowledged that the technical data sent by their AI can be confusing to Craig Certo, confirming that their objective is to understand what outcomes Craig Certo wants to see (00:23:03). Kyle Geoghan will stop proactively sending AI-generated data but noted that sharing data from other calls not involving Craig Certo is intended to be helpful (00:24:41). They agreed that daily discussions continue to be valuable for iteration and alignment (00:23:03) (00:25:23).
+* Need for Sales Dashboards and Minimum Viable Product (V0) Approach: Kyle Geoghan emphasized the need for better data visualization for the sales team, suggesting the immediate creation of dashboards featuring minimum best-practice data (00:25:23). Key data points should include customer value, success path, days until the next step, and the next action required (00:26:16). Both agreed on prioritizing a beta V0 release and continuing to iterate, prioritizing surface area coverage over initial quality (00:31:59).
+* Integrating Customer Origin and Tracking: Kyle Geoghan stressed the importance of tracking customer introductions, citing a specific example from Pat Klene at 101 Western Labs, as this influences the value and closing probability of a customer (00:27:10). They discussed adding a step to the customer process to track the source of the introduction (00:28:06).
+* Role of the Operating System in Sales Enablement: Craig Certo acknowledged the potential of the visual sales pipeline view, showing all past meetings, extracted information, and next steps, which could be implemented for every call (00:28:06). The operating system’s capability for adding a voice agent to interact with all entities simplifies the process of updating data, such as a next step (00:28:57).
+* Team Concerns Regarding Kai: Kyle Geoghan shared concerns about Kai, describing them as brilliant but lacking the professionalism and discipline needed for the role (00:34:42). They expressed worry that Kai's approach—which often involves non-work related talk and building components without prior planning—could pull the team backward (00:35:45). Craig Certo offered to act as an intermediary manager, feeling they could help translate Kai's technical ideas into achievable objectives (00:36:48).
+* Management and Team Alignment Challenges: Kyle Geoghan declined the offer for Craig Certo to manage Kai due to the complexity of the task and Craig Certo’s limited management experience, noting that Kai had been given multiple project opportunities but failed to produce a project plan (00:36:48). They also noted that while George has valuable input, George's lack of insurance experience and product technical intuition means that strategic product decisions must be made by Craig Certo and Kyle Geoghan (00:40:00). Kyle Geoghan stressed the importance of aligning the team's efforts as the company moves out of the exploration phase (00:40:52).
+* Ganesha’s Role and Product Roadmap: Kyle Geoghan identified Ganesha as a critical resource for scaling implementation, but noted they need structured guardrails and a clear product roadmap (00:41:59). They proposed that Craig Certo and Kyle Geoghan should define the product roadmap and features, which Ganesha could then study and go deep on for development (00:42:54). Both agreed on the imperative need to formalize roles and decision-making transparency across the board (00:43:59).
+* Defining Team Roles and Strategic Focus: Kyle Geoghan emphasized that due to the small team size, every team member must be flexible, acknowledging the high workload for executive tasks like fundraising and planning cycle retrospectives (00:44:55). They agreed that Ganesha should lead implementation using a clear playbook, while Craig Certo and Kyle Geoghan focus on building the higher-level product and process (00:48:46). Craig Certo highlighted that maintenance and customer implementations are the team's current focus, while strategic product development needs more focused attention from leadership (00:56:19).
+* Project Ownership and Success Definition: The conversation addressed the challenge of defining success and taking end-to-end ownership of tasks within the startup environment, contrasting it with the more defined ticket-based work often found in software development (00:58:17). Kyle Geoghan requested Craig Certo's assistance in helping other team members adopt their development mindset, which is key to translating Kyle Geoghan's ideas into a practical roadmap (00:59:07).
+* Platform Completion and Team Integration: They discussed the progress on testing, evaluation, and the observatory, estimating that these platform pieces are about 60% complete, with evaluations potentially closer to 75% complete (00:59:07). The immediate high-leverage task is integrating Peter and Kai into developing AI associates and using the current testing and evaluation features on customer associates to finish these platform components (01:00:23).
+* Observatory Status and Integration: Craig Certo agreed that the observatory is built out but requires better integration and usability to meet the needs of the team. They suggested that ongoing work will clarify what users need to see from the observatory, potentially leading to its integration into existing workflows (01:00:23).
+* Sales Reporting and Pricing Strategy: Kyle Geoghan emphasized the need for reporting on sales and success related to customer calls and activities (01:00:23). The discussion on pricing for ranking insurance services highlighted the need to choose where to spend energy, noting that small, one-person businesses with low revenue might not be worth the investment for complex services like hooking up an entire email inbox (01:01:23).
+* Customer Data Access and Reporting: Kyle Geoghan expressed a need for readily available data on customer activity, such as daily calls and web chats, to inform critical business decisions like pricing. Craig Certo agreed that the operating system should provide all necessary customer information at their fingertips for better communication and decision-making (01:03:19).
+* Observatory Reporting and Fixes: Kyle Geoghan requested specific reports from the observatory showing daily, seven-day, and thirty-day trailing data for ranking, which would improve their efficiency. Craig Certo confirmed that a similar table exists in the observatory but needs fixing following a report from Jonathan, and offered to set up a daily or weekly scheduled usage report (01:04:20).
+* Managing Team Member Kai's Work: Craig Certo sought advice on how to respond to Kai's manager proposal, and Kyle Geoghan instructed that Kai must work through them, though collaboration on a project basis is acceptable (01:05:02). Kyle Geoghan expressed frustration with Kai's lack of structure and communication, providing a framework for all projects that includes defining the business pain, audience, scope, duration, and check-in cadence, stressing that Kai's work must be a net positive for the business (01:05:59).
+* Roadmap Focus and Future Iterations: The conversation concluded with a focus on defining critical work for the roadmap, including continued daily iteration on the operating system. Key elements to nail down include creating dashboards for the sales team, developing a success playbook, and growing the operating system as a data model, while also documenting all learned information (01:08:27).
+* Digital Workforce and Operating System Capabilities: Kyle Geoghan mentioned the digital workforce as a moonshot idea, including potentially delivering an internal version of cloud code, which could eventually be integrated into the platform and offered to customers (01:09:45). Craig Certo explained that the operating system already allows for defining roles, such as a Ganesha or customer associate, that can perform everything the user can do and respond to questions via cloud code (01:10:50).
+
+
+
+
+You should review Gemini's notes to make sure they're accurate. Get tips and learn how Gemini takes notes
+How is the quality of these specific notes? Take a short survey to let us know your feedback, including how helpful the notes were for your needs.
+📖 Transcript
+Apr 24, 2026
+Kyle - Craig - Transcript
+00:00:21
+
+
+Craig Certo: Hey,
+Kyle Geoghan: afternoon.
+Craig Certo: good afternoon. How we doing?
+Kyle Geoghan: Really good. It was a good pitch,
+Craig Certo: Nice. Who was it
+Kyle Geoghan: Edwin at Core Innovation.
+Craig Certo: to?
+Kyle Geoghan: They they do good seed in series 8 checks. They would be a perfect lead for us. Yeah,
+Craig Certo: Awesome.
+Kyle Geoghan: I'm just um drafting the followup. So, I just want to finish that before we dive in.
+Craig Certo: Yeah.
+Kyle Geoghan: Okay. How was your day? feel like cloud code could be faster on this kind of stuff.
+Craig Certo: Yeah.
+Kyle Geoghan: You got a what' you
+Craig Certo: How much context are you using in the chat?
+Kyle Geoghan: say?
+Craig Certo: How much context have you used in that chat so far?
+Kyle Geoghan: I don't have a clue.
+Craig Certo: Oh, you should get one of those. Uh they have some banners that you can download like a plugin. tells you exactly in your chat how many tokens you've used and you know how much context you have left.
+
+
+
+
+00:03:33
+
+
+Kyle Geoghan: Yeah.
+Craig Certo: Super helpful. But the more you chat with it, the slower it gets because it's passing all your previous messages every
+Kyle Geoghan: You got to show me what yours looks like sometime
+Craig Certo: time. Well, right now it I can show you.
+Kyle Geoghan: soon.
+Craig Certo: I'm actually just um I've been going minimalistic recently. Right now I'm just on my laptop.
+Kyle Geoghan: Hold on a moment. Okay, I shifted. Okay, go ahead.
+Craig Certo: now. I'm just showing you what mine looks like.
+Kyle Geoghan: So, you've got the bar there. That's the
+Craig Certo: Yeah. You see how it says like And there's actually cleaner ones too,
+Kyle Geoghan: context.
+Craig Certo: like people have made their own. This is what ships out of the box. Have you When was the last time you updated your cloud code? That may be the reason.
+Kyle Geoghan: Yeah. I don't
+Craig Certo: Yeah. Well, they got some new models out,
+Kyle Geoghan: know.
+Craig Certo: too.
+
+
+
+
+00:05:17
+
+
+Craig Certo: So, I don't think they uh I don't think you can use it until you upgrade, but I'm not sure.
+Kyle Geoghan: You have to They don't prompt you to do it. You have to just go do it.
+Craig Certo: Well, normally it auto updates.
+Kyle Geoghan: Yeah,
+Craig Certo: You may that turned off.
+Kyle Geoghan: I'll look into
+Craig Certo: Okay. Yeah. Well, I'll send you a plugin too on my other computer that I use and it shows you like
+Kyle Geoghan: it.
+Craig Certo: literally up to the detail about like how many chats you've had with it in this particular session, you know, how many tokens you've used, how much context you have remaining, and then it can give you averages of like how long each message has taken, like certain, you know, stats like that.
+Kyle Geoghan: How come you don't have it here?
+Craig Certo: This is um like when I am doing more codebased development, I just rip it in here because this is my VS Code environment. So oftent times I'm like having to open up files and stuff like that.
+
+
+
+
+00:06:09
+
+
+Kyle Geoghan: Okay.
+Craig Certo: So if I have it here, I can like the files appear as if they're terminal windows, which is just helpful to have all in one place.
+Kyle Geoghan: H
+Craig Certo: If I'm doing like um if I'm doing like one or two sessions at a time sometimes or if I'm doing like one focus session, I'll have like the plug-in enabled so then I can see just for that chat like I care more about managing the context and stuff like that.
+Kyle Geoghan: H
+Craig Certo: Yeah. Cool. Well, um,
+Kyle Geoghan: interesting.
+Craig Certo: yeah, yesterday when we spoke basically, so we, it was in the context of the meetings that you had the day prior, right?
+Kyle Geoghan: Mhm.
+Craig Certo: Or even earlier that day. and you had wanted to have a system that can basically create a draft of an email after the meeting and it basically summarizes or like it would be as if you were going to send that email and it needs to know the context about
+Kyle Geoghan: Yeah.
+Craig Certo: where we are in the stage of our journey.
+
+
+
+
+00:07:15
+
+
+Craig Certo: um and have context about like what the next step might be and have all
+Kyle Geoghan: Mhm.
+Craig Certo: the context about the meeting transcript um you know action items things like that. So what I did was I took that one example of the meeting that I wasn't in because I was in the other one and just thought let me trace
+Kyle Geoghan: Yeah.
+Craig Certo: this through the operating system the way that I've designed it and I added this feature. Um, so depending on what stage you are in like the stale the sales funnel, I guess you could say, the artifact that would be generated after a meeting with a customer or after some action um may change just depending on what it is.
+Kyle Geoghan: Yeah.
+Craig Certo: The final one being the proposal, right? So it all it follows this kind of like so I'm gonna I'm gonna share you with you.
+Kyle Geoghan: Yeah.
+Craig Certo: Um but basically what I did was I I traced through the whole journey and created a email um sample that you can look at. So we can see like where basically our associate got all this information to inform this email and you can see it from beginning to end like how this what data is being used for it
+
+
+
+
+00:08:25
+
+
+Kyle Geoghan: Yeah.
+Craig Certo: and then I'm looking to get your feedback on just like you know we can rip it to shreds and then make
+Kyle Geoghan: Cool.
+Craig Certo: improvements.
+Kyle Geoghan: How did the GIC launch
+Craig Certo: Good.
+Kyle Geoghan: go?
+Craig Certo: Uh he didn't even contact me today. So, I'm happy about that.
+Kyle Geoghan: And do you have the data for like what's going through it and
+Craig Certo: Yeah, we're looking at like roughly 500 emails processed total.
+Kyle Geoghan: things?
+Craig Certo: Um, roughly a hundred of which have been entered into the AMS.
+Kyle Geoghan: Okay. Today,
+Craig Certo: Um,
+Kyle Geoghan: that's just today.
+Craig Certo: I mean over the course of the two days. And then today was a little lighter than yesterday.
+Kyle Geoghan: Yeah.
+Craig Certo: Um, which I guess it's Friday, so that makes sense,
+Kyle Geoghan: And is this just what we promised him basically or based on what you think we
+Craig Certo: but
+Kyle Geoghan: promised him in that contract he signed is like just pushing some emails into the into the UNISF system,
+Craig Certo: yeah, I mean, it's a specific situation, right?
+
+
+
+
+00:09:33
+
+
+Craig Certo: It's just the quote inbox right now,
+Kyle Geoghan: right?
+Craig Certo: and it's it's doing a workflow for the quote inbox, but there's endorsement inbox that we also have access to now. And there's some other folders in the quote inbox that he kind of wants to also do the reverse where USLI sends
+Kyle Geoghan: Cool.
+Craig Certo: a quote and he wants to just forward that to the agent and then log that in UNISOT as well. So for him he was like is that done? And I was like, whoa, let's get this first one done, man. Like, I'll do that after,
+Kyle Geoghan: Yeah, I got to charge him more money.
+Craig Certo: but
+Kyle Geoghan: Do you know what the costs are at all like for what we're doing in terms of computer or anything else?
+Craig Certo: oh, uh, very minimal. Um,
+Kyle Geoghan: Okay.
+Craig Certo: yeah, it costs about $10 a month for the Windows server because it's a Windows application. So, I'm running it there.
+Kyle Geoghan: Okay.
+Craig Certo: And then I'm actually using Gemini for every agent processing which we have
+
+
+
+
+00:10:26
+
+
+Kyle Geoghan: Mhm.
+Craig Certo: those Google cloud like 200 grand or something in free credit there.
+Kyle Geoghan: Credit.
+Craig Certo: So trying to maximize that.
+Kyle Geoghan: Okay.
+Craig Certo: Um so yeah it's really pretty much
+Kyle Geoghan: Okay.
+Craig Certo: nothing.
+Kyle Geoghan: But do you think for monthly maybe it's $10 at scale or any idea?
+Craig Certo: Yeah at scale. Um and yeah I'd say it's less than $100 a month.
+Kyle Geoghan: Yeah.
+Craig Certo: I'd say like total um Yeah.
+Kyle Geoghan: Okay, good to know.
+Craig Certo: Yeah.
+Kyle Geoghan: Thank you.
+Craig Certo: Yeah. The nice thing is now I didn't realize we had the free credits for Gemini. I guess that was last week Drew mentioned that.
+Kyle Geoghan: Mhm.
+Craig Certo: So I've been trying to use Gemini for as much as I can.
+Kyle Geoghan: Cool.
+Craig Certo: Yeah.
+Kyle Geoghan: Nice.
+Craig Certo: Oh, sorry. I'm sharing the wrong thing here. So, first I'm starting out here with the email that was generated. I want to read it. Um, and I looked at the email that you sent and it's not exactly the same,
+
+
+
+
+00:11:23
+
+
+Kyle Geoghan: Well, no. I sent a bunch of attachments.
+Craig Certo: but
+Kyle Geoghan: I think I probably sent too many attachments, but I just it was easy for me to do it, so I did it. Um, this looks good. I'd say like right off the bat, maybe it's a little too long,
+Craig Certo: yeah.
+Kyle Geoghan: but it's pretty close to what it should be. Um, what's interesting is they asked for the recording and I would like to be able to default share recordings with customers. Um, but that's a not something we need to get to right
+Craig Certo: Well,
+Kyle Geoghan: away.
+Craig Certo: actually this has the um links actually to like the overview, the transcript, and the recording. They're all in the same place in Drive.
+Kyle Geoghan: Okay.
+Craig Certo: So, theoretically, I could add that here. I don't have to think about how to give them access to it maybe,
+Kyle Geoghan: Yeah, I wouldn't worry about it.
+Craig Certo: but
+Kyle Geoghan: I would check once in the CLI if Apollo's API enables you to have a anyone can view link to the recording.
+
+
+
+
+00:12:14
+
+
+Craig Certo: yeah.
+Kyle Geoghan: You got to go into Apollo, click share with everybody, copy the link, and put in the email.
+Craig Certo: Yeah, actually Google has the same thing, so I think that should be possible to do.
+Kyle Geoghan: One thing I'll say is I think this is um something we should be doing
+Craig Certo: Yeah,
+Kyle Geoghan: but like almost automatically doing it but not trying to ship too much of it. Just trying to socialize it. Does that make sense?
+Craig Certo: with the team.
+Kyle Geoghan: Because it's like with the team and with every every interaction, every meeting it's like well here's what you know the operating system generated. Everything's a vzero. And I mean, we could make it so that it's like somebody decides to press send, they send it, it's like, "Oh, there's evidence that one works." Um, uh, I love this, by the way. I'm just saying that,
+Craig Certo: Yeah.
+Kyle Geoghan: there's a lot of pieces of this project. And, um, I definitely want us to keep building the operating system data model, and this is an offshoot of it.
+
+
+
+
+00:13:14
+
+
+Kyle Geoghan: It's a key offshoot, but it's one of them, right?
+Craig Certo: Yeah. Yeah. Yeah. So, yeah.
+Kyle Geoghan: sense.
+Craig Certo: I'm glad you like it. Honestly, let me send this to you, too. And like, if you just want to talk at it and tell me everything that's wrong or right with it, that would just be helpful. We don't need to do it right now.
+Kyle Geoghan: Okay. Love this. Look at this extra.
+Craig Certo: Um,
+Kyle Geoghan: This is awesome. So, this is worth, you know, trying to do on every call and getting in front of everybody. This is super cool.
+Craig Certo: yeah. So, I'll just walk you through what I have here. So I'm thinking about this holistically about the whole sales pipeline where the final
+Kyle Geoghan: Yeah.
+Craig Certo: st well the final stage isn't proposal it's I guess I'm calling it negotiation which could be like iterations on the proposal after feedback but the let's just say for example proposal is the last
+
+
+
+
+00:13:57
+
+
+Kyle Geoghan: Mhm.
+Craig Certo: step the proposal itself is an accumulation of opportunities we've identified you know signals that we've gotten from them um associates that or opportunities between problems they're having and associates that we can solve. That's what an opportunity is here. And basically,
+Kyle Geoghan: Mhm.
+Craig Certo: you can break down the proposal, I'm saying, into distinct entities. And as we go through this sales process, at every stage,
+Kyle Geoghan: Sure.
+Craig Certo: we're kind of like filling out more and more of the proposal, as we learn more about them, about their problems, and then we analyze internally what we can offer to them.
+Kyle Geoghan: Mhm.
+Craig Certo: And so the first thing is obviously getting email data, ingesting or getting the meeting data I mean and then ingesting that into the system and then I call it a touch point which is any interaction with the customer
+Kyle Geoghan: Yeah.
+Craig Certo: where signals, opportunities, commitments, decisions and tasks are all things that can be extracted from this. And then depending on what stage you're in in the process, like if you're in discovery phase, you might be sending up a a follow-up email like the one that we just
+
+
+
+
+00:15:20
+
+
+Kyle Geoghan: Yeah. Or generating a,
+Craig Certo: saw,
+Kyle Geoghan: you know, demo or something like that. I think I did actually say that I would scrape their
+Craig Certo: right?
+Kyle Geoghan: website.
+Craig Certo: And so it actually So you can see here, this is um from the meeting that we that you had. It's everything that was extracted.
+Kyle Geoghan: Yep.
+Craig Certo: So a lot of these are opportunities that we identified like associates we could build for them. One of them was the commitment where to send notes or other stuff that agencies are
+Kyle Geoghan: Mhm.
+Craig Certo: doing and that's why you sent those PDFs, right?
+Kyle Geoghan: Yep.
+Craig Certo: And then here you said we could scrape it and build uh show you the first version.
+Kyle Geoghan: Exactly.
+Craig Certo: So this is when you promised that kind of thing and then they made a commitment to
+Kyle Geoghan: Yeah.
+Craig Certo: us. um to like set up a demo meeting or a walkthrough.
+Kyle Geoghan: Walker did. So those two, that's where our professionally persistent AI can pick it up and say,
+
+
+
+
+00:16:11
+
+
+Craig Certo: Yeah.
+Kyle Geoghan: "Oh, we've got a request and a customer said yes." Peter and maybe Ganesha have to be notified. Peter's got to go scrape the website and build the discovery and Ganesha has got to review it and say yes, it's ready to go to the customer and then it goes to me to share.
+Craig Certo: I like it.
+Kyle Geoghan: Yeah.
+Craig Certo: Yeah, that's definitely how this could connect to like a implementation playbook or just like you know team collaboration. So I just wanted to because you had mentioned that you wanted to
+Kyle Geoghan: Yeah.
+Craig Certo: um essentially define the playbook and I know that we're going to go over the historical data to do a lot of that. So I'm just prerec.
+Kyle Geoghan: Yeah.
+Craig Certo: I know I still have to do that. So I haven't done the research there.
+Kyle Geoghan: Sure.
+Craig Certo: But generally speaking, the way I'm thinking about it is that you start with contact stage, get into discovery, demo, then we build the proposal, do a negotiation, then we're done. And at each stage here is like different information we're kind of looking to gather from them.
+
+
+
+
+00:17:17
+
+
+Craig Certo: And the contact stage, it's like who are you?
+Kyle Geoghan: Yep.
+Craig Certo: Who are the people we're going to be working with? like and just setting up like the basic stuff in the system and then discovery. We understand their operations, what opportunities, any systems they use, any contacts they have and we start building the proposal based on that information. Um then in the demo stage,
+Kyle Geoghan: Mhm.
+Craig Certo: we're kind of validating our assumptions about both their problems and the opportunities that we have and um we can just update the information. And at this point, like we're probably doing internal analysis as well, maybe even a prototype that we build for a demo on one of those associates that we could deliver. So by the time we're done with the demo, we probably already have like a phase one, two, and three pretty solidified in our mind. And so at that point, we're ready to send the proposal and then revise it if needed. So, all of these are like entities in the the OS that I already have created.
+
+
+
+
+00:18:21
+
+
+Craig Certo: It's just a matter of like tracing them kind of through with you like we just did with this one.
+Kyle Geoghan: Yeah,
+Craig Certo: And um
+Kyle Geoghan: this works well. One thing I'll say is I like that we've got only six there,
+Craig Certo: Yeah.
+Kyle Geoghan: but probably we'll want to have 12 that might be like um multi select in a way where you know is discovery complete and there might be subdiscovery for different archetypes. So this is a independent agent and that comes back to uh building up the data model where we want to put a value on each prospect and opportunity and it'll go up and down based on what we learn and based on the fundamentals of the business. So in this case it's a pretty big agency. They've got 35 employees. Um so but it's just an agency. They don't have any specialties. They're not really eager to generate revenue with AI. So, it's not like a big opportunity for us. It could become one if we sell them on like, well, you really got to, you know, spend 80k this year to to get somewhere, but it's very unlikely.
+
+
+
+
+00:19:22
+
+
+Kyle Geoghan: So, it's like, okay, we think this will be 10 to $30,000 a year. Um, so it's in this ICP group with this valuation, right?
+Craig Certo: interesting.
+Kyle Geoghan: So, all I'm saying is that uh I'm saying a few things,
+Craig Certo: Okay.
+Kyle Geoghan: but the stage here, we've got six of them. There's the, you know, in between discovery and demo, you got to build the prototype and then share it with the customer and then,
+Craig Certo: Yeah.
+Kyle Geoghan: you know, has the customer responded? Uh, you know, have we had a second or a third call? There's, um, we'll need another version of stage. We'll call it something different that's got more detail.
+Craig Certo: Yeah.
+Kyle Geoghan: That makes sense.
+Craig Certo: Yeah. Yeah. Okay. I see what you're saying. All right. I
+Kyle Geoghan: But I think I think what we'll do is maybe we'll build nodes off of each of those.
+Craig Certo: agree.
+Kyle Geoghan: Maybe whatever is easier. Either we do that or it's like a separate data column more of a you could get through discovery and demo and qualification in one call and that would be a really good sign for a customer, right?
+
+
+
+
+00:20:25
+
+
+Kyle Geoghan: And so we don't have qualification here. Um but it's built into discovery and really demo discovery and demo you do
+Craig Certo: Mhm.
+Kyle Geoghan: qualification. a part of the playbook is going to be here's all the things you need to do to fully qualify somebody and you know maybe most often you don't fully qualify them but if you get 80% is much better than 40% right
+Craig Certo: And what does that determine then? Just like how you value
+Kyle Geoghan: yes so I only maybe 60% qualified the insurance agency
+Craig Certo: um
+Kyle Geoghan: and sometimes because it was a discovery call it's not the place to do full disco full qualification because I don't know how much they're willing to spend with us yet. That's a big qualification, right? But it's not the time to ask. You show them a prototype, they get excited, they go, okay, we want to do this, this, and this. And then I can start to say, well, okay, what's your budget and what's your timeline? And so budget and timeline are late qualification questions, but do you want to put AI in front of your customers?
+
+
+
+
+00:21:21
+
+
+Kyle Geoghan: That's an early qualification question. They basically answered that yes, but it like with a mild response. You know, it's not like, hey, we're looking to do this. It's, yeah, I think we would do that. Um, but they also said they some customers are willing to start by putting it in front of their team that answers phone calls and they didn't. They're they would have it answer after hours or if it's a mis call. And so that's fine. It's a part of our discovery and qualification. But if they said we'll never let a customer talk to AI, okay, now they basically disqualified themselves from being a good customer for us, right?
+Craig Certo: Yeah. And are you so are you thinking about this from a just from a um chat like a what's it called?
+Kyle Geoghan: No, I mean we could sell we could sell them email,
+Craig Certo: Format whatever you call it doormat. Okay.
+Kyle Geoghan: but if they say we don't want AI to ever talk to our customers, we're only selling them email automation.
+
+
+
+
+00:22:18
+
+
+Kyle Geoghan: It puts them at the bottom of the list for priority customers because where our whole business is land and expand. And if we're just an email workflow,
+Craig Certo: Yeah.
+Kyle Geoghan: everybody can do that and we're not differentiated and it doesn't help with our vision for where the world's going. That's qualification, right?
+Craig Certo: Okay.
+Kyle Geoghan: That's us being really uh being more of a stickler with who was a good customer for us. And you know, you could be more or less that at our stage and probably were less that,
+Craig Certo: Yeah.
+Kyle Geoghan: but still,
+Craig Certo: Yeah. Yeah,
+Kyle Geoghan: you know.
+Craig Certo: that makes sense. Yeah. Thanks for explaining that to me. It's actually interesting.
+Kyle Geoghan: Yeah.
+Craig Certo: I'm thinking about, you know, from a sales point of view, like you you actually are like thinking about this like that and you're having conversations with people.
+Kyle Geoghan: Yeah,
+Craig Certo: It's pretty
+Kyle Geoghan: so many dynamics. And it's like they're an insurance agency,
+Craig Certo: interesting.
+
+
+
+
+00:23:03
+
+
+Kyle Geoghan: so I wouldn't try to sell in the email workflows because I can't make a lot of money from him. But with JC, we can make tens of thousands of dollars just doing his email automations, right? Because he's a big MGA wholesaler carrier,
+Craig Certo: Yeah.
+Kyle Geoghan: right?
+Craig Certo: Okay.
+Kyle Geoghan: But an agency is not the same.
+Craig Certo: Yeah. Okay. No, that makes sense. So, I think we should probably put and I was going to mention to you um kind of an aside here. So, I think first of all, it's great when we talk like this every day and I get the transcript and I can use
+Kyle Geoghan: Yeah.
+Craig Certo: that, digest it and like, you know, we can iterate on this stuff. Um,
+Kyle Geoghan: Yep.
+Craig Certo: I just had a comment that I don't know honestly if when you generate that stuff after the meeting, it sometimes makes it more confusing to me because it's a lot of it's like
+Kyle Geoghan: Okay.
+Craig Certo: it's almost like too technical in a way where like
+
+
+
+
+00:23:54
+
+
+Kyle Geoghan: Yeah,
+Craig Certo: you're
+Kyle Geoghan: I'm trying to figure out how my AI can feed your AI. And I agree.
+Craig Certo: Yeah.
+Kyle Geoghan: I'm worried about it. Every time I send it, I go, "This might throw him
+Craig Certo: Well,
+Kyle Geoghan: off.
+Craig Certo: I was so the reason I made the comment is because I think the reason why us talking about it and also me asking questions is good is because I'm getting to like what are you trying to accomplish?
+Kyle Geoghan: Yeah.
+Craig Certo: Like what is and how are you thinking about it in general? That's really all that matters. So I don't need detailed like you know here's all the data models or whatever like I just want to
+Kyle Geoghan: Yeah.
+Craig Certo: know what do you want to see next time basically like what outcomes do you want to see and if you can describe that cleanly which you do most of the time in the transcript anyway
+Kyle Geoghan: Yeah.
+Craig Certo: then I'll figure out how to get it
+Kyle Geoghan: Okay. Well,
+
+
+
+
+00:24:41
+
+
+Craig Certo: done.
+Kyle Geoghan: that's fine with me. I I can stop trying to get my AI to get you data.
+Craig Certo: Yeah.
+Kyle Geoghan: That's Well,
+Craig Certo: unless if it may be helpful sometimes. So, I'll ask for it if I need more stuff.
+Kyle Geoghan: the other thing is that I I've been asking Cam to do this forever and he doesn't know how to do it because he doesn't know exactly what we know about cloud code. It's like, ask me for what you need because I've got so much freaking data.
+Craig Certo: Yeah.
+Kyle Geoghan: And so you don't have well maybe you do but all the other calls I have that are not with you
+Craig Certo: Yeah.
+Kyle Geoghan: there's data in there that's worth you looking at right and so that's that's that's what I'm trying to do
+Craig Certo: Yeah.
+Kyle Geoghan: by shipping you cloud code
+Craig Certo: Yeah. No.
+Kyle Geoghan: s***.
+Craig Certo: Yeah. It's uh appreciated. It's better than not having it.
+Kyle Geoghan: Yeah. Well maybe not.
+Craig Certo: Sure.
+
+
+
+
+00:25:23
+
+
+Craig Certo: Well,
+Kyle Geoghan: You do have
+Craig Certo: it depends who you are, but at this point, I understand like,
+Kyle Geoghan: Yeah.
+Craig Certo: you know, I know how to use it. So,
+Kyle Geoghan: And I do think we should just be keep doing this every day because if it's it's going to be a real INDM
+Craig Certo: um
+Kyle Geoghan: operating system and I had a couple of internal calls today that were like there's more fuel for this helping internally, right? because you know one was a sales call was you know the pipeline review and Craig we just got to give the sales team a better way to look at the data and a better way to talk to it and update it and a better way uh to track it. So like I think what we need to do is if you can stand up things like this where you don't get bogged down by trying to make the first version perfect and you use best practices and cloud code to say well what the hell should a CRM do take the data you got and make a best guess.
+
+
+
+
+00:26:16
+
+
+Kyle Geoghan: So for this for example like I think one of the things we got to get to is let's start building dashboards with just a minimum amount of best practice data. In this case, it would be okay, what's the value of this customer? What do we think the success path is? And how many days do we go until the next step? And what is the next step? And the next step it's to ping Walker and say, "Hey, you never booked a call if he didn't." Or, you know, the professionally persistent associate looks every day and it sends me a message when when they did. And it's like, "Okay, great." And now the stage moves, right? Um, and so, you know, if every one of our sales guys has got 20 or 30 of these and I've got 200,
+Craig Certo: Yeah.
+Kyle Geoghan: the sooner we can get to that and start cycling through these, uh, the sooner we can be like a real machine in terms of the customer sales and success process.
+Craig Certo: Okay.
+
+
+
+
+00:27:10
+
+
+Craig Certo: No, that sounds great. I think this was my first trace through it and I'm glad that we're talking about it now and
+Kyle Geoghan: Yeah.
+Craig Certo: I think that's a good next step though because it's not much different than what I did to prepare for this meeting like so if I can just get that part of this working well
+Kyle Geoghan: Yeah.
+Craig Certo: where from and also the timeline like this was a simple example because it was only one meeting happened and then or one email happened before the meeting and then it's the meeting but obviously
+Kyle Geoghan: Well, yeah.
+Craig Certo: can get way more complicated than
+Kyle Geoghan: Well, and and we want to keep building on it. So,
+Craig Certo: that.
+Kyle Geoghan: another point that's really important, this customer came from a personal introduction from Pat Klene at 101 Western Labs. And we got to track that because um it it it increases the
+Craig Certo: Mhm.
+Kyle Geoghan: value and the chance of closing a customer and you want to know where they're coming from so that you invest correctly.
+
+
+
+
+00:28:06
+
+
+Kyle Geoghan: Um, and so there is a step before this where the intro came from Pat K client that we want to add here to the kind of customer process. Um,
+Craig Certo: Yeah.
+Kyle Geoghan: and then is this something where you feel like you're already got like I love what you've shown me here. Is this something we could do for every call
+Craig Certo: Well,
+Kyle Geoghan: essentially?
+Craig Certo: I was just thinking about that. This was just me generating something to show you visually, but I like the way it looks and I think it does capture a lot of the good information that someone might want to know. So, I can
+Kyle Geoghan: I think it's good enough to publish as a vzero and I think every call could have one and we could start to show it if you wanted to Cam and the other sales team
+Craig Certo: Yeah, you just kind of blew my mind honestly now that I'm thinking about it.
+Kyle Geoghan: members.
+Craig Certo: If you can look like if you can see like for one particular meeting like all the meetings you've had in the past with this customer,
+
+
+
+
+00:28:57
+
+
+Kyle Geoghan: Yep.
+Craig Certo: all the things that we've pulled from the meetings, where we're at and what the next steps are. Yeah, that's pretty good.
+Kyle Geoghan: So there's the detailed view and I think we'll have to figure out how to make it easy for the sales team to like give their data their thoughts on the next step kind of thing because there's going to be a lot of like okay it's good for me to see this but the next step isn't right and and I need to add data and so on. Um I think you should just start with like a pushto talk but that's my opinion.
+Craig Certo: Yeah. Yeah. Well, that dude, that's the best part about the operating system is like I can create an associate that has
+Kyle Geoghan: Um,
+Craig Certo: access to like all these entities and it's that easy. Like I can literally just I can put a voice agent that can interact with any of these things on the page. Um I can do that.
+Kyle Geoghan: so I think what we have here is V0ero on a meeting basis and maybe it's only V 0 for the demo stage,
+
+
+
+
+00:29:44
+
+
+Craig Certo: So
+Kyle Geoghan: but probably based on what you're saying, it's pretty close to Vzero for some other stage meetings. Right.
+Craig Certo: yeah, and I'll be continuing past this
+Kyle Geoghan: So I think the big thing for us is can we get to more of a
+Craig Certo: stage.
+Kyle Geoghan: dashboard and or you know spreadsheet list like view so we can start to have we can start to hydrate this with our actual pipeline and start to move them to the places they are so that I can give first me but the team can give more feedback on what to look at because what Cam wants to look at is all the potential um customers we can send a proposal to. Right? That's a dashboard and there's five or 10 columns in the data that we want to
+Craig Certo: Yeah.
+Kyle Geoghan: show that says when's the last contact and um you know who's the owner and what's our target to ship them a proposal, right?
+Craig Certo: Mhm.
+Kyle Geoghan: And that that kind of dashboard helps across the funnel. Um that that's just the the part I want us to get to soonest.
+
+
+
+
+00:30:55
+
+
+Craig Certo: Okay. Yeah, noted. That makes sense. And I'm just trying to visualize it like let's say for the
+Kyle Geoghan: You can.
+Craig Certo: um let's say for meetings, right? Let's keep it simple. I'm thinking just a table of all the meetings that we've had with first just the
+Kyle Geoghan: Mhm.
+Craig Certo: ability to say like literally just give it a stage and well I think I can figure a lot of that stuff out by building this with our real data. That's the thing
+Kyle Geoghan: Yeah. And I think it should be automatic and it's okay that it'll be wrong.
+Craig Certo: too.
+Kyle Geoghan: Like I think it's automatic. We try to pull in data and we could that's why you could start with my data, but I want to ask the whole team for their data because they're going to give you spreadsheets and then we'll have a version of it that allows them to update them, right? Um,
+Craig Certo: Yeah.
+Kyle Geoghan: and the challenge is going to be you want to show people dashboards and it's so hard to figure out what the right dashboards are and it's like are they static dashboards?
+
+
+
+
+00:31:59
+
+
+Kyle Geoghan: Are we going to let them move and filter? And I think you probably have ideas on that and I think we just have to publish to people.
+Craig Certo: Yeah,
+Kyle Geoghan: Um,
+Craig Certo: I found that you could think forever about what's the best way to show this information, but at the end of the day, like you quickly figure it out once you start using it on what s*** you need that isn't there.
+Kyle Geoghan: Yeah.
+Craig Certo: And so I think let's just let's go for a really beta vzero and
+Kyle Geoghan: Yep.
+Craig Certo: um yeah, we'll just continue to iterate on
+Kyle Geoghan: Cool. Yeah. And I think the more of the uh surface area we can get to V0 on,
+Craig Certo: it.
+Kyle Geoghan: the better. I really don't care if you feel like it's, you know, lower quality than what you can deliver or like if we feel like it's close to something that we need in this, we're going to learn more just by going to V0ero.
+Craig Certo: Yeah.
+Kyle Geoghan: And there's a lot of surface area.
+
+
+
+
+00:32:49
+
+
+Kyle Geoghan: So, if we can get to V 0 in a lot of places, we might just sunset some things and keep what we like. But we won't get to it unless we keep doing what we're doing on the iteration side.
+Craig Certo: Yeah, sounds good to me.
+Kyle Geoghan: Yeah. Cool. Awesome work, man.
+Craig Certo: Yeah, thanks. Um, this is Yeah, it's cool stuff. I'm excited about actually being able to like it's it's a win-win for me, man. I get to continue refining the operating system as I'm building this stuff. So,
+Kyle Geoghan: Yeah.
+Craig Certo: we're when we get to V1 of anything, it's we're going to be ripping. So,
+Kyle Geoghan: Whole company's excited about the NM operating
+Craig Certo: yeah. I mean,
+Kyle Geoghan: system.
+Craig Certo: I've talked to a lot of people about it and not just the operating system in general. I mean, it's been inspired by really everyone.
+Kyle Geoghan: Mhm.
+Craig Certo: like everyone has their own I feel like everyone has told me different things that all lead me to the same conclusion which is and I actually did want to talk to you about um Kai as well because it's related in my mind um
+
+
+
+
+00:33:42
+
+
+Kyle Geoghan: Sure.
+Craig Certo: and so in a moment we can get there if you want but or if you have time um but you know especially um George I think also has
+Kyle Geoghan: Yeah.
+Craig Certo: like working with Union General kind of sees how we can become more of like a systematic I don't know like we could be the underpinning of like insurance companies across the board like how that doesn't really exist in the market right now and everyone has problems that they're facing that could be solved by having something like that.
+Kyle Geoghan: Mhm.
+Craig Certo: So, it just makes a lot of sense, right? And I think we're um in alignment that it's going to be awesome. So,
+Kyle Geoghan: Yeah.
+Craig Certo: I'm excited about it.
+Kyle Geoghan: Good. Good. I'm excited,
+Craig Certo: Yeah.
+Kyle Geoghan: too.
+Craig Certo: Yeah. So, can we talk about Kai?
+Kyle Geoghan: Sure. Go ahead.
+Craig Certo: Well, curious like what your thoughts are. Um I talked to him this morning, so
+Kyle Geoghan: Okay,
+Craig Certo: Yeah.
+
+
+
+
+00:34:42
+
+
+Kyle Geoghan: my thoughts are that I really like him as a friend. I think he's brilliant. I wanted to take a bet on him as a, you know,
+Craig Certo: Sure.
+Kyle Geoghan: a a cashstrapped founder is better way to frame it, you know, a a frugal founder and stay, you know, talking to talented people who are at the frontier. But I feel that I have over uh waited on the bet I wanted to take. And I keep asking for him to be a bit more professional and a bit less of a go anywhere artist type. And uh today I wanted him to give me documentation before we had a scheduled meeting and he didn't. And then I said, "Hey, I'm not going to join the meeting until I get documentation from you." And he gave me some good documentation. So, I'm now a little torn thinking I he probably does have value to deliver, but you have to worry when you're team building. Um, you know, we're at this stage, we're all kind of not going in the perfect straightforward direction.
+
+
+
+
+00:35:45
+
+
+Kyle Geoghan: We're going these ways. And sometimes Kai will go backwards and that'll pull us all backwards. And I actually I hope it was a good call with you, but I worry that he's talking to different colleagues on our team and it's 30 minutes or more of nonwork talk and then um it's helping him figure out how he might be able to deliver value, but he's not disciplined enough to think hard about how to deliver value to the business. And so those are my concerns with him.
+Craig Certo: Makes sense. Yeah, that's all fair. Yeah. Now, he seemed like pretty frustrated when I talked to him about the whole situation and I can kind
+Kyle Geoghan: Yeah,
+Craig Certo: of empathize a little bit with where he's coming from. like you know as he definitely doesn't have necessarily the same
+Kyle Geoghan: sure.
+Craig Certo: like way of understanding um like he's very much I think has his own way of thinking about things like he finds it challenging I think to understand
+Kyle Geoghan: Correct.
+Craig Certo: like maybe what you're looking for how he can do it but
+
+
+
+
+00:36:48
+
+
+Kyle Geoghan: Yeah.
+Craig Certo: and so he said to me multiple times he's like he actually wanted me to be act like his manager because he thought that I like could understand where he was coming from and like what he was
+Kyle Geoghan: Yeah.
+Craig Certo: thinking about and maybe I'd be able to help map that to what you're looking to achieve. And then he feels like he can and I actually think he's really smart guy and I think he actually does have a lot of value that he could deliver if he were given the right task and understood end to end how he
+Kyle Geoghan: Sure.
+Craig Certo: could execute on it. And I just wanted to mention to you that I'm open to kind of being uh kind of like an intermediary there and helping guide where he puts the energy. Sounds like he's really motivated to do
+Kyle Geoghan: Maybe. So my concern is that you don't have a lot of experience managing people and he'd be a
+Craig Certo: that.
+Kyle Geoghan: really tough one to start with and you know you've got the access actually maybe as your own for your own uh you know project here you could go look at the calls I've had with him and I gave him many ways to deliver value and the first way we thought was okay in a world where you're at the frontier you've been using cloud code for six months this was in February right it's like can you be a junior developer of one kind or another and deliver value to the business and my answer
+
+
+
+
+00:38:14
+
+
+Kyle Geoghan: is absolutely yes if you're just a little bit disciplined And I gave him at least half a dozen projects. I said, you know, look at the human in the loop web chat co-pilot and, you know, figure out if there's any interface improvements. Look at um how we're constructing AI associates for web chat and figure out a simple way to, you know, make it easier to to test them. I told him to use your testing and evaluation. I told him to look at the codebase and to explore it a little bit and come back to me if there's any projects he wanted. Right. And so I worked with him now for two months trying to help him figure out where the value is. And I just kept asking him to take a shot at a project plan, even if it's small or large, and propose it. And never got anything there. And then he spent three weeks building a new data model without telling anybody.
+Craig Certo: Yeah.
+Kyle Geoghan: And did you look at the data model?
+
+
+
+
+00:39:09
+
+
+Craig Certo: Yeah. I looked at his thing. Yeah.
+Kyle Geoghan: Was it useful for you?
+Craig Certo: Well,
+Kyle Geoghan: Honestly,
+Craig Certo: he's thinking about it the same way I am, honestly. So,
+Kyle Geoghan: yeah, I know. But that's if I spent three weeks,
+Craig Certo: that's
+Kyle Geoghan: 18 hours a day on a data model, I'd have a great data model.
+Craig Certo: Yeah. Yeah. No, I get Look,
+Kyle Geoghan: It's Yeah.
+Craig Certo: I got you there. I get you
+Kyle Geoghan: So, my answer is no.
+Craig Certo: there.
+Kyle Geoghan: Um, and I'm an okay builder of people and I want to make you the most effective person you can be. Cam's excellent. And so, this kind of team building stuff, I want Cam to be in the conversation, too. um so that we can plan better. And to be frank, I haven't told Cam a lot about Kai because I think the answer Cam's going to go is like he's out. No chance. He's he's gonna and and I think that's the answer and I need to talk to Cam about it and so I just want to let you know.
+
+
+
+
+00:40:00
+
+
+Kyle Geoghan: Um I'm always going to be really honest with you and uh that's where I'm
+Craig Certo: Yeah.
+Kyle Geoghan: at. Cam's going to help us build the team plan and that's going to mean sometimes we're going to feel like we can't do all the things we want to do, but that's actually the right way to get us all working in the same direction. Um, you know, you talking about what George wanted technically actually concerns me a little bit because most of my conversations over years with George is that he's a really smart guy. He gets a lot of things right, but the product development vision doesn't always get to the place where I he doesn't have enough insurance experience or immediate product technical delivery uh in uh intuition. We're not going to be a whole operating system for every one of our customers. That's too much. We are going to bite off a lot more than any other business like ours in the past because of the tools we have. But it's more like we'd rather figure out how to hit those APIs really well and do the
+
+
+
+
+00:40:52
+
+
+Craig Certo: Yeah,
+Kyle Geoghan: broker communications really well and drop everything in their new core system, the bind HQ, right? And there's a there's a set of decisions we have to make on product development that I
+Craig Certo: sure.
+Kyle Geoghan: wouldn't let George make and you and I would have to make them. And Kai's a similar challenge. And so you and I have this challenge of aligning ourselves on what we have to build together to keep everybody aligned and running forward. And right now people are running in the right direction, but they're like a little a skew. And it's by design partly because we're still in the exploration phase,
+Craig Certo: Yeah.
+Kyle Geoghan: right? But we're coming close to the everybody that's been exploring can't explore any longer.
+Craig Certo: Yeah.
+Kyle Geoghan: Here's all the things that we're going to build, right?
+Craig Certo: Yeah. No, I I think I agree with pretty much everything you said there.
+Kyle Geoghan: So
+Craig Certo: I think and I hear your perspective, too. I'm glad I asked. um because I obviously didn't have the whole picture when I spoke to him and don't have all this context about everything you've done with him.
+
+
+
+
+00:41:59
+
+
+Craig Certo: So that makes a lot of sense and I can see how it's been challenging.
+Kyle Geoghan: yeah.
+Craig Certo: Um yeah, obviously if that's what you guys think is the right thing for the business, I I get it and I do think it's great to have everyone running in the same direction and I think we're hitting that point soon where we have the vision. we think we can get it accomplished and let's run at it all at the same time and really formulate a plan
+Kyle Geoghan: Yeah.
+Craig Certo: for how we're going to do it. So, I love
+Kyle Geoghan: And I you're going to be critical to that. And so I'm just going to keep going with my honesty here.
+Craig Certo: that.
+Kyle Geoghan: Uh Ganesha is an excellent teammate, but he's a bit his own way as well. and he has previously been too far behind the frontier of applying AI for my uh opinion of where we need to be as a business. I think we're past that, but mostly because I've been like beating him up to like come on, accept it, right?
+
+
+
+
+00:42:54
+
+
+Kyle Geoghan: Um I think he's going to be critical for us to succeed uh scaling implementation but I think we need to take the data and the success we had and set up the guard rails for him to implement it correctly and then I think that he can be really key to us on product development because he's a really good study to go deep into product development but we have to choose the pieces that he should go study and go deep on and at the beginning of the year. I tried to define with him a strategic product roadmap for our technology team and we did he actually did a good job of building how we should use linear but we're all still in this middle ground where I probably gave us 40% of what we need and we've got to do you know 40% more work to get to a real product roadmap a real set of features and technology that exists that we're supporting now and an ability for us as a technology team to look at it and communicate on it and work on it and add to it,
+
+
+
+
+00:43:59
+
+
+Craig Certo: Yeah.
+Kyle Geoghan: but also to communicate what it is to our sales team and our customers. And so, um, that's something I think you and I are going to have to do.
+Craig Certo: Yep.
+Kyle Geoghan: Um, and I think it's imperative, right? It probably follows immediately after the operating system in terms of what we need to
+Craig Certo: Yeah. Agreed,
+Kyle Geoghan: do.
+Craig Certo: man. I mean that's why I built all those thing product pages you know it and I I see it the same way you do right and I see what you're saying about Ganesha too right he had he does great work I find it challenging sometimes because he's in this position
+Kyle Geoghan: Yeah.
+Craig Certo: where and this was the way when I joined right like he was kind of the manager of the dev team but like so
+Kyle Geoghan: Yeah. Yeah.
+Craig Certo: he has a lot of opinions on everything that I also have opinions about and you have opinions about, but I think yeah, formalizing the role, like really just giving him direction to run at something important that he cares about too um will be great.
+
+
+
+
+00:44:55
+
+
+Craig Certo: But we should formalize like literally who's going to be making what decisions and um I think that's just good have that transparency across the
+Kyle Geoghan: Yeah, I agree.
+Craig Certo: board.
+Kyle Geoghan: But there's give and take here because with our number of team members, no matter what you formalize, the best team members do a lot of things at our they have to,
+Craig Certo: Yeah.
+Kyle Geoghan: right? And that's true for everybody. So, I'll give you the example.
+Craig Certo: Yeah.
+Kyle Geoghan: You know, I can't wake up and figure out how to raise money and sell the top customers in my mind and also plan the cycle retrospective for you guys, right? I can't I can't.
+Craig Certo: Yeah.
+Kyle Geoghan: And you know, Ganesh did it for a long time and then at the end of last year, the beginning of this year, we were not running close to the same direction. Everybody was going this way, right? And so I said I would kept trying to go through Ganesha and my messages were not getting through Ganesha to the team.
+
+
+
+
+00:45:51
+
+
+Kyle Geoghan: So I said Ganesha I have to take this on. So I took it on for a couple months and I think we're like we're definitely doing a little bit better but now I'm in
+Craig Certo: Yeah.
+Kyle Geoghan: fundraise mode. So I've left that. That was January February and yeah I mean somebody else has got to run the cycle retrospective. Somebody else has got to think about what the tech team's building every week. somebody else has got to think about what's on the road mapap that's prioritized now what's on the backlaughter or what you know that's a lot of work and Ganesha can do a lot of it but he he can't do the highest
+Craig Certo: Oh yeah,
+Kyle Geoghan: level and I think you and I need to do more of it and I think there's a real place for you
+Craig Certo: good. Yeah, I agree. I mean,
+Kyle Geoghan: there
+Craig Certo: I used to run like my previous team. It was pretty much just me and a bunch of um developers. And I ended up becoming the project manager because like it's hard to if you don't have one person who has the whole vision in their head and has all the context in their head and is communicating with the person like the stakeholder at the end of the day.
+
+
+
+
+00:46:49
+
+
+Kyle Geoghan: Yeah.
+Craig Certo: If you miss if you have the lost link at the top there where no longer is the team working for the same objective that the actual stakeholder is looking to achieve which in this case mostly I'd say
+Kyle Geoghan: Mhm.
+Craig Certo: is like the sales team building products or for them to and showing them what we're building and
+Kyle Geoghan: Yeah.
+Craig Certo: they're the ones driving a lot of what we need and things like that. Like I don't feel like we have that right now. Like it's pretty much that like it was kind of funny and it's not a
+Kyle Geoghan: Right.
+Craig Certo: bad thing necessarily, right? Dolly's working on this Angular to React migration,
+Kyle Geoghan: Yeah.
+Craig Certo: but at the same time she's scoping it for two to three weeks and in my head it's just like not important really for us to tackle but it is in the road map as like a really high priority thing and that's like you know the road map that they put together as a team you know that it's just so focused on like the co-pilot dashboard which I know is important but to me wouldn't be like what we're all driving at right That would be this stuff that we're working on together.
+
+
+
+
+00:47:58
+
+
+Kyle Geoghan: So the problem is somebody needs to think about how to use them their talents, right? And like Drew's a good example.
+Craig Certo: Yeah.
+Kyle Geoghan: The guy is just incredible what he can build and we got to point him in the right direction. And there's a lot of directions we can point him that are helpful.
+Craig Certo: Yeah.
+Kyle Geoghan: So I could use your help there. Dolly's the same way. She can do a lot of good work. She's detail oriented. Um, you know, there was a meeting with Branch today and I joined it for 10 minutes and I said some funny things and I met the guy and I dropped out and I thought about staying in because I
+Craig Certo: No.
+Kyle Geoghan: didn't totally trust that Ganesha and Peter were going to do it well. Not because they're like we need a playbook and they need to be able to run through an agenda and and there needs to be a system otherwise they've got to think on their feet and that's too hard.
+Craig Certo: Yeah.
+
+
+
+
+00:48:46
+
+
+Kyle Geoghan: And so to answer your question specifically about where we're going in roles, I think that Ganesh should lead implementation and we should build the playbook so that he feels empowered and can scale and can talk to a lot of customers and do some of the technical forward deployed applications and then you know work directly with Jonathan and Peter and George and we should look from a little bit higher up and keep building the product and the process that they use,
+Craig Certo: Yeah.
+Kyle Geoghan: Right.
+Craig Certo: Yeah.
+Kyle Geoghan: And so there was a meeting with Distinguished Programs on Tuesday and I've been thinking about this. I watched Money,
+Craig Certo: Uhhuh.
+Kyle Geoghan: who's the chief information officer of this company that does billions of dollars in annual revenue, fuss around with our user interface. And our user interface sucks.
+Craig Certo: Yeah.
+Kyle Geoghan: And I just thought, man, we could vibe code a much better, more enjoyable experience for him and his team and make us much closer to where we want to be probably in a weekend. But it's like then it'd be the only thing you think about that weekend and you'd have to support it.
+
+
+
+
+00:49:55
+
+
+Kyle Geoghan: And there's a middle ground that I want us to get to where I'm happy throwing out the whole interface that we have for our customers and starting with one page and then building from there. And that wouldn't really work for distinguished programs. They'd probably need five pages because we've been working with them for a year. So, it's like they need a better view of their knowledge bases. I want to actually take Did you catch the resources I sent to a woman named Naj Moon in an email?
+Craig Certo: I don't recall
+Kyle Geoghan: I'm gonna I'm gonna forward them to you because it's the start to more of our
+Craig Certo: when
+Kyle Geoghan: enterprise proposal and it's almost like maybe there should be a
+Craig Certo: Mhm.
+Kyle Geoghan: section where somebody can see what we can deliver them. Maybe they can press by now, but at a minimum it's like it just looks nice and it's more things that we can do, you know. Um, so yeah,
+Craig Certo: Mhm.
+Kyle Geoghan: it's a good example where if we could set ourselves up with a lot of work that improves the platform and the products and the main features and the way people use it and now you got a team doing it.
+
+
+
+
+00:50:59
+
+
+Kyle Geoghan: The work is setting it up and managing the team and not actually doing the work. And the challenge is it's like well cloud code could do the work so it's really a hard problem.
+Craig Certo: Yeah, it is. Yeah, I see that. Like for me, like that's why I when I joined like I felt bad for the dev team because they work differently than me and I, as you mentioned, right? Like, you know, we could change the whole damn copilot dashboard in less than a weekend, man. We could do it today.
+Kyle Geoghan: Yeah. Well,
+Craig Certo: And the funny thing,
+Kyle Geoghan: I hope it's good.
+Craig Certo: but they Yeah, I know. I just Yeah, it's a little bit hard because they have their system, right? Like, and I I would feel like at least if I were to propose doing that,
+Kyle Geoghan: Well,
+Craig Certo: there would be a lot of push back just because like what the hell,
+Kyle Geoghan: well,
+Craig Certo: man. Like, we've been this is our co-pilot dashboard.
+
+
+
+
+00:51:46
+
+
+Craig Certo: We've been working on this thing for ages.
+Kyle Geoghan: but
+Craig Certo: Every small change we make, we put a linear ticket. We talk about it in a meeting and everyone makes a decision on whether that's the right thing to do or not. And then it's like, okay, we're just going to like redo the whole thing. But like I totally agree with you. It sucks. It It doesn't look good. It's There could be so many things we could do to improve it. But the question is like how do we go about doing
+Kyle Geoghan: So, right and we should be strategic,
+Craig Certo: that?
+Kyle Geoghan: but we also have to we have to do the right thing.
+Craig Certo: Yeah.
+Kyle Geoghan: And so I I this is the first I'm hearing that that's like a process right now on the tech team.
+Craig Certo: Well,
+Kyle Geoghan: That's way there's way too much time.
+Craig Certo: that's like software development, you know, and so times are changing, of course, right?
+Kyle Geoghan: Yeah.
+Craig Certo: But but there's also the you know we do need to consider how maintainable and supportable it is and it's easy to prototype something like that but
+
+
+
+
+00:52:37
+
+
+Kyle Geoghan: That was going to be my point.
+Craig Certo: you does take a decision
+Kyle Geoghan: My other my other point is there's actually a lot of really good customer
+Craig Certo: to
+Kyle Geoghan: service thinking in our technology that we have now. It's just not executed at the top tier.
+Craig Certo: Yeah.
+Kyle Geoghan: And so to your point, yeah, we could replace everything tomorrow and it would look better. And for some of our c for many of our customers, it would be better. So that's actually a fact and I want to keep that fact and I think we should use that fact. I'm okay overlaying everything we built for a new customer that we decide here's how we want to show them how to interact with the system, right? Like we can throw it out. Don't feel like you can't just because everybody's worked so hard on it. We have to be able to change And the challenge though is that a hard decision we might make,
+Craig Certo: Yeah.
+Kyle Geoghan: I don't think we'll make it, but we might, is that we should throw out the web chat co-pilot with the AI assist, right?
+
+
+
+
+00:53:35
+
+
+Kyle Geoghan: Is that a part of the future or not? That's a hard question to answer,
+Craig Certo: What?
+Kyle Geoghan: right?
+Craig Certo: What do you mean by the chatbot with the AI assist?
+Kyle Geoghan: So um you know the chatbot answers questions, somebody wants a human or we trigger a human, human comes in the loop and we suggest a response to them.
+Craig Certo: Oh yeah. Yeah.
+Kyle Geoghan: As far as I understand it, almost nobody uses it.
+Craig Certo: Right.
+Kyle Geoghan: But I that doesn't mean I don't think it's a thing that we need. Even even if it's something that is just a feature that helps us sell the
+Craig Certo: Sure.
+Kyle Geoghan: product,
+Craig Certo: Mhm.
+Kyle Geoghan: right? It's a hard question because I'm willing to shut it down and that's one of the things we spent a lot of time on but we don't have huge usage right but
+Craig Certo: Yeah. Well, we don't have huge usage on the platform which is problem number one,
+Kyle Geoghan: I well yeah and the other thing is back to
+
+
+
+
+00:54:23
+
+
+Craig Certo: you
+Kyle Geoghan: user interface I think that the GIC team chatting with customers every
+Craig Certo: know.
+Kyle Geoghan: day would use it if we if it were better if it were easier to see like there's a small product development opportunity there that I would love like that's actually the thing that's one of the things that maybe I wanted to see if Kai could work on it. I actually don't want to put him on it now because he hasn't proven to me that he'll do the product research, that he'll watch the customers, maybe talk to him, that he'll do the rigorous, you know, uh he only is right now doing what he wants to do. And so when he says Kyle doesn't, you know, direct me, right, and blah blah blah, it's like he's only doing what he wants to do. I gave him all these directions and it doesn't matter. And that's a real challenge. That doesn't help us. And you can't go do the product research uh to make that better. And I've already asked Ganesha and Dolly and maybe even Drew to try it themselves.
+
+
+
+
+00:55:21
+
+
+Kyle Geoghan: And it's the same thing that happened with Ryan on actually improving the prompt for GSE. You need to find the person who's got the right talent for that problem, right? That's always the challenge. And so, yeah, cloud code can do a lot, but the product research to make the web chat assist uh the best thing in the market right now, it's probably human. Maybe it's, you know, a hybrid with AI, but I wouldn't put you on it. It would take you too too much
+Craig Certo: Oh yeah. Yeah.
+Kyle Geoghan: time.
+Craig Certo: You if you focus too hard on one thing like that like yeah it could consume three weeks you know. So uh I get what you're saying there.
+Kyle Geoghan: Yeah.
+Craig Certo: Yeah. I I wonder also you mentioned right like like right now I think we go based on vibes like you know I at least up until this point have mostly been just taking direction from you and doing what I think is best and getting feedback from you hoping
+Kyle Geoghan: Mhm.
+
+
+
+
+00:56:19
+
+
+Craig Certo: that we're moving in the right direction. Now I think we're going we're really aligned which is great but I don't know if the rest of the
+Kyle Geoghan: Well,
+Craig Certo: team I I feel at least like the team is kind of all doing it based on vibes too because they decide well there's the maintenance stuff which is really important Drew Rudra Dolly are taking care of that and that's important so
+Kyle Geoghan: Yeah.
+Craig Certo: that doesn't go away but when it comes to like product development stuff I think we can probably be
+Kyle Geoghan: Yeah.
+Craig Certo: more focused on one thing for multiple things that are we decide or you decide are the right things to be focused on right
+Kyle Geoghan: Well, the yes,
+Craig Certo: now.
+Kyle Geoghan: but the thing is like where I see the team working is maintenance, small improvements, and customer implementations and building tech for customers.
+Craig Certo: Yeah.
+Kyle Geoghan: And that works for me because I know that's valuable.
+Craig Certo: Mhm.
+Kyle Geoghan: It might not be the most valuable thing, but I know I don't have to spend the cycles that I don't have trying to figure out how to make them work valuable because they're doing that work, right?
+
+
+
+
+00:57:20
+
+
+Kyle Geoghan: But we need to suspend the cycles. That's the box too where it's like well what's on the product roadmap that we can pick up and make useful.
+Craig Certo: Yeah.
+Kyle Geoghan: And to be frank I don't feel like I'm supported by anybody right now in that sense. I've been putting things in linear trying to get people moving on, hey, do here's product research you could the easiest thing to say is that you know we we publish the website and the next step that I want is um interactive pages with uh web chat first but then you know click to talk to voice and um I want to make it possible for us to you know present something somebody could pay for right um or directly generate an AI associate Right? This is all work that we could do. It's all work where we have either everything we need already built or 80 to 95% of it. Right?
+Craig Certo: Yeah.
+Kyle Geoghan: And I put the first versions of that product development stuff in linear and I got nothing from anybody from
+
+
+
+
+00:58:17
+
+
+Craig Certo: Mhm.
+Kyle Geoghan: it. Right.
+Craig Certo: Yeah. Yeah.
+Kyle Geoghan: And then I could come up with five more.
+Craig Certo: Yeah.
+Kyle Geoghan: But you know it's like that.
+Craig Certo: Yeah. Well, you're you're talking to the void. Yeah.
+Kyle Geoghan: Yeah.
+Craig Certo: Unless the person is like Yeah. I mean, the nice thing about us working on this project and why I feel like now I can Sometimes it's hard to know, okay, what does success actually look like for this? And is it okay if I literally, you know, put new AI associates on the web page? Because that's takes ownership, right? A lot of people, I mean, especially in software development, most of the time you're grabbing a ticket off of a big board and the task is already clearly defined for you. You push the code change and close the task. You're not thinking about, you're not having to make like those decisions.
+Kyle Geoghan: right?
+Craig Certo: But we live in a different world at a startup especially like you should be able to take ownership of a task and
+
+
+
+
+00:59:07
+
+
+Kyle Geoghan: Well,
+Craig Certo: to end at the project.
+Kyle Geoghan: if you can, if you can, and you can. Not everybody can. And that's why we need that's why I need your help because if you can,
+Craig Certo: Yeah.
+Kyle Geoghan: that means that you can help get other people to use the way that you're thinking about development. And then we like there's a lot in my brain that if we're having more conversations, we'll get out into a road map if you're building it, right? Um, and so I think that's definitely something we should put on the board. Another thing I'll note, it's been a lot of fun working with you and it's been easy to say, well, here's the assets we have and here's the holes that we need to fill and testing and evaluation and the observatory are perfect examples. Those are big holes we needed to fill. I think we've filled them like 60%. And we do need to finish and I think that ultimately the success is
+Craig Certo: Yeah.
+Kyle Geoghan: automatically you can see things that are worth looking at on the observatory and it's really easy and a part of the process for every AI associate to do evaluations ongoing and when new construction and I actually think that's a human thing for that to be a success you should probably be getting other team members to use it and I can help you with that.
+
+
+
+
+01:00:23
+
+
+Kyle Geoghan: Um, but that's like we need to get Peter particularly and maybe Kai developing AI associates and using the testing and evaluation on current customer associates. That's something we need to do right away because it's high leverage and it will finish these pieces of the platform that you've started.
+Craig Certo: Okay. Yeah, I agree. I think yeah, you're definitely right about 60. I'd say on evaluations probably closer to 75%.
+Kyle Geoghan: Awesome.
+Craig Certo: on observatory. I'm thinking look, observatory is built out, but it's not integrated in the way that it needs to be or usable in the way that it needs to be to your point. And I kind of think it's it's one of the things that will come out of also the work we're doing because we're
+Kyle Geoghan: Yeah.
+Craig Certo: going to then have a better understanding of what people need to see from it and then maybe bring it into what we're doing. honestly.
+Kyle Geoghan: Well, I mean, it all boils down to many of the same things.
+Craig Certo: Um
+Kyle Geoghan: So, it's like we need to do reporting for our sales and success on the calls that are happening and what's going on.
+
+
+
+
+01:01:23
+
+
+Kyle Geoghan: I was we I was talking with Cam and Ian on ranking
+Craig Certo: Mhm.
+Kyle Geoghan: insurance and you know this is the cool thing about a startup is like you're critical and we need to make a decision on what we price the next set of things we do for ranking and it's going to include email and at a minimum what we're saying is we'll try to help you do a cross-ell for life insurance and we'll respond to an email that gets a response, right? But that's a tiny little thing relative to like we'll watch your whole email inbox and do everything we possibly can with
+Craig Certo: Mhm.
+Kyle Geoghan: every email, right? Which is the other side. And we're not promising that, but we might have enough product knowledge from GIC that we deliver them, you know, just the attachment data to the AMS, right? And but there's a there's a price on that and it's a price on your time and it's a price to the
+Craig Certo: Yeah.
+Kyle Geoghan: customer. And I actually don't know if that if we're anywhere close because he makes $200,000 a year in revenue, right?
+
+
+
+
+01:02:28
+
+
+Craig Certo: Mhm.
+Kyle Geoghan: So he's a one guy business. Probably costs 100 he's making $100,000 a year. And so I don't think we can charge him more than $500 a month for everything. And so it's like I don't think it's worth hooking up his email inbox for $500 a month right now.
+Craig Certo: Yeah.
+Kyle Geoghan: Maybe you're like, "Oh, maybe." All
+Craig Certo: Oh, you make a good point, right? Like it it's funny to me um as someone who hasn't sold
+Kyle Geoghan: right.
+Craig Certo: much business to real c like you, you know, started the ship from scratch. So, the fact that you have or we have 18 customers, whatever it is, it's really impressive. Um, I find it interesting that you are um, thinking about it like this because I would think any new customer like yes, like I'm saying yes to anything you want kind of thing. But you're right, like we got to make choices about where we spend the energy and sometimes it's just not mathematically worth
+Kyle Geoghan: Well, and my point on ranking is that I would have loved to come to that meeting knowing exactly how many
+
+
+
+
+01:03:19
+
+
+Craig Certo: it.
+Kyle Geoghan: calls per day we've been serving, how many web chats we've been serving.
+Craig Certo: Yeah.
+Kyle Geoghan: And I know you're thinking, "Yeah, we have the data, but I don't have access to it." And I don't like I've got demos that I've been doing for years. I I'm not building the evaluation rubrics. I'm not. There's more demos that you can empower and it's probably good because you teach me, you can might teach more salespeople and it's all coming together. It's like we should be reporting well on what's happening with each customer. I don't actually know where to go to get that data and I should, right? And that's you and me.
+Craig Certo: Yeah. Yeah. Yeah. No,
+Kyle Geoghan: So,
+Craig Certo: makes sense. Yeah, you're right. is um if you're going to be using the operating system for your communications with the customer,
+Kyle Geoghan: Yeah.
+Craig Certo: then you should have all the information at your fingertips on what you need to know when you're talking to them or what you might want to send them.
+
+
+
+
+01:04:20
+
+
+Kyle Geoghan: Yeah.
+Craig Certo: So,
+Kyle Geoghan: Yeah.
+Craig Certo: it ends up becoming a kind of a picture of everything, which is great. And if it's in a way that you can see and understand and use,
+Kyle Geoghan: Yep.
+Craig Certo: then even better,
+Kyle Geoghan: And have you looked at ranking at all uh from an observatory perspective?
+Craig Certo: I think. Yeah. I sent some reports at one point. They had like pretty low
+Kyle Geoghan: Cool. Okay. Um,
+Craig Certo: traffic.
+Kyle Geoghan: just a small thing when you can. I'd love to know what's going on with ranking. And it's back to the things that I'm always asking for. You know, what happened yesterday? What happened the last seven days? What's the 30 days trailing, right? Um,
+Craig Certo: Yeah.
+Kyle Geoghan: if I could look at that really quickly, I'd be a really happy
+Craig Certo: Okay.
+Kyle Geoghan: person.
+Craig Certo: I do have um a table like that in the observatory, but Jonathan just pinged me that there's something wrong with it.
+
+
+
+
+01:05:02
+
+
+Craig Certo: So, let me fix that.
+Kyle Geoghan: Yeah.
+Craig Certo: But al yeah, I hear what you're saying there. Um and I do you want like a daily weekly report?
+Kyle Geoghan: Yeah.
+Craig Certo: Like I I can uh get something hooked up to send you that.
+Kyle Geoghan: Yeah, that'd be
+Craig Certo: That was actually something I added to the repo or observatory not too long ago was and I don't know if I deployed it
+Kyle Geoghan: cool.
+Craig Certo: yet, but it you can schedule reports to be generated and I have a usage
+Kyle Geoghan: Mhm.
+Craig Certo: report already. So yeah.
+Kyle Geoghan: Cool. Love it.
+Craig Certo: Cool, man.
+Kyle Geoghan: Nice.
+Craig Certo: Well, so what do you think I should say to Kai? Honestly, because I when I talked to him this morning, I told him I was talking to you later today and I would bring up the his manager proposal. So, um yeah.
+Kyle Geoghan: tell them to go through me and that um
+Craig Certo: Okay.
+Kyle Geoghan: on a project basis you guys can definitely collaborate but I want I'll tell you what I sent him in a text.
+
+
+
+
+01:05:59
+
+
+Kyle Geoghan: This is probably the fourth time I've gave him a a format to work. So I said on process going forward, we need to work along some structure. Here's a starting point as a minimum. If you or another team member want to change it, you can. But I want to see something like this. And so why? What's the business pain or opportunity? Who's it for? Is it a team member or a customer? What? So what's the concrete scope and deliverables? How long is there a customer you can connect it to? Does this expand across customers? Does it expand with additional work? Is it a one-off? And what's the cadence in the check-in? Because he goes three weeks without telling you anything. on some project, right? So,
+Craig Certo: That's a good
+Kyle Geoghan: yeah. And listen, it's the third time I gave him a framework.
+Craig Certo: framework.
+Kyle Geoghan: I don't need to be frustrated with you, but humans are not easy to manage.
+
+
+
+
+01:06:50
+
+
+Kyle Geoghan: And he's an example of a human who's really hard to manage. And it's a bet. And right now, I'm feeling like the bet is neutral at best because he's taking your time away. And that can't happen. It can only be net positive, right? Because either that or he's got to be gone. because you your time is too valuable to the business for him to tell you that he's not working well with me and try to work with you. It's like yeah, he can work with you, but he still needs to work in a way that matters to the business and is documented.
+Craig Certo: Yeah, no, I hear you there. Okay, I'll tell him just yeah,
+Kyle Geoghan: So,
+Craig Certo: go through you and I appreciate the candy conversation. It's been been good talking about all this stuff.
+Kyle Geoghan: yeah. You got weekend
+Craig Certo: So,
+Kyle Geoghan: plans?
+Craig Certo: well, I'm at my in-laws right now. Um, they're in Spain, so I took over their house in the suburbs and then I'm heading back tonight to
+
+
+
+
+01:07:40
+
+
+Kyle Geoghan: Cool.
+Craig Certo: Alexandria. Just going to chill most of the weekend.
+Kyle Geoghan: Cool.
+Craig Certo: What about you?
+Kyle Geoghan: I've got my in-laws coming. We've got five people staying.
+Craig Certo: Nice. Nice.
+Kyle Geoghan: So yeah,
+Craig Certo: Yeah. So, when's your wedding again? July 11.
+Kyle Geoghan: July 11th,
+Craig Certo: So, are do you stress about that at all or
+Kyle Geoghan: I mean,
+Craig Certo: she
+Kyle Geoghan: she's a good planner. We got most of it planned. We're going um actually next week we're going to Europe where my cousin's getting married in Spain and then
+Craig Certo: Oh, yeah.
+Kyle Geoghan: we're going to go to the castle just for prep. So yeah,
+Craig Certo: Nice.
+Kyle Geoghan: I'm just stressed that uh there's just not enough time in the day if I've got to do all this stuff personally in addition to trying to grow the business. It's tough and then you get the dollars.
+Craig Certo: Yeah.
+Kyle Geoghan: But I'll find the time no matter where I
+Craig Certo: Yeah.
+
+
+
+
+01:08:27
+
+
+Kyle Geoghan: am.
+Craig Certo: Yeah, that makes sense. I mean, yeah, you got a lot on your plate, especially with wedding planning. It's not easy to manage all that s***.
+Kyle Geoghan: Yeah.
+Craig Certo: So, let me know if you like if you spend a bunch of time during your day doing something that you think I can help automate. Um, please let's let's include that in this road map, right, for our operating system because the more time we can save you, the better.
+Kyle Geoghan: Well, it's a good point and I think a lot about a more focused version of cloud code
+Craig Certo: So,
+Kyle Geoghan: that we host. Um, listen, we had a wide-ranging conversation here. um the better we can get at nailing what's the critical pieces for us to be working on and working together on and so on uh the faster we can move and so if I were to say it it's like okay we got to keep iterating daily on our INM operating system and we don't have to put a project plan together in totality but it's like being able to put a nail on the wall for dashboards that help Cam and the sales team being able to put a nail on wall for what the success playbook looks like and then what we think it looks like to grow the operating system as a data model and a system.
+
+
+
+
+01:09:45
+
+
+Kyle Geoghan: We don't need a huge plan there and I want to keep iterating with you but we do need to start nailing if we if we learn anything we want to keep we need to at least document that so we can grow on it you know and then there's managing the team and the product roadmap which is much
+Craig Certo: Yeah.
+Kyle Geoghan: bigger nut we should just talk about and you should think about and when you feel equipped to really add there that's great I think that's a good opportunity but it's not a you've got enough things it's not a requirement
+Craig Certo: Sure.
+Kyle Geoghan: right Um, and then there's a lot of moonshots and one of them is this digital workforce. So, I I was thinking about Ryan.md, you know, and it's like,
+Craig Certo: Yeah.
+Kyle Geoghan: you know, we could have a lot of those and I actually used it on something earlier today. It was like a defensibility thing and yeah, so there's like a okay, we deliver our own version of cloud code. Maybe it's internal and it's not connected to the platform, but ideally it's in the platform and we can also give it to customers and okay now that's an idea and it's not well defined but it's interesting.
+
+
+
+
+01:10:50
+
+
+Kyle Geoghan: It's there's a lot of
+Craig Certo: Oh, that's what the the operating system allows you to do. You you can give and it already has roles defined for I mean I know Ganesha and Ryan worked on
+Kyle Geoghan: Yeah.
+Craig Certo: that a little bit too defining roles but that's kind of part of that too. You can assign you can make a Ganesha associate that has access to everything Ganesha has access to or a customer, you know, anything that they have access to and it just knows how to do everything that you can do and then you can ask cloud code
+Kyle Geoghan: There's the opportunity is unlimited.
+Craig Certo: questions basically.
+Kyle Geoghan: It's defining how to seize it that's the challenge, you know.
+Craig Certo: Yeah,
+Kyle Geoghan: So,
+Craig Certo: there's so much man.
+Kyle Geoghan: yeah.
+Craig Certo: Okay, cool.
+Kyle Geoghan: Yeah.
+Craig Certo: Well, yeah, it was good talk. So,
+Kyle Geoghan: Yeah.
+Craig Certo: you have a great weekend.
+Kyle Geoghan: Me, too, man. Keep up the good work.
+Craig Certo: Yeah, you too. See you.
+
+
+
+
+Transcription ended after 01:11:39
+
+
+This editable transcript was computer generated and might contain errors. People can also change the text after it was created.

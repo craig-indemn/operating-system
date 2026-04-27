@@ -40,6 +40,8 @@ If no Touchpoint exists for this thread, create one:
 - participants_contacts: Contacts from sender/recipients/cc/bcc
 - participants_employees: Employees from sender/recipients/cc/bcc
 - summary: distill what the email exchange is about — not a repetition of the body, but the meaningful substance of the exchange
+- **source_entity_type: "Email"**
+- **source_entity_id: the ObjectId of the Email you are processing**
 
 Link the Email to this Touchpoint via `indemn email update <id> --data '{"touchpoint": "<touchpoint_id>"}'`.
 
@@ -65,6 +67,8 @@ Create a Touchpoint:
 - duration: Meeting duration
 - participants_contacts and participants_employees: from Meeting participant data
 - summary: use the Meeting's existing summary if available, or generate one from the transcript
+- **source_entity_type: "Meeting"**
+- **source_entity_id: the ObjectId of the Meeting you are processing**
 
 Link the Meeting to this Touchpoint via `indemn meeting update <id> --data '{"touchpoint": "<touchpoint_id>"}'`.
 
@@ -73,3 +77,4 @@ Link the Meeting to this Touchpoint via `indemn meeting update <id> --data '{"to
 - One email thread = one Touchpoint. Always check for existing Touchpoints before creating a new one.
 - The summary is the source of truth for "what was this exchange about." Write it as if someone is scanning a timeline and needs to understand in one sentence what happened.
 - When updating an existing Touchpoint's summary because a new email arrived in the thread, preserve the full arc of the conversation — don't just describe the latest message.
+- **Always populate `source_entity_type` and `source_entity_id` when creating a Touchpoint.** These are how downstream associates (Intelligence Extractor, Artifact Generator) navigate from a Touchpoint back to the raw source content. They must call `indemn <source_entity_type.lower()> get <source_entity_id>` to load transcripts, email bodies, and other ground-truth content. A Touchpoint without source pointers is unreachable for extraction — the Apr 24 GR Little trace surfaced this exact failure mode.

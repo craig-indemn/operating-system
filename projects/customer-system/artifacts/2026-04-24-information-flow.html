@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GR Little — Information Flow · 2026-04-24</title>
+<style>
+  :root {
+    --bg: #f8f8f6;
+    --ink: #1a1a1a;
+    --dim: #6b7280;
+    --line: #d1d5db;
+    --accent: #1e3a8a;
+    --real: #fef3c7;
+    --real-ink: #78350f;
+    --today: #dcfce7;
+    --today-ink: #14532d;
+    --code-bg: #ececeb;
+    --mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, 'SF Pro Text', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.5;
+    font-size: 14px;
+    padding: 2rem 3rem 4rem;
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+  header {
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  h1 { font-size: 1.6rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
+  h2 { font-size: 1.05rem; margin: 2rem 0 0.75rem; letter-spacing: 0.03em; text-transform: uppercase; color: var(--accent); }
+  h3 { font-size: 0.95rem; margin: 0 0 0.35rem; }
+  .sub { color: var(--dim); font-size: 0.9rem; margin: 0; }
+  .meta { color: var(--dim); font-size: 0.82rem; }
+  code, .id {
+    font-family: var(--mono);
+    background: var(--code-bg);
+    padding: 0.05em 0.35em;
+    border-radius: 3px;
+    font-size: 0.82em;
+  }
+  .legend { display: flex; gap: 0.75rem; font-size: 0.82rem; margin-top: 0.75rem; }
+  .legend .chip { padding: 0.15rem 0.5rem; border-radius: 3px; }
+  .real { background: var(--real); color: var(--real-ink); }
+  .today { background: var(--today); color: var(--today-ink); }
+  .actor-badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    padding: 0.1rem 0.4rem;
+    border-radius: 3px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  .stage {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 1.5rem;
+    padding: 1rem 0;
+    border-top: 1px solid var(--line);
+  }
+  .stage:first-of-type { border-top: none; }
+  .stage-label { color: var(--dim); font-size: 0.82rem; padding-top: 0.3rem; letter-spacing: 0.05em; }
+  .stage-label .step-no { font-weight: 600; color: var(--ink); display: block; font-size: 1rem; letter-spacing: -0.01em; margin-bottom: 0.1rem;}
+  .stage-body { }
+  .stage-body h3 { margin-top: 0; }
+  .entity-card {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    padding: 0.65rem 0.85rem;
+    margin: 0.4rem 0;
+    font-size: 0.88rem;
+  }
+  .entity-card.input { border-left: 3px solid #3b82f6; }
+  .entity-card.synth { border-left: 3px solid #8b5cf6; }
+  .entity-card.extract { border-left: 3px solid #10b981; }
+  .entity-card.playbook { border-left: 3px solid #f59e0b; }
+  .entity-card.output { border-left: 3px solid #dc2626; }
+  .entity-card .title { font-weight: 600; }
+  .entity-card .line { color: var(--dim); font-size: 0.82rem; }
+  .entity-card ul { margin: 0.3rem 0 0 1.2rem; padding: 0; }
+  .entity-card li { margin: 0.15rem 0; }
+  .arrow {
+    font-family: var(--mono);
+    color: var(--dim);
+    font-size: 0.82rem;
+    padding: 0.4rem 0;
+    padding-left: 0.3rem;
+    border-left: 2px dotted var(--line);
+    margin-left: 0.4rem;
+  }
+  .arrow strong { color: var(--ink); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+  .intel-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+  }
+  .intel-group {
+    background: white;
+    border: 1px solid var(--line);
+    border-left: 3px solid #10b981;
+    border-radius: 5px;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.83rem;
+  }
+  .intel-group h4 { margin: 0 0 0.3rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--accent); }
+  .intel-group ul { margin: 0; padding-left: 1.1rem; }
+  .intel-group li { margin: 0.15rem 0; line-height: 1.4; }
+  .tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    padding: 0 0.3rem;
+    margin-right: 0.3rem;
+    background: #e5e7eb;
+    border-radius: 2px;
+    color: var(--dim);
+  }
+  .tag.champion { background: #fde68a; color: #78350f; }
+  .tag.expansion { background: #bae6fd; color: #075985; }
+  .tag.blocker { background: #fecaca; color: #991b1b; }
+  .tag.insight { background: #e0e7ff; color: #3730a3; }
+  .tag.indemn { background: #dbeafe; color: #1e40af; }
+  .tag.customer { background: #fce7f3; color: #9d174d; }
+  .playbook-card {
+    background: #fffbeb;
+    border: 1px solid #fbbf24;
+    border-left: 4px solid #f59e0b;
+    border-radius: 5px;
+    padding: 0.8rem 1rem;
+    font-size: 0.87rem;
+  }
+  .playbook-card .field-row { display: grid; grid-template-columns: 140px 1fr; gap: 0.6rem; padding: 0.25rem 0; border-top: 1px dashed #fde68a; }
+  .playbook-card .field-row:first-child { border-top: none; }
+  .playbook-card .field-name { font-weight: 600; font-family: var(--mono); color: #78350f; font-size: 0.82rem; padding-top: 0.05rem; }
+  .playbook-card .field-val { font-size: 0.85rem; }
+  .email-preview {
+    background: white;
+    border: 1px solid var(--line);
+    border-left: 3px solid #dc2626;
+    padding: 1rem 1.2rem;
+    font-size: 0.88rem;
+    border-radius: 5px;
+  }
+  .email-preview .headers { font-family: var(--mono); font-size: 0.78rem; color: var(--dim); border-bottom: 1px solid var(--line); padding-bottom: 0.4rem; margin-bottom: 0.6rem; }
+  .email-preview p { margin: 0.5rem 0; }
+  .email-preview ul { margin: 0.3rem 0; padding-left: 1.5rem; }
+  .source-explainer {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    padding: 0.9rem 1.1rem;
+    font-size: 0.88rem;
+    border-radius: 5px;
+    margin-top: 0.6rem;
+  }
+  .source-explainer h4 { margin: 0 0 0.35rem; font-size: 0.9rem; color: #78350f; }
+  .source-explainer p { margin: 0.3rem 0; }
+  .flow-arrow-row {
+    text-align: center;
+    padding: 0.5rem 0;
+    color: var(--dim);
+    font-family: var(--mono);
+    font-size: 0.78rem;
+  }
+  footer { margin-top: 3rem; border-top: 1px solid var(--line); padding-top: 1rem; font-size: 0.82rem; color: var(--dim); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>GR Little — Information Flow</h1>
+  <p class="sub">Apr 22 first-discovery call &rarr; follow-up email draft. How the OS turned raw meeting data into a stage-appropriate artifact.</p>
+  <p class="meta">Session: 2026-04-24 &middot; Company: G.R. Little Agency (<span class="id">69eb95f2&hellip;3977</span>) &middot; Deal: GRLITTLE-2026 @ <strong>discovery</strong></p>
+  <div class="legend">
+    <span class="chip real">Planned: Associate (automated)</span>
+    <span class="chip today">Today: Claude (manual)</span>
+    <span style="color: var(--dim); align-self:center;">&mdash; in production the flow is continuous; the two we did manually are called out</span>
+  </div>
+</header>
+
+<section class="stage">
+  <div class="stage-label"><span class="step-no">1</span>INPUT<br><span class="meta">Raw data ingestion</span></div>
+  <div class="stage-body">
+    <h3>Meeting ingested from Google Meet API</h3>
+    <p class="meta">Google Workspace adapter polls the Meet REST API for conference records in the <code>_platform</code> org's delegated users' calendars. Matches by date window, pulls transcript + smart notes.</p>
+    <div class="entity-card input">
+      <div class="title">Meeting <span class="id">69eb94a9&hellip;382a</span></div>
+      <div class="line">title: "Walker Ross and Kyle Geoghan" &middot; date: 2026-04-22 14:59 UTC &middot; duration: 31 min &middot; source: <code>google_meet</code></div>
+      <ul>
+        <li>Participants: Walker Ross &lt;walker.ross@grlittle.com&gt;, HeatherFGRL &lt;heatherf@grlittle.com&gt;, Kyle Geoghan &lt;kyle@indemn.ai&gt;</li>
+        <li>Transcript: 34,509 chars (full verbatim)</li>
+        <li>Summary: 4 paragraphs, generated by Google's Meet smart-notes</li>
+        <li><span class="meta">company, contacts, touchpoint: initially null &mdash; set later during hydration</span></li>
+      </ul>
+    </div>
+    <div class="arrow"><strong>Associate:</strong> <span class="actor-badge real">n/a</span> &mdash; this is pure ingestion. No reasoning required.</div>
+  </div>
+</section>
+
+<section class="stage">
+  <div class="stage-label"><span class="step-no">2</span>HYDRATION<br><span class="meta">Anchor entities</span></div>
+  <div class="stage-body">
+    <h3>Company, Contacts, Deal linked so the Meeting is no longer orphaned</h3>
+    <p class="meta">A Meeting needs a Company / Deal context before it's useful. In production this is the Touchpoint Synthesizer's job; today we did it manually because the Synth has been creating duplicate Companies (see <span class="meta">bug note: <em>entity identity</em></span>).</p>
+    <div class="two-col">
+      <div class="entity-card input">
+        <div class="title">Company <span class="id">69eb95f2&hellip;3977</span></div>
+        <div class="line">G.R. Little Agency &middot; type: Broker &middot; domain: grlittle.com</div>
+        <div class="meta" style="margin-top:0.3rem">Picked as <em>canonical</em> from 5 GR Little duplicates in DB (most-complete fields). The other 4 flagged for cleanup.</div>
+      </div>
+      <div class="entity-card input">
+        <div class="title">Deal GRLITTLE-2026 <span class="id">69ebb722&hellip;3c06</span></div>
+        <div class="line">stage: <strong>discovery</strong> &middot; warmth: Warm &middot; source: Inbound</div>
+        <div class="meta" style="margin-top:0.3rem">Created in <code>contact</code> default, transitioned to <code>discovery</code>.</div>
+      </div>
+      <div class="entity-card input">
+        <div class="title">Contact: Walker Ross <span class="id">69ea9e56&hellip;a34c</span></div>
+        <div class="line">walker.ross@grlittle.com &middot; company: GR Little (canonical)</div>
+      </div>
+      <div class="entity-card input">
+        <div class="title">Contact: Heather F <span class="id">69ebb6f7&hellip;3c02</span></div>
+        <div class="line">heatherf@grlittle.com &middot; company: GR Little (canonical)</div>
+      </div>
+    </div>
+    <div class="arrow"><strong>Associate:</strong> <span class="actor-badge real">Touchpoint Synthesizer</span> &middot; <span class="actor-badge today">Claude (today)</span></div>
+    <div class="arrow"><strong>Input the associate has:</strong> the new Meeting (company=null). <strong>Job:</strong> resolve / create Company + Contacts, link Deal. <strong>Output:</strong> linked Meeting ready for Touchpoint creation.</div>
+  </div>
+</section>
+
+<section class="stage">
+  <div class="stage-label"><span class="step-no">3</span>SYNTHESIS<br><span class="meta">Timeline entry</span></div>
+  <div class="stage-body">
+    <h3>Touchpoint created &mdash; the Meeting becomes a timeline event</h3>
+    <p class="meta">Touchpoint is the unified timeline primitive &mdash; every external (with customer) and internal (about customer) interaction. Type=<code>meeting</code>, scope=<code>external</code> here. Meeting.touchpoint points back to it.</p>
+    <div class="entity-card synth">
+      <div class="title">Touchpoint <span class="id">69ebbec5&hellip;da4f</span> &middot; status: <code>logged</code> &rarr; <code>processed</code></div>
+      <div class="line">type: meeting &middot; scope: external &middot; date: 2026-04-22 14:59 UTC &middot; duration: 31 min</div>
+      <ul>
+        <li>company: <span class="id">69eb95f2&hellip;3977</span> (GR Little) &middot; deal: <span class="id">69ebb722&hellip;3c06</span></li>
+        <li>participants_contacts: [Walker, Heather] &middot; participants_employees: [Kyle]</li>
+        <li>summary: one-paragraph curation of the conversation (first-discovery, coastal/NCIUA niche, pain points surfaced, agreed next step: full demo)</li>
+      </ul>
+    </div>
+    <div class="arrow"><strong>Associate:</strong> <span class="actor-badge real">Touchpoint Synthesizer</span> &middot; <span class="actor-badge today">Claude (today)</span></div>
+    <div class="arrow"><strong>Input:</strong> Meeting + linked Company/Deal/Contacts. <strong>Job:</strong> emit one concise timeline summary; create Touchpoint; back-update <code>Meeting.touchpoint</code>. <strong>Output:</strong> <code>Touchpoint created</code> event fires the next watch.</div>
+  </div>
+</section>
+
+<section class="stage">
+  <div class="stage-label"><span class="step-no">4</span>EXTRACTION<br><span class="meta">Structured intelligence</span></div>
+  <div class="stage-body">
+    <h3>From the Touchpoint's source content, structured intelligence is extracted</h3>
+    <p class="meta">The Extractor reads the linked Meeting's transcript + the Touchpoint summary, then produces four categories: Tasks, Decisions, Commitments, Signals. Each links back to <code>company</code>, <code>source_meeting</code>, <code>touchpoint</code> so the graph is complete.</p>
+    <div class="intel-grid">
+      <div class="intel-group">
+        <h4>Tasks (2)</h4>
+        <ul>
+          <li><span class="tag">high &middot; follow_up</span>Send recap: recording + deck + NC agency examples <span class="meta">&middot; assignee: Kyle</span></li>
+          <li><span class="tag">med &middot; follow_up</span>Scrape grlittle.com + stand up first-version tailored demo <span class="meta">&middot; assignee: Kyle</span></li>
+        </ul>
+      </div>
+      <div class="intel-group">
+        <h4>Decisions (2)</h4>
+        <ul>
+          <li>Position at agency-tier front-door-only (web chat + voice + email). No custom build. <span class="meta">&middot; decided_by: Kyle</span></li>
+          <li>Skip the quick peek; schedule full demo with more GR Little team members. <span class="meta">&middot; decided_by: Walker</span></li>
+        </ul>
+      </div>
+      <div class="intel-group">
+        <h4>Commitments (4)</h4>
+        <ul>
+          <li><span class="tag indemn">indemn</span>Kyle &rarr; Walker: send recording + deck + NC examples <span class="meta">(due Apr 23)</span></li>
+          <li><span class="tag indemn">indemn</span>Kyle &rarr; Walker: scrape site + build tailored demo</li>
+          <li><span class="tag customer">customer</span>Walker &rarr; Kyle: book demo via calendar link</li>
+          <li><span class="tag customer">customer</span>Walker &rarr; Kyle: loop in other GR Little team members</li>
+        </ul>
+      </div>
+      <div class="intel-group">
+        <h4>Signals (5)</h4>
+        <ul>
+          <li><span class="tag champion">champion</span>Walker &mdash; 3rd-gen Team Manager, referred via Pat Klein, receptive</li>
+          <li><span class="tag expansion">expansion</span>Outbound renewal questionnaire AI &mdash; future capability Walker asked about</li>
+          <li><span class="tag expansion">expansion</span>Payment-taking for non-online clientele &mdash; Heather flagged</li>
+          <li><span class="tag blocker">blocker</span>Principal (Monty) is low-tech &mdash; slow adoption curve</li>
+          <li><span class="tag insight">insight</span>Wedge candidates: after-hours phone, billing inquiries, renewals, web leads</li>
+        </ul>
+      </div>
+    </div>
+    <div class="arrow"><strong>Associate:</strong> <span class="actor-badge real">Intelligence Extractor</span> &middot; <span class="actor-badge today">Claude (today)</span></div>
+    <div class="arrow"><strong>Input:</strong> Touchpoint + linked source Meeting transcript + Company/Deal context. <strong>Job:</strong> extract only what's stated (no inference). Dedupe against existing entities for this Company. <strong>Output:</strong> graph of 13 linked entities here.</div>
+    <div class="arrow meta" style="border-left-color:#dc2626"><strong>Note:</strong> today the Extractor failed structurally &mdash; its starting context had no path from Touchpoint to Meeting. Claude ran the extraction by hand from the transcript. Fix tracked in the procedure artifact.</div>
+  </div>
+</section>
+
+<section class="stage">
+  <div class="stage-label"><span class="step-no">5</span>PLAYBOOK<br><span class="meta">Stage-indexed intent</span></div>
+  <div class="stage-body">
+    <h3>Playbook for <code>discovery</code> stage provides the artifact spec</h3>
+    <p class="meta">One Playbook record per Stage. Looked up by <code>Deal.stage</code>. Its <code>artifact_intent</code> field is what tells the system <em>what kind of artifact</em> to produce next &mdash; follow-up email here; demo recap next stage; the Proposal itself at PROPOSAL stage.</p>
+    <div class="playbook-card">
+      <div class="field-row">
+        <div class="field-name">stage</div>
+        <div class="field-val">&rarr; Stage: <strong>Discovery</strong> (order 2)</div>
+      </div>
+      <div class="field-row">
+        <div class="field-name">description</div>
+        <div class="field-val">First real conversation with the prospect. Goal: understand what they do, what hurts, what they use, whether there's a real fit. Exit either to DEMO or parked.</div>
+      </div>
+      <div class="field-row">
+        <div class="field-name">entry_signals</div>
+        <div class="field-val">First-discovery meeting held &middot; Deal warmth Warm/Hot &middot; at least one champion_candidate identified</div>
+      </div>
+      <div class="field-row">
+        <div class="field-name">required_entities</div>
+        <div class="field-val">Company (with domain+type), Contact(s), Operation (what they do), Opportunity (a pain or wedge), CustomerSystem (their AMS + channel tools)</div>
+      </div>
+      <div class="field-row">
+        <div class="field-name">expected_next_moves</div>
+        <div class="field-val">Send follow-up email &middot; fulfill call-made commitments &middot; book demo &middot; capture pain / tech-stack / champion dynamics as entities</div>
+      </div>
+      <div class="field-row">
+        <div class="field-name">artifact_intent</div>
+        <div class="field-val"><em>"A follow-up email that (1) thanks them and reinforces specific pain points by name, (2) proposes a concrete next step with timing and attendees, (3) includes requested materials, (4) optionally acknowledges the champion by referencing their background. Short, direct, signal that we listened. A continuation, not a pitch."</em></div>
+      </div>
+    </div>
+    <div class="source-explainer">
+      <h4>Where did this Playbook come from?</h4>
+      <p><strong>The entity itself</strong> (the schema) was designed today in conversation. There was a stale "Playbook" definition in the DB before (wrong shape &mdash; draft/active/archived states, integration_requirements fields). We dropped it and recreated with the aligned shape. Full rationale in <code>2026-04-24-playbook-entity-vision.md</code>.</p>
+      <p><strong>The DISCOVERY record's content</strong> (what you see above) was seeded by Claude today. Explicitly <em>not</em> imported from Kyle's PLAYBOOK-v2 doc &mdash; that doc is CEO-level intent, not a schema. The seed came from: the four-point structure we articulated for what a first-discovery follow-up must do, plus Craig's instinct about the tone ("continuation, not a pitch"), plus the required_entities list derived from our entity model.</p>
+      <p><strong>Long-term it should hydrate from data.</strong> As more discovery calls flow through, patterns emerge &mdash; which wedge candidates lead to booked demos, what commitments are typically exchanged, what language Kyle actually uses in his emails. Those patterns refine the Playbook. Today's record is a <em>minimum viable seed</em> so the Artifact Generator has enough spec to render an email. It's not the final version; it's version one.</p>
+    </div>
+  </div>
+</section>
+
+<section class="stage">
+  <div class="stage-label"><span class="step-no">6</span>ARTIFACT<br><span class="meta">Output generation</span></div>
+  <div class="stage-body">
+    <h3>(Deal + Touchpoint + extracted intel + Playbook) &rarr; Follow-up email</h3>
+    <p class="meta">The Artifact Generator reads the Deal's current stage, looks up the Playbook for that stage, loads the Touchpoint's extracted intelligence, and renders the artifact per <code>artifact_intent</code>. Same mechanism at every stage &mdash; only the Playbook record differs.</p>
+    <div class="email-preview">
+      <div class="headers">
+        <div><strong>To:</strong> Walker Ross &lt;walker.ross@grlittle.com&gt;</div>
+        <div><strong>CC:</strong> Heather F &lt;heatherf@grlittle.com&gt;</div>
+        <div><strong>From:</strong> Kyle Geoghan &lt;kyle@indemn.ai&gt;</div>
+        <div><strong>Subject:</strong> Great to meet &mdash; recap, NC examples, and the next one</div>
+      </div>
+      <p>Walker, Heather &mdash; really enjoyed the conversation on Tuesday. And Walker &mdash; congrats on the twins; hope their NICU stay is short.</p>
+      <p>Quick recap of what I heard, and the things I'm sending over. From the call, the workflows that sounded most worth piloting were:</p>
+      <ul>
+        <li><strong>After-hours phone coverage</strong> &mdash; you don't have it today; we can stand up an AI associate that answers out-of-hours and hands off into Teams / Agency Zoom / HawkSoft.</li>
+        <li><strong>Billing inquiries</strong> &mdash; real volume to your three front-desk positions for "how do I pay this bill on carrier X." Textbook first wedge for us.</li>
+        <li><strong>Renewal questionnaires</strong> &mdash; today a Cognito form; Heather asked if AI could actually call the insured and walk them through the questions. Yes &mdash; I'll bring a live example.</li>
+      </ul>
+      <p>What you'll find in your inbox: recording of the call, Indemn deck, NC agency examples (the five IIANC agencies via Pat Klein / 101 Western Labs).</p>
+      <p>For the next one, I want to do something different &mdash; scrape grlittle.com and stand up a first-version version of <em>your</em> agency's agent, not a generic demo. Booking link: <code>[CALENDAR_LINK]</code>.</p>
+      <p>One more note: payment-taking for clients who need help &mdash; real gap, we're navigating PCI/compliance, I'll bring you in when there's a good moment to pilot.</p>
+      <p>Thanks, and say hi to the newest residents of Kitty Hawk when they're out of the NICU. &mdash; Kyle</p>
+    </div>
+    <div class="arrow"><strong>Associate:</strong> <span class="actor-badge real">Artifact Generator</span> <em>(future)</em> &middot; <span class="actor-badge today">Claude (today)</span></div>
+    <div class="arrow"><strong>Input:</strong> Deal (stage=discovery), Touchpoint, 2 Tasks + 2 Decisions + 4 Commitments + 5 Signals, Playbook[discovery]. <strong>Output:</strong> draft email. Reviewed by human before sending (HITL).</div>
+  </div>
+</section>
+
+<section class="stage">
+  <div class="stage-label"><span class="step-no">&rarr;</span>RECAP<br><span class="meta">How the email was built</span></div>
+  <div class="stage-body">
+    <h3>Each line of the email traces to specific entities</h3>
+    <div style="background:white; border:1px solid var(--line); border-radius:5px; padding:0.8rem 1rem; font-size:0.85rem;">
+      <table style="width:100%; border-collapse:collapse;">
+        <tr style="border-bottom:1px solid var(--line); text-align:left;"><th style="padding:0.3rem;">Line / section in email</th><th style="padding:0.3rem;">Fed from entity</th></tr>
+        <tr style="border-bottom:1px dashed var(--line);"><td style="padding:0.3rem;">Opener (twins, NICU)</td><td style="padding:0.3rem;"><span class="tag">direct from Meeting.transcript</span> &mdash; not extracted; note to improve skill</td></tr>
+        <tr style="border-bottom:1px dashed var(--line);"><td style="padding:0.3rem;">"After-hours phone", "billing", "renewal questionnaires"</td><td style="padding:0.3rem;"><span class="tag insight">insight Signal</span> wedge candidates + <span class="tag expansion">expansion Signal</span> outbound renewal</td></tr>
+        <tr style="border-bottom:1px dashed var(--line);"><td style="padding:0.3rem;">"Recording, deck, NC agency examples"</td><td style="padding:0.3rem;"><span class="tag indemn">indemn Commitment</span> Kyle &rarr; Walker</td></tr>
+        <tr style="border-bottom:1px dashed var(--line);"><td style="padding:0.3rem;">"Scrape site + stand up first-version demo"</td><td style="padding:0.3rem;"><span class="tag">Task</span> + <span class="tag indemn">indemn Commitment</span> Kyle &rarr; Walker</td></tr>
+        <tr style="border-bottom:1px dashed var(--line);"><td style="padding:0.3rem;">"Booking link&hellip; loop in others"</td><td style="padding:0.3rem;"><span class="tag customer">customer Commitment</span>&times;2 Walker &rarr; Kyle</td></tr>
+        <tr style="border-bottom:1px dashed var(--line);"><td style="padding:0.3rem;">"Kitty Hawk" personalization</td><td style="padding:0.3rem;"><span class="tag champion">champion Signal</span> Walker's background + Contact/Company context</td></tr>
+        <tr><td style="padding:0.3rem;">Payment gap aside</td><td style="padding:0.3rem;"><span class="tag expansion">expansion Signal</span> Heather &mdash; payment-taking</td></tr>
+      </table>
+    </div>
+    <div class="source-explainer" style="margin-top:1rem;">
+      <h4>What changes when we scale this</h4>
+      <p>Same mechanism generates different artifacts at different stages. At <strong>DEMO</strong>, Playbook's <code>artifact_intent</code> would be "a demo recap with objections addressed, next-step proposed." At <strong>PROPOSAL</strong>, it becomes "render the Proposal doc from its Phases + linked Opportunities + AssociateTypes." Same inputs (Deal + Touchpoint + intel + Playbook for stage). Only the stage's Playbook record differs, and the artifact that comes out the other end changes accordingly.</p>
+      <p>The loop closes at <strong>PROPOSAL</strong> &mdash; that's the terminus. The Proposal entity exists, its Phases exist, and the Artifact Generator reads them to render the document we send to the customer.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  All entity IDs are real &middot; all state is live in the dev OS (<code>_platform</code> org, <code>dev-indemn</code> Atlas cluster) &middot; query anything via <code>indemn &lt;entity&gt; get &lt;id&gt;</code> or <code>indemn company get 69eb95f22b0a508618923977 --depth 2 --include-related</code>.
+  <br><br>
+  Related: <code>2026-04-24-playbook-entity-vision.md</code> &middot; <code>2026-04-24-extractor-pipeline-gap.md</code> &middot; <code>2026-04-24-extractor-procedure-and-requirements.md</code> &middot; <code>2026-04-24-grlittle-followup-email-draft.md</code>
+</footer>
+
+</body>
+</html>

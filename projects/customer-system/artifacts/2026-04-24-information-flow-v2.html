@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GR Little — Customer Model · 2026-04-24</title>
+<style>
+  :root {
+    --bg: #f6f5f3;
+    --panel: #ffffff;
+    --ink: #111111;
+    --dim: #6b7280;
+    --line: #d7d5d1;
+    --accent: #1e3a8a;
+    --amber: #d97706;
+    --amber-bg: #fef3c7;
+    --amber-ink: #78350f;
+    --green: #059669;
+    --green-bg: #d1fae5;
+    --green-ink: #065f46;
+    --red: #dc2626;
+    --red-bg: #fee2e2;
+    --red-ink: #991b1b;
+    --indigo: #4f46e5;
+    --indigo-bg: #e0e7ff;
+    --indigo-ink: #3730a3;
+    --slate-bg: #f1f5f9;
+    --code-bg: #eeece8;
+    --mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, 'SF Pro Text', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.45;
+    font-size: 14px;
+    padding: 2rem 3rem 4rem;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  header.page-header {
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 0.6rem;
+  }
+  h1 { font-size: 1.45rem; margin: 0; letter-spacing: -0.01em; }
+  h1 .light { font-weight: 400; color: var(--dim); }
+  .lede { color: var(--dim); font-size: 0.9rem; margin: 0.2rem 0 0; }
+
+  h2 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin: 1.6rem 0 0.6rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid var(--line);
+  }
+  h2 .n { display: inline-block; width: 1.4em; color: var(--dim); }
+
+  code, .id {
+    font-family: var(--mono);
+    background: var(--code-bg);
+    padding: 0.02em 0.3em;
+    border-radius: 2px;
+    font-size: 0.82em;
+  }
+
+  /* === EMAIL HERO === */
+  .email-hero {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 1.2rem 1.5rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  }
+  .email-hero .headers {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--dim);
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.7rem;
+  }
+  .email-hero .headers strong { color: var(--ink); font-weight: 600; font-family: inherit; }
+  .email-hero p { margin: 0.45rem 0; }
+  .email-hero ul { margin: 0.3rem 0; padding-left: 1.3rem; }
+  .email-hero ul li { margin: 0.2rem 0; }
+  .email-hero .sig { margin-top: 0.7rem; color: var(--dim); font-style: italic; font-size: 0.88rem; }
+
+  /* === TIMELINE === */
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    position: relative;
+    margin: 0.3rem 0 0.5rem;
+  }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 8%; right: 8%;
+    top: 18px;
+    height: 2px;
+    background: var(--line);
+    z-index: 0;
+  }
+  .tl-event {
+    position: relative;
+    padding: 0 0.5rem;
+    text-align: left;
+  }
+  .tl-event .dot {
+    width: 14px; height: 14px;
+    background: var(--accent);
+    border: 3px solid var(--bg);
+    border-radius: 50%;
+    margin: 9px 0 0.7rem;
+    position: relative; z-index: 1;
+  }
+  .tl-event.now .dot { background: var(--red); }
+  .tl-event .date { font-family: var(--mono); font-size: 0.78rem; color: var(--dim); letter-spacing: 0.03em; }
+  .tl-event .label { font-weight: 600; font-size: 0.95rem; margin: 0.15rem 0 0.3rem; }
+  .tl-event .detail { font-size: 0.82rem; color: var(--dim); line-height: 1.45; }
+  .tl-event .detail .ent { color: var(--ink); font-family: var(--mono); font-size: 0.76rem; }
+
+  /* === EXTRACTION TABLE === */
+  .extraction-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    overflow: hidden;
+    font-size: 0.86rem;
+  }
+  .extraction-table th {
+    background: var(--slate-bg);
+    text-align: left;
+    padding: 0.55rem 0.8rem;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--dim);
+    font-weight: 600;
+    border-bottom: 1px solid var(--line);
+  }
+  .extraction-table td {
+    padding: 0.55rem 0.8rem;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  .extraction-table tr:last-child td { border-bottom: none; }
+  .extraction-table td:first-child { font-size: 0.84rem; color: var(--ink); font-style: italic; }
+  .extraction-table .who { color: var(--dim); font-style: normal; font-size: 0.76rem; display: block; margin-top: 0.15rem; }
+  .extraction-table .entity-pill { display: inline-block; font-family: var(--mono); font-size: 0.72rem; padding: 0.12rem 0.5rem; border-radius: 3px; margin-right: 0.3rem; margin-bottom: 0.2rem; }
+  .entity-pill.task { background: var(--indigo-bg); color: var(--indigo-ink); }
+  .entity-pill.decision { background: var(--green-bg); color: var(--green-ink); }
+  .entity-pill.commit-indemn { background: #dbeafe; color: #1e40af; }
+  .entity-pill.commit-cust { background: #fce7f3; color: #9d174d; }
+  .entity-pill.signal { background: #ede9fe; color: #5b21b6; }
+  .entity-pill.opp { background: var(--red-bg); color: var(--red-ink); }
+  .entity-pill.passthrough { background: #e5e7eb; color: var(--dim); }
+  .extraction-table td:last-child { color: var(--dim); font-size: 0.82rem; }
+
+  /* === MECHANISM TABLE === */
+  .mechanism-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    overflow: hidden;
+    font-size: 0.85rem;
+  }
+  .mechanism-table th {
+    background: var(--slate-bg);
+    text-align: left;
+    padding: 0.5rem 0.7rem;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--dim);
+    font-weight: 600;
+    border-bottom: 1px solid var(--line);
+    white-space: nowrap;
+  }
+  .mechanism-table td {
+    padding: 0.55rem 0.7rem;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+    color: var(--dim);
+    font-size: 0.82rem;
+  }
+  .mechanism-table tr:last-child td { border-bottom: none; }
+  .mechanism-table tr.now td { background: var(--amber-bg); color: var(--ink); }
+  .mechanism-table tr.now .stage-name { color: var(--amber-ink); font-weight: 700; }
+  .mechanism-table tr.future td { opacity: 0.7; }
+  .mechanism-table .stage-name { font-weight: 700; color: var(--ink); font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.05em; text-transform: uppercase; }
+  .mechanism-table .you-are-here { display: inline-block; background: var(--red); color: white; font-size: 0.65rem; padding: 0 0.4rem; border-radius: 3px; margin-left: 0.4rem; text-transform: uppercase; letter-spacing: 0.06em; vertical-align: middle; font-family: var(--mono); }
+
+  /* === PROPOSAL SPINE === */
+  .spine {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+  }
+  .spine-col {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    padding: 0.55rem 0.65rem;
+    font-size: 0.82rem;
+  }
+  .spine-col.now { background: var(--amber-bg); border-color: var(--amber); }
+  .spine-col .stage-name { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.06em; color: var(--dim); text-transform: uppercase; margin-bottom: 0.3rem; }
+  .spine-col.now .stage-name { color: var(--amber-ink); font-weight: 700; }
+  .spine-col ul { margin: 0; padding-left: 1rem; font-size: 0.8rem; color: var(--ink); }
+  .spine-col li { margin: 0.12rem 0; }
+  .spine-col li em { color: var(--dim); font-style: normal; }
+
+  /* === LEGEND === */
+  .legend-inline { font-size: 0.78rem; color: var(--dim); margin-top: 0.5rem; }
+  .legend-inline .pill { margin-right: 0.5rem; }
+
+  /* === PLAYBOOK BOX === */
+  .playbook-strip {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-left: 4px solid var(--amber);
+    border-radius: 5px;
+    padding: 0.7rem 0.95rem;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+  }
+  .playbook-strip strong { color: var(--amber-ink); font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; display: block; margin-bottom: 0.2rem; }
+  .playbook-strip em { color: var(--ink); font-style: italic; }
+
+  footer { margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--line); font-size: 0.8rem; color: var(--dim); }
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <h1>GR Little Agency <span class="light">— first-discovery call, follow-up email, and how the OS got there</span></h1>
+  <p class="lede">Walker Ross (3rd-gen Team Manager) + Heather F &middot; Apr 22 2026 &middot; Deal <code>GRLITTLE-2026</code> at <strong>discovery</strong></p>
+</header>
+
+<!-- 1. THE EMAIL -->
+<h2><span class="n">1.</span> The artifact — drafted follow-up email</h2>
+<div class="email-hero">
+  <div class="headers">
+    <div><strong>To</strong> &nbsp; Walker Ross &lt;walker.ross@grlittle.com&gt;</div>
+    <div><strong>CC</strong> &nbsp; Heather F &lt;heatherf@grlittle.com&gt;</div>
+    <div><strong>From</strong> &nbsp; Kyle Geoghan &lt;kyle@indemn.ai&gt;</div>
+    <div><strong>Subject</strong> &nbsp; Great to meet — recap, NC examples, and the next one</div>
+  </div>
+  <p>Walker, Heather — really enjoyed the conversation on Tuesday. And Walker — congrats on the twins; hope their NICU stay is short.</p>
+  <p>Quick recap of what I heard, and the things I'm sending over. From the call, the workflows that sounded most worth piloting were:</p>
+  <ul>
+    <li><strong>After-hours phone coverage.</strong> You don't have it today, and that's where the missed-call pain seemed biggest. We can stand up an AI associate that answers out-of-hours calls, captures the 3–5 key data points, and hands the call off into Teams (or directly into Agency Zoom / HawkSoft) with a full summary.</li>
+    <li><strong>Billing inquiries.</strong> You described real volume flowing to your three front-desk positions for "how do I pay this bill on carrier X." Textbook first wedge for us — we can take those calls and chats and give your customers the answer instantly, 24/7, without anyone on your side losing a day to it.</li>
+    <li><strong>Renewal questionnaires.</strong> Today you're sending a Cognito form by email. Heather asked whether we could have an AI agent actually call the insured and walk them through the questions. Yes — that's one of our favorite outbound patterns. I'll bring a live example to the demo.</li>
+  </ul>
+  <p>What you'll find in your inbox: recording of the call, Indemn deck, NC agency examples (the five IIANC agencies via Pat Klein and 101 Western Labs).</p>
+  <p>For the next meeting, I want to do something different — scrape grlittle.com and <strong>stand up a first-version version of your agency's agent</strong>, so we're looking at how it handles <em>your</em> coastal book, <em>your</em> NCIUA program, <em>your</em> stack (HawkSoft + Agency Zoom + Glovebox). Not somebody else's.</p>
+  <p>Walker — my booking link is <code>[CALENDAR_LINK]</code>. Grab whatever works in the next week or two, and loop in anyone else on your side who should be in the room.</p>
+  <p>One more note on something you and Heather both raised: taking the actual payment for clients who need help, instead of redirecting to the carrier's portal. Real gap — we're navigating the PCI / compliance side and I'll bring you in when there's a good moment to pilot.</p>
+  <p class="sig">Thanks, and say hi to the newest residents of Kitty Hawk when they're out of the NICU. — Kyle</p>
+</div>
+
+<!-- 2. TIMELINE -->
+<h2><span class="n">2.</span> How we got here — temporal flow</h2>
+<div class="timeline">
+  <div class="tl-event">
+    <div class="dot"></div>
+    <div class="date">Mar 31 2026</div>
+    <div class="label">Calendly inbound</div>
+    <div class="detail">Walker books intro via calendar link.<br><span class="ent">Contact</span> + <span class="ent">Deal</span> (stage: contact) first created.</div>
+  </div>
+  <div class="tl-event">
+    <div class="dot"></div>
+    <div class="date">Apr 22 · 10:59 ET</div>
+    <div class="label">Meeting happens + ingested</div>
+    <div class="detail">31-min first-discovery call. Google Meet API → <span class="ent">Meeting</span> entity with transcript (34K chars), summary, 3 participants.</div>
+  </div>
+  <div class="tl-event">
+    <div class="dot"></div>
+    <div class="date">Apr 22–24</div>
+    <div class="label">Touchpoint + intelligence hydrated</div>
+    <div class="detail"><span class="ent">Touchpoint</span> synthesized &middot; 3 <span class="ent">Opportunities</span> mapped to AssociateTypes &middot; 5 Signals, 4 Commitments, 2 Decisions, 2 Tasks. <span class="ent">Deal</span> → <strong>discovery</strong>. <span class="ent">Proposal</span> v1 (empty, drafting) created.</div>
+  </div>
+  <div class="tl-event now">
+    <div class="dot"></div>
+    <div class="date">Apr 24 · today</div>
+    <div class="label">Artifact generated</div>
+    <div class="detail">Playbook for <strong>discovery</strong> + the hydrated entities → follow-up email (above). Review by human → send.</div>
+  </div>
+</div>
+
+<!-- 3. EXTRACTION -->
+<h2><span class="n">3.</span> Extraction — where each piece of the email came from</h2>
+<p class="lede" style="margin-top:-0.2rem;">Quotes and observations from the Meeting transcript became structured entities. The email draws from those entities (and from the transcript directly for voice / personal context).</p>
+<table class="extraction-table">
+  <thead>
+    <tr>
+      <th style="width:40%">From the meeting (quote or observation)</th>
+      <th style="width:30%">Became this entity</th>
+      <th style="width:30%">Fed this line in the email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>"…we can answer those calls right away… after hours or you're missing calls."<span class="who">— Kyle offered; Walker: "it'd be nice to have something after hours"</span></td>
+      <td><span class="entity-pill opp">Opportunity</span> After-hours phone → Front Desk Associate<br><span class="entity-pill signal">Signal</span> insight: wedge candidate</td>
+      <td>"After-hours phone coverage. You don't have it today…"</td>
+    </tr>
+    <tr>
+      <td>"a big proportion of your calls coming in are how do I pay this bill for this carrier… we can take the answers you're giving to your customers every day…"<span class="who">— Kyle describing; Walker described 3 front-desk staff taking these calls</span></td>
+      <td><span class="entity-pill opp">Opportunity</span> Billing inquiry automation → Service Associate<br><span class="entity-pill signal">Signal</span> insight: wedge candidate</td>
+      <td>"Billing inquiries. You described real volume flowing to your three front-desk positions…"</td>
+    </tr>
+    <tr>
+      <td>"would your phone thing do outbound? Because we have an insured renewal questionnaire we just started… a Cognito form we're sending in an email. Like would they call somebody…"<span class="who">— Walker asked; Kyle: "definitely a possibility"</span></td>
+      <td><span class="entity-pill opp">Opportunity</span> Outbound renewal questionnaire → Renewal Associate<br><span class="entity-pill signal">Signal</span> expansion, attributed to Walker</td>
+      <td>"Renewal questionnaires. Today you're sending a Cognito form by email. Heather asked whether we could…"</td>
+    </tr>
+    <tr>
+      <td>"could you just send us like some notes or the other stuff that the agencies in North Carolina are doing… we can look at that before our full demo."<span class="who">— Walker requested; Kyle: "sure, that sounds great"</span></td>
+      <td><span class="entity-pill commit-indemn">Commitment</span> Kyle → Walker: send recording, deck, NC examples (due Apr 23)<br><span class="entity-pill task">Task</span> follow_up, assignee: Kyle</td>
+      <td>"What you'll find in your inbox: recording of the call, Indemn deck, NC agency examples…"</td>
+    </tr>
+    <tr>
+      <td>"we could scrape it and build a… show you the first version of yours."<span class="who">— Kyle offered; Walker: "I think that would be super helpful"</span></td>
+      <td><span class="entity-pill commit-indemn">Commitment</span> Kyle → Walker: scrape site + tailored demo<br><span class="entity-pill task">Task</span> follow_up, assignee: Kyle</td>
+      <td>"Scrape grlittle.com and stand up a first-version version of your agency's agent…"</td>
+    </tr>
+    <tr>
+      <td>"I can just use I think you sent me a booking link… we might loop in some other folks of the team."<span class="who">— Walker committed</span></td>
+      <td><span class="entity-pill commit-cust">Commitment</span> Walker → Kyle: book demo via link<br><span class="entity-pill commit-cust">Commitment</span> Walker → Kyle: loop in team members</td>
+      <td>"Walker — my booking link is [CALENDAR_LINK]… loop in anyone else on your side…"</td>
+    </tr>
+    <tr>
+      <td>"we have a certain population of clientele that we need to help them make the payment… I would definitely interested in that."<span class="who">— Heather surfaced</span></td>
+      <td><span class="entity-pill signal">Signal</span> expansion, attributed to Heather — payment-taking for non-online clientele</td>
+      <td>"One more note on something you and Heather both raised: taking the actual payment…"</td>
+    </tr>
+    <tr>
+      <td>"I'm third generation… we did loads of culture work… now kind of shifting into more of a sales growth headspace."<span class="who">— Walker, referred by Pat Klein (IIANC)</span></td>
+      <td><span class="entity-pill signal">Signal</span> champion, medium — Walker as champion candidate</td>
+      <td>Tone / framing of the whole email — Walker as decision-maker and sole recipient on TO line</td>
+    </tr>
+    <tr>
+      <td>"I just had uh twin girls that were born a couple weeks ago and they're in the NICU… we're the agency itself is on the Outer Banks. So, Kittyhawk."<span class="who">— Walker shared</span></td>
+      <td><span class="entity-pill passthrough">(not extracted)</span> — personal context read directly from <code>Meeting.transcript</code></td>
+      <td>"Walker — congrats on the twins; hope their NICU stay is short." / "newest residents of Kitty Hawk"</td>
+    </tr>
+    <tr>
+      <td>"Principal (Monty / 'Basin') is not super into that stuff, technology wise" &middot; "Glovebox adoption is 10–15%"<span class="who">— Walker framed adoption reality</span></td>
+      <td><span class="entity-pill signal">Signal</span> blocker, low — Principal low-tech, slow adoption curve</td>
+      <td>Shaped the <em>positioning</em> Decision — agency-tier front-door-only, no replace-staff pitch. Reflected in the email's "we can't replace receptionists" tone.</td>
+    </tr>
+  </tbody>
+</table>
+<div class="legend-inline">
+  <span class="entity-pill opp pill">Opportunity</span>
+  <span class="entity-pill task pill">Task</span>
+  <span class="entity-pill decision pill">Decision</span>
+  <span class="entity-pill commit-indemn pill">Commitment (indemn)</span>
+  <span class="entity-pill commit-cust pill">Commitment (customer)</span>
+  <span class="entity-pill signal pill">Signal</span>
+  <span class="entity-pill passthrough pill">Raw transcript (passthrough)</span>
+</div>
+
+<div class="playbook-strip" style="margin-top:1rem;">
+  <strong>Playbook — <code>discovery</code> stage, artifact_intent</strong>
+  <em>"A follow-up email that (1) thanks them and reinforces specific pain points by name, (2) proposes a concrete next step with timing and attendees, (3) includes requested materials, (4) optionally acknowledges the champion by referencing their background. Short, direct, signal that we listened. A continuation, not a pitch."</em>
+</div>
+
+<!-- 4. MECHANISM -->
+<h2><span class="n">4.</span> The mechanism — same pattern at every stage, different content</h2>
+<p class="lede" style="margin-top:-0.2rem;">The Playbook has one record per Stage. It tells the Extractor what to look for, and tells the Artifact Generator what to render. Same associates, same inputs, only the Playbook record changes as the deal progresses.</p>
+<table class="mechanism-table">
+  <thead>
+    <tr>
+      <th>Stage</th>
+      <th>Touchpoint</th>
+      <th>Entities hydrated at this stage</th>
+      <th>Playbook · artifact_intent</th>
+      <th>Artifact produced</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="stage-name">Contact</td>
+      <td>Cold intro email / inbound form / referral</td>
+      <td>Company, Contact, Deal (contact)</td>
+      <td>"Acknowledge receipt / propose a discovery call"</td>
+      <td>Intro email with booking link</td>
+    </tr>
+    <tr class="now">
+      <td class="stage-name">Discovery <span class="you-are-here">You are here</span></td>
+      <td>First discovery call or email thread</td>
+      <td>Operations, Opportunities, CustomerSystem, Contact enrichment, initial Proposal (empty)</td>
+      <td>"Recap pain, propose concrete next step, include requested materials, acknowledge champion"</td>
+      <td><strong>This email</strong> — see section 1</td>
+    </tr>
+    <tr class="future">
+      <td class="stage-name">Demo</td>
+      <td>Demo meeting</td>
+      <td>Opportunities validated, objections → Signals, initial Phases</td>
+      <td>"Recap what resonated, address objections, propose pilot scope"</td>
+      <td>Demo recap email + proposed pilot scope</td>
+    </tr>
+    <tr class="future">
+      <td class="stage-name">Proposal</td>
+      <td>Proposal walkthrough meeting</td>
+      <td>Phases finalized on Proposal, commercial terms, Commitments around timeline</td>
+      <td>"Render the Proposal entity + Phases + Opportunities into a formal document"</td>
+      <td>Rendered Proposal Document + cover email</td>
+    </tr>
+    <tr class="future">
+      <td class="stage-name">Negotiation</td>
+      <td>Negotiation calls / email threads</td>
+      <td>Commercial tweaks on Phases, Commitments, new Proposal version (supersedes prior)</td>
+      <td>"Address commercial concerns, revise Proposal, confirm terms"</td>
+      <td>Revised Proposal Document + response to objections</td>
+    </tr>
+    <tr class="future">
+      <td class="stage-name">Verbal / Signed</td>
+      <td>Verbal agreement / contract signature</td>
+      <td>Proposal.status = accepted → Associates planned/deployed</td>
+      <td>"Welcome, kick off delivery, set expectations"</td>
+      <td>Welcome kit + kickoff agenda</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- 5. PROPOSAL SPINE -->
+<h2><span class="n">5.</span> The Proposal is the spine — hydrated continuously, rendered at the end</h2>
+<p class="lede" style="margin-top:-0.2rem;">The Proposal entity exists from <strong>discovery</strong> onward, starting empty. Every touchpoint adds more structured data to it. At <strong>proposal</strong> stage there's enough to render the final document. This is the culmination — every earlier artifact was building toward it.</p>
+<div class="spine">
+  <div class="spine-col now">
+    <div class="stage-name">Discovery — now</div>
+    <ul>
+      <li>Proposal v1 created (<em>drafting</em>)</li>
+      <li>3 Opportunities linked</li>
+      <li>0 Phases yet</li>
+      <li><em>No terms, no doc</em></li>
+    </ul>
+  </div>
+  <div class="spine-col">
+    <div class="stage-name">Demo</div>
+    <ul>
+      <li>Opportunities → validated</li>
+      <li>First Phases formed</li>
+      <li>Pilot scope drafted</li>
+    </ul>
+  </div>
+  <div class="spine-col">
+    <div class="stage-name">Proposal</div>
+    <ul>
+      <li>All Phases defined</li>
+      <li>Commercial terms set</li>
+      <li>Document rendered</li>
+      <li>Status → <em>sent</em></li>
+    </ul>
+  </div>
+  <div class="spine-col">
+    <div class="stage-name">Negotiation</div>
+    <ul>
+      <li>Phases tweaked</li>
+      <li>v2, v3… supersede</li>
+      <li>Status → <em>under_review</em></li>
+    </ul>
+  </div>
+  <div class="spine-col">
+    <div class="stage-name">Verbal / Signed</div>
+    <ul>
+      <li>Status → <em>accepted</em></li>
+      <li>Associates planned</li>
+      <li>Kickoff scheduled</li>
+    </ul>
+  </div>
+  <div class="spine-col">
+    <div class="stage-name">Delivery</div>
+    <ul>
+      <li>Associates deployed per Phase</li>
+      <li>Tasks per Phase</li>
+      <li>New Opportunities for expansion</li>
+    </ul>
+  </div>
+</div>
+
+<div style="margin-top:1.8rem; padding: 0.9rem 1.1rem; background: #fffbeb; border: 1px solid #fde68a; border-left: 4px solid var(--amber); border-radius: 5px; font-size: 0.82rem; color: var(--amber-ink);">
+  <strong style="display:block; font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.3rem;">What this diagram intentionally simplifies</strong>
+  This is an abridged view of the customer model. The fuller entity graph (per <code>2026-04-22-entity-model-brainstorm.md</code>) also includes <strong>Document</strong> (files and artifacts exchanged or created — Kyle's deck, NC examples, internal analysis docs, the eventual rendered Proposal PDF), <strong>Operation</strong> (the named business processes Opportunities are gaps in — e.g. "front-desk handling of inbound billing inquiries"), <strong>CustomerSystem</strong> (their tech stack as structured records — HawkSoft, Agency Zoom, Cognito, Glovebox, Lightspeed, NCIUA), and <strong>BusinessRelationship</strong> (who they work with — carriers, MGAs, vendors). Those entities weren't hydrated for this trace; they'd show up in a fuller picture and change how some flows look (e.g. internal analysis Documents become first-class context inputs to the Artifact Generator). See <code>2026-04-24-design-dialogue-playbook-artifact-proposal.md</code> for the running list of refinements.
+</div>
+
+<footer>
+  GR Little Company <span class="id">69eb95f2&hellip;3977</span> &middot; Deal <span class="id">69ebb722&hellip;3c06</span> &middot; Touchpoint <span class="id">69ebbec5&hellip;da4f</span> &middot; Playbook (discovery) <span class="id">69ebbe2f&hellip;da2b</span> &middot; Proposal v1 <span class="id">69ebcd39&hellip;ddb1</span>
+  <br><br>
+  All entities live in dev OS (<code>_platform</code> org). Query any with <code>indemn &lt;entity&gt; get &lt;id&gt;</code>.
+</footer>
+
+</body>
+</html>
