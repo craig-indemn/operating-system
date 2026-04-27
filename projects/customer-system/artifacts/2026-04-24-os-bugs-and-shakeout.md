@@ -354,7 +354,7 @@ Either way, our existing `companys` collection needs to be handled — rename vi
 
 ---
 
-## Bug #16 — Associates auto-create Company records despite "never create" skill instruction 🔴
+## Bug #16 — Associates auto-create Company records despite "never create" skill instruction 🟡
 
 **Discovered:** 2026-04-24
 **Severity:** High (corrupts the knowledge graph)
@@ -393,7 +393,7 @@ Clearly not being followed.
 
 ---
 
-## Bug #17 — No meeting-to-company classifier 🔴
+## Bug #17 — No meeting-to-company classifier 🟡
 
 **Discovered:** 2026-04-24
 **Severity:** High (blocks the whole pipeline for customer-facing meetings)
@@ -789,6 +789,67 @@ Both pairs succeeded; previously each pair's second create 500'd. Bug #2 (Meetin
 
 ---
 
+## Bug #31 — Missing kernel primitive: entity-resolution (partial-identity → ranked candidates) 🟢
+
+**Discovered:** 2026-04-24 (GR Little trace), addressed 2026-04-27.
+**Severity:** **Critical** (root cause of Bug #16's 446-Company explosion; required for any associate that processes inbound entities at scale)
+**Location:** `kernel/capability/entity_resolve.py` (new), `kernel/capability/__init__.py`, `kernel/skill/generator.py`
+
+### Symptom
+Associates processing inbound emails / meetings / documents had no kernel-level way to ask "which existing entity in the graph is this?" The graph held the answers (Companies with names, Contacts with emails, etc.) but there was no query path optimized for partial-identity resolution. Each associate skill improvised — `list --search` against partial signals, fuzzy-matching in the LLM head, falling back to `create` when nothing matched. Result: silent duplication. The 446-Company explosion is the visible artifact; the missing primitive is the cause.
+
+### Root cause (architectural)
+The kernel's only existing match-shaped primitive was the rule engine, which is great for deterministic per-org rules but doesn't compose strategies (exact + fuzzy + future vector) and doesn't return ranked candidates. There was no shared abstraction for "give me what we already know that resembles this." Every domain on the OS will face this question — it's connective tissue, not domain logic.
+
+### Fix
+New kernel capability `entity_resolve`, registered alongside `auto_classify` / `fetch_new` / `stale_check`. Domain-agnostic: knows about entities, fields, and a small fixed set of match-strategy types. Configured per-entity-type via `activated_capabilities` so each entity declares which fields are resolution-relevant.
+
+**Built-in strategies (v1):**
+- `field_equality` — normalize the candidate value, query by equality on the field, score 1.0 per hit. Normalizer registry: `email` (lowercase, strip; preserves plus aliases), `domain` (lowercase, strip protocol/www/path/trailing-dot), `lowercase_trim`, `none`. Sweeps recent entities to catch values that weren't normalized at write time.
+- `fuzzy_string` — rapidfuzz `token_set_ratio` against the field, threshold-gated (default 0.85). Score = ratio/100 so it composes equally with field_equality. Bounded at 500 entities per call (configurable).
+
+**Combination:** union of candidates by `_id`, max-score across strategies (so multi-strategy hits don't stack >1.0 — `matched_on` grows instead), sort descending, return top N (default 20). Each candidate carries a small summary so callers don't need a follow-up GET.
+
+**Vector search** via MongoDB Atlas Vector Search is intentionally deferred to v2 — `field_equality` + `fuzzy_string` are already powerful and adding embedding cost+infra prematurely is wrong. Layer in only when real customer data shows it's needed.
+
+### Contract (load-bearing)
+**The capability returns ranked candidates. It never auto-picks.**
+- Score 1.0 means: exact match after normalization. Caller can auto-link only when there's exactly one 1.0 candidate AND a rule says so.
+- Score < 1.0 is fuzzy (probabilistic). Caller MUST hand off to a higher reasoning layer — either an LLM step that gets the candidate list as explicit context (and the LLM's tool-call decision is recorded via `save_tracked` audit), or a human review queue.
+- Multiple candidates tied at score 1.0 is ambiguity, surfaced honestly. Two Companies with the same domain → two candidates at 1.0. The caller deals with it; the kernel never silently picks.
+
+This contract is what achieves "no silent wrong picks" — the strict interpretation of "100% accurate" in the customer-system trace plan. Fuzzy auto-merge is OUT of scope by design.
+
+### Verified live (2026-04-27)
+After deploy + activation on Company with `[{type: field_equality, field: name, normalizer: lowercase_trim}, {type: fuzzy_string, field: name, threshold: 0.85}]`:
+
+| Query | Result |
+|---|---|
+| `{"name": "Alliance Insurance"}` | Both canonical Alliance (1.0) AND auto-create dupe "Alliance" (1.0) — ambiguity surfaced |
+| `{"name": "FoxQuilt"}` | `Foxquilt` (1.0 from lowercase-equality) + `Fox Quilt` (0.94 fuzzy) — exactly the dupe pair Bug #16 produced |
+| `{"name": "This Company Does Not Exist Anywhere"}` | 0 candidates — no false positives |
+
+### What's still pending (next session)
+The kernel primitive is shipped. Bug #16 and Bug #17 don't fully resolve until the **associate skills** (Email Classifier, Touchpoint Synthesizer) are updated to:
+1. Call `indemn <entity> entity-resolve --data '{"candidate": {...}}'` before any create.
+2. Auto-link only when there's exactly one candidate at score 1.0.
+3. Transition the parent (Email or Meeting) to `needs_review` when only fuzzy candidates exist.
+4. Create new only when 0 candidates returned.
+
+That's domain skill work — separate from the kernel piece. Marking #16 and #17 🟡 (kernel ready, skill update pending) until that lands.
+
+### Linked OS work
+- Capability module: `kernel/capability/entity_resolve.py` (new)
+- Registration + collection-level routing: `kernel/capability/__init__.py`
+- Skill generator: `kernel/skill/generator.py` (Resolve section emitted when activated)
+- 29 unit tests: `tests/unit/test_entity_resolve.py`
+- 7 new skill-generator tests: `tests/unit/test_skill_generator.py`
+- Branch: `feature/entity-resolve` (commit `579c713`, merged `a5a1c97`)
+- Deployed: `railway up --service indemn-api` 2026-04-27
+- Activated on Company: `PUT /api/entitydefinitions/Company/enable-capability` 2026-04-27
+
+---
+
 ## Future bugs (add as we encounter them)
 
 Append new entries above this line as you find them. Format:
@@ -831,8 +892,8 @@ Append new entries above this line as you find them. Format:
 | 13 | Railway doesn't auto-deploy on push to main | Med | 🔴 Open |
 | 14 | CLI POST/PUT timeout was 60s — too short for fetch-new | Med | 🟢 Fixed (f0dfe89) |
 | 15 | Naive entity collection pluralization (`companys`) | Low | 🔴 Open |
-| 16 | Associates auto-create Companies despite skill saying never | **High** | 🔴 Open |
-| 17 | No meeting-to-company classifier in pipeline | **High** | 🔴 Open |
+| 16 | Associates auto-create Companies despite skill saying never | **High** | 🟡 Kernel ready (Bug #31); skill update pending |
+| 17 | No meeting-to-company classifier in pipeline | **High** | 🟡 Kernel ready (Bug #31); skill update pending |
 | 18 | Synth doesn't update `Meeting.touchpoint` back-reference | Med | 🔴 Open |
 | 19 | Change records sometimes have non-Date `timestamp` | Low | 🔴 Open |
 | 20 | Actor CLI missing `transition`, `delete`, `bulk-*` | Med | 🔴 Open |
@@ -846,3 +907,4 @@ Append new entries above this line as you find them. Format:
 | 28 | `actor list --type` flag is silently ignored | Low | 🔴 Open |
 | 29 | Entity definition replacement doesn't evict old API routes (live replacement silently broken, requires restart) | **High** | 🟢 Fixed (Apr 27, merge `83d2494`) |
 | 30 | Manual entity create 500 — unique index on nullable field; kernel had no index reconciliation | **High** | 🟢 Fixed (Apr 27, deployed) |
+| 31 | Missing kernel primitive: entity-resolution (partial-identity → ranked candidates) | **Critical** | 🟢 Fixed (Apr 27, deployed + activated on Company) |
