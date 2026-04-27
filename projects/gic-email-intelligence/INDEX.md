@@ -763,6 +763,7 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 | 2026-04-24 | [upload-bypass-and-notification-fixes](artifacts/2026-04-24-upload-bypass-and-notification-fixes.md) | JC flagged Q:146348 missing attachments — investigation → chunked MTOM upload bypass, Notes→Description rename, delete endpoint, full ActivityNotificationDTO fields |
 | 2026-04-27 | [migration-to-indemn-infrastructure-design](artifacts/2026-04-27-migration-to-indemn-infrastructure-design.md) | Migrate from Railway + craig-indemn personal repo → indemn-ai org repo + dev-services/prod-services EC2 + AWS Secrets Manager + Amplify. 9 strategic decisions captured, cutover runbook, Phase 2 (Atlas relocation) sketched as separate follow-up |
 | 2026-04-27 | [migration-implementation-plan](artifacts/2026-04-27-migration-implementation-plan.md) | Bite-sized task plan executing the migration design. 11 phases (A–K), ~70 tasks, TDD on Phase 1.0 code work, verification steps on infra. Phase I is the prod cutover runbook step-by-step. ~10-day wall clock with 24h dev + 7d prod soak |
+| 2026-04-27 | [migration-execution-handoff](artifacts/2026-04-27-migration-execution-handoff.md) | End-of-session handoff covering Phases A-D execution. 32 commits on `migration/indemn-infra` (in worktree `gic-email-intelligence-migration`). Ground-truthed AWS facts, tracked follow-ups, decision rationale, and Phase E readiness check (4 READY / 2 NEEDS WORK incl. new OIDC policy blocker). Read this first to resume in next session. |
 
 ## Key Data Files
 | File | What it contains |
