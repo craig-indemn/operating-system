@@ -576,7 +576,7 @@ Return `{status: "completed_no_match"}` OR include `records_matched: 0` in the s
 
 ---
 
-## Bug #25 — `company create --data` returns HTTP 500 Internal Server Error 🔴
+## Bug #25 — `company create --data` returns HTTP 500 Internal Server Error 🟢
 
 **Discovered:** 2026-04-24
 **Severity:** Medium (blocked re-creating Amynta company after accidental delete)
@@ -596,6 +596,9 @@ Blocks any programmatic/scripted creation of Company records. Error opaque — u
 - Return validated error with specific field failure
 - Log the actual exception to surface the root cause
 - Almost certainly a validation or type-coercion bug given other entities create fine
+
+### Resolution (2026-04-27)
+**Same root cause as Bug #30** — Company entity has a unique index on a nullable field (e.g. `domain`). MongoDB's unique index treats explicit null as a value, so the second Company without that field collided. Resolved by the index reconciliation + sparse→partialFilterExpression work in Bug #30. After the kernel fix deployed, `indemn company create --data '{"name":"Test"}'` succeeds for any number of companies that share a null on the previously-blocking field.
 
 ---
 
@@ -651,6 +654,141 @@ Implement the filter OR remove the flag from help.
 
 ---
 
+## Bug #29 — Entity definition replacement doesn't evict old API routes 🔴
+
+**Discovered:** 2026-04-24
+**Severity:** **High** (makes live entity-def replacement impossible without a restart, defeats a core self-evidence promise of the OS)
+**Location:** `kernel/db.py::register_domain_entity()` + `kernel/api/registration.py::register_entity_routes()`
+
+### Symptom
+Sequence that fails:
+1. `db.entity_definitions.deleteOne({name: "Playbook"})` in Mongo directly (or via `DELETE /api/entitydefinitions/Playbook`)
+2. `indemn entity create Playbook --fields '{... completely different shape ...}'` (CLI hits `POST /api/entitydefinitions` which inserts the new def and calls `register_domain_entity`)
+3. Response body shows the new def correctly stored and registered in `ENTITY_REGISTRY`
+4. `POST /api/playbooks/` with data matching the new schema → rejected with an enum-validation error that references the OLD field's enum values (`"stage must be one of ['draft', 'active', 'archived']"`), even though the new `stage` field is a relationship with no enum_values
+
+### Root cause
+`register_domain_entity()` does:
+```python
+ENTITY_REGISTRY[defn.name] = dynamic_cls     # overwrites
+...
+register_entity_routes(app, defn.name, dynamic_cls)
+```
+
+`register_entity_routes()` ends with `app.include_router(router)`. FastAPI's `include_router` **appends** routes; it does not replace. So:
+- Every `@router.post("/")` closure built from the OLD `entity_cls` is still attached to the app
+- New routes from the NEW class are appended
+- When a request comes in, FastAPI matches on the FIRST matching route → always the old one
+- The route handler does `entity_cls(org_id=..., **data)` where `entity_cls` is closed over the stale class
+- Validation uses the stale class's `__init__` validator, which enforces the stale enum
+
+Result: the registry and Mongo are correct but every HTTP request to `/api/{entity}/...` still validates against the old schema. There's no way to unreach the stale routes short of restarting the process.
+
+The same bug affects `PUT /api/entitydefinitions/{name}/modify` and the `migrate` endpoint — both call `register_domain_entity` and both leave stale routes in place.
+
+### Impact
+- "Live entity-def replacement without restart" is effectively broken. The kernel docs imply this works (`"Registers it immediately without restart"`) but it doesn't for any use case that changes field types, enum values, state machine, or is_state_field/is_relationship flags.
+- Additive changes (adding new optional fields) happen to work because the OLD class doesn't reject the new fields (they just go into the BaseModel without validation).
+- Silent correctness bug for operators — you think you've replaced an entity definition, and for most operations it looks like you did, but write operations silently use the stale schema.
+
+### Proposed fix
+Before calling `app.include_router(router)` in `register_entity_routes`, find and remove all routes whose path starts with `/api/{collection_name}/` from `app.router.routes`. Something like:
+
+```python
+prefix = f"/api/{slug}"
+app.router.routes = [
+    r for r in app.router.routes
+    if not (hasattr(r, "path") and r.path.startswith(prefix + "/"))
+]
+app.include_router(router)
+```
+
+Alternative: have `register_domain_entity` take a `replace=True` mode that wipes existing routes for this entity before re-including.
+
+### Workaround until fixed
+Restart the API service (`railway up --service indemn-api`). For dev this is ~30-60s of downtime; for prod this is a full deploy. Document this limitation in `docs/guides/development.md` so no one else hits it without warning.
+
+---
+
+## Bug #30 — Manual entity create returns HTTP 500 due to unique index on nullable field; kernel had no index reconciliation 🟢
+
+**Discovered:** 2026-04-27 (Alliance trace)
+**Severity:** **High** (blocks any entity with a unique-but-nullable field — Meeting, Company, others)
+**Location:** `kernel/db.py` (additive create_index loops), `kernel/entity/definition.py` (no sparse/partial filter support), `kernel/entity/indexes.py` (new — created during fix)
+
+### Symptom
+`POST /api/meetings/` with `{"title": "...", "date": "..."}` (no `external_ref`) returned HTTP 500. After Bug #2 (the API error transparency fix) deployed, the body surfaced the actual exception:
+```
+DuplicateKeyError: E11000 duplicate key error collection: indemn_os.meetings index: org_id_1_external_ref_1 dup key: { ..., external_ref: null }
+```
+The first manual Meeting succeeded; the second collided on `external_ref: null` because the Meeting entity had a unique index on `external_ref` but `external_ref` is nullable for manual meetings (no Google Meet / Apollo source). MongoDB's unique index treats explicit null as a value, so only ONE manual meeting per org was allowed.
+
+### Two-layer root cause + journey
+
+**Initial wrong hypothesis: stale index.**
+First diagnosis assumed the index was a relic of a prior version of the Meeting entity definition that the kernel had never cleaned up. The kernel only ever ADDED indexes (idempotent `create_index` in startup + `register_domain_entity`); it never DROPPED indexes the operator had stopped requesting. So removing `unique: true` from a field flag would leave the unique index in place forever. This was indeed a real kernel gap — but it wasn't the actual cause for Meeting.
+
+Verification via the API showed the Meeting definition DOES declare `external_ref: {unique: true}`. The index isn't stale — it's intentional. Same for Company's `domain` (Bug #25).
+
+**Actual root cause: unique index on nullable field, no partial filter.**
+The semantic the operator wants: `external_ref` is unique IF set, but should allow many docs without it (manual meetings have no external system source). MongoDB's plain `sparse: true` only excludes documents where the indexed field is MISSING — but Pydantic writes `external_ref: null` explicitly for unset Optional fields, so plain sparse never helps. The correct MongoDB pattern is `partialFilterExpression: {field: {$type: <bson_type>}}` — this excludes both null and missing because null isn't of any concrete type.
+
+The kernel did not support `sparse` OR `partialFilterExpression` in entity definitions, and there was no path for an operator to express "unique-when-set" through the self-evidence surface (`indemn entity ...`).
+
+### Fix — declarative index reconciliation + sparse-via-$type translation
+Multiple PRs to main:
+
+1. **`kernel/entity/indexes.py`** (new) — `reconcile_indexes(coll, defn)`. Diffs current MongoDB indexes vs the desired set computed from the entity definition. Drops kernel-managed indexes (those matching `org_id_1[_<field>_<dir>]*` naming) that aren't in the desired set OR whose options no longer match. Creates missing ones. Preserves `_id_` and operator-added custom-named indexes. Idempotent.
+
+2. **`kernel/db.py`** — replaced both additive `create_index` loops (startup at `init_database()` + runtime at `register_domain_entity`) with a call to `reconcile_indexes`. Now the kernel is declarative: the entity definition is source of truth and MongoDB follows.
+
+3. **`kernel/entity/definition.py`** — added `sparse: bool = False` to `FieldDefinition` and `IndexDef`.
+
+4. **`kernel/entity/indexes.py`** — when a FieldDefinition has `sparse: true`, the reconciler emits `partialFilterExpression: {<field>: {$type: <bson_type>}}` instead of `sparse: true`, using a small map (str→string, objectid→objectId, datetime→date, etc.). Compound IndexDef sparse is recorded but not currently translated (no per-field type metadata in IndexDef; future work if needed).
+
+5. **`kernel/api/admin_routes.py`** — added `modify_fields` to `PUT /api/entitydefinitions/{name}/modify`, so an operator can change an existing field's spec (e.g. add `sparse: true`) without remove+add gymnastics.
+
+6. **`kernel/api/app.py`** — added `setup_logging()` to API startup so `kernel.*` INFO logs reach Railway/Grafana. Previously the API service inherited Python's default WARNING level and silently dropped all kernel logs, making the reconciler's behavior un-debuggable in production.
+
+### Operator workflow after fix
+The whole loop is on the self-evidence surface — no mongosh ever:
+```
+indemn entity get Meeting
+# see external_ref: {type: str, unique: true, sparse: true}
+
+# (or change it via API)
+PUT /api/entitydefinitions/Meeting/modify
+{"modify_fields": {"external_ref": {"type": "str", "unique": true, "sparse": true}}}
+
+# kernel re-registers the entity, reconcile_indexes sees the option mismatch,
+# drops org_id_1_external_ref_1, creates it as unique with
+# partialFilterExpression: {external_ref: {$type: "string"}}.
+
+# Manual Meeting creates now succeed.
+```
+
+### Verification (2026-04-27 post-deploy)
+```
+POST /api/meetings/  body: {"title":"Alliance Discovery (Feb 1)", "date":"2026-02-01T..."}  → 201
+POST /api/meetings/  body: {"title":"Alliance Renewal (Apr 8)",  "date":"2026-04-08T..."}  → 201
+POST /api/companys/  body: {"name":"Test Company A"}  → 201
+POST /api/companys/  body: {"name":"Test Company B"}  → 201
+```
+Both pairs succeeded; previously each pair's second create 500'd. Bug #2 (Meeting) and Bug #25 (Company) both unblocked by this single root-cause fix. Bug #26 (Deal update with company ref) likely a different shape — not yet retested.
+
+### Lesson
+**The OS principle is "the entity definition is source of truth, the database follows."** When a field flag changes, the corresponding MongoDB state must update too — by the kernel, not by the operator running mongosh. The additive-only index strategy violated that principle silently. The reconciler fix makes it real.
+
+### Linked OS work
+- Index reconciler (commits `53a7d49`, `f09a07b`, merged `869a153`)
+- Sparse → partialFilterExpression translation (commit on main `<latest>`)
+- modify_fields API extension (`1b2384b`)
+- API logging config (`957f58d`)
+- Diagnostic logging (`cfde807`) — kept for future operations debugging
+- All deployed via `railway up --service indemn-api` 2026-04-27
+
+---
+
 ## Future bugs (add as we encounter them)
 
 Append new entries above this line as you find them. Format:
@@ -702,7 +840,9 @@ Append new entries above this line as you find them. Format:
 | 22 | Service token untraceability: can't tell which associate acted | **High** | 🔴 Open |
 | 23 | `bulk-delete` silently drops MongoDB operator filters ($in, $gte, $oid) | **Critical** | 🔴 Open |
 | 24 | `bulk status` reports COMPLETED even when 0 records matched | Med | 🔴 Open |
-| 25 | `company create` returns HTTP 500 | Med | 🔴 Open |
+| 25 | `company create` returns HTTP 500 | Med | 🟢 Fixed (subsumed by #30 — Apr 27) |
 | 26 | `deal update` with company ref returns HTTP 500 | Med | 🔴 Open |
 | 27 | `created_by` null on every Company record | Med | 🔴 Open |
 | 28 | `actor list --type` flag is silently ignored | Low | 🔴 Open |
+| 29 | Entity definition replacement doesn't evict old API routes (live replacement silently broken, requires restart) | **High** | 🟢 Fixed (Apr 27, merge `83d2494`) |
+| 30 | Manual entity create 500 — unique index on nullable field; kernel had no index reconciliation | **High** | 🟢 Fixed (Apr 27, deployed) |
