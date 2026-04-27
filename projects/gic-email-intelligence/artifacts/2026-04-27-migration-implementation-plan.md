@@ -45,6 +45,17 @@ gh api repos/indemn-ai/gic-email-intelligence --jq '{size, default_branch}'
 # uv installed
 uv --version
 
+# Docker daemon running locally (B.12 smoke-tests an image build)
+docker info >/dev/null && echo OK
+
+# Atlas backup tier supports on-demand snapshots
+# Open Atlas UI → dev-indemn cluster → Backup → confirm "Continuous Cloud Backup" enabled
+# (M0 free tier does NOT support snapshots; must be M10+)
+
+# Amplify app d244t76u9ej8m0 exists in this AWS account
+aws amplify get-app --app-id d244t76u9ej8m0 --query 'app.name' --output text
+# Expected: gic-email-intelligence
+
 # Production currently stable (no active incidents)
 mongosh "..." --eval '
   var t = db.emails.countDocuments({received_at:{$gte: new Date(Date.now()-3600000)}});
@@ -284,7 +295,7 @@ grep -n "^def\|@app\." src/gic_email_intel/cli/commands/sync.py
 
 The current `sync_command` is a Typer callback that runs once per invocation. We're adding optional `--loop` and `--interval` flags that wrap the existing logic in `run_loop`.
 
-**Step 2:** Write the failing test.
+**Step 2:** Write the failing test. Note: `run_loop` must be imported at module level in `sync.py` (`from gic_email_intel.cli.loop import run_loop`) for the patch path to work. Patching the import binding at `gic_email_intel.cli.commands.sync.run_loop` only intercepts module-level imports.
 
 ```python
 # tests/test_cli_sync_loop.py
@@ -301,8 +312,8 @@ def test_sync_supports_loop_flag():
         result = runner.invoke(app, ["sync", "run", "--loop", "--interval", "1"])
     assert result.exit_code == 0
     mock_loop.assert_called_once()
-    args, kwargs = mock_loop.call_args
-    assert kwargs.get("interval", args[0] if args else None) == 1
+    _, kwargs = mock_loop.call_args
+    assert kwargs.get("interval") == 1
 ```
 
 **Step 3:** Run; confirm fail.
@@ -312,16 +323,15 @@ uv run pytest tests/test_cli_sync_loop.py -v
 # Expected: FAIL — flags not recognized
 ```
 
-**Step 4:** Refactor `sync.py` so the existing logic lives in a `_sync_tick(settings)` function, and the Typer command accepts `--loop` and `--interval`.
+**Step 4:** Refactor `sync.py`: import `run_loop` at module top, refactor existing single-shot body into `_sync_tick(settings)`, accept `--loop` and `--interval` flags. **Do NOT add a `settings.pause_sync` reference yet — that's B.5's job.** Keep `_sync_tick` as a pure refactor of the current behavior.
 
 ```python
-# Inside sync.py — pseudocode of the change
+# Top of sync.py
+from gic_email_intel.cli.loop import run_loop
+# ...
 
 def _sync_tick(settings: Settings) -> None:
-    """Single tick of the sync loop. Existing logic from sync_command moves here."""
-    if settings.pause_sync:  # NEW — added in B.5
-        console.print("[yellow]Sync paused via PAUSE_SYNC=true. Skipping tick.[/yellow]")
-        return
+    """Single tick of the sync loop. Existing single-shot logic moves here verbatim."""
     # ... existing sync body unchanged ...
 
 @app.command("run")
@@ -331,7 +341,6 @@ def run(
 ):
     """Sync new emails from Outlook into Mongo."""
     if loop:
-        from gic_email_intel.cli.loop import run_loop
         run_loop(interval=interval, single_tick=_sync_tick)
     else:
         _sync_tick(Settings())
@@ -393,7 +402,7 @@ git commit -m "feat(process): support --loop --interval for long-running contain
 
 **Files:**
 - Modify: `src/gic_email_intel/config.py`
-- Modify: `src/gic_email_intel/cli/commands/sync.py` (the `_sync_tick` from B.2 already references `settings.pause_sync` — now make it real)
+- Modify: `src/gic_email_intel/cli/commands/sync.py` (add `if settings.pause_sync: return` to `_sync_tick` — this is the first introduction of the pause check)
 - Test: `tests/test_pause_sync.py`
 
 **Step 1:** Failing test.
@@ -428,7 +437,15 @@ def test_sync_tick_skips_when_paused():
 pause_sync: bool = False
 ```
 
-In `sync.py`, ensure `_sync_tick` checks `settings.pause_sync` before doing any work (B.2 stubbed this; now it's enforced).
+In `sync.py`, add to the top of `_sync_tick` (before any work):
+
+```python
+def _sync_tick(settings: Settings) -> None:
+    if settings.pause_sync:
+        console.print("[yellow]Sync paused via PAUSE_SYNC=true. Skipping tick.[/yellow]")
+        return
+    # ... existing body ...
+```
 
 **Step 4:** Run; confirm pass.
 
@@ -496,9 +513,39 @@ git commit -m "feat(api): add /healthz process-alive endpoint for Docker healthc
 ### Task B.7: Add stale-claim recovery for `automation_status`
 
 **Files:**
+- Modify: `src/gic_email_intel/cli/commands/submissions.py` (extract `_find_duplicate_by_name` helper)
 - Create: `src/gic_email_intel/automation/recovery.py`
 - Modify: `src/gic_email_intel/cli/commands/automate.py` (call recovery at top of `_automate_tick`)
 - Test: `tests/test_automation_recovery.py`
+
+**Step 0 (precondition): Extract `_find_duplicate_by_name` helper.** Today, the duplicate-check logic lives inside the `check_duplicate` Typer command at `cli/commands/submissions.py:575`. The recovery function needs to call this in-process (not via subprocess), so move the actual matching logic into a private helper that BOTH the CLI command and `recovery.py` can call.
+
+```python
+# In cli/commands/submissions.py, refactor:
+def _find_duplicate_by_name(name: str) -> Optional[dict]:
+    """Return the most recent submission doc matching `name` (fuzzy) that has a
+    unisoft_quote_id. None if no match."""
+    # ... extracted from existing check_duplicate body ...
+
+@app.command("check-duplicate")
+def check_duplicate(name: str = typer.Option(...), compact: bool = typer.Option(False)):
+    match = _find_duplicate_by_name(name)
+    # ... existing output formatting unchanged ...
+```
+
+Run existing tests after the refactor to confirm no behavior change:
+
+```bash
+uv run pytest tests/test_cli_submissions.py -v
+# Expected: existing pass count unchanged
+```
+
+Commit the refactor on its own:
+
+```bash
+git add src/gic_email_intel/cli/commands/submissions.py
+git commit -m "refactor(submissions): extract _find_duplicate_by_name helper for in-process callers"
+```
 
 **Step 1:** Failing tests covering the four scenarios:
 
@@ -1204,15 +1251,23 @@ railway variables --environment development --service api | grep -i mongodb_uri
 # Note the value; we'll write it to Secrets Manager
 ```
 
-**Step 2:** Create the secret in AWS:
+**Step 2:** Create or update the secret in AWS — idempotent helper so partial-failures are safe to retry.
 
 ```bash
-aws secretsmanager create-secret \
-  --name indemn/dev/gic-email-intelligence/mongodb-uri \
-  --secret-string "<value-from-railway>"
+upsert_secret() {
+  local name="$1"
+  local value="$2"
+  if aws secretsmanager describe-secret --secret-id "$name" >/dev/null 2>&1; then
+    aws secretsmanager put-secret-value --secret-id "$name" --secret-string "$value"
+  else
+    aws secretsmanager create-secret --name "$name" --secret-string "$value"
+  fi
+}
+
+upsert_secret indemn/dev/gic-email-intelligence/mongodb-uri "<value-from-railway>"
 ```
 
-Repeat for: `graph-credentials` (JSON), `anthropic-api-key`, `google-cloud-sa-json`, `unisoft-api-key`, `jwt-secret`, `tiledesk-db-uri`, `api-token`, `langsmith-api-key`.
+Repeat with the same `upsert_secret` helper for: `graph-credentials` (JSON), `anthropic-api-key`, `google-cloud-sa-json`, `unisoft-api-key`, `jwt-secret`, `tiledesk-db-uri`, `api-token`, `langsmith-api-key`.
 
 **Step 3:** Verify all secrets are retrievable:
 
@@ -1228,16 +1283,17 @@ aws secretsmanager list-secrets --filters Key=name,Values=indemn/dev/gic-email-i
 
 For each entry in the design doc's Parameter Store table under `/indemn/dev/gic-email-intelligence/*`:
 
-**Step 1:** Create each param:
+**Step 1:** Create or update each param. **Always pass `--overwrite`** so retries are safe.
 
 ```bash
 aws ssm put-parameter \
   --name /indemn/dev/gic-email-intelligence/llm-provider \
   --value google_vertexai \
-  --type String
+  --type String \
+  --overwrite
 ```
 
-Repeat for all entries in the design doc's PARAM_MAP table (17 GIC-specific + verify shared `mongodb-db`, `llm-provider`, etc. already exist at `/indemn/dev/`).
+Repeat for all entries in the design doc's PARAM_MAP table (17 GIC-specific + verify shared `mongodb-db`, `llm-provider`, etc. already exist at `/indemn/dev/`). Note: Parameter Store uses **leading slash** (`/indemn/dev/...`); Secrets Manager does NOT (`indemn/dev/...`). Two different conventions — get them right.
 
 **Step 2:** Verify with the loader script:
 
@@ -1345,6 +1401,20 @@ If no runners are registered to this specific repo, register the dev-services an
 
 ### Task F.1: Squash and push initial commit
 
+**Step 0 (precondition): Verify the worktree branch contains only our migration work, not new commits from the other session.** If the monitoring session pushed bug-fixes to `main` of the personal repo while we were doing Phase B–D, we want to (a) know, and (b) decide whether to merge them in or cherry-pick later.
+
+```bash
+cd /Users/home/Repositories/gic-email-intelligence-migration
+git fetch origin main
+# Check what's on origin/main that's NOT on migration/indemn-infra
+git log --oneline origin/main ^migration/indemn-infra
+# Expected: empty. If non-empty, those are new commits from the other session.
+```
+
+If non-empty:
+- For small bug-fixes, merge `origin/main` into `migration/indemn-infra`, retest, then proceed to F.1 Step 1.
+- For larger changes, pause and discuss with Craig before squashing.
+
 **Step 1:** Confirm all Phase B/C/D commits are present and tests pass.
 
 ```bash
@@ -1406,27 +1476,31 @@ gh api repos/indemn-ai/gic-email-intelligence/commits --jq '.[0].commit.message'
 
 **[NEEDS USER APPROVAL]** for production-touching settings.
 
-**Step 1:** Branch protection on `main`:
+**Step 1:** Branch protection on `main`. Use `--input` with a JSON file because nested `--field` arrays are unreliable.
 
 ```bash
-gh api -X PUT repos/indemn-ai/gic-email-intelligence/branches/main/protection \
-  --field required_status_checks[strict]=true \
-  --field required_status_checks[contexts][]=build \
-  --field enforce_admins=false \
-  --field required_pull_request_reviews[required_approving_review_count]=1 \
-  --field restrictions=null \
-  --field allow_force_pushes=false \
-  --field allow_deletions=false
+cat > /tmp/branch-protection.json <<'EOF'
+{
+  "required_status_checks": {"strict": true, "contexts": ["build"]},
+  "enforce_admins": false,
+  "required_pull_request_reviews": {"required_approving_review_count": 1, "dismiss_stale_reviews": false},
+  "restrictions": null,
+  "allow_force_pushes": false,
+  "allow_deletions": false
+}
+EOF
+
+gh api -X PUT repos/indemn-ai/gic-email-intelligence/branches/main/protection --input /tmp/branch-protection.json
 ```
 
-**Step 2:** Create `prod` branch from `main`, set the same protection.
+**Step 2:** Create `prod` branch from `main`, then apply the same protection.
 
 ```bash
+MAIN_SHA=$(gh api repos/indemn-ai/gic-email-intelligence/branches/main --jq '.commit.sha')
 gh api -X POST repos/indemn-ai/gic-email-intelligence/git/refs \
-  --field ref=refs/heads/prod \
-  --field sha=$(git rev-parse HEAD)
+  -f "ref=refs/heads/prod" -f "sha=$MAIN_SHA"
 
-# Repeat protection PUT for prod branch
+gh api -X PUT repos/indemn-ai/gic-email-intelligence/branches/prod/protection --input /tmp/branch-protection.json
 ```
 
 ---
@@ -1441,7 +1515,14 @@ aws amplify update-app --app-id d244t76u9ej8m0 \
 # May need to re-auth GitHub OAuth in console.
 ```
 
-**Step 2:** Set `VITE_API_BASE` env var on the `main` branch to the dev EC2 API URL (will be `https://api-dev.gic.indemn.ai` after Phase G ingress is set up — initially may point at the EIP).
+**Step 2:** Set `VITE_API_BASE` env var on the `main` branch (Amplify env vars are scoped per-branch).
+
+```bash
+aws amplify update-branch --app-id d244t76u9ej8m0 --branch-name main \
+  --environment-variables VITE_API_BASE=https://api-dev.gic.indemn.ai
+```
+
+If the Phase G ingress (ALB / Caddy) hasn't been wired yet, point at the dev-services EIP directly: `VITE_API_BASE=http://44.196.55.84:8080` — and update once the canonical hostname is live.
 
 **Step 3:** Trigger a build of the `main` branch.
 
@@ -1567,7 +1648,31 @@ mongosh "mongodb+srv://..." --eval '
 # Expected: [] or {duplicates: 0}
 ```
 
-If duplicates appear, sync was double-running — abort and investigate.
+If duplicates appear, sync was double-running. **Abort + rollback procedure:**
+
+```bash
+# 1. Pause EC2 dev sync IMMEDIATELY
+aws ssm put-parameter --name /indemn/dev/gic-email-intelligence/pause-sync --value true --type String --overwrite
+
+# 2. Confirm Railway dev sync is also paused (may have been un-paused by mistake)
+railway variables --environment development --service sync | grep PAUSE_SYNC
+
+# 3. Identify the duplicates and the time window
+mongosh "..." --eval '
+  db.emails.aggregate([
+    {$match: {received_at: {$gte: new Date(Date.now()-24*3600000)}}},
+    {$group: {_id: "$graph_message_id", n: {$sum: 1}, ids: {$push: "$_id"}}},
+    {$match: {n: {$gt: 1}}}
+  ]).forEach(d => printjson(d));
+'
+
+# 4. Decide remediation: keep the older _id (first sync), delete the newer.
+#    Do NOT bulk-delete without inspecting a sample first.
+
+# 5. Investigate the root cause before unpausing either side.
+```
+
+Common root causes: (a) Railway pause flag didn't take effect (cron container in mid-tick), (b) settings reload race in EC2 sync, (c) `sync_state` rewind from clobbered token.
 
 ---
 
@@ -1633,15 +1738,22 @@ Pass criterion: at least 3 emails complete with populated `unisoft_quote_id` wit
 
 ## Phase H: Operational Readiness (parallel with G)
 
-### Task H.1: Wire Datadog alerts
+### Task H.1: Wire Datadog alerts **[NEEDS USER APPROVAL on routing decision]**
 
-For each alert in the design's table:
+**Step 0 (blocking):** Confirm with Craig which alert-routing channel to use. Options:
+- **PagerDuty** — does Indemn have a PagerDuty account / integration set up? If yes, get the integration key and the on-call schedule.
+- **Slack-to-phone** — Slack channel + Slack's "call when mentioned" feature, scoped to Craig.
+- **Email-only** — fallback for non-critical alerts. Not appropriate for P1.
 
-**Step 1:** Create the monitor in Datadog (UI or `datadog-cli`).
+Block H.1 progress on this decision; do not proceed with monitor creation until decided.
 
-**Step 2:** Configure routing per Indemn org standard (PagerDuty or Slack-to-phone — check what's wired up; the GIC migration shouldn't unilaterally pick).
+**Step 1:** Create each monitor in the design's alert table via Datadog UI or terraform-equivalent. Capture each monitor URL.
 
-**Step 3:** Test by deliberately triggering one (e.g., scale automation to 0 briefly to fire the "container down" alert), confirm the page lands.
+**Step 2:** Wire each to the routing decision from Step 0.
+
+**Step 3:** Smoke-test by deliberately triggering one (e.g., scale `automation-cron` to 0 in dev briefly to fire the "container down" alert), confirm the page lands.
+
+**Step 4:** Record the dashboard URLs in the runbook (`docs/runbook.md`) and add them to the cutover Slack thread so on-call has them in I.10.
 
 ---
 
@@ -1736,12 +1848,74 @@ sleep 360  # wait one full sync interval for any in-flight tick to drain
 
 ### Task I.8: DNS flip on `api.gic.indemn.ai`
 
-Pre-set the TTL to 60s 24h prior. At T-0:
+**Pre-set TTL to 60s 24h prior.** Cutting TTL during the cutover window doesn't help because resolvers are already caching at the old TTL.
+
+**Step 1 (T-24h, run during pre-cutover prep):** Lower the TTL to 60s.
 
 ```bash
-# Find the current Route 53 record
-aws route53 list-hosted-zones | jq '.HostedZones[] | select(.Name == "indemn.ai.") | .Id'
-# Update api.gic.indemn.ai → ALB or EIP for prod-services
+ZONE_ID=$(aws route53 list-hosted-zones --query "HostedZones[?Name=='indemn.ai.'].Id" --output text)
+# Get the current record value to preserve it
+CURRENT=$(aws route53 list-resource-record-sets --hosted-zone-id "$ZONE_ID" \
+  --query "ResourceRecordSets[?Name=='api.gic.indemn.ai.']" --output json)
+echo "$CURRENT" > /tmp/api-gic-record-pre-cutover.json   # save for rollback
+
+# Build a CHANGE batch that lowers TTL to 60 (do not change the value yet)
+# (The exact JSON depends on whether it's an ALIAS or CNAME; inspect /tmp/api-gic-record-pre-cutover.json)
+```
+
+**Step 2 (T-0):** Stage the new value pointing at prod-services. The exact target depends on the ingress decision in the open items (ALB vs Caddy on host vs direct EIP). For an ALB target:
+
+```bash
+# Pre-write the change batch JSON
+cat > /tmp/api-gic-cutover.json <<'EOF'
+{
+  "Changes": [{
+    "Action": "UPSERT",
+    "ResourceRecordSet": {
+      "Name": "api.gic.indemn.ai.",
+      "Type": "A",
+      "AliasTarget": {
+        "HostedZoneId": "<ALB-zone-id>",
+        "DNSName": "<ALB-dns-name>",
+        "EvaluateTargetHealth": true
+      }
+    }
+  }]
+}
+EOF
+
+# Pre-write the rollback change batch (back to the prior value, captured in step 1)
+cat > /tmp/api-gic-rollback.json <<EOF
+{
+  "Changes": [{
+    "Action": "UPSERT",
+    "ResourceRecordSet": $(jq '.[0]' /tmp/api-gic-record-pre-cutover.json)
+  }]
+}
+EOF
+
+# Both files staged — only execute the cutover at the right moment in the runbook
+```
+
+**Step 3:** Execute the cutover.
+
+```bash
+aws route53 change-resource-record-sets --hosted-zone-id "$ZONE_ID" --change-batch file:///tmp/api-gic-cutover.json
+# Note the ChangeId in the output
+```
+
+**Step 4:** Confirm propagation.
+
+```bash
+dig +short api.gic.indemn.ai @8.8.8.8
+dig +short api.gic.indemn.ai @1.1.1.1
+# Expected: resolves to the new ALB / EIP within ~60s of the change
+```
+
+**Rollback (if needed):**
+
+```bash
+aws route53 change-resource-record-sets --hosted-zone-id "$ZONE_ID" --change-batch file:///tmp/api-gic-rollback.json
 ```
 
 ---
@@ -1767,12 +1941,19 @@ If any fail and 90-min window approaching: roll back per the runbook (pause EC2 
 ### Task I.11: Remove Railway IPs from allowlists
 
 ```bash
-# Atlas: remove 162.220.234.15 from allowlist
+# Atlas: remove 162.220.234.15 from allowlist (via Atlas UI on the dev-indemn project)
+
 # Unisoft proxy SG: revoke rules for 162.220.234.15
+# Use `|| true` so re-running is harmless if the rule is already gone
 aws ec2 revoke-security-group-ingress --group-id sg-04cc0ee7a09c15ffb \
-  --protocol tcp --port 5000 --cidr 162.220.234.15/32
+  --protocol tcp --port 5000 --cidr 162.220.234.15/32 || true
 aws ec2 revoke-security-group-ingress --group-id sg-04cc0ee7a09c15ffb \
-  --protocol tcp --port 5001 --cidr 162.220.234.15/32
+  --protocol tcp --port 5001 --cidr 162.220.234.15/32 || true
+
+# Verify the rules are gone
+aws ec2 describe-security-groups --group-ids sg-04cc0ee7a09c15ffb \
+  --query "SecurityGroups[].IpPermissions[?ToPort==\`5000\` || ToPort==\`5001\`].IpRanges[].CidrIp"
+# Expected: 162.220.234.15/32 not present
 ```
 
 ---
@@ -1800,14 +1981,22 @@ For 7 days, daily check:
 
 **[NEEDS USER APPROVAL]**
 
-After 7 clean days:
+After 7 clean days. Note: Railway CLI command names have changed over versions — verify with `railway --help` first. As of Railway CLI v3+, deletion is via `railway service delete <name>` (or the dashboard's Settings → Danger Zone for safety). `railway down` only stops, doesn't destroy.
 
 ```bash
 cd /Users/home/Repositories/gic-email-intelligence
-railway down --service api --environment production
-railway down --service sync --environment production
-railway down --service processing --environment production
-railway down --service automation --environment production
+railway --version  # confirm v3+ syntax
+railway link --environment production --project gic-email-intelligence
+
+# Verify what's running before destroying
+railway service list
+
+# Destroy each service. Prefer the dashboard for the final confirm step
+# given how irreversible this is.
+railway service delete api
+railway service delete sync
+railway service delete processing
+railway service delete automation
 # Repeat for development environment if no longer needed
 ```
 
