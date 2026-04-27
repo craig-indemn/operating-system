@@ -24,12 +24,15 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 - `unisoft-proxy/client/cli.py` — Unisoft CLI (contacts, quote create, **attachment delete**)
 - `unisoft-proxy/server/UniProxy.cs` — SOAP proxy on EC2: **custom HttpWebRequest chunked MTOM upload path** in `FileBridge.UploadQuoteAttachment`, new `/api/file/delete` endpoint, `ExtractAttachmentDto` helper
 
+**Migration to Indemn infra (separate workstream — DEVOPS-151) — Phase E complete 2026-04-27.** Read `artifacts/2026-04-27-phase-e-execution-handoff.md` first. Branch `migration/indemn-infra` is 33 commits ahead of origin/main. Next session resumes at Phase F (push to `indemn-ai/gic-email-intelligence`). F.2 + Phase G blocked on **DEVOPS-159** (runner registration — assigned to Dhruv; needs repo admin Craig doesn't have). Phase I has a separate IAM Deny blocker with 3 resolution options on file in DEVOPS-153 comments.
+
 **Immediate priority for next session (resuming 2026-04-27):**
 1. ~~Verify notification emails actually deliver~~ — **FIXED** via commit `a42bbe1` (SendActivityEmail on IEmailService). End-of-day 4/24 monitoring confirmed 9/9 automations delivered emails cleanly across 3 wake-up checks (20:34, 21:05, 21:35 UTC).
 2. **JC weekly recap email sent 4/24 ~22:34 UTC** to jcdp@gicunderwriters.com (thread `19dc1a3729b1745e`). Awaiting his reply. Closing offered "retroactively run any pipeline step on request" — he may take us up on the backfill or have queue-management questions.
 3. **LangSmith tracing still broken** — zero traces in either project. Carry-forward, low priority.
 4. **Monitor weekend production state** — verify automations ran correctly Saturday/Sunday, no attachment fails, no notification regressions. First check on resume.
 5. **Backfill (deferred)** — Q:146340 through ~Q:146395 created before notification fix never got Application Acknowledgement emails. Some were manually retro-sent. Wait for JC's preference before doing more.
+6. **Migration Phase F kickoff** — once DEVOPS-159 status is checked (or independently for F.1+F.3 which don't need admin), proceed per `phase-e-execution-handoff.md`'s "How to resume" section.
 
 **Gotcha noted for future**: Sending HTML email to external recipients via Gmail must go through `gog gmail send` directly (API), NOT round-trip through the Gmail compose UI — the UI strips inline CSS on send. All `<table>`/`<th>`/`<td>` need inline styles (Gmail doesn't preserve `<style>` blocks).
 
@@ -764,6 +767,7 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 | 2026-04-27 | [migration-to-indemn-infrastructure-design](artifacts/2026-04-27-migration-to-indemn-infrastructure-design.md) | Migrate from Railway + craig-indemn personal repo → indemn-ai org repo + dev-services/prod-services EC2 + AWS Secrets Manager + Amplify. 9 strategic decisions captured, cutover runbook, Phase 2 (Atlas relocation) sketched as separate follow-up |
 | 2026-04-27 | [migration-implementation-plan](artifacts/2026-04-27-migration-implementation-plan.md) | Bite-sized task plan executing the migration design. 11 phases (A–K), ~70 tasks, TDD on Phase 1.0 code work, verification steps on infra. Phase I is the prod cutover runbook step-by-step. ~10-day wall clock with 24h dev + 7d prod soak |
 | 2026-04-27 | [migration-execution-handoff](artifacts/2026-04-27-migration-execution-handoff.md) | End-of-session handoff covering Phases A-D execution. 32 commits on `migration/indemn-infra` (in worktree `gic-email-intelligence-migration`). Ground-truthed AWS facts, tracked follow-ups, decision rationale, and Phase E readiness check (4 READY / 2 NEEDS WORK incl. new OIDC policy blocker). Read this first to resume in next session. |
+| 2026-04-27 | [phase-e-execution-handoff](artifacts/2026-04-27-phase-e-execution-handoff.md) | End-of-session handoff covering Phase E execution. DEVOPS-153 done. 33 commits on `migration/indemn-infra` (one new — `daf216e` env-loader patch). Three major plan deviations discovered + executed: Atlas via PrivateLink (not public allowlist), per-repo runners (not org-level — created DEVOPS-159 for Dhruv), shared/* vs GIC-specific reconciliation. AWS dev infra fully populated. Phase I prod-deploy IAM blocker fully diagnosed with 3 resolution options on file. Read this first to resume Phase F. |
 
 ## Key Data Files
 | File | What it contains |
