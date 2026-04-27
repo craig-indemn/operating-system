@@ -5,10 +5,12 @@ Build a CLI tool and MCP server around Indemn's platform APIs so developers (int
 ## Status
 **Phase 2 complete. Product showcase page built (2026-03-18) — awaiting deploy.**
 
+> **Recent activity tracked under devops:** the CLI has continued shipping incrementally as part of Slack-saved-items follow-through. As of 2026-04-27, **`@indemn/cli@1.4.0` is on npm** (active-org banner, AI-368 — closes the Celine-in-Insurica cross-workspace mistake class) and **PR #13 is open for 1.5.0** (functions create/update round-trip full configurationSchema, AI-369). Full session detail in `projects/devops/artifacts/2026-04-27-saved-items-cli-shipping.md`. Versions between 1.1.1 and 1.4.0 (1.2.0, 1.2.1, 1.2.2, 1.3.0, 1.3.1) shipped during the 2026-03-31 production-beta session.
+
 - **Showcase page:** blog.indemn.ai/products/indemn-cli/ (committed, not yet deployed)
 - **Plan:** `docs/plans/2026-03-18-product-showcase-system.md` (OS repo)
 
-- **npm:** `@indemn/cli@1.1.1` published publicly. Install: `npm install -g @indemn/cli`
+- **npm:** `@indemn/cli@1.4.0` published 2026-04-27 (1.5.0 PR #13 in review). Install: `npm install -g @indemn/cli`
 - **GitHub:** https://github.com/craig-indemn/indemn-cli (private)
 - **indemn-cli repo:** `/Users/home/Repositories/indemn-cli/` (main branch) — 35+ TypeScript source files, 58 MCP tools, 6 skills, builds cleanly
 - **Copilot Server:** `feat/api-key-auth` merged to main via PR #806 (2026-03-13). Deployed to devcopilot.indemn.ai.
