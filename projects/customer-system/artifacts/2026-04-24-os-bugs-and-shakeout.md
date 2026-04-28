@@ -946,10 +946,10 @@ Append new entries above this line as you find them. Format:
 | 2 | No singular `delete` CLI command | Med | 🔴 Open |
 | 3 | `bulk status` lacks deletion counts | Low | 🔴 Open |
 | 4 | `bulk-delete --filter '{}'` silent no-op | Med | 🔴 Open |
-| 5 | `fetch-new --help` broken (triple-dash, no docs) | Med | 🔴 Open |
+| 5 | `fetch-new --help` broken (triple-dash, no docs) | Med | 🟢 Fixed (Apr 28 burst #5, merge `896a4b0` — factory functions in both CLI surfaces) |
 | 6 | Auto-generated skill has wrong fetch-new syntax | Med | 🔴 Open |
-| 7 | Adapter noisy "fileId" warnings | Low | 🔴 Open |
-| 8 | Adapter swallows all per-user errors | Med | 🔴 Open |
+| 7 | Adapter noisy "fileId" warnings | Low | 🟢 Fixed (Apr 28 burst #5, merge `896a4b0` — truthy guard + `_export_doc` short-circuit) |
+| 8 | Adapter swallows all per-user errors | Med | 🟢 Fixed (Apr 28 burst #5, merge `896a4b0` — `_PerUserErrorTracker` raises on systemic failures) |
 | 9 | Associates pass dicts not ObjectIds → dead letters | High | 🟢 Fixed (Apr 27 burst #4, merge `31bb594` — boundary coercion + auto_resolve flag) |
 | 10 | Old meetings unprocessed (one-time data state) | Low | 🟢 Resolved (deleted) |
 | 11 | `/api/queue/stats` 404 | Low | 🟢 Fixed (Apr 28 burst #4, merge `e9d04da` — aliased to `/api/_meta/queue-stats`) |
@@ -960,7 +960,7 @@ Append new entries above this line as you find them. Format:
 | 16 | Associates auto-create Companies despite skill saying never | **High** | 🟡 Kernel ready (Bug #31); skill update pending |
 | 17 | No meeting-to-company classifier in pipeline | **High** | 🟡 Kernel ready (Bug #31); skill update pending |
 | 18 | Synth doesn't update `Meeting.touchpoint` back-reference | Med | 🔴 Open |
-| 19 | Change records sometimes have non-Date `timestamp` | Low | 🔴 Open |
+| 19 | Change records sometimes have non-Date `timestamp` | Med (audit-integrity) | 🟢 Fixed (Apr 28 burst #6, merge `cd07fb8` — `_coerce_datetime_fields` at API boundary; root was setattr-bypassing-Pydantic on PUT) |
 | 20 | Actor CLI missing `transition`, `delete`, `bulk-*` | Med | 🟢 Fixed (Apr 28 burst #4, merge `e9d04da` — `transition`/`delete` shipped) |
 | 21 | Transition API: `to` vs docs' `target_state` | Low | 🟢 Fixed (Apr 28 burst #4, merge `e9d04da` — picked `to` canonical, docs corrected) |
 | 22 | Service token untraceability: can't tell which associate acted | **High** | 🟢 Fixed (Apr 27, deployed; effective_actor_id field) |
