@@ -154,3 +154,25 @@ In migration repo:
 - PRs: #1 merged (Phase F), #17 merged (CORS fix), #18 awaiting review (SOAK_MODE)
 - Live service changes: gic-addin.vercel.app deployment replaced (was broken; now points at canonical API)
 - Production impact during this entire session: zero customer-visible changes
+
+## Recent pings (next session: monitor these)
+
+- **Slack #dev-squad thread** — replied in Dhruv's existing thread (originally about source code location for SOC 2) with the migration update + PR #18 review ask, broadcast to channel. Sent at ts `1777410154.434829` (channel `C08AM1YQF9U`). Watching for reviewer pickup. If no reply from any of Dolly / Dhruv / Rudra by mid-day next session, can re-prompt Craig (the human) on whether to escalate.
+
+## How to resume in the next session
+
+1. **Read this artifact first**, then `2026-04-28-phase-g-soak-handoff.md` for the soak validation context.
+2. Check PR #18 status: `gh pr view 18 --repo indemn-ai/gic-email-intelligence --json reviewDecision,state`. If approved + merged → ready to plan cutover window. If still open → re-engage reviewer pickup.
+3. Confirm the AWS state is intact (read-only):
+   ```bash
+   aws secretsmanager list-secrets --filters Key=name,Values=indemn/prod/gic-email-intelligence --query 'SecretList[].Name' --output text | tr '\t' '\n' | sort
+   aws ssm get-parameters-by-path --path /indemn/prod/gic-email-intelligence --recursive --query 'Parameters[].Name' --output text | tr '\t' '\n' | sort | wc -l
+   # Expect: 5 secrets, 24 params
+   ```
+4. Confirm runners still online: `gh api repos/indemn-ai/gic-email-intelligence/actions/runners --jq '.runners[] | {name, status}'` — both should be `online`
+5. Surface remaining decisions to Craig: Datadog routing (H.1), Atlas backup tier (H.2), customer comms timing
+6. Once decisions are made + PR #18 merged, pick the cutover window (low-traffic morning) and execute Phase I.1–I.12 per implementation plan.
+
+## Soak DB cleanup (reminder)
+
+The `gic_email_intelligence_devsoak` Mongo database still has the Phase G validation data (~30 emails, 5 successful submissions linked to UAT quotes 17373-17377). Recommend keeping until cutover succeeds, then dropping during Phase J cleanup.
