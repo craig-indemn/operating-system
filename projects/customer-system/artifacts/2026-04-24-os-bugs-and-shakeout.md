@@ -871,6 +871,50 @@ That's domain skill work — separate from the kernel piece. Marking #16 and #17
 
 ---
 
+## Bug #32 — `preview_bulk_operation` returns ObjectId-bearing samples that Temporal can't serialize + no retry policy → infinite retry storm 🟢
+
+**Discovered:** 2026-04-27 (during Bug #23 verification)
+**Severity:** **High** (every dry-run with non-empty sample stalls a workflow forever)
+**Location:** `kernel/temporal/activities.py::preview_bulk_operation`, `kernel/temporal/workflows.py::BulkExecuteWorkflow.run` (dry_run branch)
+
+### Symptom
+After deploying Bug #23/#24 fix, verification of the operator-filter end-to-end against the live API showed: dry-run bulk-delete with an operator filter that matched any documents (e.g. `{"created_at": {"$gte": "<recent>"}}`) hung in `RUNNING` forever. Same filter via the list endpoint worked instantly. Process-bulk-batch (non-dry-run) with the same shape also worked. Only the preview path stalled.
+
+Worker logs showed:
+```
+[WARN] Completing activity as failed (... 'activity_type': 'preview_bulk_operation' ...)
+```
+…repeated every 30-90s indefinitely. No traceback surfaced because Temporal's default activity-failure path doesn't log the exception.
+
+### Root cause (two layers)
+
+**Layer 1 — ObjectId serialization.** `preview_bulk_operation` returns:
+```python
+"sample": [e.model_dump() for e in sample]
+```
+Pydantic v2's `model_dump()` returns raw `ObjectId` and `datetime` values in the dict — but Temporal's default Python data converter encodes activity results via JSON (effectively `pydantic-core`'s `to_json`), which doesn't know how to encode `bson.ObjectId`. The activity raises a serialization exception when the converter tries to send the result back across the workflow boundary.
+
+This bug was **latent** in the previous `preview_bulk_operation` because the OLD code didn't call `current_org_id.set(ObjectId(spec.org_id))` before `find_scoped(...)`. With no org_id contextvar set, `find_scoped` skipped the org-scoping clause, and queries returned 0 documents in many cases (depending on session role) — so `sample` was always empty and the serialization issue never surfaced. Fixing the org_id contextvar (correct security behavior) exposed this latent serialization bug.
+
+**Layer 2 — no retry policy.** The workflow's `execute_activity(preview_bulk_operation, ...)` call had `start_to_close_timeout=timedelta(minutes=2)` but no `retry_policy=RetryPolicy(...)`. Temporal's default RetryPolicy is unlimited retries with exponential backoff. So when the activity failed with a serialization error, Temporal retried forever — the workflow appeared `RUNNING` indefinitely because retries kept resetting the activity, never declaring the workflow `FAILED`. The 5+ stuck workflows from earlier sessions visible in `bulk list` (some from Apr 18, hours/days old) all share this fate.
+
+### Fix
+Two changes, both in this PR:
+
+1. `kernel/temporal/activities.py::preview_bulk_operation` — replace `e.model_dump()` with `to_dict(e)` from `kernel.api.serialize`, which recursively converts ObjectId → str, datetime → ISO string, Decimal → float for JSON-safety. Same helper every API route uses.
+
+2. `kernel/temporal/workflows.py::BulkExecuteWorkflow.run` — add `retry_policy=RetryPolicy(maximum_attempts=3, initial_interval=timedelta(seconds=2), non_retryable_error_types=["PermanentProcessingError"])` to the dry-run `execute_activity` call. Validation failures (the `PermanentProcessingError` raised by `_coerce_bulk_filter` on bad input) don't retry. Other failures retry up to 3 times then mark the workflow `FAILED` so callers see a real terminal state instead of an indefinite `RUNNING`.
+
+### Verification
+After redeploy, dry-run bulk-delete with `{"created_at": {"$gte": "2026-04-27T20:00:00Z"}}` returns a normal preview result with `count: <real>` and `sample: [<JSON-safe dicts>]` within seconds.
+
+### Linked OS work
+- Same branch as Bug #23/#24: changes land alongside `bugfix/bulk-delete-operator-filters` (commit `<TBD>`)
+- Same PR/merge — the verification surfaced the issue, the fix is small, and the new test stays with the bulk verification suite.
+- Pre-existing zombie workflows (`bulk-e3affce85276` from Apr 18, several from earlier today) will eventually time out via Temporal's workflow execution timeout but won't auto-clear; can be cancelled manually via `indemn bulk cancel <wf>`.
+
+---
+
 ## Future bugs (add as we encounter them)
 
 Append new entries above this line as you find them. Format:

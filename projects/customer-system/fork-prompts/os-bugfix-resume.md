@@ -180,6 +180,12 @@ step 3. We iterate from there.
 
 This block is a courtesy summary of what the bugfix session has done recently, so Craig can see at a glance what state the parallel work is in without re-reading `os-learnings.md`. Update whenever a fork session marks rows 🟡 / 🟢.
 
+**As of 2026-04-27 evening (post-bugfix-resume #4 — Bug #23/#24 cleanup-at-scale work done):**
+
+Fourth burst (cleanup-at-scale + verification-driven follow-ups):
+- 🟢 **Bug #23 + #24 — bulk-delete operator filters + visible bulk counts** — merged `0ed8c80` (feature commit `62f3254`) + alias-fix `6b8c62e` + Bug #32 fix `b5e4757`. New `kernel/api/_filter_safelist.py::parse_filter` provides a shared three-layer safelist: field-name allowlist via `entity_cls.model_fields` (with Pydantic alias support so `_id` works alongside the canonical `id`), operator allowlist (`$in`/`$nin`/`$ne`/`$gt`/`$gte`/`$lt`/`$lte`/`$exists`), per-field type coercion (ObjectId hex / `$oid` → `bson.ObjectId`; ISO 8601 / `$date` → `datetime`; including `$in` list elements). `_parse_list_filter` becomes a thin wrapper. Per-entity `_register_bulk_route::start_bulk` validates `filter_query` at the API boundary → fast 400 on bad input. Activity re-runs `parse_filter` to produce typed values for `find_scoped()` (typed values can't cross Temporal serialization). `BulkExecuteWorkflow` returns `{matched, succeeded, errored, errors}` with status `completed_no_match` when matched=0. `GET /api/bulk/{id}` fetches `handle.result()` on terminal states and merges into response. 56 unit tests pass + full 283-test suite green. **Verified live:** Test 1 `$in` deleted 2 throwaway companies; Test 2 `$gte` datetime dry-run returned 3 matches with JSON-safe sample; Test 3 no-match → `completed_no_match`; Test 4 bad input → 400 with field-level error. Deployed both `indemn-api` and `indemn-temporal-worker`.
+- 🟢 **Bug #32 — preview activity ObjectId serialization + missing retry policy** — surfaced during Bug #23 verification. Pre-existing latent bug exposed by Bug #23's correct `current_org_id.set()` fix (old code's missing org_id meant samples were empty in non-admin queries → no serialization needed → bug masked). `preview_bulk_operation` returned `[e.model_dump() for e in sample]` — raw ObjectId values that Temporal's data converter couldn't encode → activity failed forever. Plus the workflow's `execute_activity(preview, ...)` had no retry_policy → infinite retry. Fix: use `kernel.api.serialize.to_dict()` for sample entities + `RetryPolicy(maximum_attempts=3, non_retryable_error_types=["PermanentProcessingError"])`. Merged `b5e4757`, deployed temporal-worker. Explains the 5+ zombie workflows visible in `bulk list` from earlier today (and one from Apr 18) — they're stuck in the same retry loop. Pre-existing zombies won't auto-clear; can be `indemn bulk cancel <wf>`.
+
 **As of 2026-04-27 (post-bugfix-resume #3 — three burst sessions done; kernel substantially hardened):**
 
 Pre-existing in-progress PRs from the first burst (reviewed and merged):
@@ -207,9 +213,9 @@ Third burst (systematic continuation after the trace-blocking work cleared):
 - `indemn-temporal-worker` + `indemn-queue-processor`: healthy. WARN-level noise about workflow-already-started + bulk activation retries (transient, related to test cleanups).
 
 **Bugs cleared this round (no longer blocking customer-system work):**
-Bug #1, #2 (cache-leak path), #6, #14, #25, #29, #30, #31; Bug #16/#17 (kernel ready); #22; partial fix for #9 via skill examples.
+Bug #1, #2 (cache-leak path), #6, #14, #23, #24, #25, #29, #30, #31, #32; Bug #16/#17 (kernel ready); #22; partial fix for #9 via skill examples.
 
-**Next-up (the prompt's UPDATED PRIORITY block ranks them):** #23 + #24 (bulk-delete operator filters + status counts), #10 (reprocess for backfill), #9 (defense-in-depth boundary coercion), #16/#17 finishing skill update, `--include-related` reverse relationships, then the smaller Bug #20/#21/#11/#12/#13/#5/#15/#19 cleanup.
+**Next-up (the prompt's UPDATED PRIORITY block ranks them — re-rank for the next burst):** #10 (reprocess for backfill), #9 (defense-in-depth boundary coercion at the create/update API), #16/#17 finishing skill update (Email Classifier + Touchpoint Synthesizer call entity_resolve before creating), `--include-related` reverse relationships, then the smaller Bug #20/#21/#11/#12/#13/#5/#15/#19 cleanup. Plus a one-off cleanup: `indemn bulk cancel <wf>` against the 5+ zombie bulk workflows from before the Bug #32 retry-policy fix; or just leave them to time out on Temporal's workflow execution timeout.
 
 ---
 
