@@ -159,6 +159,26 @@ The biggest single-session shipment so far. Three deliverables landed in paralle
 
 **Phase A is COMPLETE after A2.** Phase B can begin.
 
+### Session 7 (2026-04-27 evening) — Styled-PDF rendering pipeline + Cam-portfolio match
+
+Picked up from the Session 6 handoff and executed Next-session deliverable 1: re-render the Alliance v2 proposal styled to match Cam's portfolio. Built a reusable rendering pipeline that becomes the rendering step of the future autonomous Artifact Generator associate.
+
+**What shipped:** `templates/proposal/template.hbs` + `template.css` + `saas-agreement.partial.hbs` + `assets/` (Indemn iris logo + 4 Barlow font weights), `tools/render-proposal.js` (Node + puppeteer-core + handlebars), `artifacts/2026-04-27-alliance-proposal-v2.json` (structured input — what the Artifact Generator produces from the entity graph), `artifacts/2026-04-27-alliance-proposal-v2.pdf` (9-page styled deliverable for Cam, ~175 KB), `skills/artifact-generator.md` (recipe + JSON contract + 15 style guidelines).
+
+**Tooling decision:** HTML→PDF via puppeteer-core against system Chrome. Rationale: HTML/CSS lets non-developers edit the template, Chrome rendering is industry-best, no Chromium download needed. Footer is an inline SVG swoosh + white logo (CSS filter) + page number, delivered via puppeteer's `displayHeaderFooter` + `footerTemplate` (renders on every page).
+
+**The hard-earned lessons** (captured in `skills/artifact-generator.md` and forming the 15 style guidelines):
+- **Cam's brevity is the standard.** Early drafts were "word vomit" — 8-bullet stat lists, sub-sections like "What it does on Day 1" inside a phase, direct address to Christopher ("Christopher, this is what you described in your April 7 note"), v1/v2 comparison framing. Cam's portfolio is concise: ~80 words per opener, ~5 lines per phase, no direct address, no comparison framing. The cover's "Supersedes" line carries the v1→v2 context.
+- **Section-per-page rhythm.** Cam's v1 is 9 pages: Cover / Unlocking Revenue Capacity / Addressing the Implementation Gap / Three-Phase Roadmap / Implementation Timeline / Implementation Roles & Commitment + Operational Guardrails / Investment Summary + Next Steps / SaaS Agreement / Acceptance. Use `start_new_page: true` on each major section.
+- **Footer swoosh** SVG path: rounded TOP-LEFT corner only, sharp 90° bottom-left, flat top, bleeds RIGHT and BOTTOM. Logo rendered WHITE on swoosh via `filter: brightness(0) invert(1)`.
+- **Section heading sweet spot is 28pt** — bigger wraps "Implementation Roles & Commitment" to 2 lines and creates layout breaks.
+- **Tables: full grid borders + bold first column + 14pt cell padding.**
+- **Operational Guardrails as sub-section under Implementation Roles**, never its own page.
+
+**OS Document entity updated:** `69efbdea4d65e2ca69b0dd80` (Proposal v2 source_document) → `mime_type: application/pdf`, `file_size: 178935`, content pointer to repo path.
+
+**Outstanding from Session 7:** Deliverable 2 (Kyle-facing trace-showcase HTML for Alliance) is the next-session top priority. Visual template at `artifacts/2026-04-24-information-flow-v2.html` (GR Little equivalent Kyle validated). Substantive content all in `artifacts/2026-04-27-alliance-trace.md` and `artifacts/2026-04-27-alliance-proposal-v2.md`.
+
 ---
 
 ## The OS — what it is and how to internalize it
@@ -379,15 +399,19 @@ These are the principles that hold across the project. Internalize them. They ha
 
 ---
 
-## Where we are now (as of 2026-04-27, end of session 6)
+## Where we are now (as of 2026-04-27, end of session 7 — styled PDF iteration)
 
 ### What's hydrated and proven
 - 27 entity definitions live, including the Playbook entity with the aligned shape.
 - GR Little Apr 22 first-discovery call traced end-to-end + Kyle validated.
 - **Alliance hydrated end-to-end via the Apr 27 trace** — 8 timeline steps, 60+ entities created (constellation now queryable from Company hub). v2 proposal artifact rendered for Cam. PROPOSAL-stage Playbook record created — reusable for any future customer.
+- **Styled-PDF rendering pipeline shipped** — `templates/proposal/` (Handlebars + CSS + assets) + `tools/render-proposal.js` (puppeteer-core + Chrome) + `skills/artifact-generator.md` (15 style guidelines). Alliance v2 PDF at `artifacts/2026-04-27-alliance-proposal-v2.pdf` — 9 pages, brand-consistent with Cam's portfolio (verified via visual diff). Document `69efbdea4d65e2ca69b0dd80` in OS updated with PDF metadata.
 - ~930 emails ingested across the team. Gmail + Google Workspace + Google Meet API working.
 - **Vision + roadmap crystallized at project root** (`vision.md` + `roadmap.md`). Comprehensive pre-scoped 4-phase roadmap (A→F + continuous threads).
 - **Shared-context-update mechanism proven** — main session + parallel bugfix fork session ran simultaneously, coordinating via `os-learnings.md` and the living `fork-prompts/os-bugfix-resume.md`.
+
+### Outstanding for next session (top priority)
+- **Deliverable 2 — Kyle-facing trace-showcase HTML for Alliance.** In the spirit of `artifacts/2026-04-24-information-flow-v2.html` (the GR Little visual Kyle validated). Single HTML file showing Alliance timeline + per-event entity creation + Proposal-as-spine growth + mechanism table + quote→entity→proposal-line mapping. See `artifacts/2026-04-27-session-handoff-alliance-trace.md` for full briefing.
 
 ### Pipeline associates current state
 - Email Classifier — **suspended** (still). Several blocking bugs now fixed → could re-activate after Bug #16 entity-resolution capability lands.

@@ -23,6 +23,87 @@ This artifact is the single starting point for the next session. Read this in fu
 
 ---
 
+## Session 7 update (2026-04-27 evening — styled PDF iteration)
+
+Session 7 picked up from this handoff and executed **Next-session deliverable 1** end-to-end. Deliverable 2 (Kyle-facing trace-showcase HTML) is still pending and is the next-session top priority. The "NEXT SESSION — explicit Craig priorities" section below remains valid for deliverable 2; deliverable 1 is now complete.
+
+### What was built in session 7
+
+**A reusable proposal rendering pipeline** in the customer-system project, designed to be the rendering step of the future autonomous Artifact Generator associate:
+
+```
+projects/customer-system/
+  templates/proposal/
+    template.hbs                    # Master HTML structure (Handlebars)
+    template.css                    # Brand styling (Barlow @font-face, eggplant text, iris/lilac swoosh, full-grid tables)
+    saas-agreement.partial.hbs      # Standard SaaS Agreement (8 sections, identical across customers, centered ALL-CAPS title)
+    assets/
+      indemn-logo-iris.png          # Logo (rendered white via CSS filter on the swoosh)
+      Barlow-{Regular,Medium,SemiBold,Bold}.ttf
+  tools/
+    render-proposal.js              # Node renderer (puppeteer-core + handlebars). Args: --data <json> --out <pdf> [--html <html>]
+    package.json
+  artifacts/
+    2026-04-27-alliance-proposal-v2.json    # Structured input — the Artifact Generator produces this from the entity graph
+    2026-04-27-alliance-proposal-v2.html    # Hydrated HTML (intermediate, for layout debugging)
+    2026-04-27-alliance-proposal-v2.pdf     # Final deliverable (9 pages, ~175 KB)
+  skills/
+    artifact-generator.md           # Skill capturing the recipe + JSON contract + 15 style guidelines
+```
+
+**Tooling decision: HTML→PDF via puppeteer-core against system Chrome.** The renderer is ~180 lines of Node, uses the existing Chrome at `/Applications/Google Chrome.app`, no Chromium download needed. Handlebars for templating with a `saas_agreement` partial. Puppeteer's `displayHeaderFooter` + custom `footerTemplate` for the swoosh + logo + page number on every page.
+
+**Footer swoosh as inline SVG** — earlier CSS gradient + border-radius approaches produced wrong shapes (oval-with-rounded-bottom-left, "stacked" gradient bands, didn't bleed off page edges). Final SVG path: rounded top-left corner only, sharp 90° bottom-left, flat top, bleeds RIGHT and BOTTOM. White Indemn logo via `filter: brightness(0) invert(1)` on the iris source PNG.
+
+### Key iteration lessons (captured in `skills/artifact-generator.md`)
+
+Earned through several rounds of "this looks like trash compared to the original" feedback. The fixes:
+
+1. **Cam's brevity is the standard.** Early drafts were "word vomit" — 8-bullet stat lists, sub-sections like "What it does on Day 1" / "What we need from Alliance" / "What we deliver in Phase 1" inside a single phase, direct address to Christopher ("Christopher, this is what you described in your April 7 note"). Cam's portfolio (Alliance v1, Charley, Branch, Johnson, GIC, Physicians Mutual, Arches) is concise: each section gets its own page, ~80 words per opener, ~5 lines per phase.
+2. **Section-per-page rhythm.** Cam's v1 is 9 pages: Cover / Unlocking Revenue Capacity / Addressing the Implementation Gap / Three-Phase Roadmap / Implementation Timeline / Implementation Roles & Commitment + Operational Guardrails / Investment Summary + Next Steps / SaaS Agreement / Acceptance. Use `start_new_page: true` on each major section in the JSON.
+3. **No direct address, no v1/v2 framing.** The cover's "Supersedes" line tells the customer it's a follow-up; no need for a "Why This Version" section. Speak about the customer in the third person.
+4. **Operational Guardrails is a sub-section under Implementation Roles**, never its own section, never `page-break-before`.
+5. **Section heading sweet spot is 28pt** — bigger wraps "Implementation Roles & Commitment" to 2 lines and creates layout breaks; smaller doesn't have presence.
+6. **Tables need full grid borders + bold first column + 14pt cell padding** to match Cam's portfolio (early versions had only thin row separators).
+7. **`page-break-inside: avoid` on h1.section-title** — otherwise wrapped headings split awkwardly across pages.
+
+The skill is the canonical home for this recipe; future autonomous Artifact Generator runs consume it.
+
+### OS Document entity updated
+
+Document `69efbdea4d65e2ca69b0dd80` (Proposal v2 source_document) updated:
+- `mime_type: application/pdf`
+- `file_size: 178935`
+- `content`: pointer to repo file path + render pipeline note
+- name unchanged: "Alliance Insurance Services Proposal 4-27-26 (v2 — Renewal Stewardship Wedge)"
+- Verified live via `indemn document get 69efbdea4d65e2ca69b0dd80`
+
+### Content rewrite — what changed in v2 substance
+
+The original v2 markdown draft (`artifacts/2026-04-27-alliance-proposal-v2.md`) was content-correct but bloated for Cam's portfolio style. The styled PDF JSON (`artifacts/2026-04-27-alliance-proposal-v2.json`) is a TIGHTENED version:
+- Dropped the "Why This Version" section entirely
+- Trimmed "Unlocking Revenue Capacity" from a stats-list opener to 2 short paragraphs
+- Added "Addressing the Implementation Gap" section (Cam's v1 page 3 pattern: opener + 3 bold-inline-label bullets)
+- Each Phase compressed to: name + Focus + 3 bullets (Capability/Outcome/Investment) — no sub-sections
+- Added "Implementation Timeline" as its own section (Cam's v1 page 5 pattern)
+- Renamed phases to WEDGE/WALK/RUN matching Cam's CRAWL/WALK/RUN convention
+
+The substance — Renewal Stewardship as Phase 1 wedge, BT Core OAuth, $2,500/mo, real Alliance numbers — is preserved. The framing is just tighter.
+
+### Outstanding for next session
+
+**Deliverable 2 — Kyle-facing trace-showcase HTML for Alliance** — see "Next-session deliverable 2" below in this handoff. Still the top priority for next session. The substantive content (Alliance trace narrative, entity IDs, mechanism table, quote→entity→proposal-line mapping) is all in `artifacts/2026-04-27-alliance-trace.md` and `artifacts/2026-04-27-alliance-proposal-v2.md`. The visual template is `artifacts/2026-04-24-information-flow-v2.html` (the GR Little equivalent Kyle validated).
+
+Activity-specific reading per CLAUDE.md "Working with Kyle": read the full Apr 24 Kyle sync transcript at `artifacts/context/2026-04-24-kyle-craig-sync-transcript.txt` BEFORE designing the HTML — the recap doesn't have all the texture.
+
+### What did NOT happen this session
+
+- Drive upload of the styled PDF — Craig will signal when (and if) to upload to Cam's proposal folder
+- Cam review feedback — to be incorporated when received; the JSON makes iteration cheap (edit JSON, re-run renderer)
+- Any fork-session OS bug fixes (no OS bugs were hit during the styling work; OS was stable end-to-end)
+
+---
+
 ## What we set out to do (Apr 27)
 
 Per Craig's session-start prompt:

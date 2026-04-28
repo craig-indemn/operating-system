@@ -1,0 +1,131 @@
+{
+  "customer": {
+    "name": "Alliance Insurance Services"
+  },
+  "proposal": {
+    "title": "Strategic Partnership Proposal v2: Renewal Stewardship as Your Wedge",
+    "date": "April 27, 2026",
+    "supersedes": "February 11, 2026 Strategic Partnership Proposal: Your Digital Workforce Roadmap",
+    "version": 2
+  },
+  "sections": [
+    {
+      "type": "framing",
+      "heading": "Unlocking Revenue Capacity",
+      "paragraphs": [
+        "Alliance Insurance manages a book of 9,516 accounts and 16,744 policies, including roughly 3,946 renewing in the next 90 days. The current challenge is not a lack of effort — it is the operational lift required to deliver consistent renewal stewardship at scale across your full Producer book.",
+        "Indemn provides an \"Insurance-Native\" digital workforce. This v2 proposal centers on a single, high-leverage wedge: a Retention Associate that automates renewal stewardship for every Producer, every renewal. Once that's proven, we expand to lead capture and broader service automation."
+      ]
+    },
+    {
+      "type": "framing",
+      "start_new_page": true,
+      "heading": "Addressing the Implementation Gap",
+      "paragraphs": [
+        "We recognize the bandwidth constraint with nine new hires absorbing your team's onboarding capacity. This roadmap is designed to deliver value with minimal change-absorption."
+      ],
+      "bullets": [
+        "<strong>Wedge-first.</strong> Phase 1 sits behind your Producers — no customer-facing rollout, no new tools to learn. The Retention Associate works inside your existing renewal cadence.",
+        "<strong>Human-in-the-Loop.</strong> Every snapshot and pre-review email surfaces to the Producer for review and one-click send. No \"hallucinations\" reach clients.",
+        "<strong>Insurance-Native.</strong> Pre-trained on binding authority, surplus lines logic, NC-specific regulations, and your specific carrier list."
+      ]
+    },
+    {
+      "type": "phase",
+      "start_new_page": true,
+      "heading": "The Three-Phase Roadmap",
+      "phase_number": 1,
+      "name": "WEDGE (Months 1–2) — Renewal Stewardship",
+      "timeline": "",
+      "pricing": "",
+      "paragraphs": [
+        "<strong>Focus:</strong> Producer-led renewals, automated snapshots and pre-review emails."
+      ],
+      "what_it_does": [
+        "<strong>The Retention Associate (compound):</strong> Inbox + Knowledge + custom orchestration that assembles per-renewal snapshots from BT Core and drafts pre-review emails.",
+        "<strong>Outcome:</strong> Stewardship prep cut from ~30 minutes to ~5 minutes per renewal.",
+        "<strong>Investment:</strong> $2,500/month (Month-to-month)."
+      ]
+    },
+    {
+      "type": "phase",
+      "phase_number": 2,
+      "name": "WALK (Months 3–4) — Lead Capture",
+      "timeline": "",
+      "pricing": "",
+      "paragraphs": [
+        "<strong>Focus:</strong> Stop the bleeding of missed inbound calls."
+      ],
+      "what_it_does": [
+        "<strong>The Lead Capture Associate (bilingual):</strong> A Spanish + Vietnamese voice and chat Associate that ensures every inbound inquiry is answered.",
+        "<strong>Outcome:</strong> Reduce 100+ missed calls/week to fewer than 10.",
+        "<strong>Investment:</strong> $2,500/month (Month-to-month)."
+      ]
+    },
+    {
+      "type": "phase",
+      "phase_number": 3,
+      "name": "RUN (Months 5+) — Full Digital Workforce",
+      "timeline": "",
+      "pricing": "",
+      "paragraphs": [
+        "<strong>Focus:</strong> Strategic Control and high-volume service automation."
+      ],
+      "what_it_does": [
+        "<strong>High-Automation Tier:</strong> Absorbs the 24% of your call volume with structured workflows (Follow-up, Payment, COIs, Policy Info Update).",
+        "<strong>Internal Knowledge Search:</strong> Instant retrieval from your 72+ organized policy and procedure files.",
+        "<strong>Investment:</strong> $5,000–$10,000/month (12-month commitment)."
+      ]
+    },
+    {
+      "type": "raw_html",
+      "start_new_page": true,
+      "html": "<h1 class=\"section-title\">Implementation Timeline</h1><h3 class=\"phase-name\">Phase 1: Setup &amp; Grounding (Days 1–7)</h3><p>The first week ensures the Retention Associate operates from a \"Single Source of Truth.\"</p><ul><li><strong>BT Core Integration:</strong> Connected App OAuth setup. Real-time access to policies, renewals, and claims.</li><li><strong>Producer Walkthrough (30 min):</strong> Map the renewal-prep workflow per Producer.</li><li><strong>Carrier-Exit Cohort:</strong> Main Street America and NGM Insurance prioritized as the first proof set.</li></ul><h3 class=\"phase-name\">Phase 2: First Cohort Live (Days 8–30)</h3><p>Active deployment for the 30/60/90-day renewal cohorts.</p><ul><li><strong>Snapshot Generation:</strong> Per-account coverage, policies-by-carrier, claims activity, last-touch dates.</li><li><strong>Pre-Review Email Drafts:</strong> Surfaced for Producer review, edit, and send.</li><li><strong>ROI Review (Week 4):</strong> 15-min check-in with Brian and the AI Roundtable.</li></ul><h3 class=\"phase-name\">Phase 3: Expansion Decision (Days 31–60)</h3><p>Once the Retention Associate has proven its ROI, we make the Phase 2 decision.</p><ul><li><strong>Carrier-Exit Outcomes:</strong> Reported across the prioritized cohort.</li><li><strong>Producer Training:</strong> On edit/send patterns and persistence-cadence configuration.</li><li><strong>Phase 2 Scope:</strong> Define full bilingual or English-first Lead Capture deployment.</li></ul>"
+    },
+    {
+      "type": "table",
+      "start_new_page": true,
+      "heading": "Implementation Roles & Commitment",
+      "class": "implementation-roles",
+      "columns": ["Milestone", "Alliance Commitment", "Indemn Responsibility"],
+      "rows": [
+        ["Week 1: Mapping", "30-min Producer walkthrough; Connected App created", "BT Core connection; per-Producer cadence config"],
+        ["Week 2: Go-Live", "Review first batch of snapshots + pre-review emails", "Snapshot generation; Producer review surface"],
+        ["Week 4: Review", "15-min ROI review with Brian and the AI Roundtable", "Performance analytics reporting"],
+        ["Week 8: Scale", "Define Tier 1/2/3 service criteria", "BT Core deep-integration; Phase 2 deployment plan"]
+      ],
+      "guardrails": {
+        "heading": "Operational Guardrails",
+        "items": [
+          "<strong>Wedge-Risk Pilot:</strong> Phase 1 is offered month-to-month. We earn our place every month. No long-term commitment until Phase 3, and only if Phases 1 + 2 prove out.",
+          "<strong>No-Code Control:</strong> Your team can update FAQs, eligibility rules, and snapshot fields in real-time without IT tickets.",
+          "<strong>Insurance-Native:</strong> Pre-trained on binding authority, surplus lines logic, and NC-specific regulations."
+        ]
+      }
+    },
+    {
+      "type": "investment_summary",
+      "start_new_page": true,
+      "heading": "Investment Summary",
+      "columns": ["Phase", "Core Outcome", "Terms", "Monthly Investment"],
+      "rows": [
+        ["WEDGE", "Producer-led renewal stewardship", "Month-to-Month", "$2,500"],
+        ["WALK", "Missed-call capture (100+/week → <10)", "Month-to-Month", "$2,500"],
+        ["RUN", "Full Digital Workforce & Analytics", "12-Month", "$5,000 – $10,000"]
+      ]
+    },
+    {
+      "type": "next_steps",
+      "heading": "Next Steps",
+      "colon_suffix": true,
+      "items": [
+        "Approve this roadmap to begin the Phase 1 configuration.",
+        "Schedule a 30-minute kickoff to walk through the renewal-prep workflow per Producer and authorize the BT Core Connected App."
+      ]
+    }
+  ],
+  "saas_agreement": { "include": true },
+  "signatures": {
+    "customer_label": "For Alliance Insurance Services"
+  }
+}

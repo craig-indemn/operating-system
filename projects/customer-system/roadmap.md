@@ -2,7 +2,7 @@
 
 > Living source of truth for **how we get from where we are now to the vision**. Updated every session that moves the work forward. Read with `vision.md` (what we're building, why, and the lens) and `os-learnings.md` (running register of OS bugs + capability gaps + design questions).
 >
-> Last updated: **2026-04-27** (vision-and-roadmap crystallization session).
+> Last updated: **2026-04-27** (evening — styled-PDF iteration session).
 
 ---
 
@@ -41,6 +41,13 @@ The phases are sequential at the level of "Phase B starts when Phase A is done,"
   - Generated via the trace pattern (act as each associate, write entities to OS at each step). Hydrated 60+ entities into Alliance constellation.
   - PROPOSAL-stage Playbook record `69efbcf34d65e2ca69b0dd6e` created — reusable for all customers.
   - In parallel: 7 OS bugs fixed/in-progress by the bugfix fork session (Touchpoint Option B, silent stuck-state, cache leak, API 500-detail, Bug #30 Meeting create, entity-skill JSON examples, Bug #29 route eviction).
+- **A2 follow-on — Styled PDF rendering pipeline + Cam-portfolio match** *(✅ done 2026-04-27 evening)*
+  - Output: `templates/proposal/` (template.hbs + template.css + saas-agreement.partial.hbs + assets) + `tools/render-proposal.js` + `artifacts/2026-04-27-alliance-proposal-v2.{json,html,pdf}` + `skills/artifact-generator.md`
+  - Validates: HTML→PDF via puppeteer-core against system Chrome is the right tooling for the Artifact Generator's rendering step. The Handlebars JSON contract cleanly separates content (associate produces) from presentation (template provides).
+  - Match-quality with Cam's portfolio (Alliance v1, Charley, Branch, Johnson, GIC, Physicians Mutual, Arches) verified through several rounds of visual diff. 9 pages matching Cam's section-per-page rhythm. Brand-consistent footer swoosh (rounded top-left, sharp bottom-left, bleeds right + bottom, white logo via CSS filter). 15 style guidelines captured in the skill.
+  - Document `69efbdea4d65e2ca69b0dd80` in OS updated: `mime_type: application/pdf`, `file_size: 178935`, content pointer to repo file path.
+
+**Outstanding from A2:** Deliverable 2 — **Kyle-facing trace-showcase HTML for Alliance** (next-session top priority). Visual template at `artifacts/2026-04-24-information-flow-v2.html` (the GR Little equivalent Kyle validated). Substantive content all in `artifacts/2026-04-27-alliance-trace.md` + `artifacts/2026-04-27-alliance-proposal-v2.md`.
 
 **Phase A is COMPLETE.** Two stages traced (DISCOVERY + PROPOSAL/NEGOTIATION) is sufficient mechanism validation. Intermediate stages (CONTACT, DEMO, VERBAL/SIGNED) hydrate naturally from B3 stage research.
 

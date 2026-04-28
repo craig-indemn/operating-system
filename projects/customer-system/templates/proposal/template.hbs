@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{{proposal.title}}</title>
+<link rel="stylesheet" href="template.css">
+</head>
+<body>
+
+{{!-- ============================== COVER PAGE ============================== --}}
+{{!-- Full-bleed (margin: 0 via @page :first). Has its own swoosh ornament so the
+     puppeteer footer doesn't render here (it has nowhere to go in a zero-margin page). --}}
+<div class="cover">
+  <h1 class="title">{{proposal.title}}</h1>
+
+  <div class="prepared-for">A Proposal Prepared for:</div>
+  <div class="customer-name">{{customer.name}}</div>
+
+  <div class="date">{{proposal.date}}</div>
+  {{#if proposal.supersedes}}<div class="supersedes-note">Supersedes the {{proposal.supersedes}}.</div>{{/if}}
+</div>
+
+{{!-- ============================== BODY SECTIONS ============================== --}}
+{{#each sections}}
+  {{#if (eq type "framing")}}
+    <section{{#if start_new_page}} class="page-break-before"{{/if}}>
+      <h1 class="section-title">{{heading}}</h1>
+      <div class="section-body">
+        {{#each paragraphs}}<p{{#if @first}} class="lede"{{/if}}>{{{this}}}</p>{{/each}}
+        {{#if bullets}}
+          <ul>{{#each bullets}}<li>{{{this}}}</li>{{/each}}</ul>
+        {{/if}}
+      </div>
+    </section>
+  {{/if}}
+
+  {{#if (eq type "anchor")}}
+    <section{{#if start_new_page}} class="page-break-before"{{/if}}>
+      <h1 class="section-title">{{heading}}</h1>
+      <div class="section-body">
+        {{#each paragraphs}}<p>{{{this}}}</p>{{/each}}
+        {{#if stats_heading}}<h2 class="subsection-title">{{stats_heading}}</h2>{{/if}}
+        {{#if stats}}
+          <ul class="stats">{{#each stats}}<li>{{{this}}}</li>{{/each}}</ul>
+        {{/if}}
+        {{#if context_heading}}<h2 class="subsection-title">{{context_heading}}</h2>{{/if}}
+        {{#if context_bullets}}
+          <ul>{{#each context_bullets}}<li>{{{this}}}</li>{{/each}}</ul>
+        {{/if}}
+        {{#if closing}}<p>{{{closing}}}</p>{{/if}}
+      </div>
+    </section>
+  {{/if}}
+
+  {{#if (eq type "phase")}}
+    <section{{#if start_new_page}} class="page-break-before"{{/if}}>
+      {{#if heading}}<h1 class="section-title">{{heading}}</h1>{{/if}}
+      <div class="phase">
+        <h3 class="phase-name">
+          Phase {{phase_number}}: {{name}}
+          {{#if timeline}}{{#if pricing}}<span class="phase-meta">{{timeline}} — {{pricing}}</span>{{else}}<span class="phase-meta">{{timeline}}</span>{{/if}}{{else}}{{#if pricing}}<span class="phase-meta">{{pricing}}</span>{{/if}}{{/if}}
+        </h3>
+        {{#each paragraphs}}<p>{{{this}}}</p>{{/each}}
+        {{#if what_it_does}}<ul>{{#each what_it_does}}<li>{{{this}}}</li>{{/each}}</ul>{{/if}}
+      </div>
+    </section>
+  {{/if}}
+
+  {{#if (eq type "table")}}
+    <section{{#if start_new_page}} class="page-break-before"{{/if}}>
+      <h1 class="section-title">{{heading}}</h1>
+      {{#each paragraphs}}<p>{{{this}}}</p>{{/each}}
+      <table class="proposal-table {{class}}">
+        <thead>
+          <tr>{{#each columns}}<th>{{this}}</th>{{/each}}</tr>
+        </thead>
+        <tbody>
+          {{#each rows}}
+            <tr>{{#each this}}<td>{{{this}}}</td>{{/each}}</tr>
+          {{/each}}
+        </tbody>
+      </table>
+
+      {{!-- Operational Guardrails follows directly under Implementation Roles in Cam's
+           layout — sub-section style, no page break. Render here when the parent
+           section provides `guardrails`. --}}
+      {{#if guardrails}}
+        <div class="guardrails-subsection">
+          <h2>{{guardrails.heading}}</h2>
+          <ul>{{#each guardrails.items}}<li>{{{this}}}</li>{{/each}}</ul>
+        </div>
+      {{/if}}
+
+      {{#if closing}}<p>{{{closing}}}</p>{{/if}}
+    </section>
+  {{/if}}
+
+  {{!-- Standalone guardrails section (kept for backward compatibility, but prefer
+       embedding under a parent table section per Cam's layout) --}}
+  {{#if (eq type "guardrails")}}
+    <div class="guardrails-subsection"{{#if start_new_page}} style="page-break-before: always"{{/if}}>
+      <h2>{{heading}}</h2>
+      {{#each paragraphs}}<p>{{{this}}}</p>{{/each}}
+      <ul>{{#each items}}<li>{{{this}}}</li>{{/each}}</ul>
+    </div>
+  {{/if}}
+
+  {{#if (eq type "investment_summary")}}
+    <section{{#if start_new_page}} class="page-break-before"{{/if}}>
+      <h1 class="section-title">{{heading}}</h1>
+      {{#each paragraphs}}<p>{{{this}}}</p>{{/each}}
+      <table class="proposal-table investment-summary">
+        <thead>
+          <tr>{{#each columns}}<th>{{this}}</th>{{/each}}</tr>
+        </thead>
+        <tbody>
+          {{#each rows}}
+            <tr>{{#each this}}<td>{{{this}}}</td>{{/each}}</tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </section>
+  {{/if}}
+
+  {{#if (eq type "next_steps")}}
+    <section{{#if start_new_page}} class="page-break-before"{{/if}}>
+      <h1 class="section-title">{{heading}}{{#if colon_suffix}}:{{/if}}</h1>
+      {{#each paragraphs}}<p>{{{this}}}</p>{{/each}}
+      <ul class="next-steps">
+        {{#each items}}<li>{{{this}}}</li>{{/each}}
+      </ul>
+      {{#if closing}}<p>{{{closing}}}</p>{{/if}}
+    </section>
+  {{/if}}
+
+  {{#if (eq type "raw_html")}}
+    <section{{#if start_new_page}} class="page-break-before"{{/if}}>
+      {{{html}}}
+    </section>
+  {{/if}}
+{{/each}}
+
+{{!-- ============================== SAAS AGREEMENT ============================== --}}
+{{#if saas_agreement.include}}
+{{> saas_agreement}}
+{{/if}}
+
+{{!-- ============================== SIGNATURE BLOCK ============================== --}}
+<div class="signature-block">
+  <h1>Acceptance &amp; Authorization</h1>
+  <p class="intro">By signing below, the Customer agrees to the terms of this Proposal and the Services Agreement.</p>
+
+  <div class="party">
+    <div class="party-label">{{signatures.customer_label}}:</div>
+    <div class="sig-line">Signature: <span class="field"></span></div>
+    <div class="sig-line">Printed Name: <span class="field"></span></div>
+    <div class="sig-line">Title: <span class="field"></span></div>
+    <div class="sig-line">Date: <span class="field"></span></div>
+  </div>
+
+  <div class="party">
+    <div class="party-label">For Indemn:</div>
+    <div class="sig-line">Signature: <span class="field"></span></div>
+    <div class="sig-line">Printed Name: <span class="field"></span></div>
+    <div class="sig-line">Title: <span class="field"></span></div>
+    <div class="sig-line">Date: <span class="field"></span></div>
+  </div>
+</div>
+
+</body>
+</html>
