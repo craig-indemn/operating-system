@@ -1345,94 +1345,131 @@ rm /tmp/check.env
 
 ---
 
-### Task E.3: Update Atlas allowlist (dev EIPs)
+### Task E.3: Switch GIC mongodb-uri to PrivateLink endpoint
 
-**[NEEDS USER APPROVAL]**
+**[CORRECTED 2026-04-27 session 3 — was "Update Atlas allowlist (dev EIPs)"]**
 
-**Step 1:** Log into Atlas → Network Access on the `dev-indemn` project.
+The original plan called for adding the dev-services and prod-services public EIPs (`44.196.55.84/32`, `98.88.11.14/32`) to the dev-indemn Atlas project's IP Access List. Execution-time verification revealed a better path: dev-services already reaches Atlas via VPC PrivateLink endpoint `vpce-06c18b903fea23e06` (private IP `172.31.32.102`, allows VPC CIDR `172.31.0.0/16` inbound on ports 1024-1026 + 27017). The endpoint is shared across all VPC residents — `shared/mongodb-uri` already uses the PrivateLink hostname `dev-indemn-pl-0.mifra5.mongodb.net`. Only GIC's mongodb-uri (just created in E.1) was using the public endpoint hostname, which is what made E.3 appear necessary.
 
-**Step 2:** Add `44.196.55.84/32` (dev-services) and `98.88.11.14/32` (prod-services) — even though only dev is being soaked, prod-services entry needs to be in place before prod cutover, and Atlas allowlist propagation can take minutes.
+**Right fix: swap the GIC mongodb-uri host.** No public allowlist changes. Same applies to prod-services (same VPC, same SG-permitted CIDR — Phase I.3 inherits this resolution).
 
-**Step 3:** Verify from a dev-services session:
+**[NEEDS USER APPROVAL]** for the secret update (AWS state change).
+
+**Step 1:** Pull current GIC dev mongodb-uri, substitute hostname, put back. Done in-memory via a local script that never echoes the value:
 
 ```bash
-aws ssm start-session --target i-0fde0af9d216e9182
-# inside the session:
-sudo docker run --rm mongo:6 mongosh "mongodb+srv://dev-indemn:wJnKmz4P0q39GpXZ@dev-indemn.mifra5.mongodb.net/gic_email_intelligence" --eval 'db.runCommand({ping:1})'
-# Expected: { ok: 1, ... }
+SECRET_ID="indemn/dev/gic-email-intelligence/mongodb-uri"
+CURRENT=$(aws secretsmanager get-secret-value --secret-id "$SECRET_ID" --query SecretString --output text)
+UPDATED=$(printf '%s' "$CURRENT" | sed 's/dev-indemn.mifra5.mongodb.net/dev-indemn-pl-0.mifra5.mongodb.net/g')
+aws secretsmanager put-secret-value --secret-id "$SECRET_ID" --secret-string "$UPDATED" --query VersionId --output text
 ```
+
+**Step 2:** Verify connectivity from dev-services via SSM `send-command` (read-only). The EC2 reads its own secret via instance IAM role; the URI never crosses your local session.
+
+```bash
+aws ssm send-command --instance-ids i-0fde0af9d216e9182 --document-name AWS-RunShellScript \
+  --parameters 'commands=["URI=$(aws secretsmanager get-secret-value --region us-east-1 --secret-id indemn/dev/gic-email-intelligence/mongodb-uri --query SecretString --output text); sudo docker run --rm -e URI=\"$URI\" mongo:6 sh -c '\''mongosh \"$URI\" --quiet --eval \"JSON.stringify(db.runCommand({ping:1}))\"'\''"]'
+# Expected: {"ok":1,"$clusterTime":{...}, ...}
+```
+
+**[Original instructions removed — public-allowlist approach was unnecessary under PrivateLink. Risk "EIP / public-IP confusion" in the design doc no longer applies.]**
 
 ---
 
 ### Task E.4: Update Unisoft proxy SG (`sg-04cc0ee7a09c15ffb`)
 
-**[NEEDS USER APPROVAL]**
+**[CORRECTED 2026-04-27 session 3 — was 4 separate authorize calls (one per SG, per port)]**
 
-**Step 1:** Find the SGs of dev-services and prod-services:
+Verified during pre-flight: dev-services (`172.31.43.40`) and prod-services (`172.31.22.7`) both attached to **shared SG `sg-d4163da4`**. The original plan called for 4 SG-reference rules (2 source SGs × 2 ports). Reality collapses to **2 rules** (1 source SG × 2 ports). One single source-SG reference covers both EC2 instances and any future EC2 added to that SG.
+
+**[NEEDS USER APPROVAL]** for the SG ingress changes.
+
+**Step 1:** Confirm the shared SG and current SG state:
 
 ```bash
 aws ec2 describe-instances --instance-ids i-0fde0af9d216e9182 i-00ef8e2bfa651aaa8 \
   --query 'Reservations[].Instances[].{Id:InstanceId, Sg:SecurityGroups[0].GroupId}'
+# Expected: both show "Sg": "sg-d4163da4"
+
+aws ec2 describe-security-groups --group-ids sg-04cc0ee7a09c15ffb \
+  --query 'SecurityGroups[0].IpPermissions[?FromPort==`5000` || FromPort==`5001`]'
+# Confirm pre-state: 3 public CIDRs per port (Railway 162.220.234.15 + 2 office), zero SgRefs
 ```
 
-**Step 2:** Add SG-reference rules to `sg-04cc0ee7a09c15ffb`:
+**Step 2:** Add 2 SG-reference rules:
 
 ```bash
-DEV_SG=<from step 1>
-PROD_SG=<from step 1>
-
 aws ec2 authorize-security-group-ingress \
   --group-id sg-04cc0ee7a09c15ffb \
-  --protocol tcp --port 5000 --source-group $DEV_SG
+  --protocol tcp --port 5000 --source-group sg-d4163da4
 aws ec2 authorize-security-group-ingress \
   --group-id sg-04cc0ee7a09c15ffb \
-  --protocol tcp --port 5001 --source-group $DEV_SG
-aws ec2 authorize-security-group-ingress \
-  --group-id sg-04cc0ee7a09c15ffb \
-  --protocol tcp --port 5000 --source-group $PROD_SG
-aws ec2 authorize-security-group-ingress \
-  --group-id sg-04cc0ee7a09c15ffb \
-  --protocol tcp --port 5001 --source-group $PROD_SG
+  --protocol tcp --port 5001 --source-group sg-d4163da4
+# Existing 3 public CIDRs preserved (Railway + 2 office continue working through cutover)
 ```
 
-**Step 3:** Verify connectivity from dev-services:
+**Step 3:** Verify connectivity from dev-services via SSM `send-command` (read-only TCP open-only test, not interactive session):
 
 ```bash
-aws ssm start-session --target i-0fde0af9d216e9182
-# inside session:
-curl -v http://172.31.23.146:5001/api/health
-# Expected: 200 with proxy health response
+aws ssm send-command --instance-ids i-0fde0af9d216e9182 --document-name AWS-RunShellScript \
+  --parameters 'commands=["for p in 5000 5001; do if timeout 3 bash -c \"exec 3<>/dev/tcp/172.31.23.146/$p\" 2>/dev/null; then echo OPEN $p; else echo BLOCK $p; fi; done"]'
+# Expected: OPEN 5000, OPEN 5001
 ```
+
+**Implications for Phase I:** I.11 (revoke Railway IP after cutover) only needs to remove `162.220.234.15/32` from each port (not multiple SG-reference rules). Office IPs stay; SG-reference rule stays.
 
 ---
 
 ### Task E.5: Verify GitHub OIDC role permissions
 
-**[NEEDS USER APPROVAL]** (read-only verification, but also amend if needed)
+**[VERIFIED 2026-04-27 session 3]** Read-only IAM inspection. **Dev unblocked. Prod blocked — must resolve before Phase I.4.**
 
-**Step 1:** Find the GitHub OIDC role.
+**Role:** `arn:aws:iam::780354157690:role/github-actions-deploy`
 
-```bash
-aws iam list-roles --query "Roles[?contains(RoleName,'github-actions')].RoleName"
-```
+**Trust policy:** Federated to GitHub OIDC provider. Sub claim: `repo:indemn-ai/*:*` (wildcard — any indemn-ai repo, any branch). Audience: `sts.amazonaws.com`. Max session: 3600s. ✓ Covers `indemn-ai/gic-email-intelligence` once Phase F.1 pushes.
 
-**Step 2:** Inspect attached policies for read access to `indemn/dev/gic-email-intelligence/*` and `indemn/prod/gic-email-intelligence/*`.
+**Inline policy `deploy-dev-only` (single inline policy; zero attached managed policies):**
+- ✅ `secretsmanager:GetSecretValue` + `DescribeSecret` on `indemn/dev/*` — covers GIC + shared
+- ✅ `ssm:GetParameter*` on `parameter/indemn/dev/*` — covers GIC + shared
+- ✅ ECR auth + push/pull on all repos in account
+- ⚠️ **Explicit Deny on `indemn/prod/*` and `prod/*`** for both Secrets Manager and SSM. IAM explicit-Deny beats any Allow → **blocks Phase I.4 prod deploy** as currently structured.
 
-**Step 3:** If missing, add a policy that grants those actions. (May be covered by an existing wildcard like `indemn/dev/*`.)
+**Phase I.4 prerequisite — three resolution options (decide before prod cutover):**
+
+1. **Recommended: separate role `github-actions-deploy-prod`** with `indemn/prod/*` allow + trust policy scoped to prod branch only of specific repos. Preserves dev-only safety for other repos. The build-prod.yml workflow's `aws-actions/configure-aws-credentials` step references this new role.
+2. **Carve out the Deny** — modify `Resource` array on `DenyProdExplicitly` to exclude `indemn/prod/gic-email-intelligence/*`. Loses symmetric guarantee for that path; could leak to other repos via the wildcard sub claim.
+3. **Remove the Deny entirely + tighten Allow scoping.** Biggest refactor, weakest safety story.
+
+This is read-only verification; no IAM changes in Phase E. The actual IAM amend happens in Phase I prerequisites (before I.4). Track separately under DEVOPS-157.
 
 ---
 
-### Task E.6: Verify self-hosted runners online
+### Task E.6: Register self-hosted runners
 
-**Step 1:** Query GitHub for runners on the GIC repo (which is empty — the runners are at the org level or repo level).
+**[CORRECTED 2026-04-27 session 3 — was "Verify self-hosted runners online"; assumed org-level pool]**
 
+Runner pattern verified by direct host inspection on dev-services: **per-repo, not org-level**. Each Indemn repo has its own dedicated `actions-runner-<service>/` directory and `runsvc.sh` daemon. dev-services has 14+ such directories already (bot-service, copilot-react, copilot, dashboard, email-service, evaluations, middleware, observatory, ops, openai, payment, percy-service, tiledesk-sync, www, plus a legacy `actions-runner` registered to utility-service). Each `.runner` config has `gitHubUrl: https://github.com/indemn-ai/<service>`.
+
+For `indemn-ai/gic-email-intelligence` we therefore need **two new runner registrations** — one on each EC2:
+
+| Where | Directory | Name | Labels | Used by |
+|---|---|---|---|---|
+| dev-services (`i-0fde0af9d216e9182`) | `/home/ubuntu/actions-runner-gic-email-intelligence/` | `ip-172-31-43-40-gic` | `self-hosted,linux,x64,dev` | `build.yml` (main branch) |
+| prod-services (`i-00ef8e2bfa651aaa8`) | `/home/ubuntu/actions-runner-gic-email-intelligence/` | `ip-172-31-22-7-gic` | `self-hosted,linux,x64,prod` | `build-prod.yml` (prod branch) |
+
+**Runner version:** 2.334.0 (org standard, sampled from existing bot-service runner).
+
+**Permission gap:** registration requires `POST /repos/{owner}/{repo}/actions/runners/registration-token` which needs `admin` permission on the repo. `craig-indemn` has only `push/pull/triage` on the empty `indemn-ai/gic-email-intelligence` repo (Dhruv created it and is sole admin).
+
+**[BLOCKED on DEVOPS-159]** — assigned to Dhruv with full SSM-driven instructions (one fresh registration token per host, since tokens are single-use and expire in 1 hour). DEVOPS-159's description carries the full `./config.sh` + `./svc.sh install ubuntu` + `./svc.sh start` sequence for both hosts. Side ask in DEVOPS-159: grant `craig-indemn` admin on the repo so future operations don't have a single point of failure on Dhruv.
+
+**Acceptance criteria** (verified once Dhruv completes):
 ```bash
 gh api repos/indemn-ai/gic-email-intelligence/actions/runners --jq '.runners[] | {name, status, busy, labels: [.labels[].name]}'
+# Expected: 2 runners online, both busy=false, with the per-host expected labels
 ```
 
-If no runners are registered to this specific repo, register the dev-services and prod-services runners to it (they may need to be added through the GitHub UI under Settings → Actions → Runners).
-
-**Step 2:** Test by queuing a no-op workflow once Phase F's initial commit is pushed.
+**Smoke test** (after F.1 push triggers first build): runner should pick up the queued workflow within seconds. If queued >2 min, runner is offline or labels don't match.
 
 ---
 
@@ -1877,11 +1914,30 @@ Same as E.1 + E.2 but for `indemn/prod/gic-email-intelligence/*` and `/indemn/pr
 
 ### Task I.3: Atlas + Unisoft SG (already covered in E.3, E.4)
 
-Verify the prod-services EIP is in the Atlas allowlist and the SG-reference rule for `prod-services` SG is on `sg-04cc0ee7a09c15ffb`.
+**[CORRECTED 2026-04-27 session 3]** Both items are now no-ops at the network/SG level — covered automatically by E's resolution paths. **Pre-cutover verification only.**
+
+**Atlas (PrivateLink, not public allowlist):**
+- prod-services is in the same VPC as dev-services and is permitted by the `mongodb-atlas-privatelink-sg` (sg-08c6c2f9c8ef6470c) ingress rule for `172.31.0.0/16` on ports 1024-1026 + 27017
+- When Phase I.2 populates `indemn/prod/gic-email-intelligence/mongodb-uri`, **use the PrivateLink hostname `dev-indemn-pl-0.mifra5.mongodb.net`** from the start (do NOT use the public `dev-indemn.mifra5.mongodb.net` host that the original design table specified)
+- Verify by SSM `send-command` from prod-services after I.2 (same pattern as E.3 verification)
+
+**Unisoft proxy SG:**
+- E.4 added a single SG-reference rule from `sg-d4163da4` (shared by both EC2s) to `sg-04cc0ee7a09c15ffb` on ports 5000+5001
+- Prod-services is already covered (same source SG)
+- Verify by SSM TCP-open test from prod-services to `172.31.23.146:5001` before I.7 unpause: expect OPEN
+
+No Atlas allowlist additions, no additional SG rules.
 
 ---
 
 ### Task I.4: Push `prod` branch, deploy to prod-services
+
+**[PREREQUISITE BLOCKERS — verify resolved before I.4 fires]**
+
+1. **IAM OIDC role prod allow** (E.5 finding) — `github-actions-deploy` role's `DenyProdExplicitly` blocks reading `indemn/prod/gic-email-intelligence/*`. Pick one of the 3 options on file in DEVOPS-153 comments (recommended: separate `github-actions-deploy-prod` role). Update build-prod.yml's `aws-actions/configure-aws-credentials` step to reference the new role. Test by manually triggering the workflow with `pause-*=true` first.
+2. **prod-services runner** registered for `indemn-ai/gic-email-intelligence` with labels `self-hosted,linux,x64,prod` (DEVOPS-159, assigned to Dhruv). Without it, the deploy job queues forever on the `runs-on: [self-hosted, linux, x64, prod]` label.
+
+**Once both prerequisites resolved:**
 
 ```bash
 cd /Users/home/Repositories/gic-email-intelligence-migration

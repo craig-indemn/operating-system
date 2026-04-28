@@ -684,3 +684,61 @@ These are documented to make sure they aren't dropped, not to be done now:
 - Does GitHub OIDC role `github-actions-deploy` need a policy update to include `indemn/{env}/gic-email-intelligence/*` permissions? Almost certainly yes; existing roles scope to existing services. Cheap fix.
 - Is the current Atlas tier connection-pool large enough for the dev + prod overlap during cutover? Confirm by checking the cluster's connection metric vs the tier's `connectionLimit` before pausing Railway.
 - Does the Outlook add-in's `VITE_API_BASE` (set as a Vercel build env) currently target `api.gic.indemn.ai` or a Railway-specific URL? Pre-cutover step 11 verifies; rebuild only if Railway-specific.
+
+---
+
+## Post-execution corrections (2026-04-27 session 3)
+
+This section captures discoveries from Phase E execution that supersede portions of the original design above. Source-of-truth for current state. Original sections preserved for historical context.
+
+### Network plumbing (supersedes section 1.6)
+
+**Atlas access is via VPC PrivateLink, not public IP allowlist.** The dev-indemn cluster has a VPC interface endpoint at `vpce-06c18b903fea23e06` (in subnet `subnet-ff98cad7`, attached SGs `sg-314be454` + `mongodb-atlas-privatelink-sg sg-08c6c2f9c8ef6470c`). The privatelink SG allows VPC CIDR `172.31.0.0/16` on ports 1024-1026 + 27017. Both dev-services and prod-services are inside this VPC and reach Atlas through this endpoint.
+
+The PrivateLink hostname `dev-indemn-pl-0.mifra5.mongodb.net` resolves only inside the VPC and routes through the endpoint at private IP `172.31.32.102`. SRV record returns `pl-0-us-east-1.mifra5.mongodb.net` on ports 1024-1026.
+
+**Implication:** the original plan to add `44.196.55.84/32` (dev-services EIP) and `98.88.11.14/32` (prod-services EIP) to the Atlas IP Access List is **unnecessary**. The right fix is to use the PrivateLink hostname in the GIC mongodb-uri secret (done for dev in E.3; prod inherits via I.2/I.3).
+
+The design's Risks table entry "EIP / public-IP confusion" no longer applies under this resolution.
+
+### Secrets layout (refines section 1.4)
+
+The Secrets Manager table in section 1.4 listed several entries (`mongodb-uri`, `anthropic-api-key`, `langsmith-api-key`, `jwt-secret`, etc.) under `indemn/{env}/gic-email-intelligence/*`. Phase D.2 had committed an `aws-env-loader.sh` that pulled most of those from `shared/*` paths instead. Phase E execution reconciled this via SHA256 hash comparison against actual Railway dev values:
+
+| Slot | Where it actually lives | Why |
+|---|---|---|
+| `mongodb-uri` | `gic-email-intelligence/*` (overrides shared) | Different DB user — distinct value from shared infra's `dev-indemn` superuser |
+| `anthropic-api-key` | `gic-email-intelligence/*` (overrides shared) | Different Anthropic account — distinct value |
+| `google-cloud-sa-json` | `gic-email-intelligence/*` (no shared equivalent) | Different GCP project (`prod-gemini-470505`) than shared/google-cloud-sa |
+| `graph-credentials` | `gic-email-intelligence/*` (no shared equivalent) | GIC-only; bundled JSON with tenant_id + client_id + client_secret + user_email |
+| `tiledesk-db-uri` | `gic-email-intelligence/*` (no shared equivalent) | GIC-specific db user |
+| `unisoft-api-key` | `gic-email-intelligence/*` (flat, NOT bundled JSON) | Railway has only api_key value — no username/password/broker_id ever existed |
+| `langsmith-api-key` | `shared/langsmith-api-key` | GIC value matched shared (verified by hash) — GIC-specific copy was redundant, deleted |
+| `jwt-secret` | `shared/auth-secrets.jwt_secret` | GIC value matched shared (verified by hash) — GIC-specific copy was redundant, deleted |
+| ~~`api-token`~~ | NOT NEEDED | Code analysis (`api/auth.py`) showed `api_token` is fallback only; with `JWT_SECRET` set, all auth goes through JWT-only path. Skipped. |
+| ~~`s3-credentials`~~ | NOT NEEDED | EC2 instance role handles S3 access; AWS_ACCESS_KEY_ID/SECRET in Railway are NOT migrated |
+
+Loader patched in commit `daf216e` (migration repo) to apply GIC-specific overrides AFTER shared loads, and to scope the Parameter Store recursive query to `/{env}/shared/` + `/{env}/{service}/` (avoids picking up unrelated services' params like `services/observability/cors-origins`).
+
+### Self-hosted runners (supersedes section 1.3)
+
+Section 1.3 implied a generic runner pool tagged `dev` / `prod`. Reality verified by host inspection on dev-services: **runners are per-repo, not org-level**. Each Indemn repo has a dedicated `actions-runner-<service>/` directory with its own `runsvc.sh` daemon. dev-services has 14+ such daemons. The label convention (`[self-hosted, linux, x64, dev|prod]`) is consistent across all 7+ Indemn repos verified, but each runner is registered to a specific GitHub repo via `./config.sh --url https://github.com/indemn-ai/<repo>`.
+
+For `indemn-ai/gic-email-intelligence` we therefore need two new runner registrations (one per EC2). Registration requires repo `admin` permission to issue the registration token via `POST /repos/{owner}/{repo}/actions/runners/registration-token`. `craig-indemn` has only `push/pull/triage`; Dhruv (sole admin on the empty target repo) owns this work as DEVOPS-159.
+
+### Risks table updates
+
+- **"EIP / public-IP confusion"** — close. PrivateLink resolves the underlying issue.
+- **"Unisoft proxy SG missing VPC rule"** — close. E.4 added the SG-reference rule; verified TCP_OPEN on 5000+5001 from dev-services.
+- **NEW: "IAM OIDC role denies prod"** — `github-actions-deploy` role's inline `DenyProdExplicitly` blocks reading `indemn/prod/*`. Three resolution options on file (separate role / carve-out the deny / restructure). Must resolve before Phase I.4. Tracked in DEVOPS-153 → DEVOPS-157.
+- **NEW: "Repo admin single point of failure"** — Dhruv is sole admin on `indemn-ai/gic-email-intelligence`. Blocks runner registration (DEVOPS-159) and branch protection (Phase F.2). Side ask: grant `craig-indemn` admin to prevent recurrence on cutover-day operations.
+
+### Open Items resolution
+
+Items resolved during E execution:
+- ~~"Does GitHub OIDC role `github-actions-deploy` need a policy update?"~~ — Yes for prod (Phase I); No for dev (already covered by `indemn/dev/*` wildcard). Specifics in section above.
+- ~~"Atlas connection-pool capacity"~~ — N/A under PrivateLink (overlap is brief, both stacks share the same endpoint, M-tier connection metric stays bounded).
+
+Items still open at end of E:
+- Existing internal ALB / Caddy / nginx pattern on dev-services — not yet inspected since GIC's docker-compose uses `ports: ["8080:8080"]` already (host port mapping). When Phase G.1 first deploy lands, verify via SSM whether host nginx/Caddy needs a server block for `api-dev.gic.indemn.ai → localhost:8080` or a new ALB listener rule.
+- Outlook add-in `VITE_API_BASE` — to verify in Phase I.1b.
