@@ -180,6 +180,11 @@ step 3. We iterate from there.
 
 This block is a courtesy summary of what the bugfix session has done recently, so Craig can see at a glance what state the parallel work is in without re-reading `os-learnings.md`. Update whenever a fork session marks rows 🟡 / 🟢.
 
+**As of 2026-04-28 morning (post-bugfix-resume #4, sixth wave — Bug #30 prevention auto-emit shipped):**
+
+Ninth burst (continued from same session — defensive-by-default fix):
+- 🟢 **Bug #30 propagation → auto-emit partialFilterExpression on unique+nullable fields** — merged `db23749` (feature commit `2948491`). Instead of auditing each entity def and adding `sparse: true` manually, the reconciler now auto-emits the partial filter when `unique=True AND not required AND default is None`. New helper `_is_effectively_nullable(fdef)`. The kernel takes a stand: `unique: true` on an `Optional` field means "unique-when-set", full stop. **Healing on deploy:** 2 latent create-500 traps auto-fixed at indemn-api startup — `deals.deal_id` and `emails.external_ref` both went from `unique=True, partialFilter=None` to `unique=True, partialFilter={field: {$type: <bson_type>}}`. 4 new unit tests; existing tests updated for the new contract; full 320-test suite green. **Prevents future Bug #30-class incidents entirely** — every nullable+unique field is correctly indexed by default, no operator opt-in required.
+
 **As of 2026-04-28 morning (post-bugfix-resume #4, fifth wave — always-fresh entity skills shipped):**
 
 Eighth burst (continued from same session — compounding-leverage fix):
@@ -237,7 +242,6 @@ Bug #1, #2 (cache-leak path), #6, #9, #10, #11, #14, #20, #21, #23, #24, #25, #2
 
 **True OS work still open (next burst candidates):**
 - `--include-related` reverse relationships (kernel relationship traversal — substantive)
-- Bug #30 sparse propagation audit: walk all entity defs for `unique: true` on nullable fields and add `sparse: true` (kernel reconciler audit) — OR: kernel auto-emits partialFilterExpression when `unique: true` on an Optional-typed field (defensive, prevents future Bug #30s entirely)
 - Ingestion durability companion to #10: Gmail/Meet adapters copy transcripts into Document at ingestion so they survive 30-day source retention (kernel integration adapter)
 - Bug #5 (`fetch-new --help` triple-dash flags + missing `--data` doc), Bug #15 (naive collection pluralization), Bug #19 (changes timestamp string vs Date), Bug #7 (adapter noisy fileId warnings), Bug #8 (adapter swallows per-user errors) — small CLI/adapter cleanup.
 - Bug #12 (wrong MongoDB URI in AWS secret), Bug #13 (Railway auto-deploy docs/setup) — infrastructure config.
