@@ -9,7 +9,7 @@
 
 **Why this works:** the shared context lives in project files, not in conversations. A fresh session reading `os-learnings.md` sees what the previous instance marked 🟡 In-progress and 🟢 Fixed. The resume prompt just adds framing ("you're a resumed session, here's what's urgent right now") — the actual context comes from the files.
 
-**Last updated:** 2026-04-27 — after the third bugfix-session burst that cleared the API-500-transparency / Meeting-create / Bug #29 / index-reconciliation / list-filter / entity-resolve / effective-actor-id stack. The Alliance trace is no longer blocked on a kernel bug; the next session is systematic bug clearing.
+**Last updated:** 2026-04-28 — after burst #4 of bugfix-resume (waves 1-6 in one continuous session) cleared the entire load-bearing stack: bulk-delete operator filters + workflow counts + preview ObjectId/retry (Bugs #23/#24/#32), reprocess primitive (Bug #10), boundary coercion + auto_resolve flag (Bug #9), CLI papercut cluster (Bugs #11/#20/#21/#28), always-fresh entity skill rendering, and Bug #30 propagation via auto-emit partialFilterExpression. **The kernel is in genuinely solid shape now.** What's left in `os-learnings.md` is mostly customer-system domain work (belongs to the main session) plus one substantive OS feature and a handful of small papercuts. The next session may wrap up faster than previous bursts.
 
 ---
 
@@ -60,83 +60,111 @@ documented before you move to the next.
    d) where the work happens (which files in indemn-os/), 
    e) how you'll test each fix.
 
-==== UPDATED PRIORITY (post-Apr-27 third bugfix burst) ====
+==== UPDATED PRIORITY (post-Apr-28 burst — kernel substantially hardened) ====
 
-The trace-blocking bugs are all fixed. The kernel now has: typed 500 errors, declarative index 
-reconciliation with sparse-via-partialFilterExpression, route eviction on entity-def replace, 
-entity_resolve capability with field_equality + fuzzy_string strategies, list-endpoint arbitrary 
-field filters, effective_actor_id forensics chain, and a clean modify_fields path on 
-entity-def modify. The next priorities are mostly mechanical bugs that improve daily ergonomics 
-+ enable scale cleanup.
+**Read this first.** The previous session shipped 9 fixes across one continuous burst. The 
+kernel is in genuinely solid shape — most of the load-bearing items in `os-learnings.md` are 
+now 🟢. Before you pick up new work, internalize what's true now vs what was true a session 
+ago, because it changes the priority shape:
 
-Suggested order (push back if dependencies surface):
+What the kernel now has (don't re-derive these from os-learnings.md — read the architecture 
+docs to understand the current contract):
 
-1. **Bug #23 + Bug #24 — `bulk-delete` operator filters + `bulk status` counts.** 
-   Critical for cleanup at scale. Today only simple equality filters work in bulk-delete; `$in`, 
-   `$gte`, `$ne`, `$oid`, `$date` are silently dropped (Bug #23). And `bulk status` returns 
-   `COMPLETED` even when zero records matched (Bug #24), so you can't tell the operation did 
-   nothing. Combined, they make non-trivial cleanup almost impossible — the 446-Company half-finished 
-   cleanup in the GR Little trace stalled here. The fix probably touches `kernel/temporal/workflows.py::BulkExecuteWorkflow` 
-   or `kernel/api/bulk.py` filter parsing. Pair with the new list-filter parser pattern 
-   (`_parse_list_filter` in `kernel/api/registration.py`) — same shape, but for delete + with the 
-   operator safelist that list filtering doesn't have yet. The operator safelist is the real work; 
-   wire it into both list and bulk-delete uniformly.
+- **Filter safelist** in `kernel/api/_filter_safelist.py` — three layers (field-name allowlist, 
+  operator allowlist `$in/$nin/$ne/$gt/$gte/$lt/$lte/$exists`, per-field type coercion including 
+  Pydantic alias support). Used by both list endpoint and per-entity bulk routes.
+- **Bulk workflow surfaces real counts** — `BulkExecuteWorkflow` returns `{matched, succeeded, 
+  errored, errors}` with `completed_no_match` status when matched=0. `GET /api/bulk/{id}` fetches 
+  `handle.result()` on terminal states. Preview activity has bounded retry policy.
+- **Reprocess primitive** in `kernel/message/reprocess.py` — emits ONE message scoped to a named 
+  role's watch, fresh `correlation_id`, `causation_id="reprocess:<hex>"`, `event_metadata.reprocess=True`, 
+  `event_metadata.reprocess_requested_by=<actor_id>`. New `POST /api/{collection}/{id}/reprocess` 
+  endpoint + auto-registered CLI `indemn <entity> reprocess <id> --role <role>`.
+- **Boundary coercion** in `_resolve_relationship_dict_inputs` — dict on relationship field gets 
+  a 400 with shape hint by default; opt-in `auto_resolve: bool` field flag triggers `entity_resolve` 
+  with single-1.0 auto-link. Set `auto_resolve=true` on Email.company etc. and the API boundary 
+  handles dict-shaped LLM input transparently.
+- **Auto-fresh entity skills** — `indemn skill get <Entity>` re-renders from current 
+  EntityDefinition + current generator at GET time. Stored Skill row is a cache, not source of 
+  truth. Every generator improvement propagates to every entity instantly.
+- **Auto-emit partialFilterExpression on unique+nullable** — the reconciler treats `unique: true` 
+  on an Optional field as "unique-when-set" automatically. Bug #30-class create-500s are 
+  prevented at the kernel level, no operator opt-in needed. Existing latent traps (deals.deal_id, 
+  emails.external_ref) auto-healed at deploy time.
+- **CLI parity** — `indemn actor transition/delete` exist; `actor list --type` filters via the 
+  safelist; transition API canonical body field is `to`; `/api/queue/stats` aliased.
 
-2. **Bug #10 — `indemn <entity> reprocess <id> --role <role>` (backfill historical entities).** 
-   When a watch is added to a role, only future events fire it. Existing entities are invisible. Cost 
-   us real work in the GR Little trace (manually creating Touchpoints because the Synth's 
-   "Meeting created" watch couldn't refire on already-ingested meetings). Without this, every new 
-   associate we add comes with a one-time manual reprocessing chore. Fix: a new CLI/API endpoint 
-   that synthesizes a `created`-equivalent event for a named role on an existing entity. 
-   Tracked in `artifacts/2026-04-24-extractor-procedure-and-requirements.md` § Capability #6.
+The customer-system-vs-OS reframe matters: a lot of "open" rows in os-learnings.md are actually 
+**customer-system domain work** (skill updates, entity-definition tweaks, integration setup), 
+not OS kernel work. The fork session is for OS work. Hand domain work back to the main session.
 
-3. **Bug #9 — Associates pass dicts instead of ObjectIds → dead letters.** 
-   Mostly addressed by the JSON-shape examples we shipped (the auto-generated entity skill now 
-   emits real ObjectId hex placeholders). But there's a defense-in-depth piece left: the API's 
-   create/update handler could coerce dict-shaped relationship fields at the boundary (e.g. accept 
-   `{"company": {"name": "Acme"}}` by resolving via the new entity_resolve capability, OR reject 
-   with a 400 explaining the right shape). The skill examples + the existing 
-   `_coerce_objectid_fields` helper handle the happy path; this is just the failure-mode improvement.
+Suggested order for the next burst (push back if you spot a dependency):
 
-After the top 3, continue with:
+1. **`--include-related` reverse relationships.** This is the only substantive OS-feature gap 
+   left. Today `--include-related` follows forward references (fields where `is_relationship: 
+   true` on this entity) but not reverse — entities that point AT this one are invisible. For 
+   the customer-system constellation queries (vision.md item #5: "the constellation is queryable"), 
+   this is the missing piece. Fix probably lives in `kernel/message/emit.py::_build_context` 
+   (where the depth>=2 lookup happens today) or wherever the API endpoint with `include_related=true` 
+   resolves relationships. Walk all EntityDefinitions, find ones with `is_relationship: true` 
+   pointing at THIS entity, query each, attach to `_related`. Test against Touchpoint (the 
+   canonical reverse-ref case: `Meeting.touchpoint -> Touchpoint`).
 
-- **Finishing Bug #16 + #17 (kernel ready, skill update pending)** — the Email Classifier and 
-  Touchpoint Synthesizer skills need to be updated to call `indemn <entity> entity-resolve` BEFORE 
-  creating, and only auto-link on a single 1.0 candidate (else surface for review). This is 
-  domain-skill work in `projects/customer-system/skills/` not kernel work — ask Craig if he wants 
-  it done in this fork session or in the main session.
+2. **Bug #5 + Bug #7 + Bug #8 — adapter / CLI ergonomics cluster.** Small.
+   - Bug #5: `indemn fetch-new --help` shows `---cap` and `---slug` triple-dash internal-routing 
+     params. Hide them; add `--data` JSON-shape docs per capability.
+   - Bug #7: Google Workspace adapter logs "Missing required parameter 'fileId'" 50+ times per 
+     fetch — short-circuit when fileId is empty.
+   - Bug #8: Adapter swallows per-user `except Exception` — track success rate; raise if all/most 
+     users fail with the same error class.
 
-- **`--include-related` doesn't follow reverse relationships.** Kernel feature: kernel's 
-  `--include-related` follows forward references (`is_relationship: true`) but not reverse refs. 
-  For Touchpoint, this means Meeting.touchpoint→Touchpoint is invisible from Touchpoint's side. 
-  Subsumed for the Touchpoint case by Option B but underlying gap remains.
+3. **Bug #15 — naive collection pluralization.** `Company` → `companys`, `Opportunity` → 
+   `opportunitys`. Use the `inflect` library OR require explicit `collection_name` in entity 
+   defs and fail loudly if missing. Existing collections (`companys`, `opportunitys`) need 
+   migration or doc update — flag the migration path before starting.
 
-- **Bug #20 + #21 — Actor CLI parity + transition API field naming.** Mechanical: Actor CLI 
-  missing `transition`, `delete`, `bulk-*`. Transition API expects `to` but docs say `target_state`.
+4. **Bug #19 — Change records sometimes have non-Date timestamp.** Find the code path writing 
+   strings; ensure `datetime.now(UTC)` server-side. Low severity but observability nuisance.
 
-- **Bug #11 + #12 + #13 — observability/docs cleanup.** `/api/queue/stats` returns 404; 
-  `mongodb-uri` secret has wrong host; Railway doesn't auto-deploy on push to main.
+5. **Ingestion durability companion to Bug #10** — Gmail/Meet adapters copy transcripts into 
+   Document at ingestion time so they survive 30-day source retention. Substantive integration 
+   work. The reprocess primitive (already done) only helps if the source content still exists.
 
-- **Bug #5 — `fetch-new --help` triple-dash flags + missing `--data` documentation.**
+6. **Bug #12 + Bug #13 — infrastructure config (asks Craig).** `mongodb-uri` AWS secret has wrong 
+   host; Railway doesn't auto-deploy on push to main. Both require explicit user authorization. 
+   Just flag and ask before doing anything.
 
-- **Bug #15 — Naive entity collection pluralization (`Company` → `companys`).**
+**Customer-system domain work — DO NOT do these in the fork session, hand back to the main 
+session:**
+- Bug #16/#17 finishing — Email Classifier + Touchpoint Synthesizer skill updates (or just set 
+  `auto_resolve=true` on the relationship fields, now that the kernel supports it; that may 
+  obviate the skill changes entirely).
+- Email.interaction → Touchpoint rename (entity definition change).
+- Document.source enum missing `slack_file_attachment`.
+- Proposal state machine `superseded` transition.
+- Touchpoint scope/Contact-resolution chicken-and-egg (skill design).
+- Slack ingestion design (split between adapter [OS] and integration setup [domain]).
 
-- **Bug #2 — No singular `delete` CLI** (only `bulk-delete`, which is broken per #23).
-
-- **Bug #3 + #4 — `bulk status` lacks counts + `bulk-delete --filter '{}'` silent no-op** (subsumed 
-  by Bug #23 + #24 fix).
-
-- **Bug #7 + #8 — Adapter noise + per-user error swallowing** (Google Workspace adapter ergonomics).
-
-- **Bug #19 — Change records sometimes have non-Date timestamp fields** (low-severity observability bug).
+**One-off cleanup pending** (mechanical, do whenever): `indemn bulk cancel <wf>` against the 5+ 
+zombie bulk workflows from before the Bug #32 retry-policy fix. They'll auto-clear on Temporal's 
+workflow execution timeout, just slowly.
 
 ==== Operational notes for this session ====
 
-The async runtime had a deploy-failure storm at end-of-previous-session (a bare-import regression 
-from the silent-stuck-state PR; fixed in commit `65dddfa`). If you see runtime-async deploy emails 
-again, check that one first. The chat runtime is also failing startup with `Error 401: Invalid 
-service token` — that's pre-existing, NOT from any recent fork work; it needs Craig to rotate 
-the chat-runtime service token. Don't try to fix it yourself; flag it in the session and move on.
+- The kernel is healthier than at any previous bugfix burst. Your work may be smaller in scope. 
+  That's fine — don't manufacture work to fill a session. If the priorities above are cleared 
+  and what's left in os-learnings.md is genuinely customer-system territory, **end the burst 
+  cleanly and let the main session run**.
+- The chat runtime is still failing startup with `Error 401: Invalid service token` — pre-existing, 
+  needs Craig to rotate the token. Don't try to fix it yourself; flag if it surfaces.
+- The deploy pattern for kernel-image services (api / temporal-worker / queue-processor) is: 
+  deploy `indemn-api` for any API/route/handler change; deploy `indemn-temporal-worker` 
+  additionally if you touched workflow code (`kernel/temporal/workflows.py` or activities); 
+  the queue-processor rarely needs separate deploy. The reconciler runs at every kernel-image 
+  startup so any one of them updating indexes is fine.
+- Bug #30 propagation auto-heals on deploy now. If you see a "Dropped kernel index ... Created 
+  kernel index ... partialFilter=..." log line at startup, it's the reconciler self-healing a 
+  latent unique+nullable trap. Working as designed.
 
 ==== Rules of engagement (unchanged) ====
 

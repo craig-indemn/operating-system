@@ -411,6 +411,7 @@ These are the principles that hold across the project. Internalize them. They ha
 17. **Customer-system work is OS work.** They are not separate projects. Findings here flow back to update the OS itself — kernel code, docs, architecture. The 8-step domain modeling process *is* the OS being built. Where the boundary matters: don't let OS work eat the customer-system trace work *without intent*. When an OS fix would block customer-system progress and is significant, fork to a parallel session in a separate worktree. When an OS fix is small and on the path, do it inline.
 18. **Don't conflate customers.** GR Little is a one-off demo for Kyle's validation. Alliance is the proof point. Arches Insurance is a secondary trace example. Each has its own state.
 19. **Read the artifacts every time.** Don't trust your memory across sessions. Sessions clear context. Read.
+20. **Trace-as-build: act as the associate before you deploy it.** Tracing isn't just the Phase A shake-out method — it's the canonical building method for all of Phase B+ and beyond. Every skill, watch, capability, and dashboard goes through a trace first: pick a real scenario, run the procedure yourself using the `indemn` CLI on live data, watch the entity state move through each step, and only write the skill content (or wire the watch / capability) once the procedure works. The skill is the writeup of what worked. This makes the build testable by construction — if you can run the CLI sequence and produce the right state, the skill is correct. It surfaces gaps before deployment (the way Option B + the cache leak + the silent stuck-state were discovered during the GR Little trace, not after). It forces reckoning with real data state instead of theory. Discovered as Phase A's shake-out method (GR Little Apr 24, Alliance Apr 27) and elevated to the building method itself in Session 8. Apply this to skill propagation, new associate creation, watch-cascade hardening, dashboard development, integration adapter work — anything the OS does, trace it yourself first. Activate the autonomous version only after the trace produces the right state on real data.
 
 ---
 
@@ -440,7 +441,7 @@ These are the principles that hold across the project. Internalize them. They ha
 - Touchpoint Synthesizer — **suspended**. Touchpoint Option B 🟢 + skill v3 deployed → ready to re-activate once entity-resolution is in.
 - Intelligence Extractor — **active**. Now the silent stuck-state and cross-invocation cache leak are 🟢 → much safer to leave running.
 
-### What landed Apr 27 (parallel bugfix fork)
+### What landed Apr 27 (parallel bugfix fork — burst #3)
 - 🟢 Touchpoint Option B (source pointers) — schema + Synth skill v3
 - 🟢 Silent workflow stuck-state — agent-output detection + queue fail
 - 🟢 Cross-invocation tool-cache leak — per-activity scoping
@@ -448,16 +449,37 @@ These are the principles that hold across the project. Internalize them. They ha
 - 🟢 Entity-skill JSON-shape examples — generator now emits payload examples
 - 🟢 Bug #30 sparse-on-nullable-unique (Meeting create unblocked; foundation for Email/Document creates)
 - 🟢 Bug #29 route eviction — entity-def hot-update now works without redeploy
+- 🟢 List endpoint arbitrary field filters (`?filter={...}` safelist with field-name allowlist + ObjectId hex coercion)
+- 🟢 Bug #31 entity_resolve kernel capability — domain-agnostic ranked candidates, never auto-picks
+- 🟢 Bug #22 effective_actor_id forensics chain — propagates env var → CLI header → middleware contextvar → ChangeRecord
+- 🟢 async-harness import regression — package-qualified import after silent-stuck-state PR
+
+### What landed Apr 28 (parallel bugfix fork — burst #4, multiple waves in one session)
+- 🟢 Bug #23 + #24 — bulk-delete operator filter safelist (`$in`/`$nin`/`$ne`/`$gt`/`$gte`/`$lt`/`$lte`/`$exists`) + per-field type coercion (ObjectId hex / `$oid` / ISO 8601 / `$date`) + Pydantic alias support so `_id` works alongside canonical `id`. `BulkExecuteWorkflow` returns `{matched, succeeded, errored, errors}` with `completed_no_match` when matched=0. `GET /api/bulk/{id}` fetches `handle.result()` on terminal states.
+- 🟢 Bug #32 — preview activity ObjectId serialization + bounded retry policy (latent, exposed by Bug #23's correct org_id contextvar fix).
+- 🟢 Bug #10 — `reprocess` primitive in `kernel/message/reprocess.py` for backfilling watches against historical entities. Role-scoped (one role, not broadcast). Fresh `correlation_id` per call, `event_metadata.reprocess=True`. New `POST /api/{collection}/{id}/reprocess` + auto-registered CLI verb.
+- 🟢 Bug #9 — boundary coercion in `_resolve_relationship_dict_inputs`. Default 400 with shape hint when LLM passes dict on a relationship field; opt-in `auto_resolve: bool` flag on FieldDefinition triggers `entity_resolve` with single-1.0 auto-link policy.
+- 🟢 Bug #11 + #20 + #21 + #28 — CLI papercut cluster. `actor transition`/`delete` now exist; `actor list --type` filters via the safelist; transition API canonical body field is `to` (docs corrected); `/api/queue/stats` aliased to `/api/_meta/queue-stats`.
+- 🟢 Always-fresh entity-skill rendering — `indemn skill get <Entity>` re-renders from current EntityDefinition + current generator at GET time. Stored Skill row is a cache; EntityDefinition is source of truth. Generator improvements propagate to every entity instantly.
+- 🟢 Bug #30 propagation via auto-emit `partialFilterExpression` — reconciler treats `unique=True AND not required AND default is None` as "unique-when-set" automatically. Two latent create-500 traps (`deals.deal_id`, `emails.external_ref`) auto-healed at deploy time.
 
 ### What's broken or open
-- Bug #29 — entity-def replacement doesn't evict API routes (workaround: redeploy required).
-- Bug #16 — associates auto-create Companies (root cause: missing entity-resolution capability — produced 446 Company records when ~90 are legitimate).
-- Bug #17 — no meeting-to-company classifier (subsumed by entity-resolution).
-- **Option B** (Touchpoint source pointers) not yet implemented — Extractor has no path from Touchpoint to source Meeting transcript.
-- Cross-invocation tool-cache leak in async harness (`/large_tool_results/` shared across activities).
-- Silent workflow stuck-state (agent completes empty, message stays in `processing` indefinitely).
-- 4 GR Little Company duplicates flagged but not deleted (Bug #23 blocks bulk-delete with operator filters).
-- Many smaller open questions accumulated in `INDEX.md § Open Questions`.
+**Customer-system domain work (belongs to main session, not the fork):**
+- Bug #16/#17 finishing — the kernel piece (entity_resolve capability) shipped Apr 27. Either update the Email Classifier + Touchpoint Synthesizer skills to call `indemn <entity> entity-resolve` before creating, OR (cleaner) set `auto_resolve=true` on the relationship fields per Apr 28's Bug #9 boundary fix and let the API handle it transparently.
+- Email.interaction → Touchpoint rename (entity definition update — kernel-side rename happened Apr 23, the Email entity def still references the old name).
+- Document.source enum missing `slack_file_attachment`.
+- Proposal state machine lacks `superseded` transition.
+- Touchpoint scope/Contact-resolution chicken-and-egg (skill design).
+
+**True OS work still open (next fork burst):**
+- `--include-related` doesn't follow reverse relationships — substantive feature, last big OS-feature gap. Important for vision.md item #5 ("the constellation is queryable").
+- Bug #5 / #7 / #8 — adapter + CLI ergonomics papercuts.
+- Bug #15 — naive collection pluralization (`Company` → `companys`).
+- Bug #19 — change records sometimes have non-Date timestamp.
+- Bug #12 / #13 — infrastructure config (asks Craig — wrong MongoDB URI in AWS secret; Railway auto-deploy docs).
+- Ingestion-durability companion to Bug #10 (Gmail/Meet adapters copy transcripts into Document at ingestion so they survive 30-day source retention).
+
+**Pre-existing chat runtime issue:** `indemn-runtime-chat` fails startup with `Error 401: Invalid service token`. Needs Craig to rotate the chat-runtime token. NOT a bug to fix in either session — flag and move on.
 
 ### Open design questions (carried forward, NOT yet resolved)
 - **Opportunity vs Problem entity** — does unmapped pain need its own entity, or does Opportunity loosen `mapped_associate` to nullable?
