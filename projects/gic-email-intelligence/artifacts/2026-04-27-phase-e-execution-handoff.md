@@ -117,21 +117,11 @@ Verified handoff finding: dev-services (`172.31.43.40`) and prod-services (`172.
 
 **Post-change verification:** TCP from dev-services to 172.31.23.146:5000/5001 → **OPEN**.
 
-### Phase E.5 — IAM OIDC role: dev unblocked, prod blocker confirmed
+### Phase E.5 — IAM OIDC role: no issues
 
-Role: `arn:aws:iam::780354157690:role/github-actions-deploy`
+Role `arn:aws:iam::780354157690:role/github-actions-deploy` is only relevant for ECR-pushing build jobs (we use Docker Hub, so we never call it). Deploy jobs run on the self-hosted EC2 runner using the EC2 instance profile — same pattern as every other Indemn repo. No Phase I IAM blocker.
 
-**Trust policy:** GitHub OIDC, sub claim `repo:indemn-ai/*:*` (wildcard) — covers `indemn-ai/gic-email-intelligence` once we push in Phase F.
-
-**Inline policy `deploy-dev-only` (single inline policy; zero attached managed policies):**
-- ✅ Allow on `indemn/dev/*` for SecretsManager + SSM Parameter Store — covers gic-email-intelligence + shared
-- ✅ Allow ECR auth + push/pull on all repos in account
-- ⚠️ **Explicit Deny on `indemn/prod/*`** for both SecretsManager and SSM. IAM explicit-Deny wins over Allow → **blocks Phase I prod deploy** as currently structured.
-
-**Three options for Phase I (decide before I.4 — prod branch push):**
-1. **Separate role** `github-actions-deploy-prod` with `indemn/prod/*` allow + trust scoped to prod branch only of specific repos. **Recommended** — preserves dev-only safety for other repos.
-2. **Carve out the Deny** — modify `Resource` array on `DenyProdExplicitly` to exclude `indemn/prod/gic-email-intelligence/*`. Loses symmetric guarantee for that path.
-3. **Remove the Deny entirely + tighten Allow scoping.** Biggest refactor, weakest safety story.
+(Earlier in the session I read the role's `DenyProdExplicitly` statement and incorrectly concluded it would block our prod deploy. It doesn't — the deploy never assumes that role.)
 
 ### Phase E.6 — Runner registration handed off to Dhruv (DEVOPS-159)
 
@@ -199,9 +189,8 @@ These are real corrections to the migration design + plan that came out of execu
 3. **Repo admin access** — Dhruv either grants `craig-indemn` admin on `indemn-ai/gic-email-intelligence` (cleanest), OR Dhruv himself executes F.2 (sets branch protection on `main` and `prod`). Surfaced in DEVOPS-159 as a side ask.
 
 ### Must-fix before Phase I (prod cutover)
-4. **IAM OIDC role prod allow.** `github-actions-deploy` role's `DenyProdExplicitly` blocks reading `indemn/prod/gic-email-intelligence/*`. Pick one of the 3 options on file (DEVOPS-153 comments) before I.4.
-5. **UI integration for `failed_recovery_review` state** (carried from prior session): `ui/src/api/types.ts:99`, `SubmissionQueue.tsx:42,284-291`, `ProcessingTimeline.tsx:92,99`. Cutover gate at design-doc line 2082 says "failed_recovery_review count must be 0" — operators need a UI surface to see the count.
-6. **Datadog routing decision** (Phase H.1) — PagerDuty vs Slack-to-phone. Block H.1 until decided.
+4. **UI integration for `failed_recovery_review` state** (carried from prior session): `ui/src/api/types.ts:99`, `SubmissionQueue.tsx:42,284-291`, `ProcessingTimeline.tsx:92,99`. Cutover gate at design-doc line 2082 says "failed_recovery_review count must be 0" — operators need a UI surface to see the count.
+5. **Datadog routing decision** (Phase H.1) — PagerDuty vs Slack-to-phone. Block H.1 until decided.
 
 ### Nice-to-have (post-cutover)
 7. JWT_SECRET rotation. Current dev value is 14 chars (verified in E.1 sanity check). Should be ≥32 chars before EC2 dev becomes the canonical environment.

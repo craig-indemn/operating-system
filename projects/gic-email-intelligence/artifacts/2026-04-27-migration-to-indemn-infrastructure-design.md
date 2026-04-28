@@ -730,13 +730,12 @@ For `indemn-ai/gic-email-intelligence` we therefore need two new runner registra
 
 - **"EIP / public-IP confusion"** — close. PrivateLink resolves the underlying issue.
 - **"Unisoft proxy SG missing VPC rule"** — close. E.4 added the SG-reference rule; verified TCP_OPEN on 5000+5001 from dev-services.
-- **NEW: "IAM OIDC role denies prod"** — `github-actions-deploy` role's inline `DenyProdExplicitly` blocks reading `indemn/prod/*`. Three resolution options on file (separate role / carve-out the deny / restructure). Must resolve before Phase I.4. Tracked in DEVOPS-153 → DEVOPS-157.
 - **NEW: "Repo admin single point of failure"** — Dhruv is sole admin on `indemn-ai/gic-email-intelligence`. Blocks runner registration (DEVOPS-159) and branch protection (Phase F.2). Side ask: grant `craig-indemn` admin to prevent recurrence on cutover-day operations.
 
 ### Open Items resolution
 
 Items resolved during E execution:
-- ~~"Does GitHub OIDC role `github-actions-deploy` need a policy update?"~~ — Yes for prod (Phase I); No for dev (already covered by `indemn/dev/*` wildcard). Specifics in section above.
+- ~~"Does GitHub OIDC role `github-actions-deploy` need a policy update?"~~ — No. The OIDC role is only used by ECR-pushing build jobs (we use Docker Hub). Deploy jobs run on self-hosted EC2 runners with the EC2 instance profile. Same pattern as every other Indemn repo.
 - ~~"Atlas connection-pool capacity"~~ — N/A under PrivateLink (overlap is brief, both stacks share the same endpoint, M-tier connection metric stays bounded).
 
 Items still open at end of E:

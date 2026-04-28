@@ -1422,25 +1422,11 @@ aws ssm send-command --instance-ids i-0fde0af9d216e9182 --document-name AWS-RunS
 
 ### Task E.5: Verify GitHub OIDC role permissions
 
-**[VERIFIED 2026-04-27 session 3]** Read-only IAM inspection. **Dev unblocked. Prod blocked — must resolve before Phase I.4.**
+**[VERIFIED 2026-04-27 session 3]** Read-only IAM inspection. **No issues — same pattern as every other Indemn repo.**
 
-**Role:** `arn:aws:iam::780354157690:role/github-actions-deploy`
+The OIDC role `github-actions-deploy` is only relevant for build jobs that need ECR push (we use Docker Hub, so we don't even call it). The deploy job runs on the self-hosted EC2 runner using the EC2 instance profile for AWS access. The role's `DenyProdExplicitly` statement therefore doesn't affect our deploy flow at all.
 
-**Trust policy:** Federated to GitHub OIDC provider. Sub claim: `repo:indemn-ai/*:*` (wildcard — any indemn-ai repo, any branch). Audience: `sts.amazonaws.com`. Max session: 3600s. ✓ Covers `indemn-ai/gic-email-intelligence` once Phase F.1 pushes.
-
-**Inline policy `deploy-dev-only` (single inline policy; zero attached managed policies):**
-- ✅ `secretsmanager:GetSecretValue` + `DescribeSecret` on `indemn/dev/*` — covers GIC + shared
-- ✅ `ssm:GetParameter*` on `parameter/indemn/dev/*` — covers GIC + shared
-- ✅ ECR auth + push/pull on all repos in account
-- ⚠️ **Explicit Deny on `indemn/prod/*` and `prod/*`** for both Secrets Manager and SSM. IAM explicit-Deny beats any Allow → **blocks Phase I.4 prod deploy** as currently structured.
-
-**Phase I.4 prerequisite — three resolution options (decide before prod cutover):**
-
-1. **Recommended: separate role `github-actions-deploy-prod`** with `indemn/prod/*` allow + trust policy scoped to prod branch only of specific repos. Preserves dev-only safety for other repos. The build-prod.yml workflow's `aws-actions/configure-aws-credentials` step references this new role.
-2. **Carve out the Deny** — modify `Resource` array on `DenyProdExplicitly` to exclude `indemn/prod/gic-email-intelligence/*`. Loses symmetric guarantee for that path; could leak to other repos via the wildcard sub claim.
-3. **Remove the Deny entirely + tighten Allow scoping.** Biggest refactor, weakest safety story.
-
-This is read-only verification; no IAM changes in Phase E. The actual IAM amend happens in Phase I prerequisites (before I.4). Track separately under DEVOPS-157.
+For reference: trust policy federates to GitHub OIDC, sub claim `repo:indemn-ai/*:*`, allows `secretsmanager:GetSecretValue` + `ssm:GetParameter*` on `indemn/dev/*` plus ECR push/pull. Standard Indemn pattern.
 
 ---
 
@@ -1932,12 +1918,7 @@ No Atlas allowlist additions, no additional SG rules.
 
 ### Task I.4: Push `prod` branch, deploy to prod-services
 
-**[PREREQUISITE BLOCKERS — verify resolved before I.4 fires]**
-
-1. **IAM OIDC role prod allow** (E.5 finding) — `github-actions-deploy` role's `DenyProdExplicitly` blocks reading `indemn/prod/gic-email-intelligence/*`. Pick one of the 3 options on file in DEVOPS-153 comments (recommended: separate `github-actions-deploy-prod` role). Update build-prod.yml's `aws-actions/configure-aws-credentials` step to reference the new role. Test by manually triggering the workflow with `pause-*=true` first.
-2. **prod-services runner** registered for `indemn-ai/gic-email-intelligence` with labels `self-hosted,linux,x64,prod` (DEVOPS-159, assigned to Dhruv). Without it, the deploy job queues forever on the `runs-on: [self-hosted, linux, x64, prod]` label.
-
-**Once both prerequisites resolved:**
+**[PREREQUISITE]** prod-services runner registered for `indemn-ai/gic-email-intelligence` with labels `self-hosted,linux,x64,prod` (DEVOPS-159, assigned to Dhruv). Without it, the deploy job queues forever.
 
 ```bash
 cd /Users/home/Repositories/gic-email-intelligence-migration
