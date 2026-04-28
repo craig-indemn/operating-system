@@ -180,6 +180,11 @@ step 3. We iterate from there.
 
 This block is a courtesy summary of what the bugfix session has done recently, so Craig can see at a glance what state the parallel work is in without re-reading `os-learnings.md`. Update whenever a fork session marks rows 🟡 / 🟢.
 
+**As of 2026-04-27 late-evening (post-bugfix-resume #4, second wave — Bug #10 reprocess shipped):**
+
+Fifth burst (continued from same session):
+- 🟢 **Bug #10 — `reprocess` primitive for backfilling watches against historical entities** — merged `662dc2d` (feature commit `767a3ef`). New `kernel/message/reprocess.py::reprocess_for_role(entity, role_name, event_type="created")` emits ONE message scoped to the named role's watch — not broadcast. Validates role has a matching watch and surfaces actual events when there's no match. Fresh correlation_id per call (new chain), `causation_id="reprocess:<hex>"` sentinel, `event_metadata.reprocess=True` + `reprocess_requested_by` (Bug #22 forensics chain). New `POST /api/{collection}/{id}/reprocess` endpoint + auto-registered CLI verb `indemn <entity> reprocess <id> --role <role>`. 13 unit tests; full 296-test suite green. **Verified live:** all 6 scenarios pass (happy path; unknown role → 400 with "add-watch" hint; wrong event_type → 400 listing actual events; 404 on missing entity; 400 on missing role param; distinct correlation_ids on repeat). Companion ingestion-durability gap (copy transcripts into Document at ingestion time so they survive 30-day source retention) remains 🟡 partial — separate ingestion-side change.
+
 **As of 2026-04-27 evening (post-bugfix-resume #4 — Bug #23/#24 cleanup-at-scale work done):**
 
 Fourth burst (cleanup-at-scale + verification-driven follow-ups):
@@ -213,9 +218,9 @@ Third burst (systematic continuation after the trace-blocking work cleared):
 - `indemn-temporal-worker` + `indemn-queue-processor`: healthy. WARN-level noise about workflow-already-started + bulk activation retries (transient, related to test cleanups).
 
 **Bugs cleared this round (no longer blocking customer-system work):**
-Bug #1, #2 (cache-leak path), #6, #14, #23, #24, #25, #29, #30, #31, #32; Bug #16/#17 (kernel ready); #22; partial fix for #9 via skill examples.
+Bug #1, #2 (cache-leak path), #6, #10, #14, #23, #24, #25, #29, #30, #31, #32; Bug #16/#17 (kernel ready); #22; partial fix for #9 via skill examples.
 
-**Next-up (the prompt's UPDATED PRIORITY block ranks them — re-rank for the next burst):** #10 (reprocess for backfill), #9 (defense-in-depth boundary coercion at the create/update API), #16/#17 finishing skill update (Email Classifier + Touchpoint Synthesizer call entity_resolve before creating), `--include-related` reverse relationships, then the smaller Bug #20/#21/#11/#12/#13/#5/#15/#19 cleanup. Plus a one-off cleanup: `indemn bulk cancel <wf>` against the 5+ zombie bulk workflows from before the Bug #32 retry-policy fix; or just leave them to time out on Temporal's workflow execution timeout.
+**Next-up (re-rank for the next burst):** #9 (defense-in-depth boundary coercion at the create/update API — when an LLM passes `{"company": {"name": "Acme"}}` for a relationship field, return 400 with shape hint OR opt-in resolve via Bug #31's `entity_resolve`), #16/#17 finishing skill update (Email Classifier + Touchpoint Synthesizer call entity_resolve before creating), `--include-related` reverse relationships, ingestion-durability companion to #10 (copy transcripts into Document at ingestion so they survive 30-day source retention), then the smaller Bug #20/#21/#11/#12/#13/#5/#15/#19 cleanup. Plus a one-off cleanup: `indemn bulk cancel <wf>` against the 5+ zombie bulk workflows from before the Bug #32 retry-policy fix.
 
 ---
 
