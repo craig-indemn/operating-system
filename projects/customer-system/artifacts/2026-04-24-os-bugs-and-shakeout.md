@@ -943,9 +943,9 @@ Append new entries above this line as you find them. Format:
 | # | Title | Severity | Status |
 |---|---|---|---|
 | 1 | Meet adapter rejects date-only `since` | High | 🟢 Fixed (8afda9d) |
-| 2 | No singular `delete` CLI command | Med | 🔴 Open |
-| 3 | `bulk status` lacks deletion counts | Low | 🔴 Open |
-| 4 | `bulk-delete --filter '{}'` silent no-op | Med | 🔴 Open |
+| 2 | No singular `delete` CLI command | Med | 🟢 Fixed (Apr 28 burst #6, merge `d037987` — auto-registered for every entity in both CLI surfaces) |
+| 3 | `bulk status` lacks deletion counts | Low | 🟢 Fixed (Apr 27 burst #4, merge `0ed8c80` — `{matched, succeeded, errored, errors}` returned on terminal states) |
+| 4 | `bulk-delete --filter '{}'` silent no-op | Med | 🟢 Fixed (Apr 28 burst #6, merge `d037987` — empty filter on destructive ops 400s; `--all` flag for explicit match-all opt-in) |
 | 5 | `fetch-new --help` broken (triple-dash, no docs) | Med | 🟢 Fixed (Apr 28 burst #5, merge `896a4b0` — factory functions in both CLI surfaces) |
 | 6 | Auto-generated skill has wrong fetch-new syntax | Med | 🔴 Open |
 | 7 | Adapter noisy "fileId" warnings | Low | 🟢 Fixed (Apr 28 burst #5, merge `896a4b0` — truthy guard + `_export_doc` short-circuit) |
@@ -953,10 +953,10 @@ Append new entries above this line as you find them. Format:
 | 9 | Associates pass dicts not ObjectIds → dead letters | High | 🟢 Fixed (Apr 27 burst #4, merge `31bb594` — boundary coercion + auto_resolve flag) |
 | 10 | Old meetings unprocessed (one-time data state) | Low | 🟢 Resolved (deleted) |
 | 11 | `/api/queue/stats` 404 | Low | 🟢 Fixed (Apr 28 burst #4, merge `e9d04da` — aliased to `/api/_meta/queue-stats`) |
-| 12 | Wrong MongoDB URI in AWS secret | Low | 🔴 Open |
-| 13 | Railway doesn't auto-deploy on push to main | Med | 🔴 Open |
+| 12 | Wrong MongoDB URI in AWS secret | Low | 🟡 Documented (Apr 28 burst #6, merge `ade9a60` — operator note + workaround in `docs/architecture/infrastructure.md`; real fix is one `aws secretsmanager update-secret` by an operator with write permission) |
+| 13 | Railway doesn't auto-deploy on push to main | Med | 🟢 Fixed (Apr 28 burst #6, merge `ade9a60` — accepted reality + rewrote section 8 of `docs/guides/development.md` with manual-deploy flow + per-service-touched table) |
 | 14 | CLI POST/PUT timeout was 60s — too short for fetch-new | Med | 🟢 Fixed (f0dfe89) |
-| 15 | Naive entity collection pluralization (`companys`) | Low | 🔴 Open |
+| 15 | Naive entity collection pluralization (`companys`) | Low | 🟢 Fixed (Apr 28 burst #6, merge `1314a21` — `inflect` for new entities; existing `companys`/`opportunitys` accepted-and-fix-forward per Craig) |
 | 16 | Associates auto-create Companies despite skill saying never | **High** | 🟡 Kernel ready (Bug #31); skill update pending |
 | 17 | No meeting-to-company classifier in pipeline | **High** | 🟡 Kernel ready (Bug #31); skill update pending |
 | 18 | Synth doesn't update `Meeting.touchpoint` back-reference | Med | 🔴 Open |
@@ -968,7 +968,7 @@ Append new entries above this line as you find them. Format:
 | 24 | `bulk status` reports COMPLETED even when 0 records matched | Med | 🟢 Fixed (Apr 27 burst #4, merge `0ed8c80` — `completed_no_match` status + `{matched, succeeded, errored, errors}`) |
 | 25 | `company create` returns HTTP 500 | Med | 🟢 Fixed (subsumed by #30 — Apr 27) |
 | 26 | `deal update` with company ref returns HTTP 500 | Med | 🟢 Fixed (Apr 28 — auto-healed by burst #4 `partialFilterExpression` propagation, verified live `PUT /api/deals/...` returns 200) |
-| 27 | `created_by` null on every Company record | Med | 🔴 Open |
+| 27 | `created_by` null on every Company record | Med | 🟢 Fixed (Apr 28 burst #6, merge `0b5a484` — auto-populate in save_tracked from effective_actor_id ?? actor_id) |
 | 28 | `actor list --type` flag is silently ignored | Low | 🟢 Fixed (Apr 28 burst #4, merge `e9d04da` — switched to filter-safelist path, now actually filters) |
 | 29 | Entity definition replacement doesn't evict old API routes (live replacement silently broken, requires restart) | **High** | 🟢 Fixed (Apr 27, merge `83d2494`) |
 | 30 | Manual entity create 500 — unique index on nullable field; kernel had no index reconciliation | **High** | 🟢 Fixed (Apr 27, deployed) |
