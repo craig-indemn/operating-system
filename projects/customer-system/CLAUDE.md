@@ -799,13 +799,16 @@ Read INDEX.md every session. It's the project's memory.
 ### Start of every session — mandatory protocol
 
 1. Read this CLAUDE.md **in full.** Not skim — read.
-2. Read `INDEX.md` (Status, Decisions, Open Questions, full Artifacts table).
-3. Read `os-learnings.md` (the running register of OS-relevant findings — what's queued, blocking, in-progress).
-4. Read REQUIRED READING (both tracks: customer-system artifacts + OS docs).
-5. Read the **When working on X** section for the specific activity you're about to do.
-6. Then begin work.
+2. Read the **most recent session-handoff artifact** (`artifacts/<latest-date>-session-handoff*.md` or `artifacts/<latest-date>-session-N-handoff.md`). It contains a hard-coded reading list with absolute paths.
+3. Read `INDEX.md` (Status, Decisions, Open Questions, full Artifacts table).
+4. Read `os-learnings.md` (the running register of OS-relevant findings — what's queued, blocking, in-progress).
+5. **Read both tracks of REQUIRED READING (Section "REQUIRED READING — at session start").** Track 1 = this project's artifacts. Track 2 = the OS docs at `/Users/home/Repositories/indemn-os/`. **Both tracks are non-negotiable.** Reading only Track 1 produces work that fights the OS instead of leveraging it. The discipline failure mode that has happened twice now (Sessions 8 and 9): the user's session-start prompt listed Track 1 files only, Claude trusted that list as exhaustive instead of cross-checking against this CLAUDE.md's REQUIRED READING block. **The session-start prompt is not the canonical reading authority — this CLAUDE.md is. If the session-start prompt is silent on Track 2, read Track 2 anyway.**
+6. Read the **When working on X** section for the specific activity you're about to do.
+7. Then begin work.
 
 If you skip these reads "to save context," you will fail. The reading IS the work. The discipline of reading is what makes the work coherent.
+
+**Coverage check (do this before claiming reading is done):** Can you answer (a) what `save_tracked()` does in a single transaction, (b) what the three event types that trigger selective emission are, (c) what the trust boundary separates, (d) what the `--auto` pattern is, (e) what the trace-as-build-method principle says (CLAUDE.md #20 / vision §4)? If any of these are blank, you haven't read enough.
 
 ### During the session — running discipline
 

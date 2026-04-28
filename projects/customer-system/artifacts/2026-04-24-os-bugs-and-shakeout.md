@@ -950,9 +950,9 @@ Append new entries above this line as you find them. Format:
 | 6 | Auto-generated skill has wrong fetch-new syntax | Med | 🔴 Open |
 | 7 | Adapter noisy "fileId" warnings | Low | 🔴 Open |
 | 8 | Adapter swallows all per-user errors | Med | 🔴 Open |
-| 9 | Associates pass dicts not ObjectIds → dead letters | High | 🔴 Open |
+| 9 | Associates pass dicts not ObjectIds → dead letters | High | 🟢 Fixed (Apr 27 burst #4, merge `31bb594` — boundary coercion + auto_resolve flag) |
 | 10 | Old meetings unprocessed (one-time data state) | Low | 🟢 Resolved (deleted) |
-| 11 | `/api/queue/stats` 404 | Low | 🔴 Open |
+| 11 | `/api/queue/stats` 404 | Low | 🟢 Fixed (Apr 28 burst #4, merge `e9d04da` — aliased to `/api/_meta/queue-stats`) |
 | 12 | Wrong MongoDB URI in AWS secret | Low | 🔴 Open |
 | 13 | Railway doesn't auto-deploy on push to main | Med | 🔴 Open |
 | 14 | CLI POST/PUT timeout was 60s — too short for fetch-new | Med | 🟢 Fixed (f0dfe89) |
@@ -961,15 +961,16 @@ Append new entries above this line as you find them. Format:
 | 17 | No meeting-to-company classifier in pipeline | **High** | 🟡 Kernel ready (Bug #31); skill update pending |
 | 18 | Synth doesn't update `Meeting.touchpoint` back-reference | Med | 🔴 Open |
 | 19 | Change records sometimes have non-Date `timestamp` | Low | 🔴 Open |
-| 20 | Actor CLI missing `transition`, `delete`, `bulk-*` | Med | 🔴 Open |
-| 21 | Transition API: `to` vs docs' `target_state` | Low | 🔴 Open |
+| 20 | Actor CLI missing `transition`, `delete`, `bulk-*` | Med | 🟢 Fixed (Apr 28 burst #4, merge `e9d04da` — `transition`/`delete` shipped) |
+| 21 | Transition API: `to` vs docs' `target_state` | Low | 🟢 Fixed (Apr 28 burst #4, merge `e9d04da` — picked `to` canonical, docs corrected) |
 | 22 | Service token untraceability: can't tell which associate acted | **High** | 🟢 Fixed (Apr 27, deployed; effective_actor_id field) |
-| 23 | `bulk-delete` silently drops MongoDB operator filters ($in, $gte, $oid) | **Critical** | 🔴 Open |
-| 24 | `bulk status` reports COMPLETED even when 0 records matched | Med | 🔴 Open |
+| 23 | `bulk-delete` silently drops MongoDB operator filters ($in, $gte, $oid) | **Critical** | 🟢 Fixed (Apr 27 burst #4, merge `0ed8c80` + alias `6b8c62e` + retry `b5e4757` — operator safelist + per-field type coercion) |
+| 24 | `bulk status` reports COMPLETED even when 0 records matched | Med | 🟢 Fixed (Apr 27 burst #4, merge `0ed8c80` — `completed_no_match` status + `{matched, succeeded, errored, errors}`) |
 | 25 | `company create` returns HTTP 500 | Med | 🟢 Fixed (subsumed by #30 — Apr 27) |
 | 26 | `deal update` with company ref returns HTTP 500 | Med | 🔴 Open |
 | 27 | `created_by` null on every Company record | Med | 🔴 Open |
-| 28 | `actor list --type` flag is silently ignored | Low | 🔴 Open |
+| 28 | `actor list --type` flag is silently ignored | Low | 🟢 Fixed (Apr 28 burst #4, merge `e9d04da` — switched to filter-safelist path, now actually filters) |
 | 29 | Entity definition replacement doesn't evict old API routes (live replacement silently broken, requires restart) | **High** | 🟢 Fixed (Apr 27, merge `83d2494`) |
 | 30 | Manual entity create 500 — unique index on nullable field; kernel had no index reconciliation | **High** | 🟢 Fixed (Apr 27, deployed) |
 | 31 | Missing kernel primitive: entity-resolution (partial-identity → ranked candidates) | **Critical** | 🟢 Fixed (Apr 27, deployed + activated on Company) |
+| 32 | `preview_bulk_operation` ObjectId serialization + missing retry policy → infinite-retry storm | **High** | 🟢 Fixed (Apr 27 burst #4, merge `b5e4757` — `to_dict()` + bounded RetryPolicy) |
