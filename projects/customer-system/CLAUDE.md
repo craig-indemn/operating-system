@@ -159,6 +159,21 @@ The biggest single-session shipment so far. Three deliverables landed in paralle
 
 **Phase A is COMPLETE after A2.** Phase B can begin.
 
+### Session 8 (2026-04-28 morning) — Trace-showcase HTML + share to Cam + Kyle
+
+Picked up from the Session 7 handoff and shipped Next-session deliverable 2: the Kyle-facing Alliance trace-showcase HTML. With it, Phase A is fully closed.
+
+**What shipped:**
+- `artifacts/2026-04-27-alliance-trace-showcase.html` — single self-contained HTML (833 lines, all CSS inline, system fonts, no external resources) using the Apr 24 GR Little v2 Kyle-validated visual language as the base. **Five-section spine matching the GR Little template:** (1) v2 proposal cover hero with 3-card Phase strip (WEDGE / WALK / RUN with terms) + iris CTA button to the Drive PDF; (2) vertical timeline of the 8 Alliance events Feb 1 → Apr 27 with source pills (Meeting / Email+Doc / Slack / Slack DM / Slack MPDM / OS) + per-event entity-pill chips capturing what hydrated at each step; (3) extraction table — 10 quote-to-entity-to-proposal-line rows showing how every load-bearing claim in v2 traces back to source (Christopher's Apr 7 stewardship-prep ask, Apr 8 renewal-wedge pivot, Peter's data validation, Capability Document, v1 proposal); (4) mechanism table with PROPOSAL stage "you are here" + Demo "skipped" honest about Alliance's actual journey; (5) 6-column proposal-as-spine showing v1 (sent → under_review) → v2 (rendered, now) with all 3 Phases populated under v2. Footer carries the full Alliance constellation entity-ID inventory.
+- **v2 styled PDF uploaded to Cam's proposals folder on Drive** (`1k0_SYLdYtlM40y6W-ZAMV3Trr9hIq2Ph`, file ID `1pM3tYg6rHzG8RW6xU_titouiq_iddhIC`). Sits next to v1 in Cam's portfolio. Drive link wired into the showcase HTML hero CTA.
+- **Shared in MPDM `mpdm-cam--kwgeoghan--craig-1`** (Cam + Kyle + Craig, channel `C0A3B18LY07`) as a thread reply to Cam's Apr 21 message about proposal output, with `reply_broadcast=True` so the message surfaces at channel-top. HTML uploaded twice — to thread and to channel-top — to work around Slack's broadcast file-attachment quirk. Tagged Cam (`<@U084CSZV49G>`) + Kyle (`<@UFK4DNNHG>`) in the body.
+
+**Design choices that worked:** Vertical timeline (denser than the GR Little 4-event horizontal grid; right shape for 8+ events). Source-pill variety honored on each event (Slack channel / Slack DM / Slack MPDM / Meeting / Email+Doc / OS) — surfaces that the OS handles all touchpoint types uniformly. Mechanism table being honest about Alliance's non-canonical journey (Demo skipped) reinforces that the model represents real customer paths. No trace-gap caveat box — this is for showing what the OS produced, not what's still broken (the Slack-foundational / superseded-state / Apr 8 meeting reconstructed gaps live in `os-learnings.md`).
+
+**Message framing for Cam + Kyle:** the work is part of the customer-success-system effort with Kyle, not just one-off proposal generation. Sales lifecycle modeled as entities, all Alliance data traced through, v2 proposal generated from that data. Looking to ship as a prototype product Cam + Kyle can both use and give feedback on. *"Proposal generation is the last step in the puzzle — the system covers everything that leads up to it too."*
+
+**Phase A is fully closed after this session.** Two stages traced (DISCOVERY via GR Little, PROPOSAL/NEGOTIATION via Alliance), both Kyle-facing visual artifacts shipped, proposal PDF in Cam's portfolio for review/sending.
+
 ### Session 7 (2026-04-27 evening) — Styled-PDF rendering pipeline + Cam-portfolio match
 
 Picked up from the Session 6 handoff and executed Next-session deliverable 1: re-render the Alliance v2 proposal styled to match Cam's portfolio. Built a reusable rendering pipeline that becomes the rendering step of the future autonomous Artifact Generator associate.
@@ -399,19 +414,26 @@ These are the principles that hold across the project. Internalize them. They ha
 
 ---
 
-## Where we are now (as of 2026-04-27, end of session 7 — styled PDF iteration)
+## Where we are now (as of 2026-04-28, end of session 8 — trace-showcase + Cam/Kyle share)
 
-### What's hydrated and proven
+### What's hydrated, proven, and shared
 - 27 entity definitions live, including the Playbook entity with the aligned shape.
 - GR Little Apr 22 first-discovery call traced end-to-end + Kyle validated.
 - **Alliance hydrated end-to-end via the Apr 27 trace** — 8 timeline steps, 60+ entities created (constellation now queryable from Company hub). v2 proposal artifact rendered for Cam. PROPOSAL-stage Playbook record created — reusable for any future customer.
 - **Styled-PDF rendering pipeline shipped** — `templates/proposal/` (Handlebars + CSS + assets) + `tools/render-proposal.js` (puppeteer-core + Chrome) + `skills/artifact-generator.md` (15 style guidelines). Alliance v2 PDF at `artifacts/2026-04-27-alliance-proposal-v2.pdf` — 9 pages, brand-consistent with Cam's portfolio (verified via visual diff). Document `69efbdea4d65e2ca69b0dd80` in OS updated with PDF metadata.
+- **v2 PDF uploaded to Cam's proposals folder on Drive** (`1k0_SYLdYtlM40y6W-ZAMV3Trr9hIq2Ph`, file ID `1pM3tYg6rHzG8RW6xU_titouiq_iddhIC`) — sits next to v1 in Cam's portfolio.
+- **Trace-showcase HTML shipped** — `artifacts/2026-04-27-alliance-trace-showcase.html`, 833 lines, self-contained, five-section spine (cover hero / vertical timeline / extraction table / mechanism / proposal-as-spine). Wired with the Drive PDF link.
+- **Shared with Cam + Kyle in MPDM** — `mpdm-cam--kwgeoghan--craig-1` channel `C0A3B18LY07`, thread reply to Cam's Apr 21 ask, with reply_broadcast so it surfaces at channel-top. Awaiting Cam's content/visual feedback on the proposal + Kyle's reactions on the showcase.
 - ~930 emails ingested across the team. Gmail + Google Workspace + Google Meet API working.
 - **Vision + roadmap crystallized at project root** (`vision.md` + `roadmap.md`). Comprehensive pre-scoped 4-phase roadmap (A→F + continuous threads).
 - **Shared-context-update mechanism proven** — main session + parallel bugfix fork session ran simultaneously, coordinating via `os-learnings.md` and the living `fork-prompts/os-bugfix-resume.md`.
 
+### Phase A is fully complete. Phase B opens next.
+
 ### Outstanding for next session (top priority)
-- **Deliverable 2 — Kyle-facing trace-showcase HTML for Alliance.** In the spirit of `artifacts/2026-04-24-information-flow-v2.html` (the GR Little visual Kyle validated). Single HTML file showing Alliance timeline + per-event entity creation + Proposal-as-spine growth + mechanism table + quote→entity→proposal-line mapping. See `artifacts/2026-04-27-session-handoff-alliance-trace.md` for full briefing.
+- **Phase B begins — B1 foundation hardening.** Most direct unblock: propagate the Apr 27 entity-resolution kernel capability into the Email Classifier + Touchpoint Synthesizer skills (call `entity_resolve` before creating, only auto-link on a single 1.0 candidate). Closes Bug #16 / Bug #17 end-to-end since the kernel piece already shipped. Then sweep through remaining `os-learnings.md` items.
+- **Document entity sync** — Document `69efbdea4d65e2ca69b0dd80` in the OS could now be updated with `drive_file_id: "1pM3tYg6rHzG8RW6xU_titouiq_iddhIC"` + `drive_url: <Drive link>` to keep the entity graph in sync with reality. Quick CLI update; do at start of next OS-touching session.
+- **Watch for Cam + Kyle reactions** in the MPDM thread — the proposal feedback informs whether v2 ships to Christopher as-is, and Kyle's reactions on the showcase inform whether/how to socialize internally.
 
 ### Pipeline associates current state
 - Email Classifier — **suspended** (still). Several blocking bugs now fixed → could re-activate after Bug #16 entity-resolution capability lands.

@@ -2,7 +2,7 @@
 
 > Living source of truth for **how we get from where we are now to the vision**. Updated every session that moves the work forward. Read with `vision.md` (what we're building, why, and the lens) and `os-learnings.md` (running register of OS bugs + capability gaps + design questions).
 >
-> Last updated: **2026-04-27** (evening — styled-PDF iteration session).
+> Last updated: **2026-04-28** (morning — trace-showcase HTML + Cam/Kyle share).
 
 ---
 
@@ -47,11 +47,14 @@ The phases are sequential at the level of "Phase B starts when Phase A is done,"
   - Match-quality with Cam's portfolio (Alliance v1, Charley, Branch, Johnson, GIC, Physicians Mutual, Arches) verified through several rounds of visual diff. 9 pages matching Cam's section-per-page rhythm. Brand-consistent footer swoosh (rounded top-left, sharp bottom-left, bleeds right + bottom, white logo via CSS filter). 15 style guidelines captured in the skill.
   - Document `69efbdea4d65e2ca69b0dd80` in OS updated: `mime_type: application/pdf`, `file_size: 178935`, content pointer to repo file path.
 
-**Outstanding from A2:** Deliverable 2 — **Kyle-facing trace-showcase HTML for Alliance** (next-session top priority). Visual template at `artifacts/2026-04-24-information-flow-v2.html` (the GR Little equivalent Kyle validated). Substantive content all in `artifacts/2026-04-27-alliance-trace.md` + `artifacts/2026-04-27-alliance-proposal-v2.md`.
+- **A2 follow-on — Kyle-facing trace-showcase HTML for Alliance** *(✅ done 2026-04-28 morning)*
+  - Output: `artifacts/2026-04-27-alliance-trace-showcase.html` — single self-contained file (833 lines, all CSS inline) using the Kyle-validated GR Little v2 visual language as the base. Five sections: proposal cover hero with Drive PDF link / vertical 8-event timeline / extraction table (10 quote→entity→proposal-line rows) / mechanism table with PROPOSAL "you are here" + Demo "skipped" / proposal-as-spine showing v1 → v2.
+  - v2 PDF uploaded to Cam's proposals folder on Drive (`1k0_SYLdYtlM40y6W-ZAMV3Trr9hIq2Ph`, file ID `1pM3tYg6rHzG8RW6xU_titouiq_iddhIC`); Drive link wired into the showcase hero CTA.
+  - Shared with Cam + Kyle in `mpdm-cam--kwgeoghan--craig-1` (channel `C0A3B18LY07`) — thread reply to Cam's Apr 21 ask about proposal output, with `reply_broadcast=True` so it surfaces at channel-top.
 
-**Phase A is COMPLETE.** Two stages traced (DISCOVERY + PROPOSAL/NEGOTIATION) is sufficient mechanism validation. Intermediate stages (CONTACT, DEMO, VERBAL/SIGNED) hydrate naturally from B3 stage research.
+**Phase A is COMPLETE.** Two stages traced (DISCOVERY + PROPOSAL/NEGOTIATION), both Kyle-facing artifacts shipped (GR Little visual Apr 24, Alliance showcase Apr 28), proposal PDF in Cam's portfolio for review/sending. Mechanism validated across two distinct stages. Intermediate stages (CONTACT, DEMO, VERBAL/SIGNED) hydrate naturally from B3 stage research.
 
-**Next: Phase B starts.** With the OS bugs fixed in parallel during the trace, the foundation is much closer to being shipped autonomously. B1 (foundation hardening) absorbs the remaining bugs from `os-learnings.md`. B2 (hydration) starts with the rest of the active prospects + customer roster.
+**Next: Phase B starts.** With the OS bugs fixed in parallel during the trace, the foundation is much closer to being shipped autonomously. B1 (foundation hardening) absorbs the remaining bugs from `os-learnings.md` — most direct unblock is propagating the entity-resolution kernel capability (shipped Apr 27) into the Email Classifier + Touchpoint Synthesizer skills so Bug #16 (auto-create Companies) is closed end-to-end. B2 (hydration) starts with the rest of the active prospects + customer roster.
 
 ---
 
