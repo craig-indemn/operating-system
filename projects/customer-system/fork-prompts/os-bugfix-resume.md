@@ -180,6 +180,11 @@ step 3. We iterate from there.
 
 This block is a courtesy summary of what the bugfix session has done recently, so Craig can see at a glance what state the parallel work is in without re-reading `os-learnings.md`. Update whenever a fork session marks rows 🟡 / 🟢.
 
+**As of 2026-04-28 morning (post-bugfix-resume #4, fourth wave — CLI/API papercut cluster shipped):**
+
+Seventh burst (continued from same session, after the customer-system-vs-OS reframe — focus stays on true OS work):
+- 🟢 **Bug #11 + #20 + #21 + #28 — Actor CLI parity, transition field naming, queue stats alias** — merged `e9d04da` (feature commit `008efcd`). Bug #20: added `actor transition <id> --to <state>` (the documented CLI that didn't exist) + `actor delete <id> [--yes]` routing through bulk-delete (gets the same audit + watch-evaluation path as every other delete; Bug #23's $oid fix made it reliable). Bug #28: `actor list --type associate` was sending `?type=...` which the auto-list ignored; switched `--type` and `--status` to flow through the standard `?filter={...}` safelist (Bug #23) so they actually filter. Bug #21: `docs/guides/adding-entities.md:135` showed curl with `target_state` but the API has only ever accepted `to`; corrected the doc to canonical `to` (matches CLI's `--to` flag). Bug #11: `/api/queue/stats` 404'd because the handler was at `/api/_meta/queue-stats`; aliased so both work, `/api/queue/stats` now canonical for human use. Full 310-test suite green (no new tests — config-style changes covered by live verification). **Verified live:** queue stats both paths return identical 6-row aggregate; actor list --type returns only the 4 associates instead of 23+ all actors; active→suspended→active round-trip on OS Assistant via the API confirms transition CLI's target endpoint is wired right; `target_state` body still rejected with `'to' state is required` confirming canonical name.
+
 **As of 2026-04-27 late-evening (post-bugfix-resume #4, third wave — Bug #9 boundary coercion shipped):**
 
 Sixth burst (continued from same session):
@@ -221,9 +226,22 @@ Third burst (systematic continuation after the trace-blocking work cleared):
 - `indemn-temporal-worker` + `indemn-queue-processor`: healthy. WARN-level noise about workflow-already-started + bulk activation retries (transient, related to test cleanups).
 
 **Bugs cleared this round (no longer blocking customer-system work):**
-Bug #1, #2 (cache-leak path), #6, #9, #10, #14, #23, #24, #25, #29, #30, #31, #32; Bug #16/#17 (kernel ready); #22.
+Bug #1, #2 (cache-leak path), #6, #9, #10, #11, #14, #20, #21, #23, #24, #25, #28, #29, #30, #31, #32; Bug #16/#17 (kernel ready, skill update belongs to main session); #22.
 
-**Next-up (re-rank for the next burst):** #16/#17 finishing skill update (Email Classifier + Touchpoint Synthesizer skills call `entity_resolve` before creating Companies, and only auto-link on a single 1.0 candidate; can also opt into the Bug #9 `auto_resolve` flag now that it exists — set `auto_resolve=true` on the relationship field and the API boundary handles the resolve transparently). Then `--include-related` reverse relationships. Then ingestion-durability companion to #10 (copy transcripts into Document at ingestion so they survive 30-day source retention). Then the smaller Bug #20/#21/#11/#12/#13/#5/#15/#19 cleanup. Plus a one-off cleanup: `indemn bulk cancel <wf>` against the 5+ zombie bulk workflows from before the Bug #32 retry-policy fix.
+**Reframe (Apr 28 morning):** what's left in `os-learnings.md` mostly isn't OS-kernel work — it's customer-system domain-skill / entity-definition work that belongs to the main session (Bug #16/#17 finishing, Email.interaction → Touchpoint rename, Document.source slack_file_attachment, Proposal `superseded` transition, Touchpoint scope/Contact-resolution chicken-and-egg, Slack ingestion design). After this seventh burst, the truly remaining OS-kernel work is small papercuts:
+
+**True OS work still open (next burst candidates):**
+- `--include-related` reverse relationships (kernel relationship traversal — substantive)
+- Stale entity-skill rendering: re-render on read or run a migration on generator deploy (kernel)
+- Bug #30 sparse propagation audit: walk all entity defs for `unique: true` on nullable fields and add `sparse: true` (kernel reconciler audit)
+- Ingestion durability companion to #10: Gmail/Meet adapters copy transcripts into Document at ingestion so they survive 30-day source retention (kernel integration adapter)
+- Bug #5 (`fetch-new --help` triple-dash flags + missing `--data` doc), Bug #15 (naive collection pluralization), Bug #19 (changes timestamp string vs Date), Bug #7 (adapter noisy fileId warnings), Bug #8 (adapter swallows per-user errors) — small CLI/adapter cleanup.
+- Bug #12 (wrong MongoDB URI in AWS secret), Bug #13 (Railway auto-deploy docs/setup) — infrastructure config.
+
+**Customer-system domain work (handed back to main session):**
+Bug #16/#17 finishing (Email Classifier + Touchpoint Synthesizer call `entity_resolve` before creating, OR opt into Bug #9's `auto_resolve` flag), Email.interaction → Touchpoint rename, Document.source enum, Proposal state machine, Touchpoint scope/Contact-resolution, Slack ingestion design.
+
+**One-off cleanup pending:** `indemn bulk cancel <wf>` the 5+ zombie bulk workflows from before the Bug #32 retry-policy fix; or leave them to time out on Temporal's workflow execution timeout.
 
 ---
 
