@@ -159,6 +159,44 @@ The biggest single-session shipment so far. Three deliverables landed in paralle
 
 **Phase A is COMPLETE after A2.** Phase B can begin.
 
+### Session 10 (2026-04-28 evening) — LangSmith tracing wired in; EC kill-switch root cause found + fixed; Path 3 evals architecture aligned
+
+The session that turned Session 9's "research-level skill-compliance gap" into a 5-minute root-cause investigation. The hypothesis that the EC failure was an LLM-skill-following problem turned out to be wrong — the actual root cause was a kernel CLI bug. Without LangSmith we'd have spent the session iterating skill content blindly.
+
+**LangSmith wired into async-deepagents harness** (vision §2 item 7 — foundation B1 milestone). Three env vars on Railway `indemn-runtime-async` (`LANGSMITH_API_KEY` from AWS Secrets, `LANGSMITH_TRACING=true`, `LANGSMITH_PROJECT=indemn-os-associates`) + a `config={metadata, tags, run_name}` dict on `agent.ainvoke()` so traces are queryable by `entity_id` / `message_id` / `associate_name` / `runtime_id` / `correlation_id`. Auto-tracing of LLM/tool/state-graph calls happens via deepagents being LangGraph-based. Project `19302981-aa9e-4869-9137-59a38d7646df` created at deploy time. **See "When working on X → Debugging an associate's behavior (LangSmith tracing)" for query patterns.**
+
+**Architecture decision: evaluations service as OS adapter/integration (Path 3).** Read the `evaluations` repo (separate Indemn repo, port 8002, LangSmith-based, rubric + custom LLM judges, component-scoped, supports single-turn / multi-turn-replay / multi-turn-simulated). Designed three forks: standalone service learns to target OS associates / native OS evaluation kernel primitives / hybrid where OS gets `Run` + `eval` capability and the evaluations service stays as the LangSmith engine. **Picked Path 3 — eventually consolidate as a kernel adapter, but not now.** For this session: use the LangSmith Python/curl API directly + borrow rubric patterns from the evaluations repo without taking the dependency. Native OS evals stays a future fork-session.
+
+**Three sequential agent runs on Diana@CKSpecialty's email (`69ea56250a2b41b7696076b3`)** isolating each issue:
+
+| Run | Trace | Outcome | Diagnosis |
+|---|---|---|---|
+| #1 (pre-LangSmith) | n/a | EC auto-created Company `69f0df1bbca2d725ce90ed58` | Session 9 attributed to "skill compliance gap" — wrong |
+| #2 (LangSmith on, CLI broken) | `019dd522-ac39-7fc2-bcab-dacdc450cfc5` | EC auto-created Company `69f0ee5b78abc86f9ca2a648` | **Trace showed `entity-resolve` returned HTTP 422** — CLI bug, agent fell through to create |
+| #3 (CLI fixed, EC v4) | `019dd589-8d80-7aa3-93af-b59aff572184` | Resolve worked. EC tried `email create` instead of `update` (forgot context email exists), failed with E11000, narrated "email already exists", harness silent-completed | Two new issues: skill update-vs-create confusion + harness `agent_did_useful_work` looseness |
+| #4 (EC v5 + tightened completion) | `019dd5c1-3aab-7ea3-aa08-d007044570a1` | ✅ Diana → `classified` linked to existing CK Specialty (`69eaa394...`). No dupe Companies. Version 6→8. | The actual fix sequence working end-to-end |
+
+**Three kernel changes shipped to main (`db97694`, `956d7d5`, `d914d76`):**
+
+1. **`indemn_os/main.py` — `_COLLECTION_LEVEL_CAPS` add `entity_resolve`** (kernel CLI bug fix). The published CLI hardcoded `{"fetch_new"}` — missing `entity_resolve`. So `indemn company entity-resolve --data '{"candidate":...}'` (no entity_id) routed through entity-level path, which list-and-loops with `limit=1000`, the API caps list at 100 → 422. Fix: add `entity_resolve` + comment requiring sync with `kernel/capability/__init__.py::COLLECTION_LEVEL_CAPABILITIES`. **One-line fix; agent had been doing the right thing the whole time.**
+2. **LangSmith wiring** (cherry-picked into main from feat branch): `harnesses/async-deepagents/{main.py, pyproject.toml, uv.lock}`.
+3. **`harnesses/async-deepagents/completion_logic.py` — tightened `agent_did_useful_work`**. Old contract: True if any mutating CLI call was *attempted* OR if final AI message had non-empty content. New contract: True iff at least one mutating CLI call's tool result indicates *success* (`[Command succeeded with exit code 0]`, no `[stderr]`, no `[Command failed]`). Removes the narrative-content fallback. Domain-agnostic — harness still doesn't know what each associate's job is, just observes "did any state-changing call succeed?". 24/24 tests passing including the new Diana failure pattern test.
+
+**Per OS vision discussion: harness reports facts, OS interprets meaning.** The harness's tightened check is observation-only — "did any mutation succeed?" — not domain-aware. Detection of "agent didn't fulfill skill intent" lives in evals (Phase E) and observability dashboards on top of LangSmith traces. NOT in the harness. (My initial proposal was harness checks "did the watched entity transition" — Craig pushed back: that's domain knowledge that doesn't belong in glue code. Some associates legitimately don't transition their watched entity.)
+
+**EC v6 (skill version stamp) deployed** with two new Hard Rules — #8 "resolve errors are showstoppers, not fallbacks; never fall through to create on resolve failure" and #9 "never call `indemn email create` — this skill operates on existing emails, the harness loaded one into your context and that's the one you classify". Plus new Step 0 "What you're processing (READ THIS FIRST)" emphasizing the email entity in input context IS the email to classify. Content_hash `5bbfdd13ad26c8db…`.
+
+**State cleanup:** Rolled back the auto-created Company `69f0ee5b78abc86f9ca2a648` (run #2). Reset Diana to `received` via mongosh (state machine doesn't allow `classified → received`). After Run #4 verified Diana correctly lands at `classified` linked to the existing canonical CK Specialty.
+
+**Bug filed for follow-up:** `kernel/cli/app.py` has the same divergence as `indemn_os/main.py` — no `_COLLECTION_LEVEL_CAPS` set at all (every cap routes through `_make_cap_cmd` as entity-level). Lower priority since the harness uses the published `indemn_os` CLI, but worth a separate fix. Test `tests/unit/test_adapter_cli_papercuts.py:92` already pins both surfaces against drift.
+
+**EC v6 partial — still has gaps surfaced by Run #4 trace:**
+- Skipped Contact resolve (Step 3) entirely — Diana's email isn't linked to a Contact
+- Picked one Company candidate when resolve returned multiple at score 1.0 (should have gone needs_review per Hard Rule #3)
+- These are non-destructive; Diana ended up linked to the right Company anyway. Defer to v7 (more explicit Step 3) or to eval-set coverage (Phase E).
+
+**`indemn company list --search` doesn't work** (separate CLI gap surfaced repeatedly in traces; agent always falls back to entity-resolve). Worth filing as small CLI papercut.
+
 ### Session 9 (2026-04-28 afternoon) — Phase B1 entity-resolution skill propagation; trace-as-build captured; reactivation kill-switch fired
 
 Phase B opens. Captured the **trace-as-build-method principle** durably (CLAUDE.md #20, vision §4, roadmap Phase B preamble) — every skill, watch, capability, and dashboard goes through a trace first before activation. The trace is the building method, not just shake-out validation. Adopted after Craig pushed back on "recommendation, not a plan" framing.
@@ -435,7 +473,7 @@ These are the principles that hold across the project. Internalize them. They ha
 
 ---
 
-## Where we are now (as of 2026-04-28, end of session 9 — Phase B1 entity-resolution skill propagation; reactivation kill-switch fired)
+## Where we are now (as of 2026-04-28, end of session 10 — LangSmith wired in; Session 9's EC kill switch root cause found + fixed; Path 3 evals architecture aligned)
 
 ### What's hydrated, proven, and shared
 - 27 entity definitions live, including the Playbook entity with the aligned shape.
@@ -451,23 +489,35 @@ These are the principles that hold across the project. Internalize them. They ha
 
 ### Phase A is fully complete. Phase B opens next.
 
-### Phase B1 progress this session
-- ✅ Trace-as-build-method captured (CLAUDE.md #20, vision §4, roadmap Phase B preamble)
-- ✅ Phase B1 plan artifact written (`artifacts/2026-04-28-phase-b1-data-state-and-trace-plan.md`)
-- ✅ Path A cleanup (orphans, contact dupes, capability activations)
-- ✅ Email.interaction → Email.touchpoint rename (root-cause fix, 1139 docs migrated)
-- ✅ Three skills updated and deployed (EC v3, TS v6, IE v3)
-- ⚠️ B1.5 reactivation kill switch fired — skill-compliance gap on multi-candidate branch surfaces; rolled back the auto-created Company; reactivation halted
+### Phase B1 progress (Sessions 9 + 10 combined)
+- ✅ Trace-as-build-method captured (CLAUDE.md #20, vision §4, roadmap Phase B preamble) [S9]
+- ✅ Phase B1 plan artifact written (`artifacts/2026-04-28-phase-b1-data-state-and-trace-plan.md`) [S9]
+- ✅ Path A cleanup (orphans, contact dupes, capability activations) [S9]
+- ✅ Email.interaction → Email.touchpoint rename (root-cause fix, 1139 docs migrated) [S9]
+- ✅ Three skills updated and deployed: EC v6, TS v6, IE v3 [S9 + S10 — EC iterated to v6 after diagnosis]
+- ✅ **LangSmith tracing wired into async-deepagents harness** (vision §2 item 7 foundation milestone) [S10]
+- ✅ **Kernel CLI bug fix** — `_COLLECTION_LEVEL_CAPS` add `entity_resolve` (the Session 9 "skill compliance gap" was actually this CLI bug) [S10]
+- ✅ **Tightened harness `agent_did_useful_work`** — closes the silent-stuck-state regression (now requires ≥1 successful mutating call) [S10]
+- ✅ **Diana@CKSpecialty re-verified end-to-end** — EC correctly classifies + links to existing CK Specialty (`69eaa394...`) without creating a duplicate [S10]
+- ⚠️ EC v6 partial — Contact resolve step still skipped; multi-1.0 candidate handling still picks one rather than going needs_review. Non-destructive; defer to v7 or eval coverage.
 
 ### Outstanding for next session (top priority)
-- **Phase B1 — skill-compliance gap on multi-candidate branch.** Email Classifier v3 IS deployed correctly (verified) but the agent disobeys the rule on the harder branch (multi 1.0 → needs_review). Need: more explicit decision-tree language in skill, OR a force_reasoning rule that vetoes any Company create from EC entirely (deterministic guard rail), OR eval-driven fine-tuning. This is research-level; consider building a skill compliance test set (multi-candidate scenarios) before reactivating. Until resolved: only single-1.0-match emails are safe to flow through EC autonomously.
-- **Document entity sync** — Document `69efbdea4d65e2ca69b0dd80` in the OS could now be updated with `drive_file_id: "1pM3tYg6rHzG8RW6xU_titouiq_iddhIC"` + `drive_url: <Drive link>` to keep the entity graph in sync with reality. Quick CLI update; do at start of next OS-touching session.
-- **Watch for Cam + Kyle reactions** in the MPDM thread — the proposal feedback informs whether v2 ships to Christopher as-is, and Kyle's reactions on the showcase inform whether/how to socialize internally.
+- **EC v7 / eval coverage for the remaining gaps.** Diana run #4 (LangSmith trace `019dd5c1-3aab-7ea3-aa08-d007044570a1`) showed two still-non-compliant branches: agent skipped Contact resolve (Step 3) and picked a Company candidate when multiple at 1.0 (should have been needs_review per Hard Rule #3). Both non-destructive. Two options: (a) v7 with even more explicit Step 3 + multi-1.0 enforcement; (b) build an eval set covering these branches (Path 3 evals — Phase E foundation). Recommendation: try (a) once cheaply, then build (b) for durable regression protection.
+- **Native OS evaluations design.** Path 3 was aligned this session — eventual goal is the evaluations service becomes a kernel adapter (`system_type: evaluation`, provider: `langsmith` or `indemn-evals`) so any associate gets evals as a first-class capability. Deferred to a separate fork-session. Design doc should land in `../product-vision/`.
+- **Document entity sync** — Document `69efbdea4d65e2ca69b0dd80` in the OS could be updated with `drive_file_id: "1pM3tYg6rHzG8RW6xU_titouiq_iddhIC"` + `drive_url: <Drive link>` to keep the entity graph in sync with reality. Quick CLI update.
+- **Watch for Cam + Kyle reactions** in MPDM `mpdm-cam--kwgeoghan--craig-1` (channel `C0A3B18LY07`).
+- **Filed kernel bug** — `kernel/cli/app.py` has no `_COLLECTION_LEVEL_CAPS` set at all (separate from indemn_os, lower priority).
 
 ### Pipeline associates current state
-- Email Classifier — **suspended** (kill switch from B1.5 reactivation test). Skill v3 deployed but compliance gap on multi-candidate branch.
-- Touchpoint Synthesizer — **suspended** (unchanged). Skill v6 deployed with idempotency. Has not been triggered autonomously yet.
-- Intelligence Extractor — **active** (untouched). Skill v3 deployed but has not been triggered autonomously yet — silent-stuck-state regression caught it during Claude's manual Touchpoint trace.
+- Email Classifier — **suspended** (deliberate after Session 10 verification). Skill v6 deployed, end-to-end verified working on Diana single-1.0-Company case. Multi-1.0 + Contact-create branches still need v7 / evals before broad reactivation.
+- Touchpoint Synthesizer — **suspended** (unchanged from Session 9). Skill v6 with idempotency. Has not been triggered autonomously yet.
+- Intelligence Extractor — **active** (untouched from Session 9). Skill v3. Silent-stuck-state regression that previously caught it is **fixed** as of Session 10 (tightened `agent_did_useful_work`).
+
+### What landed Apr 28 evening (Session 10 — main session, NOT a fork)
+- 🟢 LangSmith wired into async-deepagents harness (commit `956d7d5` cherry-picked to main — feat branch + langsmith dep + RunnableConfig metadata). Project `indemn-os-associates` (id `19302981-aa9e-4869-9137-59a38d7646df`). API key at AWS Secrets `indemn/dev/shared/langsmith-api-key`.
+- 🟢 Kernel CLI fix: `indemn_os/main.py` `_COLLECTION_LEVEL_CAPS` add `entity_resolve` (commit `db97694`). One-line fix; root cause of Session 9's "skill compliance gap".
+- 🟢 Harness completion check tightened: `agent_did_useful_work` requires successful mutation; narrative-content fallback removed (commit `d914d76`). 24/24 tests passing including the new Diana failure pattern test.
+- 🟢 EC skill v6 deployed (Step 0 added + Hard Rules #8 #9 added; content_hash `5bbfdd13ad26c8db…`).
 
 ### What landed Apr 27 (parallel bugfix fork — burst #3)
 - 🟢 Touchpoint Option B (source pointers) — schema + Synth skill v3
@@ -769,6 +819,44 @@ This is the activity-driven router. Match your work; read what's listed; do not 
 
 **Adding a new OS capability or kernel feature:**
 → Discuss in `../product-vision/` first if it's design-level. → Read `/Users/home/Repositories/indemn-os/docs/architecture/rules-and-auto.md` (capability registration pattern). → Implement in `/Users/home/Repositories/indemn-os/kernel/capability/`. → Add doc in `/Users/home/Repositories/indemn-os/docs/architecture/` or update existing one. → Reference in customer-system artifacts where it gets used.
+
+**Debugging an associate's behavior / failure (LangSmith tracing):**
+
+Wired in 2026-04-28 (Session 10) — every async-deepagents associate run now emits a full LangSmith trace with the LLM reasoning chain, every `execute` tool call, every middleware step, and the entity context the agent was given. **This is the diagnostic layer that turns "the agent did the wrong thing and we don't know why" into a 5-minute root-cause investigation.**
+
+- **Project:** `indemn-os-associates` (LangSmith)
+- **API key:** AWS Secrets Manager `indemn/dev/shared/langsmith-api-key` (and `indemn/prod/shared/langsmith-api-key` for prod)
+- **Project ID:** `19302981-aa9e-4869-9137-59a38d7646df`
+- **UI:** https://smith.langchain.com → indemn org → indemn-os-associates project (filter by tags or metadata)
+
+Each trace carries metadata that makes it queryable by domain identifiers, not just LangSmith-internal IDs:
+```
+associate_id, associate_name, message_id, entity_type, entity_id, runtime_id, correlation_id
+```
+plus tags `associate:<name>`, `entity_type:<type>`, `runtime:<id>`.
+
+**To query a specific run** (replace `$KEY` with the API key):
+```bash
+# Find the trace for an entity_id
+curl -s -H "x-api-key: $KEY" -H "Content-Type: application/json" \
+  "https://api.smith.langchain.com/api/v1/runs/query" \
+  -d '{"session": ["19302981-aa9e-4869-9137-59a38d7646df"], "is_root": true, "limit": 5,
+       "filter": "and(eq(metadata_key, \"entity_id\"), eq(metadata_value, \"<entity_id>\"))"}'
+
+# Pull the full trace tree (paginate by 100s; trace usually has ~130 runs)
+TRACE_ID="<from above>"
+for off in 0 100 200; do
+  curl -s -H "x-api-key: $KEY" -H "Content-Type: application/json" \
+    "https://api.smith.langchain.com/api/v1/runs/query" \
+    -d "{\"trace\": \"$TRACE_ID\", \"limit\": 100, \"offset\": $off}"
+done
+```
+
+Tool calls appear with `run_type: "tool"`. LLM calls appear with `run_type: "llm"` (model is `ChatVertexAI` for the current setup). Middleware wrappers (Skills, Filesystem, SubAgent, Summarization, AnthropicPromptCaching, TodoList) appear as `chain` runs.
+
+**Use case that proved its value (Session 10):** the EC compliance gap that Session 9 attributed to "skill-compliance gap on multi-candidate branch" was actually a kernel CLI bug — `entity-resolve` was returning HTTP 422 because the published indemn_os CLI was missing it from `_COLLECTION_LEVEL_CAPS`. The agent saw a tool error and fell through to `create`. Without LangSmith we couldn't see the failed resolve call. With it, the diagnosis took 5 minutes. The "skill compliance" framing was wrong and we'd have spent the session iterating skill content blindly.
+
+**Wiring location:** `harnesses/async-deepagents/main.py` — env vars (`LANGSMITH_API_KEY`, `LANGSMITH_TRACING`, `LANGSMITH_PROJECT`) on `indemn-runtime-async` Railway service + a `config={metadata, tags, run_name}` dict passed to `agent.ainvoke()`. Auto-tracing of LLM/tool/state-graph calls happens because deepagents is LangGraph-based.
 
 **End of session, before stopping:**
 → Update `INDEX.md` (Status section, append to Decisions, append to Open Questions, append to Artifacts table). → Update `roadmap.md` (when it exists) to reflect new state and next steps. → Add new artifacts to the Files Index above. → Add new "When working on X" entries if a new activity type emerged. → Update the "Where we are now" section above if state shifted significantly. → If significant work happened, create a session-handoff artifact dated today.
