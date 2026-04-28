@@ -88,6 +88,32 @@ For depth on the breakthrough: `artifacts/2026-04-23-playbook-as-entity-model.md
 
 ---
 
+## 4. How we build: trace-as-build-method
+
+Tracing is not just how we shook out the entity model in Phase A. It is the canonical method for building everything that follows.
+
+For every skill, watch, capability, integration adapter, or dashboard we add to the OS in Phase B and beyond:
+
+1. **Pick a real scenario** — a real email, a real meeting, a real deal at a real stage. Not a synthetic test case.
+2. **Trace it yourself** — act as the associate or the system component being built. Run the `indemn` CLI on live data. Watch the entity state move through each step.
+3. **Verify the procedure works** — does the entity graph end up in the right state? Does the cascade fire correctly? Are the right messages, watches, scopes triggered?
+4. **Write the skill** (or wire the watch, configure the capability, build the dashboard) — the artifact is the writeup of what worked, not the design ahead of what should work.
+5. **Activate** the autonomous version. Drain the queue. Watch traces. Only after the trace produced the right state on real data does the autonomous version go live.
+
+**Why this is the right method:**
+
+- **Testable by construction.** If the CLI sequence produces the right state when you run it, the skill that codifies that sequence is correct.
+- **Surfaces gaps before deployment.** Option B (Touchpoint source pointers), the cross-invocation cache leak, and the silent workflow stuck-state were all discovered during the GR Little trace — not in production after deployment. Tracing is the cheapest place to find a gap.
+- **Forces reckoning with real data.** Theory is deceptive — there are 446 wrong Companies in dev OS that the previous Email Classifier auto-created. Tracing on real data confronts the actual state of the system, not the imagined state.
+- **Generalizes.** The same method that built the entity model in Phase A builds skills, capabilities, watches, integration adapters, and dashboards in Phase B+.
+- **Compounds with the OS itself.** The OS is built so that every component is exercisable via CLI. Tracing leverages the self-evidence property — every entity, every transition, every method invocation, every capability is callable from the same interface I use to develop the skill.
+
+**This means:** the work to build "Phase B B1 — entity-resolution skill propagation into Email Classifier + Touchpoint Synthesizer" is structured as a trace, not as a skill-edit. Pick real Alliance / FoxQuilt / new-prospect emails. Run `entity_resolve` myself. Decide-and-link or mark needs_review. Whatever procedure works on real data IS the new skill content.
+
+The discipline carries through Phase C (dashboards), Phase D (adoption), and Phase E (evaluations). Anything the OS does, trace it yourself first.
+
+---
+
 ## Where to go from here
 
 | File | What's in it |

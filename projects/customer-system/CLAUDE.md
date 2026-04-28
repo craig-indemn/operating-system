@@ -159,6 +159,26 @@ The biggest single-session shipment so far. Three deliverables landed in paralle
 
 **Phase A is COMPLETE after A2.** Phase B can begin.
 
+### Session 9 (2026-04-28 afternoon) — Phase B1 entity-resolution skill propagation; trace-as-build captured; reactivation kill-switch fired
+
+Phase B opens. Captured the **trace-as-build-method principle** durably (CLAUDE.md #20, vision §4, roadmap Phase B preamble) — every skill, watch, capability, and dashboard goes through a trace first before activation. The trace is the building method, not just shake-out validation. Adopted after Craig pushed back on "recommendation, not a plan" framing.
+
+Built the Phase B1 plan artifact `artifacts/2026-04-28-phase-b1-data-state-and-trace-plan.md` (404 lines) — live OS state inventory, structural gaps, Path A cleanup pass, trace plan B1.1 → B1.7, explicit out-of-scope list, decisions log + checklist. Working memory for Phase B1.
+
+**Path A executed cleanly.** Activated `entity_resolve` on Contact (email + name strategies); added `domain` strategy to Company `entity_resolve`. Bulk-deleted 79 orphan Companies (314 → 235). Resolved 91 high-volume Contact dupes across 10 groups (424 → 333). 10 Email.sender_contact references reclassified to canonicals via API before delete (clean audit trail).
+
+**Phase B1 trace through 3 scenarios** acting as Email Classifier on real emails — known/known (clean), new Contact at known Company (Contact created), truly new domain (needs_review). Inline cleanup of LE × 4 + Justin Li × 3 dupes that the trace surfaced. Trace also covered TS for S1 + IE via Option B navigation — all worked end-to-end as Claude.
+
+**Email.interaction → Email.touchpoint rename completed as ROOT-CAUSE FIX** (not a workaround — Craig pushed back on workaround language in TS skill v4). Migrated 1139 Email docs + updated `relationship_target` from Interaction to Touchpoint. Audited all 26 entities — only Email had the leftover. The `interactions` MongoDB collection kept (kernel chat/voice session log, different entity, IDs do not overlap with `touchpoints`).
+
+**Three skills updated and deployed:** Email Classifier v3 (resolve-before-create with explicit decision tree, "Never auto-create Company"), Touchpoint Synthesizer v6 (Step 1a idempotency via Email.touchpoint back-reference, domain-gated Contact auto-create, Option B mandatory), Intelligence Extractor v3 (explicit two-step Option B navigation, mandatory Touchpoint transition every time).
+
+**Reactivation B1.5 kill switch fired.** Reactivated EC, reprocessed Diana@CKSpecialty's email. EC processed 4 messages. Justin Li (single 1.0 match) classified correctly — clean. Diana (multi-candidate: 2 1.0 Contacts + 1 1.0 Company by domain) **violated the skill rule** — auto-created NEW Company despite explicit prohibition, did NOT mark needs_review on multi-match, did NOT transition email. Suspended EC immediately. Rolled back. Skill content verified correct in DB. **Skill-compliance gap on the harder multi-candidate branch.** Reactivation halted. Possible remedies: more explicit decision-tree language, force_reasoning veto rule on Company create, eval-driven fine-tuning. Out of scope for this session — research-level.
+
+**Bugs reported to os-learnings.md:** (1) Silent-stuck-state regression — agent_did_useful_work() coverage gap on read-only-then-nothing-to-extract; (2) `--include-related` doesn't follow polymorphic Option B refs (workaround in IE skill); (3) List endpoint filter regression — silent filter drops on non-relationship fields, even unknown fields return 200 (workaround: use back-references for idempotency).
+
+**Pipeline associate state at session end:** EC suspended (kill switch). TS suspended (unchanged). IE active (untouched). Three new skill versions deployed; only IE's hasn't been triggered autonomously yet.
+
 ### Session 8 (2026-04-28 morning) — Trace-showcase HTML + share to Cam + Kyle
 
 Picked up from the Session 7 handoff and shipped Next-session deliverable 2: the Kyle-facing Alliance trace-showcase HTML. With it, Phase A is fully closed.
@@ -415,7 +435,7 @@ These are the principles that hold across the project. Internalize them. They ha
 
 ---
 
-## Where we are now (as of 2026-04-28, end of session 8 — trace-showcase + Cam/Kyle share)
+## Where we are now (as of 2026-04-28, end of session 9 — Phase B1 entity-resolution skill propagation; reactivation kill-switch fired)
 
 ### What's hydrated, proven, and shared
 - 27 entity definitions live, including the Playbook entity with the aligned shape.
@@ -431,15 +451,23 @@ These are the principles that hold across the project. Internalize them. They ha
 
 ### Phase A is fully complete. Phase B opens next.
 
+### Phase B1 progress this session
+- ✅ Trace-as-build-method captured (CLAUDE.md #20, vision §4, roadmap Phase B preamble)
+- ✅ Phase B1 plan artifact written (`artifacts/2026-04-28-phase-b1-data-state-and-trace-plan.md`)
+- ✅ Path A cleanup (orphans, contact dupes, capability activations)
+- ✅ Email.interaction → Email.touchpoint rename (root-cause fix, 1139 docs migrated)
+- ✅ Three skills updated and deployed (EC v3, TS v6, IE v3)
+- ⚠️ B1.5 reactivation kill switch fired — skill-compliance gap on multi-candidate branch surfaces; rolled back the auto-created Company; reactivation halted
+
 ### Outstanding for next session (top priority)
-- **Phase B begins — B1 foundation hardening.** Most direct unblock: propagate the Apr 27 entity-resolution kernel capability into the Email Classifier + Touchpoint Synthesizer skills (call `entity_resolve` before creating, only auto-link on a single 1.0 candidate). Closes Bug #16 / Bug #17 end-to-end since the kernel piece already shipped. Then sweep through remaining `os-learnings.md` items.
+- **Phase B1 — skill-compliance gap on multi-candidate branch.** Email Classifier v3 IS deployed correctly (verified) but the agent disobeys the rule on the harder branch (multi 1.0 → needs_review). Need: more explicit decision-tree language in skill, OR a force_reasoning rule that vetoes any Company create from EC entirely (deterministic guard rail), OR eval-driven fine-tuning. This is research-level; consider building a skill compliance test set (multi-candidate scenarios) before reactivating. Until resolved: only single-1.0-match emails are safe to flow through EC autonomously.
 - **Document entity sync** — Document `69efbdea4d65e2ca69b0dd80` in the OS could now be updated with `drive_file_id: "1pM3tYg6rHzG8RW6xU_titouiq_iddhIC"` + `drive_url: <Drive link>` to keep the entity graph in sync with reality. Quick CLI update; do at start of next OS-touching session.
 - **Watch for Cam + Kyle reactions** in the MPDM thread — the proposal feedback informs whether v2 ships to Christopher as-is, and Kyle's reactions on the showcase inform whether/how to socialize internally.
 
 ### Pipeline associates current state
-- Email Classifier — **suspended** (still). Several blocking bugs now fixed → could re-activate after Bug #16 entity-resolution capability lands.
-- Touchpoint Synthesizer — **suspended**. Touchpoint Option B 🟢 + skill v3 deployed → ready to re-activate once entity-resolution is in.
-- Intelligence Extractor — **active**. Now the silent stuck-state and cross-invocation cache leak are 🟢 → much safer to leave running.
+- Email Classifier — **suspended** (kill switch from B1.5 reactivation test). Skill v3 deployed but compliance gap on multi-candidate branch.
+- Touchpoint Synthesizer — **suspended** (unchanged). Skill v6 deployed with idempotency. Has not been triggered autonomously yet.
+- Intelligence Extractor — **active** (untouched). Skill v3 deployed but has not been triggered autonomously yet — silent-stuck-state regression caught it during Claude's manual Touchpoint trace.
 
 ### What landed Apr 27 (parallel bugfix fork — burst #3)
 - 🟢 Touchpoint Option B (source pointers) — schema + Synth skill v3

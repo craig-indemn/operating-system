@@ -2,7 +2,7 @@
 
 > Living source of truth for **how we get from where we are now to the vision**. Updated every session that moves the work forward. Read with `vision.md` (what we're building, why, and the lens) and `os-learnings.md` (running register of OS bugs + capability gaps + design questions).
 >
-> Last updated: **2026-04-28** (morning — trace-showcase HTML + Cam/Kyle share).
+> Last updated: **2026-04-28** (afternoon — Phase B1 entity-resolution skill propagation; reactivation kill-switch fired).
 
 ---
 
@@ -63,6 +63,16 @@ The phases are sequential at the level of "Phase B starts when Phase A is done,"
 **Purpose.** Develop the entire customer system to the point where it runs autonomously per the vision. **This is when "the customer system is achieving its own vision."**
 
 The work in B is large and pre-scoped here. Bug-fixing forks happen in parallel as soon as B starts.
+
+#### How we build in Phase B+ — trace-as-build-method
+
+The building method for Phase B and everything after is trace-as-build:
+
+> Every skill, watch, capability, integration adapter, or dashboard goes through a trace first. Pick a real scenario. Act as the associate yourself, running the `indemn` CLI on live data. The skill is the writeup of what worked. Activation comes after the trace produces the right state.
+
+Discovered in Phase A's shake-out traces (GR Little Apr 24 → Alliance Apr 27). Elevated to canonical building method in Session 8 (Apr 28). Applies to all of B/C/D/E. See `vision.md §4` for the full articulation, and `CLAUDE.md` Foundational design principle #20.
+
+This means each B-sub-phase task below is built as a trace, not as a code/skill edit ahead of validation. Inventory live data state → pick real scenarios → run the procedure yourself → write the skill / wire the capability / activate the watch / build the dashboard from what worked.
 
 #### B1 — Foundation hardening
 
