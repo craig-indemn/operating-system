@@ -24,7 +24,7 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 - `unisoft-proxy/client/cli.py` — Unisoft CLI (contacts, quote create, **attachment delete**)
 - `unisoft-proxy/server/UniProxy.cs` — SOAP proxy on EC2: **custom HttpWebRequest chunked MTOM upload path** in `FileBridge.UploadQuoteAttachment`, new `/api/file/delete` endpoint, `ExtractAttachmentDto` helper
 
-**Migration to Indemn infra (separate workstream — DEVOPS-151) — Phases E + F + G + H.3/4 complete 2026-04-28. Cutover-ready.** Read `artifacts/2026-04-28-phase-g-soak-handoff.md` (the next handoff being written) first. Phase G ran cleanly: 5 UAT Quotes successfully created via the EC2 dev stack against an isolated soak DB, with zero production impact. PR #1 merged, PR #17 (CORS fix) merged, PR #18 (SOAK_MODE) awaiting review but already deployed on dev. Self-hosted runners online on both EC2s. **Next milestone: Phase I (DEVOPS-157 prod cutover)** — pre-cutover checklist below.
+**Migration to Indemn infra (DEVOPS-151) — pre-cutover prep complete 2026-04-28; cutover window fireable once PR #18 merges.** Read `artifacts/2026-04-28-phase-i-cutover-readiness.md` first — it has the cutover-day runbook + state snapshot. F.2 + F.3 + I.1b + I.2 all done in CLI. PR #1 + #17 merged; #18 (SOAK_MODE) awaiting reviewer. Decisions still owed: Datadog routing (H.1), Atlas backup tier (H.2), T-24h customer comms email to JC + Maribel.
 
 **Discoveries from F.1 + Phase G prep that next session will need:**
 - **Port 8080 conflict on dev-services.** `openai-fastapi-app-1` already binds host:8080. Our `docker-compose.yml` uses 8080. Fix needed before Phase G.1 deploy: pick a free host port (e.g., 8002 or 8009) and update both docker-compose.yml and the dev-services nginx config to add a server block routing the canonical hostname → that port.
@@ -778,6 +778,7 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 | 2026-04-28 | Phase H.4 — S3 versioning on indemn-gic-attachments | Versioning enabled. 3-rule lifecycle: ExpireNoncurrentVersions @ 90d, TransitionNoncurrentToIA @ 30d, AbortIncompleteMultipart @ 7d. Risk-checked first (no S3 delete calls anywhere in the GIC codebase — purely additive protection). Bucket size pre-change: ~5.78 GB. |
 | 2026-04-28 | docs/security.md (commit `97ee449` on PR #1) | Encryption posture + secret management + backup posture — one-page audit-friendly reference. Phase H.3 closed in same PR as the migration work; mild scope creep but consolidates Phase H deliverables. |
 | 2026-04-28 | [phase-g-soak-handoff](artifacts/2026-04-28-phase-g-soak-handoff.md) | Phase G soak validated end-to-end. 5 UAT Quote creations on EC2 dev against soak DB w/ SOAK_MODE; zero production impact. Surfaces the explicit Phase I pre-cutover checklist (PR #18 merge, F.2 prod branch protection, F.3 Amplify rewire, I.1b add-in rebuild, I.2 prod Secrets/Param population). Cutover-ready. |
+| 2026-04-28 | [phase-i-cutover-readiness](artifacts/2026-04-28-phase-i-cutover-readiness.md) | Pre-cutover snapshot + cutover-day runbook + rollback procedure + prod resource map. F.2/F.3/I.1b/I.2 all done in CLI. Awaits PR #18 review. Decisions still owed (Datadog routing, Atlas backup tier, T-24h customer comms). Single document handed off for cutover window. |
 
 ## Key Data Files
 | File | What it contains |
