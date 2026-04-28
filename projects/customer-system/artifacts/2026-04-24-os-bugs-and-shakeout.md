@@ -967,7 +967,7 @@ Append new entries above this line as you find them. Format:
 | 23 | `bulk-delete` silently drops MongoDB operator filters ($in, $gte, $oid) | **Critical** | 🟢 Fixed (Apr 27 burst #4, merge `0ed8c80` + alias `6b8c62e` + retry `b5e4757` — operator safelist + per-field type coercion) |
 | 24 | `bulk status` reports COMPLETED even when 0 records matched | Med | 🟢 Fixed (Apr 27 burst #4, merge `0ed8c80` — `completed_no_match` status + `{matched, succeeded, errored, errors}`) |
 | 25 | `company create` returns HTTP 500 | Med | 🟢 Fixed (subsumed by #30 — Apr 27) |
-| 26 | `deal update` with company ref returns HTTP 500 | Med | 🔴 Open |
+| 26 | `deal update` with company ref returns HTTP 500 | Med | 🟢 Fixed (Apr 28 — auto-healed by burst #4 `partialFilterExpression` propagation, verified live `PUT /api/deals/...` returns 200) |
 | 27 | `created_by` null on every Company record | Med | 🔴 Open |
 | 28 | `actor list --type` flag is silently ignored | Low | 🟢 Fixed (Apr 28 burst #4, merge `e9d04da` — switched to filter-safelist path, now actually filters) |
 | 29 | Entity definition replacement doesn't evict old API routes (live replacement silently broken, requires restart) | **High** | 🟢 Fixed (Apr 27, merge `83d2494`) |
