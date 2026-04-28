@@ -159,6 +159,39 @@ The biggest single-session shipment so far. Three deliverables landed in paralle
 
 **Phase A is COMPLETE after A2.** Phase B can begin.
 
+### Session 11 (2026-04-28 late evening) — EC skill v7 + Document Drive sync shipped; **discovered every EC iteration v3→v7 has been ineffective** because deepagents skill discovery is broken; harness fix attempted but not fully resolved
+
+The session that ended Sessions 9 + 10's "we need a better skill iteration" framing by discovering that the agent has never been reading the email-classifier associate skill content at all. Despite Hard Rules being added through versions v3 → v7, the agent's behavior has been driven entirely by the harness DEFAULT_PROMPT plus whatever it learned from `indemn skill get <Entity>` (auto-generated entity skills, NOT the associate skill).
+
+**What landed:**
+- EC skill v7 (content_hash `897d05babf0d3b83…`) — added Hard Rule #10 (Contact resolve mandatory) + Rule #11 (Contact-first ordering), strengthened Step 4 multi-1.0 ambiguity language with Diana@CKSpecialty as worked example. **Not yet read by the agent at runtime due to the deepagents discovery bug.**
+- Document `69efbdea4d65e2ca69b0dd80` synced — `drive_file_id: 1pM3tYg6rHzG8RW6xU_titouiq_iddhIC` + `drive_url: https://drive.google.com/file/d/1pM3tYg6rHzG8RW6xU_titouiq_iddhIC/view`. Entity now reflects reality.
+- Harness commit `5ec4e9f` on indemn-os main — pass skills LIBRARY directory to `deepagents.create_deep_agent(skills=[...])` instead of per-skill subdir paths. **Deployed and tested — system prompt STILL says "(No skills available yet)"** — see Bug #35 below.
+
+**Five sequential traces on Diana@CKSpecialty in LangSmith project `indemn-os-associates`:**
+
+| Run | Trace | Outcome | Diagnosis |
+|---|---|---|---|
+| #1 (Session 9, pre-LangSmith) | n/a | Auto-created Company | "skill compliance gap" hypothesis (wrong) |
+| #2 (Session 10, LangSmith on, CLI broken) | `019dd522-…` | Auto-created Company | **CLI bug** — Bug #34. Fixed in `db97694`. |
+| #3 (Session 10, CLI fixed, EC v4) | `019dd589-…` | Tried `email create`, E11000, narrative-completed | Skill update-vs-create + harness silent-stuck. Latter fixed in `d914d76`. |
+| #4 (Session 10, EC v6, completion tightened) | `019dd5c1-…` | Linked Diana to existing Company. Skipped Step 3. | "v6 partial — needs v7" hypothesis. |
+| #5 (Session 11, EC v7, harness "skills lib dir" fix) | `019dd602-…` | Agent finally called Contact resolve! BUT tried `email create` 4× (all failed). | **System prompt: "(No skills available yet)" — agent STILL not reading associate skill.** Bug #35. The Step 3 improvement came from the agent reading the Contact ENTITY skill (which has a Resolve section), NOT from the associate skill. |
+
+**THE finding:** every single iteration of the EC skill (v3 → v7) has been theatre. The DB has the content. The agent never reads it. Bug #35 in os-learnings.md (NEW) — deepagents skills discovery in the LocalShellBackend setup doesn't find the SKILL.md files even with the library-dir path passed. Hypothesis space documented in `artifacts/2026-04-28-session-11-handoff.md` Section 3. Path resolution against backend `root_dir` is the most likely culprit.
+
+**Architectural alignments confirmed (Craig + Claude):**
+- DON'T inline skills into system prompts — the OS vision requires deepagents progressive disclosure to work properly. Inlining bypasses the mechanism instead of fixing it. (My initial proposal: rejected.)
+- Harness reports facts; OS interprets meaning. The tightened `agent_did_useful_work` (Session 10) is observation-only — domain-agnostic. Detection of "agent didn't fulfill skill intent" lives in evals (Phase E) and observability dashboards on top of LangSmith — NOT in the harness.
+- Path 3 for evaluations architecture stays — the existing `evaluations` repo eventually becomes a kernel adapter. Use LangSmith API directly for now.
+
+**Other session noise/learning:**
+- I over-engineered the `5ec4e9f` fix (refactored `_write_skills_to_filesystem` signature when a one-line change at the `create_deep_agent` call site would have sufficed). Craig pushed back: "AI slop". Future sessions: minimal change > comprehensive refactor.
+- Branch confusion — Craig has been working in parallel on bugfix branches; my commits sometimes landed on the wrong branch. Always `git branch --show-current` + verify push destination before committing.
+- LangSmith earned its place again — diagnosed the "(No skills available yet)" issue in 5 minutes by inspecting the system prompt directly. Without it we'd have iterated EC skill content blindly forever.
+
+**Pipeline associates state:** EC suspended (kill switch held); TS suspended (unchanged); IE active. Diana reset to clean `received` state. No orphan Companies. Cleanup verified.
+
 ### Session 10 (2026-04-28 evening) — LangSmith tracing wired in; EC kill-switch root cause found + fixed; Path 3 evals architecture aligned
 
 The session that turned Session 9's "research-level skill-compliance gap" into a 5-minute root-cause investigation. The hypothesis that the EC failure was an LLM-skill-following problem turned out to be wrong — the actual root cause was a kernel CLI bug. Without LangSmith we'd have spent the session iterating skill content blindly.
@@ -473,7 +506,7 @@ These are the principles that hold across the project. Internalize them. They ha
 
 ---
 
-## Where we are now (as of 2026-04-28, end of session 10 — LangSmith wired in; Session 9's EC kill switch root cause found + fixed; Path 3 evals architecture aligned)
+## Where we are now (as of 2026-04-28, end of session 11 — EC v7 + Document Drive sync shipped; deepagents skill discovery discovered broken (Bug #35); harness fix attempted but not fully resolved)
 
 ### What's hydrated, proven, and shared
 - 27 entity definitions live, including the Playbook entity with the aligned shape.

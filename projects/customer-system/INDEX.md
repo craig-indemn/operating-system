@@ -6,6 +6,35 @@ Kyle is pressing for this. It doubles as the proving ground for the OS domain mo
 
 ## Status
 
+**Session 2026-04-28 (late evening — Session 11) — EC v7 + Document Drive sync shipped; discovered every EC iteration v3→v7 has been ineffective because deepagents skill discovery is broken; harness fix attempted but not fully resolved. Session ended for clean handoff to Session 12.**
+
+**Full Session 11 handoff:** `/Users/home/Repositories/operating-system/.claude/worktrees/roadmap/projects/customer-system/artifacts/2026-04-28-session-11-handoff.md` — load-bearing for next session, read in full.
+
+The session that ended Sessions 9 + 10's "we need a better skill iteration" framing by discovering that the agent has never been reading the email-classifier associate skill content at all. Despite Hard Rules being added through versions v3 → v7, the agent's behavior has been driven entirely by the harness DEFAULT_PROMPT plus what it learns from `indemn skill get <Entity>` (auto-generated entity skills, NOT the associate skill).
+
+**Five sequential Diana@CKSpecialty traces in LangSmith project `indemn-os-associates`** — see Session 11 handoff Section 2 for the full table. Run #5 (trace `019dd602-ddb9-7f03-946c-fcee7413e11f`) is the smoking gun: agent finally called Contact resolve (which we attributed to v7's Hard Rule #10), but **system prompt directly inspected says "(No skills available yet. You can create skills in act-…/skills)"** — meaning the agent never actually saw v7's content. The Step 3 improvement came from reading the Contact ENTITY skill, not the associate skill.
+
+**What landed (despite the deepagents finding):**
+- EC skill v7 (content_hash `897d05babf0d3b83…`) — Hard Rules #10 (mandatory Contact resolve) + #11 (Contact-first ordering), strengthened multi-1.0 ambiguity language with Diana as worked example. **Not yet read by agent at runtime** — pending Bug #35 fix.
+- Document `69efbdea4d65e2ca69b0dd80` Drive metadata sync — `drive_file_id` + `drive_url` set. Entity matches reality.
+- Harness commit `5ec4e9f` on indemn-os main — pass skills LIBRARY directory to `deepagents.create_deep_agent(skills=[...])` instead of per-skill subdir paths. Based on reading deepagents docs: `skills` takes library dirs, each containing skill subdirs with their own SKILL.md. **Deployed and tested — system prompt STILL says "(No skills available yet)".** The library-dir fix is necessary but not sufficient. Hypothesis space documented in Session 11 handoff Section 3 — most likely culprit is path resolution against `LocalShellBackend.root_dir` (which is `/workspace/{activity_id}` per Bug #3 fix; passing relative path `{activity_id}/skills` may double-nest).
+
+**Architectural alignments confirmed (Craig + Claude):**
+1. **DON'T inline skills into system prompts.** OS vision requires deepagents progressive disclosure to work properly. Inlining bypasses the mechanism instead of fixing it. (My initial proposal: rejected.)
+2. **Harness reports facts; OS interprets meaning.** The tightened `agent_did_useful_work` (Session 10 commit `d914d76`) is observation-only — domain-agnostic. Detection of "agent didn't fulfill skill intent" lives in evals (Phase E) and observability dashboards on top of LangSmith — NOT in the harness.
+3. **Path 3 for evaluations** stays — the existing `evaluations` repo eventually becomes a kernel adapter (`system_type: evaluation`).
+4. **Bug fixes are 100% a priority alongside roadmap progress.** The session's mix of feature work + bug fixing was deliberate.
+
+**Cleanup state at close:**
+- EC `69ea1bca23eefe641ea13f44` — suspended (kill switch held)
+- Diana@CKSpecialty `69ea56250a2b41b7696076b3` — reset to `received`, no Company link, no Contact link, version 11
+- No orphan auto-created Companies (verified via mongosh — last 30 min count = 0)
+- All commits pushed to indemn-os main: `956d7d5` (LangSmith), `db97694` (CLI fix), `d914d76` (completion check), `5ec4e9f` (skills lib dir — deployed but didn't fully solve)
+
+**Top priority for Session 12:** Fix deepagents skill discovery so the agent actually reads the email-classifier associate skill. Hypothesis space + diagnostic steps in Session 11 handoff Section 3. Likely a one-line fix at the `create_deep_agent` call site (try absolute path `/workspace/{activity_id}/skills` instead of relative).
+
+---
+
 **Session 2026-04-28 (evening — LangSmith wired in; Session 9's EC kill-switch root cause found + fixed; Path 3 evals architecture aligned) — Phase B1 substantially de-risked. EC verified working end-to-end on Diana@CKSpecialty.**
 
 The session that turned Session 9's "research-level skill-compliance gap" into a 5-minute root-cause investigation. The EC failure was diagnosed not as a skill-following problem but as a kernel CLI bug — Bug #34 in `os-learnings.md`. Without LangSmith we'd have spent the session iterating skill content blindly.
@@ -336,6 +365,10 @@ Read Kyle's EXEC folder (PLAYBOOK-v2, data dictionaries, 6 leads, MAP) and Cam's
 - 2026-04-28 (Session 10): **EC v6 deployed** with new Step 0 ("the email entity in your context IS the email to classify — never create") + Hard Rules #8 (resolve errors are showstoppers, never fall through to create) and #9 (never call `indemn email create`). Content_hash `5bbfdd13ad26c8db…`. End-to-end verified on Diana@CKSpecialty's email (LangSmith trace `019dd5c1-3aab-7ea3-aa08-d007044570a1`) — clean classify + link to existing Company, no auto-create. Partial gaps remaining (Step 3 Contact resolve still skipped; multi-1.0 still picks one) — defer to v7 or eval coverage.
 - 2026-04-28 (Session 10): **Kernel CLI bug fixed** — `indemn_os/main.py:202` had `_COLLECTION_LEVEL_CAPS = {"fetch_new"}`, missing `entity_resolve`. Caused `entity-resolve` calls to route through the entity-level path which list-and-loops with `?limit=1000` (API caps at 100) → HTTP 422. **This was Session 9's "skill compliance gap" root cause** — agent saw the tool error and fell through to create. Fixed via commit `db97694` (one-line + comment requiring sync with `kernel/capability/__init__.py`). Followon: `kernel/cli/app.py` has the same divergence (no `_COLLECTION_LEVEL` set at all) — filed for a separate fix.
 - 2026-04-28 (Session 10): **Harness completion check tightened** — `agent_did_useful_work` now requires ≥1 *successful* mutating CLI call (was: any *attempted* mutating call OR any non-empty narrative content). Domain-agnostic — checks tool result success markers via `tool_call_id` matching. Per OS vision discussion (Craig + Claude): the harness reports observable facts about tool execution; detection of "agent didn't fulfill skill intent" lives in evals (Phase E) and observability dashboards on top of LangSmith — NOT in the harness. The original hypothesis ("check if watched entity transitioned") was too domain-aware. Commit `d914d76`.
+- 2026-04-28 (Session 11): **DON'T inline associate skills into system prompts.** OS vision requires deepagents progressive disclosure to work properly. Inlining bypasses the mechanism instead of fixing it. My initial proposal (a `_load_associate_skills_inline` helper that builds a system_prompt extension) was explicitly rejected: "BAD! TERRIBLE DESIGN AND NOT ALIGNED WITH THE VISION". Reverted. The right fix is making the harness write skills in the structure deepagents expects + pass the right path.
+- 2026-04-28 (Session 11): **EC v7 deployed** (content_hash `897d05babf0d3b83…`). Hard Rule #10 (Contact resolve mandatory) + #11 (Contact-first ordering). Strengthened Step 4 multi-1.0 ambiguity language with Diana@CKSpecialty as worked example. Multiple-1.0 across ANY combination of `matched_on` fields → needs_review (most-specific match is NOT a tiebreaker). **However, agent has not actually read v7 due to Bug #35 — see below.**
+- 2026-04-28 (Session 11): **Bug #35 NEW — deepagents skill discovery broken in our LocalShellBackend setup.** Despite the harness writing `/workspace/{activity_id}/skills/email-classifier/SKILL.md` correctly + (per commit `5ec4e9f`) passing the LIBRARY directory path to `create_deep_agent(skills=[...])`, the system prompt continues to report "(No skills available yet. You can create skills in act-…/skills)". **Every single iteration of the EC skill (v3 → v7) has been theatre — agent never read any of it.** The improved behavior in Session 10 (linking to existing Company) and Session 11 (calling Contact resolve) came from the agent reading the auto-generated entity skills via `indemn skill get <Entity>`, NOT from the associate skill. Confirmed via direct system-prompt inspection in LangSmith trace `019dd602-ddb9-7f03-946c-fcee7413e11f`. Hypothesis space + diagnostic steps for Session 12 documented in `artifacts/2026-04-28-session-11-handoff.md` Section 3.
+- 2026-04-28 (Session 11): **Document `69efbdea4d65e2ca69b0dd80` synced** with Drive metadata: `drive_file_id: 1pM3tYg6rHzG8RW6xU_titouiq_iddhIC`, `drive_url: https://drive.google.com/file/d/1pM3tYg6rHzG8RW6xU_titouiq_iddhIC/view`. Entity now matches reality (v2 PDF lives in Cam's Drive folder). Carry-over item from Session 10 closed.
 
 ## Open Questions
 
