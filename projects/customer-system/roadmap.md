@@ -70,30 +70,173 @@ Each TD entry below is **structural only** — title, what-it-delivers, done-tes
 
 ### TD-2 — Cascade activated progressively
 
-**Delivers:** EC → TS → IE running autonomously on incoming Email/Meeting/Slack data. Companies, Contacts, Documents, Touchpoints, Decisions, Tasks, Commitments, Signals, Operations, Opportunities all auto-create from real data. **Proposal entity continuously hydrates as a side-effect.**
+**Delivers:** A 7-associate cascade running autonomously on incoming Email/Meeting/Slack data. Every interaction flows through it, every entity emerges from it, the Proposal entity continuously hydrates as a side-effect. The spine of the customer system.
 
-**Sub-pieces:**
-- EC reactivated, verified manually on small test batches via LangSmith, then recurring
-- TS reactivated, verified manually, then recurring
-- IE reactivated (already active), verified through full cascade end-to-end on a real new email/meeting
-- Subsequent entity creation thoughtful: Hard-Rule-#1-inverted Company creation; Contact signature parsing; Document creation from email attachments + Drive + Slack files; Internal-Touchpoint scope handling; Employee `entity_resolve` activated
-- Deal-lifecycle automation — Deal-creator associate, Proposal-at-DISCOVERY auto-create, Touchpoint↔Deal linking
-- Proposal entity continuous hydration — every Touchpoint contributes (Operations, Opportunities, Phases, Decisions, Commitments, Tasks)
-- Company auto-create enrichment — newly-created Companies hydrate beyond name+domain (continuous enrichment process)
+#### What the cascade does
 
-**Done-test:** A new email arrives → EC classifies + links → TS creates Touchpoint with Option B source pointers → IE extracts intelligence per Playbook[Deal.stage] AND updates Proposal entity. Cascade fires end-to-end with no manual intervention. Verified live on at least one new prospect's first-contact email post-activation.
+When an Email, Meeting, or Slack thread arrives in dev OS (via TD-1 adapters), it cascades through:
 
-**Dependencies:** TD-1 complete (data flowing in, but cascade off). Hard Rule #1 inversion (already done in EC v9). Bug cleanup done.
+```
+Source entity created (Email | Meeting | Slack thread)
+  → [EC | MC | SC]                        Source classifier (one fires per source type)
+    → Source classified (Company + Contacts linked)
+      → TS                                 Source-agnostic Touchpoint creator (folds Deal-creation)
+        → Touchpoint logged (+ Deal + empty Proposal if needed, atomic)
+          → IE                              Source-agnostic intelligence extractor
+            → Touchpoint processed
+              → Proposal-Hydrator           Aggregates extracted entities into the Proposal
+              → Company-Enricher            (parallel, separate trigger — fills bare Companies)
+```
 
-**Open questions to resolve (these are LOAD-BEARING — must answer before execution):**
-- **Which associate hydrates the Proposal entity?** Is it IE's job (extends current scope: extract intel + update Proposal)? Or a fourth pipeline associate "Proposal Hydrator" that watches Touchpoint→processed independently? What does the procedure look like step by step?
-- **When does the Proposal entity get auto-created?** On Deal creation at DISCOVERY? By a new Deal-creator associate that fires on first-contact? What's the trigger?
-- **How does Proposal hydration know what to add vs. update vs. leave?** Does it consult `Playbook[Deal.stage].required_entities` to know which Proposal fields belong at this stage? Does it merge intelligently or always overwrite?
-- **Touchpoint↔Deal chicken-and-egg** — a Touchpoint is created for an email; how does it know which Deal to link to? Auto-create a Deal at DISCOVERY when no existing Deal matches? Heuristic by Company?
-- **Internal Touchpoints contributing to Proposal** — when an internal Slack thread is "about" a customer, the Touchpoint scope=internal. Does it still contribute to Proposal hydration? If yes, how does it know which Proposal? If no, why?
-- **Company auto-create with bare data** — a Company auto-created from one email has only domain+name. How does it get enriched (next email? scheduled associate? human-prompted?)?
-- **Contact signature parsing** — title, phone, address are in email signatures but currently fall on the floor. Deterministic parse? LLM extract? Where does it run (EC? TS? new associate?)?
-- **Activation safety** — what's the kill-switch + rollback story per associate? How do we know a new email batch was processed correctly before we let recurring fetch send the next batch?
+By the time the cascade finishes for a single Email/Meeting/Slack thread, the customer constellation has gained: a Touchpoint with Option B source pointers; potentially a new Contact (with signature-parsed fields); potentially a new Company (Hard-Rule-#1 inverted: resolve-before-create, autonomous create on 0/0); potentially a new Deal at CONTACT or DISCOVERY (with empty Proposal attached); extracted intelligence (Decisions, Tasks, Commitments, Signals, Operations, Opportunities, Phases linked to the Touchpoint and the Deal); the Proposal entity updated with new entity references; the Company auto-enriched with any new structured info from the source.
+
+#### The 7 associates — why each exists
+
+Per the principle established in this design conversation: **a new associate is justified only when the trigger, entities used, context, or skill are significantly different from existing associates.** One associate can have multiple skills; one trigger should be one associate; decouple things separate in nature.
+
+| Associate | Trigger | Writes | Why separate |
+|---|---|---|---|
+| **EmailClassifier (EC)** — exists, v9 | `Email created` | Email.company, Email.sender_contact, Email.status | Email-specific relevance filter (spam/newsletter/real); Hard-Rule-#1-inverted resolve-before-create logic; signature parsing for richer Contact fields. **Will absorb signature parsing.** |
+| **MeetingClassifier (MC)** — new | `Meeting created` | Meeting.company, Meeting.attendees_contacts, Meeting.attendees_employees, Meeting.scope, Meeting.status | Meeting data shape is fundamentally different (structured attendee list from Google Meet API; transcript; usually pre-classified as relevant); reasoning is "resolve attendees + identify customer Company from external attendees" not "filter spam". |
+| **SlackClassifier (SC)** — new | `SlackThread created` | SlackThread.company, SlackThread.participants_contacts, SlackThread.participants_employees, SlackThread.scope, SlackThread.status | Slack context (channel name, DM/MPDM membership) is different from email/meeting; relevance filtering is needed (much off-topic noise); thread-vs-message granularity is different. |
+| **TouchpointSynthesizer (TS)** — exists, v6 (will gain Deal-creation) | `Email/Meeting/SlackThread classified` (3 watches) | Touchpoint (created), Email/Meeting/SlackThread.touchpoint, Deal (created if external + no active Deal), Proposal (created empty if Deal created), ReviewItem (if multi-Deal ambiguity for internal scope) | Source-agnostic — one Touchpoint shape regardless of source type. Folds Deal-creation atomically because Deal exists in our model purely as the carrier for a Proposal — they co-evolve. Same trigger as Touchpoint creation, same context (the source + Company + Contact). |
+| **IntelligenceExtractor (IE)** — exists, v3 | `Touchpoint logged` | Decision, Task, Commitment, Signal, Operation, Opportunity, Phase (all created and linked to Touchpoint + Deal), Touchpoint.status (transitions to processed) | Source-agnostic — reads source content via Option B navigation, extracts structured intelligence. Different from Classifiers (those classify a single source; IE creates many entities) and from TS (TS doesn't read source content). |
+| **Proposal-Hydrator (PH)** — new | `Touchpoint processed` | Proposal (updated — new entity references added), Proposal.status (potentially advanced), ReviewItem (if extracted entity doesn't fit cleanly) | Aggregates extracted entities INTO the Proposal entity. Different context from IE (IE reads source content; PH reads aggregated entity graph + Playbook). Different reasoning (IE extracts from text; PH consolidates from entities). Different writes (IE creates many entities; PH updates one Proposal entity by adding references). |
+| **Company-Enricher (CE)** — new | `Touchpoint logged` for a Company with bare data (or scheduled cron) | Company (updated — fields filled from source content) | Different from IE (IE writes intelligence entities; CE updates Company directly). Different concern (intelligence-extraction vs Company-profile-completion). Triggers in parallel with IE — no conflict because they write to different entities. |
+
+**Why not fewer than 7?** Folding more responsibilities into existing associates would: (a) conflate triggers that aren't actually the same trigger; (b) create context bloat per LLM call (IE would need to know about Proposals AND Companies AND extraction); (c) make failure modes harder to debug (one associate failing affects multiple concerns); (d) violate the "one trigger per associate" principle.
+
+**Why not more than 7?** Splitting further would: (a) over-fragment work that shares context (e.g., splitting "extract Decisions" from "extract Tasks" into separate associates would duplicate source-reading); (b) increase cascade coordination complexity for no decoupling gain; (c) stretch the cascade depth (we'd be at 6-8 levels deep, and while the kernel circuit breaker is at 10, depth has practical observability cost).
+
+The 7 associates correspond to 7 fundamentally different (trigger, entities, context, reasoning) tuples. That's the right number.
+
+#### ReviewItem — universal escape valve for human review
+
+Per the design decision in this conversation: **any associate that encounters any issue while working creates a `ReviewItem` and continues. It never blocks. It never throws. It creates a ReviewItem, makes its best-effort write, and moves on.**
+
+This is a foundational pattern, not a narrow one. Use cases include but are not limited to:
+- EC: ambiguous Company match (multiple at score 1.0)
+- EC: 0 candidates AND signature-parse can't determine company affiliation
+- MC: meeting attendees include unfamiliar emails that don't clearly resolve to any Contact/Employee
+- SC: thread relevance unclear; mentioned customers ambiguous
+- TS: multi-Deal ambiguity for internal Touchpoint (assigns to latest Deal + creates ReviewItem)
+- TS: scope determination unclear (could be external OR internal)
+- IE: source content references entities that don't exist (e.g., "the BT Core integration" — no CustomerSystem entity for it yet)
+- IE: extracted Decision conflicts with prior recorded Decision
+- Proposal-Hydrator: extracted Operation doesn't fit any existing Phase, and Playbook doesn't suggest one
+- Company-Enricher: source mentions critical fields that need confirmation (e.g., "they're at $35M ARR" — should this update Company.annual_revenue?)
+
+**ReviewItem entity structure:**
+- `target_entity_type: str` — what entity needs review (Touchpoint, Email, Company, etc.)
+- `target_entity_id: ObjectId` — which one
+- `created_by_associate: str` — which associate flagged it (for triage + improvement signal)
+- `reason: str` — why it needs review (free-text or enum like `ambiguous_match`, `multi_deal_internal`, `unfamiliar_reference`, etc.)
+- `context: dict` — the data the associate had when it encountered the issue (e.g., the candidate IDs, the source quote)
+- `proposed_resolution: str` (optional) — what the associate did as best-effort, so reviewer can accept/override
+- `status: "open" | "in_review" | "resolved" | "dismissed"`
+- `resolved_by_actor_id: ObjectId` (when reviewed)
+- `resolution: str` (what the reviewer did)
+
+**Reviewer role** — has watches on `ReviewItem created`. Anyone in this role gets messages. Reviewer can claim, look at the linked entity, fix anything wrong (e.g., reassign a Touchpoint to a different Deal), and transition the ReviewItem to `resolved` or `dismissed`.
+
+**Why this is THE pattern:**
+1. Associates never block — the cascade always completes its best effort
+2. Visibility — every uncertain decision is surfaced, not buried in a `needs_review` state on the underlying entity
+3. **Reviewing IS training data** — the corrections reviewers make become signal for the next iteration of the associate's skill or rules. Over time, patterns reviewers correct get codified into deterministic rules (the `--auto` flywheel from `rules-and-auto.md`)
+4. Generic — works across all entity types and all associates without polluting individual schemas with `flag_for_review` fields
+
+**Source-classifier exception:** EC, MC, SC are slightly different. If they cannot classify at all (0 Company candidates with no signal, sender domain unknown, attendee list all-external-but-unidentifiable), the source entity transitions to `needs_review` (terminal in the cascade — TS won't fire) and a ReviewItem is created. The cascade halts at that source until the reviewer resolves it. This is the one place we accept blocking, because proceeding without classification would create wrong downstream entities.
+
+For all other associates (TS, IE, Proposal-Hydrator, Company-Enricher): best-effort + ReviewItem + continue. No blocking.
+
+#### Proposal-Hydrator nuance: stages are fluid
+
+Per the design conversation, the Proposal-Hydrator's logic is NOT "use Playbook[Deal.stage].required_entities as a hard schema and only add entities matching the schema." That's too rigid because conversations are fluid — a DISCOVERY-stage email might surface PROPOSAL-stage information; a NEGOTIATION-stage call might contain DEMO-stage questions.
+
+Instead, Proposal-Hydrator's logic:
+1. Read entities IE just extracted on this Touchpoint
+2. For each extracted entity, determine if it fits the Proposal structure:
+   - Operation extracted? Link to Proposal.operations
+   - Opportunity extracted with a mapped AssociateType? Link to Proposal.opportunities
+   - Phase extracted? Link to Proposal.phases
+   - Decision/Commitment/Task/Signal? Already linked to Touchpoint and Deal — Proposal references Deal so they're transitively visible; no explicit Proposal-link needed
+3. Read `Playbook[Deal.stage].required_entities` as guidance, NOT schema:
+   - If the extraction added entities that the current stage didn't expect, that's interesting (might suggest the Deal should advance to next stage, or the Playbook needs refinement) — flag via ReviewItem
+   - If the current stage's required_entities aren't yet populated, don't error — just leave them empty (constellation UI will show them as gaps signaling next-actions)
+4. Update `Proposal.status` if appropriate (e.g., all DISCOVERY required_entities now populated → Deal can advance to DEMO; this is a signal, not an automatic transition — Deal stage transitions are human-initiated for now)
+
+The Proposal entity is mostly references to other entities, not free-text — per principle #3 (no fluff fields). Proposal-Hydrator does not write narrative descriptions; the narrative emerges from the linked entities.
+
+#### Sub-pieces (work to do)
+
+1. **ReviewItem entity definition + Reviewer role** (pre-flight infrastructure for everything below)
+2. **MC (MeetingClassifier) skill + role + watch + actor** — including manual trace on a real meeting (e.g., the Apr 28 Armadillo discovery call)
+3. **SC (SlackClassifier) skill + role + watch + actor** — depends on TD-1 Slack adapter complete
+4. **EC update** — fold signature parsing into the Contact-creation step; add ReviewItem creation on ambiguity (replacing the current "transition to needs_review and stop" pattern for non-source-classification ambiguity); ensure compatibility with v9's Hard-Rule-#1 inversion
+5. **TS update** — fold Deal-creation logic; auto-create empty Proposal when creating Deal; handle internal-scope multi-Deal ambiguity via ReviewItem
+6. **IE verification** — already active, but verify it works through the full cascade with TS-created Touchpoints + Option B source pointers; trace manually on Armadillo
+7. **Proposal-Hydrator skill + role + watch + actor** — including manual trace on Armadillo's processed Touchpoints
+8. **Company-Enricher skill + role + watch + actor** — including manual trace on Armadillo's bare Company
+9. **Activation, in bottom-up order** — see below
+
+#### Activation order: bottom-up
+
+Per the trace-as-build-method principle and Craig's "be careful not to have a cascade happen when we're not ready" guidance, activate from the bottom of the cascade upward. Each level proves before the next is built. This way the foundation is verified at each step, and we avoid the dirty-cascade-on-unverified-data scenario.
+
+**Pre-flight (must complete before any activation):**
+- Bug #36 cleanup: 500 unrelated Emails + 6 unrelated Meetings — either delete or transition to `irrelevant`
+- Bug #37 row cleanup: 2 malformed Email rows
+- ReviewItem entity definition created in dev OS
+- Reviewer role created with watches on `ReviewItem created`
+
+**Activation sequence:**
+
+1. **EC** — already at v9, verified live on Armadillo. Fold in signature parsing (skill update). Fold in ReviewItem creation for non-source-classification ambiguity. Drain a small batch of test emails. Confirm the new behavior. Then activate recurring (TD-1's recurring fetch can turn on after this).
+2. **MC** — trace manually on the Apr 28 Armadillo discovery meeting. Verify attendee resolution, Company identification, scope classification. Write skill. Wire watch + role. Drain a small batch of Meetings. Activate.
+3. **SC** — depends on TD-1 Slack adapter complete. Trace manually on a real Slack thread (e.g., the Apr 7-8 Retention Associate prep thread for Alliance). Verify channel-context-aware classification. Write skill. Wire. Drain. Activate.
+4. **TS** — currently at v6, suspended. Fold in Deal-creation + empty Proposal creation + internal-scope multi-Deal ambiguity → ReviewItem. Trace manually on a classified Email/Meeting/SlackThread → produced Touchpoint + Deal + Proposal. Update skill (v7). Drain a small batch. Activate.
+5. **IE** — currently active. Verify it works through the full cascade with TS-created Touchpoints + Option B source pointers + the fact that Deal/Proposal now exist. Trace manually on Armadillo's Touchpoints (already extracted, but re-verify). Optionally update skill if the Proposal-existence changes its work. Continue active.
+6. **Proposal-Hydrator** — trace manually on Armadillo's processed Touchpoints. Confirm extracted entities link correctly to Proposal. Confirm fluid-stage handling (entities extracted that the current stage didn't expect → ReviewItem). Write skill. Wire watch + role. Drain. Activate.
+7. **Company-Enricher** — trace manually on Armadillo's bare Company. Confirm enrichment logic. Decide trigger (event vs cron — default to event-triggered on `Touchpoint logged` for a bare Company). Write skill. Wire. Drain. Activate.
+
+After all 7 are active, run the done-test (below).
+
+#### Done-test: systematic historical replay
+
+Rather than waiting for one new prospect's first email, we systematically replay the historical data through the cascade as if it's happening in real time:
+
+1. We have ~930 emails + ~67 meetings already in dev OS (un-cascaded or partially-cascaded). Plus future Slack hydration from TD-1.
+2. Reset relevant entities to `received`/`logged` state where needed.
+3. Use the kernel `reprocess` primitive (Bug #10 closeout, commit `662dc2d`) to emit the watch-trigger for each Email/Meeting/SlackThread, in chronological order.
+4. Observe the cascade fire end-to-end on each one. Watch LangSmith traces. Verify:
+   - Source classification is correct (Company + Contacts/Employees linked)
+   - Touchpoint created with proper scope + source pointers
+   - Deal + Proposal auto-created when appropriate
+   - Intelligence extracted (Decisions/Tasks/Commitments/Signals/Operations/Opportunities/Phases)
+   - Proposal updated with entity references
+   - Company enriched
+   - ReviewItems created where the cascade hit ambiguity
+5. Spot-check the resulting constellation for ~3 customers (Alliance, Armadillo, GR Little, plus any new ones that emerged in the historical replay) — does the picture match what we know about each?
+
+**Done when:** historical replay completes cleanly across the full dataset, the constellation for each known customer looks correct, the ReviewItem queue is reasonable (mostly genuine edge cases, not systemic failures).
+
+This gives us 1000+ data points of cascade verification, surfaces edge cases the design didn't anticipate, hydrates the constellation for many customers naturally as a side-effect, and produces concrete material for the TD-3 UI to render.
+
+#### Dependencies
+
+- **TD-1 complete** — adapters running, data available in dev OS, Bug #36 + #37 cleanup done.
+- **ReviewItem entity + Reviewer role** — pre-flight infrastructure. Created before any associate activation.
+- **Hard Rule #1 inversion** — already done in EC v9 (Session 12).
+- **LangSmith tracing** — already wired (Session 10).
+- **Reprocess primitive** — already shipped (Bug #10 closeout, commit `662dc2d`).
+- **Sources need to be fully ingested** — Email + Meeting + Slack adapters from TD-1, plus Drive ingestion for documents that get linked to Touchpoints.
+
+#### Out of scope for TD-2
+
+- **Artifact Generator** — TD-5. The cascade ends with the Proposal entity hydrated; producing draft artifacts (follow-up emails, recaps, proposal decks) is downstream.
+- **UI** — TD-3. The cascade populates the entity graph; visualizing it for the team is downstream.
+- **Manual entity creation paths** — TD-1 (UI form + voice/talk-to-add). The cascade handles autonomous ingestion; manual paths bypass Classifier+TS but still trigger IE.
+- **External-customer multi-tenancy** — TD-11. The cascade is built for Indemn-the-company in the `_platform` org.
 
 ---
 
