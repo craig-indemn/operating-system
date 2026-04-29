@@ -204,13 +204,21 @@ The Artifact Generator skill: `skills/artifact-generator.md` (15 style guideline
 
 The styled-PDF rendering pipeline: `templates/proposal/` (Handlebars + CSS + assets) + `tools/render-proposal.js` (puppeteer-core + Chrome).
 
-### Pipeline associates
+### Pipeline associates — the 7-associate cascade
 
-Three associates form the pipeline (current run states in CURRENT.md, not here — that's fast-changing):
+Three associates exist today (EC, TS, IE); four more were designed in Session 12's TD-2 alignment conversation (MC, SC, Proposal-Hydrator, Company-Enricher). Plus the ReviewItem universal-escape-valve pattern. **Full cascade architecture, sub-piece breakdown, activation order, and done-test live in `roadmap.md` TD-2** — that's where the resolved design is. Here's just the 1-paragraph spine.
 
-- **Email Classifier (EC).** Watch: Email created. Classifies email, links sender Contact + Company. Calls `entity_resolve` before creating (Hard Rule #1 — resolve-before-create). Auto-creates Company + Contact when resolve returns 0 candidates (Hard Rule #1 was inverted in v9, post-Session-12 — resolve-first IS the dedup defense, now reliable post-Bug-#34/#36; the prior "never auto-create" stance was a defensive workaround for unreliable resolve). Multi-1.0 ambiguity → needs_review. Skill: `skills/email-classifier.md` (v9).
-- **Touchpoint Synthesizer (TS).** Watch: Email transitioned to classified. Creates Touchpoint with Option B source pointers. Idempotency check via `Email.touchpoint` back-reference. Skill: `skills/touchpoint-synthesizer.md`.
-- **Intelligence Extractor (IE).** Watch: Touchpoint created. Reads source via Option B navigation (`source_entity_type` + `source_entity_id`). Extracts intelligence per Playbook for Deal.stage. Skill: `skills/intelligence-extractor.md`.
+- **EmailClassifier (EC, exists, v9).** Watch: Email created. Classifies email, resolve-before-create on Contact + Company (Hard Rule #1 inverted Session 12 — autonomous create on 0/0). Will absorb signature parsing.
+- **MeetingClassifier (MC, NEW).** Watch: Meeting created. Resolve attendees as Contacts/Employees, identify Company, classify scope.
+- **SlackClassifier (SC, NEW).** Watch: SlackThread created. Channel-context-aware classification, relevance filter, Company resolution.
+- **TouchpointSynthesizer (TS, exists, v6 → v7 in TD-2).** Watch: Email/Meeting/SlackThread classified (3 watches). Creates Touchpoint with Option B source pointers. **Will fold in Deal-creation** (when scope=external + no active Deal for Company → create Deal at CONTACT/DISCOVERY + auto-create empty Proposal, atomic). Internal-scope multi-Deal ambiguity → assigns to latest Deal + creates ReviewItem.
+- **IntelligenceExtractor (IE, exists, v3).** Watch: Touchpoint logged. Reads source via Option B navigation; extracts Decisions/Tasks/Commitments/Signals/Operations/Opportunities/Phases per Playbook[Deal.stage].
+- **Proposal-Hydrator (NEW).** Watch: Touchpoint processed. Aggregates extracted entities into Proposal entity (linking, not free-text). Stages are fluid — uses Playbook required_entities as guidance not schema; ReviewItems what doesn't fit.
+- **Company-Enricher (NEW).** Watch: Touchpoint logged for a Company with bare data (or scheduled cron, fallback). Fills Company fields from source content. Runs in parallel with IE — different writes, no conflict.
+
+**ReviewItem pattern.** Any associate that hits an issue creates a `ReviewItem` linking to the entity in question + a reason + the proposed-resolution it took as best-effort. Reviewer role watches `ReviewItem created`. Cascade NEVER blocks (except Source-Classifier total-classification-failure, which transitions source to needs_review). Reviewing IS the training-data mechanism — patterns reviewers correct become rules / skill iterations.
+
+Run states (active/suspended/etc.) live in `CURRENT.md`, not here.
 
 ### Open design questions (carried forward)
 
@@ -348,6 +356,8 @@ Armadillo Insurance traced end-to-end as designed — first new-prospect trace p
 2. Skills load via the CLI now (`indemn skill get <name>`), not via deepagents filesystem-skills. The deepagents layer was a poor fit for one-skill-per-associate associates. The CLI pattern is symmetric with how the agent already loads everything else in the OS.
 3. The shared mental model is comprehensive and overarching, not distilled-to-tidbits. CLAUDE.md *contains* the architecture, journey, foundations, best practices — deeper files become on-demand reference.
 4. Three load-bearing kernel bugs closed in one session because parallel sessions worked simultaneously on different threads — proof that the fork-and-coordinate pattern compounds when shared context discipline holds.
+5. **Roadmap restructured around tangible deliverables (TD-1 through TD-11)** instead of foundation phases. Same vision, same work, different organization. The phases were fuzzy on what's tangibly shipped to whom; the TDs make it explicit. Roadmap stays structural per-TD until that TD is approached, at which point a focused alignment conversation resolves all open architectural questions and the section gets filled in.
+6. **TD-2 architecture resolved: 7-associate cascade + ReviewItem universal-escape-valve.** Per Craig's principle (one associate per significantly-different trigger/entities/context/skill): EC, MC, SC, TS (gains Deal-creation), IE, Proposal-Hydrator (new), Company-Enricher (new). ReviewItem entity is the universal "I'm uncertain, here's my best effort, please clean up" primitive — used by every associate, watched by Reviewer role, training-data side-effect. Cascade NEVER blocks (except Source-Classifier total-classification-failure). Stages-are-fluid for Proposal-Hydrator: Playbook is guidance, not schema. Activation order is bottom-up. Done-test is systematic historical replay (~1000+ existing emails+meetings cascaded chronologically). Full design lives in `roadmap.md § TD-2`.
 
 **Material state at close:** Armadillo constellation queryable end-to-end (1 Company + 1 Deal + 2 Contacts + 2 Touchpoints + 14 extracted entities). 5 new design gaps logged (Deal-lifecycle automation, Employee entity_resolve, Company hydration on auto-create, Contact richer-field parsing, internal docs spanning multiple prospects). Cleanup pending: 500 emails + 6 meetings from Bug #36 side-effect; 2 malformed Email rows from Bug #37.
 
