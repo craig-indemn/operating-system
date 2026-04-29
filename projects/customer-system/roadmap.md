@@ -2,23 +2,30 @@
 
 > Living source of truth for **how we get from where we are now to the vision**. Updated every session that moves the work forward. Read with `vision.md` (what we're building, why, and the lens) and `os-learnings.md` (running register of OS bugs + capability gaps + design questions).
 >
-> Last updated: **2026-04-28** (afternoon — Phase B1 entity-resolution skill propagation; reactivation kill-switch fired).
+> Last updated: **2026-04-29** (Session 12 close — Bugs #35/#36/#37 closed, Hard Rule #1 inverted, Armadillo traced end-to-end as designed, shared-context hydration redesign shipped).
 
 ---
 
-## Where we are now (2026-04-27)
+## Where we are now (2026-04-29)
 
-**Foundation status — not yet running autonomously.**
+**Phase A complete. Phase B1 substantially de-risked. Foundation is closer to running autonomously than at any prior point.**
 
-- **27 entity definitions live** in dev OS, `_platform` org. Includes Playbook entity (DISCOVERY record seeded), all 22 from the Apr 22 brainstorm.
-- **Pipeline associates state:** Email Classifier — *suspended*. Touchpoint Synthesizer — *suspended*. Intelligence Extractor — *active* (was activated Apr 24 to test, failed structurally). All three need work before they can be re-enabled hands-off.
-- **GR Little hydrated end-to-end** (the one customer that has been traced through the system): canonical Company picked from 5 dupes, Walker + Heather Contacts, Deal at DISCOVERY, Meeting linked, Touchpoint synthesized manually, intelligence extracted manually, 3 Opportunities created, empty Proposal v1, follow-up email drafted. **Kyle saw it Apr 24 and validated.** The 4 Company dupes are flagged but not deleted (Bug #23 blocks bulk-delete with operator filters).
-- **~930 emails ingested** across 11 team members (Kyle + team). 284 irrelevant, 180 processed E2E, 114 needs_review. Queue drained to zero. ~67 meetings ingested for Apr 20-21 window.
-- **Alliance not yet hydrated.** First proposal trace is today's session.
-- **OS bugs** — 29 logged, 4 fixed. Critical/blocking open: Touchpoint source pointers (Option B), entity-resolution kernel capability (Bug #16 root fix), Bug #29 (entity-def replacement doesn't evict API routes), Bug #23 (bulk-delete operator filters).
-- **Open design questions** — Opportunity vs Problem; Document-as-artifact pattern for emails. See `os-learnings.md` for full list.
+- **27 entity definitions live** in dev OS, `_platform` org. Includes Playbook entity with both DISCOVERY and PROPOSAL stage records seeded.
+- **Pipeline associates state:**
+  - Email Classifier — *suspended* (kill switch held; v9 in DB ready, content_hash `9eef4959ae701614`). Hard Rule #1 inverted (resolve-before-create > never-auto-create). Verified live on Armadillo's first-contact email — autonomous Company + Contact creation worked.
+  - Touchpoint Synthesizer — *suspended* (unchanged). Has not been triggered autonomously since Session 9.
+  - Intelligence Extractor — *active*. Silent-stuck-state regression that previously caught it is fixed (Session 10 commit `d914d76`). Ran on Armadillo extracting 14 entities against the DISCOVERY Playbook.
+- **Hydrated customers / prospects:**
+  - **GR Little** hydrated end-to-end. Kyle validated Apr 24.
+  - **Alliance** hydrated end-to-end (60+ entities). v2 proposal rendered, PDF in Cam's Drive folder, trace-showcase HTML shared with Cam + Kyle.
+  - **Armadillo Insurance** hydrated end-to-end as designed (Apr 29) — first new-prospect trace post-Hard-Rule-#1-inversion. 1 Company + 1 Deal + 2 Contacts (Matan Slagter CEO, David Wellner COO) + 2 Touchpoints + 14 extracted entities.
+- **~930+ emails ingested** across 11 team members. ~67+ meetings ingested. Queue drained.
+- **OS bugs:** load-bearing kernel work substantially done. Bug #35 (deepagents skill discovery — was THE blocker), Bug #36 (Gmail/Calendar `fetch_new` adapter `**params` absorption), Bug #37 (Email list endpoint malformed-doc tolerance) all closed this session. Plus burst #4 fixes from Apr 27-28 (Bug #23/#24 bulk-delete operators, Bug #10 reprocess primitive, Bug #9 boundary coercion, Bug #29 route eviction, Bug #30 partialFilterExpression auto-emit, --include-related reverse refs, always-fresh entity-skill rendering, several CLI papercut fixes). The kernel is in genuinely solid shape now.
+- **5 new design gaps logged this session** — Deal-lifecycle automation gap (no Deal-creator associate yet, Touchpoint↔Deal chicken-and-egg, Proposal-at-DISCOVERY auto-create not wired), Employee `entity_resolve` not activated, Company hydration is bare on auto-create, Contact richer-field parsing from email signatures, internal docs spanning multiple prospects.
+- **Cleanup pending:** 500 unrelated Emails + 6 unrelated Meetings on Kyle's mailbox from Bug #36 side-effect (sit at status `received`, EC suspended so untouched). 2 malformed Email rows from Bug #37 data side (`69ea548e…6e92` Oneleet, `69ea556f…7387` Linear Orbit).
+- **Open design questions (long-running, none resolved this session):** Opportunity vs Problem entity; Document-as-artifact pattern for emails; 12 sub-stages with archetype multi-select (Kyle's Apr 24 ask); origin/referrer tracking; Playbook hydration mechanism. See `os-learnings.md` for full list.
 
-For deeper status: `artifacts/2026-04-25-session-handoff-and-roadmap.md` (the previous session's roadmap, which this supersedes).
+For deeper context on the journey here: `CLAUDE.md § 5 Journey`, `INDEX.md § Status`, `SESSIONS.md`.
 
 ---
 
