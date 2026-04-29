@@ -29,187 +29,299 @@ For deeper context on the journey here: `CLAUDE.md § 5 Journey`, `INDEX.md § S
 
 ---
 
-## Phases (pre-scoped)
+## Tangible deliverables (TD-1 through TD-11)
 
-The phases are sequential at the level of "Phase B starts when Phase A is done," but iteration happens *throughout*. Phases are the work; iteration is the mode.
+The roadmap is organized around tangible deliverables, not foundation phases. Each TD is a concrete piece the team can use OR a foundational capability that unlocks the next concrete piece. They run mostly sequentially — the early ones are foundation, the later ones are team-facing.
 
----
+Each TD entry below is **structural only** — title, what-it-delivers, done-test, dependencies, open questions to resolve before/during execution. The deep architectural detail (which associate, what trigger, what data flow, etc.) gets resolved in a focused alignment conversation BEFORE the TD is executed, and the resolved detail then gets written into the TD section. This way fidelity grows as we work through, rather than being written speculatively at high resolution.
 
-### Phase A — Shake-out traces (in flight)
+**The trace-as-build-method principle threads through every TD.** Pick a real scenario. Run it manually first via the CLI. Verify entity state ends up correct. Then write the skill / wire the watch / build the UI / activate the autonomous version. The artifact is the writeup of what worked.
 
-**Purpose.** Validate the vision against real customer situations. Each trace produces an artifact that demonstrates what the system should produce. The traces are exploratory — Claude-in-conversation plays the role of the autonomous Artifact Generator. Output: artifacts to react to + gaps to log.
-
-- **A1 — GR Little discovery-call meeting view** *(done, Kyle validated 2026-04-24)*
-  - Output: `artifacts/2026-04-24-grlittle-followup-email-draft.md` + `artifacts/2026-04-24-information-flow-v2.html`
-  - Validates: DISCOVERY-stage artifact mechanism (follow-up email)
-- **A2 — Alliance proposal generation** *(✅ done 2026-04-27)*
-  - Output: `artifacts/2026-04-27-alliance-proposal-v2.md` + `artifacts/2026-04-27-alliance-trace.md` + `artifacts/2026-04-27-alliance-trace-plan.md`
-  - Validates: PROPOSAL/NEGOTIATION-stage artifact mechanism (revised proposal doc) — same `(Deal + recent Touchpoints + extracted intel + Playbook for stage + raw source) → artifact` mechanism as A1, only the Playbook record differs.
-  - Generated via the trace pattern (act as each associate, write entities to OS at each step). Hydrated 60+ entities into Alliance constellation.
-  - PROPOSAL-stage Playbook record `69efbcf34d65e2ca69b0dd6e` created — reusable for all customers.
-  - In parallel: 7 OS bugs fixed/in-progress by the bugfix fork session (Touchpoint Option B, silent stuck-state, cache leak, API 500-detail, Bug #30 Meeting create, entity-skill JSON examples, Bug #29 route eviction).
-- **A2 follow-on — Styled PDF rendering pipeline + Cam-portfolio match** *(✅ done 2026-04-27 evening)*
-  - Output: `templates/proposal/` (template.hbs + template.css + saas-agreement.partial.hbs + assets) + `tools/render-proposal.js` + `artifacts/2026-04-27-alliance-proposal-v2.{json,html,pdf}` + `skills/artifact-generator.md`
-  - Validates: HTML→PDF via puppeteer-core against system Chrome is the right tooling for the Artifact Generator's rendering step. The Handlebars JSON contract cleanly separates content (associate produces) from presentation (template provides).
-  - Match-quality with Cam's portfolio (Alliance v1, Charley, Branch, Johnson, GIC, Physicians Mutual, Arches) verified through several rounds of visual diff. 9 pages matching Cam's section-per-page rhythm. Brand-consistent footer swoosh (rounded top-left, sharp bottom-left, bleeds right + bottom, white logo via CSS filter). 15 style guidelines captured in the skill.
-  - Document `69efbdea4d65e2ca69b0dd80` in OS updated: `mime_type: application/pdf`, `file_size: 178935`, content pointer to repo file path.
-
-- **A2 follow-on — Kyle-facing trace-showcase HTML for Alliance** *(✅ done 2026-04-28 morning)*
-  - Output: `artifacts/2026-04-27-alliance-trace-showcase.html` — single self-contained file (833 lines, all CSS inline) using the Kyle-validated GR Little v2 visual language as the base. Five sections: proposal cover hero with Drive PDF link / vertical 8-event timeline / extraction table (10 quote→entity→proposal-line rows) / mechanism table with PROPOSAL "you are here" + Demo "skipped" / proposal-as-spine showing v1 → v2.
-  - v2 PDF uploaded to Cam's proposals folder on Drive (`1k0_SYLdYtlM40y6W-ZAMV3Trr9hIq2Ph`, file ID `1pM3tYg6rHzG8RW6xU_titouiq_iddhIC`); Drive link wired into the showcase hero CTA.
-  - Shared with Cam + Kyle in `mpdm-cam--kwgeoghan--craig-1` (channel `C0A3B18LY07`) — thread reply to Cam's Apr 21 ask about proposal output, with `reply_broadcast=True` so it surfaces at channel-top.
-
-**Phase A is COMPLETE.** Two stages traced (DISCOVERY + PROPOSAL/NEGOTIATION), both Kyle-facing artifacts shipped (GR Little visual Apr 24, Alliance showcase Apr 28), proposal PDF in Cam's portfolio for review/sending. Mechanism validated across two distinct stages. Intermediate stages (CONTACT, DEMO, VERBAL/SIGNED) hydrate naturally from B3 stage research.
-
-**Next: Phase B starts.** With the OS bugs fixed in parallel during the trace, the foundation is much closer to being shipped autonomously. B1 (foundation hardening) absorbs the remaining bugs from `os-learnings.md` — most direct unblock is propagating the entity-resolution kernel capability (shipped Apr 27) into the Email Classifier + Touchpoint Synthesizer skills so Bug #16 (auto-create Companies) is closed end-to-end. B2 (hydration) starts with the rest of the active prospects + customer roster.
+**The dogfooding principle threads through every TD.** If we can't use the OS to deliver a TD, we fix the OS until we can.
 
 ---
 
-### Phase B — Build to autonomous (the bulk)
+### TD-1 — Adapters running cleanly + historical hydration
 
-**Purpose.** Develop the entire customer system to the point where it runs autonomously per the vision. **This is when "the customer system is achieving its own vision."**
+**Delivers:** Email + Meeting + Slack + Drive data flowing in continuously to dev OS, with manual entry paths for missed/unrecorded interactions. Foundation for everything downstream. **No cascade activation yet.**
 
-The work in B is large and pre-scoped here. Bug-fixing forks happen in parallel as soon as B starts.
+**Sub-pieces:**
+- Email recurring fetch (Gmail) — scheduled associate, all 11 team mailboxes, configurable cadence
+- Meeting recurring fetch (Google Meet) — same pattern + 30-day backfill of historical meetings
+- Slack adapter — built (channels + DMs + MPDMs)
+- Slack hydration — historical Slack content backfilled (which channels/DMs are customer-relevant; threads-as-Touchpoints; file-attachments-as-Documents)
+- Drive ingestion — Cam's proposal folder, shared Kyle/Cam folder, customer-specific folders. Standalone Documents linked to Companies.
+- Manual interaction entry — UI form + voice/talk-to-add (push-to-talk for quick updates)
+- Outlook adapter `**params` propagation (Bug #36 follow-on)
 
-#### How we build in Phase B+ — trace-as-build-method
+**Done-test:** Drop a new email/meeting/Slack thread anywhere in scope; the corresponding entity appears in dev OS within the configured cadence. EC/TS/IE remain suspended — entities sit at status `received` / `logged` waiting for cascade activation.
 
-The building method for Phase B and everything after is trace-as-build:
+**Dependencies:** Bug #36 cleanup (500 unrelated emails + 6 meetings) before recurring fetch turns on. Bug #37 row cleanup. Slack OAuth integration setup.
 
-> Every skill, watch, capability, integration adapter, or dashboard goes through a trace first. Pick a real scenario. Act as the associate yourself, running the `indemn` CLI on live data. The skill is the writeup of what worked. Activation comes after the trace produces the right state.
-
-Discovered in Phase A's shake-out traces (GR Little Apr 24 → Alliance Apr 27). Elevated to canonical building method in Session 8 (Apr 28). Applies to all of B/C/D/E. See `vision.md §4` for the full articulation, and `CLAUDE.md` Foundational design principle #20.
-
-This means each B-sub-phase task below is built as a trace, not as a code/skill edit ahead of validation. Inventory live data state → pick real scenarios → run the procedure yourself → write the skill / wire the capability / activate the watch / build the dashboard from what worked.
-
-#### B1 — Foundation hardening
-
-The 9-item structural list from `vision.md §2`, made real:
-
-- **Entity model complete + accurate.** Touchpoint Option B implemented (`source_entity_type` + `source_entity_id` fields; Synthesizer populates them). Playbook entity definition consulted by both Extractor and Artifact Generator. Open entity-model questions resolved (Opportunity vs Problem; Document-as-artifact for emails — see `os-learnings.md` Open Design Questions).
-- **Entity-resolution capability built in the kernel.** New CLI: `indemn entity resolve --type Company --domain X --name Y --email Z` returns ranked matches with confidence. Associates call it before any `create`. Root fix for Bug #16 / 446-Companies.
-- **Pipeline associates reactivated and running hands-off.** Email Classifier, Touchpoint Synthesizer, Intelligence Extractor. No silent stuck states (workflow detects empty agent output). No cross-invocation cache leaks (`/large_tool_results/` scoped per `message_id`). Generated entity skill teaches actual filter syntax.
-- **Watch cascade reliable end-to-end.** Email/meeting → Touchpoint → intelligence → opportunities → proposal → artifact. Every link works. Reverse-lookup capability where needed (`--include-related` follows reverse refs, or rename the flag).
-- **Temporal workflows manageable + OTEL spans observable.** Deep tracing on every operation. We can see what is happening at any point in any workflow.
-- **LangSmith on all harnesses.** AI observability everywhere associates run. Evaluations infrastructure ready for use as the feedback mechanism (Phase E).
-- **OS itself dogfooded as designed.** Patterns designed but never used in practice get used during this work. This is the test that the OS is what we believe it to be.
-- **All P0/P1 OS bugs from `os-learnings.md` resolved.** Including: Bug #29 (route eviction in `kernel/api/registration.py`), Bug #23 + #24 (bulk-delete operator filters + status reporting), Bug #22 (per-associate service tokens or `effective_actor_id` for forensics), Bug #9 (associates pass dicts vs ObjectIds — skill prompt + entity-skill enhancement), Bug #10 (no backfill / re-trigger for historical entities), Bug #18 (Synth doesn't update `Meeting.touchpoint` back-reference — subsumed by Option B), plus the medium register (#25-28, #19-21, #5-8, #11-13, #15, #2-4).
-
-**B1 done test.** A new email or meeting can be dropped into the system and the cascade runs cleanly without manual intervention.
-
-#### B2 — Hydration
-
-Get every customer/prospect into the system with full constellation populated.
-
-- **Recurring email fetch** — scheduled associate, all 11 team members, runs continuously
-- **Meeting backfill** — 30-day window, full team, both Apollo/Granola + Google Meet sources
-- **Drive ingestion (standalone)** — Cam's proposal folder, the shared Kyle/Cam folder, customer-specific Drive folders. Standalone files become Documents linked to Companies. *Required for Alliance trace and proposal generation.*
-- **Hydrate Alliance** — Company canonical (BT Core + Applied Epic + Dialpad in CustomerSystem), all Contacts (Christopher Cook, Brian Leftwich, ~5 others), all Emails (Kyle's full thread history), all Meetings (Jan-Feb discovery + Apr 8 renewal-wedge call), all Touchpoints synthesized, intelligence extracted, all Operations (renewals, customer service, new business intake), all Opportunities (renewal automation, etc.), Documents (v1 proposal, Craig's 30-page analysis), Proposal v2 in `drafting`, Phases for the renewal wedge approach.
-- **Hydrate Arches** — same shape. Jeff Hamilton as primary contact; agency profile ($35M, personal-lines focused, building commercial team); pain points as Signals → Opportunities; Proposal in `drafting` for Inbox + Knowledge + Submission + Quote + Front Desk + Strategy Studio Associates.
-- **Hydrate FoxQuilt** — same shape. Karim Jamal (CEO), Nick Goodfellow (VP Ops); Operations and Opportunities from the demo call; Proposal in `drafting`.
-- **Hydrate the rest** — all 18 current customers + active prospects (Tillman, Rankin, O'Connor, Amynta, IIANC five via Pat Klene, etc.) — same shape, varying depth depending on data available.
-- **Per-customer human enrichment via CLI** — Operations, Opportunities, CustomerSystem, BusinessRelationship, Documents that can't be auto-extracted. Craig + Cam as the operators.
-- **Internal meetings handled** — Touchpoint scope=internal for daily syncs etc. Hydration includes them.
-- **Constellation queryable** — for every customer, the full picture loads via CLI/UI in seconds.
-
-**B2 done test.** Run `indemn company get <name> --include-related --depth 3` for any customer and get the complete picture.
-
-#### B3 — Stage research + Playbook completion
-
-With hydrated data, mine historical patterns to define each stage. The Playbook hydrates from observed reality, not from Kyle's PLAYBOOK-v2 doc as spec.
-
-- **Analyze Touchpoints across customers per stage** — CONTACT, DISCOVERY, DEMO, PROPOSAL, NEGOTIATION, VERBAL/SIGNED. What does each stage actually look like in practice?
-- **Resolve open entity-model questions** — Opportunity vs Problem; Document-as-artifact pattern for emails.
-- **Produce Playbook records for all six stages** — `entry_signals`, `required_entities`, `expected_next_moves`, `artifact_intent` for each.
-- **Refine the two stages we shook out** — DISCOVERY (from GR Little) and PROPOSAL (from Alliance) Playbooks, based on Kyle/Cam feedback.
-- **12 sub-stages with archetype multi-select** — Kyle's Apr 24 ask. Surfaces from research naturally; we don't pre-design it. Probably implemented as Stage records gaining a `parent_stage` field for hierarchy + multi-select archetype field on Deal.
-
-**B3 done test.** Six Playbook records exist, each grounded in observed historical patterns. The Artifact Generator can produce stage-appropriate artifacts for any stage.
-
-#### B4 — Autonomous artifact production
-
-Wire the Artifact Generator to run for every Touchpoint at every stage.
-
-- **Artifact Generator associate built** — the role Claude plays in the traces. Reads `(Deal + recent Touchpoints + extracted intel + Playbook for Deal.stage + raw source content) → stage-appropriate draft`.
-- **Watches every Touchpoint → processed** — produces draft when Touchpoint is fully extracted.
-- **Drafts surface to OS queue** — for human review with one-click send. The OS queue IS the team's notification surface (no separate Slack/email layer for this — that's covered when the dashboard hooks up in Phase C).
-- **Document-as-artifact pattern resolved** — drafted emails/recaps/proposals have a defined home in the entity graph (Email entity with `status: drafting`? Document with `mime_type: message/rfc822`? Resolved by B3.)
-- **End-to-end autonomous** — every customer interaction produces a draft for human review. **This is when the customer system is achieving its own vision.**
-
-**B4 done test.** A new meeting happens. Within minutes, a draft artifact appears in the OS queue for the appropriate human, ready to review and send.
+**Open questions to resolve:**
+- Recurring-fetch cadence per source (15 min? hourly? per-source different?)
+- Slack scope — which channels/DMs/MPDMs are in (vs. all-of-Slack)? Who decides?
+- Slack thread-vs-message granularity — operate at thread level for Touchpoints? File attachments as Documents?
+- Drive folder identification — explicit list, or auto-discovered?
+- Manual entry UI shape — form fields, voice transcription path
+- Internal Slack discussions about a customer — how do they tie back to the customer entity at ingestion time (vs. on cascade)?
 
 ---
 
-### Phase C — Dashboarding (after autonomous)
+### TD-2 — Cascade activated progressively
 
-**Purpose.** Surface the running system to the team in a usable form. The OS queue is the foundation; dashboards are how the team interacts with it.
+**Delivers:** EC → TS → IE running autonomously on incoming Email/Meeting/Slack data. Companies, Contacts, Documents, Touchpoints, Decisions, Tasks, Commitments, Signals, Operations, Opportunities all auto-create from real data. **Proposal entity continuously hydrates as a side-effect.**
 
-- **Per-meeting view** — the GR Little artifact, but for every meeting (customer + internal), autogenerated and live. Shows entity trace, extracted intel, draft artifact, suggested next steps.
-- **Per-customer page** — the constellation, navigable. Company hub → Contacts, Touchpoints, Operations, Opportunities, Proposal, Phases, Documents, Associates. Drill in any direction.
-- **Sales pipeline list view (Kyle's V0)** — flat table of all customers/prospects with the columns Kyle keeps asking for: customer value, success path, days to next step, next step, owner. Hydrated with real pipeline data.
-- **Push-to-talk to update** — voice agent with access to all entities; sales reps speak updates rather than typing. Kyle's Apr 24 ask.
-- **All hooked up to the OS queue** — the dashboard IS the notification surface. New drafts, stale Deals, missed Commitments all surface in views the team is already looking at.
+**Sub-pieces:**
+- EC reactivated, verified manually on small test batches via LangSmith, then recurring
+- TS reactivated, verified manually, then recurring
+- IE reactivated (already active), verified through full cascade end-to-end on a real new email/meeting
+- Subsequent entity creation thoughtful: Hard-Rule-#1-inverted Company creation; Contact signature parsing; Document creation from email attachments + Drive + Slack files; Internal-Touchpoint scope handling; Employee `entity_resolve` activated
+- Deal-lifecycle automation — Deal-creator associate, Proposal-at-DISCOVERY auto-create, Touchpoint↔Deal linking
+- Proposal entity continuous hydration — every Touchpoint contributes (Operations, Opportunities, Phases, Decisions, Commitments, Tasks)
+- Company auto-create enrichment — newly-created Companies hydrate beyond name+domain (continuous enrichment process)
 
-**C done test.** Cam opens the dashboard daily; sees customers needing proposals; reviews drafts in-line; sends with edits. George prep is 5 minutes not 20.
+**Done-test:** A new email arrives → EC classifies + links → TS creates Touchpoint with Option B source pointers → IE extracts intelligence per Playbook[Deal.stage] AND updates Proposal entity. Cascade fires end-to-end with no manual intervention. Verified live on at least one new prospect's first-contact email post-activation.
 
----
+**Dependencies:** TD-1 complete (data flowing in, but cascade off). Hard Rule #1 inversion (already done in EC v9). Bug cleanup done.
 
-### Phase D — Adoption (light)
-
-**Purpose.** The team uses the OS as their daily mode of work. Behavior change is real but low-ceremony.
-
-- **Per-role onboarding** — Cam's flow, George's flow, Ganesha's flow, Peter's flow. Each gets the entry points + the daily rhythm they need.
-- **Documentation of operational learnings** — captured continuously per Kyle's Apr 24 ask.
-- **Light ceremony.** No formal "training program." More like "here's how you check on a customer" / "here's how you respond to a draft" / "here's how you log an interaction."
-
-**D done test.** A new team member can be onboarded into the OS as their daily mode in a single sit-down session.
-
----
-
-### Phase E — Evaluations + continuous improvement loop
-
-**Purpose.** Verify autonomous AI work + drive iteration through evaluations as the feedback mechanism.
-
-- **Foundation is in B1** — LangSmith on all harnesses, deep OTEL tracing, evaluations infrastructure ready.
-- **Continuous use starts now** — evaluations on segments / specific associates are used as the feedback mechanism for tracing situations and improving the system. Whenever an associate behaves wrong, we run an evaluation on the segment to pinpoint why and refine.
-- **Full eval coverage on all workflows is the future build** — every autonomous workflow has a rubric and a test set; quality is measured continuously.
-- **Becomes how we trust autonomous work.** Combined with deep tracing, this is the verification layer — without it, we can't responsibly let AI run hands-off.
-
-**E done test.** Every autonomous associate has a rubric + test set; evaluation results are visible in the dashboard; regressions caught automatically.
+**Open questions to resolve (these are LOAD-BEARING — must answer before execution):**
+- **Which associate hydrates the Proposal entity?** Is it IE's job (extends current scope: extract intel + update Proposal)? Or a fourth pipeline associate "Proposal Hydrator" that watches Touchpoint→processed independently? What does the procedure look like step by step?
+- **When does the Proposal entity get auto-created?** On Deal creation at DISCOVERY? By a new Deal-creator associate that fires on first-contact? What's the trigger?
+- **How does Proposal hydration know what to add vs. update vs. leave?** Does it consult `Playbook[Deal.stage].required_entities` to know which Proposal fields belong at this stage? Does it merge intelligently or always overwrite?
+- **Touchpoint↔Deal chicken-and-egg** — a Touchpoint is created for an email; how does it know which Deal to link to? Auto-create a Deal at DISCOVERY when no existing Deal matches? Heuristic by Company?
+- **Internal Touchpoints contributing to Proposal** — when an internal Slack thread is "about" a customer, the Touchpoint scope=internal. Does it still contribute to Proposal hydration? If yes, how does it know which Proposal? If no, why?
+- **Company auto-create with bare data** — a Company auto-created from one email has only domain+name. How does it get enriched (next email? scheduled associate? human-prompted?)?
+- **Contact signature parsing** — title, phone, address are in email signatures but currently fall on the floor. Deterministic parse? LLM extract? Where does it run (EC? TS? new associate?)?
+- **Activation safety** — what's the kill-switch + rollback story per associate? How do we know a new email batch was processed correctly before we let recurring fetch send the next batch?
 
 ---
 
-### Phase F — Slack ingestion *(MOVED to early Phase B per Apr 27 Alliance trace)*
+### TD-3 — Customer constellation queryable + per-customer UI
 
-**Purpose.** Add Slack as a Touchpoint source.
+**Delivers:** A custom UI layer that visualizes the constellation around any Company. The team can open a customer page and see the full picture in seconds. Replaces "ask Kyle" for understanding any customer.
 
-**Why moved up (was deferred):** the Apr 27 Alliance trace surfaced that key analytical artifacts and team-internal-thinking touchpoints already live in Slack and are foundational for the customer constellation:
-- **Capability Document** (Craig's 30-page Alliance analysis) — Slack file in `#customer-implementation`
-- **Apr 7-8 Retention Associate / compound outcome design thread** — Slack thread that produced the Decisions driving the v2 proposal
-- **Apr 21 Cam mpdm packaging** — multi-party DM where the proposal-generation thread originated
+**Sub-pieces:**
+- UI layer over OS API (custom React/Astro/etc. — not auto-generated entity views; possibly an adapter pattern where the UI hooks natively into the OS)
+- Per-customer page: timeline of all Touchpoints (chronological, expandable), entity sub-sections (Contacts, Operations, Opportunities, Documents, Decisions, Commitments, Signals, Phases, Proposal), constellation summary
+- Visual language matches the GR Little / Alliance trace-showcase HTMLs Kyle and Cam validated
+- Internal + external Touchpoints interleaved on the timeline
+- Linked Documents accessible per Touchpoint and per Company
+- Proposal-fill state visible — populated vs. empty fields signal next-actions
+- AI assistant surfaced in the UI (using OS base-UI assistant pattern — every human actor has a default assistant pre-provisioned)
+- Authentication / org-scoping via existing OS auth
 
-Without Slack ingestion, ~half the touchpoints in Alliance's trace had to be manually reconstructed. Slack is foundational, not deferrable. New placement: **B2 sub-phase or its own B5**, not Phase F.
+**Done-test:** Any team member opens the UI, picks any customer, gets the full constellation in seconds. Can interact via the AI assistant ("what's the status with Alliance?"). The page looks like the trace-showcase HTMLs. Internal interactions visible alongside external.
 
-**Work needed:**
-- Slack adapter (channels + DMs + MPDMs) — same pattern as Gmail / Google Workspace adapters
-- Threads become Touchpoints — operating at thread level, not individual messages
-- File attachments become Documents — extend Document.source enum with `slack_file_attachment`
-- Sources include: customer-specific channels, tagged messages in general channels, MPDMs that reference a customer
-- Backfill mechanism for historical Slack content (same as Bug #10 family)
+**Dependencies:** TD-2 must be running (data flowing into entities for the UI to visualize). At least 3-5 customers hydrated for the UI to be meaningful in dev.
+
+**Open questions to resolve:**
+- UI tech stack — React + Vite (matches OS UI)? Astro? Something else?
+- Hosted where — Railway alongside OS UI? Separate domain? `customer.os.indemn.ai`?
+- API access pattern — direct OS API hits? Adapter pattern (a "customer-system UI adapter" in `kernel/integration/adapters/`)?
+- AI assistant in the UI — reuses OS chat-deepagents harness? Or a new dedicated harness for customer-system queries?
+- Page-level vs. component-level architecture — single-page-app with routing, or per-customer Astro pages?
+- Real-time updates when new Touchpoints arrive — WebSocket subscription? Polling?
+- Mobile responsiveness — scope decision
 
 ---
 
-## Continuous threads (run alongside everything)
+### TD-4 — Playbook stages defined from history
 
-These are not phases — they run continuously from the moment Phase B starts.
+**Delivers:** Six grounded Playbook records (one per Stage: CONTACT, DISCOVERY, DEMO, PROPOSAL, NEGOTIATION, VERBAL/SIGNED), each defining `entry_signals`, `required_entities`, `expected_next_moves`, `artifact_intent` from observed historical patterns. Resolves the long-running open design questions.
 
-### OS bug convergence (active immediately)
+**Sub-pieces:**
+- Mine hydrated data across customers per stage — what does each stage actually look like?
+- Refine DISCOVERY (GR Little + Armadillo) and PROPOSAL (Alliance) Playbooks based on Kyle/Cam feedback
+- Define CONTACT, DEMO, NEGOTIATION, VERBAL/SIGNED Playbook records from historical examples
+- Resolve open design questions:
+  - Opportunity vs. Problem entity
+  - Document-as-artifact pattern for emails
+  - 12 sub-stages with archetype multi-select (Kyle's Apr 24 ask)
+  - Origin/referrer tracking (Pat Klene → GR Little, Matan → David → Armadillo)
+  - Playbook hydration mechanism — manual vs. scheduled associate vs. human-in-the-loop
+- Internal docs spanning multiple prospects — how they attach in the entity graph (Kyle's Apr 8 Warranty Prep covering Amynta + Fair + Armadillo)
 
-**Critical operational discipline.** As soon as Phase B starts, fork parallel sessions to work bugs from `os-learnings.md`. Compute is not a constraint. The bug list converges to zero on what we choose to prioritize.
+**Done-test:** Six Playbook records exist, each grounded in observed historical patterns from at least 2-3 customers. The Artifact Generator (TD-5) can produce stage-appropriate artifacts for any stage by consulting the right Playbook record.
 
-- **Bug list lives in `os-learnings.md`** — ranked by impact (critical/blocking → high → medium → open design questions). Source-of-truth detail in `artifacts/2026-04-24-os-bugs-and-shakeout.md`.
-- **Top priorities** — Touchpoint Option B; entity-resolution kernel capability; Bug #29 (route eviction); Bug #23 (bulk-delete operator filters); Bug #22 (service-token forensics).
-- **Forking pattern** — when something blocks customer-system progress, fork an isolated git worktree, fix the bug in the OS repo, merge back. The customer-system trace work doesn't block.
+**Dependencies:** TD-1, TD-2, TD-3 — need hydrated data + visibility before we can mine patterns.
+
+**Open questions to resolve:**
+- How is each Playbook's `required_entities` defined? From the entity model + observed pattern intersection?
+- 12 sub-stages — does this become a `parent_stage` field on Stage, or a separate `qualification_state` field on Deal, or sub-stage records?
+- Playbook hydration mechanism — once defined, does the Playbook refine automatically as more data accrues, or is each version a manual update?
+
+---
+
+### TD-5 — Per-interaction artifact generation
+
+**Delivers:** Every Touchpoint that completes processing produces a stage-appropriate draft artifact — follow-up email at DISCOVERY, recap at DEMO, objection response at NEGOTIATION, kickoff at SIGNED, etc. Drafts surface to the OS queue for human review with one-click send.
+
+**Sub-pieces:**
+- Artifact Generator associate built (the role Claude played in GR Little + Alliance traces)
+- Watches Touchpoint→processed → produces draft when fully extracted
+- Reads `Playbook[Deal.stage].artifact_intent` for the spec
+- Reads `(Deal + recent Touchpoints + extracted intelligence + Playbook + raw source content)` for materials
+- Drafts surface to OS queue for human review
+- One-click send via existing Email integration (Gmail) and Slack integration
+- Document-as-artifact pattern resolved — drafted email entity location (Email with status=drafting? Document with mime_type=rfc822? Hybrid?)
+- Push-to-talk integration for sales rep voice updates of fields (Kyle's Apr 24 ask)
+
+**Done-test:** A new meeting happens → within minutes a draft artifact appears in the OS queue for the appropriate human → review and one-click send.
+
+**Dependencies:** TD-4 (Playbook records define what to render).
+
+**Open questions to resolve:**
+- Artifact Generator skill structure — same pattern as EC/TS/IE? Different harness (it produces drafts, doesn't transition data)?
+- One-click send mechanism — direct Gmail integration, or queued for human approval first?
+- Drafted email storage — Email entity with status=drafting? Document with rfc822 mime? Hybrid? (Open Q from Apr 24.)
+
+---
+
+### TD-6 — Proposal deck generation autonomous
+
+**Delivers:** At PROPOSAL stage, the proposal deck renders automatically from the live entity graph — Operations, Opportunities, Phases, AssociateTypes, all pulled from the constellation. Cam reviews + sends with edits. Replaces Cam's manual proposal authoring.
+
+**Sub-pieces:**
+- Artifact Generator handles PROPOSAL stage (special case of TD-5 mechanism)
+- Pulls from live entity graph (not Claude-in-conversation)
+- Uses existing `templates/proposal/` rendering pipeline (Handlebars + CSS + puppeteer-core)
+- Cam validates v3 of Alliance generated autonomously, OR first proposal of TFG / Arches
+- Proposal state machine `superseded` transition added (open from Sessions 6-9)
+- Drive ingestion of historical proposals (Cam's portfolio context, already in TD-1)
+
+**Done-test:** A Deal transitions to PROPOSAL stage → Artifact Generator produces a styled PDF rendered from the live entity graph → uploaded to Cam's Drive folder → Cam reviews and sends with edits, or pushes back with feedback that informs the next iteration.
+
+**Dependencies:** TD-1 (Drive ingestion), TD-4 (PROPOSAL Playbook), TD-5 (Artifact Generator wired).
+
+**Open questions to resolve:**
+- Trigger — is it automatic on stage transition, or human-initiated (Cam clicks "generate v3")?
+- v1 → v2 → v3 versioning — auto-supersede prior versions? Keep all versions queryable?
+- Drive upload — automatic on render? Or human-approved?
+- Proposal state machine — add `superseded` transition path
+
+---
+
+### TD-7 — System visibility (sales pipeline + per-meeting view + flow diagram)
+
+**Delivers:** Team-facing dashboards that surface what the OS is doing. The pieces Kyle has been asking for since Apr 24.
+
+**Sub-pieces:**
+- **Sales pipeline list view (Kyle's V0 ask)** — flat table of all customers/prospects with columns: customer value, success path, days to next step, next step, owner. Hydrated with real pipeline data.
+- **Per-meeting view** (vision §2 thread A) — every meeting Indemn has, customer + internal, autogenerated and live. Entity trace + extracted intel + draft artifact + suggested next steps.
+- **Flow diagram of actors + data flow** — what's running, on what, why. Real-time visibility into the cascade.
+- **Push-to-talk for sales reps** to update fields via voice (Kyle's Apr 24 ask, originally folded in TD-5; surfaces here as the use-case integration)
+- **Drafts review surface** — the OS queue for the current human, with all draft artifacts ready to review
+
+**Done-test:** Cam opens the dashboard daily, sees customers needing proposals, reviews drafts inline, sends with edits. George prep is 5 minutes not 20. Kyle sees the live state of every prospect and feels confident he can step away.
+
+**Dependencies:** TD-3 (UI infrastructure), TD-5 (drafts exist to review), TD-6 (proposals to review).
+
+**Open questions to resolve:**
+- Are these separate pages or unified into one team dashboard?
+- How are stale Deals / missed Commitments surfaced? Watches → notification, or visible-by-default?
+- Push-to-talk wiring — voice harness extension or new harness?
+
+---
+
+### TD-8 — Team adoption (daily mode of work)
+
+**Delivers:** The team uses the OS as their daily mode of work. Behavior change is real but low-ceremony.
+
+**Sub-pieces:**
+- Per-role onboarding flow: Cam (proposals + customer prep), George (meeting prep), Ganesha (delivery tracking), Peter (technical handoffs), Kyle (everything but lighter)
+- Operational learnings captured continuously (per Kyle's Apr 24 ask)
+- Light ceremony — no formal training program. "Here's how you check on a customer" / "how to respond to a draft" / "how to log an interaction."
+- Daily-driver practices (e.g., morning queue review, end-of-day commitments check)
+
+**Done-test:** A new team member is onboarded into the OS as their daily mode in a single sit-down session. Existing team members use it without prompting.
+
+**Dependencies:** TD-3 + TD-7 (UI is usable). TD-5 (drafts surface). TD-6 (proposals working).
+
+**Open questions to resolve:**
+- Per-role flows — what does a Cam day look like in the OS? A George day?
+- Documentation surface — in-product help? Wiki? Inline UI hints?
+
+---
+
+### TD-9 — Evaluations + continuous improvement loop
+
+**Delivers:** Every autonomous associate has rubric + test set. Quality measured continuously. Regressions caught automatically.
+
+**Sub-pieces:**
+- Path 3 architecture executed — existing `evaluations` repo becomes a kernel adapter (`system_type: evaluation`, provider: `langsmith` or `indemn-evals`)
+- Per-associate rubrics (EC, TS, IE, Artifact Generator, future associates)
+- Per-associate test sets (capture real failure modes from LangSmith traces; multi-turn-replay + multi-turn-simulated)
+- Continuous evaluation runs — when an associate behaves wrong, run an eval on the segment to pinpoint why and refine
+- Eval results visible in the dashboard (TD-7 extension)
+
+**Done-test:** Every autonomous associate has a rubric + test set. Evaluation results visible. Regressions caught automatically. Combined with deep tracing (LangSmith already wired, Session 10), this is the verification layer that lets us trust autonomous work.
+
+**Dependencies:** TD-2 (associates running). LangSmith already wired (Session 10). Path 3 evaluations design (defer until needed).
+
+**Open questions to resolve:**
+- When does evaluation become first-class — is it a continuous thread from Session 12 onwards (running on an as-needed basis), or a dedicated TD that ships when the eval set is mature?
+- Native OS evaluations primitive vs. external evaluations service vs. hybrid (Path 3 chosen, but timing of full kernel-adapter integration is open)
+
+---
+
+### TD-10 — Persistent-AI loops (Commitment-tracking pattern)
+
+**Delivers:** Commitments tracked end-to-end. The "Walker → Peter → Ganesha → Kyle" pattern Kyle described Apr 24. When a Commitment is created in a meeting/email/Slack, the system watches it, notifies the assignee, tracks fulfillment, escalates up the chain when needed.
+
+**Sub-pieces:**
+- Commitment-tracker associate
+- Watches on Commitment entity (created, transitioned)
+- Notifies assignees (via Slack/email integration) when Commitments come due
+- Tracks fulfillment events (e.g., "Walker said yes" → emit Commitment fulfilled)
+- Escalation when overdue (Walker → Peter → Ganesha → Kyle)
+- UI surface — Commitments per customer, per assignee, overdue items
+
+**Done-test:** A Commitment created during a meeting flows through to the assignee, gets tracked, notifies up the chain when fulfilled or when overdue.
+
+**Dependencies:** TD-2 (Commitment entity gets populated by IE). TD-3 (UI surface). TD-5 (artifacts include Commitment-related drafts).
+
+**Open questions to resolve:**
+- Commitment-tracker associate — what's its trigger pattern? Schedule-based (cron) for due-date checks, or event-based (watch Commitment transitions)?
+- Escalation rules — time-based (overdue by N days), or signal-based (no activity)?
+- Notification surface — Slack DM? Email? OS queue? All of the above?
+
+---
+
+### TD-11 — External-customer ready (Horizon 3)
+
+**Delivers:** The OS is production-ready for external customers (non-Indemn). The kernel is hardened, the capability library is mature, the customer-onboarding playbook is real, a second domain can be modeled in days not weeks. The white paper's Phase 6 → Phase 7 transition becomes operable.
+
+**Sub-pieces:**
+- Kernel hardening — production-grade error handling, rate limiting, observability
+- Customer-onboarding playbook — the 8-step domain modeling process with worked examples
+- Second domain modelable — proven by either a fork attempt or planned next domain (e.g., delivery tracking, evaluations) coming online quickly
+- Multi-tenancy edge cases resolved
+- Compliance + audit trail surface (changes collection, hash-chain verification)
+
+**Done-test:** A non-Indemn business modeled on the OS in <1 week. The customer-onboarding playbook is real and follows the 8-step process. Multi-tenancy holds.
+
+**Dependencies:** TD-1 through TD-10 (Indemn fully running on the OS first).
+
+**Open questions to resolve:**
+- Second domain target — what's the first non-customer-system domain to prove generality? Delivery tracking? Evaluations as a domain? Conferences?
+- Hardening checklist — what specifically needs to be production-grade before external customer onboarding?
+
+---
+
+## Continuous threads (run alongside every TD)
+
+These are not deliverables — they run continuously across every TD.
+
+### OS bug convergence (always-active)
+
+**Operational discipline.** When customer-system work surfaces an OS-relevant finding, log it in `os-learnings.md`. If it blocks current TD work and is non-trivial, fork a parallel session to fix it. The customer-system development work doesn't block on bug fixes — they run in parallel.
+
+- **Bug list lives in `os-learnings.md`** — ranked by impact (critical/blocking → high → medium → open design questions).
+- **Top priorities at any time** — pulled from `os-learnings.md`'s "Critical / blocking the next phase" section. As of Session 12 close: most load-bearing work is done; remaining is mostly customer-system domain work + a handful of CLI papercuts.
+- **Forking pattern** — when something blocks current TD work, fork to a separate git worktree, fix the OS-side bug in the OS repo, merge back. Coordinate with main session via shared context (`os-learnings.md` + `CURRENT.md`).
 - **Fix-inline pattern** — when an OS fix is small and on the path of current work, do it inline. Don't fork unnecessarily.
+- **Bugs are not pre-allocated to TDs** — they surface as we work; we fix them where they surface.
 
 ### OS-side milestones
 
@@ -233,7 +345,14 @@ As we build, the OS itself accumulates milestones beyond bug fixes. Track them s
 
 ## Out of scope (for this roadmap)
 
-- **Persistent-AI loops** (Walker → Peter → Ganesha → Kyle pattern that Kyle described Apr 24) — separate part of the system, future design. The Commitment + Task entities support it structurally; the wiring (associate that watches Commitments, notifies assignees, tracks fulfillment) is its own design problem to be tackled after B/C are in motion.
+This roadmap covers everything Indemn-the-company will run on the OS, plus the readiness for external customers (TD-11 / Horizon 3). What's explicitly NOT in this roadmap:
+
+- **External-customer-specific domain modeling** — once TD-11 lands, modeling a non-Indemn business on the OS is a new project. Each external customer is its own domain configuration.
+- **Voice agent products** for external customers (EventGuard-style autonomous voice flows) — different product, different system, not customer-system scope.
+- **Mobile UI** — not in TD-3 scope. Web-first; mobile is a future consideration after team adoption (TD-8) proves the desktop experience works.
+- **Inbound webhook from external customers' systems** — not in scope until TD-11.
+
+Note: Persistent-AI loops (Walker → Peter → Ganesha → Kyle pattern, Kyle's Apr 24 ask) are now TD-10 — folded back in. They were previously deferred but the Commitment-tracking work belongs in this roadmap because the Commitment + Task + assignee-notification mechanism is part of the customer system's foundation.
 
 ---
 
@@ -245,14 +364,17 @@ As we build, the OS itself accumulates milestones beyond bug fixes. Track them s
 | `os-learnings.md` | Running register of OS bugs, capability gaps, design questions. |
 | `INDEX.md` | Append-only project history. Status, Decisions, Open Questions, full Artifacts table. |
 | `CLAUDE.md` | Cumulative thinking, journey, principles, start-of-session protocol. **Always read first.** |
-| `artifacts/2026-04-25-session-handoff-and-roadmap.md` | The previous session's roadmap — superseded by this document but preserved for history. |
+| `CURRENT.md` | Fast-changing state (parallel sessions, blockers, in-flight). Read after CLAUDE.md every session. |
+| `SESSIONS.md` | Append-only per-session log of objectives + outcomes. |
+| `PROMPT.md` | The session-start prompt template — pasteable into N parallel + N sequential sessions. |
 | `artifacts/2026-04-22-entity-model-brainstorm.md` | Entity field-level specs. |
 | `artifacts/2026-04-22-entity-model-design-rationale.md` | Why the entity model is shaped this way. The Alliance test. |
 | `artifacts/2026-04-23-playbook-as-entity-model.md` | The breakthrough articulated. |
 | `artifacts/2026-04-24-design-dialogue-playbook-artifact-proposal.md` | Latest design refinements (Apr 24). |
 | `artifacts/2026-04-24-extractor-pipeline-gap.md` | Why the Extractor failed Apr 24; Option B is the chosen fix. |
 | `artifacts/2026-04-24-extractor-procedure-and-requirements.md` | Procedure for autonomous Extractor + 9 OS capability gaps. |
-| `artifacts/2026-04-24-information-flow-v2.html` | The Kyle-validated visual demo (open in browser). |
+| `artifacts/2026-04-24-information-flow-v2.html` | The GR Little visual demo (open in browser). |
+| `artifacts/2026-04-27-alliance-trace-showcase.html` | The Alliance trace-showcase visual (the language for TD-3 UI). |
 | `artifacts/2026-04-24-grlittle-followup-email-draft.md` | The GR Little artifact + entity-to-line mapping. |
 | `artifacts/2026-04-24-os-bugs-and-shakeout.md` | Bug-level deep detail. |
 | `/Users/home/Repositories/indemn-os/docs/white-paper.md` | The OS canonical vision. |
