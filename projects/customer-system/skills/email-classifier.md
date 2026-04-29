@@ -2,7 +2,7 @@
 
 You classify newly ingested Email entities. Determine which Company the email relates to, link participants to known Contacts and Employees, and transition to the appropriate state.
 
-The single most important rule: **resolve before create**. Always check whether a Contact or Company already exists before creating one. Never auto-create a Company. Auto-create a Contact ONLY when resolve returns zero matches AND a Company is identified.
+The single most important rule: **resolve before create**. Always check whether a Contact or Company already exists before creating one. Auto-create a Company AND Contact when both resolve calls return zero matches AND the email passed the irrelevance check (Step 2).
 
 ## Trigger
 
@@ -16,6 +16,7 @@ Use the `execute` tool to run `indemn` CLI commands. The full procedure below is
 execute("indemn email get <id>")
 execute("indemn company entity-resolve --data '{\"candidate\": {\"domain\": \"<domain>\"}}'")
 execute("indemn contact entity-resolve --data '{\"candidate\": {\"email\": \"<email>\"}}'")
+execute("indemn company create --data '{\"name\": \"...\", \"domain\": \"...\", \"cohort\": \"Prospect\"}'")
 execute("indemn contact create --data '{\"name\": \"...\", \"email\": \"...\", \"company\": \"<company_id>\", \"how_met\": \"Inbound\"}'")
 execute("indemn email update <id> --data '{\"sender_contact\": \"<contact_id>\", \"company\": \"<company_id>\"}'")
 execute("indemn email transition <id> --to classified --reason \"...\"")
@@ -79,7 +80,7 @@ indemn company entity-resolve --data '{"candidate": {"domain": "<sender_domain>"
 
 Outcomes:
 - **Exactly 1 candidate, score 1.0 matched_on contains `domain`** → known Company. Use this `_id` as `company`.
-- **0 candidates** → Company doesn't exist by domain.
+- **0 candidates** → Company doesn't exist by domain. OK to auto-create at Step 5 (sender already passed irrelevance check at Step 2). The resolve-before-create discipline IS the dedup defense; if a Company existed under this domain, this call would have surfaced it.
 - **Multiple candidates score 1.0 matched_on `domain`** → dupe Company situation. Transition to `needs_review` with reason listing candidate IDs. Do NOT pick one and do NOT auto-merge inside the classifier (cleanup is a separate operation).
 - **Multiple candidates at score 1.0 across ANY combination of `matched_on` fields** → ambiguity. Even if one matched on both `domain` AND `name` while another matched on `name` only, it is still ambiguous — the most-specific match is NOT a tiebreaker. Transition to `needs_review` with reason listing all candidate IDs and their `matched_on`. (See Hard Rule #3 + Diana@CKSpecialty as the canonical example.)
 - **Fuzzy candidate(s) only (score < 1.0)** → treat as 0 (not authoritative). Don't auto-link.
@@ -92,7 +93,7 @@ Outcomes:
 | 1 Contact (1.0) | 1 Company (1.0) | Update email with `sender_contact` + `company`. Transition to `classified`. |
 | 0 Contact | 1 Company (1.0) | **Create new Contact** with `name` (parse from sender or recipient header), `email` (sender lowercased), `company` (the resolved Company ID), `how_met: "Inbound"`. Update email with new Contact ID + Company. Transition to `classified`. |
 | 1 Contact (1.0) | 0 Company | Update email with `sender_contact` only. Transition to `needs_review` with reason "Contact known but Company is undetermined — domain `<sender_domain>` is not registered." |
-| 0 Contact | 0 Company | Transition to `needs_review` with reason "Unknown sender at unknown domain `<sender_domain>`." Do NOT create Contact. Do NOT create Company. |
+| 0 Contact | 0 Company | **Create new Company**: `name` from email signature parsing if available, otherwise humanize the domain (e.g. `armadillo.one` → `Armadillo`); `domain` = `<sender_domain>`; `cohort` = `"Prospect"`. **Create new Contact**: `name` parsed from `From` header (e.g. `"Matan Slagter"`), `email` = sender lowercased, `company` = the just-created Company `_id`, `how_met` = `"Inbound"`. Update email with both new IDs. Transition to `classified`. |
 | Multiple 1.0 (Contact OR Company) | any | Transition to `needs_review` with reason listing candidate IDs. Cleanup is a separate operation. |
 | any | resolve errored | Transition to `needs_review` with the verbatim error in the reason. **Never** fall through to `create`. |
 
@@ -106,7 +107,7 @@ When a thread_id is present, prior emails in the same thread may already be clas
 
 ## Hard rules — non-negotiable
 
-1. **Never auto-create a Company.** If Company resolution returns 0, the email goes to `needs_review`. Wait for a human to either create the Company manually or determine it's not worth tracking.
+1. **Resolve before create on Company.** Always run `indemn company entity-resolve --data '{"candidate": {"domain": "<sender_domain>"}}'` before deciding to create. If exactly **0 candidates** AND the email passed the irrelevance check (Step 2), **create the Company** using domain + name heuristics from Step 5. If **multiple candidates at score 1.0** across ANY combination of `matched_on` fields → `needs_review` per Hard Rule #3 — never pick one arbitrarily. If **resolve errors** → `needs_review` per Hard Rule #8. (Background: prior version was "Never auto-create a Company." That conservatism was warranted before `entity_resolve` was reliable — Bug #34 fix shipped 2026-04-28. With resolve now reliable and used as the safety mechanism, blanket prohibition is no longer needed and was blocking legitimate new-prospect autonomous onboarding. **Resolve-first IS the dedup defense.** The same logic applies to Contact creation — Hard Rule #2.)
 2. **Resolve before create on Contact.** Always run `entity-resolve` before `create`. Never create a Contact if any candidate (with score 1.0 and matched_on containing email) already exists.
 3. **Multiple 1.0 candidates → needs_review, never pick one arbitrarily.** Tie-breaking is a human decision (or a separate cleanup operation).
 4. **Don't trust pre-existing email field values.** A `received` email may have stale `company` / `sender_contact` set from a previous classifier run. Resolve fresh; overwrite.
@@ -124,7 +125,7 @@ When a thread_id is present, prior emails in the same thread may already be clas
 
 **Example 2 — new Contact at known Company.** Email from `brian.coburn@stratixadvisory.com`. Contact resolve → 0 candidates. Company resolve by `stratixadvisory.com` → 1 candidate (Stratix Advisory). Action: create new Contact with `how_met: "Inbound"`, link, transition to `classified`.
 
-**Example 3 — truly new domain.** Email from `j.kamrath@quadient.com`. Contact resolve → 0. Company resolve by `quadient.com` → 0. Action: transition to `needs_review` with reason "Unknown sender at unknown domain quadient.com." Do not auto-create Company.
+**Example 3 — truly new domain (auto-create both).** Email from `matan@armadillo.one` (Subject: "Indemn / Armadillo", Body: "Kyle, Great seeing you at InsurtechNY..."). Contact resolve → 0 candidates. Company resolve by `armadillo.one` → 0 candidates. Action: create Company `{"name": "Armadillo", "domain": "armadillo.one", "cohort": "Prospect"}`. Then create Contact `{"name": "Matan Slagter", "email": "matan@armadillo.one", "company": <new_company_id>, "how_met": "Inbound"}`. Update email with both IDs. Transition to `classified`. Resolve-before-create catches duplicates — if `armadillo.one` already had a Company, Step 4 would have returned 1 candidate and we'd have linked instead of creating.
 
 ## Quick reference — resolve response shape
 

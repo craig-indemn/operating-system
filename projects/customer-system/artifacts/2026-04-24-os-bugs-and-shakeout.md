@@ -915,6 +915,116 @@ After redeploy, dry-run bulk-delete with `{"created_at": {"$gte": "2026-04-27T20
 
 ---
 
+## Bug #36 — Gmail (and Calendar) `fetch_new` adapters silently ignore the `until` parameter 🔴
+
+**Discovered:** 2026-04-29 (during Armadillo trace setup)
+**Severity:** **Critical** (operators cannot scope ingestion; narrow-window intent → unbounded ingestion; cascades downstream)
+**Location:** `kernel/integration/adapters/google_workspace.py` — Gmail fetch path (`fetch_emails`/equivalent) and Calendar fetch path (`fetch_meetings`/equivalent)
+
+### Symptom
+
+Calling
+
+```
+indemn email fetch-new --data '{"user_emails": ["kyle@indemn.ai"], "since": "2026-04-02T18:00:00Z", "until": "2026-04-02T22:00:00Z"}'
+```
+
+against the live dev API returned **500 emails** — and **all sampled emails were from Apr 29 (today)**, NOT from Apr 2 as the `since` requested. The defect is worse than just `until`-ignored: the adapter appears to walk newest-first and return the 500 most-recent emails capped at the page size, **never reaching the requested `since` date**. Both window boundaries are silently violated. On Kyle's mailbox that means an Apr 2 intent fetched zero of the targeted Apr 2 emails and 500 unrelated recent ones instead. Confirmed by sampling 5 of the 500 created Email entities via `indemn email get` — all 5 had `date: 2026-04-29T13:xx:xx`.
+
+Calendar fetch shows the same defect:
+
+```
+indemn meeting fetch-new --data '{"user_emails": ["kyle@indemn.ai"], "since": "2026-04-28T18:00:00Z", "until": "2026-04-28T22:00:00Z"}'
+```
+
+returned 6 meetings, two of which fell outside the requested window — `2026-04-29T12:14` (next-day) and `2026-04-28T22:59` (after `until`). `until` is being ignored on the Calendar path too.
+
+### Root cause (likely)
+
+The adapter parses `since` and constructs a Gmail query like `after:<since-unix>` for emails or sets `timeMin` for Calendar, but does NOT consume `until` — the parameter is accepted by the API contract and dropped before query construction. To confirm, read the adapter's query-build path and look for whether `until` is bound into the query string / `timeMax`.
+
+### Why critical
+
+1. **Operators have no way to scope a targeted ingestion.** Any fetch is effectively unbounded forward in time, capped only by the API page size.
+2. **Cascades wide.** A narrow-window intent (3 emails of interest) becomes a 500-email mass create. With Email Classifier active, EC fires 500 times for a 3-email-intent — massive blast radius mismatch.
+3. **Breaks trace-as-build discipline.** The trace requires scoped data for clean step-by-step reasoning. An adapter that silently widens the scope makes deterministic tracing impossible.
+4. **Silent failure mode.** No warning, no error, no log line — the operator sees `fetched: 500` and assumes the window was honored.
+5. **Symmetric defect across two adapters** (Gmail + Calendar) suggests a shared pattern in the adapter abstraction; fix should be checked everywhere `since`/`until` semantics apply.
+
+### Fix
+
+1. Inspect the Gmail fetch query construction in `kernel/integration/adapters/google_workspace.py`. If `until` is dropped, add `before:<until-unix>` to the Gmail search query (Gmail's `before:` accepts seconds-since-epoch or `YYYY/MM/DD`).
+2. Same fix on the Calendar fetch path: ensure `timeMax` is set from `until` when provided.
+3. Add adapter-level tests that assert a fetch with `since`+`until` returns only items inside the window.
+4. Audit other adapters (e.g. any future Slack / Outlook ingestion) for the same defect class.
+
+### Verification
+
+After fix, re-run
+
+```
+indemn email fetch-new --data '{"user_emails": ["kyle@indemn.ai"], "since": "2026-04-02T18:00:00Z", "until": "2026-04-02T22:00:00Z"}'
+```
+
+should return ≤ a handful of emails (whatever Kyle actually sent/received in that 4-hour window), not 500.
+
+### Linked OS work
+
+- Surfaced during the 2026-04-29 Armadillo trace setup
+- 500 Email entities + 6 Meeting entities created in dev OS as a side-effect of this bug — material state pollution. Cleanup is a separate task once the trace concludes (or accept and fix forward).
+
+---
+
+## Bug #37 — Email list endpoint returns HTTP 400 when ANY single Email document has a malformed `company` field 🔴
+
+**Discovered:** 2026-04-29 (during Armadillo trace setup, attempting to locate the Apr 2 email entity)
+**Severity:** **High** (one bad row poisons the entire list endpoint — operators cannot list emails at all until the bad row is fixed)
+**Location:** `kernel/api/registration.py` — auto-generated list handler for Email; or wherever Pydantic strict validation runs on read-back from MongoDB
+
+### Symptom
+
+```
+GET /api/emails/?limit=100&offset=0
+→ 400
+{
+  "error": "ValidationError",
+  "message": "1 validation error(s)",
+  "errors": [{"loc": ["company"], "msg": "Input should be an instance of ObjectId", "type": "is_instance_of"}]
+}
+```
+
+The request specifies no `company` filter. Some Email document in the result set has a non-ObjectId value in its `company` field (probably a stringified dict left over from a pre-Bug-#9-fix associate run, or a manual create with the wrong shape). Pydantic's strict ObjectId validator fails on read, which fails the entire list response.
+
+### Why this is bad
+
+- One bad record makes EVERY list call fail — even calls that would have returned only good records (with appropriate offset).
+- No way for operators to recover via the API: you cannot list to find the bad record, cannot use the bulk machinery to fix it, cannot even sample.
+- Same defect class likely exists for any entity with a Pydantic strict relationship field; Email surfaces it because it has the most documents.
+
+### Likely root cause
+
+The list handler (probably `_register_list_route` in `kernel/api/registration.py`) iterates documents and constructs Pydantic models per-row, then dumps. One row's strict-validation failure aborts the whole response.
+
+### Possible fixes (any one is sufficient)
+
+1. **Per-row error handling.** Wrap each row's Pydantic construction in a try/except — on validation error, log + skip + include in a sidecar `errors[]` field of the response. List succeeds, bad rows are visible.
+2. **Coerce-on-read like Bug #19's `_coerce_datetime_fields`.** Add `_coerce_objectid_fields` on read-back — string ObjectIds → bson.ObjectId, dicts → reject (set field to None) with logging.
+3. **Fix the bad data.** Find and repair the offending Email's `company` field directly. Doesn't fix the underlying fragility.
+
+(1) is the right structural fix — the list endpoint should never be brittle to a single malformed row.
+
+### Verification
+
+After fix:
+- `GET /api/emails/?limit=100` returns 200 with up to 100 rows even if some are malformed
+- The response includes a `validation_errors` array (or similar) for visibility on which rows failed read
+
+### Linked OS work
+
+- Surfaced as a side-effect of Bug #36's mass-create. The malformed row may have been created by an earlier associate run before Bug #9 (boundary coercion) shipped.
+
+---
+
 ## Future bugs (add as we encounter them)
 
 Append new entries above this line as you find them. Format:
@@ -974,3 +1084,5 @@ Append new entries above this line as you find them. Format:
 | 30 | Manual entity create 500 — unique index on nullable field; kernel had no index reconciliation | **High** | 🟢 Fixed (Apr 27, deployed) |
 | 31 | Missing kernel primitive: entity-resolution (partial-identity → ranked candidates) | **Critical** | 🟢 Fixed (Apr 27, deployed + activated on Company) |
 | 32 | `preview_bulk_operation` ObjectId serialization + missing retry policy → infinite-retry storm | **High** | 🟢 Fixed (Apr 27 burst #4, merge `b5e4757` — `to_dict()` + bounded RetryPolicy) |
+| 36 | Gmail + Calendar `fetch_new` adapters silently ignore `until` parameter — narrow-window fetches return everything from `since` forward to API page cap | **Critical** | 🔴 Open (discovered 2026-04-29 during Armadillo trace setup) |
+| 37 | Email list endpoint returns HTTP 400 when ANY single document has malformed `company` field — one bad row poisons entire endpoint | **High** | 🔴 Open (discovered 2026-04-29) |
