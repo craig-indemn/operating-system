@@ -392,30 +392,295 @@ This gives us 1000+ data points of cascade verification, surfaces edge cases the
 
 ### TD-3 — Customer constellation queryable + per-customer UI
 
-**Delivers:** A custom UI layer that visualizes the constellation around any Company. The team can open a customer page and see the full picture in seconds. Replaces "ask Kyle" for understanding any customer.
+**Delivers:** A custom React + Vite + shadcn UI layer over the OS API that visualizes the customer constellation. The team can open the UI, see a personalized dashboard, navigate to any customer's full picture, browse meetings/documents centrally, and interact with their per-actor assistant via chat or voice. Replaces "ask Kyle" for understanding any customer. Replaces the team's siloed search across Gmail, Google Meet recordings, and Slack for finding documents.
 
-**Sub-pieces:**
-- UI layer over OS API (custom React/Astro/etc. — not auto-generated entity views; possibly an adapter pattern where the UI hooks natively into the OS)
-- Per-customer page: timeline of all Touchpoints (chronological, expandable), entity sub-sections (Contacts, Operations, Opportunities, Documents, Decisions, Commitments, Signals, Phases, Proposal), constellation summary
-- Visual language matches the GR Little / Alliance trace-showcase HTMLs Kyle and Cam validated
-- Internal + external Touchpoints interleaved on the timeline
-- Linked Documents accessible per Touchpoint and per Company
-- Proposal-fill state visible — populated vs. empty fields signal next-actions
-- AI assistant surfaced in the UI (using OS base-UI assistant pattern — every human actor has a default assistant pre-provisioned)
-- Authentication / org-scoping via existing OS auth
+#### Stack + architecture (resolved)
 
-**Done-test:** Any team member opens the UI, picks any customer, gets the full constellation in seconds. Can interact via the AI assistant ("what's the status with Alliance?"). The page looks like the trace-showcase HTMLs. Internal interactions visible alongside external.
+- **Tech stack: React + Vite + shadcn.** Matches the conventions Ganesh is using in his customer-success repo (`https://github.com/ganesh-iyer/implementation-playbook`). Component-level architecture after auditing his repo to align with his specific structure, file organization, and component patterns.
+- **Visual language: GR Little / Alliance trace-showcase HTML aesthetic.** Iris/lilac accents, Barlow font, generous whitespace, sectioned cards, dark-on-cream text. The visual system Cam and Kyle have validated. shadcn provides the primitive components; we style them to match.
+- **API access: direct OS API.** No "customer-system UI adapter." UI is a thin surface on top of the customer system on the OS. Every API call uses existing `/api/{collection}/...` endpoints. Auth via JWT session token from existing OS auth.
+- **Hosting: Railway or Amplify (frontend).** Static SPA build deployed independently of the OS API. Separate domain (e.g., `customer.os.indemn.ai`) or alongside `os.indemn.ai`.
+- **AI assistant: reuse chat-deepagents + voice-deepagents harnesses.** The per-actor `default_assistant` associate, configured via Deployment for the UI surface (web Deployment for chat, voice Deployment for push-to-talk). The OS Base UI already has this pattern wired (refinement opportunity post-async-deepagents skills-via-CLI refactor in commit `7281b83` — apply those lessons to the chat/voice harnesses).
+- **Real-time: WebSocket** subscriptions per active page, filtered by relevance (per-customer page subscribes to `Company:{id}` + entity changes related to that company). Aligns with existing OS real-time architecture (`indemn-os/docs/architecture/realtime.md` — cross-reference during execution).
+- **Auth + org-scoping:** uses existing OS auth (JWT). All data automatically scoped to actor's `org_id` per kernel `find_scoped` pattern. UI doesn't think about org isolation.
+- **Mobile: responsive.** Sections stack on narrow viewports; pills wrap; cards become full-width.
 
-**Dependencies:** TD-2 must be running (data flowing into entities for the UI to visualize). At least 3-5 customers hydrated for the UI to be meaningful in dev.
+#### Page list (7 pages)
 
-**Open questions to resolve:**
-- UI tech stack — React + Vite (matches OS UI)? Astro? Something else?
-- Hosted where — Railway alongside OS UI? Separate domain? `customer.os.indemn.ai`?
-- API access pattern — direct OS API hits? Adapter pattern (a "customer-system UI adapter" in `kernel/integration/adapters/`)?
-- AI assistant in the UI — reuses OS chat-deepagents harness? Or a new dedicated harness for customer-system queries?
-- Page-level vs. component-level architecture — single-page-app with routing, or per-customer Astro pages?
-- Real-time updates when new Touchpoints arrive — WebSocket subscription? Polling?
-- Mobile responsiveness — scope decision
+| Route | Purpose |
+|---|---|
+| `/` | **Personalized dashboard** — role-aware widgets + assistant prominent |
+| `/customers` | Customer list (browse all Companies) |
+| `/customers/<id>` | **Per-customer constellation** (the meaty 5-section page; central artifact) |
+| `/meetings` | Meetings list (browse all meetings, internal + external) |
+| `/meetings/<id>` | Per-Meeting detail (= per-Touchpoint detail with meeting-specific affordances) |
+| `/touchpoints/<id>` | Per-Touchpoint detail (deep-linkable; less commonly entered from list pages) |
+| `/documents` | Documents browse (central searchable space — Drive + email-attachments + Slack-attachments + manual) |
+| `/documents/<id>` | Per-Document detail (content preview, metadata, "Assign Company" action) |
+
+ReviewItems surfaced contextually within customer/document pages rather than a dedicated page. Can add `/reviews` later if reviewing volume warrants it.
+
+#### Per-customer constellation page detail (the central artifact)
+
+Single-scrolling page. Mirrors the trace-showcase HTML's 5-section spine, with each section adapted to render live entity data with WebSocket updates. Inline timeline expansion (click a Touchpoint → expands below).
+
+##### Section 1 — Customer hero
+
+- **Company name** as headline (large)
+- **Domain + summary blurb** — pulled from Company entity description if populated
+- **Current Deal stage badge** with iris/lilac styling (CONTACT / DISCOVERY / DEMO / PROPOSAL / NEGOTIATION / VERBAL / SIGNED)
+- **Key Contacts** — chip cards showing primary Contacts (name + title from signature parsing + click → Contact detail)
+- **Owner** — from `Deal.next_step_owner` or similar
+- **Last touchpoint** — relative date + source-type icon
+- **Live cascade indicator** if a new Touchpoint is currently being processed for this customer
+- **Action affordances** — "Log Touchpoint" (calls assistant `log-touchpoint` skill), "Generate Proposal v(n+1)" (initiates Artifact Generator from TD-8 — async OR opens chat/voice session per Craig's flexibility-of-deployment principle), "View Proposal PDF"
+- WebSocket subscription: `Company:{id}` + `Deal:{id}` change events
+
+##### Section 2 — Touchpoint timeline (the spine)
+
+- **Vertical timeline, newest at top.** Vertical line down the left, dots per Touchpoint
+- **Each Touchpoint row collapsed:** timestamp (relative + absolute on hover), source-type pill (Email/Meeting/Slack/Manual), scope pill (External/Internal), one-line `summary`, participant chips, linked Document chips
+- **Click row → expands inline** with: source content snippet (email body excerpt / meeting transcript first ~500 chars / Slack message + thread context / manual summary); extracted intelligence cards (Decisions/Tasks/Commitments/Signals/Operations/Opportunities, each linked to its entity); linked Documents; linked Phase if extracted; actions ("Re-extract", "Flag for review", "View source")
+- **Threading visualization:** subtle connector line / indent for same-`thread_id` Touchpoints (visual grouping without changing data model — Touchpoints stay 1:1 with source-events per TD-1)
+- **Filters at top:** source-type, scope, date range, participant, Touchpoint state
+- **Real-time:** WebSocket on `Touchpoint:created` filtered by `company={id}`; new Touchpoints appear at top with brief highlight animation. Cascade-in-progress indicator if new Email/Meeting/SlackMessage just landed and EC/TS hasn't fired yet
+- **Performance:** initial render 25-50 most recent Touchpoints; lazy-load older as user scrolls. Matters for customers with 100+ Touchpoints (Alliance has 60+)
+
+##### Section 3 — Constellation panel (structured-data side)
+
+- Collapsible sub-sections per entity type, each with count + summary preview, expands to full list:
+  - **Contacts** — name, title, email, days-since-last-touch, linked-Touchpoints count
+  - **Operations** — name, frequency/scale, source-Touchpoints provenance
+  - **Opportunities** — description, mapped AssociateType, status (`unmapped → mapped → validated → proposed → addressed → resolved`), source Touchpoints
+  - **CustomerSystem** — tools/systems they use (BT Core, Applied Epic, Dialpad, etc.) + linked Operations
+  - **Documents** — name, mime_type, source pill (Drive/email_attachment/Slack/manual), date, "Assign Company" action if `company` is null
+  - **Phases** — Proposal phases (name, scope, status, investment)
+  - **Decisions** — text, source Touchpoint, date
+  - **Signals** — type pill (health/expansion/champion/churn_risk/blocker/insight), description, source Touchpoint, sentiment
+- **Provenance per entity:** every linked entity shows which Touchpoint(s) extracted it (small chip with source-type icon, click → jumps to that Touchpoint in Section 2)
+- **Actions:** click entity → entity detail; per-section "Add new" (assistant or simple form for manual entry); cross-section filter "show only entities from Touchpoint X"
+
+##### Section 4 — Stage progression panel (where we are)
+
+**Descriptive status, not prescriptive gating.** Per Craig's clarification, the populated-entities list is a status display showing what's been collected at this stage; it's NOT the criteria for stage advancement. Stage transition criteria will be defined separately in TD-4 research and incorporated into this section later.
+
+- **Horizontal stage strip:** CONTACT → DISCOVERY → DEMO → PROPOSAL → NEGOTIATION → VERBAL → SIGNED
+- **Current stage** highlighted with iris accent ("you are here")
+- **Past stages** marked done with transition date; skipped stages rendered honestly (e.g., Alliance jumped DISCOVERY → PROPOSAL — "Demo skipped")
+- **Days at current stage** subtle indicator (becomes a staleness signal)
+- **Click past stage → expands** to show what happened during that stage (Touchpoints, entities created, Decisions)
+- **Current-stage detail:**
+  - **What's been populated at this stage** — descriptive status: "DISCOVERY entities populated so far: 3 Operations, 2 Opportunities, 5 Decisions, 7 Signals"
+  - **Expected next moves** (from `Playbook[Deal.stage].expected_next_moves`) — list rendered as suggestions, each clickable to log a Touchpoint or trigger artifact generation
+  - **Artifact intent at this stage** — what the Artifact Generator (TD-5/TD-8) is expected to produce; PROPOSAL stage links to current Proposal entity; DISCOVERY stage links to follow-up email draft if generated
+- **Stage transition affordance:** "Advance to next stage" button — manual decision, no entity-completion gate. Future (post-TD-4): incorporate stage criteria when defined
+- **Real-time:** subscribes to `Deal:{id}` state-transition events; required-entity creates filtered by Deal
+
+##### Section 5 — Proposal-as-spine panel (the destination)
+
+- **Status badge** — drafting / under_review / sent / accepted / rejected / superseded (Proposal entity state machine, including `superseded` transition added in TD-6)
+- **Version history bar** — v1 → v2 → v3 etc. with statuses; click a version → see that snapshot
+- **Phases section** — for each Phase: name + scope, linked Operations + Opportunities + AssociateTypes (chips clickable to entity), investment, status (proposed / accepted / in-flight / complete)
+- **Empty / TBD fields rendered honestly** — for early-stage Deals with mostly-empty Proposals: "No phases defined yet — DISCOVERY in progress, phases will populate as Opportunities are identified." Per principle #3, no fluff narrative; the entity structure shows what's known vs unknown
+- **Investment summary** — rolled up from Phases
+- **Linked source Document** — link to rendered PDF if exists (e.g., Alliance v2 PDF in Cam's Drive folder)
+- **Actions:**
+  - **"Generate new version"** — initiates Artifact Generator (TD-8). Per Craig's flexibility-of-deployment principle: can run async (auto-draft, queue for review) OR open a realtime chat/voice session for iterative work with the human
+  - **"View PDF"** — opens rendered Proposal PDF
+  - **"Edit manually"** — manual override; opens entity editor on Proposal
+  - **"Send to customer"** — one-click email send via Email integration (action lives here but functionality is TD-7)
+- **Real-time:** subscribes to `Proposal:{id}` change events; new Phase/Operation links appear live as cascade fires
+
+#### Personalized dashboard (`/`) detail
+
+The home is **NOT a customer list.** It's a per-actor, role-aware dashboard with entity widgets + the assistant as a core integrated element.
+
+##### Dashboard composition
+
+Same primitive entity-rendering components, different arrangements per role. Examples:
+
+| Role | Prominent widgets |
+|---|---|
+| **Cam** | Proposals queue (drafts to review, sent awaiting response, ready-to-render) · Customer prep for upcoming meetings · Documents pending classification · Recent Touchpoints across his customers |
+| **George** | Upcoming meetings (next 24-48h) with prep affordance · Customers needing attention (stale Touchpoints) · Recent customer activity · Open Commitments owed to George |
+| **Kyle** | Pipeline overview (all customers with stage + days-since-last-touch + value) · Recent Decisions across customers · Recent Signals (especially churn_risk + champion) · Open ReviewItems flagged for his attention |
+| **Ganesha** | Customer-implementation status · Delivery Tasks · Phase progression on active Proposals · Open technical Commitments |
+| **Peter** | Open technical Tasks · Customer-system data status · Recent Slack threads in implementation channels |
+
+Layout primitives are the same (entity widgets, list/card components); each role gets a different default arrangement. Roles can be customized later if individuals want different defaults.
+
+##### Assistant integration on the dashboard
+
+- **Primary input element at top** — bigger and more prominent than other pages. The assistant is the first thing the eye lands on
+- **Recent assistant actions widget** — what the assistant has been doing autonomously (e.g., "Drafted follow-up email for Armadillo," "Flagged 2 ReviewItems for your attention")
+- **Proactive surfacing** — the assistant proactively raises things ("3 customers no contact in 14 days — want to draft check-ins?") rendered as suggestions the actor can accept/dismiss
+- **Quick-action chips** — common skills rendered as one-click affordances (`log-touchpoint`, `assign-company-to-document`, `prep-for-meeting`, `summarize-customer`, etc.)
+
+##### Dashboard real-time
+
+- WebSocket subscription per widget filtered by relevance (e.g., Pipeline widget subscribes to all `Deal` changes for org; Recent Touchpoints widget subscribes to `Touchpoint:created` org-wide)
+- Widgets refresh independently; no full-page reloads
+- Assistant's recent actions stream in via the chat-deepagents harness's existing event mechanism
+
+#### Other pages (lower-density coverage — they're simpler than the per-customer page)
+
+##### `/customers` — Customer list
+
+- Table of all Companies. Columns: name, current Deal stage, last touchpoint (relative date), days-since-last-touch, owner, # Touchpoints
+- Sort/filter on any column; search by name
+- Click a row → per-customer constellation page
+- Real-time: last-touchpoint dates + Deal stage update live
+- Pure navigation surface — no analytical depth (that's TD-7's pipeline view)
+
+##### `/meetings` — Meetings list
+
+- Browse all meetings (across all customers + internal)
+- Filterable by date range, customer, attendee, scope (external/internal)
+- Each row: date, title, attendees (chips), customer (link), summary preview
+- Click → per-Meeting detail
+- Addresses real team gap: today's tools (Apollo / Granola / Google Meet) are siloed; this is the unified view
+
+##### `/meetings/<id>` — Per-Meeting detail
+
+- Same architecture as per-Touchpoint detail, with meeting-specific UI affordances:
+  - Transcript player (if recording exists)
+  - Recording link (Google Meet's recording URL)
+  - Gemini smart notes section (rendered)
+  - Full transcript (with speaker labels, scrollable, searchable)
+  - Attendee chips with role indicators (external Contact vs internal Employee)
+  - Linked Touchpoint
+  - Extracted intelligence (Decisions / Tasks / Commitments / Signals — per the Touchpoint linked to this Meeting)
+  - Navigate-to-customer-constellation affordance
+- TD-7 enriches this page later with: stage-appropriate next-step suggestions, draft follow-up artifact (e.g., follow-up email at DISCOVERY), the "per-meeting view" from vision §2 thread A
+
+##### `/touchpoints/<id>` — Per-Touchpoint detail (deep-linkable)
+
+- Standalone page for when inline expansion isn't enough (e.g., 50K-character meeting transcript, large email body)
+- Full source content (entire email body / full meeting transcript / full Slack thread context / manual summary)
+- All extracted intelligence (every linked entity)
+- All linked Documents
+- Full Touchpoint metadata
+- Navigation back to customer constellation
+- Deep-linkable from outside the UI (e.g., from Slack: "see the full Touchpoint at customer.os.indemn.ai/touchpoints/<id>")
+
+##### `/documents` — Documents browse (central searchable space)
+
+- Browse all Documents from any source (Drive / email-attachment / Slack-attachment / manual)
+- Filterable by Company (including null), source type, mime_type, folder path (for Drive Documents), date
+- Each row: name, mime_type pill, source pill, Company link or "Assign Company" affordance if null, date
+- Search by content text (Drive adapter extracts text content per TD-1)
+- Pagination + lazy-load for scale (Drive could have thousands of files)
+
+##### `/documents/<id>` — Per-Document detail
+
+- Content preview (rendered for Google Docs / Sheets / Slides / PDFs; metadata-only for images/videos)
+- Full metadata (source, folder path, owner, mime_type, size, modified time, original filename)
+- **"Assign Company" action** — manual classification path. Per TD-1's lazy-classify story, the team frequently assigns Company to Documents while workflows are being established. This is the primary surface for that
+- **CLI-friendly identifier** — copy-button showing `indemn document get <id>` or similar; for pulling the doc into Claude Code or other workflows
+- Download link (original file)
+- Linked Touchpoints (where this Document was referenced — populated lazily by IE during extraction)
+- Linked Company (if assigned)
+
+#### Persistent assistant integration
+
+- **Per-actor `default_assistant` associate** — kernel-provisioned, runs on chat-deepagents (web) or voice-deepagents (voice) Runtime
+- **Persistent input element on every page** — always-visible at top (matches OS Base UI pattern)
+- **Page context awareness** — when on a customer page, assistant knows which Company; when on a Document page, knows which Document; when on a Meeting page, knows which Meeting
+- **Skills loaded:** `log-touchpoint` (TD-1), `assign-company-to-document`, `prep-for-meeting`, `summarize-customer`, `draft-follow-up-email`, etc. Skills accumulate as we build out customer-system capabilities (each TD adds skills to the assistant)
+- **Voice path:** push-to-talk via voice-deepagents harness; same skills available
+- **Real-time streaming responses** via the chat-deepagents harness's `astream_events` mechanism (per OS architecture — already wired in Base UI; refinements applied based on async-deepagents skills-via-CLI work)
+- **Mid-conversation event awareness** — if a new Touchpoint arrives while user is talking to assistant about a customer, the assistant gets notified via the events stream subprocess (per existing OS pattern)
+- **ReviewItem surfacing through assistant** — when the team's customers have open ReviewItems, the assistant proactively raises them; user can resolve directly in conversation
+
+#### Real-time architecture
+
+- **WebSocket connection per active page** to OS API's existing real-time endpoint (cross-reference `indemn-os/docs/architecture/realtime.md`)
+- **Subscription model:** per-page filter (e.g., per-customer page subscribes to `Company:{id}` + `Touchpoint:created where company={id}` + `Document:created where company={id}` + reverse-related entity creates)
+- **Sub-section level updates:** sections within a page subscribe independently (timeline updates without re-rendering hero; constellation panel updates without re-rendering timeline)
+- **Disconnect handling:** reconnect with exponential backoff; resync state on reconnect
+- **Existing OS WebSocket endpoint** (e.g., `wss://api.os.indemn.ai/api/ws` — verify exact path during implementation)
+
+#### Document classification affordances (lazy-classify story from TD-1)
+
+Per TD-1, Documents created from Drive ingestion + email/Slack attachments default to `company = null`. The UI is THE primary classification surface (alongside IE's lazy linking at touchpoint extraction):
+
+- **Per-Document "Assign Company" button** on `/documents/<id>` — opens a Company picker; resolve via `entity_resolve`; auto-link on single 1.0 match; ReviewItem on ambiguity
+- **Bulk-assign affordance on `/documents`** — select multiple Documents, assign same Company in one action
+- **Folder-context hints** — when assigning a Drive Document, the UI shows the folder path; if folder name matches a Company name, suggests it as the default
+- **The team will use this frequently at first** — per Craig, until autonomous workflows mature, manual classification via UI is the primary path
+
+#### ReviewItem surfacing (contextual)
+
+- ReviewItems created by associates (TD-2 universal escape valve) surface in:
+  - **Per-customer constellation page** — small badge on entities with open ReviewItems linking to them; click to expand, resolve, dismiss
+  - **Documents page** — ReviewItems for Document classification edge cases surface in-line on the Document row
+  - **Dashboard** — Reviewer-role widget shows open ReviewItems
+  - **Assistant** — proactively raises ReviewItems for customers the user owns
+- No dedicated `/reviews` page for now; can add later if reviewing volume warrants
+
+#### Sub-pieces (concrete work to do)
+
+1. **Audit Ganesh's repo** (`https://github.com/ganesh-iyer/implementation-playbook`) — document conventions: file structure, shadcn component usage, testing approach, state management, routing pattern. Output: a short conventions doc to align our build with his
+2. **Audit existing Base UI's chat-deepagents wiring** — what works, what needs improvement post-async-deepagents skills-via-CLI refactor (commit `7281b83`); document refinements to apply
+3. **Tech-stack scaffolding** — set up React + Vite + shadcn project matching Ganesh's conventions; routing (probably react-router or similar per his repo); WebSocket client; OS API client wrapper
+4. **Authentication flow** — wire JWT auth against existing OS auth; session token handling; logout; role-based UI gating where applicable (e.g., Cam-specific dashboard widgets)
+5. **Persistent assistant integration** — chat-deepagents WebSocket connection from the UI; voice-deepagents push-to-talk integration; page-context awareness; real-time response streaming
+6. **`/customers/<id>` per-customer constellation page** — the central artifact; 5 sections; matches trace-showcase visual; WebSocket subscriptions per section
+7. **`/` personalized dashboard** — role-aware widget composition; assistant prominently integrated; per-role default layouts
+8. **Other pages** — `/customers` list, `/meetings` list + detail, `/touchpoints/<id>` detail, `/documents` browse + detail
+9. **Document classification affordances** — "Assign Company" actions, bulk-assign, folder-context hints
+10. **ReviewItem contextual surfacing** — badges, in-line affordances, dashboard widget, assistant proactive raising
+11. **Mobile responsiveness pass** — every page renders cleanly on narrow viewports; sections stack; cards full-width
+12. **Deployment** — Railway or Amplify build/deploy pipeline; environment configuration; domain (`customer.os.indemn.ai` or co-located with `os.indemn.ai`)
+
+#### Activation order
+
+Bottom-up: prep audits first, then core infrastructure, then per-customer page (the central artifact), then dashboard, then other pages, then polish.
+
+1. **Pre-flight prep** — audit Ganesh's repo + Base UI; document conventions and refinements
+2. **Tech-stack scaffolding + auth + WebSocket** — minimum viable shell
+3. **`/customers/<id>` per-customer constellation page** — build all 5 sections; verify against Alliance + Armadillo + GR Little (the 3 hydrated customers); iterate visual to match trace-showcase
+4. **Persistent assistant integration** — chat first, voice later; verify with `log-touchpoint` skill
+5. **`/customers` list page** — basic table; navigate-to-customer-page
+6. **`/` personalized dashboard** — role-aware widget composition; default layouts per role
+7. **`/meetings` list + `/meetings/<id>` detail** — meeting-specific affordances
+8. **`/documents` browse + `/documents/<id>` detail** — including classification affordances
+9. **`/touchpoints/<id>` detail** — for deep-linking
+10. **ReviewItem contextual surfacing** — across all relevant pages
+11. **Mobile pass** — responsive testing + fixes
+12. **Deploy + share** — get team using it; iterate based on feedback
+
+#### Done-test
+
+- All 7 pages render cleanly with real entity data from dev OS (Alliance + Armadillo + GR Little + remaining hydrated customers from TD-5)
+- Per-customer constellation page matches the trace-showcase visual (verified by Cam + Kyle eyeball comparison)
+- Per-Document "Assign Company" action works end-to-end; team uses it for unclassified Drive Documents
+- Real-time updates: a new Touchpoint arriving via TD-1 cascade appears in the relevant per-customer page's timeline within seconds (no refresh needed)
+- Persistent assistant works on every page; `log-touchpoint` skill end-to-end via web (chat) and voice (push-to-talk) Deployments
+- Personalized dashboard renders different widget arrangements for different roles (verify with at least Cam, George, Kyle role tests)
+- Meetings list aggregates all meetings across customers + internal; per-Meeting detail shows transcript + smart notes + linked Touchpoint
+- Documents browse lets the team find any Document by name, content text, folder, source, mime_type
+- Mobile responsive — every page renders on phone-width viewport
+- Deployed at the chosen domain; team accesses it daily
+
+#### Dependencies
+
+- **TD-1 must be complete** — adapters running, data flowing in, manual entry path live. Without data, the UI has nothing to render
+- **TD-2 must be complete or substantially in flight** — cascade producing entities (Touchpoints, extracted intel, Proposal hydration). Without cascade, the UI shows raw sources without structure
+- **At least 3-5 customers hydrated** in dev — currently have GR Little, Alliance, Armadillo. TD-5 expands; TD-3 doesn't formally depend on TD-5 but the UI is more meaningful with more customers
+- **Existing chat-deepagents + voice-deepagents harnesses** — already deployed; refinements applied post-async-deepagents work
+- **Existing OS auth** — JWT sessions, already operational
+- **Existing OS WebSocket endpoint** — verify path/protocol during implementation; align with `realtime.md`
+
+#### Out of scope for TD-3
+
+- **Sales pipeline list view (Kyle's V0 ask)** — TD-7. The dashboard's pipeline widget is a preview; the full sales-pipeline-with-analysis surface lives in TD-7
+- **Per-meeting artifact-quality view** (vision §2 thread A) — TD-7 enriches `/meetings/<id>` with stage-appropriate next-step suggestions + draft follow-up artifact
+- **Flow diagram of actors + data flow** — TD-7
+- **Push-to-talk for sales rep field updates beyond `log-touchpoint`** — TD-7 expands voice skills; TD-3 has the basic voice path
+- **`/reviews` dedicated page** — deferred until reviewing volume warrants
+- **Custom dashboard layouts per individual** (vs. per role) — defer until role defaults prove insufficient
+- **External-customer multi-tenancy** — TD-11. UI is built for Indemn-the-company in `_platform` org
 
 ---
 
