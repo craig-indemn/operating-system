@@ -86,7 +86,7 @@ The shared-context-update mechanism (this file + INDEX.md + vision.md + roadmap.
 
 ### Dogfooding the OS as designed
 
-If a pattern was designed but never used in practice, we use it. This is the test that the OS is what we believe it to be. Examples that have surfaced and been validated through customer-system work: deepagents progressive disclosure (must work — we don't inline skills); `save_tracked()` as the one save path; entity_resolve as a kernel capability called by associates; --auto pattern; `effective_actor_id` for forensics; the unified queue.
+If a pattern was designed but never used in practice, we use it. This is the test that the OS is what we believe it to be. Examples validated through customer-system work: `save_tracked()` as the one save path; entity_resolve as a kernel capability called by associates; --auto pattern; `effective_actor_id` for forensics; the unified queue. **Skills loaded via the CLI** (`indemn skill get <name>` via the agent's `execute` tool) — symmetric with how associates already load everything else from the OS; replaced the deepagents filesystem-skills layer in Session 12 (commit `7281b83`).
 
 Customer-system work is OS work. Every gap we hit during customer-system work is information the OS needs. That information flows back via `os-learnings.md` (the running register) to the OS repo (kernel commits, doc updates).
 
@@ -336,17 +336,18 @@ Three parallel threads.
 
 Armadillo Insurance traced end-to-end as designed — first new-prospect trace post-inversion. Origin: Matan Slagter (CEO) → David Wellner (COO) intro at InsurtechNY (Apr 2). Discovery call Apr 28. Autonomous flow created Company `69f22186…444d` + 2 Contacts. 14 entities extracted by IE against DISCOVERY Playbook. Artifacts shipped to Kyle (yesterday's roadmap doc + Armadillo trace HTML via Slack file attachment). Brain-dump request sent to Kyle for TFG / John Scanland — next prospect.
 
-**Thread 2 — Parallel kernel-fix: Bugs #35 + #36 + #37 closed.**
-- Bug #35 (deepagents skill discovery) — two stacked fixes: absolute-path return from `_write_skills_to_filesystem` (`8141a80`), then `yaml.safe_dump` for frontmatter (`2ba6f63`). Live-verified.
-- Bug #36 (Gmail/Calendar `fetch_new` adapters silently absorbing kwargs) — deeper root cause was `**params` on adapter methods. Fix plumbs `until` end-to-end and replaces `**params` with `**unknown_params` raising `AdapterValidationError` (`477a98f`). 15 unit tests.
+**Thread 2 — Parallel kernel-fix: Bugs #35 + #36 + #37 closed, then deepagents skills layer dropped entirely.**
+- Bug #35 (deepagents skill discovery) — two stacked fixes first: absolute-path return from `_write_skills_to_filesystem` (`8141a80`), then `yaml.safe_dump` for frontmatter (`2ba6f63`). Live-verified. Then **the whole layer was dropped** (`7281b83` `refactor(harness): load skills via CLI in DEFAULT_PROMPT, drop deepagents skills layer`) — the deepagents filesystem-skills mechanism (write SKILL.md to disk, pass library dir to `create_deep_agent`, `SkillsMiddleware` scans + parses YAML frontmatter, surfaces metadata in system prompt, agent loads full content via `read_file`) was a poor fit. Our associates have ONE skill each — no "many skills, agent dynamically chooses" pattern that progressive-disclosure-via-filesystem was designed for. Replaced with: agent runs `execute('indemn skill get <name>')` (system-prompt directive), skill content arrives as tool result on turn 1 and stays in message history. Symmetric with how associates already load entity skills + everything else. Eliminates Bug #35 class entirely (no path resolution against backend root_dir, no YAML escaping, no SKILL.md format to maintain). The two stacked fixes are no longer load-bearing — the layer they fixed is gone.
+- Bug #36 (Gmail/Calendar `fetch_new` adapters silently absorbing kwargs) — deeper root cause was `**params` on adapter methods. Fix plumbs `until` end-to-end and replaces `**params` with `**unknown_params` raising `AdapterValidationError` (`477a98f`). 15 unit tests. Outlook adapter same pattern propagated (`3fc4b55`).
 - Bug #37 (Email list endpoint poisoned by malformed `company` field) — opt-in tolerance via `_DomainQuery.to_list(skip_invalid=False)` (`a5aa89f`).
 
 **Thread 3 — Parallel hydration-redesign (this thread):** solved the meta-problem of 500K-token hydration. Designed and shipped the layered model. Outcome: this CLAUDE.md (rewritten), `CURRENT.md` (new), `SESSIONS.md` (new), `PROMPT.md` (new). Design captured in `docs/plans/2026-04-28-shared-context-hydration-design.md`. Total always-loaded hydration reduced ~5x (500K → ~95K).
 
 **Load-bearing turns:**
 1. Hard Rule #1 was a workaround. Once resolve became reliable (Bug #34 + #36 closeouts), the workaround became unnecessary — autonomous create on 0/0 is now the cleaner default.
-2. The shared mental model is comprehensive and overarching, not distilled-to-tidbits. CLAUDE.md *contains* the architecture, journey, foundations, best practices — deeper files become on-demand reference.
-3. Three load-bearing kernel bugs closed in one session because parallel sessions worked simultaneously on different threads — proof that the fork-and-coordinate pattern compounds when shared context discipline holds.
+2. Skills load via the CLI now (`indemn skill get <name>`), not via deepagents filesystem-skills. The deepagents layer was a poor fit for one-skill-per-associate associates. The CLI pattern is symmetric with how the agent already loads everything else in the OS.
+3. The shared mental model is comprehensive and overarching, not distilled-to-tidbits. CLAUDE.md *contains* the architecture, journey, foundations, best practices — deeper files become on-demand reference.
+4. Three load-bearing kernel bugs closed in one session because parallel sessions worked simultaneously on different threads — proof that the fork-and-coordinate pattern compounds when shared context discipline holds.
 
 **Material state at close:** Armadillo constellation queryable end-to-end (1 Company + 1 Deal + 2 Contacts + 2 Touchpoints + 14 extracted entities). 5 new design gaps logged (Deal-lifecycle automation, Employee entity_resolve, Company hydration on auto-create, Contact richer-field parsing, internal docs spanning multiple prospects). Cleanup pending: 500 emails + 6 meetings from Bug #36 side-effect; 2 malformed Email rows from Bug #37.
 
@@ -394,7 +395,7 @@ These are the principles that hold across the project. Internalize them. They ha
 - Do not let CLAUDE.md, INDEX.md, CURRENT.md, SESSIONS.md, or os-learnings.md rot.
 - Do not conflate customers.
 - Do not propose splitting "Phase 1, 2, 3" without first asking what the priorities and threading are.
-- **Do not inline skills into system prompts.** The OS vision requires deepagents progressive disclosure to work properly. Inlining bypasses the mechanism instead of fixing it.
+- **Skills load via the CLI, not via static system-prompt content.** The agent runs `execute('indemn skill get <name>')` (operating skill on turn 1, entity skills on demand). Skill content arrives as a tool result and stays in the agent's message history. This is symmetric with everything else the agent does in the OS. Don't try to put skill content directly in the system_prompt parameter when constructing the agent — the system_prompt has a directive telling the agent to call `indemn skill get`, not the skill content itself. (The deepagents filesystem-skills layer was dropped in Session 12 commit `7281b83` — wrong fit for one-skill-per-associate associates.)
 
 ---
 

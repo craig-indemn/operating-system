@@ -89,8 +89,10 @@ Five carried forward from Sessions 9-11. None resolved this session. All belong 
 
 ## Recent OS commits to indemn-os main (Session 12)
 
-- `8141a80`, `2ba6f63` — Bug #35 stacked fixes (deepagents skill discovery: absolute path + YAML safe_dump)
-- `477a98f` — Bug #36 (Gmail/Calendar `fetch_new` adapters: explicit param plumbing, replaces `**params`)
+- `8141a80`, `2ba6f63` — Bug #35 stacked fixes (deepagents skill discovery: absolute path + YAML safe_dump). **No longer load-bearing** after the subsequent layer-drop refactor below.
+- **`7281b83` — `refactor(harness): load skills via CLI in DEFAULT_PROMPT, drop deepagents skills layer`.** The canonical skills-loading pattern is now: agent runs `execute('indemn skill get <name>')` (system-prompt directive), skill content arrives as tool result on turn 1, stays in agent message history. The deepagents `skills=[...]` parameter, SKILL.md filesystem layout, and `SkillsMiddleware` are dropped. Eliminates Bug #35 class entirely.
+- `477a98f` — Bug #36 (Gmail/Calendar `fetch_new` adapters: explicit param plumbing, replaces `**params` with `**unknown_params` raising `AdapterValidationError`)
+- `3fc4b55` — Bug #36 propagation to Outlook adapter
 - `a5aa89f` — Bug #37 (Email list endpoint: opt-in tolerance via `_DomainQuery.to_list(skip_invalid=False)`)
 
 Plus prior cumulative work from Sessions 10-11 (LangSmith, Bug #34 CLI fix, completion check tightening).
