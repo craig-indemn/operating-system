@@ -2,7 +2,7 @@
 
 > Living source of truth for **how we get from where we are now to the vision**. Updated every session that moves the work forward. Read with `vision.md` (what we're building, why, and the lens) and `os-learnings.md` (running register of OS bugs + capability gaps + design questions).
 >
-> Last updated: **2026-04-29** (Session 12 close — Bugs #35/#36/#37 closed, Hard Rule #1 inverted, Armadillo traced end-to-end as designed, shared-context hydration redesign shipped).
+> Last updated: **2026-04-29** (Session 13 close — comprehensive roadmap alignment; restructured as Tangible Deliverables TD-1 through TD-11; TD-1/2/3 detailed at full fidelity, TD-4-11 structural; ready for TD-1 execution next session).
 
 ---
 

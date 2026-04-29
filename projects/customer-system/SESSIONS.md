@@ -6,6 +6,68 @@
 
 ---
 
+## Session 13 — 2026-04-29 — Comprehensive roadmap alignment (TD-1 through TD-11)
+
+**Objective:** Continue from Session 12. Test the new shared-context hydration system. Discuss the roadmap holistically — get foundational alignment on what we're actually going to build, in what order, and how each piece works in practice. Per Craig: dive deep into the roadmap, attack it aggressively, deliver something tangible to the team. Avoid the prior failure mode of "fuzzy on what's tangibly going to be accomplished."
+
+**Parallel sessions during:** None — Session 13 was a single-thread alignment session in the roadmap worktree.
+
+**Outcome:**
+
+- **Roadmap restructured as 11 Tangible Deliverables (TD-1 through TD-11)**, replacing the prior Phase A → F structure. Same vision, same work, different organization. Phases were fuzzy on what's tangibly shipped to whom; TDs make it explicit. (`74b6012`)
+- **TD-1 detailed at full fidelity (~180 lines)** — 4 source adapters + 4 scheduled fetcher actors + manual entry via per-actor assistant. Per-event Touchpoints (1:1 with source-events). Slack adapter NEW build (direct API, all channels, no DMs initially). Drive pull-all + lazy-classify. Pre-flight Bug #36/#37 cleanup. (`64830cd`)
+- **TD-2 detailed at full fidelity (~170 lines)** — 7-associate cascade (EC, MC, SC, TS gains Deal-creation, IE, Proposal-Hydrator, Company-Enricher) + ReviewItem universal-escape-valve pattern. Bottom-up activation. Done-test = systematic historical replay. (`605dc01`)
+- **TD-3 detailed at full fidelity (~280 lines)** — React+Vite+shadcn UI matching Ganesh's repo conventions (`https://github.com/ganesh-iyer/implementation-playbook`). 7 pages. Per-customer constellation page mirrors trace-showcase HTML 5-section spine (single-scrolling, inline timeline expand). Role-aware personalized dashboard. Persistent assistant across all pages. (`0941968`)
+- **TD-4 through TD-11 structurally aligned** (~30-70 lines each — sufficient to start work; deeper detail filled in when each TD is approached). (`8310734`)
+- **Where-we-are-now refresh + deepagents-skills-layer drop sync** (`e5c2bfb`, `4d7b648`)
+
+**Major architectural decisions (full list in INDEX.md § Decisions; load-bearing ones below):**
+
+- **Tangible-deliverable framing for roadmap** — TD-1 through TD-11 with continuous threads
+- **7-associate cascade architecture** — one associate per significantly-different (trigger, entities, context, skill) per Craig's principle. EC, MC, SC, TS (gains Deal-creation), IE, Proposal-Hydrator, Company-Enricher
+- **ReviewItem universal-escape-valve pattern** — any associate creates one when uncertain; never blocks; reviewing IS training data; replaces "needs_review" entity-state pattern except for source-classifier total-failure
+- **Per-event Touchpoints** — 1:1 with discrete source-events (Email, Meeting, SlackMessage); threading is metadata; new replies are SEPARATE Touchpoints
+- **Slack adapter design** — direct Slack API (not agent-slack); all channels via Slack admin; no DMs initially (team uses channels for customer chatter); polling 5min then Events API push later; per-message granularity
+- **Drive ingestion design** — pull all of Drive; Documents source-agnostic; lazy classification (at IE touchpoint extraction or manual via UI or future workflow-driven); folder context as hint
+- **Manual entry via per-actor assistant** — uses existing OS kernel-level Deployment pattern; new domain skill `log-touchpoint`; no special infrastructure
+- **TD-3 stack: React + Vite + shadcn** matching Ganesh's customer-success repo conventions; direct OS API (no adapter); reuse existing chat-deepagents + voice-deepagents harnesses
+- **TD-4 process: conversational research via Claude Code** — not auto-mining; phase 1 research determines actual stages; phase 2 per-stage deep-dive; phase 3 mostly-static refinement
+- **Artifact Generator: one associate, Playbook-driven, multi-deployment** (async + realtime chat + realtime voice). Drafted email = Email entity with `status: drafting`.
+- **TD-9 evaluations: LangSmith API directly for now**; Path 3 kernel-adapter integration deferred to TD-11
+- **TD-10 Commitment-Tracker: both event + schedule triggers; OS queue + Slack DM notifications; Commitment-level escalation chain with Role defaults**
+- **TD-11 detailed alignment deferred to `../product-vision/`** (the OS-level project)
+- **Stage progression UI is descriptive, not prescriptive** — stage transition criteria defined later in TD-4 research, not in TD-3 UI gating
+
+**Resolved long-running open design questions:**
+- Document-as-artifact for emails → Email with `status: drafting`
+- Playbook hydration mechanism → mostly-static, conversational refinement
+- Touchpoint↔Deal chicken-and-egg → TS atomically creates Deal + empty Proposal when external scope + no active Deal
+- Internal Touchpoints contributing to Proposal → YES, treated same as external
+- Multi-Deal ambiguity for internal → assigns to latest + creates ReviewItem
+
+Carried forward (fold into TD-4 research):
+- Opportunity vs Problem entity
+- 12 sub-stages with archetypes (Kyle's Apr 24 ask)
+- Origin/referrer tracking
+
+**Handoff to next session:**
+
+Use `PROMPT.md` as the kickoff prompt. Objective slot:
+
+> *Execute TD-1 — adapters running cleanly + historical hydration. Start with pre-flight cleanup (bulk-delete Bug #36's 500 emails + 6 meetings; delete Bug #37's 2 malformed Email rows). Create ReviewItem entity + Reviewer role (pre-flight infrastructure for TD-2). Then activate the four scheduled fetcher actors in bottom-up order: Email-Fetcher (5min), Meeting-Fetcher (15min, with 30-day backfill), Drive-Fetcher (hourly, with full crawl). The Slack adapter is a multi-session NEW build — start design + scaffold this session, finish in subsequent sessions. Verify each step manually before activating recurring. EC/TS/IE remain suspended — TD-1 does NOT activate the cascade. Touch all relevant docs at end of session per CLAUDE.md § 7. See `roadmap.md § TD-1` for full architecture detail.*
+
+**Key TD-1 risks to watch:**
+- Cascade-firing-before-ready: pre-flight cleanup MUST complete before any actor activation
+- Slack adapter is the largest NEW build — likely multi-session work
+- Voice harness refinement may be needed (per Craig: not actually tested or used much)
+
+**Touched:**
+- Modified: `roadmap.md` (entire restructure + all 11 TD detail sections; ~580 line growth net), `CLAUDE.md` (light — pipeline-associates section, journey Session 12 entry expanded), `CURRENT.md` (rewrite end-of-session)
+- Created: this Session 13 entry in SESSIONS.md
+- No entity changes in dev OS, no parallel kernel-fix work, no skill updates
+
+---
+
 ## Session 12 — 2026-04-29 — Bug #35/#36/#37 closeouts + Armadillo trace + Hard Rule #1 inversion + shared-context hydration redesign
 
 Three parallel threads ran on this Session 12. The combined output is captured below. The full INDEX.md Status entry has the comprehensive narrative; this is the per-thread breakdown.

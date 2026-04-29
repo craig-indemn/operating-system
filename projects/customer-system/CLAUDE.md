@@ -359,6 +359,47 @@ Armadillo Insurance traced end-to-end as designed — first new-prospect trace p
 5. **Roadmap restructured around tangible deliverables (TD-1 through TD-11)** instead of foundation phases. Same vision, same work, different organization. The phases were fuzzy on what's tangibly shipped to whom; the TDs make it explicit. Roadmap stays structural per-TD until that TD is approached, at which point a focused alignment conversation resolves all open architectural questions and the section gets filled in.
 6. **TD-2 architecture resolved: 7-associate cascade + ReviewItem universal-escape-valve.** Per Craig's principle (one associate per significantly-different trigger/entities/context/skill): EC, MC, SC, TS (gains Deal-creation), IE, Proposal-Hydrator (new), Company-Enricher (new). ReviewItem entity is the universal "I'm uncertain, here's my best effort, please clean up" primitive — used by every associate, watched by Reviewer role, training-data side-effect. Cascade NEVER blocks (except Source-Classifier total-classification-failure). Stages-are-fluid for Proposal-Hydrator: Playbook is guidance, not schema. Activation order is bottom-up. Done-test is systematic historical replay (~1000+ existing emails+meetings cascaded chronologically). Full design lives in `roadmap.md § TD-2`.
 
+### Session 13 (2026-04-29) — Comprehensive roadmap alignment (TD-1 through TD-11)
+
+The session that took the roadmap from foundational-phase framing (Phases A → F, fuzzy on what's tangibly shipped) to tangible-deliverable framing (TD-1 through TD-11, explicit on what each delivers and how). Session 13 was a single-thread alignment session — no parallel work, deep design conversation about how the system actually works in practice across the full roadmap.
+
+**What landed:**
+
+- **Roadmap restructured as 11 Tangible Deliverables.** Same vision, same work, different organization. TD-1 (adapters running) → TD-2 (cascade activated) → TD-3 (per-customer UI) → TD-4 (Playbook stages from history) → TD-5 (per-interaction artifact generation) → TD-6 (Proposal deck generation) → TD-7 (system visibility) → TD-8 (team adoption) → TD-9 (evaluations) → TD-10 (Commitment-tracking persistent-AI loops) → TD-11 (external-customer ready, deferred to product-vision).
+- **TD-1, TD-2, TD-3 detailed at full fidelity** (~170-280 lines each in roadmap.md). Deep architectural alignment for the foundation work — every "how does this actually work" question resolved with rationale captured.
+- **TD-4 through TD-11 detailed at structural fidelity** (~30-70 lines each — sufficient to start work; deeper detail filled in when each TD is approached for execution).
+
+**Load-bearing turns:**
+
+1. **Tangible-deliverable framing.** Phases were fuzzy. TDs are concrete: each delivers a specific tangible thing (a working adapter, a running cascade, a UI page) the team can use OR a foundational capability that unlocks the next concrete piece.
+2. **7-associate cascade architecture for TD-2** (locked in this session): EC, MC, SC, TS (gains Deal-creation), IE, Proposal-Hydrator, Company-Enricher. Per Craig's principle — one associate per significantly-different trigger/entities/context/skill.
+3. **ReviewItem universal-escape-valve pattern.** Per Craig: "any issue that the associates encounter as they're working they should just go and create a review item and call it a day." Generic across all entity types; never blocks the cascade; reviewing IS training data. Replaces per-entity `flag_for_review` field anti-pattern.
+4. **Per-event Touchpoints, NOT per-thread.** A Touchpoint is a discrete event in time — every email, every reply, every Slack message, every meeting → its own Touchpoint. Threading is metadata (Email.thread_id / SlackMessage.thread_ts), not a primary entity. Touchpoints are immutable snapshots; constellation evolves because the SET of Touchpoints grows.
+5. **Slack adapter design.** Direct Slack API (not third-party); all channels via Slack admin; no DMs initially; per-message granularity; polling-then-Events-API.
+6. **Drive ingestion design.** Pull all of Drive; lazy classification (at Touchpoint extraction by IE OR manually via UI OR future workflow-driven); folder context as hint, not auto-applied; Document entity source-agnostic.
+7. **Manual entry via per-actor assistant** uses existing OS kernel-level Deployment pattern (not custom infrastructure). New domain skill `log-touchpoint` added to each team member's `default_assistant`.
+8. **TD-3 stack: React + Vite + shadcn matching Ganesh's customer-success repo conventions.** Direct OS API. Reuse existing chat-deepagents + voice-deepagents harnesses. Visual matches GR Little / Alliance trace-showcase HTML language. 7 pages. Single-scrolling per-customer page with inline timeline expansion. Role-aware personalized dashboard. Persistent assistant on every page.
+9. **TD-4 process is fully conversational design via Claude Code, not automation.** Three phases: research session (determine WHAT stages exist), per-stage deep-dive, mostly-static refinement. The 5 long-running open design Qs fold into the research, resolved as they surface.
+10. **Artifact Generator: one associate, Playbook-driven, multi-deployment** (async + realtime chat + realtime voice). Drafted email = Email entity with `status: drafting`. Per Craig's flexibility-of-deployment principle — associates can be deployed async or realtime depending on use case; same skill, different harness + Deployment.
+11. **Stage progression UI is descriptive, not prescriptive.** Populated entities at a stage are STATUS, not stage-advancement criteria. Stage transition criteria defined separately in TD-4 research.
+12. **No more "open questions" sections in TD entries** per Craig's principle. Architectural decisions get resolved in alignment conversations BEFORE the TD entry gets detailed; TD entry captures resolved design with rationale, not unresolved Qs.
+
+**Resolved long-running open design questions:**
+- Document-as-artifact for emails → Email with `status: drafting` (TD-5)
+- Playbook hydration mechanism → mostly-static, conversational refinement (TD-4)
+- Touchpoint↔Deal chicken-and-egg → TS atomically creates Deal + empty Proposal when external scope + no active Deal (TD-2)
+- Internal Touchpoints contributing to Proposal → YES, treated same as external (TD-2)
+- Multi-Deal ambiguity for internal → assigns to latest + creates ReviewItem (TD-2)
+
+**Carried forward (now folded into TD-4 research, no longer separate open Qs):**
+- Opportunity vs Problem entity
+- 12 sub-stages with archetypes (Kyle's Apr 24 ask)
+- Origin/referrer tracking
+
+**Material state at close:** No entity changes in dev OS (alignment session, not execution). Pipeline associates unchanged from Session 12 close (EC v9 suspended; TS v6 suspended; IE active). Bug #36/#37 cleanup still pending (TD-1 pre-flight). Roadmap is now ~1100 lines of comprehensive design ready for TD-1 execution.
+
+**Handoff to Session 14:** Use `PROMPT.md` as kickoff. Objective: execute TD-1 — pre-flight cleanup (Bug #36/#37) → ReviewItem entity + Reviewer role → 4 scheduled fetcher actors (bottom-up activation) → Slack adapter NEW build (multi-session work; design + scaffold this session) → voice harness verification + `log-touchpoint` skill. EC/TS/IE remain suspended; cascade NOT activated by TD-1.
+
 **Material state at close:** Armadillo constellation queryable end-to-end (1 Company + 1 Deal + 2 Contacts + 2 Touchpoints + 14 extracted entities). 5 new design gaps logged (Deal-lifecycle automation, Employee entity_resolve, Company hydration on auto-create, Contact richer-field parsing, internal docs spanning multiple prospects). Cleanup pending: 500 emails + 6 meetings from Bug #36 side-effect; 2 malformed Email rows from Bug #37.
 
 ---
