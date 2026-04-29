@@ -43,28 +43,178 @@ Each TD entry below is **structural only** — title, what-it-delivers, done-tes
 
 ### TD-1 — Adapters running cleanly + historical hydration
 
-**Delivers:** Email + Meeting + Slack + Drive data flowing in continuously to dev OS, with manual entry paths for missed/unrecorded interactions. Foundation for everything downstream. **No cascade activation yet.**
+**Delivers:** Email + Meeting + Slack + Drive data flowing in continuously to dev OS via four source adapters running on independent schedules. Manual Touchpoint entry via the per-actor assistant for unrecorded interactions. Pre-flight cleanup of Bug #36 + Bug #37 leftover data. Foundation for everything downstream. **No cascade activation yet** — entities sit at `received` / `logged` status waiting for TD-2.
 
-**Sub-pieces:**
-- Email recurring fetch (Gmail) — scheduled associate, all 11 team mailboxes, configurable cadence
-- Meeting recurring fetch (Google Meet) — same pattern + 30-day backfill of historical meetings
-- Slack adapter — built (channels + DMs + MPDMs)
-- Slack hydration — historical Slack content backfilled (which channels/DMs are customer-relevant; threads-as-Touchpoints; file-attachments-as-Documents)
-- Drive ingestion — Cam's proposal folder, shared Kyle/Cam folder, customer-specific folders. Standalone Documents linked to Companies.
-- Manual interaction entry — UI form + voice/talk-to-add (push-to-talk for quick updates)
-- Outlook adapter `**params` propagation (Bug #36 follow-on)
+#### What flows in, and what entity each source produces
 
-**Done-test:** Drop a new email/meeting/Slack thread anywhere in scope; the corresponding entity appears in dev OS within the configured cadence. EC/TS/IE remain suspended — entities sit at status `received` / `logged` waiting for cascade activation.
+Per the design discussion: each source-event produces a **discrete entity**; Touchpoints are 1:1 with source-events (immutable snapshots in time, NOT grouped by thread). Threading is metadata, not a primary entity.
 
-**Dependencies:** Bug #36 cleanup (500 unrelated emails + 6 meetings) before recurring fetch turns on. Bug #37 row cleanup. Slack OAuth integration setup.
+| Source | Entity created per event | Threading metadata | Existing or new? |
+|---|---|---|---|
+| Gmail email | `Email` (one per individual email message, with `thread_id`) | `Email.thread_id` | Existing; Gmail adapter shipped Apr 23 |
+| Google Meet meeting | `Meeting` (one per scheduled meeting / conference record) | n/a (meetings are discrete) | Existing; Meet adapter shipped Apr 21 |
+| Slack message | `SlackMessage` (one per individual message, with `thread_ts`) | `SlackMessage.thread_ts` | **NEW — adapter to be built** |
+| Drive file (standalone) | `Document` (one per Drive file) | `Document.source_folder_path` for context | Drive adapter exists for one-off pulls; need systematic ingestion via fetch-new |
+| Email attachment | `Document` (one per attachment, linked to parent Email) | parent Email reference | Created inline by Email adapter when processing attachments |
+| Slack file attachment | `Document` (one per file, linked to parent SlackMessage) | parent SlackMessage reference | Created inline by Slack adapter when processing file uploads |
+| Manual entry (assistant-driven) | `Touchpoint` directly (with `summary` field populated by user) | n/a | NEW skill on per-actor assistant; uses existing voice/chat harnesses |
 
-**Open questions to resolve:**
-- Recurring-fetch cadence per source (15 min? hourly? per-source different?)
-- Slack scope — which channels/DMs/MPDMs are in (vs. all-of-Slack)? Who decides?
-- Slack thread-vs-message granularity — operate at thread level for Touchpoints? File attachments as Documents?
-- Drive folder identification — explicit list, or auto-discovered?
-- Manual entry UI shape — form fields, voice transcription path
-- Internal Slack discussions about a customer — how do they tie back to the customer entity at ingestion time (vs. on cascade)?
+**Document entity is source-agnostic.** Whatever fields exist on Document accommodate Drive, email-attachment, Slack-attachment, and manual-upload origins. Adapters extract whatever metadata the source provides and populate generic Document fields. No Drive-specific top-level fields like `source_folder_id` — folder context goes in the existing generic source-metadata field on Document.
+
+#### The four source adapters
+
+##### Email adapter (Gmail) — exists
+
+Already shipped (Apr 23). Pulls Email entities + creates linked Document entities per attachment. Incremental by `since` watermark via Bug #36 fix (Apr 28). Outlook adapter has the same pattern; Bug #36 propagation completed in commit `3fc4b55`.
+
+**Scope:** all 11 team mailboxes, all incoming + outgoing emails since the watermark. Email entities created at status `received`.
+
+##### Meeting adapter (Google Meet) — exists
+
+Already shipped (Apr 21). Pulls Meeting entities from Google Meet conference records via the Google Workspace adapter. Includes structured transcripts (speaker+timestamp), Gemini smart notes, recordings, Calendar attendees. Incremental by `since` watermark.
+
+**Scope:** all team members' meetings (via domain-wide delegation). Meeting entities created at status `logged`.
+
+##### Slack adapter — NEW, to be built
+
+**Architectural choices (resolved):**
+- **Scope: all channels.** Craig has Slack admin permission; the OS-Slack app gets workspace-wide access. Adapter pulls every channel. DMs/MPDMs out of scope initially — team uses channels for customer-relevant chatter.
+- **Direct Slack API.** Not `agent-slack` (third party). Build the adapter from scratch using Slack's REST API + (later) Events API. Standard pattern matching Outlook/Stripe/Google Workspace adapters in `kernel/integration/adapters/`.
+- **Per-message granularity.** One `SlackMessage` entity per individual message. `SlackMessage.thread_ts` captures threading. Touchpoints are 1:1 with SlackMessages (no thread-level grouping).
+- **Polling first; Events API later.** Polling cadence as fast as practical (target every 5 min). Move to push/webhook (Slack Events API) post-TD-2 once base data flow is proven.
+- **File attachments → Documents.** When a SlackMessage has file uploads, adapter creates linked Document entities (source: `slack_file_attachment`). Document.source enum needs the new value if not already there.
+
+**Adapter responsibilities:**
+- OAuth-based authentication via OS Integration entity (system_type: `messaging`, provider: `slack`, owner_type: `org`, secret_ref to AWS Secrets Manager)
+- `fetch_new` capability — pull SlackMessages since watermark (most recent `SlackMessage.ts` per channel)
+- Per-channel pagination (Slack's `conversations.history` API with cursor)
+- Per-message: extract text content, user (sender), channel, timestamp, thread_ts, file attachments
+- File attachment processing: create Document with filename, mime_type, size, content (text-extracted where possible), parent SlackMessage reference
+- Adapter is "dumb" — no classification logic, no Company resolution. SlackMessages dumped at status `received`; SlackClassifier (TD-2) handles classification.
+
+**Initial backfill:** one-time CLI invocation with explicit `since` (e.g., last 90 days) to populate historical Slack content. Per-channel pagination handles volume.
+
+##### Drive adapter — exists; needs systematic ingestion wired
+
+Drive adapter exists for one-off file pulls. TD-1 wires it for systematic incremental ingestion.
+
+**Architectural choices (resolved):**
+- **Pull all of Drive** — not allowlisted folders. Drive becomes a central searchable space. Documents may or may not be customer-relevant; many won't be. That's fine.
+- **Documents created with `company = null`** by default. Lazy classification:
+  - **At Touchpoint extraction** — IE links the Document to a Touchpoint AND classifies Document.company to the Touchpoint's Company when a Document is referenced (e.g., meeting transcript says "we shared the v1 proposal"). Folder context (`Document.source_folder_path`) serves as a hint at this moment.
+  - **Manual via UI** (TD-3) — team browses Documents, assigns Company explicitly. Frequent at first while workflows are being established.
+  - **Future workflow-driven** — when documents are created out of tasks assigned to customers, attach automatically. Out of scope for current roadmap.
+- **Documents that never get classified** — fine; they live in the central searchable space, queryable by other dimensions (folder, content, type, date). Per principle #3 (no fluff fields), null `company` is honest.
+- **Incremental fetch by `modifiedTime` watermark** — same pattern as every other adapter. No special "Drive changes API" complexity. Adapter queries `where modifiedTime > most_recent_document.external_modified_at`.
+- **Maximum metadata extraction.** For each Document: folder structure, owner, permissions, mime_type, size, modified time, original filename, extracted text content. All populated through generic Document fields.
+
+**File type handling:**
+- Google Docs / Sheets / Slides → native export to text/plain or markdown for content extraction
+- PDFs → text extraction (PDF.js, pdfminer, or similar)
+- Images → metadata only initially; OCR is a future enhancement
+- Videos → metadata only; transcription is a future enhancement
+- Files above some threshold (e.g., 100MB) → metadata + pointer to original; no content extraction
+
+**Deletion handling:** Drive file deleted → Document marked deleted (don't hard-delete; preserves audit trail).
+
+#### The four scheduled fetcher actors
+
+Per the design discussion: **one actor per source, deterministic mode (no LLM), trigger_schedule cron, kill-switch each independently.**
+
+| Actor | trigger_schedule | Deterministic skill |
+|---|---|---|
+| **Email-Fetcher** | every 5 min | Run `indemn email fetch-new` (no params); adapter handles incremental via watermark |
+| **Meeting-Fetcher** | every 15 min | Run `indemn meeting fetch-new`; adapter handles incremental |
+| **Slack-Fetcher** | every 5 min (polling) | Run `indemn slackmessage fetch-new`; adapter paginates per channel; later replaced by Slack Events API webhook |
+| **Drive-Fetcher** | every hour | Run `indemn document fetch-new`; adapter queries by modifiedTime watermark |
+
+**Pull-as-fast-as-possible philosophy.** Cadences are aggressive. Each actor's skill is trivial (single CLI call). API rate limits are the practical ceiling — if we hit them, we back off; otherwise pull frequently.
+
+**Recurring vs. backfill.** Same actor handles both. Recurring is automatic via schedule. Backfill is human-initiated via CLI with explicit `since`/`until` params (e.g., `indemn meeting fetch-new --data '{"since": "2026-04-01", "until": "2026-04-29"}'`). For Meetings: 30-day backfill once. For Slack: 90-day backfill once after adapter is built.
+
+**Kill-switch.** Each actor can be transitioned to `suspended` independently. The cascade activation order in TD-2 starts with everything suspended; we activate progressively.
+
+#### Manual Touchpoint entry flow
+
+Per the design discussion, manual entry **uses the existing OS-level per-actor assistant pattern**, not custom infrastructure. Each team member has their own `default_assistant` associate (kernel-provisioned), surfaced in the UI via Deployment, runs through the chat-deepagents (web) or voice-deepagents (voice) Runtime.
+
+**New domain skill: `log-touchpoint`** — added to each team member's assistant's skills list. The skill instructs the assistant:
+- When the user wants to log a touchpoint (manually-recorded call, in-person interaction, anything not auto-ingested), collect:
+  - Participants (resolve as Contacts/Employees via `indemn contact entity-resolve` / `indemn employee entity-resolve`)
+  - Customer Company (resolve via `indemn company entity-resolve`)
+  - Date / time
+  - Scope (external vs. internal)
+  - Summary (the user's free-text recap)
+- Once collected, the assistant calls `indemn touchpoint create --data '...'` with all fields populated.
+- The Touchpoint cascades through IE → Proposal-Hydrator just like an automated one — IE reads `Touchpoint.summary` for source content (no source_entity_id needed since the assistant provided summary directly).
+
+**Voice harness refinement** — flagged as TD-1 sub-piece. Per Craig: we haven't actually tested or used the voice harness much. Likely needs work before push-to-talk manual-entry is reliable. Scope: confirm voice harness wires up correctly, test end-to-end with a `log-touchpoint` skill, refine as needed.
+
+**ManualTouchpoint entity deferred.** A "manually recorded touchpoint" entity that goes through SC/MC/EC-equivalent classification was considered but deferred. The simpler assistant-creates-Touchpoint-directly flow works for now. Revisit if assistant-driven flow hits limits.
+
+#### Pre-flight cleanup (Bug #36 + #37 leftover data)
+
+Must complete before any TD-2 cascade activation. Otherwise TD-2's progressive activation would inherit dirty data.
+
+- **Bug #36 side-effect: 500 unrelated Emails + 6 unrelated Meetings on Kyle's mailbox.** Bulk-delete (clean slate, per Craig). Use `indemn email bulk-delete` and `indemn meeting bulk-delete` with appropriate filters (e.g., `created_at` range matching the broken-adapter-run window).
+- **Bug #37 data side: 2 malformed Email rows** (`69ea548e…6e92` Oneleet, `69ea556f…7387` Linear Orbit). Delete via `indemn email delete <id>`.
+
+#### Sub-pieces (concrete work to do)
+
+1. **Bug #36 + #37 cleanup** — bulk-delete pre-flight
+2. **Email-Fetcher actor** — create + configure (trigger_schedule: every 5 min); deterministic skill; activate
+3. **Meeting-Fetcher actor + 30-day backfill** — create actor; one-time backfill; activate recurring
+4. **Slack adapter (NEW)** — full build:
+   - OS Integration entity for Slack workspace + secret_ref
+   - `kernel/integration/adapters/slack.py` — implements Adapter base class, fetch-new for SlackMessages with file-attachment processing, OAuth flow, channel pagination
+   - Tests
+   - Self-register adapter in `kernel/integration/adapters/__init__.py`
+   - SlackMessage entity definition (if not already exists) — fields: text, user, channel, ts, thread_ts, file_attachments references
+   - 90-day backfill one-time
+   - Slack-Fetcher actor (every 5 min); activate recurring
+5. **Drive ingestion** — wire systematic fetch-new on existing Drive adapter; Document entity additions if any (review existing fields first); Drive-Fetcher actor (hourly); one-time backfill with no `since` (pulls everything in scope); activate recurring
+6. **`log-touchpoint` skill** — written and assigned to each team member's default_assistant
+7. **Voice harness verification + refinement** — confirm chat-deepagents + voice-deepagents Runtimes work; test end-to-end manual entry via voice
+8. **Document.source enum check** — confirm `slack_file_attachment` is in the enum (was an open from prior session); add if missing
+
+#### Activation order
+
+Bottom-up per the OS bug-cleanup-first principle:
+
+1. Pre-flight cleanup (Bug #36 + #37) — complete before any actor activation
+2. Email-Fetcher activated — already-functional Gmail adapter; lowest risk; verify it pulls cleanly
+3. Meeting-Fetcher activated — same; plus run 30-day backfill manually first to populate historical
+4. Drive-Fetcher activated — Drive adapter exists; one-time backfill; then recurring
+5. Slack adapter built (multi-day work) — backfill 90-day once built; Slack-Fetcher activated
+6. `log-touchpoint` skill deployed to assistants; voice harness verified
+
+After all 4 fetcher actors active + adapters working + manual entry path live: TD-1 is done. Cascade is still suspended; TD-2 takes over.
+
+#### Done-test
+
+- All 4 fetcher actors active with their `trigger_schedule` running
+- New Email/Meeting/SlackMessage/Document entities appear in dev OS within their configured cadence
+- 30-day Meeting backfill complete; 90-day Slack backfill complete; full Drive crawl complete
+- Pre-flight cleanup verified: 0 unrelated emails/meetings from Bug #36; 2 malformed rows from Bug #37 deleted
+- A team member can talk to / chat with their UI assistant and successfully log a Touchpoint via the `log-touchpoint` skill
+- Document.source enum includes `slack_file_attachment`
+- All entities sit at appropriate `received` / `logged` status — cascade NOT activated (EC/TS/IE remain suspended; MC/SC/Proposal-Hydrator/Company-Enricher don't exist yet)
+
+#### Dependencies
+
+- **No upstream TD dependencies** — TD-1 is the foundation
+- **OS bug fixes already in place** — Bug #36 fix (`477a98f`, propagated to Outlook in `3fc4b55`); Bug #34 CLI fix (`db97694`); LangSmith tracing (`956d7d5`); skills-via-CLI refactor (`7281b83`)
+- **Slack workspace admin permissions** — Craig grants the OS-Slack app workspace-wide access
+- **AWS Secrets Manager** — Slack credentials at `indemn/dev/integrations/slack-oauth` (or similar path)
+- **Existing Runtime infrastructure** — chat-deepagents + voice-deepagents Runtimes deployed (already on Railway)
+
+#### Out of scope for TD-1
+
+- **The cascade activation** — TD-2. EC/TS/IE/MC/SC/Proposal-Hydrator/Company-Enricher all remain suspended or unbuilt during TD-1. Data flows IN; no autonomous processing on it.
+- **Per-customer constellation UI** — TD-3. UI for browsing Documents, assigning Company manually, etc. lives in TD-3.
+- **Slack Events API push** — TD-1 starts with polling; Events API webhook migration is post-TD-2.
+- **DM ingestion** — out of TD-1 scope. Team uses channels for customer-relevant chatter.
+- **OCR / video transcription** — Drive ingestion handles text-extractable file types; OCR + video transcription are future enhancements.
 
 ---
 
