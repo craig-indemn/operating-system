@@ -421,6 +421,7 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 | 2026-03-30 | [production-implementation-plan](artifacts/2026-03-30-production-implementation-plan.md) | Bite-sized implementation plan — 16 tasks across 4 parallel tracks (pipeline fix, infra, auth, production) |
 | 2026-03-30 | [mongodb-proxy-setup](artifacts/2026-03-30-mongodb-proxy-setup.md) | EC2 socat proxy setup for Railway → Atlas connectivity. Temporary. Includes teardown instructions. |
 | 2026-03-31 | [ui-issues-noted](artifacts/2026-03-31-ui-issues-noted.md) | UI issues from prod review — extracted fields vs gap analysis confusion, PDF links (fixed), empty bodies (fixed) |
+| 2026-04-30 | [unisoft-quote-search-investigation](artifacts/2026-04-30-unisoft-quote-search-investigation.md) | **PAUSED — pending SAZ capture.** Document the Unisoft Quote Search investigation: ruled out permissions, request shape, pagination, proxy translation. Server returns count without data. Recommend: capture fresh Fiddler SAZ of UI doing a name search to identify the canonical op + service. Resume from this artifact. |
 
 ## Key Data Files
 | File | What it contains |
