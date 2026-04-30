@@ -16,6 +16,11 @@ sources:
 
 # Phase I — Cutover-Readiness State
 
+> **🔄 SUPERSEDED 2026-04-29 — cutover executed.**
+> This document is the **pre-cutover snapshot + runbook**. For the post-cutover state, lessons learned, and current carryover items, read **[`2026-04-29-cutover-execution-handoff.md`](2026-04-29-cutover-execution-handoff.md)** instead. That artifact is the current source of truth for the GIC migration.
+>
+> Production is now live on EC2 prod-services as of 2026-04-29 ~22:50 UTC. Phase J (7-day soak) in progress. Kept here for historical reference of the original plan.
+
 **TL;DR:** Pre-cutover prep complete except for **PR #18 review/merge**. Once that lands, the cutover window is fireable.
 
 ## Pre-cutover checklist

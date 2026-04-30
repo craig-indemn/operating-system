@@ -10,4 +10,4 @@ TOKEN=$(op read "op://cli-secrets/Linear API Token/credential" 2>/dev/null) || {
   exit 1
 }
 
-LINEAR_API_KEY="$TOKEN" exec linearis "$@"
+LINEAR_API_KEY="$TOKEN" LINEAR_API_TOKEN="$TOKEN" exec linearis "$@"

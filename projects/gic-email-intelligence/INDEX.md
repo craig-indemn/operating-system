@@ -4,27 +4,37 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 
 ## Status
 
-**PRODUCTION IS LIVE AND STABLE. NOTIFICATION DELIVERY FIXED.** Five fixes shipped 2026-04-24: (1) attachment uploads bypass WCF with chunked MTOM/XOP — breaks the ~1.5MB Azure App Service content-length ceiling; (2) activity text field renamed `Notes` → `Description` to match ActivityDTO schema; (3) new `/api/file/delete` + `unisoft attachment delete` CLI; (4) ActivityNotificationDTO now sends all 13 schema fields (later superseded by #5); (5) **`SendActivityEmail` on `IEmailService` — the real notification email sender** (separate SOAP service, plain HTTPS transport security, AccessToken in body not header). SetActivity alone does NOT send email; the UI uses a 2-call workflow. Commit `a42bbe1`. Verified end-to-end in production: Q:146397/146398/146400 all delivered emails to agents.
+**MIGRATED TO INDEMN INFRA 2026-04-29 — IN 7-DAY SOAK PHASE (Phase J).** Production is live on EC2 `prod-services` (`i-00ef8e2bfa651aaa8`). Real customer email **Q:146697 (Crown Park)** verified end-to-end through the new pipeline (sync → process → automation → Unisoft Quote with attachments + agent acknowledgement). Soak window 2026-04-29 22:50 UTC → ~2026-05-06; after that, Railway prod gets torn down and `craig-indemn/gic-email-intelligence` is archived. 3 carryover items: PR #20 (AUTOMATION_START_DATE filter) needs main backfill, PR #19 (Datadog) awaiting review, Q:146691/146692 (2 unintended quotes from cutover) deferred for cleanup.
 
-**To resume this project:**
-1. Read `artifacts/2026-04-24-upload-bypass-and-notification-fixes.md` — full day context, all 4 commits, Fiddler evidence
-2. Read `artifacts/2026-04-23-go-live-day-session-2.md` — go-live day context (still relevant)
-3. Read the key code files listed below
-4. Check production status: `mongosh "mongodb+srv://dev-indemn:wJnKmz4P0q39GpXZ@dev-indemn.mifra5.mongodb.net/gic_email_intelligence" --eval 'var t=db.emails.countDocuments({received_at:{$gte:ISODate("2026-04-25T00:00:00Z")}}); var c=db.emails.countDocuments({received_at:{$gte:ISODate("2026-04-25T00:00:00Z")},processing_status:"complete"}); print("Today: "+t+" Complete: "+c)'`
-5. Monitor: sync status, processing throughput, automation completions, **attachment uploads** (should no longer fail on >1.5MB files), **notification delivery**
+**PRIOR — PRODUCTION ON RAILWAY WAS LIVE AND STABLE.** Five fixes shipped 2026-04-24: (1) attachment uploads bypass WCF with chunked MTOM/XOP — breaks the ~1.5MB Azure App Service content-length ceiling; (2) activity text field renamed `Notes` → `Description` to match ActivityDTO schema; (3) new `/api/file/delete` + `unisoft attachment delete` CLI; (4) ActivityNotificationDTO now sends all 13 schema fields (later superseded by #5); (5) **`SendActivityEmail` on `IEmailService` — the real notification email sender** (separate SOAP service, plain HTTPS transport security, AccessToken in body not header). SetActivity alone does NOT send email; the UI uses a 2-call workflow. Commit `a42bbe1`. Verified end-to-end in production: Q:146397/146398/146400 all delivered emails to agents.
+
+**To resume this project (post-cutover):**
+1. **Read `artifacts/2026-04-29-cutover-execution-handoff.md`** — current state, lessons learned during cutover (read these BEFORE attempting similar work), carryover items, soak monitoring plan. This supersedes the readiness artifact.
+2. Reference `artifacts/2026-04-28-phase-i-cutover-readiness.md` — pre-cutover plan/runbook. Marked as superseded; valid for historical context of the original plan.
+3. For pre-migration product context (still relevant for understanding the system): `artifacts/2026-04-24-upload-bypass-and-notification-fixes.md` (DTO patterns, attachment + notification fixes) and `artifacts/2026-04-23-go-live-day-session-2.md` (classification rules, multi-LOB handling, deterministic activity).
+4. Check current state:
+   - ALB target health: `aws elbv2 describe-target-health --target-group-arn arn:aws:elasticloadbalancing:us-east-1:780354157690:targetgroup/prod-gic-email-intelligence/9843153a6fabd7d4 --query 'TargetHealthDescriptions[0].TargetHealth' --output json`
+   - HTTPS: `curl -sw "%{http_code}\n" https://api.gic.indemn.ai/healthz`
+   - Containers: SSM into `i-00ef8e2bfa651aaa8`, `docker ps | grep gic-email`
+   - MongoDB queries: must run from inside `gic-email-api` container (Atlas allowlist blocks local mongosh) — see Lesson #12 in the cutover-execution handoff for the pattern
+5. PR review status: `gh pr view 20 --repo indemn-ai/gic-email-intelligence` and same for #19. PR #20 must merge to main before any normal `main:prod` push, otherwise prod regresses.
 
 **Key code files to read for full understanding:**
+- `src/gic_email_intel/config.py` — Settings class. Notable fields: `pause_sync`, `pause_processing`, `pause_automation` (kill switches), and `automation_start_date` (the post-cutover filter — landed via PR #20)
+- `src/gic_email_intel/cli/commands/emails.py` — `gic emails next` (atomic claim with date+type filter, load-bearing for automation), `gic emails complete` (deterministic activity + notification)
+- `src/gic_email_intel/cli/commands/automate.py` — `_count_pending_emails`, `_automate_tick`, `run` command. Date filter MUST mirror `emails.py` or count/claim diverge
 - `src/gic_email_intel/agent/harness.py` — pipeline orchestrator, classification rules (including Rule 7 portal logic), folder move on classification
-- `src/gic_email_intel/cli/commands/emails.py` — `gic emails complete` with deterministic activity+notification (now sends `Description` + full 13-field Notification), duplicate detection, folder routing
 - `src/gic_email_intel/core/email_mover.py` — shared folder move helper (updates graph_message_id after move)
 - `src/gic_email_intel/agent/tools.py` — `_safe_object_id()` for LLM hex corruption recovery
-- `src/gic_email_intel/automation/agent.py` — deepagent system prompt with CLI docs
+- `src/gic_email_intel/automation/agent.py` — deepagent system prompt with CLI docs; `run_one()` invokes the agent on the next claimed email (claims via `gic emails next`, so it respects the filter)
 - `src/gic_email_intel/automation/skills/create-quote-id.md` — automation skill (multi-LOB rules, contact lookup, applicant email)
 - `src/gic_email_intel/agent/skills/submission_linker.md` — linker (single submission for multi-LOB)
-- `unisoft-proxy/client/cli.py` — Unisoft CLI (contacts, quote create, **attachment delete**)
-- `unisoft-proxy/server/UniProxy.cs` — SOAP proxy on EC2: **custom HttpWebRequest chunked MTOM upload path** in `FileBridge.UploadQuoteAttachment`, new `/api/file/delete` endpoint, `ExtractAttachmentDto` helper
+- `scripts/aws-env-loader.sh` — loads secrets + Param Store on host at deploy time. **Has hardcoded `PARAM_MAP` — params not in the dict are silently dropped.** New env vars require an entry here AND the code that reads them
+- `.github/workflows/build-prod.yml` — push to `prod` branch → build image → deploy to prod-services via self-hosted runner
+- `unisoft-proxy/client/cli.py` — Unisoft CLI (contacts, quote create, attachment delete; no quote/task delete commands — see proxy lessons in 2026-04-29 cutover-execution handoff)
+- `unisoft-proxy/server/UniProxy.cs` — SOAP proxy on EC2: **custom HttpWebRequest chunked MTOM upload path** in `FileBridge.UploadQuoteAttachment`, `/api/file/delete` endpoint, `BuildFaultJson` (currently strips inner exceptions — would need extension to debug Quote/Activity hard-delete FK constraints)
 
-**Migration to Indemn infra (DEVOPS-151) — pre-cutover prep complete 2026-04-28; cutover window fireable once PR #18 merges.** Read `artifacts/2026-04-28-phase-i-cutover-readiness.md` first — it has the cutover-day runbook + state snapshot. F.2 + F.3 + I.1b + I.2 all done in CLI. PR #1 + #17 merged; #18 (SOAK_MODE) awaiting reviewer. Decisions still owed: Datadog routing (H.1), Atlas backup tier (H.2), T-24h customer comms email to JC + Maribel.
+**Migration to Indemn infra (DEVOPS-151) — CUTOVER COMPLETE 2026-04-29; SOAK PHASE (DEVOPS-158) IN PROGRESS through ~2026-05-06.** Production now runs on EC2 `prod-services`. PRs #1 + #17 + #18 + #20 merged or deployed; #19 (Datadog) awaiting review. Carryover items captured in `artifacts/2026-04-29-cutover-execution-handoff.md`.
 
 **Discoveries from F.1 + Phase G prep that next session will need:**
 - **Port 8080 conflict on dev-services.** `openai-fastapi-app-1` already binds host:8080. Our `docker-compose.yml` uses 8080. Fix needed before Phase G.1 deploy: pick a free host port (e.g., 8002 or 8009) and update both docker-compose.yml and the dev-services nginx config to add a server block routing the canonical hostname → that port.
@@ -32,7 +42,15 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 - **`shared-datadog` network confirmed present** on dev-services (bridge driver, 20 containers attached). Our compose file's `external: true` reference will work cleanly.
 - **Phase E.6 corrected** — runners are per-repo, not org-level. Two new runners need registration (one per EC2). DEVOPS-159 owns this; assigned to Dhruv with full SSM-driven instructions.
 
-**Immediate priority for next session (resuming 2026-04-27):**
+**Immediate priority for next session (resuming post-cutover, 2026-04-29):**
+
+1. **Soak monitoring** (Phase J) — daily checks on automation_status: failed count, processing backlog, sync_state advance, container restart count, real customer Quote creation. Per-day during 7-day window. End ~2026-05-06.
+2. **PR #20 backfill to main** — currently main is at `dd579f9` and prod is at `6d40b81`. Silent regression risk if anyone does `git push indemn main:prod` before main catches up. Reviewers requested (Dolly + Dhruv); Slack-pinged (`#dev-squad` thread `1777260393.941529`, ts `1777511357.794549`).
+3. **PR #19 (Datadog) review + deploy** — once merged + deployed, close DEVOPS-156.
+4. **Q:146691, Q:146692 cleanup** — deferred. JC's queue is already clean (tasks Completed); Quote shells remain. Best path forward = modify `unisoft-proxy/server/UniProxy.cs:BuildFaultJson` to expose inner exceptions, then retry hard-delete cascade with visibility into what's blocking.
+5. **End-of-soak teardown** (2026-05-06+) — `railway service delete` for sync/processing/automation in dev + prod environments; archive `craig-indemn/gic-email-intelligence`; drop `gic_email_intelligence_devsoak` MongoDB.
+
+**Earlier priority (pre-migration era — kept for historical reference, all resolved):**
 1. ~~Verify notification emails actually deliver~~ — **FIXED** via commit `a42bbe1` (SendActivityEmail on IEmailService). End-of-day 4/24 monitoring confirmed 9/9 automations delivered emails cleanly across 3 wake-up checks (20:34, 21:05, 21:35 UTC).
 2. **JC weekly recap email sent 4/24 ~22:34 UTC** to jcdp@gicunderwriters.com (thread `19dc1a3729b1745e`). Awaiting his reply. Closing offered "retroactively run any pipeline step on request" — he may take us up on the backfill or have queue-management questions.
 3. **LangSmith tracing still broken** — zero traces in either project. Carry-forward, low priority.
