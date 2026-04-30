@@ -2,11 +2,43 @@
 
 > Living source of truth for **how we get from where we are now to the vision**. Updated every session that moves the work forward. Read with `vision.md` (what we're building, why, and the lens) and `os-learnings.md` (running register of OS bugs + capability gaps + design questions).
 >
-> Last updated: **2026-04-29** (Session 13 close — comprehensive roadmap alignment; restructured as Tangible Deliverables TD-1 through TD-11; TD-1/2/3 detailed at full fidelity, TD-4-11 structural; ready for TD-1 execution next session).
+> Last updated: **2026-04-30** (Session 14 close — TD-1 substantially executed; sub-pieces 1, 2, 3, 5, 8 done end-to-end; sub-pieces 4, 6, 7 partial; voice canonical rebuild + Slack live-fetch debug pending next session).
 
 ---
 
-## Where we are now (2026-04-29)
+## Where we are now (2026-04-30)
+
+**TD-1 ~85% complete.** Three of four scheduled fetcher actors running autonomously (Email-Fetcher every 5 min, Meeting-Fetcher every 15 min, Drive-Fetcher every hour). Slack adapter built + deployed but live fetch blocked by Bug #45 (resolve_integration not finding the active Integration). Voice harness v1 built (commit `62f47f9`) but architecturally wrong — does NOT use deepagents framework or Interaction/Attention lifecycle per `docs/architecture/realtime.md` + `associates.md`; v2 canonical rebuild pending. log-touchpoint skill uploaded + assigned to OS Assistant; chat-side end-to-end test pending. **Phase A complete (Sessions 6-8). Phase B1 substantially de-risked (Session 12). Bug-fix work converging — Bug #38, #41, #42 resolved this session via parallel fork + main thread.**
+
+**Specific Session 14 progress against TD-1 done-test:**
+- ✓ Pre-flight cleanup verified: 0 unrelated emails/meetings from Bug #36 (500 + 5 deleted; Armadillo preserved); 2 Bug #37 rows deleted by fork session.
+- ✓ ReviewItem entity + Reviewer role created (TD-2 pre-flight infrastructure done early per Session 13 plan).
+- ✓ Email-Fetcher actor active. Trace `019ddf95-d579-7390-9483-beece987389f` 18:10-18:15Z verified end-to-end: 7 LLM turns all `finish=STOP`, fetched 326 emails.
+- ✓ Meeting-Fetcher actor active. 30-day backfill done: fetched 396, created 2 net new, 394 deduped.
+- ✓ Drive-Fetcher actor active. NEW kernel build: `fetch_documents()` on GoogleWorkspaceAdapter (commit `c87376d`). 30-day backfill: fetched 1161, created 493, deduped 668. Drive content extraction (Google Docs/Sheets/Slides export, PDF text) deferred to follow-up enrichment pass.
+- ⚠ **Slack-Fetcher activation BLOCKED by Bug #45** — adapter built (`kernel/integration/adapters/slack.py` in commit `c87376d`, 9 unit tests GREEN), SlackMessage entity created, Integration entity active, but `resolve_integration()` doesn't find it. Live fetch returns "No messaging integration available." 90-day backfill + actor build pending the dispatch fix.
+- ✓ Document.source enum extended with `slack_file_attachment`.
+- ⚠ **log-touchpoint skill** uploaded + assigned to OS Assistant; chat-side end-to-end test still pending (WebSocket interaction).
+- ⚠ **Voice harness v1 wrong shape; v2 canonical rebuild pending.** Per `docs/architecture/realtime.md`, the canonical voice harness mirrors chat-deepagents structure: deepagents `create_deep_agent` + harness_common (Interaction lifecycle, Attention with heartbeat, runtime registration, backend factory) + three-layer LLM config merge + LiveKit only handles audio I/O via DeepagentsLLM adapter. v1 (commit `62f47f9`) used `livekit.agents.Agent` with single custom `execute` tool — not aligned. **DELETE + REBUILD next session.** Voice runtime entity (id `69f3b7fc97300b115e7236a0`) + service token (`indemn/dev/shared/runtime-voice-service-token`) ready for v2.
+
+**Bugs resolved this session:**
+- Bug #38 (queue dispatch jam — uncaught WorkflowAlreadyStartedError + stale message retries + suspended-actor watch fan-out). Fork session, indemn-os commits `1026d78` + `c36969b`.
+- Bug #37 follow-on (bulk-delete poison on malformed entities). Fork session, bundled in `1026d78`.
+- Bug #41 (harness `_scheduled` entity-load CLI failure). Fork session, indemn-os commit `96684d5`.
+- Bug #42 (Gemini 2.5 Flash MALFORMED_FUNCTION_CALL on `write_todos` schema). Resolved by switching runtime defaults to `gemini-3-flash-preview/global`. Both async-deepagents-dev + chat-deepagents-dev runtimes flipped.
+- Bug #43 (Drive adapter scope was understated). Closed in-session by actually building the adapter.
+
+**Bugs still open (logged for next session):**
+- Bug #44 (voice-deepagents canonical rebuild — v1 built but wrong shape). Per-actor default_assistant pattern deferred per Craig (shared OS Assistant suffices for now).
+- Bug #45 NEW (Slack `resolve_integration()` not finding active Integration). Highest priority next session — closes TD-1 sub-piece 4.
+
+**LangSmith query gotcha discovered:** `order: "DESC"` (uppercase) returns HTTP 422 silently; must use `"desc"`. Worth noting in CLAUDE.md § 8 LangSmith debugging recipe.
+
+For deeper context on the journey here: `CLAUDE.md § 5 Journey`, `INDEX.md § Status`, `SESSIONS.md`.
+
+---
+
+## Pre-Session-14 baseline (carried for reference)
 
 **Phase A complete. Phase B1 substantially de-risked. Foundation is closer to running autonomously than at any prior point.**
 

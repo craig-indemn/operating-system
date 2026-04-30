@@ -6,6 +6,92 @@
 
 ---
 
+## Session 14 — 2026-04-30 — TD-1 substantial execution (Drive end-to-end, Slack adapter, voice harness v1, Bug #38/#41/#42 closeouts)
+
+**Objective:** Execute TD-1. Pre-flight cleanup → ReviewItem infrastructure → activate fetcher actors bottom-up → Slack adapter NEW build → voice harness verification → log-touchpoint skill. Per Craig mid-session: "We are implementing EVERYTHING to completion" — Drive, Slack, and Voice all in this session, no deferring.
+
+**Parallel sessions during:**
+- Bug #38/#37/#41 fork session ran early in Session 14 (per Bug #38 handoff prompt at session start). Closed with 3 indemn-os commits (`1026d78`, `c36969b`, `96684d5`) and 2 operating-system commits. Three bugs verified fixed live. Fork closed mid-session.
+
+**Outcome:**
+
+- **TD-1 ~85% complete.** Sub-pieces 1, 2, 3, 5, 8 closed end-to-end. Sub-pieces 4 (Slack), 6 (log-touchpoint chat verification), 7 (voice canonical rebuild) partial — see Handoff.
+- **Pre-flight cleanup:** Bug #36's 500 emails + 5 unrelated meetings deleted (Armadillo email + meeting preserved). Bug #37 rows deleted by fork session via the new bulk-delete skip_invalid path.
+- **ReviewItem entity + Reviewer role created** — collection `review_items`, polymorphic target_entity_type/id, 8-value enum reason, state machine open→in_review→resolved/dismissed. Smoke-tested end-to-end (created → watch fired → message routed → resolution flow). Craig assigned to reviewer role.
+- **Email Fetcher activated end-to-end** — id `69f2bf30942e5629f07a8313`, cron `*/5 * * * *`, gemini-3-flash-preview/global, autonomous. Trace `019ddf95-d579-7390-9483-beece987389f` 18:10-18:15Z verified: 7 LLM turns all `finish=STOP`, agent fetched 326 new emails.
+- **Meeting Fetcher activated** — id `69f39ec6c0b340cf765a38d6`, cron `*/15 * * * *`. 30-day backfill (per-user via direct API to dodge CLI 600s timeout) returned fetched=396 created=2 skipped=394 errors=0.
+- **Drive adapter (NEW kernel build)** — `fetch_documents()` method on GoogleWorkspaceAdapter (per-user DWD impersonation, paginate by pageToken, dedup by drive_file_id, format Document-shaped dicts with `external_ref = drive_file_id`). 6 unit tests in `TestFetchDocumentsContract` GREEN. Document `external_ref` field added (sparse+unique). fetch_new capability activated. Deployed (indemn-os commit `c87376d`). 30-day backfill: fetched=1161 created=493 skipped=668 errors=0.
+- **Drive Fetcher activated** — id `69f3abbe268936150b46a0fa`, hourly cron, gemini-3-flash-preview/global.
+- **Slack adapter (NEW kernel build)** — `kernel/integration/adapters/slack.py`: Slack Web API via httpx; conversations.list (public+private, no DMs, paginate cursor); conversations.history (paginate cursor, oldest/latest); strict params; rate-limit + auth error typing; SlackMessage-shaped dicts with `external_ref = "{channel_id}:{slack_ts}"`. 9 unit tests in `TestSlackAdapterContract` GREEN. Self-registered via `register_adapter("messaging", "slack", ...)`. SlackMessage entity created (16 fields). fetch_new capability activated. Deployed (commit `c87376d`). **Slack Integration entity created + transitioned to active** (id `69f3bb5097300b115e7236dd`, secret_ref pointing at `indemn/dev/integrations/slack-oauth`). Bot token stored in AWS Secrets. **Live fetch BLOCKED — see Handoff Bug #45.**
+- **Document.source enum** extended with `slack_file_attachment`.
+- **log-touchpoint skill** uploaded + assigned to OS Assistant (skills count 23→24). Chat-side end-to-end verification pending.
+- **voice-deepagents v1 built but architecturally wrong** — uses `livekit.agents.Agent` with single custom `execute` tool. Does NOT use deepagents library, harness_common modules, Interaction/Attention entity lifecycle. Per `docs/architecture/realtime.md` + `docs/architecture/associates.md` (which I read mid-session after Craig's correction "I would read files to understand first"), the canonical voice harness MUST mirror chat-deepagents structure: deepagents `create_deep_agent`, three-layer config merge, harness_common interaction/attention/runtime/backend modules, and a DeepagentsLLM adapter wrapping the agent for LiveKit's AgentSession. **v1 needs DELETE + REBUILD.** Voice runtime entity already in place (id `69f3b7fc97300b115e7236a0`); service token at `indemn/dev/shared/runtime-voice-service-token`. v1 commit at `62f47f9` will be reverted/replaced next session.
+- **Bug #42 reframe + resolution.** Original framing was wrong. Actual root cause: Gemini 2.5 Flash returns `MALFORMED_FUNCTION_CALL` on the deepagents `write_todos` schema (Pythonic `default_api.WriteTodosTodos(...)` syntax instead of valid JSON). Verified across 3 traces. Resolution: switched to `gemini-3-flash-preview/global`. Both runtime defaults flipped (async-deepagents-dev + chat-deepagents-dev). IE picked up the new model on its next run.
+- **LangSmith query gotcha discovered** — `order: "DESC"` (uppercase) returns HTTP 422 silently; must use `"desc"` (lowercase). The fork session's earlier "0 traces visible" symptom was this query bug — traces had been arriving the entire time post-LangSmith-wiring.
+- **Bug #38 + #37 follow-on + #41 fixed by fork session** — 3 indemn-os commits. Stale message backlog drained (1015 EC + 28 TS messages parked cleanly via the new `parked` status + WorkflowAlreadyStartedError catch).
+- **Bug #43** (Drive adapter scope was understated) — closed in-session with the actual Drive adapter build.
+- **Bug #44** logged + partially addressed — voice-deepagents v1 built (but per Blocker #2 it's wrong shape; v2 rebuild pending). Per-actor default_assistant pattern confirmed deferred per Craig (shared OS Assistant suffices for now).
+- **Bug #45 NEW** — Slack `resolve_integration()` not finding active Integration. Symptom: `POST /api/slackmessages/fetch-new` returns "No messaging integration available." State + debug-pointer in CURRENT.md Blocker #1.
+
+**Major architectural learnings (Session 14):**
+1. **Trace-as-build worked at the kernel level too.** Drive adapter built TDD-style (6 tests RED → implementation GREEN), deployed, verified live with real backfill. Same for Slack adapter (9 tests). 437 unit tests pass overall (was 428 + 6 Drive + 9 Slack).
+2. **The OS canonical voice harness pattern is in `docs/architecture/realtime.md` + `docs/architecture/associates.md`.** Specifically: voice harness lifecycle = Interaction creation → Attention with `purpose=real_time_session` + heartbeat → build deepagents agent → events stream subprocess → process voice frames → close. The framework expectation is deepagents (not LiveKit's native Agent class) with LiveKit as audio I/O.
+3. **Three-layer LLM config merge** (Runtime defaults → Associate skill → Deployment override) happens at invocation time in `kernel/temporal/activities.py::load_actor`. Voice harness needs to honor this.
+4. **`harness_common`** has the OS-level lifecycle helpers (`interaction.py`, `attention.py`, `runtime.py`, `backend.py`) — both async-deepagents and chat-deepagents use them. voice-deepagents must too.
+5. **Restricted tool surface in v1 was a mistake.** v2 should give the agent the full deepagents toolset (execute + write_todos + read_file/write_file + glob/grep + task subagent dispatch) — same as chat-deepagents. The agent picks what to use per skill instructions.
+
+**Handoff to next session:**
+
+Use `PROMPT.md` as kickoff. Two priorities:
+
+1. **Bug #45 — Slack live fetch debug.** Read `kernel/integration/dispatch.py::resolve_integration()` to see what filters it applies on lookup by system_type. Likely candidates: status filter expecting something other than `active`; org_id mismatch; (system_type, provider) tuple key in the adapter registry. Fix → 90-day Slack backfill → build slack_fetcher role + skill + Slack-Fetcher actor (5min cron) → activate.
+
+2. **Voice-deepagents canonical rebuild (Bug #44 / Blocker #2).** DELETE v1 files (`harnesses/voice-deepagents/{tools.py, assistant.py, main.py, tests/test_tools.py}`; pyproject.toml + Dockerfile reusable parts only). REBUILD mirroring `harnesses/chat-deepagents/`:
+   - `agent.py` — copy `chat-deepagents/agent.py` verbatim, swap DEFAULT_PROMPT for voice-specific guidance (concise, ask-one-question-at-a-time, no JSON dumps to user). Uses `deepagents.create_deep_agent` + `init_chat_model` + `build_backend`.
+   - `session.py` — copy `chat-deepagents/session.py` and swap WebSocket I/O for LiveKit. Keep Interaction + Attention + heartbeat + events stream subprocess + three-layer config merge. Per-turn flow: STT text in → `agent.astream_events(...)` → final text out → TTS.
+   - `llm_adapter.py` — `DeepagentsLLM(livekit.agents.llm.LLM)` wrapping the deepagents CompiledStateGraph for LiveKit's AgentSession. Translates `chat_ctx` ↔ deepagents `messages`. Streams response back via LiveKit's expected ChatStream interface.
+   - `main.py` — LiveKit Agents `WorkerOptions(entrypoint_fnc=...)` constructing VoiceSession per room.
+   - `pyproject.toml` — add `deepagents`, `langchain`, `langchain-google-vertexai`, `langgraph` alongside livekit deps.
+   - tests for the LLM adapter + VoiceSession.
+   
+   Voice runtime entity ready (id `69f3b7fc97300b115e7236a0`); service token at `indemn/dev/shared/runtime-voice-service-token`. Repoint deployment image once v2 builds.
+
+After both: TD-1 done-test verification + close. Then TD-2 cascade activation begins.
+
+**Touched (Session 14):**
+
+*indemn-os commits to main (3 + voice v1):*
+- `1026d78` (fork) `fix(queue+activities): unjam dispatch + tolerate malformed rows (Bug #38, Bug #37 follow-on)`
+- `c36969b` (fork) `fix(queue): sort dispatch sweep pending-first (Bug #38 followup)`
+- `96684d5` (fork) `fix(harness): handle synthetic kernel-internal entity_types (Bug #41)`
+- `c87376d` (this thread) `feat(adapters): Drive fetch_documents + Slack adapter (TD-1 sub-pieces 4+5)`
+- `62f47f9` (this thread) `feat(harnesses): voice-deepagents — LiveKit Agents harness for voice (TD-1 sub-piece 7)` — **voice v1, will be replaced**
+
+*operating-system commits (in this end-of-session protocol commit):*
+- `projects/customer-system/CURRENT.md` rewrite
+- `projects/customer-system/SESSIONS.md` Session 14 entry (this entry)
+- `projects/customer-system/os-learnings.md` updates: Bug #42 reframe + #43 close + #44 add + #45 add
+- `projects/customer-system/artifacts/2026-04-30-slack-adapter-design.md` (NEW)
+- `projects/customer-system/artifacts/2026-04-30-voice-deepagents-runbook.md` (NEW; describes v1 — will need update after v2 rebuild)
+- `projects/customer-system/skills/log-touchpoint.md` (NEW)
+- `projects/customer-system/CLAUDE.md` (Journey § 5: Session 14 entry)
+
+*OS state created (live in dev OS):*
+- ReviewItem entity + Reviewer role (Craig assigned)
+- SlackMessage entity (16 fields)
+- voice-deepagents-dev runtime entity (id `69f3b7fc97300b115e7236a0`) + service token in AWS Secrets
+- Slack Integration entity (id `69f3bb5097300b115e7236dd`, status active, secret_ref `indemn/dev/integrations/slack-oauth`)
+- Slack bot_token in AWS Secrets at `indemn/dev/integrations/slack-oauth`
+- Email-Fetcher / Meeting-Fetcher / Drive-Fetcher actors + roles + skills (all active, autonomous)
+- log-touchpoint skill record + assigned to OS Assistant
+- Document.external_ref field + Document.source enum extended
+- 493 new Drive Documents from backfill
+- 326 new Email entities from Email Fetcher's first run
+- async-deepagents-dev runtime + chat-deepagents-dev runtime llm_config flipped to gemini-3-flash-preview/global
+- Email-Classifier (now llm_config inheriting gemini-3-flash-preview), TS unchanged, IE picked up new model
+
+---
+
 ## Session 13 — 2026-04-29 — Comprehensive roadmap alignment (TD-1 through TD-11)
 
 **Objective:** Continue from Session 12. Test the new shared-context hydration system. Discuss the roadmap holistically — get foundational alignment on what we're actually going to build, in what order, and how each piece works in practice. Per Craig: dive deep into the roadmap, attack it aggressively, deliver something tangible to the team. Avoid the prior failure mode of "fuzzy on what's tangibly going to be accomplished."
