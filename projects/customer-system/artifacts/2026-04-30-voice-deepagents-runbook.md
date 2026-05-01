@@ -1,192 +1,190 @@
 ---
-ask: "TD-1 sub-piece 7 (voice harness verification + refinement). voice-deepagents harness was built this session — capture deployment + verification runbook for Craig to flip live."
+ask: "TD-1 sub-piece 7 (voice harness). Capture the deployment + verification runbook so Craig can flip live."
 created: 2026-04-30
+updated: 2026-05-01
 workstream: customer-system
-session: 14
+session: 15
 sources:
   - type: indemn-os-source
-    description: "harnesses/voice-deepagents/{main.py,assistant.py,tools.py,Dockerfile,pyproject.toml,tests/}"
+    description: "harnesses/voice-deepagents/{agent,llm_adapter,session,main}.py + Dockerfile + pyproject.toml + tests/test_llm_adapter.py — v2 canonical pattern (Session 15 rebuild, indemn-os main commit 6671dea)"
   - type: indemn-os-source
-    description: "voice-livekit/ — Indemn customer-product voice agent, the template for our LiveKit Agents pattern"
+    description: "harnesses/chat-deepagents/{agent,session}.py — the v2 voice harness mirrors this structure exactly; only I/O differs (LiveKit AgentSession ↔ WebSocket)"
   - type: design-decision
-    ref: "Session 14 — Craig: 'We already use LiveKit and have livekit self hosted on a GPU.'"
+    ref: "Session 14 — Craig's correction 'I would read files to understand first' → reading docs/architecture/realtime.md + docs/architecture/associates.md surfaced the canonical pattern v1 violated. Session 15 — DELETE v1 + REBUILD."
+  - type: indemn-os-source
+    description: "voice-livekit/ — Indemn's customer-product voice agent. Same plugin stack (Deepgram, Cartesia, Silero, EnglishModel turn detector). The voice-deepagents harness is the *internal* dogfood version of the same transport layer."
 ---
 
-# voice-deepagents — Deployment + Verification Runbook
+# voice-deepagents — v2 Deployment + Verification Runbook
 
-## What's built
+> **Note (2026-05-01):** v2 of this runbook supersedes v1 (commit `62f47f9`).
+> v1 used `livekit.agents.Agent` + a single custom `execute` tool — wrong shape
+> per `docs/architecture/realtime.md` + `associates.md`. v2 mirrors
+> `harnesses/chat-deepagents/` — same agent code (deepagents +
+> harness_common + Interaction/Attention lifecycle + three-layer LLM config),
+> only the I/O transport differs. Indemn-os main commit `6671dea`.
 
-`harnesses/voice-deepagents/` — a LiveKit Agents worker that:
+## What v2 is
 
-- Subscribes to a LiveKit room and runs the realtime voice pipeline:
-  `user audio → Silero VAD → Deepgram STT → Gemini LLM → Cartesia TTS → user audio`
-- Tool surface: a single `execute(command: str)` function that subprocess-shells
-  `indemn` CLI commands. Symmetric with async-deepagents and chat-deepagents.
-- LLM: `google_vertexai:gemini-3-flash-preview` on `global` endpoint (matching the
-  async-deepagents runtime default; Bug #42 resolution).
-- Restricted tool surface: the agent can only run `indemn ...` commands. Anything
-  else returns an error to the agent, never spawns. Prevents arbitrary process
-  execution by a runaway model.
+`harnesses/voice-deepagents/` — a LiveKit Agents worker that runs the *same
+deepagents agent* as async + chat, with LiveKit handling audio I/O.
 
-Files:
+```
+user audio
+  → Silero VAD → Deepgram STT
+                       ↓
+              [DeepagentsLLM adapter]
+                       ↓
+                deepagents agent
+            (CompiledStateGraph — internal
+             reasoning loop runs CLI tools
+             via LocalShellBackend)
+                       ↓
+        final assistant text response
+                       ↓
+              Cartesia TTS → audio out
+```
+
+The deepagents agent does ALL the work — loads its skill via `indemn skill get`
+on turn 1, plans with `write_todos`, executes `indemn ...` CLI commands. LiveKit
+sees a standard LLM that takes ChatContext and emits text deltas; it doesn't
+know about the inner loop.
+
+## v2 file inventory
 
 | File | Purpose |
 |---|---|
-| `main.py` | LiveKit Agents `WorkerOptions` entrypoint. Builds the AgentSession with STT/LLM/TTS/VAD/turn-detector. Greets the user. |
-| `assistant.py` | `IndemnVoiceAssistant(Agent)` with the system prompt + bound tools. System prompt directs `execute('indemn skill get log-touchpoint')` on turn 1. |
-| `tools.py` | The `@function_tool execute(command: str)` wrapper. Subprocess + timeout + error formatting. Restricts to `indemn` commands only. |
-| `Dockerfile` | Python 3.12 base + ffmpeg/libsndfile/libportaudio2, indemn-os CLI installed, livekit-agents + plugins, VAD + turn-detector models pre-downloaded at build time. |
-| `pyproject.toml` | Deps: livekit-agents>=1.0, livekit-plugins-{google,deepgram,cartesia,silero,turn-detector,noise-cancellation}, google-auth/cloud-aiplatform. |
-| `tests/test_tools.py` | Unit tests for the `execute` wrapper — pin: empty rejection, non-`indemn` rejection, success returns stdout, failure returns formatted error, timeout handling, stderr appending. |
+| `agent.py` | `build_agent(associate, skill_paths, llm_config, checkpointer)` — copy of `chat-deepagents/agent.py` with voice-specific `DEFAULT_PROMPT` (concise, ask-one-at-a-time, no JSON dumps, confirm before destructive ops). Returns a `deepagents.create_deep_agent(...)`. |
+| `llm_adapter.py` | `DeepagentsLLM(LLM)` + `DeepagentsLLMStream(LLMStream)`. Translates LiveKit `ChatContext` ↔ LangChain `BaseMessage` list, invokes `agent.ainvoke(...)`, extracts the last AIMessage with non-empty text, emits as `ChatChunk`. LiveKit-side `tools` arg is intentionally ignored — deepagents owns its own tool surface. |
+| `session.py` | `VoiceSession` mirroring `ChatSession`. Same OS lifecycle: load associate via CLI, three-layer LLM config merge (Runtime defaults < Associate < Deployment), write skills to filesystem (Bug #35 fix preserved — absolute path + yaml.safe_dump), create Interaction (channel_type=voice), open Attention (purpose=real_time_session), 30s heartbeat, `indemn events stream` subprocess for mid-conversation entity awareness. |
+| `main.py` | LiveKit `WorkerOptions(entrypoint_fnc=...)`. Per-room job: VoiceSession.start() → AgentSession with STT/LLM/TTS/VAD/turn-detector → connect to room → greet → wait for disconnect → VoiceSession.close(). Background runtime register-instance + heartbeat (matches async/chat pattern). |
+| `Dockerfile` | Same pattern as chat-deepagents: copy harness_common, install indemn CLI, install deps, `COPY harnesses/voice-deepagents/ /app/harness/`, `CMD ["opentelemetry-instrument", "python", "-m", "harness.main"]`. Pre-downloads VAD + turn-detector models at build time. |
+| `pyproject.toml` | v0.2.0. Adds deepagents/langchain/langgraph alongside livekit deps. Drops `py-modules = [...]` (uses package layout). |
+| `tests/test_llm_adapter.py` | 11 tests pinning ChatContext→LangChain translation + final-text extraction + DeepagentsLLM/Stream contract. Module-level `pytest.importorskip` for langchain_core + livekit so kernel test suite skips cleanly while harness venv (Docker) runs them. |
 
-## OS state
+## v1 → v2 deltas (deleted from harness)
 
-| Item | Value |
-|---|---|
-| Runtime entity | `voice-deepagents-dev`, id `69f3b7fc97300b115e7236a0`, kind `realtime_voice`, framework `livekit`, llm_config `gemini-3-flash-preview/global` |
-| Runtime task queue | `runtime-69f3b7fc97300b115e7236a0` |
-| Runtime service actor | id `69f3b7fc97300b115e7236a2` |
-| Runtime service token | Stored at AWS Secret `indemn/dev/shared/runtime-voice-service-token`. Token value visible only at create time; do not log. |
-| `log-touchpoint` skill | Live in dev OS (this session). Assigned to OS Assistant. |
+- `assistant.py` — `IndemnVoiceAssistant(livekit.agents.Agent)` subclass. Replaced by the deepagents agent (which lives in `agent.py`) wrapped in DeepagentsLLM.
+- `tools.py` — single custom `execute()` function tool. Replaced by deepagents' built-in `LocalShellBackend` tool surface (execute + write_todos + read_file + glob/grep + task — same as async + chat).
+- `tests/test_tools.py` — superseded by `tests/test_llm_adapter.py`.
 
-## What still needs to happen for live voice
+## Pre-deployment OS state (already in place from Session 14)
 
-This is the deployment/operational work that requires Craig's external resources.
-The code is in place; flipping voice-on requires the following setup.
+- **Voice runtime entity:** id `69f3b7fc97300b115e7236a0`, kind=`realtime_voice`, framework=`livekit`/`deepagents`, llm_config=`{model: google_vertexai:gemini-3-flash-preview, location: global}`. (Inherits gemini-3-flash-preview/global from runtime defaults — Bug #42 resolution.)
+- **Service token:** AWS Secrets at `indemn/dev/shared/runtime-voice-service-token`.
+- **Indemn API:** `https://api.os.indemn.ai`.
 
-### 1. Required env vars on the deployed worker
+## Deployment (Craig action)
 
-The voice-deepagents Docker image expects these at runtime:
+The voice harness runs on the same self-hosted GPU instance as `voice-livekit` (per Craig: "we already use LiveKit and have livekit self hosted on a GPU"). Two options for runtime hosting:
 
-| Env var | Source | Purpose |
-|---|---|---|
-| `LIVEKIT_URL` | Indemn's self-hosted LiveKit server | wss://… endpoint of the LiveKit room manager |
-| `LIVEKIT_API_KEY` | LiveKit dashboard | Worker auth for joining rooms |
-| `LIVEKIT_API_SECRET` | LiveKit dashboard | Worker auth |
-| `DEEPGRAM_API_KEY` | Deepgram dashboard (Indemn already has — used by voice-livekit) | STT |
-| `CARTESIA_API_KEY` | Cartesia dashboard (Indemn already has) | TTS |
-| `GCP_SERVICE_ACCOUNT_JSON` | AWS Secrets `indemn/dev/shared/google-cloud-sa` (already exists) | Vertex Gemini auth |
-| `GCP_PROJECT_ID` | `prod-gemini-470505` | Vertex project for Gemini |
-| `GCP_LOCATION` | `global` | Endpoint for gemini-3-flash-preview |
-| `INDEMN_API_URL` | `https://api.os.indemn.ai` | OS API for the CLI subprocess |
-| `INDEMN_SERVICE_TOKEN` | AWS Secret `indemn/dev/shared/runtime-voice-service-token` | CLI auth — runtime acts as `voice-deepagents-dev` service actor |
-
-Optional tuning:
-| Env var | Default | Purpose |
-|---|---|---|
-| `VOICE_LLM_MODEL` | `gemini-3-flash-preview` | Override LLM |
-| `VOICE_LLM_LOCATION` | `global` | Override LLM endpoint |
-| `VOICE_LLM_TEMPERATURE` | `0.3` | LLM temp |
-| `VOICE_STT_MODEL` | `nova-3` | Deepgram model |
-| `VOICE_TTS_MODEL` | `sonic-3` | Cartesia model |
-| `VOICE_TTS_VOICE_ID` | `6ccbfb76-...` | Cartesia voice (matches voice-livekit default) |
-| `INDEMN_CLI_TIMEOUT` | `600` | Per-command timeout in seconds |
-
-### 2. Deploy the worker
-
-Two patterns Indemn already runs:
-
-**Option A (matches voice-livekit) — deploy on the same GPU instance** as voice-livekit. Build the image and run alongside. The worker connects out to the LiveKit room manager and waits for jobs.
-
-**Option B — Railway service.** Build the image and push to Railway:
+### Option A — Container alongside voice-livekit on the GPU instance
 
 ```bash
-cd /Users/home/Repositories/indemn-os
+# On the GPU instance:
+docker build -f harnesses/voice-deepagents/Dockerfile -t indemn-runtime-voice-deepagents:dev .
+
+docker run --rm --network host \
+  -e LIVEKIT_URL="wss://livekit.indemn.<...>" \
+  -e LIVEKIT_API_KEY="<...>" \
+  -e LIVEKIT_API_SECRET="<...>" \
+  -e DEEPGRAM_API_KEY="<...>" \
+  -e CARTESIA_API_KEY="<...>" \
+  -e GCP_SERVICE_ACCOUNT_JSON="$(cat /path/to/gcp-sa.json)" \
+  -e GCP_PROJECT_ID="<gcp-project>" \
+  -e GCP_LOCATION="us-central1" \
+  -e INDEMN_API_URL="https://api.os.indemn.ai" \
+  -e INDEMN_SERVICE_TOKEN="$(aws secretsmanager get-secret-value --secret-id indemn/dev/shared/runtime-voice-service-token --query SecretString --output text)" \
+  -e RUNTIME_ID="69f3b7fc97300b115e7236a0" \
+  -e VOICE_ASSOCIATE_ID="<actor-id-of-the-voice-assistant-actor>" \
+  -e LANGSMITH_API_KEY="$(aws secretsmanager get-secret-value --secret-id indemn/dev/shared/langsmith-api-key --query SecretString --output text)" \
+  -e LANGSMITH_TRACING="true" \
+  -e LANGSMITH_PROJECT="indemn-os-associates" \
+  -e VOICE_STT_MODEL="nova-3" \
+  -e VOICE_TTS_MODEL="sonic-3" \
+  indemn-runtime-voice-deepagents:dev
+```
+
+### Option B — Railway service `indemn-runtime-voice` (if/when Railway gets GPU support, or if running CPU-only is acceptable)
+
+```bash
 railway up --service indemn-runtime-voice
-# Set env vars in Railway dashboard or via:
-railway variables set --service indemn-runtime-voice \
-  LIVEKIT_URL=... LIVEKIT_API_KEY=... LIVEKIT_API_SECRET=... \
-  DEEPGRAM_API_KEY=... CARTESIA_API_KEY=... \
-  GCP_PROJECT_ID=prod-gemini-470505 GCP_LOCATION=global \
-  INDEMN_API_URL=https://api.os.indemn.ai
-# GCP_SERVICE_ACCOUNT_JSON + INDEMN_SERVICE_TOKEN need the AWS-Secrets injection flow
-# (same pattern as indemn-runtime-async/chat).
+# Then set the same env vars in the Railway service config.
 ```
 
-Note: Option B works because LiveKit Agents workers are NOT GPU-bound — Deepgram and Cartesia handle audio externally (cloud APIs). LiveKit's local VAD + turn-detector models are CPU-fine. GPU is only required if you want local STT/TTS models, which Indemn doesn't currently use for voice agents.
+## Verification
 
-### 3. Wire an Actor to use the voice runtime
+### 1. Runtime registration
 
-Once the worker is up + connected to LiveKit, configure an actor to dispatch voice
-jobs to it. For testing: update OS Assistant's runtime_id, OR create a new
-`Voice OS Assistant` actor:
+The harness calls `indemn runtime register-instance` on boot. Verify:
 
 ```bash
-# Option 1: route OS Assistant to voice (loses chat path; not recommended)
-# DO NOT do this — keep OS Assistant on chat-deepagents-dev.
-
-# Option 2: clone OS Assistant onto voice runtime
-indemn actor create \
-  --type associate --name "Voice OS Assistant" \
-  --mode hybrid \
-  --runtime-id 69f3b7fc97300b115e7236a0 \
-  --skills '["log-touchpoint"]'
-indemn actor update <new-id> --data '{"runtime_id": "69f3b7fc97300b115e7236a0"}'
-indemn actor transition <new-id> --to active
+indemn runtime get 69f3b7fc97300b115e7236a0 | jq '.instances'
+# Should show one instance with last_heartbeat ≤ 30s ago.
 ```
 
-Then for the user-facing path: a Deployment entity that maps a UI surface (a
-"call" button or push-to-talk in TD-3's per-customer page) to the Voice OS
-Assistant. Per OS architecture: Deployment owns the surface + actor + runtime
-+ pre-conversation params.
+If the runtime is `configured` and you see `instances=[]`, the harness didn't reach the OS API — check INDEMN_API_URL + INDEMN_SERVICE_TOKEN.
 
-### 4. Verification
+### 2. Health check call
 
-End-to-end smoke test:
+The simplest test: dispatch a LiveKit room with the harness's worker name, join it from a LiveKit playground client (or any LiveKit web SDK). Within ~2s the harness should:
 
-1. Worker process is running and connected to LiveKit (look for "registered worker"
-   in worker stdout).
-2. Open the Indemn voice-livekit room manager / dispatch a test room.
-3. Join the room as a user (LiveKit web playground or a built-in UI).
-4. Speak: *"Log a touchpoint with Walker at GR Little. We discussed BT Core
-   integration today and he committed to sending us the API spec by Friday."*
-5. Expected behavior:
-   - Agent transcribes the speech
-   - Agent calls `execute('indemn skill get log-touchpoint')` to load the
-     procedure
-   - Agent walks through resolve → confirm → create
-   - Agent confirms back: "Logged. Touchpoint <id> for GR Little. IE will pick
-     this up."
-6. Verify in dev OS: `indemn touchpoint list --limit 1` shows the new entry,
-   `summary` matches the user's statement.
-7. Verify in LangSmith (project `indemn-os-associates`): trace shows the agent
-   reasoning + each `execute` call.
+1. Pick up the room job (LiveKit Agents framework)
+2. `VoiceSession.start()` — log lines:
+   - `Loaded associate: <name> (<id>)`
+   - `Created Interaction: <id>` (channel_type=voice)
+   - `Opened Attention: <id>` (purpose=real_time_session)
+3. AgentSession constructs STT/LLM/TTS pipeline
+4. Bot greets: "Hi, this is your Indemn OS assistant. What can I help you with?"
 
-### 5. Out of scope for this build (future enhancements)
+### 3. End-to-end skill load + execution (real voice turn)
 
-- Bilingual support (voice-livekit has `MultilingualModel` turn detector — not
-  wired here; English only)
-- Outbound calling (voice-livekit's `outbound.py` pattern — calling a customer's
-  phone from the OS is a separate use case, not log-touchpoint)
-- Conversation persistence (chat-deepagents has MongoDB checkpointer; voice
-  conversations are ephemeral by default — recordings are LiveKit's job)
-- Per-actor default_assistant pattern (Bug #44) — this voice runtime is shared
-  for now; per-team-member voice assistants requires the kernel sweep that
-  doesn't yet exist
-- Custom LiveKit agent observability hooks (LangFuse like voice-livekit) — using
-  LiveKit's built-in observability for now
+User says: "Log a touchpoint with Walker at GR Little, today, scope external, summary: discussed renewal."
 
-## Why this design
+Expected:
+- STT transcribes
+- DeepagentsLLM invokes the deepagents agent
+- Agent runs `indemn skill get log-touchpoint` on turn 1
+- Agent runs `indemn contact entity-resolve --data '{"name": "Walker"}'`, `indemn company entity-resolve --data '{"name": "GR Little"}'`
+- Agent confirms: "Logging a touchpoint with Walker at GR Little, scope external, dated today, summary discussed renewal. Sound right?"
+- User says yes
+- Agent runs `indemn touchpoint create --data '{...}'`
+- Agent reports the new Touchpoint id
+- TTS speaks each agent turn
 
-- **LiveKit Agents framework** — same as voice-livekit (Indemn's customer voice
-  product). One library, two harnesses, shared expertise.
-- **Single tool (`execute`)** — symmetric with async-deepagents (commit `7281b83`
-  on indemn-os main, Session 12). Skill content arrives as tool result on turn
-  1, agent acts per skill instructions. No deepagents skills layer to maintain.
-- **Gemini-3-flash-preview** — same model as the rest of the OS post-Bug-#42.
-  Bug #42's MALFORMED_FUNCTION_CALL fix applies here too once the worker is
-  live.
-- **Restricted tool surface** — only `indemn` CLI commands. Prevents the agent
-  from spawning arbitrary subprocesses. Safety + auditability.
-- **Deepgram + Cartesia** — Indemn already pays for these and uses them in
-  voice-livekit. No new vendor relationships.
-- **No GPU dep** — Deepgram and Cartesia are cloud APIs; only Silero VAD +
-  turn-detector run locally and are CPU-friendly. Worker is Railway-deployable.
+### 4. LangSmith trace
 
-## Why the framework choice answers your earlier question
+Per CLAUDE.md § 8 — query the indemn-os-associates project, filter by `associate_id = <voice-actor-id>`, `entity_type = Interaction`. Use `order: "desc"` (lowercase — Bug #42 query gotcha). Trace should show:
 
-Voice-deepagents is **option (c) LiveKit-based** from the architecture choice
-earlier this session (you said: "We already use LiveKit and have livekit self
-hosted on a GPU."). The harness uses LiveKit Agents for the realtime pipeline
-and the same plugin set (deepgram, cartesia, silero, google) that voice-livekit
-uses, so all of Indemn's existing voice infra knowledge transfers.
+- One root chain run per voice turn (named "<Associate Name> → Interaction <id>")
+- Inside: `agent.ainvoke` → `write_todos` → `execute('indemn ...')` tool calls → final AIMessage
+- Total LLM turns ≤ ~8 for a typical 1-2 minute conversation
+
+### 5. Attention + heartbeat lifecycle
+
+```bash
+indemn attention list --filter '{"actor_id":"<voice-actor-id>","status":"active"}'
+# During an active call, expect 1 active Attention with target_entity.type=Interaction
+# and last_heartbeat within the past 30s.
+```
+
+After the call ends, the Attention transitions `active → closed` via `VoiceSession.close()`. If the harness crashes mid-call, the queue processor's `cleanup_expired_attentions` sweep transitions it `active → expired` 2 minutes after the last heartbeat (TTL).
+
+### 6. Interaction record
+
+```bash
+indemn interaction list --filter '{"channel_type":"voice"}' --limit 5
+# Should show recent voice Interactions with their status (active during, closed after).
+```
+
+## Known gaps + follow-ups
+
+- **Token-by-token TTS streaming.** v1 of `DeepagentsLLM` emits one ChatChunk with the full final text. TTS will start synthesizing once it receives the chunk, but it doesn't get earlier-than-final tokens. Future enhancement: tap into `agent.astream_events(...)` and emit deltas as the final assistant message tokens generate.
+- **Mid-conversation event awareness for voice.** The events stream subprocess populates `VoiceSession._event_queue` but the LLM adapter doesn't yet drain it into a system message on the next turn (chat does this in `session.py::handle_message`). Add to `DeepagentsLLMStream._run` when the use case arrives.
+- **MongoDB checkpointer.** v1 voice sessions use the in-memory checkpointer (no persistence across reconnect). Wiring the LangGraph MongoDB checkpointer (same one chat uses) is straightforward when needed — set `checkpointer=...` in `VoiceSession(...)`.
+- **chat-deepagents → CLI-via-prompt skill loading.** Pending separate work — chat still uses the deepagents skills layer that voice inherits. Both will migrate together when `harnesses/chat-deepagents/` adopts the async-deepagents pattern (commit `7281b83`).
+- **Per-actor `default_assistant` provisioning.** Per Craig's call: shared OS Assistant covers TD-1; deferred. Kernel sweep that auto-provisions a `default_assistant` per human Actor on create is its own future work.
+
+## Closes Bug #44
+
+The v1 framing (assistant.py + tools.py + livekit.agents.Agent class with single custom execute tool) is fully replaced. Per-actor `default_assistant` pattern remains deferred. The voice runtime is ready for deployment by Craig once env vars + GPU instance allocation align.

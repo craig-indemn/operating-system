@@ -2,13 +2,21 @@
 
 > Living source of truth for **how we get from where we are now to the vision**. Updated every session that moves the work forward. Read with `vision.md` (what we're building, why, and the lens) and `os-learnings.md` (running register of OS bugs + capability gaps + design questions).
 >
-> Last updated: **2026-04-30** (Session 14 close — TD-1 substantially executed; sub-pieces 1, 2, 3, 5, 8 done end-to-end; sub-pieces 4, 6, 7 partial; voice canonical rebuild + Slack live-fetch debug pending next session).
+> Last updated: **2026-05-01** (Session 15 close — TD-1 fully closed end-to-end; voice harness v2 deployed to Railway with multi-turn round-trip verified; chat-side log-touchpoint verified; 7 OS bugs resolved; chat + voice harnesses migrated to CLI-only skill loading. Bug #40 deferred to Session 16 for deep architectural design.).
 
 ---
 
-## Where we are now (2026-04-30)
+## Where we are now (2026-05-01)
 
-**TD-1 ~85% complete.** Three of four scheduled fetcher actors running autonomously (Email-Fetcher every 5 min, Meeting-Fetcher every 15 min, Drive-Fetcher every hour). Slack adapter built + deployed but live fetch blocked by Bug #45 (resolve_integration not finding the active Integration). Voice harness v1 built (commit `62f47f9`) but architecturally wrong — does NOT use deepagents framework or Interaction/Attention lifecycle per `docs/architecture/realtime.md` + `associates.md`; v2 canonical rebuild pending. log-touchpoint skill uploaded + assigned to OS Assistant; chat-side end-to-end test pending. **Phase A complete (Sessions 6-8). Phase B1 substantially de-risked (Session 12). Bug-fix work converging — Bug #38, #41, #42 resolved this session via parallel fork + main thread.**
+**TD-1 COMPLETE.** All four scheduled fetchers (Email, Meeting, Drive, Slack) active and autonomous on Railway. Voice harness v2 deployed; multi-turn voice round-trip created real Touchpoint `69f4ed4f03e56394d808bc88` end-to-end. Chat-side log-touchpoint verified end-to-end (Touchpoint `69f4f2ca03e56394d808bd6d`). Both transports use Voice OS Assistant (id `69f4c62d03e56394d808b79c`) with `log-touchpoint` skill. All TD-1 done-test items passing. **Next gate: Bug #40 deep architectural work in Session 16, then TD-2 begins.**
+
+For deeper context on Session 15 closeout: `CURRENT.md`, `SESSIONS.md` Session 15 entry, `CLAUDE.md § 5 Journey` Session 15.
+
+---
+
+## Pre-Session-15 baseline (carried for reference — see CURRENT.md for current state)
+
+**TD-1 ~85% complete (Session 14 close).** Three of four scheduled fetcher actors running autonomously (Email-Fetcher every 5 min, Meeting-Fetcher every 15 min, Drive-Fetcher every hour). Slack adapter built + deployed but live fetch blocked by Bug #45 (resolve_integration not finding the active Integration). Voice harness v1 built (commit `62f47f9`) but architecturally wrong — does NOT use deepagents framework or Interaction/Attention lifecycle per `docs/architecture/realtime.md` + `associates.md`; v2 canonical rebuild pending. log-touchpoint skill uploaded + assigned to OS Assistant; chat-side end-to-end test pending. **Phase A complete (Sessions 6-8). Phase B1 substantially de-risked (Session 12). Bug-fix work converging — Bug #38, #41, #42 resolved this session via parallel fork + main thread.**
 
 **Specific Session 14 progress against TD-1 done-test:**
 - ✓ Pre-flight cleanup verified: 0 unrelated emails/meetings from Bug #36 (500 + 5 deleted; Armadillo preserved); 2 Bug #37 rows deleted by fork session.

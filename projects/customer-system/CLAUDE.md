@@ -439,6 +439,45 @@ The biggest single execution session on the customer-system project. TD-1 ~85% c
 
 **Material state at close:** TD-1 ~85% complete. Three of four fetcher actors active and autonomous. Pipeline EC/TS still suspended; IE active and now on gemini-3-flash-preview. ReviewItem + Reviewer wired. log-touchpoint skill assigned to OS Assistant. Slack Integration in place but live fetch blocked by Bug #45. Voice runtime + token ready for v2 rebuild. Bug list converged on Bug #44 (voice rebuild) + Bug #45 (Slack dispatch) + carry-forward Bug #40 (deterministic scheduled-actor execution path — long-term architectural).
 
+### Session 15 (2026-05-01) — TD-1 fully closed; voice harness v2 deployed; chat + voice migrated to CLI-only skill loading; 7 OS bugs resolved
+
+The session that closed TD-1 end-to-end. Massive validation + cleanup + harness architecture cleanup.
+
+**TD-1 closure (3 verifications):**
+- **Slack-Fetcher activated.** Bug #45 resolved as DUAL fix: (a) Slack Integration `access: null` workaround via data patch; (b) `register_adapter("messaging", "slack", SlackAdapter)` had wrong arg order (passed system_type+provider instead of provider+version) → registered at key `messaging:slack` instead of `slack:v1` → `AdapterNotFoundError` on every fetch_new. One-line fix: `register_adapter("slack", "v1", SlackAdapter)` (`eea170d`). 90-day Slack backfill drained 860 messages spanning 2023-11-17 → 2026-05-01 across 4 channels (conversation-design 435, voice 217, customer-implementation 200, test-reports 8). Slack Fetcher actor `69f4a473a0cbb2f5d2d0386f` cron `*/5 * * * *` active and autonomous; first tick verified via LangSmith trace `019de3c9-ab78-7383-b273-5c0d051d9431`.
+- **Voice harness v2 canonical rebuild + Railway deploy.** v1 (`62f47f9`) deleted; v2 mirrors chat-deepagents structure: `agent.py` (deepagents `create_deep_agent` + voice DEFAULT_PROMPT), `session.py` (VoiceSession with Interaction + Attention + 30s heartbeat + `indemn events stream` subprocess), `llm_adapter.py` (`DeepagentsLLM(LLM)` adapter wrapping the deepagents agent for LiveKit's AgentSession), `main.py` (LiveKit `WorkerOptions(entrypoint_fnc, prewarm_fnc)`). 17 unit tests. Indemn-os main commits `6671dea` (v2) + 7 follow-ups for bootstrap, env-var fallbacks, agent_name dispatch, sys.executable indemn resolution, LangSmith metadata, Dockerfile CMD, drop turn_detector. Deployed to NEW Railway service `indemn-runtime-voice` (id `df2349d6`). Multi-turn voice round-trip created Touchpoint `69f4ed4f03e56394d808bc88` (Branch + Dan Spiegel + summary "discussed renewal pricing and timeline").
+- **Chat-side log-touchpoint verified.** Touchpoint `69f4f2ca03e56394d808bd6d` created via deployed `indemn-runtime-chat` after migration to CLI-only skill loading (Bug #47 fix required first — chat service token in Railway env was stale).
+
+**Architectural cleanup:**
+- **chat + voice harnesses migrated to CLI-only skill loading.** Mirrors async-deepagents `7281b83`. New `build_system_prompt(associate)` helper composes per-associate system prompts with `execute('indemn skill get <ref>')` directives. Drops the deepagents filesystem-skills layer entirely. Eliminates the Bug #35 class for both harnesses. (`7197f08`)
+- **`harness_common.cli` resolves indemn via `sys.executable`.** Eliminates the `/opt/homebrew/bin/indemn` (Node.js CLI from `@indemn/cli` npm package) collision that was silently breaking the harness in spawn-mode subprocesses. (`33d12f7`)
+- **Voice DeepagentsLLM passes RunnableConfig with metadata + tags + run_name** (`27e9304`). Voice traces appear in `indemn-os-associates` LangSmith project queryable per CLAUDE.md § 8.
+
+**OS bugs resolved (7):**
+1. **Bug #45a** (data patch): Slack Integration `access.roles` populated.
+2. **Bug #45b** (`eea170d`): Slack adapter register_adapter args fixed.
+3. **Bug #45c** (`5036bc1`): kernel resolver Step 3 query uses `$or` to tolerate null/missing `access`. 5 unit tests.
+4. **Bug #46** (`20c074c`): kernel `fetch_new` watermark fallback chain (`date`→`posted_at`→`created_date`). 8 unit tests. Verified live: Document fetch-new immediately surfaced 5 NEW Drive files post-fix.
+5. **Bug #47** (Railway env update + redeploy): chat-deepagents stale service token resolved.
+6. **Bug #12** (AWS Secrets update): `mongodb-uri` corrected to working host.
+7. **Bug #13 followup** (`bee1a7e`): Voice harness rows added to development.md deploy table.
+8. **Bug #39** (`00b7407`): `_route_slug_for` honors `_collection_name` operator override + `Settings.name` for kernel entities. 5 unit tests.
+9. **Bug #44** closed: voice harness fully canonical + deployed end-to-end.
+
+**Load-bearing turns:**
+
+1. **Bug #45 was a dual fix that required both layers.** The data patch alone wasn't enough; the adapter registration call was also wrong. Fixing only one would leave the system silently broken. Lesson: when multiple integrations of the same `system_type` work but a new one doesn't, suspect BOTH the data shape (per-integration config like access.roles) AND the code path (per-integration registration). Don't stop at the first plausible cause.
+2. **The deepagents filesystem-skills layer was wrong shape for ALL three harnesses, not just async.** Async-deepagents migrated 2026-04-29 (Session 12, commit `7281b83`); chat + voice followed Session 15 (Session 12 plan tracked it). Three concrete benefits: eliminates Bug #35 class entirely (no path resolution against backend root_dir, no YAML escaping, no SKILL.md format), symmetric with how the agent loads entity skills + everything else in the OS, gives operators a system_prompt directive they can directly read.
+3. **Subprocess env propagation in spawn-mode multi-process workers (LiveKit Agents) is unreliable for PATH.** `harness_common.cli` previously called `subprocess.run(["indemn", ...])` relying on PATH. Different binary (`/opt/homebrew/bin/indemn` is Node.js CLI from `@indemn/cli` npm package — only has `init`) gets picked up sometimes. Fix: resolve absolute path via `sys.executable`'s parent dir at module load. Generalizable lesson: any harness shell-out should pin to absolute paths, not rely on PATH inheritance.
+4. **Kernel `fetch_new` watermark assumed `entity.date`** — silently broken for SlackMessage (`posted_at`) + Document (`created_date`). Symptom invisible to logs (no error, just `created=0`). Surfaced only by running the actual flow on real backfilled data and noticing the drain pattern doesn't converge. Trace-as-build success.
+5. **Resolver `access: null` → unreachable** is the wrong default for org integrations. Operator intent for null is "no role gate, any actor in this org can use it" — not "no access." Bug #45c fix uses $or to make both work; better error message uses `Integration.find().count()` to hint at status/access mismatch when lookup fails on existing-but-non-matching integrations.
+6. **Voice harness ports 1:1 from chat structure once you have DeepagentsLLM.** The DeepagentsLLM adapter (translates LiveKit `ChatContext` ↔ deepagents `messages` + invokes `agent.ainvoke()` + emits `ChatChunk`s) is the bridge that lets all three harnesses (async, chat, voice) share the same agent + skill loading + Interaction/Attention lifecycle. Confirms the canonical pattern: agent code is harness-agnostic; only I/O transport differs.
+7. **End-of-session bug-cleanup discipline pays off.** 7 OS bugs resolved + 14 indemn-os commits in one session. Test count grew 437 → 456 (kernel suite). The fork-and-coordinate pattern from prior sessions wasn't needed because the work fit one main thread.
+
+**Material state at close:** TD-1 fully closed end-to-end. All 4 fetcher actors active and autonomous. Voice + chat round-trips both create real Touchpoints. Voice OS Assistant created and bound to Railway voice runtime. 7 OS bugs resolved. Bug list converged on Bug #40 (deterministic scheduled-actor execution path — deferred to Session 16 for deep design per Craig) + Bug #19 follow-on (process improvement, no code action). 14 indemn-os main commits this session.
+
+**Handoff to Session 16:** Use `PROMPT.md` as kickoff. Objective: deep design + implementation of Bug #40. Pick (A) `cron_runner` actor mode or (B) new `ScheduledActorWorkflow` with rationale, execute, deploy, verify all 4 fetchers continue working post-migration. Then begin TD-2 (cascade activation: build MeetingClassifier, SlackClassifier, Proposal-Hydrator, Company-Enricher; activate progressively bottom-up; systematic historical replay across the ~930 emails + 67 meetings + 860 SlackMessages).
+
 ---
 
 ## 6. Foundations

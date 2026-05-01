@@ -12,9 +12,9 @@ User says any of: "log a touchpoint", "I just had a call with X", "log my meetin
 
 Walk the user through these. **Do not require all in one shot — start with the most natural and probe for the rest.**
 
-1. **Customer Company.** Resolve via `execute('indemn company entity-resolve --data ''{\"name\": \"<their phrase>\"}'')` first. If 1 candidate at 1.0 — use that. If multiple at 1.0 — ask "Did you mean X (id ...) or Y (id ...)?" If 0 candidates — ask if this is a new prospect; if yes, create the Company.
+1. **Customer Company.** Resolve via `execute('indemn company entity-resolve --data ''{\"candidate\": {\"name\": \"<their phrase>\"}}'')` first. If 1 candidate at 1.0 — use that. If multiple at 1.0 — ask "Did you mean X (id ...) or Y (id ...)?" If 0 candidates — ask if this is a new prospect; if yes, create the Company.
 
-2. **Participants.** External-side: Contacts. Internal-side: Employees (the user themselves + any colleagues they mention). Resolve each via `execute('indemn contact entity-resolve --data ''{\"email\": \"<addr>\"}'')` or by name. Single 1.0 match: use it. Ambiguous: ask. Zero: ask whether to create a new Contact (with email + name + company); only do so on user confirmation.
+2. **Participants.** External-side: Contacts. Internal-side: Employees (the user themselves + any colleagues they mention). Resolve each via `execute('indemn contact entity-resolve --data ''{\"candidate\": {\"email\": \"<addr>\"}}'')` or by name. Single 1.0 match: use it. Ambiguous: ask. Zero: ask whether to create a new Contact (with email + name + company); only do so on user confirmation.
 
 3. **Date/time.** Default to NOW if not specified. If user says "yesterday" or "this morning", convert to ISO timestamp; show the user what you parsed and confirm.
 
