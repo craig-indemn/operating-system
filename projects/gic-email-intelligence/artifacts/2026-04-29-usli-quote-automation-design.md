@@ -18,6 +18,12 @@ sources:
 
 # USLI Quote Automation — Design
 
+> **UPDATE 2026-05-01:** The Quote-lookup mechanism has been rearchitected after empirical findings invalidated the original "name-search with ambiguous-folder fallback" approach. **See `2026-05-01-usli-deterministic-lookup-architecture.md` for the canonical lookup algorithm — supersedes the "branched on lookup" section below.** The original design here is preserved as historical record; the deterministic-lookup artifact is authoritative for D.2 implementation.
+>
+> **UPDATE 2026-05-01:** Phase B.1 finding flipped the action_id-only spec to a **(action_id, letter_name) PAIR**. ActionId 67 ("Send offer to agent") has 25 templates; LetterName="USLI Quote" picks the carrier-specific one. `_create_activity_and_notify` must filter `GetActionNotifications` by LetterName, not pick `templates[0]` blindly. See `2026-05-01-unisoft-quote-search-canonical-shape.md` plus the implementation plan's revised C.4.
+>
+> **UPDATE 2026-05-01:** Phase B.3 — PDF detection uses a **whitelist policy** (upload only if filename matches retailer/applicant; default-skip everything else). Family 2 (Retail Web) has no "customer" string in any filename, so blacklist-on-customer would miss the small bare {REF}.pdf declaration page. Attachment field name is `name`, not `filename`.
+
 ## Goal
 
 Extend the existing GIC Email Intelligence automation pipeline to handle `usli_quote` emails — USLI's quote responses that arrive at `quote@gicunderwriters.com` for retail agents. The system creates or enriches a Unisoft **Submission** (carrier-side offer record) under the appropriate Quote, attaches the retailer-version and applicant-version PDFs, and fires an activity that auto-sends the agent the quote follow-up via Unisoft's notification template.

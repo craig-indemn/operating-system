@@ -2,9 +2,33 @@
 
 > **For Claude:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.
 
+> ## Updates log (2026-05-01)
+>
+> Empirical findings from Phase B inverted several assumptions in the original plan. Key deltas, with pointers to the canonical reference for each:
+>
+> 1. **B.2 — name-search works after all.** Original conclusion ("returns empty arrays, pivot to ambiguous-folder fallback") was wrong. Root cause was Criteria DTO field-shape mismatch (modeled after the saved-search XML, not the SOAP wire). Canonical shape captured 2026-05-01: see `2026-05-01-unisoft-quote-search-canonical-shape.md`. **C.1 was implemented against this — references to `GetQuotesByName2` throughout the plan are stale; shipped op is `GetQuotesForLookupByCriteria`.** Shipped: commit `b2f0f27`.
+> 2. **B.5 architectural pivot.** USLI ref is NOT stored anywhere on Unisoft side today (verified across 7 real linked Quotes: every `Quote.ConfirmationNumber` / `Source` / `OriginatingSystem` / `Submission.ConfirmationNo` for CarrierNo=2 is null). Name-search-as-primary with ambiguous-folder fallback would push 30–50% of daily volume to manual triage. New architecture: three-tier deterministic lookup with loop-closure stamping. **See `2026-05-01-usli-deterministic-lookup-architecture.md` — supersedes the original B.5 task and the design's "branched on lookup" diagram.** New task **C.7** added (deterministic-lookup helper + CLI). The `Indemn USLI Needs Review` folder is dropped — Tier 2 ambiguity uses tiebreak instead.
+> 3. **B.1 — (action_id, letter_name) PAIR.** ActionId 67 ("Send offer to agent") has 25 templates in the UI dropdown; LetterName="USLI Quote" is the discriminator. **C.4 contains a real bug:** `_create_activity_and_notify` picks `templates[0]` blindly, which fires the wrong template for any ActionId with multiple templates. **C.4 spec revised below to thread `letter_name` and filter `GetActionNotifications` results.** B.6 Settings + Param Store thread both values, not just one. Shipped: commit `9f7e81d` (fixture only).
+> 4. **B.3 — whitelist PDF policy** (not blacklist). Family 2 (Retail Web) attachments have no "customer" string in any filename, so blacklist-on-customer would miss the bare `{REF}.pdf` declaration page. Whitelist by `retailer` / `applicant` substring; default-skip everything else. Attachment field name is `name`, not `filename`. C.5/C.6/D.2 spec revised below. Shipped: commit `74cd768` (fixture only).
+> 5. **B.4 — defaults match prod.** USLI=2, GIC BrokerId=1 in both UAT and prod; no code changes required. Shipped: commit `fa8d55a` (fixture only).
+> 6. **C.0/C.1/C.2/C.3 already shipped.** Commit SHAs: `ea0fe75` (C.0), `b2f0f27` (C.1), `aec13fa` (C.2), `8608121` (C.3). 17 new tests, all green. Plan bodies for these tasks are preserved as historical record.
+> 7. **K.5 superseded.** "Exact-match Quote lookup IF B.2 found a real ref field" — empirically no such field exists. The equivalent capability is now folded into C.7 + the loop-closure stamping (no longer post-launch deferred). New **K.8** added: backfill `Submission.ConfirmationNo` for the ~7 historical USLI-linked Quotes.
+>
+> **Summary of remaining work in execution order** (post-2026-05-01):
+> 1. C.4 letter_name bug fix (critical, independent of architecture)
+> 2. B.6 Settings + Param Store (action_id + letter_name pair)
+> 3. C.5 whitelist + classify-usli-state CLI
+> 4. C.7 deterministic-lookup helper
+> 5. D.1, D.2, D.3 (skill loader, skill rewrite, factory test)
+> 6. D.4 dispatch (unchanged)
+> 7. E.1 folder routing (drop Needs Review folder)
+> 8. G UAT soak with revised G.3 thresholds
+> 9. H prod rollout (unchanged, gates on DEVOPS-158)
+> 10. K post-launch (K.5 dropped, K.8 added)
+
 **Goal:** Extend the existing email-to-Unisoft automation to handle `usli_quote` emails — for each one, create or enrich Unisoft Submission(s) under the appropriate Quote, attach the retailer + applicant copies, and create a USLI Quote Follow-Up activity that auto-fires the notification email to the retail agent. Three smaller cleanup PRs (task subject format, faster claim, .eml inline attachments) ship in parallel as sibling PRs, not bundled with USLI.
 
-**Architecture:** New deep agent factory + skill markdown for `usli_quote` (parallel to today's `agent_submission`), three new CLI commands wrapping existing SOAP operations (`GetQuotesByName2`, `SetSubmission Action=Update`, plus a new `--confirmation-no` flag and Submission-bound activity wiring), one new automation cron container, one new `Settings` field. Hard rule: prod-touching merges (Phase H) gate on **DEVOPS-158 7-day soak completion** (target end ~2026-05-06). Build + UAT work (Phases A–G) can overlap with the prod soak — different infrastructure.
+**Architecture:** New deep agent factory + skill markdown for `usli_quote` (parallel to today's `agent_submission`), three new CLI commands wrapping existing SOAP operations (`GetQuotesForLookupByCriteria`, `SetSubmission Action=Update`, plus a new `--confirmation-no` flag and Submission-bound activity wiring), one new automation cron container, one new `Settings` field. Hard rule: prod-touching merges (Phase H) gate on **DEVOPS-158 7-day soak completion** (target end ~2026-05-06). Build + UAT work (Phases A–G) can overlap with the prod soak — different infrastructure.
 
 **Tech Stack:** Python 3.12 (uv), Typer + LangChain `deepagents`, MongoDB Atlas, Google Vertex AI Gemini, in-house Unisoft REST proxy on Windows EC2, Docker Compose on dev-services / prod-services EC2, GitHub Actions self-hosted runners.
 
@@ -237,6 +261,8 @@ Schema:
 
 ### Task B.1: Identify ActionId for "USLI Quote Follow-Up" + confirm template
 
+> **UPDATE 2026-05-01 — SHIPPED + spec revised.** Final values: `usli_quote_action_id=67` ("Send offer to agent") + `usli_quote_letter_name="USLI Quote"`. Plan candidates 101/89/88 were wrong — final value 67 has 25 templates, requiring the LetterName discriminator. Fixture key `usli_quote_followup_action_id` (single int) is replaced by the pair `usli_quote_action_id` + `usli_quote_letter_name`. **C.4, B.6, D.1 spec revised below.** Shipped: commit `9f7e81d`.
+
 **Step 1:** From dev-services:
 
 ```bash
@@ -294,6 +320,8 @@ EOF
 (Subsequent B tasks merge into the same file.)
 
 ### Task B.2: Confirm GetQuotesByName2 request shape + USLI ref candidate field
+
+> **UPDATE 2026-05-01 — SUPERSEDED.** Op is `GetQuotesForLookupByCriteria` (not GetQuotesByName2). Original conclusion ("ops return empty arrays, pivot to ambiguous-folder fallback") was wrong — root cause was Criteria DTO field-shape mismatch. Canonical wire format captured 2026-05-01: see `2026-05-01-unisoft-quote-search-canonical-shape.md`. The `quote_usli_ref_field` probe found NO field on Unisoft side stores the USLI ref; the equivalent capability is built into C.7's deterministic-lookup architecture (`2026-05-01-usli-deterministic-lookup-architecture.md`). C.1 shipped against the canonical shape: commit `b2f0f27`. Plan body below preserved as historical record.
 
 **Step 1:** WSDL shows `QuoteListRequest` has no `Name2` field. Real fields include `SearchForValue`, `Criteria` (a `QuoteSearchCriteriaDTO` with a nested `Name`), `AgentNumber`, `IsNewSystem`, `ItemsPerPage`, `MGANumber`, `PageNumber`, `SortExpression`. Probe empirically — start with a known UAT insured (the migration soak created Q:17373 ↔ Golden Hands Home Keeping; confirm before relying on it).
 
@@ -359,6 +387,8 @@ If `quote_usli_ref_field == "none"`, name search remains the v1 lookup. If a rea
 
 ### Task B.3: Confirm PDF version detection patterns
 
+> **UPDATE 2026-05-01 — SHIPPED + policy revised.** Use whitelist policy (upload only on `retailer` or `applicant` substring; default-skip everything else), not blacklist on `customer`. Reason: Family 2 (Retail Web) attachments have a small bare `{REF}.pdf` declaration page with no "customer" string, so blacklist-on-customer would miss it. Two filename families captured: Family 1 `{REF}_Customer/Retailer/Applicant.pdf`, Family 2 `{REF}.pdf` / `{REF}_RetailerVersion/ApplicantVersion.pdf`. Schema gotcha: attachment field name is `name`, not `filename`. C.5 helper renamed to `should_upload_pdf()`; D.2 skill instructions revised. Shipped: commit `74cd768`.
+
 **Step 1:** Pull 5 recent USLI quote emails with attachments from the **prod database** (read-only — that's where real recent USLI traffic lives; `_devsoak` only has Phase G migration data which is stale).
 
 ```bash
@@ -390,6 +420,8 @@ If filenames are inconsistent, note the fallback — content-pattern matching du
 
 ### Task B.4: Confirm BrokerId + CarrierNo in prod
 
+> **UPDATE 2026-05-01 — SHIPPED.** USLI is `CarrierNumber=2` and GIC Underwriters is `BrokerId=1` in both UAT and prod. No code changes required. Schema gotcha: response uses `CarrierNumber` (not `CarrierNo`) and `Name1` (not `Name`). Shipped: commit `fa8d55a`.
+
 ```bash
 # Inside SSM session, with prod KEY:
 KEY=$(aws secretsmanager get-secret-value --secret-id indemn/prod/gic-email-intelligence/unisoft-api-key --query SecretString --output text)
@@ -416,6 +448,14 @@ p.write_text(json.dumps(cfg, indent=2))
 
 ### Task B.5: Confirm with JC — ambiguous-match folder
 
+> **UPDATE 2026-05-01 — REPLACED by deterministic-lookup architecture.** The original B.5 task ("ask JC about ambiguous-match folder routing") was predicated on name-search being the primary lookup. Empirical Phase B.5 investigation (7 real linked Quotes inspected) showed **the USLI ref is not stored anywhere on Unisoft side**, AND **name-search alone produces ambiguous matches in 30–50% of real cases** (e.g., one insured had 5 distinct USLI refs against 1 Quote ID).
+>
+> The new B.5 is an architectural spec: see `2026-05-01-usli-deterministic-lookup-architecture.md`. Three-tier deterministic lookup (Mongo by ref → Unisoft search with agent+LOB+recency filter → create), with loop-closure stamping (every Submission we touch gets `ConfirmationNo=usli_ref`).
+>
+> The `Indemn USLI Needs Review` folder is **dropped** under this architecture — Tier 2 ambiguity uses tiebreak (highest QuoteId), not human triage. The folder constant removal lands in the revised E.1.
+>
+> JC sign-off is no longer the gate; the architecture lock IS the gate. Implementation lands in C.7 (helper) + revised D.2 (skill).
+
 Send a one-line ask: when the system finds >1 matching Unisoft Quote for a USLI quote email, route to (a) new "Indemn USLI Needs Review" folder, or (b) Inbox with a flag? Default: (a).
 
 ```bash
@@ -429,6 +469,8 @@ p.write_text(json.dumps(cfg, indent=2))
 ```
 
 ### Task B.6: Add Settings field + Param Store wiring for the ActionId — [NEEDS USER APPROVAL] for prod
+
+> **UPDATE 2026-05-01 — Two values, not one.** Settings + Param Store thread BOTH `usli_quote_action_id: int = 0` AND `usli_quote_letter_name: str = ""`. Param Store paths: `/indemn/{env}/gic-email-intelligence/usli-quote-action-id` and `.../usli-quote-letter-name`. The `aws-env-loader.sh` PARAM_MAP gets two entries. The B-exit gate's fixture-presence check asserts on both. Optional addition: `usli_lookup_recency_days: int = 60` for the C.7 deterministic-lookup helper's recency window.
 
 **Files:**
 - Modify: `src/gic_email_intel/config.py`
@@ -499,7 +541,31 @@ git commit -m "feat(config): add usli_quote_followup_action_id Settings + Param 
 
 **Hard gate. Don't start C until this passes.**
 
-**Step 1:** Verify the fixture has all required fields:
+> **UPDATE 2026-05-01 — Assertion list revised.** The original assertions reference fixture keys that no longer exist (`usli_quote_followup_action_id`, `quote_search_request_field`, `quote_usli_ref_field`, `ambiguous_match_folder`). The revised gate is below; the original is preserved for historical record.
+
+**Revised gate (2026-05-01):**
+
+```bash
+python3 -c "
+import json
+cfg = json.load(open('tests/fixtures/usli_config.json'))
+required = ['usli_quote_action_id', 'usli_quote_letter_name',
+            'pdf_retailer_patterns', 'pdf_applicant_patterns', 'pdf_default_action',
+            'broker_id_gic', 'carrier_no_usli', 'agent_no_gic_office_quoted',
+            '_b2_canonical_criteria_template', '_b2_canonical_search_op']
+missing = [k for k in required if k not in cfg]
+assert not missing, f'Missing fixture keys: {missing}'
+assert cfg['usli_quote_action_id'] == 67, 'B.1 expected ActionId 67 (Send offer to agent)'
+assert cfg['usli_quote_letter_name'] == 'USLI Quote', 'B.1 expected LetterName \"USLI Quote\"'
+assert cfg['_b2_canonical_search_op'] == 'GetQuotesForLookupByCriteria', 'B.2 canonical op'
+assert cfg['carrier_no_usli'] == 2, 'B.4 USLI CarrierNo divergence — update usli_helpers + C.3/D.2'
+assert cfg['broker_id_gic'] == 1, 'B.4 GIC BrokerId divergence — update C.3/D.2'
+assert cfg['pdf_default_action'] == 'skip', 'B.3 whitelist policy: default-skip required'
+print('B-exit gate (revised 2026-05-01): PASS')
+"
+```
+
+**Original gate (preserved as historical record):**
 
 ```bash
 python3 -c "
@@ -535,6 +601,8 @@ If anything fails, return to Phase B and complete the missing piece. Do not proc
 **Test pattern.** `unisoft-proxy/client/cli.py` is a standalone script (no `__init__.py`). The conftest shim added in A.3 puts `unisoft-proxy/client/` on `sys.path`, so tests can `from cli import app` and `from unisoft_client import UnisoftClient`. Mock `cli.get_client` (the function in that module).
 
 ### Task C.0: Fix `unisoft_client.get_submissions` PascalCase bug
+
+> **UPDATE 2026-05-01 — SHIPPED.** Commit `ea0fe75`. `tests/test_unisoft_client.py::test_get_submissions_uses_camelcase_quote_id`. Verified empirically against UAT 2026-05-01: with camelCase fix, `GetSubmissions(QuoteId=17129)` returns the 1 known Submission.
 
 **Pre-existing bug.** `unisoft_client.py:126` does `self.call("GetSubmissions", {"QuoteID": quote_id})`. The WSDL `SubmissionListRequest` and the captured SAZ payload both use camelCase `QuoteId`. WCF silently treats unknown elements as null → returns wrong/empty data. C.3 depends on this working.
 
@@ -587,6 +655,8 @@ git commit -m "fix(unisoft_client): get_submissions sends QuoteId (camelCase) pe
 ```
 
 ### Task C.1: Wrap `GetQuotesByName2` as `unisoft quote search`
+
+> **UPDATE 2026-05-01 — SHIPPED with revised op + canonical Criteria.** Op shipped is `GetQuotesForLookupByCriteria` (not GetQuotesByName2 — captured UI uses the former). Client method shipped as `search_quotes()` (not `get_quotes_by_name()`). Canonical Criteria shape captured from Fiddler SAZ session 115: see `2026-05-01-unisoft-quote-search-canonical-shape.md`. Tests shipped: `tests/test_unisoft_quote_search.py` (8 tests including canonical-shape regression guards). Plan body below preserved as historical record. Shipped: commit `b2f0f27`.
 
 **Files:**
 - Modify: `unisoft-proxy/client/cli.py` (add to `quote_app`)
@@ -728,6 +798,8 @@ git commit -m "feat(unisoft): quote search --name (wraps GetQuotesByName2 with f
 
 ### Task C.2: Add `--confirmation-no` flag to `unisoft submission create`
 
+> **UPDATE 2026-05-01 — SHIPPED.** Commit `aec13fa`. Tests in `tests/test_unisoft_submission.py` cover with-flag, without-flag (omitted), and explicit empty-string (also omitted) cases.
+
 **Files:**
 - Modify: `unisoft-proxy/client/cli.py` (`submission_create`)
 - Create: `tests/test_unisoft_submission.py`
@@ -779,6 +851,8 @@ git commit -m "feat(unisoft): submission create accepts --confirmation-no"
 ```
 
 ### Task C.3: Add `unisoft submission update` (`SetSubmission Action=Update`)
+
+> **UPDATE 2026-05-01 — SHIPPED.** Commit `8608121`. `unisoft_client.update_submission()` + `unisoft submission update` CLI with fetch-then-modify pattern. Tests cover preserve-existing-fields, multi-field diff, unaffected-fields-untouched, and not-found error cases. **C.7 (new task above) and Tier 2 backfill in the deterministic-lookup architecture both depend on this.**
 
 **Files:**
 - Modify: `unisoft-proxy/client/cli.py`
@@ -834,6 +908,16 @@ git commit -am "feat(unisoft): submission update (wraps SetSubmission Action=Upd
 ```
 
 ### Task C.4: Generalize `_create_activity_and_notify` (no refactor — keep httpx)
+
+> **UPDATE 2026-05-01 — REAL BUG, plan body revised below.** Original C.4 generalizes the function over `(quote_id, action_id, submission_id)` and adds body validation, but does **NOT** thread `letter_name` for filtering `GetActionNotifications` results. Today's `emails.py:311` does `template = templates[0] if templates and templates[0].get("IsActive") else None` — works for ActionId 6 (one template) but fires the WRONG template for ActionId 67 (which has 25 templates; `LetterName="USLI Quote"` is the discriminator we need). Without the filter, USLI quote emails would silently fire e.g. "Quote Pending" or another wrong-context template to the agent.
+>
+> **Required signature change:** `_create_activity_and_notify(quote_id, action_id=6, letter_name="", submission_id=0)`. After `GetActionNotifications`, filter `templates` by `LetterName == letter_name` if `letter_name` is non-empty; fall back to `templates[0]` only when `letter_name` is empty (preserves agent_submission backward compat).
+>
+> **CLI flag:** `gic emails complete <id> --letter-name "USLI Quote"` is added to thread the value through.
+>
+> **New required test** (in addition to the test sketches below): `test_letter_name_filter_picks_carrier_specific_template`. Mock `GetActionNotifications` to return a list of 25 templates with varied `LetterName` values; assert the chosen one matches the requested LetterName.
+>
+> The original C.4 sketch below (signature, body validation, existing tests) is otherwise intact — just augmented with `letter_name`. Implementation order: ship C.4 with letter_name first; it's an independent bug fix that improves the agent_submission flow's robustness too (any future ActionId with multiple templates will work correctly).
 
 Decision: keep raw `httpx`. Tests mock `httpx.post`. Refactor to `UnisoftClient` is deferred to Phase K.
 
@@ -974,6 +1058,8 @@ git commit -m "feat(emails): generalize _create_activity_and_notify(quote_id, ac
 ```
 
 ### Task C.5: Idempotency classifier helper (3-layer + multi-LOB)
+
+> **UPDATE 2026-05-01 — Helper rename + whitelist policy.** Replace `is_customer_copy(filename, customer_patterns)` with `should_upload_pdf(filename, retailer_patterns, applicant_patterns)` returning bool — whitelist policy (return True only if filename matches retailer or applicant; default False). Rationale: Family 2 (Retail Web) attachments have no "customer" string, so blacklist-on-customer would miss the bare `{REF}.pdf` declaration page. The `classify_submission_state()` 3-layer logic itself is unchanged; just update the docstring to clarify that empty-ref Submissions in the `update` branch are "legacy untracked, backfill" not "we know this needs an update" (under the deterministic-lookup architecture, every Submission we touch has ConfirmationNo set going forward). The CLI shim `gic submissions classify-usli-state` lands here as planned.
 
 **Files:**
 - Create: `src/gic_email_intel/automation/usli_helpers.py`
@@ -1239,11 +1325,89 @@ git add tests/test_usli_failure_modes.py src/gic_email_intel/automation/usli_hel
 git commit -m "test(usli): failure-mode + concurrent-claim + recovery + customer-copy defense"
 ```
 
+### Task C.7: Deterministic-lookup helper — NEW 2026-05-01
+
+**Spec source:** `2026-05-01-usli-deterministic-lookup-architecture.md` (Tier 1 + Tier 2 + Tier 3 algorithm). This task implements the algorithm as a helper + CLI, which D.2 then calls instead of embedding lookup logic in skill prose.
+
+**Files:**
+- Create: `src/gic_email_intel/automation/usli_helpers.py::find_quote_for_usli_ref()`
+- Create: `src/gic_email_intel/cli/commands/submissions.py::find_quote_for_usli` (new subcommand)
+- Create: `tests/test_usli_lookup.py`
+
+**Step 1: Mongo index.** Add a one-shot migration (or document a manual `db.submissions.createIndex({"reference_numbers": 1, "unisoft_quote_id": 1})` step in the runbook). Multi-key index over the `reference_numbers` array. Idempotent — Mongo handles re-runs gracefully.
+
+**Step 2: Helper signature.**
+
+```python
+def find_quote_for_usli_ref(
+    usli_ref: str,
+    insured_name: str,
+    agent_no: int,
+    lob: str,
+    *,
+    skip_backfill: bool = False,
+    mongo_only: bool = False,
+) -> dict:
+    """
+    Returns:
+      {"state": "found"|"ambiguous"|"create_new",
+       "quote_id": int|None,
+       "lookup_path": "tier_1_mongo"|"tier_2_name_search"|"tier_3_create_new",
+       "candidates": [...],         # populated only on ambiguous
+       "tiebreak_applied": str|None,
+       "backfill_applied": dict|None}
+    """
+```
+
+**Step 3: Failing tests** for each branch:
+
+- `test_tier_1_mongo_hit_returns_directly` — seed Mongo with a submission having the ref linked; assert no Unisoft call is made.
+- `test_tier_1_mongo_miss_falls_to_tier_2` — empty Mongo; assert `search_quotes` is called.
+- `test_tier_2_single_match_after_filter_backfills` — mock `search_quotes` returning 1 hit after agent+LOB+date filter; assert state="found", lookup_path="tier_2_name_search", and BOTH backfill writes happen (Mongo `unisoft_quote_id` set + `unisoft submission update` called with the ref).
+- `test_tier_2_zero_hits_returns_create_new` — assert state="create_new".
+- `test_tier_2_multiple_hits_tiebreak_to_highest_quote_id` — mock 3 candidates; assert state="found", tiebreak_applied="highest_quote_id", chosen Quote is highest ID, backfill happens.
+- `test_tier_2_lob_filter_applies` — multi-LOB candidates, only matching LOB returned.
+- `test_tier_2_recency_filter_applies` — candidate older than 60d filtered out.
+- `test_skip_backfill_flag_short_circuits_writes` — caller passes `skip_backfill=True` (used by the CLI's `--mongo-only` flag); no writes happen.
+- `test_mongo_only_flag_returns_None_on_tier_1_miss` — caller passes `mongo_only=True`; if Mongo doesn't have it, returns `state="create_new", quote_id=None` without calling Unisoft.
+
+**Step 4: Implement** following the algorithm in the architecture artifact. Key implementation notes:
+- **LOB-prefix → Unisoft-LOB mapping:** `MGL→CG, MPL→CP, MSE→Special Events, NPP→CG, XSL→CU, ...` — fixture-driven, in `tests/fixtures/usli_config.json` as `usli_ref_prefix_to_lob` (a new fixture key, populated as observed in soak).
+- **Recency window:** 60 days from `LastActivityDate` on the candidate; configurable via Settings (`usli_lookup_recency_days: int = 60`).
+- **Active status:** `StatusId != 2` (2 = closed/declined per Q:17129's StatusId=2 we saw).
+- **Backfill writes:** done via the existing `unisoft submission update` (C.3) and a direct Mongo update. Both are idempotent — re-running is safe.
+
+**Step 5: CLI shim.**
+
+```bash
+gic submissions find-quote-for-usli \
+    --usli-ref MGL026A6ER4 \
+    --insured "Las Marias Properties LLC" \
+    --agent-no 7406 \
+    --lob CG \
+    [--mongo-only] \
+    [--skip-backfill]
+```
+
+Returns the JSON shape from Step 2 to stdout.
+
+**Step 6: Commit.**
+
+```bash
+git add src/gic_email_intel/automation/usli_helpers.py \
+        src/gic_email_intel/cli/commands/submissions.py \
+        tests/test_usli_lookup.py \
+        tests/fixtures/usli_config.json
+git commit -m "feat(usli): deterministic Quote lookup (Tier 1 Mongo / Tier 2 search / Tier 3 create + backfill)"
+```
+
 ---
 
 ## Phase D: New Skill + Agent Factory
 
 ### Task D.1: Extend `_load_skill` for new placeholder
+
+> **UPDATE 2026-05-01 — Two placeholders, not one.** `_load_skill` adds BOTH `{usli_quote_action_id}` AND `{usli_quote_letter_name}` substitutions to the `text.format(...)` call. Test asserts both values land in the rendered skill prose.
 
 **Files:**
 - Modify: `src/gic_email_intel/automation/agent.py`
@@ -1278,6 +1442,15 @@ git commit -am "feat(automation): _load_skill supports {usli_quote_followup_acti
 ```
 
 ### Task D.2: Create `process-usli-quote.md` skill
+
+> **UPDATE 2026-05-01 — Major rewrite.** The skill no longer embeds the lookup algorithm in prose. Instead Step 2 calls a single CLI shim wrapping the C.7 helper:
+>
+> ```
+> gic submissions find-quote-for-usli --usli-ref REF --insured "..." --agent-no NNN --lob CG
+> → returns JSON: {"state": "found"|"ambiguous"|"create_new", "quote_id": N|null, "lookup_path": ...}
+> ```
+>
+> The skill branches on `state` only — no name-search, no agent-match, no recency-filtering done in skill prose (all in C.7). Step 6 (PDF upload) reads `pdf_retailer_patterns` + `pdf_applicant_patterns` from fixture and applies whitelist (NOT blacklist on customer). Step 7 (`gic emails complete`) passes both `--action-id` (67) AND `--letter-name` ("USLI Quote") via the C.4-revised CLI. Skill prose mentions both filename Families (Family 1 manual UW + Family 2 Retail Web) but doesn't try to distinguish — the whitelist works for both. The `Indemn USLI Needs Review` folder is removed from the skill's failure-routing decisions.
 
 **Files:**
 - Create: `src/gic_email_intel/automation/skills/process-usli-quote.md`
@@ -1435,6 +1608,8 @@ git commit -am "feat(automate): type→factory dispatch + PAUSE_USLI_AUTOMATION 
 ## Phase E: Folder Routing Additions
 
 ### Task E.1: Factor `ensure_folder_exists` + add new folder constants + behavioral test
+
+> **UPDATE 2026-05-01 — Drop the `Indemn USLI Needs Review` folder.** Under the deterministic-lookup architecture, Tier 2 ambiguity uses tiebreak (highest QuoteId), not human triage — so there's no normal-flow case routing to a Needs Review folder. Only `INDEM_USLI_PROCESSED = "Indemn USLI Processed"` lands in the folder constants. Failure cases (Quote-creation fails, Activity-creation fails after Submission, Email-send fails) still route to `Inbox` per existing pattern. The `INDEM_USLI_NEEDS_REVIEW` constant is dropped from this task; the folder is not created in H.0 either.
 
 **Files:**
 - Modify: `src/gic_email_intel/core/email_mover.py`
@@ -1624,6 +1799,21 @@ Verify in UAT Unisoft for each email:
 
 ### Task G.3: Soak metrics gate Phase H
 
+> **UPDATE 2026-05-01 — Revised thresholds + new metrics.** Replace the original "ambiguous-match rate < 5%" with a tighter set reflecting the deterministic-lookup architecture. New metrics:
+>
+> | Metric | Soak threshold | Steady-state (≥ 2 weeks) | Notes |
+> |---|---|---|---|
+> | Successful end-to-end runs | ≥ 10 distinct usli_quote emails | n/a | unchanged |
+> | Tier 1 hit rate | ≥ 0% (start) | ≥ 95% | new; index fills as we process emails |
+> | Tier 2 ambiguous-tiebreak rate | < 5% | < 1% | replaces "ambiguous-match rate" |
+> | **Stamping success rate** (every Submission ends with non-null `ConfirmationNo`) | **= 100%** | **= 100%** | new — non-negotiable; failure means loop-closure broken |
+> | Customer-copy uploads to Unisoft | = 0 | = 0 | unchanged (whitelist policy) |
+> | Notification template empty/unrendered | = 0 | = 0 | unchanged |
+> | Stale-claim recovery activations | = 0 | = 0 | unchanged |
+> | Path 1 enrichment correctness | All empty-ref Submissions on multi-LOB Quote received ref | n/a | unchanged |
+>
+> A failure on stamping success is a hard stop — every USLI Submission we touch MUST end with `ConfirmationNo` set, otherwise Tier 1 lookups can't function and the architecture degrades back to name-search-with-tiebreak. Document in `tests/fixtures/usli_soak_report.json` (committed); walk JC through the report.
+
 **Numerical thresholds.** Phase H does not start until G.3 reports:
 
 | Metric | Threshold |
@@ -1760,11 +1950,13 @@ If any pattern, pause via env var.
 
 4. **K.4: Multi-skill agent dispatch refactor** — when adding a 3rd email type.
 
-5. **K.5: Exact-match Quote lookup** — IF B.2 found a real `quote_usli_ref_field`, add a fast path that searches Unisoft by ref before falling to name search.
+5. ~~**K.5: Exact-match Quote lookup** — IF B.2 found a real `quote_usli_ref_field`, add a fast path that searches Unisoft by ref before falling to name search.~~ **SUPERSEDED 2026-05-01.** Empirically no Unisoft field stores the USLI ref. The equivalent capability is folded into v1 as the C.7 deterministic-lookup helper (Tier 1 = Mongo by ref, Tier 2 = Unisoft name-search-with-filter, Tier 3 = create + stamp). See `2026-05-01-usli-deterministic-lookup-architecture.md`.
 
 6. **K.6: Datadog dashboards for USLI** — beyond H.2 baseline alerts.
 
 7. **K.7: Doc updates** — `CLAUDE.md` (skills + flags), `docs/runbook.md` (USLI failure modes, folder taxonomy, ActionId reference). Single PR after H closes.
+
+8. **K.8: Backfill `Submission.ConfirmationNo` for historical USLI Quotes** — NEW 2026-05-01. The deterministic-lookup architecture's loop closure stamps `Submission.ConfirmationNo = usli_ref` on every Submission we create or touch. The ~7 historical USLI-linked Quotes in our Mongo (verified 2026-05-01) currently have null `ConfirmationNo` on their USLI Submissions. One-shot script reads `db.submissions.find({unisoft_quote_id: {$ne: None}, intake_channel: "usli_retail_web"})`, fetches each Submission via `unisoft submission list --quote-id N`, and runs `unisoft submission update --confirmation-no <ref>` for each. **[NEEDS USER APPROVAL]** before running against prod (writes to Unisoft prod). Defer until 1 week post-launch when Tier 1 hit rate is observable.
 
 ---
 
