@@ -6,6 +6,52 @@
 
 ---
 
+## Pricing Framework Session 2 — 2026-05-01 — Phase A close (4 customers walked) + §7 catalog audit + Phase B sweep across all 55 Cam rows + 5-phase plan locked
+
+**Workstream:** Cam-assigned action item from Apr 30 pricing call (Pricing Framework). **Parallel side-project to TD-1**, not part of main customer-system roadmap. Continuation of Pricing Framework Session 1 (commit `381b773`).
+
+**Objective:** Continue customer walk from 9 → 13 (Rankin · Tillman · Family First · Alliance), audit §7 pathway skills for framework consistency, sweep all 47 deployable + 8 in-development Cam rows for Phase B, lock the multi-phase plan structure for the rest of the work.
+
+**Parallel sessions during:** None on this workstream. (TD-1 Session 15 ran in parallel earlier in the day in a different worktree, fully closed TD-1 — separate workstream, no cross-impact.)
+
+**Outcome:**
+
+- **Phase A complete (13 of 13 active customers walked).** New customers Session 2: 8.9 Rankin (Front Desk + Lead — Easy Links AMS · IIANC cohort) · 8.10 Tillman (Front Desk bilingual + Lead bilingual — Hawksoft AMS · IIANC · pre-revenue) · 8.11 Family First (Knowledge — caregiving Care Library Q&A; healthcare/caregiving outlier mapped to Agency/Broker per Craig) · 8.21 Alliance (Front Desk + Lead + Ticket internal "State of the Agency"; reclassified active customer per Craig — "if we built it, they're a customer to me"). 5 prospects (GR Little, Armadillo, FoxQuilt, Charley, Physicians Mutual) confirmed **out-of-scope** for this work.
+- **§7 catalog audit — 9 pathway-skill consolidations applied** (55 → 46 pathway skills): 3 channel-split merges (path-025/026 · 037/038 · 040/041) · 1 escalation merge (path-013 → path-012) · 1 intake-disambiguation merge (path-029 → path-025) · 1 LOB-split merge (path-045 → path-044) · 3 KB-scope merges (path-017/018/022 → path-016). Merged entries kept as numbered placeholders for audit trail per never-delete-history discipline. Skills-not-channel-scoped rule enforced retroactively.
+- **Phase B sweep complete across all 55 Cam rows** (47 deployable + 8 in-development). §9.1 Agency/Broker (13 rows) · §9.2 Carrier (14 rows) · §9.3 MGA (20 rows) · §9.4 Z in-development (8 rows). Per-row redundancy applied per Craig 2026-05-01: each row writes pathway skills + tool skills + channels + systems + customers active + status fully, even when content shared across Cam rows. Functional-emphasis distinction settled for Authority + Submission + Intake (MGA Rows 32 + 46 + 34): three lifecycle gates (pre-bind compliance · pre-carrier-submission eligibility filter · data flow at arrival), UG bundles all three.
+- **5-phase plan locked:** A Customer walks (✅) → B Per-associate sweep (✅ this session) → C LOE pass per catalog entry (hours only, no money — Craig authors, I capture structure) → D Output presentation (Cam sheet update spec + HTML UI visualization) → E OS data-model bounce-off (put framework into operating system to bounce customer/associate/skill data models).
+- **New tool skills added:** tool-049 Business-hours lookup (@bizHoursLookup / @checkBusinessHours — Rankin + Tillman) · tool-050 Bilingual handling / linguistic compass (Tillman) · tool-051 Auto · tool-052 Property · tool-053 Life · tool-054 Business · tool-055 Event · tool-056 Pet insurance intakes (Tillman per-product) · tool-057 Emergency redirection (Family First — 911/988/Poison Control routing). 8 new tool skills.
+- **New systems catalog entry:** Embedded chat in partner surface (Zola pattern — JM Dahlia for Zola; per Craig 2026-05-01 — Systems-catalog item, not a separate Cam row).
+- **Decisions captured:**
+  - Cam catalog rows are official; we don't merge them (redundancy per row when skills are shared).
+  - Dashboard Associate + Strategy Studio (across 3 tiers) ARE conversational associates (talk with staff/builders), not infrastructure.
+  - Compliance Audit Trails + Secure Data Integration + E&O Risk Mitigation ARE infrastructure (kernel-provided), not runtime associates.
+  - Skills are NOT channel-scoped (caught on Tillman's voice/web channel-split path entries; applied retroactively across catalog).
+  - Each new carrier × workflow = new skill instance (per Craig's Working Copy on Intake-for-AMS).
+  - Cohesive end-to-end sequence within one associate is ONE good pathway (path-003 GIC submission-into-AMS as canonical example) — don't break up just because it has multiple steps.
+  - Functional emphasis differs across Authority/Submission/Intake (lifecycle gates, not duplicates).
+
+**Catalog state at close:** 8 channels · 28 systems · 57 tool skills · 46 pathway skills · 4 catalog gaps tracked.
+
+**Discipline notes (Session 2):**
+- **Hydration miss** caught early — I claimed "all required files read" when I had skipped roadmap.md, os-learnings.md, CURRENT.md, SESSIONS.md, and most of the pricing-framework artifact. Craig caught it; I read everything before continuing. Per CLAUDE.md § 7 pre-flight discipline.
+- **Channel-split discipline gap** — wrote Tillman with 4 channel-split path entries despite the rule being in §3 of the framework doc. Craig caught it; consolidated to 2 paths + applied retroactively across §7 (9 consolidations). The rule was internalized only after the correction.
+
+**Handoff to Pricing Framework Session 3:**
+
+Begin **Phase C — LOE pass per catalog entry**. Hours only, no money. Collaborative — Craig authors estimates, I capture structure. Recommended order: channels (8 entries, smallest catalog) → systems (28) → tool skills (57) → pathway skills (46). Anchors for Craig's authoring already exist in Appendix A (Working Copy annotations: Renewal Associate 30 + 30-50 hrs, Knowledge Associate 8-12 hrs, etc.).
+
+After Phase C: Phase D output presentation (Cam sheet update spec + HTML UI visualization).
+
+**Touched (files / entities):**
+- Modified: `projects/customer-system/artifacts/2026-04-30-associate-pricing-framework.md` (4 new §8 customer entries + §9 sweep across all 55 rows + §7 catalog audit + 5-phase plan structure in §0/§9/§10/§11/§12 + §6 systems catalog Zola entry)
+- Modified: `projects/customer-system/CURRENT.md` (Workstream A section refreshed)
+- Modified: `projects/customer-system/SESSIONS.md` (this entry)
+- No OS entity changes
+- No code commits
+
+---
+
 ## Session 15 — 2026-05-01 — TD-1 fully closed (Slack-Fetcher activation, voice harness v2 canonical rebuild + Railway deploy, chat + voice CLI-only skill loading, 7 OS bugs resolved)
 
 **Objective:** Close out TD-1 from Session 14's ~85% state. Two priorities from PROMPT.md kickoff: (1) Bug #45 — debug Slack `resolve_integration()` to unblock Slack-Fetcher; build slack_fetcher role + skill + actor; activate; (2) voice-deepagents v2 canonical rebuild — DELETE v1 + REBUILD mirroring chat-deepagents. After both: TD-1 done-test verification + close. Then resolve all open OS bugs before session close per Craig's directive ("we want to resolve all the bugs before we close out the session").

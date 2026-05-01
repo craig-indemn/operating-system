@@ -14,39 +14,56 @@ There are **two parallel customer-system workstreams** active right now:
 
 **Source of truth:** `artifacts/2026-04-30-associate-pricing-framework.md` § 0 Session Handoff
 
-**Status (2026-05-01):** Session 1 closed. **9 of 18 customers walked.** Framework rules established + applied retroactively. Next session resumes with **Rankin Insurance Group** (8.9).
+**Status (2026-05-01):** **Session 2 closed.** Phase A + Phase B complete. **All 13 active customers walked + all 55 Cam rows swept.** 5 prospects out-of-scope per Craig 2026-05-01. **Phase C next** (LOE pass).
 
-| # | Done | # | Pending |
-|---|---|---|---|
-| 8.1 | GIC ✅ | 8.9 | Rankin ⏳ next |
-| 8.2 | JM ✅ | 8.10 | Tillman |
-| 8.3 | INSURICA ✅ | 8.11 | Family First |
-| 8.4 | UG ✅ | 8.21 | Alliance (prospect) |
-| 8.5 | Distinguished Programs ✅ | 8.22 | GR Little (prospect) |
-| 8.6 | Johnson ✅ | 8.23 | Armadillo (prospect) |
-| 8.7 | Branch ✅ | 8.24 | FoxQuilt (prospect) |
-| 8.8 | O'Connor ✅ | 8.25 | Charley (prospect) |
-| 8.12 | Silent Sport (pilot) ✅ | 8.26 | Physicians Mutual (prospect) |
+| # | Customer | Status |
+|---|---|---|
+| 8.1 | GIC | ✅ |
+| 8.2 | JM | ✅ |
+| 8.3 | INSURICA | ✅ |
+| 8.4 | UG | ✅ |
+| 8.5 | Distinguished Programs | ✅ |
+| 8.6 | Johnson | ✅ |
+| 8.7 | Branch | ✅ |
+| 8.8 | O'Connor | ✅ |
+| 8.9 | Rankin (Session 2) | ✅ |
+| 8.10 | Tillman (Session 2) | ✅ |
+| 8.11 | Family First (Session 2) | ✅ |
+| 8.12 | Silent Sport (pilot) | ✅ |
+| 8.21 | Alliance Insurance Services (Session 2 — reclassified active customer per Craig) | ✅ |
+| 8.22–8.26 | GR Little, Armadillo, FoxQuilt, Charley, Physicians Mutual | 🔒 out-of-scope |
 
-**Catalog state:** 48 tool skills · 47 pathway skills · 8 channels · 27 systems · 4 catalog gaps tracked.
+**5-phase plan locked:**
+| Phase | What | Status |
+|---|---|---|
+| A | Customer walks | ✅ Complete |
+| B | Per-associate sweep (47 deployable + 8 in-dev rows; per-row redundancy applied) | ✅ Complete (Session 2) |
+| C | LOE pass per catalog entry — hours only, no money; collaborative (Craig authors, I capture) | ⏳ Next |
+| D | Output presentation — Cam sheet update spec + HTML UI visualization | ⏳ After C |
+| E | OS data-model bounce-off — put framework into operating system to bounce customer/associate/skill data models | ⏳ After / with D |
 
-**Key framework rules established (load-bearing, applied retroactively):**
-- Paths ARE skills (end-to-end, not function-call-level)
+**Catalog state (post-Session 2):** 8 channels · **28 systems** (added Zola embedded-chat) · **57 tool skills** (added tool-049 to tool-057) · **46 pathway skills** (post §7 audit — was 55, consolidated 9 channel-split / lumped / LOB-split / KB-scope merges) · 4 catalog gaps tracked.
+
+**Key framework rules locked (Session 1 + Session 2):**
+- Paths ARE skills (end-to-end, not function-call-level; cohesive sequence within one associate is one good pathway — not broken up just because it has multiple steps)
 - Two skill types: tool skill (atomic, high reuse) + pathway skill (workflow, medium reuse). Browser automation / field writes / navigation are IMPLICIT in `web operator` system integration type, NOT separate tool skills.
+- **Skills are NOT channel-scoped** (Session 2 — Tillman correction). Same skill deployed across multiple channels is one skill, not multiple.
 - Skill specificity emerges per case (LOB / carrier / system / customer rule)
 - Bundle-by-task rule: same agent multi-task = ONE associate; different agents different objectives = SPLIT
 - Built-only (don't include proposals or planned things; built includes prototypes)
 - Implementation cost = (channels) + (skills) + (systems), with channels/systems at deal level
+- **Cam catalog rows are official — we don't merge them** (Session 2). When skills are shared across rows, each row writes its skills out redundantly.
+- **Each new carrier × workflow = new skill instance** (per Craig's Working Copy on Intake-for-AMS)
 
-**Discipline (load-bearing, learned from pushback):** surface findings → discuss with Craig → only write to doc after agreement. No willy-nilly authoring.
-
-**4 catalog gaps tracked:**
+**4 catalog gaps tracked (unchanged this session):**
 1. Lead Associate for MGA tier (surfaced at JM, UG, Branch)
 2. Quote & Bind for Agency/Broker tier (surfaced at Silent Sport)
 3. Document Fulfillment Associate (surfaced at Branch — Aria)
 4. Claims Status Associate (surfaced at Branch — Colleen)
 
-**Resume protocol for next pricing-framework session:** read `artifacts/2026-04-30-associate-pricing-framework.md § 0` (full handoff) + `artifacts/2026-04-30-pricing-call-and-sheet-source-material.md` (Cam call decisions) + this CURRENT.md + standard PROMPT.md hydration set. Then pick next customer (Rankin) and continue.
+**§7 catalog audit (Session 2):** 9 pathway-skill consolidations applied — 3 channel-split merges (path-025/026, 037/038, 040/041) · 1 escalation merge (path-013→012) · 1 intake-disambiguation merge (path-029→025) · 1 LOB-split merge (path-045→044) · 3 KB-scope merges (path-017/018/022→016). Merged entries kept as numbered placeholders for audit trail.
+
+**Resume protocol for next pricing-framework session:** read `artifacts/2026-04-30-associate-pricing-framework.md § 0` (full handoff) + this CURRENT.md + standard PROMPT.md hydration set. Then begin Phase C — LOE pass per catalog entry. Recommended order: channels (8 entries, smallest catalog) → systems (28) → tool skills (57) → pathway skills (46). Hours only, no money. Craig authors estimates, I capture structure.
 
 ### Workstream B — TD-1 Roadmap Execution (the main customer-system roadmap)
 
