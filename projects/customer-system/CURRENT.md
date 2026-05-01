@@ -2,7 +2,55 @@
 
 > **Fast-changing state.** What just happened, what's in flight, parallel sessions, blockers, next steps. Rewritten every session. Read this *after* CLAUDE.md to know where things actually stand right now.
 
-**Last updated:** 2026-04-30 (end of Session 14 — TD-1 substantially executed; voice-deepagents canonical rebuild + Slack live-fetch debug pending for next session)
+**Last updated:** 2026-05-01 (end of Pricing Framework Session 1 — 9 of 18 customers walked; framework rules established; handoff complete for next pricing-framework session)
+
+---
+
+## ACTIVE PARALLEL WORKSTREAMS
+
+There are **two parallel customer-system workstreams** active right now:
+
+### Workstream A — Pricing Framework (Cam-assigned action item; SIDE-PROJECT but high-value)
+
+**Source of truth:** `artifacts/2026-04-30-associate-pricing-framework.md` § 0 Session Handoff
+
+**Status (2026-05-01):** Session 1 closed. **9 of 18 customers walked.** Framework rules established + applied retroactively. Next session resumes with **Rankin Insurance Group** (8.9).
+
+| # | Done | # | Pending |
+|---|---|---|---|
+| 8.1 | GIC ✅ | 8.9 | Rankin ⏳ next |
+| 8.2 | JM ✅ | 8.10 | Tillman |
+| 8.3 | INSURICA ✅ | 8.11 | Family First |
+| 8.4 | UG ✅ | 8.21 | Alliance (prospect) |
+| 8.5 | Distinguished Programs ✅ | 8.22 | GR Little (prospect) |
+| 8.6 | Johnson ✅ | 8.23 | Armadillo (prospect) |
+| 8.7 | Branch ✅ | 8.24 | FoxQuilt (prospect) |
+| 8.8 | O'Connor ✅ | 8.25 | Charley (prospect) |
+| 8.12 | Silent Sport (pilot) ✅ | 8.26 | Physicians Mutual (prospect) |
+
+**Catalog state:** 48 tool skills · 47 pathway skills · 8 channels · 27 systems · 4 catalog gaps tracked.
+
+**Key framework rules established (load-bearing, applied retroactively):**
+- Paths ARE skills (end-to-end, not function-call-level)
+- Two skill types: tool skill (atomic, high reuse) + pathway skill (workflow, medium reuse). Browser automation / field writes / navigation are IMPLICIT in `web operator` system integration type, NOT separate tool skills.
+- Skill specificity emerges per case (LOB / carrier / system / customer rule)
+- Bundle-by-task rule: same agent multi-task = ONE associate; different agents different objectives = SPLIT
+- Built-only (don't include proposals or planned things; built includes prototypes)
+- Implementation cost = (channels) + (skills) + (systems), with channels/systems at deal level
+
+**Discipline (load-bearing, learned from pushback):** surface findings → discuss with Craig → only write to doc after agreement. No willy-nilly authoring.
+
+**4 catalog gaps tracked:**
+1. Lead Associate for MGA tier (surfaced at JM, UG, Branch)
+2. Quote & Bind for Agency/Broker tier (surfaced at Silent Sport)
+3. Document Fulfillment Associate (surfaced at Branch — Aria)
+4. Claims Status Associate (surfaced at Branch — Colleen)
+
+**Resume protocol for next pricing-framework session:** read `artifacts/2026-04-30-associate-pricing-framework.md § 0` (full handoff) + `artifacts/2026-04-30-pricing-call-and-sheet-source-material.md` (Cam call decisions) + this CURRENT.md + standard PROMPT.md hydration set. Then pick next customer (Rankin) and continue.
+
+### Workstream B — TD-1 Roadmap Execution (the main customer-system roadmap)
+
+State below is from Session 14 close (2026-04-30). Pricing framework session ran in parallel and did not modify TD-1 state.
 
 ---
 

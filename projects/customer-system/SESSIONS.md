@@ -6,6 +6,52 @@
 
 ---
 
+## Pricing Framework Session 1 — 2026-04-30 to 2026-05-01 — Side-project: walk current customers, reverse-engineer associate/skill/integration framework, map to Cam's catalog
+
+**Workstream:** Cam-assigned action item from Apr 30 pricing call ("[Craig] Analyze Associate Usage" + "[Kyle + Craig] Analyze Customer Solutions"). **Parallel side-project to TD-1, not part of main customer-system roadmap.** Will end up driving augmentations to Cam's 47-row pricing spreadsheet so proposal generation becomes formulaic.
+
+**Objective:** Build a framework that bridges what Indemn actually delivers (skills + integrations + channels composed into associates) with Cam's pricing catalog. Reverse-engineer from current customers first; sweep the catalog after. Output: an augmented Cam spreadsheet + framework rules.
+
+**Parallel sessions during:** None on this workstream. (TD-1 ran in Session 14 same day; separate workstream — see entry below.)
+
+**Outcome:**
+
+- **9 of 18 customers walked** (12 active + 6 prospects-with-build-history; 8 AI_Investments dropped early per Craig). Done: GIC (8.1) · JM (8.2) · INSURICA (8.3) · UG (8.4) · Distinguished Programs (8.5) · Johnson (8.6) · Branch (8.7) · O'Connor (8.8) · Silent Sport (8.12, pilot state). Pending: Rankin (8.9) · Tillman (8.10) · Family First (8.11) · 6 prospects (8.21-8.26).
+- **Framework rules established + applied retroactively:**
+  1. Paths ARE skills (end-to-end process granularity)
+  2. Two skill types: tool skill (atomic, high reuse) + pathway skill (workflow, medium reuse). Browser automation / field writes / navigation are IMPLICIT in `web operator` system integration type, not separate skills.
+  3. Skill specificity is emergent (LOB / carrier / system / customer rule — encoded in skill name)
+  4. Bundle-by-task rule: same agent multi-task = ONE associate; different agents different objectives = SPLIT. Applied retroactively (revisions to JM 3→2, UG Mobile Home 2→1, Silent Sport 2→1, Branch 2-bundled→5-distinct).
+  5. Built-only catalog (don't include proposals; built = built regardless of "live" status)
+  6. Implementation cost formula: `(channels) + (skills) + (systems)` at deal level
+  7. Crawl/walk/run = customer-facing phasing language (immediate / near term / long term)
+- **Catalog state at close:** 48 tool skills · 47 pathway skills · 8 channels · 27 systems · 4 catalog gaps tracked.
+- **4 catalog gaps surfaced** in §2.05: Lead Associate for MGA tier · Quote & Bind for Agency/Broker tier · Document Fulfillment Associate (Branch Aria) · Claims Status Associate (Branch Colleen).
+- **Discipline learned (load-bearing):** surface findings → discuss with Craig → only write to doc after agreement. Past-session failures: writing speculative LOE estimates, "NET NEW" claims, tier classifications, premature live-vs-prototype framing. Each got Craig pushback. **Pattern is: bring data + propose mapping + ask, then write only what's agreed.** This discipline is now codified in §0 of the working doc.
+- **Per-customer process** standardized: OS (indemn CLI) + Drive (gog) + MongoDB tiledesk via SSM into prod-services + bot-service container + GitHub (gh) + Slack (#customer-implementation).
+- **Bot tool URL location confirmed** at `configurationSchema.endpoint` and `executionSchema.actions[].url` — useful going forward for any future tool-URL extraction.
+- **Operations_api repo identified** as the central proxy for ALL Indemn carrier API integrations (zurich, markel, chubb, bonzah, GIC Granada, insurica salesforce, joshu).
+- **n8n.indemn.ai surfaced** as workflow automation layer hosting webhooks that wrap external APIs.
+- **Comprehensive systems map built across 9 customers:** Granada Insurance · Unisoft AMS (web operator) · GIC PAS · Indemn Copilot · Salesforce · Nationwide PL/CL · ACIC · Northfield · Composio · Airtable (multiple bases) · Twilio · LiveKit · Cartesia · Google Cloud Translate · Stripe · n8n.indemn.ai · Branch GraphQL · Dialpad · Microsoft Power Automate · Microsoft Teams · plus Indemn-built customer-specific Railway services (claims-mcp-server, branch-ivr-webhook, branch-aria-documents, ug-apis, ug-service).
+
+**Handoff to next pricing-framework session:**
+
+Source of truth = `artifacts/2026-04-30-associate-pricing-framework.md § 0 Session Handoff`. Read that section first; it captures everything needed to continue.
+
+Resume protocol:
+1. Standard hydration via `PROMPT.md` (CLAUDE.md · vision.md · roadmap.md · os-learnings.md · CURRENT.md · indemn-os CLAUDE.md)
+2. Read working doc § 0 (handoff) + § 2 (formula) + § 2.05 (catalog gaps) + § 8 (per-customer detail)
+3. Read source-material artifact `2026-04-30-pricing-call-and-sheet-source-material.md` for Cam call decisions
+4. Pick up at customer 8.9 Rankin
+
+**Touched (files / entities):**
+- Created: `projects/customer-system/artifacts/2026-04-30-pricing-call-and-sheet-source-material.md` (source material — Cam call + sheet schema)
+- Created: `projects/customer-system/artifacts/2026-04-30-associate-pricing-framework.md` (working doc — primary handoff artifact)
+- No OS entity changes
+- No code commits
+
+---
+
 ## Session 14 — 2026-04-30 — TD-1 substantial execution (Drive end-to-end, Slack adapter, voice harness v1, Bug #38/#41/#42 closeouts)
 
 **Objective:** Execute TD-1. Pre-flight cleanup → ReviewItem infrastructure → activate fetcher actors bottom-up → Slack adapter NEW build → voice harness verification → log-touchpoint skill. Per Craig mid-session: "We are implementing EVERYTHING to completion" — Drive, Slack, and Voice all in this session, no deferring.

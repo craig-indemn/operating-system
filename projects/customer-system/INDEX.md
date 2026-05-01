@@ -276,6 +276,8 @@ Read Kyle's EXEC folder (PLAYBOOK-v2, data dictionaries, 6 leads, MAP) and Cam's
 
 | Date | Artifact | Ask |
 |------|----------|-----|
+| 2026-04-30 | [pricing-call-and-sheet-source-material](artifacts/2026-04-30-pricing-call-and-sheet-source-material.md) | Source material for the associate-pricing-framework work — Cam/Kyle/Craig pricing call decisions (Enterprise/Core split), Cam's pricing spreadsheet schema, existing Working Copy annotations Craig had begun. Anchor for the framework work. |
+| 2026-04-30 | [associate-pricing-framework](artifacts/2026-04-30-associate-pricing-framework.md) | The working doc — reverse-engineer Indemn's actual delivery (skills + integrations + channels composed into associates) from current customers, map to Cam's 47-row pricing catalog, surface gaps. Living document that accumulates per-customer detail; § 0 has full session handoff for resumption; § 2.05 tracks catalog gaps. **Cam-assigned action item from Apr 30 pricing call.** As of 2026-05-01: 9 of 18 customers walked, framework rules established + applied retroactively, 4 catalog gaps tracked. |
 | 2026-04-14 | [context/craigs-brain-dump](artifacts/context/2026-04-14-craigs-brain-dump.md) | Record Craig's raw notes from conversations with Kyle, George, Ganesh |
 | 2026-04-14 | [context/source-inventory](artifacts/context/2026-04-14-source-inventory.md) | Complete inventory of all source materials — docs, sheets, transcripts, repos |
 | 2026-04-14 | [problem-statement](artifacts/2026-04-14-problem-statement.md) | Comprehensive problem statement — 7 concepts with evidence, success criteria, risks |
@@ -339,6 +341,14 @@ Read Kyle's EXEC folder (PLAYBOOK-v2, data dictionaries, 6 leads, MAP) and Cam's
 
 ## Decisions
 
+- 2026-05-01: **Pricing Framework — Bundle-by-task rule for associate mapping** (load-bearing). Bundle when SAME agent does multiple tasks in one conversation, OR multiple agents are *orchestrated together* toward one objective. Split when DIFFERENT agents have DIFFERENT objectives, no shared orchestration. Applied retroactively across customers — JM 3→2, UG Mobile Home 2→1, Silent Sport 2→1, Branch 2-bundled→5-distinct.
+- 2026-05-01: **Pricing Framework — Two skill types: tool skill (atomic, high reuse) + pathway skill (workflow, medium reuse).** Browser automation, field writes, navigation are IMPLICIT in `web operator` system integration type — not separate skills. Each pathway is composed FROM tool skills + integration capabilities + customer-specific logic.
+- 2026-05-01: **Pricing Framework — Paths ARE skills.** Skill granularity is at the path level (end-to-end process), not function-call level. Skill specificity is emergent (LOB / carrier / system / customer rule encoded in skill name; no pre-baked specificity column).
+- 2026-05-01: **Pricing Framework — Built-only catalog.** Only catalog what's actually built. Don't include things from proposals or planned work. But "built" includes prototypes — don't filter by live-vs-prototype.
+- 2026-05-01: **Pricing Framework — Discipline:** surface findings → discuss with Craig → only write to doc after agreement. No willy-nilly authoring. No LOE estimates without grounding. No tier classifications (Core/Soon/Enterprise) — those are Craig's, not mine.
+- 2026-04-30: **Pricing Framework — Cam's Enterprise vs Core product split.** Enterprise = custom proposals via the customer-system AI engine (the work in TD-1). Core = standardized outcomes, embedded pricing, ≤7-day deploy KPI, sold via website with self-service proposal generation. Flywheel: Enterprise IP → push down to Core → near-zero implementation lift.
+- 2026-04-30: **Pricing Framework — Implementation cost formula:** `(channel integration cost) + (skill development cost) + (system integration cost)`. Channels and systems are at the deal level, NOT bound to individual skills. Multiple skills share the same channel + system integrations on a given customer.
+- 2026-04-30: **Pricing Framework — Customer walk roster:** 12 active customers + 6 prospects with build history = 18. AI_Investments tier dropped to 2 (Family First, Silent Sport) per Craig; rest (mShift, Bonzah, InsuranceTrak, Surety First, eSpecialty, ConvergentRPS, Overlook VC, Sotant) excluded as not having material build/integration history worth reverse-engineering.
 - 2026-04-14: This is the first implementation on the Operating System — proves and refines the OS domain modeling process
 - 2026-04-14: Company entity covers the full lifecycle from prospect through churned
 - 2026-04-14: AI populates everything — system designed for extraction, not manual entry
