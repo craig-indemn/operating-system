@@ -4,6 +4,24 @@ Build a comprehensive understanding of GIC Underwriters' quoting operation by an
 
 ## Status
 
+**Session 2026-05-01 (latest). USLI quote automation: code complete, UAT-validated, pre-staged for production. Ready to ship.**
+
+PR #23 (`feat: USLI quote automation`) is open at https://github.com/indemn-ai/gic-email-intelligence/pull/23 with 28 commits, awaiting review from Dolly + Dhruv. Code is running on dev-services + UAT Unisoft (workflow_dispatch deployment, retroactive merge to main planned). All prod pre-staging done:
+- Param Store entries set with `pause-usli-automation=true` (cron starts paused on first deploy)
+- Customer mailbox folder `Indemn USLI Processed` pre-created
+- Prod proxy smoke-tested for `GetQuotesForLookupByCriteria` canonical Criteria
+- Prod `unisoft_agents` collection populated (2,898 agents)
+- Datadog alert spec written (`2026-05-01-usli-datadog-alerts-spec.md`); Dhruv configures via UI
+- Customer comms email drafted in Gmail (draftId `r5499973616452698529`)
+
+**Cutover sequence is captured step-by-step in `artifacts/2026-05-01-usli-prod-deployment-checklist.md` — fresh sessions should start there.** The single-flip moment is `aws ssm put-parameter ... pause-usli-automation false`. Everything else is pre-staged.
+
+Hard gates: DEVOPS-158 (7-day prod soak) closes ~2026-05-06; PR #23 must be approved + merged; Dhruv must configure Datadog monitors with synthetic-test verification.
+
+UAT validation summary: 2/3 USLI emails processed end-to-end (Q:17379 TAMARA GONZALEZ, Q:17380 AIRA INVESTMENTS), 1 legitimate fail (agent not in UAT Unisoft). Loop-closure stamping verified — both Submissions ended with `ConfirmationNo` matching their USLI ref. SOAK_MODE held — zero notifications sent, zero folder moves. Three skill iterations shipped during UAT debugging (failure CLI explicit, address parsing from retailer block, agents-collection sync).
+
+---
+
 **Session 2026-03-31. Production live, critical bugs fixed, ready for full re-sync + backfill.**
 
 System is deployed on Railway + Amplify. Auth works (copilot-server JWT). Week 1 backfill completed (124 emails) but revealed two critical data issues that require a full re-sync before continuing:
@@ -423,6 +441,11 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 | 2026-03-31 | [ui-issues-noted](artifacts/2026-03-31-ui-issues-noted.md) | UI issues from prod review — extracted fields vs gap analysis confusion, PDF links (fixed), empty bodies (fixed) |
 | 2026-04-30 | [unisoft-quote-search-investigation](artifacts/2026-04-30-unisoft-quote-search-investigation.md) | **PAUSED — pending SAZ capture.** Document the Unisoft Quote Search investigation: ruled out permissions, request shape, pagination, proxy translation. Server returns count without data. Recommend: capture fresh Fiddler SAZ of UI doing a name search to identify the canonical op + service. Resume from this artifact. |
 | 2026-04-30 | [jc-followups-handoff](artifacts/2026-04-30-jc-followups-handoff.md) | Self-contained handoff for a fresh session to deliver JC's three follow-up requests (DEVOPS-163 task subject, DEVOPS-164 faster claim, DEVOPS-165 .eml inline attachments). Independent of the USLI feature build, which is paused. |
+| 2026-04-30 | [sibling-1-test-rollout-plan](artifacts/2026-04-30-sibling-1-test-rollout-plan.md) | Test + rollout plan for Sibling 1 (DEVOPS-163, task subject `[LOB] - business description`). Phase 1 local/CI TDD, Phase 2 dev validation against UAT Unisoft (CLI smoke + LLM one-shot, SOAK_MODE doesn't gate task creation), Phase 3 prod via `git push indemn main:prod`, rollback via revert-PR. |
+| 2026-05-01 | [unisoft-quote-search-canonical-shape](artifacts/2026-05-01-unisoft-quote-search-canonical-shape.md) | Canonical SOAP wire format for `GetQuotesForLookupByCriteria` reverse-engineered from Fiddler SAZ session 115. Saved-search XML field set (`SelWordFilterOption`, nested `DateRange`) ≠ SOAP wire shape — that mismatch caused the prior session's "search returns empty arrays" dead-end. Future-self defense doc. |
+| 2026-05-01 | [usli-deterministic-lookup-architecture](artifacts/2026-05-01-usli-deterministic-lookup-architecture.md) | Locks the 3-tier deterministic lookup model (Tier 1 Mongo by ref → Tier 2 Unisoft search w/ agent+LOB+recency filter → Tier 3 caller-creates) with loop-closure stamping. Replaces the original "branched on lookup" design — drops the `Indemn USLI Needs Review` folder; tiebreak on highest QuoteId resolves ambiguity. Authoritative for D.2 skill behavior. |
+| 2026-05-01 | [usli-datadog-alerts-spec](artifacts/2026-05-01-usli-datadog-alerts-spec.md) | Two Datadog monitors for the H.2 gate: (1) USLI failure rate > 10% over 1h, (2) failed_recovery_review > 0. Datadog API key not in 1Password vaults — Dhruv configures via UI before H.5. Includes Slack channel routing + synthetic-test verification pattern. |
+| 2026-05-01 | [usli-prod-deployment-checklist](artifacts/2026-05-01-usli-prod-deployment-checklist.md) | **Self-contained checklist for the USLI quote automation production rollout.** Captures all identifiers (PR #23, branch, latest SHA 655a950, EC2 instance IDs, Param Store paths, Gmail draft ID, customer mailbox folder), pre-staged work (✅ what's done), hard gates, the H.3–H.6 cutover sequence, rollback procedures, and post-launch backfill scripts (K.8, cutover-window stranded). Fresh sessions resuming the rollout start here. |
 
 ## Key Data Files
 | File | What it contains |
@@ -511,6 +534,14 @@ Top 15: Personal Liability (887), GL (519), Special Events (245), Non Profit (21
 - 2026-03-31: dict[str, Any] DOES NOT WORK with LangChain structured output — LangChain/Anthropic set additionalProperties=false. Use list[ExtractedField] with explicit key/value pairs instead. (pydantic-ai #4117)
 - 2026-03-31: Graph API Prefer: text header causes HTML-only emails to return empty body. Remove the preference, capture native format.
 - 2026-03-31: VITE_API_BASE must be used everywhere the frontend calls the API — relative /api only works with local Vite proxy.
+- 2026-04-30: Sibling 1 (DEVOPS-163) `business_description` source = same value passed to `unisoft quote create` Step 4 (no re-derivation, no drift). No length cap on the field beyond the existing 50-char word-boundary truncation in `_format_task_subject`.
+- 2026-05-01: USLI quote-search SOAP request must use the wire-format Criteria (`WordLookupType`, flat dates, nillable BusinessType/LOB/SubLOB/Underwriter), NOT the saved-search XML shape returned by `GetAllSearchPreferences`. Same field names, different shapes — modeling after the wrong one returns empty arrays silently. Wire shape captured in `2026-05-01-unisoft-quote-search-canonical-shape.md`.
+- 2026-05-01: USLI Quote lookup is deterministic 3-tier (Mongo by ref → Unisoft search w/ filters → caller-creates) with loop-closure stamping (`ConfirmationNo` set on every Submission we touch). Tier 2 ambiguity resolves via highest-QuoteId tiebreak — NOT human triage. Drops the original "Indemn USLI Needs Review" folder. See `2026-05-01-usli-deterministic-lookup-architecture.md`.
+- 2026-05-01: C.7 `find_quote_for_usli_ref` does ONLY Mongo backfill. Unisoft-side `ConfirmationNo` stamping happens in D.2 skill's `("update", [ids])` branch (via `unisoft submission update`), NOT in C.7. If C.7 stamped Unisoft directly, classify-usli-state would return `duplicate_skip` on the same run and the skill would skip PDF uploads + agent notification.
+- 2026-05-01: USLI quote create requires `Address` and `City` (server-side BRConstraint). For Path 2 USLI Retail Web emails, the insured's address lives in attached PDFs (intentionally not extracted — `CARRIER_RESPONSE_TYPES`). Skill parses the **retailer's** address from the email body's "Retailer ... Address: ..." block as the best-available audit-trail value. JC manually updates if needed.
+- 2026-05-01: D.2 skill failure path always uses `gic emails complete --status failed --error "..."` — never `--notes` for failures. `--status` defaults to `completed` so omitting it on a failure path silently marks the email successful. `--notes` is the successful-run audit trail.
+- 2026-05-01: Don't backfill pre-cutover historical USLI emails. Each backfilled email fires `SendActivityEmail` to the retail agent; old quote follow-ups risk agent confusion. The Unisoft audit-trail Quote isn't valuable enough to justify it. Specific historical quotes can be one-shot via `docker exec` with a temporary lower `AUTOMATION_START_DATE`.
+- 2026-05-01: K.9 — defer `usli_ref_prefix_to_lob` fixture map. The LLM classifier already extracts `line_of_business`; D.2 passes it as `--lob` to C.7 directly. Add the prefix→LOB map back if soak shows ambiguous-tiebreak rate > 1% steady-state.
 
 ## Open Questions (deferred — not blocking demo)
 - How does RingCentral data merge into the same pipeline? (Same pattern: RingCentral CLI + skills)
