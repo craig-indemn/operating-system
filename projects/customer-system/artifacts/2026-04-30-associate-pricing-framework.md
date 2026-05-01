@@ -123,22 +123,65 @@ Then: surface findings to Craig with proposed associate mapping → discuss + co
 - **Phase E (after / with D):** OS data-model integration — put this information in the operating system to bounce our customer/associate/skill data models off what we've built. Output written to §12.
 - **Catalog gaps already tracked (§ 2.05):** Lead Associate for MGA tier · Quote & Bind for Agency/Broker tier · Document Fulfillment Associate · Claims Status Associate. May surface more.
 - **Document generation as a capability area (tool-038)** — flagged for formalization as shared platform skill.
-- **After customer walk completes:** populate §9 (per-associate sweep against Cam's 47 rows) → §10 (final sheet update spec for Cam).
-- **Don't touch Cam's sheet** until §10 produces the migration spec and Craig signs off.
+- **Don't touch Cam's sheet** until §11 produces the migration spec and Craig signs off (post-Phase D).
 
-### Session-start protocol for next session
+### Phase C kickoff plan (next session — Pricing Framework Session 3)
 
-1. Read the canonical context per `PROMPT.md` (CLAUDE.md · vision.md · roadmap.md · os-learnings.md · CURRENT.md · indemn-os CLAUDE.md)
-2. Read this working doc (especially §0 Session Handoff, §2 Formula, §2.05 Catalog gaps, §8 customer detail)
-3. Read the source-material artifact (`artifacts/2026-04-30-pricing-call-and-sheet-source-material.md`) for context on the Cam call decisions
-4. Confirm understanding of: framework rules · process · what's done · what's next
-5. Pick up with next customer (suggested: Rankin)
+**What Phase C produces.** For each entry in the §§5-7 catalogs, an LOE estimate in hours:
+
+| Catalog | Entries | What we capture per entry |
+|---|---|---|
+| §5 Channels | 8 | First-customer LOE (hours to build the channel adapter for the first customer) · per-customer-after-first LOE (hours to apply to subsequent customers) · notes |
+| §6 Systems | 28 | Same shape · plus integration-type effect (`API` vs `web operator` vs other) |
+| §7 Tool skills | 57 | Same shape · plus reuse caveat (some tools are per-customer-custom even when nominally reusable) |
+| §7 Pathway skills | 46 | Same shape · plus customer-specific customization weight (per the "medium reuse" framing) |
+
+**The discipline (per Craig 2026-05-01).**
+- **Hours only, no money.** Hours-to-dollars mapping is not in scope for Phase C.
+- **Collaborative.** Craig authors estimates + reasoning. I capture structure. **I do NOT propose LOE numbers myself.** I bring the catalog entry, ask for the estimate, capture it.
+- **Anchors already in Appendix A** (Working Copy annotations Craig has already written): Renewal Associate "Currently integrated: 30 hours. Additional integration: 30-50 hours depending on complexity for new integration. Total 60 hours for new integration + man hours to implement the solution." · Knowledge Associate "KB Development: 3-5h, Prompt Development: 3-5h, Testing/Evaluation: 2h" · etc.
+
+**Recommended order (smallest catalog first for warmup):**
+1. **§5 Channels (8 entries)** — quick warmup; channels are well-bounded and reusable
+2. **§6 Systems (28 entries)** — substantive; `API` vs `web operator` distinction matters; some are 3rd-party (Twilio/LiveKit/Cartesia/Stripe) with low first-time LOE, others are per-customer-custom (Unisoft web operator, BT Core integration TBD, ECM Web Operator Framework)
+3. **§7 Tool skills (57 entries)** — atomic capabilities; many short builds (per-product intake forms = 1-3h each), some longer (Branch GraphQL convertQuote with error-handling fallbacks = larger)
+4. **§7 Pathway skills (46 entries)** — workflows; LOE is the orchestration cost on top of the underlying tool skills
+
+**Output structure for §10 (when Phase C captures land):**
+
+```
+§10.1 Channels LOE
+| Channel | First-customer LOE | Per-customer-after | Notes |
+| ... | ... | ... | ... |
+
+§10.2 Systems LOE
+| System | Integration type | First-customer LOE | Per-customer-after | Notes |
+| ... | ... | ... | ... | ... |
+
+§10.3 Tool skills LOE
+| ID | Skill | First-customer LOE | Per-customer-after | Notes |
+| ... | ... | ... | ... | ... |
+
+§10.4 Pathway skills LOE
+| ID | Skill | First-customer LOE | Per-customer-after | Notes |
+| ... | ... | ... | ... | ... |
+```
+
+**After Phase C done-test:** the formula `cost = (channels) + (skills) + (systems)` is computable per customer for any of Cam's 47 rows — given a customer's channel/system/skill state, sum hours to get implementation LOE.
+
+### Session-start protocol for next session (Pricing Framework Session 3)
+
+1. Read canonical context per `PROMPT.md` (customer-system CLAUDE.md · vision.md · roadmap.md · os-learnings.md · CURRENT.md · SESSIONS.md · indemn-os CLAUDE.md)
+2. Read this working doc — **§0 Session Handoff (this section) + §2 Formula + §2.05 Catalog gaps + §10 Phase C structure**. The §8 customer detail and §9 per-associate sweep don't need to be re-read in full unless a specific row is being authored — they're reference.
+3. Read source-material artifact (`artifacts/2026-04-30-pricing-call-and-sheet-source-material.md`) for Cam call context — light read.
+4. Confirm understanding back to Craig — framework rules · 5-phase plan · Phase A + B complete · Phase C kickoff plan (above).
+5. Begin Phase C — **start with §5 Channels (8 entries, smallest catalog)**. Work entry-by-entry: bring channel name + description + customers active → ask Craig for first-customer LOE + per-customer-after LOE + notes → capture to §10.1 → next.
 
 ### Key files / references
 
-- **Working doc:** `artifacts/2026-04-30-associate-pricing-framework.md` (this file)
-- **Source material:** `artifacts/2026-04-30-pricing-call-and-sheet-source-material.md` (Cam call decisions + Cam sheet schema + existing Craig annotations)
-- **Cam's spreadsheet:** `https://docs.google.com/spreadsheets/d/17GEDxqTvCHxHYsZKSQDppGfx6XYOzykUkuF_rxQUsx4/edit` (DON'T modify until §10 spec is ready)
+- **Working doc:** `artifacts/2026-04-30-associate-pricing-framework.md` (this file) — primary state-of-work
+- **Source material:** `artifacts/2026-04-30-pricing-call-and-sheet-source-material.md` (Cam call decisions + Cam sheet schema + existing Craig annotations — Phase C anchors live here in Appendix A)
+- **Cam's spreadsheet:** `https://docs.google.com/spreadsheets/d/17GEDxqTvCHxHYsZKSQDppGfx6XYOzykUkuF_rxQUsx4/edit` (DON'T modify until §11 spec is ready post-Phase D)
 - **Cam's proposal portfolio:** Drive folder `1k0_SYLdYtlM40y6W-ZAMV3Trr9hIq2Ph`
 - **Cam call notes (Gemini summary):** `https://docs.google.com/document/d/1JUEa5v7rzuh7JB_YRYW9JhJEkiSznxrlhdhiBDthK18/edit`
 
@@ -2484,14 +2527,52 @@ MGA-flavored: internal MGA staff inquiries (program guidelines, system access, i
 
 ---
 
-## 10. Phase C — LOE pass per catalog entry `[after Phase B]`
+## 10. Phase C — LOE pass per catalog entry `[next — Pricing Framework Session 3]`
 
-For each entry in §§5-7 catalogs (every channel, every system, every tool skill, every pathway skill), assign hours estimate. **Hours only, no money per Craig 2026-05-01.**
+For each entry in §§5-7 catalogs, assign hours estimate. **Hours only, no money per Craig 2026-05-01.** Collaborative — Craig authors, I capture structure.
 
 ### LOE rules (already in §2)
 
 - **Things already developed** for a customer → **actual hours** (Craig recall + git history where useful)
 - **Things not built for any customer** → **first-customer LOE estimate** (Craig authors, I capture structure)
+
+### §10.1 Channels LOE `[8 entries — start here]`
+
+| Channel | Status | First-customer LOE (h) | Per-customer-after (h) | Notes |
+|---|---|---|---|---|
+| Web chat (Indemn Copilot) | built | _ | _ | _ |
+| Email — Outlook (Microsoft Graph) | built | _ | _ | _ |
+| Email — outbound | built | _ | _ | _ |
+| Voice — inbound | built | _ | _ | _ |
+| Voice — outbound | not built | _ | _ | _ |
+| SMS | built | _ | _ | _ |
+| Schedule | built | _ | _ | _ |
+| Microsoft Teams (outbound notification) | built | _ | _ | _ |
+
+### §10.2 Systems LOE `[28 entries]`
+
+| System | Integration type | Status | First-customer LOE (h) | Per-customer-after (h) | Notes |
+|---|---|---|---|---|---|
+
+`[Populate per row from §6 systems catalog. Each row: system name + integration type (API / web operator / other) + status + first-customer LOE + per-customer-after + notes. Order matches §6.]`
+
+### §10.3 Tool skills LOE `[57 entries]`
+
+| ID | Skill | Status | First-customer LOE (h) | Per-customer-after (h) | Notes |
+|---|---|---|---|---|---|
+
+`[Populate per row from §7 tool skills table. Order tool-001 through tool-057.]`
+
+### §10.4 Pathway skills LOE `[46 entries — excluding 9 merged placeholders]`
+
+| ID | Skill | Status | First-customer LOE (h) | Per-customer-after (h) | Notes |
+|---|---|---|---|---|---|
+
+`[Populate per row from §7 pathway skills table. Skip merged placeholders (path-026, 029, 038, 041, 013, 045, 017, 018, 022) — they redirect to their targets.]`
+
+### Phase C done-test
+
+After all 4 sub-tables populated, the formula `cost = (channels) + (skills) + (systems)` is computable per customer for any of Cam's 47 rows — sum hours per the catalog entries that customer's deal touches.
 
 ### What Phase C produces
 

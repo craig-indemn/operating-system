@@ -63,7 +63,22 @@ There are **two parallel customer-system workstreams** active right now:
 
 **§7 catalog audit (Session 2):** 9 pathway-skill consolidations applied — 3 channel-split merges (path-025/026, 037/038, 040/041) · 1 escalation merge (path-013→012) · 1 intake-disambiguation merge (path-029→025) · 1 LOB-split merge (path-045→044) · 3 KB-scope merges (path-017/018/022→016). Merged entries kept as numbered placeholders for audit trail.
 
-**Resume protocol for next pricing-framework session:** read `artifacts/2026-04-30-associate-pricing-framework.md § 0` (full handoff) + this CURRENT.md + standard PROMPT.md hydration set. Then begin Phase C — LOE pass per catalog entry. Recommended order: channels (8 entries, smallest catalog) → systems (28) → tool skills (57) → pathway skills (46). Hours only, no money. Craig authors estimates, I capture structure.
+**Resume protocol for Pricing Framework Session 3 (Phase C kickoff):**
+
+1. **Hydrate** — standard PROMPT.md set (customer-system CLAUDE.md · vision.md · roadmap.md · os-learnings.md · CURRENT.md · SESSIONS.md · indemn-os CLAUDE.md). Skim §8 + §9 in the working doc but **don't re-read in full** unless authoring a specific row.
+2. **Focus reads** — `artifacts/2026-04-30-associate-pricing-framework.md` §0 Session Handoff (esp. "Phase C kickoff plan" sub-section) + §2 Formula + §10 Phase C sub-table structure (§10.1 Channels, §10.2 Systems, §10.3 Tool skills, §10.4 Pathway skills) + Appendix A (Working Copy LOE annotations Craig already authored — anchors).
+3. **Confirm understanding back to Craig** — framework rules · 5-phase plan · Phase A + B complete · Phase C kickoff plan + discipline (collaborative; Craig authors estimates, I capture).
+4. **Begin Phase C with §10.1 Channels** (8 entries, smallest catalog). Per-entry process:
+   - Bring entry name + description + customers active + status → ask Craig for first-customer LOE (h) + per-customer-after LOE (h) + notes → capture to §10.1 row → next entry.
+5. After §10.1 done → §10.2 Systems (28 entries) → §10.3 Tool skills (57) → §10.4 Pathway skills (46).
+6. **Phase C done-test:** all 4 sub-tables populated; formula `cost = (channels) + (skills) + (systems)` computable per customer for any Cam row.
+
+**Discipline reminders for Phase C:**
+- **Hours only, no money** per Craig 2026-05-01.
+- **I do NOT propose LOE numbers.** I bring the catalog entry + ask Craig for the estimate. He authors. I capture.
+- **Per-customer-after-first LOE is the reuse story.** Make sure to ask both first-customer and per-customer-after for each entry.
+- **Anchors in Appendix A** — when Craig has already annotated something in his Working Copy (e.g., Renewal Associate 30+30-50h, Knowledge Associate 8-12h), use that as the starting point and confirm.
+- **Don't touch Cam's sheet** until §11 (Phase D) produces the migration spec.
 
 ### Workstream B — TD-1 Roadmap Execution (the main customer-system roadmap)
 
