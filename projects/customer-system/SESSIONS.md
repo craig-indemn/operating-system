@@ -6,6 +6,98 @@
 
 ---
 
+## Session 16 — 2026-05-01 → 2026-05-04 — Bug #40 closed via cron_runner mode + Bug #48 (CLI URL slug) + Bug #49 (cron_runner heartbeat + OTEL span); 3-day soak verifies 1863 completions / 0 LangSmith traces; ~1000 LLM calls/day eliminated
+
+**Workstream:** TD-1 follow-on. Bug #40 was the explicit gate to TD-2 per Craig's directive at Session 15 close. Session 16 spans 2026-05-01 (initial implementation + flip + Bug #48 surfacing) and 2026-05-04 (3-day soak verification + Bug #49 root-cause + heartbeat fix + EOS).
+
+**Objective:** Deep architectural design + implementation of Bug #40. Two design choices to weigh: (A) new `cron_runner` actor mode bypassing the LLM (skill content = literal CLI command, ~5-7 file change, faster); (B) new `ScheduledActorWorkflow` peer to `ProcessMessageWorkflow` (cleaner architectural separation; ~2x the work). All 4 fetchers currently functional via mode=hybrid + LLM agent — wasteful (~1000 LLM calls/day across 4 fetchers) but not broken. After Bug #40 closes: TD-2 begins (cascade activation: build MeetingClassifier, SlackClassifier, Proposal-Hydrator, Company-Enricher; activate progressively bottom-up; systematic historical replay).
+
+**Parallel sessions during:** Pricing Framework Session 3 ran in parallel in `.claude/worktrees/gic-feature-scoping/` (Phase C LOE pass + Phase D start). No cross-impact — different worktree, separate workstream, only shared file is `CURRENT.md` where each session updates its own workstream section.
+
+**Outcome (Bug #40):**
+
+- **Design choice resolved: Option A (`cron_runner` actor mode)** over Option B (`ScheduledActorWorkflow` peer). Rationale: extends the existing `Actor.mode` primitive (deterministic | reasoning | hybrid | cron_runner) rather than introducing a parallel kernel-side workflow; uses Bug #41's existing harness foothold (`_load_message_context` already branches on `_*` synthetic types); routes through unchanged dispatch path; ~5-7 files vs ~2x for Option B with no observable runtime difference. Per CLAUDE.md "no abstraction for abstraction's sake."
+- **Implementation:**
+  - `kernel_entities/actor.py` — added `cron_runner` to mode Literal.
+  - `harnesses/async-deepagents/cron_runner.py` — NEW (~200 LOC): `parse_command_from_skill` extracts argv from skill's `## Command` section + bash fence, indemn-only allowlist, single-command-only. `run_cron_skill` validates trigger is synthetic `_*`, loads first skill via existing CLI, parses command, exec via existing `harness_common.cli.indemn()` helper (env-var propagation INDEMN_EFFECTIVE_ACTOR_ID + INDEMN_CAUSATION_MESSAGE_ID intact), inspects JSON `errors` field (non-empty → fail), marks queue complete/fail.
+  - `harnesses/async-deepagents/main.py::process_with_associate` — branches on `actor.mode == "cron_runner"` BEFORE building the agent; skips deepagents entirely.
+  - **22 unit tests** in `harnesses/async-deepagents/tests/test_cron_runner.py` (parser shape × 11, executor happy + 7 failure modes × 8, sync-helper pin, mode-Literal pin via Pydantic field annotation introspection). Plus `test_load_message_context.py` stub-list update for `harness.cron_runner`.
+- **Skills:** all 4 fetcher skills rewritten to cron_runner shape (`## Command` section + single-line CLI command + `## Why this exists` rationale). Pushed to dev OS as v3 each. Files NEW in repo: `email-fetcher.md`, `meeting-fetcher.md`, `drive-fetcher.md` (slack-fetcher.md updated).
+- **Deployment:** indemn-api + indemn-queue-processor + indemn-temporal-worker (all needed for Pydantic Literal change to load Actor records with cron_runner mode) + indemn-runtime-async (cron_runner module). Initial runtime deploy hit `ModuleNotFoundError: No module named 'cron_runner'` — fixed import to `from harness.cron_runner import` (the `/app/harness/` package layout in container) and redeployed.
+- **Live verification 2026-05-01 19:59:58Z (flip) → 2026-05-04 (3 days):** all 4 fetcher actors flipped to `mode=cron_runner` via `PUT /api/actors/<id> --data '{"mode": "cron_runner"}'`. cron_runner exec + success log lines visible in runtime logs for all 4. **3-day soak: 1863 cron_runner completions (Email 770, Meeting 259, Drive 65, Slack 769); 0 LangSmith traces for any of the 4 fetcher associates since 20:01:00Z.** ~1000 LLM calls/day eliminated.
+
+**Outcome (Bug #48 — surfaced during Bug #40 verification):**
+
+- **Surfaced from:** Slack-Fetcher cron_runner exec hit 404 on `indemn slackmessage fetch-new`. Server-side route is `/api/slack_messages/` (Bug #39 Session 15 fix); CLI client was hitting `/api/slackmessages/` (naive plural).
+- **Two-part fix:**
+  - `kernel/api/meta.py::get_entity_metadata` (list endpoint) — added `collection` field via `_route_slug_for(name, cls)`. Detail endpoint `get_entity_detail_metadata` had `collection` but used the broken `cls.Settings.name if hasattr(cls, "Settings") else entity_name.lower() + "s"` fallback (which returned naive plural for every domain entity). Replaced with `_route_slug_for(entity_name, cls)`.
+  - `indemn_os/src/indemn_os/main.py` — split `cli_name = name.lower()` (singular Typer subcommand — operators still type `indemn slackmessage list`) from `slug = meta.get("collection") or (cli_name + "s")` (URL collection slug). All `f"/api/{slug}s/..."` templates → `f"/api/{slug}/..."`. `register_bulk_commands(name, entity_app, url_slug=slug)` plumbs the URL slug to bulk_commands.
+  - `indemn_os/src/indemn_os/bulk_commands.py` — accepts `url_slug` kwarg.
+- **9 unit tests:** `tests/unit/test_meta_collection_field.py` × 4 + `tests/unit/test_cli_url_slug_resolution.py` × 5. Source-level pins via `inspect.getsource`.
+- **Deployment:** indemn-api + indemn-runtime-async redeployed.
+- **Live verified:** `indemn slackmessage list --limit 3` returns 3 entries (was 404 pre-fix); `indemn slackmessage fetch-new` returns `{fetched: 1, created: 0, errors: []}`; runtime cron_runner success log on Slack-Fetcher.
+
+**Outcome (Bug #49 — surfaced during 3-day soak EOS):**
+
+- **Initially framed as:** "Bug #38 orphan cleanup, not a real cron_runner failure." 11 dead_letter messages over 3 days (5 Email + 6 Slack + 0 Meeting/Drive — Slack-heavy) all marked with the cleanup error message.
+- **Direct investigation via Temporal CLI:** `temporal workflow describe msg-69f81d4a1f2c3ee82ecb65bf` returned `Status: FAILED, Failure: Activity task timed out → Cause: activity Heartbeat timeout`, RunTime 8m15s. Confirmed root cause is heartbeat timeout, not infrastructure restart.
+- **Root cause:** `process_with_associate` activity has `heartbeat_timeout=timedelta(seconds=90)` (per `kernel/temporal/workflows.py`). The agent path runs `_heartbeat_loop` that fires `activity.heartbeat()` every 30s during `agent.ainvoke()`. The cron_runner branch shipped in Bug #40 v1 had NO heartbeat — `run_cron_skill` (sync) blocked on `subprocess.run`. Fetches under 90s succeeded; fetches over 90s (Slack with rate-limited channels) hit heartbeat_timeout, activity cancelled, both retries hit identical timing, workflow ended FAILED, message orphaned at status=processing → visibility timeout → next dispatch sweep → WorkflowAlreadyStartedError → Bug #38 cleanup → dead_letter. **The Slack > Email > 0 split is the predicted pattern** (Slack fetches slowest).
+- **Fix:** in `harnesses/async-deepagents/main.py::process_with_associate`'s cron_runner branch, mirror the agent path: `activity.heartbeat("starting_cron_runner")` immediately, then `asyncio.create_task(_cron_heartbeat_loop)` (sleeps 30s + heartbeats), wrap sync `run_cron_skill` in `await asyncio.to_thread(...)` so the heartbeat runs concurrently. Cancel + await heartbeat task in finally. Activity-level concern lives in the calling activity — keeps `run_cron_skill` sync + simple.
+- **OTEL span added in same fix:** `cron_runner.run` span in `cron_runner.py` via `opentelemetry.trace.get_tracer(__name__)` with attributes `associate.id`, `associate.name`, `message.id`, `entity.type`, `argv`, `tool`, `result.fetched|created|skipped_duplicates`, `result.errors_count`, `outcome`. Span lives under the parent activity span (TracingInterceptor) so the full chain is queryable in Grafana by trace_id. Per vision §2 item 7 — OTEL is canonical for system-level observability; LangSmith stays for AI-agent observability and the 0 LangSmith traces for cron_runner runs are the correct state, not a gap.
+- **3 new tests:** `test_process_with_associate_heartbeats_cron_runner_branch` (source-level pin on the heartbeat shape) + `test_run_cron_skill_emits_otel_span_with_attributes` + `test_run_cron_skill_otel_span_records_failure_outcome` (using `opentelemetry.sdk.trace.export.in_memory_span_exporter`).
+- **Deployment:** indemn-runtime-async redeployed. Verification: 24-48h post-deploy expectation is dead_letter rate drops to near-zero; Bug #38 orphans from genuine runtime restarts will still occur but should be << 11/1863.
+
+**Side-fixes:**
+- **Bug #12 re-fix** — AWS Secret `indemn/dev/shared/mongodb-uri` was reverted between Session 15 and Session 16 (host back to broken `dev-indemn-pl-0`). Re-applied the same fix (pull working URI from chat-deepagents Railway env, `aws secretsmanager update-secret`). No code change. Open question: what reverted it? Worth a pre-session-hook validation script.
+- **Slack Integration recovery** — found at `status=error` (auto-transitioned 2026-05-01 18:53:00Z, before Session 16 started). Walked `error → configured → connected → active`. Stayed active through 769+ Slack-Fetcher cron_runner completions over 3 days — one-off, not recurring. Root-cause investigation deferred (couldn't pin the kernel handler that transitioned it to error).
+
+**Test counts:**
+- Pre-session: 510 unit tests (kernel) + 60 harness = 570 total.
+- Post-session: **527 unit tests** (kernel — 9 new for Bug #48 + 8 retest growth from earlier work) + **85 harness tests** (60 → 85 — 25 cron_runner tests for Bug #40/#49 = 22 v1 + 3 for OTEL + heartbeat). Total: **612 tests, 611 passing** (1 pre-existing pollution failure on `test_effective_actor_id::test_harness_cli_wrapper_propagates_effective_actor_to_subprocess`, orthogonal — passes in isolation, fails when run with full suite due to module-level sys.modules.setdefault stubbing in `test_agent.py`; documented in os-learnings Bug #41 row).
+
+**Touched (files / entities):**
+- Indemn-os main commits pending push (2 logical commits):
+  - **Bug #40 + #49** — `M kernel_entities/actor.py`, `?? harnesses/async-deepagents/cron_runner.py`, `M harnesses/async-deepagents/main.py`, `?? harnesses/async-deepagents/tests/test_cron_runner.py`, `M harnesses/async-deepagents/tests/test_load_message_context.py`
+  - **Bug #48** — `M kernel/api/meta.py`, `M indemn_os/src/indemn_os/main.py`, `M indemn_os/src/indemn_os/bulk_commands.py`, `?? tests/unit/test_meta_collection_field.py`, `?? tests/unit/test_cli_url_slug_resolution.py`
+- Operating-system worktree changes (this commit):
+  - 4 fetcher skill files (3 NEW, 1 modified): `projects/customer-system/skills/{email,meeting,drive,slack}-fetcher.md`
+  - Project docs: `CURRENT.md` (rewritten), `SESSIONS.md` (this entry), `os-learnings.md` (Bug #40 close + Bug #48 NEW + Bug #49 NEW + Bug #12 regression note + Bug #45-family followup), `roadmap.md` (Where we are now), `CLAUDE.md` (§ 5 Journey entry), `INDEX.md` (Decisions / Open Questions / Artifacts)
+- Dev OS state: 4 fetcher actors flipped to `mode=cron_runner`; 4 fetcher skills updated to v3; Slack Integration walked back to active; AWS Secret `indemn/dev/shared/mongodb-uri` corrected
+- Production touched: indemn-api (×2), indemn-queue-processor, indemn-temporal-worker, indemn-runtime-async (×4 — initial + import fix + Bug #48 + Bug #49)
+
+**Handoff to next session:** Use `PROMPT.md` as kickoff. **TD-2 cascade activation begins.** 4 NEW associates to build (MeetingClassifier, SlackClassifier, Proposal-Hydrator, Company-Enricher) per `roadmap.md § TD-2`; update EC v9 → v10 (signature parsing + ReviewItem-on-ambiguity); update TS v6 → v7 (Deal-creation + atomic Proposal-at-DISCOVERY + multi-Deal ambiguity → ReviewItem); IE full-cascade verification; activate progressively bottom-up; systematic historical replay across ~930 emails + 67 meetings + 860 SlackMessages. Trace-as-build-method per CLAUDE.md § 2 — for each new associate: pick a real scenario (Armadillo's Apr 28 discovery meeting for MC; Apr 7-8 Retention Associate Slack thread for SC; Armadillo's processed Touchpoints for PH; Armadillo's bare Company for CE), trace manually first via CLI, write skill from what worked, activate after the trace produces correct state. Multi-session work; close cleanly per session. **Plus 24-48h Bug #49 verification** — confirm dead_letter rate dropped to near-zero on cron_runner runs after the heartbeat fix deployed today.
+
+---
+
+## Pricing Framework Session 3 — 2026-05-04 — Phase C LOE pass complete across channels, systems, tool skills, and pathway skills
+
+**Workstream:** Cam-assigned pricing framework action item. Continuation of Pricing Framework Session 2.
+
+**Objective:** Complete Phase C — populate first-customer LOE and per-customer-after-first LOE for every catalog entry. Hours only, no money. Craig authors estimates; assistant captures structure.
+
+**Outcome:**
+
+- **Phase C complete.** §10 populated for all 4 catalogs: 8 channels · 28 systems · 57 tool skills · 46 non-merged pathway skills.
+- **Systems catalog corrected:** ECM Portal removed as a separate system per Craig — "this isn't a thing, we don't use the ECM portal." Applied Epic remains the Johnson web-operator system. Catalog now consistently has 28 systems.
+- **Channel LOE captured:** Web chat 10/10 · Outlook email 15/15 · outbound email +2/+2 · inbound voice 15/15 · outbound voice 20/5 · SMS 10/10 · schedule 5/5 · Teams 15/15.
+- **Systems LOE captured:** all systems in §10.2 now have first/repeat estimates. Important defaults/anchors: general APIs 30/15 unless overridden; web operators have larger setup (Unisoft 40/10, Applied Epic 80/20); internal/platform/3rd-party services vary by setup complexity.
+- **Tool skills LOE captured:** all 57 tool skills in §10.3 now have first/repeat estimates.
+- **Pathway skills LOE captured:** all 46 non-merged pathway skills in §10.4 use Craig's Phase C assumption: pathways are generally sequences of steps; understanding/refining them is 30h first-customer and 15h subsequent. Bulk implementation work is already captured in channel/system/tool estimates.
+- **Phase D started:** §11.1 Cam sheet update spec drafted (6 tabs, row keys, columns, formula contract) + §11.1.9 computability checks drafted for 5 representative examples + §11.2 HTML UI visualization plan drafted (views, visual language, normalized data contract). §11.3 now locks the data-shaping path: hand-author normalized JSON first, validate it against the local schema, then export the testing sheet + HTML from the same object. Local draft data object now exists with §10 catalogs, 13 customers, 4 gaps, and 5 fixture checks. Working doc §0 and CURRENT now point future sessions to the §9 associate-row pass instead of Phase C.
+
+**Touched (files / entities):**
+- Modified: `projects/customer-system/artifacts/2026-04-30-associate-pricing-framework.md` (§0 handoff refreshed, §10 LOE tables populated, §11 Phase D sheet/UI spec + computability checks drafted)
+- Added: `projects/customer-system/artifacts/2026-05-04-pricing-framework-staging-data.schema.json` (Phase D normalized object contract for testing sheet + HTML)
+- Added: `projects/customer-system/artifacts/2026-05-04-pricing-framework-staging-data.json` (draft normalized object: catalogs, customers, gaps, calculation fixtures)
+- Added: `projects/customer-system/tools/build-pricing-framework-staging-data.js` (local builder; extracts §10 catalogs and verifies fixtures)
+- Modified: `projects/customer-system/tools/package.json` (added `build:pricing-staging-data` script)
+- Modified: `projects/customer-system/CURRENT.md` (Pricing Framework state updated: Phase C complete, Phase D in progress)
+- Modified: `projects/customer-system/SESSIONS.md` (this entry)
+- No OS entity changes
+- No production changes
+
+---
+
 ## Pricing Framework Session 2 — 2026-05-01 — Phase A close (4 customers walked) + §7 catalog audit + Phase B sweep across all 55 Cam rows + 5-phase plan locked
 
 **Workstream:** Cam-assigned action item from Apr 30 pricing call (Pricing Framework). **Parallel side-project to TD-1**, not part of main customer-system roadmap. Continuation of Pricing Framework Session 1 (commit `381b773`).

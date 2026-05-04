@@ -2,15 +2,27 @@
 
 > Living source of truth for **how we get from where we are now to the vision**. Updated every session that moves the work forward. Read with `vision.md` (what we're building, why, and the lens) and `os-learnings.md` (running register of OS bugs + capability gaps + design questions).
 >
-> Last updated: **2026-05-01** (Session 15 close — TD-1 fully closed end-to-end; voice harness v2 deployed to Railway with multi-turn round-trip verified; chat-side log-touchpoint verified; 7 OS bugs resolved; chat + voice harnesses migrated to CLI-only skill loading. Bug #40 deferred to Session 16 for deep architectural design.).
+> Last updated: **2026-05-04** (Session 16 close — Bug #40 closed via `cron_runner` actor mode (Option A chosen over `ScheduledActorWorkflow` peer); Bug #48 closed (CLI URL slug client-side counterpart of Bug #39); Bug #49 closed (cron_runner heartbeat + `cron_runner.run` OTEL span — root-caused 11 spurious dead_letters from 90s heartbeat_timeout); Bug #12 re-fixed (mongodb-uri secret reverted between sessions). 3-day soak: 1863 cron_runner completions across 4 fetchers, 0 LangSmith deepagents traces, ~1000 LLM calls/day eliminated.).
 
 ---
 
-## Where we are now (2026-05-01)
+## Where we are now (2026-05-04)
 
-**TD-1 COMPLETE.** All four scheduled fetchers (Email, Meeting, Drive, Slack) active and autonomous on Railway. Voice harness v2 deployed; multi-turn voice round-trip created real Touchpoint `69f4ed4f03e56394d808bc88` end-to-end. Chat-side log-touchpoint verified end-to-end (Touchpoint `69f4f2ca03e56394d808bd6d`). Both transports use Voice OS Assistant (id `69f4c62d03e56394d808b79c`) with `log-touchpoint` skill. All TD-1 done-test items passing. **Next gate: Bug #40 deep architectural work in Session 16, then TD-2 begins.**
+**Bug #40 + Bug #48 + Bug #49 COMPLETE.** All four scheduled fetchers (Email, Meeting, Drive, Slack) running `mode=cron_runner` since 2026-05-01 19:59:58Z — deterministic LLM-free CLI exec on every cron tick. **3-day soak verifies: 1863 cron_runner completions (Email 770, Meeting 259, Drive 65, Slack 769); 0 LangSmith deepagents traces; 11 dead_letter all root-caused to Bug #49 (cron_runner heartbeat timeout) — fix shipped 2026-05-04, expected to drop dead_letter rate to near-zero within 24-48h.** ~1000 LLM calls/day eliminated as designed. cron_runner runs emit `cron_runner.run` OTEL span with associate metadata for Grafana queries (LangSmith stays at 0 traces — correct state per vision §2 item 7: OTEL for system observability, LangSmith for AI observability).
 
-For deeper context on Session 15 closeout: `CURRENT.md`, `SESSIONS.md` Session 15 entry, `CLAUDE.md § 5 Journey` Session 15.
+**TD-1 COMPLETE** (since Session 15) — adapters running, manual entry path (log-touchpoint via voice + chat) verified, Voice OS Assistant active.
+
+**Next gate: TD-2 cascade activation begins.** 4 NEW associates to build (MeetingClassifier, SlackClassifier, Proposal-Hydrator, Company-Enricher); update EC v9 → v10 (signature parsing + ReviewItem-on-ambiguity); update TS v6 → v7 (Deal-creation atomic with Proposal-at-DISCOVERY); IE full-cascade verification; activate progressively bottom-up; systematic historical replay across ~930 emails + 67 meetings + 860 SlackMessages. Designs are in `roadmap.md § TD-2`.
+
+For deeper context on Session 16 closeout: `CURRENT.md`, `SESSIONS.md` Session 16 entry, `CLAUDE.md § 5 Journey` Session 16.
+
+---
+
+## Pre-Session-16 baseline (carried for reference — see CURRENT.md for current state)
+
+**TD-1 fully closed (Session 15).** All four scheduled fetchers (Email, Meeting, Drive, Slack) active and autonomous on Railway. Voice harness v2 deployed; multi-turn voice round-trip created real Touchpoint `69f4ed4f03e56394d808bc88` end-to-end. Chat-side log-touchpoint verified (Touchpoint `69f4f2ca03e56394d808bd6d`). Both transports use Voice OS Assistant with `log-touchpoint` skill. **All TD-1 done-test items passing.** Bug #40 was deferred to Session 16 for deep architectural design.
+
+For deeper context on Session 15 closeout: `SESSIONS.md` Session 15 entry, `CLAUDE.md § 5 Journey` Session 15.
 
 ---
 
