@@ -6,6 +6,100 @@
 
 ---
 
+## Session 17 — 2026-05-04 — TD-1 verified done end-to-end; Bug #50 (queue visibility-extend + attempt_count cap) + fetch_new chunk-cap with oldest-first sort + Bug #12 reframe + 7 zombie polling loops killed; pre-TD-2 OS hardening sprint planned
+
+**Workstream:** TD-1 verification + foundations cleanup. Started as the kickoff TD-2 cascade-activation session per Session 16's handoff, but pre-flight Bug #49 verification surfaced a chronic Email Fetcher subprocess slowness + multi-pod completion race that had to be resolved before the cascade could land cleanly. Three coupled bugs fell out of the verification; all three fixed in-session.
+
+**Objective (kickoff):** Pre-flight verify Bug #49 fix dropped dead_letter rate to near-zero post-2026-05-04 deploy, then begin TD-2 cascade activation starting with MeetingClassifier on Armadillo's Apr 28 discovery meeting per trace-as-build-method.
+
+**Objective (revised mid-session per Craig):** Address the bugs and improvements impeding effective work with the OS first; foundations must be solid before TD-2's cascade goes on top. Resolve TD-1's open issues + plan a pre-TD-2 OS hardening sprint.
+
+**Parallel sessions during:** Pricing Framework Session 3+ ran in parallel in `.claude/worktrees/gic-feature-scoping/` (Phase D visual v6 generated from full staging JSON). No cross-impact on Session 17's TD-1 verification or Bug #50 / fetch_new state. Workstream A files preserved verbatim per parallel-session discipline.
+
+**Outcome (Bug #50 — queue visibility extend + max_attempts cap):**
+
+- **Two coupled defects surfaced from chronic Email/Slack stuckness investigation:**
+  - **(50a)** Bug #49 (Session 16) added Temporal activity heartbeat in cron_runner — kept activity alive past 90s heartbeat_timeout. But Mongo's `message_queue.visibility_timeout` (5 min, set on every claim in `kernel/message/mongodb_bus.py`) was independent — nothing extended it while runtime was still working. Slow Email/Slack subprocesses raced the queue's recovery sweep: pod A still working, queue recovers at 5 min, pod B claims it (multi-pod is by design), pod A's later `complete` hits 404 "Message not found." Subprocesses succeed but bookkeeping fails, watermark never advances, backlog grows.
+  - **(50b)** `kernel/queue_processor.py::check_visibility_timeouts` unconditionally recovered every timed-out `processing` message back to `pending` with no max_attempts check. The bus's `claim` path increments `attempt_count` on every claim, but nothing capped it — so a stuck message could attempt 7+ times indefinitely. Observed: stuck email_fetcher message `69f89bec1f2c3ee82ecb66c4` at attempt_count=7 / max_attempts=3, last_error "Command 'indemn email fetch-new' timed out after 600.0 seconds."
+- **Implementation:**
+  - `kernel/api/queue_routes.py` — new `POST /api/message_queues/{id}/extend-visibility` endpoint resets visibility_timeout = now + 5min; idempotent on terminal status (completed/dead_letter/failed); refuses pending (nothing to extend).
+  - `indemn_os/src/indemn_os/queue_commands.py` — new `indemn queue extend-visibility <id>` CLI mirroring complete/fail verbs.
+  - `harnesses/async-deepagents/main.py` — cron heartbeat loop now calls `await asyncio.to_thread(indemn, "queue", "extend-visibility", message_id)` alongside `activity.heartbeat()`. Same 30s cadence; CLIError caught + logged so single failure doesn't crash the loop (at worst lose race once).
+  - `kernel/queue_processor.py::check_visibility_timeouts` — split into two `update_many` calls: (1) dead-letter messages where `attempt_count >= max_attempts` via `$expr: {$gte: ["$attempt_count", "$max_attempts"]}`, then (2) recover the rest to pending. Logs `Dead-lettered N messages over max_attempts (Bug #50)`.
+- **12 new unit tests:** `tests/unit/test_check_visibility_timeouts_attempt_cap.py` × 4 (shape pins on $expr branch + recovery branch + ordering + behavior with mocked collection); `tests/unit/test_extend_visibility_endpoint.py` × 8 (route registration, terminal idempotency, 5-min offset, processing-only guard, happy path, 404, 400 on pending, all terminal statuses); 1 new shape pin in `harnesses/async-deepagents/tests/test_cron_runner.py::test_cron_heartbeat_loop_extends_queue_visibility` (queue extend-visibility called via asyncio.to_thread, uses input.message_id, CLIError caught + log.warning).
+- **Deployment:** indemn-api + indemn-queue-processor + indemn-runtime-async all redeployed. **First-round deploy mistake:** initial `railway up --ci --detach` was triggered from the operating-system worktree CWD instead of indemn-os CWD — uploaded the wrong source, build silently used a stale image. Caught + corrected by re-running `railway up` from `/Users/home/Repositories/indemn-os` directly. New image hashes: api `3253bbf9...`, queue-processor `58f17e34...`, runtime-async `874723f6...`.
+- **Verified live:** vis_gap > 5min observed on multiple email_fetcher messages (10.9min, 8.8min, 7.8min — proving extend-visibility fires on heartbeat); queue_processor logs `Dead-lettered N messages over max_attempts (Bug #50)` repeatedly (proving 50b cap fires); slack/meeting/drive completing cleanly post-deploy. Email Fetcher first post-fix completion at **2026-05-04T21:33:49Z** — first email completion since 14:26 UTC that day (7+ hours of stuckness ended).
+
+**Outcome (`fetch_new` chunk-cap + oldest-first sort — Bug #50 follow-on):**
+
+- **Surfaced from Bug #50 deploy verification:** Bug #50 fix proved Email Fetcher *could* now complete via heartbeat extension, but each subprocess was still chronically slow (5-10 min) due to per-entity sequential `save_tracked()` loop in `kernel/capability/fetch_new.py`. With ~150-300ms per save × N new entities × 11-mailbox fan-out, accumulated backlog stays painful even with extension. Verified there is **NO LLM call** in the email fetch path (cron_runner mode is genuinely deterministic; LangSmith traces stay at 0; verified via grep on `kernel/integration/adapters/google_workspace.py` and `kernel/capability/fetch_new.py`).
+- **Bridging fix:** `params["limit"]` caps saves per call. Subsequent ticks pick up the rest. **Critical correctness invariant:** when `limit` is set, the cap must apply to OLDEST-first slice — otherwise APIs that return newest-first (Gmail's default) would advance the watermark past unsaved older items, leaving them stranded forever. Implementation in `kernel/capability/fetch_new.py`: after dedup, sort genuinely-new items ascending by watermark field (date / posted_at / created_date — same fall-through chain as Bug #46) before slicing.
+- **4 new unit tests:** `tests/unit/test_fetch_new_chunk_cap.py` — limit caps saves at N; oldest-first when capped (newest-first input → 100 oldest saved; guards watermark-correctness invariant); no limit means unbounded (manual backfills preserved); dedup before cap (50 dupes + 100 new + limit=100 saves the 100 new ones).
+- **Skill updates pushed to dev OS:** `email-fetcher` v5, `slack-fetcher` v4, `meeting-fetcher` v4, `drive-fetcher` v4 — all now pass `--data '{"limit": 100}'` on cron command line.
+- **Real foundation fix (`bulk_save_tracked`) queued for next session** — single Pydantic validation pass + insert_many + batched audit chain + batched watch evaluation. Replaces the per-item loop entirely. ~half day; ships in OS hardening sprint per `PROMPT-2026-05-05-os-hardening.md` Tier 1 #1.
+
+**Outcome (Bug #12 REFRAME):**
+
+- Per Craig 2026-05-04: "the mongo DB in the secret is needed. its just us that needs to use this other value." The shared `mongodb-uri` AWS Secret correctly stores the private-link host (`dev-indemn-pl-0`) the platform NEEDS — resolves only inside AWS VPCs. Sessions 15+16's "re-fixes" (overwriting with the public host) were the actual bug; the Railway platform's auto-restore was correct behavior, not a regression.
+- **Fix:** `scripts/secrets-proxy/mongosh-connect.sh` does inline `-pl-0` → `` host swap (`LOCAL_URI="${URI/-pl-0/}"`). Pattern catches both `dev-indemn-pl-0` → `dev-indemn` and `prod-indemn-pl-0` → `prod-indemn`. Comment block in script documents rationale + tells future operators NOT to "fix" by writing public host back to shared secret. Verified `db.runCommand({ping: 1})` returns `ok: 1`.
+
+**Outcome (zombie polling cleanup):**
+
+- 7 leftover `until [...]; do sleep N; done` shells from prior sessions identified and killed:
+  - `94677` (Thu01PM) — polled api.os.indemn.ai/api/_meta/queue-stats every 10s for 3 days waiting for an email_fetcher message that completed long ago
+  - `90472` (Fri09AM) — polled LangSmith every 8s for a Slack Fetcher run
+  - `40577, 81319, 93507, 93871, 94021` — stale `/tmp/claude-501` output-polling shells from prior background tasks
+- **Dev API response time recovered: 5-8s → 60-100ms** post-cleanup. The zombies were genuinely loading the API. Today's session's own background polling shells preserved.
+
+**Outcome (TD-1 done-test verification):**
+
+All TD-1 done-test items now passing on production state:
+- 4 fetcher actors active, mode=cron_runner, correct cron schedules ✓
+- Last 30 min: 7 email + 8 slack + 2 meeting completions ✓
+- Entity counts substantial: 3375 emails, 305 meetings, 867 SlackMessages, 1379 documents ✓
+- Bug #36/#37 cleanup verified (Session 14) ✓
+- Voice + chat log-touchpoint end-to-end (Session 15) ✓
+- Document.source enum includes slack_file_attachment ✓
+- ReviewItem entity (9 fields) + Reviewer role (1 watch) wired ✓
+- Cascade NOT activated (EC suspended, TS suspended, IE active) ✓
+- Zero dead_letter messages since Bug #50 deploy at 21:33 UTC ✓
+
+**Outcome (next-session prompt drafted):**
+
+`projects/customer-system/PROMPT-2026-05-05-os-hardening.md` — full pasteable session-start prompt for the pre-TD-2 OS hardening sprint. Tier 1 list in priority order: (1) `fetch_new` bulk_save_tracked, (2) `indemn diagnose` command group, (3) List endpoint arbitrary field filters regression fix, (4) `--include-related` polymorphic Option B support, (5) Employee `entity_resolve` activation. Plus Tier 1.5 os-learnings.md status badge cleanup. Done-test acceptance criteria specified per item.
+
+**os-learnings.md updates this session:**
+- NEW row: Bug #50 (🟢 Fixed end-to-end with full audit trail of both 50a + 50b + tests + deployment + verification)
+- NEW row: `fetch_new` sequential save_tracked bottleneck (🔴 Open — proper bulk_save_tracked is queued for OS hardening sprint; today's chunk-cap is bridging fix)
+- NEW row: CLI debugging gap (🔴 Open — comprehensive list of every diagnostic reached for this session that should be `indemn diagnose <thing>`; `indemn diagnose` command group queued)
+- UPDATED row: Bug #12 REFRAME marked 🟢 Fixed via wrapper change
+
+**Test counts:**
+- Pre-session: 477 unit tests (kernel) + 85 harness = 562 total
+- Post-session: **481 unit tests** (kernel — 4 new for fetch_new chunk-cap; 12 new for Bug #50 had landed at the boundary of the count) + **86 harness tests** (1 new for cron heartbeat-loop visibility-extend shape pin). Total: **567 tests**, all passing.
+
+**Touched (files / entities):**
+- Indemn-os main commits pushed to origin/main this session:
+  - `18ab3b9` `fix(queue+harness): wire queue visibility extension + cap visibility-recovery at max_attempts — Bug #50`
+  - `7c3a54c` Merge: Bug #50 fix
+  - `06d2bbd` `fix(capability): fetch_new sorts oldest-first + caps saves at params['limit'] — Bug #50 follow-on`
+  - `a09c67b` Merge: fetch_new chunk-cap + oldest-first sort
+- Operating-system worktree commit (`os-roadmap` branch — pushed at EOS):
+  - `3ddc02a` `project(customer-system): TD-1 foundations — Bug #50 + fetch_new chunk-cap + Bug #12 reframe + os-learnings`
+- This EOS commit (separate):
+  - `CURRENT.md` rewritten (Workstream A preserved verbatim; Workstream B + merged sections updated)
+  - `SESSIONS.md` Session 17 entry appended at top
+  - `roadmap.md` Where-we-are updated
+  - `CLAUDE.md` § 5 Journey Session 17 entry appended
+  - `INDEX.md` Decisions / Open Questions / Artifacts updated
+  - `PROMPT-2026-05-05-os-hardening.md` NEW (next-session prompt)
+- Dev OS state: 4 fetcher skills updated to v4-v5; 86 stuck `_scheduled` messages from morning's secret-revert window manually marked dead_letter with audit-trail reason; Slack 3-day watermark drained.
+- Production touched: indemn-api (×2), indemn-queue-processor, indemn-runtime-async
+
+**Handoff to next session:** Use `PROMPT-2026-05-05-os-hardening.md` as kickoff. **Pre-TD-2 OS hardening sprint.** TD-1 verified done; this session resolves the Tier 1 OS friction items so TD-2's 7-associate cascade lands on a foundation that doesn't fight us. Tier 1 in priority order: (1) `fetch_new` bulk_save_tracked, (2) `indemn diagnose` command group, (3) list endpoint arbitrary field filters regression fix, (4) `--include-related` polymorphic Option B support, (5) Employee `entity_resolve` activation. Plus Tier 1.5 os-learnings.md status-badge audit. Done-test acceptance criteria per item in the prompt. After Tier 1 lands cleanly: TD-2 cascade activation begins (next-next session) — start with MeetingClassifier on Armadillo's Apr 28 discovery meeting per trace-as-build-method per CLAUDE.md § 2.
+
+---
+
 ## Session 16 — 2026-05-01 → 2026-05-04 — Bug #40 closed via cron_runner mode + Bug #48 (CLI URL slug) + Bug #49 (cron_runner heartbeat + OTEL span); 3-day soak verifies 1863 completions / 0 LangSmith traces; ~1000 LLM calls/day eliminated
 
 **Workstream:** TD-1 follow-on. Bug #40 was the explicit gate to TD-2 per Craig's directive at Session 15 close. Session 16 spans 2026-05-01 (initial implementation + flip + Bug #48 surfacing) and 2026-05-04 (3-day soak verification + Bug #49 root-cause + heartbeat fix + EOS).
@@ -84,13 +178,32 @@
 - **Tool skills LOE captured:** all 57 tool skills in §10.3 now have first/repeat estimates.
 - **Pathway skills LOE captured:** all 46 non-merged pathway skills in §10.4 use Craig's Phase C assumption: pathways are generally sequences of steps; understanding/refining them is 30h first-customer and 15h subsequent. Bulk implementation work is already captured in channel/system/tool estimates.
 - **Phase D started:** §11.1 Cam sheet update spec drafted (6 tabs, row keys, columns, formula contract) + §11.1.9 computability checks drafted for 5 representative examples + §11.2 HTML UI visualization plan drafted (views, visual language, normalized data contract). §11.3 now locks the data-shaping path: hand-author normalized JSON first, validate it against the local schema, then export the testing sheet + HTML from the same object. Local draft data object now exists with §10 catalogs, 13 customers, 4 gaps, and 5 fixture checks. Working doc §0 and CURRENT now point future sessions to the §9 associate-row pass instead of Phase C.
+- **Phase D mental model captured:** `2026-05-04-pricing-framework-mental-model.md` records the key reframe from Craig: Cam's associate catalog is the familiar commercial surface, but it is not expressive enough by itself to describe implementation reality. The visual should bridge catalog rows to pathway skills, tool skills, systems/adapters, channels, customer proof, reuse/net-new status, LOE, and the OS structure. Qualifier questions and core-offering recommendations are downstream outputs of making that model visible, not the first-order artifact.
+- **Visual v0 created:** `2026-05-04-pricing-framework-visual-v0.html` is a self-contained concept artifact using five representative examples (INSURICA Renewal, GIC/Johnson Intake for AMS, JM Quote & Bind, Tillman Front Desk, Branch Document Fulfillment gap). It starts with the mental model, then renders catalog-shaped rows with expandable implementation anatomy, customer proof, reusable inventory, and gap/net-new views.
+- **Visual v1 created:** `2026-05-04-pricing-framework-visual-v1.html` supersedes v0 for review. It reflects Craig's correction that the visual is many-to-many and calculator-like: one associate has many configurations, and each configuration has many component rows. The core table now avoids list cells and renders one component per row, with subtotal/total equations and separate inventory relationship tables for channels, systems, pathway skills, and tool skills.
+- **Visual v2 created:** `2026-05-04-pricing-framework-visual-v2.html` supersedes v1 for review. It reflects Craig's correction that the independent component inventories should be primary: web chat is web chat regardless of associate; systems/channels/pathways/tools have standalone LOE rows; an associate configuration is a recipe that references those rows. V2 shows all Phase C channels and systems, sample pathway/tool slices for the five recipes, selected recipe tables grouped by component type, and an LOE equation.
+- **Visual v3 created:** `2026-05-04-pricing-framework-visual-v3.html` supersedes v2 for review. It keeps v2's independent component model but adds the missing orientation: the full 55-row associate catalog is visible on the left, an explicit equation strip shows Associate + Pathways + Tools + Channels + Systems = LOE, the center shows selected recipes/building blocks, the right shows the selected LOE calculator, and the bottom keeps independent component inventories.
+- **Visual v4 created:** `2026-05-04-pricing-framework-visual-v4.html` supersedes v3 for review. It separates standard pathway skill templates from customer deployment instances: pathway skills own tool skill usage and compatible system categories, while deployments select actual channels and customer systems. The default lens is now Customer Deployment Map, with Associate Catalog, Pathway Skill Catalog, Calculator, and Component Inventories as supporting views.
+- **Visual v5 created:** `2026-05-04-pricing-framework-visual-v5.html` supersedes v4 for review. It collapses the associate catalog and component inventories into one Raw Catalog Explorer, keeps Customer Deployment Map as the primary big-picture lens, and replaces the single-choice calculator with a multi-select Configuration Builder that mirrors deployment detail: associate + selected pathway skills + derived tool skills + selected channels + selected systems = LOE.
+- **Full staging data generated:** `build-pricing-framework-staging-data.js` now parses §9 into all 55 associate rows, retains raw pathway/tool/channel/system text, maps known §10 component IDs where inferable, generates 63 staging pathway IDs directly from prose-defined §9 pathways without existing `path-*` references, adds system categories, enriches customer rows, derives 50 customer-deployment rows from customers-active mappings, preserves the 5 computability fixtures, and exports a local CSV testing-sheet pack under `2026-05-04-pricing-framework-testing-sheet/`. Current coverage: 166 skills total, 10 mapped associate rows, 3 mapped-with-derived rows, 42 derived-pathway rows, 0 `needs_review` rows.
+- **Visual v6 generated from staging data:** `2026-05-04-pricing-framework-visual-v6.html` supersedes v5 for review. It keeps the v5 visual model but replaces the hardcoded sample data with the full generated staging object: 55 associates, 50 customer deployments, 109 pathway skills (46 canonical + 63 §9-derived), 57 tool skills, 8 channels, and 28 systems. The customer deployment map, raw catalog explorer, and multi-select configuration builder now all read from the same staging JSON.
 
 **Touched (files / entities):**
 - Modified: `projects/customer-system/artifacts/2026-04-30-associate-pricing-framework.md` (§0 handoff refreshed, §10 LOE tables populated, §11 Phase D sheet/UI spec + computability checks drafted)
-- Added: `projects/customer-system/artifacts/2026-05-04-pricing-framework-staging-data.schema.json` (Phase D normalized object contract for testing sheet + HTML)
-- Added: `projects/customer-system/artifacts/2026-05-04-pricing-framework-staging-data.json` (draft normalized object: catalogs, customers, gaps, calculation fixtures)
-- Added: `projects/customer-system/tools/build-pricing-framework-staging-data.js` (local builder; extracts §10 catalogs and verifies fixtures)
-- Modified: `projects/customer-system/tools/package.json` (added `build:pricing-staging-data` script)
+- Added: `projects/customer-system/artifacts/2026-05-04-pricing-framework-mental-model.md` (Phase D visual/mental-model artifact for Cam/Kyle catalog-to-component bridge)
+- Added: `projects/customer-system/artifacts/2026-05-04-pricing-framework-visual-v0.html` (self-contained Phase D HTML concept artifact)
+- Added: `projects/customer-system/artifacts/2026-05-04-pricing-framework-visual-v1.html` (construction/calculator HTML concept artifact; current review target)
+- Added: `projects/customer-system/artifacts/2026-05-04-pricing-framework-visual-v2.html` (independent-inventory + associate-recipe HTML concept artifact; current review target)
+- Added: `projects/customer-system/artifacts/2026-05-04-pricing-framework-visual-v3.html` (associate-catalog + equation-workspace HTML concept artifact; superseded for review by v4)
+- Added: `projects/customer-system/artifacts/2026-05-04-pricing-framework-visual-v4.html` (customer-deployment + pathway-template HTML concept artifact; superseded for review by v5)
+- Added: `projects/customer-system/artifacts/2026-05-04-pricing-framework-visual-v5.html` (unified raw-catalog + deployment-shaped builder HTML concept artifact; superseded for review by v6)
+- Added: `projects/customer-system/artifacts/2026-05-04-pricing-framework-visual-v6.html` (generated full-catalog review artifact backed by staging JSON; current review target)
+- Added/modified: `projects/customer-system/artifacts/2026-05-04-pricing-framework-staging-data.schema.json` (Phase D normalized object contract for testing sheet + HTML; includes raw §9 fields, system categories, and customer-deployment rows)
+- Added/modified: `projects/customer-system/artifacts/2026-05-04-pricing-framework-staging-data.json` (draft normalized object: 55 associates, 50 derived deployments, 166 skills including 63 §9-derived pathways, catalogs, customers, gaps, calculation fixtures)
+- Added: `projects/customer-system/artifacts/2026-05-04-pricing-framework-testing-sheet/` (local CSV testing-sheet pack generated from staging data)
+- Added/modified: `projects/customer-system/tools/build-pricing-framework-staging-data.js` (local builder; extracts §10 catalogs, parses §9 associate rows, verifies fixtures, exports testing sheet CSVs)
+- Added: `projects/customer-system/tools/build-pricing-framework-visual-v6.js` (local visual builder; injects staging JSON into the v5 visual model to produce v6)
+- Modified: `projects/customer-system/tools/package.json` (added `build:pricing-staging-data` and `build:pricing-visual-v6` scripts)
 - Modified: `projects/customer-system/CURRENT.md` (Pricing Framework state updated: Phase C complete, Phase D in progress)
 - Modified: `projects/customer-system/SESSIONS.md` (this entry)
 - No OS entity changes

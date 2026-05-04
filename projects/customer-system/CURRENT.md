@@ -2,7 +2,7 @@
 
 > **Fast-changing state.** What just happened, what's in flight, parallel sessions, blockers, next steps. Rewritten every session. Read this *after* CLAUDE.md to know where things actually stand right now.
 
-**Last updated:** 2026-05-04 (end of Session 16 — Bug #40 + #48 + #49 closed; all 4 fetchers running cron_runner-mode autonomously LLM-free; 3-day soak verified 1863 completions / 0 LangSmith traces; cron_runner heartbeat + OTEL span shipped to close the dead_letter rate). Pricing Framework Session 3 closed in parallel — Phase D staging-data path locked.
+**Last updated:** 2026-05-04 (end of Session 17 — TD-1 verified done end-to-end; Bug #50 (queue visibility-extend + attempt_count cap) deployed; `fetch_new` chunk-cap with oldest-first sort deployed; Bug #12 REFRAME (mongosh-connect.sh inline host swap) shipped; 7 zombie polling loops killed → dev API response time recovered 5-8s → 60-100ms; pre-TD-2 OS hardening sprint planned for next session). Pricing Framework Session 3 closed in parallel — visual v6 generated from full staging JSON.
 
 ---
 
@@ -14,7 +14,7 @@ There are **two parallel customer-system workstreams** active right now:
 
 **Source of truth:** `artifacts/2026-04-30-associate-pricing-framework.md` § 0 Session Handoff
 
-**Status (2026-05-04):** **Pricing Framework Session 3 Phase C complete; Phase D in progress.** Phase A + Phase B + Phase C complete. **All 13 active customers walked + all 55 Cam rows swept + all LOE tables populated.** 5 prospects out-of-scope per Craig 2026-05-01. **Phase D §11.1 Cam sheet update spec + §11.2 HTML UI visualization plan drafted; §11.3 locks the hand-authored normalized staging-data path; local draft data object now exists.**
+**Status (2026-05-04):** **Pricing Framework Session 3 Phase C complete; Phase D in progress.** Phase A + Phase B + Phase C complete. **All 13 active customers walked + all 55 Cam rows swept + all LOE tables populated.** 5 prospects out-of-scope per Craig 2026-05-01. **Phase D §11.1 Cam sheet update spec + §11.2 HTML UI visualization plan drafted; §11.3 locks the normalized staging-data path; local draft data object + testing-sheet CSV pack exist; Phase D mental-model artifact captures the Cam/Kyle visual thesis; HTML visual v6 is now the current full-catalog review artifact generated from staging JSON.**
 
 | # | Customer | Status |
 |---|---|---|
@@ -66,76 +66,96 @@ There are **two parallel customer-system workstreams** active right now:
 **Resume protocol for next Pricing Framework session (Phase D continuation):**
 
 1. **Hydrate** — standard PROMPT.md set (customer-system CLAUDE.md · vision.md · roadmap.md · os-learnings.md · CURRENT.md · SESSIONS.md · indemn-os CLAUDE.md). Skim §8 + §9 in the working doc but **don't re-read in full** unless authoring a specific row.
-2. **Focus reads** — `artifacts/2026-04-30-associate-pricing-framework.md` §0 Session Handoff + §2 Formula + §4 End-state sheet design + §9 Per-associate sweep + §10 LOE tables + §11 Phase D output presentation.
+2. **Focus reads** — `artifacts/2026-04-30-associate-pricing-framework.md` §0 Session Handoff + §2 Formula + §4 End-state sheet design + §9 Per-associate sweep + §10 LOE tables + §11 Phase D output presentation + `artifacts/2026-05-04-pricing-framework-mental-model.md`.
 3. **Confirm understanding back to Craig** — framework rules · 5-phase plan · Phase A/B/C complete · Phase D output goal.
 4. **Review §11.1.9 computability checks** — five representative examples are drafted with first/repeat totals and traceable components. Validate component inclusion with Craig before using them in the staging sheet.
-5. **Continue local staging data object** — `artifacts/2026-05-04-pricing-framework-staging-data.json` exists with §10 catalogs, 13 customers, 4 gaps, and 5 computability fixtures. Next: hand-author §9 associate rows into it, then export the testing sheet + HTML from that object. Rebuild with `npm --prefix projects/customer-system/tools run build:pricing-staging-data`.
+5. **Review visual v6 + generated testing data** — `artifacts/2026-05-04-pricing-framework-visual-v6.html` is the current full-catalog review artifact generated from `artifacts/2026-05-04-pricing-framework-staging-data.json`. It renders all 55 §9 associate rows, 50 derived customer-deployment rows, 166 skills total (103 §10 skills + 63 §9-derived pathway skills), §10 catalogs, 13 customers, 4 gaps, and 5 computability fixtures through the customer-deployment map, raw catalog explorer, and multi-select configuration builder. Local testing-sheet CSVs are generated under `artifacts/2026-05-04-pricing-framework-testing-sheet/`. Next: review generated `path-derived-row-*` IDs with Craig and decide whether to keep them for staging or renumber them into canonical `path-*`. Rebuild data with `npm --prefix projects/customer-system/tools run build:pricing-staging-data`; rebuild the visual with `npm --prefix projects/customer-system/tools run build:pricing-visual-v6`.
 
 **Discipline reminders for Phase D:**
 - **Don't touch Cam's sheet** until §11 produces the migration spec and Craig signs off.
 - Keep output hours-only unless Craig explicitly asks for money mapping.
 - Preserve Cam catalog rows as official; redundant row-level skill listing remains intentional.
 
-### Workstream B — Bug #40/#48/#49 closed; TD-2 next
+### Workstream B — TD-1 verified done; pre-TD-2 OS hardening sprint queued
 
-State below is from **Session 16 close (2026-05-04)** — Bug #40 fully closed (cron_runner mode + heartbeat + OTEL span); Bug #48 (CLI URL slug) closed; Bug #12 re-fixed; Slack Integration recovered. Pricing framework session ran in parallel and did not modify any of this state.
+State below is from **Session 17 close (2026-05-04)** — TD-1 done-test verified passing end-to-end; Bug #50 (queue visibility-extend + attempt_count cap) shipped; `fetch_new` chunk-cap with oldest-first sort shipped; Bug #12 reframed (wrapper inline host-swap; stop overwriting shared secret); 7 zombie polling loops killed; dev API response time recovered to baseline. Next session is the OS hardening sprint before TD-2 cascade activation.
 
 ---
 
 ## Top of roadmap
 
-**Bug #40 + Bug #48 + Bug #49 COMPLETE.** All four scheduled fetchers (Email, Meeting, Drive, Slack) running `mode=cron_runner` since 2026-05-01 19:59:58Z. **3-day soak: 1863 cron_runner completions, 0 LangSmith deepagents traces, 11 dead_letter (all root-caused to Bug #49 — cron_runner heartbeat timeout — now fixed).** ~1000 LLM calls/day eliminated as designed.
+**TD-1 VERIFIED DONE end-to-end (Session 17).** All done-test items passing on production state:
 
-**Next gate: TD-2 cascade activation begins.** 4 NEW associates to build (MeetingClassifier, SlackClassifier, Proposal-Hydrator, Company-Enricher); update EC v9 → v10 (signature parsing + ReviewItem-on-ambiguity); update TS v6 → v7 (Deal-creation atomic with Proposal-at-DISCOVERY); IE full-cascade verification; activate progressively bottom-up; systematic historical replay across ~930 emails + 67 meetings + 860 SlackMessages. Designs are in `roadmap.md § TD-2`.
+- 4 fetcher actors active, `mode=cron_runner`, correct cron schedules (Email */5, Meeting */15, Drive hourly, Slack */5)
+- Last 30 min of production: 7 email + 8 slack + 2 meeting completions — data flowing cleanly
+- Substantial entity counts: 3375 emails, 305 meetings, 867 SlackMessages, 1379 documents
+- Zero `dead_letter` messages since Bug #50 deploy (21:33 UTC) verified across the post-deploy soak
+- ReviewItem entity (9 fields) + Reviewer role (1 watch on `ReviewItem created`) wired and ready
+- EC/TS suspended; IE active — cascade NOT activated by design
+- `Document.source` enum includes `slack_file_attachment`
+- Voice OS Assistant active; `log-touchpoint` skill v3 (4600+ chars)
+
+**Next gate: pre-TD-2 OS hardening sprint** (next session). Tier 1 items in priority order:
+1. `fetch_new` bulk_save_tracked (replaces sequential save loop with batched insert + audit chain + watch eval — proper foundation, half day)
+2. `indemn diagnose` command group (actor / message / cron-runs surfaces — half day)
+3. List endpoint arbitrary field filters regression (~1-2 hours)
+4. `--include-related` polymorphic Option B support (~2 hours)
+5. Employee `entity_resolve` activation (5 min, TD-2 blocker)
+6. os-learnings.md status badge cleanup (~30 min — several rows mismarked 🔴 are actually 🟢)
+
+After Tier 1 lands: **TD-2 cascade activation begins** — 4 NEW associates (MeetingClassifier, SlackClassifier, Proposal-Hydrator, Company-Enricher) + EC v9→v10 + TS v6→v7 + IE verification + ReviewItem cascade-wide. Trace-as-build-method per CLAUDE.md § 2.
+
+Next-session prompt drafted at: `projects/customer-system/PROMPT-2026-05-05-os-hardening.md`.
 
 ---
 
-## Pipeline associate states (Session 16 changes)
+## Pipeline associate states (Session 17 close — unchanged from Session 16)
 
 | Associate | State | Notes |
 |---|---|---|
 | Email Classifier (EC) | **suspended** | Unchanged. Will activate in TD-2 (v9 → v10 with signature parsing + ReviewItem on ambiguity). |
 | Touchpoint Synthesizer (TS) | **suspended** | Unchanged. Will gain Deal-creation + Proposal-at-DISCOVERY atomic in TD-2 (v6 → v7). |
 | Intelligence Extractor (IE) | **active** | Unchanged. Inherits gemini-3-flash-preview/global. Will be verified through full cascade in TD-2. |
-| **Email Fetcher** | **active, mode=cron_runner** | Flipped 2026-05-01 19:59:58Z. id `69f2bf30942e5629f07a8313`. */5 cron. **770 cron_runner completions in 3 days, 5 dead_letter (Bug #49 heartbeat timeout — fixed today), 0 LangSmith traces.** |
-| **Meeting Fetcher** | **active, mode=cron_runner** | Flipped 2026-05-01 20:07:45Z. id `69f39ec6c0b340cf765a38d6`. */15 cron. **259 completions, 0 dead_letter, 0 LangSmith traces.** |
-| **Drive Fetcher** | **active, mode=cron_runner** | Flipped 2026-05-01 20:07:45Z. id `69f3abbe268936150b46a0fa`. hourly. **65 completions, 0 dead_letter, 0 LangSmith traces.** |
-| **Slack Fetcher** | **active, mode=cron_runner** | Flipped 2026-05-01 20:07:45Z. id `69f4a473a0cbb2f5d2d0386f`. */5 cron. **769 completions, 6 dead_letter (Bug #49 — fixed today), 0 LangSmith traces.** |
-| Voice OS Assistant | **active** (mode=hybrid, unchanged from Session 15) | Used by Railway voice runtime for log-touchpoint flow. Not affected by cron_runner work. |
-| Reviewer role | wired | Unchanged from Session 14. |
+| **Email Fetcher** | **active, mode=cron_runner** | Skill v5 (post Session 17 — now passes `--data '{"limit": 100}'` per Bug #50 follow-on). Bug #50 fix live; Email completing cleanly within visibility (first post-fix completion 2026-05-04T21:33:49Z). |
+| **Meeting Fetcher** | **active, mode=cron_runner** | Skill v4. Completing cleanly. |
+| **Drive Fetcher** | **active, mode=cron_runner** | Skill v4. Completing cleanly. |
+| **Slack Fetcher** | **active, mode=cron_runner** | Skill v4. Completing cleanly. |
+| Voice OS Assistant | **active** (mode=hybrid, unchanged from Session 15) | Used by Railway voice runtime for log-touchpoint flow. |
+| Reviewer role | wired | Unchanged from Session 14 — ready for TD-2. |
 
 **4 NEW associates designed in Session 13's TD-2 alignment** — to be built when TD-2 executes (MeetingClassifier, SlackClassifier, Proposal-Hydrator, Company-Enricher).
 
 ---
 
-## Material state in dev OS (Session 16 changes)
+## Material state in dev OS (Session 17 changes)
 
 **Hydrated customer constellations** (carried forward unchanged): GR Little, Alliance Insurance, Armadillo Insurance.
 
-**Entity-state changes Session 16:**
-- 4 fetcher actors flipped: `mode=hybrid` → `mode=cron_runner` (Email/Meeting/Drive/Slack-Fetcher).
-- 4 fetcher skills updated to v3 cron_runner shape: `email-fetcher`, `meeting-fetcher`, `drive-fetcher`, `slack-fetcher` — pushed to dev OS.
-- Slack Integration `69f3bb5097300b115e7236dd` walked `error → configured → connected → active` (recovery from a pre-session auto-error transition at 2026-05-01 18:53:00Z; details in os-learnings Bug #45-family followup).
-- AWS Secret `indemn/dev/shared/mongodb-uri` re-fixed (Bug #12 regressed between Session 15 and Session 16 — secret was reverted to broken `dev-indemn-pl-0` host; restored to `dev-indemn` host).
-
-**Entities ingested since cron_runner flip (3 days):**
-- Emails: 506 (Email-Fetcher every 5 min)
-- Meetings: 2 (Meeting-Fetcher every 15 min — low weekend activity)
-- Documents: 1 (Drive-Fetcher hourly — low weekend activity)
-- SlackMessages: 0 (Slack-Fetcher every 5 min — bot is in 4 channels; no new content over the soak window)
+**Entity-state changes Session 17:**
+- 4 fetcher skills updated to v4-v5 (now pass `--data '{"limit": 100}'` per Bug #50 follow-on chunk-cap design): `email-fetcher` v5, `slack-fetcher` v4, `meeting-fetcher` v4, `drive-fetcher` v4 — pushed to dev OS.
+- 86 stuck `_scheduled` messages from the morning's secret-revert window manually marked `dead_letter` with audit-trail `last_error` reason (cleared the recovery-loop deadlock so Bug #50 fix could verify cleanly on fresh cron ticks).
+- Slack 3-day watermark gap (May 1 15:39Z stale → 14 min current) drained via chunked `indemn slackmessage fetch-new --data '{"since":..., "until":...}'`. Server-side fetch completed in ~10 min despite CLI ReadTimeout — work persisted, watermark advanced cleanly.
 
 ---
 
-## Indemn-os main commits this session (Session 16)
+## Indemn-os main commits this session (Session 17)
 
-**Pending end-of-session push** (uncommitted at the time of writing — git working tree on indemn-os main branch):
-
-| Commit-to-be | What |
+| Commit | What |
 |---|---|
-| (Bug #40 + #49 cron_runner) | `feat(harness): cron_runner actor mode + heartbeat + OTEL span — Bug #40, #49` — kernel_entities/actor.py mode Literal extended; harnesses/async-deepagents/cron_runner.py NEW (with `cron_runner.run` OTEL span); harnesses/async-deepagents/main.py branches on mode==cron_runner with concurrent heartbeat loop wrapping `asyncio.to_thread(run_cron_skill, ...)`; tests/test_cron_runner.py NEW (25 tests — parser × 11, executor happy + 7 failure modes × 8, sync-helper pin, mode-Literal pin, OTEL span × 2, heartbeat shape × 1); tests/test_load_message_context.py stub-list update for `harness.cron_runner`. |
-| (Bug #48 CLI URL) | `fix(api+cli): meta endpoint surfaces collection slug; CLI honors it — Bug #48` — kernel/api/meta.py adds `collection` field to list + detail endpoints via `_route_slug_for`; indemn_os/src/indemn_os/main.py splits cli_name (singular Typer) from URL slug (collection from meta), all `/api/{slug}s/` → `/api/{slug}/`; bulk_commands.py accepts `url_slug` kwarg; tests/test_meta_collection_field.py + tests/test_cli_url_slug_resolution.py NEW (9 tests). |
+| `18ab3b9` (merged via `7c3a54c`) | `fix(queue+harness): wire queue visibility extension + cap visibility-recovery at max_attempts — Bug #50` — kernel/queue_processor.py splits visibility-recovery into dead-letter (attempt_count >= max_attempts via $expr) + recovery passes; kernel/api/queue_routes.py adds POST /api/message_queues/{id}/extend-visibility endpoint; indemn_os queue_commands.py adds `indemn queue extend-visibility <id>` CLI; harnesses/async-deepagents/main.py cron heartbeat loop now calls extend-visibility every 30s alongside activity.heartbeat. 12 new unit tests in `tests/unit/test_check_visibility_timeouts_attempt_cap.py` + `tests/unit/test_extend_visibility_endpoint.py`. 1 new shape pin in `harnesses/async-deepagents/tests/test_cron_runner.py::test_cron_heartbeat_loop_extends_queue_visibility`. |
+| `06d2bbd` (merged via `a09c67b`) | `fix(capability): fetch_new sorts oldest-first + caps saves at params['limit'] — Bug #50 follow-on` — kernel/capability/fetch_new.py: after dedup, sort genuinely-new items ascending by watermark field (date / posted_at / created_date) so when limit is set, the cap applies to OLDEST-first slice (preserves watermark-correctness invariant against APIs that return newest-first like Gmail). 4 new unit tests in `tests/unit/test_fetch_new_chunk_cap.py`. |
 
-Test count: 515 unit tests pre-session → **527 unit tests post-session** (3 new for Bug #48 in `tests/unit/`, plus 9 retest growth from earlier work + 3 new for Bug #40/#49 OTEL + heartbeat in harness tests). Plus 25 harness tests for cron_runner (60 → 85 in `harnesses/async-deepagents/tests/`).
+Test count: 477 unit tests pre-session → **481 unit tests post-session** (4 new for `fetch_new` chunk-cap; the 12 Bug #50 tests had been counted already at the Session 16/17 boundary). Full kernel suite passes; no regressions.
+
+---
+
+## Operating-system worktree commit this session (Session 17)
+
+`3ddc02a` (`os-roadmap` branch, unpushed at write time — will go up at EOS): `project(customer-system): TD-1 foundations — Bug #50 + fetch_new chunk-cap + Bug #12 reframe + os-learnings`
+
+- 4 fetcher skill files updated with `--data '{"limit": 100}'` cron command line (email-fetcher.md, slack-fetcher.md, meeting-fetcher.md, drive-fetcher.md)
+- `scripts/secrets-proxy/mongosh-connect.sh` does inline `-pl-0 → ` host swap; comment block tells future operators NOT to overwrite the shared secret
+- `os-learnings.md` updated: NEW Bug #50 entry (🟢 Fixed end-to-end with full audit trail); NEW `fetch_new` sequential save_tracked bottleneck entry (🔴 — proper bulk_save_tracked is queued for next session); NEW CLI diagnostics gap entry (🔴 — `indemn diagnose` command group queued); Bug #12 REFRAME entry marked 🟢 Fixed.
 
 ---
 
@@ -143,10 +163,11 @@ Test count: 515 unit tests pre-session → **527 unit tests post-session** (3 ne
 
 | Service | What changed |
 |---|---|
-| `indemn-api` | Bug #40 (Pydantic Actor.mode Literal change) + Bug #48 (meta endpoint collection field). Deployed twice — once for Bug #40, once for Bug #48 on top. |
-| `indemn-queue-processor` | Bug #40 (Pydantic Literal — needs to load Actor records with cron_runner mode). |
-| `indemn-temporal-worker` | Bug #40 (Pydantic Literal — needs `load_actor` activity to handle cron_runner). |
-| `indemn-runtime-async` | Bug #40 (cron_runner module + import path fix from `from cron_runner import` → `from harness.cron_runner import`) + Bug #48 (Dockerfile pip-installs indemn_os during build → harness picks up new client URL behavior) + Bug #49 (heartbeat loop + OTEL span). Deployed four times: initial + import fix + Bug #48 follow-on + Bug #49 follow-on. |
+| `indemn-api` | Bug #50 (extend-visibility endpoint + queue_processor recovery split) + fetch_new chunk-cap. Deployed 2x — once for Bug #50 cluster, once for chunk-cap. |
+| `indemn-queue-processor` | Bug #50 (visibility-recovery split: dead-letter at max_attempts, recover otherwise). |
+| `indemn-runtime-async` | Bug #50 (cron heartbeat loop now calls extend-visibility every 30s). New image hash `874723f6...`. |
+
+**First-round deploy mistake & lesson:** initial `railway up --ci --detach` was triggered from the operating-system worktree CWD instead of the indemn-os repo CWD — uploaded the wrong source, build silently used a stale image. Caught + corrected by re-running `railway up` from `/Users/home/Repositories/indemn-os` directly. Deploy IDs: indemn-api `9c5bc78c`, indemn-queue-processor `633a045f`, indemn-runtime-async `4cbe96eb`.
 
 ---
 
@@ -154,76 +175,74 @@ Test count: 515 unit tests pre-session → **527 unit tests post-session** (3 ne
 
 | Bug | Status before | Status after | Commit / artifact |
 |---|---|---|---|
-| **Bug #40** (no deterministic scheduled-actor execution path) | open from Session 14, deferred to Session 16 | 🟢 **fixed** — chose `cron_runner` actor mode (Option A) | indemn-os main commit pending push (cron_runner module + tests) |
-| **Bug #48** (CLI URL slug ignores collection_name; client-side counterpart of Bug #39) | NEW — surfaced during Bug #40 verification on Slack-Fetcher 404s | 🟢 **fixed** — meta endpoint surfaces `collection`; CLI uses it | indemn-os main commit pending push (meta + indemn_os CLI + tests) |
-| **Bug #49** (cron_runner doesn't heartbeat → 11 spurious dead_letters over 3 days) | NEW — surfaced during 3-day soak investigation; root cause confirmed via `temporal workflow describe` showing `Activity Heartbeat timeout` | 🟢 **fixed** — concurrent heartbeat loop wraps subprocess work; OTEL span added in same fix | indemn-os main commit pending push (heartbeat in main.py + OTEL in cron_runner.py + 3 new tests) |
-| **Bug #12** (mongodb-uri AWS Secret host) | re-broken between Session 15 and Session 16 | 🟢 **re-fixed** | AWS Secrets Manager update (no code change) |
-| **Bug #45-family followup** (Slack Integration auto-transitioned to error 18:53Z pre-session) | observed | 🟡 walked back to active; root cause not yet pinned | data fix; investigation logged in os-learnings (one-off — no recurrence over 769 Slack-Fetcher runs) |
+| **Bug #50a** (Mongo queue visibility-recovery is independent of Temporal heartbeat; long-running cron_runner subprocesses race the queue's recovery sweep) | NEW — surfaced mid-session investigating Email/Slack chronic stuckness post-cron_runner-flip | 🟢 **fixed** — extend-visibility endpoint + heartbeat-loop wire | indemn-os main `18ab3b9` (12 tests + endpoint + CLI + harness wire) |
+| **Bug #50b** (visibility-recovery loop unconditionally returns to pending without checking `max_attempts` — stuck messages attempt 7+ times indefinitely) | NEW — surfaced in same investigation, observed stuck email_fetcher message at attempt_count=7 / max_attempts=3 | 🟢 **fixed** — recovery now splits dead_letter (cap exceeded) vs pending (recover) | bundled with #50a in `18ab3b9` |
+| **`fetch_new` chunk-cap + oldest-first sort** (chronic >5min subprocess on Email Fetcher's 11-mailbox fan-out — root bottleneck is sequential `save_tracked` per entity) | NEW — surfaced from Bug #50 deploy verification | 🟢 **bridging fix shipped** — `params["limit"]` caps saves per call after sorting oldest-first by watermark field. Proper foundation fix (`bulk_save_tracked`) queued for Session 18 OS hardening sprint | indemn-os main `06d2bbd` (4 tests) |
+| **Bug #12 REFRAME** (Sessions 15+16's "re-fix" was actually wrong — overwrote correct private-link host with public one; auto-restore is correct platform behavior) | 🔴 reframed | 🟢 **fixed via wrapper** — `scripts/secrets-proxy/mongosh-connect.sh` does inline host swap; doesn't touch shared secret | os-roadmap `3ddc02a` |
+| **Zombie polling loops** (7 leftover `until [...]; do sleep 10/8; done` shells from prior sessions hammering api.os.indemn.ai + LangSmith for days) | observed mid-session (caused dev API response time 5-8s) | 🟢 **killed** — dev API recovered to 60-100ms baseline | local cleanup; no commit |
 
-**Bugs deferred (next session or beyond):**
-- **Bug #19 follow-on** — process improvement (test fixture pattern), no code action.
-- **Slack Integration auto-error root cause** — couldn't find the kernel handler that transitioned the integration to error. Since the 20:26Z reset + Bug #48 fix, no recurrences over 3 days. Worth investigating only if it recurs.
-- **`kernel/cli/app.py` Bug #48 propagation** — parallel kernel-side CLI surface still uses naive plural for entity URL slugs. Same fix needed; lower priority since the harness uses `indemn_os/` CLI.
+**Bugs deferred (next session — pre-TD-2 OS hardening sprint):**
+- **`fetch_new` bulk_save_tracked** (replaces the sequential per-entity save loop with batched insert + audit chain + watch eval; proper foundation, ~half day)
+- **`indemn diagnose` command group** (actor / message / cron-runs surfaces; ~half day) — the chunk-cap + the Bug #50 fix work today proved how badly we need this
+- **List endpoint arbitrary field filters regression** (~1-2 hours)
+- **`--include-related` polymorphic Option B Touchpoint.source_entity_id** (~2 hours)
+- **Employee `entity_resolve` activation** (5 min — TD-2 blocker)
+- **os-learnings.md status badge audit** (~30 min cleanup)
+
+**Bugs deferred (further out):**
+- Bug #19 follow-on (test fixture process improvement; no code action)
+- `kernel/cli/app.py` Bug #48 propagation (lower priority — parallel CLI surface in kernel image; harness uses `indemn_os/`)
+- Slack Integration auto-error root cause (only investigate if it recurs)
+- Bug #12 mongodb-uri secret revert mechanism (now mitigated by wrapper fix; pre-session validation script optional)
 
 ---
 
 ## Parallel sessions
 
-**Pricing Framework session (parallel)** — running in `.claude/worktrees/gic-feature-scoping/`. Session 3 closed 2026-05-04 (Phase C complete; Phase D staging-data path locked). Did not modify any of Session 16's TD-1/Bug-#40/#48/#49 state.
+**Pricing Framework session (parallel)** — running in `.claude/worktrees/gic-feature-scoping/`. Session 3 closed 2026-05-04; visual v6 generated from full staging JSON. Did not modify any of Session 17's TD-1 / Bug #50 / fetch_new state.
 
-**Currently no other parallel sessions.** Next session resumes single-thread.
+**Currently no other parallel sessions.** Next session resumes single-thread on the OS hardening sprint.
 
 ---
 
-## What just shipped (Session 16)
+## What just shipped (Session 17) — narrative
 
-Session 16 closed Bug #40 + Bug #48 + Bug #49 end-to-end. The scheduled-actor execution path is now deterministic across all 4 fetchers — no LLM calls on cron ticks, ~1000 LLM calls/day saved, no spurious dead_letters from heartbeat timeouts.
+Session 17 took TD-1 from "marked complete in roadmap.md" to "verified done end-to-end on production state" and shipped the Tier-zero fixes that made it true. Three coupled bugs fell out of the verification:
 
-### Bug #40 closure (cron_runner actor mode v1)
+### Bug #50 closure (queue visibility-extend + attempt_count cap)
 
-- **Design choice resolved:** Option A (`cron_runner` actor mode) over Option B (new `ScheduledActorWorkflow` peer). Rationale captured in os-learnings Bug #40 row.
-- **Implementation:** Pydantic Literal extension on `Actor.mode`; new `harnesses/async-deepagents/cron_runner.py` module with `parse_command_from_skill` (extracts argv from skill's `## Command` section + bash fence + indemn-only allowlist) and `run_cron_skill` (validates trigger is synthetic `_*`, loads first skill via existing CLI, parses + execs, marks queue based on JSON `errors` field). Branch added in `process_with_associate` BEFORE the agent build.
-- **22 unit tests in v1.** Skills migrated: all 4 fetcher skills rewritten to cron_runner shape and pushed to dev OS as v3 each.
-- **All 4 fetcher actors flipped** to `mode=cron_runner` and verified end-to-end.
+Bug #49 (Session 16) added a Temporal activity heartbeat in cron_runner — kept the activity alive past 90s heartbeat_timeout. **But the Mongo queue's `visibility_timeout` (5 min, set on every claim in `kernel/message/mongodb_bus.py`) was independent — nothing extended it while the runtime was still working.** Slow Email/Slack fetches on backed-up watermarks raced the queue's recovery sweep: pod A still working, queue recovers at 5 min, pod B claims it (multi-pod is by design), pod A's later `complete` hits 404 "Message not found." Net effect: subprocesses succeed but bookkeeping fails, watermark never advances, backlog grows.
 
-### Bug #49 closure (cron_runner heartbeat + OTEL span)
+Compounded by **Bug #50b** — pre-fix `kernel/queue_processor.py::check_visibility_timeouts` unconditionally recovered every timed-out `processing` message back to `pending` with no max_attempts check. The bus's `claim` path increments `attempt_count` on every claim, but nothing capped it — so a stuck message could attempt 7+ times indefinitely (observed: stuck email_fetcher message `69f89bec1f2c3ee82ecb66c4` at attempt_count=7 / max_attempts=3).
 
-Surfaced during 3-day-soak dead_letter investigation. 11 dead_letter messages all marked "Bug #38 orphan cleanup" — initially framed as runtime-restart symptom. Direct Temporal investigation (`temporal workflow describe msg-69f81d4a1f2c3ee82ecb65bf`) showed the actual cause: `Status: FAILED, Cause: activity Heartbeat timeout`, RunTime 8m15s. cron_runner v1 had no `activity.heartbeat()` call; subprocess.run blocked the worker thread for the duration of the fetch; Temporal cancelled after 90s heartbeat_timeout; both retries hit same timing; workflow ended FAILED.
+**Fix shape:** new `POST /api/message_queues/{id}/extend-visibility` endpoint resets visibility_timeout to now + 5min; idempotent on terminal status; refuses pending. New `indemn queue extend-visibility <id>` CLI mirrors complete/fail verbs. Cron heartbeat loop now calls `await asyncio.to_thread(indemn, "queue", "extend-visibility", message_id)` alongside `activity.heartbeat()` — same 30s cadence; CLIError caught + logged. Recovery sweep splits into two `update_many` calls: first dead-letters messages where `attempt_count >= max_attempts` via `$expr: {$gte: ["$attempt_count", "$max_attempts"]}`, then recovers the rest. Logs `Dead-lettered N messages over max_attempts (Bug #50)`.
 
-**Fix:** in `process_with_associate`'s cron_runner branch (main.py), wrap `run_cron_skill` in `await asyncio.to_thread(...)` and run a concurrent `_cron_heartbeat_loop` (sleeps 30s + heartbeats). `activity.heartbeat("starting_cron_runner")` fires immediately at branch entry. Cancel + await the heartbeat task in finally. Mirrors the agent path's pattern. Activity-level concern lives in the activity, NOT in cron_runner.py — keeps `run_cron_skill` sync + simple.
+**Verified live post-deploy:** vis_gap > 5min observed on multiple email_fetcher messages (10.9min, 8.8min, 7.8min — proving extend-visibility fires); queue_processor logs `Dead-lettered N messages over max_attempts (Bug #50)` repeatedly (proving 50b cap fires); slack/meeting/drive fetchers completing cleanly post-deploy. Email Fetcher first post-fix completion at 2026-05-04T21:33:49Z — first email completion since 14:26 UTC that day.
 
-**OTEL span added in same fix:** `cron_runner.run` span via `opentelemetry.trace.get_tracer(__name__)` with attributes `associate.id`, `associate.name`, `message.id`, `entity.type`, `argv`, `tool`, `result.fetched|created|skipped_duplicates`, `result.errors_count`, `outcome`. Lives under the parent activity span (TracingInterceptor) so the full chain is queryable in Grafana by trace_id. Per vision §2 item 7 — OTEL is canonical for system-level observability; LangSmith stays for AI-agent observability and that's why cron_runner runs continue to show 0 LangSmith traces (correct state, not a gap).
+### `fetch_new` chunk-cap + oldest-first sort
 
-**3 new tests** (heartbeat shape pin × 1, OTEL span × 2 using `InMemorySpanExporter`).
+Bug #50 fix proved Email Fetcher *could* now complete via heartbeat extension, but each subprocess was still chronically slow (5-10 min) because of the per-entity sequential `save_tracked()` loop in `kernel/capability/fetch_new.py`. With ~150-300ms per save × N new entities × 11-mailbox fan-out, accumulated backlog stays painful even with extension.
 
-### Bug #48 closure (CLI URL slug)
+**Bridging fix:** `params["limit"]` caps saves per call. Subsequent ticks pick up the rest. Critical correctness invariant: when `limit` is set, the cap must apply to the OLDEST-first slice — otherwise APIs that return newest-first (Gmail's default) would advance the watermark past unsaved older items, leaving them stranded forever. Implementation sorts new items ascending by watermark field (`date` / `posted_at` / `created_date`) before slicing.
 
-- **Surfaced from:** Slack-Fetcher cron_runner exec hit 404 on `indemn slackmessage fetch-new`. Server-side route is `/api/slack_messages/` (Bug #39 fix); CLI client was hitting `/api/slackmessages/` (naive plural).
-- **Two-part fix:** (1) `kernel/api/meta.py` list + detail endpoints surface `collection` field via `_route_slug_for`; (2) `indemn_os/src/indemn_os/main.py` + `bulk_commands.py` use `meta.collection` for URL construction, with `cli_name = name.lower()` kept for the singular Typer subcommand name.
-- **9 unit tests** (source-level pins via `inspect.getsource`).
-- **Live verified:** `indemn slackmessage list/fetch-new` now succeed; runtime cron_runner success log on Slack-Fetcher.
+**Skill updates:** all 4 fetcher skills now pass `--data '{"limit": 100}'`. 100 saves × ~200ms = ~20s, well under the 5-min visibility window.
 
-### Bug #12 re-fix
+**Real foundation fix (`bulk_save_tracked`) queued for next session** — single Pydantic validation pass + insert_many + batched audit chain + batched watch evaluation. Ships in OS hardening sprint per `PROMPT-2026-05-05-os-hardening.md` Tier 1 #1.
 
-- AWS Secret `indemn/dev/shared/mongodb-uri` was reverted between Session 15 and Session 16. Re-applied the same fix (pull working URI from chat-deepagents Railway env, `aws secretsmanager update-secret`). Open question: what reverted it? No code change.
+### Bug #12 REFRAME
 
-### Slack Integration recovery
+Per Craig 2026-05-04: "the mongo DB in the secret is needed. its just us that needs to use this other value." The shared `mongodb-uri` AWS Secret correctly stores the private-link host (`dev-indemn-pl-0`) the platform NEEDS. Sessions 15+16's "re-fixes" (overwriting with the public host) were the actual bug — the Railway platform's auto-restore was correct behavior, not a regression.
 
-- Found at `status=error` (auto-transitioned 2026-05-01 18:53:00Z, before Session 16 started). Walked `error → configured → connected → active`. Stayed active through 769+ Slack-Fetcher cron_runner completions over 3 days. One-off, not recurring; root-cause investigation deferred.
+**Fix:** `scripts/secrets-proxy/mongosh-connect.sh` now does an inline `-pl-0` → `` host swap (`LOCAL_URI="${URI/-pl-0/}"`). Pattern catches both `dev-indemn-pl-0` and `prod-indemn-pl-0`. Comment block in the script explicitly documents the rationale + tells future operators NOT to "fix" this by writing the public host back to the shared secret. Verified: `db.runCommand({ping: 1})` returns `ok: 1`.
 
-### Cumulative cron_runner soak (3 days, 2026-05-01 → 2026-05-04 — pre-Bug-#49-fix metrics)
+### Zombie polling cleanup
 
-| Fetcher | Cadence | Completions | DLQ (Bug #49) | LangSmith traces | Pending backlog |
-|---|---|---|---|---|---|
-| Email-Fetcher | */5 | 770 | 5 | 0 | 14 |
-| Meeting-Fetcher | */15 | 259 | 0 | 0 | 4 |
-| Drive-Fetcher | hourly | 65 | 0 | 0 | 1 |
-| Slack-Fetcher | */5 | 769 | 6 | 0 | 12 |
-| **Totals** | | **1863** | **11** | **0** | **31** |
+Process audit found 7 leftover `until [...]; do sleep 10/8; done` shells from prior sessions:
+- `94677` (Thu01PM) — polled api.os.indemn.ai/api/_meta/queue-stats every 10s for **3 days** waiting for an email_fetcher message that completed long ago
+- `90472` (Fri09AM) — polled LangSmith every 8s for a Slack Fetcher run completion
+- `40577, 81319, 93507, 93871, 94021` — stale `/tmp/claude-501` output-polling shells from prior background tasks that never terminated cleanly
 
-**Cost reduction confirmed:** 0 LangSmith deepagents traces across 1863 cron_runner runs. ~1000 LLM calls/day Bug #40's design intent eliminated.
-
-**Bug #49 fix expected impact:** dead_letter rate should drop to near-zero on cron_runner runs (Bug #38 orphans from genuine runtime restarts will still occur but should be << 11/1863). Verify over next 24-48h.
+All 7 killed. **Dev API response time dropped from 5-8s to 60-100ms** post-cleanup — the zombies were genuinely loading the API. Today's session's own background polling shells preserved.
 
 ---
 
@@ -237,8 +256,10 @@ These mostly fold into TD-4's research session per the Session 13 alignment:
 4. **Origin / referrer tracking** — surfaces from TD-4 research
 5. **Playbook hydration mechanism** — RESOLVED in TD-4 alignment
 6. **Drive content extraction** — current Drive adapter populates metadata only; Google Docs/Sheets/Slides export, PDF text extraction, image OCR are future enrichment passes
-7. **Slack Integration auto-error transition root cause** (NEW) — couldn't pin the kernel-side handler that transitioned the integration to error 2026-05-01 18:53Z. Defer investigation unless it recurs; same approach as Bug #12 regression (re-fix on detection).
-8. **Bug #12 mongodb-uri secret revert mechanism** (NEW) — what process reverts this secret? Worth a pre-session-hook validation script in the future.
+7. **Slack Integration auto-error transition root cause** — couldn't pin the kernel-side handler that transitioned the integration to error 2026-05-01 18:53Z. Defer investigation unless it recurs.
+8. **Bug #12 mongodb-uri secret revert mechanism** — what process reverts this secret? Now mitigated by wrapper fix; pre-session-hook validation script optional.
+9. **fetch_new bulk_save_tracked architecture** (NEW) — shape drafted in PROMPT-2026-05-05-os-hardening.md Tier 1 #1; details to surface during implementation.
+10. **`indemn diagnose` command group surface** (NEW) — sub-commands sketched in same PROMPT; specifics to surface during implementation.
 
 ---
 
@@ -248,48 +269,47 @@ These mostly fold into TD-4's research session per the Session 13 alignment:
 
 **Uncommitted changes at session close (will commit in EOS protocol):**
 - `M projects/customer-system/CURRENT.md` — this rewrite
-- `M projects/customer-system/SESSIONS.md` — Session 16 entry to append at top
-- `M projects/customer-system/os-learnings.md` — Bug #40 close + Bug #48 NEW row + Bug #49 NEW row + Bug #12 regression note + Bug #45-family followup observation
+- `M projects/customer-system/SESSIONS.md` — Session 17 entry to append at top
+- `M projects/customer-system/os-learnings.md` — already-staged Session 17 entries committed in `3ddc02a`; any further refinements this EOS
 - `M projects/customer-system/roadmap.md` — Where we are now updated
-- `M projects/customer-system/CLAUDE.md` — Session 16 entry in § 5 Journey
+- `M projects/customer-system/CLAUDE.md` — Session 17 entry in § 5 Journey
 - `M projects/customer-system/INDEX.md` — Decisions, Open Questions, Artifacts updates
-- `M projects/customer-system/skills/slack-fetcher.md` — v3 cron_runner shape
-- `?? projects/customer-system/skills/email-fetcher.md` — NEW v3 cron_runner shape
-- `?? projects/customer-system/skills/meeting-fetcher.md` — NEW v3 cron_runner shape
-- `?? projects/customer-system/skills/drive-fetcher.md` — NEW v3 cron_runner shape
+- `?? projects/customer-system/PROMPT-2026-05-05-os-hardening.md` — drafted next-session prompt
 
-**Indemn-os repo state (uncommitted, 2 logical commits):**
-- Bug #40 + #49 (cron_runner mode + heartbeat + OTEL): `M kernel_entities/actor.py`, `?? harnesses/async-deepagents/cron_runner.py`, `M harnesses/async-deepagents/main.py`, `?? harnesses/async-deepagents/tests/test_cron_runner.py`, `M harnesses/async-deepagents/tests/test_load_message_context.py`
-- Bug #48 (CLI URL): `M kernel/api/meta.py`, `M indemn_os/src/indemn_os/main.py`, `M indemn_os/src/indemn_os/bulk_commands.py`, `?? tests/unit/test_meta_collection_field.py`, `?? tests/unit/test_cli_url_slug_resolution.py`
+**Indemn-os repo state (all pushed to origin/main):**
+- `7c3a54c` Merge: Bug #50 fix
+- `18ab3b9` fix(queue+harness): wire queue visibility extension + cap visibility-recovery at max_attempts — Bug #50
+- `a09c67b` Merge: fetch_new chunk cap + oldest-first sort (Bug #50 follow-on)
+- `06d2bbd` fix(capability): fetch_new sorts oldest-first + caps saves at params['limit'] — Bug #50 follow-on
 
 ---
 
 ## Next session — focus
 
-**Use `PROMPT.md` as the kickoff prompt** with this objective slot:
+**Use `PROMPT-2026-05-05-os-hardening.md` as the kickoff prompt** (drafted this session; saved at `projects/customer-system/PROMPT-2026-05-05-os-hardening.md`).
 
-> *TD-2 cascade activation. Bug #40 + #48 + #49 closed; the scheduled-actor execution path is fully deterministic, 4 fetchers run LLM-free, dead_letter rate near zero. Next: build the 4 NEW associates (MeetingClassifier, SlackClassifier, Proposal-Hydrator, Company-Enricher) per `roadmap.md § TD-2`; update EC v9 → v10 (fold signature parsing + ReviewItem-on-ambiguity); update TS v6 → v7 (fold Deal-creation + atomic Proposal-at-DISCOVERY + multi-Deal ambiguity → ReviewItem); IE full-cascade verification through TS-created Touchpoints + Option B source pointers + Deal/Proposal existence; activate progressively bottom-up; done-test = systematic historical replay across ~930 emails + 67 meetings + 860 SlackMessages. Trace-as-build-method per CLAUDE.md § 2 — for each new associate: pick a real scenario (Armadillo's Apr 28 discovery meeting for MC; Apr 7-8 Retention Associate Slack thread for SC; Armadillo's processed Touchpoints for PH; Armadillo's bare Company for CE), trace manually first via CLI, write skill from what worked, activate after the trace produces correct state on real data. Multi-session work; close cleanly per session.*
+> *Pre-TD-2 OS hardening sprint. TD-1 verified done end-to-end. Tier 1 items in priority order: (1) `fetch_new` bulk_save_tracked replaces sequential save loop — proper foundation, ~half day; (2) `indemn diagnose` command group — actor / message / cron-runs CLI surfaces, ~half day; (3) List endpoint arbitrary field filters regression fix — ~1-2 hours; (4) `--include-related` polymorphic Option B support — ~2 hours; (5) Employee `entity_resolve` activation — 5 min, TD-2 blocker. Plus Tier 1.5 os-learnings.md status badge audit (~30 min). After Tier 1 lands: TD-2 cascade activation begins (next-next session) — start with MeetingClassifier on Armadillo's Apr 28 discovery meeting per trace-as-build-method.*
 
 **Key follow-ups carried into next session:**
-- TD-2 cascade activation (highest priority)
-- Bug #19 follow-on (test fixture pattern improvement; no code action — surfaces as we add tests)
+- Pre-TD-2 OS hardening sprint (highest priority — Tier 1 list above)
+- Then TD-2 cascade activation (after Tier 1 lands cleanly)
+- Bug #19 follow-on (test fixture pattern improvement; no code action)
 - Slack Integration auto-error root cause (only investigate if it recurs)
-- `kernel/cli/app.py` Bug #48 propagation (lower priority — parallel CLI surface used inside kernel image; harness uses `indemn_os/` so impact is limited)
-- Bug #12 mongodb-uri secret regression — consider a pre-session-hook validation script
-- Drive "full crawl" — only 30-day backfill done; if "every Drive file ever" is required, run `indemn document fetch-new --data '{"since":"2020-01-01"}'` once. Current hourly cron is picking up new content correctly post-Bug-#46-fix; no immediate action needed.
-- **24-48h Bug #49 verification** — confirm dead_letter rate dropped to near-zero on cron_runner runs after the heartbeat fix deployed today.
+- `kernel/cli/app.py` Bug #48 propagation (lower priority)
+- Drive "full crawl" — only 30-day backfill done; if "every Drive file ever" is required, run `indemn document fetch-new --data '{"since":"2020-01-01"}'` once
 
-**Bug #40/#48/#49 done-test (all passing):**
-- All 4 fetcher actors `mode=cron_runner` ✓
-- cron_runner exec + success log lines visible for all 4 ✓
-- 0 LangSmith deepagents traces post-flip across 3 days / 1863 completions ✓
-- ~1000 LLM calls/day eliminated (cost reduction objective met) ✓
-- Heartbeat loop wrapping subprocess (Bug #49 fix) ✓
-- `cron_runner.run` OTEL span emitted with associate/result attributes ✓
-- 25/25 cron_runner unit tests pass ✓
-- 527/527 full unit suite pass (1 pre-existing pollution failure orthogonal) ✓
+**TD-1 done-test (all passing — verified end-to-end Session 17):**
+- All 4 fetcher actors `mode=cron_runner` with correct cron schedules ✓
+- New entities flowing within configured cadence ✓ (7 email + 8 slack + 2 meeting completions in 30 min)
+- Substantial entity counts (3375 emails, 305 meetings, 867 slack, 1379 docs) ✓
+- Bug #36 / #37 cleanup verified Session 14 ✓
+- Voice + chat log-touchpoint end-to-end ✓
+- Document.source enum includes slack_file_attachment ✓
+- ReviewItem entity (9 fields) + Reviewer role wired ✓
+- Cascade NOT activated (EC suspended, TS suspended, IE active) ✓
+- Bug #49/#50 verification: ZERO dead_letters since Bug #50 deploy at 21:33 UTC ✓
 
-After Session 16 closes: **TD-2 begins.**
+After Session 17 closes: **OS hardening sprint, then TD-2.**
 
 ---
 
