@@ -5,7 +5,7 @@ Scheduled deterministic CLI executor. Runs `indemn meeting fetch-new` on every c
 ## Command
 
 ```bash
-indemn meeting fetch-new
+indemn meeting fetch-new --data '{"limit": 100}'
 ```
 
 ## Why this exists

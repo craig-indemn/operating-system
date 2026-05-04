@@ -5,7 +5,7 @@ Scheduled deterministic CLI executor. Runs `indemn document fetch-new` on every 
 ## Command
 
 ```bash
-indemn document fetch-new
+indemn document fetch-new --data '{"limit": 100}'
 ```
 
 ## Why this exists
