@@ -557,6 +557,26 @@ Fix landed in indemn-os main `18ab3b9` (merged via `7c3a54c`): new `POST /api/me
 
 **Handoff to Session 18:** Use `projects/customer-system/PROMPT-2026-05-05-os-hardening.md` as kickoff. Objective: **pre-TD-2 OS hardening sprint** — Tier 1 list per the prompt's done-test acceptance criteria. After Tier 1 lands cleanly: TD-2 cascade activation begins (Session 19+) — start with MeetingClassifier on Armadillo's Apr 28 discovery meeting per trace-as-build-method.
 
+### Session 18 (2026-05-05) — Pre-TD-2 OS hardening sprint complete; all 5 Tier 1 items shipped + deployed + verified
+
+The session that made the OS foundation ready for TD-2's cascade. Focused execution — no design discussion, no parallel threads, just ship the 5 queued items and verify them end-to-end.
+
+**What shipped:**
+1. `bulk_save_tracked()` in `kernel/entity/save.py` — batched insert_many(ordered=False) + in-memory hash-chained change records + batched watch evaluation. Wired from fetch_new.py. 12 tests.
+2. `indemn diagnose` command group — `actor <id>`, `message <id>`, `cron <name>`. API at `/api/_diagnose/*`. Verified live: Email Fetcher runs, durations, outcomes visible without mongosh. 12 tests. Fixed two deploy issues: role_ids→Role.name lookup, Message schema (claimed_at not completed_at).
+3. List endpoint `--data` filter — root cause: CLI had no `--data` flag on list command. API's `?filter=` param was correct but unreachable. Added flag, verified: good field → filtered, bogus field → 400. 4 tests.
+4. Polymorphic `--include-related` — `is_polymorphic_relationship` + `target_type_field` on FieldDefinition; `_build_related_entities` resolves at runtime. Touchpoint entity def activated. Ready for TD-2's TS v7 to populate source pointers. 5 tests.
+5. Employee `entity_resolve` — one API call. Verified Kyle@indemn.ai → score 1.0. TD-2's MC/TS can now resolve internal participants.
+
+**Load-bearing turns:**
+1. **The list filter "regression" was never a server-side bug.** The API `?filter=` parameter + `parse_filter` safelist (shipped Apr 27, commit `df92cca`) worked the entire time. The actual gap: CLI's `list` command had no `--data` option, so operators using `--data` got a Typer error, and operators passing `?data=` in URLs hit a parameter the endpoint didn't read. One-line fix.
+2. **Diagnose endpoint required two deploy iterations.** First: role lookup (`actor.role` doesn't exist; Actor has `role_ids` list of ObjectId refs to Role entities). Second: Message queue entries don't have `completed_at` (that's on MessageLog); used `claimed_at` for wait-time duration. Both surfaced immediately on live verification — trace-as-build catches what unit tests don't.
+3. **Documentation IS the deliverable for future discoverability.** Added bulk_save_tracked + diagnose commands to indemn-os CLAUDE.md's save-path section, key-files table, and debugging section. Without this, a future session would loop save_tracked and reach for mongosh.
+
+**Material state at close:** All 5 Tier 1 items deployed to Railway (indemn-api, queue-processor, temporal-worker, runtime-async). 514 unit tests pass (+33). os-learnings.md 7 rows corrected. Employee entity_resolve live. Touchpoint polymorphic ref activated. No new bugs surfaced. EC/TS still suspended; IE active. Foundation clean.
+
+**Handoff to Session 19:** Use `projects/customer-system/PROMPT-2026-05-05-td2-cascade.md` as kickoff. Objective: **TD-2 cascade activation** — start with MeetingClassifier on Armadillo's Apr 28 discovery meeting per trace-as-build-method. Multi-session work; close cleanly per session.
+
 ---
 
 ## 6. Foundations

@@ -6,29 +6,21 @@
 
 ---
 
-## Where we are now (2026-05-04)
+## Where we are now (2026-05-05)
 
-**TD-1 VERIFIED DONE end-to-end (Session 17).** All done-test items passing on production state: 4 fetcher actors active with `mode=cron_runner` and correct cron schedules; ~17 cron completions in last 30 min (Email 7, Slack 8, Meeting 2); substantial entity counts (3375 emails, 305 meetings, 867 SlackMessages, 1379 documents); ReviewItem entity (9 fields) + Reviewer role (1 watch) wired; EC/TS suspended, IE active (cascade NOT activated by design); Document.source enum includes `slack_file_attachment`; Voice OS Assistant + log-touchpoint v3 active; **ZERO dead_letter messages since Bug #50 deploy at 21:33 UTC**. Bug #49 verification window passed cleanly.
+**Pre-TD-2 OS hardening sprint COMPLETE (Session 18).** All 5 Tier 1 items shipped, deployed, verified end-to-end. 514 unit tests pass (+33 new). Foundation is clean for TD-2.
 
-**Bug #50 (queue visibility extend + attempt_count cap) shipped end-to-end** (indemn-os `18ab3b9`, merged via `7c3a54c`): new `POST /api/message_queues/{id}/extend-visibility` endpoint + `indemn queue extend-visibility <id>` CLI + cron heartbeat-loop call extend-visibility every 30s alongside `activity.heartbeat()`. `kernel/queue_processor.py::check_visibility_timeouts` split into dead-letter-at-max-attempts ($expr) + recover-otherwise. 12 new unit tests; verified live (vis_gap > 5min observed; queue_processor logs `Dead-lettered N messages over max_attempts (Bug #50)`).
+**Session 18 delivered:**
+1. `bulk_save_tracked()` — batched insert replaces sequential per-entity save loop in fetch_new. Same audit + watch contracts. 12 tests.
+2. `indemn diagnose` command group — actor/message/cron sub-commands. Verified live against Email Fetcher. 12 tests.
+3. List endpoint `--data` filter fix — CLI was missing the flag. Bogus fields → 400. 4 tests.
+4. Polymorphic `--include-related` — `is_polymorphic_relationship` + `target_type_field`. Touchpoint entity def activated. 5 tests.
+5. Employee `entity_resolve` activated — verified Kyle@indemn.ai → score 1.0.
+6. os-learnings.md 7 rows corrected. indemn-os CLAUDE.md updated.
 
-**fetch_new chunk-cap + oldest-first sort shipped** (indemn-os `06d2bbd`, merged via `a09c67b`): `params["limit"]` caps saves per call after sorting genuinely-new items ascending by watermark field — guards watermark-correctness invariant against APIs returning newest-first (Gmail's default). 4 new unit tests. **Real foundation fix (`bulk_save_tracked`) queued for next session** in the OS hardening sprint.
+**TD-2 cascade activation begins next session (Session 19).** Per `roadmap.md § TD-2`: 7-associate cascade (EC v9→v10, MC NEW, SC NEW, TS v6→v7, IE verified, Proposal-Hydrator NEW, Company-Enricher NEW) + ReviewItem universal-escape-valve. Trace-as-build-method — start with MeetingClassifier on Armadillo's Apr 28 discovery meeting.
 
-**Bug #12 reframed and fixed** (operating-system worktree `3ddc02a`): the shared `mongodb-uri` AWS Secret correctly stores the private-link host the platform needs. `scripts/secrets-proxy/mongosh-connect.sh` now does inline `-pl-0` → `` host swap for local mongosh use; doesn't touch shared secret. Sessions 15+16's "re-fixes" were actually overwrites; auto-restore was correct platform behavior. Comment block in script tells future operators NOT to overwrite.
-
-**7 zombie polling loops killed** in same session — dev API response time recovered from 5-8s to 60-100ms baseline.
-
-**Next gate: pre-TD-2 OS hardening sprint** (next session, per `PROMPT-2026-05-05-os-hardening.md`). Tier 1 list:
-1. `fetch_new` bulk_save_tracked (proper foundation, ~half day)
-2. `indemn diagnose` command group (actor / message / cron-runs CLI surfaces, ~half day)
-3. List endpoint arbitrary field filters regression fix (~1-2 hours)
-4. `--include-related` polymorphic Option B support (~2 hours)
-5. Employee `entity_resolve` activation (5 min — TD-2 blocker)
-Plus Tier 1.5 os-learnings.md status-badge audit (~30 min — several rows mismarked 🔴 are actually 🟢).
-
-**After Tier 1 lands: TD-2 cascade activation begins** (Session 19+). 4 NEW associates to build (MeetingClassifier, SlackClassifier, Proposal-Hydrator, Company-Enricher); update EC v9 → v10 (signature parsing + ReviewItem-on-ambiguity); update TS v6 → v7 (Deal-creation atomic with Proposal-at-DISCOVERY); IE full-cascade verification; activate progressively bottom-up; systematic historical replay across ~930+ emails + 305 meetings + 867 SlackMessages. Designs are in `roadmap.md § TD-2`.
-
-For deeper context on Session 17 closeout: `CURRENT.md`, `SESSIONS.md` Session 17 entry, `CLAUDE.md § 5 Journey` Session 17.
+For deeper context: `CURRENT.md`, `SESSIONS.md` Session 18 entry.
 
 ---
 

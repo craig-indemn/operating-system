@@ -6,6 +6,32 @@
 
 ---
 
+## Session 18 — 2026-05-05 — Pre-TD-2 OS hardening sprint complete; all 5 Tier 1 items shipped + deployed + verified
+
+**Workstream:** OS hardening sprint — ship foundation fixes so TD-2 cascade lands on clean infrastructure.
+
+**Objective:** Ship the 5 Tier 1 items (bulk_save_tracked, indemn diagnose, list filter fix, polymorphic --include-related, Employee entity_resolve) + os-learnings.md badge audit. NOT start TD-2.
+
+**Parallel sessions during:** None active. Pricing Framework at Phase D visual v6 (separate worktree, untouched).
+
+**Outcome:**
+- **bulk_save_tracked** — `kernel/entity/save.py` new sibling to `save_tracked_impl`. insert_many(ordered=False) + in-memory hash-chained change records + batched watch evaluation. Wired from fetch_new.py. 12 unit tests.
+- **`indemn diagnose` command group** — 3 sub-commands (actor/message/cron) + `/api/_diagnose/*` API endpoints. Deployed + verified end-to-end against live Email Fetcher. 12 unit tests. Auth help docstring updated with INDEMN_SERVICE_TOKEN.
+- **List endpoint --data filter** — root cause was CLI missing the flag entirely (API `?filter=` param was always correct). Added `--data` to list command → passes as `filter` query param. Verified: valid field filters, bogus field → 400. 4 tests.
+- **Polymorphic --include-related** — `is_polymorphic_relationship` + `target_type_field` on FieldDefinition. `_build_related_entities` resolves target type at runtime. Touchpoint entity def updated with the flag. 5 tests.
+- **Employee entity_resolve activated** — single API call. Verified: Kyle@indemn.ai → score 1.0.
+- **os-learnings.md audit** — 7 rows corrected from stale 🔴/🟡 to 🟢 (Slack ingestion, Document.source enum, list filter, fetch_new bottleneck, Employee resolve, CLI diagnostics gap, polymorphic include-related).
+- **indemn-os CLAUDE.md updated** — documents bulk_save_tracked + diagnose commands for discoverability.
+- Test count: 481 → 514 (+33 new, 0 regressions).
+
+**Indemn-os commits:** `d1f695a` (main feat), `12ce818` (role_ids fix), `0e95ea5` (Message schema fix), `d746ea4` (docs). All pushed + deployed to indemn-api / queue-processor / temporal-worker / runtime-async.
+
+**Handoff to Session 19:** TD-2 cascade activation begins. Start with MeetingClassifier on Armadillo's Apr 28 discovery meeting per trace-as-build-method. Next-session prompt at `PROMPT-2026-05-05-td2-cascade.md`.
+
+**Touched:** `kernel/entity/save.py`, `kernel/capability/fetch_new.py`, `kernel/api/diagnose_routes.py`, `kernel/api/app.py`, `kernel/entity/definition.py`, `kernel/message/emit.py`, `indemn_os/diagnose_commands.py`, `indemn_os/main.py`, `indemn_os/auth_commands.py`, `CLAUDE.md` (indemn-os), `os-learnings.md`, 4 new test files.
+
+---
+
 ## Session 17 — 2026-05-04 — TD-1 verified done end-to-end; Bug #50 (queue visibility-extend + attempt_count cap) + fetch_new chunk-cap with oldest-first sort + Bug #12 reframe + 7 zombie polling loops killed; pre-TD-2 OS hardening sprint planned
 
 **Workstream:** TD-1 verification + foundations cleanup. Started as the kickoff TD-2 cascade-activation session per Session 16's handoff, but pre-flight Bug #49 verification surfaced a chronic Email Fetcher subprocess slowness + multi-pod completion race that had to be resolved before the cascade could land cleanly. Three coupled bugs fell out of the verification; all three fixed in-session.
